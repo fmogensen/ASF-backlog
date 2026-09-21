@@ -1,7 +1,7 @@
 # ASF — Autonomous Software Factory: the record
 
 The factory's own backlog, kept the way ASF keeps any product's record: one markdown file per work
-item, in git, readable on GitHub, editable by a person or by an agent session, read by every
+item, in git, readable in a browser, editable by a person or by an agent session, read by every
 command through `index.json`. The schema and the tooling live in the code repo
 (https://github.com/fmogensen/ASF); this repo is the data — and, because ASF builds itself, the
 demo.
@@ -106,7 +106,7 @@ Type-specific typed fields:
 
 **Links:** `[[ID]]` in bodies, plain ids in frontmatter. `index` rewrites `## Children` and
 `## Backlinks` in every file; inside those two sections an id is written
-`[F-0042](../features/F-0042.md)` so GitHub makes it clickable. Bodies are never rewritten by
+`[F-0042](../features/F-0042.md)` so a repository browser renders it as a link. Bodies are never rewritten by
 `index` — they keep the `[[ID]]` form, and `check` accepts both forms. A bare `D171` in a new body
 fails `check`; it must be `[[D-0171]]`.
 
