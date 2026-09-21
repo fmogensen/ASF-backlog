@@ -1,3 +1,5 @@
+→ E-0004
+
 # Control plane — the factory's dashboard, served from the record
 type: epic
 

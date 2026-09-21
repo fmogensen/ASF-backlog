@@ -1,0 +1,48 @@
+→ F-0073
+
+# Everything enters through the inbox; the type is derived from the card's shape
+type: feature
+
+## Description
+As an operator, I want every new piece of work to enter the record as an untyped inbox card and
+receive its type (Epic, Feature, Story, Task, Bug) from the groom's reading of its shape, so that
+nobody — human or session — decides "this is a Feature" by hand, and the type is a statement about
+size that the code can check.
+
+Today `asf new epic|feature` mints directly; on 2026-09-21 the operator's proxy filed F-0071,
+F-0072 and S-0001–S-0004 that way while the operator answered live. That is the remembered rule
+this card turns into code.
+
+Why the types exist: an **Epic** is a business outcome spanning several Features; a **Feature**
+carries one spec and one plan and lands as one deployable thing; a **Story** is one PR with one
+acceptance list; a **Task** is one session in one worktree with a `writes:` footprint; a **Bug** is
+a defect with a signature.
+
+## Acceptance
+- [ ] `inbox/<slug>.md` needs only title, description, acceptance and links; a `type:` line is a
+  proposal, never binding.
+- [ ] `asf groom` proposes a type from shape and prints it as a one-word question:
+  `type? feature (spec-shaped, 6 acceptance lines)` — Epic: ≥ 3 sub-features listed or no single
+  acceptance list · Feature: needs a spec, 2–10 stories or acceptance lines, one deploy · Story:
+  one acceptance list, one PR · Task: a plan line with `writes:` · Bug: a defect with a signature.
+  The operator answers `yes`, `epic`, `feature`, `story`, `task`, `bug` or `drop`.
+- [ ] `asf groom --apply` is the only path that mints an Epic or a Feature; `asf new epic|feature`
+  refuses unless given `--from inbox/<file>` (the same code path). Bugs stay direct (`file-bugs`,
+  incidents); Stories and Tasks stay direct for spec and plan writers (a spec's `## Stories`, a
+  plan's `### Task N:`), each carrying `source:` naming the spec or plan.
+- [ ] Every minted card carries `source:` (`inbox/<file>`, a spec path, a plan path, `file-bugs`,
+  or `operator-direct <date>` for the historical ones).
+- [ ] Re-typing is a groom proposal, never a hand edit: a Feature above 10 Stories → "split into an
+  Epic"; a Feature with 1 Story → "demote to Story"; both follow split-never-reopen.
+- [ ] The Rule below is a check.
+
+## Rule (to be minted with this card)
+**A typed Epic or Feature must name its origin.** `check`: an Epic or Feature whose `source:` is
+absent, or not one of `inbox/<file>` · a spec path · a plan path · `operator-direct <date>`, is a
+violation; the tick files one Bug per violation against the filer's product. Trigger: every tick.
+
+## History
+- 2026-09-21 18:40 operator: first developed after the cutover, with S-0001–S-0004 and B-0016–B-0018 (blockedBy F-0019, rank 8 in that set)
+- 2026-09-21 18:35 operator: "why do we have features? shouldn't all flow through the inbox and
+  then determined epic or feature based on size of sub-features and tasks or similar?" — filed on
+  "file it in the inbox".

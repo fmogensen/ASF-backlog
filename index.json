@@ -1,10 +1,11 @@
 {
-  "generated": "2026-09-21T17:01:59Z",
+  "generated": "2026-09-21T17:04:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
       "backlinks": [
-        "F-0072"
+        "F-0072",
+        "B-0020"
       ],
       "children": [],
       "decided": true,
@@ -259,7 +260,8 @@
       "area": "factory",
       "backlinks": [
         "F-0071",
-        "B-0015"
+        "B-0015",
+        "B-0020"
       ],
       "children": [],
       "decided": true,
@@ -283,7 +285,8 @@
       "area": "factory",
       "backlinks": [
         "F-0071",
-        "B-0015"
+        "B-0015",
+        "B-0020"
       ],
       "children": [],
       "decided": true,
@@ -306,7 +309,8 @@
     "B-0015": {
       "area": "factory",
       "backlinks": [
-        "F-0071"
+        "F-0071",
+        "B-0020"
       ],
       "children": [],
       "decided": true,
@@ -328,7 +332,9 @@
     },
     "B-0016": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0073"
+      ],
       "blocked": true,
       "blockedBy": [
         "F-0019"
@@ -384,7 +390,9 @@
     },
     "B-0018": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0073"
+      ],
       "blocked": true,
       "blockedBy": [
         "F-0019"
@@ -438,6 +446,68 @@
       "title": "Health reaps a live job whose branch has no commits yet (reads \"no commits\" as \"merged\")",
       "type": "bug",
       "updated": "2026-09-21T17:01:58Z"
+    },
+    "B-0020": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0020",
+      "parent": "F-0010",
+      "priority": "need",
+      "severity": "S1",
+      "signature": "evidence: conventions hardcoded, no id-token matching",
+      "stage_since": "2026-09-21T17:04:24Z",
+      "state": "New",
+      "title": "Evidence is blind to any product but the first: branch prefixes hardcoded, id tokens in commits ignored",
+      "type": "bug",
+      "updated": "2026-09-21T17:04:24Z"
+    },
+    "B-0021": {
+      "area": "factory",
+      "backlinks": [],
+      "blockedBy": [
+        "F-0019"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0021",
+      "parent": "F-0012",
+      "priority": "need",
+      "rank": 10,
+      "severity": "S2",
+      "signature": "rules: core checks missing",
+      "stage_since": "2026-09-21T17:04:24Z",
+      "state": "New",
+      "title": "Core rules have no check scripts in the ASF repo (142 unenforced)",
+      "type": "bug",
+      "updated": "2026-09-21T17:04:24Z"
+    },
+    "B-0022": {
+      "area": "factory",
+      "backlinks": [],
+      "blockedBy": [
+        "F-0019"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0022",
+      "parent": "F-0014",
+      "priority": "need",
+      "rank": 11,
+      "severity": "S3",
+      "signature": "cli: second-product rough edges",
+      "stage_since": "2026-09-21T17:04:24Z",
+      "state": "New",
+      "title": "CLI consistency: --product everywhere, one commit per tick, one-factory false positive, sessions/status/prod views on a second product",
+      "type": "bug",
+      "updated": "2026-09-21T17:04:24Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -1153,6 +1223,32 @@
       "type": "epic",
       "updated": "2026-09-21T14:00:00Z"
     },
+    "E-0004": {
+      "backlinks": [],
+      "children": [
+        "F-0073"
+      ],
+      "decided": false,
+      "folder": "epics",
+      "id": "E-0004",
+      "stage_since": "2026-09-21T17:03:05Z",
+      "state": "New",
+      "title": "Control plane \u2014 the factory's dashboard, served from the record",
+      "type": "epic",
+      "updated": "2026-09-21T17:03:05Z"
+    },
+    "E-0005": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "epics",
+      "id": "E-0005",
+      "stage_since": "2026-09-21T17:03:05Z",
+      "state": "New",
+      "title": "jev decision model in the tick \u2014 a cheap judge between code and sessions",
+      "type": "epic",
+      "updated": "2026-09-21T17:03:05Z"
+    },
     "F-0001": {
       "area": "factory",
       "backlinks": [],
@@ -1339,7 +1435,8 @@
       "area": "factory",
       "backlinks": [],
       "children": [
-        "S-0002"
+        "S-0002",
+        "B-0020"
       ],
       "decided": true,
       "evidence": [
@@ -1380,7 +1477,9 @@
     "F-0012": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "B-0021"
+      ],
       "decided": true,
       "evidence": [
         "no evidence found (2026-09-21)"
@@ -1425,7 +1524,8 @@
       "area": "factory",
       "backlinks": [],
       "children": [
-        "S-0004"
+        "S-0004",
+        "B-0022"
       ],
       "decided": true,
       "evidence": [
@@ -1530,6 +1630,7 @@
     "F-0019": {
       "area": "factory",
       "backlinks": [
+        "F-0073",
         "S-0001",
         "S-0002",
         "S-0003",
@@ -1538,6 +1639,8 @@
         "B-0017",
         "B-0018",
         "B-0019",
+        "B-0021",
+        "B-0022",
         "D-0019"
       ],
       "children": [
@@ -2615,7 +2718,9 @@
     },
     "F-0071": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0073"
+      ],
       "children": [
         "S-0003"
       ],
@@ -2638,7 +2743,10 @@
     },
     "F-0072": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0073",
+        "B-0020"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -2656,6 +2764,19 @@
       "title": "Install and upgrade: pipx package, asf init adopts, schema check on every write, asf migrate, PATH-bound scheduler and hooks",
       "type": "feature",
       "updated": "2026-09-21T17:01:58Z"
+    },
+    "F-0073": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0073",
+      "parent": "E-0004",
+      "stage_since": "2026-09-21T17:03:05Z",
+      "state": "New",
+      "title": "Everything enters through the inbox; the type is derived from the card's shape",
+      "type": "feature",
+      "updated": "2026-09-21T17:03:05Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -4795,7 +4916,9 @@
     },
     "S-0001": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0073"
+      ],
       "blocked": true,
       "blockedBy": [
         "F-0019"
@@ -4876,7 +4999,9 @@
     },
     "S-0004": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0073"
+      ],
       "blocked": true,
       "blockedBy": [
         "F-0019"
@@ -4901,5 +5026,6 @@
       "type": "story",
       "updated": "2026-09-21T17:01:58Z"
     }
-  }
+  },
+  "schema_version": 1
 }
