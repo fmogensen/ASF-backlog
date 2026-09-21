@@ -12,6 +12,24 @@ use it: every path, branch prefix and limit named below is a key in the operator
 
 ## Vocabulary
 
+The words, before the types:
+
+| Word | Means |
+| --- | --- |
+| **record** | this repository: one product's work-item database, served by `asf` |
+| **inbox item** | an idea — one untyped file in `inbox/`, no id; the groom reads its shape and asks the operator one word |
+| **item** (work item) | one typed, numbered markdown file in a type folder — the unit everything else refers to |
+| **card** | the same as *item*; the informal word, used in prose and briefs |
+| **type** | which folder an item lives in — one of the seven below; a statement about size and shape, derived by the groom, never chosen by the filer |
+| **typed field** | a line a human or a session writes (title, acceptance, parent, priority, rank, decided, blockedBy, removed) |
+| **derived field** | a line only the tick writes, under `# ---- machine ----` (state, stage, evidence, cost) |
+| **groom** | the daily pass that types inbox items and asks the operator one-word questions in `groom/<date>.md` |
+| **lane** | the path an item takes from card to landed code: rows the feeder emits, sessions the wave launches, harvest |
+| **row** | one thing the feeder says should happen now (`CARD → SPEC`, `PLAN → CODE`, `BUG → FIX`, …) |
+| **session** / **worker** | one headless coding-agent run the wave launched for one row, in its own worktree |
+| **tick** | one scheduled pass of `asf tick`: record → health → wave → prs → batch → daily |
+| **operator** | the human who answers the groom and holds the `human-now` approvals; never named in the record |
+
 | Type | Folder | Id | Parent | What it is |
 | --- | --- | --- | --- | --- |
 | Epic | `epics/` | `E-0001` | — | a GOAL: a business outcome |
@@ -26,7 +44,7 @@ Plus the folders that are not items:
 
 | Folder | What |
 | --- | --- |
-| `inbox/` | raw thoughts, one file each; the groom pass turns them into cards or writes one question back |
+| `inbox/` | inbox items — ideas, one file each, untyped; the groom types them into items or writes one question back |
 | `groom/` | `YYYY-MM-DD.md`, generated daily; the operator answers one word per line |
 | `releases/` | `YYYY-MM-DD-<sha>.md`, generated per prod deploy: every item that reached prod |
 | `metrics/` | `ci/`, `sessions/`, `ticks/` — JSONL, one line per event, item id on every line; `daily/` — generated md |
