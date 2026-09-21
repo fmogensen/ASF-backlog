@@ -1,0 +1,26 @@
+# The tick ends with two tables: in flight, and done since the last tick
+
+Operator, 2026-09-21 23:50: "When the tick runs I see one-liners. It would be more useful in table format with relevant columns and a description of what's being developed, as well as completed since last tick."
+
+## In flight (one row per live session)
+
+| Item | Title | Kind | Row | Account | Model | Age | Health | Branch |
+
+`Account` is the pool index (`a1`…), never a name, because the record is public. `Health` is the
+stall reader's word (`ok`, `silent 12 m`, `dead`). `Row` is the feeder row that launched it
+(`BUG → FIX`, `CARD → SPEC`, `FIX → CORRECT`).
+
+## Done since the last tick
+
+| Item | Title | What happened | Evidence |
+
+Rows: `landed <branch> → <sha>`, `Resolved` / `Closed` (with the commit and the CI run),
+`held <branch>: <reason>`, `stopped by operator`, `adjudicate`. "Since the last tick" is the
+previous `tick: state` commit's timestamp in the record clone.
+
+## Also
+
+- `asf status --product <p>` prints the same two tables on demand (code-generated, stamped).
+- The one-line events stay in the log for grep; the tables are printed last so the tail of the
+  log is the tables.
+- Vocabulary from the README (item, row, session, tick).
