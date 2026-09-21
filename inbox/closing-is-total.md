@@ -15,8 +15,8 @@ with no children and no naming commit, and everything landed before the id-in-su
 ## What is general and what is a bridge (operator asked, 2026-09-21 19:50)
 General, permanent: derived state, a definition of done per type, harvest refusing a branch that
 does not name its item, no row for a done item. **Bridges for 0.1**: "a trunk commit naming the id"
-proves linkage, not doneness; `reconcile` by text match is a one-time migration crutch that retires
-once the record is clean. **The general closing rule** is the one the story-to-test gate (F-0040)
+proves linkage, not doneness; the fix-bug template's "already landed → empty commit" is a session's judgment
+and a hand-carried bridge (D-0047); it retires when acceptance-as-tests lands. **The general closing rule** is the one the story-to-test gate (F-0040)
 and "criteria have evidence" carry: every acceptance line names its test, the CI provider exposes
 per-test results from the trunk run, and Closed = every named test exists and is green at or after
 the change. A card whose acceptance names no test cannot close — which is right. The bridge ships
@@ -31,11 +31,10 @@ supersedes the commit-naming proxy for Stories and Features when it lands.
   the landing commit, or `deploy_sha: none` → `on-prod`/Closed. **Epic** — typed `closed` by the
   operator; the tick proposes it in the groom when every Feature is Closed. **Decision/Rule** —
   never close; `superseded_by` instead.
-- [ ] `asf reconcile --product <p>`: for every open Feature/Story/Task/Bug, matches the card's
-  title and `## Fix`/`## Acceptance` terms against trunk commit subjects and merged PR titles since
-  the card's creation; a match above a threshold becomes a groom line `close? <id> — <n> commits
-  match: <sha> <subject>`; the operator's `yes` writes `closed_by: <sha>` (typed — a ruling with its
-  evidence) and the tick derives Closed from it. Never closes anything on its own.
+- [ ] No reconciliation by matching (D-0047). The groom lists every open item with no evidence for
+  more than `stage_limits.no_evidence_days` (default 7) as `close? <id> — <title> — no evidence
+  since <date>`; the operator's answer is `keep` or a sha; a sha writes `closed_by: <sha>` (a typed
+  ruling with its evidence) and the tick derives Closed from it. Nothing is inferred.
 - [ ] Every brief kind requires the item id in every commit subject (`<kind>(<id>): …`); harvest
   refuses a branch whose commits do not name the branch's item.
 - [ ] The feeder emits no row for an item in a done state and caps attempts (B-0026); `asf next`
