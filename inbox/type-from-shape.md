@@ -40,6 +40,7 @@ absent, or not one of `inbox/<file>` · a spec path · a plan path · `operator-
 violation; the tick files one Bug per violation against the filer's product. Trigger: every tick.
 
 ## History
+- 2026-09-21 18:40 operator: first developed after the cutover, with S-0001–S-0004 and B-0016–B-0018 (blockedBy F-0019, rank 8 in that set)
 - 2026-09-21 18:35 operator: "why do we have features? shouldn't all flow through the inbox and
   then determined epic or feature based on size of sub-features and tasks or similar?" — filed on
   "file it in the inbox".
