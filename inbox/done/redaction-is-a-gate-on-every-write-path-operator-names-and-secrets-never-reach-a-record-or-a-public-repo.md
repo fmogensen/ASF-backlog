@@ -1,0 +1,39 @@
+→ F-0075
+
+# Redaction is a gate on every write path: operator names and secrets never reach a record or a public repo
+type: feature
+
+## Description
+As an operator whose records and factory code are public, I want every path that commits or
+pushes — the tick, the harvest, a session, a human — to run the same redaction check and refuse
+when a line carries an operator name or a secret, so that nothing has to be remembered and a
+leak is impossible by construction rather than caught by luck.
+
+On 2026-09-21 the wave wrote worker-account names into a public record's `metrics/events`; the
+name check existed but ran only when a human committed. The tick's own commit path had no gate.
+
+## Acceptance
+- [ ] One check, `asf redact --check [paths|--diff]` (library `asf.redact`): flags (a) every name
+  in the forbidden set, (b) secret patterns — API keys, bearer tokens, `sk-…`, JWTs, private-key
+  blocks, `password=`, cloud credentials — with the class of each hit; output `REDACTION:
+  <file>:<line> <class>`; exit 1 on any hit.
+- [ ] The forbidden set is data: `~/.ASF/config.yaml` `worker_pool.accounts[].name`, every host or
+  name under a `redact:` list the operator keeps, plus the ASF repo's `tools/forbidden-names.txt`
+  when the target is the ASF repo itself. A stranger's install therefore redacts *their* names.
+- [ ] Triggers, all four, each a test: (1) the tick's `commit_local` runs the check on the staged
+  diff and refuses the commit, logging one `redaction` event and filing/bumping a Bug with
+  signature `redaction: <class>`; (2) the record's pre-commit hook (installed by `asf init`) runs
+  it; (3) harvest and the `prs` step run it on the branch diff before any push; (4) worker
+  sessions get a `Stop` hook from `asf hooks install` that runs it on the worktree.
+- [ ] `asf doctor` shows the redaction set size and the last refusal; `check_generic` and
+  `check_conventions` become callers of the same library (one implementation).
+- [ ] The rule below is minted with this item.
+
+## Rule
+**Nothing named, nothing secret, leaves the machine.** `check`: `asf redact --check` clean on every
+commit path listed above. Trigger: every commit, every push. A hit is a Bug (S1 when the target
+repo is public).
+
+## History
+- 2026-09-21 19:35 operator: "shouldn't keys and names be handled by trigger checks so they never
+  appear in a public repo?" — after the wave leaked account names into `metrics/events`

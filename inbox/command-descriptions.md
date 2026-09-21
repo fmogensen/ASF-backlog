@@ -36,3 +36,6 @@ question; no description says which commands write the record.
 ## History
 - 2026-09-21 19:30 operator: "evaluate the description on all asf commands … some might need
   revision"
+
+## Question
+Unrecognized `type: story` — use bug, epic or feature, or remove the line.

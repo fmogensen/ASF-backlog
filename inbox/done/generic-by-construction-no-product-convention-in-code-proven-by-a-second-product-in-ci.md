@@ -1,0 +1,44 @@
+→ F-0074
+
+# Generic by construction: no product convention in code, proven by a second product in CI
+type: feature
+
+## Description
+As the maintainer of a factory that must run any product, I want every path, branch prefix, file
+name and id a product can differ on to come from one conventions object read from the product's
+yaml — and a check that fails the build when code carries a literal — so that "works for any
+product" is a property the tests prove, not a claim.
+
+Found 2026-09-21 19:20 while running ASF on itself: 14 of the package's modules carry the first
+product's conventions as literals (`cloud/`, `worktree-m-`, `docs/superpowers`, `.sdd-input`,
+`goals.txt`, `feature-matrix`, `E-0009`, `tools/*.py`, `~/.claude-workers/…`, `~/.claude/…`,
+`/tmp/…`). The name check (`check_generic`) cannot see them because they are not names. The
+evidence provider was blind on the second product for exactly this reason (B-0020).
+
+## Acceptance
+- [ ] `asf/conventions.py`: one dataclass with every convention and its documented default —
+  `branch_prefixes {code, fix, spec, plan, legacy: []}`, `specs_dir`, `plans_dir`, `reviews_dir`,
+  `review_pattern`, `task_heading`, `intake_dir`, `goals_file`, `default_bug_epic`, `main`,
+  `test_command`, `preamble_max_lines`, `prs_per_tick`, `stage_limits` — loaded from the product
+  yaml by `env.load_product`; every module reads `product.conventions.<field>`, never a literal.
+- [ ] Operator-side paths live under `~/.ASF/` only: `state/<p>/sessions.jsonl` (the session
+  registry the workers write), `logs/jobs/<p>/*.jsonl`, `state/<p>/record`, `state/<p>/worktrees`;
+  no module reads a path under any other home directory. Pre-asf logs are imported once by
+  `asf import-sessions <file>` (an adapter with a documented line format), not read live.
+- [ ] `tools/check_conventions.sh` (run by the tests and CI): a literal from the forbidden-token
+  list in any `asf/**/*.py` outside `asf/conventions.py` fails; the list is in
+  `tools/forbidden-conventions.txt` next to `forbidden-names.txt`.
+- [ ] `sample/`: a second product — different branch prefixes (`feature/`, `bugfix/`), `specs/`
+  and `plans/` at the repo root, no CI (`ci: none`), the fake runtime — with a record of ten
+  cards; a test runs `asf init` on it, then one full tick (record → health → wave → prs) and
+  asserts the derived states and the launched briefs. This is the dogfood-in-CI test from the
+  plan; it is what "generic" means.
+- [ ] The rule below is a check card.
+
+## Rule (to be minted with this card)
+**Code carries no product convention.** `check`: `tools/check_conventions.sh` clean on every
+commit; a violation is a Bug against the module. Trigger: every tick, every PR.
+
+## History
+- 2026-09-21 19:25 operator: "seems we have a lot of work still … think generic, as this should
+  work for any product."

@@ -28,3 +28,6 @@ hardcodes (batches per run, parallel batches, runner count).
 
 ## History
 - 2026-09-21 19:42 operator: "capacity should be configurable for session workers and for CI"
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
