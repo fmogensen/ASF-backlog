@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T21:20:36Z",
+  "generated": "2026-09-21T21:29:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -75,7 +75,7 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-21)"
+        "branch fix/B-0003"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -84,11 +84,11 @@
       "priority": "need",
       "severity": "S1",
       "signature": "config: product file shape mismatch",
-      "stage_since": "2026-09-21T14:00:00Z",
-      "state": "New",
+      "stage_since": "2026-09-21T21:29:23Z",
+      "state": "Active",
       "title": "The operator's product file for this product does not match the schema the config reader reads",
       "type": "bug",
-      "updated": "2026-09-21T17:48:07Z"
+      "updated": "2026-09-21T21:29:23Z"
     },
     "B-0004": {
       "area": "factory",
@@ -185,7 +185,8 @@
       "area": "factory",
       "backlinks": [
         "B-0025",
-        "B-0026"
+        "B-0026",
+        "B-0041"
       ],
       "children": [],
       "cost": {
@@ -692,7 +693,8 @@
       "area": "factory",
       "backlinks": [
         "B-0026",
-        "B-0032"
+        "B-0032",
+        "B-0041"
       ],
       "children": [],
       "cost": {
@@ -870,6 +872,7 @@
       "backlinks": [
         "B-0039",
         "B-0040",
+        "B-0041",
         "D-0048"
       ],
       "children": [],
@@ -1084,6 +1087,25 @@
       "title": "Harvest gates once per tick on the combined head, bisecting on red (replaces the interim cap)",
       "type": "bug",
       "updated": "2026-09-21T21:20:33Z"
+    },
+    "B-0041": {
+      "area": "asf.workers",
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "commit 689e91c names B-0041"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0041",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "spawn-relaunch-inherits-ended",
+      "stage_since": "2026-09-21T21:29:23Z",
+      "state": "Resolved",
+      "title": "A relaunched job inherits the previous run's ended/failed fields; health skips it, the feeder re-emits it, harvest never lands it",
+      "type": "bug",
+      "updated": "2026-09-21T21:29:23Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -1825,7 +1847,8 @@
         "B-0037",
         "B-0038",
         "B-0039",
-        "B-0040"
+        "B-0040",
+        "B-0041"
       ],
       "decided": true,
       "folder": "epics",
