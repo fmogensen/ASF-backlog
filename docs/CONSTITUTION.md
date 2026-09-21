@@ -1,3 +1,5 @@
+> Moved: the source of truth is docs/CONSTITUTION.md in the ASF repo.
+
 # The ASF constitution — draft
 
 Ten directives. Each one is here because something went wrong without it, and each one names the
