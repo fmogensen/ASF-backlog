@@ -1,0 +1,18 @@
+# /asf:groom — backlog grooming as a skill
+
+Operator, 2026-09-21 23:58: "I think we are missing /asf:groom for backlog grooming."
+
+The plugin has status, next, backlog, roadmap, sessions, parity, prod — but grooming runs only
+as the CLI `asf groom [--apply]`. The skill:
+
+1. runs `asf groom --product <p>` and prints the groom file's question table verbatim
+   (inbox cards → proposed type/parent/severity; undecided items > N days; near-duplicate titles;
+   held branches awaiting a ruling; NEEDS OPERATOR lines);
+2. takes the operator's answers in chat (`yes` / `no` / `rank 2` / `S1` / `parent F-0019` /
+   `duplicate of B-0038`), writes them into the groom file's answer column, and runs
+   `asf groom --apply`;
+3. prints what changed (typed cards created/updated, `removed:` rulings) as a table with the
+   record commit.
+
+Rules: the table is code-generated (the skill prints, never composes); one question per row;
+`decided: true` is only ever written from an answer; `--product` when more than one product.
