@@ -12,6 +12,17 @@ with no children and no naming commit, and everything landed before the id-in-su
 (2026-09-21) stay open forever; the feeder re-emits an open Bug every wave with no attempt cap
 (B-0026); an operator names nothing by hand (a typed status lies).
 
+## What is general and what is a bridge (operator asked, 2026-09-21 19:50)
+General, permanent: derived state, a definition of done per type, harvest refusing a branch that
+does not name its item, no row for a done item. **Bridges for 0.1**: "a trunk commit naming the id"
+proves linkage, not doneness; `reconcile` by text match is a one-time migration crutch that retires
+once the record is clean. **The general closing rule** is the one the story-to-test gate (F-0040)
+and "criteria have evidence" carry: every acceptance line names its test, the CI provider exposes
+per-test results from the trunk run, and Closed = every named test exists and is green at or after
+the change. A card whose acceptance names no test cannot close — which is right. The bridge ships
+first because it is cheap and stops the loop today; the general rule is the 0.1 target and
+supersedes the commit-naming proxy for Stories and Features when it lands.
+
 ## Acceptance
 - [ ] Definition of done, per type, in `docs/` and in code (`asf.record.ingest`): **Bug/Task** —
   trunk commit naming it → Resolved; CI green at/after it, or `ci: none` → Closed. **Story** — all
@@ -29,6 +40,7 @@ with no children and no naming commit, and everything landed before the id-in-su
   refuses a branch whose commits do not name the branch's item.
 - [ ] The feeder emits no row for an item in a done state and caps attempts (B-0026); `asf next`
   prints `done: <n> items closed since the last tick`.
+- [ ] Acceptance-as-tests (the general rule): `- [ ] … (test: <path>::<name>)` on acceptance lines; ingest reads per-test results from the CI provider's trunk run (gh-actions: a junit/json artifact named in the product yaml) and derives Closed from them for Bugs, Tasks and Stories; the commit-naming proxy remains for linkage and cost only.
 - [ ] A test per rule above on the `sample/` product; a test that a card closed by `closed_by`
   never re-emits.
 
