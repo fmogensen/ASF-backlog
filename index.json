@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T21:29:24Z",
+  "generated": "2026-09-21T21:31:03Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -852,6 +852,7 @@
         "B-0040"
       ],
       "children": [],
+      "decided": true,
       "evidence": [
         "no evidence found (2026-09-21)"
       ],
@@ -876,6 +877,7 @@
         "D-0048"
       ],
       "children": [],
+      "decided": true,
       "evidence": [
         "no evidence found (2026-09-21)"
       ],
@@ -967,7 +969,8 @@
     "B-0036": {
       "area": "asf.harvest",
       "backlinks": [
-        "B-0040"
+        "B-0040",
+        "B-0042"
       ],
       "children": [],
       "evidence": [
@@ -1090,7 +1093,9 @@
     },
     "B-0041": {
       "area": "asf.workers",
-      "backlinks": [],
+      "backlinks": [
+        "B-0042"
+      ],
       "children": [],
       "evidence": [
         "commit 689e91c names B-0041"
@@ -1106,6 +1111,23 @@
       "title": "A relaunched job inherits the previous run's ended/failed fields; health skips it, the feeder re-emits it, harvest never lands it",
       "type": "bug",
       "updated": "2026-09-21T21:29:23Z"
+    },
+    "B-0042": {
+      "area": "asf.harvest",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0042",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "checkout-sync-only-after-landing",
+      "stage_since": "2026-09-21T21:30:03Z",
+      "state": "New",
+      "title": "The scheduler's checkout is fast-forwarded only after a lane landing; a fix pushed any other way leaves the factory on old code",
+      "type": "bug",
+      "updated": "2026-09-21T21:30:03Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -1848,7 +1870,8 @@
         "B-0038",
         "B-0039",
         "B-0040",
-        "B-0041"
+        "B-0041",
+        "B-0042"
       ],
       "decided": true,
       "folder": "epics",
