@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T21:06:05Z",
+  "generated": "2026-09-21T21:15:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -32,6 +32,7 @@
     "B-0002": {
       "area": "factory",
       "backlinks": [
+        "B-0032",
         "B-0034"
       ],
       "children": [],
@@ -690,7 +691,8 @@
     "B-0025": {
       "area": "factory",
       "backlinks": [
-        "B-0026"
+        "B-0026",
+        "B-0032"
       ],
       "children": [],
       "cost": {
@@ -775,7 +777,7 @@
     "B-0028": {
       "area": "asf.workers",
       "backlinks": [
-        "B-0032"
+        "B-0039"
       ],
       "children": [],
       "evidence": [
@@ -844,7 +846,8 @@
       "area": "asf.harvest",
       "backlinks": [
         "B-0030",
-        "B-0036"
+        "B-0036",
+        "B-0040"
       ],
       "children": [],
       "evidence": [
@@ -858,13 +861,15 @@
       "signature": "harvest-gate-per-branch",
       "stage_since": "2026-09-21T18:54:06Z",
       "state": "New",
-      "title": "Harvest runs the full gate once per branch inside the tick; the tick outruns its clock",
+      "title": "Harvest gates every eligible branch in one tick; a tick runs 25 minutes and CI races the landings \u2014 cap the branches per tick (interim)",
       "type": "bug",
       "updated": "2026-09-21T19:04:23Z"
     },
     "B-0032": {
       "area": "asf.workers",
       "backlinks": [
+        "B-0039",
+        "B-0040",
         "D-0048"
       ],
       "children": [],
@@ -879,13 +884,16 @@
       "signature": "correction-blocks-tick",
       "stage_since": "2026-09-21T18:54:06Z",
       "state": "New",
-      "title": "A failed job is corrected once, at the next tick, and a red harvest gate files a Bug \u2014 instead of looping back to the session at once (D-0048)",
+      "title": "A red harvest gate or a rebase conflict files a Bug or holds silently \u2014 it must go back to the branch's session with the failing output (D-0048, part a)",
       "type": "bug",
       "updated": "2026-09-21T19:04:23Z"
     },
     "B-0033": {
       "area": "asf.harvest",
-      "backlinks": [],
+      "backlinks": [
+        "B-0034",
+        "B-0035"
+      ],
       "children": [],
       "evidence": [
         "commit 7ab931c names B-0033",
@@ -905,7 +913,8 @@
     },
     "B-0034": {
       "backlinks": [
-        "B-0030"
+        "B-0030",
+        "B-0032"
       ],
       "children": [],
       "count": 1,
@@ -918,6 +927,7 @@
       "id": "B-0034",
       "last_filed": "2026-09-21",
       "parent": "E-0001",
+      "removed": "superseded by B-0033 (gate environment) and D-0048 (harvest no longer files Bugs on a red gate) \u2014 ruling 2026-09-21",
       "severity": "S2",
       "signature": "harvest gate red: product yaml's conventions: block and read it through asf.conventions.Conventions",
       "stage_since": "2026-09-21T19:09:41Z",
@@ -928,7 +938,8 @@
     },
     "B-0035": {
       "backlinks": [
-        "B-0030"
+        "B-0030",
+        "B-0032"
       ],
       "children": [],
       "count": 1,
@@ -941,6 +952,7 @@
       "id": "B-0035",
       "last_filed": "2026-09-21",
       "parent": "E-0001",
+      "removed": "superseded by B-0033 and D-0048 \u2014 ruling 2026-09-21",
       "severity": "S2",
       "signature": "harvest gate red: ERROR: test_next_shows_the_bug_in_flight_and_a_feature_waiting (test_sample_product.SampleProductTest.test_next_shows_the_bug_in_flight_and_a_feature_waiting)",
       "stage_since": "2026-09-21T19:25:21Z",
@@ -951,7 +963,9 @@
     },
     "B-0036": {
       "area": "asf.harvest",
-      "backlinks": [],
+      "backlinks": [
+        "B-0040"
+      ],
       "children": [],
       "evidence": [
         "commit 2abb90e names B-0036",
@@ -982,6 +996,7 @@
       "found_in": "ci",
       "id": "B-0037",
       "parent": "E-0001",
+      "removed": "duplicate of B-0038 \u2014 ruling 2026-09-21",
       "severity": "S1",
       "signature": "harvest-tests-inherit-default-branch",
       "stage_since": "2026-09-21T20:15:34Z",
@@ -1011,6 +1026,49 @@
       "title": "CI main red: harvest fixture depends on the host's init.defaultBranch",
       "type": "bug",
       "updated": "2026-09-21T21:06:04Z"
+    },
+    "B-0039": {
+      "area": "asf.workers",
+      "backlinks": [
+        "B-0032"
+      ],
+      "blockedBy": [
+        "B-0032"
+      ],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0039",
+      "parent": "E-0001",
+      "severity": "S2",
+      "signature": "correction-resume-same-session",
+      "stage_since": "2026-09-21T21:15:18Z",
+      "state": "New",
+      "title": "Corrections resume the same runtime session (--resume) instead of relaunching cold (D-0048, part b)",
+      "type": "bug",
+      "updated": "2026-09-21T21:15:18Z"
+    },
+    "B-0040": {
+      "area": "asf.harvest",
+      "backlinks": [
+        "B-0031"
+      ],
+      "blockedBy": [
+        "B-0031",
+        "B-0032"
+      ],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0040",
+      "parent": "E-0001",
+      "severity": "S3",
+      "signature": "harvest-one-gate-per-tick",
+      "stage_since": "2026-09-21T21:15:48Z",
+      "state": "New",
+      "title": "Harvest gates once per tick on the combined head, bisecting on red (replaces the interim cap)",
+      "type": "bug",
+      "updated": "2026-09-21T21:15:48Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -1639,7 +1697,10 @@
     },
     "D-0048": {
       "backlinks": [
-        "B-0032"
+        "B-0032",
+        "B-0034",
+        "B-0035",
+        "B-0039"
       ],
       "children": [],
       "folder": "decisions",
@@ -1747,7 +1808,9 @@
         "B-0035",
         "B-0036",
         "B-0037",
-        "B-0038"
+        "B-0038",
+        "B-0039",
+        "B-0040"
       ],
       "decided": true,
       "folder": "epics",
