@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T15:44:22Z",
+  "generated": "2026-09-21T16:25:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -280,6 +280,57 @@
       "title": "`asf new bug` mints no severity, signature or found_in, and `check` does not miss them",
       "type": "bug",
       "updated": "2026-09-21T15:23:13Z"
+    },
+    "B-0016": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0016",
+      "parent": "F-0015",
+      "priority": "need",
+      "severity": "S2",
+      "signature": "spawn: worktree add lock race",
+      "stage_since": "2026-09-21T16:25:04Z",
+      "state": "New",
+      "title": "Parallel spawns race on .git/config when creating worktrees",
+      "type": "bug",
+      "updated": "2026-09-21T16:25:04Z"
+    },
+    "B-0017": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0017",
+      "parent": "F-0015",
+      "priority": "need",
+      "severity": "S3",
+      "signature": "spawn: grant path not validated",
+      "stage_since": "2026-09-21T16:25:04Z",
+      "state": "New",
+      "title": "Spawn passes a non-existent grant path through instead of refusing",
+      "type": "bug",
+      "updated": "2026-09-21T16:25:04Z"
+    },
+    "B-0018": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0018",
+      "parent": "F-0013",
+      "priority": "nice",
+      "severity": "S3",
+      "signature": "tick: record step slow",
+      "stage_since": "2026-09-21T16:25:04Z",
+      "state": "New",
+      "title": "Record step is 1.6\u00d7 slower than the tool it replaced",
+      "type": "bug",
+      "updated": "2026-09-21T16:25:04Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -1144,7 +1195,9 @@
     "F-0010": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-0002"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0010",
@@ -1193,7 +1246,9 @@
       "area": "factory",
       "backlinks": [],
       "children": [
-        "B-0013"
+        "S-0001",
+        "B-0013",
+        "B-0018"
       ],
       "decided": true,
       "folder": "features",
@@ -1210,7 +1265,9 @@
     "F-0014": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-0004"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0014",
@@ -1226,7 +1283,10 @@
     "F-0015": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "B-0016",
+        "B-0017"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0015",
@@ -2160,7 +2220,9 @@
     "F-0071": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-0003"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0071",
@@ -4324,6 +4386,66 @@
       "title": "Run the mechanical pre-review before any deep-model spec review",
       "type": "rule",
       "updated": "2026-09-21T14:00:00Z"
+    },
+    "S-0001": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "stories",
+      "id": "S-0001",
+      "parent": "F-0013",
+      "priority": "need",
+      "stage_since": "2026-09-21T16:25:04Z",
+      "state": "New",
+      "title": "Daily step native in asf tick (groom apply, stale, file-bugs, rollup)",
+      "type": "story",
+      "updated": "2026-09-21T16:25:04Z"
+    },
+    "S-0002": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "stories",
+      "id": "S-0002",
+      "parent": "F-0010",
+      "priority": "need",
+      "stage_since": "2026-09-21T16:25:04Z",
+      "state": "New",
+      "title": "Ingest adds mergeable and opened so CONFLICT \u2192 REBASE rows and the incident clock work",
+      "type": "story",
+      "updated": "2026-09-21T16:25:04Z"
+    },
+    "S-0003": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "stories",
+      "id": "S-0003",
+      "parent": "F-0071",
+      "priority": "need",
+      "stage_since": "2026-09-21T16:25:04Z",
+      "state": "New",
+      "title": "INCIDENTS line first in asf status (F-0071 acceptance 6, the view half)",
+      "type": "story",
+      "updated": "2026-09-21T16:25:04Z"
+    },
+    "S-0004": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "stories",
+      "id": "S-0004",
+      "parent": "F-0014",
+      "priority": "nice",
+      "stage_since": "2026-09-21T16:25:04Z",
+      "state": "New",
+      "title": "Remaining console views and skills: ci, health, performance",
+      "type": "story",
+      "updated": "2026-09-21T16:25:04Z"
     }
   }
 }
