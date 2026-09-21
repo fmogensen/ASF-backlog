@@ -1,0 +1,34 @@
+# Session identity: every asf worker is distinguishable from every other, and from sessions that are not asf's
+type: feature
+
+## Description
+As an operator running several products and my own sessions on the same accounts and machine, I
+want every asf worker to carry one identity through its process, files, registry line and commits
+— and the pool to see sessions that are not asf's — so that health, stall, capacity and history
+never confuse two products' workers or touch a session the factory did not start.
+
+Today an asf session is registered in `~/.ASF/state/<product>/sessions.jsonl` with `ASF_PRODUCT`/
+`ASF_JOB` in its env and product-scoped worktree/brief/log paths; a session started any other way
+(a legacy launcher, the operator by hand) on the same account is invisible: it eats the account's
+cap and quota without the wave knowing, and each product's wave reads only its own registry.
+
+## Acceptance
+- [ ] `ASF_SESSION_ID` (uuid) is minted at spawn and appears in: the process env (with
+  `ASF_PRODUCT`, `ASF_JOB`), the registry line, the job log's file name suffix, the brief's first
+  line, and a commit trailer `ASF-Session: <product>/<job>/<id>` on every commit the session makes
+  (the brief instructs it; `harvest` refuses a branch whose commits lack the trailer of the session
+  that owns it).
+- [ ] `asf workers ps [--all-products]`: every process of the runtime binary on this machine, joined
+  on pid → `asf:<product>/<job>` (with age, account, item) or `foreign (<account or unknown>)`.
+- [ ] The pool's load per account = asf sessions across ALL products' registries + foreign
+  processes on that account's config dir; a row waits with reason `account cap (1 foreign)` when a
+  foreign session fills the account.
+- [ ] Health and stall act only on pids present in a registry; a foreign process is listed, never
+  killed, reaped or corrected.
+- [ ] `asf sessions --all-products` prints one table over every product with a Product column;
+  `asf status` shows `sessions: <asf> asf · <n> foreign`.
+
+## History
+- 2026-09-21 19:17 operator: "how do we differentiate session workers from each other … there
+  could be asf workers on different products running, and there could be non-asf workers running
+  on other things"
