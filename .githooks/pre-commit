@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# The record's gate: `asf check` must be green before anything lands here.
+# Enable once per clone: git config core.hooksPath .githooks
+#
+# ASF_DIR points at the checkout of the code repo (github.com/fmogensen/ASF); set it in your
+# environment if the package is not already importable.
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+if python3 -c 'import asf' 2>/dev/null; then
+  python3 -m asf.cli check
+elif [ -n "${ASF_DIR:-}" ] && [ -d "$ASF_DIR/asf" ]; then
+  PYTHONPATH="$ASF_DIR" python3 -m asf.cli check
+else
+  echo "pre-commit: the asf package is not importable; set ASF_DIR to the ASF checkout" >&2
+  exit 1
+fi
