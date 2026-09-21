@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T22:29:17Z",
+  "generated": "2026-09-21T22:58:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -68,10 +68,10 @@
       ],
       "children": [],
       "cost": {
-        "fix_rounds": 1,
+        "fix_rounds": 2,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 0.0
+        "sessions": 2,
+        "usd": 0.4
       },
       "decided": true,
       "evidence": [
@@ -88,7 +88,7 @@
       "state": "Active",
       "title": "The operator's product file for this product does not match the schema the config reader reads",
       "type": "bug",
-      "updated": "2026-09-21T21:29:23Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "B-0004": {
       "area": "factory",
@@ -190,14 +190,15 @@
       ],
       "children": [],
       "cost": {
-        "fix_rounds": 1,
+        "fix_rounds": 2,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 0.0
+        "sessions": 2,
+        "usd": 0.23
       },
       "decided": true,
       "evidence": [
-        "branch fix/B-0008"
+        "commit 4d0666b names B-0008",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -206,11 +207,11 @@
       "priority": "need",
       "severity": "S1",
       "signature": "tick: shared working tree",
-      "stage_since": "2026-09-21T21:20:33Z",
-      "state": "Active",
+      "stage_since": "2026-09-21T22:58:03Z",
+      "state": "Closed",
       "title": "A tick that staged everything in a shared checkout committed in-progress worker content",
       "type": "bug",
-      "updated": "2026-09-21T21:20:33Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "B-0009": {
       "area": "factory",
@@ -829,7 +830,8 @@
     "B-0030": {
       "area": "asf.tick",
       "backlinks": [
-        "B-0036"
+        "B-0036",
+        "B-0044"
       ],
       "children": [],
       "decided": true,
@@ -859,9 +861,16 @@
         "B-0040"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 1.22
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-21)"
+        "commit 992da83 names B-0031",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -869,11 +878,11 @@
       "parent": "E-0001",
       "severity": "S2",
       "signature": "harvest-gate-per-branch",
-      "stage_since": "2026-09-21T18:54:06Z",
-      "state": "New",
+      "stage_since": "2026-09-21T22:58:03Z",
+      "state": "Closed",
       "title": "Harvest gates every eligible branch in one tick; a tick runs 25 minutes and CI races the landings \u2014 cap the branches per tick (interim)",
       "type": "bug",
-      "updated": "2026-09-21T19:04:23Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "B-0032": {
       "area": "asf.workers",
@@ -884,9 +893,15 @@
         "D-0048"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.9
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-21)"
+        "commit b50da0e names B-0032"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -894,11 +909,11 @@
       "parent": "E-0001",
       "severity": "S1",
       "signature": "correction-blocks-tick",
-      "stage_since": "2026-09-21T18:54:06Z",
-      "state": "New",
+      "stage_since": "2026-09-21T22:58:03Z",
+      "state": "Resolved",
       "title": "A red harvest gate or a rebase conflict files a Bug or holds silently \u2014 it must go back to the branch's session with the failing output (D-0048, part a)",
       "type": "bug",
-      "updated": "2026-09-21T19:04:23Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "B-0033": {
       "area": "asf.harvest",
@@ -1085,7 +1100,6 @@
         "B-0032"
       ],
       "blocked_by_open": [
-        "B-0031",
         "B-0032"
       ],
       "children": [],
@@ -1103,7 +1117,7 @@
       "state": "New",
       "title": "Harvest gates once per tick on the combined head, bisecting on red (replaces the interim cap)",
       "type": "bug",
-      "updated": "2026-09-21T21:20:33Z"
+      "updated": "2026-09-21T22:58:03Z"
     },
     "B-0041": {
       "area": "asf.workers",
@@ -1132,9 +1146,16 @@
       "area": "asf.harvest",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.32
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-21)"
+        "commit a8a9e07 names B-0042",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1142,28 +1163,52 @@
       "parent": "E-0001",
       "severity": "S1",
       "signature": "checkout-sync-only-after-landing",
-      "stage_since": "2026-09-21T21:30:03Z",
-      "state": "New",
+      "stage_since": "2026-09-21T22:58:03Z",
+      "state": "Closed",
       "title": "The scheduler's checkout is fast-forwarded only after a lane landing; a fix pushed any other way leaves the factory on old code",
       "type": "bug",
-      "updated": "2026-09-21T21:36:49Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "B-0043": {
       "area": "tests",
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "commit 9d94182 names B-0043",
+        "CI green on main at or after it"
+      ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0043",
       "parent": "E-0001",
       "severity": "S1",
       "signature": "tests-read-operator-home",
-      "stage_since": "2026-09-21T22:19:30Z",
-      "state": "New",
+      "stage_since": "2026-09-21T22:58:03Z",
+      "state": "Closed",
       "title": "The test suite reads the operator's live ~/.ASF; the harvest gate goes red on any operator config change",
       "type": "bug",
-      "updated": "2026-09-21T22:19:30Z"
+      "updated": "2026-09-21T22:58:03Z"
+    },
+    "B-0044": {
+      "area": "asf.tick",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-21)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0044",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "record-rebase-machine-owned-conflict",
+      "stage_since": "2026-09-21T22:50:09Z",
+      "state": "New",
+      "title": "A record rebase conflicts on machine-owned content when a hand commit touched the same card; the tick's push is still refused",
+      "type": "bug",
+      "updated": "2026-09-21T22:58:03Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -1910,18 +1955,19 @@
         "B-0040",
         "B-0041",
         "B-0042",
-        "B-0043"
+        "B-0043",
+        "B-0044"
       ],
       "decided": true,
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 1.61,
+      "spend_usd": 10.04,
       "stage_since": "2026-09-21T21:20:33Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-21T21:20:35Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -2012,6 +2058,12 @@
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 2.7
+      },
       "decided": false,
       "evidence": [
         "branch spec/F-0002"
@@ -2026,12 +2078,18 @@
       "state": "Active",
       "title": "P0b \u2014 the card-evaluation pass for multi-product wording",
       "type": "feature",
-      "updated": "2026-09-21T21:36:49Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "F-0003": {
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": false,
       "evidence": [
         "no evidence found (2026-09-21)"
@@ -2046,12 +2104,18 @@
       "state": "New",
       "title": "P0c \u2014 seed this record with the factory itself",
       "type": "feature",
-      "updated": "2026-09-21T17:01:58Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "F-0004": {
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": false,
       "evidence": [
         "no evidence found (2026-09-21)"
@@ -2066,7 +2130,7 @@
       "state": "New",
       "title": "P0d \u2014 the package moved behind product config",
       "type": "feature",
-      "updated": "2026-09-21T17:01:58Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "F-0005": {
       "area": "factory",
@@ -2452,6 +2516,12 @@
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": false,
       "evidence": [
         "no evidence found (2026-09-21)"
@@ -2467,12 +2537,18 @@
       "state": "New",
       "title": "The preamble: every brief opens with facts the runner already knows",
       "type": "feature",
-      "updated": "2026-09-21T17:01:58Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "F-0023": {
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": false,
       "evidence": [
         "no evidence found (2026-09-21)"
@@ -2488,12 +2564,18 @@
       "state": "New",
       "title": "The grill: a request is interrogated before it is spent on",
       "type": "feature",
-      "updated": "2026-09-21T17:01:58Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "F-0024": {
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": false,
       "evidence": [
         "no evidence found (2026-09-21)"
@@ -2509,12 +2591,18 @@
       "state": "New",
       "title": "Self-amendment policy: the factory proposes, humans approve and merge",
       "type": "feature",
-      "updated": "2026-09-21T17:01:58Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "F-0025": {
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": false,
       "evidence": [
         "no evidence found (2026-09-21)"
@@ -2530,7 +2618,7 @@
       "state": "New",
       "title": "Typed envelopes: every job ends with a machine-readable report beside its prose",
       "type": "feature",
-      "updated": "2026-09-21T17:01:58Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "F-0026": {
       "area": "factory",
@@ -3470,6 +3558,12 @@
       "children": [
         "S-0003"
       ],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 2.66
+      },
       "decided": true,
       "evidence": [
         "branch spec/F-0071"
@@ -3486,7 +3580,7 @@
       "state": "Active",
       "title": "S1 lane: critical factory bugs pre-empt Feature work \u2014 tiers, reserved capacity, no ladder, a clock",
       "type": "feature",
-      "updated": "2026-09-21T21:36:49Z"
+      "updated": "2026-09-21T22:58:04Z"
     },
     "F-0072": {
       "area": "factory",
@@ -3540,66 +3634,86 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-21)"
+      ],
       "folder": "features",
       "id": "F-0074",
       "parent": "E-0005",
-      "stage_since": "2026-09-21T21:50:25Z",
+      "stage": "card",
+      "stage_since": "2026-09-21T22:58:03Z",
       "state": "New",
       "title": "Generic by construction: no product convention in code, proven by a second product in CI",
       "type": "feature",
-      "updated": "2026-09-21T21:50:25Z"
+      "updated": "2026-09-21T22:58:03Z"
     },
     "F-0075": {
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-21)"
+      ],
       "folder": "features",
       "id": "F-0075",
       "parent": "E-0004",
-      "stage_since": "2026-09-21T21:50:25Z",
+      "stage": "card",
+      "stage_since": "2026-09-21T22:58:03Z",
       "state": "New",
       "title": "Redaction is a gate on every write path: operator names and secrets never reach a record or a public repo",
       "type": "feature",
-      "updated": "2026-09-21T21:50:25Z"
+      "updated": "2026-09-21T22:58:03Z"
     },
     "F-0076": {
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-21)"
+      ],
       "folder": "features",
       "id": "F-0076",
       "parent": "E-0001",
-      "stage_since": "2026-09-21T21:50:25Z",
+      "stage": "card",
+      "stage_since": "2026-09-21T22:58:03Z",
       "state": "New",
       "title": "Session identity: every asf worker is distinguishable from every other, and from sessions that are not asf's",
       "type": "feature",
-      "updated": "2026-09-21T21:50:25Z"
+      "updated": "2026-09-21T22:58:03Z"
     },
     "F-0077": {
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-21)"
+      ],
       "folder": "features",
       "id": "F-0077",
       "parent": "E-0001",
-      "stage_since": "2026-09-21T21:50:25Z",
+      "stage": "card",
+      "stage_since": "2026-09-21T22:58:03Z",
       "state": "New",
       "title": "/asf:groom \u2014 backlog grooming as a skill",
       "type": "feature",
-      "updated": "2026-09-21T21:50:25Z"
+      "updated": "2026-09-21T22:58:03Z"
     },
     "F-0078": {
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-21)"
+      ],
       "folder": "features",
       "id": "F-0078",
       "parent": "E-0005",
-      "stage_since": "2026-09-21T21:50:25Z",
+      "stage": "card",
+      "stage_since": "2026-09-21T22:58:03Z",
       "state": "New",
       "title": "The tick ends with two tables: in flight, and done since the last tick",
       "type": "feature",
-      "updated": "2026-09-21T21:50:25Z"
+      "updated": "2026-09-21T22:58:03Z"
     },
     "R-0001": {
       "backlinks": [],
