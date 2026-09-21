@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T19:04:25Z",
+  "generated": "2026-09-21T20:23:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -28,7 +28,9 @@
     },
     "B-0002": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0034"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -228,7 +230,9 @@
     },
     "B-0010": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0036"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -607,7 +611,8 @@
       "backlinks": [
         "B-0026",
         "B-0027",
-        "B-0028"
+        "B-0028",
+        "B-0035"
       ],
       "children": [],
       "cost": {
@@ -826,6 +831,90 @@
       "title": "The harvest gate inherits the tick's ASF_PRODUCT; ASF's own suite reads the live product and goes red",
       "type": "bug",
       "updated": "2026-09-21T19:04:23Z"
+    },
+    "B-0034": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0034",
+      "last_filed": "2026-09-21",
+      "parent": "E-0001",
+      "severity": "S2",
+      "signature": "harvest gate red: product yaml's conventions: block and read it through asf.conventions.Conventions",
+      "stage_since": "2026-09-21T19:09:41Z",
+      "state": "New",
+      "title": "Harvest gate red: product yaml's conventions: block and read it through asf.conventions.Conventions",
+      "type": "bug",
+      "updated": "2026-09-21T19:09:41Z"
+    },
+    "B-0035": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0035",
+      "last_filed": "2026-09-21",
+      "parent": "E-0001",
+      "severity": "S2",
+      "signature": "harvest gate red: ERROR: test_next_shows_the_bug_in_flight_and_a_feature_waiting (test_sample_product.SampleProductTest.test_next_shows_the_bug_in_flight_and_a_feature_waiting)",
+      "stage_since": "2026-09-21T19:25:21Z",
+      "state": "New",
+      "title": "Harvest gate red: ERROR: test_next_shows_the_bug_in_flight_and_a_feature_waiting",
+      "type": "bug",
+      "updated": "2026-09-21T19:25:21Z"
+    },
+    "B-0036": {
+      "area": "asf.harvest",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0036",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "harvest-landing-leaves-checkout-stale",
+      "stage_since": "2026-09-21T20:04:06Z",
+      "state": "New",
+      "title": "A landing never reaches the checkout the scheduler runs; the factory keeps running the code from before its own fix",
+      "type": "bug",
+      "updated": "2026-09-21T20:04:06Z"
+    },
+    "B-0037": {
+      "area": "asf.harvest",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0037",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "harvest-tests-inherit-default-branch",
+      "stage_since": "2026-09-21T20:15:34Z",
+      "state": "New",
+      "title": "The record-harvest test fixture inherits the default branch name; on the hosted runner the clone has no main and six tests fail on every push",
+      "type": "bug",
+      "updated": "2026-09-21T20:15:34Z"
+    },
+    "B-0038": {
+      "area": "asf.harvest",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0038",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "ci-main-red-harvest-fixture-default-branch",
+      "stage_since": "2026-09-21T20:23:01Z",
+      "state": "New",
+      "title": "CI main red: harvest fixture depends on the host's init.defaultBranch",
+      "type": "bug",
+      "updated": "2026-09-21T20:23:01Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -1436,7 +1525,8 @@
     "D-0047": {
       "area": "factory",
       "backlinks": [
-        "B-0033"
+        "B-0033",
+        "B-0038"
       ],
       "children": [],
       "decided": true,
@@ -1554,7 +1644,12 @@
         "B-0030",
         "B-0031",
         "B-0032",
-        "B-0033"
+        "B-0033",
+        "B-0034",
+        "B-0035",
+        "B-0036",
+        "B-0037",
+        "B-0038"
       ],
       "decided": true,
       "folder": "epics",
