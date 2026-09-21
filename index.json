@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T22:58:05Z",
+  "generated": "2026-09-21T23:13:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -64,7 +64,8 @@
       "area": "factory",
       "backlinks": [
         "B-0025",
-        "B-0026"
+        "B-0026",
+        "B-0045"
       ],
       "children": [],
       "cost": {
@@ -75,7 +76,7 @@
       },
       "decided": true,
       "evidence": [
-        "branch fix/B-0003"
+        "commit a79c60e names B-0003"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -84,11 +85,11 @@
       "priority": "need",
       "severity": "S1",
       "signature": "config: product file shape mismatch",
-      "stage_since": "2026-09-21T21:29:23Z",
-      "state": "Active",
+      "stage_since": "2026-09-21T23:13:30Z",
+      "state": "Resolved",
       "title": "The operator's product file for this product does not match the schema the config reader reads",
       "type": "bug",
-      "updated": "2026-09-21T22:58:04Z"
+      "updated": "2026-09-21T23:13:30Z"
     },
     "B-0004": {
       "area": "factory",
@@ -166,7 +167,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-21)"
+        "branch fix/B-0007"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -175,11 +176,11 @@
       "priority": "need",
       "severity": "S2",
       "signature": "new: id range unallocatable",
-      "stage_since": "2026-09-21T14:00:00Z",
-      "state": "New",
+      "stage_since": "2026-09-21T23:13:30Z",
+      "state": "Active",
       "title": "Minting in a worktree needs an id range the tool gives no way to allocate",
       "type": "bug",
-      "updated": "2026-09-21T17:01:58Z"
+      "updated": "2026-09-21T23:13:30Z"
     },
     "B-0008": {
       "area": "factory",
@@ -310,7 +311,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-21)"
+        "branch fix/B-0012"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -319,11 +320,11 @@
       "priority": "need",
       "severity": "S2",
       "signature": "test: id range leaks into the fixture",
-      "stage_since": "2026-09-21T14:00:00Z",
-      "state": "New",
+      "stage_since": "2026-09-21T23:13:30Z",
+      "state": "Active",
       "title": "A fixture test reads the job's id range from the environment and fails in any ranged worktree",
       "type": "bug",
-      "updated": "2026-09-21T17:01:58Z"
+      "updated": "2026-09-21T23:13:30Z"
     },
     "B-0013": {
       "area": "factory",
@@ -394,7 +395,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-21)"
+        "branch fix/B-0015"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -403,11 +404,11 @@
       "priority": "need",
       "severity": "S2",
       "signature": "new: bug minted without severity",
-      "stage_since": "2026-09-21T15:23:13Z",
-      "state": "New",
+      "stage_since": "2026-09-21T23:13:30Z",
+      "state": "Active",
       "title": "`asf new bug` mints no severity, signature or found_in, and `check` does not miss them",
       "type": "bug",
-      "updated": "2026-09-21T17:01:58Z"
+      "updated": "2026-09-21T23:13:30Z"
     },
     "B-0016": {
       "area": "factory",
@@ -1173,6 +1174,12 @@
       "area": "tests",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "commit 9d94182 names B-0043",
@@ -1188,10 +1195,30 @@
       "state": "Closed",
       "title": "The test suite reads the operator's live ~/.ASF; the harvest gate goes red on any operator config change",
       "type": "bug",
-      "updated": "2026-09-21T22:58:03Z"
+      "updated": "2026-09-21T23:13:32Z"
     },
     "B-0044": {
       "area": "asf.tick",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "evidence": [
+        "branch fix/B-0044"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0044",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "record-rebase-machine-owned-conflict",
+      "stage_since": "2026-09-21T23:13:30Z",
+      "state": "Active",
+      "title": "A record rebase conflicts on machine-owned content when a hand commit touched the same card; the tick's push is still refused",
+      "type": "bug",
+      "updated": "2026-09-21T23:13:30Z"
+    },
+    "B-0045": {
+      "area": "asf.cli",
       "backlinks": [],
       "children": [],
       "decided": true,
@@ -1200,15 +1227,15 @@
       ],
       "folder": "bugs",
       "found_in": "dev",
-      "id": "B-0044",
+      "id": "B-0045",
       "parent": "E-0001",
-      "severity": "S1",
-      "signature": "record-rebase-machine-owned-conflict",
-      "stage_since": "2026-09-21T22:50:09Z",
+      "severity": "S2",
+      "signature": "refused-product-file-crashes",
+      "stage_since": "2026-09-21T23:11:31Z",
       "state": "New",
-      "title": "A record rebase conflicts on machine-owned content when a hand commit touched the same card; the tick's push is still refused",
+      "title": "A refused product file crashes every command and the tick with a traceback instead of one NEEDS OPERATOR line",
       "type": "bug",
-      "updated": "2026-09-21T22:58:03Z"
+      "updated": "2026-09-21T23:13:30Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -1956,7 +1983,8 @@
         "B-0041",
         "B-0042",
         "B-0043",
-        "B-0044"
+        "B-0044",
+        "B-0045"
       ],
       "decided": true,
       "folder": "epics",
