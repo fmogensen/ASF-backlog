@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T06:20:28Z",
+  "generated": "2026-09-22T07:30:29Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -122,7 +122,9 @@
     },
     "B-0005": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0051"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -406,6 +408,7 @@
       "id": "B-0014",
       "parent": "F-0019",
       "priority": "need",
+      "removed": "delivered by 93a07b0 + 2491034 + ed25b5b (the cutover kit: doctor gates, split clock, rollback) before commit naming was the rule \u2014 ruling per D-0049, 2026-09-22",
       "severity": "S1",
       "signature": "cutover: retired a directory a loaded job still uses",
       "stage_since": "2026-09-21T17:37:50Z",
@@ -448,7 +451,8 @@
     "B-0016": {
       "area": "factory",
       "backlinks": [
-        "F-0073"
+        "F-0073",
+        "B-0051"
       ],
       "blocked": true,
       "blockedBy": [
@@ -605,6 +609,7 @@
       "id": "B-0020",
       "parent": "F-0010",
       "priority": "need",
+      "removed": "delivered by f132d09 (branch conventions from config; id tokens as evidence) before commit naming was the rule \u2014 ruling per D-0049, 2026-09-22",
       "severity": "S1",
       "signature": "evidence: conventions hardcoded, no id-token matching",
       "stage_since": "2026-09-21T17:37:50Z",
@@ -744,7 +749,8 @@
         "B-0041",
         "B-0046",
         "B-0048",
-        "B-0049"
+        "B-0049",
+        "B-0051"
       ],
       "children": [],
       "cost": {
@@ -1114,7 +1120,8 @@
       "area": "asf.workers",
       "backlinks": [
         "B-0032",
-        "B-0049"
+        "B-0049",
+        "B-0051"
       ],
       "children": [],
       "cost": {
@@ -1424,6 +1431,24 @@
       "title": "Record commands use the cwd as the record: /asf:groom from a product repo grooms nothing and writes groom/ into the product repo",
       "type": "bug",
       "updated": "2026-09-22T05:59:40Z"
+    },
+    "B-0051": {
+      "area": "asf.workers",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0051",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "finished-without-push-blocks-item",
+      "stage_since": "2026-09-22T07:28:13Z",
+      "state": "New",
+      "title": "A session that ends 'finished' without pushing blocks its item forever: health says finished, harvest sees nothing, spawn refuses the worktree",
+      "type": "bug",
+      "updated": "2026-09-22T07:28:13Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2036,6 +2061,7 @@
       "area": "factory",
       "backlinks": [
         "F-0080",
+        "F-0086",
         "B-0033",
         "B-0036",
         "B-0038"
@@ -2053,10 +2079,12 @@
     },
     "D-0048": {
       "backlinks": [
+        "F-0086",
         "B-0032",
         "B-0034",
         "B-0035",
-        "B-0039"
+        "B-0039",
+        "B-0051"
       ],
       "children": [],
       "folder": "decisions",
@@ -2066,6 +2094,22 @@
       "title": "Worker failures loop back to their session at once; Bug cards are for ASF's own code defects",
       "type": "decision",
       "updated": "2026-09-21T18:55:17Z"
+    },
+    "D-0049": {
+      "backlinks": [
+        "F-0085",
+        "B-0014",
+        "B-0020"
+      ],
+      "children": [],
+      "folder": "decisions",
+      "id": "D-0049",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T07:29:37Z",
+      "state": "New",
+      "title": "ASF develops ASF autonomously: the factory answers its own groom and informs the operator",
+      "type": "decision",
+      "updated": "2026-09-22T07:29:37Z"
     },
     "E-0001": {
       "backlinks": [],
@@ -2154,6 +2198,8 @@
         "F-0082",
         "F-0083",
         "F-0084",
+        "F-0085",
+        "F-0086",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -2188,7 +2234,8 @@
         "B-0047",
         "B-0048",
         "B-0049",
-        "B-0050"
+        "B-0050",
+        "B-0051"
       ],
       "decided": true,
       "folder": "epics",
@@ -2241,7 +2288,9 @@
       "updated": "2026-09-21T17:03:05Z"
     },
     "E-0005": {
-      "backlinks": [],
+      "backlinks": [
+        "D-0049"
+      ],
       "children": [],
       "decided": false,
       "folder": "epics",
@@ -2959,9 +3008,11 @@
     },
     "F-0031": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0085"
+      ],
       "children": [],
-      "decided": false,
+      "decided": true,
       "evidence": [
         "no evidence found (2026-09-22)"
       ],
@@ -2969,7 +3020,7 @@
       "id": "F-0031",
       "parent": "E-0001",
       "priority": "need",
-      "rank": 31,
+      "rank": 2,
       "source": "plan:missing-in-ours",
       "stage": "card",
       "stage_since": "2026-09-21T17:01:58Z",
@@ -3171,7 +3222,9 @@
     },
     "F-0041": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0086"
+      ],
       "children": [],
       "decided": false,
       "evidence": [
@@ -3882,7 +3935,10 @@
       "updated": "2026-09-22T00:07:20Z"
     },
     "F-0075": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0086",
+        "B-0051"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -3941,7 +3997,10 @@
       "updated": "2026-09-22T00:07:20Z"
     },
     "F-0078": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0085",
+        "F-0086"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -3966,7 +4025,8 @@
     },
     "F-0079": {
       "backlinks": [
-        "E-0001"
+        "E-0001",
+        "F-0086"
       ],
       "children": [],
       "cost": {
@@ -4030,7 +4090,8 @@
     },
     "F-0082": {
       "backlinks": [
-        "E-0001"
+        "E-0001",
+        "F-0086"
       ],
       "children": [],
       "cost": {
@@ -4056,7 +4117,8 @@
     },
     "F-0083": {
       "backlinks": [
-        "E-0001"
+        "E-0001",
+        "F-0086"
       ],
       "children": [],
       "cost": {
@@ -4098,6 +4160,36 @@
       "title": "The command surface reads as one product: names, one voice, and \"writes\" marked",
       "type": "feature",
       "updated": "2026-09-22T05:16:10Z"
+    },
+    "F-0085": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "features",
+      "id": "F-0085",
+      "parent": "E-0001",
+      "rank": 1,
+      "schema_version": 1,
+      "stage_since": "2026-09-22T07:29:58Z",
+      "state": "New",
+      "title": "The groom answers itself (D-0049): rules as code, an adjudicate session for the rest, a digest to the operator",
+      "type": "feature",
+      "updated": "2026-09-22T07:29:58Z"
+    },
+    "F-0086": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "features",
+      "id": "F-0086",
+      "parent": "E-0001",
+      "rank": 6,
+      "schema_version": 1,
+      "stage_since": "2026-09-22T07:29:58Z",
+      "state": "New",
+      "title": "The groom proposes merges, splits and batches of Stories \u2014 shape decides delivery speed",
+      "type": "feature",
+      "updated": "2026-09-22T07:29:58Z"
     },
     "R-0001": {
       "backlinks": [],

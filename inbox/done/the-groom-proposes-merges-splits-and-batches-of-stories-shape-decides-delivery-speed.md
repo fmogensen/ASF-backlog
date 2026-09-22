@@ -1,0 +1,35 @@
+→ F-0086
+
+# The groom proposes merges, splits and batches of Stories — shape decides delivery speed
+parent: E-0001
+type: feature
+
+Operator, 2026-09-22 08:00: "Does the backlog grooming do the consolidation of stories or split of
+stories to make delivery more efficient?" — not today: the groom types and asks; the shape of a Story
+is frozen at spec/plan time. Yet the lane's speed is decided by shape: the feeder runs only rows with
+disjoint footprints, harvest gates once per landing, a Story spanning two areas blocks two sessions,
+a Story too small costs a whole gate.
+
+## Rule — signals from the record and the metrics streams, no model involved
+
+| Signal | Proposal in `groom/<date>.md` |
+| --- | --- |
+| two open Stories under one Feature whose plans' `writes:` overlap, or near-duplicate titles | **merge** — one Story, one branch, one gate |
+| a Story whose plan has more than `groom.max_tasks_per_story` Tasks (default 6) or whose footprint spans areas with no shared file | **split** by footprint — the parts run in parallel sessions |
+| several Stories under one Feature each below the size floor (`size_classes.small`: few files, no test of their own) | **batch** into one Story or one train (F-0041's size class) |
+| a Story whose sessions reached 3 rounds (D-0048) | flag "not one-shot" — propose a split |
+
+The operator answers `yes` / `no` per line as today. `--apply` rewrites the cards with typed links —
+`merged_into: S-nnnn`, `split_from: S-nnnn`, `batched_in: S-nnnn` — so evidence and closing stay total
+(the old Stories close by ruling with the link as the sha-less evidence, per D-0047's "typed ruling").
+
+## Measured
+
+Scorecard: landings per session, rounds per landing, gate minutes per landed Story — before and after
+each applied proposal, on the product it was applied to.
+
+## Where
+
+`asf/groom/groom.py` (new question sections), `asf/groom/inbox.py` untouched, `asf/record` (the three
+typed links, `check` validates them), `asf/views` (the BOARD shows merged/split lineage), tests.
+After the cutover set (F-0075, F-0078, F-0082, F-0083, F-0079).
