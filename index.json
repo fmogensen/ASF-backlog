@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T14:15:39Z",
+  "generated": "2026-09-22T14:50:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -459,7 +459,8 @@
         "B-0052",
         "B-0054",
         "B-0058",
-        "B-0062"
+        "B-0062",
+        "B-0065"
       ],
       "children": [],
       "cost": {
@@ -757,7 +758,8 @@
         "B-0053",
         "B-0057",
         "B-0061",
-        "B-0063"
+        "B-0063",
+        "B-0065"
       ],
       "children": [],
       "cost": {
@@ -1189,6 +1191,7 @@
       "area": "asf.workers",
       "backlinks": [
         "F-0087",
+        "T-0001",
         "B-0042"
       ],
       "children": [],
@@ -1245,7 +1248,8 @@
         "B-0048",
         "B-0055",
         "B-0057",
-        "B-0061"
+        "B-0061",
+        "B-0065"
       ],
       "children": [],
       "cost": {
@@ -1633,7 +1637,8 @@
     "B-0057": {
       "area": "asf.harvest",
       "backlinks": [
-        "B-0061"
+        "B-0061",
+        "B-0065"
       ],
       "children": [],
       "decided": true,
@@ -1771,7 +1776,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "commit a27a56f names B-0063"
+        "commit a27a56f names B-0063",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1779,11 +1785,11 @@
       "parent": "E-0001",
       "severity": "S3",
       "signature": "health-never-prunes-local-branches",
-      "stage_since": "2026-09-22T14:15:34Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-22T14:50:29Z",
+      "state": "Closed",
       "title": "Stale local lane branches pile up in the scheduler's checkout: health deletes a branch only with its worktree",
       "type": "bug",
-      "updated": "2026-09-22T14:15:34Z"
+      "updated": "2026-09-22T14:50:29Z"
     },
     "B-0064": {
       "area": "asf.briefs",
@@ -1791,7 +1797,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "commit 9294048 names B-0064",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1799,11 +1806,31 @@
       "parent": "E-0001",
       "severity": "S1",
       "signature": "adjudicate-ruling-has-no-home",
-      "stage_since": "2026-09-22T14:14:14Z",
-      "state": "New",
+      "stage_since": "2026-09-22T14:50:29Z",
+      "state": "Closed",
       "title": "The adjudicate brief still asks the session to mint a Decision id and commit a ruling file; the ruling has no home a session can reach",
       "type": "bug",
-      "updated": "2026-09-22T14:15:34Z"
+      "updated": "2026-09-22T14:50:29Z"
+    },
+    "B-0065": {
+      "area": "asf.harvest",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "evidence": [
+        "commit 8fde7e5 names B-0065"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0065",
+      "parent": "E-0001",
+      "severity": "S2",
+      "signature": "removed-card-keeps-its-branch",
+      "stage_since": "2026-09-22T14:50:29Z",
+      "state": "Resolved",
+      "title": "A card the groom removed keeps its branch on origin for ever: harvest reads only live cards, so superseded never fires",
+      "type": "bug",
+      "updated": "2026-09-22T14:50:29Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2621,18 +2648,19 @@
         "B-0061",
         "B-0062",
         "B-0063",
-        "B-0064"
+        "B-0064",
+        "B-0065"
       ],
       "decided": true,
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 123.29,
+      "spend_usd": 131.14,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:50:30Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -2691,6 +2719,7 @@
     "F-0001": {
       "area": "factory",
       "backlinks": [
+        "T-0010",
         "B-0030",
         "B-0063"
       ],
@@ -4421,54 +4450,67 @@
         "F-0086",
         "B-0059"
       ],
-      "children": [],
+      "children": [
+        "T-0001",
+        "T-0002"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
-        "usd": 4.82
+        "sessions": 5,
+        "usd": 8.44
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main"
+        "spec on origin/main",
+        "plan on origin/main"
       ],
       "folder": "features",
       "id": "F-0078",
       "parent": "E-0001",
       "rank": 2,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-22T14:04:59Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T14:50:29Z",
       "state": "Active",
       "title": "The tick ends with two tables: in flight, and done since the last tick",
       "type": "feature",
-      "updated": "2026-09-22T14:04:59Z"
+      "updated": "2026-09-22T14:50:30Z"
     },
     "F-0079": {
       "backlinks": [
         "E-0001",
         "F-0086"
       ],
-      "children": [],
+      "children": [
+        "T-0003",
+        "T-0004",
+        "T-0005",
+        "T-0006",
+        "T-0007",
+        "T-0008",
+        "T-0009"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 2.27
+        "sessions": 2,
+        "usd": 4.06
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main"
+        "spec on origin/main",
+        "plan on origin/main"
       ],
       "folder": "features",
       "id": "F-0079",
       "parent": "E-0001",
       "rank": 5,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-22T14:04:59Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T14:50:29Z",
       "state": "Active",
       "title": "Capacity is configuration: session workers and CI, per product and per operator",
       "type": "feature",
-      "updated": "2026-09-22T14:04:59Z"
+      "updated": "2026-09-22T14:50:30Z"
     },
     "F-0080": {
       "backlinks": [
@@ -4586,27 +4628,35 @@
       "backlinks": [
         "B-0059"
       ],
-      "children": [],
+      "children": [
+        "T-0010",
+        "T-0011",
+        "T-0012",
+        "T-0013",
+        "T-0014",
+        "T-0015"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "usd": 5.05
+        "sessions": 4,
+        "usd": 7.49
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main"
+        "spec on origin/main",
+        "plan on origin/main"
       ],
       "folder": "features",
       "id": "F-0085",
       "parent": "E-0001",
       "rank": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-22T14:04:59Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T14:50:29Z",
       "state": "Active",
       "title": "The groom answers itself (D-0049): rules as code, an adjudicate session for the rest, a digest to the operator",
       "type": "feature",
-      "updated": "2026-09-22T14:04:59Z"
+      "updated": "2026-09-22T14:50:30Z"
     },
     "F-0086": {
       "backlinks": [
@@ -6311,7 +6361,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "R-0109": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0007"
+      ],
       "children": [],
       "enforced": false,
       "folder": "rules",
@@ -6931,6 +6983,351 @@
       "title": "Remaining console views and skills: ci, health, performance",
       "type": "story",
       "updated": "2026-09-22T00:07:20Z"
+    },
+    "T-0001": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0001",
+      "links": {
+        "plan": "docs/plans/f-0078.md"
+      },
+      "parent": "F-0078",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "the summary module \u2014 the window, the rows, the two tables",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/tick/summary.py",
+        "tests/test_tick_summary.py"
+      ]
+    },
+    "T-0002": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0002",
+      "links": {
+        "plan": "docs/plans/f-0078.md"
+      },
+      "parent": "F-0078",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "the tick calls it, and the pinned-output tests carry the tables",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/tick/tick.py",
+        "tests/test_tick.py",
+        "tests/test_tick_steps.py",
+        "asf/tick/summary.py"
+      ]
+    },
+    "T-0003": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0003",
+      "links": {
+        "plan": "docs/plans/f-0079.md"
+      },
+      "parent": "F-0079",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "`asf/capacity.py` \u2014 the resolver, the CI source, the overlay, the reserve's new home",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/capacity.py",
+        "tests/test_capacity.py",
+        "asf/workers/pool.py"
+      ]
+    },
+    "T-0004": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0004",
+      "links": {
+        "plan": "docs/plans/f-0079.md"
+      },
+      "parent": "F-0079",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "`capacity:` is a declared, validated field of the product file",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/env.py",
+        "tests/test_env.py"
+      ]
+    },
+    "T-0005": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0005",
+      "links": {
+        "plan": "docs/plans/f-0079.md"
+      },
+      "parent": "F-0079",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "the `wave` step (and `asf next`) take their cut from the resolver and write a `capacity` event",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/tick/step_wave.py",
+        "asf/feeder/render.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0006": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0006",
+      "links": {
+        "plan": "docs/plans/f-0079.md"
+      },
+      "parent": "F-0079",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "the `batch` step waits at the CI ceiling; every command step carries the overlay",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/tick/steps.py",
+        "asf/tick/tick.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0007": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0007",
+      "links": {
+        "plan": "docs/plans/f-0079.md"
+      },
+      "parent": "F-0079",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "`asf capacity` (table and `--json`), the status Capacity row, the plugin skill",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/views/capacity.py",
+        "asf/views/status.py",
+        "asf/cli.py",
+        "asf/plugin_build.py",
+        "plugin/**",
+        ".claude-plugin/marketplace.json",
+        "tests/test_views.py",
+        "tests/test_cli.py"
+      ]
+    },
+    "T-0008": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0008",
+      "links": {
+        "plan": "docs/plans/f-0079.md"
+      },
+      "parent": "F-0079",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "the `capacity` doctor row",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/doctor.py",
+        "tests/test_doctor.py"
+      ]
+    },
+    "T-0009": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0009",
+      "links": {
+        "plan": "docs/plans/f-0079.md"
+      },
+      "parent": "F-0079",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "the examples and the sample product carry the new block",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "docs/config.example.yaml",
+        "docs/products.example.yaml",
+        "sample/config.yaml",
+        "sample/product.yaml"
+      ]
+    },
+    "T-0010": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0010",
+      "links": {
+        "plan": "docs/plans/f-0085.md"
+      },
+      "parent": "F-0085",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "The gate, the config, and the GROOM \u2192 ADJUDICATE row",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/env.py",
+        "docs/products.example.yaml",
+        "asf/groom/policy.py",
+        "asf/feeder/rows.py",
+        "asf/tick/step_wave.py",
+        "tests/test_env.py",
+        "tests/test_feeder.py",
+        "tests/test_tick_steps.py",
+        "tests/test_groom_policy.py"
+      ]
+    },
+    "T-0011": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0011",
+      "links": {
+        "plan": "docs/plans/f-0085.md"
+      },
+      "parent": "F-0085",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "The `groom` brief",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/briefs/build.py",
+        "asf/briefs/templates/groom.md",
+        "tests/test_briefs.py",
+        "tests/fixtures/briefs/golden/groom.md"
+      ]
+    },
+    "T-0012": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0012",
+      "links": {
+        "plan": "docs/plans/f-0085.md"
+      },
+      "parent": "F-0085",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "The answer grammar \u2014 `unblock <id>`, `adjudicator:`, policy attribution",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/groom/groom.py",
+        "tests/test_groom.py",
+        "tests/test_groom_policy.py"
+      ]
+    },
+    "T-0013": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0013",
+      "links": {
+        "plan": "docs/plans/f-0085.md"
+      },
+      "parent": "F-0085",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "The four policies, the policy pass, and the approval bound",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/groom/policy.py",
+        "asf/groom/groom.py",
+        "tests/test_groom_policy.py"
+      ]
+    },
+    "T-0014": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0014",
+      "links": {
+        "plan": "docs/plans/f-0085.md"
+      },
+      "parent": "F-0085",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "Suppression, the answers file, the events, and the daily wiring",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/groom/policy.py",
+        "asf/groom/groom.py",
+        "asf/tick/step_daily.py",
+        "tests/test_groom_policy.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0015": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0015",
+      "links": {
+        "plan": "docs/plans/f-0085.md"
+      },
+      "parent": "F-0085",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T14:50:30Z",
+      "state": "New",
+      "title": "The digest and the `Groom` status row",
+      "type": "task",
+      "updated": "2026-09-22T14:50:30Z",
+      "writes": [
+        "asf/groom/digest.py",
+        "asf/groom/groom.py",
+        "asf/views/status.py",
+        "tests/test_groom_policy.py",
+        "tests/test_views.py"
+      ]
     }
   },
   "schema_version": 1
