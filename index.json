@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T18:44:19Z",
+  "generated": "2026-09-22T18:52:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2907,12 +2907,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 195.05,
+      "spend_usd": 198.73,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-22T18:35:46Z"
+      "updated": "2026-09-22T18:52:18Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -4769,18 +4769,18 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/2 tasks Closed"
+        "2/2 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0078",
       "parent": "E-0001",
       "rank": 2,
-      "stage": "building 1/2",
-      "stage_since": "2026-09-22T16:53:55Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-09-22T18:52:15Z",
+      "state": "Resolved",
       "title": "The tick ends with two tables: in flight, and done since the last tick",
       "type": "feature",
-      "updated": "2026-09-22T16:53:55Z"
+      "updated": "2026-09-22T18:52:15Z"
     },
     "F-0079": {
       "backlinks": [
@@ -4966,18 +4966,18 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/6 tasks Closed"
+        "3/6 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0085",
       "parent": "E-0001",
       "rank": 1,
-      "stage": "building 2/6",
-      "stage_since": "2026-09-22T17:42:56Z",
+      "stage": "building 3/6",
+      "stage_since": "2026-09-22T18:52:15Z",
       "state": "Active",
       "title": "The groom answers itself (D-0049): rules as code, an adjudicate session for the rest, a digest to the operator",
       "type": "feature",
-      "updated": "2026-09-22T17:42:56Z"
+      "updated": "2026-09-22T18:52:15Z"
     },
     "F-0086": {
       "backlinks": [
@@ -7360,12 +7360,13 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "usd": 0.33
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0002"
+        "commit d6ff841 names T-0002",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0002",
@@ -7373,11 +7374,11 @@
         "plan": "docs/plans/f-0078.md"
       },
       "parent": "F-0078",
-      "stage_since": "2026-09-22T18:35:43Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T18:52:15Z",
+      "state": "Closed",
       "title": "the tick calls it, and the pinned-output tests carry the tables",
       "type": "task",
-      "updated": "2026-09-22T18:35:46Z",
+      "updated": "2026-09-22T18:52:18Z",
       "writes": [
         "asf/tick/tick.py",
         "tests/test_tick.py",
@@ -7673,9 +7674,16 @@
     "T-0012": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 1.69
+      },
       "decided": true,
       "evidence": [
-        "branch worker/T-0012"
+        "commit 6b3e498 names T-0012",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0012",
@@ -7683,11 +7691,11 @@
         "plan": "docs/plans/f-0085.md"
       },
       "parent": "F-0085",
-      "stage_since": "2026-09-22T18:35:43Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T18:52:15Z",
+      "state": "Closed",
       "title": "The answer grammar \u2014 `unblock <id>`, `adjudicator:`, policy attribution",
       "type": "task",
-      "updated": "2026-09-22T18:35:43Z",
+      "updated": "2026-09-22T18:52:18Z",
       "writes": [
         "asf/groom/groom.py",
         "tests/test_groom.py",
@@ -8054,8 +8062,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "usd": 1.94
+        "sessions": 4,
+        "usd": 3.24
       },
       "decided": true,
       "evidence": [
@@ -8071,7 +8079,7 @@
       "state": "Active",
       "title": "no session is launched into a repo with no push gate \u2014 `asf/workers/spawn.py`",
       "type": "task",
-      "updated": "2026-09-22T18:09:40Z",
+      "updated": "2026-09-22T18:52:18Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -8536,9 +8544,15 @@
       "backlinks": [],
       "blocked": true,
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "branch worker/T-0043"
       ],
       "folder": "tasks",
       "id": "T-0043",
@@ -8546,11 +8560,11 @@
         "plan": "docs/plans/f-0083.md"
       },
       "parent": "F-0083",
-      "stage_since": "2026-09-22T15:49:00Z",
-      "state": "New",
+      "stage_since": "2026-09-22T18:52:15Z",
+      "state": "Active",
       "title": "The clock moves from argv into the product file \u2014 scheduler, CLI, and the callers that break with it",
       "type": "task",
-      "updated": "2026-09-22T16:13:42Z",
+      "updated": "2026-09-22T18:52:18Z",
       "writes": [
         "asf/env.py",
         "asf/scheduler.py",
@@ -8824,8 +8838,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "usd": 0.35
       },
       "decided": true,
       "evidence": [
@@ -8841,7 +8855,7 @@
       "state": "Active",
       "title": "the feeder holds a reshaped Task and launches one reshape session",
       "type": "task",
-      "updated": "2026-09-22T18:35:43Z",
+      "updated": "2026-09-22T18:52:18Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
