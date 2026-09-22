@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T14:50:32Z",
+  "generated": "2026-09-22T15:21:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -748,6 +748,7 @@
       "area": "factory",
       "backlinks": [
         "F-0087",
+        "T-0026",
         "B-0026",
         "B-0032",
         "B-0041",
@@ -1336,6 +1337,7 @@
       "area": "asf.workers",
       "backlinks": [
         "F-0087",
+        "T-0026",
         "B-0048",
         "B-0056"
       ],
@@ -1386,6 +1388,8 @@
       "backlinks": [
         "E-0001",
         "F-0087",
+        "T-0024",
+        "T-0026",
         "B-0056"
       ],
       "children": [],
@@ -1478,6 +1482,7 @@
       "area": "asf.workers",
       "backlinks": [
         "F-0087",
+        "T-0026",
         "B-0052"
       ],
       "children": [],
@@ -1795,6 +1800,12 @@
       "area": "asf.briefs",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "commit 9294048 names B-0064",
@@ -1810,7 +1821,7 @@
       "state": "Closed",
       "title": "The adjudicate brief still asks the session to mint a Decision id and commit a ruling file; the ruling has no home a session can reach",
       "type": "bug",
-      "updated": "2026-09-22T14:50:29Z"
+      "updated": "2026-09-22T15:21:17Z"
     },
     "B-0065": {
       "area": "asf.harvest",
@@ -1818,7 +1829,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "commit 8fde7e5 names B-0065"
+        "commit 8fde7e5 names B-0065",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1826,11 +1838,11 @@
       "parent": "E-0001",
       "severity": "S2",
       "signature": "removed-card-keeps-its-branch",
-      "stage_since": "2026-09-22T14:50:29Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-22T15:21:15Z",
+      "state": "Closed",
       "title": "A card the groom removed keeps its branch on origin for ever: harvest reads only live cards, so superseded never fires",
       "type": "bug",
-      "updated": "2026-09-22T14:50:29Z"
+      "updated": "2026-09-22T15:21:15Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2655,12 +2667,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 131.14,
+      "spend_usd": 145.08,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-22T14:50:30Z"
+      "updated": "2026-09-22T15:21:17Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -3429,16 +3441,24 @@
         "B-0054",
         "B-0059"
       ],
-      "children": [],
+      "children": [
+        "T-0016",
+        "T-0017",
+        "T-0018",
+        "T-0019",
+        "T-0020",
+        "T-0021"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 8,
-        "usd": 6.37
+        "sessions": 9,
+        "usd": 9.52
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main"
+        "spec on origin/main",
+        "plan on origin/main"
       ],
       "folder": "features",
       "id": "F-0031",
@@ -3446,12 +3466,12 @@
       "priority": "need",
       "rank": 2,
       "source": "plan:missing-in-ours",
-      "stage": "spec-approved",
-      "stage_since": "2026-09-22T14:04:59Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T15:21:15Z",
       "state": "Active",
       "title": "The approval matrix as code",
       "type": "feature",
-      "updated": "2026-09-22T14:04:59Z"
+      "updated": "2026-09-22T15:21:17Z"
     },
     "F-0032": {
       "area": "factory",
@@ -4378,27 +4398,35 @@
         "B-0051",
         "B-0059"
       ],
-      "children": [],
+      "children": [
+        "T-0022",
+        "T-0023",
+        "T-0024",
+        "T-0025",
+        "T-0026",
+        "T-0027"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 6,
-        "usd": 13.41
+        "sessions": 7,
+        "usd": 16.59
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main"
+        "spec on origin/main",
+        "plan on origin/main"
       ],
       "folder": "features",
       "id": "F-0075",
       "parent": "E-0001",
       "rank": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-22T14:04:59Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T15:21:15Z",
       "state": "Active",
       "title": "Redaction is a gate on every write path: operator names and secrets never reach a record or a public repo",
       "type": "feature",
-      "updated": "2026-09-22T14:04:59Z"
+      "updated": "2026-09-22T15:21:17Z"
     },
     "F-0076": {
       "backlinks": [
@@ -4463,18 +4491,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on origin/main"
+        "plan on origin/main",
+        "0/2 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0078",
       "parent": "E-0001",
       "rank": 2,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-22T14:50:29Z",
+      "stage": "building 0/2",
+      "stage_since": "2026-09-22T15:21:15Z",
       "state": "Active",
       "title": "The tick ends with two tables: in flight, and done since the last tick",
       "type": "feature",
-      "updated": "2026-09-22T14:50:30Z"
+      "updated": "2026-09-22T15:21:15Z"
     },
     "F-0079": {
       "backlinks": [
@@ -4499,18 +4528,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on origin/main"
+        "plan on origin/main",
+        "0/7 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0079",
       "parent": "E-0001",
       "rank": 5,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-22T14:50:29Z",
+      "stage": "building 0/7",
+      "stage_since": "2026-09-22T15:21:15Z",
       "state": "Active",
       "title": "Capacity is configuration: session workers and CI, per product and per operator",
       "type": "feature",
-      "updated": "2026-09-22T14:50:30Z"
+      "updated": "2026-09-22T15:21:15Z"
     },
     "F-0080": {
       "backlinks": [
@@ -4556,27 +4586,32 @@
         "F-0086",
         "B-0059"
       ],
-      "children": [],
+      "children": [
+        "T-0028",
+        "T-0029",
+        "T-0030"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "usd": 4.42
+        "sessions": 4,
+        "usd": 6.74
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main"
+        "spec on origin/main",
+        "plan on origin/main"
       ],
       "folder": "features",
       "id": "F-0082",
       "parent": "E-0001",
       "rank": 3,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-22T14:04:59Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T15:21:15Z",
       "state": "Active",
       "title": "Quota: a cooldown band before the stop \u2014 one new job per account from 90 %, none from 95 %",
       "type": "feature",
-      "updated": "2026-09-22T14:04:59Z"
+      "updated": "2026-09-22T15:21:17Z"
     },
     "F-0083": {
       "backlinks": [
@@ -4587,8 +4622,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 2.52
+        "sessions": 3,
+        "usd": 5.24
       },
       "decided": true,
       "evidence": [
@@ -4603,7 +4638,7 @@
       "state": "Active",
       "title": "Scheduler clocks are configuration: each job group on its own interval, per product",
       "type": "feature",
-      "updated": "2026-09-22T14:04:59Z"
+      "updated": "2026-09-22T15:21:17Z"
     },
     "F-0084": {
       "backlinks": [
@@ -4645,18 +4680,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on origin/main"
+        "plan on origin/main",
+        "0/6 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0085",
       "parent": "E-0001",
       "rank": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-22T14:50:29Z",
+      "stage": "building 0/6",
+      "stage_since": "2026-09-22T15:21:15Z",
       "state": "Active",
       "title": "The groom answers itself (D-0049): rules as code, an adjudicate session for the rest, a digest to the operator",
       "type": "feature",
-      "updated": "2026-09-22T14:50:30Z"
+      "updated": "2026-09-22T15:21:15Z"
     },
     "F-0086": {
       "backlinks": [
@@ -4666,8 +4702,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 5.28
+        "sessions": 3,
+        "usd": 7.85
       },
       "decided": true,
       "evidence": [
@@ -4682,7 +4718,7 @@
       "state": "Active",
       "title": "The groom proposes merges, splits and batches of Stories \u2014 shape decides delivery speed",
       "type": "feature",
-      "updated": "2026-09-22T14:04:59Z"
+      "updated": "2026-09-22T15:21:17Z"
     },
     "F-0087": {
       "backlinks": [
@@ -6988,18 +7024,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "branch task/T-0001"
+      ],
       "folder": "tasks",
       "id": "T-0001",
       "links": {
         "plan": "docs/plans/f-0078.md"
       },
       "parent": "F-0078",
-      "schema_version": 1,
-      "stage_since": "2026-09-22T14:50:30Z",
-      "state": "New",
+      "stage_since": "2026-09-22T15:21:15Z",
+      "state": "Active",
       "title": "the summary module \u2014 the window, the rows, the two tables",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/tick/summary.py",
         "tests/test_tick_summary.py"
@@ -7009,18 +7047,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0002",
       "links": {
         "plan": "docs/plans/f-0078.md"
       },
       "parent": "F-0078",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "the tick calls it, and the pinned-output tests carry the tables",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/tick/tick.py",
         "tests/test_tick.py",
@@ -7032,18 +7072,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "branch task/T-0003"
+      ],
       "folder": "tasks",
       "id": "T-0003",
       "links": {
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "schema_version": 1,
-      "stage_since": "2026-09-22T14:50:30Z",
-      "state": "New",
+      "stage_since": "2026-09-22T15:21:15Z",
+      "state": "Active",
       "title": "`asf/capacity.py` \u2014 the resolver, the CI source, the overlay, the reserve's new home",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/capacity.py",
         "tests/test_capacity.py",
@@ -7054,18 +7096,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0004",
       "links": {
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "`capacity:` is a declared, validated field of the product file",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/env.py",
         "tests/test_env.py"
@@ -7075,18 +7119,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0005",
       "links": {
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "the `wave` step (and `asf next`) take their cut from the resolver and write a `capacity` event",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/tick/step_wave.py",
         "asf/feeder/render.py",
@@ -7097,18 +7143,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0006",
       "links": {
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "the `batch` step waits at the CI ceiling; every command step carries the overlay",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/tick/steps.py",
         "asf/tick/tick.py",
@@ -7119,18 +7167,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "branch task/T-0007"
+      ],
       "folder": "tasks",
       "id": "T-0007",
       "links": {
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "schema_version": 1,
-      "stage_since": "2026-09-22T14:50:30Z",
-      "state": "New",
+      "stage_since": "2026-09-22T15:21:15Z",
+      "state": "Active",
       "title": "`asf capacity` (table and `--json`), the status Capacity row, the plugin skill",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/views/capacity.py",
         "asf/views/status.py",
@@ -7146,18 +7196,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "branch task/T-0008"
+      ],
       "folder": "tasks",
       "id": "T-0008",
       "links": {
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "schema_version": 1,
-      "stage_since": "2026-09-22T14:50:30Z",
-      "state": "New",
+      "stage_since": "2026-09-22T15:21:15Z",
+      "state": "Active",
       "title": "the `capacity` doctor row",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -7167,18 +7219,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0009",
       "links": {
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "the examples and the sample product carry the new block",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "docs/config.example.yaml",
         "docs/products.example.yaml",
@@ -7190,18 +7244,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0010",
       "links": {
         "plan": "docs/plans/f-0085.md"
       },
       "parent": "F-0085",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "The gate, the config, and the GROOM \u2192 ADJUDICATE row",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/env.py",
         "docs/products.example.yaml",
@@ -7218,18 +7274,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "branch task/T-0011"
+      ],
       "folder": "tasks",
       "id": "T-0011",
       "links": {
         "plan": "docs/plans/f-0085.md"
       },
       "parent": "F-0085",
-      "schema_version": 1,
-      "stage_since": "2026-09-22T14:50:30Z",
-      "state": "New",
+      "stage_since": "2026-09-22T15:21:15Z",
+      "state": "Active",
       "title": "The `groom` brief",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/briefs/templates/groom.md",
@@ -7241,18 +7299,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0012",
       "links": {
         "plan": "docs/plans/f-0085.md"
       },
       "parent": "F-0085",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "The answer grammar \u2014 `unblock <id>`, `adjudicator:`, policy attribution",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/groom/groom.py",
         "tests/test_groom.py",
@@ -7263,18 +7323,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0013",
       "links": {
         "plan": "docs/plans/f-0085.md"
       },
       "parent": "F-0085",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "The four policies, the policy pass, and the approval bound",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/groom/policy.py",
         "asf/groom/groom.py",
@@ -7285,18 +7347,20 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0014",
       "links": {
         "plan": "docs/plans/f-0085.md"
       },
       "parent": "F-0085",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "Suppression, the answers file, the events, and the daily wiring",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/groom/policy.py",
         "asf/groom/groom.py",
@@ -7309,24 +7373,366 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "tasks",
       "id": "T-0015",
       "links": {
         "plan": "docs/plans/f-0085.md"
       },
       "parent": "F-0085",
-      "schema_version": 1,
       "stage_since": "2026-09-22T14:50:30Z",
       "state": "New",
       "title": "The digest and the `Groom` status row",
       "type": "task",
-      "updated": "2026-09-22T14:50:30Z",
+      "updated": "2026-09-22T15:21:15Z",
       "writes": [
         "asf/groom/digest.py",
         "asf/groom/groom.py",
         "asf/views/status.py",
         "tests/test_groom_policy.py",
         "tests/test_views.py"
+      ]
+    },
+    "T-0016": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0016",
+      "links": {
+        "plan": "docs/plans/f-0031.md"
+      },
+      "parent": "F-0031",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "The catalogue, the matrix, the classifier and the hold ledger",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/approvals.py",
+        "asf/env.py",
+        "asf/conventions.py",
+        "asf/hooks.py",
+        "docs/products.example.yaml",
+        "sample/product.yaml",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0017": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0017",
+      "links": {
+        "plan": "docs/plans/f-0031.md"
+      },
+      "parent": "F-0031",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "The hook \u2014 `asf hook approvals` refuses what the matrix holds",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/approvals.py",
+        "asf/hooks.py",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0018": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0018",
+      "links": {
+        "plan": "docs/plans/f-0031.md"
+      },
+      "parent": "F-0031",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "`asf hooks install` puts the approvals hook in every worker account",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/hooks.py",
+        "tests/test_install.py",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0019": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0019",
+      "links": {
+        "plan": "docs/plans/f-0031.md"
+      },
+      "parent": "F-0031",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "The operator's side \u2014 `asf approvals`, `list`, `resolve`, and the doctor row",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/approvals.py",
+        "asf/cli.py",
+        "asf/doctor.py",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0020": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0020",
+      "links": {
+        "plan": "docs/plans/f-0031.md"
+      },
+      "parent": "F-0031",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "The tick raises one line per held item and does not relaunch it",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/approvals.py",
+        "asf/tick/step_wave.py",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0021": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0021",
+      "links": {
+        "plan": "docs/plans/f-0031.md"
+      },
+      "parent": "F-0031",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "The harvest reads the merge classes; the bug filer reads `file_bug`",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/approvals.py",
+        "asf/harvest/harvest.py",
+        "asf/tick/file_bugs.py",
+        "asf/tick/tick.py",
+        "asf/tick/step_daily.py",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0022": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0022",
+      "links": {
+        "plan": "docs/plans/f-0075.md"
+      },
+      "parent": "F-0075",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "the one scanner \u2014 `asf/redact.py` and `asf redact`",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/redact.py",
+        "asf/cli.py",
+        "tests/test_redact.py"
+      ]
+    },
+    "T-0023": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0023",
+      "links": {
+        "plan": "docs/plans/f-0075.md"
+      },
+      "parent": "F-0075",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "the tick cannot skip the gate \u2014 `asf/tick/shadow.py`",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/tick/shadow.py",
+        "asf/tick/tick.py",
+        "asf/tick/step_wave.py",
+        "asf/schema.py",
+        "tests/test_shadow.py",
+        "tests/test_tick.py"
+      ]
+    },
+    "T-0024": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0024",
+      "links": {
+        "plan": "docs/plans/f-0075.md"
+      },
+      "parent": "F-0075",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "both harvest push paths scan before they push \u2014 `asf/harvest/harvest.py`",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/harvest/harvest.py",
+        "tests/test_harvest.py"
+      ]
+    },
+    "T-0025": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0025",
+      "links": {
+        "plan": "docs/plans/f-0075.md"
+      },
+      "parent": "F-0075",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "the git hooks a session and a human inherit \u2014 `asf/hooks.py`, `asf doctor`",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/hooks.py",
+        "asf/doctor.py",
+        "tests/test_install.py",
+        "tests/test_doctor.py"
+      ]
+    },
+    "T-0026": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0026",
+      "links": {
+        "plan": "docs/plans/f-0075.md"
+      },
+      "parent": "F-0075",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "no session is launched into a repo with no push gate \u2014 `asf/workers/spawn.py`",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/workers/spawn.py",
+        "tests/test_workers.py"
+      ]
+    },
+    "T-0027": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0027",
+      "links": {
+        "plan": "docs/plans/f-0075.md"
+      },
+      "parent": "F-0075",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "one list and one matcher in ASF's own repo",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "tools/check_generic.sh",
+        ".githooks/pre-commit",
+        ".githooks/pre-push",
+        "tests/test_check_generic.py",
+        "tests/test_install.py"
+      ]
+    },
+    "T-0028": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0028",
+      "links": {
+        "plan": "docs/plans/f-0082.md"
+      },
+      "parent": "F-0082",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "the band replaces the guard, and the pick rule and the `quota` verb read it",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/workers/quota.py",
+        "asf/workers/pool.py",
+        "asf/workers/__init__.py",
+        "tests/test_workers.py"
+      ]
+    },
+    "T-0029": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0029",
+      "links": {
+        "plan": "docs/plans/f-0082.md"
+      },
+      "parent": "F-0082",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "the status cell names the band, and an unreadable account reads as stopped",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "asf/views/status.py",
+        "tests/test_views.py"
+      ]
+    },
+    "T-0030": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0030",
+      "links": {
+        "plan": "docs/plans/f-0082.md"
+      },
+      "parent": "F-0082",
+      "schema_version": 1,
+      "stage_since": "2026-09-22T15:21:17Z",
+      "state": "New",
+      "title": "the example config documents the band and stops advertising the one number",
+      "type": "task",
+      "updated": "2026-09-22T15:21:17Z",
+      "writes": [
+        "docs/config.example.yaml"
       ]
     }
   },
