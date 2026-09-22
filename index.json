@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T08:53:23Z",
+  "generated": "2026-09-22T09:03:55Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -465,10 +465,10 @@
       ],
       "children": [],
       "cost": {
-        "fix_rounds": 1,
+        "fix_rounds": 2,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "usd": 0.97
       },
       "decided": true,
       "evidence": [
@@ -486,7 +486,7 @@
       "state": "Active",
       "title": "Parallel spawns race on .git/config when creating worktrees",
       "type": "bug",
-      "updated": "2026-09-22T08:53:21Z"
+      "updated": "2026-09-22T09:03:54Z"
     },
     "B-0017": {
       "area": "factory",
@@ -766,7 +766,8 @@
       },
       "decided": true,
       "evidence": [
-        "branch fix/B-0025"
+        "commit 7c8c756 names B-0025",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -775,11 +776,11 @@
       "priority": "need",
       "severity": "S2",
       "signature": "spawn: dead empty worktree blocks relaunch",
-      "stage_since": "2026-09-21T20:49:24Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T09:03:52Z",
+      "state": "Closed",
       "title": "A session that ended with nothing committed leaves a worktree that blocks every relaunch",
       "type": "bug",
-      "updated": "2026-09-22T08:37:47Z"
+      "updated": "2026-09-22T09:03:52Z"
     },
     "B-0026": {
       "area": "factory",
@@ -848,7 +849,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "commit 54f8a2f names B-0028",
+        "commit 7c8c756 names B-0028",
         "CI green on main at or after it"
       ],
       "folder": "bugs",
@@ -861,7 +862,7 @@
       "state": "Closed",
       "title": "A corrected or late-finishing session stays 'dead pid'; harvest never lands its branch",
       "type": "bug",
-      "updated": "2026-09-21T21:06:04Z"
+      "updated": "2026-09-22T09:03:52Z"
     },
     "B-0029": {
       "area": "asf.tick",
@@ -1189,7 +1190,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "commit 689e91c names B-0041",
+        "commit 7c8c756 names B-0041",
         "CI green on main at or after it"
       ],
       "folder": "bugs",
@@ -1202,7 +1203,7 @@
       "state": "Closed",
       "title": "A relaunched job inherits the previous run's ended/failed fields; health skips it, the feeder re-emits it, harvest never lands it",
       "type": "bug",
-      "updated": "2026-09-21T21:36:49Z"
+      "updated": "2026-09-22T09:03:52Z"
     },
     "B-0042": {
       "area": "asf.harvest",
@@ -1328,7 +1329,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "commit d9a1df0 names B-0046",
+        "commit 7c8c756 names B-0046",
         "CI green on main at or after it"
       ],
       "folder": "bugs",
@@ -1341,7 +1342,7 @@
       "state": "Closed",
       "title": "A correction row cannot spawn: spawn creates a new branch, but the held branch already exists",
       "type": "bug",
-      "updated": "2026-09-22T00:35:52Z"
+      "updated": "2026-09-22T09:03:52Z"
     },
     "B-0047": {
       "area": "asf.plugin",
@@ -1382,7 +1383,7 @@
       },
       "decided": true,
       "evidence": [
-        "commit ada6a4c names B-0048",
+        "commit 7c8c756 names B-0048",
         "CI green on main at or after it"
       ],
       "folder": "bugs",
@@ -1395,7 +1396,7 @@
       "state": "Closed",
       "title": "An adjudicate row cannot spawn on a held branch, and rounds climb past the cap \u2014 held branches loop forever",
       "type": "bug",
-      "updated": "2026-09-22T05:45:22Z"
+      "updated": "2026-09-22T09:03:52Z"
     },
     "B-0049": {
       "area": "asf.workers",
@@ -1411,7 +1412,7 @@
       },
       "decided": true,
       "evidence": [
-        "commit cb0cbb7 names B-0049",
+        "commit 7c8c756 names B-0049",
         "CI green on main at or after it"
       ],
       "folder": "bugs",
@@ -1424,7 +1425,7 @@
       "state": "Closed",
       "title": "Health never reaps a landed branch's worktree: harvest rebased the tip and deleted the remote branch, so 'pushed' fails forever",
       "type": "bug",
-      "updated": "2026-09-22T05:31:03Z"
+      "updated": "2026-09-22T09:03:52Z"
     },
     "B-0050": {
       "area": "asf.cli",
@@ -1471,7 +1472,7 @@
       },
       "decided": true,
       "evidence": [
-        "commit 2380a19 names B-0051",
+        "commit 7c8c756 names B-0051",
         "CI green on main at or after it"
       ],
       "folder": "bugs",
@@ -1484,7 +1485,7 @@
       "state": "Closed",
       "title": "A session that ends 'finished' without pushing blocks its item forever: health says finished, harvest sees nothing, spawn refuses the worktree",
       "type": "bug",
-      "updated": "2026-09-22T08:01:53Z"
+      "updated": "2026-09-22T09:03:52Z"
     },
     "B-0052": {
       "area": "asf.briefs",
@@ -1519,6 +1520,12 @@
       "area": "ci",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.71
+      },
       "decided": true,
       "evidence": [
         "branch fix/B-0053"
@@ -1533,7 +1540,7 @@
       "state": "Active",
       "title": "CI runs on every worker-branch push: red notifications for in-progress work and wasted minutes; the gate is harvest's",
       "type": "bug",
-      "updated": "2026-09-22T08:53:21Z"
+      "updated": "2026-09-22T09:03:54Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2330,12 +2337,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 44.34,
+      "spend_usd": 46.02,
       "stage_since": "2026-09-21T21:20:33Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-22T08:37:47Z"
+      "updated": "2026-09-22T09:03:54Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -4308,18 +4315,19 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "commit 7c8c756 names F-0087",
+        "CI green on main at or after it"
       ],
       "folder": "features",
       "id": "F-0087",
       "parent": "E-0001",
       "rank": 3,
-      "stage": "card",
-      "stage_since": "2026-09-22T08:37:46Z",
-      "state": "New",
+      "stage": "landed",
+      "stage_since": "2026-09-22T09:03:52Z",
+      "state": "Resolved",
       "title": "Failure-class invariants: one property test per class of the first 53 Bugs, and the whole-loop dogfood tick in CI",
       "type": "feature",
-      "updated": "2026-09-22T08:37:46Z"
+      "updated": "2026-09-22T09:03:52Z"
     },
     "R-0001": {
       "backlinks": [],
