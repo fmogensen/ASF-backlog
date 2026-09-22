@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T12:25:55Z",
+  "generated": "2026-09-22T12:41:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -454,7 +454,8 @@
       "backlinks": [
         "F-0073",
         "B-0051",
-        "B-0052"
+        "B-0052",
+        "B-0054"
       ],
       "blocked": true,
       "blockedBy": [
@@ -1507,7 +1508,9 @@
     },
     "B-0053": {
       "area": "ci",
-      "backlinks": [],
+      "backlinks": [
+        "B-0054"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -1530,6 +1533,23 @@
       "title": "CI runs on every worker-branch push: red notifications for in-progress work and wasted minutes; the gate is harvest's",
       "type": "bug",
       "updated": "2026-09-22T10:37:06Z"
+    },
+    "B-0054": {
+      "area": "asf.workers",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0054",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "adjudicate-commits-invented-rulings",
+      "stage_since": "2026-09-22T12:41:10Z",
+      "state": "New",
+      "title": "Adjudicate sessions commit invented rulings to the code repo, never close the row, and every push re-fires the stale branch workflow",
+      "type": "bug",
+      "updated": "2026-09-22T12:41:10Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2320,7 +2340,8 @@
         "B-0050",
         "B-0051",
         "B-0052",
-        "B-0053"
+        "B-0053",
+        "B-0054"
       ],
       "decided": true,
       "folder": "epics",
@@ -3095,7 +3116,8 @@
     "F-0031": {
       "area": "factory",
       "backlinks": [
-        "F-0085"
+        "F-0085",
+        "B-0054"
       ],
       "children": [],
       "cost": {
