@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T00:35:54Z",
+  "generated": "2026-09-22T04:55:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -742,7 +742,8 @@
         "B-0026",
         "B-0032",
         "B-0041",
-        "B-0046"
+        "B-0046",
+        "B-0048"
       ],
       "children": [],
       "cost": {
@@ -1214,7 +1215,9 @@
     },
     "B-0043": {
       "area": "tests",
-      "backlinks": [],
+      "backlinks": [
+        "B-0048"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -1295,7 +1298,9 @@
     },
     "B-0046": {
       "area": "asf.workers",
-      "backlinks": [],
+      "backlinks": [
+        "B-0048"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -1334,6 +1339,26 @@
       "title": "asf plugin check resolves the plugin directory from the package, not the checkout; CI is red on a plain install",
       "type": "bug",
       "updated": "2026-09-21T23:53:04Z"
+    },
+    "B-0048": {
+      "area": "asf.workers",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0048",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "adjudicate-spawn-branch-exists-rounds-uncapped",
+      "stage_since": "2026-09-22T04:53:32Z",
+      "state": "New",
+      "title": "An adjudicate row cannot spawn on a held branch, and rounds climb past the cap \u2014 held branches loop forever",
+      "type": "bug",
+      "updated": "2026-09-22T04:55:22Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2084,7 +2109,8 @@
         "B-0044",
         "B-0045",
         "B-0046",
-        "B-0047"
+        "B-0047",
+        "B-0048"
       ],
       "decided": true,
       "folder": "epics",
