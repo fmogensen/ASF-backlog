@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T08:27:39Z",
+  "generated": "2026-09-22T08:37:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -761,8 +761,8 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 1.5
+        "sessions": 3,
+        "usd": 6.69
       },
       "decided": true,
       "evidence": [
@@ -779,7 +779,7 @@
       "state": "Active",
       "title": "A session that ended with nothing committed leaves a worktree that blocks every relaunch",
       "type": "bug",
-      "updated": "2026-09-22T08:20:51Z"
+      "updated": "2026-09-22T08:37:47Z"
     },
     "B-0026": {
       "area": "factory",
@@ -1136,14 +1136,15 @@
       ],
       "children": [],
       "cost": {
-        "fix_rounds": 1,
+        "fix_rounds": 2,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "usd": 0.51
       },
       "decided": true,
       "evidence": [
-        "branch fix/B-0039"
+        "commit 4d38582 names B-0039",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1151,11 +1152,11 @@
       "parent": "E-0001",
       "severity": "S2",
       "signature": "correction-resume-same-session",
-      "stage_since": "2026-09-22T08:20:51Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T08:37:46Z",
+      "state": "Closed",
       "title": "Corrections resume the same runtime session (--resume) instead of relaunching cold (D-0048, part b)",
       "type": "bug",
-      "updated": "2026-09-22T08:20:51Z"
+      "updated": "2026-09-22T08:37:47Z"
     },
     "B-0040": {
       "area": "asf.harvest",
@@ -1493,7 +1494,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "branch fix/B-0052"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1501,11 +1502,11 @@
       "parent": "E-0001",
       "severity": "S1",
       "signature": "session-backgrounds-gate-returns-early",
-      "stage_since": "2026-09-22T08:17:31Z",
-      "state": "New",
+      "stage_since": "2026-09-22T08:37:46Z",
+      "state": "Active",
       "title": "Sessions background the test suite and return before it ends \u2014 no commit, no push; the brief must forbid it",
       "type": "bug",
-      "updated": "2026-09-22T08:20:51Z"
+      "updated": "2026-09-22T08:37:46Z"
     },
     "B-0053": {
       "area": "ci",
@@ -2322,12 +2323,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 33.39,
+      "spend_usd": 44.34,
       "stage_since": "2026-09-21T21:20:33Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-22T08:01:53Z"
+      "updated": "2026-09-22T08:37:47Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -3094,6 +3095,12 @@
         "F-0085"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.73
+      },
       "decided": true,
       "evidence": [
         "branch spec/F-0031"
@@ -3109,7 +3116,7 @@
       "state": "Active",
       "title": "The approval matrix as code",
       "type": "feature",
-      "updated": "2026-09-22T08:01:52Z"
+      "updated": "2026-09-22T08:37:47Z"
     },
     "F-0032": {
       "area": "factory",
@@ -4028,8 +4035,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 1.94
+        "sessions": 2,
+        "usd": 2.59
       },
       "decided": true,
       "evidence": [
@@ -4044,7 +4051,7 @@
       "state": "Active",
       "title": "Redaction is a gate on every write path: operator names and secrets never reach a record or a public repo",
       "type": "feature",
-      "updated": "2026-09-22T05:45:22Z"
+      "updated": "2026-09-22T08:37:47Z"
     },
     "F-0076": {
       "backlinks": [],
@@ -4090,8 +4097,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 2.22
+        "sessions": 2,
+        "usd": 3.09
       },
       "decided": true,
       "evidence": [
@@ -4106,7 +4113,7 @@
       "state": "Active",
       "title": "The tick ends with two tables: in flight, and done since the last tick",
       "type": "feature",
-      "updated": "2026-09-22T05:45:22Z"
+      "updated": "2026-09-22T08:37:47Z"
     },
     "F-0079": {
       "backlinks": [
@@ -4250,6 +4257,12 @@
     "F-0085": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 2.99
+      },
       "decided": true,
       "evidence": [
         "branch spec/F-0085"
@@ -4263,7 +4276,7 @@
       "state": "Active",
       "title": "The groom answers itself (D-0049): rules as code, an adjudicate session for the rest, a digest to the operator",
       "type": "feature",
-      "updated": "2026-09-22T08:20:51Z"
+      "updated": "2026-09-22T08:37:47Z"
     },
     "F-0086": {
       "backlinks": [],
@@ -4287,16 +4300,19 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
       "folder": "features",
       "id": "F-0087",
       "parent": "E-0001",
       "rank": 3,
-      "schema_version": 1,
-      "stage_since": "2026-09-22T08:21:23Z",
+      "stage": "card",
+      "stage_since": "2026-09-22T08:37:46Z",
       "state": "New",
       "title": "Failure-class invariants: one property test per class of the first 53 Bugs, and the whole-loop dogfood tick in CI",
       "type": "feature",
-      "updated": "2026-09-22T08:21:23Z"
+      "updated": "2026-09-22T08:37:46Z"
     },
     "R-0001": {
       "backlinks": [],
