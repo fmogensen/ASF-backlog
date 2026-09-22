@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T17:31:59Z",
+  "generated": "2026-09-22T17:43:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1181,7 +1181,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "commit 6eaee6a names B-0040"
+        "commit 6eaee6a names B-0040",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1189,11 +1190,11 @@
       "parent": "E-0001",
       "severity": "S3",
       "signature": "harvest-one-gate-per-tick",
-      "stage_since": "2026-09-22T16:53:55Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-22T17:42:56Z",
+      "state": "Closed",
       "title": "Harvest gates once per tick on the combined head, bisecting on red (replaces the interim cap)",
       "type": "bug",
-      "updated": "2026-09-22T16:53:55Z"
+      "updated": "2026-09-22T17:42:56Z"
     },
     "B-0041": {
       "area": "asf.workers",
@@ -1915,7 +1916,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "commit 32b2c1a names B-0068"
+        "commit 3d4fb98 names B-0068",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1923,11 +1925,11 @@
       "parent": "E-0001",
       "severity": "S2",
       "signature": "suite-serial-gate",
-      "stage_since": "2026-09-22T16:53:55Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-22T17:42:56Z",
+      "state": "Closed",
       "title": "The suite runs serially: 324 s per gate on ten idle cores \u2014 shard the test modules across processes",
       "type": "bug",
-      "updated": "2026-09-22T16:53:55Z"
+      "updated": "2026-09-22T17:42:56Z"
     },
     "B-0069": {
       "area": "asf.workers",
@@ -1973,9 +1975,16 @@
         "B-0068"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 2.13
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "commit e0b6614 names B-0071",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1983,29 +1992,54 @@
       "parent": "E-0001",
       "severity": "S2",
       "signature": "suite-fixture-per-test",
-      "stage_since": "2026-09-22T16:49:22Z",
-      "state": "New",
+      "stage_since": "2026-09-22T17:42:56Z",
+      "state": "Closed",
       "title": "test_cutover builds an installation per test: 172 s of a 318 s suite in one module \u2014 build each module's fixture once",
       "type": "bug",
-      "updated": "2026-09-22T16:53:55Z"
+      "updated": "2026-09-22T17:42:58Z"
     },
     "B-0072": {
       "area": "asf.harvest",
-      "backlinks": [],
+      "backlinks": [
+        "B-0073"
+      ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "commit fbd56e9 names B-0072",
+        "CI green on main at or after it"
+      ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0072",
       "parent": "E-0001",
-      "schema_version": 1,
       "severity": "S1",
       "signature": "harvest-gate-no-timeout",
-      "stage_since": "2026-09-22T17:31:28Z",
-      "state": "New",
+      "stage_since": "2026-09-22T17:42:56Z",
+      "state": "Closed",
       "title": "The harvest gate has no timeout: one branch whose test recurses through the pre-commit hook hangs the tick, and every tick after it",
       "type": "bug",
-      "updated": "2026-09-22T17:31:28Z"
+      "updated": "2026-09-22T17:42:56Z"
+    },
+    "B-0073": {
+      "area": "tests",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0073",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "pre-commit-hook-recursion",
+      "stage_since": "2026-09-22T17:38:47Z",
+      "state": "New",
+      "title": "A test that commits triggers the pre-commit hook, which runs the suite, which commits: the gate recurses and the lane stops",
+      "type": "bug",
+      "updated": "2026-09-22T17:42:56Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2836,18 +2870,19 @@
         "B-0069",
         "B-0070",
         "B-0071",
-        "B-0072"
+        "B-0072",
+        "B-0073"
       ],
       "decided": true,
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 182.41,
+      "spend_usd": 190.34,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-22T16:53:57Z"
+      "updated": "2026-09-22T17:42:58Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -4852,12 +4887,12 @@
       "id": "F-0083",
       "parent": "E-0001",
       "rank": 4,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-22T15:48:58Z",
+      "stage": "building 0/3",
+      "stage_since": "2026-09-22T17:42:56Z",
       "state": "Active",
       "title": "Scheduler clocks are configuration: each job group on its own interval, per product",
       "type": "feature",
-      "updated": "2026-09-22T16:13:42Z"
+      "updated": "2026-09-22T17:42:56Z"
     },
     "F-0084": {
       "backlinks": [
@@ -4900,18 +4935,18 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/6 tasks Closed"
+        "2/6 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0085",
       "parent": "E-0001",
       "rank": 1,
-      "stage": "building 0/6",
-      "stage_since": "2026-09-22T15:21:15Z",
+      "stage": "building 2/6",
+      "stage_since": "2026-09-22T17:42:56Z",
       "state": "Active",
       "title": "The groom answers itself (D-0049): rules as code, an adjudicate session for the rest, a digest to the operator",
       "type": "feature",
-      "updated": "2026-09-22T15:21:15Z"
+      "updated": "2026-09-22T17:42:56Z"
     },
     "F-0086": {
       "backlinks": [
@@ -7350,7 +7385,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "branch worker/T-0004"
       ],
       "folder": "tasks",
       "id": "T-0004",
@@ -7358,11 +7393,11 @@
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "stage_since": "2026-09-22T14:50:30Z",
-      "state": "New",
+      "stage_since": "2026-09-22T17:42:56Z",
+      "state": "Active",
       "title": "`capacity:` is a declared, validated field of the product file",
       "type": "task",
-      "updated": "2026-09-22T15:21:15Z",
+      "updated": "2026-09-22T17:42:56Z",
       "writes": [
         "asf/env.py",
         "tests/test_env.py"
@@ -7523,7 +7558,8 @@
       },
       "decided": true,
       "evidence": [
-        "branch task/T-0010"
+        "commit cada650 names T-0010",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0010",
@@ -7531,11 +7567,11 @@
         "plan": "docs/plans/f-0085.md"
       },
       "parent": "F-0085",
-      "stage_since": "2026-09-22T15:48:58Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T17:42:56Z",
+      "state": "Closed",
       "title": "The gate, the config, and the GROOM \u2192 ADJUDICATE row",
       "type": "task",
-      "updated": "2026-09-22T16:13:44Z",
+      "updated": "2026-09-22T17:42:56Z",
       "writes": [
         "asf/env.py",
         "docs/products.example.yaml",
@@ -7561,7 +7597,8 @@
       },
       "decided": true,
       "evidence": [
-        "branch task/T-0011"
+        "commit ee8dfff names T-0011",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0011",
@@ -7569,11 +7606,11 @@
         "plan": "docs/plans/f-0085.md"
       },
       "parent": "F-0085",
-      "stage_since": "2026-09-22T15:21:15Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T17:42:56Z",
+      "state": "Closed",
       "title": "The `groom` brief",
       "type": "task",
-      "updated": "2026-09-22T15:49:00Z",
+      "updated": "2026-09-22T17:42:56Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/briefs/templates/groom.md",
@@ -7870,7 +7907,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "branch worker/T-0023"
       ],
       "folder": "tasks",
       "id": "T-0023",
@@ -7878,11 +7915,11 @@
         "plan": "docs/plans/f-0075.md"
       },
       "parent": "F-0075",
-      "stage_since": "2026-09-22T15:21:17Z",
-      "state": "New",
+      "stage_since": "2026-09-22T17:42:56Z",
+      "state": "Active",
       "title": "the tick cannot skip the gate \u2014 `asf/tick/shadow.py`",
       "type": "task",
-      "updated": "2026-09-22T15:48:58Z",
+      "updated": "2026-09-22T17:42:56Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -7978,7 +8015,9 @@
       ]
     },
     "T-0027": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0073"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -8359,6 +8398,12 @@
     "T-0041": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 3.5
+      },
       "decided": true,
       "evidence": [
         "branch task/T-0041"
@@ -8373,7 +8418,7 @@
       "state": "Active",
       "title": "The sample product differs on every kind of convention, and CI reads the result",
       "type": "task",
-      "updated": "2026-09-22T16:53:55Z",
+      "updated": "2026-09-22T17:42:58Z",
       "writes": [
         "sample/product.yaml",
         "sample/repo/reviews/README.md",
@@ -8439,9 +8484,15 @@
     "T-0044": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 1.54
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "branch worker/T-0044"
       ],
       "folder": "tasks",
       "id": "T-0044",
@@ -8449,11 +8500,11 @@
         "plan": "docs/plans/f-0083.md"
       },
       "parent": "F-0083",
-      "stage_since": "2026-09-22T15:49:00Z",
-      "state": "New",
+      "stage_since": "2026-09-22T17:42:56Z",
+      "state": "Active",
       "title": "Doctor reads each job's own clock, flags a declared clock that isn't loaded, and marks `scheduler.interval_s` dead",
       "type": "task",
-      "updated": "2026-09-22T16:13:42Z",
+      "updated": "2026-09-22T17:42:58Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -8625,8 +8676,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "usd": 0.75
       },
       "decided": true,
       "evidence": [
@@ -8642,7 +8693,7 @@
       "state": "Active",
       "title": "a removed Task neither holds its Feature's ladder nor covers a Story",
       "type": "task",
-      "updated": "2026-09-22T16:53:57Z",
+      "updated": "2026-09-22T17:42:58Z",
       "writes": [
         "asf/record/ingest.py",
         "asf/record/check.py",
