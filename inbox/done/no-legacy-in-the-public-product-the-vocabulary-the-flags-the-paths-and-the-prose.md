@@ -1,0 +1,41 @@
+→ F-0081
+
+# No legacy in the public product: the vocabulary, the flags, the paths and the prose
+parent: E-0001
+type: feature
+
+## Description
+As the maintainer of a product released to the public, I want the ASF repository to read as a
+clean new product — no field, flag, config key, function or sentence that exists only because a
+previous factory existed — so that a stranger reading the code or the docs meets one design, not a
+migration.
+
+Counted 2026-09-21 19:25 in the ASF repo: 26 files mention "legacy"; `legacy_id` 84 times (the
+matching key the adopter and the evidence provider use), `legacy_paths` 26, `legacy_dir(s)` 23,
+`legacy_labels` 16, `legacy_steps` 12 (already renamed to `steps` in the tick but still in the
+cutover kit and doctor), `--legacy-id` on `asf new`; ~40 docstring sentences describe behaviour by
+reference to "the tool it replaced". `check_generic` cannot see any of this — they are words, not
+names.
+
+## Acceptance
+- [ ] Renames, with the meaning stated on its own terms: `legacy_id` → `source_id` (the id an item
+  had in the system it was imported from — a generic import concept), `branch_prefixes.legacy` →
+  `branch_prefixes.imported`, `legacy_paths` → `retire_paths` and `legacy_labels` →
+  `retire_labels` (what the install retires; the cutover kit is a generic "adopt an existing
+  factory" tool), `_legacy_tool_names` → `retired_tool_names`, `--legacy-id` → `--source-id`;
+  `asf schema-migrate` carries the record-side rename (a migration, exercised for the first time).
+- [ ] Every docstring and comment describes what the code does, never what an earlier tool did:
+  "the old tick", "the tool it replaced", "pre-asf", "legacy" and `backlog.py` mentions are gone
+  from `asf/`, `tools/`, `plugin/`, `tests/` and `docs/` — `docs/research/` is the one place that
+  may talk about prior art, by its dated name.
+- [ ] `tools/check_conventions.sh`'s forbidden list gains `legacy`, `pre-asf`, `backlog\.py`, "the
+  old "; CI runs it; the rule card "code carries no product convention" covers it.
+- [ ] `README.md` of the ASF repo introduces the product with no reference to a predecessor; the
+  vocabulary table from the record's README is copied into `docs/` (record, inbox item, item/card,
+  type, typed/derived field, groom, lane, row, session, tick, operator).
+- [ ] The first product's yaml is updated for every renamed key by `asf init` (re-discovery prints
+  the diff; the operator applies it).
+
+## History
+- 2026-09-21 19:25 operator: "lets make sure we don't have any legacy … this is a clean new
+  product, release to the public"

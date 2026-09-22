@@ -1,0 +1,51 @@
+→ F-0080
+
+# Closing is derived and total: a definition of done per type, reconciliation for work that predates it, nothing re-emitted
+parent: E-0001
+type: feature
+
+## Description
+As an operator, I want every item to close by itself the moment its work is demonstrably done — and
+work done before the marker existed to be closed through one groom question — so that the factory
+never develops the same thing twice because a card stayed open.
+
+Today: a Bug/Task turns `Resolved` on a trunk commit naming it and `Closed` on green CI after it; a
+Feature lands when its children close or a commit names it. Gaps: a Story with no Tasks, a Feature
+with no children and no naming commit, and everything landed before the id-in-subject convention
+(2026-09-21) stay open forever; the feeder re-emits an open Bug every wave with no attempt cap
+(B-0026); an operator names nothing by hand (a typed status lies).
+
+## What is general and what is a bridge (operator asked, 2026-09-21 19:50)
+General, permanent: derived state, a definition of done per type, harvest refusing a branch that
+does not name its item, no row for a done item. **Bridges for 0.1**: "a trunk commit naming the id"
+proves linkage, not doneness; the fix-bug template's "already landed → empty commit" is a session's judgment
+and a hand-carried bridge (D-0047); it retires when acceptance-as-tests lands. **The general closing rule** is the one the story-to-test gate (F-0040)
+and "criteria have evidence" carry: every acceptance line names its test, the CI provider exposes
+per-test results from the trunk run, and Closed = every named test exists and is green at or after
+the change. A card whose acceptance names no test cannot close — which is right. The bridge ships
+first because it is cheap and stops the loop today; the general rule is the 0.1 target and
+supersedes the commit-naming proxy for Stories and Features when it lands.
+
+## Acceptance
+- [ ] Definition of done, per type, in `docs/` and in code (`asf.record.ingest`): **Bug/Task** —
+  trunk commit naming it → Resolved; CI green at/after it, or `ci: none` → Closed. **Story** — all
+  Tasks Closed, or (no Tasks) a PR whose body ticks every acceptance line and is merged → Closed.
+  **Feature** — all children Closed, or a naming trunk commit → `landed`; the deploy sha contains
+  the landing commit, or `deploy_sha: none` → `on-prod`/Closed. **Epic** — typed `closed` by the
+  operator; the tick proposes it in the groom when every Feature is Closed. **Decision/Rule** —
+  never close; `superseded_by` instead.
+- [ ] No reconciliation by matching (D-0047). The groom lists every open item with no evidence for
+  more than `stage_limits.no_evidence_days` (default 7) as `close? <id> — <title> — no evidence
+  since <date>`; the operator's answer is `keep` or a sha; a sha writes `closed_by: <sha>` (a typed
+  ruling with its evidence) and the tick derives Closed from it. Nothing is inferred.
+- [ ] Every brief kind requires the item id in every commit subject (`<kind>(<id>): …`); harvest
+  refuses a branch whose commits do not name the branch's item.
+- [ ] The feeder emits no row for an item in a done state and caps attempts (B-0026); `asf next`
+  prints `done: <n> items closed since the last tick`.
+- [ ] Acceptance-as-tests (the general rule): `- [ ] … (test: <path>::<name>)` on acceptance lines; ingest reads per-test results from the CI provider's trunk run (gh-actions: a junit/json artifact named in the product yaml) and derives Closed from them for Bugs, Tasks and Stories; the commit-naming proxy remains for linkage and cost only.
+- [ ] A test per rule above on the `sample/` product; a test that a card closed by `closed_by`
+  never re-emits.
+
+## History
+- 2026-09-21 19:45 operator: "if we don't close stuff when it's done, we'll keep developing the
+  same things in loops endlessly"
