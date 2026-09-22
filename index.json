@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T13:06:43Z",
+  "generated": "2026-09-22T13:24:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -460,9 +460,6 @@
         "B-0058"
       ],
       "blocked": true,
-      "blockedBy": [
-        "B-0054"
-      ],
       "blocked_by_open": [
         "B-0054"
       ],
@@ -483,6 +480,7 @@
       "parent": "F-0015",
       "priority": "need",
       "rank": 2,
+      "removed": "superseded: worktree creation is serialised by the lane state machine on main (7c8c756, F-0087) \u2014 the branch was older than main; operator ruling 2026-09-22",
       "severity": "S2",
       "signature": "spawn: worktree add lock race",
       "stage_since": "2026-09-22T08:53:21Z",
@@ -778,6 +776,7 @@
       "id": "B-0025",
       "parent": "F-0015",
       "priority": "need",
+      "removed": "superseded: the empty/landed reap rule is on main (fix(B-0049), F-0087) \u2014 operator ruling 2026-09-22",
       "severity": "S2",
       "signature": "spawn: dead empty worktree blocks relaunch",
       "stage_since": "2026-09-22T09:03:52Z",
@@ -1262,6 +1261,7 @@
       "found_in": "dev",
       "id": "B-0043",
       "parent": "E-0001",
+      "removed": "superseded: landed as 9d94182 (the suite runs against its own home) \u2014 operator ruling 2026-09-22",
       "severity": "S1",
       "signature": "tests-read-operator-home",
       "stage_since": "2026-09-22T13:06:39Z",
@@ -1410,6 +1410,7 @@
       "area": "asf.workers",
       "backlinks": [
         "F-0087",
+        "B-0025",
         "B-0057"
       ],
       "children": [],
@@ -4488,6 +4489,7 @@
     },
     "F-0087": {
       "backlinks": [
+        "B-0016",
         "B-0024",
         "B-0025",
         "B-0028",
