@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T08:01:55Z",
+  "generated": "2026-09-22T08:21:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -123,7 +123,8 @@
     "B-0005": {
       "area": "factory",
       "backlinks": [
-        "B-0051"
+        "B-0051",
+        "B-0052"
       ],
       "children": [],
       "cost": {
@@ -452,7 +453,8 @@
       "area": "factory",
       "backlinks": [
         "F-0073",
-        "B-0051"
+        "B-0051",
+        "B-0052"
       ],
       "blocked": true,
       "blockedBy": [
@@ -710,6 +712,7 @@
     "B-0024": {
       "area": "factory",
       "backlinks": [
+        "F-0087",
         "B-0026",
         "B-0027",
         "B-0028",
@@ -744,13 +747,15 @@
     "B-0025": {
       "area": "factory",
       "backlinks": [
+        "F-0087",
         "B-0026",
         "B-0032",
         "B-0041",
         "B-0046",
         "B-0048",
         "B-0049",
-        "B-0051"
+        "B-0051",
+        "B-0053"
       ],
       "children": [],
       "cost": {
@@ -838,6 +843,7 @@
     "B-0028": {
       "area": "asf.workers",
       "backlinks": [
+        "F-0087",
         "B-0039"
       ],
       "children": [],
@@ -884,6 +890,7 @@
     "B-0030": {
       "area": "asf.tick",
       "backlinks": [
+        "F-0087",
         "B-0036",
         "B-0044"
       ],
@@ -974,6 +981,7 @@
     "B-0033": {
       "area": "asf.harvest",
       "backlinks": [
+        "F-0087",
         "B-0034",
         "B-0035",
         "B-0043"
@@ -1049,6 +1057,7 @@
     "B-0036": {
       "area": "asf.harvest",
       "backlinks": [
+        "F-0087",
         "B-0040",
         "B-0042"
       ],
@@ -1096,6 +1105,7 @@
       "area": "asf.harvest",
       "backlinks": [
         "F-0077",
+        "F-0087",
         "B-0037"
       ],
       "children": [],
@@ -1121,7 +1131,9 @@
       "backlinks": [
         "B-0032",
         "B-0049",
-        "B-0051"
+        "B-0051",
+        "B-0052",
+        "B-0053"
       ],
       "children": [],
       "cost": {
@@ -1171,6 +1183,7 @@
     "B-0041": {
       "area": "asf.workers",
       "backlinks": [
+        "F-0087",
         "B-0042"
       ],
       "children": [],
@@ -1193,7 +1206,9 @@
     },
     "B-0042": {
       "area": "asf.harvest",
-      "backlinks": [],
+      "backlinks": [
+        "F-0087"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -1221,6 +1236,7 @@
     "B-0043": {
       "area": "tests",
       "backlinks": [
+        "F-0087",
         "B-0048"
       ],
       "children": [],
@@ -1249,7 +1265,9 @@
     },
     "B-0044": {
       "area": "asf.tick",
-      "backlinks": [],
+      "backlinks": [
+        "F-0087"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -1304,6 +1322,7 @@
     "B-0046": {
       "area": "asf.workers",
       "backlinks": [
+        "F-0087",
         "B-0048"
       ],
       "children": [],
@@ -1327,6 +1346,7 @@
     "B-0047": {
       "area": "asf.plugin",
       "backlinks": [
+        "F-0087",
         "B-0050"
       ],
       "children": [],
@@ -1350,7 +1370,8 @@
     "B-0048": {
       "area": "asf.workers",
       "backlinks": [
-        "E-0001"
+        "E-0001",
+        "F-0087"
       ],
       "children": [],
       "cost": {
@@ -1378,7 +1399,9 @@
     },
     "B-0049": {
       "area": "asf.workers",
-      "backlinks": [],
+      "backlinks": [
+        "F-0087"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -1406,7 +1429,8 @@
     "B-0050": {
       "area": "asf.cli",
       "backlinks": [
-        "E-0001"
+        "E-0001",
+        "F-0087"
       ],
       "children": [],
       "cost": {
@@ -1434,7 +1458,10 @@
     },
     "B-0051": {
       "area": "asf.workers",
-      "backlinks": [],
+      "backlinks": [
+        "F-0087",
+        "B-0052"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -1458,6 +1485,44 @@
       "title": "A session that ends 'finished' without pushing blocks its item forever: health says finished, harvest sees nothing, spawn refuses the worktree",
       "type": "bug",
       "updated": "2026-09-22T08:01:53Z"
+    },
+    "B-0052": {
+      "area": "asf.briefs",
+      "backlinks": [
+        "F-0087"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0052",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "session-backgrounds-gate-returns-early",
+      "stage_since": "2026-09-22T08:17:31Z",
+      "state": "New",
+      "title": "Sessions background the test suite and return before it ends \u2014 no commit, no push; the brief must forbid it",
+      "type": "bug",
+      "updated": "2026-09-22T08:17:31Z"
+    },
+    "B-0053": {
+      "area": "ci",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0053",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "ci-runs-on-every-branch",
+      "stage_since": "2026-09-22T08:19:11Z",
+      "state": "New",
+      "title": "CI runs on every worker-branch push: red notifications for in-progress work and wasted minutes; the gate is harvest's",
+      "type": "bug",
+      "updated": "2026-09-22T08:19:11Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2073,7 +2138,8 @@
         "F-0086",
         "B-0033",
         "B-0036",
-        "B-0038"
+        "B-0038",
+        "B-0053"
       ],
       "children": [],
       "decided": true,
@@ -2209,6 +2275,7 @@
         "F-0084",
         "F-0085",
         "F-0086",
+        "F-0087",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -2244,7 +2311,9 @@
         "B-0048",
         "B-0049",
         "B-0050",
-        "B-0051"
+        "B-0051",
+        "B-0052",
+        "B-0053"
       ],
       "decided": true,
       "folder": "epics",
@@ -3062,7 +3131,9 @@
     },
     "F-0033": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0087"
+      ],
       "children": [],
       "decided": false,
       "evidence": [
@@ -4206,6 +4277,21 @@
       "title": "The groom proposes merges, splits and batches of Stories \u2014 shape decides delivery speed",
       "type": "feature",
       "updated": "2026-09-22T07:33:08Z"
+    },
+    "F-0087": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "features",
+      "id": "F-0087",
+      "parent": "E-0001",
+      "rank": 3,
+      "schema_version": 1,
+      "stage_since": "2026-09-22T08:21:23Z",
+      "state": "New",
+      "title": "Failure-class invariants: one property test per class of the first 53 Bugs, and the whole-loop dogfood tick in CI",
+      "type": "feature",
+      "updated": "2026-09-22T08:21:23Z"
     },
     "R-0001": {
       "backlinks": [],
