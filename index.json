@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T13:30:56Z",
+  "generated": "2026-09-22T13:39:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -459,16 +459,12 @@
         "B-0054",
         "B-0058"
       ],
-      "blocked": true,
-      "blocked_by_open": [
-        "B-0054"
-      ],
       "children": [],
       "cost": {
-        "fix_rounds": 2,
+        "fix_rounds": 3,
         "runner_min": 0,
-        "sessions": 11,
-        "usd": 14.21
+        "sessions": 14,
+        "usd": 16.64
       },
       "decided": true,
       "evidence": [
@@ -487,7 +483,7 @@
       "state": "Active",
       "title": "Parallel spawns race on .git/config when creating worktrees",
       "type": "bug",
-      "updated": "2026-09-22T13:06:41Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "B-0017": {
       "area": "factory",
@@ -761,10 +757,10 @@
       ],
       "children": [],
       "cost": {
-        "fix_rounds": 1,
+        "fix_rounds": 2,
         "runner_min": 0,
-        "sessions": 3,
-        "usd": 6.69
+        "sessions": 5,
+        "usd": 11.89
       },
       "decided": true,
       "evidence": [
@@ -783,7 +779,7 @@
       "state": "Closed",
       "title": "A session that ended with nothing committed leaves a worktree that blocks every relaunch",
       "type": "bug",
-      "updated": "2026-09-22T09:03:52Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "B-0026": {
       "area": "factory",
@@ -1247,9 +1243,9 @@
       ],
       "children": [],
       "cost": {
-        "fix_rounds": 1,
+        "fix_rounds": 2,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -1268,7 +1264,7 @@
       "state": "Closed",
       "title": "The test suite reads the operator's live ~/.ASF; the harvest gate goes red on any operator config change",
       "type": "bug",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "B-0044": {
       "area": "asf.tick",
@@ -1558,15 +1554,14 @@
     "B-0054": {
       "area": "asf.workers",
       "backlinks": [
-        "B-0016",
         "B-0058"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "usd": 0.59
       },
       "decided": true,
       "evidence": [
@@ -1582,7 +1577,7 @@
       "state": "Active",
       "title": "Adjudicate sessions commit invented rulings to the code repo, never close the row, and every push re-fires the stale branch workflow",
       "type": "bug",
-      "updated": "2026-09-22T13:17:07Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "B-0055": {
       "area": "ci",
@@ -1667,6 +1662,26 @@
       "title": "A blocked Bug still gets its FIX row and a blocked item its CORRECT or ADJUDICATE row: the feeder reads blocked for Features only",
       "type": "bug",
       "updated": "2026-09-22T13:17:07Z"
+    },
+    "B-0059": {
+      "area": "asf.evidence",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-22)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0059",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "spec-commit-resolves-feature",
+      "stage_since": "2026-09-22T13:36:53Z",
+      "state": "New",
+      "title": "A spec landing commit resolves the Feature it names, and a spec on main reads spec-draft: the evidence does not know the lane's own conventions",
+      "type": "bug",
+      "updated": "2026-09-22T13:39:30Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2284,6 +2299,7 @@
         "B-0036",
         "B-0038",
         "B-0053",
+        "B-0059",
         "D-0050"
       ],
       "children": [],
@@ -2476,18 +2492,19 @@
         "B-0055",
         "B-0056",
         "B-0057",
-        "B-0058"
+        "B-0058",
+        "B-0059"
       ],
       "decided": true,
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 96.49,
+      "spend_usd": 123.29,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-22T13:17:09Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -3252,14 +3269,15 @@
       "area": "factory",
       "backlinks": [
         "F-0085",
-        "B-0054"
+        "B-0054",
+        "B-0059"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 7,
-        "usd": 5.39
+        "sessions": 8,
+        "usd": 6.37
       },
       "decided": true,
       "evidence": [
@@ -3277,7 +3295,7 @@
       "state": "Resolved",
       "title": "The approval matrix as code",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "F-0032": {
       "area": "factory",
@@ -4204,14 +4222,15 @@
     "F-0075": {
       "backlinks": [
         "F-0086",
-        "B-0051"
+        "B-0051",
+        "B-0059"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 5,
-        "usd": 9.04
+        "sessions": 6,
+        "usd": 13.41
       },
       "decided": true,
       "evidence": [
@@ -4227,16 +4246,18 @@
       "state": "Resolved",
       "title": "Redaction is a gate on every write path: operator names and secrets never reach a record or a public repo",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "F-0076": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0059"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 2.36
+        "sessions": 2,
+        "usd": 4.73
       },
       "decided": true,
       "evidence": [
@@ -4251,7 +4272,7 @@
       "state": "Resolved",
       "title": "Session identity: every asf worker is distinguishable from every other, and from sessions that are not asf's",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "F-0077": {
       "backlinks": [],
@@ -4274,14 +4295,15 @@
     "F-0078": {
       "backlinks": [
         "F-0085",
-        "F-0086"
+        "F-0086",
+        "B-0059"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "usd": 3.95
+        "sessions": 4,
+        "usd": 4.82
       },
       "decided": true,
       "evidence": [
@@ -4297,7 +4319,7 @@
       "state": "Resolved",
       "title": "The tick ends with two tables: in flight, and done since the last tick",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "F-0079": {
       "backlinks": [
@@ -4368,14 +4390,15 @@
     "F-0082": {
       "backlinks": [
         "E-0001",
-        "F-0086"
+        "F-0086",
+        "B-0059"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 3.7
+        "sessions": 3,
+        "usd": 4.42
       },
       "decided": true,
       "evidence": [
@@ -4391,7 +4414,7 @@
       "state": "Resolved",
       "title": "Quota: a cooldown band before the stop \u2014 one new job per account from 90 %, none from 95 %",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "F-0083": {
       "backlinks": [
@@ -4441,13 +4464,15 @@
       "updated": "2026-09-22T05:16:10Z"
     },
     "F-0085": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0059"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 4.02
+        "sessions": 3,
+        "usd": 5.05
       },
       "decided": true,
       "evidence": [
@@ -4463,16 +4488,18 @@
       "state": "Resolved",
       "title": "The groom answers itself (D-0049): rules as code, an adjudicate session for the rest, a digest to the operator",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "F-0086": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0059"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 2.64
+        "sessions": 2,
+        "usd": 5.28
       },
       "decided": true,
       "evidence": [
@@ -4488,7 +4515,7 @@
       "state": "Resolved",
       "title": "The groom proposes merges, splits and batches of Stories \u2014 shape decides delivery speed",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "F-0087": {
       "backlinks": [
@@ -4510,14 +4537,15 @@
         "B-0049",
         "B-0050",
         "B-0051",
-        "B-0052"
+        "B-0052",
+        "B-0059"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 5.61
+        "sessions": 2,
+        "usd": 11.22
       },
       "decided": true,
       "evidence": [
@@ -4533,7 +4561,7 @@
       "state": "Resolved",
       "title": "Failure-class invariants: one property test per class of the first 53 Bugs, and the whole-loop dogfood tick in CI",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T13:39:32Z"
     },
     "R-0001": {
       "backlinks": [],
