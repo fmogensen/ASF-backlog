@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T16:36:57Z",
+  "generated": "2026-09-22T16:49:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -461,7 +461,8 @@
         "B-0058",
         "B-0062",
         "B-0065",
-        "B-0066"
+        "B-0066",
+        "B-0069"
       ],
       "children": [],
       "cost": {
@@ -1696,7 +1697,8 @@
     "B-0059": {
       "area": "asf.evidence",
       "backlinks": [
-        "B-0060"
+        "B-0060",
+        "B-0070"
       ],
       "children": [],
       "cost": {
@@ -1809,7 +1811,9 @@
     },
     "B-0064": {
       "area": "asf.briefs",
-      "backlinks": [],
+      "backlinks": [
+        "B-0070"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -1901,7 +1905,10 @@
     },
     "B-0068": {
       "area": "asf.testing",
-      "backlinks": [],
+      "backlinks": [
+        "B-0040",
+        "B-0071"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -1916,6 +1923,58 @@
       "title": "The suite runs serially: 324 s per gate on ten idle cores \u2014 shard the test modules across processes",
       "type": "bug",
       "updated": "2026-09-22T16:36:46Z"
+    },
+    "B-0069": {
+      "area": "asf.workers",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0069",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "kill-does-not-stop-a-run",
+      "stage_since": "2026-09-22T16:45:46Z",
+      "state": "New",
+      "title": "Killing a session's process does not stop the run: the client dies, the work keeps pushing",
+      "type": "bug",
+      "updated": "2026-09-22T16:45:46Z"
+    },
+    "B-0070": {
+      "area": "asf.feeder",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0070",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "lane-duplicates-operator-fix",
+      "stage_since": "2026-09-22T16:45:46Z",
+      "state": "New",
+      "title": "The lane duplicates a fix the operator is already carrying by hand",
+      "type": "bug",
+      "updated": "2026-09-22T16:45:46Z"
+    },
+    "B-0071": {
+      "area": "asf.testing",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0071",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "suite-fixture-per-test",
+      "stage_since": "2026-09-22T16:49:22Z",
+      "state": "New",
+      "title": "test_cutover builds an installation per test: 172 s of a 318 s suite in one module \u2014 build each module's fixture once",
+      "type": "bug",
+      "updated": "2026-09-22T16:49:22Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2511,6 +2570,7 @@
       "area": "factory",
       "backlinks": [
         "B-0036",
+        "B-0070",
         "D-0047"
       ],
       "children": [],
@@ -2741,7 +2801,10 @@
         "B-0065",
         "B-0066",
         "B-0067",
-        "B-0068"
+        "B-0068",
+        "B-0069",
+        "B-0070",
+        "B-0071"
       ],
       "decided": true,
       "folder": "epics",
@@ -7155,6 +7218,7 @@
     "T-0001": {
       "backlinks": [
         "T-0051",
+        "B-0040",
         "B-0067"
       ],
       "children": [],
@@ -7214,6 +7278,7 @@
     },
     "T-0003": {
       "backlinks": [
+        "B-0040",
         "B-0067"
       ],
       "children": [],
