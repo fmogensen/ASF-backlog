@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T04:55:24Z",
+  "generated": "2026-09-22T05:03:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -743,7 +743,8 @@
         "B-0032",
         "B-0041",
         "B-0046",
-        "B-0048"
+        "B-0048",
+        "B-0049"
       ],
       "children": [],
       "cost": {
@@ -805,7 +806,9 @@
     },
     "B-0027": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0049"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -1109,7 +1112,8 @@
     "B-0039": {
       "area": "asf.workers",
       "backlinks": [
-        "B-0032"
+        "B-0032",
+        "B-0049"
       ],
       "blockedBy": [
         "B-0032"
@@ -1359,6 +1363,42 @@
       "title": "An adjudicate row cannot spawn on a held branch, and rounds climb past the cap \u2014 held branches loop forever",
       "type": "bug",
       "updated": "2026-09-22T04:55:22Z"
+    },
+    "B-0049": {
+      "area": "asf.workers",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0049",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "health-never-reaps-harvested",
+      "stage_since": "2026-09-22T04:56:16Z",
+      "state": "New",
+      "title": "Health never reaps a landed branch's worktree: harvest rebased the tip and deleted the remote branch, so 'pushed' fails forever",
+      "type": "bug",
+      "updated": "2026-09-22T04:56:16Z"
+    },
+    "B-0050": {
+      "area": "asf.cli",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0050",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "record-commands-use-cwd",
+      "stage_since": "2026-09-22T05:03:09Z",
+      "state": "New",
+      "title": "Record commands use the cwd as the record: /asf:groom from a product repo grooms nothing and writes groom/ into the product repo",
+      "type": "bug",
+      "updated": "2026-09-22T05:03:09Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2110,7 +2150,9 @@
         "B-0045",
         "B-0046",
         "B-0047",
-        "B-0048"
+        "B-0048",
+        "B-0049",
+        "B-0050"
       ],
       "decided": true,
       "folder": "epics",

@@ -30,3 +30,6 @@ guard. The pool table gains a column `Mode` (`open` / `cooldown` / `stopped`).
 `quota_guards:` in the operator config was a **list** of rule cards (R-0077…); the code reads only a
 mapping, so the defaults applied (7-day stop at 85 %, not the 90 % the rules said). Rewritten as the
 mapping today. `asf doctor` should say when `quota_guards` has a shape the code ignores.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
