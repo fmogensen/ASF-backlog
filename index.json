@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T17:43:01Z",
+  "generated": "2026-09-22T18:09:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2027,7 +2027,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "branch fix/B-0073"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2035,11 +2035,32 @@
       "parent": "E-0001",
       "severity": "S1",
       "signature": "pre-commit-hook-recursion",
-      "stage_since": "2026-09-22T17:38:47Z",
-      "state": "New",
+      "stage_since": "2026-09-22T18:09:37Z",
+      "state": "Active",
       "title": "A test that commits triggers the pre-commit hook, which runs the suite, which commits: the gate recurses and the lane stops",
       "type": "bug",
-      "updated": "2026-09-22T17:42:56Z"
+      "updated": "2026-09-22T18:09:37Z"
+    },
+    "B-0074": {
+      "area": "asf.record",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "evidence": [
+        "commit 2b3d628 names B-0074",
+        "CI green on main at or after it"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0074",
+      "parent": "E-0001",
+      "severity": "S1",
+      "signature": "plan-evidence-outranks-landed-commit",
+      "stage_since": "2026-09-22T18:09:37Z",
+      "state": "Closed",
+      "title": "A landed Task stays Active: its plan's 'branch exists' line outranks the commit that landed it",
+      "type": "bug",
+      "updated": "2026-09-22T18:09:37Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2659,6 +2680,7 @@
         "B-0038",
         "B-0053",
         "B-0059",
+        "B-0074",
         "D-0050"
       ],
       "children": [],
@@ -2871,18 +2893,19 @@
         "B-0070",
         "B-0071",
         "B-0072",
-        "B-0073"
+        "B-0073",
+        "B-0074"
       ],
       "decided": true,
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 190.34,
+      "spend_usd": 192.41,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-22T17:42:58Z"
+      "updated": "2026-09-22T18:09:40Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -4590,12 +4613,12 @@
       "folder": "features",
       "id": "F-0073",
       "parent": "E-0001",
-      "stage": "building 0/5",
-      "stage_since": "2026-09-22T16:53:55Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T18:09:37Z",
       "state": "Active",
       "title": "Everything enters through the inbox; the type is derived from the card's shape",
       "type": "feature",
-      "updated": "2026-09-22T16:53:55Z"
+      "updated": "2026-09-22T18:09:37Z"
     },
     "F-0074": {
       "backlinks": [],
@@ -4854,12 +4877,12 @@
       "id": "F-0082",
       "parent": "E-0001",
       "rank": 3,
-      "stage": "building 0/3",
-      "stage_since": "2026-09-22T16:53:55Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T18:09:37Z",
       "state": "Active",
       "title": "Quota: a cooldown band before the stop \u2014 one new job per account from 90 %, none from 95 %",
       "type": "feature",
-      "updated": "2026-09-22T16:53:55Z"
+      "updated": "2026-09-22T18:09:37Z"
     },
     "F-0083": {
       "backlinks": [
@@ -4887,12 +4910,12 @@
       "id": "F-0083",
       "parent": "E-0001",
       "rank": 4,
-      "stage": "building 0/3",
-      "stage_since": "2026-09-22T17:42:56Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T18:09:37Z",
       "state": "Active",
       "title": "Scheduler clocks are configuration: each job group on its own interval, per product",
       "type": "feature",
-      "updated": "2026-09-22T17:42:56Z"
+      "updated": "2026-09-22T18:09:37Z"
     },
     "F-0084": {
       "backlinks": [
@@ -4915,7 +4938,8 @@
     },
     "F-0085": {
       "backlinks": [
-        "B-0059"
+        "B-0059",
+        "B-0074"
       ],
       "children": [
         "T-0010",
@@ -4974,12 +4998,12 @@
       "id": "F-0086",
       "parent": "E-0001",
       "rank": 6,
-      "stage": "building 0/4",
-      "stage_since": "2026-09-22T16:53:55Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-22T18:09:37Z",
       "state": "Active",
       "title": "The groom proposes merges, splits and batches of Stories \u2014 shape decides delivery speed",
       "type": "feature",
-      "updated": "2026-09-22T16:53:55Z"
+      "updated": "2026-09-22T18:09:37Z"
     },
     "F-0087": {
       "backlinks": [
@@ -7288,7 +7312,8 @@
       "backlinks": [
         "T-0051",
         "B-0040",
-        "B-0067"
+        "B-0067",
+        "B-0074"
       ],
       "children": [],
       "cost": {
@@ -7383,9 +7408,15 @@
     "T-0004": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 1.27
+      },
       "decided": true,
       "evidence": [
-        "branch worker/T-0004"
+        "commit afcd3da names T-0004"
       ],
       "folder": "tasks",
       "id": "T-0004",
@@ -7393,11 +7424,11 @@
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "stage_since": "2026-09-22T17:42:56Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T18:09:37Z",
+      "state": "Resolved",
       "title": "`capacity:` is a declared, validated field of the product file",
       "type": "task",
-      "updated": "2026-09-22T17:42:56Z",
+      "updated": "2026-09-22T18:09:40Z",
       "writes": [
         "asf/env.py",
         "tests/test_env.py"
@@ -7547,7 +7578,8 @@
     },
     "T-0010": {
       "backlinks": [
-        "B-0067"
+        "B-0067",
+        "B-0074"
       ],
       "children": [],
       "cost": {
@@ -7586,7 +7618,8 @@
     },
     "T-0011": {
       "backlinks": [
-        "B-0067"
+        "B-0067",
+        "B-0074"
       ],
       "children": [],
       "cost": {
@@ -7905,9 +7938,15 @@
     "T-0023": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.81
+      },
       "decided": true,
       "evidence": [
-        "branch worker/T-0023"
+        "commit e7deac8 names T-0023"
       ],
       "folder": "tasks",
       "id": "T-0023",
@@ -7915,11 +7954,11 @@
         "plan": "docs/plans/f-0075.md"
       },
       "parent": "F-0075",
-      "stage_since": "2026-09-22T17:42:56Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T18:09:37Z",
+      "state": "Resolved",
       "title": "the tick cannot skip the gate \u2014 `asf/tick/shadow.py`",
       "type": "task",
-      "updated": "2026-09-22T17:42:56Z",
+      "updated": "2026-09-22T18:09:40Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -7991,7 +8030,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
+        "sessions": 3,
         "usd": 1.94
       },
       "decided": true,
@@ -8008,7 +8047,7 @@
       "state": "Active",
       "title": "no session is launched into a repo with no push gate \u2014 `asf/workers/spawn.py`",
       "type": "task",
-      "updated": "2026-09-22T16:53:57Z",
+      "updated": "2026-09-22T18:09:40Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -8107,7 +8146,7 @@
       },
       "decided": true,
       "evidence": [
-        "branch task/T-0030"
+        "commit cf11378 names T-0030"
       ],
       "folder": "tasks",
       "id": "T-0030",
@@ -8115,11 +8154,11 @@
         "plan": "docs/plans/f-0082.md"
       },
       "parent": "F-0082",
-      "stage_since": "2026-09-22T16:53:55Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T18:09:37Z",
+      "state": "Resolved",
       "title": "the example config documents the band and stops advertising the one number",
       "type": "task",
-      "updated": "2026-09-22T16:53:57Z",
+      "updated": "2026-09-22T18:09:37Z",
       "writes": [
         "docs/config.example.yaml"
       ]
@@ -8135,7 +8174,7 @@
       },
       "decided": true,
       "evidence": [
-        "branch task/T-0031"
+        "commit aee07c4 names T-0031"
       ],
       "folder": "tasks",
       "id": "T-0031",
@@ -8143,11 +8182,11 @@
         "plan": "docs/plans/f-0073.md"
       },
       "parent": "F-0073",
-      "stage_since": "2026-09-22T16:53:55Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T18:09:37Z",
+      "state": "Resolved",
       "title": "The shape rules \u2014 `asf/groom/shape.py`",
       "type": "task",
-      "updated": "2026-09-22T16:53:57Z",
+      "updated": "2026-09-22T18:09:37Z",
       "writes": [
         "asf/groom/shape.py",
         "asf/groom/inbox.py",
@@ -8322,7 +8361,7 @@
       },
       "decided": true,
       "evidence": [
-        "branch task/T-0038"
+        "commit a893479 names T-0038"
       ],
       "folder": "tasks",
       "id": "T-0038",
@@ -8330,11 +8369,11 @@
         "plan": "docs/plans/f-0074.md"
       },
       "parent": "F-0074",
-      "stage_since": "2026-09-22T16:53:55Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T18:09:37Z",
+      "state": "Resolved",
       "title": "The evidence provider asks for nothing the product did not declare",
       "type": "task",
-      "updated": "2026-09-22T16:53:57Z",
+      "updated": "2026-09-22T18:09:37Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/metrics/metrics.py",
@@ -8492,7 +8531,7 @@
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0044"
+        "commit aee9925 names T-0044"
       ],
       "folder": "tasks",
       "id": "T-0044",
@@ -8500,11 +8539,11 @@
         "plan": "docs/plans/f-0083.md"
       },
       "parent": "F-0083",
-      "stage_since": "2026-09-22T17:42:56Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T18:09:37Z",
+      "state": "Resolved",
       "title": "Doctor reads each job's own clock, flags a declared clock that isn't loaded, and marks `scheduler.interval_s` dead",
       "type": "task",
-      "updated": "2026-09-22T17:42:58Z",
+      "updated": "2026-09-22T18:09:37Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -8681,7 +8720,7 @@
       },
       "decided": true,
       "evidence": [
-        "branch task/T-0051"
+        "commit 6911ef1 names T-0051"
       ],
       "folder": "tasks",
       "id": "T-0051",
@@ -8689,11 +8728,11 @@
         "plan": "docs/plans/f-0086.md"
       },
       "parent": "F-0086",
-      "stage_since": "2026-09-22T16:53:55Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T18:09:37Z",
+      "state": "Resolved",
       "title": "a removed Task neither holds its Feature's ladder nor covers a Story",
       "type": "task",
-      "updated": "2026-09-22T17:42:58Z",
+      "updated": "2026-09-22T18:09:37Z",
       "writes": [
         "asf/record/ingest.py",
         "asf/record/check.py",
@@ -8731,6 +8770,12 @@
     "T-0053": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "no evidence found (2026-09-22)"
@@ -8745,7 +8790,7 @@
       "state": "New",
       "title": "the feeder holds a reshaped Task and launches one reshape session",
       "type": "task",
-      "updated": "2026-09-22T16:53:55Z",
+      "updated": "2026-09-22T18:09:40Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -8754,6 +8799,12 @@
     "T-0054": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "no evidence found (2026-09-22)"
@@ -8768,7 +8819,7 @@
       "state": "New",
       "title": "the reshape brief kind, and a merged Task's coder brief",
       "type": "task",
-      "updated": "2026-09-22T16:53:55Z",
+      "updated": "2026-09-22T18:09:40Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/briefs/preamble.py",
