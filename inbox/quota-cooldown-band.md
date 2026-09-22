@@ -1,0 +1,32 @@
+# Quota: a cooldown band before the stop — one new job per account from 90 %, none from 95 %
+
+Operator, 2026-09-22 07:10: "Instead of a hard limit at 90 % for 7 days, just do a cooldown and only
+allow one new job at a time until we hit 95 %. Then stop new runners."
+
+## Rule
+
+Per worker account, per window:
+
+| 7-day usage | Launches per tick on that account |
+| --- | --- |
+| below `seven_d_cooldown` (default 90) | up to `cap` |
+| from `seven_d_cooldown` to `seven_d` (default 95) | **one** — and only if the account has no live session |
+| at or above `seven_d` | none (today's rule) |
+
+The 5-hour window keeps its single ceiling (`five_h`). In-flight sessions are never stopped by the
+guard. The pool table gains a column `Mode` (`open` / `cooldown` / `stopped`).
+
+## Where
+
+- `asf/workers/quota.py`: `DEFAULT_GUARDS` gains `seven_d_cooldown: 90`; `under_guard` returns a
+  mode, not only ok/why.
+- `asf/workers/pool.py Pool.take`: in cooldown, an account offers at most one slot per wave and
+  only when idle.
+- `asf workers quota`: the `Mode` column.
+- Operator config already carries the key (`~/.ASF/config.yaml quota_guards.seven_d_cooldown`).
+
+## Also found while writing this
+
+`quota_guards:` in the operator config was a **list** of rule cards (R-0077…); the code reads only a
+mapping, so the defaults applied (7-day stop at 85 %, not the 90 % the rules said). Rewritten as the
+mapping today. `asf doctor` should say when `quota_guards` has a shape the code ignores.
