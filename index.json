@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-22T13:49:52Z",
+  "generated": "2026-09-22T14:05:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -135,7 +135,7 @@
       },
       "decided": true,
       "evidence": [
-        "commit 524223e names B-0005",
+        "commit 8c557f5 names B-0005",
         "CI green on main at or after it"
       ],
       "folder": "bugs",
@@ -149,7 +149,7 @@
       "state": "Closed",
       "title": "`check` does not validate the record's layout, only its items",
       "type": "bug",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "B-0006": {
       "area": "factory",
@@ -457,7 +457,8 @@
         "B-0051",
         "B-0052",
         "B-0054",
-        "B-0058"
+        "B-0058",
+        "B-0062"
       ],
       "children": [],
       "cost": {
@@ -753,7 +754,8 @@
         "B-0049",
         "B-0051",
         "B-0053",
-        "B-0057"
+        "B-0057",
+        "B-0061"
       ],
       "children": [],
       "cost": {
@@ -1239,7 +1241,8 @@
         "F-0087",
         "B-0048",
         "B-0055",
-        "B-0057"
+        "B-0057",
+        "B-0061"
       ],
       "children": [],
       "cost": {
@@ -1536,7 +1539,7 @@
       },
       "decided": true,
       "evidence": [
-        "commit 3456e58 names B-0053",
+        "commit 5696b20 names B-0053",
         "CI green on main at or after it"
       ],
       "folder": "bugs",
@@ -1549,7 +1552,7 @@
       "state": "Closed",
       "title": "CI runs on every worker-branch push: red notifications for in-progress work and wasted minutes; the gate is harvest's",
       "type": "bug",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "B-0054": {
       "area": "asf.workers",
@@ -1560,12 +1563,13 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 2,
+        "sessions": 3,
         "usd": 0.59
       },
       "decided": true,
       "evidence": [
-        "branch fix/B-0054"
+        "commit 04a96ab names B-0054",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1573,11 +1577,11 @@
       "parent": "E-0001",
       "severity": "S1",
       "signature": "adjudicate-commits-invented-rulings",
-      "stage_since": "2026-09-22T13:17:07Z",
-      "state": "Active",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Closed",
       "title": "Adjudicate sessions commit invented rulings to the code repo, never close the row, and every push re-fires the stale branch workflow",
       "type": "bug",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:05:01Z"
     },
     "B-0055": {
       "area": "ci",
@@ -1623,7 +1627,9 @@
     },
     "B-0057": {
       "area": "asf.harvest",
-      "backlinks": [],
+      "backlinks": [
+        "B-0061"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -1669,6 +1675,12 @@
         "B-0060"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "commit 1efd24a names B-0059",
@@ -1684,14 +1696,15 @@
       "state": "Closed",
       "title": "A spec landing commit resolves the Feature it names, and a spec on main reads spec-draft: the evidence does not know the lane's own conventions",
       "type": "bug",
-      "updated": "2026-09-22T13:49:51Z"
+      "updated": "2026-09-22T14:05:01Z"
     },
     "B-0060": {
       "area": "asf.record",
       "backlinks": [],
       "children": [],
       "evidence": [
-        "no evidence found (2026-09-22)"
+        "commit adb4ddf names B-0060",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1699,11 +1712,51 @@
       "parent": "E-0001",
       "severity": "S1",
       "signature": "landed-plan-mints-no-tasks",
-      "stage_since": "2026-09-22T13:44:37Z",
-      "state": "New",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Closed",
       "title": "A landed plan never becomes Task cards: the Feature sits at plan-approved with nothing for the feeder to launch",
       "type": "bug",
-      "updated": "2026-09-22T13:49:51Z"
+      "updated": "2026-09-22T14:04:59Z"
+    },
+    "B-0061": {
+      "area": "asf.harvest",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "evidence": [
+        "commit ba2942d names B-0061"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0061",
+      "parent": "E-0001",
+      "severity": "S2",
+      "signature": "harvest-reads-verdict-before-content",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Resolved",
+      "title": "A branch whose run ended other than finished is never landed by content nor archived: harvest reads the run's verdict before the content",
+      "type": "bug",
+      "updated": "2026-09-22T14:04:59Z"
+    },
+    "B-0062": {
+      "area": "asf.tick",
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "evidence": [
+        "commit ba2942d names B-0062"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0062",
+      "parent": "E-0001",
+      "severity": "S2",
+      "signature": "died-twice-asks-the-operator",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Resolved",
+      "title": "A session that died twice asks the operator every tick instead of being held: the one dead end in the lane that is not a correction",
+      "type": "bug",
+      "updated": "2026-09-22T14:04:59Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2358,6 +2411,7 @@
         "F-0085",
         "B-0014",
         "B-0020",
+        "B-0062",
         "D-0050"
       ],
       "children": [],
@@ -2516,7 +2570,9 @@
         "B-0057",
         "B-0058",
         "B-0059",
-        "B-0060"
+        "B-0060",
+        "B-0061",
+        "B-0062"
       ],
       "decided": true,
       "folder": "epics",
@@ -2624,20 +2680,19 @@
       },
       "decided": false,
       "evidence": [
-        "commit 8dcf00a names F-0002",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0002",
       "parent": "E-0001",
       "priority": "need",
       "rank": 2,
-      "stage": "landed",
-      "stage_since": "2026-09-22T07:47:29Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "P0b \u2014 the card-evaluation pass for multi-product wording",
       "type": "feature",
-      "updated": "2026-09-22T07:47:29Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0003": {
       "area": "factory",
@@ -3304,8 +3359,7 @@
       },
       "decided": true,
       "evidence": [
-        "commit cc168ab names F-0031",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0031",
@@ -3313,12 +3367,12 @@
       "priority": "need",
       "rank": 2,
       "source": "plan:missing-in-ours",
-      "stage": "landed",
-      "stage_since": "2026-09-22T12:50:47Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "The approval matrix as code",
       "type": "feature",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0032": {
       "area": "factory",
@@ -4146,8 +4200,7 @@
       },
       "decided": true,
       "evidence": [
-        "commit da204e7 names F-0071",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0071",
@@ -4156,12 +4209,12 @@
       "rank": 1,
       "removed": "delivered: the S1 lane runs (feeder BUG \u2192 FIX rows, d33cc66 and later; ten Bugs closed through it 2026-09-21) \u2014 ruling 2026-09-21",
       "source": "operator-direct 2026-09-21",
-      "stage": "landed",
-      "stage_since": "2026-09-22T08:20:51Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "S1 lane: critical factory bugs pre-empt Feature work \u2014 tiers, reserved capacity, no ladder, a clock",
       "type": "feature",
-      "updated": "2026-09-22T08:20:51Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0072": {
       "area": "factory",
@@ -4205,18 +4258,17 @@
       },
       "decided": true,
       "evidence": [
-        "commit 781d7c7 names F-0073",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0073",
       "parent": "E-0001",
-      "stage": "landed",
-      "stage_since": "2026-09-22T10:06:19Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "Everything enters through the inbox; the type is derived from the card's shape",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0074": {
       "backlinks": [],
@@ -4229,18 +4281,17 @@
       },
       "decided": true,
       "evidence": [
-        "commit 895539c names F-0074",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0074",
       "parent": "E-0001",
-      "stage": "landed",
-      "stage_since": "2026-09-22T11:12:54Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "Generic by construction: no product convention in code, proven by a second product in CI",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0075": {
       "backlinks": [
@@ -4257,23 +4308,23 @@
       },
       "decided": true,
       "evidence": [
-        "commit cc168ab names F-0075",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0075",
       "parent": "E-0001",
       "rank": 1,
-      "stage": "landed",
-      "stage_since": "2026-09-22T12:50:47Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "Redaction is a gate on every write path: operator names and secrets never reach a record or a public repo",
       "type": "feature",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0076": {
       "backlinks": [
-        "B-0059"
+        "B-0059",
+        "B-0061"
       ],
       "children": [],
       "cost": {
@@ -4284,18 +4335,17 @@
       },
       "decided": true,
       "evidence": [
-        "commit cc168ab names F-0076",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0076",
       "parent": "E-0001",
-      "stage": "landed",
-      "stage_since": "2026-09-22T12:50:47Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "Session identity: every asf worker is distinguishable from every other, and from sessions that are not asf's",
       "type": "feature",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0077": {
       "backlinks": [],
@@ -4330,19 +4380,18 @@
       },
       "decided": true,
       "evidence": [
-        "commit cc168ab names F-0078",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0078",
       "parent": "E-0001",
       "rank": 2,
-      "stage": "landed",
-      "stage_since": "2026-09-22T12:50:47Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "The tick ends with two tables: in flight, and done since the last tick",
       "type": "feature",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0079": {
       "backlinks": [
@@ -4358,19 +4407,18 @@
       },
       "decided": true,
       "evidence": [
-        "commit e926bd4 names F-0079",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0079",
       "parent": "E-0001",
       "rank": 5,
-      "stage": "landed",
-      "stage_since": "2026-09-22T08:20:51Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "Capacity is configuration: session workers and CI, per product and per operator",
       "type": "feature",
-      "updated": "2026-09-22T08:20:51Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0080": {
       "backlinks": [
@@ -4425,19 +4473,18 @@
       },
       "decided": true,
       "evidence": [
-        "commit cc168ab names F-0082",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0082",
       "parent": "E-0001",
       "rank": 3,
-      "stage": "landed",
-      "stage_since": "2026-09-22T12:50:47Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "Quota: a cooldown band before the stop \u2014 one new job per account from 90 %, none from 95 %",
       "type": "feature",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0083": {
       "backlinks": [
@@ -4453,19 +4500,18 @@
       },
       "decided": true,
       "evidence": [
-        "commit b0a50d2 names F-0083",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0083",
       "parent": "E-0001",
       "rank": 4,
-      "stage": "landed",
-      "stage_since": "2026-09-22T09:38:59Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "Scheduler clocks are configuration: each job group on its own interval, per product",
       "type": "feature",
-      "updated": "2026-09-22T13:06:39Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0084": {
       "backlinks": [
@@ -4499,19 +4545,18 @@
       },
       "decided": true,
       "evidence": [
-        "commit cc168ab names F-0085",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0085",
       "parent": "E-0001",
       "rank": 1,
-      "stage": "landed",
-      "stage_since": "2026-09-22T12:50:47Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "The groom answers itself (D-0049): rules as code, an adjudicate session for the rest, a digest to the operator",
       "type": "feature",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0086": {
       "backlinks": [
@@ -4526,19 +4571,18 @@
       },
       "decided": true,
       "evidence": [
-        "commit cc168ab names F-0086",
-        "CI green on main at or after it"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0086",
       "parent": "E-0001",
       "rank": 6,
-      "stage": "landed",
-      "stage_since": "2026-09-22T12:50:47Z",
-      "state": "Resolved",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-22T14:04:59Z",
+      "state": "Active",
       "title": "The groom proposes merges, splits and batches of Stories \u2014 shape decides delivery speed",
       "type": "feature",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "F-0087": {
       "backlinks": [
@@ -4561,7 +4605,8 @@
         "B-0050",
         "B-0051",
         "B-0052",
-        "B-0059"
+        "B-0059",
+        "B-0061"
       ],
       "children": [],
       "cost": {
@@ -4572,7 +4617,7 @@
       },
       "decided": true,
       "evidence": [
-        "commit cc168ab names F-0087",
+        "commit 0f98f2c names F-0087",
         "CI green on main at or after it"
       ],
       "folder": "features",
@@ -4584,7 +4629,7 @@
       "state": "Resolved",
       "title": "Failure-class invariants: one property test per class of the first 53 Bugs, and the whole-loop dogfood tick in CI",
       "type": "feature",
-      "updated": "2026-09-22T13:39:32Z"
+      "updated": "2026-09-22T14:04:59Z"
     },
     "R-0001": {
       "backlinks": [],
