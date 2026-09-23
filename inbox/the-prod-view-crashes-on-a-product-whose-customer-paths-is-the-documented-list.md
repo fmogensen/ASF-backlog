@@ -1,4 +1,5 @@
 # The PROD view crashes on a product whose `customer_paths` is the documented list
+signature: AttributeError: 'list' object has no attribute 'get' (asf/views/prod.py:119)
 parent: E-0002
 
 `asf/views/prod.py:119` reads `(product.customer_paths or {}).get('customer_visible')` — the old hand-written shape (a map with `customer_visible` / `non_customer_hint` / `rule`). The schema (`asf/env.py` PRODUCT_FIELDS: `'customer_paths': _LIST`, and `docs/products.example.yaml`) says it is a list of globs, and `asf doctor` refuses the map. So a product that follows the schema with a non-empty list crashes the view: `AttributeError: 'list' object has no attribute 'get'`. Seen 2026-09-23 on botseon (customer_paths: [apps/web/**, apps/site/**, …]): `asf tick --product botseon --shadow` ran step 0 and then died in `render_tables` → `prod.render`; `asf prod --product botseon` fails the same way. The live `asf tick` does not render tables, so the scheduled tick is unaffected. A product with no `customer_paths` (asf itself) does not hit it: `[] or {}` is `{}`.

@@ -12,3 +12,9 @@ The factory then fixes itself through its own pipeline instead of waiting for so
 
 ## Question
 This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
+
+## Acceptance
+- [ ] The tick files or bumps a Bug by signature when a session-outcome class exceeds a rate over 24h (default: `not pushed` > 10%).
+- [ ] The same Task failing the same way twice files or bumps a Bug naming the Task and the result.
+- [ ] N consecutive ticks with `wave: nothing to launch` while New Tasks exist file a Bug naming the gate that holds them.
+- [ ] Tests for each trigger; the thresholds are product config.

@@ -19,3 +19,10 @@ Feature, parent E-0002. Decided by the operator on 2026-09-23 ("wouldn't it be m
 
 ## Question
 This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
+
+## Acceptance
+- [ ] A rule selects decided small items (small Features, S2/S3 Bugs, small Stories) with a shared area or overlapping writes, up to a budget of items, files and tokens.
+- [ ] One plan session writes a spec-lite acceptance per item and one Task list; the items skip their own spec and plan.
+- [ ] One Sonnet coder builds the delivery with one commit per item; the gate runs once; harvest lands once; each item closes by its own commit.
+- [ ] An item that fails its acceptance splits back out as its own row; the rest land.
+- [ ] The rollup reports cost, sessions and time per landed item, delivered vs single.

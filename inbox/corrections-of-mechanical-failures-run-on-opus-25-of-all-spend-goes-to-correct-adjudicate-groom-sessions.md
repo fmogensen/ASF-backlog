@@ -13,3 +13,9 @@ Expected:
 
 ## Question
 This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
+
+## Acceptance
+- [ ] A correction of a mechanical failure (push, commit, rebase, a named red test) launches on Sonnet; Opus is kept for adjudicate at the round limit, specs, plans and the groom adjudicator.
+- [ ] Model per job kind is product config (`models:`) with those defaults.
+- [ ] The daily rollup reports spend by kind × model; the Opus share has a threshold that files a Bug.
+- [ ] Tests for model selection per row.
