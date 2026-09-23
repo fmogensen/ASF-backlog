@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T03:38:50Z",
+  "generated": "2026-09-23T05:49:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1761,7 +1761,8 @@
     "B-0061": {
       "area": "asf.harvest",
       "backlinks": [
-        "B-0040"
+        "B-0040",
+        "B-0079"
       ],
       "children": [],
       "decided": true,
@@ -2142,7 +2143,9 @@
     },
     "B-0077": {
       "area": "asf.record",
-      "backlinks": [],
+      "backlinks": [
+        "B-0078"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -2160,6 +2163,42 @@
       "title": "A product with no deploy can never close a Feature: Closed demands a prod sha that does not exist",
       "type": "bug",
       "updated": "2026-09-23T03:38:14Z"
+    },
+    "B-0078": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0078",
+      "parent": "E-0001",
+      "priority": "need",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "ingest: feature no children stops at resolved",
+      "stage_since": "2026-09-23T03:32:15Z",
+      "state": "New",
+      "title": "A Feature that lands by a commit stops at Resolved: ingest drops the state it just derived",
+      "type": "bug",
+      "updated": "2026-09-23T03:32:15Z"
+    },
+    "B-0079": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0079",
+      "parent": "E-0001",
+      "priority": "need",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "harvest: eligible drops a pushed branch with a failed run",
+      "stage_since": "2026-09-23T05:43:10Z",
+      "state": "New",
+      "title": "A branch ahead of the trunk whose run failed is orphaned: harvest never looks at it again",
+      "type": "bug",
+      "updated": "2026-09-23T05:43:10Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -2781,6 +2820,7 @@
         "B-0059",
         "B-0074",
         "B-0077",
+        "B-0078",
         "D-0050"
       ],
       "children": [],
@@ -2999,7 +3039,9 @@
         "B-0074",
         "B-0075",
         "B-0076",
-        "B-0077"
+        "B-0077",
+        "B-0078",
+        "B-0079"
       ],
       "decided": true,
       "folder": "epics",
@@ -5138,7 +5180,8 @@
         "B-0059",
         "B-0061",
         "B-0063",
-        "B-0077"
+        "B-0077",
+        "B-0078"
       ],
       "children": [],
       "cost": {
@@ -8137,8 +8180,10 @@
       ]
     },
     "T-0022": {
-      "backlinks": [],
-      "blocked": true,
+      "backlinks": [
+        "T-0024",
+        "T-0027"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -8196,10 +8241,12 @@
       ]
     },
     "T-0024": {
+      "after": [
+        "T-0022"
+      ],
       "backlinks": [
         "B-0067"
       ],
-      "blocked": true,
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -8228,8 +8275,9 @@
       ]
     },
     "T-0025": {
-      "backlinks": [],
-      "blocked": true,
+      "backlinks": [
+        "T-0026"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -8254,8 +8302,12 @@
       ]
     },
     "T-0026": {
-      "backlinks": [],
-      "blocked": true,
+      "after": [
+        "T-0025"
+      ],
+      "backlinks": [
+        "B-0079"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -8284,11 +8336,14 @@
       ]
     },
     "T-0027": {
+      "after": [
+        "T-0022"
+      ],
       "backlinks": [
         "B-0073",
-        "B-0075"
+        "B-0075",
+        "B-0079"
       ],
-      "blocked": true,
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -8693,8 +8748,9 @@
       ]
     },
     "T-0041": {
-      "backlinks": [],
-      "blocked": true,
+      "backlinks": [
+        "B-0079"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
