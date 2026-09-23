@@ -1,3 +1,5 @@
+→ B-0095
+
 # The PROD view crashes on a product whose `customer_paths` is the documented list
 signature: AttributeError: 'list' object has no attribute 'get' (asf/views/prod.py:119)
 parent: E-0002

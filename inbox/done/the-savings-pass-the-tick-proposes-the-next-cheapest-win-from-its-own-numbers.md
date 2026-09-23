@@ -1,3 +1,5 @@
+→ F-0100
+
 # The savings pass: the tick proposes the next cheapest win from its own numbers
 parent: E-0001
 type: feature

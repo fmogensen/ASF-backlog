@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T18:56:13Z",
+  "generated": "2026-09-23T19:35:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -864,6 +864,8 @@
       "area": "asf.workers",
       "backlinks": [
         "F-0087",
+        "T-0087",
+        "T-0090",
         "B-0039"
       ],
       "children": [],
@@ -1184,6 +1186,7 @@
     "B-0040": {
       "area": "asf.harvest",
       "backlinks": [
+        "F-0100",
         "T-0036",
         "B-0031",
         "B-0068",
@@ -1508,6 +1511,7 @@
         "T-0021",
         "T-0026",
         "T-0037",
+        "T-0090",
         "B-0052",
         "B-0076"
       ],
@@ -1600,6 +1604,7 @@
       "backlinks": [
         "T-0027",
         "T-0042",
+        "T-0082",
         "B-0058",
         "B-0064",
         "B-0066"
@@ -1653,7 +1658,8 @@
       "area": "asf.workers",
       "backlinks": [
         "T-0034",
-        "T-0036"
+        "T-0036",
+        "T-0090"
       ],
       "children": [],
       "decided": true,
@@ -2111,7 +2117,8 @@
     "B-0075": {
       "area": "asf.workers",
       "backlinks": [
-        "T-0017"
+        "T-0017",
+        "T-0090"
       ],
       "children": [],
       "cost": {
@@ -2141,7 +2148,9 @@
       "area": "asf.workers",
       "backlinks": [
         "T-0017",
-        "T-0021"
+        "T-0021",
+        "T-0090",
+        "B-0094"
       ],
       "children": [],
       "cost": {
@@ -2242,7 +2251,10 @@
     },
     "B-0080": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0101",
+        "T-0076"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -2297,6 +2309,7 @@
       "area": "factory",
       "backlinks": [
         "T-0042",
+        "T-0080",
         "B-0085"
       ],
       "children": [],
@@ -2356,7 +2369,9 @@
     },
     "B-0084": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "T-0082"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -2577,6 +2592,40 @@
       "title": "asf status: Runners/Prod say 'not configured' for a product with hosted CI and no deploy",
       "type": "bug",
       "updated": "2026-09-23T16:55:36Z"
+    },
+    "B-0094": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0094",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "failed: not pushed: N uncommitted file(s)",
+      "stage_since": "2026-09-23T19:34:52Z",
+      "state": "New",
+      "title": "19% of sessions end 'not pushed': finished work is lost to a missing commit or push",
+      "type": "bug",
+      "updated": "2026-09-23T19:34:52Z"
+    },
+    "B-0095": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0095",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "AttributeError: 'list' object has no attribute 'get' (asf/views/prod.py:119)",
+      "stage_since": "2026-09-23T19:34:52Z",
+      "state": "New",
+      "title": "The PROD view crashes on a product whose `customer_paths` is the documented list",
+      "type": "bug",
+      "updated": "2026-09-23T19:34:52Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -3252,7 +3301,8 @@
     },
     "D-0050": {
       "backlinks": [
-        "F-0091"
+        "F-0091",
+        "F-0100"
       ],
       "children": [],
       "folder": "decisions",
@@ -3380,6 +3430,7 @@
         "F-0093",
         "F-0097",
         "F-0098",
+        "F-0100",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -3454,12 +3505,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 398.77,
+      "spend_usd": 417.8,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T18:48:14Z"
+      "updated": "2026-09-23T19:33:56Z"
     },
     "E-0002": {
       "backlinks": [
@@ -3470,23 +3521,28 @@
         "F-0095",
         "F-0096",
         "F-0099",
+        "F-0101",
+        "F-0102",
+        "F-0103",
         "B-0087",
         "B-0088",
         "B-0089",
         "B-0090",
         "B-0091",
-        "B-0092"
+        "B-0092",
+        "B-0094",
+        "B-0095"
       ],
       "decided": false,
       "folder": "epics",
       "id": "E-0002",
       "rank": 2,
-      "spend_usd": 3.13,
+      "spend_usd": 11.26,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-23T18:40:38Z"
+      "updated": "2026-09-23T19:33:56Z"
     },
     "E-0003": {
       "backlinks": [
@@ -3542,6 +3598,7 @@
         "T-0041",
         "T-0051",
         "T-0053",
+        "T-0085",
         "B-0030",
         "B-0063"
       ],
@@ -4060,6 +4117,7 @@
       "area": "factory",
       "backlinks": [
         "F-0093",
+        "F-0100",
         "B-0092"
       ],
       "children": [
@@ -4078,7 +4136,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/4 tasks Closed"
+        "1/4 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0022",
@@ -4086,12 +4144,12 @@
       "priority": "need",
       "rank": 3,
       "source": "prototype:docs/specs/23-preamble.md",
-      "stage": "building 0/4",
-      "stage_since": "2026-09-23T18:25:22Z",
+      "stage": "building 1/4",
+      "stage_since": "2026-09-23T19:32:18Z",
       "state": "Active",
       "title": "The preamble: every brief opens with facts the runner already knows",
       "type": "feature",
-      "updated": "2026-09-23T18:25:22Z"
+      "updated": "2026-09-23T19:32:18Z"
     },
     "F-0023": {
       "area": "factory",
@@ -4312,6 +4370,7 @@
       "area": "factory",
       "backlinks": [
         "F-0085",
+        "F-0102",
         "T-0056",
         "B-0054",
         "B-0059",
@@ -4512,9 +4571,15 @@
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 4.85
+      },
       "decided": true,
       "evidence": [
-        "branch spec/F-0039"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0039",
@@ -4522,12 +4587,12 @@
       "parent": "E-0001",
       "priority": "need",
       "rank": 4,
-      "stage": "card",
-      "stage_since": "2026-09-21T17:01:58Z",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-23T19:32:18Z",
       "state": "Active",
       "title": "Same-session correction: review findings go back to the writer's own session; a fixer only for a dead one",
       "type": "feature",
-      "updated": "2026-09-23T18:56:05Z"
+      "updated": "2026-09-23T19:33:56Z"
     },
     "F-0040": {
       "area": "factory",
@@ -4555,7 +4620,8 @@
     "F-0041": {
       "area": "factory",
       "backlinks": [
-        "F-0086"
+        "F-0086",
+        "F-0102"
       ],
       "children": [],
       "decided": true,
@@ -5352,6 +5418,7 @@
     },
     "F-0076": {
       "backlinks": [
+        "T-0089",
         "B-0059",
         "B-0061"
       ],
@@ -5481,23 +5548,23 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 3.3
+        "sessions": 3,
+        "usd": 6.6
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "spec on origin/main"
       ],
       "folder": "features",
       "id": "F-0080",
       "parent": "E-0001",
       "rank": 2,
-      "stage": "card",
-      "stage_since": "2026-09-22T05:16:10Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-23T19:32:18Z",
+      "state": "Active",
       "title": "Closing is derived and total: a definition of done per type, reconciliation for work that predates it, nothing re-emitted",
       "type": "feature",
-      "updated": "2026-09-23T16:30:07Z"
+      "updated": "2026-09-23T19:33:56Z"
     },
     "F-0081": {
       "backlinks": [
@@ -5652,6 +5719,7 @@
     "F-0086": {
       "backlinks": [
         "F-0096",
+        "F-0102",
         "B-0059"
       ],
       "children": [
@@ -5686,6 +5754,7 @@
     "F-0087": {
       "backlinks": [
         "F-0098",
+        "F-0100",
         "B-0016",
         "B-0024",
         "B-0025",
@@ -5759,7 +5828,8 @@
       "area": "factory",
       "backlinks": [
         "F-0093",
-        "F-0098"
+        "F-0098",
+        "B-0094"
       ],
       "children": [
         "B-0082"
@@ -5783,28 +5853,37 @@
     "F-0090": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0076",
+        "T-0077",
+        "T-0078",
+        "T-0079",
+        "T-0080",
+        "T-0081",
+        "T-0082"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 5.61
+        "sessions": 2,
+        "usd": 10.46
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main"
+        "spec on origin/main",
+        "plan on origin/main"
       ],
       "folder": "features",
       "id": "F-0090",
       "parent": "E-0001",
       "priority": "need",
       "rank": 3,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-23T18:48:10Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-23T19:32:18Z",
       "state": "Active",
       "title": "Adjudication is the last resort: the cheap causes are ruled out before Opus is spent",
       "type": "feature",
-      "updated": "2026-09-23T18:48:14Z"
+      "updated": "2026-09-23T19:33:56Z"
     },
     "F-0091": {
       "area": "factory",
@@ -5896,27 +5975,33 @@
     },
     "F-0095": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0083",
+        "T-0084",
+        "T-0085",
+        "T-0086"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 3.13
+        "sessions": 2,
+        "usd": 6.89
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main"
+        "spec on origin/main",
+        "plan on origin/main"
       ],
       "folder": "features",
       "id": "F-0095",
       "parent": "E-0002",
       "rank": 2,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-23T18:40:29Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-23T19:32:18Z",
       "state": "Active",
       "title": "The wave relaunches coders on Tasks that end 'empty branch: nothing to land'",
       "type": "feature",
-      "updated": "2026-09-23T18:40:38Z"
+      "updated": "2026-09-23T19:33:56Z"
     },
     "F-0096": {
       "backlinks": [],
@@ -5956,45 +6041,113 @@
     },
     "F-0098": {
       "backlinks": [],
+      "children": [
+        "T-0087",
+        "T-0088",
+        "T-0089",
+        "T-0090"
+      ],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 2,
+        "usd": 8.64
+      },
+      "decided": true,
+      "evidence": [
+        "spec on origin/main",
+        "plan on origin/main"
+      ],
+      "folder": "features",
+      "id": "F-0098",
+      "parent": "E-0001",
+      "rank": 2,
+      "stage": "plan-approved",
+      "stage_since": "2026-09-23T19:32:18Z",
+      "state": "Active",
+      "title": "'dead' sessions are nearly always finished ones not yet recorded: say 'ended, awaiting tick', free the slot at once",
+      "type": "feature",
+      "updated": "2026-09-23T19:33:56Z"
+    },
+    "F-0099": {
+      "backlinks": [],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
         "sessions": 1,
-        "usd": 3.07
+        "usd": 4.37
       },
       "decided": true,
       "evidence": [
         "spec on origin/main"
       ],
       "folder": "features",
-      "id": "F-0098",
-      "parent": "E-0001",
-      "rank": 2,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-23T18:40:29Z",
-      "state": "Active",
-      "title": "'dead' sessions are nearly always finished ones not yet recorded: say 'ended, awaiting tick', free the slot at once",
-      "type": "feature",
-      "updated": "2026-09-23T18:40:38Z"
-    },
-    "F-0099": {
-      "backlinks": [],
-      "children": [],
-      "decided": true,
-      "evidence": [
-        "no evidence found (2026-09-23)"
-      ],
-      "folder": "features",
       "id": "F-0099",
       "parent": "E-0002",
       "rank": 1,
-      "stage": "card",
-      "stage_since": "2026-09-23T18:48:50Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-23T19:32:18Z",
+      "state": "Active",
       "title": "Groom every tick: intake, policy pass and questions run on each tick, not once a day",
       "type": "feature",
-      "updated": "2026-09-23T18:48:50Z"
+      "updated": "2026-09-23T19:33:56Z"
+    },
+    "F-0100": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0100",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:34:52Z",
+      "state": "New",
+      "title": "The savings pass: the tick proposes the next cheapest win from its own numbers",
+      "type": "feature",
+      "updated": "2026-09-23T19:34:52Z"
+    },
+    "F-0101": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0101",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:34:52Z",
+      "state": "New",
+      "title": "Corrections of mechanical failures run on Opus: 25% of all spend goes to correct/adjudicate/groom sessions",
+      "type": "feature",
+      "updated": "2026-09-23T19:34:52Z"
+    },
+    "F-0102": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0102",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:34:52Z",
+      "state": "New",
+      "title": "Deliveries: one plan, one agent, one gate for several small Features and Bug fixes across the backlog",
+      "type": "feature",
+      "updated": "2026-09-23T19:34:52Z"
+    },
+    "F-0103": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0103",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:34:52Z",
+      "state": "New",
+      "title": "The tick files Bugs from its own session outcomes and a stalled wave",
+      "type": "feature",
+      "updated": "2026-09-23T19:34:52Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -8255,6 +8408,7 @@
     "T-0001": {
       "backlinks": [
         "T-0051",
+        "T-0082",
         "B-0040",
         "B-0067",
         "B-0074"
@@ -9141,7 +9295,8 @@
         "F-0088",
         "F-0090",
         "B-0079",
-        "B-0080"
+        "B-0080",
+        "B-0094"
       ],
       "children": [],
       "cost": {
@@ -9180,7 +9335,8 @@
         "B-0073",
         "B-0075",
         "B-0079",
-        "B-0080"
+        "B-0080",
+        "B-0094"
       ],
       "children": [],
       "cost": {
@@ -9336,7 +9492,9 @@
       ]
     },
     "T-0032": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0094"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -9402,7 +9560,8 @@
     },
     "T-0034": {
       "backlinks": [
-        "B-0083"
+        "B-0083",
+        "B-0094"
       ],
       "children": [],
       "cost": {
@@ -9505,7 +9664,8 @@
       "backlinks": [
         "T-0042",
         "T-0047",
-        "B-0083"
+        "B-0083",
+        "B-0094"
       ],
       "children": [],
       "cost": {
@@ -9605,7 +9765,8 @@
         "T-0034",
         "T-0042",
         "T-0047",
-        "B-0083"
+        "B-0083",
+        "B-0094"
       ],
       "children": [],
       "cost": {
@@ -9718,7 +9879,9 @@
       ]
     },
     "T-0043": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0094"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -9783,7 +9946,9 @@
       ]
     },
     "T-0045": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0094"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -9887,7 +10052,8 @@
     "T-0048": {
       "backlinks": [
         "T-0047",
-        "B-0083"
+        "B-0083",
+        "B-0094"
       ],
       "children": [],
       "cost": {
@@ -10217,6 +10383,12 @@
     "T-0058": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.46
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0058"
@@ -10231,7 +10403,7 @@
       "state": "Active",
       "title": "intake resolves a forward reference, and one tree becomes an Epic with Features, Stories and acceptance",
       "type": "task",
-      "updated": "2026-09-23T18:48:10Z",
+      "updated": "2026-09-23T19:33:56Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/shape.py",
@@ -10412,7 +10584,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch worker/T-0065"
       ],
       "folder": "tasks",
       "id": "T-0065",
@@ -10420,11 +10592,11 @@
         "plan": "docs/plans/f-0022.md"
       },
       "parent": "F-0022",
-      "stage_since": "2026-09-23T18:00:22Z",
-      "state": "New",
+      "stage_since": "2026-09-23T19:32:18Z",
+      "state": "Active",
       "title": "Input tokens and turns land on the `sessions` stream",
       "type": "task",
-      "updated": "2026-09-23T18:10:15Z",
+      "updated": "2026-09-23T19:32:18Z",
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
@@ -10433,9 +10605,16 @@
     "T-0066": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "commit 90d4dcc names T-0066",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0066",
@@ -10443,11 +10622,11 @@
         "plan": "docs/plans/f-0022.md"
       },
       "parent": "F-0022",
-      "stage_since": "2026-09-23T18:00:22Z",
-      "state": "New",
+      "stage_since": "2026-09-23T19:32:18Z",
+      "state": "Closed",
       "title": "`asf tokens` \u2014 the before and the after, per brief kind",
       "type": "task",
-      "updated": "2026-09-23T18:10:15Z",
+      "updated": "2026-09-23T19:33:56Z",
       "writes": [
         "asf/views/tokens.py",
         "asf/cli.py",
@@ -10681,6 +10860,351 @@
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
+      ]
+    },
+    "T-0076": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0076",
+      "links": {
+        "plan": "docs/plans/f-0090.md"
+      },
+      "parent": "F-0090",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "triage \u2014 the three cheap causes, in the card's order, and the rows they produce",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/feeder/triage.py",
+        "asf/feeder/rows.py",
+        "tests/test_feeder.py"
+      ]
+    },
+    "T-0077": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0077",
+      "links": {
+        "plan": "docs/plans/f-0090.md"
+      },
+      "parent": "F-0090",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the round history, and the files a correction carries",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/workers/lifecycle.py",
+        "tests/test_lifecycle.py"
+      ]
+    },
+    "T-0078": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0078",
+      "links": {
+        "plan": "docs/plans/f-0090.md"
+      },
+      "parent": "F-0090",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the digest that makes \"stale\" a fact, and the ruling's three typed fields",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/briefs/build.py",
+        "asf/briefs/templates/adjudicate.md",
+        "asf/workers/report.py",
+        "tests/test_briefs.py",
+        "tests/test_report.py",
+        "tests/fixtures/briefs/golden/**"
+      ]
+    },
+    "T-0079": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0079",
+      "links": {
+        "plan": "docs/plans/f-0090.md"
+      },
+      "parent": "F-0090",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the weekly measure \u2014 adjudicate hours as a share of the heavy model's",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "tests/test_metrics.py"
+      ]
+    },
+    "T-0080": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0080",
+      "links": {
+        "plan": "docs/plans/f-0090.md"
+      },
+      "parent": "F-0090",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the gate names its files, and a red outside the footprint costs no round",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/harvest/harvest.py",
+        "tests/test_harvest.py"
+      ]
+    },
+    "T-0081": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0081",
+      "links": {
+        "plan": "docs/plans/f-0090.md"
+      },
+      "parent": "F-0090",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the tick \u2014 the facts triage needs, the digest at launch, and the line that says why",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/tick/step_wave.py",
+        "asf/workers/pool.py",
+        "asf/workers/spawn.py",
+        "tests/test_tick_steps.py",
+        "tests/test_workers.py"
+      ]
+    },
+    "T-0082": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0082",
+      "links": {
+        "plan": "docs/plans/f-0090.md"
+      },
+      "parent": "F-0090",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the ruling lands on the card \u2014 typed, round-tripped, and refused when it cannot",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/record/setfield.py",
+        "asf/tick/step_health.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0083": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0083",
+      "links": {
+        "plan": "docs/plans/f-0095.md"
+      },
+      "parent": "F-0095",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the feeder's three gates \u2014 on the trunk, after: counts the trunk, and parked",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/feeder/rows.py",
+        "tests/test_feeder.py"
+      ]
+    },
+    "T-0084": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0084",
+      "links": {
+        "plan": "docs/plans/f-0095.md"
+      },
+      "parent": "F-0095",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "an empty end is its own kind, it is counted, and the second one parks",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/workers/lifecycle.py",
+        "tests/test_lifecycle.py"
+      ]
+    },
+    "T-0085": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0085",
+      "links": {
+        "plan": "docs/plans/f-0095.md"
+      },
+      "parent": "F-0095",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the trunk as a fact, health parks, and the operator is told once",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/tick/step_wave.py",
+        "asf/tick/step_health.py",
+        "asf/workers/health.py",
+        "tests/test_tick_steps.py",
+        "tests/test_workers.py"
+      ]
+    },
+    "T-0086": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0086",
+      "links": {
+        "plan": "docs/plans/f-0095.md"
+      },
+      "parent": "F-0095",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "`asf unpark <item>` \u2014 the operator's way out, recorded beside the park",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/workers/unpark.py",
+        "asf/cli.py",
+        "tests/test_cli.py"
+      ]
+    },
+    "T-0087": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0087",
+      "links": {
+        "plan": "docs/plans/f-0098.md"
+      },
+      "parent": "F-0098",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the classifier \u2014 five states, the evidence ladder, and `derive` re-expressed over it",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/workers/lifecycle.py",
+        "tests/test_lifecycle.py"
+      ]
+    },
+    "T-0088": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0088",
+      "links": {
+        "plan": "docs/plans/f-0098.md"
+      },
+      "parent": "F-0098",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the seat frees the moment the process is gone",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/workers/lifecycle.py",
+        "asf/capacity.py",
+        "asf/feeder/tiers.py",
+        "asf/workers/pool.py",
+        "asf/tick/step_wave.py",
+        "tests/test_lifecycle.py",
+        "tests/test_capacity.py",
+        "tests/test_feeder.py",
+        "tests/test_workers.py"
+      ]
+    },
+    "T-0089": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0089",
+      "links": {
+        "plan": "docs/plans/f-0098.md"
+      },
+      "parent": "F-0098",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "the three views say what happened",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/views/sessions.py",
+        "asf/views/status.py",
+        "asf/tick/summary.py",
+        "tests/test_lifecycle.py",
+        "tests/test_views.py",
+        "tests/test_tick_summary.py"
+      ]
+    },
+    "T-0090": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0090",
+      "links": {
+        "plan": "docs/plans/f-0098.md"
+      },
+      "parent": "F-0098",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T19:33:55Z",
+      "state": "New",
+      "title": "health writes the classifier's reason, stall and harvest ask it, and nothing else derives state",
+      "type": "task",
+      "updated": "2026-09-23T19:33:55Z",
+      "writes": [
+        "asf/workers/health.py",
+        "asf/workers/stall.py",
+        "asf/harvest/harvest.py",
+        "asf/tick/step_health.py",
+        "tests/test_lifecycle.py",
+        "tests/test_workers.py",
+        "tests/test_harvest.py",
+        "tests/test_tick_steps.py"
       ]
     }
   },
