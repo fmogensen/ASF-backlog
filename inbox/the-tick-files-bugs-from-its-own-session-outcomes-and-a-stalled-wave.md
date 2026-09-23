@@ -9,3 +9,6 @@ Expected: the tick files or bumps a Bug by signature whenever:
 - the wave reports `nothing to launch` for N ticks while New Tasks exist, naming the gate that holds them (e.g. `WAITS ON` a Closed item).
 
 The factory then fixes itself through its own pipeline instead of waiting for someone to look.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

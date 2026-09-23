@@ -9,3 +9,6 @@ Expected:
 
 History:
 - 2026-09-23 operator: "enable asf on botseon" — found while dry-running botseon's tick under the launchd env after rewriting products/botseon.yaml to the current schema.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
