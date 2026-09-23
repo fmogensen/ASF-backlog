@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T11:19:12Z",
+  "generated": "2026-09-23T12:57:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2258,7 +2258,9 @@
     },
     "B-0082": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0085"
+      ],
       "children": [],
       "evidence": [
         "no evidence found (2026-09-23)"
@@ -2275,6 +2277,69 @@
       "title": "A timed-out gate is counted as a failed round and sends the item to Opus",
       "type": "bug",
       "updated": "2026-09-23T11:19:06Z"
+    },
+    "B-0083": {
+      "area": "factory",
+      "backlinks": [
+        "B-0084"
+      ],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0083",
+      "parent": "E-0001",
+      "priority": "need",
+      "severity": "S1",
+      "signature": "tick: record failure does not stop the wave",
+      "stage_since": "2026-09-23T11:22:21Z",
+      "state": "New",
+      "title": "A failed record step does not stop the tick: the wave acts on a stale board",
+      "type": "bug",
+      "updated": "2026-09-23T12:57:28Z"
+    },
+    "B-0084": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0084",
+      "parent": "E-0001",
+      "priority": "need",
+      "severity": "S2",
+      "signature": "record: typed fields hand-edited",
+      "stage_since": "2026-09-23T11:22:21Z",
+      "state": "New",
+      "title": "A typed field is written by hand, so an unparseable card is only caught a tick later",
+      "type": "bug",
+      "updated": "2026-09-23T12:57:28Z"
+    },
+    "B-0085": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "commit 07e130a names B-0085",
+        "CI green on main at or after it"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0085",
+      "parent": "E-0001",
+      "priority": "need",
+      "severity": "S1",
+      "signature": "tick: step blocks on a foreground session",
+      "stage_since": "2026-09-23T12:57:28Z",
+      "state": "Closed",
+      "title": "A tick step waits on a model session, so health and harvest stop for its whole duration",
+      "type": "bug",
+      "updated": "2026-09-23T12:57:28Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -3138,18 +3203,21 @@
         "B-0076",
         "B-0077",
         "B-0078",
-        "B-0079"
+        "B-0079",
+        "B-0083",
+        "B-0084",
+        "B-0085"
       ],
       "decided": true,
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 312.17,
+      "spend_usd": 317.89,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T11:18:21Z"
+      "updated": "2026-09-23T12:57:33Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -4856,17 +4924,17 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "3/5 tasks Closed"
+        "4/5 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0073",
       "parent": "E-0001",
-      "stage": "building 3/5",
-      "stage_since": "2026-09-23T08:14:49Z",
+      "stage": "building 4/5",
+      "stage_since": "2026-09-23T12:57:28Z",
       "state": "Active",
       "title": "Everything enters through the inbox; the type is derived from the card's shape",
       "type": "feature",
-      "updated": "2026-09-23T08:14:49Z"
+      "updated": "2026-09-23T12:57:28Z"
     },
     "F-0074": {
       "backlinks": [],
@@ -4889,17 +4957,17 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "6/7 tasks Closed"
+        "7/7 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0074",
       "parent": "E-0001",
-      "stage": "building 6/7",
-      "stage_since": "2026-09-23T11:19:06Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-09-23T12:57:28Z",
+      "state": "Closed",
       "title": "Generic by construction: no product convention in code, proven by a second product in CI",
       "type": "feature",
-      "updated": "2026-09-23T11:19:06Z"
+      "updated": "2026-09-23T12:57:28Z"
     },
     "F-0075": {
       "backlinks": [
@@ -4963,17 +5031,17 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/5 tasks Closed"
+        "3/5 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0076",
       "parent": "E-0001",
-      "stage": "building 2/5",
-      "stage_since": "2026-09-23T11:19:06Z",
+      "stage": "building 3/5",
+      "stage_since": "2026-09-23T12:57:28Z",
       "state": "Active",
       "title": "Session identity: every asf worker is distinguishable from every other, and from sessions that are not asf's",
       "type": "feature",
-      "updated": "2026-09-23T11:19:06Z"
+      "updated": "2026-09-23T12:57:28Z"
     },
     "F-0077": {
       "backlinks": [],
@@ -8826,17 +8894,20 @@
       ]
     },
     "T-0034": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0083"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 0.79
+        "sessions": 3,
+        "usd": 2.87
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0034"
+        "commit 11e88a8 names T-0034",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0034",
@@ -8844,11 +8915,11 @@
         "plan": "docs/plans/f-0073.md"
       },
       "parent": "F-0073",
-      "stage_since": "2026-09-23T11:19:06Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T12:57:28Z",
+      "state": "Closed",
       "title": "`asf inbox` \u2014 one untyped card into the record's intake directory",
       "type": "task",
-      "updated": "2026-09-23T11:19:06Z",
+      "updated": "2026-09-23T12:57:33Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/cli.py",
@@ -8917,13 +8988,14 @@
     "T-0037": {
       "backlinks": [
         "T-0042",
-        "T-0047"
+        "T-0047",
+        "B-0083"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
+        "sessions": 5,
         "usd": 2.29
       },
       "decided": true,
@@ -8941,7 +9013,7 @@
       "state": "Closed",
       "title": "The workflow names fold into the object, and the example yaml says so",
       "type": "task",
-      "updated": "2026-09-23T11:19:06Z",
+      "updated": "2026-09-23T12:57:33Z",
       "writes": [
         "asf/env.py",
         "docs/products.example.yaml",
@@ -9013,7 +9085,8 @@
     "T-0040": {
       "backlinks": [
         "T-0042",
-        "T-0047"
+        "T-0047",
+        "B-0083"
       ],
       "children": [],
       "cost": {
@@ -9091,18 +9164,20 @@
         "T-0040"
       ],
       "backlinks": [
-        "B-0082"
+        "B-0082",
+        "B-0083"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 6,
-        "usd": 11.48
+        "sessions": 8,
+        "usd": 13.65
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0042"
+        "commit 2724d7e names T-0042",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0042",
@@ -9110,11 +9185,11 @@
         "plan": "docs/plans/f-0074.md"
       },
       "parent": "F-0074",
-      "stage_since": "2026-09-23T07:35:06Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T12:57:28Z",
+      "state": "Closed",
       "title": "The check has two sources, three exclusions, and a CI step beside it",
       "type": "task",
-      "updated": "2026-09-23T11:19:09Z",
+      "updated": "2026-09-23T12:57:33Z",
       "writes": [
         "tools/check_conventions.sh",
         "tools/forbidden-conventions.txt",
@@ -9257,13 +9332,14 @@
     },
     "T-0047": {
       "backlinks": [
-        "B-0082"
+        "B-0082",
+        "B-0083"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
+        "sessions": 5,
         "usd": 4.27
       },
       "decided": true,
@@ -9281,7 +9357,7 @@
       "state": "Closed",
       "title": "`asf.workers.observe` \u2014 every session on the machine, whose it is, which account",
       "type": "task",
-      "updated": "2026-09-23T11:19:09Z",
+      "updated": "2026-09-23T12:57:33Z",
       "writes": [
         "asf/workers/observe.py",
         "tests/test_session_identity.py",
@@ -9290,18 +9366,20 @@
     },
     "T-0048": {
       "backlinks": [
-        "T-0047"
+        "T-0047",
+        "B-0083"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 0.63
+        "sessions": 3,
+        "usd": 2.09
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0048"
+        "commit e15bbf1 names T-0048",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0048",
@@ -9309,11 +9387,11 @@
         "plan": "docs/plans/f-0076.md"
       },
       "parent": "F-0076",
-      "stage_since": "2026-09-23T11:19:06Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T12:57:28Z",
+      "state": "Closed",
       "title": "pool load counts every product's sessions and foreign ones, once each; the wave's running check is per product",
       "type": "task",
-      "updated": "2026-09-23T11:19:09Z",
+      "updated": "2026-09-23T12:57:33Z",
       "writes": [
         "asf/workers/pool.py",
         "asf/workers/wave.py",
