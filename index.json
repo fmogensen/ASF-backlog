@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T20:38:23Z",
+  "generated": "2026-09-23T21:21:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2603,7 +2603,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch fix/B-0094"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2611,18 +2611,25 @@
       "parent": "E-0002",
       "severity": "S1",
       "signature": "failed: not pushed: N uncommitted file(s)",
-      "stage_since": "2026-09-23T19:34:52Z",
-      "state": "New",
+      "stage_since": "2026-09-23T21:10:24Z",
+      "state": "Active",
       "title": "19% of sessions end 'not pushed': finished work is lost to a missing commit or push",
       "type": "bug",
-      "updated": "2026-09-23T19:50:02Z"
+      "updated": "2026-09-23T21:10:24Z"
     },
     "B-0095": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.22
+      },
       "decided": true,
       "evidence": [
-        "branch fix/B-0095"
+        "commit 1b60fc2 names B-0095",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2630,11 +2637,11 @@
       "parent": "E-0002",
       "severity": "S2",
       "signature": "AttributeError: 'list' object has no attribute 'get' (asf/views/prod.py:119)",
-      "stage_since": "2026-09-23T20:31:28Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T21:10:24Z",
+      "state": "Closed",
       "title": "The PROD view crashes on a product whose `customer_paths` is the documented list",
       "type": "bug",
-      "updated": "2026-09-23T20:31:28Z"
+      "updated": "2026-09-23T21:14:14Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -3213,7 +3220,8 @@
     "D-0045": {
       "area": "factory",
       "backlinks": [
-        "F-0072"
+        "F-0072",
+        "F-0104"
       ],
       "children": [],
       "decided": true,
@@ -3533,6 +3541,7 @@
         "F-0101",
         "F-0102",
         "F-0103",
+        "F-0104",
         "B-0087",
         "B-0088",
         "B-0089",
@@ -3546,12 +3555,12 @@
       "folder": "epics",
       "id": "E-0002",
       "rank": 2,
-      "spend_usd": 20.57,
+      "spend_usd": 21.06,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-23T20:19:48Z"
+      "updated": "2026-09-23T21:14:14Z"
     },
     "E-0003": {
       "backlinks": [
@@ -4828,7 +4837,7 @@
       "area": "factory",
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "evidence": [
         "no evidence found (2026-09-23)"
       ],
@@ -5139,7 +5148,7 @@
       "area": "security",
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "evidence": [
         "no evidence found (2026-09-23)"
       ],
@@ -5892,19 +5901,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "3/7 tasks Closed"
+        "4/7 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0090",
       "parent": "E-0001",
       "priority": "need",
       "rank": 3,
-      "stage": "building 3/7",
-      "stage_since": "2026-09-23T20:04:14Z",
+      "stage": "building 4/7",
+      "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
       "title": "Adjudication is the last resort: the cheap causes are ruled out before Opus is spent",
       "type": "feature",
-      "updated": "2026-09-23T20:04:14Z"
+      "updated": "2026-09-23T21:10:24Z"
     },
     "F-0091": {
       "area": "factory",
@@ -5962,6 +5971,7 @@
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "decided": true,
       "evidence": [
         "no evidence found (2026-09-23)"
       ],
@@ -5980,7 +5990,7 @@
     "F-0094": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "evidence": [
         "no evidence found (2026-09-23)"
       ],
@@ -6114,18 +6124,18 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/8 tasks Closed"
+        "1/8 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0099",
       "parent": "E-0002",
       "rank": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-23T20:04:14Z",
+      "stage": "building 1/8",
+      "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
       "title": "Groom every tick: intake, policy pass and questions run on each tick, not once a day",
       "type": "feature",
-      "updated": "2026-09-23T20:19:37Z"
+      "updated": "2026-09-23T21:10:24Z"
     },
     "F-0100": {
       "backlinks": [],
@@ -6204,6 +6214,20 @@
       "title": "The tick files Bugs from its own session outcomes and a stalled wave",
       "type": "feature",
       "updated": "2026-09-23T19:50:02Z"
+    },
+    "F-0104": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0104",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T21:20:23Z",
+      "state": "New",
+      "title": "Products tick on a pinned live install; `asf upgrade` moves it to the merged head",
+      "type": "feature",
+      "updated": "2026-09-23T21:20:23Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -10380,6 +10404,8 @@
     "T-0056": {
       "backlinks": [
         "T-0057",
+        "T-0059",
+        "T-0060",
         "T-0061",
         "T-0062"
       ],
@@ -10393,7 +10419,17 @@
       "links": {
         "plan": "docs/plans/f-0023.md"
       },
+      "merged": [
+        "T-0057",
+        "T-0059",
+        "T-0060",
+        "T-0061",
+        "T-0062"
+      ],
       "parent": "F-0023",
+      "reshape_declined": [
+        "split T-0056 asf | asf/idea | docs | tests"
+      ],
       "stage_since": "2026-09-23T17:55:22Z",
       "state": "New",
       "title": "the tree grammar, the record-first filter, and `asf idea apply`",
@@ -10410,7 +10446,24 @@
         "docs/products.example.yaml",
         "tests/test_idea.py",
         "tests/test_cli.py",
-        "tests/test_conventions.py"
+        "tests/test_conventions.py",
+        "asf/record/new.py",
+        "asf/briefs/build.py",
+        "asf/briefs/templates/idea.md",
+        "asf/feeder/rows.py",
+        "tests/test_briefs.py",
+        "asf/record/core.py",
+        "tests/test_feeder.py",
+        "tests/test_readers.py",
+        "tests/test_backlog.py",
+        "asf/briefs/preamble.py",
+        "asf/briefs/templates/spec.md",
+        "asf/briefs/templates/plan.md",
+        "asf/harvest/refine.py",
+        "asf/harvest/harvest.py",
+        "tests/test_refine.py",
+        "rules/refine-not-rewrite.sh",
+        "docs/CONSTITUTION.md"
       ]
     },
     "T-0057": {
@@ -10418,6 +10471,7 @@
         "T-0056"
       ],
       "backlinks": [
+        "T-0056",
         "T-0058",
         "T-0059",
         "T-0060"
@@ -10433,6 +10487,10 @@
         "plan": "docs/plans/f-0023.md"
       },
       "parent": "F-0023",
+      "removed": "merged into T-0056 (groom 2026-09-23)",
+      "reshape_declined": [
+        "split T-0057 asf/briefs | asf/feeder | asf/idea | asf/record | tests"
+      ],
       "stage_since": "2026-09-23T17:55:22Z",
       "state": "New",
       "title": "the front door, the `idea` brief kind, and `asf idea --enrich`",
@@ -10488,7 +10546,9 @@
       "after": [
         "T-0057"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0056"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -10500,6 +10560,10 @@
         "plan": "docs/plans/f-0023.md"
       },
       "parent": "F-0023",
+      "removed": "merged into T-0056 (groom 2026-09-23)",
+      "reshape_declined": [
+        "split T-0059 asf | asf/feeder | asf/record | docs | tests"
+      ],
       "stage_since": "2026-09-23T17:55:22Z",
       "state": "New",
       "title": "thinness is a derived fact, and the feeder emits `CARD \u2192 ENRICH`",
@@ -10520,7 +10584,9 @@
       "after": [
         "T-0057"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0056"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -10532,6 +10598,7 @@
         "plan": "docs/plans/f-0023.md"
       },
       "parent": "F-0023",
+      "removed": "merged into T-0056 (groom 2026-09-23)",
       "stage_since": "2026-09-23T17:55:22Z",
       "state": "New",
       "title": "a brief for a document already in the record says refine, and names what must survive",
@@ -10549,7 +10616,9 @@
       "after": [
         "T-0056"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0056"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -10561,6 +10630,10 @@
         "plan": "docs/plans/f-0023.md"
       },
       "parent": "F-0023",
+      "removed": "merged into T-0056 (groom 2026-09-23)",
+      "reshape_declined": [
+        "split T-0061 asf | asf/harvest | docs | tests"
+      ],
       "stage_since": "2026-09-23T17:55:22Z",
       "state": "New",
       "title": "`refine.verdict`, and the harvest holds a doc branch that regenerates",
@@ -10579,7 +10652,9 @@
       "after": [
         "T-0056"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0056"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -10591,6 +10666,10 @@
         "plan": "docs/plans/f-0023.md"
       },
       "parent": "F-0023",
+      "removed": "merged into T-0056 (groom 2026-09-23)",
+      "reshape_declined": [
+        "split T-0062 asf | asf/harvest | docs | rules | tests"
+      ],
       "stage_since": "2026-09-23T17:55:22Z",
       "state": "New",
       "title": "`asf refine-check`, the shipped rule script, and directive 1 reads `checked`",
@@ -10768,7 +10847,9 @@
       ]
     },
     "T-0068": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0071"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -10780,6 +10861,10 @@
         "plan": "docs/plans/f-0028.md"
       },
       "parent": "F-0028",
+      "reshape_declined": [
+        "merge T-0068+T-0071",
+        "split T-0068 asf/workers | tests"
+      ],
       "stage_since": "2026-09-23T18:00:22Z",
       "state": "New",
       "title": "the stop \u2014 a run over any one dimension is signalled, gets a cap result line, and is marked on its registry line",
@@ -10828,6 +10913,9 @@
         "plan": "docs/plans/f-0028.md"
       },
       "parent": "F-0028",
+      "reshape_declined": [
+        "split T-0070 asf | docs | sample | tests"
+      ],
       "stage_since": "2026-09-23T18:00:22Z",
       "state": "New",
       "title": "`token_caps:` is a product field an operator can read \u2014 the example, the sample, and the doctor row",
@@ -10843,7 +10931,9 @@
       ]
     },
     "T-0071": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0068"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -10855,6 +10945,9 @@
         "plan": "docs/plans/f-0028.md"
       },
       "parent": "F-0028",
+      "reshape_declined": [
+        "merge T-0068+T-0071"
+      ],
       "stage_since": "2026-09-23T18:00:22Z",
       "state": "New",
       "title": "the tick raises the cap and ends the run in the same pass",
@@ -10914,6 +11007,9 @@
         "plan": "docs/plans/f-0091.md"
       },
       "parent": "F-0091",
+      "reshape_declined": [
+        "split T-0073 asf | asf/improve | asf/record | docs | sample | tests"
+      ],
       "stage_since": "2026-09-23T18:25:29Z",
       "state": "New",
       "title": "`asf improve` writes the page, and proposes a card per class over threshold",
@@ -10947,6 +11043,9 @@
         "plan": "docs/plans/f-0091.md"
       },
       "parent": "F-0091",
+      "reshape_declined": [
+        "split T-0074 asf/tick | docs | tests"
+      ],
       "stage_since": "2026-09-23T18:25:29Z",
       "state": "New",
       "title": "the tick runs it weekly, off its own stamp",
@@ -11136,9 +11235,16 @@
         "T-0082"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
-        "branch worker/T-0080"
+        "commit cb8d7ec names T-0080",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0080",
@@ -11146,11 +11252,11 @@
         "plan": "docs/plans/f-0090.md"
       },
       "parent": "F-0090",
-      "stage_since": "2026-09-23T20:19:37Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T21:10:24Z",
+      "state": "Closed",
       "title": "the gate names its files, and a red outside the footprint costs no round",
       "type": "task",
-      "updated": "2026-09-23T20:19:37Z",
+      "updated": "2026-09-23T21:14:14Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
@@ -11176,6 +11282,9 @@
       "links": {
         "plan": "docs/plans/f-0090.md"
       },
+      "merged": [
+        "T-0082"
+      ],
       "parent": "F-0090",
       "stage_since": "2026-09-23T19:33:55Z",
       "state": "New",
@@ -11187,7 +11296,9 @@
         "asf/workers/pool.py",
         "asf/workers/spawn.py",
         "tests/test_tick_steps.py",
-        "tests/test_workers.py"
+        "tests/test_workers.py",
+        "asf/record/setfield.py",
+        "asf/tick/step_health.py"
       ]
     },
     "T-0082": {
@@ -11195,7 +11306,9 @@
         "T-0080",
         "T-0081"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0081"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -11207,6 +11320,10 @@
         "plan": "docs/plans/f-0090.md"
       },
       "parent": "F-0090",
+      "removed": "merged into T-0081 (groom 2026-09-23)",
+      "reshape_declined": [
+        "split T-0082 asf/record | asf/tick | tests"
+      ],
       "stage_since": "2026-09-23T19:33:55Z",
       "state": "New",
       "title": "the ruling lands on the card \u2014 typed, round-tripped, and refused when it cannot",
@@ -11336,7 +11453,9 @@
     },
     "T-0087": {
       "backlinks": [
-        "T-0088"
+        "T-0088",
+        "T-0089",
+        "T-0090"
       ],
       "children": [],
       "decided": true,
@@ -11348,6 +11467,11 @@
       "links": {
         "plan": "docs/plans/f-0098.md"
       },
+      "merged": [
+        "T-0088",
+        "T-0089",
+        "T-0090"
+      ],
       "parent": "F-0098",
       "stage_since": "2026-09-23T19:33:55Z",
       "state": "New",
@@ -11356,7 +11480,25 @@
       "updated": "2026-09-23T19:50:02Z",
       "writes": [
         "asf/workers/lifecycle.py",
-        "tests/test_lifecycle.py"
+        "tests/test_lifecycle.py",
+        "asf/capacity.py",
+        "asf/feeder/tiers.py",
+        "asf/workers/pool.py",
+        "asf/tick/step_wave.py",
+        "tests/test_capacity.py",
+        "tests/test_feeder.py",
+        "tests/test_workers.py",
+        "asf/views/sessions.py",
+        "asf/views/status.py",
+        "asf/tick/summary.py",
+        "tests/test_views.py",
+        "tests/test_tick_summary.py",
+        "asf/workers/health.py",
+        "asf/workers/stall.py",
+        "asf/harvest/harvest.py",
+        "asf/tick/step_health.py",
+        "tests/test_harvest.py",
+        "tests/test_tick_steps.py"
       ]
     },
     "T-0088": {
@@ -11364,6 +11506,7 @@
         "T-0087"
       ],
       "backlinks": [
+        "T-0087",
         "T-0089"
       ],
       "children": [],
@@ -11377,6 +11520,10 @@
         "plan": "docs/plans/f-0098.md"
       },
       "parent": "F-0098",
+      "removed": "merged into T-0087 (groom 2026-09-23)",
+      "reshape_declined": [
+        "split T-0088 asf | asf/feeder | asf/tick | asf/workers | tests"
+      ],
       "stage_since": "2026-09-23T19:33:55Z",
       "state": "New",
       "title": "the seat frees the moment the process is gone",
@@ -11399,6 +11546,7 @@
         "T-0088"
       ],
       "backlinks": [
+        "T-0087",
         "T-0090"
       ],
       "children": [],
@@ -11412,6 +11560,10 @@
         "plan": "docs/plans/f-0098.md"
       },
       "parent": "F-0098",
+      "removed": "merged into T-0087 (groom 2026-09-23)",
+      "reshape_declined": [
+        "split T-0089 asf/tick | asf/views | tests"
+      ],
       "stage_since": "2026-09-23T19:33:55Z",
       "state": "New",
       "title": "the three views say what happened",
@@ -11430,7 +11582,9 @@
       "after": [
         "T-0089"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0087"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -11442,6 +11596,7 @@
         "plan": "docs/plans/f-0098.md"
       },
       "parent": "F-0098",
+      "removed": "merged into T-0087 (groom 2026-09-23)",
       "stage_since": "2026-09-23T19:33:55Z",
       "state": "New",
       "title": "health writes the classifier's reason, stall and harvest ask it, and nothing else derives state",
@@ -11513,6 +11668,9 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
+      "reshape_declined": [
+        "split T-0092 asf | asf/groom | tests"
+      ],
       "stage_since": "2026-09-23T20:04:21Z",
       "state": "New",
       "title": "the day file \u2014 today's answers applied, additive, idempotent, digest and all",
@@ -11537,7 +11695,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch worker/T-0093"
       ],
       "folder": "tasks",
       "id": "T-0093",
@@ -11545,11 +11703,11 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "stage_since": "2026-09-23T20:04:21Z",
-      "state": "New",
+      "stage_since": "2026-09-23T21:10:24Z",
+      "state": "Active",
       "title": "every undecided open item is a question from its first groom",
       "type": "task",
-      "updated": "2026-09-23T20:19:37Z",
+      "updated": "2026-09-23T21:10:24Z",
       "writes": [
         "asf/groom/groom.py",
         "tests/test_groom.py",
@@ -11605,6 +11763,9 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
+      "reshape_declined": [
+        "split T-0095 asf/feeder | asf/groom | asf/tick | tests"
+      ],
       "stage_since": "2026-09-23T20:04:21Z",
       "state": "New",
       "title": "one adjudicate round per question set, capped per set and per day",
@@ -11682,9 +11843,16 @@
         "T-0093"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.27
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "commit a712209 names T-0098",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0098",
@@ -11692,11 +11860,11 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "stage_since": "2026-09-23T20:04:21Z",
-      "state": "New",
+      "stage_since": "2026-09-23T21:10:24Z",
+      "state": "Closed",
       "title": "`asf doctor` names an `asf` step no clock ticks",
       "type": "task",
-      "updated": "2026-09-23T20:19:37Z",
+      "updated": "2026-09-23T21:14:14Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -11775,6 +11943,9 @@
         "plan": "docs/plans/f-0080.md"
       },
       "parent": "F-0080",
+      "reshape_declined": [
+        "split T-0101 asf/evidence | asf/groom | asf/record | tests"
+      ],
       "stage_since": "2026-09-23T20:19:47Z",
       "state": "New",
       "title": "reconciliation \u2014 the marker, one question, three answers that write evidence",
