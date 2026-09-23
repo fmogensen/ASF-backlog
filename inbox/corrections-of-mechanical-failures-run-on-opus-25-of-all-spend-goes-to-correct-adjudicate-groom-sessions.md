@@ -10,3 +10,6 @@ Expected:
 - The model per job kind is operator config (models: {correct: sonnet, adjudicate: opus, …}) with these defaults.
 - The daily rollup reports spend by kind × model, and the Opus share is a tracked metric with a threshold that files a Bug.
 - Tests cover model selection per row.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

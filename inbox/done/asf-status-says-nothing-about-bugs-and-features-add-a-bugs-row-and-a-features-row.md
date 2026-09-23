@@ -1,0 +1,14 @@
+→ F-0097
+
+# asf status says nothing about Bugs and Features: add a Bugs row and a Features row
+parent: E-0001
+
+Bug, severity S2, parent E-0001. Decided by the operator on 2026-09-23 ("the tick status should say something about bugs and features").
+
+`asf status` (asf/views/status.py) reports runners, prod, agents, capacity, quota, cron and groom, but nothing about the work itself. The operator has to run /asf:backlog, /asf:next and /asf:sessions to learn whether Bugs are being fixed and Features are moving. Operator, 2026-09-23: "the tick status should say something about bugs and features".
+
+Expected: two new rows in the FACTORY STATUS table, one line each.
+- **Bugs**: open by severity (S1 n · S2 n · S3 n), in fix now (n, with ids for S1), fixed today (n), and the oldest open S1/S2 by age.
+- **Features**: landed today (n, with the latest id), building (n), spec/plan in flight (n), decided and waiting (n), undecided (n), and the median time to land over the last 7 days.
+
+The per-tick digest (B-0087) carries the same two lines, as deltas since the last tick: "bugs +1 filed, 2 fixed · features 1 landed, 3 started". Built from index.json and the session ledger, with tests.
