@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T16:41:09Z",
+  "generated": "2026-09-23T16:56:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1958,7 +1958,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch fix/B-0069"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1966,11 +1966,11 @@
       "parent": "E-0001",
       "severity": "S2",
       "signature": "kill-does-not-stop-a-run",
-      "stage_since": "2026-09-22T16:45:46Z",
-      "state": "New",
+      "stage_since": "2026-09-23T16:55:36Z",
+      "state": "Active",
       "title": "Killing a session's process does not stop the run: the client dies, the work keeps pushing",
       "type": "bug",
-      "updated": "2026-09-23T00:05:35Z"
+      "updated": "2026-09-23T16:55:36Z"
     },
     "B-0070": {
       "area": "asf.feeder",
@@ -2158,7 +2158,8 @@
       "area": "asf.record",
       "backlinks": [
         "B-0078",
-        "B-0086"
+        "B-0086",
+        "B-0093"
       ],
       "children": [],
       "decided": true,
@@ -2232,7 +2233,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch fix/B-0080"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2241,11 +2242,11 @@
       "priority": "need",
       "severity": "S1",
       "signature": "feeder: after not honoured on correct/adjudicate rows",
-      "stage_since": "2026-09-23T05:56:17Z",
-      "state": "New",
+      "stage_since": "2026-09-23T16:55:36Z",
+      "state": "Active",
       "title": "after: holds the coder row only \u2014 correction and adjudicate launch anyway, on Opus",
       "type": "bug",
-      "updated": "2026-09-23T06:43:44Z"
+      "updated": "2026-09-23T16:55:36Z"
     },
     "B-0081": {
       "area": "factory",
@@ -2279,9 +2280,16 @@
         "B-0085"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.23
+      },
       "decided": true,
       "evidence": [
-        "branch fix/B-0082"
+        "commit 5b5055f names B-0082",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2290,11 +2298,11 @@
       "priority": "need",
       "severity": "S1",
       "signature": "harvest: gate timeout counted as a round",
-      "stage_since": "2026-09-23T16:41:00Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T16:55:36Z",
+      "state": "Closed",
       "title": "A timed-out gate is counted as a failed round and sends the item to Opus",
       "type": "bug",
-      "updated": "2026-09-23T16:41:00Z"
+      "updated": "2026-09-23T16:55:57Z"
     },
     "B-0083": {
       "area": "factory",
@@ -2304,7 +2312,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch fix/B-0083"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2313,19 +2321,26 @@
       "priority": "need",
       "severity": "S1",
       "signature": "tick: record failure does not stop the wave",
-      "stage_since": "2026-09-23T11:22:21Z",
-      "state": "New",
+      "stage_since": "2026-09-23T16:55:36Z",
+      "state": "Active",
       "title": "A failed record step does not stop the tick: the wave acts on a stale board",
       "type": "bug",
-      "updated": "2026-09-23T12:57:28Z"
+      "updated": "2026-09-23T16:55:36Z"
     },
     "B-0084": {
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
-        "branch fix/B-0084"
+        "commit 9790fdb names B-0084",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2334,11 +2349,11 @@
       "priority": "need",
       "severity": "S2",
       "signature": "record: typed fields hand-edited",
-      "stage_since": "2026-09-23T16:41:00Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T16:55:36Z",
+      "state": "Closed",
       "title": "A typed field is written by hand, so an unparseable card is only caught a tick later",
       "type": "bug",
-      "updated": "2026-09-23T16:41:00Z"
+      "updated": "2026-09-23T16:55:57Z"
     },
     "B-0085": {
       "area": "factory",
@@ -2476,6 +2491,40 @@
       "title": "asf new / asf inbox never commit or push: a card filed from the console never reaches the tick",
       "type": "bug",
       "updated": "2026-09-23T16:07:46Z"
+    },
+    "B-0092": {
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0092",
+      "parent": "E-0002",
+      "severity": "S2",
+      "stage_since": "2026-09-23T16:46:27Z",
+      "state": "New",
+      "title": "Groom digest says '55 for you' for items the adjudicator already ruled; removals are not surfaced",
+      "type": "bug",
+      "updated": "2026-09-23T16:55:36Z"
+    },
+    "B-0093": {
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0093",
+      "parent": "E-0001",
+      "severity": "S3",
+      "stage_since": "2026-09-23T16:48:49Z",
+      "state": "New",
+      "title": "asf status: Runners/Prod say 'not configured' for a product with hosted CI and no deploy",
+      "type": "bug",
+      "updated": "2026-09-23T16:55:36Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -3344,18 +3393,19 @@
         "B-0083",
         "B-0084",
         "B-0085",
-        "B-0086"
+        "B-0086",
+        "B-0093"
       ],
       "decided": true,
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 337.36,
+      "spend_usd": 337.6,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T16:30:07Z"
+      "updated": "2026-09-23T16:55:57Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -3367,7 +3417,8 @@
         "B-0088",
         "B-0089",
         "B-0090",
-        "B-0091"
+        "B-0091",
+        "B-0092"
       ],
       "decided": false,
       "folder": "epics",
@@ -3463,7 +3514,8 @@
     "F-0002": {
       "area": "factory",
       "backlinks": [
-        "T-0041"
+        "T-0041",
+        "B-0092"
       ],
       "children": [],
       "cost": {
@@ -3941,7 +3993,8 @@
     "F-0022": {
       "area": "factory",
       "backlinks": [
-        "F-0093"
+        "F-0093",
+        "B-0092"
       ],
       "children": [],
       "cost": {
@@ -3969,7 +4022,9 @@
     },
     "F-0023": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0092"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -5599,19 +5654,19 @@
       ],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "1/1 children Closed"
       ],
       "folder": "features",
       "id": "F-0089",
       "parent": "E-0001",
       "priority": "need",
       "rank": 5,
-      "stage": "card",
-      "stage_since": "2026-09-23T06:43:44Z",
-      "state": "New",
+      "stage": "landed",
+      "stage_since": "2026-09-23T16:55:36Z",
+      "state": "Closed",
       "title": "No run ends unlanded: the end-of-run check happens inside the session, not in the next one",
       "type": "feature",
-      "updated": "2026-09-23T06:43:44Z"
+      "updated": "2026-09-23T16:55:36Z"
     },
     "F-0090": {
       "area": "factory",
@@ -9184,7 +9239,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch worker/T-0035"
       ],
       "folder": "tasks",
       "id": "T-0035",
@@ -9192,11 +9247,11 @@
         "plan": "docs/plans/f-0073.md"
       },
       "parent": "F-0073",
-      "stage_since": "2026-09-22T15:49:00Z",
-      "state": "New",
+      "stage_since": "2026-09-23T16:55:36Z",
+      "state": "Active",
       "title": "`asf new` mints only what a spec or plan cuts \u2014 Stories with acceptance, Tasks with writes",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T16:55:36Z",
       "writes": [
         "asf/record/new.py",
         "asf/cli.py",
