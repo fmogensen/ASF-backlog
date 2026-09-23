@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T05:52:21Z",
+  "generated": "2026-09-23T06:12:48Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -456,6 +456,7 @@
       "area": "factory",
       "backlinks": [
         "F-0073",
+        "F-0092",
         "B-0051",
         "B-0052",
         "B-0054",
@@ -2205,6 +2206,24 @@
       "type": "bug",
       "updated": "2026-09-23T05:52:18Z"
     },
+    "B-0080": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0080",
+      "parent": "F-0088",
+      "priority": "need",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "feeder: after not honoured on correct/adjudicate rows",
+      "stage_since": "2026-09-23T05:56:17Z",
+      "state": "New",
+      "title": "after: holds the coder row only \u2014 correction and adjudicate launch anyway, on Opus",
+      "type": "bug",
+      "updated": "2026-09-23T05:56:17Z"
+    },
     "D-0001": {
       "backlinks": [],
       "children": [],
@@ -2878,7 +2897,9 @@
       "updated": "2026-09-22T07:29:37Z"
     },
     "D-0050": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0091"
+      ],
       "children": [],
       "folder": "decisions",
       "id": "D-0050",
@@ -2888,6 +2909,19 @@
       "title": "Every saving is a card: spot it, cite the number, prove it on the scorecard, revert it if the number does not move",
       "type": "decision",
       "updated": "2026-09-22T12:52:25Z"
+    },
+    "D-0051": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "decisions",
+      "id": "D-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T06:05:39Z",
+      "state": "New",
+      "title": "A green run: the five conditions, computed and printed, not judged",
+      "type": "decision",
+      "updated": "2026-09-23T06:05:39Z"
     },
     "E-0001": {
       "backlinks": [
@@ -2983,6 +3017,11 @@
         "F-0085",
         "F-0086",
         "F-0087",
+        "F-0088",
+        "F-0089",
+        "F-0090",
+        "F-0091",
+        "F-0092",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -3633,7 +3672,7 @@
       "id": "F-0022",
       "parent": "E-0001",
       "priority": "need",
-      "rank": 22,
+      "rank": 3,
       "source": "prototype:docs/specs/23-preamble.md",
       "stage": "card",
       "stage_since": "2026-09-21T17:01:58Z",
@@ -3777,7 +3816,7 @@
       "id": "F-0028",
       "parent": "E-0001",
       "priority": "need",
-      "rank": 28,
+      "rank": 8,
       "source": "prototype:docs/specs/20-prompt-budget.md",
       "stage": "card",
       "stage_since": "2026-09-21T17:01:58Z",
@@ -4810,6 +4849,8 @@
     "F-0075": {
       "backlinks": [
         "F-0086",
+        "F-0088",
+        "F-0092",
         "B-0051",
         "B-0059"
       ],
@@ -5210,6 +5251,87 @@
       "title": "Failure-class invariants: one property test per class of the first 53 Bugs, and the whole-loop dogfood tick in CI",
       "type": "feature",
       "updated": "2026-09-23T03:38:47Z"
+    },
+    "F-0088": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [
+        "B-0080"
+      ],
+      "folder": "features",
+      "id": "F-0088",
+      "parent": "E-0001",
+      "priority": "need",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T05:54:41Z",
+      "state": "New",
+      "title": "Order is a derived relation: the plan states it, the planner writes it, preflight enforces it",
+      "type": "feature",
+      "updated": "2026-09-23T05:54:41Z"
+    },
+    "F-0089": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "features",
+      "id": "F-0089",
+      "parent": "E-0001",
+      "priority": "need",
+      "rank": 5,
+      "schema_version": 1,
+      "stage_since": "2026-09-23T06:02:04Z",
+      "state": "New",
+      "title": "No run ends unlanded: the end-of-run check happens inside the session, not in the next one",
+      "type": "feature",
+      "updated": "2026-09-23T06:02:04Z"
+    },
+    "F-0090": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "features",
+      "id": "F-0090",
+      "parent": "E-0001",
+      "priority": "need",
+      "rank": 6,
+      "schema_version": 1,
+      "stage_since": "2026-09-23T06:02:04Z",
+      "state": "New",
+      "title": "Adjudication is the last resort: the cheap causes are ruled out before Opus is spent",
+      "type": "feature",
+      "updated": "2026-09-23T06:02:04Z"
+    },
+    "F-0091": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "features",
+      "id": "F-0091",
+      "parent": "E-0001",
+      "priority": "need",
+      "rank": 7,
+      "schema_version": 1,
+      "stage_since": "2026-09-23T06:02:43Z",
+      "state": "New",
+      "title": "asf improve: the self-improvement pass is a tick step, not something someone remembers to ask for",
+      "type": "feature",
+      "updated": "2026-09-23T06:02:43Z"
+    },
+    "F-0092": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "folder": "features",
+      "id": "F-0092",
+      "parent": "E-0001",
+      "priority": "need",
+      "rank": 2,
+      "schema_version": 1,
+      "stage_since": "2026-09-23T06:08:16Z",
+      "state": "New",
+      "title": "An item has a budget: three sessions or $10, then it stops and says why",
+      "type": "feature",
+      "updated": "2026-09-23T06:08:16Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -7999,6 +8121,7 @@
         "T-0016"
       ],
       "backlinks": [
+        "F-0092",
         "T-0018",
         "B-0067",
         "B-0076"
@@ -8150,6 +8273,7 @@
         "T-0020"
       ],
       "backlinks": [
+        "F-0092",
         "T-0020"
       ],
       "children": [],
@@ -8187,7 +8311,8 @@
     "T-0022": {
       "backlinks": [
         "T-0024",
-        "T-0027"
+        "T-0027",
+        "B-0080"
       ],
       "children": [],
       "decided": true,
@@ -8281,7 +8406,8 @@
     },
     "T-0025": {
       "backlinks": [
-        "T-0026"
+        "T-0026",
+        "B-0080"
       ],
       "children": [],
       "decided": true,
@@ -8311,7 +8437,10 @@
         "T-0025"
       ],
       "backlinks": [
-        "B-0079"
+        "F-0088",
+        "F-0090",
+        "B-0079",
+        "B-0080"
       ],
       "children": [],
       "cost": {
@@ -8345,9 +8474,11 @@
         "T-0022"
       ],
       "backlinks": [
+        "F-0090",
         "B-0073",
         "B-0075",
-        "B-0079"
+        "B-0079",
+        "B-0080"
       ],
       "children": [],
       "cost": {
