@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T07:35:13Z",
+  "generated": "2026-09-23T08:02:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2192,7 +2192,8 @@
       "backlinks": [],
       "children": [],
       "evidence": [
-        "commit 75b3234 names B-0079"
+        "commit 75b3234 names B-0079",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2201,11 +2202,11 @@
       "priority": "need",
       "severity": "S1",
       "signature": "harvest: eligible drops a pushed branch with a failed run",
-      "stage_since": "2026-09-23T07:35:06Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-23T08:02:24Z",
+      "state": "Closed",
       "title": "A branch ahead of the trunk whose run failed is orphaned: harvest never looks at it again",
       "type": "bug",
-      "updated": "2026-09-23T07:35:06Z"
+      "updated": "2026-09-23T08:02:24Z"
     },
     "B-0080": {
       "area": "factory",
@@ -3118,12 +3119,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 284.92,
+      "spend_usd": 286.79,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T07:35:10Z"
+      "updated": "2026-09-23T08:02:27Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -5096,18 +5097,18 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed"
+        "3/3 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0082",
       "parent": "E-0001",
       "rank": 3,
-      "stage": "building 2/3",
-      "stage_since": "2026-09-23T07:35:06Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-09-23T08:02:24Z",
+      "state": "Closed",
       "title": "Quota: a cooldown band before the stop \u2014 one new job per account from 90 %, none from 95 %",
       "type": "feature",
-      "updated": "2026-09-23T07:35:06Z"
+      "updated": "2026-09-23T08:02:24Z"
     },
     "F-0083": {
       "backlinks": [
@@ -5129,18 +5130,18 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed"
+        "3/3 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0083",
       "parent": "E-0001",
       "rank": 4,
-      "stage": "building 2/3",
-      "stage_since": "2026-09-22T19:04:13Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-09-23T08:02:24Z",
+      "state": "Closed",
       "title": "Scheduler clocks are configuration: each job group on its own interval, per product",
       "type": "feature",
-      "updated": "2026-09-22T19:04:13Z"
+      "updated": "2026-09-23T08:02:24Z"
     },
     "F-0084": {
       "backlinks": [
@@ -7823,7 +7824,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch worker/T-0006"
       ],
       "folder": "tasks",
       "id": "T-0006",
@@ -7831,11 +7832,11 @@
         "plan": "docs/plans/f-0079.md"
       },
       "parent": "F-0079",
-      "stage_since": "2026-09-22T14:50:30Z",
-      "state": "New",
+      "stage_since": "2026-09-23T08:02:24Z",
+      "state": "Active",
       "title": "the `batch` step waits at the CI ceiling; every command step carries the overlay",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T08:02:24Z",
       "writes": [
         "asf/tick/steps.py",
         "asf/tick/tick.py",
@@ -8632,12 +8633,13 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0029"
+        "commit e109cc1 names T-0029",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0029",
@@ -8645,11 +8647,11 @@
         "plan": "docs/plans/f-0082.md"
       },
       "parent": "F-0082",
-      "stage_since": "2026-09-23T07:35:06Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T08:02:24Z",
+      "state": "Closed",
       "title": "the status cell names the band, and an unreadable account reads as stopped",
       "type": "task",
-      "updated": "2026-09-23T07:35:10Z",
+      "updated": "2026-09-23T08:02:27Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_views.py"
@@ -8750,9 +8752,15 @@
     "T-0033": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch worker/T-0033"
       ],
       "folder": "tasks",
       "id": "T-0033",
@@ -8760,11 +8768,11 @@
         "plan": "docs/plans/f-0073.md"
       },
       "parent": "F-0073",
-      "stage_since": "2026-09-22T15:49:00Z",
-      "state": "New",
+      "stage_since": "2026-09-23T08:02:24Z",
+      "state": "Active",
       "title": "Intake reads the shape \u2014 `process_inbox`, the groom line, the intake directory",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T08:02:27Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/groom.py",
@@ -9013,8 +9021,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 3.82
+        "sessions": 2,
+        "usd": 4.96
       },
       "decided": true,
       "evidence": [
@@ -9030,7 +9038,7 @@
       "state": "Active",
       "title": "The check has two sources, three exclusions, and a CI step beside it",
       "type": "task",
-      "updated": "2026-09-23T07:35:10Z",
+      "updated": "2026-09-23T08:02:27Z",
       "writes": [
         "tools/check_conventions.sh",
         "tools/forbidden-conventions.txt",
@@ -9110,12 +9118,13 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "usd": 0.73
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0045"
+        "commit 4403c6f names T-0045",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0045",
@@ -9123,11 +9132,11 @@
         "plan": "docs/plans/f-0083.md"
       },
       "parent": "F-0083",
-      "stage_since": "2026-09-23T07:14:41Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T08:02:24Z",
+      "state": "Closed",
       "title": "The example and sample product files declare the card's four clocks",
       "type": "task",
-      "updated": "2026-09-23T07:14:44Z",
+      "updated": "2026-09-23T08:02:27Z",
       "writes": [
         "docs/products.example.yaml",
         "docs/config.example.yaml",
@@ -9138,6 +9147,12 @@
     "T-0046": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "no evidence found (2026-09-23)"
@@ -9152,7 +9167,7 @@
       "state": "New",
       "title": "one id per run \u2014 minted at launch, on the line, in the environment, the log and every commit",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T08:02:27Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/spawn.py",
