@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T13:28:50Z",
+  "generated": "2026-09-23T13:39:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2154,7 +2154,8 @@
     "B-0077": {
       "area": "asf.record",
       "backlinks": [
-        "B-0078"
+        "B-0078",
+        "B-0086"
       ],
       "children": [],
       "decided": true,
@@ -2176,7 +2177,9 @@
     },
     "B-0078": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0086"
+      ],
       "children": [],
       "evidence": [
         "commit ca17297 names B-0078",
@@ -2197,7 +2200,9 @@
     },
     "B-0079": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0086"
+      ],
       "children": [],
       "evidence": [
         "commit 449302e names B-0079",
@@ -2239,7 +2244,8 @@
     "B-0081": {
       "area": "factory",
       "backlinks": [
-        "T-0027"
+        "T-0027",
+        "B-0086"
       ],
       "children": [],
       "evidence": [
@@ -2326,7 +2332,9 @@
     },
     "B-0085": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0086"
+      ],
       "children": [],
       "evidence": [
         "commit 07e130a names B-0085",
@@ -2344,6 +2352,26 @@
       "title": "A tick step waits on a model session, so health and harvest stop for its whole duration",
       "type": "bug",
       "updated": "2026-09-23T12:57:28Z"
+    },
+    "B-0086": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0086",
+      "parent": "E-0001",
+      "priority": "need",
+      "severity": "S1",
+      "signature": "tick: installed package drifts from trunk",
+      "stage_since": "2026-09-23T13:36:18Z",
+      "state": "New",
+      "title": "The factory runs an installed copy of itself and never notices the trunk has moved",
+      "type": "bug",
+      "updated": "2026-09-23T13:39:09Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -3210,18 +3238,19 @@
         "B-0079",
         "B-0083",
         "B-0084",
-        "B-0085"
+        "B-0085",
+        "B-0086"
       ],
       "decided": true,
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 320.87,
+      "spend_usd": 325.86,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T13:18:26Z"
+      "updated": "2026-09-23T13:39:13Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -9410,6 +9439,12 @@
     "T-0049": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 5.0
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0049"
@@ -9424,7 +9459,7 @@
       "state": "Active",
       "title": "a run is alive only while its own session holds its pid; foreign sessions are never judged",
       "type": "task",
-      "updated": "2026-09-23T13:28:47Z",
+      "updated": "2026-09-23T13:39:13Z",
       "writes": [
         "asf/workers/health.py",
         "asf/workers/stall.py",
