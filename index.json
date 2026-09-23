@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T17:41:04Z",
+  "generated": "2026-09-23T17:55:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2473,20 +2473,27 @@
     "B-0089": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
-        "branch fix/B-0089"
+        "commit eb8cb90 names B-0089",
+        "CI green on main at or after it"
       ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0089",
       "parent": "E-0002",
       "severity": "S1",
-      "stage_since": "2026-09-23T17:40:51Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T17:55:16Z",
+      "state": "Closed",
       "title": "A new S1/S2 Bug waits up to 24h for the daily groom before BUG \u2192 FIX can take it",
       "type": "bug",
-      "updated": "2026-09-23T17:40:51Z"
+      "updated": "2026-09-23T17:55:22Z"
     },
     "B-0090": {
       "backlinks": [
@@ -2510,6 +2517,12 @@
     "B-0091": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "branch fix/B-0091"
@@ -2523,7 +2536,7 @@
       "state": "Active",
       "title": "asf new / asf inbox never commit or push: a card filed from the console never reaches the tick",
       "type": "bug",
-      "updated": "2026-09-23T17:40:51Z"
+      "updated": "2026-09-23T17:55:22Z"
     },
     "B-0092": {
       "backlinks": [],
@@ -3433,15 +3446,17 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 364.66,
+      "spend_usd": 368.85,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T17:40:57Z"
+      "updated": "2026-09-23T17:55:22Z"
     },
     "E-0002": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0058"
+      ],
       "children": [
         "F-0094",
         "F-0095",
@@ -3548,6 +3563,7 @@
       "area": "factory",
       "backlinks": [
         "T-0041",
+        "T-0059",
         "B-0092"
       ],
       "children": [
@@ -4065,16 +4081,25 @@
       "backlinks": [
         "B-0092"
       ],
-      "children": [],
+      "children": [
+        "T-0056",
+        "T-0057",
+        "T-0058",
+        "T-0059",
+        "T-0060",
+        "T-0061",
+        "T-0062"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 7.28
+        "sessions": 3,
+        "usd": 11.47
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main"
+        "spec on origin/main",
+        "plan on origin/main"
       ],
       "folder": "features",
       "id": "F-0023",
@@ -4082,12 +4107,12 @@
       "priority": "need",
       "rank": 23,
       "source": "prototype:docs/specs/22-grill.md",
-      "stage": "spec-approved",
-      "stage_since": "2026-09-23T17:27:09Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-23T17:55:16Z",
       "state": "Active",
       "title": "The grill: a request is interrogated before it is spent on",
       "type": "feature",
-      "updated": "2026-09-23T17:27:15Z"
+      "updated": "2026-09-23T17:55:22Z"
     },
     "F-0024": {
       "area": "factory",
@@ -4101,7 +4126,7 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch spec/F-0024"
       ],
       "folder": "features",
       "id": "F-0024",
@@ -4111,10 +4136,10 @@
       "source": "prototype:docs/specs/11-self-amendment.md",
       "stage": "card",
       "stage_since": "2026-09-21T17:01:58Z",
-      "state": "New",
+      "state": "Active",
       "title": "Self-amendment policy: the factory proposes, humans approve and merge",
       "type": "feature",
-      "updated": "2026-09-23T00:05:35Z"
+      "updated": "2026-09-23T17:55:16Z"
     },
     "F-0025": {
       "area": "factory",
@@ -4259,6 +4284,7 @@
       "area": "factory",
       "backlinks": [
         "F-0085",
+        "T-0056",
         "B-0054",
         "B-0059",
         "B-0076",
@@ -8003,7 +8029,8 @@
         "F-0073",
         "T-0031",
         "T-0035",
-        "T-0051"
+        "T-0051",
+        "T-0061"
       ],
       "blocked": true,
       "blockedBy": [
@@ -10002,6 +10029,188 @@
         "record:bugs/**",
         "record:groom/f-0002-card-evaluation.md",
         "record:index.json"
+      ]
+    },
+    "T-0056": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0056",
+      "links": {
+        "plan": "docs/plans/f-0023.md"
+      },
+      "parent": "F-0023",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T17:55:22Z",
+      "state": "New",
+      "title": "the tree grammar, the record-first filter, and `asf idea apply`",
+      "type": "task",
+      "updated": "2026-09-23T17:55:22Z",
+      "writes": [
+        "asf/idea/__init__.py",
+        "asf/idea/tree.py",
+        "asf/idea/answered.py",
+        "asf/idea/apply.py",
+        "asf/idea/cli.py",
+        "asf/cli.py",
+        "asf/conventions.py",
+        "docs/products.example.yaml",
+        "tests/test_idea.py",
+        "tests/test_cli.py",
+        "tests/test_conventions.py"
+      ]
+    },
+    "T-0057": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0057",
+      "links": {
+        "plan": "docs/plans/f-0023.md"
+      },
+      "parent": "F-0023",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T17:55:22Z",
+      "state": "New",
+      "title": "the front door, the `idea` brief kind, and `asf idea --enrich`",
+      "type": "task",
+      "updated": "2026-09-23T17:55:22Z",
+      "writes": [
+        "asf/idea/cli.py",
+        "asf/idea/apply.py",
+        "asf/record/new.py",
+        "asf/briefs/build.py",
+        "asf/briefs/templates/idea.md",
+        "asf/feeder/rows.py",
+        "tests/test_idea.py",
+        "tests/test_briefs.py"
+      ]
+    },
+    "T-0058": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0058",
+      "links": {
+        "plan": "docs/plans/f-0023.md"
+      },
+      "parent": "F-0023",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T17:55:22Z",
+      "state": "New",
+      "title": "intake resolves a forward reference, and one tree becomes an Epic with Features, Stories and acceptance",
+      "type": "task",
+      "updated": "2026-09-23T17:55:22Z",
+      "writes": [
+        "asf/groom/inbox.py",
+        "asf/groom/shape.py",
+        "tests/test_inbox_shape.py",
+        "tests/test_groom.py",
+        "tests/test_idea.py"
+      ]
+    },
+    "T-0059": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0059",
+      "links": {
+        "plan": "docs/plans/f-0023.md"
+      },
+      "parent": "F-0023",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T17:55:22Z",
+      "state": "New",
+      "title": "thinness is a derived fact, and the feeder emits `CARD \u2192 ENRICH`",
+      "type": "task",
+      "updated": "2026-09-23T17:55:22Z",
+      "writes": [
+        "asf/record/core.py",
+        "asf/feeder/rows.py",
+        "asf/conventions.py",
+        "docs/products.example.yaml",
+        "tests/test_feeder.py",
+        "tests/test_readers.py",
+        "tests/test_backlog.py",
+        "tests/test_conventions.py"
+      ]
+    },
+    "T-0060": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0060",
+      "links": {
+        "plan": "docs/plans/f-0023.md"
+      },
+      "parent": "F-0023",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T17:55:22Z",
+      "state": "New",
+      "title": "a brief for a document already in the record says refine, and names what must survive",
+      "type": "task",
+      "updated": "2026-09-23T17:55:22Z",
+      "writes": [
+        "asf/briefs/preamble.py",
+        "asf/briefs/build.py",
+        "asf/briefs/templates/spec.md",
+        "asf/briefs/templates/plan.md",
+        "tests/test_briefs.py"
+      ]
+    },
+    "T-0061": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0061",
+      "links": {
+        "plan": "docs/plans/f-0023.md"
+      },
+      "parent": "F-0023",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T17:55:22Z",
+      "state": "New",
+      "title": "`refine.verdict`, and the harvest holds a doc branch that regenerates",
+      "type": "task",
+      "updated": "2026-09-23T17:55:22Z",
+      "writes": [
+        "asf/harvest/refine.py",
+        "asf/harvest/harvest.py",
+        "asf/conventions.py",
+        "docs/products.example.yaml",
+        "tests/test_refine.py",
+        "tests/test_conventions.py"
+      ]
+    },
+    "T-0062": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0062",
+      "links": {
+        "plan": "docs/plans/f-0023.md"
+      },
+      "parent": "F-0023",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T17:55:22Z",
+      "state": "New",
+      "title": "`asf refine-check`, the shipped rule script, and directive 1 reads `checked`",
+      "type": "task",
+      "updated": "2026-09-23T17:55:22Z",
+      "writes": [
+        "asf/harvest/refine.py",
+        "asf/cli.py",
+        "rules/refine-not-rewrite.sh",
+        "docs/CONSTITUTION.md",
+        "tests/test_refine.py",
+        "tests/test_cli.py"
       ]
     }
   },
