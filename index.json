@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T15:06:13Z",
+  "generated": "2026-09-23T16:08:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2373,6 +2373,98 @@
       "type": "bug",
       "updated": "2026-09-23T13:39:09Z"
     },
+    "B-0087": {
+      "backlinks": [
+        "B-0089",
+        "B-0091"
+      ],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0087",
+      "parent": "E-0002",
+      "severity": "S2",
+      "stage_since": "2026-09-23T15:56:11Z",
+      "state": "New",
+      "title": "The console operator is never told what a tick did: no per-tick digest, no asf watch",
+      "type": "bug",
+      "updated": "2026-09-23T16:07:46Z"
+    },
+    "B-0088": {
+      "backlinks": [
+        "B-0089"
+      ],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0088",
+      "parent": "E-0002",
+      "severity": "S2",
+      "stage_since": "2026-09-23T15:56:11Z",
+      "state": "New",
+      "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
+      "type": "bug",
+      "updated": "2026-09-23T16:07:46Z"
+    },
+    "B-0089": {
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0089",
+      "parent": "E-0002",
+      "severity": "S2",
+      "stage_since": "2026-09-23T15:56:42Z",
+      "state": "New",
+      "title": "A new S1/S2 Bug waits up to 24h for the daily groom before BUG \u2192 FIX can take it",
+      "type": "bug",
+      "updated": "2026-09-23T16:07:46Z"
+    },
+    "B-0090": {
+      "backlinks": [
+        "B-0091"
+      ],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0090",
+      "parent": "E-0002",
+      "severity": "S2",
+      "stage_since": "2026-09-23T15:57:11Z",
+      "state": "New",
+      "title": "The operator's console rules live in assistant memory, not code: the plugin ships no hooks enforcing them",
+      "type": "bug",
+      "updated": "2026-09-23T16:07:46Z"
+    },
+    "B-0091": {
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0091",
+      "parent": "E-0002",
+      "severity": "S2",
+      "stage_since": "2026-09-23T15:58:24Z",
+      "state": "New",
+      "title": "asf new / asf inbox never commit or push: a card filed from the console never reaches the tick",
+      "type": "bug",
+      "updated": "2026-09-23T16:07:46Z"
+    },
     "D-0001": {
       "backlinks": [],
       "children": [],
@@ -3245,16 +3337,22 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 330.19,
+      "spend_usd": 333.31,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T15:06:10Z"
+      "updated": "2026-09-23T16:07:53Z"
     },
     "E-0002": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "B-0087",
+        "B-0088",
+        "B-0089",
+        "B-0090",
+        "B-0091"
+      ],
       "decided": false,
       "folder": "epics",
       "id": "E-0002",
@@ -5169,6 +5267,12 @@
         "E-0001"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 3.12
+      },
       "decided": false,
       "evidence": [
         "no evidence found (2026-09-23)"
@@ -5181,7 +5285,7 @@
       "state": "New",
       "title": "Closing is derived and total: a definition of done per type, reconciliation for work that predates it, nothing re-emitted",
       "type": "feature",
-      "updated": "2026-09-23T00:05:35Z"
+      "updated": "2026-09-23T16:07:53Z"
     },
     "F-0081": {
       "backlinks": [
@@ -9546,7 +9650,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch worker/T-0052"
       ],
       "folder": "tasks",
       "id": "T-0052",
@@ -9554,11 +9658,11 @@
         "plan": "docs/plans/f-0086.md"
       },
       "parent": "F-0086",
-      "stage_since": "2026-09-22T16:13:44Z",
-      "state": "New",
+      "stage_since": "2026-09-23T16:07:46Z",
+      "state": "Active",
       "title": "the groom proposes merges, batches and splits, and applies the answers",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T16:07:46Z",
       "writes": [
         "asf/groom/shape.py",
         "asf/groom/groom.py",
