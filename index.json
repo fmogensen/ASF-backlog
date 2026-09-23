@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T22:17:03Z",
+  "generated": "2026-09-23T22:30:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3528,12 +3528,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 428.68,
+      "spend_usd": 434.66,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T22:16:22Z"
+      "updated": "2026-09-23T22:29:10Z"
     },
     "E-0002": {
       "backlinks": [
@@ -3549,6 +3549,7 @@
         "F-0103",
         "F-0104",
         "F-0105",
+        "F-0106",
         "B-0087",
         "B-0088",
         "B-0089",
@@ -3562,12 +3563,12 @@
       "folder": "epics",
       "id": "E-0002",
       "rank": 2,
-      "spend_usd": 22.57,
+      "spend_usd": 28.95,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-23T22:16:22Z"
+      "updated": "2026-09-23T22:29:10Z"
     },
     "E-0003": {
       "backlinks": [
@@ -4181,6 +4182,7 @@
     "F-0023": {
       "area": "factory",
       "backlinks": [
+        "F-0106",
         "B-0092"
       ],
       "children": [
@@ -4317,6 +4319,7 @@
     "F-0028": {
       "area": "factory",
       "backlinks": [
+        "F-0106",
         "T-0065"
       ],
       "children": [
@@ -4601,8 +4604,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 4.85
+        "sessions": 2,
+        "usd": 10.22
       },
       "decided": true,
       "evidence": [
@@ -4619,7 +4622,7 @@
       "state": "Active",
       "title": "Same-session correction: review findings go back to the writer's own session; a fixer only for a dead one",
       "type": "feature",
-      "updated": "2026-09-23T19:33:56Z"
+      "updated": "2026-09-23T22:29:10Z"
     },
     "F-0040": {
       "area": "factory",
@@ -6012,7 +6015,9 @@
       "updated": "2026-09-23T16:29:56Z"
     },
     "F-0095": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0106"
+      ],
       "children": [
         "T-0083",
         "T-0084",
@@ -6168,8 +6173,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 4.35
+        "sessions": 2,
+        "usd": 9.58
       },
       "decided": true,
       "evidence": [
@@ -6184,7 +6189,7 @@
       "state": "Active",
       "title": "Corrections of mechanical failures run on Opus: 25% of all spend goes to correct/adjudicate/groom sessions",
       "type": "feature",
-      "updated": "2026-09-23T20:19:48Z"
+      "updated": "2026-09-23T22:29:10Z"
     },
     "F-0102": {
       "backlinks": [],
@@ -6243,15 +6248,32 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
       "folder": "features",
       "id": "F-0105",
       "parent": "E-0002",
-      "schema_version": 1,
-      "stage_since": "2026-09-23T22:16:42Z",
+      "stage": "card",
+      "stage_since": "2026-09-23T22:28:12Z",
       "state": "New",
       "title": "The landing gate runs 15\u201325 min on the operator's machine next to 8 sessions: gate on CI instead",
       "type": "feature",
-      "updated": "2026-09-23T22:16:42Z"
+      "updated": "2026-09-23T22:28:12Z"
+    },
+    "F-0106": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0106",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "stage_since": "2026-09-23T22:29:41Z",
+      "state": "New",
+      "title": "Plans cut Tasks already on trunk, and depend on ids that were never minted: coders end with an empty branch",
+      "type": "feature",
+      "updated": "2026-09-23T22:29:41Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -10956,9 +10978,16 @@
     },
     "T-0071": {
       "backlinks": [
+        "F-0106",
         "T-0068"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.13
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0071"
@@ -10976,7 +11005,7 @@
       "state": "Active",
       "title": "the tick raises the cap and ends the run in the same pass",
       "type": "task",
-      "updated": "2026-09-23T22:16:11Z",
+      "updated": "2026-09-23T22:29:10Z",
       "writes": [
         "asf/tick/step_health.py",
         "tests/test_tokens.py"
@@ -11114,6 +11143,7 @@
     },
     "T-0076": {
       "backlinks": [
+        "F-0106",
         "T-0080",
         "T-0081"
       ],
@@ -11362,9 +11392,16 @@
     },
     "T-0083": {
       "backlinks": [
+        "F-0106",
         "T-0085"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.39
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0083"
@@ -11379,7 +11416,7 @@
       "state": "Active",
       "title": "the feeder's three gates \u2014 on the trunk, after: counts the trunk, and parked",
       "type": "task",
-      "updated": "2026-09-23T22:16:11Z",
+      "updated": "2026-09-23T22:29:10Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -11387,9 +11424,16 @@
     },
     "T-0084": {
       "backlinks": [
+        "F-0106",
         "T-0085"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0084"
@@ -11404,7 +11448,7 @@
       "state": "Active",
       "title": "an empty end is its own kind, it is counted, and the second one parks",
       "type": "task",
-      "updated": "2026-09-23T22:16:11Z",
+      "updated": "2026-09-23T22:29:10Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py"
@@ -11452,8 +11496,8 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 0.38
+        "sessions": 2,
+        "usd": 0.74
       },
       "decided": true,
       "evidence": [
@@ -11469,7 +11513,7 @@
       "state": "Active",
       "title": "`asf unpark <item>` \u2014 the operator's way out, recorded beside the park",
       "type": "task",
-      "updated": "2026-09-23T20:19:48Z",
+      "updated": "2026-09-23T22:29:10Z",
       "writes": [
         "asf/workers/unpark.py",
         "asf/cli.py",
@@ -11851,6 +11895,12 @@
         "T-0098"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.4
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0097"
@@ -11865,7 +11915,7 @@
       "state": "Active",
       "title": "the measure \u2014 minutes from `asf inbox` to decided, and from decided to first session",
       "type": "task",
-      "updated": "2026-09-23T22:16:11Z",
+      "updated": "2026-09-23T22:29:10Z",
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
@@ -11912,6 +11962,12 @@
         "T-0100"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": 0.49
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0099"
@@ -11926,7 +11982,7 @@
       "state": "Active",
       "title": "the table \u2014 one definition of done, total, with no caller yet",
       "type": "task",
-      "updated": "2026-09-23T22:16:11Z",
+      "updated": "2026-09-23T22:29:10Z",
       "writes": [
         "asf/evidence/closing.py",
         "tests/test_closing.py"

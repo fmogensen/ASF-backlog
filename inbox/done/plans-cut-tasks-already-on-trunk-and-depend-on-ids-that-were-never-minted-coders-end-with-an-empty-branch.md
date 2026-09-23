@@ -1,0 +1,16 @@
+→ F-0106
+
+# Plans cut Tasks already on trunk, and depend on ids that were never minted: coders end with an empty branch
+parent: E-0002
+
+Plans cut Tasks that cannot produce work. On 2026-09-23 23:09–00:15, three coder sessions ended `empty branch: nothing to land`, and each was a planning defect, not a coding one:
+- **Already on trunk:** T-0083 (F-0095) duplicates T-0076, whose work is on main at dff2286. T-0084 (F-0095): its whole change (EMPTY_CAP, empty_ends, park_text, EmptyEndsTests) was already on main at 989b775. The plan was written without checking main.
+- **Unminted dependency:** T-0071 (F-0028) depends on "T-14651" (`stall.capped`), an id from a session's reserved range that was never minted. So the order hotfix (ea6b09e, plan_order) could not derive `after:`, and T-0071 launched before its dependency existed. The F-0023 plan commit (dfe10fe) names the same class: reserved five-digit ids that `asf check` does not accept.
+
+Operator direction (2026-09-23): speed and cost first. Each empty session costs a launch, a hold and a correction round.
+
+## Acceptance
+- [ ] Before a plan is accepted (plan review or the minting step), each Task is checked against trunk. A Task whose acceptance or writes are already satisfied on main is minted as closed-by-trunk with the sha, not as New. A test covers a plan whose Task is already on main.
+- [ ] A plan may reference only minted ids or its own Task numbers. The minter maps reserved or unknown ids to the plan's own Tasks, or refuses the plan with a NEEDS OPERATOR-free, self-correcting message back to the plan session. `after:` is never silently dropped.
+- [ ] The wave's preflight refuses to launch a coder whose Task's writes/acceptance are already on trunk, and closes it by trunk instead.
+- [ ] Tests for each.
