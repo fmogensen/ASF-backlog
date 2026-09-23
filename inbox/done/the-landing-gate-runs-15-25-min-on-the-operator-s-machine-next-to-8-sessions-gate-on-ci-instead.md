@@ -1,0 +1,14 @@
+→ F-0105
+
+# The landing gate runs 15–25 min on the operator's machine next to 8 sessions: gate on CI instead
+parent: E-0002
+
+The harvest gate runs the full suite on the same machine as up to 8 worker sessions. On 2026-09-23 a gate that takes about 95 s alone took 15–25 minutes (23:25–23:50: `tests.test_cutover` ran `tools/cutover.sh` about every 13 s for more than 13 minutes). gate_timeout_s had to be raised to 1800. Since 989b775 the gate no longer blocks the wave, but landing latency is still gate time, and the gate takes CPU from every working session.
+
+Operator direction (2026-09-23): speed and cost first.
+
+## Acceptance
+- [ ] The landing gate for a batch can run on the product's CI (GitHub Actions: this repo already has .github/workflows/tests.yml). Harvest pushes the candidate as a gate ref (e.g. `refs/heads/gate/<batch>`), waits for the workflow's conclusion on later ticks, then fast-forwards on green and holds on red. This is product config (`harvest.gate: local|ci`), default local.
+- [ ] With gate: ci, no gate test process runs on the operator's machine.
+- [ ] Per-module timings from the gate are kept, and the slowest modules are reported in the daily rollup. tests.test_cutover is the first to look at.
+- [ ] Tests cover the ci gate: green lands, red holds, workflow missing → NEEDS OPERATOR, and a stale gate ref is cleaned.
