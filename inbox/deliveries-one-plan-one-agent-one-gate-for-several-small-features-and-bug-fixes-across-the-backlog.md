@@ -16,3 +16,6 @@ Feature, parent E-0002. Decided by the operator on 2026-09-23 ("wouldn't it be m
 **Measured:** cost per landed item, sessions per landed item, time to land and failure rate, delivered vs. single, on this product. The rollup reports it.
 
 **Relation:** it builds on F-0086's batch signal and F-0041's size classes. Once built, it replaces "batch" within a Feature as the special case of a single-Feature delivery.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
