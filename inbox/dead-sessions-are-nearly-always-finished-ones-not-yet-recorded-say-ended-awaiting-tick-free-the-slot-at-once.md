@@ -10,3 +10,11 @@ Expected:
 - "dead" is kept for real deaths: killed, crashed, or no end-of-run record and nothing pushed. Each is shown with the reason.
 - The slot an ended session holds is released at once, not at the next tick, so the wave does not wait up to 10 minutes for capacity.
 - Tests cover all three cases in the view and in capacity.
+
+Operator, 2026-09-23: fix it **systemically**, not as a relabel. The class of defect is that each reader derives session state on its own: `asf status` from the process table, `asf sessions` from the registry plus pids, capacity/the wave from the pool, and the tick from the ledger when it next runs. So they disagree in the gap between ticks, and every view can mislead the same way again with the next state that gets added.
+
+Expected, systemically:
+1. **One classifier.** One function in asf.workers.lifecycle maps (ledger records, registry, pid liveness, the session's own end-of-run record, the branch on origin) to one state per run: working · ended-awaiting-tick(result) · finished · failed(reason) · dead(reason). status, sessions, capacity, the wave, harvest and the tick digest all call it, and nothing else derives state. A test asserts that each of those readers imports it and has no pid or ledger logic of its own.
+2. **The session writes its own end.** With F-0089, the session appends its end record to the ledger as it exits, so "awaiting tick" becomes a window of seconds, not up to 10 minutes. The tick reconciles; it does not discover.
+3. **Capacity counts only working runs.** An ended run frees its slot the moment its end record is written.
+4. **An invariant test** (F-0087 style) for the class: for any sequence of ledger and pid events, every reader reports the same state for the same run.
