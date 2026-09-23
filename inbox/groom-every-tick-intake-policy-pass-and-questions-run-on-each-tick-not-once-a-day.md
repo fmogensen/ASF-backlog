@@ -1,0 +1,14 @@
+# Groom every tick: intake, policy pass and questions run on each tick, not once a day
+parent: E-0002
+
+Feature, parent E-0002, rank 1. Decided by the operator on 2026-09-23 ("maybe groom should run every 10 min like the rest", "it continuously detects grooming issues").
+
+B-0089 closed on eb8cb90, which only files auto-filed S1/S2 Bugs as decided. The operator's direction recorded on B-0089 is not built: grooming runs every tick, and every undecided Bug is asked about from its first groom. Since T-0035, every new item (Bug or Feature) enters through `asf inbox`, so eb8cb90 helps none of them. At 20:45, seven inbox cards were still waiting for the 06:00 daily, including four the operator decided today.
+
+Expected:
+- **Every tick,** the groom's intake and policy pass run on what is new since the last tick. Inbox cards are typed and numbered, rules decide what they can, and the rest go to the adjudicator row. No per-tick card limit (tonight's runs typed only 2 cards per run).
+- The per-date groom file and answers stay the ledger, but they are additive within the day and idempotent (rerunning a tick changes nothing). The daily step keeps only rollup and stale.
+- **Every** undecided open item (not just auto-filed Bugs, and not only after 3 days) is a groom question from its first groom.
+- Metric: minutes from `asf inbox` to decided, and from decided to first session. Test: a card filed between two ticks is decided by the second.
+
+Also a closing defect for F-0080's definition of done: B-0089 closed when a commit naming it landed, although its acceptance (the operator's direction in its body) was unmet.
