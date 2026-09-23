@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T06:12:48Z",
+  "generated": "2026-09-23T06:43:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2210,19 +2210,42 @@
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0080",
       "parent": "F-0088",
       "priority": "need",
-      "schema_version": 1,
       "severity": "S1",
       "signature": "feeder: after not honoured on correct/adjudicate rows",
       "stage_since": "2026-09-23T05:56:17Z",
       "state": "New",
       "title": "after: holds the coder row only \u2014 correction and adjudicate launch anyway, on Opus",
       "type": "bug",
-      "updated": "2026-09-23T05:56:17Z"
+      "updated": "2026-09-23T06:43:44Z"
+    },
+    "B-0081": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "commit f3369f9 names B-0081",
+        "CI green on main at or after it"
+      ],
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0081",
+      "parent": "F-0075",
+      "priority": "need",
+      "severity": "S1",
+      "signature": "redact: env name rule too broad",
+      "stage_since": "2026-09-23T06:43:44Z",
+      "state": "Closed",
+      "title": "The redaction scanner reads GIT_CONFIG_KEY_0 as a secret and flags ordinary text",
+      "type": "bug",
+      "updated": "2026-09-23T06:43:44Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -3022,6 +3045,7 @@
         "F-0090",
         "F-0091",
         "F-0092",
+        "F-0093",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -3091,12 +3115,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 267.49,
+      "spend_usd": 271.34,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T02:50:36Z"
+      "updated": "2026-09-23T06:43:47Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -3656,7 +3680,9 @@
     },
     "F-0022": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0093"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -4801,17 +4827,17 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/5 tasks Closed"
+        "2/5 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0073",
       "parent": "E-0001",
-      "stage": "building 1/5",
-      "stage_since": "2026-09-22T18:21:28Z",
+      "stage": "building 2/5",
+      "stage_since": "2026-09-23T06:43:44Z",
       "state": "Active",
       "title": "Everything enters through the inbox; the type is derived from the card's shape",
       "type": "feature",
-      "updated": "2026-09-22T18:21:28Z"
+      "updated": "2026-09-23T06:43:44Z"
     },
     "F-0074": {
       "backlinks": [],
@@ -4834,17 +4860,17 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "3/7 tasks Closed"
+        "4/7 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0074",
       "parent": "E-0001",
-      "stage": "building 3/7",
-      "stage_since": "2026-09-23T05:52:18Z",
+      "stage": "building 4/7",
+      "stage_since": "2026-09-23T06:43:44Z",
       "state": "Active",
       "title": "Generic by construction: no product convention in code, proven by a second product in CI",
       "type": "feature",
-      "updated": "2026-09-23T05:52:18Z"
+      "updated": "2026-09-23T06:43:44Z"
     },
     "F-0075": {
       "backlinks": [
@@ -4860,7 +4886,8 @@
         "T-0024",
         "T-0025",
         "T-0026",
-        "T-0027"
+        "T-0027",
+        "B-0081"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -4872,18 +4899,18 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/6 tasks Closed"
+        "5/6 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0075",
       "parent": "E-0001",
       "rank": 1,
-      "stage": "building 1/6",
-      "stage_since": "2026-09-22T18:21:28Z",
+      "stage": "building 5/6",
+      "stage_since": "2026-09-23T06:43:44Z",
       "state": "Active",
       "title": "Redaction is a gate on every write path: operator names and secrets never reach a record or a public repo",
       "type": "feature",
-      "updated": "2026-09-22T18:21:28Z"
+      "updated": "2026-09-23T06:43:44Z"
     },
     "F-0076": {
       "backlinks": [
@@ -5258,80 +5285,116 @@
       "children": [
         "B-0080"
       ],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
       "folder": "features",
       "id": "F-0088",
       "parent": "E-0001",
       "priority": "need",
-      "schema_version": 1,
-      "stage_since": "2026-09-23T05:54:41Z",
+      "stage": "card",
+      "stage_since": "2026-09-23T06:43:44Z",
       "state": "New",
       "title": "Order is a derived relation: the plan states it, the planner writes it, preflight enforces it",
       "type": "feature",
-      "updated": "2026-09-23T05:54:41Z"
+      "updated": "2026-09-23T06:43:44Z"
     },
     "F-0089": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0093"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
       "folder": "features",
       "id": "F-0089",
       "parent": "E-0001",
       "priority": "need",
       "rank": 5,
-      "schema_version": 1,
-      "stage_since": "2026-09-23T06:02:04Z",
+      "stage": "card",
+      "stage_since": "2026-09-23T06:43:44Z",
       "state": "New",
       "title": "No run ends unlanded: the end-of-run check happens inside the session, not in the next one",
       "type": "feature",
-      "updated": "2026-09-23T06:02:04Z"
+      "updated": "2026-09-23T06:43:44Z"
     },
     "F-0090": {
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
       "folder": "features",
       "id": "F-0090",
       "parent": "E-0001",
       "priority": "need",
       "rank": 6,
-      "schema_version": 1,
-      "stage_since": "2026-09-23T06:02:04Z",
+      "stage": "card",
+      "stage_since": "2026-09-23T06:43:44Z",
       "state": "New",
       "title": "Adjudication is the last resort: the cheap causes are ruled out before Opus is spent",
       "type": "feature",
-      "updated": "2026-09-23T06:02:04Z"
+      "updated": "2026-09-23T06:43:44Z"
     },
     "F-0091": {
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
       "folder": "features",
       "id": "F-0091",
       "parent": "E-0001",
       "priority": "need",
       "rank": 7,
-      "schema_version": 1,
-      "stage_since": "2026-09-23T06:02:43Z",
+      "stage": "card",
+      "stage_since": "2026-09-23T06:43:44Z",
       "state": "New",
       "title": "asf improve: the self-improvement pass is a tick step, not something someone remembers to ask for",
       "type": "feature",
-      "updated": "2026-09-23T06:02:43Z"
+      "updated": "2026-09-23T06:43:44Z"
     },
     "F-0092": {
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
       "folder": "features",
       "id": "F-0092",
       "parent": "E-0001",
       "priority": "need",
       "rank": 2,
-      "schema_version": 1,
-      "stage_since": "2026-09-23T06:08:16Z",
+      "stage": "card",
+      "stage_since": "2026-09-23T06:43:44Z",
       "state": "New",
       "title": "An item has a budget: three sessions or $10, then it stops and says why",
       "type": "feature",
-      "updated": "2026-09-23T06:08:16Z"
+      "updated": "2026-09-23T06:43:44Z"
+    },
+    "F-0093": {
+      "area": "factory",
+      "backlinks": [],
+      "children": [],
+      "evidence": [
+        "no evidence found (2026-09-23)"
+      ],
+      "folder": "features",
+      "id": "F-0093",
+      "parent": "E-0001",
+      "priority": "need",
+      "rank": 4,
+      "stage": "card",
+      "stage_since": "2026-09-23T06:43:44Z",
+      "state": "New",
+      "title": "Model routing is argued from minutes-per-landing, and the pool gets a cheap tier",
+      "type": "feature",
+      "updated": "2026-09-23T06:43:44Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -8312,12 +8375,14 @@
       "backlinks": [
         "T-0024",
         "T-0027",
-        "B-0080"
+        "B-0080",
+        "B-0081"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "commit 73b4a3a names T-0022",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0022",
@@ -8325,11 +8390,11 @@
         "plan": "docs/plans/f-0075.md"
       },
       "parent": "F-0075",
-      "stage_since": "2026-09-22T15:21:17Z",
-      "state": "New",
+      "stage_since": "2026-09-23T06:43:44Z",
+      "state": "Closed",
       "title": "the one scanner \u2014 `asf/redact.py` and `asf redact`",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T06:43:44Z",
       "writes": [
         "asf/redact.py",
         "asf/cli.py",
@@ -8386,7 +8451,7 @@
       },
       "decided": true,
       "evidence": [
-        "branch task/T-0024"
+        "no evidence found (2026-09-23)"
       ],
       "folder": "tasks",
       "id": "T-0024",
@@ -8398,7 +8463,7 @@
       "state": "Active",
       "title": "both harvest push paths scan before they push \u2014 `asf/harvest/harvest.py`",
       "type": "task",
-      "updated": "2026-09-22T22:11:57Z",
+      "updated": "2026-09-23T06:43:44Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
@@ -8412,7 +8477,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "commit cc19830 names T-0025",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0025",
@@ -8420,11 +8486,11 @@
         "plan": "docs/plans/f-0075.md"
       },
       "parent": "F-0075",
-      "stage_since": "2026-09-22T15:21:17Z",
-      "state": "New",
+      "stage_since": "2026-09-23T06:43:44Z",
+      "state": "Closed",
       "title": "the git hooks a session and a human inherit \u2014 `asf/hooks.py`, `asf doctor`",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T06:43:44Z",
       "writes": [
         "asf/hooks.py",
         "asf/doctor.py",
@@ -8446,12 +8512,13 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 7,
-        "usd": 6.49
+        "sessions": 9,
+        "usd": 7.53
       },
       "decided": true,
       "evidence": [
-        "branch task/T-0026"
+        "commit fb58ca9 names T-0026",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0026",
@@ -8459,11 +8526,11 @@
         "plan": "docs/plans/f-0075.md"
       },
       "parent": "F-0075",
-      "stage_since": "2026-09-22T15:48:58Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T06:43:44Z",
+      "state": "Closed",
       "title": "no session is launched into a repo with no push gate \u2014 `asf/workers/spawn.py`",
       "type": "task",
-      "updated": "2026-09-22T22:06:43Z",
+      "updated": "2026-09-23T06:43:47Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -8484,12 +8551,13 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 7,
-        "usd": 5.85
+        "sessions": 9,
+        "usd": 8.66
       },
       "decided": true,
       "evidence": [
-        "branch task/T-0027"
+        "commit d1c77ef names T-0027",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0027",
@@ -8497,11 +8565,11 @@
         "plan": "docs/plans/f-0075.md"
       },
       "parent": "F-0075",
-      "stage_since": "2026-09-22T16:13:42Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T06:43:44Z",
+      "state": "Closed",
       "title": "one list and one matcher in ASF's own repo",
       "type": "task",
-      "updated": "2026-09-22T22:06:43Z",
+      "updated": "2026-09-23T06:43:47Z",
       "writes": [
         "tools/check_generic.sh",
         ".githooks/pre-commit",
@@ -8632,7 +8700,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "commit 1fdf14f names T-0032",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0032",
@@ -8640,11 +8709,11 @@
         "plan": "docs/plans/f-0073.md"
       },
       "parent": "F-0073",
-      "stage_since": "2026-09-22T15:49:00Z",
-      "state": "New",
+      "stage_since": "2026-09-23T06:43:44Z",
+      "state": "Closed",
       "title": "The record keeps the reading \u2014 `write_new_item`, file-bugs' shape line, `asf check`'s size rules",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T06:43:44Z",
       "writes": [
         "asf/record/ids.py",
         "asf/record/check.py",
@@ -8833,7 +8902,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "commit e8c992d names T-0039",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0039",
@@ -8841,11 +8911,11 @@
         "plan": "docs/plans/f-0074.md"
       },
       "parent": "F-0074",
-      "stage_since": "2026-09-22T15:49:00Z",
-      "state": "New",
+      "stage_since": "2026-09-23T06:43:44Z",
+      "state": "Closed",
       "title": "The briefs read the object, not their own copies",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T06:43:44Z",
       "writes": [
         "asf/briefs/preamble.py",
         "asf/briefs/build.py",
