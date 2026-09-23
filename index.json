@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T13:39:16Z",
+  "generated": "2026-09-23T14:22:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3245,12 +3245,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 325.86,
+      "spend_usd": 326.49,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-23T13:39:13Z"
+      "updated": "2026-09-23T14:22:42Z"
     },
     "E-0002": {
       "backlinks": [],
@@ -5064,17 +5064,17 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "3/5 tasks Closed"
+        "4/5 tasks Closed"
       ],
       "folder": "features",
       "id": "F-0076",
       "parent": "E-0001",
-      "stage": "building 3/5",
-      "stage_since": "2026-09-23T12:57:28Z",
+      "stage": "building 4/5",
+      "stage_since": "2026-09-23T14:22:38Z",
       "state": "Active",
       "title": "Session identity: every asf worker is distinguishable from every other, and from sessions that are not asf's",
       "type": "feature",
-      "updated": "2026-09-23T12:57:28Z"
+      "updated": "2026-09-23T14:22:38Z"
     },
     "F-0077": {
       "backlinks": [],
@@ -9442,12 +9442,13 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 5.0
+        "sessions": 2,
+        "usd": 5.63
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0049"
+        "commit 899506e names T-0049",
+        "CI green on main at or after it"
       ],
       "folder": "tasks",
       "id": "T-0049",
@@ -9455,11 +9456,11 @@
         "plan": "docs/plans/f-0076.md"
       },
       "parent": "F-0076",
-      "stage_since": "2026-09-23T13:28:47Z",
-      "state": "Active",
+      "stage_since": "2026-09-23T14:22:38Z",
+      "state": "Closed",
       "title": "a run is alive only while its own session holds its pid; foreign sessions are never judged",
       "type": "task",
-      "updated": "2026-09-23T13:39:13Z",
+      "updated": "2026-09-23T14:22:42Z",
       "writes": [
         "asf/workers/health.py",
         "asf/workers/stall.py",
@@ -9478,7 +9479,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-23)"
+        "branch worker/T-0050"
       ],
       "folder": "tasks",
       "id": "T-0050",
@@ -9486,11 +9487,11 @@
         "plan": "docs/plans/f-0076.md"
       },
       "parent": "F-0076",
-      "stage_since": "2026-09-22T16:13:44Z",
-      "state": "New",
+      "stage_since": "2026-09-23T14:22:38Z",
+      "state": "Active",
       "title": "the operator sees every session and its owner; the metrics event carries the id",
       "type": "task",
-      "updated": "2026-09-23T00:05:35Z",
+      "updated": "2026-09-23T14:22:38Z",
       "writes": [
         "asf/workers/__init__.py",
         "asf/views/sessions.py",
