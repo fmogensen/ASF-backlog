@@ -19,3 +19,6 @@ will prove it. The scorecard gains a "savings" block: card, expected, actual, ke
 
 First measurement to build, because the record cannot yet answer it: minutes and dollars **per landed
 change**, per kind (fix, spec, plan, code), from `metrics/sessions` joined to the landing.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

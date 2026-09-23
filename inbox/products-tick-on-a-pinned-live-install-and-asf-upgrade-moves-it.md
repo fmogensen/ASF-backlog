@@ -13,3 +13,6 @@ Expected:
 
 History:
 - 2026-09-23 operator: "how does botseon get updates when ASF updates as it does continuously?" — then accepted the recommendation: a clean live install that only takes merged work, with a rollback.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
