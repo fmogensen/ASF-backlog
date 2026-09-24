@@ -5,3 +5,6 @@ Spec and plan approval ignores the product's review naming. Approval of a spec/p
 Fix: one review-file contract for every kind. Spec, plan and code reviews are all found through `conventions.review_pattern`, and all read the same verdict syntax (`verdict: approved`, with the legacy first-word form accepted). The review brief writes exactly that. Migration: keep matching `<slug>-review-r<n>.md` as a fallback.
 
 Tests: a spec review under the default pattern with `verdict: approved` → spec-approved; the legacy name still works; the code path is unchanged.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

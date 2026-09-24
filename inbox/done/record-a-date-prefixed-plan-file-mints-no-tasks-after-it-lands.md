@@ -1,3 +1,5 @@
+→ F-0123
+
 # record: a date-prefixed plan file mints no Tasks after it lands
 
 A plan file whose name is date-prefixed and does not contain the item id

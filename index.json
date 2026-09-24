@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T06:30:40Z",
+  "generated": "2026-09-24T06:45:17Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3688,12 +3688,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 567.1,
+      "spend_usd": 567.82,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-24T05:44:30Z"
+      "updated": "2026-09-24T06:45:03Z"
     },
     "E-0002": {
       "backlinks": [
@@ -3725,12 +3725,12 @@
       "folder": "epics",
       "id": "E-0002",
       "rank": 2,
-      "spend_usd": 60.11,
+      "spend_usd": 60.29,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-24T05:44:30Z"
+      "updated": "2026-09-24T06:45:03Z"
     },
     "E-0003": {
       "backlinks": [
@@ -3755,7 +3755,8 @@
         "F-0115",
         "F-0116",
         "F-0117",
-        "F-0118"
+        "F-0118",
+        "F-0123"
       ],
       "decided": true,
       "folder": "epics",
@@ -4246,6 +4247,7 @@
       "backlinks": [
         "F-0073",
         "F-0077",
+        "F-0123",
         "S-0001",
         "S-0002",
         "S-0003",
@@ -5932,6 +5934,7 @@
       "backlinks": [
         "E-0001",
         "F-0086",
+        "F-0123",
         "T-0146"
       ],
       "children": [
@@ -7060,15 +7063,32 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-24)"
+      ],
       "folder": "features",
       "id": "F-0122",
       "parent": "E-0001",
-      "schema_version": 1,
-      "stage_since": "2026-09-24T06:30:33Z",
+      "stage": "card",
+      "stage_since": "2026-09-24T06:44:40Z",
       "state": "New",
       "title": "The /asf:* tables read backlog_dir, which the tick never pulls \u2014 views go stale",
       "type": "feature",
-      "updated": "2026-09-24T06:30:33Z"
+      "updated": "2026-09-24T06:44:40Z"
+    },
+    "F-0123": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0123",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-09-24T06:45:11Z",
+      "state": "New",
+      "title": "record: a date-prefixed plan file mints no Tasks after it lands",
+      "type": "feature",
+      "updated": "2026-09-24T06:45:11Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -13426,6 +13446,16 @@
         "T-0118"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 1485882,
+        "tokens_cache_write": 62619,
+        "tokens_input": 56,
+        "tokens_output": 16990,
+        "usd": 0.72
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0117"
@@ -13440,7 +13470,7 @@
       "state": "Active",
       "title": "the rule \u2014 who may be continued, and the reason when they may not",
       "type": "task",
-      "updated": "2026-09-24T06:29:59Z",
+      "updated": "2026-09-24T06:45:03Z",
       "writes": [
         "asf/workers/continuation.py",
         "tests/test_continuation.py"
@@ -15184,12 +15214,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 2405713,
-        "tokens_cache_write": 71267,
-        "tokens_input": 80,
-        "tokens_output": 21424,
-        "usd": 0.98
+        "sessions": 2,
+        "tokens_cache_read": 2762826,
+        "tokens_cache_write": 91244,
+        "tokens_input": 108,
+        "tokens_output": 24298,
+        "usd": 1.16
       },
       "decided": true,
       "evidence": [
@@ -15205,7 +15235,7 @@
       "state": "Active",
       "title": "harvest accepts a delivery branch and reports the members no commit named",
       "type": "task",
-      "updated": "2026-09-24T04:06:25Z",
+      "updated": "2026-09-24T06:45:03Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
