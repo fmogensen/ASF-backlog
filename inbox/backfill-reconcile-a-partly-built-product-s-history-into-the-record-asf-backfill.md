@@ -1,0 +1,32 @@
+# backfill: reconcile a partly-built product's history into the record (asf backfill)
+
+Operator decision (2026-09-24): adopting ASF on a product that was already partly built is the normal
+case, so ASF itself must reconcile the product's history into the record — a factory feature, not a
+per-product chore.
+
+Problem seen on the first adopting product: the pre-ASF migration marked shipped work `removed:`
+("done before the backlog existed"), so ASF counts none of it as delivered; old Features/Stories/Tasks
+sit New/Active with no evidence either way; ~140 pre-ASF PRs are still open (≈105 with clean
+unmerged work, ≈36 conflicting, several report-only) and nothing in ASF will ever land or close them.
+
+Proposal — `asf backfill --product <p> [--dry-run]`, deterministic (code over facts, no LLM judgement):
+1. Merged history → evidence. Walk every merged PR / merge commit on the trunk (incl. merge-queue
+   batch commits naming member PRs). Map each head branch to a card through the product's legacy
+   branch conventions (conventions.branch_patterns / a `legacy_branch` regex capturing a plan slug + task
+   number) and the card's `legacy_id`. Mark Tasks Closed with evidence (PR #, merge sha, date); roll up
+   Stories/Features to landed (closing rules as today); turn `removed: history…` Features into their
+   derived landed state with dates instead of hiding them.
+2. Open pre-ASF PRs → adopt or close. For each open non-lane PR: already on the trunk (patch-id /
+   merge-tree identical) → close with evidence; mapped to a card and mergeable → adopt as a lane run
+   (review row → gate → land, via the normal PR lifecycle); conflicting and stale, or report-only
+   (adds only a writer report) → close with a reason line. The product may declare a
+   `legacy_review {glob, verdict_regex}` to honour old APPROVED reviews on adopted PRs.
+3. Unmatched residue (hand merges, hotfixes without a pattern) → one code-generated table for the
+   operator; parity Stories close only on test evidence (the product's "done = tests green" rule).
+4. Output: a dry-run table first (per card: before → after, evidence), then one record commit.
+
+Acceptance: on a fixture product with legacy branches + merge-queue commits, --dry-run lists the
+mapped Tasks/Features with PR evidence and the open-PR decisions; the apply commit passes asf check;
+status "Record" shows the delivered counts.
+First real test: botseon (520 merged PRs, 157 merge-queue batches, 103 history-removed Features,
+142 open pre-ASF PRs).
