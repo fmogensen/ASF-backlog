@@ -13,3 +13,6 @@ State on 2026-09-24: v0.1.0 is tagged (626fffe cuts releases on its own). tools/
 - [ ] **Release notes:** each release tag gets a CHANGELOG entry generated from releases/<day>-<sha>.md (items shipped), and a GitHub Release with the install line pinned to that tag.
 - [ ] **Feedback channel:** GitHub issue templates (bug / idea / install problem). An opened issue becomes an `asf inbox` card on the next tick, linked back to the issue, and the issue gets a comment when its item lands.
 - [ ] **Release checklist:** a 0.1.x tag is cut only when the CI install test is green and the docs build with no dead links.
+- [ ] **First customer:** the first product other than ASF itself is installed only through the documented path (README Install, tools/install.sh at a release tag, the plugin from the marketplace), with no product-specific code or hand fixes. Every step that needs help becomes an inbox card, and the release is ready when that install goes from zero to a landed Task with none.
+
+Status 2026-09-24: tools/install.sh <product> [sha|tag] landed in d5fa4c9 (generic: pinned `asf-live` via pipx, hooks, clocks, doctor). The /asf:* skills prefer `asf-live`. The README has an Install section.
