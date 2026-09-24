@@ -12,3 +12,9 @@ Operator, 2026-09-24: "Do we have asf installer ready?" No. The pieces exist, bu
 - [ ] `asf uninstall` removes the jobs and hooks and leaves the record and repos untouched.
 - [ ] A README "Install" section of 5 lines or fewer, and a CI test that installs into a temp HOME against `sample/` and gets doctor green.
 - [ ] Relates to F-0104 (ticking on a pinned install; `asf upgrade` moves it).
+
+Operator, 2026-09-24: the install is `pipx install --suffix=-live "git+https://github.com/fmogensen/ASF.git@<sha|tag>"`. Tested at 26fe059: it installs `asf-factory 0.1.0` as `asf-live`, `--version` works, and the brief templates are packaged. Gaps to close:
+- [ ] The scheduler's jobs run the pinned `-live` install (its own interpreter, no PYTHONPATH or WorkingDirectory pointing at a checkout). Today's plist runs ~/Code/…/ASF, so harvest's fast-forward of the checkout is also a deploy. See F-0104.
+- [ ] The Claude Code plugin ships with the package (package data, or `asf plugin install` writing it from the installed package), so a git install gets the /asf:* skills. See B-0047.
+- [ ] The stamp names the installed version and sha, not the cwd's repo (`asf doctor@26cb764` was printed by an install of 26fe059).
+- [ ] `asf upgrade --to <sha|tag>` reinstalls the pinned `-live` and restarts the jobs; the doctor shows the installed sha against the trunk.
