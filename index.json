@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T21:32:48Z",
+  "generated": "2026-09-24T21:44:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1333,8 +1333,7 @@
       "evidence": [
         "commit 7c8c756 names B-0041",
         "CI green on main at or after it",
-        "held Closed; fixed would say Resolved",
-        "rule: closed-terminal"
+        "rule: quiet"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -1347,7 +1346,7 @@
       "state": "Closed",
       "title": "A relaunched job inherits the previous run's ended/failed fields; health skips it, the feeder re-emits it, harvest never lands it",
       "type": "bug",
-      "updated": "2026-09-24T07:24:43Z"
+      "updated": "2026-09-24T21:43:42Z"
     },
     "B-0042": {
       "area": "asf.harvest",
@@ -2803,17 +2802,17 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 4,
-        "tokens_cache_read": 9027687,
-        "tokens_cache_write": 195679,
-        "tokens_input": 302,
-        "tokens_output": 70407,
-        "usd": 3.29
+        "sessions": 5,
+        "tokens_cache_read": 9863489,
+        "tokens_cache_write": 226351,
+        "tokens_input": 344,
+        "tokens_output": 78007,
+        "usd": 3.66
       },
       "decided": true,
       "evidence": [
-        "branch fix/B-0090",
-        "rule: fixer"
+        "merge 6b6b89a of fix/B-0090 lands B-0090",
+        "rule: fixed"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2821,11 +2820,11 @@
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S2",
-      "stage_since": "2026-09-24T19:22:23Z",
-      "state": "Active",
+      "stage_since": "2026-09-24T21:43:42Z",
+      "state": "Resolved",
       "title": "The operator's console rules live in assistant memory, not code: the plugin ships no hooks enforcing them",
       "type": "bug",
-      "updated": "2026-09-24T21:32:45Z"
+      "updated": "2026-09-24T21:43:43Z"
     },
     "B-0091": {
       "backlinks": [
@@ -3235,8 +3234,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-24)",
-        "rule: filed"
+        "branch fix/B-0105",
+        "rule: fixer"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -3245,11 +3244,11 @@
       "schema_version": 1,
       "severity": "S2",
       "signature": "config reader loads a YAML flow-style map as a string - quota_guards written flow style crashed the quota guard",
-      "stage_since": "2026-09-24T15:36:18Z",
-      "state": "New",
+      "stage_since": "2026-09-24T21:43:42Z",
+      "state": "Active",
       "title": "Config reader: a YAML flow-style map loads silently as a string \u2014 parse it or reject it clearly",
       "type": "bug",
-      "updated": "2026-09-24T15:47:15Z"
+      "updated": "2026-09-24T21:43:42Z"
     },
     "B-0106": {
       "backlinks": [],
@@ -3612,6 +3611,23 @@
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
       "updated": "2026-09-24T17:54:31Z"
+    },
+    "B-0122": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0122",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "Status Prod row reports the dispatching head, not the deployed sha, for workflow_dispatch deploys",
+      "stage_since": "2026-09-24T21:44:01Z",
+      "state": "New",
+      "title": "Status Prod row reports the dispatching head, not the deployed sha, for workflow_dispatch deploys",
+      "type": "bug",
+      "updated": "2026-09-24T21:44:01Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -4573,7 +4589,8 @@
         "B-0118",
         "B-0119",
         "B-0120",
-        "B-0121"
+        "B-0121",
+        "B-0122"
       ],
       "decided": true,
       "evidence": [
@@ -4633,12 +4650,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 86.5,
+      "spend_usd": 86.86,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-24T21:32:45Z"
+      "updated": "2026-09-24T21:43:43Z"
     },
     "E-0003": {
       "backlinks": [
@@ -16415,7 +16432,9 @@
       "after": [
         "T-0137"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-0122"
+      ],
       "children": [],
       "decided": true,
       "evidence": [

@@ -1,0 +1,10 @@
+→ B-0122
+
+# Status Prod row reports the dispatching head, not the deployed sha, for workflow_dispatch deploys
+
+type: bug
+severity: S2
+
+The status Prod row reports the wrong sha for a deploy started by workflow_dispatch with an input sha. botseon deployed prod at 23:25 on 2026-09-24 via deploy-prod.yml with inputs.sha=8adaac8a3 (run 36061375318; the checkout log shows ref 8adaac8a3). The run's headSha is fbf9f8e29, the main head the dispatch ran from. /asf:status then printed "main is 0 commits ahead of prod fbf9f8e29". In fact prod was 8adaac8a3, and main was 4 commits ahead (#770, #771 and the T-0140 plan, not yet green).
+
+The deploy_sha provider `github-deployments` with rule `headSha` reads the dispatching ref, not what was deployed. Want: the deployed sha comes from what the run actually deployed. In order: the GitHub Deployment's sha when the workflow creates one; else the workflow_dispatch input named by config (e.g. `deploy_sha.input: sha`); else the ref the checkout step used. Fall back to headSha only when none of these exists, and then say so in the row ("prod ≈ headSha, dispatch input unknown"). Tests: a dispatch-with-input run whose headSha differs from its input sha reports the input sha and the right commits-ahead count. A green-looking Prod row that is wrong hides undeployed commits.
