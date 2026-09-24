@@ -1,0 +1,9 @@
+# Worker sessions are refused the repo's own lint (check_conventions) and printenv
+
+Worker sessions are refused the repo's own lint, `bash tools/check_conventions.sh`. They are also refused `printenv` / `env | grep`. So every session reports the lint "left out" and asks the operator to run it (NEEDS OPERATOR). Its branch lands with that check unverified.
+
+Evidence: ~/.ASF/logs/jobs/asf/plan-f-0041.jsonl, 2026-09-24 04:0x. Its `permission_denials` list 6 Bash calls, among them `bash tools/check_conventions.sh` (3 times) and `printenv | grep -iE 'backlog|ASF'`. `bash tools/check_generic.sh` was allowed in the same session.
+
+Fix: the permission rules ASF writes for worker sessions allow every check the gate itself runs. Derive that list from the gate/lint registry, not a hand-kept list, so a new lint is allowed the day it is added. A read-only `printenv` of the session's own env is harmless and needed for self-diagnosis.
+
+Test: the worker settings allow each lint command the gate runs, and adding a lint to the registry adds it to the allow list.
