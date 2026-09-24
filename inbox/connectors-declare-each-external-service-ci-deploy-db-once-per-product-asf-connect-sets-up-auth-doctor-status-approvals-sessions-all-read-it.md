@@ -50,3 +50,28 @@ Tests:
 - an action pattern triggers its approval class
 - an inherited secret is redacted in a session's commit
 - the Prod row reads the deploy connector
+
+## Also: LLM runners are connectors (operator, 2026-09-24)
+
+"Because of multiple cux runners or different LLM runners, auth is a thing that is probably needed."
+
+The worker pool is the biggest auth surface: several accounts per runtime, and possibly more than one runtime or LLM provider. Today each is configured by hand in `worker_pool.accounts` (config_dir, quota_command), outside any shared model. So runner accounts use the same connector model, at operator scope (config.yaml, shared by all products), not per product:
+
+```yaml
+connectors:
+  <account>:
+    kind: runner
+    runtime: <runtime name>        # the runtime adapter that launches sessions
+    config_dir: <isolated dir>     # the account's own home or config
+    check: [<argv>]                # is this account logged in, and as whom
+    login: [<argv>]                # the one interactive command to (re)login
+    quota: [<argv>]                # prints {five_h_pct, seven_d_pct, ...}; feeds the bands
+    models: [<model>, ...]         # what this account may run
+    lane: worker | cloud
+```
+
+- `asf connect <account>` does for a runner what it does for a service: detect, print the login command, verify, write. Adding a worker account is one command.
+- `asf connectors` shows every runner's identity, auth state, quota band and load, next to the service connectors.
+- An account whose auth expired is taken out of the pool (like `stop`), with one NEEDS OPERATOR line naming its login command. A session is never launched onto it to fail.
+- Service connectors with `sessions: inherit` are provisioned into every runner account's isolated config dir. That covers each account, and each runtime's own way of taking credentials, so a session on any account has the same external access.
+- Runtime-neutral: a runner connector names its runtime adapter. A second LLM runtime is a new adapter plus catalogue data, not a change to the pool, quota or approvals code.
