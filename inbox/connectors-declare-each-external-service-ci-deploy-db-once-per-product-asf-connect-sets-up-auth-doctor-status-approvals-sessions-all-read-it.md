@@ -93,3 +93,49 @@ Priority note: item 1 (scoping, isolated HOME) and item 2 (a prod or live contex
 
 ## Question
 This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
+
+## Key rotation as a connector capability (operator, 2026-09-24)
+
+"Think about how key rotation could be part of asf if the provider allows it."
+
+A connector can declare how its credential is rotated. ASF then runs rotation the same way every time: on a schedule, on a detected leak, or on demand.
+
+```yaml
+connectors:
+  <name>:
+    rotate:
+      mode: api | guided | none          # what the provider allows
+      create:  [<argv>]                  # api: mint a new credential; prints it on stdout only
+      revoke:  [<argv with {old_id}>]    # api: revoke the old one
+      max_age: 90d                       # scheduled rotation; doctor shows age vs max
+      overlap: 10m                       # both keys valid while consumers switch
+    consumers:                           # every place this secret lives
+      - keychain:<service>
+      - ci-secret:<NAME>                 # via the code-host connector's own action
+      - app-secret:<app>/<NAME>          # via the hosting connector's action
+      - env-file:<path>#<KEY>            # rewritten key by key, never sourced
+      - accounts: all                    # each worker account's isolated store
+```
+
+`asf rotate <connector> --product P` runs one deterministic sequence, in code, never inside an LLM session:
+1. **Create** the new credential (api), or for guided mode, print the provider console steps and read the new value from a hidden prompt or clipboard. The value never passes through chat, a transcript, argv or a log.
+2. **Distribute** it to every consumer, each through that consumer's own connector action. The approvals class for each write applies.
+3. **Verify** with the connector's proof check, using the new credential, from every place it's consumed (including one worker account).
+4. **Revoke** the old credential after `overlap` (api), or for guided mode print the revoke step and wait for confirmation.
+5. **Record** an audit line in the record: connector, rotated_at, who or what triggered it, and the fingerprints (a short hash of old and new, never the value). If distribution or verification fails at any consumer, roll back to the old credential (not yet revoked) and file NEEDS OPERATOR.
+
+Triggers:
+- **Schedule:** the health step flags `age > max_age` in doctor and the status table. Rotation then runs if the approvals matrix sets `rotate_secret` to auto, and otherwise raises one NEEDS OPERATOR line with the command.
+- **Leak:** when the redaction gate sees this connector's secret shape in a commit, transcript or log, it files the finding and starts an emergency rotation, auto if approvals allow, else NEEDS OPERATOR with top priority. This is the case from the first customer, a runner-provider token pasted into chat.
+- **On demand:** `asf rotate <connector>`, or `asf rotate --all-due`.
+
+Approvals: a new class, `rotate_secret` (a sub-kind of touch_security). The operator decides per product whether scheduled or emergency rotation runs unattended.
+
+Degradation: providers that can't mint credentials through an API get `mode: guided`, where ASF still does steps 2–5 (distribution, verification, audit, the revoke reminder). `mode: none` just tracks age and reminds.
+
+Tests use fake providers:
+- api rotation happy path; a consumer write fails → rollback, old credential not revoked
+- guided mode never echoes the value
+- a leak finding triggers rotation
+- the audit line holds fingerprints only
+- doctor shows age against max_age
