@@ -1,3 +1,5 @@
+→ F-0119
+
 # asf pr-hygiene --lanes: a machine-readable listing product rule checks can call
 
 Product rule checks sometimes need to know which PRs ASF's PR-hygiene pass already owns: its lanes (conflicting, stale, awaiting rebase, and so on). Without that, a product rule like "no PR sits conflicting" flags PRs that the hygiene pass is already handling. Today `asf pr-hygiene` has no listing output, so a product that retires its legacy tooling loses that signal. Reported by the first customer install.

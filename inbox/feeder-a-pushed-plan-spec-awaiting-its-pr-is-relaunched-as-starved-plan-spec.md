@@ -12,3 +12,6 @@ Expected: a spec/plan whose lane branch is pushed with an open PR (or a done rep
 harvest) is not STARVED — the row waits on the PR. Only an unmoved draft with no pushed lane
 branch is starved.
 Acceptance: a feeder test where the plan branch exists with an open lane PR yields no STARVED → PLAN row.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
