@@ -1,3 +1,6 @@
 # Landed spec/plan branches keep their worker worktree
 
 A spec/plan branch that lands keeps its worker worktree: botseon's plan-f-0061 and plan-f-0079 worktrees (cloud/plan-F-0061, cloud/plan-F-0079, 293M each) sat under state/botseon/worktrees 9h after their heads were on origin/main, with no session on them. Code branches are reaped by harvest (reap_one: worktree remove + branch -D after landing); the spec/plan landing path (land_spec) does not. Want: land_spec's adopt/landing, or health's worktree scan, reaps a worktree whose branch head is on the trunk and whose session has ended, the same way harvest does for code — never one with uncommitted files or a live session. With a test.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
