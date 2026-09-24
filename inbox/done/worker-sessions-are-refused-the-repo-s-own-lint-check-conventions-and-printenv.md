@@ -1,3 +1,5 @@
+→ F-0115
+
 # Worker sessions are refused the repo's own lint (check_conventions) and printenv
 
 Worker sessions are refused the repo's own lint, `bash tools/check_conventions.sh`. They are also refused `printenv` / `env | grep`. So every session reports the lint "left out" and asks the operator to run it (NEEDS OPERATOR). Its branch lands with that check unverified.
