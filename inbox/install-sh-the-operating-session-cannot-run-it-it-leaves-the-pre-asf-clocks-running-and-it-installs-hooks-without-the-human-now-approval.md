@@ -7,3 +7,6 @@ Found while installing ASF for botseon (first customer) on 2026-09-24, following
 2. install.sh installs the product's clocks but never retires a product's pre-ASF scheduler. botseon still runs com.nordio.factory-dispatch/-batch/-daily, and its botseon.yaml wave step runs the same factory-cron.sh as a command step. Right after install.sh, two clocks drive the same work every 10 minutes. The doctor's `one-factory` row passed anyway. Expected: install.sh (or `scheduler install`) refuses, or names the jobs to retire, while a known pre-ASF job for the product is loaded, and `one-factory` goes RED in that state.
 
 3. Hooks install (step 3) touches the product's tracked git hooks. botseon.yaml's approvals put that class under human-now, but install.sh runs it without asking.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
