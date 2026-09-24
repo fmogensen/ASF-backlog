@@ -1,0 +1,31 @@
+# A rule check that times out is filed as the rule being violated
+
+signature: rules: check timeout filed as violation
+severity: S2
+
+## What is wrong
+`run_check()` in `asf/rules/rules.py` turns a check that times out (10 s), cannot run, or exits with
+anything other than 0/1 into a violation line under the rule's own id. `file_bugs` keys the Bug on
+`<rule>: rule violated`, so a broken or slow *check* is filed as "<rule> violated: <rule title>" —
+an S2 claim that the product broke the rule — and it bumps a real violation Bug of the same rule
+with a timeout line.
+
+## Evidence (reported by the first customer install)
+- Three S2 Bugs titled "<rule> violated: …" whose only evidence line is
+  `<rule> check timed out after 10s <script>`.
+- A fourth, real per-rule violation Bug was bumped (count 1 -> 2) by a timeout line of its own check,
+  mixing "the check is broken" into "the rule is violated".
+- On a product repo of realistic size, checks that query the forge or walk history exceed 10 s.
+
+## Fix direction
+- Return check health separately from violations (e.g. `{"violations": [...], "broken": [...]}`
+  in `--json`).
+- `file-bugs` files a broken check under its own signature (`<rule>: check broken`), severity S3,
+  titled "Rule check <rule> times out / cannot run", never as "<rule> violated".
+- The per-check timeout becomes configuration (product yaml, default 10 s) and the timing of each
+  check is printed with `--verbose`.
+
+## Test
+Fixture rule whose script sleeps past the timeout: `asf rules check --json` lists it under
+`broken`, not `violations`; `asf file-bugs` files one S3 "check broken" Bug and does not touch an
+existing "<rule> violated" Bug of the same rule.
