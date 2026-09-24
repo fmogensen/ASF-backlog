@@ -1,0 +1,9 @@
+# A session commits under its own identity, never the operator's
+
+A worker session commits under its own identity, never the operator's.
+
+Rule to add to the record (imported from a product that moved its factory rules here): a session authors and signs off its commits as itself — the agent identity the launch configures — and the operator's name and e-mail appear only on commits the operator made. A brief template or preamble that tells a session to author or sign as the operator is a defect.
+
+Why: a history where agent work carries the operator's name cannot be read for who did what, and the `Signed-off-by:` trailer becomes an untrue statement. The existing sign-off rule (trailer must match the author) does not catch this: an agent authoring and signing as the operator passes it.
+
+Check (read-only, no fetch): over the product checkout's existing refs for session branches (the branch prefixes come from the product config), commits from the last 24 hours whose author or `Signed-off-by` equals the operator identity named in config. One line per offending commit.
