@@ -9,3 +9,6 @@ Want:
 - After 2 identical refusals, route by content: a lint or test on files outside writes → widen_footprint; a redaction finding → a security hold; otherwise → the stalemate or adjudicate path. Never an endless loop.
 
 Tests: a refusal is classified; the correction includes the tail; the routing after the second identical refusal.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

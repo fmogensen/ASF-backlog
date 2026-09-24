@@ -8,3 +8,6 @@ The groom digest's "For you" section must hold only genuine operator decisions: 
 4. Minor: derived Backlinks are written onto removed cards. Removed and moved cards get no derived sections.
 
 Tests: the For-you count on a fixture with templated duplicates and keyword-laden Stories is 0; a real human-now action (e.g. a new Epic) still appears.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

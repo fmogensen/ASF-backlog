@@ -102,3 +102,6 @@ Design verdicts:
 - **PD9 agree** — byte-identical PARITY without references (golden), alias of the first otherwise.
 - **PD10 agree** — tracing by rule from `legacy_id` (+ optional pattern) and `area`, dry-run first,
   idempotent `--apply`: a command, not a hand edit.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

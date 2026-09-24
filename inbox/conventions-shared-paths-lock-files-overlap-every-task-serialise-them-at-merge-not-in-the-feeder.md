@@ -8,3 +8,6 @@ Want: `conventions.shared_paths`, globs the product declares as merge-serialised
 - The default is empty.
 
 Tests: two Tasks sharing only a shared path → both launch; harvest lands them one after another; widen adds a shared path freely.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

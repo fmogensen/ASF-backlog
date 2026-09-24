@@ -5,3 +5,6 @@ Native docs-only landing counts only specs_dir, plans_dir and reviews_dir as doc
 Want: `conventions.doc_paths`, extra globs a product declares as documents (e.g. its decision register, its docs/). They count for docs-only landing and for the doc lane, and never for code gates. The default is empty, so nothing changes until a product sets it. doctor lists them.
 
 Tests: a branch touching specs_dir plus a declared doc_path → docs-only and merged natively; an undeclared path → not docs-only.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

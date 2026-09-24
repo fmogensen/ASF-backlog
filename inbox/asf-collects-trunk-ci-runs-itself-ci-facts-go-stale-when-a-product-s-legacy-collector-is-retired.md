@@ -15,3 +15,6 @@ The customer's trunk went red on its CI `gate` job, and a whole-tree lint in its
 - A required job red on the trunk's newest run → file-bugs files or bumps one Bug `CI red: <job> on <main>` with severity S1 and decided (it's a fact, not a judgement). Its Acceptance is the job green on the trunk. The wave's S1-first order then launches its fix-bug session ahead of any Task.
 - Green again on the trunk → decide_or_close_ci_red closes it.
 - While it's open, harvest and the wave say "trunk red: <job>" on held code rows instead of looping corrections.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
