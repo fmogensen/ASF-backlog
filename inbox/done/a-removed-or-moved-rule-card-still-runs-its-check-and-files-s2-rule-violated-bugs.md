@@ -1,0 +1,33 @@
+→ B-0099
+
+# A removed or moved rule card still runs its check and files S2 'rule violated' Bugs
+
+signature: rules: removed rule still enforced
+severity: S2
+
+## What is wrong
+`asf rules check` runs every rule card in a product's record that carries a `check:` script. It never
+looks at `removed:` or `moved_to:`. A rule card that was retired from the product's record (moved to
+another record, or removed) keeps its check running, and `asf file-bugs` keeps filing and bumping an S2
+"<rule> violated" Bug for it in the product's record every day.
+
+## Evidence (reported by the first customer install)
+- 15 per-rule S2 Bugs in a product's record were filed and then bumped *after* their rule cards had
+  been marked `removed: moved to the ASF record` with `moved_to: asf:R-nnnn`. The index still lists
+  each of them with `type: rule` and a `check:` path, so `load_rules()` / `partition()` treat them
+  as enforced.
+- The evidence lines describe a merge lane the product no longer runs (pull requests, batch branches,
+  review-round files, launch scripts), so no fix in the product can ever clear them.
+- F-0046 (a) asks that a *superseded* rule be excluded from the rule run; `removed:` / `moved_to:`
+  are a second retirement path that nothing honours.
+
+## Fix direction
+- `partition()` skips a rule whose typed fields carry `removed`, `moved_to` or `superseded_by`
+  (whichever retirement fields the schema defines) and reports it as `retired`, not enforced.
+- `asf file-bugs` closes, with a history line, an open "<rule> violated" Bug whose rule is retired.
+- `asf check` flags a retired rule card that still carries `check:` as a warning.
+
+## Test
+Fixture record with one live rule and one rule card carrying `removed:` + `moved_to:` + `check:`
+whose script always prints a violation: `asf rules check --json` lists no violation for the retired
+rule, and `asf file-bugs` files nothing for it and closes a pre-existing Bug with its signature.

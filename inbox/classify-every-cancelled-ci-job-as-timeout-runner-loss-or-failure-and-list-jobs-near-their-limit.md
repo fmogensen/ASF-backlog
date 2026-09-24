@@ -22,3 +22,6 @@ ingest derives the class; `file-bugs` keys CI signatures on it (a `runner-loss` 
 Three recorded provider payloads (all-green at limit, shutdown signal, failed step) produce the
 three classes; a job whose last ten durations include one within the margin appears in the
 near-limit list; a runner-loss files no Bug.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

@@ -18,3 +18,6 @@ red gate), never lands it.
 Fixture branch adding a line with a default marker is not landed and its session gets the finding;
 the same branch without the marker lands; a marker already on the trunk does not block an unrelated
 branch.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

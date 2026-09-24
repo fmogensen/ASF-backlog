@@ -23,3 +23,6 @@ has a lockfile.
 Fixture product whose setup command writes a marker file: a fresh worktree has the marker before
 the session starts; a failing command refuses the spawn with its first stderr line; a reused
 worktree does not re-run it unless the lockfile changed.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

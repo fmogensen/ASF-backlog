@@ -1,3 +1,5 @@
+→ B-0101
+
 # file-bugs mints Bugs with an empty Acceptance and no statement of what is wrong
 
 signature: file-bugs: filed Bug has no acceptance

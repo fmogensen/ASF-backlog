@@ -23,3 +23,6 @@ line with the runway in hours; a cap death relaunches from the branch on the nex
 Fixture ledger + two window accounts, one at 80 % with a far reset: a row predicted to need 30 % is
 placed on the other; with both infeasible the row waits with reason `predicted cap`; a week-long
 replay shows zero cap deaths.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

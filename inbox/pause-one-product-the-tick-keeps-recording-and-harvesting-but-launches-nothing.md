@@ -23,3 +23,6 @@ The control-plane Epic lists pause/unpause as a dashboard action, but no CLI pri
 Two fixture products, one paused: an hour of ticks launches nothing for the paused one and keeps
 launching for the other; its finished branches are still recorded; unpause restores launching on
 the next tick.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
