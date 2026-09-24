@@ -75,3 +75,18 @@ connectors:
 - An account whose auth expired is taken out of the pool (like `stop`), with one NEEDS OPERATOR line naming its login command. A session is never launched onto it to fail.
 - Service connectors with `sessions: inherit` are provisioned into every runner account's isolated config dir. That covers each account, and each runtime's own way of taking credentials, so a session on any account has the same external access.
 - Runtime-neutral: a runner connector names its runtime adapter. A second LLM runtime is a new adapter plus catalogue data, not a change to the pool, quota or approvals code.
+
+## First-customer requirements (service survey, 2026-09-24)
+
+Key fact from the survey, verified in code: worker spawn (asf/workers/runtime.py build_env → asf/hermetic.py) sets only the runtime's config dir. HOME is not isolated, so every worker session inherits **every** CLI login the operator has: keychain and dot-dirs for the code host, hosting, database, payments, and cloud IAM. Env-file secrets reach no worker. So worker access is all-or-nothing today, and the only guard on a production write is an approval_signals regex. On the surveyed machine, a payments CLI's active context was LIVE and reachable by every worker.
+
+The connector model must therefore include:
+1. **Default-deny scoping.** Workers get an isolated HOME. Only connectors with `sessions: inherit` are provisioned into it, each with its own least-privilege credential where the service supports one (a deploy token, a test-mode key, a read-only role). "All logins via HOME" stops.
+2. **Declared environments per connector** (`contexts: {dev: …, prod: …}`), with a doctor check that says which context is active. A worker may only ever see non-prod contexts unless the approvals matrix grants that class at `auto`. A live payments context visible to a worker is a doctor RED.
+3. **Proof checks in doctor**: the CLI proof command for CLI connectors, and a key-exists check (name only, never the value) for env/keychain-only tokens.
+4. **Loading rule**: connectors load secrets key by key from their declared source, never by sourcing a whole env file. Sourcing one leaked a deploy token twice.
+5. **Per-account prerequisites** for runner connectors, e.g. an app grant the code host needs per LLM account for cloud sessions, checked per account.
+6. **Headless-safe commands**: a connector can mark which of its CLI calls prompt when run headless and name the non-interactive equivalent (e.g. use the API form instead of a listing command that asks for approval).
+7. **Leak response**: when the redaction gate sees a connector's secret shape in a transcript, commit or log, it files one NEEDS OPERATOR line naming the connector and "rotate".
+
+Priority note: item 1 (scoping, isolated HOME) and item 2 (a prod or live context visible to workers) are safety defects in the current code. They should be built before the rest of the feature.
