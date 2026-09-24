@@ -1,3 +1,6 @@
 # one-factory is always RED for the asf product: its repo is the factory source
 
 Widens "one-factory flags the ASF repo's own agent worktrees as a second factory". With every worktree removed, `asf doctor --product asf` is still RED on one-factory: "frontmatter.py in product repo at .../ASF/asf/record/frontmatter.py". For the product whose repo IS the factory's source (asf itself), the check reads the factory's own code as a second copy, so the row can never go green. Want: one-factory skips the factory's own source repo (the repo the installed package was built from, or a product whose repo_slug is the ASF repo) and git worktrees of it, with tests. It still flags a real copy in another product's repo or on PATH.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
