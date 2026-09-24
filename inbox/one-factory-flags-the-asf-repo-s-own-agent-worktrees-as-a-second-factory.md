@@ -1,0 +1,3 @@
+# one-factory flags the ASF repo's own agent worktrees as a second factory
+
+`asf doctor`'s one-factory row goes RED on the ASF repo's own agent worktrees, e.g. "frontmatter.py in product repo at .../ASF/.claude/worktrees/agent-<id>/asf/record/frontmatter.py". A git worktree of the factory's own repo is not a second copy of a factory tool on PATH or in a product repo. Every session that uses isolated worktrees turns the row red until someone deletes them by hand. Want: one-factory skips paths that are git worktrees of the ASF repo itself (e.g. `git worktree list` of the repo, or `.claude/worktrees/`), with a test. It still flags a real copy in another product's repo or on PATH.
