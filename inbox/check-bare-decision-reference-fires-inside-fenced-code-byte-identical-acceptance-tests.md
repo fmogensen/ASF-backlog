@@ -11,3 +11,6 @@ not a record D-card. Six such findings in one product block every commit once th
 Expected: the bare-reference rule skips fenced code blocks (``` … ```) and inline code spans.
 Acceptance: a check test with `D287` inside a fenced block yields no finding; the same token in prose
 still does.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

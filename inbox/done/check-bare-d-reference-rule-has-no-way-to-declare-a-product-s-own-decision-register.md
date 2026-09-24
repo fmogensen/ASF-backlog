@@ -1,3 +1,5 @@
+→ F-0124
+
 # check: bare D-reference rule has no way to declare a product's own decision register
 
 `asf check`'s "bare decision reference" rule treats any `D<n>` token in prose as a reference to a
