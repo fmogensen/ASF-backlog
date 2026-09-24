@@ -1,3 +1,5 @@
+→ F-0122
+
 # The /asf:* tables read backlog_dir, which the tick never pulls — views go stale
 
 The /asf:* tables read the record at `backlog_dir`, the operator's checkout. The tick writes and pushes through its own clone at ~/.ASF/state/<product>/record, and never pulls `backlog_dir`. So the tables show a stale record unless the operator pulls by hand. The first customer install needed to learn "the two record copies" to understand what it saw. Found while writing the user guide.

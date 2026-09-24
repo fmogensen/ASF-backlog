@@ -5,3 +5,6 @@ With `scheduler.kind: cron`, tools/install.sh step 4 (`asf scheduler install`) e
 Fix: the scheduler install gets a distinct exit code for "printed the lines for the operator", and the installer reports it as "ACTION: add these crontab lines", not as a failure. Or the scheduler install writes the crontab entries itself, idempotently, between markers.
 
 Test: kind cron → the installer exits 0 with the action line; a real failure still exits non-zero.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
