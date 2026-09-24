@@ -1,3 +1,5 @@
+→ B-0096
+
 # A code branch re-gated as 'red outside its writes' can loop forever without being corrected
 parent: E-0002
 
