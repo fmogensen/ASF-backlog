@@ -16,3 +16,7 @@ a test covers it.
 
 ## Question
 Which Epic is this under? No open Epic shares a title word with it.
+
+## Related, found while writing the user guide (2026-09-24)
+
+/asf:prod reads `deploy_sha.prod.source` / `deploy_sha.prod.workflow`, but docs/products.example.yaml documents a flat `deploy_sha: {workflow, …}` shape. So the status Prod row, the prod view and the example use three different shapes for one fact. Fix all three together: one documented `deploy_sha` schema (per environment if needed), read the same way by status, prod and doctor, and flagged by `asf config check` when a product uses another shape.
