@@ -1,0 +1,14 @@
+→ B-0098
+
+# One invalid product file blanks multi-product views (capacity --all): isolate it as one row
+parent: E-0001
+
+signature: NEEDS OPERATOR: …/products/<p>.yaml: … is not a field of the product file
+parent: E-0001
+
+2026-09-24: `asf capacity --all` printed only a NEEDS OPERATOR line, because one product file listed in config.yaml `products:` is an unfinished template (TODO values, old field names). One invalid product config blanks the view for every product. Any multi-product reader (capacity --all, the pool's summed load, one-factory) is exposed the same way.
+
+## Acceptance
+- [ ] Multi-product readers load each product independently. An invalid one becomes a single row, `<p>  config invalid — asf doctor --product <p>`, and the valid products still render and count.
+- [ ] The pool's cross-product load skips an invalid product with one warning line; it does not crash and does not count it as zero-free.
+- [ ] Tests with one valid and one invalid product file.
