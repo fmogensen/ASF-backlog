@@ -1,3 +1,5 @@
+→ F-0109
+
 # install.sh: the operating session cannot run it, it leaves the pre-ASF clocks running, and it installs hooks without the human-now approval
 
 Found while installing ASF for botseon (first customer) on 2026-09-24, following the README install path.
