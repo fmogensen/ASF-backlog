@@ -6,3 +6,6 @@ Three small groom and daily gaps from the first customer install:
 3. `approvals.groom` defaults to off, so a new product's inbox is never groomed unless the operator knows to set it. `asf init` should write `approvals.groom: auto` into a new product yaml, and doctor should say "groom off: inbox is not groomed" when it's unset.
 
 Tests for each.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

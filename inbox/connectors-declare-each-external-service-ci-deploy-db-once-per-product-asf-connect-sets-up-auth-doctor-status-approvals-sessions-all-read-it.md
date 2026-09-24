@@ -90,3 +90,6 @@ The connector model must therefore include:
 7. **Leak response**: when the redaction gate sees a connector's secret shape in a transcript, commit or log, it files one NEEDS OPERATOR line naming the connector and "rotate".
 
 Priority note: item 1 (scoping, isolated HOME) and item 2 (a prod or live context visible to workers) are safety defects in the current code. They should be built before the rest of the feature.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

@@ -9,3 +9,6 @@ Want: `asf config check --product P` and `asf config migrate --product P`.
 - Unknown keys are reported, never a crash. Covers the prod-view crash on a list-shaped `customer_paths`.
 
 Tests: rename mapped; unknown key kept under x-unmapped; second run is a no-op; doctor hint.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

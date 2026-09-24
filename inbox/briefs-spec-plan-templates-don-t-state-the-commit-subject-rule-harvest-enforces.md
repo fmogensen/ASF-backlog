@@ -14,3 +14,6 @@ Expected: spec.md and plan.md (and review/adjudicate) state the subject conventi
 `plan({item_id}): <what>` / `spec({item_id}): <what>`, matching DOC_LANE_SUBJECT.
 Acceptance: the brief-build test asserts every document-lane template names the subject form;
 a plan session following the brief passes lane_refusal on the first round.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
