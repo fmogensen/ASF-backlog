@@ -13,3 +13,6 @@ Expected: the status view reads `product.conventions['deploy_workflow']` (the sa
 the evidence pass uses), and its "not configured" hint names `deploy_sha.workflow`.
 Acceptance: a product with only `deploy_sha.workflow` set shows a prod sha in the status Prod row;
 a test covers it.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

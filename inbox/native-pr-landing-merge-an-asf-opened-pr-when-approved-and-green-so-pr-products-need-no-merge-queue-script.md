@@ -16,3 +16,6 @@ Tests use a fake gh:
 - pending → waits
 - human-now approval → NEEDS OPERATOR line, not merged
 - merge-queue repo → enqueued, not merged directly
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

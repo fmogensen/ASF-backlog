@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T05:32:48Z",
+  "generated": "2026-09-24T05:44:46Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3684,12 +3684,12 @@
       "folder": "epics",
       "id": "E-0001",
       "rank": 1,
-      "spend_usd": 565.55,
+      "spend_usd": 567.1,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-24T04:56:39Z"
+      "updated": "2026-09-24T05:44:30Z"
     },
     "E-0002": {
       "backlinks": [
@@ -3721,12 +3721,12 @@
       "folder": "epics",
       "id": "E-0002",
       "rank": 2,
-      "spend_usd": 59.01,
+      "spend_usd": 60.11,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-24T05:09:41Z"
+      "updated": "2026-09-24T05:44:30Z"
     },
     "E-0003": {
       "backlinks": [
@@ -3749,7 +3749,9 @@
       ],
       "children": [
         "F-0115",
-        "F-0116"
+        "F-0116",
+        "F-0117",
+        "F-0118"
       ],
       "decided": true,
       "folder": "epics",
@@ -4818,7 +4820,9 @@
     },
     "F-0037": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0117"
+      ],
       "children": [],
       "decided": false,
       "evidence": [
@@ -6962,6 +6966,34 @@
       "title": "A session commits under its own identity, never the operator's",
       "type": "feature",
       "updated": "2026-09-24T04:56:13Z"
+    },
+    "F-0117": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0117",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-09-24T05:44:39Z",
+      "state": "New",
+      "title": "Command center: follow every product's factory live and talk to each product's orchestrator; each product keeps its own controller",
+      "type": "feature",
+      "updated": "2026-09-24T05:44:39Z"
+    },
+    "F-0118": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0118",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-09-24T05:44:39Z",
+      "state": "New",
+      "title": "Every product session shows its factory status each tick: a statusLine fed by the tick's snapshot",
+      "type": "feature",
+      "updated": "2026-09-24T05:44:39Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -12068,6 +12100,16 @@
         "T-0082"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 2493864,
+        "tokens_cache_write": 69144,
+        "tokens_input": 84,
+        "tokens_output": 21452,
+        "usd": 0.99
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0081"
@@ -12085,7 +12127,7 @@
       "state": "Active",
       "title": "the tick \u2014 the facts triage needs, the digest at launch, and the line that says why",
       "type": "task",
-      "updated": "2026-09-24T04:39:40Z",
+      "updated": "2026-09-24T05:44:30Z",
       "writes": [
         "asf/tick/step_wave.py",
         "asf/workers/pool.py",
@@ -12745,8 +12787,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "usd": 2.73
+        "sessions": 2,
+        "tokens_cache_read": 109347,
+        "tokens_cache_write": 1517,
+        "tokens_input": 6,
+        "tokens_output": 458,
+        "usd": 3.29
       },
       "decided": true,
       "evidence": [
@@ -12762,7 +12808,7 @@
       "state": "Active",
       "title": "ingest matches evidence and derives nothing, and a landing closes what it covered",
       "type": "task",
-      "updated": "2026-09-24T02:29:46Z",
+      "updated": "2026-09-24T05:44:30Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_ingest.py"
@@ -14299,6 +14345,16 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 241819,
+        "tokens_cache_write": 3479,
+        "tokens_input": 10,
+        "tokens_output": 2211,
+        "usd": 0.66
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0150"
@@ -14313,7 +14369,7 @@
       "state": "Active",
       "title": "`asf next` \u2014 the footer for what the cap hid, and `--all`",
       "type": "task",
-      "updated": "2026-09-24T05:32:48Z",
+      "updated": "2026-09-24T05:44:30Z",
       "writes": [
         "asf/feeder/render.py",
         "tests/test_feeder.py",
@@ -15786,6 +15842,16 @@
         "T-0204"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 853998,
+        "tokens_cache_write": 44479,
+        "tokens_input": 42,
+        "tokens_output": 8529,
+        "usd": 0.43
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0202"
@@ -15800,7 +15866,7 @@
       "state": "Active",
       "title": "the four thresholds are typed conventions with documented defaults",
       "type": "task",
-      "updated": "2026-09-24T05:32:48Z",
+      "updated": "2026-09-24T05:44:30Z",
       "writes": [
         "asf/conventions.py",
         "tests/test_conventions.py"

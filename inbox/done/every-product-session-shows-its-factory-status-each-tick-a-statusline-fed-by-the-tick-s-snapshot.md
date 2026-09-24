@@ -1,3 +1,5 @@
+→ F-0118
+
 # Every product session shows its factory status each tick: a statusLine fed by the tick's snapshot
 
 Every Claude Code session working on a product shows that product's factory status, updated each tick. The operator runs no `/loop` and no central controller session. Operator 2026-09-24: "each session runs asf for itself ... no central controller"; the durable fix was chosen over per-session `/loop 5m /asf:status`, which a session's auto-mode refuses to arm when a peer asks and which dies with the session.

@@ -1,0 +1,22 @@
+→ F-0117
+
+# Command center: follow every product's factory live and talk to each product's orchestrator; each product keeps its own controller
+parent: E-0004
+
+Operator direction, 2026-09-24: "Eventually, I want individual controllers for each software project, but a centralized command center for asf where I can follow all moving parts from all projects, and talk to each project orchestrator individually."
+
+The target has two layers:
+
+1. **One controller per product.** Each product has its own orchestrator: a Claude Code session running ASF for that product only. It supervises its own tick, holds its own backlog, files ASF defects into ASF's inbox, and upgrades itself. This is the state as of 2026-09-24, and it stays the unit of autonomy.
+
+2. **One command center for the operator.** It spans every product on the machine:
+   - **Follow:** every moving part, live, for every product: ticks, waves, sessions per account, harvest and gate results, holds, NEEDS OPERATOR lines, quota bands, fair-share caps, releases. It reads each product's tick snapshot and state, and it never runs any product itself.
+   - **Talk:** address one product's orchestrator directly, e.g. "botseon: why is F-0037 held?". The message reaches that product's session and the reply comes back to the command center. One conversation per product, never a broadcast.
+   - **No control inversion:** the command center observes and relays; each product's controller decides. The command center never launches, lands or edits another product's record.
+
+Relation to existing work:
+- This is the "follow and talk" half of E-0004 (Control plane — the dashboard served from the record).
+- The per-tick status snapshot card (statusLine) is its first building block: the command center reads the same snapshots.
+- The transport for "talk" is local cross-session messaging (the receiving session's inbound policy applies). A product session that holds messages for approval must be visible as such in the command center, not silently dropped.
+
+Open for the groom: whether the command center is a Claude Code session with an ASF skill (`/asf:center`), a web page (E-0004), or both, with the web page later.
