@@ -1,3 +1,5 @@
+→ B-0123
+
 # A failed daily run is never retried until the next day
 
 type: bug
