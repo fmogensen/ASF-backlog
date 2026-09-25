@@ -35,3 +35,13 @@ Acceptance:
 
 ## Question
 This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
+
+Evidence, 2026-09-25 23:25 (a product): all 12 heavy runners busy, 5 of 7 light idle; two runs
+filled every heavy box, and a trunk CI run sat queued 2h20m behind earlier PR runs (host FIFO).
+- Stage 2 adds per-job resource peaks (CPU, RAM) from a runner-side sampler (post-job hook
+  writing to the job summary or an artifact), beside duration and runner from the jobs API.
+- Stage 3's first question: which "heavy" jobs need a heavy box (compose stacks, e2e browsers,
+  timing guards) and which run on light (lint, typecheck, unit suites, docs checks) — decided on
+  measured peaks; interim heuristic: a job whose light-box duration was within 1.2x of heavy.
+- Stage 4 includes trunk starvation relief (built 2026-09-25): queued lower-priority runs are
+  cancelled and re-run after the trunk starts.
