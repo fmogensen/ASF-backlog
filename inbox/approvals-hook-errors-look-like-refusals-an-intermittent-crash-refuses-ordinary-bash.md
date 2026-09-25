@@ -1,0 +1,6 @@
+# Approvals hook errors look like refusals: an intermittent crash refuses ordinary Bash
+
+type: bug
+severity: S2
+
+The approvals pre-tool hook (`asf hook approvals`) intermittently refuses ordinary actions: botseon's B-1372 adjudicator, on 47c3e9d on 2026-09-25, had a read-only `ls` refused, and the identical retry passed. A crash, timeout or transient read error inside the hook currently looks the same to the session as a deliberate refusal, so sessions waste turns and record false holds. Want: a hook that fails for internal reasons (exception, a config or state read error, a timeout) says so plainly — "approvals hook error: <exception>; not a refusal — retry" — distinct from a policy refusal, and logs the traceback to the hook's own log. It stays fail-closed: an error is never an allow. A policy refusal keeps its current wording. Repeated hook errors in one session surface in the tick log as one "approvals hook erroring: N times in <job>" line. Investigate the likely causes under load (the hook re-reads config and product files on every call; concurrent writes to approvals.jsonl; a slow start of the installed binary). Tests: an exception inside classification yields the error wording, not the refusal wording.
