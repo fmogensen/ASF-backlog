@@ -12,3 +12,5 @@ Incident 2026-09-25: 3 of 5 Contabo heavy boxes (8c/24GB) sat idle for days beca
 6. Provider-neutral: GitHub runner labels are the first backend; the same pool feeds `ci.provider: vm` (inbox: external CI on any VM).
 
 Acceptance: tests with a fake runner API covering stranded-runner detection, reconcile adding labels, trial pass and rollback, and capacity from the pool.
+
+Operator refinement (2026-09-25, "labels seems misleading"): routing labels are capability only (heavy, light, and later gpu/docker). Provider and size are inventory in `ci.pool`, never in `runs-on`. An optional informational label is prefixed `provider-<name>`, and doctor refuses it in `runs-on`. Reconcile sets exactly the role label plus the provider label and strips the rest. Example of the current damage: Contabo boxes carried a `hetzner` label only because the jobs required it.
