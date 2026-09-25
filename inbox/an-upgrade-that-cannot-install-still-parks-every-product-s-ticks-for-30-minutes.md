@@ -6,3 +6,6 @@ Wanted, in code:
 (1) Write the pending marker only for a target the upgrade will actually install: green CI, and no refusal. Clear it the moment the upgrade refuses or the head moves to an uninstallable sha.
 (2) The pending expiry becomes 10 minutes, not 30.
 (3) The doctor's SCHEDULER row and the status Cron row say "waiting on upgrade to <sha> since <time> (owner <product>)" while a marker holds ticks, never "ok".
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
