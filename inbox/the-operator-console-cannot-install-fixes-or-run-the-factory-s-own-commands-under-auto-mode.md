@@ -1,0 +1,8 @@
+# The operator console cannot install fixes or run the factory's own commands under auto mode
+
+type: bug
+severity: S2
+
+An operator's orchestrator session cannot run the factory's own maintenance commands. Under Claude Code's auto mode, `bash tools/install.sh <p> <sha>`, `asf approvals resolve`, `launchctl` (pause/resume a clock), pushes to the trunk and `git worktree` cleanup are refused by the safety classifier as "production deploy", "security weaken" or "merge without review". An approval given in chat does not count, and the session cannot add its own allow rules (that is refused as self-modification). On 2026-09-25 this left 31 commits of fixes (the refusal-never-parks change, the push guard, the hook crash, the per-tick digest) on main and not installed, while both products kept running the old build. Every ASF user who runs the console in auto mode will hit the same wall.
+
+Want: `asf init` / tools/install.sh ends by offering the operator a reviewed allow list for the console, shown in full and written only when the operator confirms it at install time: `Bash(asf:*)`, `Bash(bash tools/install.sh:*)`, `Bash(launchctl bootout gui/*/asf.*)`, `Bash(launchctl bootstrap gui/*)`, `Bash(git worktree:*)`, pushes of lane branches, and a deny rule for `git push --force*` on the trunk. It goes into the operator's user-level settings or the product repo's `.claude/settings.json`, as they choose. The operating guide gets a "console permissions" section explaining why each rule is there. `asf doctor` gets a row "console permissions" that is RED when the console cannot run `asf` or the installer without a prompt. Tests: the installer's offered list is exactly the documented one; doctor reads the settings file and reports the missing rules by name.
