@@ -14,3 +14,6 @@ Want: ASF drives CI itself on one or more connected machines, with no dependency
 - Generic: any ssh-reachable machine, no product or vendor names in the code.
 
 Acceptance: tests with a fake host (a local subprocess acting as ssh) covering dispatch, green/red/timeout/cancel, required-check judging and capacity. botseon can then switch from github-actions to vm by changing config alone.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
