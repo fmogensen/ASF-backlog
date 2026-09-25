@@ -1,3 +1,5 @@
+→ closed (groom 2026-09-25, operator session: built directly in ASF, not by the factory)
+
 # ASF owns the CI runner pool: declared inventory, drift doctor, safe reconcile
 
 Feature: ASF owns the CI runner pool — declared inventory, drift detection, safe reconcile.
