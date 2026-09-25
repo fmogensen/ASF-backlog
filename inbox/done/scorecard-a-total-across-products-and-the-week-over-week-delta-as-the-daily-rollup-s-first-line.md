@@ -1,0 +1,15 @@
+→ F-0148
+
+# Scorecard: a total across products and the week-over-week delta, as the daily rollup's first line
+parent: E-0001
+
+Feature: the rest of F-0044. The scorecard loop (asf/scorecard, `asf scorecard`, the daily step's `scorecard` part) already computes, per product and per ISO week: features landed and on prod, $ per feature all-in and own, lead times, repair load, clutter; weekly rows persist in state/<product>/scorecard.jsonl.
+
+Still missing:
+- a total row across every configured product (sum of landed/on-prod, all-in $ over all products' landings);
+- the week-over-week delta beside each headline number (this week vs the stored snapshot of last week);
+- that line as the first line of metrics/daily/<day>.md (the rollup), so the retro reads it first.
+
+## Acceptance
+- [ ] `asf scorecard --all` prints one row per product plus a total, each with last week's value and the delta
+- [ ] the daily rollup's first line carries the same numbers
