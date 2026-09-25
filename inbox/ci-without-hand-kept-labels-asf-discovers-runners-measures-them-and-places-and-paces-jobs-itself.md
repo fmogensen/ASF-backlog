@@ -32,3 +32,6 @@ Acceptance:
 - A runner that turns slow is moved off timing-sensitive jobs by ASF, with one log line saying why.
 - No human-written routing label remains in any product's config.
 - The scorecard shows queue wait and CI minutes per Feature falling after stage 3.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
