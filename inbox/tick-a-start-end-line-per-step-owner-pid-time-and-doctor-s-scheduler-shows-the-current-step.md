@@ -1,0 +1,15 @@
+# tick: a start/end line per step (owner, pid, time) and doctor's SCHEDULER shows the current step
+parent: E-0001
+
+Follow-up to B-0119. That item's Task 1 only makes a command step's own stdout/stderr stream to
+the tick log as it is produced. The rest of B-0119's Description is still open:
+
+- A line when each step — asf-owned or a command step — starts and when it ends, naming the step,
+  owner, pid and time, flushed at once. Today the only per-step line is `[step:<name>] <seconds>s`,
+  printed once the step has already finished (`asf/tick/tick.py:_run_steps`), and it carries no
+  owner, pid or timestamp, and there is no line at all when a step starts.
+- The doctor's SCHEDULER row should then read that line to show the tick's current step live
+  (`asf/doctor.py`), so an operator watching `asf doctor` mid-tick sees which step is running, not
+  just whether the last tick was green.
+
+See `docs/plans/b-0119.md`'s "Accepted costs" for why this was split out of B-0119 itself.
