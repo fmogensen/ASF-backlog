@@ -6,3 +6,6 @@ Wanted in code:
 - The health step prunes entries older than N days (default 7) or beyond a size cap (default 10 GB), oldest first, with one line per pass.
 - Doctor shows the directory's size.
 - Scorecard or status records the turbo hit rate, if cheaply readable from turbo's run summary, to prove the cache pays.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
