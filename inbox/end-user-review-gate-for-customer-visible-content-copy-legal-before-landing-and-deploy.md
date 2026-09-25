@@ -11,3 +11,6 @@ Want (generic, deterministic routing; an LLM only does the reading):
 4. Views: `asf prod` NOT LIVE / ON PROD rows show the enduser review state.
 
 Acceptance: tests for classification, gate holding a landing and a deploy, the brief rendering with an audience, and the approval path for legal content.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
