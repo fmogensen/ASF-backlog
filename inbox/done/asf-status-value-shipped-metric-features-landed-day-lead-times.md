@@ -1,3 +1,5 @@
+→ F-0145
+
 # asf status: value-shipped metric (Features landed/day, lead times)
 
 Feature: a value-shipped metric in `asf status`.

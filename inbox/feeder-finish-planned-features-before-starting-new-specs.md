@@ -10,3 +10,6 @@ Rule (asf/feeder/rows.py plan_rows, called by step_wave.gated_plan):
 - Deterministic policy, no LLM. Show it in `asf next` so the reason a spec waits is visible.
 
 Acceptance: a test where planned-unbuilt > N, and the feeder picks Task rows first and holds a third spec row.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
