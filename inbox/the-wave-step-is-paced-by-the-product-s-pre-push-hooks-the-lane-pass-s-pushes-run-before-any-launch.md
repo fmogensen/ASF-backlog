@@ -1,0 +1,3 @@
+# The wave step is paced by the product's pre-push hooks: the lane pass's pushes run before any launch
+
+botseon 2026-09-25 about 18:09: [step:wave] took 786 s of a 977 s tick, so botseon gets only about 4 waves an hour. The lane pass inside the wave step pushes branches one at a time, and each push runs the product's own pre-push hook. botseon's hook ran a full turbo typecheck (botseon PR #796 fixes that on their side). ASF should not let a product's hooks set the wave's pace. Options: run the lane pass's pushes after the launches, or run them in the detached harvest process; give each push a time budget; and log per-push durations so the slow part shows in the tick log.
