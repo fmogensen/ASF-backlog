@@ -1,0 +1,6 @@
+# The wave overloads one account's quota window: 5 Opus specs died on 'session limit' mid-run
+
+type: bug
+severity: S1
+
+A wave can launch more work on an account than its quota window holds. On 2026-09-25 at 13:26, botseon's wave launched 5 Opus spec sessions on one account that was at 51% of its 5-hour window (the quota guard reads only the current percent against a 92% threshold). All 5 died mid-run with "You've hit your session limit · resets 3:20pm", wasting about $15 and every spec those sessions had written. The same wave's 4 sessions on the other account finished and pushed. Want: (1) The wave budgets per account. Each launch's expected quota cost comes from recent sessions of the same kind and model (e.g. an Opus spec is about 8-10% of a 5h window). An account takes launches only while current % + committed cost stays under the guard, and the rest go to accounts with headroom or wait. (2) A session that ends with a session-limit message is `quota-exhausted`, not a failure: no correction round, no hold, and it relaunches after the account's reset time, preferring its pushed branch or worktree so partial work is kept. (3) `asf status` quota row shows the reset time for stopped accounts. Tests: a wave with two accounts at 51% and 10% spreads Opus specs by headroom; a session-limit result yields a relaunch after reset, not a correction.
