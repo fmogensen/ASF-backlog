@@ -1,3 +1,5 @@
+→ F-0151
+
 # A branch whose remote is an older rebase of the same work strands the session's commits: settle two-rebase divergence in code
 
 A product's T-0338 on 2026-09-25: an adjudicate session worked on a branch rebased onto today's trunk, while origin/<branch> held an older rebase of the same Task. The two diverged. `git cherry` showed two remote-only commits with no patch-equivalent locally, so the push guard (790ae4e) refused and the auto-rebase (ffad194) could not settle it. The session ended "not pushed: 2 unpushed commits". The console rescued the work by hand to rescue/adjudicate-t-0338.
