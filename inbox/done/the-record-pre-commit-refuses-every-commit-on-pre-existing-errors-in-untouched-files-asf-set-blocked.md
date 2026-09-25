@@ -1,3 +1,5 @@
+→ B-0132
+
 # The record pre-commit refuses every commit on pre-existing errors in untouched files (asf set blocked)
 
 type: bug

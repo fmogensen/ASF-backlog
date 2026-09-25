@@ -1,3 +1,5 @@
+→ B-0131
+
 # The operator console cannot install fixes or run the factory's own commands under auto mode
 
 type: bug
