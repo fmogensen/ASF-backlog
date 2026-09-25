@@ -1,0 +1,6 @@
+# A failed daily run is never retried until the next day
+
+type: bug
+severity: S2
+
+The daily clock fires once, at 06:00. On 2026-09-25 the host was offline 03:00-10:20, so that run failed at record (exit 1), and nothing retried it. Today's groom --apply, stale sweep, file-bugs and rollup did not run, and status kept showing "Groom 2026-09-24" into the afternoon. Want: a daily that has not succeeded today (daily.stamp older than today) catches up on the next regular tick after its time, once, instead of waiting a day. The tick log names the catch-up ("daily: catching up — 06:00 run failed: <reason>"). Tests: a failed 06:00 run with a later successful tick runs the daily once; a successful 06:00 run does not run it again.
