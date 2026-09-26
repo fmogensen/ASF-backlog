@@ -12,3 +12,6 @@ Expected:
 - A publish refusal is shown with the exact git error.
 
 Tests: a result record plus an unpushed ready branch → the factory publishes it and nothing is held. A hold's text never says "without a result" when a result record exists.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
