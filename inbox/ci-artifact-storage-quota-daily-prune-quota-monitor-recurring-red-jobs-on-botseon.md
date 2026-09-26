@@ -8,3 +8,6 @@ Expected, as generic ASF behaviour:
 3. **Doctor:** a doctor row flags upload-artifact steps without `retention-days`, advisory only; that part is the product's ci.yml.
 
 Test: fake artifact list over the threshold → the oldest deletable artifacts are removed, and protected ones are kept.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
