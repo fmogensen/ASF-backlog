@@ -7,3 +7,6 @@ Wanted in code (asf/harvest/deploy.py, the relevance path filter for named targe
 - A per-target `exclude:` list under deploy_sha.<env>/targets.<name>, added to the defaults, with an `exclude_defaults: false` switch.
 - Relevance counts only commits touching a path under the target's paths and outside its excludes.
 - Tests for both.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
