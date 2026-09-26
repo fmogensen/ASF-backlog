@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-26T07:31:51Z",
+  "generated": "2026-09-26T07:39:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4102,12 +4102,12 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 9,
-        "tokens_cache_read": 20801951,
-        "tokens_cache_write": 449093,
-        "tokens_input": 528,
-        "tokens_output": 153160,
-        "usd": 10.27
+        "sessions": 10,
+        "tokens_cache_read": 25961228,
+        "tokens_cache_write": 526317,
+        "tokens_input": 680,
+        "tokens_output": 185456,
+        "usd": 11.93
       },
       "decided": true,
       "evidence": [
@@ -4125,7 +4125,7 @@
       "state": "Active",
       "title": "An install can leave a product's tick clock unloaded; status just omits it",
       "type": "bug",
-      "updated": "2026-09-26T07:15:06Z"
+      "updated": "2026-09-26T07:37:19Z"
     },
     "B-0137": {
       "backlinks": [],
@@ -4180,6 +4180,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-26)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0139",
@@ -4192,7 +4196,7 @@
       "state": "New",
       "title": "Invariant I10 refused a write to features/F-0098.md",
       "type": "bug",
-      "updated": "2026-09-26T07:31:49Z"
+      "updated": "2026-09-26T07:37:13Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -5190,12 +5194,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 782.82,
+      "spend_usd": 785.39,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-26T07:21:47Z"
+      "updated": "2026-09-26T07:37:19Z"
     },
     "E-0002": {
       "backlinks": [
@@ -8314,20 +8318,20 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/1 tasks Closed",
-        "rule: documented"
+        "1/1 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0098",
       "parent": "E-0001",
       "rank": 2,
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-09-24T18:32:13Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-09-26T07:37:13Z",
+      "state": "Closed",
       "title": "'dead' sessions are nearly always finished ones not yet recorded: say 'ended, awaiting tick', free the slot at once",
       "type": "feature",
-      "updated": "2026-09-24T18:32:13Z"
+      "updated": "2026-09-26T07:37:13Z"
     },
     "F-0099": {
       "backlinks": [
@@ -15210,6 +15214,7 @@
         "T-0088",
         "T-0089",
         "T-0090",
+        "B-0123",
         "B-0138",
         "B-0139"
       ],
@@ -15227,7 +15232,8 @@
       "decided": true,
       "evidence": [
         "merge 9f51f3a of worker/T-0087 lands T-0087",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0087",
@@ -15244,11 +15250,11 @@
         "split T-0087 asf | asf/feeder | asf/harvest | asf/tick | asf/views | asf/workers | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-26T07:28:43Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-26T07:37:13Z",
+      "state": "Closed",
       "title": "the classifier \u2014 five states, the evidence ladder, and `derive` re-expressed over it",
       "type": "task",
-      "updated": "2026-09-26T07:28:43Z",
+      "updated": "2026-09-26T07:37:13Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py",
@@ -15284,8 +15290,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-26)",
-        "rule: planned"
+        "F-0098 Closed (commit 9f51f3a)",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0088",
@@ -15298,11 +15304,11 @@
         "split T-0088 asf | asf/feeder | asf/tick | asf/workers | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-23T19:33:55Z",
-      "state": "New",
+      "stage_since": "2026-09-26T07:37:13Z",
+      "state": "Closed",
       "title": "the seat frees the moment the process is gone",
       "type": "task",
-      "updated": "2026-09-26T00:05:43Z",
+      "updated": "2026-09-26T07:37:13Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/capacity.py",
@@ -15326,8 +15332,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-26)",
-        "rule: planned"
+        "F-0098 Closed (commit 9f51f3a)",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0089",
@@ -15340,11 +15346,11 @@
         "split T-0089 asf/tick | asf/views | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-23T19:33:55Z",
-      "state": "New",
+      "stage_since": "2026-09-26T07:37:13Z",
+      "state": "Closed",
       "title": "the three views say what happened",
       "type": "task",
-      "updated": "2026-09-26T00:05:43Z",
+      "updated": "2026-09-26T07:37:13Z",
       "writes": [
         "asf/views/sessions.py",
         "asf/views/status.py",
@@ -15364,8 +15370,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-26)",
-        "rule: planned"
+        "F-0098 Closed (commit 9f51f3a)",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0090",
@@ -15375,11 +15381,11 @@
       "parent": "F-0098",
       "removed": "merged into T-0087 (groom 2026-09-23)",
       "schema_version": 1,
-      "stage_since": "2026-09-23T19:33:55Z",
-      "state": "New",
+      "stage_since": "2026-09-26T07:37:13Z",
+      "state": "Closed",
       "title": "health writes the classifier's reason, stall and harvest ask it, and nothing else derives state",
       "type": "task",
-      "updated": "2026-09-26T00:05:43Z",
+      "updated": "2026-09-26T07:37:13Z",
       "writes": [
         "asf/workers/health.py",
         "asf/workers/stall.py",
@@ -16538,12 +16544,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 1362563,
-        "tokens_cache_write": 51381,
-        "tokens_input": 58,
-        "tokens_output": 19345,
-        "usd": 1.68
+        "sessions": 2,
+        "tokens_cache_read": 3958643,
+        "tokens_cache_write": 102199,
+        "tokens_input": 164,
+        "tokens_output": 38014,
+        "usd": 2.59
       },
       "decided": true,
       "evidence": [
@@ -16571,7 +16577,7 @@
       "state": "Active",
       "title": "the wave continues, then launches \u2014 both lanes",
       "type": "task",
-      "updated": "2026-09-26T05:48:17Z",
+      "updated": "2026-09-26T07:37:19Z",
       "writes": [
         "asf/workers/continuation.py",
         "asf/tick/step_wave.py",
