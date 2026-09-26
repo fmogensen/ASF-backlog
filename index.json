@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-26T20:56:00Z",
+  "generated": "2026-09-26T21:29:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2898,8 +2898,7 @@
       "evidence": [
         "merge a712209 of fix/B-0095 lands B-0095",
         "CI green on main at or after it",
-        "held Closed; fixed would say Resolved",
-        "rule: closed-terminal"
+        "rule: quiet"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -2912,7 +2911,7 @@
       "state": "Closed",
       "title": "The PROD view crashes on a product whose `customer_paths` is the documented list",
       "type": "bug",
-      "updated": "2026-09-24T15:28:22Z"
+      "updated": "2026-09-26T21:27:52Z"
     },
     "B-0096": {
       "backlinks": [],
@@ -5083,6 +5082,7 @@
         "F-0160",
         "F-0162",
         "F-0163",
+        "F-0166",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -5200,12 +5200,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 899.38,
+      "spend_usd": 899.88,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-26T20:19:04Z"
+      "updated": "2026-09-26T21:28:24Z"
     },
     "E-0002": {
       "backlinks": [
@@ -5251,12 +5251,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 146.25,
+      "spend_usd": 147.84,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-26T20:35:18Z"
+      "updated": "2026-09-26T21:28:24Z"
     },
     "E-0003": {
       "backlinks": [
@@ -8122,7 +8122,9 @@
     },
     "F-0092": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0166"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -9724,15 +9726,34 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-26)",
+        "rule: card"
+      ],
       "folder": "features",
       "id": "F-0165",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage_since": "2026-09-26T20:55:46Z",
+      "stage": "card",
+      "stage_since": "2026-09-26T21:27:52Z",
       "state": "New",
       "title": "One push timeout for hookless and hooked pushes: 120 s kills real publishes",
       "type": "feature",
-      "updated": "2026-09-26T20:55:46Z"
+      "updated": "2026-09-26T21:27:52Z"
+    },
+    "F-0166": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0166",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-09-26T21:29:08Z",
+      "state": "New",
+      "title": "asf index drops hand-added card text when regenerating Backlinks",
+      "type": "feature",
+      "updated": "2026-09-26T21:29:08Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -16396,12 +16417,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 10,
-        "tokens_cache_read": 38414097,
-        "tokens_cache_write": 757836,
-        "tokens_input": 994,
-        "tokens_output": 288905,
-        "usd": 15.18
+        "sessions": 11,
+        "tokens_cache_read": 38596692,
+        "tokens_cache_write": 759566,
+        "tokens_input": 1000,
+        "tokens_output": 289427,
+        "usd": 15.68
       },
       "decided": true,
       "evidence": [
@@ -16425,7 +16446,7 @@
       "state": "Active",
       "title": "the schema module, and every prose reader it replaces",
       "type": "task",
-      "updated": "2026-09-26T20:19:04Z",
+      "updated": "2026-09-26T21:28:24Z",
       "writes": [
         "asf/workers/report.py",
         "tests/test_report.py",
@@ -18889,12 +18910,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 5,
-        "tokens_cache_read": 11214408,
-        "tokens_cache_write": 245638,
-        "tokens_input": 354,
-        "tokens_output": 84914,
-        "usd": 4.08
+        "sessions": 6,
+        "tokens_cache_read": 12372432,
+        "tokens_cache_write": 253913,
+        "tokens_input": 378,
+        "tokens_output": 90722,
+        "usd": 5.66
       },
       "decided": true,
       "evidence": [
@@ -18915,7 +18936,7 @@
       "state": "Active",
       "title": "the two brief kinds, their templates, their goldens and the folded digest",
       "type": "task",
-      "updated": "2026-09-26T20:35:18Z",
+      "updated": "2026-09-26T21:28:24Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/briefs/preamble.py",
@@ -19784,11 +19805,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 4778098,
-        "tokens_cache_write": 103792,
-        "tokens_input": 112,
-        "tokens_output": 33039,
+        "sessions": 2,
+        "tokens_cache_read": 6498754,
+        "tokens_cache_write": 112081,
+        "tokens_input": 134,
+        "tokens_output": 33077,
         "usd": 1.7
       },
       "decided": true,
@@ -19808,7 +19829,7 @@
       "state": "Active",
       "title": "ingest ticks the Story acceptance line",
       "type": "task",
-      "updated": "2026-09-26T20:19:04Z",
+      "updated": "2026-09-26T21:28:24Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_ingest.py"
