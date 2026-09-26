@@ -34,3 +34,6 @@ This is one `harvest --dry-run` pass (part of the wave step's `lane_pass`/`gate_
 tick wave also runs the feeder's gated invariant replans, brief-building `git` calls, and the
 launches themselves, plus retried reword/pushes seen in the tick log — consistent with the
 69-505s range observed. No code changed; no gbrain write calls made.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
