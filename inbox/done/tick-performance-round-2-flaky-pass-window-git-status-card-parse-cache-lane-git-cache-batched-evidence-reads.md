@@ -1,3 +1,5 @@
+→ F-0154
+
 # Tick performance round 2: flaky pass window, git status, card parse cache, lane git cache, batched evidence reads
 
 Follow-ups from the 2026-09-26 tick profile (29654dc1c cut the tick's Python CPU from 91 s to 22 s). These are measured, not guesses:
