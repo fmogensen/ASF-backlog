@@ -10,3 +10,6 @@ Expected: the pending upgrade installs within one tick interval once CI is green
 - the parked product's tick does the install itself when the running asf tick holds no lock the install needs.
 
 Test: overlapping owner ticks → the pending upgrade installs within N passes. It must never be "deferred" forever.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

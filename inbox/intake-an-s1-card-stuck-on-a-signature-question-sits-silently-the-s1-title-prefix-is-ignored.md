@@ -8,3 +8,6 @@ Gaps (asf/groom/inbox.py process_inbox):
 3. Consider accepting a card whose body has an `Error:` / failing-spec line as its signature, not only a `signature:` header.
 
 Tests: an `S1:` title prefix → severity S1. An S1 card left on a question → a status/NEEDS OPERATOR line naming the file.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
