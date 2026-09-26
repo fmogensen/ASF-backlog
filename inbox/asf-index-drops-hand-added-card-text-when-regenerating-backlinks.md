@@ -1,0 +1,3 @@
+# asf index drops hand-added card text when regenerating Backlinks
+
+2026-09-26 23:2x botseon session: appending a note to features/F-0092.md was refused by the record commit hook ("## Backlinks section is stale (run `asf index`)"); running `asf index` then rewrote F-0092.md and DROPPED the hand-appended note (3 tries). Two defects: (1) `asf index` must regenerate only the derived sections (Backlinks/Children) and preserve every other line of the card verbatim, including hand-added notes and History lines; (2) the hook's stale-Backlinks check should auto-stage the regenerated Backlinks (as 69380aa does for derived Backlinks) instead of blocking. Test: a card with an appended note + stale backlinks → index keeps the note, fixes backlinks; commit passes.
