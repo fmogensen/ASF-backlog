@@ -1,0 +1,5 @@
+# Health publish pushes run product hooks serially (health 427 s); a slow-hook branch can never publish
+
+2026-09-26 22:1x botseon tick on e2a1803: [step:health] 426.6 s (earlier ticks 26–190 s). Health's publish path pushes session branches with the product pre-push hook (correctly — real content), each up to git.push_timeout_s (120 s); one publish (worktree-m-hotfix-allowance-v3, a non-lane stray branch) timed out twice → "publish … refused: push timed out … left as it was", so that branch can never publish while its hook runs >120 s.
+
+Prove the split of health time (per publish push), then: (1) run hooked publish pushes concurrently (bounded pool, like the wave's launch setup) or move publishing to its own step after the wave so launches don't wait on hooks; (2) a publish that timed out N times gets a clear hold/next action rather than retrying forever; (3) don't publish non-lane branches (worktree-m-*) from health at all if they are not the factory's. Test each.
