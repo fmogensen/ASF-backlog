@@ -5,3 +5,6 @@ The tick in-flight table prints "dead pid <age>" for sessions that exited normal
 Expected: a session whose pid has exited reads "exited — awaiting harvest" (and "finished" when its log ends with a result record). "Dead" is kept for exits with no result record. The age shows how long ago it exited, not how long ago it launched.
 
 Test: a clean exit with a result record, not yet health-judged → the row reads exited/finished, not dead.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
