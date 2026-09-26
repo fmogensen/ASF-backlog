@@ -1,0 +1,15 @@
+→ F-0159
+
+# CI gate:--- test_dry_run: FAILED (rc N) is red 6 times a week
+parent: E-0001
+
+Filed by the scorecard loop for product asf (product cause, last 14 days).
+
+Reading: 6 red runs/week (threshold 3). 12 of 12 runs red over 14 days, 126 runner minutes; threshold 3/week.
+
+Verify: the loop reads this number over the 2 weeks before this card lands and the 2 weeks after; it must fall by 20 %, or the card is reopened with both numbers.
+
+scorecard-cause: gate:--- test_dry_run: FAILED (rc N) #1
+
+## Acceptance
+- [ ] gate:--- test_dry_run: FAILED (rc N) reads below 3 red runs/week over 2 weeks after landing
