@@ -5,3 +5,6 @@ Proven 2026-09-26 13:28:57–13:29:04Z: the botseon and asf waves both launched 
 Expected: seat claims are atomic across products, using a lock or compare-and-set on the ledger per account at `take()`. A wave re-reads the account load under the lock just before spawning.
 
 Test: two concurrent waves never exceed an account cap.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

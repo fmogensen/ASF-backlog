@@ -5,3 +5,6 @@ Relief cancelled botseon PR #849 run 36245122391 (p1-e2e, m8-e2e, site, deploy-d
 Expected: trunk relief never cancels a PR run whose PR changes CI config (.github/workflows/**, or configurable `ci.queue.relief_exempt_paths`). Nor does it cancel runs of PRs labelled or classified as infra/ci. It logs "exempt: CI change".
 
 Test: a PR touching .github/workflows/ci.yml is never a relief candidate.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
