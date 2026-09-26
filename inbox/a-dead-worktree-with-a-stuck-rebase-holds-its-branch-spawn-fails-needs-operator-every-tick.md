@@ -5,3 +5,6 @@
 Fix in code: before spawning on a branch, when the holding worktree has no live session: archive any commits not on origin (archive/<branch>-wip-<sha9>, push with --no-verify since it's an archive ref), `git rebase --abort`, remove the worktree, then spawn. Never surface this as NEEDS OPERATOR. Test: a dead worktree with a rebase in progress on the branch is archived+cleared and the spawn succeeds.
 
 Hand-cleared this once (archived f0690aeb2 to origin archive/cloud-T-0349-wip-f0690aeb2, aborted rebase, removed worktree).
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
