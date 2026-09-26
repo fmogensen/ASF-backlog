@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-26T07:21:50Z",
+  "generated": "2026-09-26T07:31:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4175,6 +4175,25 @@
       "type": "bug",
       "updated": "2026-09-26T00:05:43Z"
     },
+    "B-0139": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0139",
+      "last_filed": "2026-09-26",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0098.md",
+      "stage_since": "2026-09-26T07:31:49Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0098.md",
+      "type": "bug",
+      "updated": "2026-09-26T07:31:49Z"
+    },
     "D-0001": {
       "backlinks": [],
       "children": [],
@@ -5160,7 +5179,8 @@
         "B-0135",
         "B-0136",
         "B-0137",
-        "B-0138"
+        "B-0138",
+        "B-0139"
       ],
       "decided": true,
       "evidence": [
@@ -8275,7 +8295,9 @@
       "updated": "2026-09-24T18:05:40Z"
     },
     "F-0098": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0139"
+      ],
       "children": [
         "T-0087",
         "T-0088",
@@ -15188,7 +15210,8 @@
         "T-0088",
         "T-0089",
         "T-0090",
-        "B-0138"
+        "B-0138",
+        "B-0139"
       ],
       "children": [],
       "cost": {
@@ -15203,8 +15226,8 @@
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0087",
-        "rule: in-flight"
+        "merge 9f51f3a of worker/T-0087 lands T-0087",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0087",
@@ -15221,11 +15244,11 @@
         "split T-0087 asf | asf/feeder | asf/harvest | asf/tick | asf/views | asf/workers | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-24T18:32:13Z",
-      "state": "Active",
+      "stage_since": "2026-09-26T07:28:43Z",
+      "state": "Resolved",
       "title": "the classifier \u2014 five states, the evidence ladder, and `derive` re-expressed over it",
       "type": "task",
-      "updated": "2026-09-26T07:03:30Z",
+      "updated": "2026-09-26T07:28:43Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py",
