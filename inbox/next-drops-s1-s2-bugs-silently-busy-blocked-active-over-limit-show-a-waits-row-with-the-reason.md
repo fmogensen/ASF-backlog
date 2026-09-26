@@ -5,3 +5,6 @@ asf/feeder/rows.py bug_rows() drops a decided S1/S2 Bug from NEXT with no row an
 Expected: each case gives a WAITS row with its reason, for example "B-1378 — WAITS ON session fix-bug-b-1378 running" or "held: 4 attempts, over the limit". At minimum do this for S1/S2.
 
 Test: an S1 Bug in each of the four cases → a row with its reason.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
