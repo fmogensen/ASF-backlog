@@ -4733,3 +4733,49 @@
 {"branch": "merge-queue", "kind": "foreign-merge", "pr": 124, "product": "asf", "ts": "2026-09-27T18:12:52Z"}
 {"branch": "worker/T-0175", "kind": "foreign-merge", "pr": 42, "product": "asf", "ts": "2026-09-27T18:12:52Z"}
 {"branch": "worker/T-0232", "kind": "foreign-merge", "pr": 87, "product": "asf", "ts": "2026-09-27T18:12:52Z"}
+{"item": "T-0268", "job": "adjudicate-t-0268", "kind": "ruling", "product": "asf", "text": "All three rounds held the same finding: `asf/harvest/lane.py:1352` calls `review_at` with no `required`, so the table-first derivation (D4/PD6) runs in production with an always-empty required set and can't bounce on missing coverage — confirmed true by direct inspection of the line, unchanged since round 1. But T-0268 no longer has standing to fix it: a reshape session already split Task 4 (card T-0268) into Task 30900 (`asf/evidence/review.py`, `asf/harvest/lane.py`, `tests/test_review_reader.py`, `tests/test_harvest.py`, `tests/test_contracts.py`) and Task 30901 (`asf/evidence/evidence.py`, `tests/test_evidence.py`, `tests/test_pr_hygiene.py`, after: Task 30900), merged to `main` in `9795827be` (PR #158, \"plan(T-0268): split into 30900, 30901\"), landing between round 2 (19:13) and round 3 (20:06) and already an ancestor of this branch's HEAD. `docs/plans/f-0053.md:284-298` states plainly: \"Task 4 (card T-0268) — removed: split into 30900, 30901.\" Round 3 ran after that commit landed but never noticed it, repeating round 2's C byte-for-byte instead of recognizing the ask had already been granted elsewhere, one layer down, by name. The stalemate is therefore not a disagreement about the code — all three rounds and the reshape agree on the same root cause — it's that the review kept treating T-0268 as the terminal owner of a fix the plan had already reassigned to a card that hasn't opened yet. Widening T-0268's own `writes:` to include `lane.py`/`test_harvest.py` would contradict the plan that's already on `main`, so that path is overruled. What holds instead: T-0268 is closed as superseded by Task 30900 and Task 30901. Everything already committed on `worker/T-0268` (the reader in `asf/evidence/review.py`, the map in `asf/evidence/evidence.py`, both test files) matches 30901's footprint in full and 30900's footprint save its Step 4 (lane wiring) and Step 6 (`test_harvest.py` fixture); that work is not lost, it sits ready for whichever session opens 30900/30901 to build on. The one thing this ruling can't do is write the record half of the split (`removed:` on T-0268, `split_from:` on the two new cards) — `backlog/` isn't tracked in this repo, and the reshape session already flagged that same gap as its own `NEEDS OPERATOR` line.", "ts": "2026-09-27T18:18:42Z"}
+{"class": "touch_security", "count": 1, "hold": "F-0064/touch_security", "item": "F-0064", "kind": "held", "level": "human-now", "product": "asf", "ts": "2026-09-27T18:18:51Z"}
+{"active_products": 2, "borrowed": 0, "ci": null, "ci_bound_by": null, "ci_inflight": null, "fair_share": null, "kind": "capacity", "product": "asf", "sessions": 6, "sessions_bound_by": "product", "sessions_inflight": 5, "ts": "2026-09-27T18:19:00Z", "usable": 12}
+{"brief_kind": "adjudicate", "item": "T-0268", "job": "adjudicate-t-0268", "kind": "launch", "model": "claude-sonnet-5", "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/adjudicate-later-cheaper", "kind": "foreign-merge", "pr": 53, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/brief-no-worker-names", "kind": "foreign-merge", "pr": 54, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/ci-dedupe-push", "kind": "foreign-merge", "pr": 31, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/ci-head-starvation", "kind": "foreign-merge", "pr": 39, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/ci-queue-backfill", "kind": "foreign-merge", "pr": 48, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/ci-queue-own-clock", "kind": "foreign-merge", "pr": 47, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/ci-queue-record-rank", "kind": "foreign-merge", "pr": 60, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/ci-queue-rerun-rank", "kind": "foreign-merge", "pr": 62, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/correction-row-new-state", "kind": "foreign-merge", "pr": 52, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/flaky-ingest-ts", "kind": "foreign-merge", "pr": 58, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/gate-review-row", "kind": "foreign-merge", "pr": 73, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/naming-no-session", "kind": "foreign-merge", "pr": 51, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/no-stale-rerun", "kind": "foreign-merge", "pr": 64, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/phantom-busy-runners", "kind": "foreign-merge", "pr": 63, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/rebase-progress", "kind": "foreign-merge", "pr": 66, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/s1-label-aware", "kind": "foreign-merge", "pr": 35, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "agent/t-0195-coder-template", "kind": "foreign-merge", "pr": 70, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "console/T-0183-T-0187", "kind": "foreign-merge", "pr": 121, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "feat/F-0195-features-in-build-cap", "kind": "foreign-merge", "pr": 115, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "feature-delivery", "kind": "foreign-merge", "pr": 137, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/by-branch-latest-launch", "kind": "foreign-merge", "pr": 102, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/ci-queue-admitted-rerun-starts", "kind": "foreign-merge", "pr": 98, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/ci-queue-opens-held-prs", "kind": "foreign-merge", "pr": 85, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/died-twice-reads-the-run", "kind": "foreign-merge", "pr": 113, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/ended-run-liveness", "kind": "foreign-merge", "pr": 132, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/in-prod-auto-deploy", "kind": "foreign-merge", "pr": 146, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/landed-removed-and-superseded-carry", "kind": "foreign-merge", "pr": 145, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/landed-removed-via-index-load", "kind": "foreign-merge", "pr": 149, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/merge-refused-conflict-back", "kind": "foreign-merge", "pr": 77, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/merge-refused-conflict-mergeable", "kind": "foreign-merge", "pr": 86, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/publish-rebase-pingpong", "kind": "foreign-merge", "pr": 117, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/publish-superseded-branch-commits", "kind": "foreign-merge", "pr": 105, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/quota-stale", "kind": "foreign-merge", "pr": 84, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/redact-rebased-copies", "kind": "foreign-merge", "pr": 82, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/republish-ended-unpushed", "kind": "foreign-merge", "pr": 114, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/retired-done-survives-overlays", "kind": "foreign-merge", "pr": 151, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/review-answered-by-rebase", "kind": "foreign-merge", "pr": 107, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/review-current-across-rewrites", "kind": "foreign-merge", "pr": 97, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "fix/stale-stop-holds", "kind": "foreign-merge", "pr": 88, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "merge-queue", "kind": "foreign-merge", "pr": 124, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "worker/T-0175", "kind": "foreign-merge", "pr": 42, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
+{"branch": "worker/T-0232", "kind": "foreign-merge", "pr": 87, "product": "asf", "ts": "2026-09-27T18:19:03Z"}
