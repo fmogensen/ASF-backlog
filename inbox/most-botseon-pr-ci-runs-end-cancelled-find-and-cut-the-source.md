@@ -1,3 +1,6 @@
 # Most botseon PR CI runs end cancelled: find and cut the source
 
 botseon ci.yml p1-e2e jobs 2026-09-26 18:02Z–09-27 05:15Z: 74 of 125 cancelled — 6 main (superseded pass, fixed 332c1c7), 65 PR runs, 3 non-trunk pushes. The CI queue log accounts for only 13 PR cancels (relief). The other ~52 are likely ci.yml's cancel-in-progress on PR re-pushes (lane rebase/publish force-with-lease re-pushes a branch whose run was mid-flight) and the lane's cancel_ci after a merge. Each wasted run holds 4–5 heavy runners. Measure which source dominates; if it is re-pushes by the lane (rebase-only publishes), have the lane skip or delay a publish while the branch's CI run is past N minutes, or let the CI queue hold re-pushed branches until their slot.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
