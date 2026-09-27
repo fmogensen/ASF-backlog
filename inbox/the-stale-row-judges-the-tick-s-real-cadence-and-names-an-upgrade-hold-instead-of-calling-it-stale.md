@@ -1,0 +1,9 @@
+# The Stale row judges the tick's real cadence, and names an upgrade hold instead of calling it stale
+
+The status Stale row fires on nearly every healthy tick, so it no longer separates a stall from normal cadence.
+
+Evidence (2026-09-27, botseon, metrics/ticks/2026-09-27.jsonl): `stale_cell` (asf/views/status.py:219-243) judges the age of index.json `generated` against 2× the record clock (2×5m = 10 min). `generated` is stamped early in the tick ([record:index]) but reaches the operator checkout only at tick end (commit_and_push after harvest), and launchd `StartInterval=300` adds 5 min idle after each tick. The visible age is therefore rest of tick N + 5 min + tick N+1; any tick over ~5 min trips it. Stretches at 13:10 (13.3m), 14:01 (12.4m), 22:56 (29.6m), 23:18 were all healthy ticks. The 23:18 stretch was an upgrade hold (`tick: waiting — upgrade to 2a02de5 pending`), shown as STALE.
+
+Want: threshold = 2 × (clock interval + last metrics/ticks duration_s); while an upgrade hold parks the product show `upgrade.held_label` instead of STALE; STALE only when no tick finished a record in that window.
+
+Verify: a case beside the existing stale_cell tests in tests/test_tick.py; replay today's jsonl — only a real stall fires, 23:31–23:36 reads as the upgrade wait.
