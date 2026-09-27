@@ -1,3 +1,5 @@
+→ F-0221
+
 # The Stale row judges the tick's real cadence, and names an upgrade hold instead of calling it stale
 
 The status Stale row fires on nearly every healthy tick, so it no longer separates a stall from normal cadence.

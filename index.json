@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T21:29:53Z",
+  "generated": "2026-09-27T21:47:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3328,7 +3328,7 @@
       "evidence": [
         "merge 1f6f21a of fix/B-0109 lands B-0109",
         "CI green on main at or after it",
-        "rule: fixed"
+        "rule: quiet"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -3337,11 +3337,11 @@
       "schema_version": 1,
       "severity": "S1",
       "signature": "\"worker sessions and the landing lane run full test suites on the shared host at the same time\"",
-      "stage_since": "2026-09-24T21:32:43Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-27T21:43:12Z",
+      "state": "Closed",
       "title": "Full test suites run locally in parallel and exhaust the host (load 99, swap 95%)",
       "type": "bug",
-      "updated": "2026-09-25T13:08:01Z"
+      "updated": "2026-09-27T21:43:12Z"
     },
     "B-0110": {
       "backlinks": [],
@@ -5539,12 +5539,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1351.24,
+      "spend_usd": 1353.31,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T21:29:37Z"
+      "updated": "2026-09-27T21:44:42Z"
     },
     "E-0002": {
       "backlinks": [
@@ -5665,6 +5665,7 @@
         "F-0205",
         "F-0217",
         "F-0219",
+        "F-0221",
         "B-0146"
       ],
       "decided": true,
@@ -11590,6 +11591,20 @@
       "title": "Feeder: cap the Features in build by bandwidth, and finish the nearest-to-done first",
       "type": "feature",
       "updated": "2026-09-27T08:40:33Z"
+    },
+    "F-0221": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0221",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T21:46:40Z",
+      "state": "New",
+      "title": "The Stale row judges the tick's real cadence, and names an upgrade hold instead of calling it stale",
+      "type": "feature",
+      "updated": "2026-09-27T21:46:40Z"
     },
     "R-0001": {
       "backlinks": [
@@ -24380,12 +24395,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 13770350,
-        "tokens_cache_write": 177229,
-        "tokens_input": 220,
-        "tokens_output": 72579,
-        "usd": 4.19
+        "sessions": 2,
+        "tokens_cache_read": 20243187,
+        "tokens_cache_write": 281254,
+        "tokens_input": 368,
+        "tokens_output": 108046,
+        "usd": 6.25
       },
       "decided": true,
       "evidence": [
@@ -24404,7 +24419,7 @@
       "state": "Active",
       "title": "ingest sets the round's verdict from the table, and ticks the lines a code review proved",
       "type": "task",
-      "updated": "2026-09-27T21:02:05Z",
+      "updated": "2026-09-27T21:44:42Z",
       "writes": [
         "asf/record/ingest.py",
         "asf/proves.py",
