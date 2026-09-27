@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T08:33:45Z",
+  "generated": "2026-09-27T08:40:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5339,6 +5339,7 @@
         "F-0209",
         "F-0212",
         "F-0218",
+        "F-0220",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -5462,12 +5463,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1050.23,
+      "spend_usd": 1050.88,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T08:33:41Z"
+      "updated": "2026-09-27T08:40:16Z"
     },
     "E-0002": {
       "backlinks": [
@@ -5586,6 +5587,7 @@
         "F-0199",
         "F-0205",
         "F-0217",
+        "F-0219",
         "B-0146"
       ],
       "decided": true,
@@ -6944,7 +6946,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "3/7 tasks Closed",
+        "4/7 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -6954,12 +6956,12 @@
       "priority": "need",
       "rank": 40,
       "schema_version": 1,
-      "stage": "building 3/7",
-      "stage_since": "2026-09-27T03:36:11Z",
+      "stage": "building 4/7",
+      "stage_since": "2026-09-27T08:40:06Z",
       "state": "Active",
       "title": "Story-to-test gate: a Task's pull request must tick an acceptance line with the test that proves it",
       "type": "feature",
-      "updated": "2026-09-27T03:36:11Z"
+      "updated": "2026-09-27T08:40:06Z"
     },
     "F-0041": {
       "area": "factory",
@@ -10710,7 +10712,9 @@
       "updated": "2026-09-27T04:20:34Z"
     },
     "F-0195": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0220"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -11182,6 +11186,34 @@
       "title": "asf unpark releases one parked job per call",
       "type": "feature",
       "updated": "2026-09-27T05:59:16Z"
+    },
+    "F-0219": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0219",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T08:40:33Z",
+      "state": "New",
+      "title": "CI queue: runs cancelled to free main's reserved runners waste time; measure it and stop admitting runs that will be cancelled",
+      "type": "feature",
+      "updated": "2026-09-27T08:40:33Z"
+    },
+    "F-0220": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0220",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T08:40:33Z",
+      "state": "New",
+      "title": "Feeder: cap the Features in build by bandwidth, and finish the nearest-to-done first",
+      "type": "feature",
+      "updated": "2026-09-27T08:40:33Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -16803,6 +16835,7 @@
       "backlinks": [
         "F-0106",
         "F-0182",
+        "F-0219",
         "T-0085"
       ],
       "children": [],
@@ -21346,7 +21379,8 @@
       "decided": true,
       "evidence": [
         "merge 50afc8c of worker/T-0199 lands T-0199 (PR #45)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0199",
@@ -21355,11 +21389,11 @@
       },
       "parent": "F-0040",
       "schema_version": 1,
-      "stage_since": "2026-09-27T08:33:27Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-27T08:40:06Z",
+      "state": "Closed",
       "title": "ingest ticks the Story acceptance line",
       "type": "task",
-      "updated": "2026-09-27T08:33:27Z",
+      "updated": "2026-09-27T08:40:06Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_ingest.py"
@@ -22449,12 +22483,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 14520027,
-        "tokens_cache_write": 251835,
-        "tokens_input": 288,
-        "tokens_output": 79626,
-        "usd": 4.71
+        "sessions": 3,
+        "tokens_cache_read": 16280958,
+        "tokens_cache_write": 298845,
+        "tokens_input": 354,
+        "tokens_output": 91201,
+        "usd": 5.36
       },
       "decided": true,
       "evidence": [
@@ -22476,7 +22510,7 @@
       "state": "Active",
       "title": "the ruling \u2014 the groom asks, and `budget <n> [$<usd>]` answers",
       "type": "task",
-      "updated": "2026-09-27T08:05:56Z",
+      "updated": "2026-09-27T08:40:16Z",
       "writes": [
         "asf/groom/groom.py",
         "tests/test_groom.py"

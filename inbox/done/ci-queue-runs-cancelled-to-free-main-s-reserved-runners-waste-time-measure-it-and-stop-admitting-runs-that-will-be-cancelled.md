@@ -1,0 +1,15 @@
+→ F-0219
+
+# CI queue: runs cancelled to free main's reserved runners waste time; measure it and stop admitting runs that will be cancelled
+
+Botseon has 24 hours of data on cancelled CI runs (2026-09-26 06:00 to 09-27 08:30).
+
+- The `ci` workflow's runs were cancelled 64.6% of the time (252 of 390; 209 of the 308 pull_request runs). For comparison, `dco` was 1.6% and voice/computer about 15%.
+- The queue log shows runs being cancelled to hand the heavy runners back to main. It records sunk time, for example "cancelled in-progress pr run ... main's reserved runners nordio-ci-4b held by a pr job ... sunk 66 min" on T-0084, and 5 min on spec-tinkerer-mode.
+- The heavy pool is short for long stretches: the usual log line reads "heavy 0 free, needs 5-7". The starvation guard forced 23 admissions, and runs waited from 20 minutes to 3 h 42 min.
+- Botseon PR #849 (merged 09-26 15:25) reserved 2 heavy runners for main only. That reservation may cause both the waits and the cancellations.
+
+Wanted:
+1. In the queue metrics, count separately the runs cancelled because a newer push replaced them (expected) and the runs cancelled to hand main's reserved runners back (waste), with the sunk minutes for each.
+2. Before a PR job starts on a runner reserved for main, check it can finish before main needs that runner. Otherwise don't admit it, rather than admitting it and cancelling it later.
+3. Measure whether #849's reservation saves or wastes time overall: main's wait time against the PR minutes sunk and the PR wait, and suggest a size for ci.reserve.
