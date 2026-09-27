@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T08:15:49Z",
+  "generated": "2026-09-27T08:27:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5462,12 +5462,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1038.34,
+      "spend_usd": 1043.64,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T08:15:46Z"
+      "updated": "2026-09-27T08:27:19Z"
     },
     "E-0002": {
       "backlinks": [
@@ -6064,7 +6064,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/8 tasks Closed",
+        "1/8 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -6073,12 +6073,12 @@
       "priority": "need",
       "rank": 14,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-27T08:05:44Z",
+      "stage": "building 1/8",
+      "stage_since": "2026-09-27T08:27:11Z",
       "state": "Active",
       "title": "P3 wave 6 \u2014 the CLI and the plugin",
       "type": "feature",
-      "updated": "2026-09-27T08:05:44Z"
+      "updated": "2026-09-27T08:27:11Z"
     },
     "F-0015": {
       "area": "factory",
@@ -8518,7 +8518,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/7 tasks Closed",
+        "2/7 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -8527,12 +8527,12 @@
       "priority": "need",
       "rank": 2,
       "schema_version": 1,
-      "stage": "building 1/7",
-      "stage_since": "2026-09-27T07:19:21Z",
+      "stage": "building 2/7",
+      "stage_since": "2026-09-27T08:27:11Z",
       "state": "Active",
       "title": "An item has a budget: three sessions or $10, then it stops and says why",
       "type": "feature",
-      "updated": "2026-09-27T07:19:21Z"
+      "updated": "2026-09-27T08:27:11Z"
     },
     "F-0093": {
       "area": "factory",
@@ -17554,8 +17554,19 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 4049341,
+        "tokens_cache_write": 97055,
+        "tokens_input": 104,
+        "tokens_output": 40226,
+        "usd": 4.0
+      },
       "decided": true,
       "evidence": [
+        "PR #112 OPEN",
         "branch plan/T-0102",
         "rule: in-flight"
       ],
@@ -17571,7 +17582,7 @@
       "state": "Active",
       "title": "a reconciled item closes through the ordinary rules",
       "type": "task",
-      "updated": "2026-09-27T08:15:34Z",
+      "updated": "2026-09-27T08:27:19Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -21326,16 +21337,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 12,
-        "tokens_cache_read": 20687479,
-        "tokens_cache_write": 437437,
-        "tokens_input": 670,
-        "tokens_output": 133003,
-        "usd": 9.57
+        "sessions": 13,
+        "tokens_cache_read": 23924013,
+        "tokens_cache_write": 509420,
+        "tokens_input": 764,
+        "tokens_output": 169946,
+        "usd": 10.87
       },
       "decided": true,
       "evidence": [
         "PR #45 OPEN",
+        "branch archive/worker/T-0199-copies-688982391",
         "branch worker/T-0199",
         "rule: in-flight"
       ],
@@ -21350,7 +21362,7 @@
       "state": "Active",
       "title": "ingest ticks the Story acceptance line",
       "type": "task",
-      "updated": "2026-09-27T07:52:03Z",
+      "updated": "2026-09-27T08:27:19Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_ingest.py"
@@ -22364,7 +22376,8 @@
       "decided": true,
       "evidence": [
         "merge 76b21d9 of worker/T-0228 lands T-0228 (PR #101)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0228",
@@ -22376,11 +22389,11 @@
         "split T-0228 asf | asf/workers | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-27T08:05:44Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-27T08:27:11Z",
+      "state": "Closed",
       "title": "the run caps \u2014 the meter counts turns, `capped` judges the clock, the record says which",
       "type": "task",
-      "updated": "2026-09-27T08:05:44Z",
+      "updated": "2026-09-27T08:27:11Z",
       "writes": [
         "asf/tokens.py",
         "asf/workers/stall.py",
@@ -22686,8 +22699,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-27)",
-        "rule: planned"
+        "branch worker/T-0236",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0236",
@@ -22696,17 +22709,18 @@
       },
       "parent": "F-0010",
       "schema_version": 1,
-      "stage_since": "2026-09-27T03:59:03Z",
-      "state": "New",
+      "stage_since": "2026-09-27T08:27:11Z",
+      "state": "Active",
       "title": "the deployed sha has one owner",
       "type": "task",
-      "updated": "2026-09-27T04:06:51Z",
+      "updated": "2026-09-27T08:27:11Z",
       "writes": [
         "asf/harvest/deploy.py",
         "asf/views/prod.py",
         "tests/test_deploy.py",
         "tests/test_prod_view.py",
-        "tests/test_cloud.py"
+        "tests/test_cloud.py",
+        "tests/test_customer_content.py"
       ]
     },
     "T-0237": {
@@ -23068,7 +23082,8 @@
       "decided": true,
       "evidence": [
         "merge f06ef1c of worker/T-0247 lands T-0247 (PR #104)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0247",
@@ -23077,11 +23092,11 @@
       },
       "parent": "F-0014",
       "schema_version": 1,
-      "stage_since": "2026-09-27T08:05:44Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-27T08:27:11Z",
+      "state": "Closed",
       "title": "`asf/views/header.py` \u2014 the registry, `head()` and `command_key()`",
       "type": "task",
-      "updated": "2026-09-27T08:05:44Z",
+      "updated": "2026-09-27T08:27:11Z",
       "writes": [
         "asf/views/header.py",
         "tests/test_views_header.py"
