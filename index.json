@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T10:35:02Z",
+  "generated": "2026-09-27T10:41:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4432,6 +4432,25 @@
       "type": "bug",
       "updated": "2026-09-27T10:34:49Z"
     },
+    "B-0148": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0148",
+      "last_filed": "2026-09-27",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0033.md",
+      "stage_since": "2026-09-27T10:41:20Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0033.md",
+      "type": "bug",
+      "updated": "2026-09-27T10:41:20Z"
+    },
     "D-0001": {
       "backlinks": [],
       "children": [],
@@ -5476,7 +5495,8 @@
         "B-0143",
         "B-0144",
         "B-0145",
-        "B-0147"
+        "B-0147",
+        "B-0148"
       ],
       "decided": true,
       "evidence": [
@@ -6717,7 +6737,8 @@
     "F-0033": {
       "area": "factory",
       "backlinks": [
-        "F-0087"
+        "F-0087",
+        "B-0148"
       ],
       "children": [
         "T-0180",
@@ -20763,7 +20784,9 @@
       "after": [
         "T-0180"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-0148"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -20777,9 +20800,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #120 OPEN",
-        "branch worker/T-0182",
-        "rule: in-flight"
+        "merge 8bbdb6f of worker/T-0182 lands T-0182 (PR #120)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0182",
@@ -20791,11 +20813,11 @@
         "split T-0182 .github/workflows | sample"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-27T09:58:35Z",
-      "state": "Active",
+      "stage_since": "2026-09-27T10:40:53Z",
+      "state": "Resolved",
       "title": "the build log names the loop",
       "type": "task",
-      "updated": "2026-09-27T10:34:59Z",
+      "updated": "2026-09-27T10:40:53Z",
       "writes": [
         ".github/workflows/tests.yml",
         "sample/README.md"
