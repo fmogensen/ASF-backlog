@@ -15,3 +15,6 @@ Fresh evidence for `inbox/route-a-task-whose-writes-touch-the-amendable-set-to-t
   text, which the plan-time route would not fix: the hook should judge write targets only.
 
 Both T-cases were visible in `writes:` at plan time, exactly as the parent card predicts.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T17:09:09Z",
+  "generated": "2026-09-27T17:15:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3050,7 +3050,8 @@
       "evidence": [
         "merge 9699c51 of fix/B-0100 lands B-0100",
         "CI green on main at or after it",
-        "rule: quiet"
+        "held Closed; fixed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -3063,7 +3064,7 @@
       "state": "Closed",
       "title": "A rule check that times out is filed as the rule being violated",
       "type": "bug",
-      "updated": "2026-09-27T17:09:03Z"
+      "updated": "2026-09-27T17:15:00Z"
     },
     "B-0101": {
       "backlinks": [],
@@ -5534,12 +5535,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1218.01,
+      "spend_usd": 1223.51,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T17:09:07Z"
+      "updated": "2026-09-27T17:15:15Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7432,7 +7433,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/5 tasks Closed",
+        "2/5 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -7442,12 +7443,12 @@
       "priority": "nice",
       "rank": 52,
       "schema_version": 1,
-      "stage": "building 1/5",
-      "stage_since": "2026-09-27T16:04:01Z",
+      "stage": "building 2/5",
+      "stage_since": "2026-09-27T17:15:00Z",
       "state": "Active",
       "title": "Budget enforcement per Epic",
       "type": "feature",
-      "updated": "2026-09-27T16:04:01Z"
+      "updated": "2026-09-27T17:15:00Z"
     },
     "F-0053": {
       "area": "factory",
@@ -7760,6 +7761,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/8 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -7773,7 +7775,7 @@
       "state": "Active",
       "title": "Hooks as rule enforcement inside every worker session",
       "type": "feature",
-      "updated": "2026-09-27T17:09:03Z"
+      "updated": "2026-09-27T17:15:00Z"
     },
     "F-0062": {
       "area": "security",
@@ -7811,6 +7813,16 @@
       "area": "factory",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 5777443,
+        "tokens_cache_write": 145506,
+        "tokens_input": 110,
+        "tokens_output": 46075,
+        "usd": 5.5
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0063",
@@ -7827,7 +7839,7 @@
       "state": "New",
       "title": "Relaunch from the branch, not from zero",
       "type": "feature",
-      "updated": "2026-09-27T17:09:03Z"
+      "updated": "2026-09-27T17:15:15Z"
     },
     "F-0064": {
       "area": "factory",
@@ -24614,7 +24626,8 @@
       "decided": true,
       "evidence": [
         "merge efff851 of worker/T-0279 lands T-0279 (PR #156)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0279",
@@ -24623,11 +24636,11 @@
       },
       "parent": "F-0052",
       "schema_version": 1,
-      "stage_since": "2026-09-27T17:09:03Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-27T17:15:00Z",
+      "state": "Closed",
       "title": "the roadmap says it in the cell that shows the budget",
       "type": "task",
-      "updated": "2026-09-27T17:09:07Z",
+      "updated": "2026-09-27T17:15:00Z",
       "writes": [
         "asf/views/roadmap.py",
         "tests/test_views.py"
@@ -25405,6 +25418,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-27)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0303",
       "links": {
@@ -25416,7 +25433,7 @@
       "state": "New",
       "title": "the hook contract \u2014 allow, refuse, fail closed, one ledger row, and the core directory's README",
       "type": "task",
-      "updated": "2026-09-27T17:09:04Z",
+      "updated": "2026-09-27T17:15:00Z",
       "writes": [
         "asf/rules/hookcall.py",
         "asf/rules/hooks/__init__.py",
@@ -25433,6 +25450,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-27)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0304",
       "links": {
@@ -25444,7 +25465,7 @@
       "state": "New",
       "title": "`install` writes where every session reads, `asf hook` finds a core script, and the doctor sees an unenforced rule",
       "type": "task",
-      "updated": "2026-09-27T17:09:04Z",
+      "updated": "2026-09-27T17:15:00Z",
       "writes": [
         "asf/hooks.py",
         "asf/doctor.py",
@@ -25462,6 +25483,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-27)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0305",
       "links": {
@@ -25473,7 +25498,7 @@
       "state": "New",
       "title": "R-0001 and R-0002 \u2014 a stage names its files, and the shared stash stack is never touched",
       "type": "task",
-      "updated": "2026-09-27T17:09:04Z",
+      "updated": "2026-09-27T17:15:00Z",
       "writes": [
         "rules/R-0001.md",
         "rules/r0001.sh",
@@ -25496,6 +25521,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-27)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0306",
       "links": {
@@ -25507,7 +25536,7 @@
       "state": "New",
       "title": "R-0003 and R-0005 \u2014 the trunk pushes the classifier cannot see, and the pull request a session never opens",
       "type": "task",
-      "updated": "2026-09-27T17:09:04Z",
+      "updated": "2026-09-27T17:15:00Z",
       "writes": [
         "rules/R-0003.md",
         "rules/r0003.sh",
@@ -25530,6 +25559,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-27)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0307",
       "links": {
@@ -25541,7 +25574,7 @@
       "state": "New",
       "title": "R-0004 \u2014 a card written straight to disk is minted from the session's range",
       "type": "task",
-      "updated": "2026-09-27T17:09:04Z",
+      "updated": "2026-09-27T17:15:00Z",
       "writes": [
         "rules/R-0004.md",
         "rules/r0004.sh",
@@ -25558,6 +25591,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-27)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0308",
       "links": {
@@ -25569,7 +25606,7 @@
       "state": "New",
       "title": "R-0006 and R-0007 \u2014 a card written is a card checked, and a session ends clean",
       "type": "task",
-      "updated": "2026-09-27T17:09:04Z",
+      "updated": "2026-09-27T17:15:00Z",
       "writes": [
         "rules/R-0006.md",
         "rules/r0006.sh",
@@ -25589,6 +25626,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-27)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0309",
       "links": {
@@ -25600,7 +25641,7 @@
       "state": "New",
       "title": "the measure \u2014 declared, installed, refused, errored, and the violations that should fall",
       "type": "task",
-      "updated": "2026-09-27T17:09:04Z",
+      "updated": "2026-09-27T17:15:00Z",
       "writes": [
         "asf/rules/rules.py",
         "asf/cli.py",
@@ -25614,6 +25655,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-27)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0310",
       "links": {
@@ -25625,7 +25670,7 @@
       "state": "New",
       "title": "the directory as a set, and the named refusals firing in a fixture session",
       "type": "task",
-      "updated": "2026-09-27T17:09:04Z",
+      "updated": "2026-09-27T17:15:00Z",
       "writes": [
         "rules/*.md",
         "rules/*.sh",
