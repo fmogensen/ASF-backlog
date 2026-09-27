@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T16:16:14Z",
+  "generated": "2026-09-27T16:23:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -680,7 +680,9 @@
     },
     "B-0021": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "T-0296"
+      ],
       "blocked": true,
       "blockedBy": [
         "F-0019"
@@ -4413,7 +4415,9 @@
       "updated": "2026-09-27T07:07:14Z"
     },
     "B-0147": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0302"
+      ],
       "children": [],
       "count": 1,
       "decided": false,
@@ -5239,7 +5243,8 @@
         "T-0264",
         "T-0276",
         "T-0277",
-        "T-0278"
+        "T-0278",
+        "T-0298"
       ],
       "children": [
         "F-0001",
@@ -5526,12 +5531,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1189.89,
+      "spend_usd": 1192.14,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T16:04:12Z"
+      "updated": "2026-09-27T16:22:57Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7571,7 +7576,16 @@
     "F-0056": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0295",
+        "T-0296",
+        "T-0297",
+        "T-0298",
+        "T-0299",
+        "T-0300",
+        "T-0301",
+        "T-0302"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -7585,7 +7599,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0056",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -7594,12 +7608,12 @@
       "priority": "need",
       "rank": 56,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-27T15:14:18Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-27T16:22:35Z",
       "state": "Active",
       "title": "Memory to code, first pass: what a session has to remember becomes a script, a row or a rule",
       "type": "feature",
-      "updated": "2026-09-27T16:04:12Z"
+      "updated": "2026-09-27T16:22:35Z"
     },
     "F-0057": {
       "area": "factory",
@@ -13430,7 +13444,10 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "R-0124": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0295",
+        "T-0296"
+      ],
       "children": [],
       "enforced": false,
       "folder": "rules",
@@ -21309,7 +21326,8 @@
         "T-0189",
         "T-0191",
         "T-0192",
-        "T-0193"
+        "T-0193",
+        "T-0301"
       ],
       "children": [],
       "decided": true,
@@ -21341,7 +21359,8 @@
         "T-0190"
       ],
       "backlinks": [
-        "T-0189"
+        "T-0189",
+        "T-0301"
       ],
       "children": [],
       "decided": true,
@@ -24146,12 +24165,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "tokens_cache_read": 14586771,
-        "tokens_cache_write": 279016,
-        "tokens_input": 318,
-        "tokens_output": 86667,
-        "usd": 4.9
+        "sessions": 4,
+        "tokens_cache_read": 21779624,
+        "tokens_cache_write": 380444,
+        "tokens_input": 492,
+        "tokens_output": 127152,
+        "usd": 7.15
       },
       "decided": true,
       "evidence": [
@@ -24171,7 +24190,7 @@
       "state": "Active",
       "title": "the one reader derives the verdict from the rows, and every task row carries its checks",
       "type": "task",
-      "updated": "2026-09-27T15:41:16Z",
+      "updated": "2026-09-27T16:22:57Z",
       "writes": [
         "asf/evidence/review.py",
         "asf/evidence/evidence.py",
@@ -25073,6 +25092,214 @@
         ".githooks/pre-commit",
         "tests/test_evals.py",
         "tests/test_install.py"
+      ]
+    },
+    "T-0295": {
+      "backlinks": [
+        "T-0296",
+        "T-0297",
+        "T-0299"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0295",
+      "links": {
+        "plan": "docs/plans/f-0056.md"
+      },
+      "parent": "F-0056",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T16:22:38Z",
+      "state": "New",
+      "title": "`asf.memory` \u2014 the interface, the five conventions, and the check that names a file with no card",
+      "type": "task",
+      "updated": "2026-09-27T16:22:38Z",
+      "writes": [
+        "asf/memory.py",
+        "asf/conventions.py",
+        "asf/cli.py",
+        "tests/test_memory.py",
+        "tests/test_conventions.py",
+        "docs/products.example.yaml",
+        "docs/guide/product-config.md"
+      ]
+    },
+    "T-0296": {
+      "after": [
+        "T-0295"
+      ],
+      "backlinks": [
+        "T-0302"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0296",
+      "links": {
+        "plan": "docs/plans/f-0056.md"
+      },
+      "parent": "F-0056",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T16:22:38Z",
+      "state": "New",
+      "title": "`rules/memory-pointer.sh` \u2014 the check the CONSTITUTION promised R-0124",
+      "type": "task",
+      "updated": "2026-09-27T16:22:38Z",
+      "writes": [
+        "rules/memory-pointer.sh",
+        "tests/test_memory.py",
+        "tests/test_rules.py"
+      ]
+    },
+    "T-0297": {
+      "after": [
+        "T-0295",
+        "T-0298"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0297",
+      "links": {
+        "plan": "docs/plans/f-0056.md"
+      },
+      "parent": "F-0056",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T16:22:38Z",
+      "state": "New",
+      "title": "an inbox card is parented by what it changes, words only as the floor",
+      "type": "task",
+      "updated": "2026-09-27T16:22:38Z",
+      "writes": [
+        "asf/groom/shape.py",
+        "asf/groom/inbox.py",
+        "asf/groom/groom.py",
+        "tests/test_groom_shape.py"
+      ]
+    },
+    "T-0298": {
+      "backlinks": [
+        "T-0297"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0298",
+      "links": {
+        "plan": "docs/plans/f-0056.md"
+      },
+      "parent": "F-0056",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T16:22:38Z",
+      "state": "New",
+      "title": "a refused inbox answer is a line, not a silence",
+      "type": "task",
+      "updated": "2026-09-27T16:22:38Z",
+      "writes": [
+        "asf/groom/inbox.py",
+        "asf/groom/groom.py",
+        "tests/test_groom.py"
+      ]
+    },
+    "T-0299": {
+      "after": [
+        "T-0295"
+      ],
+      "backlinks": [
+        "T-0300"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0299",
+      "links": {
+        "plan": "docs/plans/f-0056.md"
+      },
+      "parent": "F-0056",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T16:22:38Z",
+      "state": "New",
+      "title": "`asf plan-check <plan>` \u2014 the real parser over a draft, and what it silently drops",
+      "type": "task",
+      "updated": "2026-09-27T16:22:38Z",
+      "writes": [
+        "asf/record/plan_check.py",
+        "asf/cli.py",
+        "tests/test_plan_check.py"
+      ]
+    },
+    "T-0300": {
+      "after": [
+        "T-0299"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0300",
+      "links": {
+        "plan": "docs/plans/f-0056.md"
+      },
+      "parent": "F-0056",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T16:22:38Z",
+      "state": "New",
+      "title": "`asf spec-check <spec>` \u2014 every path and symbol a spec names, against the checkout",
+      "type": "task",
+      "updated": "2026-09-27T16:22:38Z",
+      "writes": [
+        "asf/record/spec_check.py",
+        "asf/cli.py",
+        "tests/test_spec_check.py"
+      ]
+    },
+    "T-0301": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0301",
+      "links": {
+        "plan": "docs/plans/f-0056.md"
+      },
+      "parent": "F-0056",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T16:22:38Z",
+      "state": "New",
+      "title": "a relaunched reshape is handed the parts the record already holds",
+      "type": "task",
+      "updated": "2026-09-27T16:22:38Z",
+      "writes": [
+        "asf/briefs/build.py",
+        "asf/briefs/templates/reshape.md",
+        "asf/feeder/rows.py",
+        "tests/test_briefs.py",
+        "tests/test_feeder.py"
+      ]
+    },
+    "T-0302": {
+      "after": [
+        "T-0296"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0302",
+      "links": {
+        "plan": "docs/plans/f-0056.md"
+      },
+      "parent": "F-0056",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T16:22:38Z",
+      "state": "New",
+      "title": "this pass's pointer table, committed, with the check green over it",
+      "type": "task",
+      "updated": "2026-09-27T16:22:38Z",
+      "writes": [
+        "tests/fixtures/memory/*",
+        "tests/test_memory.py"
       ]
     }
   },
