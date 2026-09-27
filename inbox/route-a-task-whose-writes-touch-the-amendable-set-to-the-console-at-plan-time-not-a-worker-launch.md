@@ -35,5 +35,4 @@ console lane (or flagged and held with one operator line), never launched as a w
 test: a `writes:` naming `asf/briefs/templates/x.md` yields no launching row. Not implemented here.
 
 ## Question
-Route to a console lane (the console lands it, as PR #121 did) or split the amendable hunk into a
-separate console Task at plan time?
+Which Epic is this under? No open Epic shares a title word with it.
