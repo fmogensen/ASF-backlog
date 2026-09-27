@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T04:35:59Z",
+  "generated": "2026-09-27T04:47:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4238,8 +4238,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-27)",
-        "rule: filed"
+        "branch fix/B-0141",
+        "rule: fixer"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -4248,11 +4248,11 @@
       "schema_version": 1,
       "severity": "S1",
       "signature": "tick: waiting \u2014 upgrade to f5aa236 pending",
-      "stage_since": "2026-09-27T04:14:25Z",
-      "state": "New",
+      "stage_since": "2026-09-27T04:47:03Z",
+      "state": "Active",
       "title": "An upgrade that cannot install still parks every product's ticks for 30 minutes",
       "type": "bug",
-      "updated": "2026-09-27T04:20:34Z"
+      "updated": "2026-09-27T04:47:03Z"
     },
     "B-0142": {
       "backlinks": [
@@ -5413,12 +5413,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 975.11,
+      "spend_usd": 978.37,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T04:35:56Z"
+      "updated": "2026-09-27T04:47:06Z"
     },
     "E-0002": {
       "backlinks": [
@@ -5535,6 +5535,7 @@
         "F-0198",
         "F-0199",
         "F-0205",
+        "F-0217",
         "B-0146"
       ],
       "decided": true,
@@ -5649,6 +5650,7 @@
     "F-0003": {
       "area": "factory",
       "backlinks": [
+        "F-0217",
         "T-0175",
         "T-0221"
       ],
@@ -8439,12 +8441,12 @@
       "priority": "need",
       "rank": 2,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-27T03:51:52Z",
+      "stage": "building 0/7",
+      "stage_since": "2026-09-27T04:47:03Z",
       "state": "Active",
       "title": "An item has a budget: three sessions or $10, then it stops and says why",
       "type": "feature",
-      "updated": "2026-09-27T03:59:00Z"
+      "updated": "2026-09-27T04:47:03Z"
     },
     "F-0093": {
       "area": "factory",
@@ -11043,6 +11045,20 @@
       "title": "Epic: cloud is the default executor \u2014 local sessions only by exception; the host guard covers local only",
       "type": "feature",
       "updated": "2026-09-27T04:35:48Z"
+    },
+    "F-0217": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0217",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T04:47:24Z",
+      "state": "New",
+      "title": "Loop guard parks on the head read before the same tick's publish",
+      "type": "feature",
+      "updated": "2026-09-27T04:47:24Z"
     },
     "R-0001": {
       "backlinks": [],
@@ -17448,12 +17464,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 5,
-        "tokens_cache_read": 5407411,
-        "tokens_cache_write": 199745,
-        "tokens_input": 206,
-        "tokens_output": 45230,
-        "usd": 3.28
+        "sessions": 6,
+        "tokens_cache_read": 5685527,
+        "tokens_cache_write": 204465,
+        "tokens_input": 216,
+        "tokens_output": 49004,
+        "usd": 3.74
       },
       "decided": true,
       "evidence": [
@@ -17473,7 +17489,7 @@
       "state": "Active",
       "title": "nothing re-emitted \u2014 the cap over every launching kind",
       "type": "task",
-      "updated": "2026-09-27T03:59:26Z",
+      "updated": "2026-09-27T04:47:06Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py",
@@ -22091,8 +22107,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-27)",
-        "rule: planned"
+        "branch worker/T-0225",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0225",
@@ -22101,11 +22117,11 @@
       },
       "parent": "F-0092",
       "schema_version": 1,
-      "stage_since": "2026-09-27T03:51:53Z",
-      "state": "New",
+      "stage_since": "2026-09-27T04:47:03Z",
+      "state": "Active",
       "title": "the config and the leaf \u2014 `conventions.budget` and `asf/budget.py`",
       "type": "task",
-      "updated": "2026-09-27T03:59:00Z",
+      "updated": "2026-09-27T04:47:03Z",
       "writes": [
         "asf/conventions.py",
         "asf/budget.py",
@@ -22326,8 +22342,19 @@
         "T-0236"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 7847452,
+        "tokens_cache_write": 143397,
+        "tokens_input": 138,
+        "tokens_output": 65732,
+        "usd": 2.8
+      },
       "decided": true,
       "evidence": [
+        "PR #87 OPEN",
         "branch worker/T-0232",
         "rule: in-flight"
       ],
@@ -22342,7 +22369,7 @@
       "state": "Active",
       "title": "the three interfaces, and the fake that satisfies all three",
       "type": "task",
-      "updated": "2026-09-27T04:35:48Z",
+      "updated": "2026-09-27T04:47:06Z",
       "writes": [
         "asf/evidence/sources.py",
         "asf/env.py",
