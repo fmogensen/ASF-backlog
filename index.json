@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T07:32:49Z",
+  "generated": "2026-09-27T07:45:55Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4251,6 +4251,7 @@
       "decided": true,
       "evidence": [
         "merge 98f1ee0 of fix/B-0141 lands B-0141 (PR #89)",
+        "CI green on main at or after it",
         "rule: fixed"
       ],
       "folder": "bugs",
@@ -4264,7 +4265,7 @@
       "state": "Resolved",
       "title": "An upgrade that cannot install still parks every product's ticks for 30 minutes",
       "type": "bug",
-      "updated": "2026-09-27T07:32:28Z"
+      "updated": "2026-09-27T07:45:08Z"
     },
     "B-0142": {
       "backlinks": [
@@ -5459,12 +5460,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1023.31,
+      "spend_usd": 1026.91,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T07:32:46Z"
+      "updated": "2026-09-27T07:45:29Z"
     },
     "E-0002": {
       "backlinks": [
@@ -5914,7 +5915,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/4 tasks Closed",
+        "1/4 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -5923,12 +5924,12 @@
       "priority": "need",
       "rank": 10,
       "schema_version": 1,
-      "stage": "building 0/4",
-      "stage_since": "2026-09-27T04:59:56Z",
+      "stage": "building 1/4",
+      "stage_since": "2026-09-27T07:45:08Z",
       "state": "Active",
       "title": "P3 wave 2 \u2014 evidence and ingest",
       "type": "feature",
-      "updated": "2026-09-27T04:59:56Z"
+      "updated": "2026-09-27T07:45:08Z"
     },
     "F-0011": {
       "area": "factory",
@@ -6249,7 +6250,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-27)",
+        "spec on spec/F-0021",
         "rule: card"
       ],
       "folder": "features",
@@ -6258,12 +6259,12 @@
       "priority": "need",
       "rank": 21,
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-21T17:01:58Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-27T07:45:08Z",
       "state": "New",
       "title": "P5 \u2014 launch",
       "type": "feature",
-      "updated": "2026-09-27T00:03:28Z"
+      "updated": "2026-09-27T07:45:08Z"
     },
     "F-0022": {
       "area": "factory",
@@ -8074,7 +8075,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "4/6 tasks Closed",
+        "5/6 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -8082,12 +8083,12 @@
       "parent": "E-0001",
       "rank": 2,
       "schema_version": 1,
-      "stage": "building 4/6",
-      "stage_since": "2026-09-24T09:39:26Z",
+      "stage": "building 5/6",
+      "stage_since": "2026-09-27T07:45:08Z",
       "state": "Active",
       "title": "Closing is derived and total: a definition of done per type, reconciliation for work that predates it, nothing re-emitted",
       "type": "feature",
-      "updated": "2026-09-24T09:39:26Z"
+      "updated": "2026-09-27T07:45:08Z"
     },
     "F-0081": {
       "backlinks": [
@@ -17588,10 +17589,9 @@
       },
       "decided": true,
       "evidence": [
-        "PR #49 OPEN",
-        "branch archive/worker/T-0103-copies-88eddbd25",
-        "branch worker/T-0103",
-        "rule: in-flight"
+        "merge c2a709b of worker/T-0103 lands T-0103 (PR #49)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0103",
@@ -17600,11 +17600,11 @@
       },
       "parent": "F-0080",
       "schema_version": 1,
-      "stage_since": "2026-09-24T08:38:22Z",
-      "state": "Active",
+      "stage_since": "2026-09-27T07:45:08Z",
+      "state": "Closed",
       "title": "nothing re-emitted \u2014 the cap over every launching kind",
       "type": "task",
-      "updated": "2026-09-27T07:32:46Z",
+      "updated": "2026-09-27T07:45:08Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py",
@@ -19889,7 +19889,8 @@
       "writes": [
         "asf/savings/__init__.py",
         "asf/savings/landed.py",
-        "tests/test_savings.py"
+        "tests/test_savings.py",
+        "tools/run_tests.py"
       ]
     },
     "T-0161": {
@@ -22420,8 +22421,19 @@
         "T-0229"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 8700507,
+        "tokens_cache_write": 145777,
+        "tokens_input": 146,
+        "tokens_output": 44600,
+        "usd": 2.77
+      },
       "decided": true,
       "evidence": [
+        "PR #103 OPEN",
         "branch worker/T-0230",
         "rule: in-flight"
       ],
@@ -22439,7 +22451,7 @@
       "state": "Active",
       "title": "the ruling \u2014 the groom asks, and `budget <n> [$<usd>]` answers",
       "type": "task",
-      "updated": "2026-09-27T07:32:28Z",
+      "updated": "2026-09-27T07:45:29Z",
       "writes": [
         "asf/groom/groom.py",
         "tests/test_groom.py"
@@ -22490,9 +22502,9 @@
       },
       "decided": true,
       "evidence": [
-        "PR #87 OPEN",
-        "branch worker/T-0232",
-        "rule: in-flight"
+        "merge 7762e52 of worker/T-0232 lands T-0232 (PR #87)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0232",
@@ -22501,11 +22513,11 @@
       },
       "parent": "F-0010",
       "schema_version": 1,
-      "stage_since": "2026-09-27T04:35:48Z",
-      "state": "Active",
+      "stage_since": "2026-09-27T07:45:08Z",
+      "state": "Closed",
       "title": "the three interfaces, and the fake that satisfies all three",
       "type": "task",
-      "updated": "2026-09-27T07:32:46Z",
+      "updated": "2026-09-27T07:45:08Z",
       "writes": [
         "asf/evidence/sources.py",
         "asf/env.py",
@@ -23017,8 +23029,19 @@
         "T-0248"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 2497880,
+        "tokens_cache_write": 53094,
+        "tokens_input": 84,
+        "tokens_output": 12091,
+        "usd": 0.83
+      },
       "decided": true,
       "evidence": [
+        "PR #104 OPEN",
         "branch worker/T-0247",
         "rule: in-flight"
       ],
@@ -23033,7 +23056,7 @@
       "state": "Active",
       "title": "`asf/views/header.py` \u2014 the registry, `head()` and `command_key()`",
       "type": "task",
-      "updated": "2026-09-27T07:32:28Z",
+      "updated": "2026-09-27T07:45:29Z",
       "writes": [
         "asf/views/header.py",
         "tests/test_views_header.py"
