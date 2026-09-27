@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T20:21:23Z",
+  "generated": "2026-09-27T20:29:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5539,12 +5539,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1330.8,
+      "spend_usd": 1333.8,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T20:21:20Z"
+      "updated": "2026-09-27T20:29:05Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7836,7 +7836,15 @@
     "F-0063": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0340",
+        "T-0341",
+        "T-0342",
+        "T-0343",
+        "T-0344",
+        "T-0345",
+        "T-0346"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -7850,7 +7858,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0063",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -7859,12 +7867,12 @@
       "priority": "need",
       "rank": 63,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-27T17:22:26Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-27T20:28:29Z",
       "state": "Active",
       "title": "Relaunch from the branch, not from zero",
       "type": "feature",
-      "updated": "2026-09-27T20:21:20Z"
+      "updated": "2026-09-27T20:28:29Z"
     },
     "F-0064": {
       "area": "factory",
@@ -24780,9 +24788,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #177 OPEN",
-        "branch worker/T-0280",
-        "rule: in-flight"
+        "merge c613d9c of worker/T-0280 lands T-0280 (PR #177)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0280",
@@ -24791,11 +24798,11 @@
       },
       "parent": "F-0052",
       "schema_version": 1,
-      "stage_since": "2026-09-27T19:19:23Z",
-      "state": "Active",
+      "stage_since": "2026-09-27T20:28:29Z",
+      "state": "Resolved",
       "title": "the groom asks the Epic's question, and `budget $<usd>` is the ruling that raises it",
       "type": "task",
-      "updated": "2026-09-27T20:21:20Z",
+      "updated": "2026-09-27T20:28:29Z",
       "writes": [
         "asf/groom/groom.py",
         "tests/test_groom.py"
@@ -25490,12 +25497,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 6731827,
-        "tokens_cache_write": 118295,
-        "tokens_input": 154,
-        "tokens_output": 43737,
-        "usd": 2.26
+        "sessions": 2,
+        "tokens_cache_read": 10635730,
+        "tokens_cache_write": 190866,
+        "tokens_input": 284,
+        "tokens_output": 69523,
+        "usd": 3.59
       },
       "decided": true,
       "evidence": [
@@ -25514,7 +25521,7 @@
       "state": "Active",
       "title": "a relaunched reshape is handed the parts the record already holds",
       "type": "task",
-      "updated": "2026-09-27T18:53:43Z",
+      "updated": "2026-09-27T20:29:05Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/briefs/templates/reshape.md",
@@ -26034,12 +26041,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 17623877,
-        "tokens_cache_write": 211332,
-        "tokens_input": 226,
-        "tokens_output": 84566,
-        "usd": 5.22
+        "sessions": 2,
+        "tokens_cache_read": 23034293,
+        "tokens_cache_write": 309472,
+        "tokens_input": 352,
+        "tokens_output": 105065,
+        "usd": 6.9
       },
       "decided": true,
       "evidence": [
@@ -26058,7 +26065,7 @@
       "state": "Active",
       "title": "the launch table, the capability probe, the agents file, and the two conventions",
       "type": "task",
-      "updated": "2026-09-27T19:37:10Z",
+      "updated": "2026-09-27T20:29:05Z",
       "writes": [
         "asf/roles/launch.py",
         "asf/workers/capability.py",
@@ -26803,6 +26810,170 @@
         "tests/test_workers.py",
         "tests/test_redact.py",
         "tests/test_console_perms.py"
+      ]
+    },
+    "T-0340": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0340",
+      "links": {
+        "plan": "docs/plans/f-0063.md"
+      },
+      "parent": "F-0063",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T20:28:32Z",
+      "state": "New",
+      "title": "the end-to-end harness \u2014 no background git writer, and a fork that never hands back a half copy",
+      "type": "task",
+      "updated": "2026-09-27T20:28:32Z",
+      "writes": [
+        "tests/gitfixture.py",
+        "tests/e2e/factory.py",
+        "tests/test_gitfixture.py",
+        "tests/test_e2e_lane.py"
+      ]
+    },
+    "T-0341": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0341",
+      "links": {
+        "plan": "docs/plans/f-0063.md"
+      },
+      "parent": "F-0063",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T20:28:32Z",
+      "state": "New",
+      "title": "`asf/tick/step_wave.py` \u2014 one filler for the brief's facts",
+      "type": "task",
+      "updated": "2026-09-27T20:28:32Z",
+      "writes": [
+        "asf/tick/step_wave.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0342": {
+      "backlinks": [
+        "T-0343",
+        "T-0344"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0342",
+      "links": {
+        "plan": "docs/plans/f-0063.md"
+      },
+      "parent": "F-0063",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T20:28:32Z",
+      "state": "New",
+      "title": "`asf/briefs/facts.py` \u2014 the head origin holds, and the commits to it",
+      "type": "task",
+      "updated": "2026-09-27T20:28:32Z",
+      "writes": [
+        "asf/briefs/facts.py",
+        "tests/test_brief_facts.py"
+      ]
+    },
+    "T-0343": {
+      "after": [
+        "T-0342"
+      ],
+      "backlinks": [
+        "T-0344"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0343",
+      "links": {
+        "plan": "docs/plans/f-0063.md"
+      },
+      "parent": "F-0063",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T20:28:32Z",
+      "state": "New",
+      "title": "`asf/briefs/facts.py` \u2014 the run that stopped, what it was doing, and the report on its branch",
+      "type": "task",
+      "updated": "2026-09-27T20:28:32Z",
+      "writes": [
+        "asf/briefs/facts.py",
+        "tests/test_brief_facts.py"
+      ]
+    },
+    "T-0344": {
+      "after": [
+        "T-0342",
+        "T-0343"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0344",
+      "links": {
+        "plan": "docs/plans/f-0063.md"
+      },
+      "parent": "F-0063",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T20:28:32Z",
+      "state": "New",
+      "title": "`asf/briefs/preamble.py` \u2014 the block, and what it tells the session to do",
+      "type": "task",
+      "updated": "2026-09-27T20:28:32Z",
+      "writes": [
+        "asf/briefs/facts.py",
+        "asf/briefs/preamble.py",
+        "tests/test_brief_facts.py",
+        "tests/test_briefs.py"
+      ]
+    },
+    "T-0345": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0345",
+      "links": {
+        "plan": "docs/plans/f-0063.md"
+      },
+      "parent": "F-0063",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T20:28:32Z",
+      "state": "New",
+      "title": "`tests/test_workers.py` \u2014 a relaunched session starts on the old head",
+      "type": "task",
+      "updated": "2026-09-27T20:28:32Z",
+      "writes": [
+        "tests/test_workers.py"
+      ]
+    },
+    "T-0346": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0346",
+      "links": {
+        "plan": "docs/plans/f-0063.md"
+      },
+      "parent": "F-0063",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T20:28:32Z",
+      "state": "New",
+      "title": "the measure \u2014 relaunch cost per session, on the page the operator already reads",
+      "type": "task",
+      "updated": "2026-09-27T20:28:32Z",
+      "writes": [
+        "asf/improve/measure.py",
+        "asf/metrics/metrics.py",
+        "tests/test_improve.py",
+        "tests/test_metrics.py"
       ]
     }
   },
