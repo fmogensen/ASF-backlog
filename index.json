@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T10:41:20Z",
+  "generated": "2026-09-27T10:46:40Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4437,6 +4437,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-27)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0148",
@@ -4449,7 +4453,7 @@
       "state": "New",
       "title": "Invariant I10 refused a write to features/F-0033.md",
       "type": "bug",
-      "updated": "2026-09-27T10:41:20Z"
+      "updated": "2026-09-27T10:46:39Z"
     },
     "D-0001": {
       "backlinks": [],
@@ -6755,8 +6759,8 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/2 tasks Closed",
-        "rule: documented"
+        "2/2 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0033",
@@ -6765,12 +6769,12 @@
       "rank": 33,
       "schema_version": 1,
       "source": "plan:missing-in-ours",
-      "stage": "building 1/2",
-      "stage_since": "2026-09-27T09:46:21Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-09-27T10:46:39Z",
+      "state": "Closed",
       "title": "Dogfood end to end in CI",
       "type": "feature",
-      "updated": "2026-09-27T09:46:21Z"
+      "updated": "2026-09-27T10:46:39Z"
     },
     "F-0034": {
       "area": "factory",
@@ -20752,8 +20756,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-27)",
-        "rule: planned"
+        "F-0033 Closed (commit 8bbdb6f)",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0181",
@@ -20766,11 +20770,11 @@
         "split T-0181 tests | tests/fixtures"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-24T02:42:21Z",
-      "state": "New",
+      "stage_since": "2026-09-27T10:46:39Z",
+      "state": "Closed",
       "title": "the normaliser and the five goldens",
       "type": "task",
-      "updated": "2026-09-27T00:03:28Z",
+      "updated": "2026-09-27T10:46:39Z",
       "writes": [
         "tests/test_sample_product.py",
         "tests/fixtures/sample_loop/board.md",
@@ -20801,7 +20805,8 @@
       "decided": true,
       "evidence": [
         "merge 8bbdb6f of worker/T-0182 lands T-0182 (PR #120)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0182",
@@ -20813,11 +20818,11 @@
         "split T-0182 .github/workflows | sample"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-27T10:40:53Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-27T10:46:39Z",
+      "state": "Closed",
       "title": "the build log names the loop",
       "type": "task",
-      "updated": "2026-09-27T10:40:53Z",
+      "updated": "2026-09-27T10:46:39Z",
       "writes": [
         ".github/workflows/tests.yml",
         "sample/README.md"
