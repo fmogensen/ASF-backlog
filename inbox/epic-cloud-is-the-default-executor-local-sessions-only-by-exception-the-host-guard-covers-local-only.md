@@ -1,4 +1,5 @@
 # Epic: cloud is the default executor — local sessions only by exception; the host guard covers local only
+parent: E-0003
 
 type: epic
 
@@ -30,4 +31,4 @@ The cloud lane exists: asf/workers/cloud.py, runtime `actions`. It runs `claude 
 4. **Default on:** set it for botseon, measure sessions in flight and lead time against the local-only week.
 
 ## Question
-Which Epic is this under? No open Epic shares a title word with it.
+`type: epic` is not read — the card's shape reads as feature (default: one spec and one plan, landing as one deployable thing). Remove the line, or change the shape.

@@ -1,8 +1,0 @@
-# Lane rebases a PR onto a moved main mid-CI, restarting its required jobs (S1 #858 superseded 4x)
-
-2026-09-26 botseon S1 PR #858 (B-1382, only prod blocker): its CI run was superseded four times in ~40 min (runs 36258895126 → 36260038746 → 36261357776 → 36261437904 → 36262385912). The last one (18:23Z) was a lane rebase onto a moved main — all five branch commits re-dated 20:22:51 with no content change beyond main (B-1380 #848 had merged 20:02). Each supersede throws away queued/started required jobs and sends the PR back to the end of the runner queue, while relief work (cancelling others' runs) is wasted.
-
-Fix: the lane does not rebase/re-push a PR branch whose CI run is queued or in progress unless (a) the PR is conflicting, or (b) the merge actually needs it (host requires up-to-date and the checks are otherwise green). Prefer "update at merge time". For S1/hotfix PRs, never rebase mid-run. Log "rebase deferred: <branch> CI in flight (run <id>)". Test: main moves while an S1 PR's run is in progress → no push; after green, merge path rebases once if required.
-
-## Question
-Which Epic is this under? No open Epic shares a title word with it.

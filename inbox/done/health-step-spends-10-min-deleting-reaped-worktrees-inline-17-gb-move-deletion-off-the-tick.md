@@ -1,0 +1,8 @@
+→ F-0197
+
+# Health step spends 10 min deleting reaped worktrees inline (17 GB); move deletion off the tick
+parent: E-0002
+
+2026-09-26 18:45 botseon tick: [step:health] 611.4 s, almost all of it "worktrees: reaped 10 (17.2 GB), kept 11" — deleting node_modules-heavy worktrees inline in the health step. The wave (launches) and harvest wait behind it; botseon sat at 1/10 sessions with 8 Ready for 10+ minutes.
+
+Fix: the reaper detaches the worktree from git (`git worktree remove` bookkeeping / rename into ~/.ASF/state/<p>/trash/) inline — O(1) — and deletes the trash directory in a detached background process (nice'd), never inside the tick. Log "reaped N (X GB) — deleting in background". Test: health step returns promptly with large worktrees; trash is emptied by the background job and never re-used.
