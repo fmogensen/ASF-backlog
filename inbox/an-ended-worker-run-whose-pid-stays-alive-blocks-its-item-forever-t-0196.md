@@ -9,3 +9,6 @@ Wanted:
 - The factory terminates that worker process. It should only ever terminate `claude -p` workers it launched itself, never an interactive session.
 - The item is released for its next row.
 - Add a test covering an ended run with a live pid.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
