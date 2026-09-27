@@ -10,3 +10,6 @@ groom has for them, while `no` in its general grammar closes an inbox card unmin
 
 Wanted: the groom.md cut (and its golden) lands with T-0187, by the operator console, since
 templates are the amendable set (F-0024); T-0183's branch lands without that hunk.
+
+## Question
+A Story is one PR with one acceptance list — add an ## Acceptance checklist.
