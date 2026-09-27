@@ -5,3 +5,6 @@
 The label is ASF's own. botseon.yaml declares `ci_pool.reserve: {label: class-pr-heavy, of: heavy, keep_free: 2}`, the CI queue applies that label to the reserved runners on every tick, and the product's ci.yml asks for it because the reserve exists.
 
 Wanted: the doctor's pool check accepts a label declared under `ci_pool.reserve` as a derived role of its `of:` role. Add a test where a reserve label is used in runs-on and the row comes out ok.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
