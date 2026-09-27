@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T17:03:22Z",
+  "generated": "2026-09-27T17:09:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1636,6 +1636,7 @@
         "T-0026",
         "T-0037",
         "T-0090",
+        "T-0308",
         "B-0052",
         "B-0076"
       ],
@@ -1702,6 +1703,7 @@
       "backlinks": [
         "T-0144",
         "T-0145",
+        "T-0308",
         "B-0054",
         "B-0066"
       ],
@@ -1798,6 +1800,7 @@
         "T-0034",
         "T-0036",
         "T-0090",
+        "T-0306",
         "B-0123"
       ],
       "children": [],
@@ -3047,7 +3050,7 @@
       "evidence": [
         "merge 9699c51 of fix/B-0100 lands B-0100",
         "CI green on main at or after it",
-        "rule: fixed"
+        "rule: quiet"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -3056,11 +3059,11 @@
       "schema_version": 1,
       "severity": "S2",
       "signature": "rules: check timeout filed as violation",
-      "stage_since": "2026-09-24T17:08:25Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-27T17:09:03Z",
+      "state": "Closed",
       "title": "A rule check that times out is filed as the rule being violated",
       "type": "bug",
-      "updated": "2026-09-25T13:08:01Z"
+      "updated": "2026-09-27T17:09:03Z"
     },
     "B-0101": {
       "backlinks": [],
@@ -5531,12 +5534,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1199.1,
+      "spend_usd": 1218.01,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T17:03:12Z"
+      "updated": "2026-09-27T17:09:07Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7733,7 +7736,16 @@
       "backlinks": [
         "F-0201"
       ],
-      "children": [],
+      "children": [
+        "T-0303",
+        "T-0304",
+        "T-0305",
+        "T-0306",
+        "T-0307",
+        "T-0308",
+        "T-0309",
+        "T-0310"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -7747,7 +7759,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0061",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -7756,17 +7768,27 @@
       "priority": "need",
       "rank": 61,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-27T15:14:18Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-27T17:09:03Z",
       "state": "Active",
       "title": "Hooks as rule enforcement inside every worker session",
       "type": "feature",
-      "updated": "2026-09-27T17:03:12Z"
+      "updated": "2026-09-27T17:09:03Z"
     },
     "F-0062": {
       "area": "security",
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 7520297,
+        "tokens_cache_write": 192446,
+        "tokens_input": 116,
+        "tokens_output": 63576,
+        "usd": 7.27
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0062",
@@ -7783,7 +7805,7 @@
       "state": "New",
       "title": "The launch path: skills as procedures, role agents with restricted tools, per-job caps, deny rules",
       "type": "feature",
-      "updated": "2026-09-27T17:03:08Z"
+      "updated": "2026-09-27T17:09:07Z"
     },
     "F-0063": {
       "area": "factory",
@@ -7791,7 +7813,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-27)",
+        "spec on spec/F-0063",
         "rule: card"
       ],
       "folder": "features",
@@ -7800,12 +7822,12 @@
       "priority": "need",
       "rank": 63,
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-21T17:01:58Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-27T17:09:03Z",
       "state": "New",
       "title": "Relaunch from the branch, not from zero",
       "type": "feature",
-      "updated": "2026-09-27T00:03:28Z"
+      "updated": "2026-09-27T17:09:03Z"
     },
     "F-0064": {
       "area": "factory",
@@ -11455,7 +11477,10 @@
     "R-0001": {
       "backlinks": [
         "T-0257",
-        "T-0291"
+        "T-0291",
+        "T-0303",
+        "T-0305",
+        "T-0310"
       ],
       "children": [],
       "enforced": false,
@@ -11473,7 +11498,8 @@
     },
     "R-0002": {
       "backlinks": [
-        "T-0257"
+        "T-0257",
+        "T-0305"
       ],
       "children": [],
       "enforced": false,
@@ -11490,7 +11516,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "R-0003": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0306"
+      ],
       "children": [],
       "enforced": false,
       "folder": "rules",
@@ -11506,7 +11534,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "R-0004": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0307"
+      ],
       "children": [],
       "enforced": false,
       "folder": "rules",
@@ -11522,7 +11552,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "R-0005": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0306"
+      ],
       "children": [],
       "enforced": false,
       "folder": "rules",
@@ -11538,7 +11570,11 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "R-0006": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0308",
+        "T-0309",
+        "T-0310"
+      ],
       "children": [],
       "enforced": false,
       "folder": "rules",
@@ -11556,7 +11592,9 @@
     "R-0007": {
       "backlinks": [
         "T-0256",
-        "T-0260"
+        "T-0260",
+        "T-0308",
+        "T-0310"
       ],
       "children": [],
       "enforced": false,
@@ -13041,7 +13079,9 @@
     "R-0099": {
       "backlinks": [
         "T-0106",
-        "T-0257"
+        "T-0257",
+        "T-0303",
+        "T-0310"
       ],
       "children": [],
       "enforced": false,
@@ -24167,16 +24207,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
-        "tokens_cache_read": 21779624,
-        "tokens_cache_write": 380444,
-        "tokens_input": 492,
-        "tokens_output": 127152,
-        "usd": 7.15
+        "sessions": 5,
+        "tokens_cache_read": 28603323,
+        "tokens_cache_write": 518408,
+        "tokens_input": 630,
+        "tokens_output": 184515,
+        "usd": 13.38
       },
       "decided": true,
       "evidence": [
         "PR #150 OPEN",
+        "PR #158 OPEN",
         "branch plan/T-0268",
         "branch worker/T-0268",
         "rule: in-flight"
@@ -24193,7 +24234,7 @@
       "state": "Active",
       "title": "the one reader derives the verdict from the rows, and every task row carries its checks",
       "type": "task",
-      "updated": "2026-09-27T17:03:08Z",
+      "updated": "2026-09-27T17:09:07Z",
       "writes": [
         "asf/evidence/review.py",
         "asf/evidence/evidence.py",
@@ -24287,12 +24328,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 41097227,
-        "tokens_cache_write": 371911,
-        "tokens_input": 538,
-        "tokens_output": 132204,
-        "usd": 11.03
+        "sessions": 3,
+        "tokens_cache_read": 47457899,
+        "tokens_cache_write": 449910,
+        "tokens_input": 724,
+        "tokens_output": 159821,
+        "usd": 12.89
       },
       "decided": true,
       "evidence": [
@@ -24311,7 +24352,7 @@
       "state": "Active",
       "title": "the `PRECHECK` state, its facts, and the feeder row that launches the pass",
       "type": "task",
-      "updated": "2026-09-27T15:28:59Z",
+      "updated": "2026-09-27T17:09:07Z",
       "writes": [
         "asf/conventions.py",
         "asf/harvest/lane.py",
@@ -24563,18 +24604,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 3486796,
-        "tokens_cache_write": 69284,
-        "tokens_input": 98,
-        "tokens_output": 19278,
-        "usd": 1.17
+        "sessions": 2,
+        "tokens_cache_read": 5898060,
+        "tokens_cache_write": 146794,
+        "tokens_input": 164,
+        "tokens_output": 37354,
+        "usd": 2.14
       },
       "decided": true,
       "evidence": [
-        "PR #156 OPEN",
-        "branch worker/T-0279",
-        "rule: in-flight"
+        "merge efff851 of worker/T-0279 lands T-0279 (PR #156)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0279",
@@ -24583,11 +24623,11 @@
       },
       "parent": "F-0052",
       "schema_version": 1,
-      "stage_since": "2026-09-27T16:35:53Z",
-      "state": "Active",
+      "stage_since": "2026-09-27T17:09:03Z",
+      "state": "Resolved",
       "title": "the roadmap says it in the cell that shows the budget",
       "type": "task",
-      "updated": "2026-09-27T16:47:52Z",
+      "updated": "2026-09-27T17:09:07Z",
       "writes": [
         "asf/views/roadmap.py",
         "tests/test_views.py"
@@ -24876,6 +24916,16 @@
         "T-0289"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 6211897,
+        "tokens_cache_write": 145216,
+        "tokens_input": 108,
+        "tokens_output": 75152,
+        "usd": 2.57
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0288",
@@ -24892,7 +24942,7 @@
       "state": "Active",
       "title": "`evals/` and `asf/evals/set.py` \u2014 the set, the loader, the two hashes",
       "type": "task",
-      "updated": "2026-09-27T17:03:08Z",
+      "updated": "2026-09-27T17:09:07Z",
       "writes": [
         "evals/README.md",
         "evals/manifest.json",
@@ -25347,6 +25397,239 @@
       "writes": [
         "tests/fixtures/memory/*",
         "tests/test_memory.py"
+      ]
+    },
+    "T-0303": {
+      "backlinks": [
+        "T-0304"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0303",
+      "links": {
+        "plan": "docs/plans/f-0061.md"
+      },
+      "parent": "F-0061",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T17:09:04Z",
+      "state": "New",
+      "title": "the hook contract \u2014 allow, refuse, fail closed, one ledger row, and the core directory's README",
+      "type": "task",
+      "updated": "2026-09-27T17:09:04Z",
+      "writes": [
+        "asf/rules/hookcall.py",
+        "asf/rules/hooks/__init__.py",
+        "rules/README.md",
+        "tests/test_rule_hooks.py"
+      ]
+    },
+    "T-0304": {
+      "after": [
+        "T-0303"
+      ],
+      "backlinks": [
+        "T-0305"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0304",
+      "links": {
+        "plan": "docs/plans/f-0061.md"
+      },
+      "parent": "F-0061",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T17:09:04Z",
+      "state": "New",
+      "title": "`install` writes where every session reads, `asf hook` finds a core script, and the doctor sees an unenforced rule",
+      "type": "task",
+      "updated": "2026-09-27T17:09:04Z",
+      "writes": [
+        "asf/hooks.py",
+        "asf/doctor.py",
+        "tests/test_install.py",
+        "tests/test_doctor.py",
+        "tests/test_rule_hooks.py"
+      ]
+    },
+    "T-0305": {
+      "after": [
+        "T-0304"
+      ],
+      "backlinks": [
+        "T-0306"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0305",
+      "links": {
+        "plan": "docs/plans/f-0061.md"
+      },
+      "parent": "F-0061",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T17:09:04Z",
+      "state": "New",
+      "title": "R-0001 and R-0002 \u2014 a stage names its files, and the shared stash stack is never touched",
+      "type": "task",
+      "updated": "2026-09-27T17:09:04Z",
+      "writes": [
+        "rules/R-0001.md",
+        "rules/r0001.sh",
+        "rules/R-0002.md",
+        "rules/r0002.sh",
+        "asf/rules/hooks/r0001.py",
+        "asf/rules/hooks/r0002.py",
+        "asf/conventions.py",
+        "tests/test_conventions.py",
+        "docs/products.example.yaml",
+        "tests/test_rule_hooks.py"
+      ]
+    },
+    "T-0306": {
+      "after": [
+        "T-0305"
+      ],
+      "backlinks": [
+        "T-0307"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0306",
+      "links": {
+        "plan": "docs/plans/f-0061.md"
+      },
+      "parent": "F-0061",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T17:09:04Z",
+      "state": "New",
+      "title": "R-0003 and R-0005 \u2014 the trunk pushes the classifier cannot see, and the pull request a session never opens",
+      "type": "task",
+      "updated": "2026-09-27T17:09:04Z",
+      "writes": [
+        "rules/R-0003.md",
+        "rules/r0003.sh",
+        "rules/R-0005.md",
+        "rules/r0005.sh",
+        "asf/rules/hooks/r0003.py",
+        "asf/rules/hooks/r0005.py",
+        "asf/conventions.py",
+        "tests/test_conventions.py",
+        "docs/products.example.yaml",
+        "tests/test_rule_hooks.py"
+      ]
+    },
+    "T-0307": {
+      "after": [
+        "T-0306"
+      ],
+      "backlinks": [
+        "T-0308"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0307",
+      "links": {
+        "plan": "docs/plans/f-0061.md"
+      },
+      "parent": "F-0061",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T17:09:04Z",
+      "state": "New",
+      "title": "R-0004 \u2014 a card written straight to disk is minted from the session's range",
+      "type": "task",
+      "updated": "2026-09-27T17:09:04Z",
+      "writes": [
+        "rules/R-0004.md",
+        "rules/r0004.sh",
+        "asf/rules/hooks/r0004.py",
+        "tests/test_rule_hooks.py"
+      ]
+    },
+    "T-0308": {
+      "after": [
+        "T-0307"
+      ],
+      "backlinks": [
+        "T-0309"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0308",
+      "links": {
+        "plan": "docs/plans/f-0061.md"
+      },
+      "parent": "F-0061",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T17:09:04Z",
+      "state": "New",
+      "title": "R-0006 and R-0007 \u2014 a card written is a card checked, and a session ends clean",
+      "type": "task",
+      "updated": "2026-09-27T17:09:04Z",
+      "writes": [
+        "rules/R-0006.md",
+        "rules/r0006.sh",
+        "rules/R-0007.md",
+        "rules/r0007.sh",
+        "asf/rules/hooks/r0006.py",
+        "asf/rules/hooks/r0007.py",
+        "tests/test_rule_hooks.py"
+      ]
+    },
+    "T-0309": {
+      "after": [
+        "T-0308"
+      ],
+      "backlinks": [
+        "T-0310"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0309",
+      "links": {
+        "plan": "docs/plans/f-0061.md"
+      },
+      "parent": "F-0061",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T17:09:04Z",
+      "state": "New",
+      "title": "the measure \u2014 declared, installed, refused, errored, and the violations that should fall",
+      "type": "task",
+      "updated": "2026-09-27T17:09:04Z",
+      "writes": [
+        "asf/rules/rules.py",
+        "asf/cli.py",
+        "tests/test_rule_hooks.py"
+      ]
+    },
+    "T-0310": {
+      "after": [
+        "T-0309"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0310",
+      "links": {
+        "plan": "docs/plans/f-0061.md"
+      },
+      "parent": "F-0061",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T17:09:04Z",
+      "state": "New",
+      "title": "the directory as a set, and the named refusals firing in a fixture session",
+      "type": "task",
+      "updated": "2026-09-27T17:09:04Z",
+      "writes": [
+        "rules/*.md",
+        "rules/*.sh",
+        "tests/test_rule_hooks.py"
       ]
     }
   },
