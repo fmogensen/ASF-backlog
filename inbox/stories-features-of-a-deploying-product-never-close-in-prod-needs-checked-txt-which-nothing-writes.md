@@ -1,0 +1,19 @@
+# Stories/Features of a deploying product never close: _in_prod needs checked.txt, which nothing writes
+
+A product that configures `deploy_sha` never closes a Story or Feature, because nothing writes the operator's checked list.
+
+## Observed (botseon, 2026-09-27)
+S-0218 has 4/4 acceptance lines cited and ticked. Its only Task, T-0366, is Closed (merge edfe8c7, PR #869), and edfe8c7 is an ancestor of the newest successful deploy-prod run (412349d). The Story still reads `state: Resolved`, `rule: tasks-resolved`. 14 botseon Stories are on `tasks-resolved` and 3 Features on `children-resolved`. The 129 Closed Stories all got there through `matrix-done`.
+
+## Cause
+- `asf/evidence/closing.py:107`: `story tasks-closed` needs every Task Closed **and** `ev.in_prod`. `feature children-closed` (`:125`) has the same gate.
+- `asf/record/ingest.py:391-403` `_in_prod`: when `prod_sha` is set (botseon sets `deploy_sha.workflow: deploy-prod.yml`), it also needs every Task's PR in `ev['checked']`.
+- `asf/evidence/evidence.py:44,681-688`: `checked` is read from `~/.asf/checked.txt`. No asf command writes that file (grep finds only the reader), and it does not exist on this host. So `in_prod` is always False for a deploying product, and `Resolved → Closed` can't be reached.
+- The botseon config sets `deploy_sha.prod.mode: auto` ("prod deploys when the required checks are green"), and nothing in asf reads it.
+- Acceptance ticks are not an input to `closing.Ev` at all. That is by design: Tasks prove, ticks record. It is not the gap.
+
+## Fix (do not hand-edit state)
+1. `asf/record/ingest.py:398-403` `_in_prod`: when the product's `deploy_sha.prod.mode` is `auto`, return `_merged_in_prod(...)`, meaning every child merge is an ancestor of `prod_sha`, without the `checked` gate. Keep the `checked` gate only for `mode: manual`. Read the mode through `Conventions`, not the raw yaml.
+2. Or, alongside 1, give the operator's tick a writer. `asf deploy` already records hand deploys, so it could append the PRs it shipped to `checked.txt`. Then the reader has a producer, and it is no longer a file nobody writes.
+3. Tests: `tests/` for `_in_prod`. Cover prod_sha set with mode auto and merge in deploy → True. Cover mode manual with no checked → False. Add an ingest fixture: a Story whose Tasks are all Closed and merged in the deploy derives `Closed (rule: tasks-closed)`.
+4. After install, the next ingest closes S-0218 and the other 13 `tasks-resolved` Stories whose merges are deployed. No `asf reopen` or hand edit is needed.
