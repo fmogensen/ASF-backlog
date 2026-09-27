@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T03:44:50Z",
+  "generated": "2026-09-27T03:52:22Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5215,12 +5215,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 951.04,
+      "spend_usd": 956.65,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T03:44:35Z"
+      "updated": "2026-09-27T03:52:18Z"
     },
     "E-0002": {
       "backlinks": [
@@ -5266,12 +5266,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 155.62,
+      "spend_usd": 160.12,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-27T03:36:51Z"
+      "updated": "2026-09-27T03:52:18Z"
     },
     "E-0003": {
       "backlinks": [
@@ -5622,12 +5622,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 5383471,
-        "tokens_cache_write": 112101,
-        "tokens_input": 130,
-        "tokens_output": 42881,
-        "usd": 4.89
+        "sessions": 2,
+        "tokens_cache_read": 10875490,
+        "tokens_cache_write": 262507,
+        "tokens_input": 238,
+        "tokens_output": 97318,
+        "usd": 10.5
       },
       "decided": true,
       "evidence": [
@@ -5646,7 +5646,7 @@
       "state": "Active",
       "title": "P3 wave 2 \u2014 evidence and ingest",
       "type": "feature",
-      "updated": "2026-09-27T03:43:49Z"
+      "updated": "2026-09-27T03:52:18Z"
     },
     "F-0011": {
       "area": "factory",
@@ -6167,7 +6167,8 @@
       "area": "factory",
       "backlinks": [
         "F-0106",
-        "T-0065"
+        "T-0065",
+        "T-0228"
       ],
       "children": [
         "T-0067",
@@ -8151,7 +8152,15 @@
       "backlinks": [
         "F-0166"
       ],
-      "children": [],
+      "children": [
+        "T-0225",
+        "T-0226",
+        "T-0227",
+        "T-0228",
+        "T-0229",
+        "T-0230",
+        "T-0231"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -8165,7 +8174,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0092",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -8174,12 +8183,12 @@
       "priority": "need",
       "rank": 2,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-27T02:41:50Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-27T03:51:52Z",
       "state": "Active",
       "title": "An item has a budget: three sessions or $10, then it stops and says why",
       "type": "feature",
-      "updated": "2026-09-27T03:44:35Z"
+      "updated": "2026-09-27T03:51:52Z"
     },
     "F-0093": {
       "area": "factory",
@@ -8465,6 +8474,7 @@
     },
     "F-0101": {
       "backlinks": [
+        "T-0225",
         "B-0097"
       ],
       "children": [
@@ -12997,7 +13007,9 @@
       "backlinks": [
         "F-0092",
         "F-0095",
-        "T-0020"
+        "T-0020",
+        "T-0225",
+        "T-0231"
       ],
       "children": [],
       "cost": {
@@ -19064,16 +19076,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 5,
-        "tokens_cache_read": 15065694,
-        "tokens_cache_write": 305025,
-        "tokens_input": 466,
-        "tokens_output": 118753,
-        "usd": 5.42
+        "sessions": 6,
+        "tokens_cache_read": 30798958,
+        "tokens_cache_write": 481122,
+        "tokens_input": 728,
+        "tokens_output": 183804,
+        "usd": 9.92
       },
       "decided": true,
       "evidence": [
         "PR #43 OPEN",
+        "branch archive/worker/T-0176-copies-d5ed8c8d5",
         "branch worker/T-0176",
         "rule: in-flight"
       ],
@@ -19088,7 +19101,7 @@
       "state": "Active",
       "title": "harvest accepts a delivery branch and reports the members no commit named",
       "type": "task",
-      "updated": "2026-09-27T02:35:00Z",
+      "updated": "2026-09-27T03:52:18Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
@@ -19099,8 +19112,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-27)",
-        "rule: planned"
+        "branch worker/T-0177",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0177",
@@ -19109,11 +19122,11 @@
       },
       "parent": "F-0102",
       "schema_version": 1,
-      "stage_since": "2026-09-24T01:47:48Z",
-      "state": "New",
+      "stage_since": "2026-09-27T03:51:52Z",
+      "state": "Active",
       "title": "ingest stages a delivery lead of any type from its own plan document",
       "type": "task",
-      "updated": "2026-09-27T00:03:28Z",
+      "updated": "2026-09-27T03:51:52Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_ingest.py"
@@ -20820,6 +20833,188 @@
       "updated": "2026-09-27T00:03:28Z",
       "writes": [
         "tests/test_metrics.py"
+      ]
+    },
+    "T-0225": {
+      "backlinks": [
+        "T-0226",
+        "T-0227",
+        "T-0228",
+        "T-0230"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0225",
+      "links": {
+        "plan": "docs/plans/f-0092.md"
+      },
+      "parent": "F-0092",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T03:51:53Z",
+      "state": "New",
+      "title": "the config and the leaf \u2014 `conventions.budget` and `asf/budget.py`",
+      "type": "task",
+      "updated": "2026-09-27T03:51:53Z",
+      "writes": [
+        "asf/conventions.py",
+        "asf/budget.py",
+        "tests/test_conventions.py",
+        "tests/test_budget.py"
+      ]
+    },
+    "T-0226": {
+      "after": [
+        "T-0225"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0226",
+      "links": {
+        "plan": "docs/plans/f-0092.md"
+      },
+      "parent": "F-0092",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T03:51:53Z",
+      "state": "New",
+      "title": "the card carries the budget and its verdict \u2014 `asf/metrics/metrics.py`",
+      "type": "task",
+      "updated": "2026-09-27T03:51:53Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "tests/test_metrics.py"
+      ]
+    },
+    "T-0227": {
+      "after": [
+        "T-0225"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0227",
+      "links": {
+        "plan": "docs/plans/f-0092.md"
+      },
+      "parent": "F-0092",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T03:51:53Z",
+      "state": "New",
+      "title": "the gate, the tick's line and the backstop \u2014 the feeder stops an item that is over",
+      "type": "task",
+      "updated": "2026-09-27T03:51:53Z",
+      "writes": [
+        "asf/feeder/rows.py",
+        "asf/invariants.py",
+        "asf/tick/step_wave.py",
+        "tests/test_feeder.py",
+        "tests/test_invariants.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0228": {
+      "after": [
+        "T-0225"
+      ],
+      "backlinks": [
+        "T-0229"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0228",
+      "links": {
+        "plan": "docs/plans/f-0092.md"
+      },
+      "parent": "F-0092",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T03:51:53Z",
+      "state": "New",
+      "title": "the run caps \u2014 the meter counts turns, `capped` judges the clock, the record says which",
+      "type": "task",
+      "updated": "2026-09-27T03:51:53Z",
+      "writes": [
+        "asf/tokens.py",
+        "asf/workers/stall.py",
+        "asf/workers/runtime.py",
+        "asf/workers/lifecycle.py",
+        "tests/test_tokens.py",
+        "tests/test_lifecycle.py",
+        "tests/test_budget.py"
+      ]
+    },
+    "T-0229": {
+      "after": [
+        "T-0228"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0229",
+      "links": {
+        "plan": "docs/plans/f-0092.md"
+      },
+      "parent": "F-0092",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T03:51:53Z",
+      "state": "New",
+      "title": "the health step is the caller \u2014 a capped run is ended the same tick",
+      "type": "task",
+      "updated": "2026-09-27T03:51:53Z",
+      "writes": [
+        "asf/tick/step_health.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0230": {
+      "after": [
+        "T-0225"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0230",
+      "links": {
+        "plan": "docs/plans/f-0092.md"
+      },
+      "parent": "F-0092",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T03:51:53Z",
+      "state": "New",
+      "title": "the ruling \u2014 the groom asks, and `budget <n> [$<usd>]` answers",
+      "type": "task",
+      "updated": "2026-09-27T03:51:53Z",
+      "writes": [
+        "asf/groom/groom.py",
+        "tests/test_groom.py"
+      ]
+    },
+    "T-0231": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0231",
+      "links": {
+        "plan": "docs/plans/f-0092.md"
+      },
+      "parent": "F-0092",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T03:51:53Z",
+      "state": "New",
+      "title": "the board shows it and sorts by it \u2014 `asf backlog --sort budget`",
+      "type": "task",
+      "updated": "2026-09-27T03:51:53Z",
+      "writes": [
+        "asf/views/board.py",
+        "asf/cli.py",
+        "tests/test_views.py",
+        "tests/test_cli.py"
       ]
     }
   },
