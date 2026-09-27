@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T18:53:46Z",
+  "generated": "2026-09-27T18:59:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5536,12 +5536,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1276.56,
+      "spend_usd": 1279.82,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-27T18:53:43Z"
+      "updated": "2026-09-27T18:59:34Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7880,6 +7880,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0064",
         "rule: documented"
       ],
       "folder": "features",
@@ -7893,12 +7894,20 @@
       "state": "Active",
       "title": "Events at the source: every tool appends its own event, and the human log is rendered from the streams",
       "type": "feature",
-      "updated": "2026-09-27T17:42:10Z"
+      "updated": "2026-09-27T18:59:30Z"
     },
     "F-0065": {
       "area": "security",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0325",
+        "T-0326",
+        "T-0327",
+        "T-0328",
+        "T-0329",
+        "T-0330",
+        "T-0331"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -7912,7 +7921,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0065",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -7921,12 +7930,12 @@
       "priority": "need",
       "rank": 65,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-27T17:54:55Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-27T18:59:30Z",
       "state": "Active",
       "title": "Spike: a sandboxed shell for worker sessions",
       "type": "feature",
-      "updated": "2026-09-27T18:47:50Z"
+      "updated": "2026-09-27T18:59:30Z"
     },
     "F-0066": {
       "area": "factory",
@@ -7934,7 +7943,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-27)",
+        "spec on spec/F-0066",
         "rule: card"
       ],
       "folder": "features",
@@ -7943,12 +7952,12 @@
       "priority": "need",
       "rank": 66,
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-21T17:01:58Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-27T18:59:30Z",
       "state": "New",
       "title": "A progress heartbeat: no progress for twenty minutes is a stall, not only silence",
       "type": "feature",
-      "updated": "2026-09-27T00:03:28Z"
+      "updated": "2026-09-27T18:59:30Z"
     },
     "F-0067": {
       "area": "factory",
@@ -24273,12 +24282,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 9,
-        "tokens_cache_read": 37605535,
-        "tokens_cache_write": 743622,
-        "tokens_input": 954,
-        "tokens_output": 266174,
-        "usd": 18.17
+        "sessions": 10,
+        "tokens_cache_read": 48811950,
+        "tokens_cache_write": 868653,
+        "tokens_input": 1172,
+        "tokens_output": 318726,
+        "usd": 21.44
       },
       "decided": true,
       "evidence": [
@@ -24299,7 +24308,7 @@
       "state": "Active",
       "title": "the one reader derives the verdict from the rows, and every task row carries its checks",
       "type": "task",
-      "updated": "2026-09-27T18:18:29Z",
+      "updated": "2026-09-27T18:59:34Z",
       "writes": [
         "asf/evidence/review.py",
         "asf/evidence/evidence.py",
@@ -26225,6 +26234,182 @@
         "tests/test_briefs.py",
         "tests/test_doctor.py",
         "tests/test_launch.py"
+      ]
+    },
+    "T-0325": {
+      "backlinks": [
+        "T-0327"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0325",
+      "links": {
+        "plan": "docs/plans/f-0065.md"
+      },
+      "parent": "F-0065",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T18:59:31Z",
+      "state": "New",
+      "title": "the probe set and the throwaway fixture \u2014 fourteen probes, one line each, and the product they run against",
+      "type": "task",
+      "updated": "2026-09-27T18:59:31Z",
+      "writes": [
+        "tools/spike/f-0065/probe.sh",
+        "tools/spike/f-0065/fixture.sh"
+      ]
+    },
+    "T-0326": {
+      "backlinks": [
+        "T-0327"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0326",
+      "links": {
+        "plan": "docs/plans/f-0065.md"
+      },
+      "parent": "F-0065",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T18:59:31Z",
+      "state": "New",
+      "title": "the fence's own settings surface, read off the harness, and the collector that refuses a guessed key",
+      "type": "task",
+      "updated": "2026-09-27T18:59:31Z",
+      "writes": [
+        "tools/spike/f-0065/collect.py",
+        "tools/spike/f-0065/settings/**"
+      ]
+    },
+    "T-0327": {
+      "after": [
+        "T-0325",
+        "T-0326"
+      ],
+      "backlinks": [
+        "T-0328"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0327",
+      "links": {
+        "plan": "docs/plans/f-0065.md"
+      },
+      "parent": "F-0065",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T18:59:31Z",
+      "state": "New",
+      "title": "`session.sh` \u2014 one real session per (role, variant), in the environment a worker actually gets",
+      "type": "task",
+      "updated": "2026-09-27T18:59:31Z",
+      "writes": [
+        "tools/spike/f-0065/session.sh"
+      ]
+    },
+    "T-0328": {
+      "after": [
+        "T-0327"
+      ],
+      "backlinks": [
+        "T-0329"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0328",
+      "links": {
+        "plan": "docs/plans/f-0065.md"
+      },
+      "parent": "F-0065",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T18:59:31Z",
+      "state": "New",
+      "title": "the fence proved on, the permission-mode pair, and the environment's own hole",
+      "type": "task",
+      "updated": "2026-09-27T18:59:31Z",
+      "writes": [
+        "tools/spike/f-0065/**",
+        "docs/research/sandboxed-worker-shell.md"
+      ]
+    },
+    "T-0329": {
+      "after": [
+        "T-0328"
+      ],
+      "backlinks": [
+        "T-0330"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0329",
+      "links": {
+        "plan": "docs/plans/f-0065.md"
+      },
+      "parent": "F-0065",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T18:59:31Z",
+      "state": "New",
+      "title": "the coder's table \u2014 every row paired, every grant one entry over `bare`",
+      "type": "task",
+      "updated": "2026-09-27T18:59:31Z",
+      "writes": [
+        "tools/spike/f-0065/**",
+        "docs/research/sandboxed-worker-shell.md"
+      ]
+    },
+    "T-0330": {
+      "after": [
+        "T-0329"
+      ],
+      "backlinks": [
+        "T-0331"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0330",
+      "links": {
+        "plan": "docs/plans/f-0065.md"
+      },
+      "parent": "F-0065",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T18:59:31Z",
+      "state": "New",
+      "title": "the reviewer's table and the prober's \u2014 the role that reads, and the role the fence is cheapest for",
+      "type": "task",
+      "updated": "2026-09-27T18:59:31Z",
+      "writes": [
+        "tools/spike/f-0065/**",
+        "docs/research/sandboxed-worker-shell.md"
+      ]
+    },
+    "T-0331": {
+      "after": [
+        "T-0330"
+      ],
+      "backlinks": [
+        "B-0132"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0331",
+      "links": {
+        "plan": "docs/plans/f-0065.md"
+      },
+      "parent": "F-0065",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T18:59:31Z",
+      "state": "New",
+      "title": "the document closed \u2014 three settings blocks, the adoption list, the deletion line",
+      "type": "task",
+      "updated": "2026-09-27T18:59:31Z",
+      "writes": [
+        "tools/spike/f-0065/**",
+        "docs/research/sandboxed-worker-shell.md"
       ]
     }
   },
