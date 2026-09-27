@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T10:11:42Z",
+  "generated": "2026-09-27T10:29:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4409,6 +4409,25 @@
       "type": "bug",
       "updated": "2026-09-27T07:07:14Z"
     },
+    "B-0147": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0147",
+      "last_filed": "2026-09-27",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0093.md",
+      "stage_since": "2026-09-27T10:29:28Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0093.md",
+      "type": "bug",
+      "updated": "2026-09-27T10:29:28Z"
+    },
     "D-0001": {
       "backlinks": [],
       "children": [],
@@ -5452,7 +5471,8 @@
         "B-0142",
         "B-0143",
         "B-0144",
-        "B-0145"
+        "B-0145",
+        "B-0147"
       ],
       "decided": true,
       "evidence": [
@@ -8537,7 +8557,9 @@
     },
     "F-0093": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "B-0147"
+      ],
       "children": [
         "T-0183",
         "T-0184",
@@ -20779,7 +20801,8 @@
       "backlinks": [
         "F-0170",
         "T-0187",
-        "B-0138"
+        "B-0138",
+        "B-0147"
       ],
       "children": [],
       "cost": {
@@ -20794,11 +20817,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #119 OPEN",
-        "PR #121 OPEN",
-        "branch console/T-0183-T-0187",
-        "branch worker/T-0183",
-        "rule: in-flight"
+        "commit e4506e1 names T-0183",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0183",
@@ -20807,11 +20827,11 @@
       },
       "parent": "F-0093",
       "schema_version": 1,
-      "stage_since": "2026-09-24T13:28:43Z",
-      "state": "Active",
+      "stage_since": "2026-09-27T10:28:59Z",
+      "state": "Resolved",
       "title": "the third label, the fallback, and the two new brief kinds",
       "type": "task",
-      "updated": "2026-09-27T10:11:39Z",
+      "updated": "2026-09-27T10:28:59Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/briefs/templates/groom-clerk.md",
@@ -20944,14 +20964,13 @@
         "T-0183"
       ],
       "backlinks": [
-        "T-0183"
+        "B-0147"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "PR #121 OPEN",
-        "branch console/T-0183-T-0187",
-        "rule: in-flight"
+        "commit 060c95c names T-0187",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0187",
@@ -20960,11 +20979,11 @@
       },
       "parent": "F-0093",
       "schema_version": 1,
-      "stage_since": "2026-09-27T10:04:45Z",
-      "state": "Active",
+      "stage_since": "2026-09-27T10:28:59Z",
+      "state": "Resolved",
       "title": "the feeder \u2014 the groom day splits, and the second spec run amends",
       "type": "task",
-      "updated": "2026-09-27T10:04:45Z",
+      "updated": "2026-09-27T10:28:59Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/tick/step_wave.py",
