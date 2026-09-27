@@ -1,7 +1,9 @@
+→ F-0216
+
 # Epic: cloud is the default executor — local sessions only by exception; the host guard covers local only
+type: feature
 parent: E-0003
 
-type: epic
 
 ## Why
 On 2026-09-26 most waves were held by "host pressure load 30–45 (1m up to 112)/cores 10", while CI runners sat partly idle. botseon ran 0–6 sessions for hours. Every worker session, and its typechecks and vitest, shares one 10-core Mac with the controller, ASF's own sessions and Spotlight. The operator: "why do we run things on the Mac … when we have cloud agents and cloud CIs".
@@ -29,6 +31,3 @@ The cloud lane exists: asf/workers/cloud.py, runtime `actions`. It runs `claude 
 2. **Runner class:** `cloud.runs_on: [self-hosted, class-agent]`, counted by ci_queue as its own class and never taking CI slots.
 3. **First live run:** one botseon review row in the cloud, end to end (dispatch → push → harvest → merge), then widen to coder, correct and fix-bug.
 4. **Default on:** set it for botseon, measure sessions in flight and lead time against the local-only week.
-
-## Question
-`type: epic` is not read — the card's shape reads as feature (default: one spec and one plan, landing as one deployable thing). Remove the line, or change the shape.
