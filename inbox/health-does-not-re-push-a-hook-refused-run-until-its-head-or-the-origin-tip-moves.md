@@ -7,3 +7,6 @@ Evidence (2026-09-28, botseon, measured after #186): `cloud/spec-mobile-pass` co
 Want: `publish_gap` / `republish` (asf/workers/health.py) remember the (local head, origin tip) pair of the last hook refusal and skip the retry while both are unchanged; surface the refusal once as a hold with the hook's reason so a session can fix it.
 
 Verify: a test beside tests/test_health_publish_steps.py — a refused push is not retried on the next tick with unchanged heads, and is retried after a new commit.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
