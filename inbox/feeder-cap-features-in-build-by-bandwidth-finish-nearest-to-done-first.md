@@ -1,0 +1,24 @@
+# Feeder: cap the Features in build by bandwidth, and finish the nearest-to-done first
+parent: E-0001
+rank: 1
+related: F-0195
+
+Evidence (botseon, 2026-09-27 10:40; from botseon/backlog index.json and gh):
+- 99 Features Active and 69 New, but only 7 have ever been Resolved (all between 09-24 01:21 and 09-27 05:55). That is about 2.2 per day (7 in 3.2 days). At that rate the 99 Active take about 45 days to clear.
+- 73 of the 99 Active Features entered their stage 2–3 days ago. Many were started at once, and few finish.
+- PRs merged since 09-20, by title prefix: F- (spec/plan) 54, T- (build Task) 23, B- 19. There are 81 open PRs.
+- The bandwidth is 3 of 3 sessions in use and a CI cap of 4, and 2 accounts are at their 7-day limit.
+
+What exists: `finish_first` (asf/feeder/rows.py:1091, `feeder.max_specs_in_flight`, default 2) caps spec/plan sessions only while they run. It has no limit on how many Features are open. Each spec that lands adds another Active Feature, so the open set only grows.
+
+Wanted:
+1. A work-in-progress limit on Features in build. While the product has N or more Features in a build stage, the feeder starts no spec or plan for a new Feature. Rows for Features already in build (Tasks, corrections, fixes) are never held.
+2. Make N configurable AND dynamic:
+   - `feeder.max_features_in_build`: a fixed number, or `auto`.
+   - `auto`: derive N every tick from the bandwidth, e.g. `ceil(sessions_cap × k)` (k = `feeder.features_per_session`, default 2), scaled down when accounts are at their quota stop and when CI has no free heavy slot. Log the inputs and the resulting N.
+   - Default: `auto`.
+3. Finish the nearest-to-done first. Among Features in build, rank Task rows by the share of Tasks already landed, highest first, then by the oldest stage_since. A Feature with one Task left beats a Feature with ten.
+4. Visibility: `asf next` and `asf status` show "Features in build X / N (auto: sessions S, quota-stopped A, CI free C)". A held spec shows `WAITS ON finish: X in build, cap N`.
+5. Deterministic, with no LLM. Tests: over the cap, a spec for a new Feature is held while Task rows launch; `auto` lowers N when an account hits its quota stop; ordering puts the Feature with the highest landed share first.
+
+Non-goals: closing or parking Features that are already Active (the cap only stops new starts); changing the spec cap in `finish_first`.
