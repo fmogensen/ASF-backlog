@@ -1298,3 +1298,30 @@
 {"branch": "fix/quota-stale", "kind": "foreign-merge", "pr": 84, "product": "asf", "ts": "2026-09-27T07:07:47Z"}
 {"branch": "fix/redact-rebased-copies", "kind": "foreign-merge", "pr": 82, "product": "asf", "ts": "2026-09-27T07:07:47Z"}
 {"branch": "fix/stale-stop-holds", "kind": "foreign-merge", "pr": 88, "product": "asf", "ts": "2026-09-27T07:07:47Z"}
+{"item": "T-0199", "job": "adjudicate-t-0199", "kind": "ruling", "product": "asf", "text": "The only open finding was the mechanical one this session was launched to end: rebasing `worker/T-0199` onto `origin/main` (53 commits ahead) conflicted in `tests/test_ingest.py`, because `f24e20bc1` (\"pin the on-prod-event test's clock\") and a commit already landed on `main` independently (`198d8adfd`, from an unrelated session, same date) made the exact same logical fix to the exact same test — `test_history_and_stage_since_are_unchanged_by_the_new_write` in `FeatureOnProdEventTests` — pinning `ingest.now_iso` for both `cmd_ingest` calls, differing only in a variable name (`frozen_now` vs `frozen`) and docstring wording. Both reviews (round 1, round 2) had already found zero C findings against Task 6 of `docs/plans/f-0040.md`; the \"conflict\" that stalled three correction rounds was never a defect a correction could fix — a correction re-edits code, but the code on both sides was already correct and identical in effect, so every correction attempt re-produced the same conflict on the next rebase. Upheld: this is a rebase-mechanics conflict, not a contested design or code claim. I resolved it directly on `worker/T-0199` by taking `main`'s wording for the shared hunk (making `f24e20bc1`'s content a no-op, which git then dropped as an empty commit during `git rebase --continue`), keeping `tick_proven`, its call site, and `ProvenAcceptanceTests` untouched and byte-identical to both approved reviews. Nothing about Task 6's design, scope, or `writes:` changes. `python3 -m unittest tests.test_ingest tests.test_proves tests.test_backlog` (179 tests) and both convention/generic checks are green post-rebase; the branch now sits cleanly on `origin/main` at `a3a38ca53` with a fast-forward-clean diff of exactly `asf/record/ingest.py` and `tests/test_ingest.py` (plus its own two review files).", "ts": "2026-09-27T07:13:16Z"}
+{"active_products": 2, "borrowed": 0, "ci": null, "ci_bound_by": null, "ci_inflight": null, "fair_share": null, "kind": "capacity", "product": "asf", "sessions": 6, "sessions_bound_by": "product", "sessions_inflight": 4, "ts": "2026-09-27T07:13:29Z", "usable": 12}
+{"brief_kind": "review", "item": "T-0232", "job": "review-t-0232", "kind": "launch", "model": "claude-sonnet-5", "product": "asf", "ts": "2026-09-27T07:13:34Z"}
+{"branch": "agent/adjudicate-later-cheaper", "kind": "foreign-merge", "pr": 53, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/brief-no-worker-names", "kind": "foreign-merge", "pr": 54, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/ci-dedupe-push", "kind": "foreign-merge", "pr": 31, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/ci-head-starvation", "kind": "foreign-merge", "pr": 39, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/ci-queue-backfill", "kind": "foreign-merge", "pr": 48, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/ci-queue-own-clock", "kind": "foreign-merge", "pr": 47, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/ci-queue-record-rank", "kind": "foreign-merge", "pr": 60, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/ci-queue-rerun-rank", "kind": "foreign-merge", "pr": 62, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/correction-row-new-state", "kind": "foreign-merge", "pr": 52, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/flaky-ingest-ts", "kind": "foreign-merge", "pr": 58, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/gate-review-row", "kind": "foreign-merge", "pr": 73, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/naming-no-session", "kind": "foreign-merge", "pr": 51, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/no-stale-rerun", "kind": "foreign-merge", "pr": 64, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/phantom-busy-runners", "kind": "foreign-merge", "pr": 63, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/rebase-progress", "kind": "foreign-merge", "pr": 66, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/s1-label-aware", "kind": "foreign-merge", "pr": 35, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "agent/t-0195-coder-template", "kind": "foreign-merge", "pr": 70, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "fix/ci-queue-opens-held-prs", "kind": "foreign-merge", "pr": 85, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "fix/merge-refused-conflict-back", "kind": "foreign-merge", "pr": 77, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "fix/merge-refused-conflict-mergeable", "kind": "foreign-merge", "pr": 86, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "fix/quota-stale", "kind": "foreign-merge", "pr": 84, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "fix/redact-rebased-copies", "kind": "foreign-merge", "pr": 82, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "fix/review-current-across-rewrites", "kind": "foreign-merge", "pr": 97, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
+{"branch": "fix/stale-stop-holds", "kind": "foreign-merge", "pr": 88, "product": "asf", "ts": "2026-09-27T07:13:35Z"}
