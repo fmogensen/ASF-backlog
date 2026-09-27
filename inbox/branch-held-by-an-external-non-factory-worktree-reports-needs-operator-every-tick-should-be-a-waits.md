@@ -1,3 +1,6 @@
 # Branch held by an external (non-factory) worktree reports NEEDS OPERATOR every tick; should be a WAITS
 
 2026-09-27 05:10 asf: "NEEDS OPERATOR: review-pr-0071 fails to spawn each tick: worktree already exists: …/ASF/.claude/worktrees/agent-ac96027eef2f77fc6 — no run recorded it". The PR's branch is checked out in a live console-agent worktree (the agent that opened the PR is still working in it). That's not an operator matter: a branch held by a worktree ASF didn't create (outside ~/.ASF/state/<p>/worktrees) should be a plain WAITS ("branch checked out in an external worktree <path>; waits until it's released") — never NEEDS OPERATOR, never removed by the factory. Test: external worktree holding the branch → WAITS row, no spawn attempt, no NEEDS OPERATOR.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
