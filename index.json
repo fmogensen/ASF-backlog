@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27T05:42:34Z",
+  "generated": "2026-09-27T05:50:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4283,9 +4283,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #92 OPEN",
-        "branch fix/B-0142",
-        "rule: fixer"
+        "merge 1ba355b of fix/B-0142 lands B-0142 (PR #92)",
+        "rule: fixed"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -4294,11 +4293,11 @@
       "schema_version": 1,
       "severity": "S2",
       "signature": "fails to spawn each tick: worktree already exists (a worktree outside the factory's worktrees directory)",
-      "stage_since": "2026-09-27T04:59:56Z",
-      "state": "Active",
+      "stage_since": "2026-09-27T05:50:31Z",
+      "state": "Resolved",
       "title": "Branch held by an external (non-factory) worktree reports NEEDS OPERATOR every tick; should be a WAITS",
       "type": "bug",
-      "updated": "2026-09-27T05:42:25Z"
+      "updated": "2026-09-27T05:50:31Z"
     },
     "B-0143": {
       "backlinks": [],
@@ -5335,6 +5334,7 @@
         "F-0208",
         "F-0209",
         "F-0212",
+        "F-0218",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -5931,7 +5931,9 @@
     },
     "F-0011": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "F-0218"
+      ],
       "children": [
         "B-0023"
       ],
@@ -6158,6 +6160,7 @@
         "F-0073",
         "F-0077",
         "F-0123",
+        "F-0218",
         "S-0001",
         "S-0002",
         "S-0003",
@@ -8535,7 +8538,9 @@
       "updated": "2026-09-26T06:17:00Z"
     },
     "F-0094": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0218"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -11123,6 +11128,20 @@
       "title": "Loop guard parks on the head read before the same tick's publish",
       "type": "feature",
       "updated": "2026-09-27T04:53:04Z"
+    },
+    "F-0218": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0218",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-09-27T05:50:53Z",
+      "state": "New",
+      "title": "asf unpark releases one parked job per call",
+      "type": "feature",
+      "updated": "2026-09-27T05:50:53Z"
     },
     "R-0001": {
       "backlinks": [],
