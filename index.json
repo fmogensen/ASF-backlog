@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T18:25:31Z",
+  "generated": "2026-09-28T18:32:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4622,6 +4622,25 @@
       "type": "bug",
       "updated": "2026-09-28T18:04:08Z"
     },
+    "B-0153": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0153",
+      "last_filed": "2026-09-28",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0127.md",
+      "stage_since": "2026-09-28T18:32:44Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0127.md",
+      "type": "bug",
+      "updated": "2026-09-28T18:32:44Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256"
@@ -5700,7 +5719,8 @@
         "B-0147",
         "B-0148",
         "B-0151",
-        "B-0152"
+        "B-0152",
+        "B-0153"
       ],
       "decided": true,
       "evidence": [
@@ -5710,12 +5730,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1822.51,
+      "spend_usd": 1827.6,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T18:25:02Z"
+      "updated": "2026-09-28T18:32:05Z"
     },
     "E-0002": {
       "backlinks": [
@@ -10387,7 +10407,9 @@
       "updated": "2026-09-28T18:13:18Z"
     },
     "F-0127": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0153"
+      ],
       "children": [
         "T-0483",
         "T-0484"
@@ -10791,12 +10813,12 @@
       "id": "F-0143",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-28T17:57:12Z",
+      "stage": "building 0/3",
+      "stage_since": "2026-09-28T18:31:56Z",
       "state": "Active",
       "title": "A pre-commit hook pointing at the /x/asf test fixture path broke review-b-0111's commit",
       "type": "feature",
-      "updated": "2026-09-28T18:04:08Z"
+      "updated": "2026-09-28T18:31:56Z"
     },
     "F-0144": {
       "backlinks": [],
@@ -10804,12 +10826,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 9381103,
-        "tokens_cache_write": 273192,
-        "tokens_input": 308,
-        "tokens_output": 42271,
-        "usd": 4.28
+        "sessions": 3,
+        "tokens_cache_read": 10224577,
+        "tokens_cache_write": 339372,
+        "tokens_input": 338,
+        "tokens_output": 68532,
+        "usd": 6.02
       },
       "decided": true,
       "evidence": [
@@ -10826,7 +10848,7 @@
       "state": "Active",
       "title": "asf set cannot widen a Task's writes: footprint",
       "type": "feature",
-      "updated": "2026-09-28T18:24:43Z"
+      "updated": "2026-09-28T18:32:05Z"
     },
     "F-0145": {
       "backlinks": [],
@@ -10892,12 +10914,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 3220563,
-        "tokens_cache_write": 110171,
-        "tokens_input": 82,
-        "tokens_output": 44298,
-        "usd": 3.82
+        "sessions": 2,
+        "tokens_cache_read": 5694171,
+        "tokens_cache_write": 217766,
+        "tokens_input": 146,
+        "tokens_output": 85792,
+        "usd": 7.17
       },
       "decided": true,
       "evidence": [
@@ -10914,7 +10936,7 @@
       "state": "Active",
       "title": "Scorecard: a total across products and the week-over-week delta, as the daily rollup's first line",
       "type": "feature",
-      "updated": "2026-09-28T18:24:43Z"
+      "updated": "2026-09-28T18:32:05Z"
     },
     "F-0149": {
       "backlinks": [],
@@ -31555,9 +31577,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #290 OPEN",
-        "branch worker/T-0425",
-        "rule: in-flight"
+        "merge 3e16f50 of worker/T-0425 lands T-0425 (PR #290)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0425",
@@ -31566,11 +31587,11 @@
       },
       "parent": "F-0110",
       "schema_version": 1,
-      "stage_since": "2026-09-28T16:08:43Z",
-      "state": "Active",
+      "stage_since": "2026-09-28T18:31:56Z",
+      "state": "Resolved",
       "title": "the installer stops asking for `ASF_PRODUCT` in the product's own repo",
       "type": "task",
-      "updated": "2026-09-28T18:13:23Z",
+      "updated": "2026-09-28T18:31:56Z",
       "writes": [
         "tools/install.sh",
         "tests/test_install.py",
@@ -33461,7 +33482,9 @@
       "after": [
         "T-0483"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-0153"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -33475,9 +33498,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #294 OPEN",
-        "branch worker/T-0484",
-        "rule: in-flight"
+        "merge 7074ad5 of worker/T-0484 lands T-0484 (PR #294)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0484",
@@ -33486,11 +33508,11 @@
       },
       "parent": "F-0127",
       "schema_version": 1,
-      "stage_since": "2026-09-28T18:04:08Z",
-      "state": "Active",
+      "stage_since": "2026-09-28T18:31:56Z",
+      "state": "Resolved",
       "title": "the product-config guide documents the key a product declares",
       "type": "task",
-      "updated": "2026-09-28T18:25:02Z",
+      "updated": "2026-09-28T18:31:56Z",
       "writes": [
         "docs/guide/product-config.md",
         "tests/test_readme.py"
@@ -33922,8 +33944,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0499",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0499",
@@ -33932,11 +33954,11 @@
       },
       "parent": "F-0143",
       "schema_version": 1,
-      "stage_since": "2026-09-28T17:57:14Z",
-      "state": "New",
+      "stage_since": "2026-09-28T18:31:56Z",
+      "state": "Active",
       "title": "the net \u2014 a hook file the confine never saw turns the run red, naming it",
       "type": "task",
-      "updated": "2026-09-28T18:04:08Z",
+      "updated": "2026-09-28T18:31:56Z",
       "writes": [
         "tools/run_tests.py",
         "tests/test_run_tests.py"
