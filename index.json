@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T07:55:07Z",
+  "generated": "2026-09-28T08:01:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4563,6 +4563,7 @@
       "decided": true,
       "evidence": [
         "merge 903ae10 of fix/B-0151 lands B-0151 (PR #201)",
+        "CI green on main at or after it",
         "rule: fixed"
       ],
       "folder": "bugs",
@@ -4576,7 +4577,7 @@
       "state": "Resolved",
       "title": "Lane branches collide on sequential numbers (migrations, bands); ASF should reserve them",
       "type": "bug",
-      "updated": "2026-09-28T07:55:04Z"
+      "updated": "2026-09-28T08:00:54Z"
     },
     "D-0001": {
       "backlinks": [
@@ -5664,12 +5665,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1482.78,
+      "spend_usd": 1486.4,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T07:55:04Z"
+      "updated": "2026-09-28T08:01:06Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7584,6 +7585,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/9 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -7598,7 +7600,7 @@
       "state": "Active",
       "title": "The production verification probe: a real customer journey after every deploy",
       "type": "feature",
-      "updated": "2026-09-28T07:55:00Z"
+      "updated": "2026-09-28T08:00:54Z"
     },
     "F-0052": {
       "area": "factory",
@@ -8313,7 +8315,15 @@
         "F-0131",
         "T-0055"
       ],
-      "children": [],
+      "children": [
+        "T-0377",
+        "T-0378",
+        "T-0379",
+        "T-0380",
+        "T-0381",
+        "T-0382",
+        "T-0383"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -8327,7 +8337,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0070",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -8336,12 +8346,12 @@
       "priority": "need",
       "rank": 70,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T07:31:06Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T08:00:54Z",
       "state": "Active",
       "title": "A CI step-silence rule: a job with no new step for ten minutes is stalled, even under budget",
       "type": "feature",
-      "updated": "2026-09-28T07:55:04Z"
+      "updated": "2026-09-28T08:00:54Z"
     },
     "F-0071": {
       "area": "factory",
@@ -27454,12 +27464,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "tokens_cache_read": 28545889,
-        "tokens_cache_write": 376001,
-        "tokens_input": 406,
-        "tokens_output": 146698,
-        "usd": 8.68
+        "sessions": 4,
+        "tokens_cache_read": 30065526,
+        "tokens_cache_write": 432378,
+        "tokens_input": 464,
+        "tokens_output": 170882,
+        "usd": 9.45
       },
       "decided": true,
       "evidence": [
@@ -27485,7 +27495,7 @@
       "state": "Active",
       "title": "`session.sh` \u2014 one real session per (role, variant), in the environment a worker actually gets",
       "type": "task",
-      "updated": "2026-09-28T07:55:04Z",
+      "updated": "2026-09-28T08:01:06Z",
       "writes": [
         "tools/spike/f-0065/session.sh",
         "tools/spike/f-0065/**",
@@ -28050,7 +28060,9 @@
       ]
     },
     "T-0341": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0382"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -28657,8 +28669,19 @@
         "T-0364"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 9086682,
+        "tokens_cache_write": 119377,
+        "tokens_input": 208,
+        "tokens_output": 55686,
+        "usd": 2.85
+      },
       "decided": true,
       "evidence": [
+        "PR #215 OPEN",
         "branch worker/T-0358",
         "rule: in-flight"
       ],
@@ -28673,7 +28696,7 @@
       "state": "Active",
       "title": "`conventions.security` and `asf/security/paths.py` \u2014 which paths are sensitive",
       "type": "task",
-      "updated": "2026-09-28T07:55:00Z",
+      "updated": "2026-09-28T08:01:06Z",
       "writes": [
         "asf/conventions.py",
         "asf/security/__init__.py",
@@ -28980,6 +29003,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0368",
       "links": {
@@ -28991,7 +29018,7 @@
       "state": "New",
       "title": "the `probe:` block \u2014 validated, defaulted, documented, and off when unset",
       "type": "task",
-      "updated": "2026-09-28T07:55:01Z",
+      "updated": "2026-09-28T08:00:54Z",
       "writes": [
         "asf/probe/__init__.py",
         "asf/probe/config.py",
@@ -29010,6 +29037,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0369",
       "links": {
@@ -29021,7 +29052,7 @@
       "state": "New",
       "title": "one customer-visible classifier, and what a deploy owes a probe",
       "type": "task",
-      "updated": "2026-09-28T07:55:01Z",
+      "updated": "2026-09-28T08:00:54Z",
       "writes": [
         "asf/probe/scope.py",
         "asf/views/prod.py",
@@ -29041,6 +29072,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0370",
       "links": {
@@ -29052,7 +29087,7 @@
       "state": "New",
       "title": "the journeys ASF sends, the sign-in it always runs first, and the schema it refuses to read loosely",
       "type": "task",
-      "updated": "2026-09-28T07:55:01Z",
+      "updated": "2026-09-28T08:00:54Z",
       "writes": [
         "asf/probe/journey.py",
         "tests/test_probe_journey.py"
@@ -29070,6 +29105,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0371",
       "links": {
@@ -29081,7 +29120,7 @@
       "state": "New",
       "title": "the probe stream in the record \u2014 one line per journey, written once",
       "type": "task",
-      "updated": "2026-09-28T07:55:01Z",
+      "updated": "2026-09-28T08:00:54Z",
       "writes": [
         "asf/probe/stream.py",
         "asf/init.py",
@@ -29098,6 +29137,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0372",
       "links": {
@@ -29109,7 +29152,7 @@
       "state": "New",
       "title": "the fence \u2014 the workflow lint, the origin allowlist, the consent stamp, and the prober's boundaries as a contract",
       "type": "task",
-      "updated": "2026-09-28T07:55:01Z",
+      "updated": "2026-09-28T08:00:54Z",
       "writes": [
         "asf/probe/fence.py",
         "asf/probe/ledger.py",
@@ -29129,6 +29172,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0373",
       "links": {
@@ -29140,7 +29187,7 @@
       "state": "New",
       "title": "the host, the dispatch, the read-back, and the pass in the tick",
       "type": "task",
-      "updated": "2026-09-28T07:55:01Z",
+      "updated": "2026-09-28T08:00:54Z",
       "writes": [
         "asf/probe/host.py",
         "asf/tick/step_harvest.py",
@@ -29157,6 +29204,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0374",
       "links": {
@@ -29168,7 +29219,7 @@
       "state": "New",
       "title": "the evidence on the item's own card, and the close rule",
       "type": "task",
-      "updated": "2026-09-28T07:55:01Z",
+      "updated": "2026-09-28T08:00:54Z",
       "writes": [
         "asf/record/ingest.py",
         "asf/evidence/closing.py",
@@ -29185,6 +29236,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0375",
       "links": {
@@ -29196,7 +29251,7 @@
       "state": "New",
       "title": "a failed journey files a severity-one Bug naming the step it failed at",
       "type": "task",
-      "updated": "2026-09-28T07:55:01Z",
+      "updated": "2026-09-28T08:00:54Z",
       "writes": [
         "asf/tick/file_bugs.py",
         "tests/test_file_bugs.py"
@@ -29211,6 +29266,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0376",
       "links": {
@@ -29222,7 +29281,7 @@
       "state": "New",
       "title": "`asf probe`, the two doctor rows, the guide \u2014 and the new package inside both whole-tree fences",
       "type": "task",
-      "updated": "2026-09-28T07:55:01Z",
+      "updated": "2026-09-28T08:00:54Z",
       "writes": [
         "asf/probe/cli.py",
         "asf/cli.py",
@@ -29233,6 +29292,188 @@
         "tests/test_doctor.py",
         "tests/test_probe_fence.py",
         "tests/test_lifecycle.py"
+      ]
+    },
+    "T-0377": {
+      "backlinks": [
+        "T-0379"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0377",
+      "links": {
+        "plan": "docs/plans/f-0070.md"
+      },
+      "parent": "F-0070",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:00:55Z",
+      "state": "New",
+      "title": "the steps travel on the read the pass already makes \u2014 `live_runs` and the memo",
+      "type": "task",
+      "updated": "2026-09-28T08:00:55Z",
+      "writes": [
+        "asf/ci_queue.py",
+        "tests/test_ci_step_silence.py",
+        "tests/test_ci_phantom.py"
+      ]
+    },
+    "T-0378": {
+      "backlinks": [
+        "T-0379"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0378",
+      "links": {
+        "plan": "docs/plans/f-0070.md"
+      },
+      "parent": "F-0070",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:00:55Z",
+      "state": "New",
+      "title": "the rule itself \u2014 `step_silence`, and the limit at the module's own level",
+      "type": "task",
+      "updated": "2026-09-28T08:00:55Z",
+      "writes": [
+        "asf/ci_queue.py",
+        "tests/test_ci_step_silence.py"
+      ]
+    },
+    "T-0379": {
+      "after": [
+        "T-0377",
+        "T-0378"
+      ],
+      "backlinks": [
+        "T-0380",
+        "T-0382"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0379",
+      "links": {
+        "plan": "docs/plans/f-0070.md"
+      },
+      "parent": "F-0070",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:00:55Z",
+      "state": "New",
+      "title": "the watch and the cancel \u2014 a job hung inside a step goes by the twelfth minute",
+      "type": "task",
+      "updated": "2026-09-28T08:00:55Z",
+      "writes": [
+        "asf/ci_queue.py",
+        "tests/test_ci_step_silence.py"
+      ]
+    },
+    "T-0380": {
+      "after": [
+        "T-0379"
+      ],
+      "backlinks": [
+        "T-0383"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0380",
+      "links": {
+        "plan": "docs/plans/f-0070.md"
+      },
+      "parent": "F-0070",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:00:55Z",
+      "state": "New",
+      "title": "the cancel is remembered and re-run, and the third stall on one sha is not",
+      "type": "task",
+      "updated": "2026-09-28T08:00:55Z",
+      "writes": [
+        "asf/ci_queue.py",
+        "tests/test_ci_step_silence.py",
+        "tests/test_ci_queue.py"
+      ]
+    },
+    "T-0381": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0381",
+      "links": {
+        "plan": "docs/plans/f-0070.md"
+      },
+      "parent": "F-0070",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:00:55Z",
+      "state": "New",
+      "title": "the threshold is the product's own \u2014 `ci.queue.step_silence_min`",
+      "type": "task",
+      "updated": "2026-09-28T08:00:55Z",
+      "writes": [
+        "asf/ci_queue.py",
+        "tests/test_ci_step_silence.py",
+        "docs/products.example.yaml",
+        "sample/product.yaml",
+        "docs/guide/ci-runner-pool.md",
+        "docs/guide/product-config.md",
+        "docs/guide/troubleshooting.md"
+      ]
+    },
+    "T-0382": {
+      "after": [
+        "T-0379"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0382",
+      "links": {
+        "plan": "docs/plans/f-0070.md"
+      },
+      "parent": "F-0070",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:00:55Z",
+      "state": "New",
+      "title": "a confirmed stall is a red `ci runners` row and a clause on the CI line",
+      "type": "task",
+      "updated": "2026-09-28T08:00:55Z",
+      "writes": [
+        "asf/ci_queue.py",
+        "asf/doctor.py",
+        "tests/test_ci_step_silence.py",
+        "tests/test_doctor.py"
+      ]
+    },
+    "T-0383": {
+      "after": [
+        "T-0380"
+      ],
+      "backlinks": [
+        "B-0151"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0383",
+      "links": {
+        "plan": "docs/plans/f-0070.md"
+      },
+      "parent": "F-0070",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:00:55Z",
+      "state": "New",
+      "title": "the class on the CI stream line, and the step on the hung job",
+      "type": "task",
+      "updated": "2026-09-28T08:00:55Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "asf/ci_queue.py",
+        "tests/test_metrics.py",
+        "tests/test_ci_step_silence.py"
       ]
     }
   },
