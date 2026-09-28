@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T10:01:47Z",
+  "generated": "2026-09-28T10:08:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -753,6 +753,8 @@
       "area": "factory",
       "backlinks": [
         "T-0339",
+        "T-0391",
+        "T-0395",
         "B-0026"
       ],
       "children": [],
@@ -5666,12 +5668,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1550.27,
+      "spend_usd": 1554.04,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T10:01:42Z"
+      "updated": "2026-09-28T10:08:45Z"
     },
     "E-0002": {
       "backlinks": [
@@ -8126,7 +8128,9 @@
     },
     "F-0065": {
       "area": "security",
-      "backlinks": [],
+      "backlinks": [
+        "T-0396"
+      ],
       "children": [
         "T-0325",
         "T-0326",
@@ -8254,7 +8258,15 @@
     "F-0068": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0390",
+        "T-0391",
+        "T-0392",
+        "T-0393",
+        "T-0394",
+        "T-0395",
+        "T-0396"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -8268,7 +8280,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0068",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -8277,12 +8289,12 @@
       "priority": "nice",
       "rank": 92,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T08:51:00Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T10:08:34Z",
       "state": "Active",
       "title": "Spike: one Feature through a hosted agent runtime, compared with the local pool",
       "type": "feature",
-      "updated": "2026-09-28T09:55:07Z"
+      "updated": "2026-09-28T10:08:34Z"
     },
     "F-0069": {
       "area": "security",
@@ -8837,7 +8849,14 @@
       "backlinks": [
         "E-0001"
       ],
-      "children": [],
+      "children": [
+        "T-0397",
+        "T-0398",
+        "T-0399",
+        "T-0400",
+        "T-0401",
+        "T-0402"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -8851,19 +8870,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0084",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0084",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T08:51:00Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T10:08:34Z",
       "state": "Active",
       "title": "The command surface reads as one product: names, one voice, and \"writes\" marked",
       "type": "feature",
-      "updated": "2026-09-28T09:55:07Z"
+      "updated": "2026-09-28T10:08:34Z"
     },
     "F-0085": {
       "backlinks": [
@@ -9655,12 +9674,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 3873416,
-        "tokens_cache_write": 127377,
-        "tokens_input": 88,
-        "tokens_output": 48595,
-        "usd": 4.43
+        "sessions": 2,
+        "tokens_cache_read": 6666841,
+        "tokens_cache_write": 249255,
+        "tokens_input": 160,
+        "tokens_output": 94860,
+        "usd": 8.2
       },
       "decided": true,
       "evidence": [
@@ -9677,7 +9696,7 @@
       "state": "Active",
       "title": "asf install: one command from zero to a ticking factory (from a release tag, doctor green)",
       "type": "feature",
-      "updated": "2026-09-28T10:01:25Z"
+      "updated": "2026-09-28T10:08:45Z"
     },
     "F-0108": {
       "backlinks": [
@@ -29814,6 +29833,399 @@
         "asf/doctor.py",
         "tests/test_doctor.py",
         "tests/test_product_loop.py"
+      ]
+    },
+    "T-0390": {
+      "backlinks": [
+        "T-0391",
+        "T-0392"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0390",
+      "links": {
+        "plan": "docs/plans/f-0068.md"
+      },
+      "parent": "F-0068",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "`Pool.banded_seats()` \u2014 the seats the guard has taken, off readings the pool already holds",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/workers/pool.py",
+        "tests/test_quota_pressure.py"
+      ]
+    },
+    "T-0391": {
+      "after": [
+        "T-0390"
+      ],
+      "backlinks": [
+        "T-0392"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0391",
+      "links": {
+        "plan": "docs/plans/f-0068.md"
+      },
+      "parent": "F-0068",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "`quota_held` and `quota_seats` \u2014 the two keys, on the schema, the tick line, the digest and `watch`",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "asf/tick/tick.py",
+        "asf/tick/watch.py",
+        "asf/tick/summary.py",
+        "tests/test_quota_pressure.py"
+      ]
+    },
+    "T-0392": {
+      "after": [
+        "T-0390",
+        "T-0391"
+      ],
+      "backlinks": [
+        "T-0393"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0392",
+      "links": {
+        "plan": "docs/plans/f-0068.md"
+      },
+      "parent": "F-0068",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "the wave's `stats` seam, `ready_waiting`, and the two numbers stamped on the tick",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/workers/wave.py",
+        "asf/tick/step_wave.py",
+        "tests/test_quota_pressure.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0393": {
+      "after": [
+        "T-0392"
+      ],
+      "backlinks": [
+        "T-0394"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0393",
+      "links": {
+        "plan": "docs/plans/f-0068.md"
+      },
+      "parent": "F-0068",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "the rule \u2014 three days in seven, pure, and a day with no tick is no evidence",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "tests/test_quota_pressure.py"
+      ]
+    },
+    "T-0394": {
+      "after": [
+        "T-0393"
+      ],
+      "backlinks": [
+        "T-0395"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0394",
+      "links": {
+        "plan": "docs/plans/f-0068.md"
+      },
+      "parent": "F-0068",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "the measured line \u2014 one `quota pressure` row in the daily scorecard",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "tests/test_quota_pressure.py",
+        "tests/test_metrics.py"
+      ]
+    },
+    "T-0395": {
+      "after": [
+        "T-0394"
+      ],
+      "backlinks": [
+        "T-0396"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0395",
+      "links": {
+        "plan": "docs/plans/f-0068.md"
+      },
+      "parent": "F-0068",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "`lane` on the `sessions` stream \u2014 filled from the runtime's own marker, never claimed for an old line",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "tests/test_quota_pressure.py",
+        "tests/test_cloud.py"
+      ]
+    },
+    "T-0396": {
+      "after": [
+        "T-0395"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0396",
+      "links": {
+        "plan": "docs/plans/f-0068.md"
+      },
+      "parent": "F-0068",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "the instrument and the protocol \u2014 cost per Task, rounds per pull request, and a refusal",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "tools/spike/f-0068/compare.py",
+        "tools/spike/f-0068/fixture/index.json",
+        "tools/spike/f-0068/fixture/sessions.jsonl",
+        "tools/spike/f-0068/fixture/landings.jsonl",
+        "tests/test_quota_pressure.py"
+      ]
+    },
+    "T-0397": {
+      "backlinks": [
+        "T-0400"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0397",
+      "links": {
+        "plan": "docs/plans/f-0084.md"
+      },
+      "parent": "F-0084",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "`asf/surface.py` \u2014 one row per command: what it is called, what it does, what it writes",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/surface.py",
+        "tests/test_surface.py"
+      ]
+    },
+    "T-0398": {
+      "backlinks": [
+        "T-0399"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0398",
+      "links": {
+        "plan": "docs/plans/f-0084.md"
+      },
+      "parent": "F-0084",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "`backlog` \u2192 `board` \u2014 the command, the title, the artifact and the skill",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/cli.py",
+        "asf/views/board.py",
+        "asf/views/header.py",
+        "asf/views/__init__.py",
+        "asf/tick/tick.py",
+        "asf/tick/shadow_diff.py",
+        "asf/plugin_build.py",
+        "plugin/skills/**",
+        "tests/test_plugin.py",
+        "tests/test_path_resolution.py",
+        "tests/test_views_header.py",
+        "tests/test_operator_checkout_sync.py"
+      ]
+    },
+    "T-0399": {
+      "after": [
+        "T-0398"
+      ],
+      "backlinks": [
+        "T-0400"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0399",
+      "links": {
+        "plan": "docs/plans/f-0084.md"
+      },
+      "parent": "F-0084",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "`parity` \u2192 `stories`, and the word cannot come back as a command or a table",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/cli.py",
+        "asf/views/parity.py",
+        "asf/views/stories.py",
+        "asf/views/__init__.py",
+        "asf/views/header.py",
+        "asf/tick/tick.py",
+        "asf/tick/shadow_diff.py",
+        "asf/plugin_build.py",
+        "tools/forbidden-conventions.txt",
+        "plugin/skills/**",
+        "tests/test_plugin.py",
+        "tests/test_path_resolution.py",
+        "tests/test_views_header.py"
+      ]
+    },
+    "T-0400": {
+      "after": [
+        "T-0397",
+        "T-0399"
+      ],
+      "backlinks": [
+        "F-0225",
+        "T-0401"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0400",
+      "links": {
+        "plan": "docs/plans/f-0084.md"
+      },
+      "parent": "F-0084",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "`migrate` \u2192 `import-items`, and every retired name answers with its replacement",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/cli.py",
+        "asf/tick/migrate.py",
+        "asf/schema.py",
+        "asf/record/plan_tasks.py",
+        "asf/views/roadmap.py",
+        "asf/conventions.py",
+        "pyproject.toml",
+        "tests/test_surface.py",
+        "tests/test_path_resolution.py",
+        "tests/test_migrate.py",
+        "tests/test_report.py",
+        "tests/test_cli.py"
+      ]
+    },
+    "T-0401": {
+      "after": [
+        "T-0400"
+      ],
+      "backlinks": [
+        "T-0402"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0401",
+      "links": {
+        "plan": "docs/plans/f-0084.md"
+      },
+      "parent": "F-0084",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "the post-pass \u2014 `--help` is rendered from the table, markers and all, or the parser refuses to build",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/cli.py",
+        "asf/surface.py",
+        "tests/test_surface.py",
+        "plugin/skills/**",
+        "tests/test_plugin.py"
+      ]
+    },
+    "T-0402": {
+      "after": [
+        "T-0401"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0402",
+      "links": {
+        "plan": "docs/plans/f-0084.md"
+      },
+      "parent": "F-0084",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T10:08:35Z",
+      "state": "New",
+      "title": "the 49 typed descriptions are emptied, so the table is the only place a command is described",
+      "type": "task",
+      "updated": "2026-09-28T10:08:35Z",
+      "writes": [
+        "asf/cli.py",
+        "asf/init.py",
+        "asf/schema.py",
+        "asf/upgrade.py",
+        "asf/hooks.py",
+        "asf/console_perms.py",
+        "asf/approvals.py",
+        "asf/scheduler.py",
+        "asf/ci_pool.py",
+        "asf/redact.py",
+        "asf/metrics/import_sessions.py",
+        "asf/plugin_build.py",
+        "asf/feeder/render.py",
+        "asf/harvest/deploy.py",
+        "asf/workers/__init__.py",
+        "asf/workers/unpark.py",
+        "asf/workers/actions.py",
+        "asf/briefs/build.py",
+        "asf/tick/shadow_diff.py",
+        "asf/tick/tick.py",
+        "asf/tick/watch.py",
+        "tests/test_surface.py"
       ]
     }
   },
