@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T08:01:09Z",
+  "generated": "2026-09-28T08:07:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -8248,7 +8248,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
+        "spec on spec/F-0068",
         "rule: card"
       ],
       "folder": "features",
@@ -8257,12 +8257,12 @@
       "priority": "nice",
       "rank": 92,
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-21T17:01:58Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-28T08:07:11Z",
       "state": "New",
       "title": "Spike: one Feature through a hosted agent runtime, compared with the local pool",
       "type": "feature",
-      "updated": "2026-09-28T00:00:12Z"
+      "updated": "2026-09-28T08:07:11Z"
     },
     "F-0069": {
       "area": "security",
@@ -8338,6 +8338,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/7 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -8351,7 +8352,7 @@
       "state": "Active",
       "title": "A CI step-silence rule: a job with no new step for ten minutes is stalled, even under budget",
       "type": "feature",
-      "updated": "2026-09-28T08:00:54Z"
+      "updated": "2026-09-28T08:07:11Z"
     },
     "F-0071": {
       "area": "factory",
@@ -27473,9 +27474,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #212 OPEN",
-        "branch worker/T-0327",
-        "rule: in-flight"
+        "merge ec2fe5f of worker/T-0327 lands T-0327 (PR #212)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0327",
@@ -27491,11 +27491,11 @@
         "batch T-0327+T-0328+T-0329"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-28T07:22:22Z",
-      "state": "Active",
+      "stage_since": "2026-09-28T08:07:11Z",
+      "state": "Resolved",
       "title": "`session.sh` \u2014 one real session per (role, variant), in the environment a worker actually gets",
       "type": "task",
-      "updated": "2026-09-28T08:01:06Z",
+      "updated": "2026-09-28T08:07:11Z",
       "writes": [
         "tools/spike/f-0065/session.sh",
         "tools/spike/f-0065/**",
@@ -28438,8 +28438,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0351",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0351",
@@ -28451,18 +28451,19 @@
         "split T-0351 asf | asf/workers | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-28T00:08:24Z",
-      "state": "New",
+      "stage_since": "2026-09-28T08:07:11Z",
+      "state": "Active",
       "title": "the sampler \u2014 `watch`, `start`, the spawner's child, and `asf workers progress`",
       "type": "task",
-      "updated": "2026-09-28T00:23:52Z",
+      "updated": "2026-09-28T08:07:11Z",
       "writes": [
         "asf/progress.py",
         "asf/workers/spawn.py",
         "asf/workers/__init__.py",
         "tests/test_progress.py",
         "tests/test_workers.py",
-        "tests/test_path_resolution.py"
+        "tests/test_path_resolution.py",
+        "tests/e2e/product/config.yaml"
       ]
     },
     "T-0352": {
@@ -29300,6 +29301,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0377",
       "links": {
@@ -29311,7 +29316,7 @@
       "state": "New",
       "title": "the steps travel on the read the pass already makes \u2014 `live_runs` and the memo",
       "type": "task",
-      "updated": "2026-09-28T08:00:55Z",
+      "updated": "2026-09-28T08:07:11Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_step_silence.py",
@@ -29324,6 +29329,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0378",
       "links": {
@@ -29335,7 +29344,7 @@
       "state": "New",
       "title": "the rule itself \u2014 `step_silence`, and the limit at the module's own level",
       "type": "task",
-      "updated": "2026-09-28T08:00:55Z",
+      "updated": "2026-09-28T08:07:11Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_step_silence.py"
@@ -29352,6 +29361,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0379",
       "links": {
@@ -29363,7 +29376,7 @@
       "state": "New",
       "title": "the watch and the cancel \u2014 a job hung inside a step goes by the twelfth minute",
       "type": "task",
-      "updated": "2026-09-28T08:00:55Z",
+      "updated": "2026-09-28T08:07:11Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_step_silence.py"
@@ -29378,6 +29391,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0380",
       "links": {
@@ -29389,7 +29406,7 @@
       "state": "New",
       "title": "the cancel is remembered and re-run, and the third stall on one sha is not",
       "type": "task",
-      "updated": "2026-09-28T08:00:55Z",
+      "updated": "2026-09-28T08:07:11Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_step_silence.py",
@@ -29400,6 +29417,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0381",
       "links": {
@@ -29411,7 +29432,7 @@
       "state": "New",
       "title": "the threshold is the product's own \u2014 `ci.queue.step_silence_min`",
       "type": "task",
-      "updated": "2026-09-28T08:00:55Z",
+      "updated": "2026-09-28T08:07:11Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_step_silence.py",
@@ -29429,6 +29450,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0382",
       "links": {
@@ -29440,7 +29465,7 @@
       "state": "New",
       "title": "a confirmed stall is a red `ci runners` row and a clause on the CI line",
       "type": "task",
-      "updated": "2026-09-28T08:00:55Z",
+      "updated": "2026-09-28T08:07:11Z",
       "writes": [
         "asf/ci_queue.py",
         "asf/doctor.py",
@@ -29457,6 +29482,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0383",
       "links": {
@@ -29468,7 +29497,7 @@
       "state": "New",
       "title": "the class on the CI stream line, and the step on the hung job",
       "type": "task",
-      "updated": "2026-09-28T08:00:55Z",
+      "updated": "2026-09-28T08:07:11Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_queue.py",
