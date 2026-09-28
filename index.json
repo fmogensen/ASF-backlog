@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T00:00:39Z",
+  "generated": "2026-09-28T00:09:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -931,6 +931,7 @@
         "T-0087",
         "T-0090",
         "T-0283",
+        "T-0347",
         "B-0039"
       ],
       "children": [],
@@ -5544,12 +5545,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1385.5,
+      "spend_usd": 1388.4,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T00:00:34Z"
+      "updated": "2026-09-28T00:09:36Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7832,12 +7833,12 @@
       "priority": "need",
       "rank": 62,
       "schema_version": 1,
-      "stage": "building 0/8",
-      "stage_since": "2026-09-27T19:26:05Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T00:08:17Z",
       "state": "Active",
       "title": "The launch path: skills as procedures, role agents with restricted tools, per-job caps, deny rules",
       "type": "feature",
-      "updated": "2026-09-27T19:26:05Z"
+      "updated": "2026-09-28T00:08:17Z"
     },
     "F-0063": {
       "area": "factory",
@@ -7969,7 +7970,14 @@
     "F-0066": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0347",
+        "T-0348",
+        "T-0349",
+        "T-0350",
+        "T-0351",
+        "T-0352"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -7983,7 +7991,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0066",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -7992,12 +8000,12 @@
       "priority": "need",
       "rank": 66,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-27T19:19:23Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T00:08:17Z",
       "state": "Active",
       "title": "A progress heartbeat: no progress for twenty minutes is a stall, not only silence",
       "type": "feature",
-      "updated": "2026-09-28T00:00:34Z"
+      "updated": "2026-09-28T00:08:17Z"
     },
     "F-0067": {
       "area": "factory",
@@ -24272,7 +24280,8 @@
         "T-0266",
         "T-0267",
         "T-0268",
-        "T-0269"
+        "T-0269",
+        "T-0317"
       ],
       "children": [],
       "cost": {
@@ -25481,9 +25490,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #182 OPEN",
-        "branch worker/T-0298",
-        "rule: in-flight"
+        "merge 13a3b37 of worker/T-0298 lands T-0298 (PR #182)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0298",
@@ -25492,11 +25500,11 @@
       },
       "parent": "F-0056",
       "schema_version": 1,
-      "stage_since": "2026-09-27T21:18:49Z",
-      "state": "Active",
+      "stage_since": "2026-09-28T00:08:17Z",
+      "state": "Resolved",
       "title": "a refused inbox answer is a line, not a silence",
       "type": "task",
-      "updated": "2026-09-28T00:00:34Z",
+      "updated": "2026-09-28T00:08:17Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/groom.py",
@@ -26113,18 +26121,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 7,
-        "tokens_cache_read": 38769735,
-        "tokens_cache_write": 698319,
-        "tokens_input": 824,
-        "tokens_output": 222356,
-        "usd": 15.26
+        "sessions": 8,
+        "tokens_cache_read": 40963191,
+        "tokens_cache_write": 765707,
+        "tokens_input": 896,
+        "tokens_output": 248605,
+        "usd": 16.23
       },
       "decided": true,
       "evidence": [
-        "PR #178 OPEN",
-        "branch worker/T-0317",
-        "rule: in-flight"
+        "merge bef6f29 of worker/T-0317 lands T-0317 (PR #178)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0317",
@@ -26134,11 +26141,11 @@
       "parent": "F-0062",
       "reshape": "footprint: needs docs/reviews/2-t-0317.md",
       "schema_version": 1,
-      "stage_since": "2026-09-27T19:26:05Z",
-      "state": "Active",
+      "stage_since": "2026-09-28T00:08:17Z",
+      "state": "Resolved",
       "title": "the launch table, the capability probe, the agents file, and the two conventions",
       "type": "task",
-      "updated": "2026-09-27T23:52:57Z",
+      "updated": "2026-09-28T00:09:36Z",
       "writes": [
         "asf/roles/launch.py",
         "asf/workers/capability.py",
@@ -27009,8 +27016,19 @@
         "T-0344"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 5168459,
+        "tokens_cache_write": 120489,
+        "tokens_input": 106,
+        "tokens_output": 41329,
+        "usd": 1.93
+      },
       "decided": true,
       "evidence": [
+        "PR #191 OPEN",
         "branch worker/T-0343",
         "rule: in-flight"
       ],
@@ -27025,7 +27043,7 @@
       "state": "Active",
       "title": "`asf/briefs/facts.py` \u2014 the run that stopped, what it was doing, and the report on its branch",
       "type": "task",
-      "updated": "2026-09-28T00:00:12Z",
+      "updated": "2026-09-28T00:09:36Z",
       "writes": [
         "asf/briefs/facts.py",
         "tests/test_brief_facts.py"
@@ -27121,6 +27139,162 @@
         "asf/improve/measure.py",
         "asf/metrics/metrics.py",
         "tests/test_improve.py",
+        "tests/test_metrics.py"
+      ]
+    },
+    "T-0347": {
+      "backlinks": [
+        "T-0349"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0347",
+      "links": {
+        "plan": "docs/plans/f-0066.md"
+      },
+      "parent": "F-0066",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:08:24Z",
+      "state": "New",
+      "title": "`asf/progress.py` \u2014 the leaf: a sample, a store, a judge",
+      "type": "task",
+      "updated": "2026-09-28T00:08:24Z",
+      "writes": [
+        "asf/progress.py",
+        "tests/test_progress.py"
+      ]
+    },
+    "T-0348": {
+      "backlinks": [
+        "T-0349"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0348",
+      "links": {
+        "plan": "docs/plans/f-0066.md"
+      },
+      "parent": "F-0066",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:08:24Z",
+      "state": "New",
+      "title": "`report.needs_input` \u2014 the question a run declares, and nothing it merely mentions",
+      "type": "task",
+      "updated": "2026-09-28T00:08:24Z",
+      "writes": [
+        "asf/workers/report.py",
+        "tests/test_report.py"
+      ]
+    },
+    "T-0349": {
+      "after": [
+        "T-0347",
+        "T-0348"
+      ],
+      "backlinks": [
+        "T-0350",
+        "T-0351",
+        "T-0352"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0349",
+      "links": {
+        "plan": "docs/plans/f-0066.md"
+      },
+      "parent": "F-0066",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:08:24Z",
+      "state": "New",
+      "title": "the fifth rung \u2014 `STUCK` in `classify`, `INPUT` over the ledger",
+      "type": "task",
+      "updated": "2026-09-28T00:08:24Z",
+      "writes": [
+        "asf/progress.py",
+        "asf/workers/stall.py",
+        "tests/test_progress.py",
+        "tests/test_workers.py"
+      ]
+    },
+    "T-0350": {
+      "after": [
+        "T-0349"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0350",
+      "links": {
+        "plan": "docs/plans/f-0066.md"
+      },
+      "parent": "F-0066",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:08:24Z",
+      "state": "New",
+      "title": "the tick probes, stops and lets the branch relaunch it \u2014 and holds the second time",
+      "type": "task",
+      "updated": "2026-09-28T00:08:24Z",
+      "writes": [
+        "asf/tick/step_health.py",
+        "asf/workers/runtime.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0351": {
+      "after": [
+        "T-0349"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0351",
+      "links": {
+        "plan": "docs/plans/f-0066.md"
+      },
+      "parent": "F-0066",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:08:24Z",
+      "state": "New",
+      "title": "the sampler \u2014 `watch`, `start`, the spawner's child, and `asf workers progress`",
+      "type": "task",
+      "updated": "2026-09-28T00:08:24Z",
+      "writes": [
+        "asf/progress.py",
+        "asf/workers/spawn.py",
+        "asf/workers/__init__.py",
+        "tests/test_progress.py",
+        "tests/test_workers.py",
+        "tests/test_path_resolution.py"
+      ]
+    },
+    "T-0352": {
+      "after": [
+        "T-0349"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0352",
+      "links": {
+        "plan": "docs/plans/f-0066.md"
+      },
+      "parent": "F-0066",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:08:24Z",
+      "state": "New",
+      "title": "the class per session in the stream, and `stage_limits.progress_min` in the product files",
+      "type": "task",
+      "updated": "2026-09-28T00:08:24Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "docs/products.example.yaml",
+        "sample/product.yaml",
         "tests/test_metrics.py"
       ]
     }
