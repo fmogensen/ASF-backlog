@@ -1,3 +1,5 @@
+→ closed (groom 2026-09-28, adjudicator, groom-2026-09-28)
+
 # Amendable-set holds, three more: T-0259, T-0288 at plan time, F-0042 a read-only false positive
 
 Fresh evidence for `inbox/route-a-task-whose-writes-touch-the-amendable-set-to-the-console-at-plan-time-not-a-worker-launch.md`

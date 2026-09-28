@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T05:02:17Z",
+  "generated": "2026-09-28T05:19:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4503,6 +4503,57 @@
       "type": "bug",
       "updated": "2026-09-28T00:00:12Z"
     },
+    "B-0149": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0149",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "ci_red_per_week counted 69 cancelled of 112 p1-e2e jobs as red and minted F-1128 \"p1-e2e red 21.5 times a week\" from history already fixed on main",
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "CI-red cards count cancelled runs and fixed history",
+      "type": "bug",
+      "updated": "2026-09-28T05:19:31Z"
+    },
+    "B-0150": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0150",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "ci pool RED: provider-like label in runs-on: ci.yml asks for 'class-pr-heavy', not a declared role (heavy, light)",
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "doctor ci-pool row flags ASF's own ci_pool.reserve label as undeclared",
+      "type": "bug",
+      "updated": "2026-09-28T05:19:31Z"
+    },
+    "B-0151": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0151",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "bands check red on main: migration 0292 reused on cloud/T-0383 after 0292_bot_locale.sql had landed on main",
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "Lane branches collide on sequential numbers (migrations, bands); ASF should reserve them",
+      "type": "bug",
+      "updated": "2026-09-28T05:19:31Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256"
@@ -5458,6 +5509,11 @@
         "F-0222",
         "F-0223",
         "F-0224",
+        "F-0227",
+        "F-0229",
+        "F-0231",
+        "F-0232",
+        "F-0233",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -5573,7 +5629,8 @@
         "B-0144",
         "B-0145",
         "B-0147",
-        "B-0148"
+        "B-0148",
+        "B-0151"
       ],
       "decided": true,
       "evidence": [
@@ -5583,12 +5640,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1414.45,
+      "spend_usd": 1414.77,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T05:02:02Z"
+      "updated": "2026-09-28T05:19:12Z"
     },
     "E-0002": {
       "backlinks": [
@@ -5626,6 +5683,8 @@
         "F-0213",
         "F-0214",
         "F-0215",
+        "F-0228",
+        "F-0230",
         "B-0087",
         "B-0088",
         "B-0089",
@@ -5638,7 +5697,9 @@
         "B-0097",
         "B-0104",
         "B-0110",
-        "B-0114"
+        "B-0114",
+        "B-0149",
+        "B-0150"
       ],
       "decided": true,
       "evidence": [
@@ -5711,6 +5772,7 @@
         "F-0219",
         "F-0221",
         "F-0225",
+        "F-0226",
         "B-0146"
       ],
       "decided": true,
@@ -8944,7 +9006,8 @@
       "area": "factory",
       "backlinks": [
         "F-0166",
-        "F-0198"
+        "F-0198",
+        "F-0226"
       ],
       "budget_sessions": 12,
       "budget_usd": 20,
@@ -8990,6 +9053,7 @@
     "F-0093": {
       "area": "factory",
       "backlinks": [
+        "F-0232",
         "T-0261",
         "B-0147"
       ],
@@ -9555,7 +9619,8 @@
     "F-0112": {
       "backlinks": [
         "F-0208",
-        "F-0213"
+        "F-0213",
+        "B-0151"
       ],
       "children": [],
       "decided": true,
@@ -9577,7 +9642,8 @@
     "F-0113": {
       "backlinks": [
         "F-0202",
-        "F-0208"
+        "F-0208",
+        "B-0151"
       ],
       "children": [],
       "decided": true,
@@ -11791,6 +11857,118 @@
       "title": "The CI start queue counts only runners that carry the labels a run's jobs ask for, and counts a started run once",
       "type": "feature",
       "updated": "2026-09-28T04:43:38Z"
+    },
+    "F-0226": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0226",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "A conflict BACK shows as STARVED -> SPEC and reads like a duplicate spec",
+      "type": "feature",
+      "updated": "2026-09-28T05:19:31Z"
+    },
+    "F-0227": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0227",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "An ended worker run whose pid stays alive blocks its item forever (T-0196)",
+      "type": "feature",
+      "updated": "2026-09-28T05:19:31Z"
+    },
+    "F-0228": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0228",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "Health does not re-push a hook-refused run until its head or the origin tip moves",
+      "type": "feature",
+      "updated": "2026-09-28T05:19:31Z"
+    },
+    "F-0229": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0229",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "Lane reaches MERGING with PR #None (plan/T-0189); I9 events repeat every tick",
+      "type": "feature",
+      "updated": "2026-09-28T05:19:31Z"
+    },
+    "F-0230": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0230",
+      "parent": "E-0002",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "Most botseon PR CI runs end cancelled: find and cut the source",
+      "type": "feature",
+      "updated": "2026-09-28T05:19:31Z"
+    },
+    "F-0231": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0231",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "No command releases a stale correction; F-1129 holds one for a never-pushed branch",
+      "type": "feature",
+      "updated": "2026-09-28T05:19:31Z"
+    },
+    "F-0232": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0232",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "Route a Task whose writes: touch the amendable set to the console at plan time, not a worker launch",
+      "type": "feature",
+      "updated": "2026-09-28T05:19:31Z"
+    },
+    "F-0233": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0233",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T05:19:31Z",
+      "state": "New",
+      "title": "Stories/Features of a deploying product never close: _in_prod needs checked.txt, which nothing writes",
+      "type": "feature",
+      "updated": "2026-09-28T05:19:31Z"
     },
     "R-0001": {
       "backlinks": [
@@ -19985,7 +20163,8 @@
       ],
       "parent": "F-0038",
       "reshape_declined": [
-        "split T-0144 .github/workflows | tests"
+        "split T-0144 .github/workflows | tests",
+        "split T-0144 .github/workflows | asf | tests"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-24T01:47:43Z",
@@ -21475,6 +21654,7 @@
     "T-0183": {
       "backlinks": [
         "F-0170",
+        "F-0232",
         "T-0187",
         "B-0138",
         "B-0147"
@@ -21640,6 +21820,7 @@
         "T-0183"
       ],
       "backlinks": [
+        "F-0232",
         "T-0183",
         "B-0147"
       ],
@@ -21707,6 +21888,7 @@
     },
     "T-0189": {
       "backlinks": [
+        "F-0229",
         "T-0190",
         "T-0191",
         "T-0193"
@@ -21995,7 +22177,9 @@
         "T-0195",
         "T-0271"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "F-0227"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -23063,6 +23247,7 @@
         "T-0225"
       ],
       "backlinks": [
+        "T-0227",
         "T-0229",
         "T-0230"
       ],
@@ -23078,7 +23263,8 @@
         "plan": "docs/plans/f-0092.md"
       },
       "merged": [
-        "T-0229"
+        "T-0229",
+        "T-0227"
       ],
       "parent": "F-0092",
       "reshape_declined": [
@@ -23094,7 +23280,12 @@
         "asf/metrics/metrics.py",
         "tests/test_metrics.py",
         "asf/tick/step_health.py",
-        "tests/test_tick_steps.py"
+        "tests/test_tick_steps.py",
+        "asf/feeder/rows.py",
+        "asf/invariants.py",
+        "asf/tick/step_wave.py",
+        "tests/test_feeder.py",
+        "tests/test_invariants.py"
       ]
     },
     "T-0227": {
@@ -23102,6 +23293,7 @@
         "T-0225"
       ],
       "backlinks": [
+        "T-0226",
         "T-0229"
       ],
       "children": [],
@@ -23116,6 +23308,7 @@
         "plan": "docs/plans/f-0092.md"
       },
       "parent": "F-0092",
+      "removed": "merged into T-0226 (groom 2026-09-28)",
       "reshape_declined": [
         "merge T-0227+T-0229",
         "split T-0227 asf | asf/feeder | asf/tick | tests"
@@ -23678,6 +23871,9 @@
         "T-0246"
       ],
       "parent": "F-0013",
+      "reshape_declined": [
+        "split T-0241 asf | asf/tick | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-27T07:19:26Z",
       "state": "New",
@@ -24136,7 +24332,8 @@
         "T-0249",
         "T-0250",
         "T-0251",
-        "T-0253"
+        "T-0253",
+        "T-0254"
       ],
       "children": [],
       "decided": true,
@@ -24149,6 +24346,9 @@
       "links": {
         "plan": "docs/plans/f-0014.md"
       },
+      "merged": [
+        "T-0254"
+      ],
       "parent": "F-0014",
       "reshape_declined": [
         "merge T-0248+T-0249+T-0250+T-0251+T-0252+T-0253"
@@ -24161,7 +24361,9 @@
       "updated": "2026-09-28T00:00:12Z",
       "writes": [
         "asf/doctor.py",
-        "tests/test_doctor.py"
+        "tests/test_doctor.py",
+        "asf/init.py",
+        "tests/test_install.py"
       ]
     },
     "T-0253": {
@@ -24216,7 +24418,9 @@
       "after": [
         "T-0253"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0252"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -24229,6 +24433,7 @@
         "plan": "docs/plans/f-0014.md"
       },
       "parent": "F-0014",
+      "removed": "merged into T-0252 (groom 2026-09-28)",
       "schema_version": 1,
       "stage_since": "2026-09-27T07:19:26Z",
       "state": "New",
@@ -27110,7 +27315,8 @@
       },
       "parent": "F-0065",
       "reshape_declined": [
-        "merge T-0327+T-0328+T-0329+T-0330+T-0331"
+        "merge T-0327+T-0328+T-0329+T-0330+T-0331",
+        "batch T-0327+T-0328+T-0329"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-27T18:59:31Z",
@@ -27146,7 +27352,8 @@
       "parent": "F-0065",
       "reshape_declined": [
         "merge T-0327+T-0328+T-0329+T-0330+T-0331",
-        "split T-0328 docs/research | tools/spike"
+        "split T-0328 docs/research | tools/spike",
+        "batch T-0327+T-0328+T-0329"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-27T18:59:31Z",
@@ -27183,7 +27390,8 @@
       "parent": "F-0065",
       "reshape_declined": [
         "merge T-0327+T-0328+T-0329+T-0330+T-0331",
-        "split T-0329 docs/research | tools/spike"
+        "split T-0329 docs/research | tools/spike",
+        "batch T-0327+T-0328+T-0329"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-27T18:59:31Z",
@@ -27748,16 +27956,17 @@
       "backlinks": [
         "T-0344"
       ],
+      "budget_sessions": 12,
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
-        "tokens_cache_read": 11602027,
-        "tokens_cache_write": 250612,
-        "tokens_input": 282,
-        "tokens_output": 77829,
-        "usd": 5.94
+        "sessions": 5,
+        "tokens_cache_read": 12273531,
+        "tokens_cache_write": 281602,
+        "tokens_input": 316,
+        "tokens_output": 84195,
+        "usd": 6.26
       },
       "decided": true,
       "evidence": [
@@ -27776,7 +27985,7 @@
       "state": "Active",
       "title": "`asf/briefs/facts.py` \u2014 the run that stopped, what it was doing, and the report on its branch",
       "type": "task",
-      "updated": "2026-09-28T05:02:02Z",
+      "updated": "2026-09-28T05:19:12Z",
       "writes": [
         "asf/briefs/facts.py",
         "tests/test_brief_facts.py"

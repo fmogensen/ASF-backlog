@@ -1,4 +1,7 @@
+→ F-0233
+
 # Stories/Features of a deploying product never close: _in_prod needs checked.txt, which nothing writes
+parent: E-0001
 
 A product that configures `deploy_sha` never closes a Story or Feature, because nothing writes the operator's checked list.
 
@@ -17,6 +20,3 @@ S-0218 has 4/4 acceptance lines cited and ticked. Its only Task, T-0366, is Clos
 2. Or, alongside 1, give the operator's tick a writer. `asf deploy` already records hand deploys, so it could append the PRs it shipped to `checked.txt`. Then the reader has a producer, and it is no longer a file nobody writes.
 3. Tests: `tests/` for `_in_prod`. Cover prod_sha set with mode auto and merge in deploy → True. Cover mode manual with no checked → False. Add an ingest fixture: a Story whose Tasks are all Closed and merged in the deploy derives `Closed (rule: tasks-closed)`.
 4. After install, the next ingest closes S-0218 and the other 13 `tasks-resolved` Stories whose merges are deployed. No `asf reopen` or hand edit is needed.
-
-## Question
-Which Epic is this under? No open Epic shares a title word with it.

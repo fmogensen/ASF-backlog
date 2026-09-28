@@ -1,4 +1,7 @@
+→ F-0232
+
 # Route a Task whose writes: touch the amendable set to the console at plan time, not a worker launch
+parent: E-0001
 
 A Task whose `writes:` footprint touches the amendable set is launched as a worker session anyway,
 and the only check is the run-time hook refusal. T-0183 (F-0093) declared
@@ -33,6 +36,3 @@ Where it could be seen earlier (the footprint is already in hand):
 Wanted: a Task whose declared footprint intersects the amendable set is routed at plan time to a
 console lane (or flagged and held with one operator line), never launched as a worker session;
 test: a `writes:` naming `asf/briefs/templates/x.md` yields no launching row. Not implemented here.
-
-## Question
-Which Epic is this under? No open Epic shares a title word with it.

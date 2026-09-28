@@ -1,3 +1,5 @@
+→ closed (groom 2026-09-28, adjudicator, groom-2026-09-28)
+
 # groom.md's inbox:<file> cut rides with T-0187's groom split, not T-0183
 parent: F-0093
 
