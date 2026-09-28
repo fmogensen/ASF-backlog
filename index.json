@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T17:58:45Z",
+  "generated": "2026-09-28T18:04:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4604,6 +4604,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0152",
@@ -4616,7 +4620,7 @@
       "state": "New",
       "title": "Invariant I10 refused a write to features/F-0107.md",
       "type": "bug",
-      "updated": "2026-09-28T17:58:44Z"
+      "updated": "2026-09-28T18:04:08Z"
     },
     "D-0001": {
       "backlinks": [
@@ -5706,12 +5710,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1815.99,
+      "spend_usd": 1818.95,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T17:57:30Z"
+      "updated": "2026-09-28T18:04:13Z"
     },
     "E-0002": {
       "backlinks": [
@@ -9750,19 +9754,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "7/8 tasks Closed",
-        "rule: documented"
+        "8/8 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0107",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "building 7/8",
-      "stage_since": "2026-09-28T16:08:43Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-09-28T18:04:08Z",
+      "state": "Closed",
       "title": "asf install: one command from zero to a ticking factory (from a release tag, doctor green)",
       "type": "feature",
-      "updated": "2026-09-28T16:08:43Z"
+      "updated": "2026-09-28T18:04:08Z"
     },
     "F-0108": {
       "backlinks": [
@@ -10780,6 +10784,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/3 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -10791,7 +10796,7 @@
       "state": "Active",
       "title": "A pre-commit hook pointing at the /x/asf test fixture path broke review-b-0111's commit",
       "type": "feature",
-      "updated": "2026-09-28T17:57:12Z"
+      "updated": "2026-09-28T18:04:08Z"
     },
     "F-0144": {
       "backlinks": [],
@@ -31036,7 +31041,8 @@
       "decided": true,
       "evidence": [
         "merge 2fbee67 of worker/T-0410 lands T-0410 (PR #287)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0410",
@@ -31045,11 +31051,11 @@
       },
       "parent": "F-0107",
       "schema_version": 1,
-      "stage_since": "2026-09-28T17:57:12Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-28T18:04:08Z",
+      "state": "Closed",
       "title": "five lines of README, and a guide that copies no yaml by hand",
       "type": "task",
-      "updated": "2026-09-28T17:57:12Z",
+      "updated": "2026-09-28T18:04:08Z",
       "writes": [
         "README.md",
         "docs/guide/getting-started.md",
@@ -32623,8 +32629,19 @@
         "T-0462"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 8551407,
+        "tokens_cache_write": 152593,
+        "tokens_input": 134,
+        "tokens_output": 64572,
+        "usd": 2.97
+      },
       "decided": true,
       "evidence": [
+        "PR #293 OPEN",
         "branch worker/T-0459",
         "rule: in-flight"
       ],
@@ -32639,7 +32656,7 @@
       "state": "Active",
       "title": "the two chained bodies, and the branch that renames a foreign hook behind them",
       "type": "task",
-      "updated": "2026-09-28T17:57:12Z",
+      "updated": "2026-09-28T18:04:13Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hook_chain.py",
@@ -33272,9 +33289,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #291 OPEN",
-        "branch worker/T-0479",
-        "rule: in-flight"
+        "merge a6a4277 of worker/T-0479 lands T-0479 (PR #291)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0479",
@@ -33283,11 +33299,11 @@
       },
       "parent": "F-0126",
       "schema_version": 1,
-      "stage_since": "2026-09-28T17:28:37Z",
-      "state": "Active",
+      "stage_since": "2026-09-28T18:04:08Z",
+      "state": "Resolved",
       "title": "a plan that is not on the trunk feeds no coder",
       "type": "task",
-      "updated": "2026-09-28T17:57:30Z",
+      "updated": "2026-09-28T18:04:08Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -33433,8 +33449,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0484",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0484",
@@ -33443,11 +33459,11 @@
       },
       "parent": "F-0127",
       "schema_version": 1,
-      "stage_since": "2026-09-28T16:02:13Z",
-      "state": "New",
+      "stage_since": "2026-09-28T18:04:08Z",
+      "state": "Active",
       "title": "the product-config guide documents the key a product declares",
       "type": "task",
-      "updated": "2026-09-28T16:08:43Z",
+      "updated": "2026-09-28T18:04:08Z",
       "writes": [
         "docs/guide/product-config.md",
         "tests/test_readme.py"
@@ -33821,6 +33837,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0497",
       "links": {
@@ -33832,7 +33852,7 @@
       "state": "New",
       "title": "the rail \u2014 one variable, one refusal at the one resolution git owns",
       "type": "task",
-      "updated": "2026-09-28T17:57:14Z",
+      "updated": "2026-09-28T18:04:08Z",
       "writes": [
         "asf/hermetic.py",
         "asf/hooks.py",
@@ -33846,6 +33866,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0498",
       "links": {
@@ -33857,7 +33881,7 @@
       "state": "New",
       "title": "the install \u2014 both twins set it, and neither can drop it unnoticed",
       "type": "task",
-      "updated": "2026-09-28T17:57:14Z",
+      "updated": "2026-09-28T18:04:08Z",
       "writes": [
         "tests/__init__.py",
         "tests/test_00_home.py",
@@ -33868,6 +33892,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-28)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0499",
       "links": {
@@ -33879,7 +33907,7 @@
       "state": "New",
       "title": "the net \u2014 a hook file the confine never saw turns the run red, naming it",
       "type": "task",
-      "updated": "2026-09-28T17:57:14Z",
+      "updated": "2026-09-28T18:04:08Z",
       "writes": [
         "tools/run_tests.py",
         "tests/test_run_tests.py"
