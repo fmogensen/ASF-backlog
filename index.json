@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T16:08:51Z",
+  "generated": "2026-09-28T16:17:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -12,6 +12,7 @@
         "T-0181",
         "T-0235",
         "T-0237",
+        "T-0487",
         "B-0020",
         "B-0027",
         "B-0030",
@@ -5384,7 +5385,8 @@
         "T-0276",
         "T-0277",
         "T-0278",
-        "T-0298"
+        "T-0298",
+        "T-0487"
       ],
       "children": [
         "F-0001",
@@ -5680,17 +5682,18 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1780.89,
+      "spend_usd": 1788.5,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T16:08:48Z"
+      "updated": "2026-09-28T16:16:55Z"
     },
     "E-0002": {
       "backlinks": [
         "T-0058",
-        "T-0277"
+        "T-0277",
+        "T-0487"
       ],
       "children": [
         "F-0094",
@@ -5859,6 +5862,7 @@
         "T-0220",
         "T-0221",
         "T-0243",
+        "T-0487",
         "B-0030",
         "B-0063"
       ],
@@ -5894,6 +5898,7 @@
         "T-0041",
         "T-0059",
         "T-0221",
+        "T-0487",
         "B-0092"
       ],
       "children": [
@@ -5930,7 +5935,8 @@
       "backlinks": [
         "F-0217",
         "T-0175",
-        "T-0221"
+        "T-0221",
+        "T-0487"
       ],
       "children": [],
       "cost": {
@@ -5962,7 +5968,8 @@
       "area": "factory",
       "backlinks": [
         "T-0055",
-        "T-0221"
+        "T-0221",
+        "T-0487"
       ],
       "children": [],
       "cost": {
@@ -5992,7 +5999,9 @@
     },
     "F-0005": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "T-0487"
+      ],
       "children": [],
       "decided": false,
       "evidence": [
@@ -6016,7 +6025,8 @@
     "F-0006": {
       "area": "factory",
       "backlinks": [
-        "E-0001"
+        "E-0001",
+        "T-0487"
       ],
       "children": [],
       "decided": false,
@@ -6868,6 +6878,7 @@
         "F-0102",
         "T-0056",
         "T-0108",
+        "T-0486",
         "B-0054",
         "B-0059",
         "B-0076",
@@ -10382,7 +10393,12 @@
     },
     "F-0128": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0485",
+        "T-0486",
+        "T-0487",
+        "T-0488"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -10396,25 +10412,31 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0128",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0128",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T15:25:05Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T16:15:48Z",
       "state": "Active",
       "title": "approvals: decide_feature: auto \u2014 ASF decides a product's Features itself (operator instruction)",
       "type": "feature",
-      "updated": "2026-09-28T16:02:21Z"
+      "updated": "2026-09-28T16:15:48Z"
     },
     "F-0129": {
       "backlinks": [
         "B-0114"
       ],
-      "children": [],
+      "children": [
+        "T-0489",
+        "T-0490",
+        "T-0491",
+        "T-0492",
+        "T-0493"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -10428,19 +10450,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0129",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0129",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T15:43:53Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T16:15:48Z",
       "state": "Active",
       "title": "asf config check/migrate: an old or hand-made product yaml maps onto the schema without a hand rewrite",
       "type": "feature",
-      "updated": "2026-09-28T16:02:21Z"
+      "updated": "2026-09-28T16:15:48Z"
     },
     "F-0130": {
       "backlinks": [],
@@ -10720,19 +10742,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0143",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0143",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-28T15:55:58Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-28T16:15:48Z",
+      "state": "Active",
       "title": "A pre-commit hook pointing at the /x/asf test fixture path broke review-b-0111's commit",
       "type": "feature",
-      "updated": "2026-09-28T16:02:21Z"
+      "updated": "2026-09-28T16:15:48Z"
     },
     "F-0144": {
       "backlinks": [],
@@ -10749,19 +10771,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0144",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0144",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-28T15:55:58Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-28T16:15:48Z",
+      "state": "Active",
       "title": "asf set cannot widen a Task's writes: footprint",
       "type": "feature",
-      "updated": "2026-09-28T16:02:21Z"
+      "updated": "2026-09-28T16:15:48Z"
     },
     "F-0145": {
       "backlinks": [],
@@ -10824,6 +10846,16 @@
     "F-0148": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 3220563,
+        "tokens_cache_write": 110171,
+        "tokens_input": 82,
+        "tokens_output": 44298,
+        "usd": 3.82
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0148",
@@ -10838,7 +10870,7 @@
       "state": "New",
       "title": "Scorecard: a total across products and the week-over-week delta, as the daily rollup's first line",
       "type": "feature",
-      "updated": "2026-09-28T16:08:43Z"
+      "updated": "2026-09-28T16:16:55Z"
     },
     "F-0149": {
       "backlinks": [],
@@ -30954,8 +30986,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0410",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0410",
@@ -30964,11 +30996,11 @@
       },
       "parent": "F-0107",
       "schema_version": 1,
-      "stage_since": "2026-09-28T10:20:17Z",
-      "state": "New",
+      "stage_since": "2026-09-28T16:15:48Z",
+      "state": "Active",
       "title": "five lines of README, and a guide that copies no yaml by hand",
       "type": "task",
-      "updated": "2026-09-28T10:27:06Z",
+      "updated": "2026-09-28T16:15:48Z",
       "writes": [
         "README.md",
         "docs/guide/getting-started.md",
@@ -31452,6 +31484,16 @@
     "T-0425": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 1180575,
+        "tokens_cache_write": 51673,
+        "tokens_input": 48,
+        "tokens_output": 12634,
+        "usd": 0.57
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0425",
@@ -31468,7 +31510,7 @@
       "state": "Active",
       "title": "the installer stops asking for `ASF_PRODUCT` in the product's own repo",
       "type": "task",
-      "updated": "2026-09-28T16:08:43Z",
+      "updated": "2026-09-28T16:16:55Z",
       "writes": [
         "tools/install.sh",
         "tests/test_install.py"
@@ -33090,8 +33132,19 @@
         "T-0482"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 6161153,
+        "tokens_cache_write": 103720,
+        "tokens_input": 140,
+        "tokens_output": 36392,
+        "usd": 2.01
+      },
       "decided": true,
       "evidence": [
+        "PR #285 OPEN",
         "branch worker/T-0477",
         "rule: in-flight"
       ],
@@ -33106,7 +33159,7 @@
       "state": "Active",
       "title": "no footprint, no launch \u2014 the re-cut on the Task path, the same refusal on the delivery path",
       "type": "task",
-      "updated": "2026-09-28T16:08:43Z",
+      "updated": "2026-09-28T16:16:55Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -33115,8 +33168,19 @@
     "T-0478": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 3771867,
+        "tokens_cache_write": 63312,
+        "tokens_input": 126,
+        "tokens_output": 20462,
+        "usd": 1.21
+      },
       "decided": true,
       "evidence": [
+        "PR #286 OPEN",
         "branch worker/T-0478",
         "rule: in-flight"
       ],
@@ -33131,7 +33195,7 @@
       "state": "Active",
       "title": "the plan is found where a migrated card says it is",
       "type": "task",
-      "updated": "2026-09-28T16:08:43Z",
+      "updated": "2026-09-28T16:16:55Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_ingest.py"
@@ -33200,8 +33264,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0481",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0481",
@@ -33210,11 +33274,11 @@
       },
       "parent": "F-0126",
       "schema_version": 1,
-      "stage_since": "2026-09-28T15:55:59Z",
-      "state": "New",
+      "stage_since": "2026-09-28T16:15:48Z",
+      "state": "Active",
       "title": "a run that ends with nothing to land and declares a question is parked, until its card changes",
       "type": "task",
-      "updated": "2026-09-28T16:02:12Z",
+      "updated": "2026-09-28T16:15:48Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -33303,6 +33367,244 @@
       "writes": [
         "docs/guide/product-config.md",
         "tests/test_readme.py"
+      ]
+    },
+    "T-0485": {
+      "backlinks": [
+        "T-0486"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0485",
+      "links": {
+        "plan": "docs/plans/f-0128.md"
+      },
+      "parent": "F-0128",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T16:15:59Z",
+      "state": "New",
+      "title": "`areas:` \u2014 a third declared recogniser, and `area_class` over it",
+      "type": "task",
+      "updated": "2026-09-28T16:15:59Z",
+      "writes": [
+        "asf/approvals.py",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0486": {
+      "after": [
+        "T-0485"
+      ],
+      "backlinks": [
+        "T-0487",
+        "T-0488"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0486",
+      "links": {
+        "plan": "docs/plans/f-0128.md"
+      },
+      "parent": "F-0128",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T16:15:59Z",
+      "state": "New",
+      "title": "the groom's bound reads a declared area, and bars nothing else",
+      "type": "task",
+      "updated": "2026-09-28T16:15:59Z",
+      "writes": [
+        "asf/groom/policy.py",
+        "tests/test_groom_policy.py",
+        "tests/test_groom_for_you.py"
+      ]
+    },
+    "T-0487": {
+      "after": [
+        "T-0486"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0487",
+      "links": {
+        "plan": "docs/plans/f-0128.md"
+      },
+      "parent": "F-0128",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T16:15:59Z",
+      "state": "New",
+      "title": "the card's acceptance sentence, from a record and a product yaml to a feeder row",
+      "type": "task",
+      "updated": "2026-09-28T16:15:59Z",
+      "writes": [
+        "tests/test_decide_feature_auto.py"
+      ]
+    },
+    "T-0488": {
+      "after": [
+        "T-0486"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0488",
+      "links": {
+        "plan": "docs/plans/f-0128.md"
+      },
+      "parent": "F-0128",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T16:15:59Z",
+      "state": "New",
+      "title": "the guide describes the bound that exists, and the example shows how to declare it",
+      "type": "task",
+      "updated": "2026-09-28T16:15:59Z",
+      "writes": [
+        "docs/guide/product-config.md",
+        "docs/products.example.yaml",
+        "docs/guide/operating.md",
+        "docs/guide/connectors.md",
+        "tests/test_decide_feature_docs.py"
+      ]
+    },
+    "T-0489": {
+      "backlinks": [
+        "T-0490"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0489",
+      "links": {
+        "plan": "docs/plans/f-0129.md"
+      },
+      "parent": "F-0129",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T16:16:01Z",
+      "state": "New",
+      "title": "the schema \u2014 `x-unmapped:` declared, and a shape for `ci:` and `deploy_sha:`",
+      "type": "task",
+      "updated": "2026-09-28T16:16:01Z",
+      "writes": [
+        "asf/env.py",
+        "docs/products.example.yaml",
+        "tests/test_env.py"
+      ]
+    },
+    "T-0490": {
+      "after": [
+        "T-0489"
+      ],
+      "backlinks": [
+        "T-0491",
+        "T-0492"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0490",
+      "links": {
+        "plan": "docs/plans/f-0129.md"
+      },
+      "parent": "F-0129",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T16:16:01Z",
+      "state": "New",
+      "title": "`asf/product_config.py`'s read half, and `asf config check`",
+      "type": "task",
+      "updated": "2026-09-28T16:16:01Z",
+      "writes": [
+        "asf/product_config.py",
+        "asf/init.py",
+        "tests/test_product_config.py",
+        "tests/test_install.py"
+      ]
+    },
+    "T-0491": {
+      "after": [
+        "T-0490"
+      ],
+      "backlinks": [
+        "T-0493"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0491",
+      "links": {
+        "plan": "docs/plans/f-0129.md"
+      },
+      "parent": "F-0129",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T16:16:01Z",
+      "state": "New",
+      "title": "the rewrite \u2014 `blocks`, `rewrite`, `effect`, and `asf config migrate`",
+      "type": "task",
+      "updated": "2026-09-28T16:16:01Z",
+      "writes": [
+        "asf/product_config.py",
+        "tests/test_product_config.py",
+        "tests/test_install.py"
+      ]
+    },
+    "T-0492": {
+      "after": [
+        "T-0490"
+      ],
+      "backlinks": [
+        "T-0493"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0492",
+      "links": {
+        "plan": "docs/plans/f-0129.md"
+      },
+      "parent": "F-0129",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T16:16:01Z",
+      "state": "New",
+      "title": "the pointer \u2014 the `NEEDS OPERATOR` line, the doctor's two rows, `asf upgrade`'s row",
+      "type": "task",
+      "updated": "2026-09-28T16:16:01Z",
+      "writes": [
+        "asf/cli.py",
+        "asf/doctor.py",
+        "asf/upgrade.py",
+        "tests/test_cli.py",
+        "tests/test_doctor.py",
+        "tests/test_install.py"
+      ]
+    },
+    "T-0493": {
+      "after": [
+        "T-0491",
+        "T-0492"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0493",
+      "links": {
+        "plan": "docs/plans/f-0129.md"
+      },
+      "parent": "F-0129",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T16:16:01Z",
+      "state": "New",
+      "title": "the guide \u2014 the table split, `x-unmapped:`, the troubleshooting row, and the drift test",
+      "type": "task",
+      "updated": "2026-09-28T16:16:01Z",
+      "writes": [
+        "docs/guide/product-config.md",
+        "docs/guide/troubleshooting.md",
+        "tests/test_readme.py",
+        "tests/test_product_config.py"
       ]
     }
   },
