@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T00:38:31Z",
+  "generated": "2026-09-28T00:45:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5545,12 +5545,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1394.1,
+      "spend_usd": 1397.16,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T00:38:26Z"
+      "updated": "2026-09-28T00:45:48Z"
     },
     "E-0002": {
       "backlinks": [
@@ -8011,7 +8011,13 @@
     "F-0067": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0353",
+        "T-0354",
+        "T-0355",
+        "T-0356",
+        "T-0357"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -8025,7 +8031,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0067",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -8034,12 +8040,12 @@
       "priority": "need",
       "rank": 67,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-27T21:00:28Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T00:45:39Z",
       "state": "Active",
       "title": "Clean floor, re-scoped: the sweep, the registry and the tool repository",
       "type": "feature",
-      "updated": "2026-09-28T00:38:26Z"
+      "updated": "2026-09-28T00:45:39Z"
     },
     "F-0068": {
       "area": "factory",
@@ -26450,8 +26456,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0326",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0326",
@@ -26460,11 +26466,11 @@
       },
       "parent": "F-0065",
       "schema_version": 1,
-      "stage_since": "2026-09-27T18:59:31Z",
-      "state": "New",
+      "stage_since": "2026-09-28T00:45:39Z",
+      "state": "Active",
       "title": "the fence's own settings surface, read off the harness, and the collector that refuses a guessed key",
       "type": "task",
-      "updated": "2026-09-28T00:00:12Z",
+      "updated": "2026-09-28T00:45:39Z",
       "writes": [
         "tools/spike/f-0065/collect.py",
         "tools/spike/f-0065/settings/**"
@@ -26915,12 +26921,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "tokens_cache_read": 7008234,
-        "tokens_cache_write": 101829,
-        "tokens_input": 154,
-        "tokens_output": 32270,
-        "usd": 5.49
+        "sessions": 4,
+        "tokens_cache_read": 10059892,
+        "tokens_cache_write": 168735,
+        "tokens_input": 242,
+        "tokens_output": 58478,
+        "usd": 6.63
       },
       "decided": true,
       "evidence": [
@@ -26939,7 +26945,7 @@
       "state": "Active",
       "title": "the end-to-end harness \u2014 no background git writer, and a fork that never hands back a half copy",
       "type": "task",
-      "updated": "2026-09-28T00:24:17Z",
+      "updated": "2026-09-28T00:45:48Z",
       "writes": [
         "tests/gitfixture.py",
         "tests/e2e/factory.py",
@@ -27024,12 +27030,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 5168459,
-        "tokens_cache_write": 120489,
-        "tokens_input": 106,
-        "tokens_output": 41329,
-        "usd": 1.93
+        "sessions": 2,
+        "tokens_cache_read": 5489188,
+        "tokens_cache_write": 121537,
+        "tokens_input": 112,
+        "tokens_output": 41892,
+        "usd": 3.84
       },
       "decided": true,
       "evidence": [
@@ -27048,7 +27054,7 @@
       "state": "Active",
       "title": "`asf/briefs/facts.py` \u2014 the run that stopped, what it was doing, and the report on its branch",
       "type": "task",
-      "updated": "2026-09-28T00:09:36Z",
+      "updated": "2026-09-28T00:45:48Z",
       "writes": [
         "asf/briefs/facts.py",
         "tests/test_brief_facts.py"
@@ -27325,6 +27331,135 @@
         "docs/products.example.yaml",
         "sample/product.yaml",
         "tests/test_metrics.py"
+      ]
+    },
+    "T-0353": {
+      "backlinks": [
+        "T-0354"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0353",
+      "links": {
+        "plan": "docs/plans/f-0067.md"
+      },
+      "parent": "F-0067",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:45:40Z",
+      "state": "New",
+      "title": "`asf/conventions.py` \u2014 the `floor:` map convention",
+      "type": "task",
+      "updated": "2026-09-28T00:45:40Z",
+      "writes": [
+        "asf/conventions.py",
+        "tests/test_conventions.py"
+      ]
+    },
+    "T-0354": {
+      "after": [
+        "T-0353"
+      ],
+      "backlinks": [
+        "T-0355",
+        "T-0356",
+        "T-0357"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0354",
+      "links": {
+        "plan": "docs/plans/f-0067.md"
+      },
+      "parent": "F-0067",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:45:40Z",
+      "state": "New",
+      "title": "`asf/floor.py` \u2014 the registry, the judgement, the sweep, the hold branch, the tooling class",
+      "type": "task",
+      "updated": "2026-09-28T00:45:40Z",
+      "writes": [
+        "asf/floor.py",
+        "asf/workers/retention.py",
+        "asf/workers/worktrees.py",
+        "tests/test_floor.py",
+        "tests/test_worktree_reaper.py"
+      ]
+    },
+    "T-0355": {
+      "after": [
+        "T-0354"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0355",
+      "links": {
+        "plan": "docs/plans/f-0067.md"
+      },
+      "parent": "F-0067",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:45:40Z",
+      "state": "New",
+      "title": "`asf/doctor.py` \u2014 the `floor` row",
+      "type": "task",
+      "updated": "2026-09-28T00:45:40Z",
+      "writes": [
+        "asf/doctor.py",
+        "tests/test_doctor.py"
+      ]
+    },
+    "T-0356": {
+      "after": [
+        "T-0354"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0356",
+      "links": {
+        "plan": "docs/plans/f-0067.md"
+      },
+      "parent": "F-0067",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:45:40Z",
+      "state": "New",
+      "title": "`asf/groom/groom.py` \u2014 the `## Floor violations` section",
+      "type": "task",
+      "updated": "2026-09-28T00:45:40Z",
+      "writes": [
+        "asf/groom/groom.py",
+        "tests/test_groom.py"
+      ]
+    },
+    "T-0357": {
+      "after": [
+        "T-0354"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0357",
+      "links": {
+        "plan": "docs/plans/f-0067.md"
+      },
+      "parent": "F-0067",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T00:45:40Z",
+      "state": "New",
+      "title": "the wiring \u2014 one sweep in the tick, one command by hand",
+      "type": "task",
+      "updated": "2026-09-28T00:45:40Z",
+      "writes": [
+        "asf/tick/step_health.py",
+        "asf/workers/__init__.py",
+        "asf/cli.py",
+        "tests/test_tick_steps.py",
+        "tests/test_workers.py"
       ]
     }
   },
