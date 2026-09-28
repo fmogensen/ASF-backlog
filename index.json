@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T13:08:49Z",
+  "generated": "2026-09-28T13:21:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1320,6 +1320,7 @@
         "T-0132",
         "T-0133",
         "T-0286",
+        "T-0441",
         "B-0042"
       ],
       "children": [],
@@ -1832,6 +1833,7 @@
       "area": "asf.harvest",
       "backlinks": [
         "T-0212",
+        "T-0437",
         "B-0040",
         "B-0061",
         "B-0065",
@@ -1939,6 +1941,8 @@
     "B-0061": {
       "area": "asf.harvest",
       "backlinks": [
+        "T-0437",
+        "T-0441",
         "B-0040",
         "B-0079"
       ],
@@ -3484,7 +3488,7 @@
       "evidence": [
         "merge 393c4e5 of fix/B-0114 lands B-0114",
         "CI green on main at or after it",
-        "rule: fixed"
+        "rule: quiet"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -3493,11 +3497,11 @@
       "schema_version": 1,
       "severity": "S1",
       "signature": "a merged plan PR leaves the Feature at stage=landed state=Resolved, so its minted Tasks stay New and no coder ever launches",
-      "stage_since": "2026-09-25T13:16:20Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-28T13:21:48Z",
+      "state": "Closed",
       "title": "native landing: a merged spec/plan PR marks its Feature landed/Resolved, so no coder ever launches",
       "type": "bug",
-      "updated": "2026-09-25T13:27:37Z"
+      "updated": "2026-09-28T13:21:48Z"
     },
     "B-0115": {
       "backlinks": [
@@ -5674,12 +5678,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1632.96,
+      "spend_usd": 1641.6,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T13:02:38Z"
+      "updated": "2026-09-28T13:21:52Z"
     },
     "E-0002": {
       "backlinks": [
@@ -9864,12 +9868,12 @@
       "id": "F-0111",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-28T13:02:33Z",
+      "stage": "building 0/4",
+      "stage_since": "2026-09-28T13:21:48Z",
       "state": "Active",
       "title": "hooks install from asf-live tells the operator to wire the dev install's path into the product's git hooks",
       "type": "feature",
-      "updated": "2026-09-28T13:08:49Z"
+      "updated": "2026-09-28T13:21:48Z"
     },
     "F-0112": {
       "backlinks": [
@@ -9919,7 +9923,13 @@
         "F-0208",
         "B-0151"
       ],
-      "children": [],
+      "children": [
+        "T-0437",
+        "T-0438",
+        "T-0439",
+        "T-0440",
+        "T-0441"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -9933,19 +9943,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0113",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0113",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T12:09:44Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T13:21:48Z",
       "state": "Active",
       "title": "An S1 silently holds all Feature work, and NEXT plans from different inputs than the tick",
       "type": "feature",
-      "updated": "2026-09-28T13:02:38Z"
+      "updated": "2026-09-28T13:21:48Z"
     },
     "F-0114": {
       "backlinks": [],
@@ -9962,19 +9972,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0114",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0114",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-28T12:56:23Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-28T13:21:48Z",
+      "state": "Active",
       "title": "Upgrades never break other installs: automatic, versioned, rollback-safe migrations with an upgrade test from every release",
       "type": "feature",
-      "updated": "2026-09-28T13:02:38Z"
+      "updated": "2026-09-28T13:21:48Z"
     },
     "F-0115": {
       "backlinks": [],
@@ -10055,6 +10065,16 @@
     "F-0119": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 5225987,
+        "tokens_cache_write": 105391,
+        "tokens_input": 146,
+        "tokens_output": 40815,
+        "usd": 4.69
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0119",
@@ -10069,7 +10089,7 @@
       "state": "New",
       "title": "asf pr-hygiene --lanes: a machine-readable listing product rule checks can call",
       "type": "feature",
-      "updated": "2026-09-28T13:08:49Z"
+      "updated": "2026-09-28T13:21:52Z"
     },
     "F-0120": {
       "backlinks": [
@@ -10078,19 +10098,19 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
+        "spec on spec/F-0120",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0120",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-24T06:29:59Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-28T13:21:48Z",
       "state": "New",
       "title": "Adopting a record: flag cards that belong to another product and move or remove them in bulk (asf move)",
       "type": "feature",
-      "updated": "2026-09-28T00:00:12Z"
+      "updated": "2026-09-28T13:21:48Z"
     },
     "F-0121": {
       "backlinks": [],
@@ -30509,8 +30529,19 @@
         "T-0409"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 11768195,
+        "tokens_cache_write": 192502,
+        "tokens_input": 174,
+        "tokens_output": 83121,
+        "usd": 3.96
+      },
       "decided": true,
       "evidence": [
+        "PR #253 OPEN",
         "branch worker/T-0404",
         "rule: in-flight"
       ],
@@ -30525,7 +30556,7 @@
       "state": "Active",
       "title": "the six steps that record and carry on, and the second run that writes nothing new",
       "type": "task",
-      "updated": "2026-09-28T13:08:49Z",
+      "updated": "2026-09-28T13:21:52Z",
       "writes": [
         "asf/install.py",
         "tests/test_install.py"
@@ -31290,8 +31321,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0428",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0428",
@@ -31300,11 +31331,11 @@
       },
       "parent": "F-0111",
       "schema_version": 1,
-      "stage_since": "2026-09-28T13:02:34Z",
-      "state": "New",
+      "stage_since": "2026-09-28T13:21:48Z",
+      "state": "Active",
       "title": "both recognisers read back every form asf can write",
       "type": "task",
-      "updated": "2026-09-28T13:08:49Z",
+      "updated": "2026-09-28T13:21:48Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
@@ -31558,6 +31589,133 @@
         "asf/doctor.py",
         "docs/guide/upgrading.md",
         "tests/test_doctor.py"
+      ]
+    },
+    "T-0437": {
+      "backlinks": [
+        "T-0438"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0437",
+      "links": {
+        "plan": "docs/plans/f-0113.md"
+      },
+      "parent": "F-0113",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T13:21:48Z",
+      "state": "New",
+      "title": "`tiers.Gate` \u2014 what the S1 lane's cut dropped, said in one string",
+      "type": "task",
+      "updated": "2026-09-28T13:21:48Z",
+      "writes": [
+        "asf/feeder/tiers.py",
+        "tests/test_feeder.py",
+        "tests/test_s1_gate.py"
+      ]
+    },
+    "T-0438": {
+      "after": [
+        "T-0437"
+      ],
+      "backlinks": [
+        "T-0439",
+        "T-0440",
+        "T-0441"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0438",
+      "links": {
+        "plan": "docs/plans/f-0113.md"
+      },
+      "parent": "F-0113",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T13:21:48Z",
+      "state": "New",
+      "title": "`step_wave.plan_now` \u2014 one plan, over one set of inputs, and `launch` made from it",
+      "type": "task",
+      "updated": "2026-09-28T13:21:48Z",
+      "writes": [
+        "asf/tick/step_wave.py",
+        "tests/test_s1_gate.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0439": {
+      "after": [
+        "T-0438"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0439",
+      "links": {
+        "plan": "docs/plans/f-0113.md"
+      },
+      "parent": "F-0113",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T13:21:48Z",
+      "state": "New",
+      "title": "the tick log says the gate once, names five rows, and raises the S1 nobody is working",
+      "type": "task",
+      "updated": "2026-09-28T13:21:48Z",
+      "writes": [
+        "asf/tick/step_wave.py",
+        "tests/test_s1_gate.py"
+      ]
+    },
+    "T-0440": {
+      "after": [
+        "T-0438"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0440",
+      "links": {
+        "plan": "docs/plans/f-0113.md"
+      },
+      "parent": "F-0113",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T13:21:48Z",
+      "state": "New",
+      "title": "`asf next` plans the wave's rows, and names the gate under its table",
+      "type": "task",
+      "updated": "2026-09-28T13:21:48Z",
+      "writes": [
+        "asf/feeder/render.py",
+        "tests/test_feeder.py",
+        "tests/test_s1_gate.py",
+        "tests/fixtures/feeder/next-s1-held.md"
+      ]
+    },
+    "T-0441": {
+      "after": [
+        "T-0438"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0441",
+      "links": {
+        "plan": "docs/plans/f-0113.md"
+      },
+      "parent": "F-0113",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T13:21:48Z",
+      "state": "New",
+      "title": "`asf status` \u2014 one plan per table, and an `S1 gate` row that only speaks when it holds",
+      "type": "task",
+      "updated": "2026-09-28T13:21:48Z",
+      "writes": [
+        "asf/views/status.py",
+        "tests/test_views.py"
       ]
     }
   },
