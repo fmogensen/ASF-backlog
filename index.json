@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T14:34:04Z",
+  "generated": "2026-09-28T14:46:52Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5679,12 +5679,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1686.85,
+      "spend_usd": 1694.72,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T14:34:01Z"
+      "updated": "2026-09-28T14:46:48Z"
     },
     "E-0002": {
       "backlinks": [
@@ -8681,7 +8681,8 @@
         "F-0123",
         "F-0138",
         "F-0201",
-        "T-0146"
+        "T-0146",
+        "T-0454"
       ],
       "children": [
         "T-0003",
@@ -9880,6 +9881,7 @@
       "backlinks": [
         "F-0208",
         "F-0213",
+        "T-0456",
         "B-0151"
       ],
       "children": [
@@ -9961,7 +9963,15 @@
     },
     "F-0114": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0452",
+        "T-0453",
+        "T-0454",
+        "T-0455",
+        "T-0456",
+        "T-0457",
+        "T-0458"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -9975,19 +9985,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0114",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0114",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T13:21:48Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T14:46:28Z",
       "state": "Active",
       "title": "Upgrades never break other installs: automatic, versioned, rollback-safe migrations with an upgrade test from every release",
       "type": "feature",
-      "updated": "2026-09-28T14:28:07Z"
+      "updated": "2026-09-28T14:46:28Z"
     },
     "F-0115": {
       "backlinks": [],
@@ -10157,6 +10167,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0121",
         "rule: documented"
       ],
       "folder": "features",
@@ -10168,11 +10179,21 @@
       "state": "Active",
       "title": "asf hooks install chains an existing git hook instead of refusing (stdin shared, one command)",
       "type": "feature",
-      "updated": "2026-09-28T14:20:53Z"
+      "updated": "2026-09-28T14:46:28Z"
     },
     "F-0122": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 4377075,
+        "tokens_cache_write": 122754,
+        "tokens_input": 108,
+        "tokens_output": 50145,
+        "usd": 4.67
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0122",
@@ -10187,7 +10208,7 @@
       "state": "New",
       "title": "The /asf:* tables read backlog_dir, which the tick never pulls \u2014 views go stale",
       "type": "feature",
-      "updated": "2026-09-28T14:33:57Z"
+      "updated": "2026-09-28T14:46:48Z"
     },
     "F-0123": {
       "backlinks": [],
@@ -10235,38 +10256,38 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
+        "spec on spec/F-0125",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0125",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-24T07:13:03Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-28T14:46:28Z",
       "state": "New",
       "title": "Onboarding: adopt a product's in-flight PRs (asf adopt-pr + legacy review form) so native landing drains them",
       "type": "feature",
-      "updated": "2026-09-28T00:00:12Z"
+      "updated": "2026-09-28T14:46:28Z"
     },
     "F-0126": {
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
+        "spec on spec/F-0126",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0126",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-24T07:24:43Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-28T14:46:28Z",
       "state": "New",
       "title": "feeder: a Task with no writes: (migrated pre-ASF plan) is launched and can only block",
       "type": "feature",
-      "updated": "2026-09-28T00:00:12Z"
+      "updated": "2026-09-28T14:46:28Z"
     },
     "F-0127": {
       "backlinks": [],
@@ -30689,8 +30710,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0407",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0407",
@@ -30699,11 +30720,11 @@
       },
       "parent": "F-0107",
       "schema_version": 1,
-      "stage_since": "2026-09-28T10:20:17Z",
-      "state": "New",
+      "stage_since": "2026-09-28T14:46:28Z",
+      "state": "Active",
       "title": "`asf uninstall` \u2014 the jobs, the hooks and the plugin tree, and nothing else",
       "type": "task",
-      "updated": "2026-09-28T10:27:06Z",
+      "updated": "2026-09-28T14:46:28Z",
       "writes": [
         "asf/install.py",
         "asf/init.py",
@@ -30744,8 +30765,19 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 9034038,
+        "tokens_cache_write": 179763,
+        "tokens_input": 138,
+        "tokens_output": 67439,
+        "usd": 3.2
+      },
       "decided": true,
       "evidence": [
+        "PR #263 OPEN",
         "branch worker/T-0409",
         "rule: in-flight"
       ],
@@ -30760,7 +30792,7 @@
       "state": "Active",
       "title": "zero to green \u2014 one `asf install` into a temp HOME, in CI",
       "type": "task",
-      "updated": "2026-09-28T14:33:57Z",
+      "updated": "2026-09-28T14:46:48Z",
       "writes": [
         "tests/test_install_e2e.py",
         ".github/workflows/tests.yml"
@@ -32102,6 +32134,196 @@
         "docs/guide/operating.md",
         "docs/guide/product-config.md",
         "tests/test_readme.py"
+      ]
+    },
+    "T-0452": {
+      "backlinks": [
+        "T-0453",
+        "T-0455",
+        "T-0456"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0452",
+      "links": {
+        "plan": "docs/plans/f-0114.md"
+      },
+      "parent": "F-0114",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T14:46:32Z",
+      "state": "New",
+      "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
+      "type": "task",
+      "updated": "2026-09-28T14:46:32Z",
+      "writes": [
+        "asf/schema.py",
+        "asf/cli.py",
+        "tests/test_schema_version.py",
+        "tests/test_surface.py"
+      ]
+    },
+    "T-0453": {
+      "after": [
+        "T-0452"
+      ],
+      "backlinks": [
+        "T-0454"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0453",
+      "links": {
+        "plan": "docs/plans/f-0114.md"
+      },
+      "parent": "F-0114",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T14:46:32Z",
+      "state": "New",
+      "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
+      "type": "task",
+      "updated": "2026-09-28T14:46:32Z",
+      "writes": [
+        "asf/env.py",
+        "docs/config.example.yaml",
+        "docs/products.example.yaml",
+        "tests/test_env.py"
+      ]
+    },
+    "T-0454": {
+      "after": [
+        "T-0453"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0454",
+      "links": {
+        "plan": "docs/plans/f-0114.md"
+      },
+      "parent": "F-0114",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T14:46:32Z",
+      "state": "New",
+      "title": "`asf/doctor.py` \u2014 one new row, a `config` row that stops swallowing the table, and one copy of the deprecation lines instead of two",
+      "type": "task",
+      "updated": "2026-09-28T14:46:32Z",
+      "writes": [
+        "asf/doctor.py",
+        "asf/capacity.py",
+        "tests/test_doctor.py",
+        "tests/test_schema_version.py"
+      ]
+    },
+    "T-0455": {
+      "after": [
+        "T-0452"
+      ],
+      "backlinks": [
+        "T-0457"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0455",
+      "links": {
+        "plan": "docs/plans/f-0114.md"
+      },
+      "parent": "F-0114",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T14:46:32Z",
+      "state": "New",
+      "title": "`asf/tick/tick.py` \u2014 the migration before the steps, and the halt only where it is earned",
+      "type": "task",
+      "updated": "2026-09-28T14:46:32Z",
+      "writes": [
+        "asf/tick/tick.py",
+        "tests/test_schema_version.py",
+        "tests/test_tick_steps.py"
+      ]
+    },
+    "T-0456": {
+      "after": [
+        "T-0452"
+      ],
+      "backlinks": [
+        "T-0457"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0456",
+      "links": {
+        "plan": "docs/plans/f-0114.md"
+      },
+      "parent": "F-0114",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T14:46:32Z",
+      "state": "New",
+      "title": "`asf/upgrade.py` \u2014 the upgrade migrates what it installed, and `--to` puts the snapshot back",
+      "type": "task",
+      "updated": "2026-09-28T14:46:32Z",
+      "writes": [
+        "asf/upgrade.py",
+        "asf/init.py",
+        "asf/install.py",
+        "tests/test_install.py"
+      ]
+    },
+    "T-0457": {
+      "after": [
+        "T-0455",
+        "T-0456"
+      ],
+      "backlinks": [
+        "T-0458"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0457",
+      "links": {
+        "plan": "docs/plans/f-0114.md"
+      },
+      "parent": "F-0114",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T14:46:32Z",
+      "state": "New",
+      "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
+      "type": "task",
+      "updated": "2026-09-28T14:46:32Z",
+      "writes": [
+        "tools/upgrade_matrix.py",
+        ".github/workflows/tests.yml",
+        "tests/test_upgrade_matrix.py"
+      ]
+    },
+    "T-0458": {
+      "after": [
+        "T-0457"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0458",
+      "links": {
+        "plan": "docs/plans/f-0114.md"
+      },
+      "parent": "F-0114",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T14:46:32Z",
+      "state": "New",
+      "title": "`asf/release.py` \u2014 the ninth criterion, the migrations in a release's notes, and the guide brought into step",
+      "type": "task",
+      "updated": "2026-09-28T14:46:32Z",
+      "writes": [
+        "asf/release.py",
+        "asf/metrics/metrics.py",
+        "tests/test_release.py",
+        "docs/guide/upgrading.md"
       ]
     }
   },
