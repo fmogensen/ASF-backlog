@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T07:48:44Z",
+  "generated": "2026-09-28T07:55:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2373,6 +2373,7 @@
     "B-0077": {
       "area": "asf.record",
       "backlinks": [
+        "T-0374",
         "B-0078",
         "B-0086",
         "B-0093"
@@ -4552,18 +4553,17 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 5,
-        "tokens_cache_read": 18530436,
-        "tokens_cache_write": 384404,
-        "tokens_input": 494,
-        "tokens_output": 139972,
-        "usd": 6.64
+        "sessions": 6,
+        "tokens_cache_read": 20336734,
+        "tokens_cache_write": 429868,
+        "tokens_input": 566,
+        "tokens_output": 152205,
+        "usd": 7.31
       },
       "decided": true,
       "evidence": [
-        "PR #201 OPEN",
-        "branch fix/B-0151",
-        "rule: fixer"
+        "merge 903ae10 of fix/B-0151 lands B-0151 (PR #201)",
+        "rule: fixed"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -4572,11 +4572,11 @@
       "schema_version": 1,
       "severity": "S2",
       "signature": "bands check red on main: migration 0292 reused on cloud/T-0383 after 0292_bot_locale.sql had landed on main",
-      "stage_since": "2026-09-28T05:42:00Z",
-      "state": "Active",
+      "stage_since": "2026-09-28T07:55:00Z",
+      "state": "Resolved",
       "title": "Lane branches collide on sequential numbers (migrations, bands); ASF should reserve them",
       "type": "bug",
-      "updated": "2026-09-28T07:37:15Z"
+      "updated": "2026-09-28T07:55:04Z"
     },
     "D-0001": {
       "backlinks": [
@@ -5664,12 +5664,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1477.9,
+      "spend_usd": 1482.78,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T07:48:41Z"
+      "updated": "2026-09-28T07:55:04Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7539,6 +7539,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0050",
         "rule: documented"
       ],
       "folder": "features",
@@ -7553,12 +7554,22 @@
       "state": "Active",
       "title": "The product improvement loop: the factory proposes product changes from the product's own measurements",
       "type": "feature",
-      "updated": "2026-09-28T07:22:22Z"
+      "updated": "2026-09-28T07:55:00Z"
     },
     "F-0051": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0368",
+        "T-0369",
+        "T-0370",
+        "T-0371",
+        "T-0372",
+        "T-0373",
+        "T-0374",
+        "T-0375",
+        "T-0376"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -7572,7 +7583,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0051",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -7582,12 +7593,12 @@
       "priority": "need",
       "rank": 91,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T07:22:22Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T07:55:00Z",
       "state": "Active",
       "title": "The production verification probe: a real customer journey after every deploy",
       "type": "feature",
-      "updated": "2026-09-28T07:48:41Z"
+      "updated": "2026-09-28T07:55:00Z"
     },
     "F-0052": {
       "area": "factory",
@@ -8289,12 +8300,12 @@
       "priority": "need",
       "rank": 69,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-28T07:31:06Z",
+      "stage": "building 0/10",
+      "stage_since": "2026-09-28T07:55:00Z",
       "state": "Active",
       "title": "Security checks by code: a review pass on sensitive paths, secret and dependency scanning as rules",
       "type": "feature",
-      "updated": "2026-09-28T07:37:01Z"
+      "updated": "2026-09-28T07:55:00Z"
     },
     "F-0070": {
       "area": "ci",
@@ -8306,12 +8317,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 6830085,
-        "tokens_cache_write": 154595,
-        "tokens_input": 150,
-        "tokens_output": 56796,
-        "usd": 6.38
+        "sessions": 2,
+        "tokens_cache_read": 9892960,
+        "tokens_cache_write": 266123,
+        "tokens_input": 224,
+        "tokens_output": 97815,
+        "usd": 10.05
       },
       "decided": true,
       "evidence": [
@@ -8330,7 +8341,7 @@
       "state": "Active",
       "title": "A CI step-silence rule: a job with no new step for ten minutes is stalled, even under budget",
       "type": "feature",
-      "updated": "2026-09-28T07:48:29Z"
+      "updated": "2026-09-28T07:55:04Z"
     },
     "F-0071": {
       "area": "factory",
@@ -27443,12 +27454,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 27043227,
-        "tokens_cache_write": 338109,
-        "tokens_input": 342,
-        "tokens_output": 138692,
-        "usd": 8.15
+        "sessions": 3,
+        "tokens_cache_read": 28545889,
+        "tokens_cache_write": 376001,
+        "tokens_input": 406,
+        "tokens_output": 146698,
+        "usd": 8.68
       },
       "decided": true,
       "evidence": [
@@ -27474,7 +27485,7 @@
       "state": "Active",
       "title": "`session.sh` \u2014 one real session per (role, variant), in the environment a worker actually gets",
       "type": "task",
-      "updated": "2026-09-28T07:48:41Z",
+      "updated": "2026-09-28T07:55:04Z",
       "writes": [
         "tools/spike/f-0065/session.sh",
         "tools/spike/f-0065/**",
@@ -28648,8 +28659,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0358",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0358",
@@ -28658,11 +28669,11 @@
       },
       "parent": "F-0069",
       "schema_version": 1,
-      "stage_since": "2026-09-28T07:31:06Z",
-      "state": "New",
+      "stage_since": "2026-09-28T07:55:00Z",
+      "state": "Active",
       "title": "`conventions.security` and `asf/security/paths.py` \u2014 which paths are sensitive",
       "type": "task",
-      "updated": "2026-09-28T07:37:01Z",
+      "updated": "2026-09-28T07:55:00Z",
       "writes": [
         "asf/conventions.py",
         "asf/security/__init__.py",
@@ -28958,6 +28969,270 @@
         "docs/products.example.yaml",
         "docs/README.md",
         "tests/test_doctor.py"
+      ]
+    },
+    "T-0368": {
+      "backlinks": [
+        "T-0369",
+        "T-0370",
+        "T-0371",
+        "T-0372"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0368",
+      "links": {
+        "plan": "docs/plans/f-0051.md"
+      },
+      "parent": "F-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T07:55:01Z",
+      "state": "New",
+      "title": "the `probe:` block \u2014 validated, defaulted, documented, and off when unset",
+      "type": "task",
+      "updated": "2026-09-28T07:55:01Z",
+      "writes": [
+        "asf/probe/__init__.py",
+        "asf/probe/config.py",
+        "asf/env.py",
+        "docs/products.example.yaml",
+        "tests/test_probe_config.py",
+        "tests/test_env.py"
+      ]
+    },
+    "T-0369": {
+      "after": [
+        "T-0368"
+      ],
+      "backlinks": [
+        "T-0370"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0369",
+      "links": {
+        "plan": "docs/plans/f-0051.md"
+      },
+      "parent": "F-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T07:55:01Z",
+      "state": "New",
+      "title": "one customer-visible classifier, and what a deploy owes a probe",
+      "type": "task",
+      "updated": "2026-09-28T07:55:01Z",
+      "writes": [
+        "asf/probe/scope.py",
+        "asf/views/prod.py",
+        "tests/test_probe_scope.py",
+        "tests/test_prod_view.py",
+        "tests/test_metrics.py"
+      ]
+    },
+    "T-0370": {
+      "after": [
+        "T-0368",
+        "T-0369"
+      ],
+      "backlinks": [
+        "T-0371",
+        "T-0372"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0370",
+      "links": {
+        "plan": "docs/plans/f-0051.md"
+      },
+      "parent": "F-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T07:55:01Z",
+      "state": "New",
+      "title": "the journeys ASF sends, the sign-in it always runs first, and the schema it refuses to read loosely",
+      "type": "task",
+      "updated": "2026-09-28T07:55:01Z",
+      "writes": [
+        "asf/probe/journey.py",
+        "tests/test_probe_journey.py"
+      ]
+    },
+    "T-0371": {
+      "after": [
+        "T-0368",
+        "T-0370"
+      ],
+      "backlinks": [
+        "T-0373",
+        "T-0374",
+        "T-0375"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0371",
+      "links": {
+        "plan": "docs/plans/f-0051.md"
+      },
+      "parent": "F-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T07:55:01Z",
+      "state": "New",
+      "title": "the probe stream in the record \u2014 one line per journey, written once",
+      "type": "task",
+      "updated": "2026-09-28T07:55:01Z",
+      "writes": [
+        "asf/probe/stream.py",
+        "asf/init.py",
+        "tests/test_probe_stream.py"
+      ]
+    },
+    "T-0372": {
+      "after": [
+        "T-0368",
+        "T-0370"
+      ],
+      "backlinks": [
+        "T-0373"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0372",
+      "links": {
+        "plan": "docs/plans/f-0051.md"
+      },
+      "parent": "F-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T07:55:01Z",
+      "state": "New",
+      "title": "the fence \u2014 the workflow lint, the origin allowlist, the consent stamp, and the prober's boundaries as a contract",
+      "type": "task",
+      "updated": "2026-09-28T07:55:01Z",
+      "writes": [
+        "asf/probe/fence.py",
+        "asf/probe/ledger.py",
+        "asf/roles/roles.py",
+        "tests/test_probe_fence.py",
+        "tests/test_launch.py",
+        "tests/test_roles.py"
+      ]
+    },
+    "T-0373": {
+      "after": [
+        "T-0371",
+        "T-0372"
+      ],
+      "backlinks": [
+        "T-0376"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0373",
+      "links": {
+        "plan": "docs/plans/f-0051.md"
+      },
+      "parent": "F-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T07:55:01Z",
+      "state": "New",
+      "title": "the host, the dispatch, the read-back, and the pass in the tick",
+      "type": "task",
+      "updated": "2026-09-28T07:55:01Z",
+      "writes": [
+        "asf/probe/host.py",
+        "asf/tick/step_harvest.py",
+        "tests/test_probe_run.py",
+        "tests/test_harvest.py"
+      ]
+    },
+    "T-0374": {
+      "after": [
+        "T-0371"
+      ],
+      "backlinks": [
+        "T-0376"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0374",
+      "links": {
+        "plan": "docs/plans/f-0051.md"
+      },
+      "parent": "F-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T07:55:01Z",
+      "state": "New",
+      "title": "the evidence on the item's own card, and the close rule",
+      "type": "task",
+      "updated": "2026-09-28T07:55:01Z",
+      "writes": [
+        "asf/record/ingest.py",
+        "asf/evidence/closing.py",
+        "tests/test_ingest.py",
+        "tests/test_closing.py"
+      ]
+    },
+    "T-0375": {
+      "after": [
+        "T-0371"
+      ],
+      "backlinks": [
+        "T-0376"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0375",
+      "links": {
+        "plan": "docs/plans/f-0051.md"
+      },
+      "parent": "F-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T07:55:01Z",
+      "state": "New",
+      "title": "a failed journey files a severity-one Bug naming the step it failed at",
+      "type": "task",
+      "updated": "2026-09-28T07:55:01Z",
+      "writes": [
+        "asf/tick/file_bugs.py",
+        "tests/test_file_bugs.py"
+      ]
+    },
+    "T-0376": {
+      "after": [
+        "T-0373",
+        "T-0374",
+        "T-0375"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0376",
+      "links": {
+        "plan": "docs/plans/f-0051.md"
+      },
+      "parent": "F-0051",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T07:55:01Z",
+      "state": "New",
+      "title": "`asf probe`, the two doctor rows, the guide \u2014 and the new package inside both whole-tree fences",
+      "type": "task",
+      "updated": "2026-09-28T07:55:01Z",
+      "writes": [
+        "asf/probe/cli.py",
+        "asf/cli.py",
+        "asf/doctor.py",
+        "docs/guide/production-probe.md",
+        "docs/README.md",
+        "tests/test_cli.py",
+        "tests/test_doctor.py",
+        "tests/test_probe_fence.py",
+        "tests/test_lifecycle.py"
       ]
     }
   },
