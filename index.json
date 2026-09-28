@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T17:50:43Z",
+  "generated": "2026-09-28T17:58:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2259,7 +2259,8 @@
     "B-0073": {
       "area": "tests",
       "backlinks": [
-        "T-0047"
+        "T-0047",
+        "T-0497"
       ],
       "children": [],
       "cost": {
@@ -4598,6 +4599,25 @@
       "type": "bug",
       "updated": "2026-09-28T12:56:23Z"
     },
+    "B-0152": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0152",
+      "last_filed": "2026-09-28",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0107.md",
+      "stage_since": "2026-09-28T17:58:44Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0107.md",
+      "type": "bug",
+      "updated": "2026-09-28T17:58:44Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256"
@@ -5675,7 +5695,8 @@
         "B-0145",
         "B-0147",
         "B-0148",
-        "B-0151"
+        "B-0151",
+        "B-0152"
       ],
       "decided": true,
       "evidence": [
@@ -5685,12 +5706,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1813.94,
+      "spend_usd": 1815.99,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T17:50:38Z"
+      "updated": "2026-09-28T17:57:30Z"
     },
     "E-0002": {
       "backlinks": [
@@ -9702,7 +9723,8 @@
         "T-0414",
         "T-0415",
         "T-0420",
-        "T-0425"
+        "T-0425",
+        "B-0152"
       ],
       "children": [
         "T-0403",
@@ -10197,12 +10219,12 @@
       "id": "F-0121",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-28T15:00:45Z",
+      "stage": "building 0/5",
+      "stage_since": "2026-09-28T17:57:12Z",
       "state": "Active",
       "title": "asf hooks install chains an existing git hook instead of refusing (stdin shared, one command)",
       "type": "feature",
-      "updated": "2026-09-28T15:07:38Z"
+      "updated": "2026-09-28T17:57:12Z"
     },
     "F-0122": {
       "backlinks": [],
@@ -10346,19 +10368,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/6 tasks Closed",
+        "3/6 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0126",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "building 2/6",
-      "stage_since": "2026-09-28T16:47:44Z",
+      "stage": "building 3/6",
+      "stage_since": "2026-09-28T17:57:12Z",
       "state": "Active",
       "title": "feeder: a Task with no writes: (migrated pre-ASF plan) is launched and can only block",
       "type": "feature",
-      "updated": "2026-09-28T16:47:44Z"
+      "updated": "2026-09-28T17:57:12Z"
     },
     "F-0127": {
       "backlinks": [],
@@ -10739,7 +10761,11 @@
     },
     "F-0143": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0497",
+        "T-0498",
+        "T-0499"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -10753,19 +10779,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0143",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0143",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T16:15:48Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T17:57:12Z",
       "state": "Active",
       "title": "A pre-commit hook pointing at the /x/asf test fixture path broke review-b-0111's commit",
       "type": "feature",
-      "updated": "2026-09-28T17:50:38Z"
+      "updated": "2026-09-28T17:57:12Z"
     },
     "F-0144": {
       "backlinks": [],
@@ -30993,7 +31019,9 @@
         "T-0406",
         "T-0408"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-0152"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -31007,9 +31035,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #287 OPEN",
-        "branch worker/T-0410",
-        "rule: in-flight"
+        "merge 2fbee67 of worker/T-0410 lands T-0410 (PR #287)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0410",
@@ -31018,11 +31045,11 @@
       },
       "parent": "F-0107",
       "schema_version": 1,
-      "stage_since": "2026-09-28T16:15:48Z",
-      "state": "Active",
+      "stage_since": "2026-09-28T17:57:12Z",
+      "state": "Resolved",
       "title": "five lines of README, and a guide that copies no yaml by hand",
       "type": "task",
-      "updated": "2026-09-28T17:50:38Z",
+      "updated": "2026-09-28T17:57:12Z",
       "writes": [
         "README.md",
         "docs/guide/getting-started.md",
@@ -31509,12 +31536,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "tokens_cache_read": 3534664,
-        "tokens_cache_write": 122923,
-        "tokens_input": 116,
-        "tokens_output": 36926,
-        "usd": 3.22
+        "sessions": 4,
+        "tokens_cache_read": 5816796,
+        "tokens_cache_write": 173095,
+        "tokens_input": 198,
+        "tokens_output": 47337,
+        "usd": 3.98
       },
       "decided": true,
       "evidence": [
@@ -31533,7 +31560,7 @@
       "state": "Active",
       "title": "the installer stops asking for `ASF_PRODUCT` in the product's own repo",
       "type": "task",
-      "updated": "2026-09-28T17:28:50Z",
+      "updated": "2026-09-28T17:57:30Z",
       "writes": [
         "tools/install.sh",
         "tests/test_install.py",
@@ -32598,8 +32625,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0459",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0459",
@@ -32608,11 +32635,11 @@
       },
       "parent": "F-0121",
       "schema_version": 1,
-      "stage_since": "2026-09-28T15:00:47Z",
-      "state": "New",
+      "stage_since": "2026-09-28T17:57:12Z",
+      "state": "Active",
       "title": "the two chained bodies, and the branch that renames a foreign hook behind them",
       "type": "task",
-      "updated": "2026-09-28T15:07:38Z",
+      "updated": "2026-09-28T17:57:12Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hook_chain.py",
@@ -33236,12 +33263,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 4626541,
-        "tokens_cache_write": 90380,
-        "tokens_input": 116,
-        "tokens_output": 25792,
-        "usd": 1.54
+        "sessions": 2,
+        "tokens_cache_read": 8280809,
+        "tokens_cache_write": 164311,
+        "tokens_input": 232,
+        "tokens_output": 52200,
+        "usd": 2.84
       },
       "decided": true,
       "evidence": [
@@ -33260,7 +33287,7 @@
       "state": "Active",
       "title": "a plan that is not on the trunk feeds no coder",
       "type": "task",
-      "updated": "2026-09-28T17:42:41Z",
+      "updated": "2026-09-28T17:57:30Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -33310,7 +33337,8 @@
       "decided": true,
       "evidence": [
         "merge e417fa2 of worker/T-0481 lands T-0481 (PR #288)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0481",
@@ -33319,11 +33347,11 @@
       },
       "parent": "F-0126",
       "schema_version": 1,
-      "stage_since": "2026-09-28T17:50:22Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-28T17:57:12Z",
+      "state": "Closed",
       "title": "a run that ends with nothing to land and declares a question is parked, until its card changes",
       "type": "task",
-      "updated": "2026-09-28T17:50:38Z",
+      "updated": "2026-09-28T17:57:12Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -33785,6 +33813,76 @@
         "docs/guide/operating.md",
         "docs/guide/getting-started.md",
         "tests/test_readme.py"
+      ]
+    },
+    "T-0497": {
+      "backlinks": [
+        "T-0498"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0497",
+      "links": {
+        "plan": "docs/plans/f-0143.md"
+      },
+      "parent": "F-0143",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T17:57:14Z",
+      "state": "New",
+      "title": "the rail \u2014 one variable, one refusal at the one resolution git owns",
+      "type": "task",
+      "updated": "2026-09-28T17:57:14Z",
+      "writes": [
+        "asf/hermetic.py",
+        "asf/hooks.py",
+        "tests/test_install.py"
+      ]
+    },
+    "T-0498": {
+      "after": [
+        "T-0497"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0498",
+      "links": {
+        "plan": "docs/plans/f-0143.md"
+      },
+      "parent": "F-0143",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T17:57:14Z",
+      "state": "New",
+      "title": "the install \u2014 both twins set it, and neither can drop it unnoticed",
+      "type": "task",
+      "updated": "2026-09-28T17:57:14Z",
+      "writes": [
+        "tests/__init__.py",
+        "tests/test_00_home.py",
+        "tests/test_hermetic.py"
+      ]
+    },
+    "T-0499": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0499",
+      "links": {
+        "plan": "docs/plans/f-0143.md"
+      },
+      "parent": "F-0143",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T17:57:14Z",
+      "state": "New",
+      "title": "the net \u2014 a hook file the confine never saw turns the run red, naming it",
+      "type": "task",
+      "updated": "2026-09-28T17:57:14Z",
+      "writes": [
+        "tools/run_tests.py",
+        "tests/test_run_tests.py"
       ]
     }
   },
