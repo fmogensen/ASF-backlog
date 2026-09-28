@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T08:37:58Z",
+  "generated": "2026-09-28T08:51:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7526,7 +7526,14 @@
     "F-0050": {
       "area": "factory",
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0384",
+        "T-0385",
+        "T-0386",
+        "T-0387",
+        "T-0388",
+        "T-0389"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -7540,7 +7547,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0050",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
@@ -7550,12 +7557,12 @@
       "priority": "need",
       "rank": 90,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T07:22:22Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-28T08:51:00Z",
       "state": "Active",
       "title": "The product improvement loop: the factory proposes product changes from the product's own measurements",
       "type": "feature",
-      "updated": "2026-09-28T08:13:33Z"
+      "updated": "2026-09-28T08:51:00Z"
     },
     "F-0051": {
       "area": "factory",
@@ -8258,8 +8265,8 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0068",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0068",
@@ -8267,12 +8274,12 @@
       "priority": "nice",
       "rank": 92,
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-28T08:07:11Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-28T08:51:00Z",
+      "state": "Active",
       "title": "Spike: one Feature through a hosted agent runtime, compared with the local pool",
       "type": "feature",
-      "updated": "2026-09-28T08:13:33Z"
+      "updated": "2026-09-28T08:51:00Z"
     },
     "F-0069": {
       "area": "security",
@@ -8840,19 +8847,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0084",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0084",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-28T08:22:49Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-28T08:51:00Z",
+      "state": "Active",
       "title": "The command surface reads as one product: names, one voice, and \"writes\" marked",
       "type": "feature",
-      "updated": "2026-09-28T08:37:29Z"
+      "updated": "2026-09-28T08:51:00Z"
     },
     "F-0085": {
       "backlinks": [
@@ -9653,19 +9660,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0107",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0107",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-28T08:22:49Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-28T08:51:00Z",
+      "state": "Active",
       "title": "asf install: one command from zero to a ticking factory (from a release tag, doctor green)",
       "type": "feature",
-      "updated": "2026-09-28T08:37:29Z"
+      "updated": "2026-09-28T08:51:00Z"
     },
     "F-0108": {
       "backlinks": [
@@ -28863,8 +28870,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0362",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0362",
@@ -28873,11 +28880,11 @@
       },
       "parent": "F-0069",
       "schema_version": 1,
-      "stage_since": "2026-09-28T07:31:06Z",
-      "state": "New",
+      "stage_since": "2026-09-28T08:51:00Z",
+      "state": "Active",
       "title": "`asf/security/alerts.py` \u2014 the host's own alarms, and a blind read that violates",
       "type": "task",
-      "updated": "2026-09-28T07:37:01Z",
+      "updated": "2026-09-28T08:51:00Z",
       "writes": [
         "asf/security/alerts.py",
         "tests/test_security_alerts.py"
@@ -29566,6 +29573,174 @@
         "asf/ci_queue.py",
         "tests/test_metrics.py",
         "tests/test_ci_step_silence.py"
+      ]
+    },
+    "T-0384": {
+      "backlinks": [
+        "T-0385"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0384",
+      "links": {
+        "plan": "docs/plans/f-0050.md"
+      },
+      "parent": "F-0050",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:51:11Z",
+      "state": "New",
+      "title": "`improve: {product: {...}}` \u2014 the settings, the breach arithmetic, and the approval class",
+      "type": "task",
+      "updated": "2026-09-28T08:51:11Z",
+      "writes": [
+        "asf/product_loop/__init__.py",
+        "asf/product_loop/measures.py",
+        "asf/env.py",
+        "asf/approvals.py",
+        "docs/products.example.yaml",
+        "sample/product.yaml",
+        "docs/guide/product-config.md",
+        "tests/test_product_loop.py",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0385": {
+      "after": [
+        "T-0384"
+      ],
+      "backlinks": [
+        "T-0386"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0385",
+      "links": {
+        "plan": "docs/plans/f-0050.md"
+      },
+      "parent": "F-0050",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:51:11Z",
+      "state": "New",
+      "title": "`asf/product_loop/probe.py` \u2014 one reading, and a probe identity that is development-only",
+      "type": "task",
+      "updated": "2026-09-28T08:51:11Z",
+      "writes": [
+        "asf/product_loop/probe.py",
+        "tests/fixtures/product_loop/signup-ok.sh",
+        "tests/fixtures/product_loop/signup-token.sh",
+        "tests/fixtures/product_loop/unparseable.sh",
+        "tests/test_product_loop.py"
+      ]
+    },
+    "T-0386": {
+      "after": [
+        "T-0385"
+      ],
+      "backlinks": [
+        "T-0387",
+        "B-0151"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0386",
+      "links": {
+        "plan": "docs/plans/f-0050.md"
+      },
+      "parent": "F-0050",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:51:11Z",
+      "state": "New",
+      "title": "`asf/product_loop/loop.py` \u2014 measure, record the readings, propose into its own record",
+      "type": "task",
+      "updated": "2026-09-28T08:51:11Z",
+      "writes": [
+        "asf/product_loop/loop.py",
+        "asf/scorecard/loop.py",
+        "tests/test_product_loop.py",
+        "tests/test_scorecard.py"
+      ]
+    },
+    "T-0387": {
+      "after": [
+        "T-0386"
+      ],
+      "backlinks": [
+        "T-0388"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0387",
+      "links": {
+        "plan": "docs/plans/f-0050.md"
+      },
+      "parent": "F-0050",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:51:11Z",
+      "state": "New",
+      "title": "`verify` \u2014 a worse measurement reverts, once, naming the sha, and nothing reverts without evidence",
+      "type": "task",
+      "updated": "2026-09-28T08:51:11Z",
+      "writes": [
+        "asf/product_loop/loop.py",
+        "tests/test_product_loop.py"
+      ]
+    },
+    "T-0388": {
+      "after": [
+        "T-0387"
+      ],
+      "backlinks": [
+        "T-0389"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0388",
+      "links": {
+        "plan": "docs/plans/f-0050.md"
+      },
+      "parent": "F-0050",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:51:11Z",
+      "state": "New",
+      "title": "the daily step's fourth part, and a product that configures none",
+      "type": "task",
+      "updated": "2026-09-28T08:51:11Z",
+      "writes": [
+        "asf/tick/step_daily.py",
+        "tests/test_tick_steps.py",
+        "tests/test_product_loop.py"
+      ]
+    },
+    "T-0389": {
+      "after": [
+        "T-0388"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0389",
+      "links": {
+        "plan": "docs/plans/f-0050.md"
+      },
+      "parent": "F-0050",
+      "schema_version": 1,
+      "stage_since": "2026-09-28T08:51:11Z",
+      "state": "New",
+      "title": "`asf product-loop` and one `asf doctor` row \u2014 the operator's two views",
+      "type": "task",
+      "updated": "2026-09-28T08:51:11Z",
+      "writes": [
+        "asf/product_loop/cli.py",
+        "asf/cli.py",
+        "asf/doctor.py",
+        "tests/test_doctor.py",
+        "tests/test_product_loop.py"
       ]
     }
   },
