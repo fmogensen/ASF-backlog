@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T17:18:15Z",
+  "generated": "2026-09-28T17:29:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3640,7 +3640,8 @@
       "evidence": [
         "merge 04f5029 of fix/B-0119 lands B-0119",
         "CI green on main at or after it",
-        "rule: quiet"
+        "held Closed; fixed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -3653,7 +3654,7 @@
       "state": "Closed",
       "title": "tick logs stay empty while steps run; a live tick looks the same as a hung one",
       "type": "bug",
-      "updated": "2026-09-28T17:17:12Z"
+      "updated": "2026-09-28T17:28:37Z"
     },
     "B-0120": {
       "backlinks": [
@@ -5683,12 +5684,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1805.54,
+      "spend_usd": 1807.83,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-28T17:18:08Z"
+      "updated": "2026-09-28T17:28:50Z"
     },
     "E-0002": {
       "backlinks": [
@@ -10378,19 +10379,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/2 tasks Closed",
+        "1/2 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0127",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "building 0/2",
-      "stage_since": "2026-09-28T16:31:04Z",
+      "stage": "building 1/2",
+      "stage_since": "2026-09-28T17:28:37Z",
       "state": "Active",
       "title": "A product declares a worktree setup command; the spawner runs it in every fresh worktree",
       "type": "feature",
-      "updated": "2026-09-28T16:31:04Z"
+      "updated": "2026-09-28T17:28:37Z"
     },
     "F-0128": {
       "backlinks": [],
@@ -31506,12 +31507,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 1280687,
-        "tokens_cache_write": 52524,
-        "tokens_input": 50,
-        "tokens_output": 12679,
-        "usd": 2.25
+        "sessions": 3,
+        "tokens_cache_read": 3534664,
+        "tokens_cache_write": 122923,
+        "tokens_input": 116,
+        "tokens_output": 36926,
+        "usd": 3.22
       },
       "decided": true,
       "evidence": [
@@ -31530,10 +31531,11 @@
       "state": "Active",
       "title": "the installer stops asking for `ASF_PRODUCT` in the product's own repo",
       "type": "task",
-      "updated": "2026-09-28T17:04:04Z",
+      "updated": "2026-09-28T17:28:50Z",
       "writes": [
         "tools/install.sh",
-        "tests/test_install.py"
+        "tests/test_install.py",
+        "asf/install.py"
       ]
     },
     "T-0426": {
@@ -33231,8 +33233,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-28)",
-        "rule: planned"
+        "branch worker/T-0479",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0479",
@@ -33241,11 +33243,11 @@
       },
       "parent": "F-0126",
       "schema_version": 1,
-      "stage_since": "2026-09-28T15:55:59Z",
-      "state": "New",
+      "stage_since": "2026-09-28T17:28:37Z",
+      "state": "Active",
       "title": "a plan that is not on the trunk feeds no coder",
       "type": "task",
-      "updated": "2026-09-28T16:02:12Z",
+      "updated": "2026-09-28T17:28:37Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -33285,12 +33287,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 17225179,
-        "tokens_cache_write": 265151,
-        "tokens_input": 320,
-        "tokens_output": 96097,
-        "usd": 5.47
+        "sessions": 3,
+        "tokens_cache_read": 17567510,
+        "tokens_cache_write": 282983,
+        "tokens_input": 340,
+        "tokens_output": 98575,
+        "usd": 5.63
       },
       "decided": true,
       "evidence": [
@@ -33309,7 +33311,7 @@
       "state": "Active",
       "title": "a run that ends with nothing to land and declares a question is parked, until its card changes",
       "type": "task",
-      "updated": "2026-09-28T17:18:08Z",
+      "updated": "2026-09-28T17:28:50Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -33353,18 +33355,18 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 8436406,
-        "tokens_cache_write": 151223,
-        "tokens_input": 142,
-        "tokens_output": 59403,
-        "usd": 2.89
+        "sessions": 2,
+        "tokens_cache_read": 11734407,
+        "tokens_cache_write": 226959,
+        "tokens_input": 228,
+        "tokens_output": 78305,
+        "usd": 4.04
       },
       "decided": true,
       "evidence": [
-        "PR #289 OPEN",
-        "branch worker/T-0483",
-        "rule: in-flight"
+        "merge b267ed9 of worker/T-0483 lands T-0483 (PR #289)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0483",
@@ -33373,11 +33375,11 @@
       },
       "parent": "F-0127",
       "schema_version": 1,
-      "stage_since": "2026-09-28T16:31:04Z",
-      "state": "Active",
+      "stage_since": "2026-09-28T17:28:37Z",
+      "state": "Closed",
       "title": "the worktree's own record of its setup, and the spawner that reads it instead of a path",
       "type": "task",
-      "updated": "2026-09-28T16:49:04Z",
+      "updated": "2026-09-28T17:28:50Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_worker_isolation.py"
