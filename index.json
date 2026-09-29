@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T17:01:52Z",
+  "generated": "2026-09-29T17:13:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4154,7 +4154,7 @@
       "evidence": [
         "merge ad08442 of fix/B-0135 lands B-0135",
         "CI green on main at or after it",
-        "rule: fixed"
+        "rule: quiet"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -4164,11 +4164,11 @@
       "schema_version": 1,
       "severity": "S2",
       "signature": "An install during a running tick tears it: groom ImportError from a half-swapped package",
-      "stage_since": "2026-09-26T17:11:56Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-29T17:12:51Z",
+      "state": "Closed",
       "title": "An install during a running tick tears it: groom ImportError from a half-swapped package",
       "type": "bug",
-      "updated": "2026-09-26T17:11:56Z"
+      "updated": "2026-09-29T17:12:51Z"
     },
     "B-0136": {
       "backlinks": [
@@ -5860,12 +5860,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2086.75,
+      "spend_usd": 2087.48,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T17:01:50Z"
+      "updated": "2026-09-29T17:12:57Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11777,12 +11777,12 @@
       "id": "F-0169",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T16:55:34Z",
+      "stage": "building 0/2",
+      "stage_since": "2026-09-29T17:12:51Z",
       "state": "Active",
       "title": "CI gate:--- test_tick_steps: FAILED (rc N) is red 3.5 times a week",
       "type": "feature",
-      "updated": "2026-09-29T17:01:44Z"
+      "updated": "2026-09-29T17:12:51Z"
     },
     "F-0170": {
       "backlinks": [],
@@ -11800,6 +11800,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0170",
         "rule: documented"
       ],
       "folder": "features",
@@ -11811,7 +11812,7 @@
       "state": "Active",
       "title": "32 pre-existing I3 writes: overlaps after the invariants audit; groom on no clock",
       "type": "feature",
-      "updated": "2026-09-29T16:55:34Z"
+      "updated": "2026-09-29T17:12:51Z"
     },
     "F-0171": {
       "backlinks": [],
@@ -12128,19 +12129,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0185",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0185",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-29T16:49:34Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-29T17:12:51Z",
+      "state": "Active",
       "title": "Connectors: declare each external service (CI, deploy, db, \u2026) once per product \u2014 asf connect sets up auth, doctor/status/approvals/sessions all read it",
       "type": "feature",
-      "updated": "2026-09-29T16:55:41Z"
+      "updated": "2026-09-29T17:12:51Z"
     },
     "F-0186": {
       "backlinks": [],
@@ -12157,19 +12158,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0186",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0186",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-29T16:49:34Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-29T17:12:51Z",
+      "state": "Active",
       "title": "conventions.doc_paths: let a product declare extra document folders so approved spec branches land without a session",
       "type": "feature",
-      "updated": "2026-09-29T16:55:41Z"
+      "updated": "2026-09-29T17:12:51Z"
     },
     "F-0187": {
       "backlinks": [],
@@ -12205,19 +12206,19 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
+        "spec on spec/F-0188",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0188",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-27T04:20:34Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-29T17:12:51Z",
       "state": "New",
       "title": "coverage: a product declares references; generic reference coverage (generalises matrix_path + asf parity)",
       "type": "feature",
-      "updated": "2026-09-29T12:23:03Z"
+      "updated": "2026-09-29T17:12:51Z"
     },
     "F-0189": {
       "backlinks": [],
@@ -36452,8 +36453,19 @@
         "T-0540"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 2030177,
+        "tokens_cache_write": 45489,
+        "tokens_input": 80,
+        "tokens_output": 14045,
+        "usd": 0.73
+      },
       "decided": true,
       "evidence": [
+        "PR #369 OPEN",
         "branch worker/T-0539",
         "rule: in-flight"
       ],
@@ -36468,7 +36480,7 @@
       "state": "Active",
       "title": "the four words, and nothing that reads them yet",
       "type": "task",
-      "updated": "2026-09-29T17:01:44Z",
+      "updated": "2026-09-29T17:12:57Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py"
@@ -36544,8 +36556,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0542",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0542",
@@ -36554,11 +36566,11 @@
       },
       "parent": "F-0169",
       "schema_version": 1,
-      "stage_since": "2026-09-29T16:55:35Z",
-      "state": "New",
+      "stage_since": "2026-09-29T17:12:51Z",
+      "state": "Active",
       "title": "the guard, armed, before anything it guards changes",
       "type": "task",
-      "updated": "2026-09-29T17:01:44Z",
+      "updated": "2026-09-29T17:12:51Z",
       "writes": [
         "asf/scorecard/diagnose.py",
         "asf/scorecard/loop.py",
