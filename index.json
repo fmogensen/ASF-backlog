@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T21:12:30Z",
+  "generated": "2026-09-29T21:18:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5896,12 +5896,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2309.27,
+      "spend_usd": 2310.02,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T21:12:28Z"
+      "updated": "2026-09-29T21:18:36Z"
     },
     "E-0002": {
       "backlinks": [
@@ -12382,19 +12382,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/4 tasks Closed",
+        "3/4 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0190",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "building 2/4",
-      "stage_since": "2026-09-29T21:06:06Z",
+      "stage": "building 3/4",
+      "stage_since": "2026-09-29T21:18:29Z",
       "state": "Active",
       "title": "Deploy relevance counts test-only commits as undeployed changes",
       "type": "feature",
-      "updated": "2026-09-29T21:06:06Z"
+      "updated": "2026-09-29T21:18:29Z"
     },
     "F-0191": {
       "backlinks": [],
@@ -12641,12 +12641,12 @@
       "id": "F-0201",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T20:48:46Z",
+      "stage": "building 0/2",
+      "stage_since": "2026-09-29T21:18:29Z",
       "state": "Active",
       "title": "Landed spec/plan branches keep their worker worktree",
       "type": "feature",
-      "updated": "2026-09-29T20:54:53Z"
+      "updated": "2026-09-29T21:18:29Z"
     },
     "F-0202": {
       "backlinks": [],
@@ -12957,6 +12957,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/1 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -12968,7 +12969,7 @@
       "state": "Active",
       "title": "The approvals hook holds a read-only 'git config core.hooksPath' as a security write",
       "type": "feature",
-      "updated": "2026-09-29T21:12:21Z"
+      "updated": "2026-09-29T21:18:29Z"
     },
     "F-0213": {
       "backlinks": [],
@@ -13096,6 +13097,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/1 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -13107,7 +13109,7 @@
       "state": "Active",
       "title": "asf unpark releases one parked job per call",
       "type": "feature",
-      "updated": "2026-09-29T21:12:21Z"
+      "updated": "2026-09-29T21:18:29Z"
     },
     "F-0219": {
       "backlinks": [],
@@ -20340,7 +20342,8 @@
         "T-0189",
         "T-0342",
         "T-0558",
-        "T-0559"
+        "T-0559",
+        "T-0589"
       ],
       "children": [],
       "cost": {
@@ -22595,7 +22598,8 @@
         "T-0167",
         "T-0271",
         "T-0558",
-        "T-0559"
+        "T-0559",
+        "T-0589"
       ],
       "children": [],
       "cost": {
@@ -26637,7 +26641,8 @@
         "T-0273",
         "T-0301",
         "T-0559",
-        "T-0566"
+        "T-0566",
+        "T-0589"
       ],
       "budget_sessions": 12,
       "budget_usd": 25,
@@ -38244,7 +38249,8 @@
       "decided": true,
       "evidence": [
         "merge 5c632a3 of worker/T-0579 lands T-0579 (PR #422)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0579",
@@ -38253,11 +38259,11 @@
       },
       "parent": "F-0190",
       "schema_version": 1,
-      "stage_since": "2026-09-29T21:12:21Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-29T21:18:29Z",
+      "state": "Closed",
       "title": "every line and every view reads the one predicate, and the excludes are visible in words",
       "type": "task",
-      "updated": "2026-09-29T21:12:28Z",
+      "updated": "2026-09-29T21:18:29Z",
       "writes": [
         "asf/harvest/deploy.py",
         "asf/views/prod.py",
@@ -38536,14 +38542,19 @@
       ]
     },
     "T-0589": {
+      "after": [
+        "T-0110",
+        "T-0166",
+        "T-0271"
+      ],
       "backlinks": [
         "T-0590"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0589",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0589",
@@ -38552,11 +38563,11 @@
       },
       "parent": "F-0201",
       "schema_version": 1,
-      "stage_since": "2026-09-29T20:48:47Z",
-      "state": "New",
+      "stage_since": "2026-09-29T21:18:29Z",
+      "state": "Active",
       "title": "the verdict asks what the tree holds before it asks what origin has",
       "type": "task",
-      "updated": "2026-09-29T20:54:53Z",
+      "updated": "2026-09-29T21:18:29Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py",
@@ -38652,8 +38663,19 @@
     "T-0593": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 2010392,
+        "tokens_cache_write": 54795,
+        "tokens_input": 68,
+        "tokens_output": 12738,
+        "usd": 0.75
+      },
       "decided": true,
       "evidence": [
+        "PR #423 OPEN",
         "branch worker/T-0593",
         "rule: in-flight"
       ],
@@ -38668,7 +38690,7 @@
       "state": "Active",
       "title": "the widening of a refused push, pinned at the two edges that had no test",
       "type": "task",
-      "updated": "2026-09-29T21:12:21Z",
+      "updated": "2026-09-29T21:18:36Z",
       "writes": [
         "tests/test_widen.py"
       ]
@@ -38949,6 +38971,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-29)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0603",
       "links": {
@@ -38960,7 +38986,7 @@
       "state": "New",
       "title": "`git config` is judged by git's own grammar \u2014 every read form passes, every set form of the hooks path holds",
       "type": "task",
-      "updated": "2026-09-29T21:12:21Z",
+      "updated": "2026-09-29T21:18:29Z",
       "writes": [
         "asf/approvals.py",
         "tests/test_approvals.py"
@@ -38970,6 +38996,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-29)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0604",
       "links": {
@@ -38981,7 +39011,7 @@
       "state": "New",
       "title": "one call releases every park the item holds, and names what still holds it",
       "type": "task",
-      "updated": "2026-09-29T21:12:21Z",
+      "updated": "2026-09-29T21:18:29Z",
       "writes": [
         "asf/workers/unpark.py",
         "tests/test_cli.py",
