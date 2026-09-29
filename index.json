@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T15:23:08Z",
+  "generated": "2026-09-29T15:30:29Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1839,6 +1839,7 @@
       "backlinks": [
         "T-0212",
         "T-0437",
+        "T-0538",
         "B-0040",
         "B-0061",
         "B-0065",
@@ -4313,7 +4314,8 @@
     },
     "B-0141": {
       "backlinks": [
-        "F-0213"
+        "F-0213",
+        "T-0536"
       ],
       "budget_sessions": 12,
       "budget_usd": 20,
@@ -5507,7 +5509,8 @@
         "T-0277",
         "T-0278",
         "T-0298",
-        "T-0487"
+        "T-0487",
+        "T-0538"
       ],
       "children": [
         "F-0001",
@@ -11493,7 +11496,11 @@
     },
     "F-0162": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0534",
+        "T-0535",
+        "T-0536"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -11507,23 +11514,26 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0162",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0162",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T13:06:13Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T15:30:15Z",
       "state": "Active",
       "title": "asf upgrade writes the pending marker before checking the ref exists",
       "type": "feature",
-      "updated": "2026-09-29T15:08:19Z"
+      "updated": "2026-09-29T15:30:15Z"
     },
     "F-0163": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0537",
+        "T-0538"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -11537,19 +11547,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0163",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0163",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T13:06:13Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T15:30:15Z",
       "state": "Active",
       "title": "asf set cannot change a bug's severity (needed to downgrade an S1)",
       "type": "feature",
-      "updated": "2026-09-29T15:15:08Z"
+      "updated": "2026-09-29T15:30:15Z"
     },
     "F-0164": {
       "backlinks": [],
@@ -11634,7 +11644,6 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0167",
         "rule: documented"
       ],
       "folder": "features",
@@ -11646,7 +11655,7 @@
       "state": "Active",
       "title": "asf status blocks on quota_command: reads uncached per account, 60 s timeout each",
       "type": "feature",
-      "updated": "2026-09-29T15:23:05Z"
+      "updated": "2026-09-29T15:30:15Z"
     },
     "F-0168": {
       "backlinks": [],
@@ -35784,8 +35793,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0525",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0525",
@@ -35794,11 +35803,11 @@
       },
       "parent": "F-0158",
       "schema_version": 1,
-      "stage_since": "2026-09-29T13:06:14Z",
-      "state": "New",
+      "stage_since": "2026-09-29T15:30:15Z",
+      "state": "Active",
       "title": "the meter is not moved, and the cause names its sub-causes",
       "type": "task",
-      "updated": "2026-09-29T13:13:11Z",
+      "updated": "2026-09-29T15:30:15Z",
       "writes": [
         "asf/scorecard/diagnose.py",
         "asf/improve/measure.py",
@@ -36076,6 +36085,130 @@
         "tests/test_lifecycle.py",
         "tests/test_widen.py",
         "tests/test_scorecard.py"
+      ]
+    },
+    "T-0534": {
+      "backlinks": [
+        "T-0535"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0534",
+      "links": {
+        "plan": "docs/plans/f-0162.md"
+      },
+      "parent": "F-0162",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T15:30:17Z",
+      "state": "New",
+      "title": "the resolver \u2014 a three-valued answer about one commit, live and idle",
+      "type": "task",
+      "updated": "2026-09-29T15:30:17Z",
+      "writes": [
+        "asf/upgrade.py",
+        "tests/test_install.py"
+      ]
+    },
+    "T-0535": {
+      "after": [
+        "T-0534"
+      ],
+      "backlinks": [
+        "T-0536"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0535",
+      "links": {
+        "plan": "docs/plans/f-0162.md"
+      },
+      "parent": "F-0162",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T15:30:17Z",
+      "state": "New",
+      "title": "the gate \u2014 a ref the install source does not have writes no marker and exits 2",
+      "type": "task",
+      "updated": "2026-09-29T15:30:17Z",
+      "writes": [
+        "asf/upgrade.py",
+        "tests/test_install.py"
+      ]
+    },
+    "T-0536": {
+      "after": [
+        "T-0535"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0536",
+      "links": {
+        "plan": "docs/plans/f-0162.md"
+      },
+      "parent": "F-0162",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T15:30:17Z",
+      "state": "New",
+      "title": "the prose \u2014 what a refused ref costs, in the module and in the guide",
+      "type": "task",
+      "updated": "2026-09-29T15:30:17Z",
+      "writes": [
+        "asf/upgrade.py",
+        "docs/guide/upgrading.md",
+        "tests/test_readme.py"
+      ]
+    },
+    "T-0537": {
+      "backlinks": [
+        "T-0538"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0537",
+      "links": {
+        "plan": "docs/plans/f-0163.md"
+      },
+      "parent": "F-0163",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T15:30:18Z",
+      "state": "New",
+      "title": "a Bug's severity is settable, and the record keeps the reason it moved",
+      "type": "task",
+      "updated": "2026-09-29T15:30:18Z",
+      "writes": [
+        "asf/record/new.py",
+        "asf/record/setfield.py",
+        "asf/cli.py",
+        "tests/test_backlog.py"
+      ]
+    },
+    "T-0538": {
+      "after": [
+        "T-0537"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0538",
+      "links": {
+        "plan": "docs/plans/f-0163.md"
+      },
+      "parent": "F-0163",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T15:30:18Z",
+      "state": "New",
+      "title": "the S1 gate's remedy is a command that runs",
+      "type": "task",
+      "updated": "2026-09-29T15:30:18Z",
+      "writes": [
+        "asf/feeder/tiers.py",
+        "tests/test_s1_gate.py",
+        "tests/test_backlog.py"
       ]
     }
   },
