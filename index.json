@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T22:51:34Z",
+  "generated": "2026-09-29T22:57:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5894,12 +5894,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2387.71,
+      "spend_usd": 2389.57,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T22:51:16Z"
+      "updated": "2026-09-29T22:57:42Z"
     },
     "E-0002": {
       "backlinks": [
@@ -10810,19 +10810,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0131",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0131",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-29T22:38:28Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-29T22:57:34Z",
+      "state": "Active",
       "title": "Classify every cancelled CI job as timeout, runner loss or failure, and list jobs near their limit",
       "type": "feature",
-      "updated": "2026-09-29T22:44:51Z"
+      "updated": "2026-09-29T22:57:34Z"
     },
     "F-0132": {
       "backlinks": [],
@@ -11592,7 +11592,9 @@
       "updated": "2026-09-29T16:37:12Z"
     },
     "F-0160": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0615"
+      ],
       "children": [
         "T-0528",
         "T-0529",
@@ -13362,7 +13364,10 @@
     },
     "F-0227": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0615",
+        "T-0616"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -13376,19 +13381,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0227",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0227",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T22:01:37Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T22:57:34Z",
       "state": "Active",
       "title": "An ended worker run whose pid stays alive blocks its item forever (T-0196)",
       "type": "feature",
-      "updated": "2026-09-29T22:44:51Z"
+      "updated": "2026-09-29T22:57:34Z"
     },
     "F-0228": {
       "backlinks": [],
@@ -23918,7 +23923,9 @@
         "T-0271"
       ],
       "backlinks": [
-        "F-0227"
+        "F-0227",
+        "T-0615",
+        "T-0616"
       ],
       "children": [],
       "cost": {
@@ -39088,8 +39095,19 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 5790001,
+        "tokens_cache_write": 114092,
+        "tokens_input": 126,
+        "tokens_output": 24767,
+        "usd": 1.86
+      },
       "decided": true,
       "evidence": [
+        "PR #449 OPEN",
         "branch worker/T-0601",
         "rule: in-flight"
       ],
@@ -39104,7 +39122,7 @@
       "state": "Active",
       "title": "the planner is told what is held before it books",
       "type": "task",
-      "updated": "2026-09-29T22:51:06Z",
+      "updated": "2026-09-29T22:57:42Z",
       "writes": [
         "asf/briefs/facts.py",
         "asf/briefs/preamble.py",
@@ -39519,6 +39537,55 @@
         "asf/workers/health.py",
         "asf/tick/step_health.py",
         "tests/test_correction_drop.py"
+      ]
+    },
+    "T-0615": {
+      "backlinks": [
+        "T-0616"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0615",
+      "links": {
+        "plan": "docs/plans/f-0227.md"
+      },
+      "parent": "F-0227",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T22:57:35Z",
+      "state": "New",
+      "title": "one grace, one predicate, one index \u2014 and the stop reading them instead of its own arithmetic",
+      "type": "task",
+      "updated": "2026-09-29T22:57:35Z",
+      "writes": [
+        "asf/workers/lifecycle.py",
+        "asf/workers/health.py",
+        "tests/test_lifecycle.py"
+      ]
+    },
+    "T-0616": {
+      "after": [
+        "T-0615"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0616",
+      "links": {
+        "plan": "docs/plans/f-0227.md"
+      },
+      "parent": "F-0227",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T22:57:35Z",
+      "state": "New",
+      "title": "a spent run's leftover process is load on its account, and never a running job",
+      "type": "task",
+      "updated": "2026-09-29T22:57:35Z",
+      "writes": [
+        "asf/workers/pool.py",
+        "asf/workers/wave.py",
+        "tests/test_session_identity.py"
       ]
     }
   },
