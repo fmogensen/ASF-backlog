@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T23:47:15Z",
+  "generated": "2026-09-29T23:53:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -9995,12 +9995,12 @@
       "id": "F-0106",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T23:33:52Z",
+      "stage": "building 0/3",
+      "stage_since": "2026-09-29T23:53:12Z",
       "state": "Active",
       "title": "Plans cut Tasks already on trunk, and depend on ids that were never minted: coders end with an empty branch",
       "type": "feature",
-      "updated": "2026-09-29T23:40:13Z"
+      "updated": "2026-09-29T23:53:12Z"
     },
     "F-0107": {
       "backlinks": [
@@ -10830,7 +10830,12 @@
     },
     "F-0131": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0644",
+        "T-0645",
+        "T-0646",
+        "T-0647"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -10844,19 +10849,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0131",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0131",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T22:57:34Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T23:53:12Z",
       "state": "Active",
       "title": "Classify every cancelled CI job as timeout, runner loss or failure, and list jobs near their limit",
       "type": "feature",
-      "updated": "2026-09-29T23:47:13Z"
+      "updated": "2026-09-29T23:53:12Z"
     },
     "F-0132": {
       "backlinks": [],
@@ -10997,19 +11002,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0137",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0137",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-29T23:33:52Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-29T23:53:12Z",
+      "state": "Active",
       "title": "Pause one product: the tick keeps recording and harvesting but launches nothing",
       "type": "feature",
-      "updated": "2026-09-29T23:40:28Z"
+      "updated": "2026-09-29T23:53:12Z"
     },
     "F-0138": {
       "backlinks": [],
@@ -20230,7 +20235,8 @@
         "T-0104"
       ],
       "backlinks": [
-        "T-0566"
+        "T-0566",
+        "T-0641"
       ],
       "children": [],
       "cost": {
@@ -40429,14 +40435,17 @@
       ]
     },
     "T-0641": {
+      "after": [
+        "T-0102"
+      ],
       "backlinks": [
         "T-0643"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0641",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0641",
@@ -40445,11 +40454,11 @@
       },
       "parent": "F-0106",
       "schema_version": 1,
-      "stage_since": "2026-09-29T23:33:53Z",
-      "state": "New",
+      "stage_since": "2026-09-29T23:53:12Z",
+      "state": "Active",
       "title": "the trunk is asked before a Task is minted, and a typed `landed:` finally closes one",
       "type": "task",
-      "updated": "2026-09-29T23:40:13Z",
+      "updated": "2026-09-29T23:53:12Z",
       "writes": [
         "asf/record/trunk_check.py",
         "asf/record/plan_tasks.py",
@@ -40510,6 +40519,108 @@
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_trunk_check.py"
+      ]
+    },
+    "T-0644": {
+      "backlinks": [
+        "T-0645"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0644",
+      "links": {
+        "plan": "docs/plans/f-0131.md"
+      },
+      "parent": "F-0131",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:53:12Z",
+      "state": "New",
+      "title": "a job's limit, read out of the workflow file",
+      "type": "task",
+      "updated": "2026-09-29T23:53:12Z",
+      "writes": [
+        "asf/ci_pool.py",
+        "tests/test_ci_pool.py"
+      ]
+    },
+    "T-0645": {
+      "after": [
+        "T-0644"
+      ],
+      "backlinks": [
+        "T-0646",
+        "T-0647"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0645",
+      "links": {
+        "plan": "docs/plans/f-0131.md"
+      },
+      "parent": "F-0131",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:53:12Z",
+      "state": "New",
+      "title": "every cancelled job carries why it was cancelled, written at import",
+      "type": "task",
+      "updated": "2026-09-29T23:53:12Z",
+      "writes": [
+        "asf/ci_jobs.py",
+        "asf/metrics/metrics.py",
+        "tests/test_ci_jobs.py",
+        "tests/test_metrics.py"
+      ]
+    },
+    "T-0646": {
+      "after": [
+        "T-0645"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0646",
+      "links": {
+        "plan": "docs/plans/f-0131.md"
+      },
+      "parent": "F-0131",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:53:12Z",
+      "state": "New",
+      "title": "the scorecard names the cause and lists the jobs near their limit",
+      "type": "task",
+      "updated": "2026-09-29T23:53:12Z",
+      "writes": [
+        "asf/ci_jobs.py",
+        "asf/metrics/metrics.py",
+        "tests/test_ci_jobs.py",
+        "tests/test_metrics.py"
+      ]
+    },
+    "T-0647": {
+      "after": [
+        "T-0645"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0647",
+      "links": {
+        "plan": "docs/plans/f-0131.md"
+      },
+      "parent": "F-0131",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:53:12Z",
+      "state": "New",
+      "title": "a job that times out or loses its runner is finally red in the diagnosis",
+      "type": "task",
+      "updated": "2026-09-29T23:53:12Z",
+      "writes": [
+        "asf/scorecard/diagnose.py",
+        "tests/test_scorecard.py"
       ]
     }
   },
