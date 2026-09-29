@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T13:33:34Z",
+  "generated": "2026-09-29T13:40:59Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5759,12 +5759,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1955.31,
+      "spend_usd": 1955.91,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T13:33:22Z"
+      "updated": "2026-09-29T13:40:16Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11274,12 +11274,12 @@
       "parent": "E-0001",
       "rank": 2,
       "schema_version": 1,
-      "stage": "building 0/3",
-      "stage_since": "2026-09-29T12:46:52Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T13:39:59Z",
       "state": "Active",
       "title": "Sessions die with 'failed: empty branch' 12 times a week",
       "type": "feature",
-      "updated": "2026-09-29T12:46:52Z"
+      "updated": "2026-09-29T13:39:59Z"
     },
     "F-0158": {
       "backlinks": [],
@@ -33598,7 +33598,8 @@
         "T-0464"
       ],
       "backlinks": [
-        "T-0467"
+        "T-0467",
+        "T-0468"
       ],
       "children": [],
       "decided": true,
@@ -33612,6 +33613,9 @@
         "plan": "docs/plans/f-0122.md"
       },
       "parent": "F-0122",
+      "reshape_declined": [
+        "batch T-0465+T-0468"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-28T15:37:41Z",
       "state": "New",
@@ -33703,6 +33707,7 @@
         "T-0466"
       ],
       "backlinks": [
+        "T-0465",
         "T-0469"
       ],
       "children": [],
@@ -33717,6 +33722,9 @@
         "plan": "docs/plans/f-0122.md"
       },
       "parent": "F-0122",
+      "reshape_declined": [
+        "batch T-0465+T-0468"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-28T15:37:41Z",
       "state": "New",
@@ -34313,7 +34321,8 @@
     },
     "T-0485": {
       "backlinks": [
-        "T-0486"
+        "T-0486",
+        "T-0487"
       ],
       "children": [],
       "decided": true,
@@ -34327,6 +34336,9 @@
         "plan": "docs/plans/f-0128.md"
       },
       "parent": "F-0128",
+      "reshape_declined": [
+        "batch T-0485+T-0487"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-28T16:15:59Z",
       "state": "New",
@@ -34374,7 +34386,9 @@
       "after": [
         "T-0486"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0485"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -34387,6 +34401,9 @@
         "plan": "docs/plans/f-0128.md"
       },
       "parent": "F-0128",
+      "reshape_declined": [
+        "batch T-0485+T-0487"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-28T16:15:59Z",
       "state": "New",
@@ -35029,7 +35046,8 @@
         "asf/scorecard/score.py",
         "asf/scorecard/diagnose.py",
         "asf/views/scorecard.py",
-        "tests/test_scorecard.py"
+        "tests/test_scorecard.py",
+        "tests/test_s1_gate.py"
       ]
     },
     "T-0507": {
@@ -35108,8 +35126,19 @@
         "T-0512"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 1465529,
+        "tokens_cache_write": 56456,
+        "tokens_input": 46,
+        "tokens_output": 8344,
+        "usd": 0.6
+      },
       "decided": true,
       "evidence": [
+        "PR #333 OPEN",
         "branch worker/T-0509",
         "rule: in-flight"
       ],
@@ -35128,7 +35157,7 @@
       "state": "Active",
       "title": "the third verdict \u2014 one pure function beside the one it does not replace",
       "type": "task",
-      "updated": "2026-09-29T13:33:08Z",
+      "updated": "2026-09-29T13:40:16Z",
       "writes": [
         "asf/scorecard/loop.py",
         "tests/test_scorecard.py",
@@ -35350,8 +35379,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0516",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0516",
@@ -35363,11 +35392,11 @@
       ],
       "parent": "F-0156",
       "schema_version": 1,
-      "stage_since": "2026-09-29T12:23:03Z",
-      "state": "New",
+      "stage_since": "2026-09-29T13:39:59Z",
+      "state": "Active",
       "title": "the census \u2014 one read of every head, classified, and the doctor row that prints it",
       "type": "task",
-      "updated": "2026-09-29T12:29:59Z",
+      "updated": "2026-09-29T13:39:59Z",
       "writes": [
         "asf/workers/retention.py",
         "asf/doctor.py",
@@ -35424,9 +35453,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #327 OPEN",
-        "branch worker/T-0518",
-        "rule: in-flight"
+        "merge a0f8598 of worker/T-0518 lands T-0518 (PR #327)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0518",
@@ -35435,11 +35463,11 @@
       },
       "parent": "F-0157",
       "schema_version": 1,
-      "stage_since": "2026-09-29T12:46:52Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T13:39:59Z",
+      "state": "Resolved",
       "title": "the word, and the proof \u2014 a fourth thing an ended run can be",
       "type": "task",
-      "updated": "2026-09-29T13:33:22Z",
+      "updated": "2026-09-29T13:39:59Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py"
