@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T13:47:31Z",
+  "generated": "2026-09-29T13:55:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5759,12 +5759,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1959.74,
+      "spend_usd": 1960.14,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T13:47:27Z"
+      "updated": "2026-09-29T13:54:22Z"
     },
     "E-0002": {
       "backlinks": [
@@ -19764,7 +19764,6 @@
       },
       "decided": true,
       "evidence": [
-        "PR #36 OPEN",
         "branch worker/T-0110",
         "rule: in-flight"
       ],
@@ -19783,7 +19782,7 @@
       "state": "Active",
       "title": "the schema module, and every prose reader it replaces",
       "type": "task",
-      "updated": "2026-09-29T13:21:43Z",
+      "updated": "2026-09-29T13:54:03Z",
       "writes": [
         "asf/workers/report.py",
         "tests/test_report.py",
@@ -35129,12 +35128,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 1465529,
-        "tokens_cache_write": 56456,
-        "tokens_input": 46,
-        "tokens_output": 8344,
-        "usd": 0.6
+        "sessions": 2,
+        "tokens_cache_read": 2475667,
+        "tokens_cache_write": 84867,
+        "tokens_input": 98,
+        "tokens_output": 16922,
+        "usd": 1.0
       },
       "decided": true,
       "evidence": [
@@ -35157,7 +35156,7 @@
       "state": "Active",
       "title": "the third verdict \u2014 one pure function beside the one it does not replace",
       "type": "task",
-      "updated": "2026-09-29T13:40:16Z",
+      "updated": "2026-09-29T13:54:22Z",
       "writes": [
         "asf/scorecard/loop.py",
         "tests/test_scorecard.py",
@@ -35750,7 +35749,8 @@
     },
     "T-0528": {
       "backlinks": [
-        "T-0529"
+        "T-0529",
+        "T-0530"
       ],
       "children": [],
       "decided": true,
@@ -35763,7 +35763,14 @@
       "links": {
         "plan": "docs/plans/f-0160.md"
       },
+      "merged": [
+        "T-0529",
+        "T-0530"
+      ],
       "parent": "F-0160",
+      "reshape_declined": [
+        "split T-0528 asf/workers | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T13:06:14Z",
       "state": "New",
@@ -35772,7 +35779,14 @@
       "updated": "2026-09-29T13:13:11Z",
       "writes": [
         "asf/workers/health.py",
-        "tests/test_ended_run_liveness.py"
+        "tests/test_ended_run_liveness.py",
+        "asf/workers/lifecycle.py",
+        "tests/test_lifecycle.py",
+        "tests/test_workers.py",
+        "asf/workers/stall.py",
+        "asf/tick/step_health.py",
+        "docs/guide/operating.md",
+        "tests/test_readme.py"
       ]
     },
     "T-0529": {
@@ -35780,6 +35794,7 @@
         "T-0528"
       ],
       "backlinks": [
+        "T-0528",
         "T-0530"
       ],
       "children": [],
@@ -35794,6 +35809,7 @@
         "plan": "docs/plans/f-0160.md"
       },
       "parent": "F-0160",
+      "removed": "merged into T-0528 (groom 2026-09-29)",
       "schema_version": 1,
       "stage_since": "2026-09-29T13:06:14Z",
       "state": "New",
@@ -35811,7 +35827,9 @@
       "after": [
         "T-0529"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0528"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -35824,6 +35842,7 @@
         "plan": "docs/plans/f-0160.md"
       },
       "parent": "F-0160",
+      "removed": "merged into T-0528 (groom 2026-09-29)",
       "schema_version": 1,
       "stage_since": "2026-09-29T13:06:14Z",
       "state": "New",
