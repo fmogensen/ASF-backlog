@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T16:17:59Z",
+  "generated": "2026-09-29T16:26:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4716,6 +4716,25 @@
       "type": "bug",
       "updated": "2026-09-29T14:36:21Z"
     },
+    "B-0156": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0156",
+      "last_filed": "2026-09-29",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0159.md",
+      "stage_since": "2026-09-29T16:26:43Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0159.md",
+      "type": "bug",
+      "updated": "2026-09-29T16:26:43Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -5802,7 +5821,8 @@
         "B-0152",
         "B-0153",
         "B-0154",
-        "B-0155"
+        "B-0155",
+        "B-0156"
       ],
       "decided": true,
       "evidence": [
@@ -5812,12 +5832,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2032.31,
+      "spend_usd": 2040.02,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T16:17:56Z"
+      "updated": "2026-09-29T16:24:37Z"
     },
     "E-0002": {
       "backlinks": [
@@ -6640,7 +6660,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/4 tasks Closed",
+        "1/3 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -6652,12 +6672,12 @@
       "reshape_applied": "7da015f22a8d",
       "reshape_applied_at": "2026-09-29T16:17:51Z",
       "schema_version": 1,
-      "stage": "building 1/4",
-      "stage_since": "2026-09-27T14:08:39Z",
+      "stage": "building 1/3",
+      "stage_since": "2026-09-29T16:24:11Z",
       "state": "Active",
       "title": "P5 \u2014 launch",
       "type": "feature",
-      "updated": "2026-09-29T16:09:04Z"
+      "updated": "2026-09-29T16:24:11Z"
     },
     "F-0022": {
       "area": "factory",
@@ -11386,7 +11406,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/5 tasks Closed",
+        "2/5 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -11394,15 +11414,17 @@
       "parent": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "stage": "building 1/5",
-      "stage_since": "2026-09-29T15:14:40Z",
+      "stage": "building 2/5",
+      "stage_since": "2026-09-29T16:24:11Z",
       "state": "Active",
       "title": "Sessions die with 'failed: not pushed' 72 times a week",
       "type": "feature",
-      "updated": "2026-09-29T15:14:40Z"
+      "updated": "2026-09-29T16:24:11Z"
     },
     "F-0159": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0156"
+      ],
       "children": [
         "T-0526",
         "T-0527"
@@ -35622,8 +35644,19 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 20920598,
+        "tokens_cache_write": 196488,
+        "tokens_input": 300,
+        "tokens_output": 71324,
+        "usd": 5.68
+      },
       "decided": true,
       "evidence": [
+        "PR #360 OPEN",
         "branch worker/T-0519",
         "rule: in-flight"
       ],
@@ -35638,7 +35671,7 @@
       "state": "Active",
       "title": "the three readers \u2014 written for a session that committed nothing, and never able to see one",
       "type": "task",
-      "updated": "2026-09-29T16:17:50Z",
+      "updated": "2026-09-29T16:24:37Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py",
@@ -35655,18 +35688,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 9699068,
-        "tokens_cache_write": 138750,
-        "tokens_input": 182,
-        "tokens_output": 51468,
-        "usd": 3.01
+        "sessions": 2,
+        "tokens_cache_read": 11826196,
+        "tokens_cache_write": 194170,
+        "tokens_input": 260,
+        "tokens_output": 70550,
+        "usd": 3.85
       },
       "decided": true,
       "evidence": [
-        "PR #355 OPEN",
-        "branch worker/T-0520",
-        "rule: in-flight"
+        "merge 668c2ec of worker/T-0520 lands T-0520 (PR #355)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0520",
@@ -35675,11 +35707,11 @@
       },
       "parent": "F-0157",
       "schema_version": 1,
-      "stage_since": "2026-09-29T15:38:01Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T16:24:11Z",
+      "state": "Resolved",
       "title": "health stops calling a delivered no-op a failure, and starts using the brake it already has",
       "type": "task",
-      "updated": "2026-09-29T15:45:16Z",
+      "updated": "2026-09-29T16:24:37Z",
       "writes": [
         "asf/workers/health.py",
         "tests/test_workers.py"
@@ -35746,7 +35778,8 @@
       "decided": true,
       "evidence": [
         "merge 14173e3 of worker/T-0522 lands T-0522 (PR #356)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0522",
@@ -35758,11 +35791,11 @@
         "split T-0522 asf | asf/briefs | asf/workers | tests | tests/fixtures"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-29T16:17:50Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-29T16:24:11Z",
+      "state": "Closed",
       "title": "the gate \u2014 a stop the session must answer, bounded, and the brief that now says so",
       "type": "task",
-      "updated": "2026-09-29T16:17:56Z",
+      "updated": "2026-09-29T16:24:11Z",
       "writes": [
         "asf/workers/stopgate.py",
         "asf/conventions.py",
@@ -35836,12 +35869,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 12403041,
-        "tokens_cache_write": 220825,
-        "tokens_input": 284,
-        "tokens_output": 94861,
-        "usd": 4.31
+        "sessions": 3,
+        "tokens_cache_read": 13919409,
+        "tokens_cache_write": 254473,
+        "tokens_input": 352,
+        "tokens_output": 101404,
+        "usd": 4.82
       },
       "decided": true,
       "evidence": [
@@ -35860,7 +35893,7 @@
       "state": "Active",
       "title": "the meter is not moved, and the cause names its sub-causes",
       "type": "task",
-      "updated": "2026-09-29T16:09:04Z",
+      "updated": "2026-09-29T16:24:37Z",
       "writes": [
         "asf/scorecard/diagnose.py",
         "asf/improve/measure.py",
@@ -35910,23 +35943,24 @@
       "after": [
         "T-0526"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-0156"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 833526,
-        "tokens_cache_write": 42713,
-        "tokens_input": 32,
-        "tokens_output": 6497,
-        "usd": 0.4
+        "sessions": 2,
+        "tokens_cache_read": 2564550,
+        "tokens_cache_write": 88653,
+        "tokens_input": 100,
+        "tokens_output": 22502,
+        "usd": 1.09
       },
       "decided": true,
       "evidence": [
-        "PR #357 OPEN",
-        "branch worker/T-0527",
-        "rule: in-flight"
+        "merge d6a2206 of worker/T-0527 lands T-0527 (PR #357)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0527",
@@ -35935,11 +35969,11 @@
       },
       "parent": "F-0159",
       "schema_version": 1,
-      "stage_since": "2026-09-29T15:45:09Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T16:24:11Z",
+      "state": "Resolved",
       "title": "the rehearsal is compared with no clock pinned, and no clock may return to it",
       "type": "task",
-      "updated": "2026-09-29T15:54:38Z",
+      "updated": "2026-09-29T16:24:37Z",
       "writes": [
         "tests/test_dry_run.py"
       ]
