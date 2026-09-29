@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T19:35:32Z",
+  "generated": "2026-09-29T19:41:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5892,12 +5892,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2212.58,
+      "spend_usd": 2214.71,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T19:35:29Z"
+      "updated": "2026-09-29T19:41:35Z"
     },
     "E-0002": {
       "backlinks": [
@@ -12356,7 +12356,12 @@
     },
     "F-0190": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0577",
+        "T-0578",
+        "T-0579",
+        "T-0580"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -12370,19 +12375,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0190",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0190",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T18:57:56Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T19:41:28Z",
       "state": "Active",
       "title": "Deploy relevance counts test-only commits as undeployed changes",
       "type": "feature",
-      "updated": "2026-09-29T19:29:28Z"
+      "updated": "2026-09-29T19:41:28Z"
     },
     "F-0191": {
       "backlinks": [],
@@ -12583,19 +12588,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0200",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0200",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-29T19:23:04Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-29T19:41:28Z",
+      "state": "Active",
       "title": "Intake: an S1 card stuck on a signature question sits silently; the 'S1:' title prefix is ignored",
       "type": "feature",
-      "updated": "2026-09-29T19:29:28Z"
+      "updated": "2026-09-29T19:41:28Z"
     },
     "F-0201": {
       "backlinks": [],
@@ -12661,19 +12666,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0203",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0203",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-29T19:23:04Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-29T19:41:28Z",
+      "state": "Active",
       "title": "Lane rebases a PR onto a moved main mid-CI, restarting its required jobs (S1 #858 superseded 4x)",
       "type": "feature",
-      "updated": "2026-09-29T19:29:28Z"
+      "updated": "2026-09-29T19:41:28Z"
     },
     "F-0204": {
       "backlinks": [],
@@ -37454,18 +37459,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 32176037,
-        "tokens_cache_write": 278895,
-        "tokens_input": 332,
-        "tokens_output": 94209,
-        "usd": 8.49
+        "sessions": 2,
+        "tokens_cache_read": 39331608,
+        "tokens_cache_write": 386655,
+        "tokens_input": 494,
+        "tokens_output": 120383,
+        "usd": 10.62
       },
       "decided": true,
       "evidence": [
-        "PR #398 OPEN",
-        "branch worker/T-0561",
-        "rule: in-flight"
+        "merge 9549a97 of worker/T-0561 lands T-0561 (PR #398)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0561",
@@ -37474,11 +37478,11 @@
       },
       "parent": "F-0187",
       "schema_version": 1,
-      "stage_since": "2026-09-29T19:23:04Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T19:41:28Z",
+      "state": "Resolved",
       "title": "the widening the rule allows is the widening that is written \u2014 and `asf check` agrees",
       "type": "task",
-      "updated": "2026-09-29T19:29:28Z",
+      "updated": "2026-09-29T19:41:35Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -37979,6 +37983,107 @@
       "updated": "2026-09-29T19:04:04Z",
       "writes": [
         "tests/test_seat_claims.py"
+      ]
+    },
+    "T-0577": {
+      "backlinks": [
+        "T-0578"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0577",
+      "links": {
+        "plan": "docs/plans/f-0190.md"
+      },
+      "parent": "F-0190",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T19:41:29Z",
+      "state": "New",
+      "title": "the exclude list resolves once, and the defaults never make a filter on their own",
+      "type": "task",
+      "updated": "2026-09-29T19:41:29Z",
+      "writes": [
+        "asf/harvest/deploy.py",
+        "tests/test_deploy.py"
+      ]
+    },
+    "T-0578": {
+      "after": [
+        "T-0577"
+      ],
+      "backlinks": [
+        "T-0579"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0578",
+      "links": {
+        "plan": "docs/plans/f-0190.md"
+      },
+      "parent": "F-0190",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T19:41:29Z",
+      "state": "New",
+      "title": "relevance counts only commits under `paths` and outside the excludes",
+      "type": "task",
+      "updated": "2026-09-29T19:41:29Z",
+      "writes": [
+        "asf/harvest/deploy.py",
+        "tests/test_deploy.py"
+      ]
+    },
+    "T-0579": {
+      "after": [
+        "T-0578"
+      ],
+      "backlinks": [
+        "T-0580"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0579",
+      "links": {
+        "plan": "docs/plans/f-0190.md"
+      },
+      "parent": "F-0190",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T19:41:29Z",
+      "state": "New",
+      "title": "every line and every view reads the one predicate, and the excludes are visible in words",
+      "type": "task",
+      "updated": "2026-09-29T19:41:29Z",
+      "writes": [
+        "asf/harvest/deploy.py",
+        "asf/views/prod.py",
+        "tests/test_deploy.py"
+      ]
+    },
+    "T-0580": {
+      "after": [
+        "T-0579"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0580",
+      "links": {
+        "plan": "docs/plans/f-0190.md"
+      },
+      "parent": "F-0190",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T19:41:29Z",
+      "state": "New",
+      "title": "a mistyped filter refuses the product load, on dev and prod as well as on a target",
+      "type": "task",
+      "updated": "2026-09-29T19:41:29Z",
+      "writes": [
+        "asf/env.py",
+        "docs/products.example.yaml",
+        "tests/test_deploy.py"
       ]
     }
   },
