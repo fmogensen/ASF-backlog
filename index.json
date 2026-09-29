@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T16:43:41Z",
+  "generated": "2026-09-29T16:50:17Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4739,6 +4739,25 @@
       "type": "bug",
       "updated": "2026-09-29T16:37:12Z"
     },
+    "B-0157": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0157",
+      "last_filed": "2026-09-29",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0157.md",
+      "stage_since": "2026-09-29T16:50:17Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0157.md",
+      "type": "bug",
+      "updated": "2026-09-29T16:50:17Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -5826,7 +5845,8 @@
         "B-0153",
         "B-0154",
         "B-0155",
-        "B-0156"
+        "B-0156",
+        "B-0157"
       ],
       "decided": true,
       "evidence": [
@@ -5836,12 +5856,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2056.04,
+      "spend_usd": 2060.78,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T16:43:33Z"
+      "updated": "2026-09-29T16:49:40Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11354,7 +11374,9 @@
       "updated": "2026-09-29T14:36:21Z"
     },
     "F-0157": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0157"
+      ],
       "children": [
         "T-0518",
         "T-0519",
@@ -11412,7 +11434,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/5 tasks Closed",
+        "3/5 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -11420,12 +11442,12 @@
       "parent": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "stage": "building 2/5",
-      "stage_since": "2026-09-29T16:24:11Z",
+      "stage": "building 3/5",
+      "stage_since": "2026-09-29T16:49:34Z",
       "state": "Active",
       "title": "Sessions die with 'failed: not pushed' 72 times a week",
       "type": "feature",
-      "updated": "2026-09-29T16:24:11Z"
+      "updated": "2026-09-29T16:49:34Z"
     },
     "F-0159": {
       "backlinks": [
@@ -11825,6 +11847,16 @@
     "F-0173": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 3288180,
+        "tokens_cache_write": 105847,
+        "tokens_input": 88,
+        "tokens_output": 46438,
+        "usd": 3.86
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0173",
@@ -11839,7 +11871,7 @@
       "state": "New",
       "title": "A ruling should survive a lane rebase (same patch-ids, new head)",
       "type": "feature",
-      "updated": "2026-09-29T16:43:27Z"
+      "updated": "2026-09-29T16:49:40Z"
     },
     "F-0174": {
       "backlinks": [],
@@ -12058,38 +12090,38 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
+        "spec on spec/F-0185",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0185",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-27T04:20:34Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-29T16:49:34Z",
       "state": "New",
       "title": "Connectors: declare each external service (CI, deploy, db, \u2026) once per product \u2014 asf connect sets up auth, doctor/status/approvals/sessions all read it",
       "type": "feature",
-      "updated": "2026-09-29T12:23:03Z"
+      "updated": "2026-09-29T16:49:34Z"
     },
     "F-0186": {
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
+        "spec on spec/F-0186",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0186",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-27T04:20:34Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-29T16:49:34Z",
       "state": "New",
       "title": "conventions.doc_paths: let a product declare extra document folders so approved spec branches land without a session",
       "type": "feature",
-      "updated": "2026-09-29T12:23:03Z"
+      "updated": "2026-09-29T16:49:34Z"
     },
     "F-0187": {
       "backlinks": [],
@@ -35666,23 +35698,24 @@
       "after": [
         "T-0518"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-0157"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 20920598,
-        "tokens_cache_write": 196488,
-        "tokens_input": 300,
-        "tokens_output": 71324,
-        "usd": 5.68
+        "sessions": 2,
+        "tokens_cache_read": 23528548,
+        "tokens_cache_write": 254837,
+        "tokens_input": 386,
+        "tokens_output": 82850,
+        "usd": 6.55
       },
       "decided": true,
       "evidence": [
-        "PR #360 OPEN",
-        "branch worker/T-0519",
-        "rule: in-flight"
+        "merge b9b45b7 of worker/T-0519 lands T-0519 (PR #360)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0519",
@@ -35691,11 +35724,11 @@
       },
       "parent": "F-0157",
       "schema_version": 1,
-      "stage_since": "2026-09-29T16:17:50Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T16:49:34Z",
+      "state": "Resolved",
       "title": "the three readers \u2014 written for a session that committed nothing, and never able to see one",
       "type": "task",
-      "updated": "2026-09-29T16:24:37Z",
+      "updated": "2026-09-29T16:49:40Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py",
@@ -35904,7 +35937,8 @@
       "decided": true,
       "evidence": [
         "merge 5a59c5f of worker/T-0525 lands T-0525 (PR #353)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0525",
@@ -35913,11 +35947,11 @@
       },
       "parent": "F-0158",
       "schema_version": 1,
-      "stage_since": "2026-09-29T16:43:27Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-29T16:49:34Z",
+      "state": "Closed",
       "title": "the meter is not moved, and the cause names its sub-causes",
       "type": "task",
-      "updated": "2026-09-29T16:43:33Z",
+      "updated": "2026-09-29T16:49:34Z",
       "writes": [
         "asf/scorecard/diagnose.py",
         "asf/improve/measure.py",
