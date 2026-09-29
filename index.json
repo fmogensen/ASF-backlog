@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T23:40:30Z",
+  "generated": "2026-09-29T23:47:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5968,12 +5968,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 262.68,
+      "spend_usd": 272.9,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-29T23:40:28Z"
+      "updated": "2026-09-29T23:47:13Z"
     },
     "E-0003": {
       "backlinks": [
@@ -10834,12 +10834,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 14665981,
-        "tokens_cache_write": 189447,
-        "tokens_input": 222,
-        "tokens_output": 95694,
-        "usd": 11.62
+        "sessions": 2,
+        "tokens_cache_read": 22806868,
+        "tokens_cache_write": 345270,
+        "tokens_input": 370,
+        "tokens_output": 159774,
+        "usd": 18.85
       },
       "decided": true,
       "evidence": [
@@ -10856,7 +10856,7 @@
       "state": "Active",
       "title": "Classify every cancelled CI job as timeout, runner loss or failure, and list jobs near their limit",
       "type": "feature",
-      "updated": "2026-09-29T23:40:13Z"
+      "updated": "2026-09-29T23:47:13Z"
     },
     "F-0132": {
       "backlinks": [],
@@ -13498,19 +13498,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/2 tasks Closed",
+        "1/2 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0229",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T23:40:13Z",
+      "stage": "building 1/2",
+      "stage_since": "2026-09-29T23:47:06Z",
       "state": "Active",
       "title": "Lane reaches MERGING with PR #None (plan/T-0189); I9 events repeat every tick",
       "type": "feature",
-      "updated": "2026-09-29T23:40:13Z"
+      "updated": "2026-09-29T23:47:06Z"
     },
     "F-0230": {
       "backlinks": [],
@@ -39719,7 +39719,8 @@
       "decided": true,
       "evidence": [
         "merge ed41d4a of worker/T-0618 lands T-0618 (PR #457)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0618",
@@ -39728,11 +39729,11 @@
       },
       "parent": "F-0229",
       "schema_version": 1,
-      "stage_since": "2026-09-29T23:40:13Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-29T23:47:06Z",
+      "state": "Closed",
       "title": "a merge found outside the lane is recorded once per branch, not once per tick",
       "type": "task",
-      "updated": "2026-09-29T23:40:28Z",
+      "updated": "2026-09-29T23:47:06Z",
       "writes": [
         "asf/invariants.py",
         "asf/record/check.py",
@@ -40028,8 +40029,19 @@
         "T-0630"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 8830581,
+        "tokens_cache_write": 159349,
+        "tokens_input": 134,
+        "tokens_output": 58146,
+        "usd": 2.99
+      },
       "decided": true,
       "evidence": [
+        "PR #460 OPEN",
         "branch worker/T-0628",
         "rule: in-flight"
       ],
@@ -40044,7 +40056,7 @@
       "state": "Active",
       "title": "one reader of which install a clock runs, and how far it is from the trunk",
       "type": "task",
-      "updated": "2026-09-29T23:40:13Z",
+      "updated": "2026-09-29T23:47:13Z",
       "writes": [
         "asf/clockinstall.py",
         "tests/test_clock_install.py"
