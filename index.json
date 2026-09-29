@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T17:37:23Z",
+  "generated": "2026-09-29T17:48:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4495,6 +4495,7 @@
     "B-0147": {
       "backlinks": [
         "T-0302",
+        "T-0547",
         "B-0148",
         "B-0152",
         "B-0153",
@@ -5862,12 +5863,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2112.4,
+      "spend_usd": 2120.89,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T17:37:20Z"
+      "updated": "2026-09-29T17:48:29Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11381,6 +11382,7 @@
     },
     "F-0157": {
       "backlinks": [
+        "T-0547",
         "B-0157"
       ],
       "children": [
@@ -11814,12 +11816,12 @@
       "id": "F-0170",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T17:31:10Z",
+      "stage": "building 0/3",
+      "stage_since": "2026-09-29T17:48:24Z",
       "state": "Active",
       "title": "32 pre-existing I3 writes: overlaps after the invariants audit; groom on no clock",
       "type": "feature",
-      "updated": "2026-09-29T17:37:14Z"
+      "updated": "2026-09-29T17:48:24Z"
     },
     "F-0171": {
       "backlinks": [],
@@ -11862,7 +11864,9 @@
     },
     "F-0173": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0547"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -11876,19 +11880,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0173",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0173",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T17:01:44Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T17:48:24Z",
       "state": "Active",
       "title": "A ruling should survive a lane rebase (same patch-ids, new head)",
       "type": "feature",
-      "updated": "2026-09-29T17:31:17Z"
+      "updated": "2026-09-29T17:48:24Z"
     },
     "F-0174": {
       "backlinks": [],
@@ -11916,12 +11920,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 7365147,
-        "tokens_cache_write": 158022,
-        "tokens_input": 144,
-        "tokens_output": 63341,
-        "usd": 6.85
+        "sessions": 2,
+        "tokens_cache_read": 13025658,
+        "tokens_cache_write": 289665,
+        "tokens_input": 258,
+        "tokens_output": 112312,
+        "usd": 12.22
       },
       "decided": true,
       "evidence": [
@@ -11938,7 +11942,7 @@
       "state": "Active",
       "title": "ASF collects trunk CI runs itself \u2014 CI facts go stale when a product's legacy collector is retired",
       "type": "feature",
-      "updated": "2026-09-29T17:37:14Z"
+      "updated": "2026-09-29T17:48:29Z"
     },
     "F-0176": {
       "backlinks": [],
@@ -11956,6 +11960,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0176",
         "rule: documented"
       ],
       "folder": "features",
@@ -11967,7 +11972,7 @@
       "state": "Active",
       "title": "B-0123 loop: 'died without a result' while both logs end in a ruling; ready branch never published",
       "type": "feature",
-      "updated": "2026-09-29T17:19:05Z"
+      "updated": "2026-09-29T17:48:24Z"
     },
     "F-0177": {
       "backlinks": [],
@@ -12169,6 +12174,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0186",
         "rule: documented"
       ],
       "folder": "features",
@@ -12180,7 +12186,7 @@
       "state": "Active",
       "title": "conventions.doc_paths: let a product declare extra document folders so approved spec branches land without a session",
       "type": "feature",
-      "updated": "2026-09-29T17:12:51Z"
+      "updated": "2026-09-29T17:48:24Z"
     },
     "F-0187": {
       "backlinks": [],
@@ -12198,6 +12204,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0187",
         "rule: documented"
       ],
       "folder": "features",
@@ -12209,7 +12216,7 @@
       "state": "Active",
       "title": "conventions.shared_paths: lock files overlap every Task \u2014 serialise them at merge, not in the feeder",
       "type": "feature",
-      "updated": "2026-09-29T17:19:05Z"
+      "updated": "2026-09-29T17:48:24Z"
     },
     "F-0188": {
       "backlinks": [],
@@ -36519,8 +36526,19 @@
         "T-0541"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 9922304,
+        "tokens_cache_write": 146422,
+        "tokens_input": 168,
+        "tokens_output": 54955,
+        "usd": 3.12
+      },
       "decided": true,
       "evidence": [
+        "PR #376 OPEN",
         "branch worker/T-0540",
         "rule: in-flight"
       ],
@@ -36535,7 +36553,7 @@
       "state": "Active",
       "title": "both doors shut at the callable, and the deferral bounded by the log",
       "type": "task",
-      "updated": "2026-09-29T17:37:14Z",
+      "updated": "2026-09-29T17:48:29Z",
       "writes": [
         "asf/workers/observe.py",
         "asf/workers/health.py",
@@ -36652,8 +36670,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0544",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0544",
@@ -36662,11 +36680,11 @@
       },
       "parent": "F-0170",
       "schema_version": 1,
-      "stage_since": "2026-09-29T17:31:11Z",
-      "state": "New",
+      "stage_since": "2026-09-29T17:48:24Z",
+      "state": "Active",
       "title": "one definition of the overlap that violates I3, and both of its existing readers on it",
       "type": "task",
-      "updated": "2026-09-29T17:37:14Z",
+      "updated": "2026-09-29T17:48:24Z",
       "writes": [
         "asf/invariants.py",
         "asf/record/check.py",
@@ -36729,6 +36747,29 @@
         "asf/install.py",
         "tests/test_doctor.py",
         "tests/test_install.py"
+      ]
+    },
+    "T-0547": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0547",
+      "links": {
+        "plan": "docs/plans/f-0173.md"
+      },
+      "parent": "F-0173",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T17:48:24Z",
+      "state": "New",
+      "title": "the ruling is measured with the review's ruler \u2014 one predicate, both shas, the lane hands over `same_code`",
+      "type": "task",
+      "updated": "2026-09-29T17:48:24Z",
+      "writes": [
+        "asf/workers/lifecycle.py",
+        "asf/harvest/lane.py",
+        "tests/test_lifecycle.py",
+        "tests/test_lane.py"
       ]
     }
   },
