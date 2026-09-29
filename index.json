@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T18:52:02Z",
+  "generated": "2026-09-29T18:57:59Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -12237,12 +12237,12 @@
       "id": "F-0186",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T18:25:53Z",
+      "stage": "building 0/3",
+      "stage_since": "2026-09-29T18:57:56Z",
       "state": "Active",
       "title": "conventions.doc_paths: let a product declare extra document folders so approved spec branches land without a session",
       "type": "feature",
-      "updated": "2026-09-29T18:32:53Z"
+      "updated": "2026-09-29T18:57:56Z"
     },
     "F-0187": {
       "backlinks": [],
@@ -12320,7 +12320,12 @@
     },
     "F-0189": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0573",
+        "T-0574",
+        "T-0575",
+        "T-0576"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -12334,19 +12339,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0189",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0189",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T18:19:30Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T18:57:56Z",
       "state": "Active",
       "title": "Cross-product seat overcommit: two waves launch on one account at once (6 of cap 4)",
       "type": "feature",
-      "updated": "2026-09-29T18:39:31Z"
+      "updated": "2026-09-29T18:57:56Z"
     },
     "F-0190": {
       "backlinks": [],
@@ -12363,19 +12368,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0190",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0190",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-29T18:32:53Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-29T18:57:56Z",
+      "state": "Active",
       "title": "Deploy relevance counts test-only commits as undeployed changes",
       "type": "feature",
-      "updated": "2026-09-29T18:39:31Z"
+      "updated": "2026-09-29T18:57:56Z"
     },
     "F-0191": {
       "backlinks": [],
@@ -37621,8 +37626,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0568",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0568",
@@ -37631,11 +37636,11 @@
       },
       "parent": "F-0186",
       "schema_version": 1,
-      "stage_since": "2026-09-29T18:25:55Z",
-      "state": "New",
+      "stage_since": "2026-09-29T18:57:56Z",
+      "state": "Active",
       "title": "the native landing of a declared doc path, pinned",
       "type": "task",
-      "updated": "2026-09-29T18:32:53Z",
+      "updated": "2026-09-29T18:57:56Z",
       "writes": [
         "tests/test_land_spec.py"
       ]
@@ -37761,6 +37766,105 @@
         "asf/groom/groom.py",
         "tests/test_groom_policy.py",
         "tests/test_feeder.py"
+      ]
+    },
+    "T-0573": {
+      "backlinks": [
+        "T-0574"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0573",
+      "links": {
+        "plan": "docs/plans/f-0189.md"
+      },
+      "parent": "F-0189",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:57:56Z",
+      "state": "New",
+      "title": "the claim ledger \u2014 one file, one lock, and one definition of a live claim",
+      "type": "task",
+      "updated": "2026-09-29T18:57:56Z",
+      "writes": [
+        "asf/workers/seats.py",
+        "tests/test_seat_claims.py"
+      ]
+    },
+    "T-0574": {
+      "after": [
+        "T-0573"
+      ],
+      "backlinks": [
+        "T-0575"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0574",
+      "links": {
+        "plan": "docs/plans/f-0189.md"
+      },
+      "parent": "F-0189",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:57:56Z",
+      "state": "New",
+      "title": "`Pool.take` is a compare-and-set, and the pick sees every product's claims",
+      "type": "task",
+      "updated": "2026-09-29T18:57:56Z",
+      "writes": [
+        "asf/workers/pool.py",
+        "tests/test_seat_claims.py"
+      ]
+    },
+    "T-0575": {
+      "after": [
+        "T-0574"
+      ],
+      "backlinks": [
+        "T-0576"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0575",
+      "links": {
+        "plan": "docs/plans/f-0189.md"
+      },
+      "parent": "F-0189",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:57:56Z",
+      "state": "New",
+      "title": "the row whose seat went, and the hand launch that claims before it spawns",
+      "type": "task",
+      "updated": "2026-09-29T18:57:56Z",
+      "writes": [
+        "asf/workers/wave.py",
+        "asf/workers/__init__.py",
+        "tests/test_seat_claims.py"
+      ]
+    },
+    "T-0576": {
+      "after": [
+        "T-0575"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0576",
+      "links": {
+        "plan": "docs/plans/f-0189.md"
+      },
+      "parent": "F-0189",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:57:56Z",
+      "state": "New",
+      "title": "two real waves, one account, four seats \u2014 the card's own test",
+      "type": "task",
+      "updated": "2026-09-29T18:57:56Z",
+      "writes": [
+        "tests/test_seat_claims.py"
       ]
     }
   },
