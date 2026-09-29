@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T18:19:56Z",
+  "generated": "2026-09-29T18:27:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4770,6 +4770,25 @@
       "type": "bug",
       "updated": "2026-09-29T16:55:34Z"
     },
+    "B-0158": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0158",
+      "last_filed": "2026-09-29",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0173.md",
+      "stage_since": "2026-09-29T18:27:33Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0173.md",
+      "type": "bug",
+      "updated": "2026-09-29T18:27:33Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -5858,7 +5877,8 @@
         "B-0154",
         "B-0155",
         "B-0156",
-        "B-0157"
+        "B-0157",
+        "B-0158"
       ],
       "decided": true,
       "evidence": [
@@ -5868,12 +5888,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2152.69,
+      "spend_usd": 2155.86,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T18:07:28Z"
+      "updated": "2026-09-29T18:26:10Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11869,7 +11889,9 @@
       "updated": "2026-09-29T12:23:03Z"
     },
     "F-0173": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0158"
+      ],
       "children": [
         "T-0547"
       ],
@@ -11949,12 +11971,12 @@
       "id": "F-0175",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "building 0/3",
-      "stage_since": "2026-09-29T18:00:46Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T18:25:53Z",
       "state": "Active",
       "title": "ASF collects trunk CI runs itself \u2014 CI facts go stale when a product's legacy collector is retired",
       "type": "feature",
-      "updated": "2026-09-29T18:00:46Z"
+      "updated": "2026-09-29T18:25:53Z"
     },
     "F-0176": {
       "backlinks": [],
@@ -12185,33 +12207,37 @@
     },
     "F-0186": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0566",
+        "T-0567",
+        "T-0568"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 8082174,
-        "tokens_cache_write": 211880,
-        "tokens_input": 204,
-        "tokens_output": 90369,
-        "usd": 8.42
+        "sessions": 3,
+        "tokens_cache_read": 8733018,
+        "tokens_cache_write": 251128,
+        "tokens_input": 240,
+        "tokens_output": 100835,
+        "usd": 9.4
       },
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0186",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0186",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T17:12:51Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T18:25:53Z",
       "state": "Active",
       "title": "conventions.doc_paths: let a product declare extra document folders so approved spec branches land without a session",
       "type": "feature",
-      "updated": "2026-09-29T17:54:51Z"
+      "updated": "2026-09-29T18:26:10Z"
     },
     "F-0187": {
       "backlinks": [],
@@ -12244,16 +12270,21 @@
       "id": "F-0187",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T18:07:11Z",
+      "stage": "building 0/6",
+      "stage_since": "2026-09-29T18:25:53Z",
       "state": "Active",
       "title": "conventions.shared_paths: lock files overlap every Task \u2014 serialise them at merge, not in the feeder",
       "type": "feature",
-      "updated": "2026-09-29T18:19:30Z"
+      "updated": "2026-09-29T18:25:53Z"
     },
     "F-0188": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0569",
+        "T-0570",
+        "T-0571",
+        "T-0572"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -12267,19 +12298,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0188",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0188",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T17:31:10Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T18:25:53Z",
       "state": "Active",
       "title": "coverage: a product declares references; generic reference coverage (generalises matrix_path + asf parity)",
       "type": "feature",
-      "updated": "2026-09-29T18:07:28Z"
+      "updated": "2026-09-29T18:25:53Z"
     },
     "F-0189": {
       "backlinks": [],
@@ -36760,8 +36791,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0545",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0545",
@@ -36770,11 +36801,11 @@
       },
       "parent": "F-0170",
       "schema_version": 1,
-      "stage_since": "2026-09-29T17:31:11Z",
-      "state": "New",
+      "stage_since": "2026-09-29T18:25:53Z",
+      "state": "Active",
       "title": "the tick writes the order, one pair at a time, and never a cycle",
       "type": "task",
-      "updated": "2026-09-29T17:37:14Z",
+      "updated": "2026-09-29T18:25:53Z",
       "writes": [
         "asf/tick/widen_footprint.py",
         "asf/feeder/widen.py",
@@ -36809,23 +36840,24 @@
       ]
     },
     "T-0547": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0158"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 5713810,
-        "tokens_cache_write": 93034,
-        "tokens_input": 142,
-        "tokens_output": 24943,
-        "usd": 1.76
+        "sessions": 2,
+        "tokens_cache_read": 10104604,
+        "tokens_cache_write": 170844,
+        "tokens_input": 254,
+        "tokens_output": 42979,
+        "usd": 3.13
       },
       "decided": true,
       "evidence": [
-        "PR #383 OPEN",
-        "branch worker/T-0547",
-        "rule: in-flight"
+        "merge b27c356 of worker/T-0547 lands T-0547 (PR #383)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0547",
@@ -36834,11 +36866,11 @@
       },
       "parent": "F-0173",
       "schema_version": 1,
-      "stage_since": "2026-09-29T18:00:46Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T18:25:53Z",
+      "state": "Resolved",
       "title": "the ruling is measured with the review's ruler \u2014 one predicate, both shas, the lane hands over `same_code`",
       "type": "task",
-      "updated": "2026-09-29T18:07:28Z",
+      "updated": "2026-09-29T18:26:10Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/harvest/lane.py",
@@ -36912,18 +36944,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 1617257,
-        "tokens_cache_write": 43695,
-        "tokens_input": 66,
-        "tokens_output": 9525,
-        "usd": 0.59
+        "sessions": 2,
+        "tokens_cache_read": 4067093,
+        "tokens_cache_write": 94063,
+        "tokens_input": 158,
+        "tokens_output": 22473,
+        "usd": 1.41
       },
       "decided": true,
       "evidence": [
-        "PR #384 OPEN",
-        "branch worker/T-0550",
-        "rule: in-flight"
+        "merge 564949d of worker/T-0550 lands T-0550 (PR #384)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0550",
@@ -36932,11 +36963,11 @@
       },
       "parent": "F-0175",
       "schema_version": 1,
-      "stage_since": "2026-09-29T18:00:46Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T18:25:53Z",
+      "state": "Resolved",
       "title": "the policy answers nothing off a fact older than its own window",
       "type": "task",
-      "updated": "2026-09-29T18:07:28Z",
+      "updated": "2026-09-29T18:26:10Z",
       "writes": [
         "asf/groom/policy.py",
         "tests/test_groom_policy.py"
@@ -37216,8 +37247,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0560",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0560",
@@ -37226,11 +37257,11 @@
       },
       "parent": "F-0187",
       "schema_version": 1,
-      "stage_since": "2026-09-29T18:07:12Z",
-      "state": "New",
+      "stage_since": "2026-09-29T18:25:53Z",
+      "state": "Active",
       "title": "one reader of the key, and the exemption that stops at the shared set",
       "type": "task",
-      "updated": "2026-09-29T18:19:30Z",
+      "updated": "2026-09-29T18:25:53Z",
       "writes": [
         "asf/feeder/footprint.py",
         "asf/feeder/rows.py",
@@ -37399,6 +37430,176 @@
         "tests/test_e2e_lane.py",
         "tests/e2e/product/repo/uv.lock",
         "tests/e2e/product/stages/shared/**"
+      ]
+    },
+    "T-0566": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0566",
+      "links": {
+        "plan": "docs/plans/f-0186.md"
+      },
+      "parent": "F-0186",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:25:55Z",
+      "state": "New",
+      "title": "one docs rule, one list \u2014 the evidence half stops disagreeing with the landing",
+      "type": "task",
+      "updated": "2026-09-29T18:25:55Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "asf/evidence/evidence.py",
+        "tests/test_doc_lane_landing.py"
+      ]
+    },
+    "T-0567": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0567",
+      "links": {
+        "plan": "docs/plans/f-0186.md"
+      },
+      "parent": "F-0186",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:25:55Z",
+      "state": "New",
+      "title": "`asf doctor` lists the document folders a product declared",
+      "type": "task",
+      "updated": "2026-09-29T18:25:55Z",
+      "writes": [
+        "asf/doctor.py",
+        "tests/test_doctor.py"
+      ]
+    },
+    "T-0568": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0568",
+      "links": {
+        "plan": "docs/plans/f-0186.md"
+      },
+      "parent": "F-0186",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:25:55Z",
+      "state": "New",
+      "title": "the native landing of a declared doc path, pinned",
+      "type": "task",
+      "updated": "2026-09-29T18:25:55Z",
+      "writes": [
+        "tests/test_land_spec.py"
+      ]
+    },
+    "T-0569": {
+      "backlinks": [
+        "T-0570",
+        "T-0571",
+        "T-0572"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0569",
+      "links": {
+        "plan": "docs/plans/f-0188.md"
+      },
+      "parent": "F-0188",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:25:55Z",
+      "state": "New",
+      "title": "the product declares its references \u2014 one declared key, one per-entry checker, one resolved property, and the example that documents it",
+      "type": "task",
+      "updated": "2026-09-29T18:25:55Z",
+      "writes": [
+        "asf/env.py",
+        "docs/products.example.yaml",
+        "tests/test_env.py"
+      ]
+    },
+    "T-0570": {
+      "after": [
+        "T-0569"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0570",
+      "links": {
+        "plan": "docs/plans/f-0188.md"
+      },
+      "parent": "F-0188",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:25:55Z",
+      "state": "New",
+      "title": "a reference row closes only on the evidence its reference asks for \u2014 two `Ev` fields, two rules above `tasks-closed`, and the two values ingest fills them from",
+      "type": "task",
+      "updated": "2026-09-29T18:25:55Z",
+      "writes": [
+        "asf/evidence/closing.py",
+        "asf/record/ingest.py",
+        "tests/test_closing.py",
+        "tests/test_ingest.py"
+      ]
+    },
+    "T-0571": {
+      "after": [
+        "T-0569"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0571",
+      "links": {
+        "plan": "docs/plans/f-0188.md"
+      },
+      "parent": "F-0188",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:25:55Z",
+      "state": "New",
+      "title": "`asf coverage` is the one reference table \u2014 a new view, the four registrations, and `parity` as its alias",
+      "type": "task",
+      "updated": "2026-09-29T18:25:55Z",
+      "writes": [
+        "asf/views/coverage.py",
+        "asf/cli.py",
+        "asf/surface.py",
+        "asf/views/header.py",
+        "tests/test_coverage_view.py",
+        "tests/test_surface.py",
+        "tests/test_views_header.py"
+      ]
+    },
+    "T-0572": {
+      "after": [
+        "T-0569"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0572",
+      "links": {
+        "plan": "docs/plans/f-0188.md"
+      },
+      "parent": "F-0188",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T18:25:55Z",
+      "state": "New",
+      "title": "`decide: need` is a groom policy \u2014 one rule at index 5, the same name at the same index in `POLICY_NAMES`, and the `CARD \u2192 SPEC` row it already produces",
+      "type": "task",
+      "updated": "2026-09-29T18:25:55Z",
+      "writes": [
+        "asf/groom/policy.py",
+        "asf/groom/groom.py",
+        "tests/test_groom_policy.py",
+        "tests/test_feeder.py"
       ]
     }
   },
