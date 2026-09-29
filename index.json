@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T17:31:19Z",
+  "generated": "2026-09-29T17:37:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5862,12 +5862,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2105.22,
+      "spend_usd": 2112.4,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T17:31:17Z"
+      "updated": "2026-09-29T17:37:20Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11772,19 +11772,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/2 tasks Closed",
+        "1/2 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0169",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T17:31:10Z",
+      "stage": "building 1/2",
+      "stage_since": "2026-09-29T17:37:14Z",
       "state": "Active",
       "title": "CI gate:--- test_tick_steps: FAILED (rc N) is red 3.5 times a week",
       "type": "feature",
-      "updated": "2026-09-29T17:31:10Z"
+      "updated": "2026-09-29T17:37:14Z"
     },
     "F-0170": {
       "backlinks": [],
@@ -11807,6 +11807,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/3 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -11818,7 +11819,7 @@
       "state": "Active",
       "title": "32 pre-existing I3 writes: overlaps after the invariants audit; groom on no clock",
       "type": "feature",
-      "updated": "2026-09-29T17:31:10Z"
+      "updated": "2026-09-29T17:37:14Z"
     },
     "F-0171": {
       "backlinks": [],
@@ -11925,6 +11926,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0175",
         "rule: documented"
       ],
       "folder": "features",
@@ -11936,7 +11938,7 @@
       "state": "Active",
       "title": "ASF collects trunk CI runs itself \u2014 CI facts go stale when a product's legacy collector is retired",
       "type": "feature",
-      "updated": "2026-09-29T17:19:05Z"
+      "updated": "2026-09-29T17:37:14Z"
     },
     "F-0176": {
       "backlinks": [],
@@ -12127,12 +12129,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 2767124,
-        "tokens_cache_write": 102829,
-        "tokens_input": 84,
-        "tokens_output": 38926,
-        "usd": 3.39
+        "sessions": 2,
+        "tokens_cache_read": 9921896,
+        "tokens_cache_write": 269925,
+        "tokens_input": 210,
+        "tokens_output": 116260,
+        "usd": 10.57
       },
       "decided": true,
       "evidence": [
@@ -12149,7 +12151,7 @@
       "state": "Active",
       "title": "Connectors: declare each external service (CI, deploy, db, \u2026) once per product \u2014 asf connect sets up auth, doctor/status/approvals/sessions all read it",
       "type": "feature",
-      "updated": "2026-09-29T17:31:10Z"
+      "updated": "2026-09-29T17:37:20Z"
     },
     "F-0186": {
       "backlinks": [],
@@ -36519,8 +36521,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0540",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0540",
@@ -36529,11 +36531,11 @@
       },
       "parent": "F-0234",
       "schema_version": 1,
-      "stage_since": "2026-09-29T15:54:29Z",
-      "state": "New",
+      "stage_since": "2026-09-29T17:37:14Z",
+      "state": "Active",
       "title": "both doors shut at the callable, and the deferral bounded by the log",
       "type": "task",
-      "updated": "2026-09-29T16:08:01Z",
+      "updated": "2026-09-29T17:37:14Z",
       "writes": [
         "asf/workers/observe.py",
         "asf/workers/health.py",
@@ -36590,7 +36592,8 @@
       "decided": true,
       "evidence": [
         "merge 7b03032 of worker/T-0542 lands T-0542 (PR #372)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0542",
@@ -36599,11 +36602,11 @@
       },
       "parent": "F-0169",
       "schema_version": 1,
-      "stage_since": "2026-09-29T17:31:10Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-29T17:37:14Z",
+      "state": "Closed",
       "title": "the guard, armed, before anything it guards changes",
       "type": "task",
-      "updated": "2026-09-29T17:31:10Z",
+      "updated": "2026-09-29T17:37:14Z",
       "writes": [
         "asf/scorecard/diagnose.py",
         "asf/scorecard/loop.py",
@@ -36648,6 +36651,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-29)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0544",
       "links": {
@@ -36659,7 +36666,7 @@
       "state": "New",
       "title": "one definition of the overlap that violates I3, and both of its existing readers on it",
       "type": "task",
-      "updated": "2026-09-29T17:31:11Z",
+      "updated": "2026-09-29T17:37:14Z",
       "writes": [
         "asf/invariants.py",
         "asf/record/check.py",
@@ -36675,6 +36682,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-29)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0545",
       "links": {
@@ -36686,7 +36697,7 @@
       "state": "New",
       "title": "the tick writes the order, one pair at a time, and never a cycle",
       "type": "task",
-      "updated": "2026-09-29T17:31:11Z",
+      "updated": "2026-09-29T17:37:14Z",
       "writes": [
         "asf/tick/widen_footprint.py",
         "asf/feeder/widen.py",
@@ -36697,6 +36708,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-29)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0546",
       "links": {
@@ -36708,7 +36723,7 @@
       "state": "New",
       "title": "a step no clock runs fails the install that left it there",
       "type": "task",
-      "updated": "2026-09-29T17:31:11Z",
+      "updated": "2026-09-29T17:37:14Z",
       "writes": [
         "asf/doctor.py",
         "asf/install.py",
