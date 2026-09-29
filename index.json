@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T14:22:42Z",
+  "generated": "2026-09-29T14:31:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4689,6 +4689,25 @@
       "type": "bug",
       "updated": "2026-09-29T14:22:41Z"
     },
+    "B-0155": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0155",
+      "last_filed": "2026-09-29",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0156.md",
+      "stage_since": "2026-09-29T14:31:05Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0156.md",
+      "type": "bug",
+      "updated": "2026-09-29T14:31:05Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -5773,7 +5792,8 @@
         "B-0151",
         "B-0152",
         "B-0153",
-        "B-0154"
+        "B-0154",
+        "B-0155"
       ],
       "decided": true,
       "evidence": [
@@ -5783,12 +5803,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1964.24,
+      "spend_usd": 1964.89,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T14:11:15Z"
+      "updated": "2026-09-29T14:30:14Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11236,7 +11256,9 @@
       "updated": "2026-09-28T19:54:20Z"
     },
     "F-0156": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0155"
+      ],
       "children": [
         "T-0515",
         "T-0516",
@@ -11338,12 +11360,12 @@
       "parent": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T13:06:13Z",
+      "stage": "building 0/5",
+      "stage_since": "2026-09-29T14:29:49Z",
       "state": "Active",
       "title": "Sessions die with 'failed: not pushed' 72 times a week",
       "type": "feature",
-      "updated": "2026-09-29T13:13:11Z"
+      "updated": "2026-09-29T14:29:49Z"
     },
     "F-0159": {
       "backlinks": [],
@@ -35042,12 +35064,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 4938359,
-        "tokens_cache_write": 103815,
-        "tokens_input": 144,
-        "tokens_output": 27546,
-        "usd": 1.68
+        "sessions": 3,
+        "tokens_cache_read": 6756735,
+        "tokens_cache_write": 144970,
+        "tokens_input": 218,
+        "tokens_output": 39359,
+        "usd": 2.33
       },
       "decided": true,
       "evidence": [
@@ -35066,7 +35088,7 @@
       "state": "Active",
       "title": "the ladder \u2014 a Bug under an Epic, a branch that names the card, and the share left over",
       "type": "task",
-      "updated": "2026-09-29T13:47:27Z",
+      "updated": "2026-09-29T14:30:14Z",
       "writes": [
         "asf/scorecard/score.py",
         "asf/scorecard/diagnose.py",
@@ -35400,7 +35422,8 @@
         "T-0515"
       ],
       "backlinks": [
-        "T-0517"
+        "T-0517",
+        "B-0155"
       ],
       "children": [],
       "cost": {
@@ -35415,9 +35438,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #335 OPEN",
-        "branch worker/T-0516",
-        "rule: in-flight"
+        "merge f70ecd9 of worker/T-0516 lands T-0516 (PR #335)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0516",
@@ -35429,11 +35451,11 @@
       ],
       "parent": "F-0156",
       "schema_version": 1,
-      "stage_since": "2026-09-29T13:39:59Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T14:29:49Z",
+      "state": "Resolved",
       "title": "the census \u2014 one read of every head, classified, and the doctor row that prints it",
       "type": "task",
-      "updated": "2026-09-29T14:11:15Z",
+      "updated": "2026-09-29T14:29:49Z",
       "writes": [
         "asf/workers/retention.py",
         "asf/doctor.py",
@@ -35577,8 +35599,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0521",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0521",
@@ -35587,11 +35609,11 @@
       },
       "parent": "F-0158",
       "schema_version": 1,
-      "stage_since": "2026-09-29T13:06:14Z",
-      "state": "New",
+      "stage_since": "2026-09-29T14:29:49Z",
+      "state": "Active",
       "title": "one owner for \"is this on origin\" \u2014 `lifecycle.unpublished`",
       "type": "task",
-      "updated": "2026-09-29T13:13:11Z",
+      "updated": "2026-09-29T14:29:49Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
