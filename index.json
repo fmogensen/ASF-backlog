@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T19:04:26Z",
+  "generated": "2026-09-29T19:10:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5892,12 +5892,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2176.62,
+      "spend_usd": 2180.15,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T19:04:11Z"
+      "updated": "2026-09-29T19:10:27Z"
     },
     "E-0002": {
       "backlinks": [
@@ -12003,19 +12003,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/3 tasks Closed",
+        "1/3 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0176",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "building 0/3",
-      "stage_since": "2026-09-29T18:32:53Z",
+      "stage": "building 1/3",
+      "stage_since": "2026-09-29T19:10:20Z",
       "state": "Active",
       "title": "B-0123 loop: 'died without a result' while both logs end in a ruling; ready branch never published",
       "type": "feature",
-      "updated": "2026-09-29T18:32:53Z"
+      "updated": "2026-09-29T19:10:20Z"
     },
     "F-0177": {
       "backlinks": [],
@@ -12347,12 +12347,12 @@
       "id": "F-0189",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T18:57:56Z",
+      "stage": "building 0/4",
+      "stage_since": "2026-09-29T19:10:20Z",
       "state": "Active",
       "title": "Cross-product seat overcommit: two waves launch on one account at once (6 of cap 4)",
       "type": "feature",
-      "updated": "2026-09-29T19:04:04Z"
+      "updated": "2026-09-29T19:10:20Z"
     },
     "F-0190": {
       "backlinks": [],
@@ -37351,7 +37351,8 @@
       "decided": true,
       "evidence": [
         "merge 8b14616 of worker/T-0559 lands T-0559 (PR #390)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0559",
@@ -37360,11 +37361,11 @@
       },
       "parent": "F-0176",
       "schema_version": 1,
-      "stage_since": "2026-09-29T19:04:04Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-29T19:10:20Z",
+      "state": "Closed",
       "title": "a publish refusal names git's own error, not its hint or its summary",
       "type": "task",
-      "updated": "2026-09-29T19:04:11Z",
+      "updated": "2026-09-29T19:10:20Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py"
@@ -37457,8 +37458,19 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 4734085,
+        "tokens_cache_write": 106472,
+        "tokens_input": 98,
+        "tokens_output": 27967,
+        "usd": 1.65
+      },
       "decided": true,
       "evidence": [
+        "PR #392 OPEN",
         "branch worker/T-0562",
         "rule: in-flight"
       ],
@@ -37473,7 +37485,7 @@
       "state": "Active",
       "title": "the groomer stops proposing that every dependency-adding Task be one session",
       "type": "task",
-      "updated": "2026-09-29T19:04:04Z",
+      "updated": "2026-09-29T19:10:27Z",
       "writes": [
         "asf/groom/shape.py",
         "asf/groom/groom.py",
@@ -37584,8 +37596,19 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 3302463,
+        "tokens_cache_write": 74227,
+        "tokens_input": 84,
+        "tokens_output": 16206,
+        "usd": 1.12
+      },
       "decided": true,
       "evidence": [
+        "PR #393 OPEN",
         "branch worker/T-0566",
         "rule: in-flight"
       ],
@@ -37600,7 +37623,7 @@
       "state": "Active",
       "title": "one docs rule, one list \u2014 the evidence half stops disagreeing with the landing",
       "type": "task",
-      "updated": "2026-09-29T19:04:04Z",
+      "updated": "2026-09-29T19:10:27Z",
       "writes": [
         "asf/harvest/lane.py",
         "asf/evidence/evidence.py",
@@ -37638,12 +37661,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 1359619,
-        "tokens_cache_write": 44054,
-        "tokens_input": 50,
-        "tokens_output": 7550,
-        "usd": 0.52
+        "sessions": 2,
+        "tokens_cache_read": 3507521,
+        "tokens_cache_write": 94525,
+        "tokens_input": 128,
+        "tokens_output": 19774,
+        "usd": 1.28
       },
       "decided": true,
       "evidence": [
@@ -37662,7 +37685,7 @@
       "state": "Active",
       "title": "the native landing of a declared doc path, pinned",
       "type": "task",
-      "updated": "2026-09-29T19:04:11Z",
+      "updated": "2026-09-29T19:10:27Z",
       "writes": [
         "tests/test_land_spec.py"
       ]
@@ -37797,8 +37820,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0573",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0573",
@@ -37807,11 +37830,11 @@
       },
       "parent": "F-0189",
       "schema_version": 1,
-      "stage_since": "2026-09-29T18:57:56Z",
-      "state": "New",
+      "stage_since": "2026-09-29T19:10:20Z",
+      "state": "Active",
       "title": "the claim ledger \u2014 one file, one lock, and one definition of a live claim",
       "type": "task",
-      "updated": "2026-09-29T19:04:04Z",
+      "updated": "2026-09-29T19:10:20Z",
       "writes": [
         "asf/workers/seats.py",
         "tests/test_seat_claims.py"
