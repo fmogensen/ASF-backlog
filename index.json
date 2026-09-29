@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T14:01:35Z",
+  "generated": "2026-09-29T14:17:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4666,6 +4666,25 @@
       "type": "bug",
       "updated": "2026-09-29T12:23:03Z"
     },
+    "B-0154": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0154",
+      "last_filed": "2026-09-29",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0150.md",
+      "stage_since": "2026-09-29T14:17:06Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0150.md",
+      "type": "bug",
+      "updated": "2026-09-29T14:17:06Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -5749,7 +5768,8 @@
         "B-0148",
         "B-0151",
         "B-0152",
-        "B-0153"
+        "B-0153",
+        "B-0154"
       ],
       "decided": true,
       "evidence": [
@@ -5759,12 +5779,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1962.59,
+      "spend_usd": 1964.24,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T14:01:32Z"
+      "updated": "2026-09-29T14:11:15Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11041,7 +11061,9 @@
       "updated": "2026-09-29T13:00:07Z"
     },
     "F-0150": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0154"
+      ],
       "children": [
         "T-0509",
         "T-0510",
@@ -35122,7 +35144,8 @@
     "T-0509": {
       "backlinks": [
         "T-0511",
-        "T-0512"
+        "T-0512",
+        "B-0154"
       ],
       "children": [],
       "cost": {
@@ -35137,9 +35160,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #333 OPEN",
-        "branch worker/T-0509",
-        "rule: in-flight"
+        "merge f94e15d of worker/T-0509 lands T-0509 (PR #333)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0509",
@@ -35152,11 +35174,11 @@
       ],
       "parent": "F-0150",
       "schema_version": 1,
-      "stage_since": "2026-09-29T13:33:08Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T14:09:12Z",
+      "state": "Resolved",
       "title": "the third verdict \u2014 one pure function beside the one it does not replace",
       "type": "task",
-      "updated": "2026-09-29T13:54:22Z",
+      "updated": "2026-09-29T14:09:12Z",
       "writes": [
         "asf/scorecard/loop.py",
         "tests/test_scorecard.py",
@@ -35379,12 +35401,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 10311651,
-        "tokens_cache_write": 168127,
-        "tokens_input": 138,
-        "tokens_output": 84079,
-        "usd": 3.58
+        "sessions": 2,
+        "tokens_cache_read": 15243374,
+        "tokens_cache_write": 254695,
+        "tokens_input": 272,
+        "tokens_output": 115771,
+        "usd": 5.23
       },
       "decided": true,
       "evidence": [
@@ -35406,7 +35428,7 @@
       "state": "Active",
       "title": "the census \u2014 one read of every head, classified, and the doctor row that prints it",
       "type": "task",
-      "updated": "2026-09-29T13:47:27Z",
+      "updated": "2026-09-29T14:11:15Z",
       "writes": [
         "asf/workers/retention.py",
         "asf/doctor.py",
