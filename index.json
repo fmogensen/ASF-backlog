@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T21:06:20Z",
+  "generated": "2026-09-29T21:12:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5896,12 +5896,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2308.18,
+      "spend_usd": 2309.27,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T21:06:12Z"
+      "updated": "2026-09-29T21:12:28Z"
     },
     "E-0002": {
       "backlinks": [
@@ -12892,12 +12892,12 @@
       "id": "F-0209",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T20:48:46Z",
+      "stage": "building 0/2",
+      "stage_since": "2026-09-29T21:12:21Z",
       "state": "Active",
       "title": "Plans get writes: right; lane widens writes: on refusal instead of dying",
       "type": "feature",
-      "updated": "2026-09-29T20:54:53Z"
+      "updated": "2026-09-29T21:12:21Z"
     },
     "F-0210": {
       "backlinks": [],
@@ -12940,7 +12940,9 @@
     },
     "F-0212": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0603"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -12954,19 +12956,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0212",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0212",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T20:36:24Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T21:12:21Z",
       "state": "Active",
       "title": "The approvals hook holds a read-only 'git config core.hooksPath' as a security write",
       "type": "feature",
-      "updated": "2026-09-29T20:55:00Z"
+      "updated": "2026-09-29T21:12:21Z"
     },
     "F-0213": {
       "backlinks": [],
@@ -13077,7 +13079,9 @@
     },
     "F-0218": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0604"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -13091,19 +13095,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0218",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0218",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T20:36:24Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T21:12:21Z",
       "state": "Active",
       "title": "asf unpark releases one parked job per call",
       "type": "feature",
-      "updated": "2026-09-29T20:55:00Z"
+      "updated": "2026-09-29T21:12:21Z"
     },
     "F-0219": {
       "backlinks": [],
@@ -22199,7 +22203,8 @@
         "F-0212",
         "T-0158",
         "T-0160",
-        "T-0163"
+        "T-0163",
+        "T-0603"
       ],
       "children": [],
       "cost": {
@@ -38229,18 +38234,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 6974190,
-        "tokens_cache_write": 120371,
-        "tokens_input": 130,
-        "tokens_output": 27832,
-        "usd": 2.15
+        "sessions": 2,
+        "tokens_cache_read": 10169373,
+        "tokens_cache_write": 186358,
+        "tokens_input": 228,
+        "tokens_output": 47002,
+        "usd": 3.25
       },
       "decided": true,
       "evidence": [
-        "PR #422 OPEN",
-        "branch worker/T-0579",
-        "rule: in-flight"
+        "merge 5c632a3 of worker/T-0579 lands T-0579 (PR #422)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0579",
@@ -38249,11 +38253,11 @@
       },
       "parent": "F-0190",
       "schema_version": 1,
-      "stage_since": "2026-09-29T20:54:53Z",
-      "state": "Active",
+      "stage_since": "2026-09-29T21:12:21Z",
+      "state": "Resolved",
       "title": "every line and every view reads the one predicate, and the excludes are visible in words",
       "type": "task",
-      "updated": "2026-09-29T21:06:12Z",
+      "updated": "2026-09-29T21:12:28Z",
       "writes": [
         "asf/harvest/deploy.py",
         "asf/views/prod.py",
@@ -38650,8 +38654,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-29)",
-        "rule: planned"
+        "branch worker/T-0593",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0593",
@@ -38660,11 +38664,11 @@
       },
       "parent": "F-0209",
       "schema_version": 1,
-      "stage_since": "2026-09-29T20:48:47Z",
-      "state": "New",
+      "stage_since": "2026-09-29T21:12:21Z",
+      "state": "Active",
       "title": "the widening of a refused push, pinned at the two edges that had no test",
       "type": "task",
-      "updated": "2026-09-29T20:54:53Z",
+      "updated": "2026-09-29T21:12:21Z",
       "writes": [
         "tests/test_widen.py"
       ]
@@ -38939,6 +38943,49 @@
         "tests/test_reserve.py",
         "tests/test_conventions.py",
         "tests/test_env.py"
+      ]
+    },
+    "T-0603": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0603",
+      "links": {
+        "plan": "docs/plans/f-0212.md"
+      },
+      "parent": "F-0212",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T21:12:21Z",
+      "state": "New",
+      "title": "`git config` is judged by git's own grammar \u2014 every read form passes, every set form of the hooks path holds",
+      "type": "task",
+      "updated": "2026-09-29T21:12:21Z",
+      "writes": [
+        "asf/approvals.py",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0604": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0604",
+      "links": {
+        "plan": "docs/plans/f-0218.md"
+      },
+      "parent": "F-0218",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T21:12:21Z",
+      "state": "New",
+      "title": "one call releases every park the item holds, and names what still holds it",
+      "type": "task",
+      "updated": "2026-09-29T21:12:21Z",
+      "writes": [
+        "asf/workers/unpark.py",
+        "tests/test_cli.py",
+        "docs/guide/operating.md"
       ]
     }
   },
