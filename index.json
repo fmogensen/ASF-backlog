@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29T23:16:27Z",
+  "generated": "2026-09-29T23:22:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1716,6 +1716,7 @@
         "T-0145",
         "T-0308",
         "T-0521",
+        "T-0631",
         "B-0054",
         "B-0066"
       ],
@@ -5896,12 +5897,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2390.09,
+      "spend_usd": 2391.82,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-29T23:16:25Z"
+      "updated": "2026-09-29T23:22:35Z"
     },
     "E-0002": {
       "backlinks": [
@@ -9908,6 +9909,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/3 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -9919,13 +9921,19 @@
       "state": "Active",
       "title": "Products tick on a pinned live install; `asf upgrade` moves it to the merged head",
       "type": "feature",
-      "updated": "2026-09-29T23:16:18Z"
+      "updated": "2026-09-29T23:22:27Z"
     },
     "F-0105": {
       "backlinks": [
         "B-0133"
       ],
-      "children": [],
+      "children": [
+        "T-0631",
+        "T-0632",
+        "T-0633",
+        "T-0634",
+        "T-0635"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -9939,19 +9947,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0105",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0105",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T22:26:53Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T23:22:27Z",
       "state": "Active",
       "title": "The landing gate runs 15\u201325 min on the operator's machine next to 8 sessions: gate on CI instead",
       "type": "feature",
-      "updated": "2026-09-29T23:16:25Z"
+      "updated": "2026-09-29T23:22:27Z"
     },
     "F-0106": {
       "backlinks": [],
@@ -10859,7 +10867,11 @@
     },
     "F-0133": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0636",
+        "T-0637",
+        "T-0638"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -10873,19 +10885,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0133",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0133",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-29T22:44:43Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-29T23:22:27Z",
       "state": "Active",
       "title": "Groom commits its own output; a foreign daily stamp never skips the native daily; new products groom by default",
       "type": "feature",
-      "updated": "2026-09-29T23:09:58Z"
+      "updated": "2026-09-29T23:22:27Z"
     },
     "F-0134": {
       "backlinks": [],
@@ -11127,7 +11139,9 @@
       "updated": "2026-09-28T19:08:48Z"
     },
     "F-0144": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0637"
+      ],
       "budget_sessions": 12,
       "children": [
         "T-0500",
@@ -39668,8 +39682,19 @@
     "T-0618": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 4120701,
+        "tokens_cache_write": 79514,
+        "tokens_input": 102,
+        "tokens_output": 18927,
+        "usd": 1.33
+      },
       "decided": true,
       "evidence": [
+        "PR #457 OPEN",
         "branch worker/T-0618",
         "rule: in-flight"
       ],
@@ -39684,7 +39709,7 @@
       "state": "Active",
       "title": "a merge found outside the lane is recorded once per branch, not once per tick",
       "type": "task",
-      "updated": "2026-09-29T23:16:18Z",
+      "updated": "2026-09-29T23:22:35Z",
       "writes": [
         "asf/invariants.py",
         "asf/record/check.py",
@@ -39700,12 +39725,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 1066731,
-        "tokens_cache_write": 58411,
-        "tokens_input": 34,
-        "tokens_output": 7428,
-        "usd": 0.52
+        "sessions": 2,
+        "tokens_cache_read": 1797118,
+        "tokens_cache_write": 106114,
+        "tokens_input": 60,
+        "tokens_output": 13499,
+        "usd": 0.92
       },
       "decided": true,
       "evidence": [
@@ -39724,7 +39749,7 @@
       "state": "Active",
       "title": "`amendable.partition` splits a `writes:` list, and `glob_set` gives an edge the product-free pair",
       "type": "task",
-      "updated": "2026-09-29T23:16:25Z",
+      "updated": "2026-09-29T23:22:35Z",
       "writes": [
         "asf/amendable.py",
         "tests/test_amendable.py"
@@ -39981,6 +40006,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-29)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0628",
       "links": {
@@ -39992,7 +40021,7 @@
       "state": "New",
       "title": "one reader of which install a clock runs, and how far it is from the trunk",
       "type": "task",
-      "updated": "2026-09-29T23:16:18Z",
+      "updated": "2026-09-29T23:22:27Z",
       "writes": [
         "asf/clockinstall.py",
         "tests/test_clock_install.py"
@@ -40007,6 +40036,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-29)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0629",
       "links": {
@@ -40018,7 +40051,7 @@
       "state": "New",
       "title": "`asf doctor` names the install each clock runs, and goes RED when it is not pinned and merged",
       "type": "task",
-      "updated": "2026-09-29T23:16:18Z",
+      "updated": "2026-09-29T23:22:27Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_clock_install.py",
@@ -40033,6 +40066,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-29)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0630",
       "links": {
@@ -40044,12 +40081,221 @@
       "state": "New",
       "title": "`asf upgrade` reinstalls the venvs the clocks name, and the sha a rollback needs is recorded and printed",
       "type": "task",
-      "updated": "2026-09-29T23:16:18Z",
+      "updated": "2026-09-29T23:22:27Z",
       "writes": [
         "asf/upgrade.py",
         "docs/guide/upgrading.md",
         "tests/test_clock_install.py",
         "tests/test_install.py"
+      ]
+    },
+    "T-0631": {
+      "backlinks": [
+        "T-0632"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0631",
+      "links": {
+        "plan": "docs/plans/f-0105.md"
+      },
+      "parent": "F-0105",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:22:28Z",
+      "state": "New",
+      "title": "the landing gate can be moved to the product's CI, and then starts no suite on this host",
+      "type": "task",
+      "updated": "2026-09-29T23:22:28Z",
+      "writes": [
+        "asf/conventions.py",
+        "asf/ci_gate.py",
+        "asf/harvest/lane.py",
+        ".github/workflows/tests.yml",
+        "docs/products.example.yaml",
+        "docs/guide/product-config.md",
+        "tests/test_ci_gate.py"
+      ]
+    },
+    "T-0632": {
+      "after": [
+        "T-0631"
+      ],
+      "backlinks": [
+        "T-0633",
+        "T-0634"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0632",
+      "links": {
+        "plan": "docs/plans/f-0105.md"
+      },
+      "parent": "F-0105",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:22:28Z",
+      "state": "New",
+      "title": "every gate keeps its per-module timings, wherever it ran",
+      "type": "task",
+      "updated": "2026-09-29T23:22:28Z",
+      "writes": [
+        "tools/run_tests.py",
+        "asf/harvest/harvest.py",
+        "asf/harvest/lane.py",
+        "asf/ci_gate.py",
+        "tests/test_ci_gate.py",
+        "tests/test_harvest.py",
+        "tests/test_run_tests.py"
+      ]
+    },
+    "T-0633": {
+      "after": [
+        "T-0632"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0633",
+      "links": {
+        "plan": "docs/plans/f-0105.md"
+      },
+      "parent": "F-0105",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:22:28Z",
+      "state": "New",
+      "title": "the daily rollup names the slowest gate modules",
+      "type": "task",
+      "updated": "2026-09-29T23:22:28Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "tests/test_metrics.py"
+      ]
+    },
+    "T-0634": {
+      "after": [
+        "T-0632"
+      ],
+      "backlinks": [
+        "T-0635"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0634",
+      "links": {
+        "plan": "docs/plans/f-0105.md"
+      },
+      "parent": "F-0105",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:22:28Z",
+      "state": "New",
+      "title": "a green CI gate lands the gated sha and a red one holds",
+      "type": "task",
+      "updated": "2026-09-29T23:22:28Z",
+      "writes": [
+        "asf/ci_gate.py",
+        "tests/test_ci_gate.py"
+      ]
+    },
+    "T-0635": {
+      "after": [
+        "T-0634"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0635",
+      "links": {
+        "plan": "docs/plans/f-0105.md"
+      },
+      "parent": "F-0105",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:22:28Z",
+      "state": "New",
+      "title": "a gate that cannot run says so to a person, and leaves no refs behind",
+      "type": "task",
+      "updated": "2026-09-29T23:22:28Z",
+      "writes": [
+        "asf/ci_gate.py",
+        "asf/doctor.py",
+        "tests/test_ci_gate.py",
+        "tests/test_doctor.py"
+      ]
+    },
+    "T-0636": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0636",
+      "links": {
+        "plan": "docs/plans/f-0133.md"
+      },
+      "parent": "F-0133",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:22:28Z",
+      "state": "New",
+      "title": "the groom commits and pushes its own output, on the tick as well as on the console",
+      "type": "task",
+      "updated": "2026-09-29T23:22:28Z",
+      "writes": [
+        "asf/groom/groom.py",
+        "asf/cli.py",
+        "tests/test_groom_publish.py",
+        "tests/test_groom_every_tick.py"
+      ]
+    },
+    "T-0637": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0637",
+      "links": {
+        "plan": "docs/plans/f-0133.md"
+      },
+      "parent": "F-0133",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:22:28Z",
+      "state": "New",
+      "title": "a stamp ASF did not write never skips the native daily, and the doctor says whose it is",
+      "type": "task",
+      "updated": "2026-09-29T23:22:28Z",
+      "writes": [
+        "asf/tick/steps.py",
+        "asf/doctor.py",
+        "tests/test_tick_steps.py",
+        "tests/test_doctor.py",
+        "tests/test_tick.py",
+        "docs/guide/operating.md"
+      ]
+    },
+    "T-0638": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0638",
+      "links": {
+        "plan": "docs/plans/f-0133.md"
+      },
+      "parent": "F-0133",
+      "schema_version": 1,
+      "stage_since": "2026-09-29T23:22:28Z",
+      "state": "New",
+      "title": "a new product grooms by default, and one that does not is told so",
+      "type": "task",
+      "updated": "2026-09-29T23:22:28Z",
+      "writes": [
+        "asf/init.py",
+        "asf/approvals.py",
+        "tests/test_install.py",
+        "tests/test_approvals.py",
+        "docs/products.example.yaml",
+        "docs/guide/product-config.md"
       ]
     }
   },
