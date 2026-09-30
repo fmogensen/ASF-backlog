@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T14:23:42Z",
+  "generated": "2026-09-30T14:31:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4858,6 +4858,25 @@
       "type": "bug",
       "updated": "2026-09-30T11:57:56Z"
     },
+    "B-0161": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0161",
+      "last_filed": "2026-09-30",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "invariant I10: features/F-0182.md",
+      "stage_since": "2026-09-30T14:31:38Z",
+      "state": "New",
+      "title": "Invariant I10 refused a write to features/F-0182.md",
+      "type": "bug",
+      "updated": "2026-09-30T14:31:38Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -5951,7 +5970,8 @@
         "B-0157",
         "B-0158",
         "B-0159",
-        "B-0160"
+        "B-0160",
+        "B-0161"
       ],
       "decided": true,
       "evidence": [
@@ -12688,7 +12708,9 @@
       "updated": "2026-09-27T04:20:34Z"
     },
     "F-0182": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0161"
+      ],
       "children": [
         "T-0765"
       ],
@@ -13020,7 +13042,10 @@
     },
     "F-0191": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0766",
+        "T-0767"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -13034,19 +13059,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0191",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0191",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-30T13:55:42Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T14:30:17Z",
       "state": "Active",
       "title": "DONE table credits 'landed <sha>' to a run with no commits of its own",
       "type": "feature",
-      "updated": "2026-09-30T14:16:49Z"
+      "updated": "2026-09-30T14:30:17Z"
     },
     "F-0192": {
       "backlinks": [],
@@ -13189,6 +13214,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0196",
         "rule: documented"
       ],
       "folder": "features",
@@ -13200,7 +13226,7 @@
       "state": "Active",
       "title": "Groom digest 'For you' fills with rule-decidable noise (379 on the first customer) \u2014 only human-now actions belong there",
       "type": "feature",
-      "updated": "2026-09-30T14:09:45Z"
+      "updated": "2026-09-30T14:30:17Z"
     },
     "F-0197": {
       "backlinks": [],
@@ -13446,6 +13472,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0205",
         "rule: documented"
       ],
       "folder": "features",
@@ -13457,7 +13484,7 @@
       "state": "Active",
       "title": "NEXT drops S1/S2 bugs silently (busy, blocked, Active, over limit) \u2014 show a WAITS row with the reason",
       "type": "feature",
-      "updated": "2026-09-30T14:16:39Z"
+      "updated": "2026-09-30T14:30:17Z"
     },
     "F-0206": {
       "backlinks": [],
@@ -14083,19 +14110,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0226",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0226",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-30T14:09:45Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-30T14:30:17Z",
+      "state": "Active",
       "title": "A conflict BACK shows as STARVED -> SPEC and reads like a duplicate spec",
       "type": "feature",
-      "updated": "2026-09-30T14:16:49Z"
+      "updated": "2026-09-30T14:30:17Z"
     },
     "F-0227": {
       "backlinks": [],
@@ -16966,6 +16993,7 @@
         "T-0695",
         "T-0738",
         "T-0746",
+        "T-0767",
         "B-0040",
         "B-0067",
         "B-0074"
@@ -45284,7 +45312,9 @@
       ]
     },
     "T-0765": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0161"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -45298,9 +45328,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #585 OPEN",
-        "branch worker/T-0765",
-        "rule: in-flight"
+        "merge 7793b35 of worker/T-0765 lands T-0765 (PR #585)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0765",
@@ -45309,15 +45338,62 @@
       },
       "parent": "F-0182",
       "schema_version": 1,
-      "stage_since": "2026-09-30T14:09:45Z",
-      "state": "Active",
+      "stage_since": "2026-09-30T14:30:17Z",
+      "state": "Resolved",
       "title": "the row prints the guard's own clock and threshold, and says nothing where the guard will never fire",
       "type": "task",
-      "updated": "2026-09-30T14:23:37Z",
+      "updated": "2026-09-30T14:30:17Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_queue.py",
         "docs/guide/ci-runner-pool.md"
+      ]
+    },
+    "T-0766": {
+      "backlinks": [
+        "T-0767"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0766",
+      "links": {
+        "plan": "docs/plans/f-0191.md"
+      },
+      "parent": "F-0191",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T14:30:18Z",
+      "state": "New",
+      "title": "the lane writes down what the branch carried",
+      "type": "task",
+      "updated": "2026-09-30T14:30:18Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "tests/test_lane.py"
+      ]
+    },
+    "T-0767": {
+      "after": [
+        "T-0766"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0767",
+      "links": {
+        "plan": "docs/plans/f-0191.md"
+      },
+      "parent": "F-0191",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T14:30:18Z",
+      "state": "New",
+      "title": "the DONE table credits the run that earned it",
+      "type": "task",
+      "updated": "2026-09-30T14:30:18Z",
+      "writes": [
+        "asf/tick/summary.py",
+        "tests/test_lane.py"
       ]
     }
   },
