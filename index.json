@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T07:11:38Z",
+  "generated": "2026-09-30T07:17:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5973,12 +5973,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 399.85,
+      "spend_usd": 410.42,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-30T07:11:34Z"
+      "updated": "2026-09-30T07:17:53Z"
     },
     "E-0003": {
       "backlinks": [
@@ -12237,12 +12237,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 12832100,
-        "tokens_cache_write": 269750,
-        "tokens_input": 258,
-        "tokens_output": 93910,
-        "usd": 11.53
+        "sessions": 3,
+        "tokens_cache_read": 20584911,
+        "tokens_cache_write": 439979,
+        "tokens_input": 394,
+        "tokens_output": 163397,
+        "usd": 18.85
       },
       "decided": true,
       "evidence": [
@@ -12259,7 +12259,7 @@
       "state": "Active",
       "title": "botseon wave step (69-505s): gh/git subprocess fan-out dominates, not CPU",
       "type": "feature",
-      "updated": "2026-09-30T07:11:24Z"
+      "updated": "2026-09-30T07:17:53Z"
     },
     "F-0178": {
       "backlinks": [],
@@ -12293,7 +12293,11 @@
     },
     "F-0179": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0665",
+        "T-0666",
+        "T-0667"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -12307,19 +12311,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0179",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0179",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-30T00:47:50Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T07:17:44Z",
       "state": "Active",
       "title": "ci_pool runs-on reader can't resolve fromJSON(format()) + event ternary (botseon #849)",
       "type": "feature",
-      "updated": "2026-09-30T07:05:16Z"
+      "updated": "2026-09-30T07:17:44Z"
     },
     "F-0180": {
       "backlinks": [],
@@ -12386,12 +12390,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 5988384,
-        "tokens_cache_write": 224594,
-        "tokens_input": 160,
-        "tokens_output": 73428,
-        "usd": 7.08
+        "sessions": 3,
+        "tokens_cache_read": 8836466,
+        "tokens_cache_write": 315400,
+        "tokens_input": 248,
+        "tokens_output": 110247,
+        "usd": 10.33
       },
       "decided": true,
       "evidence": [
@@ -12408,7 +12412,7 @@
       "state": "Active",
       "title": "ci reconcile --apply would strip hetzner-heavy: ignores repo vars in runs-on",
       "type": "feature",
-      "updated": "2026-09-30T07:11:24Z"
+      "updated": "2026-09-30T07:17:53Z"
     },
     "F-0184": {
       "backlinks": [],
@@ -13632,6 +13636,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0228",
         "rule: documented"
       ],
       "folder": "features",
@@ -13643,7 +13648,7 @@
       "state": "Active",
       "title": "Health does not re-push a hook-refused run until its head or the origin tip moves",
       "type": "feature",
-      "updated": "2026-09-30T05:29:56Z"
+      "updated": "2026-09-30T07:17:44Z"
     },
     "F-0229": {
       "backlinks": [],
@@ -41531,6 +41536,81 @@
         "asf/record/plan_tasks.py",
         "tests/test_plan_order.py",
         "tests/test_plan_tasks.py"
+      ]
+    },
+    "T-0665": {
+      "backlinks": [
+        "T-0666"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0665",
+      "links": {
+        "plan": "docs/plans/f-0179.md"
+      },
+      "parent": "F-0179",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T07:17:45Z",
+      "state": "New",
+      "title": "the unresolved row, said out loud \u2014 and no label removed while one stands",
+      "type": "task",
+      "updated": "2026-09-30T07:17:45Z",
+      "writes": [
+        "asf/ci_pool.py",
+        "asf/doctor.py",
+        "tests/test_ci_pool.py"
+      ]
+    },
+    "T-0666": {
+      "after": [
+        "T-0665"
+      ],
+      "backlinks": [
+        "T-0667"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0666",
+      "links": {
+        "plan": "docs/plans/f-0179.md"
+      },
+      "parent": "F-0179",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T07:17:45Z",
+      "state": "New",
+      "title": "the evaluator \u2014 one label set per event class, and the class label it reveals is not drift",
+      "type": "task",
+      "updated": "2026-09-30T07:17:45Z",
+      "writes": [
+        "asf/ci_pool.py",
+        "tests/test_ci_pool.py"
+      ]
+    },
+    "T-0667": {
+      "after": [
+        "T-0666"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0667",
+      "links": {
+        "plan": "docs/plans/f-0179.md"
+      },
+      "parent": "F-0179",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T07:17:45Z",
+      "state": "New",
+      "title": "the repo's own variables \u2014 asked for, never guessed \u2014 and the guide",
+      "type": "task",
+      "updated": "2026-09-30T07:17:45Z",
+      "writes": [
+        "asf/ci_pool.py",
+        "tests/test_ci_pool.py",
+        "docs/guide/ci-runner-pool.md"
       ]
     }
   },
