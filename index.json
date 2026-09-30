@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T05:49:51Z",
+  "generated": "2026-09-30T06:01:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4376,7 +4376,7 @@
       "evidence": [
         "merge 1ba355b of fix/B-0142 lands B-0142 (PR #92)",
         "CI green on main at or after it",
-        "rule: fixed"
+        "rule: quiet"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -4385,11 +4385,11 @@
       "schema_version": 1,
       "severity": "S2",
       "signature": "fails to spawn each tick: worktree already exists (a worktree outside the factory's worktrees directory)",
-      "stage_since": "2026-09-27T05:50:31Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-30T06:00:27Z",
+      "state": "Closed",
       "title": "Branch held by an external (non-factory) worktree reports NEEDS OPERATOR every tick; should be a WAITS",
       "type": "bug",
-      "updated": "2026-09-27T05:59:16Z"
+      "updated": "2026-09-30T06:00:27Z"
     },
     "B-0143": {
       "backlinks": [],
@@ -4408,7 +4408,7 @@
       "evidence": [
         "merge 235d5b0 of fix/B-0143 lands B-0143 (PR #91)",
         "CI green on main at or after it",
-        "rule: fixed"
+        "rule: quiet"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -4417,11 +4417,11 @@
       "schema_version": 1,
       "severity": "S2",
       "signature": "could not read Username for 'https://github.com': Device not configured",
-      "stage_since": "2026-09-27T05:59:16Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-30T06:00:27Z",
+      "state": "Closed",
       "title": "Local worker sessions can't authenticate git pushes (keychain unavailable); route via factory credentials",
       "type": "bug",
-      "updated": "2026-09-27T06:51:49Z"
+      "updated": "2026-09-30T06:00:27Z"
     },
     "B-0144": {
       "backlinks": [],
@@ -5899,12 +5899,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2394.61,
+      "spend_usd": 2397.88,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-30T05:48:35Z"
+      "updated": "2026-09-30T06:01:00Z"
     },
     "E-0002": {
       "backlinks": [
@@ -18495,6 +18495,7 @@
         "T-0166",
         "T-0189",
         "T-0256",
+        "T-0266",
         "T-0271",
         "T-0301",
         "T-0544",
@@ -19197,8 +19198,10 @@
         "T-0110",
         "T-0119",
         "T-0130",
+        "T-0140",
         "T-0189",
         "T-0256",
+        "T-0266",
         "T-0341"
       ],
       "children": [],
@@ -21141,6 +21144,7 @@
         "T-0121",
         "T-0122",
         "T-0130",
+        "T-0140",
         "T-0163",
         "T-0301",
         "T-0524"
@@ -21984,9 +21988,12 @@
     },
     "T-0140": {
       "after": [
-        "T-0137"
+        "T-0137",
+        "T-0073",
+        "T-0119"
       ],
       "backlinks": [
+        "T-0189",
         "B-0122",
         "B-0129",
         "B-0130"
@@ -21994,8 +22001,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0140",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0140",
@@ -22007,11 +22014,11 @@
         "split T-0140 asf | asf/tick | sample | sample/repo | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-24T01:47:43Z",
-      "state": "New",
+      "stage_since": "2026-09-30T06:00:27Z",
+      "state": "Active",
       "title": "drift is visible \u2014 the sample product renders, doctor shows it, file-bugs files it",
       "type": "task",
-      "updated": "2026-09-30T00:05:44Z",
+      "updated": "2026-09-30T06:00:27Z",
       "writes": [
         "asf/doctor.py",
         "asf/tick/file_bugs.py",
@@ -22019,7 +22026,8 @@
         "sample/repo/README",
         "tests/test_doctor.py",
         "tests/test_file_bugs.py",
-        "tests/test_sample_product.py"
+        "tests/test_sample_product.py",
+        "asf/views/readme.py"
       ]
     },
     "T-0141": {
@@ -23890,7 +23898,8 @@
         "T-0056",
         "T-0073",
         "T-0110",
-        "T-0153"
+        "T-0153",
+        "T-0140"
       ],
       "backlinks": [
         "F-0229",
@@ -23898,6 +23907,7 @@
         "T-0191",
         "T-0193",
         "T-0257",
+        "T-0266",
         "T-0341"
       ],
       "children": [],
@@ -26504,8 +26514,19 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 3635125,
+        "tokens_cache_write": 79715,
+        "tokens_input": 104,
+        "tokens_output": 16982,
+        "usd": 1.22
+      },
       "decided": true,
       "evidence": [
+        "PR #483 OPEN",
         "branch worker/T-0256",
         "rule: in-flight"
       ],
@@ -26520,7 +26541,7 @@
       "state": "Active",
       "title": "`asf check` fails a supersession that dangles, cycles or is written once",
       "type": "task",
-      "updated": "2026-09-30T05:47:08Z",
+      "updated": "2026-09-30T06:01:00Z",
       "writes": [
         "asf/record/check.py",
         "asf/record/new.py",
@@ -26533,8 +26554,19 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 936856,
+        "tokens_cache_write": 34490,
+        "tokens_input": 46,
+        "tokens_output": 6313,
+        "usd": 0.39
+      },
       "decided": true,
       "evidence": [
+        "PR #484 OPEN",
         "branch worker/T-0257",
         "rule: in-flight"
       ],
@@ -26549,7 +26581,7 @@
       "state": "Active",
       "title": "a superseded rule no longer runs, and is no gap",
       "type": "task",
-      "updated": "2026-09-30T05:47:08Z",
+      "updated": "2026-09-30T06:01:00Z",
       "writes": [
         "asf/rules/rules.py",
         "tests/test_rules.py"
@@ -26858,7 +26890,10 @@
     },
     "T-0266": {
       "after": [
-        "T-0265"
+        "T-0265",
+        "T-0056",
+        "T-0073",
+        "T-0189"
       ],
       "backlinks": [
         "T-0267"
@@ -26866,8 +26901,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0266",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0266",
@@ -26879,11 +26914,11 @@
         "split T-0266 asf | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-27T12:48:19Z",
-      "state": "New",
+      "stage_since": "2026-09-30T06:00:27Z",
+      "state": "Active",
       "title": "`asf review-checks` \u2014 the mechanical pre-review, and what it refuses",
       "type": "task",
-      "updated": "2026-09-30T00:05:44Z",
+      "updated": "2026-09-30T06:00:27Z",
       "writes": [
         "asf/review_checks.py",
         "asf/cli.py",
@@ -29969,8 +30004,19 @@
         "T-0382"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 5053006,
+        "tokens_cache_write": 91620,
+        "tokens_input": 142,
+        "tokens_output": 29369,
+        "usd": 1.67
+      },
       "decided": true,
       "evidence": [
+        "PR #485 OPEN",
         "branch worker/T-0341",
         "rule: in-flight"
       ],
@@ -29985,7 +30031,7 @@
       "state": "Active",
       "title": "`asf/tick/step_wave.py` \u2014 one filler for the brief's facts",
       "type": "task",
-      "updated": "2026-09-30T05:47:08Z",
+      "updated": "2026-09-30T06:01:00Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_tick_steps.py"
