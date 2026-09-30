@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T14:57:55Z",
+  "generated": "2026-09-30T15:11:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6173,6 +6173,7 @@
         "T-0243",
         "T-0487",
         "T-0738",
+        "T-0769",
         "B-0030",
         "B-0063"
       ],
@@ -9520,7 +9521,8 @@
       "backlinks": [
         "F-0166",
         "F-0198",
-        "F-0226"
+        "F-0226",
+        "T-0770"
       ],
       "budget_sessions": 12,
       "budget_usd": 20,
@@ -12732,19 +12734,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/1 tasks Closed",
-        "rule: documented"
+        "1/1 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0182",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-09-30T14:09:45Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-09-30T15:11:14Z",
+      "state": "Closed",
       "title": "CI queue status shows total wait, not the at-head age the starvation guard uses",
       "type": "feature",
-      "updated": "2026-09-30T14:09:45Z"
+      "updated": "2026-09-30T15:11:14Z"
     },
     "F-0183": {
       "backlinks": [
@@ -14106,7 +14108,11 @@
     },
     "F-0226": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0768",
+        "T-0769",
+        "T-0770"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -14120,19 +14126,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0226",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0226",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-30T14:30:17Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T15:11:14Z",
       "state": "Active",
       "title": "A conflict BACK shows as STARVED -> SPEC and reads like a duplicate spec",
       "type": "feature",
-      "updated": "2026-09-30T14:57:47Z"
+      "updated": "2026-09-30T15:11:14Z"
     },
     "F-0227": {
       "backlinks": [],
@@ -45339,7 +45345,8 @@
       "decided": true,
       "evidence": [
         "merge 7793b35 of worker/T-0765 lands T-0765 (PR #585)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0765",
@@ -45348,11 +45355,11 @@
       },
       "parent": "F-0182",
       "schema_version": 1,
-      "stage_since": "2026-09-30T14:30:17Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-30T15:11:14Z",
+      "state": "Closed",
       "title": "the row prints the guard's own clock and threshold, and says nothing where the guard will never fire",
       "type": "task",
-      "updated": "2026-09-30T14:30:17Z",
+      "updated": "2026-09-30T15:11:14Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_queue.py",
@@ -45412,6 +45419,87 @@
       "writes": [
         "asf/tick/summary.py",
         "tests/test_lane.py"
+      ]
+    },
+    "T-0768": {
+      "backlinks": [
+        "T-0769",
+        "T-0770"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0768",
+      "links": {
+        "plan": "docs/plans/f-0226.md"
+      },
+      "parent": "F-0226",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T15:11:14Z",
+      "state": "New",
+      "title": "the kind, the vocabulary, and every set that must not change its mind",
+      "type": "task",
+      "updated": "2026-09-30T15:11:14Z",
+      "writes": [
+        "asf/feeder/rows.py",
+        "asf/invariants.py",
+        "tests/test_feeder.py",
+        "tests/test_invariants.py",
+        "tests/test_ingest.py",
+        "tests/test_land_spec.py"
+      ]
+    },
+    "T-0769": {
+      "after": [
+        "T-0768"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0769",
+      "links": {
+        "plan": "docs/plans/f-0226.md"
+      },
+      "parent": "F-0226",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T15:11:14Z",
+      "state": "New",
+      "title": "the two producers name the refusal",
+      "type": "task",
+      "updated": "2026-09-30T15:11:14Z",
+      "writes": [
+        "asf/tick/land_spec.py",
+        "asf/harvest/lane.py",
+        "tests/test_land_spec.py",
+        "tests/test_lane.py"
+      ]
+    },
+    "T-0770": {
+      "after": [
+        "T-0768"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0770",
+      "links": {
+        "plan": "docs/plans/f-0226.md"
+      },
+      "parent": "F-0226",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T15:11:14Z",
+      "state": "New",
+      "title": "the cause reaches the two places a reader looks",
+      "type": "task",
+      "updated": "2026-09-30T15:11:14Z",
+      "writes": [
+        "asf/feeder/render.py",
+        "tests/test_briefs.py",
+        "tests/test_head_checks.py",
+        "docs/guide/operating.md",
+        "docs/guide/product-config.md"
       ]
     }
   },
