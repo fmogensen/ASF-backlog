@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T11:07:30Z",
+  "generated": "2026-09-30T11:15:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -11259,12 +11259,12 @@
       "id": "F-0139",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T11:00:09Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-09-30T11:14:23Z",
       "state": "Active",
       "title": "Status Record row: calculate the open split (work, Resolved, records) instead of one total",
       "type": "feature",
-      "updated": "2026-09-30T11:06:56Z"
+      "updated": "2026-09-30T11:14:23Z"
     },
     "F-0140": {
       "backlinks": [
@@ -22894,7 +22894,8 @@
         "T-0154",
         "T-0155",
         "T-0156",
-        "T-0189"
+        "T-0189",
+        "T-0744"
       ],
       "children": [],
       "cost": {
@@ -42448,8 +42449,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0681",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0681",
@@ -42458,11 +42459,11 @@
       },
       "parent": "F-0184",
       "schema_version": 1,
-      "stage_since": "2026-09-30T07:41:53Z",
-      "state": "New",
+      "stage_since": "2026-09-30T11:14:23Z",
+      "state": "Active",
       "title": "`capacity.batch`'s `parallel` and `runners` are measured when the product declares neither, and the row says which",
       "type": "task",
-      "updated": "2026-09-30T07:48:25Z",
+      "updated": "2026-09-30T11:14:23Z",
       "writes": [
         "asf/capacity.py",
         "tests/test_capacity.py"
@@ -42476,8 +42477,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0682",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0682",
@@ -42486,11 +42487,11 @@
       },
       "parent": "F-0184",
       "schema_version": 1,
-      "stage_since": "2026-09-30T07:41:53Z",
-      "state": "New",
+      "stage_since": "2026-09-30T11:14:23Z",
+      "state": "Active",
       "title": "the queue's PR and head wait limits follow the measured p50, clamped so no tuned limit can shorten",
       "type": "task",
-      "updated": "2026-09-30T07:48:25Z",
+      "updated": "2026-09-30T11:14:23Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_queue.py"
@@ -44403,12 +44404,15 @@
       ]
     },
     "T-0744": {
+      "after": [
+        "T-0153"
+      ],
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0744",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0744",
@@ -44417,11 +44421,11 @@
       },
       "parent": "F-0139",
       "schema_version": 1,
-      "stage_since": "2026-09-30T11:00:10Z",
-      "state": "New",
+      "stage_since": "2026-09-30T11:14:23Z",
+      "state": "Active",
       "title": "the Record row calculates work, Resolved and records, and the flags read the work",
       "type": "task",
-      "updated": "2026-09-30T11:06:56Z",
+      "updated": "2026-09-30T11:14:23Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_views.py"
