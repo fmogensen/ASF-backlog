@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T00:54:15Z",
+  "generated": "2026-09-30T05:12:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5968,12 +5968,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 353.29,
+      "spend_usd": 359.54,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-30T00:54:13Z"
+      "updated": "2026-09-30T05:12:37Z"
     },
     "E-0003": {
       "backlinks": [
@@ -11031,7 +11031,11 @@
     },
     "F-0138": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0654",
+        "T-0655",
+        "T-0656"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -11045,19 +11049,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0138",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0138",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-30T00:18:12Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T05:12:29Z",
       "state": "Active",
       "title": "Predictive capacity: place a launch on the account that can finish it, by provider kind",
       "type": "feature",
-      "updated": "2026-09-30T00:47:58Z"
+      "updated": "2026-09-30T05:12:29Z"
     },
     "F-0139": {
       "backlinks": [],
@@ -11101,7 +11105,10 @@
     },
     "F-0141": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0657",
+        "T-0658"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -11115,19 +11122,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0141",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0141",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-30T00:24:16Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T05:12:29Z",
       "state": "Active",
       "title": "The landing gate refuses a branch that adds a debug-toggle marker",
       "type": "feature",
-      "updated": "2026-09-30T00:47:58Z"
+      "updated": "2026-09-30T05:12:29Z"
     },
     "F-0142": {
       "backlinks": [],
@@ -11493,12 +11500,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 5418263,
-        "tokens_cache_write": 134151,
-        "tokens_input": 118,
-        "tokens_output": 64325,
-        "usd": 5.66
+        "sessions": 2,
+        "tokens_cache_read": 11248708,
+        "tokens_cache_write": 293831,
+        "tokens_input": 224,
+        "tokens_output": 133686,
+        "usd": 11.91
       },
       "decided": true,
       "evidence": [
@@ -11515,7 +11522,7 @@
       "state": "Active",
       "title": "Tick performance round 2: flaky pass window, git status, card parse cache, lane git cache, batched evidence reads",
       "type": "feature",
-      "updated": "2026-09-30T00:54:05Z"
+      "updated": "2026-09-30T05:12:37Z"
     },
     "F-0155": {
       "backlinks": [],
@@ -13638,19 +13645,19 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
+        "spec on spec/F-0230",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0230",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-28T05:20:19Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-30T05:12:29Z",
       "state": "New",
       "title": "Most botseon PR CI runs end cancelled: find and cut the source",
       "type": "feature",
-      "updated": "2026-09-30T00:05:44Z"
+      "updated": "2026-09-30T05:12:29Z"
     },
     "F-0231": {
       "backlinks": [],
@@ -40949,6 +40956,135 @@
         "asf/views/status.py",
         "asf/doctor.py",
         "tests/test_pause.py"
+      ]
+    },
+    "T-0654": {
+      "backlinks": [
+        "T-0655"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0654",
+      "links": {
+        "plan": "docs/plans/f-0138.md"
+      },
+      "parent": "F-0138",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T05:12:29Z",
+      "state": "New",
+      "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
+      "type": "task",
+      "updated": "2026-09-30T05:12:29Z",
+      "writes": [
+        "asf/workers/headroom.py",
+        "asf/workers/pool.py",
+        "asf/env.py",
+        "asf/workers/wave.py",
+        "docs/config.example.yaml",
+        "tests/test_quota_provider.py"
+      ]
+    },
+    "T-0655": {
+      "after": [
+        "T-0654"
+      ],
+      "backlinks": [
+        "T-0656"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0655",
+      "links": {
+        "plan": "docs/plans/f-0138.md"
+      },
+      "parent": "F-0138",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T05:12:29Z",
+      "state": "New",
+      "title": "every window the source reads is projected, at that account's scale, and the binding one names itself",
+      "type": "task",
+      "updated": "2026-09-30T05:12:29Z",
+      "writes": [
+        "asf/workers/pool.py",
+        "tests/test_quota_provider.py"
+      ]
+    },
+    "T-0656": {
+      "after": [
+        "T-0655"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0656",
+      "links": {
+        "plan": "docs/plans/f-0138.md"
+      },
+      "parent": "F-0138",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T05:12:29Z",
+      "state": "New",
+      "title": "the run's expected span, and a reset inside it credited against the reading",
+      "type": "task",
+      "updated": "2026-09-30T05:12:29Z",
+      "writes": [
+        "asf/workers/headroom.py",
+        "asf/workers/pool.py",
+        "tests/test_quota_provider.py"
+      ]
+    },
+    "T-0657": {
+      "backlinks": [
+        "T-0658"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0657",
+      "links": {
+        "plan": "docs/plans/f-0141.md"
+      },
+      "parent": "F-0141",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T05:12:30Z",
+      "state": "New",
+      "title": "the recogniser, the waiver, and the refusal on both of the marker gate's seams",
+      "type": "task",
+      "updated": "2026-09-30T05:12:30Z",
+      "writes": [
+        "asf/debug_toggles.py",
+        "asf/conventions.py",
+        "asf/customer_content.py",
+        "asf/harvest/lane.py",
+        "tests/test_debug_toggles.py"
+      ]
+    },
+    "T-0658": {
+      "after": [
+        "T-0657"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0658",
+      "links": {
+        "plan": "docs/plans/f-0141.md"
+      },
+      "parent": "F-0141",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T05:12:30Z",
+      "state": "New",
+      "title": "`asf doctor` says what the debug-toggle gate checks on this product",
+      "type": "task",
+      "updated": "2026-09-30T05:12:30Z",
+      "writes": [
+        "asf/debug_toggles.py",
+        "asf/doctor.py",
+        "tests/test_doctor.py"
       ]
     }
   },
