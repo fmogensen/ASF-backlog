@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T13:56:00Z",
+  "generated": "2026-09-30T14:09:59Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6108,12 +6108,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 231.61,
+      "spend_usd": 239.33,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-09-30T13:55:52Z"
+      "updated": "2026-09-30T14:09:55Z"
     },
     "E-0005": {
       "backlinks": [
@@ -12706,18 +12706,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/1 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0182",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T13:55:42Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-09-30T14:09:45Z",
       "state": "Active",
       "title": "CI queue status shows total wait, not the at-head age the starvation guard uses",
       "type": "feature",
-      "updated": "2026-09-30T13:55:42Z"
+      "updated": "2026-09-30T14:09:45Z"
     },
     "F-0183": {
       "backlinks": [
@@ -13033,6 +13034,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0191",
         "rule: documented"
       ],
       "folder": "features",
@@ -13044,7 +13046,7 @@
       "state": "Active",
       "title": "DONE table credits 'landed <sha>' to a run with no commits of its own",
       "type": "feature",
-      "updated": "2026-09-30T13:55:42Z"
+      "updated": "2026-09-30T14:09:45Z"
     },
     "F-0192": {
       "backlinks": [],
@@ -13186,19 +13188,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0196",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0196",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-30T13:40:51Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-30T14:09:45Z",
+      "state": "Active",
       "title": "Groom digest 'For you' fills with rule-decidable noise (379 on the first customer) \u2014 only human-now actions belong there",
       "type": "feature",
-      "updated": "2026-09-30T13:48:22Z"
+      "updated": "2026-09-30T14:09:45Z"
     },
     "F-0197": {
       "backlinks": [],
@@ -13884,7 +13886,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/5 tasks Closed",
+        "1/5 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -13892,12 +13894,12 @@
       "parent": "E-0004",
       "rank": 0,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T13:48:06Z",
+      "stage": "building 1/5",
+      "stage_since": "2026-09-30T14:09:45Z",
       "state": "Active",
       "title": "CI queue: runs cancelled to free main's reserved runners waste time; measure it and stop admitting runs that will be cancelled",
       "type": "feature",
-      "updated": "2026-09-30T13:48:06Z"
+      "updated": "2026-09-30T14:09:45Z"
     },
     "F-0220": {
       "backlinks": [
@@ -14040,6 +14042,16 @@
     "F-0225": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 8393838,
+        "tokens_cache_write": 156529,
+        "tokens_input": 162,
+        "tokens_output": 78461,
+        "usd": 7.72
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0225",
@@ -14054,26 +14066,26 @@
       "state": "New",
       "title": "The CI start queue counts only runners that carry the labels a run's jobs ask for, and counts a started run once",
       "type": "feature",
-      "updated": "2026-09-30T13:55:42Z"
+      "updated": "2026-09-30T14:09:55Z"
     },
     "F-0226": {
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
+        "spec on spec/F-0226",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0226",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-28T05:20:19Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-30T14:09:45Z",
       "state": "New",
       "title": "A conflict BACK shows as STARVED -> SPEC and reads like a duplicate spec",
       "type": "feature",
-      "updated": "2026-09-30T00:05:44Z"
+      "updated": "2026-09-30T14:09:45Z"
     },
     "F-0227": {
       "backlinks": [],
@@ -43675,7 +43687,8 @@
       "decided": true,
       "evidence": [
         "merge b377c91 of worker/T-0714 lands T-0714 (PR #573)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0714",
@@ -43684,11 +43697,11 @@
       },
       "parent": "F-0219",
       "schema_version": 1,
-      "stage_since": "2026-09-30T13:48:06Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-30T14:09:45Z",
+      "state": "Closed",
       "title": "the plan stops keeping a busy runner free, and the hold that tells it how long",
       "type": "task",
-      "updated": "2026-09-30T13:48:22Z",
+      "updated": "2026-09-30T14:09:45Z",
       "writes": [
         "asf/ci_pool.py",
         "asf/ci_queue.py",
@@ -45264,6 +45277,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "branch worker/T-0765",
+        "rule: in-flight"
+      ],
       "folder": "tasks",
       "id": "T-0765",
       "links": {
@@ -45271,11 +45288,11 @@
       },
       "parent": "F-0182",
       "schema_version": 1,
-      "stage_since": "2026-09-30T13:55:43Z",
-      "state": "New",
+      "stage_since": "2026-09-30T14:09:45Z",
+      "state": "Active",
       "title": "the row prints the guard's own clock and threshold, and says nothing where the guard will never fire",
       "type": "task",
-      "updated": "2026-09-30T13:55:43Z",
+      "updated": "2026-09-30T14:09:45Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_queue.py",
