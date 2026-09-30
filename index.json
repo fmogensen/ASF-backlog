@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T06:39:38Z",
+  "generated": "2026-09-30T06:46:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5971,12 +5971,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 391.61,
+      "spend_usd": 391.97,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-30T06:39:34Z"
+      "updated": "2026-09-30T06:45:44Z"
     },
     "E-0003": {
       "backlinks": [
@@ -10764,12 +10764,12 @@
       "parent": "E-0001",
       "rank": 56,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-28T16:15:48Z",
+      "stage": "building 0/4",
+      "stage_since": "2026-09-30T06:45:35Z",
       "state": "Active",
       "title": "approvals: decide_feature: auto \u2014 ASF decides a product's Features itself (operator instruction)",
       "type": "feature",
-      "updated": "2026-09-28T16:31:04Z"
+      "updated": "2026-09-30T06:45:35Z"
     },
     "F-0129": {
       "backlinks": [
@@ -19208,6 +19208,7 @@
         "T-0256",
         "T-0266",
         "T-0341",
+        "T-0485",
         "T-0494"
       ],
       "children": [],
@@ -35530,6 +35531,9 @@
       ]
     },
     "T-0485": {
+      "after": [
+        "T-0073"
+      ],
       "backlinks": [
         "T-0486",
         "T-0487"
@@ -35537,8 +35541,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0485",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0485",
@@ -35550,11 +35554,11 @@
         "batch T-0485+T-0487"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-28T16:15:59Z",
-      "state": "New",
+      "stage_since": "2026-09-30T06:45:35Z",
+      "state": "Active",
       "title": "`areas:` \u2014 a third declared recogniser, and `area_class` over it",
       "type": "task",
-      "updated": "2026-09-30T00:05:44Z",
+      "updated": "2026-09-30T06:45:35Z",
       "writes": [
         "asf/approvals.py",
         "tests/test_approvals.py"
@@ -41338,18 +41342,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "tokens_cache_read": 9262378,
-        "tokens_cache_write": 212969,
-        "tokens_input": 236,
-        "tokens_output": 77561,
-        "usd": 3.48
+        "sessions": 4,
+        "tokens_cache_read": 10053854,
+        "tokens_cache_write": 250438,
+        "tokens_input": 270,
+        "tokens_output": 82444,
+        "usd": 3.84
       },
       "decided": true,
       "evidence": [
-        "PR #492 OPEN",
-        "branch worker/T-0659",
-        "rule: in-flight"
+        "merge d63bc46 of worker/T-0659 lands T-0659 (PR #492)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0659",
@@ -41358,11 +41361,11 @@
       },
       "parent": "F-0154",
       "schema_version": 1,
-      "stage_since": "2026-09-30T06:20:34Z",
-      "state": "Active",
+      "stage_since": "2026-09-30T06:45:35Z",
+      "state": "Resolved",
       "title": "the flaky pass asks one workflow for its own runs, over a window that moves only over what it read",
       "type": "task",
-      "updated": "2026-09-30T06:39:34Z",
+      "updated": "2026-09-30T06:45:44Z",
       "writes": [
         "asf/tick/flaky.py",
         "tests/test_flaky.py"
