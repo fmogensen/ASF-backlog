@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T09:47:00Z",
+  "generated": "2026-09-30T09:53:22Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4026,6 +4026,7 @@
     },
     "B-0131": {
       "backlinks": [
+        "T-0721",
         "B-0135",
         "B-0136"
       ],
@@ -6077,12 +6078,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 69.53,
+      "spend_usd": 76.49,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-09-30T09:46:56Z"
+      "updated": "2026-09-30T09:53:18Z"
     },
     "E-0005": {
       "backlinks": [
@@ -7532,7 +7533,9 @@
     },
     "F-0042": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "T-0720"
+      ],
       "children": [
         "T-0311",
         "T-0312",
@@ -10369,7 +10372,13 @@
     },
     "F-0115": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0719",
+        "T-0720",
+        "T-0721",
+        "T-0722",
+        "T-0723"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -10383,23 +10392,28 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0115",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0115",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-30T09:08:08Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T09:53:06Z",
       "state": "Active",
       "title": "Worker sessions are refused the repo's own lint (check_conventions) and printenv",
       "type": "feature",
-      "updated": "2026-09-30T09:40:19Z"
+      "updated": "2026-09-30T09:53:06Z"
     },
     "F-0116": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0724",
+        "T-0725",
+        "T-0726",
+        "T-0727"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -10413,19 +10427,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0116",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0116",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-30T09:01:30Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T09:53:06Z",
       "state": "Active",
       "title": "A session commits under its own identity, never the operator's",
       "type": "feature",
-      "updated": "2026-09-30T09:40:19Z"
+      "updated": "2026-09-30T09:53:06Z"
     },
     "F-0117": {
       "backlinks": [],
@@ -10463,12 +10477,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 3112960,
-        "tokens_cache_write": 112586,
-        "tokens_input": 78,
-        "tokens_output": 40366,
-        "usd": 3.69
+        "sessions": 2,
+        "tokens_cache_read": 10667246,
+        "tokens_cache_write": 257669,
+        "tokens_input": 240,
+        "tokens_output": 109562,
+        "usd": 10.65
       },
       "decided": true,
       "evidence": [
@@ -10485,7 +10499,7 @@
       "state": "Active",
       "title": "Every product session shows its factory status each tick: a statusLine fed by the tick's snapshot",
       "type": "feature",
-      "updated": "2026-09-30T09:46:48Z"
+      "updated": "2026-09-30T09:53:18Z"
     },
     "F-0119": {
       "backlinks": [
@@ -10666,19 +10680,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0123",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0123",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-30T09:33:38Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-30T09:53:06Z",
+      "state": "Active",
       "title": "record: a date-prefixed plan file mints no Tasks after it lands",
       "type": "feature",
-      "updated": "2026-09-30T09:40:19Z"
+      "updated": "2026-09-30T09:53:06Z"
     },
     "F-0124": {
       "backlinks": [
@@ -10961,19 +10975,19 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
+        "spec on spec/F-0132",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0132",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-24T15:47:15Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-30T09:53:06Z",
       "state": "New",
       "title": "Derived backlinks copy a protected name from one card's title into others, and redaction then refuses unrelated pushes",
       "type": "feature",
-      "updated": "2026-09-30T00:05:44Z"
+      "updated": "2026-09-30T09:53:06Z"
     },
     "F-0133": {
       "backlinks": [],
@@ -11161,19 +11175,19 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
+        "spec on spec/F-0139",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0139",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-24T15:47:15Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-30T09:53:06Z",
       "state": "New",
       "title": "Status Record row: calculate the open split (work, Resolved, records) instead of one total",
       "type": "feature",
-      "updated": "2026-09-30T00:05:44Z"
+      "updated": "2026-09-30T09:53:06Z"
     },
     "F-0140": {
       "backlinks": [
@@ -43466,6 +43480,237 @@
         "tests/test_ci_reserve.py",
         "docs/guide/ci-runner-pool.md",
         "docs/guide/product-config.md"
+      ]
+    },
+    "T-0719": {
+      "backlinks": [
+        "T-0721"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0719",
+      "links": {
+        "plan": "docs/plans/f-0115.md"
+      },
+      "parent": "F-0115",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T09:53:07Z",
+      "state": "New",
+      "title": "the commands the gate runs become one function, and `product_gate` is its first reader",
+      "type": "task",
+      "updated": "2026-09-30T09:53:07Z",
+      "writes": [
+        "asf/harvest/harvest.py",
+        "tests/test_harvest.py"
+      ]
+    },
+    "T-0720": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0720",
+      "links": {
+        "plan": "docs/plans/f-0115.md"
+      },
+      "parent": "F-0115",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T09:53:07Z",
+      "state": "New",
+      "title": "`printenv` joins the approvals hook's read-only register",
+      "type": "task",
+      "updated": "2026-09-30T09:53:07Z",
+      "writes": [
+        "asf/approvals.py",
+        "tests/test_approvals.py"
+      ]
+    },
+    "T-0721": {
+      "after": [
+        "T-0719"
+      ],
+      "backlinks": [
+        "T-0722"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0721",
+      "links": {
+        "plan": "docs/plans/f-0115.md"
+      },
+      "parent": "F-0115",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T09:53:07Z",
+      "state": "New",
+      "title": "the allow list is derived from the registry \u2014 one rule per command the gate runs, plus the two a session needs to read its own situation",
+      "type": "task",
+      "updated": "2026-09-30T09:53:07Z",
+      "writes": [
+        "asf/workers/worker_perms.py",
+        "tests/test_worker_perms.py"
+      ]
+    },
+    "T-0722": {
+      "after": [
+        "T-0721"
+      ],
+      "backlinks": [
+        "T-0723"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0722",
+      "links": {
+        "plan": "docs/plans/f-0115.md"
+      },
+      "parent": "F-0115",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T09:53:07Z",
+      "state": "New",
+      "title": "the settings a session is launched with are composed over the operator's own, and `--settings` points at the composition",
+      "type": "task",
+      "updated": "2026-09-30T09:53:07Z",
+      "writes": [
+        "asf/workers/worker_perms.py",
+        "asf/workers/spawn.py",
+        "tests/test_worker_perms.py",
+        "tests/test_workers.py"
+      ]
+    },
+    "T-0723": {
+      "after": [
+        "T-0722"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0723",
+      "links": {
+        "plan": "docs/plans/f-0115.md"
+      },
+      "parent": "F-0115",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T09:53:07Z",
+      "state": "New",
+      "title": "a derived rule the operator's own file denies is named once \u2014 the doctor row, the offer command, and the two documents",
+      "type": "task",
+      "updated": "2026-09-30T09:53:07Z",
+      "writes": [
+        "asf/workers/worker_perms.py",
+        "asf/doctor.py",
+        "asf/init.py",
+        "asf/surface.py",
+        "tests/test_worker_perms.py",
+        "tests/test_surface.py",
+        "tests/test_doctor.py",
+        "docs/config.example.yaml",
+        "CHANGELOG.md"
+      ]
+    },
+    "T-0724": {
+      "backlinks": [
+        "T-0725",
+        "T-0726"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0724",
+      "links": {
+        "plan": "docs/plans/f-0116.md"
+      },
+      "parent": "F-0116",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T09:53:07Z",
+      "state": "New",
+      "title": "the session commits as itself \u2014 `asf/identity.py`, the `GIT_CONFIG_*` channel that beats every `.gitconfig` on the box, the session home rewritten as the agent, and the per-account override refused when malformed",
+      "type": "task",
+      "updated": "2026-09-30T09:53:07Z",
+      "writes": [
+        "asf/identity.py",
+        "asf/workers/runtime.py",
+        "asf/workers/pool.py",
+        "asf/env.py",
+        "docs/guide/operating.md",
+        "tests/test_session_identity.py",
+        "tests/test_worker_isolation.py"
+      ]
+    },
+    "T-0725": {
+      "after": [
+        "T-0724"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0725",
+      "links": {
+        "plan": "docs/plans/f-0116.md"
+      },
+      "parent": "F-0116",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T09:53:07Z",
+      "state": "New",
+      "title": "one factory, one agent \u2014 the cloud workflow's two hard-coded lines become the resolved identity, and the account the lane runs as is what resolves it",
+      "type": "task",
+      "updated": "2026-09-30T09:53:07Z",
+      "writes": [
+        "asf/workers/actions.py",
+        "tests/test_session_identity.py"
+      ]
+    },
+    "T-0726": {
+      "after": [
+        "T-0724"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0726",
+      "links": {
+        "plan": "docs/plans/f-0116.md"
+      },
+      "parent": "F-0116",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T09:53:07Z",
+      "state": "New",
+      "title": "the check \u2014 read-only, no fetch, the product's own prefixes, the last 24 hours, one line per offending commit that never repeats the name it found, exit 1, and the doctor row that proves it ran",
+      "type": "task",
+      "updated": "2026-09-30T09:53:07Z",
+      "writes": [
+        "asf/identity.py",
+        "asf/cli.py",
+        "asf/surface.py",
+        "asf/doctor.py",
+        "docs/config.example.yaml",
+        "tests/test_session_identity.py",
+        "tests/test_surface.py"
+      ]
+    },
+    "T-0727": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0727",
+      "links": {
+        "plan": "docs/plans/f-0116.md"
+      },
+      "parent": "F-0116",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T09:53:07Z",
+      "state": "New",
+      "title": "a brief that tells a session to author or sign as the operator is a defect \u2014 the guard, over every rendered kind, proved to bite",
+      "type": "task",
+      "updated": "2026-09-30T09:53:07Z",
+      "writes": [
+        "tests/test_session_identity.py"
       ]
     }
   },
