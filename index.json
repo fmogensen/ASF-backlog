@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T10:07:52Z",
+  "generated": "2026-09-30T10:14:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6001,12 +6001,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 466.16,
+      "spend_usd": 468.54,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-09-30T09:59:48Z"
+      "updated": "2026-09-30T10:14:02Z"
     },
     "E-0003": {
       "backlinks": [
@@ -10400,12 +10400,12 @@
       "id": "F-0115",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T09:53:06Z",
+      "stage": "building 0/5",
+      "stage_since": "2026-09-30T10:13:52Z",
       "state": "Active",
       "title": "Worker sessions are refused the repo's own lint (check_conventions) and printenv",
       "type": "feature",
-      "updated": "2026-09-30T09:59:38Z"
+      "updated": "2026-09-30T10:13:52Z"
     },
     "F-0116": {
       "backlinks": [],
@@ -10503,6 +10503,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/4 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -10514,7 +10515,7 @@
       "state": "Active",
       "title": "Every product session shows its factory status each tick: a statusLine fed by the tick's snapshot",
       "type": "feature",
-      "updated": "2026-09-30T10:07:15Z"
+      "updated": "2026-09-30T10:13:52Z"
     },
     "F-0119": {
       "backlinks": [
@@ -11230,19 +11231,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0139",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0139",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-09-30T09:53:06Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-09-30T10:13:52Z",
+      "state": "Active",
       "title": "Status Record row: calculate the open split (work, Resolved, records) instead of one total",
       "type": "feature",
-      "updated": "2026-09-30T09:59:48Z"
+      "updated": "2026-09-30T10:13:52Z"
     },
     "F-0140": {
       "backlinks": [
@@ -18810,6 +18811,7 @@
         "T-0601",
         "T-0604",
         "T-0661",
+        "T-0719",
         "B-0138"
       ],
       "children": [],
@@ -23365,7 +23367,8 @@
         "T-0271",
         "T-0558",
         "T-0559",
-        "T-0589"
+        "T-0589",
+        "T-0719"
       ],
       "children": [],
       "cost": {
@@ -42765,8 +42768,19 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 7605100,
+        "tokens_cache_write": 127822,
+        "tokens_input": 138,
+        "tokens_output": 34378,
+        "usd": 2.38
+      },
       "decided": true,
       "evidence": [
+        "PR #543 OPEN",
         "branch worker/T-0694",
         "rule: in-flight"
       ],
@@ -42781,7 +42795,7 @@
       "state": "Active",
       "title": "one table says which source dominates and names the cut",
       "type": "task",
-      "updated": "2026-09-30T10:07:15Z",
+      "updated": "2026-09-30T10:14:02Z",
       "writes": [
         "asf/ci_cancels.py",
         "asf/ci_pool.py",
@@ -43550,14 +43564,18 @@
       ]
     },
     "T-0719": {
+      "after": [
+        "T-0056",
+        "T-0166"
+      ],
       "backlinks": [
         "T-0721"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0719",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0719",
@@ -43566,11 +43584,11 @@
       },
       "parent": "F-0115",
       "schema_version": 1,
-      "stage_since": "2026-09-30T09:53:07Z",
-      "state": "New",
+      "stage_since": "2026-09-30T10:13:52Z",
+      "state": "Active",
       "title": "the commands the gate runs become one function, and `product_gate` is its first reader",
       "type": "task",
-      "updated": "2026-09-30T09:59:38Z",
+      "updated": "2026-09-30T10:13:52Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
@@ -44022,6 +44040,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0734",
       "links": {
@@ -44033,7 +44055,7 @@
       "state": "New",
       "title": "the tick leaves a snapshot behind it, atomically",
       "type": "task",
-      "updated": "2026-09-30T10:07:16Z",
+      "updated": "2026-09-30T10:13:52Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -44047,6 +44069,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0735",
       "links": {
@@ -44058,7 +44084,7 @@
       "state": "New",
       "title": "a session's status line is one file read",
       "type": "task",
-      "updated": "2026-09-30T10:07:16Z",
+      "updated": "2026-09-30T10:13:52Z",
       "writes": [
         "asf/cli.py",
         "asf/views/status.py",
@@ -44071,6 +44097,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0736",
       "links": {
@@ -44082,7 +44112,7 @@
       "state": "New",
       "title": "the install writes the setting, and never over one it did not write",
       "type": "task",
-      "updated": "2026-09-30T10:07:16Z",
+      "updated": "2026-09-30T10:13:52Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
@@ -44096,6 +44126,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0737",
       "links": {
@@ -44107,7 +44141,7 @@
       "state": "New",
       "title": "the doctor says whether the line is there",
       "type": "task",
-      "updated": "2026-09-30T10:07:16Z",
+      "updated": "2026-09-30T10:13:52Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
