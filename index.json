@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T11:51:59Z",
+  "generated": "2026-09-30T11:59:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4840,6 +4840,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0160",
@@ -4852,7 +4856,7 @@
       "state": "New",
       "title": "Invariant I10 refused a write to features/F-0230.md",
       "type": "bug",
-      "updated": "2026-09-30T11:51:53Z"
+      "updated": "2026-09-30T11:57:56Z"
     },
     "D-0001": {
       "backlinks": [
@@ -6104,12 +6108,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 163.99,
+      "spend_usd": 165.23,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-09-30T11:45:55Z"
+      "updated": "2026-09-30T11:59:11Z"
     },
     "E-0005": {
       "backlinks": [
@@ -14109,19 +14113,19 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed",
-        "rule: documented"
+        "3/3 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0230",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "building 2/3",
-      "stage_since": "2026-09-30T09:33:38Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-09-30T11:57:56Z",
+      "state": "Closed",
       "title": "Most botseon PR CI runs end cancelled: find and cut the source",
       "type": "feature",
-      "updated": "2026-09-30T09:33:38Z"
+      "updated": "2026-09-30T11:57:56Z"
     },
     "F-0231": {
       "backlinks": [],
@@ -42925,7 +42929,8 @@
       "decided": true,
       "evidence": [
         "merge da5bebd of worker/T-0694 lands T-0694 (PR #543)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0694",
@@ -42934,11 +42939,11 @@
       },
       "parent": "F-0230",
       "schema_version": 1,
-      "stage_since": "2026-09-30T11:44:38Z",
-      "state": "Resolved",
+      "stage_since": "2026-09-30T11:57:56Z",
+      "state": "Closed",
       "title": "one table says which source dominates and names the cut",
       "type": "task",
-      "updated": "2026-09-30T11:45:55Z",
+      "updated": "2026-09-30T11:57:56Z",
       "writes": [
         "asf/ci_cancels.py",
         "asf/ci_pool.py",
@@ -44450,8 +44455,19 @@
     "T-0743": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 3101615,
+        "tokens_cache_write": 88064,
+        "tokens_input": 74,
+        "tokens_output": 27009,
+        "usd": 1.24
+      },
       "decided": true,
       "evidence": [
+        "PR #562 OPEN",
         "branch worker/T-0743",
         "rule: in-flight"
       ],
@@ -44466,7 +44482,7 @@
       "state": "Active",
       "title": "the two halves already landed, pinned",
       "type": "task",
-      "updated": "2026-09-30T11:44:38Z",
+      "updated": "2026-09-30T11:59:11Z",
       "writes": [
         "tests/test_record_stage.py"
       ]
