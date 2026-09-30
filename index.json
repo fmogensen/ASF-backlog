@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T08:36:16Z",
+  "generated": "2026-09-30T08:42:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6051,12 +6051,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 16.1,
+      "spend_usd": 21.3,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-09-30T08:29:34Z"
+      "updated": "2026-09-30T08:42:28Z"
     },
     "E-0005": {
       "backlinks": [
@@ -10346,23 +10346,33 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
+        "spec on spec/F-0115",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0115",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-24T04:39:40Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-30T08:42:20Z",
       "state": "New",
       "title": "Worker sessions are refused the repo's own lint (check_conventions) and printenv",
       "type": "feature",
-      "updated": "2026-09-30T00:05:44Z"
+      "updated": "2026-09-30T08:42:20Z"
     },
     "F-0116": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 4962863,
+        "tokens_cache_write": 127136,
+        "tokens_input": 120,
+        "tokens_output": 58054,
+        "usd": 5.2
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0116",
@@ -10377,26 +10387,26 @@
       "state": "New",
       "title": "A session commits under its own identity, never the operator's",
       "type": "feature",
-      "updated": "2026-09-30T08:36:05Z"
+      "updated": "2026-09-30T08:42:28Z"
     },
     "F-0117": {
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
+        "spec on spec/F-0117",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0117",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-24T05:59:21Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-30T08:42:20Z",
       "state": "New",
       "title": "Command center: follow every product's factory live and talk to each product's orchestrator; each product keeps its own controller",
       "type": "feature",
-      "updated": "2026-09-30T00:05:44Z"
+      "updated": "2026-09-30T08:42:20Z"
     },
     "F-0118": {
       "backlinks": [],
@@ -11491,7 +11501,12 @@
     },
     "F-0153": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0695",
+        "T-0696",
+        "T-0697",
+        "T-0698"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -11505,19 +11520,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0153",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0153",
       "parent": "E-0003",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-30T07:54:54Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T08:42:20Z",
       "state": "Active",
       "title": "Naming reword retries a refused push every tick (144 log lines, 3 branches)",
       "type": "feature",
-      "updated": "2026-09-30T08:29:44Z"
+      "updated": "2026-09-30T08:42:20Z"
     },
     "F-0154": {
       "backlinks": [],
@@ -12786,6 +12801,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0194",
         "rule: documented"
       ],
       "folder": "features",
@@ -12797,7 +12813,7 @@
       "state": "Active",
       "title": "External CI on any VM (ci.provider: vm) \u2014 drop the GitHub Actions dependency",
       "type": "feature",
-      "updated": "2026-09-30T08:01:13Z"
+      "updated": "2026-09-30T08:42:20Z"
     },
     "F-0195": {
       "backlinks": [
@@ -16532,6 +16548,7 @@
         "T-0527",
         "T-0545",
         "T-0565",
+        "T-0695",
         "B-0040",
         "B-0067",
         "B-0074"
@@ -41955,8 +41972,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0675",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0675",
@@ -41965,11 +41982,11 @@
       },
       "parent": "F-0183",
       "schema_version": 1,
-      "stage_since": "2026-09-30T07:41:53Z",
-      "state": "New",
+      "stage_since": "2026-09-30T08:42:20Z",
+      "state": "Active",
       "title": "while one reference is unresolved, no label is removed and the doctor says which",
       "type": "task",
-      "updated": "2026-09-30T07:48:25Z",
+      "updated": "2026-09-30T08:42:20Z",
       "writes": [
         "asf/ci_pool.py",
         "tests/test_ci_pool.py",
@@ -42549,6 +42566,113 @@
         "asf/ci_pool.py",
         "asf/views/header.py",
         "tests/test_ci_cancels.py"
+      ]
+    },
+    "T-0695": {
+      "backlinks": [
+        "T-0696",
+        "T-0697",
+        "T-0698"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0695",
+      "links": {
+        "plan": "docs/plans/f-0153.md"
+      },
+      "parent": "F-0153",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T08:42:20Z",
+      "state": "New",
+      "title": "the lease diagnosis comes from the sha, not from the wording",
+      "type": "task",
+      "updated": "2026-09-30T08:42:20Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "tests/test_lane.py"
+      ]
+    },
+    "T-0696": {
+      "after": [
+        "T-0695"
+      ],
+      "backlinks": [
+        "T-0697",
+        "T-0698"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0696",
+      "links": {
+        "plan": "docs/plans/f-0153.md"
+      },
+      "parent": "F-0153",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T08:42:20Z",
+      "state": "New",
+      "title": "a refused reword is remembered by the tip it was refused over",
+      "type": "task",
+      "updated": "2026-09-30T08:42:20Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "tests/test_lane.py"
+      ]
+    },
+    "T-0697": {
+      "after": [
+        "T-0695",
+        "T-0696"
+      ],
+      "backlinks": [
+        "T-0698"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0697",
+      "links": {
+        "plan": "docs/plans/f-0153.md"
+      },
+      "parent": "F-0153",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T08:42:20Z",
+      "state": "New",
+      "title": "a push the lane can never make routes to a correct session, or to the reaper",
+      "type": "task",
+      "updated": "2026-09-30T08:42:20Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "tests/test_lane.py"
+      ]
+    },
+    "T-0698": {
+      "after": [
+        "T-0695",
+        "T-0696",
+        "T-0697"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0698",
+      "links": {
+        "plan": "docs/plans/f-0153.md"
+      },
+      "parent": "F-0153",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T08:42:20Z",
+      "state": "New",
+      "title": "a standing refusal is one advisory row in status and the doctor",
+      "type": "task",
+      "updated": "2026-09-30T08:42:20Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "asf/views/status.py",
+        "asf/doctor.py",
+        "tests/test_lane.py"
       ]
     }
   },
