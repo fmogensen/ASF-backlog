@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T09:40:23Z",
+  "generated": "2026-09-30T09:47:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6077,12 +6077,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 61.78,
+      "spend_usd": 69.53,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-09-30T09:40:19Z"
+      "updated": "2026-09-30T09:46:56Z"
     },
     "E-0005": {
       "backlinks": [
@@ -10433,12 +10433,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 5296495,
-        "tokens_cache_write": 138004,
-        "tokens_input": 118,
-        "tokens_output": 52341,
-        "usd": 5.34
+        "sessions": 2,
+        "tokens_cache_read": 14067275,
+        "tokens_cache_write": 304394,
+        "tokens_input": 280,
+        "tokens_output": 120586,
+        "usd": 13.09
       },
       "decided": true,
       "evidence": [
@@ -10455,7 +10455,7 @@
       "state": "Active",
       "title": "Command center: follow every product's factory live and talk to each product's orchestrator; each product keeps its own controller",
       "type": "feature",
-      "updated": "2026-09-30T09:40:10Z"
+      "updated": "2026-09-30T09:46:56Z"
     },
     "F-0118": {
       "backlinks": [],
@@ -10473,6 +10473,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0118",
         "rule: documented"
       ],
       "folder": "features",
@@ -10484,7 +10485,7 @@
       "state": "Active",
       "title": "Every product session shows its factory status each tick: a statusLine fed by the tick's snapshot",
       "type": "feature",
-      "updated": "2026-09-30T09:22:00Z"
+      "updated": "2026-09-30T09:46:48Z"
     },
     "F-0119": {
       "backlinks": [
@@ -13607,6 +13608,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/5 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -13619,7 +13621,7 @@
       "state": "Active",
       "title": "CI queue: runs cancelled to free main's reserved runners waste time; measure it and stop admitting runs that will be cancelled",
       "type": "feature",
-      "updated": "2026-09-30T09:40:10Z"
+      "updated": "2026-09-30T09:46:48Z"
     },
     "F-0220": {
       "backlinks": [
@@ -43319,6 +43321,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0714",
       "links": {
@@ -43330,7 +43336,7 @@
       "state": "New",
       "title": "the plan stops keeping a busy runner free, and the hold that tells it how long",
       "type": "task",
-      "updated": "2026-09-30T09:40:11Z",
+      "updated": "2026-09-30T09:46:48Z",
       "writes": [
         "asf/ci_pool.py",
         "asf/ci_queue.py",
@@ -43347,6 +43353,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0715",
       "links": {
@@ -43358,7 +43368,7 @@
       "state": "New",
       "title": "every relief cancel says which kind it was, and every claim says what it cost",
       "type": "task",
-      "updated": "2026-09-30T09:40:11Z",
+      "updated": "2026-09-30T09:46:48Z",
       "writes": [
         "asf/ci_queue.py",
         "asf/harvest/lane.py",
@@ -43376,6 +43386,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0716",
       "links": {
@@ -43387,7 +43401,7 @@
       "state": "New",
       "title": "`asf ci queue` names the waste beside the expected",
       "type": "task",
-      "updated": "2026-09-30T09:40:11Z",
+      "updated": "2026-09-30T09:46:48Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_queue.py"
@@ -43402,6 +43416,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0717",
       "links": {
@@ -43413,7 +43431,7 @@
       "state": "New",
       "title": "a PR start that would land on main's reserved runners and cannot finish first waits",
       "type": "task",
-      "updated": "2026-09-30T09:40:11Z",
+      "updated": "2026-09-30T09:46:48Z",
       "writes": [
         "asf/ci_queue.py",
         "tests/test_ci_queue.py"
@@ -43426,6 +43444,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-09-30)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0718",
       "links": {
@@ -43437,7 +43459,7 @@
       "state": "New",
       "title": "`asf ci reserve --measure` says whether the reservation is worth it, and suggests a size",
       "type": "task",
-      "updated": "2026-09-30T09:40:11Z",
+      "updated": "2026-09-30T09:46:48Z",
       "writes": [
         "asf/ci_queue.py",
         "asf/ci_pool.py",
