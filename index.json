@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T13:33:40Z",
+  "generated": "2026-09-30T13:41:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6108,12 +6108,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 198.8,
+      "spend_usd": 208.44,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-09-30T13:33:36Z"
+      "updated": "2026-09-30T13:41:00Z"
     },
     "E-0005": {
       "backlinks": [
@@ -6414,7 +6414,8 @@
     "F-0010": {
       "area": "factory",
       "backlinks": [
-        "T-0241"
+        "T-0241",
+        "T-0762"
       ],
       "budget_sessions": 12,
       "budget_usd": 20,
@@ -12374,7 +12375,10 @@
     },
     "F-0172": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "T-0761",
+        "T-0762"
+      ],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
@@ -12388,19 +12392,19 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0172",
+        "plan on origin/main",
         "rule: documented"
       ],
       "folder": "features",
       "id": "F-0172",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-30T11:06:56Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T13:40:51Z",
       "state": "Active",
       "title": "A removed or moved Feature still shows a derived stage (plan-approved) in index and tables",
       "type": "feature",
-      "updated": "2026-09-30T13:26:11Z"
+      "updated": "2026-09-30T13:40:51Z"
     },
     "F-0173": {
       "backlinks": [
@@ -12682,12 +12686,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 9512723,
-        "tokens_cache_write": 133644,
-        "tokens_input": 192,
-        "tokens_output": 67800,
-        "usd": 7.79
+        "sessions": 2,
+        "tokens_cache_read": 14319015,
+        "tokens_cache_write": 279101,
+        "tokens_input": 290,
+        "tokens_output": 131211,
+        "usd": 13.23
       },
       "decided": true,
       "evidence": [
@@ -12704,7 +12708,7 @@
       "state": "Active",
       "title": "CI queue status shows total wait, not the at-head age the starvation guard uses",
       "type": "feature",
-      "updated": "2026-09-30T13:26:00Z"
+      "updated": "2026-09-30T13:41:00Z"
     },
     "F-0183": {
       "backlinks": [
@@ -13007,6 +13011,16 @@
     "F-0191": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 3855204,
+        "tokens_cache_write": 111741,
+        "tokens_input": 96,
+        "tokens_output": 45895,
+        "usd": 4.19
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0191",
@@ -13021,7 +13035,7 @@
       "state": "New",
       "title": "DONE table credits 'landed <sha>' to a run with no commits of its own",
       "type": "feature",
-      "updated": "2026-09-30T13:33:27Z"
+      "updated": "2026-09-30T13:41:00Z"
     },
     "F-0192": {
       "backlinks": [],
@@ -13153,19 +13167,19 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
+        "spec on spec/F-0196",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0196",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-09-27T04:20:34Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-09-30T13:40:51Z",
       "state": "New",
       "title": "Groom digest 'For you' fills with rule-decidable noise (379 on the first customer) \u2014 only human-now actions belong there",
       "type": "feature",
-      "updated": "2026-09-30T00:05:44Z"
+      "updated": "2026-09-30T13:40:51Z"
     },
     "F-0197": {
       "backlinks": [],
@@ -45061,6 +45075,56 @@
       "writes": [
         "docs/guide/operating.md",
         "tests/test_readme.py"
+      ]
+    },
+    "T-0761": {
+      "backlinks": [
+        "T-0762"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0761",
+      "links": {
+        "plan": "docs/plans/f-0172.md"
+      },
+      "parent": "F-0172",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T13:40:52Z",
+      "state": "New",
+      "title": "one retirement rule \u2014 a moved card is retired to the index reader too",
+      "type": "task",
+      "updated": "2026-09-30T13:40:52Z",
+      "writes": [
+        "asf/views/index_reader.py",
+        "tests/test_views.py",
+        "tests/test_feeder.py"
+      ]
+    },
+    "T-0762": {
+      "after": [
+        "T-0761"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0762",
+      "links": {
+        "plan": "docs/plans/f-0172.md"
+      },
+      "parent": "F-0172",
+      "schema_version": 1,
+      "stage_since": "2026-09-30T13:40:52Z",
+      "state": "New",
+      "title": "the retirement is the stage \u2014 on the card, and in the index",
+      "type": "task",
+      "updated": "2026-09-30T13:40:52Z",
+      "writes": [
+        "asf/record/core.py",
+        "asf/record/ingest.py",
+        "tests/test_record_stage.py",
+        "tests/test_backlog.py"
       ]
     }
   },
