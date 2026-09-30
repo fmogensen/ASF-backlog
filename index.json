@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T06:09:13Z",
+  "generated": "2026-09-30T06:21:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5901,12 +5901,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2406.14,
+      "spend_usd": 2408.72,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-09-30T06:08:43Z"
+      "updated": "2026-09-30T06:20:43Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11170,12 +11170,12 @@
       "parent": "E-0001",
       "rank": 33,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-28T16:31:04Z",
+      "stage": "building 0/3",
+      "stage_since": "2026-09-30T06:20:34Z",
       "state": "Active",
       "title": "tick: a start/end line per step (owner, pid, time) and doctor's SCHEDULER shows the current step",
       "type": "feature",
-      "updated": "2026-09-28T16:47:44Z"
+      "updated": "2026-09-30T06:20:34Z"
     },
     "F-0143": {
       "backlinks": [],
@@ -11540,12 +11540,12 @@
       "id": "F-0154",
       "parent": "E-0002",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T05:20:05Z",
+      "stage": "building 0/6",
+      "stage_since": "2026-09-30T06:20:34Z",
       "state": "Active",
       "title": "Tick performance round 2: flaky pass window, git status, card parse cache, lane git cache, batched evidence reads",
       "type": "feature",
-      "updated": "2026-09-30T05:29:56Z"
+      "updated": "2026-09-30T06:20:34Z"
     },
     "F-0155": {
       "backlinks": [],
@@ -18504,6 +18504,7 @@
         "T-0544",
         "T-0601",
         "T-0604",
+        "T-0661",
         "B-0138"
       ],
       "children": [],
@@ -19206,7 +19207,8 @@
         "T-0189",
         "T-0256",
         "T-0266",
-        "T-0341"
+        "T-0341",
+        "T-0494"
       ],
       "children": [],
       "cost": {
@@ -22000,6 +22002,7 @@
       ],
       "backlinks": [
         "T-0189",
+        "T-0412",
         "B-0122",
         "B-0129",
         "B-0130"
@@ -22096,8 +22099,19 @@
         "T-0464"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 2948060,
+        "tokens_cache_write": 70142,
+        "tokens_input": 90,
+        "tokens_output": 15094,
+        "usd": 1.02
+      },
       "decided": true,
       "evidence": [
+        "PR #489 OPEN",
         "branch worker/T-0142",
         "rule: in-flight"
       ],
@@ -22112,7 +22126,7 @@
       "state": "Active",
       "title": "the key \u2014 `ci.factory_only_paths`, validated, read, and documented where the operator writes it",
       "type": "task",
-      "updated": "2026-09-30T06:08:30Z",
+      "updated": "2026-09-30T06:20:43Z",
       "writes": [
         "asf/env.py",
         "docs/products.example.yaml",
@@ -23931,7 +23945,9 @@
         "T-0193",
         "T-0257",
         "T-0266",
-        "T-0341"
+        "T-0341",
+        "T-0412",
+        "T-0494"
       ],
       "children": [],
       "cost": {
@@ -32820,6 +32836,10 @@
       ]
     },
     "T-0412": {
+      "after": [
+        "T-0140",
+        "T-0189"
+      ],
       "backlinks": [
         "T-0416",
         "T-0421"
@@ -32827,8 +32847,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0412",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0412",
@@ -32840,11 +32860,11 @@
       ],
       "parent": "F-0108",
       "schema_version": 1,
-      "stage_since": "2026-09-28T11:22:45Z",
-      "state": "New",
+      "stage_since": "2026-09-30T06:20:34Z",
+      "state": "Active",
       "title": "`doctor.ROWS` \u2014 the 34 rows the code can print, held to the source by `ast`",
       "type": "task",
-      "updated": "2026-09-30T00:05:44Z",
+      "updated": "2026-09-30T06:20:34Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py",
@@ -35790,6 +35810,10 @@
       ]
     },
     "T-0494": {
+      "after": [
+        "T-0073",
+        "T-0189"
+      ],
       "backlinks": [
         "T-0495",
         "T-0496"
@@ -35797,8 +35821,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0494",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0494",
@@ -35807,11 +35831,11 @@
       },
       "parent": "F-0142",
       "schema_version": 1,
-      "stage_since": "2026-09-28T16:31:24Z",
-      "state": "New",
+      "stage_since": "2026-09-30T06:20:34Z",
+      "state": "Active",
       "title": "the tick prints the pair \u2014 a start line where each step begins, the end line grown",
       "type": "task",
-      "updated": "2026-09-30T00:05:44Z",
+      "updated": "2026-09-30T06:20:34Z",
       "writes": [
         "asf/tick/tick.py",
         "tests/test_tick.py"
@@ -36180,12 +36204,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
-        "tokens_cache_read": 8150227,
-        "tokens_cache_write": 207891,
-        "tokens_input": 264,
-        "tokens_output": 54057,
-        "usd": 3.0
+        "sessions": 6,
+        "tokens_cache_read": 12461528,
+        "tokens_cache_write": 325376,
+        "tokens_input": 408,
+        "tokens_output": 77231,
+        "usd": 4.57
       },
       "decided": true,
       "evidence": [
@@ -36204,7 +36228,7 @@
       "state": "Active",
       "title": "the ladder \u2014 a Bug under an Epic, a branch that names the card, and the share left over",
       "type": "task",
-      "updated": "2026-09-29T14:43:34Z",
+      "updated": "2026-09-30T06:20:43Z",
       "writes": [
         "asf/scorecard/score.py",
         "asf/scorecard/diagnose.py",
@@ -41274,8 +41298,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0659",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0659",
@@ -41284,11 +41308,11 @@
       },
       "parent": "F-0154",
       "schema_version": 1,
-      "stage_since": "2026-09-30T05:20:19Z",
-      "state": "New",
+      "stage_since": "2026-09-30T06:20:34Z",
+      "state": "Active",
       "title": "the flaky pass asks one workflow for its own runs, over a window that moves only over what it read",
       "type": "task",
-      "updated": "2026-09-30T05:29:56Z",
+      "updated": "2026-09-30T06:20:34Z",
       "writes": [
         "asf/tick/flaky.py",
         "tests/test_flaky.py"
@@ -41321,12 +41345,15 @@
       ]
     },
     "T-0661": {
+      "after": [
+        "T-0056"
+      ],
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-09-30)",
-        "rule: planned"
+        "branch worker/T-0661",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0661",
@@ -41335,11 +41362,11 @@
       },
       "parent": "F-0154",
       "schema_version": 1,
-      "stage_since": "2026-09-30T05:20:19Z",
-      "state": "New",
+      "stage_since": "2026-09-30T06:20:34Z",
+      "state": "Active",
       "title": "a card is parsed once per version of its text, and every caller is still handed its own copy",
       "type": "task",
-      "updated": "2026-09-30T05:29:56Z",
+      "updated": "2026-09-30T06:20:34Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/frontmatter.py",
