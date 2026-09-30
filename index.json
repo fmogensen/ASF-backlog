@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T12:09:16Z",
+  "generated": "2026-09-30T12:17:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6108,12 +6108,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 165.23,
+      "spend_usd": 171.37,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-09-30T11:59:11Z"
+      "updated": "2026-09-30T12:17:24Z"
     },
     "E-0005": {
       "backlinks": [
@@ -11338,12 +11338,12 @@
       "id": "F-0140",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage": "building 0/3",
-      "stage_since": "2026-09-30T11:36:41Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-09-30T12:17:14Z",
       "state": "Active",
       "title": "The factory's own clock imports from the live dev checkout \u2014 a tick mid-update gets a torn tree; tick from a snapshot",
       "type": "feature",
-      "updated": "2026-09-30T11:36:41Z"
+      "updated": "2026-09-30T12:17:14Z"
     },
     "F-0141": {
       "backlinks": [],
@@ -11514,12 +11514,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 6938257,
-        "tokens_cache_write": 111097,
-        "tokens_input": 172,
-        "tokens_output": 51384,
-        "usd": 5.87
+        "sessions": 2,
+        "tokens_cache_read": 11516238,
+        "tokens_cache_write": 223989,
+        "tokens_input": 290,
+        "tokens_output": 104043,
+        "usd": 10.6
       },
       "decided": true,
       "evidence": [
@@ -11536,7 +11536,7 @@
       "state": "Active",
       "title": "The record pre-commit hook should rebuild and stage a stale index.json instead of refusing",
       "type": "feature",
-      "updated": "2026-09-30T12:09:16Z"
+      "updated": "2026-09-30T12:17:24Z"
     },
     "F-0147": {
       "backlinks": [],
@@ -12143,6 +12143,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0164",
         "rule: documented"
       ],
       "folder": "features",
@@ -12154,7 +12155,7 @@
       "state": "Active",
       "title": "Health publish pushes run product hooks serially (health 427 s); a slow-hook branch can never publish",
       "type": "feature",
-      "updated": "2026-09-30T10:42:15Z"
+      "updated": "2026-09-30T12:17:14Z"
     },
     "F-0165": {
       "backlinks": [],
@@ -44777,18 +44778,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 3367843,
-        "tokens_cache_write": 92615,
-        "tokens_input": 78,
-        "tokens_output": 24104,
-        "usd": 1.29
+        "sessions": 2,
+        "tokens_cache_read": 7557101,
+        "tokens_cache_write": 182059,
+        "tokens_input": 188,
+        "tokens_output": 45073,
+        "usd": 2.69
       },
       "decided": true,
       "evidence": [
-        "PR #561 OPEN",
-        "branch worker/T-0753",
-        "rule: in-flight"
+        "merge 92cfdf6 of worker/T-0753 lands T-0753 (PR #561)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0753",
@@ -44797,11 +44797,11 @@
       },
       "parent": "F-0140",
       "schema_version": 1,
-      "stage_since": "2026-09-30T11:36:41Z",
-      "state": "Active",
+      "stage_since": "2026-09-30T12:17:14Z",
+      "state": "Resolved",
       "title": "the launcher refreshes itself from the snapshot it just made",
       "type": "task",
-      "updated": "2026-09-30T11:45:55Z",
+      "updated": "2026-09-30T12:17:24Z",
       "writes": [
         "asf/snapshot.py",
         "tests/test_snapshot.py"
