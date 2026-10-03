@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03T04:14:28Z",
+  "generated": "2026-10-03T04:27:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4500,7 +4500,10 @@
         "B-0155",
         "B-0156",
         "B-0157",
-        "B-0158"
+        "B-0158",
+        "B-0159",
+        "B-0160",
+        "B-0161"
       ],
       "children": [],
       "count": 1,
@@ -4704,7 +4707,9 @@
       "updated": "2026-10-03T00:00:37Z"
     },
     "B-0155": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0156"
+      ],
       "children": [],
       "count": 1,
       "decided": false,
@@ -4717,7 +4722,7 @@
       "id": "B-0155",
       "last_filed": "2026-09-29",
       "parent": "E-0001",
-      "removed": "one card for one defect: this is B-0147's mechanism exactly, a writer landing a Feature while a Task under it is still open (asf/invariants.py:342-361, the landing transition alone), on a different features/ path; B-0147 is open and owns the fix, so closing the younger of the pair loses nothing (groom 2026-10-03)",
+      "removed": "it is not a Bug of its own to decide at a severity; it is one more occurrence of B-0147, which already owns the fix for I10 refusing a landing write while a Task under the Feature is open (asf/invariants.py:342-361) (groom 2026-10-03)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "invariant I10: features/F-0156.md",
@@ -4741,7 +4746,7 @@
       "id": "B-0156",
       "last_filed": "2026-09-29",
       "parent": "E-0001",
-      "removed": "the same I10 landing refusal as B-0147 on another features/ path; the defect keeps an owner in B-0147 and a second card buys no second fix (groom 2026-10-03)",
+      "removed": "another occurrence of B-0147, not a Bug of its own; a severity set here would be a second owner for one defect (groom 2026-10-03)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "invariant I10: features/F-0159.md",
@@ -4765,7 +4770,7 @@
       "id": "B-0157",
       "last_filed": "2026-09-29",
       "parent": "E-0001",
-      "removed": "the same I10 landing refusal as B-0147 on another features/ path; one card for one defect, and B-0147 is the one (groom 2026-10-03)",
+      "removed": "another occurrence of B-0147, not a Bug of its own; a severity set here would be a second owner for one defect (groom 2026-10-03)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "invariant I10: features/F-0157.md",
@@ -4789,7 +4794,7 @@
       "id": "B-0158",
       "last_filed": "2026-09-29",
       "parent": "E-0001",
-      "removed": "the same I10 landing refusal as B-0147 on another features/ path; seven cards for one mechanism is the duplicate-filing F-0103 should stop, not seven severities to set (groom 2026-10-03)",
+      "removed": "another occurrence of B-0147, not a Bug of its own; a severity set here would be a second owner for one defect (groom 2026-10-03)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "invariant I10: features/F-0173.md",
@@ -4813,6 +4818,7 @@
       "id": "B-0159",
       "last_filed": "2026-09-30",
       "parent": "E-0001",
+      "removed": "another occurrence of B-0147, not a Bug of its own; a severity set here would be a second owner for one defect (groom 2026-10-03)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "invariant I10: features/F-0183.md",
@@ -4836,6 +4842,7 @@
       "id": "B-0160",
       "last_filed": "2026-09-30",
       "parent": "E-0001",
+      "removed": "another occurrence of B-0147, not a Bug of its own; a severity set here would be a second owner for one defect (groom 2026-10-03)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "invariant I10: features/F-0230.md",
@@ -4859,6 +4866,7 @@
       "id": "B-0161",
       "last_filed": "2026-09-30",
       "parent": "E-0001",
+      "removed": "another occurrence of B-0147, not a Bug of its own; seven cards filed one per features/ path, each with count 1, is the filer missing that they are one event class \u2014 F-0103 ranked 81 is where that is fixed (groom 2026-10-03)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "invariant I10: features/F-0182.md",
@@ -9635,6 +9643,7 @@
       "id": "F-0094",
       "parent": "E-0002",
       "rank": 27,
+      "reshape": "cut it to the one feeder row its title asks for",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-29T23:33:52Z",
@@ -9956,7 +9965,8 @@
     },
     "F-0103": {
       "backlinks": [
-        "B-0158"
+        "B-0158",
+        "B-0161"
       ],
       "children": [
         "T-0201",
@@ -10070,7 +10080,9 @@
       "updated": "2026-09-29T23:33:52Z"
     },
     "F-0106": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0208"
+      ],
       "children": [
         "T-0641",
         "T-0642",
@@ -10097,6 +10109,7 @@
       "id": "F-0106",
       "parent": "E-0002",
       "rank": 18,
+      "reshape": "make it the one plan preflight, carrying all three checks over the same plan in the same pass",
       "schema_version": 1,
       "stage": "building 0/3",
       "stage_since": "2026-09-29T23:53:12Z",
@@ -10538,6 +10551,7 @@
       "id": "F-0117",
       "parent": "E-0004",
       "rank": 122,
+      "reshape": "cut it to the read-only half",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T09:59:38Z",
@@ -11036,6 +11050,7 @@
       "id": "F-0130",
       "parent": "E-0004",
       "rank": 110,
+      "reshape": "cut it to what the repository can actually be made to say",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T11:21:27Z",
@@ -11073,6 +11088,7 @@
       "id": "F-0131",
       "parent": "E-0002",
       "rank": 71,
+      "reshape": "cut it to the classification alone",
       "schema_version": 1,
       "stage": "building 1/4",
       "stage_since": "2026-09-30T00:30:22Z",
@@ -11146,6 +11162,7 @@
       "id": "F-0133",
       "parent": "E-0002",
       "rank": 83,
+      "reshape": "cut it to the two halves that lose a day's questions",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-29T23:22:27Z",
@@ -11849,6 +11866,7 @@
       "id": "F-0154",
       "parent": "E-0002",
       "rank": 59,
+      "reshape": "cut it to the two that F-0177's measurement points at",
       "schema_version": 1,
       "stage": "building 1/6",
       "stage_since": "2026-09-30T06:52:06Z",
@@ -12406,6 +12424,7 @@
       "id": "F-0170",
       "parent": "E-0001",
       "rank": 45,
+      "reshape": "cut it to putting the 32 on a clock",
       "schema_version": 1,
       "stage": "building 2/3",
       "stage_since": "2026-09-29T18:51:23Z",
@@ -12597,7 +12616,9 @@
       "updated": "2026-09-29T19:10:20Z"
     },
     "F-0177": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0154"
+      ],
       "children": [
         "T-0671",
         "T-0672",
@@ -12662,6 +12683,7 @@
       "id": "F-0178",
       "parent": "E-0002",
       "rank": 70,
+      "reshape": "cut it to the daily prune, which is the half that actually stops the recurring red, and file the quota monitor behind it",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T07:24:03Z",
@@ -12700,6 +12722,7 @@
       "id": "F-0179",
       "parent": "E-0002",
       "rank": 72,
+      "reshape": "cut it to the two expression forms the workflow in #849 actually uses",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T07:17:44Z",
@@ -12853,6 +12876,7 @@
       "id": "F-0184",
       "parent": "E-0002",
       "rank": 118,
+      "reshape": "cut it to discovery and measurement",
       "schema_version": 1,
       "stage": "building 5/9",
       "stage_since": "2026-09-30T13:03:06Z",
@@ -12892,6 +12916,7 @@
       "id": "F-0185",
       "parent": "E-0001",
       "rank": 117,
+      "reshape": "cut it to one connector kind end to end",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-29T17:54:45Z",
@@ -12927,7 +12952,7 @@
       "folder": "features",
       "id": "F-0186",
       "parent": "E-0001",
-      "removed": "it needs no Stories because the capability is on trunk at 7d2ee49c6: the field and its validation (asf/conventions.py:764, :491), the one docs-vs-code rule reading it (asf/harvest/lane.py:349-360, landing_class) and the trunk-move case (asf/harvest/harvest.py:538-552, docs_only_move); the card is open only because the landing never ticked it, which is F-0080's ground (groom 2026-10-03)",
+      "removed": "it is already on trunk at 7d2ee49c6 (groom 2026-10-03)",
       "schema_version": 1,
       "stage": "building 1/3",
       "stage_since": "2026-09-29T19:23:04Z",
@@ -13174,6 +13199,7 @@
       "id": "F-0193",
       "parent": "E-0003",
       "rank": 130,
+      "removed": "there is no deploying product for this gate to gate (groom 2026-10-03)",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T09:08:08Z",
@@ -13213,6 +13239,7 @@
       "id": "F-0194",
       "parent": "E-0003",
       "rank": 120,
+      "reshape": "cut it to the seam",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T09:08:08Z",
@@ -13662,6 +13689,7 @@
       "id": "F-0208",
       "parent": "E-0001",
       "rank": 92,
+      "removed": "its scope moves into F-0106's reshaped preflight, where the reserved-range check joins the Tasks-already-on-trunk and never-minted-id checks as one pass over one plan. Two cards each paying their own $10 to read the same plan file is the duplication this section keeps surfacing; F-0106 is ranked 18 against this card's 92, so the survivor is the one the factory would reach first anyway. (groom 2026-10-03)",
       "schema_version": 1,
       "stage": "building 1/4",
       "stage_since": "2026-09-29T22:38:28Z",
@@ -13899,6 +13927,7 @@
       "id": "F-0216",
       "parent": "E-0003",
       "rank": 121,
+      "reshape": "cut it to the defect its own title names",
       "schema_version": 1,
       "stage": "building 1/3",
       "stage_since": "2026-09-30T09:33:38Z",
@@ -14006,6 +14035,7 @@
       "id": "F-0219",
       "parent": "E-0004",
       "rank": 69,
+      "reshape": "cut it to the measurement first",
       "schema_version": 1,
       "stage": "building 1/5",
       "stage_since": "2026-09-30T14:09:45Z",
@@ -32703,6 +32733,11 @@
       "links": {
         "plan": "docs/plans/replans/f-0068-c564def2cd66.md"
       },
+      "merged": [
+        "T-0392",
+        "T-0393",
+        "T-0394"
+      ],
       "parent": "F-0068",
       "reshape_declined": [
         "merge T-0391+T-0392+T-0393+T-0394+T-0395+T-0396",
@@ -32720,7 +32755,11 @@
         "asf/tick/tick.py",
         "asf/tick/watch.py",
         "asf/tick/summary.py",
-        "tests/test_quota_pressure.py"
+        "tests/test_quota_pressure.py",
+        "asf/workers/wave.py",
+        "asf/tick/step_wave.py",
+        "tests/test_tick_steps.py",
+        "tests/test_metrics.py"
       ]
     },
     "T-0392": {
@@ -32747,6 +32786,7 @@
         "plan": "docs/plans/replans/f-0068-c564def2cd66.md"
       },
       "parent": "F-0068",
+      "removed": "merged into T-0391 (groom 2026-10-03)",
       "reshape_declined": [
         "merge T-0391+T-0392+T-0393+T-0394+T-0395+T-0396"
       ],
@@ -32787,6 +32827,7 @@
         "plan": "docs/plans/replans/f-0068-c564def2cd66.md"
       },
       "parent": "F-0068",
+      "removed": "merged into T-0391 (groom 2026-10-03)",
       "reshape_declined": [
         "merge T-0391+T-0392+T-0393+T-0394+T-0395+T-0396",
         "split T-0393 asf/metrics | tests"
@@ -32826,6 +32867,7 @@
         "plan": "docs/plans/replans/f-0068-c564def2cd66.md"
       },
       "parent": "F-0068",
+      "removed": "merged into T-0391 (groom 2026-10-03)",
       "reshape_declined": [
         "merge T-0391+T-0392+T-0393+T-0394+T-0395+T-0396"
       ],
@@ -36889,6 +36931,9 @@
         "plan": "docs/plans/f-0148.md"
       },
       "parent": "F-0148",
+      "reshape_declined": [
+        "split T-0503 asf | asf/scorecard | asf/views | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-28T18:44:47Z",
       "state": "New",
@@ -37960,6 +38005,9 @@
       "links": {
         "plan": "docs/plans/f-0235.md"
       },
+      "merged": [
+        "T-0533"
+      ],
       "parent": "F-0235",
       "schema_version": 1,
       "stage_since": "2026-09-29T15:14:42Z",
@@ -37972,14 +38020,19 @@
         "asf/workers/health.py",
         "asf/workers/lifecycle.py",
         "tests/test_report.py",
-        "tests/test_lifecycle.py"
+        "tests/test_lifecycle.py",
+        "asf/tick/widen_footprint.py",
+        "tests/test_widen.py",
+        "tests/test_scorecard.py"
       ]
     },
     "T-0533": {
       "after": [
         "T-0532"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0532"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -37992,6 +38045,7 @@
         "plan": "docs/plans/f-0235.md"
       },
       "parent": "F-0235",
+      "removed": "merged into T-0532 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T15:14:42Z",
       "state": "New",
@@ -38009,7 +38063,8 @@
     },
     "T-0534": {
       "backlinks": [
-        "T-0535"
+        "T-0535",
+        "T-0536"
       ],
       "children": [],
       "decided": true,
@@ -38022,6 +38077,10 @@
       "links": {
         "plan": "docs/plans/f-0162.md"
       },
+      "merged": [
+        "T-0535",
+        "T-0536"
+      ],
       "parent": "F-0162",
       "schema_version": 1,
       "stage_since": "2026-09-29T15:30:17Z",
@@ -38031,7 +38090,9 @@
       "updated": "2026-10-03T00:00:37Z",
       "writes": [
         "asf/upgrade.py",
-        "tests/test_install.py"
+        "tests/test_install.py",
+        "docs/guide/upgrading.md",
+        "tests/test_readme.py"
       ]
     },
     "T-0535": {
@@ -38039,6 +38100,7 @@
         "T-0534"
       ],
       "backlinks": [
+        "T-0534",
         "T-0536"
       ],
       "children": [],
@@ -38053,6 +38115,7 @@
         "plan": "docs/plans/f-0162.md"
       },
       "parent": "F-0162",
+      "removed": "merged into T-0534 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T15:30:17Z",
       "state": "New",
@@ -38068,7 +38131,9 @@
       "after": [
         "T-0535"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0534"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -38081,6 +38146,7 @@
         "plan": "docs/plans/f-0162.md"
       },
       "parent": "F-0162",
+      "removed": "merged into T-0534 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T15:30:17Z",
       "state": "New",
@@ -38108,6 +38174,9 @@
       "links": {
         "plan": "docs/plans/f-0163.md"
       },
+      "merged": [
+        "T-0538"
+      ],
       "parent": "F-0163",
       "schema_version": 1,
       "stage_since": "2026-09-29T15:30:18Z",
@@ -38119,14 +38188,18 @@
         "asf/record/new.py",
         "asf/record/setfield.py",
         "asf/cli.py",
-        "tests/test_backlog.py"
+        "tests/test_backlog.py",
+        "asf/feeder/tiers.py",
+        "tests/test_s1_gate.py"
       ]
     },
     "T-0538": {
       "after": [
         "T-0537"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0537"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -38139,6 +38212,7 @@
         "plan": "docs/plans/f-0163.md"
       },
       "parent": "F-0163",
+      "removed": "merged into T-0537 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T15:30:18Z",
       "state": "New",
@@ -38599,7 +38673,16 @@
       "links": {
         "plan": "docs/plans/f-0185.md"
       },
+      "merged": [
+        "T-0552",
+        "T-0554",
+        "T-0555",
+        "T-0556"
+      ],
       "parent": "F-0185",
+      "reshape_declined": [
+        "split T-0551 . | asf | asf/connectors | docs | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T17:54:45Z",
       "state": "New",
@@ -38613,7 +38696,20 @@
         "pyproject.toml",
         "docs/products.example.yaml",
         "tests/test_connectors.py",
-        "tests/test_env.py"
+        "tests/test_env.py",
+        "asf/connect.py",
+        "asf/cli.py",
+        "asf/surface.py",
+        "tests/test_connect.py",
+        "tests/test_surface.py",
+        "asf/approvals.py",
+        "asf/workers/spawn.py",
+        "asf/workers/runtime.py",
+        "tests/test_worker_env.py",
+        "tests/test_redact.py",
+        "asf/views/status.py",
+        "asf/credentials.py",
+        "tests/test_credentials.py"
       ]
     },
     "T-0552": {
@@ -38621,6 +38717,7 @@
         "T-0551"
       ],
       "backlinks": [
+        "T-0551",
         "T-0553"
       ],
       "children": [],
@@ -38635,6 +38732,10 @@
         "plan": "docs/plans/f-0185.md"
       },
       "parent": "F-0185",
+      "removed": "merged into T-0551 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0552 asf | asf/connectors | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T17:54:45Z",
       "state": "New",
@@ -38683,7 +38784,9 @@
       "after": [
         "T-0551"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0551"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -38696,6 +38799,10 @@
         "plan": "docs/plans/f-0185.md"
       },
       "parent": "F-0185",
+      "removed": "merged into T-0551 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0554 asf | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T17:54:45Z",
       "state": "New",
@@ -38711,7 +38818,9 @@
       "after": [
         "T-0551"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0551"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -38724,6 +38833,7 @@
         "plan": "docs/plans/f-0185.md"
       },
       "parent": "F-0185",
+      "removed": "merged into T-0551 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T17:54:45Z",
       "state": "New",
@@ -38743,7 +38853,9 @@
       "after": [
         "T-0551"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0551"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -38756,6 +38868,7 @@
         "plan": "docs/plans/f-0185.md"
       },
       "parent": "F-0185",
+      "removed": "merged into T-0551 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T17:54:45Z",
       "state": "New",
@@ -39091,6 +39204,9 @@
         "plan": "docs/plans/f-0187.md"
       },
       "parent": "F-0187",
+      "reshape_declined": [
+        "split T-0565 docs | docs/guide | tests | tests/e2e"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T18:07:12Z",
       "state": "New",
@@ -39428,6 +39544,9 @@
       "links": {
         "plan": "docs/plans/f-0189.md"
       },
+      "merged": [
+        "T-0576"
+      ],
       "parent": "F-0189",
       "schema_version": 1,
       "stage_since": "2026-09-29T18:57:56Z",
@@ -39445,7 +39564,9 @@
       "after": [
         "T-0575"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0575"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -39458,6 +39579,7 @@
         "plan": "docs/plans/f-0189.md"
       },
       "parent": "F-0189",
+      "removed": "merged into T-0575 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T18:57:56Z",
       "state": "New",
@@ -39606,6 +39728,9 @@
         "plan": "docs/plans/f-0190.md"
       },
       "parent": "F-0190",
+      "reshape_declined": [
+        "split T-0580 asf | docs | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T19:41:29Z",
       "state": "New",
@@ -39664,6 +39789,9 @@
         "plan": "docs/plans/f-0200.md"
       },
       "parent": "F-0200",
+      "reshape_declined": [
+        "split T-0582 asf/groom | asf/views | docs/guide | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T20:36:25Z",
       "state": "New",
@@ -39763,6 +39891,9 @@
       "links": {
         "plan": "docs/plans/f-0203.md"
       },
+      "merged": [
+        "T-0586"
+      ],
       "parent": "F-0203",
       "schema_version": 1,
       "stage_since": "2026-09-29T20:36:25Z",
@@ -39779,7 +39910,9 @@
       "after": [
         "T-0585"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0585"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -39792,6 +39925,7 @@
         "plan": "docs/plans/f-0203.md"
       },
       "parent": "F-0203",
+      "removed": "merged into T-0585 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T20:36:25Z",
       "state": "New",
@@ -40028,6 +40162,8 @@
     "T-0594": {
       "backlinks": [
         "T-0595",
+        "T-0596",
+        "T-0597",
         "T-0598"
       ],
       "children": [],
@@ -40041,6 +40177,11 @@
       "links": {
         "plan": "docs/plans/f-0207.md"
       },
+      "merged": [
+        "T-0595",
+        "T-0596",
+        "T-0597"
+      ],
       "parent": "F-0207",
       "schema_version": 1,
       "stage_since": "2026-09-29T20:54:54Z",
@@ -40050,7 +40191,10 @@
       "updated": "2026-10-03T00:00:37Z",
       "writes": [
         "asf/upgrade.py",
-        "tests/test_install.py"
+        "tests/test_install.py",
+        "asf/tick/tick.py",
+        "asf/tick/step_harvest.py",
+        "tests/test_tick_steps.py"
       ]
     },
     "T-0595": {
@@ -40058,6 +40202,7 @@
         "T-0594"
       ],
       "backlinks": [
+        "T-0594",
         "T-0596"
       ],
       "children": [],
@@ -40072,6 +40217,7 @@
         "plan": "docs/plans/f-0207.md"
       },
       "parent": "F-0207",
+      "removed": "merged into T-0594 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T20:54:54Z",
       "state": "New",
@@ -40090,6 +40236,7 @@
         "T-0595"
       ],
       "backlinks": [
+        "T-0594",
         "T-0597"
       ],
       "children": [],
@@ -40104,6 +40251,7 @@
         "plan": "docs/plans/f-0207.md"
       },
       "parent": "F-0207",
+      "removed": "merged into T-0594 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T20:54:54Z",
       "state": "New",
@@ -40121,7 +40269,9 @@
       "after": [
         "T-0596"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0594"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -40134,6 +40284,7 @@
         "plan": "docs/plans/f-0207.md"
       },
       "parent": "F-0207",
+      "removed": "merged into T-0594 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T20:54:54Z",
       "state": "New",
@@ -40389,7 +40540,9 @@
     },
     "T-0605": {
       "backlinks": [
-        "T-0606"
+        "T-0606",
+        "T-0607",
+        "T-0608"
       ],
       "children": [],
       "decided": true,
@@ -40402,6 +40555,11 @@
       "links": {
         "plan": "docs/plans/f-0223.md"
       },
+      "merged": [
+        "T-0606",
+        "T-0607",
+        "T-0608"
+      ],
       "parent": "F-0223",
       "schema_version": 1,
       "stage_since": "2026-09-29T21:42:29Z",
@@ -40416,7 +40574,12 @@
         "asf/improve/measure.py",
         "asf/scorecard/diagnose.py",
         "tests/test_dead_run_reason.py",
-        "tests/test_scorecard.py"
+        "tests/test_scorecard.py",
+        "tests/test_health_publish_steps.py",
+        "tests/test_dead_run_load.py",
+        "tests/test_lifecycle.py",
+        "asf/tick/step_health.py",
+        "tests/test_continuation.py"
       ]
     },
     "T-0606": {
@@ -40424,6 +40587,7 @@
         "T-0605"
       ],
       "backlinks": [
+        "T-0605",
         "T-0607"
       ],
       "children": [],
@@ -40438,6 +40602,7 @@
         "plan": "docs/plans/f-0223.md"
       },
       "parent": "F-0223",
+      "removed": "merged into T-0605 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T21:42:29Z",
       "state": "New",
@@ -40454,6 +40619,7 @@
         "T-0606"
       ],
       "backlinks": [
+        "T-0605",
         "T-0608"
       ],
       "children": [],
@@ -40468,6 +40634,7 @@
         "plan": "docs/plans/f-0223.md"
       },
       "parent": "F-0223",
+      "removed": "merged into T-0605 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T21:42:29Z",
       "state": "New",
@@ -40485,7 +40652,9 @@
       "after": [
         "T-0607"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0605"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -40498,6 +40667,7 @@
         "plan": "docs/plans/f-0223.md"
       },
       "parent": "F-0223",
+      "removed": "merged into T-0605 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T21:42:29Z",
       "state": "New",
@@ -40555,6 +40725,9 @@
       "links": {
         "plan": "docs/plans/f-0224.md"
       },
+      "merged": [
+        "T-0611"
+      ],
       "parent": "F-0224",
       "schema_version": 1,
       "stage_since": "2026-09-29T22:20:34Z",
@@ -40566,7 +40739,9 @@
         "asf/workers/lifecycle.py",
         "asf/feeder/rows.py",
         "tests/test_lifecycle.py",
-        "tests/test_feeder.py"
+        "tests/test_feeder.py",
+        "asf/invariants.py",
+        "tests/test_invariants.py"
       ]
     },
     "T-0611": {
@@ -40574,7 +40749,9 @@
         "T-0609",
         "T-0610"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0610"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -40587,6 +40764,7 @@
         "plan": "docs/plans/f-0224.md"
       },
       "parent": "F-0224",
+      "removed": "merged into T-0610 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T22:20:34Z",
       "state": "New",
@@ -40654,7 +40832,13 @@
       "links": {
         "plan": "docs/plans/f-0231.md"
       },
+      "merged": [
+        "T-0614"
+      ],
       "parent": "F-0231",
+      "reshape_declined": [
+        "split T-0613 asf | asf/workers | docs/guide | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T22:38:28Z",
       "state": "New",
@@ -40667,14 +40851,18 @@
         "asf/surface.py",
         "tests/test_surface.py",
         "tests/test_correction_drop.py",
-        "docs/guide/operating.md"
+        "docs/guide/operating.md",
+        "asf/workers/health.py",
+        "asf/tick/step_health.py"
       ]
     },
     "T-0614": {
       "after": [
         "T-0613"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0613"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -40687,6 +40875,10 @@
         "plan": "docs/plans/f-0231.md"
       },
       "parent": "F-0231",
+      "removed": "merged into T-0613 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0614 asf/tick | asf/workers | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T22:38:28Z",
       "state": "New",
@@ -41059,6 +41251,9 @@
         "plan": "docs/plans/f-0233.md"
       },
       "parent": "F-0233",
+      "reshape_declined": [
+        "split T-0626 asf | asf/evidence | docs | docs/guide | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T23:03:39Z",
       "state": "New",
@@ -41215,7 +41410,9 @@
     },
     "T-0631": {
       "backlinks": [
-        "T-0632"
+        "T-0632",
+        "T-0634",
+        "T-0635"
       ],
       "children": [],
       "decided": true,
@@ -41228,7 +41425,15 @@
       "links": {
         "plan": "docs/plans/f-0105.md"
       },
+      "merged": [
+        "T-0632",
+        "T-0634",
+        "T-0635"
+      ],
       "parent": "F-0105",
+      "reshape_declined": [
+        "split T-0631 .github/workflows | asf | asf/harvest | docs | docs/guide | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T23:22:28Z",
       "state": "New",
@@ -41242,7 +41447,13 @@
         ".github/workflows/tests.yml",
         "docs/products.example.yaml",
         "docs/guide/product-config.md",
-        "tests/test_ci_gate.py"
+        "tests/test_ci_gate.py",
+        "tools/run_tests.py",
+        "asf/harvest/harvest.py",
+        "tests/test_harvest.py",
+        "tests/test_run_tests.py",
+        "asf/doctor.py",
+        "tests/test_doctor.py"
       ]
     },
     "T-0632": {
@@ -41250,6 +41461,7 @@
         "T-0631"
       ],
       "backlinks": [
+        "T-0631",
         "T-0633",
         "T-0634"
       ],
@@ -41265,6 +41477,10 @@
         "plan": "docs/plans/f-0105.md"
       },
       "parent": "F-0105",
+      "removed": "merged into T-0631 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0632 asf | asf/harvest | tests | tools"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T23:22:28Z",
       "state": "New",
@@ -41314,6 +41530,7 @@
         "T-0632"
       ],
       "backlinks": [
+        "T-0631",
         "T-0635"
       ],
       "children": [],
@@ -41328,6 +41545,7 @@
         "plan": "docs/plans/f-0105.md"
       },
       "parent": "F-0105",
+      "removed": "merged into T-0631 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T23:22:28Z",
       "state": "New",
@@ -41343,7 +41561,9 @@
       "after": [
         "T-0634"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0631"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -41356,6 +41576,7 @@
         "plan": "docs/plans/f-0105.md"
       },
       "parent": "F-0105",
+      "removed": "merged into T-0631 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T23:22:28Z",
       "state": "New",
@@ -41564,6 +41785,9 @@
         "plan": "docs/plans/f-0106.md"
       },
       "parent": "F-0106",
+      "reshape_declined": [
+        "split T-0642 asf/briefs | asf/feeder | asf/record | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T23:33:53Z",
       "state": "New",
@@ -41663,6 +41887,10 @@
         "plan": "docs/plans/f-0131.md"
       },
       "parent": "F-0131",
+      "reshape_declined": [
+        "merge T-0645+T-0646",
+        "split T-0645 asf | asf/metrics | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T23:53:12Z",
       "state": "New",
@@ -41680,7 +41908,9 @@
       "after": [
         "T-0645"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0645"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -41693,6 +41923,10 @@
         "plan": "docs/plans/f-0131.md"
       },
       "parent": "F-0131",
+      "reshape_declined": [
+        "merge T-0645+T-0646",
+        "split T-0646 asf | asf/metrics | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-29T23:53:12Z",
       "state": "New",
@@ -41821,7 +42055,8 @@
     },
     "T-0651": {
       "backlinks": [
-        "T-0652"
+        "T-0652",
+        "T-0653"
       ],
       "children": [],
       "decided": true,
@@ -41834,7 +42069,14 @@
       "links": {
         "plan": "docs/plans/f-0137.md"
       },
+      "merged": [
+        "T-0652",
+        "T-0653"
+      ],
       "parent": "F-0137",
+      "reshape_declined": [
+        "split T-0651 asf | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T00:47:51Z",
       "state": "New",
@@ -41844,7 +42086,12 @@
       "writes": [
         "asf/pause.py",
         "asf/cli.py",
-        "tests/test_pause.py"
+        "tests/test_pause.py",
+        "asf/tick/step_wave.py",
+        "asf/tick/step_health.py",
+        "asf/tick/dry_run.py",
+        "asf/views/status.py",
+        "asf/doctor.py"
       ]
     },
     "T-0652": {
@@ -41852,6 +42099,7 @@
         "T-0651"
       ],
       "backlinks": [
+        "T-0651",
         "T-0653"
       ],
       "children": [],
@@ -41866,6 +42114,10 @@
         "plan": "docs/plans/f-0137.md"
       },
       "parent": "F-0137",
+      "removed": "merged into T-0651 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0652 asf/tick | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T00:47:51Z",
       "state": "New",
@@ -41882,7 +42134,9 @@
       "after": [
         "T-0652"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0651"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -41895,6 +42149,10 @@
         "plan": "docs/plans/f-0137.md"
       },
       "parent": "F-0137",
+      "removed": "merged into T-0651 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0653 asf | asf/tick | asf/views | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T00:47:51Z",
       "state": "New",
@@ -41958,6 +42216,9 @@
         "plan": "docs/plans/f-0138.md"
       },
       "parent": "F-0138",
+      "reshape_declined": [
+        "split T-0655 asf/workers | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T05:12:29Z",
       "state": "New",
@@ -41986,6 +42247,9 @@
         "plan": "docs/plans/f-0138.md"
       },
       "parent": "F-0138",
+      "reshape_declined": [
+        "split T-0656 asf/workers | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T05:12:29Z",
       "state": "New",
@@ -42013,7 +42277,13 @@
       "links": {
         "plan": "docs/plans/f-0141.md"
       },
+      "merged": [
+        "T-0658"
+      ],
       "parent": "F-0141",
+      "reshape_declined": [
+        "split T-0657 asf | asf/harvest | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T05:12:30Z",
       "state": "New",
@@ -42025,14 +42295,18 @@
         "asf/conventions.py",
         "asf/customer_content.py",
         "asf/harvest/lane.py",
-        "tests/test_debug_toggles.py"
+        "tests/test_debug_toggles.py",
+        "asf/doctor.py",
+        "tests/test_doctor.py"
       ]
     },
     "T-0658": {
       "after": [
         "T-0657"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0657"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -42045,6 +42319,7 @@
         "plan": "docs/plans/f-0141.md"
       },
       "parent": "F-0141",
+      "removed": "merged into T-0657 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T05:12:30Z",
       "state": "New",
@@ -42239,7 +42514,8 @@
     },
     "T-0665": {
       "backlinks": [
-        "T-0666"
+        "T-0666",
+        "T-0667"
       ],
       "children": [],
       "decided": true,
@@ -42253,6 +42529,9 @@
         "plan": "docs/plans/f-0179.md"
       },
       "parent": "F-0179",
+      "reshape_declined": [
+        "merge T-0665+T-0666+T-0667"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T07:17:45Z",
       "state": "New",
@@ -42270,6 +42549,7 @@
         "T-0665"
       ],
       "backlinks": [
+        "T-0665",
         "T-0667"
       ],
       "children": [],
@@ -42284,6 +42564,9 @@
         "plan": "docs/plans/f-0179.md"
       },
       "parent": "F-0179",
+      "reshape_declined": [
+        "merge T-0665+T-0666+T-0667"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T07:17:45Z",
       "state": "New",
@@ -42299,7 +42582,10 @@
       "after": [
         "T-0666"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0665",
+        "T-0666"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -42312,6 +42598,9 @@
         "plan": "docs/plans/f-0179.md"
       },
       "parent": "F-0179",
+      "reshape_declined": [
+        "merge T-0665+T-0666+T-0667"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T07:17:45Z",
       "state": "New",
@@ -42340,6 +42629,10 @@
       "links": {
         "plan": "docs/plans/f-0178.md"
       },
+      "merged": [
+        "T-0669",
+        "T-0670"
+      ],
       "parent": "F-0178",
       "schema_version": 1,
       "stage_since": "2026-09-30T07:24:04Z",
@@ -42358,14 +42651,22 @@
         "docs/products.example.yaml",
         "docs/guide/ci-runner-pool.md",
         "docs/guide/product-config.md",
-        "docs/guide/troubleshooting.md"
+        "docs/guide/troubleshooting.md",
+        "asf/tick/step_health.py",
+        "asf/views/status.py",
+        "tests/test_tick_steps.py",
+        "tests/test_ci_queue.py",
+        "asf/doctor.py",
+        "tests/test_doctor.py"
       ]
     },
     "T-0669": {
       "after": [
         "T-0668"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0668"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -42378,6 +42679,10 @@
         "plan": "docs/plans/f-0178.md"
       },
       "parent": "F-0178",
+      "removed": "merged into T-0668 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0669 asf | asf/tick | asf/views | docs/guide | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T07:24:04Z",
       "state": "New",
@@ -42398,7 +42703,9 @@
       "after": [
         "T-0668"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0668"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -42411,6 +42718,7 @@
         "plan": "docs/plans/f-0178.md"
       },
       "parent": "F-0178",
+      "removed": "merged into T-0668 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T07:24:04Z",
       "state": "New",
@@ -42425,7 +42733,8 @@
     },
     "T-0671": {
       "backlinks": [
-        "T-0672"
+        "T-0672",
+        "T-0673"
       ],
       "children": [],
       "decided": true,
@@ -42438,6 +42747,10 @@
       "links": {
         "plan": "docs/plans/f-0177.md"
       },
+      "merged": [
+        "T-0672",
+        "T-0673"
+      ],
       "parent": "F-0177",
       "schema_version": 1,
       "stage_since": "2026-09-30T07:41:52Z",
@@ -42459,6 +42772,7 @@
         "T-0671"
       ],
       "backlinks": [
+        "T-0671",
         "T-0673"
       ],
       "children": [],
@@ -42473,6 +42787,7 @@
         "plan": "docs/plans/f-0177.md"
       },
       "parent": "F-0177",
+      "removed": "merged into T-0671 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T07:41:52Z",
       "state": "New",
@@ -42490,7 +42805,9 @@
       "after": [
         "T-0672"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0671"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -42503,6 +42820,7 @@
         "plan": "docs/plans/f-0177.md"
       },
       "parent": "F-0177",
+      "removed": "merged into T-0671 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T07:41:52Z",
       "state": "New",
@@ -43002,7 +43320,8 @@
     },
     "T-0688": {
       "backlinks": [
-        "T-0689"
+        "T-0689",
+        "T-0690"
       ],
       "children": [],
       "decided": true,
@@ -43015,7 +43334,14 @@
       "links": {
         "plan": "docs/plans/f-0214.md"
       },
+      "merged": [
+        "T-0689",
+        "T-0690"
+      ],
       "parent": "F-0214",
+      "reshape_declined": [
+        "split T-0688 asf | asf/tick | asf/workers | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T07:41:54Z",
       "state": "New",
@@ -43028,7 +43354,9 @@
         "asf/tick/step_health.py",
         "tests/test_cache_prune.py",
         "tests/test_tick_steps.py",
-        "tests/test_conventions.py"
+        "tests/test_conventions.py",
+        "asf/doctor.py",
+        "asf/views/status.py"
       ]
     },
     "T-0689": {
@@ -43036,6 +43364,7 @@
         "T-0688"
       ],
       "backlinks": [
+        "T-0688",
         "T-0690"
       ],
       "children": [],
@@ -43050,6 +43379,10 @@
         "plan": "docs/plans/f-0214.md"
       },
       "parent": "F-0214",
+      "removed": "merged into T-0688 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0689 asf | asf/workers | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T07:41:54Z",
       "state": "New",
@@ -43066,7 +43399,9 @@
       "after": [
         "T-0689"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0688"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -43079,6 +43414,10 @@
         "plan": "docs/plans/f-0214.md"
       },
       "parent": "F-0214",
+      "removed": "merged into T-0688 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0690 asf/views | asf/workers | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T07:41:54Z",
       "state": "New",
@@ -43258,6 +43597,11 @@
       "links": {
         "plan": "docs/plans/f-0153.md"
       },
+      "merged": [
+        "T-0696",
+        "T-0697",
+        "T-0698"
+      ],
       "parent": "F-0153",
       "schema_version": 1,
       "stage_since": "2026-09-30T08:42:20Z",
@@ -43267,7 +43611,9 @@
       "updated": "2026-10-03T00:00:37Z",
       "writes": [
         "asf/harvest/lane.py",
-        "tests/test_lane.py"
+        "tests/test_lane.py",
+        "asf/views/status.py",
+        "asf/doctor.py"
       ]
     },
     "T-0696": {
@@ -43275,6 +43621,7 @@
         "T-0695"
       ],
       "backlinks": [
+        "T-0695",
         "T-0697",
         "T-0698"
       ],
@@ -43290,6 +43637,7 @@
         "plan": "docs/plans/f-0153.md"
       },
       "parent": "F-0153",
+      "removed": "merged into T-0695 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T08:42:20Z",
       "state": "New",
@@ -43307,6 +43655,7 @@
         "T-0696"
       ],
       "backlinks": [
+        "T-0695",
         "T-0698"
       ],
       "children": [],
@@ -43321,6 +43670,7 @@
         "plan": "docs/plans/f-0153.md"
       },
       "parent": "F-0153",
+      "removed": "merged into T-0695 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T08:42:20Z",
       "state": "New",
@@ -43338,7 +43688,9 @@
         "T-0696",
         "T-0697"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0695"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -43351,6 +43703,7 @@
         "plan": "docs/plans/f-0153.md"
       },
       "parent": "F-0153",
+      "removed": "merged into T-0695 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T08:42:20Z",
       "state": "New",
@@ -43420,7 +43773,13 @@
       "links": {
         "plan": "docs/plans/f-0216.md"
       },
+      "merged": [
+        "T-0701"
+      ],
       "parent": "F-0216",
+      "reshape_declined": [
+        "split T-0700 asf/tick | asf/workers | docs | docs/guide | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T08:48:56Z",
       "state": "New",
@@ -43434,14 +43793,18 @@
         "asf/tick/step_wave.py",
         "tests/test_cloud.py",
         "docs/config.example.yaml",
-        "docs/guide/product-config.md"
+        "docs/guide/product-config.md",
+        "tests/test_tick_steps.py",
+        "tests/test_host_pressure.py"
       ]
     },
     "T-0701": {
       "after": [
         "T-0700"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0700"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -43454,6 +43817,7 @@
         "plan": "docs/plans/f-0216.md"
       },
       "parent": "F-0216",
+      "removed": "merged into T-0700 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T08:48:56Z",
       "state": "New",
@@ -43471,7 +43835,11 @@
     },
     "T-0702": {
       "backlinks": [
-        "T-0703"
+        "T-0703",
+        "T-0704",
+        "T-0705",
+        "T-0706",
+        "T-0707"
       ],
       "children": [],
       "decided": true,
@@ -43485,6 +43853,10 @@
         "plan": "docs/plans/f-0193.md"
       },
       "parent": "F-0193",
+      "reshape_declined": [
+        "merge T-0702+T-0703+T-0704+T-0705+T-0706+T-0707",
+        "split T-0702 asf | docs | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:11Z",
       "state": "New",
@@ -43505,7 +43877,11 @@
         "T-0702"
       ],
       "backlinks": [
-        "T-0704"
+        "T-0702",
+        "T-0704",
+        "T-0705",
+        "T-0706",
+        "T-0707"
       ],
       "children": [],
       "decided": true,
@@ -43519,6 +43895,10 @@
         "plan": "docs/plans/f-0193.md"
       },
       "parent": "F-0193",
+      "reshape_declined": [
+        "merge T-0702+T-0703+T-0704+T-0705+T-0706+T-0707",
+        "split T-0703 asf | asf/briefs | asf/metrics | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:11Z",
       "state": "New",
@@ -43538,7 +43918,11 @@
         "T-0703"
       ],
       "backlinks": [
-        "T-0705"
+        "T-0702",
+        "T-0703",
+        "T-0705",
+        "T-0706",
+        "T-0707"
       ],
       "children": [],
       "decided": true,
@@ -43552,6 +43936,10 @@
         "plan": "docs/plans/f-0193.md"
       },
       "parent": "F-0193",
+      "reshape_declined": [
+        "merge T-0702+T-0703+T-0704+T-0705+T-0706+T-0707",
+        "split T-0704 asf | asf/briefs | asf/feeder | asf/harvest | asf/workers | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:11Z",
       "state": "New",
@@ -43573,7 +43961,11 @@
         "T-0704"
       ],
       "backlinks": [
-        "T-0706"
+        "T-0702",
+        "T-0703",
+        "T-0704",
+        "T-0706",
+        "T-0707"
       ],
       "children": [],
       "decided": true,
@@ -43587,6 +43979,10 @@
         "plan": "docs/plans/f-0193.md"
       },
       "parent": "F-0193",
+      "reshape_declined": [
+        "merge T-0702+T-0703+T-0704+T-0705+T-0706+T-0707",
+        "split T-0705 asf | asf/harvest | asf/views | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:11Z",
       "state": "New",
@@ -43605,6 +44001,10 @@
         "T-0705"
       ],
       "backlinks": [
+        "T-0702",
+        "T-0703",
+        "T-0704",
+        "T-0705",
         "T-0707"
       ],
       "children": [],
@@ -43619,6 +44019,10 @@
         "plan": "docs/plans/f-0193.md"
       },
       "parent": "F-0193",
+      "reshape_declined": [
+        "merge T-0702+T-0703+T-0704+T-0705+T-0706+T-0707",
+        "split T-0706 asf | asf/harvest | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:11Z",
       "state": "New",
@@ -43635,7 +44039,13 @@
       "after": [
         "T-0706"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0702",
+        "T-0703",
+        "T-0704",
+        "T-0705",
+        "T-0706"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -43648,6 +44058,10 @@
         "plan": "docs/plans/f-0193.md"
       },
       "parent": "F-0193",
+      "reshape_declined": [
+        "merge T-0702+T-0703+T-0704+T-0705+T-0706+T-0707",
+        "split T-0707 asf/views | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:11Z",
       "state": "New",
@@ -43661,7 +44075,11 @@
     },
     "T-0708": {
       "backlinks": [
-        "T-0709"
+        "T-0709",
+        "T-0710",
+        "T-0711",
+        "T-0712",
+        "T-0713"
       ],
       "children": [],
       "decided": true,
@@ -43675,6 +44093,10 @@
         "plan": "docs/plans/f-0194.md"
       },
       "parent": "F-0194",
+      "reshape_declined": [
+        "merge T-0708+T-0709+T-0710+T-0711+T-0712+T-0713",
+        "split T-0708 asf | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:13Z",
       "state": "New",
@@ -43692,9 +44114,11 @@
         "T-0708"
       ],
       "backlinks": [
+        "T-0708",
         "T-0710",
         "T-0711",
-        "T-0712"
+        "T-0712",
+        "T-0713"
       ],
       "children": [],
       "decided": true,
@@ -43708,6 +44132,9 @@
         "plan": "docs/plans/f-0194.md"
       },
       "parent": "F-0194",
+      "reshape_declined": [
+        "merge T-0708+T-0709+T-0710+T-0711+T-0712+T-0713"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:13Z",
       "state": "New",
@@ -43723,7 +44150,13 @@
       "after": [
         "T-0709"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0708",
+        "T-0709",
+        "T-0711",
+        "T-0712",
+        "T-0713"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -43736,6 +44169,10 @@
         "plan": "docs/plans/f-0194.md"
       },
       "parent": "F-0194",
+      "reshape_declined": [
+        "merge T-0708+T-0709+T-0710+T-0711+T-0712+T-0713",
+        "split T-0710 asf | asf/harvest | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:13Z",
       "state": "New",
@@ -43754,6 +44191,10 @@
         "T-0709"
       ],
       "backlinks": [
+        "T-0708",
+        "T-0709",
+        "T-0710",
+        "T-0712",
         "T-0713"
       ],
       "children": [],
@@ -43768,6 +44209,10 @@
         "plan": "docs/plans/f-0194.md"
       },
       "parent": "F-0194",
+      "reshape_declined": [
+        "merge T-0708+T-0709+T-0710+T-0711+T-0712+T-0713",
+        "split T-0711 asf | asf/evidence | asf/harvest | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:13Z",
       "state": "New",
@@ -43787,6 +44232,10 @@
         "T-0709"
       ],
       "backlinks": [
+        "T-0708",
+        "T-0709",
+        "T-0710",
+        "T-0711",
         "T-0713"
       ],
       "children": [],
@@ -43801,6 +44250,9 @@
         "plan": "docs/plans/f-0194.md"
       },
       "parent": "F-0194",
+      "reshape_declined": [
+        "merge T-0708+T-0709+T-0710+T-0711+T-0712+T-0713"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:13Z",
       "state": "New",
@@ -43821,7 +44273,13 @@
         "T-0711",
         "T-0712"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0708",
+        "T-0709",
+        "T-0710",
+        "T-0711",
+        "T-0712"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -43834,6 +44292,10 @@
         "plan": "docs/plans/f-0194.md"
       },
       "parent": "F-0194",
+      "reshape_declined": [
+        "merge T-0708+T-0709+T-0710+T-0711+T-0712+T-0713",
+        "split T-0713 asf | docs | docs/guide | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:08:13Z",
       "state": "New",
@@ -43894,7 +44356,9 @@
         "T-0714"
       ],
       "backlinks": [
-        "T-0716"
+        "T-0716",
+        "T-0717",
+        "T-0718"
       ],
       "children": [],
       "decided": true,
@@ -43908,6 +44372,9 @@
         "plan": "docs/plans/f-0219.md"
       },
       "parent": "F-0219",
+      "reshape_declined": [
+        "merge T-0715+T-0716+T-0717+T-0718"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:40:11Z",
       "state": "New",
@@ -43927,7 +44394,9 @@
         "T-0715"
       ],
       "backlinks": [
-        "T-0717"
+        "T-0715",
+        "T-0717",
+        "T-0718"
       ],
       "children": [],
       "decided": true,
@@ -43941,6 +44410,9 @@
         "plan": "docs/plans/f-0219.md"
       },
       "parent": "F-0219",
+      "reshape_declined": [
+        "merge T-0715+T-0716+T-0717+T-0718"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:40:11Z",
       "state": "New",
@@ -43957,6 +44429,8 @@
         "T-0716"
       ],
       "backlinks": [
+        "T-0715",
+        "T-0716",
         "T-0718"
       ],
       "children": [],
@@ -43971,6 +44445,9 @@
         "plan": "docs/plans/f-0219.md"
       },
       "parent": "F-0219",
+      "reshape_declined": [
+        "merge T-0715+T-0716+T-0717+T-0718"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:40:11Z",
       "state": "New",
@@ -43986,7 +44463,11 @@
       "after": [
         "T-0717"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0715",
+        "T-0716",
+        "T-0717"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -43999,6 +44480,9 @@
         "plan": "docs/plans/f-0219.md"
       },
       "parent": "F-0219",
+      "reshape_declined": [
+        "merge T-0715+T-0716+T-0717+T-0718"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:40:11Z",
       "state": "New",
@@ -44085,7 +44569,8 @@
         "T-0719"
       ],
       "backlinks": [
-        "T-0722"
+        "T-0722",
+        "T-0723"
       ],
       "children": [],
       "decided": true,
@@ -44098,6 +44583,10 @@
       "links": {
         "plan": "docs/plans/f-0115.md"
       },
+      "merged": [
+        "T-0722",
+        "T-0723"
+      ],
       "parent": "F-0115",
       "schema_version": 1,
       "stage_since": "2026-09-30T09:53:07Z",
@@ -44107,7 +44596,16 @@
       "updated": "2026-10-03T00:00:37Z",
       "writes": [
         "asf/workers/worker_perms.py",
-        "tests/test_worker_perms.py"
+        "tests/test_worker_perms.py",
+        "asf/workers/spawn.py",
+        "tests/test_workers.py",
+        "asf/doctor.py",
+        "asf/init.py",
+        "asf/surface.py",
+        "tests/test_surface.py",
+        "tests/test_doctor.py",
+        "docs/config.example.yaml",
+        "CHANGELOG.md"
       ]
     },
     "T-0722": {
@@ -44115,6 +44613,7 @@
         "T-0721"
       ],
       "backlinks": [
+        "T-0721",
         "T-0723"
       ],
       "children": [],
@@ -44129,6 +44628,7 @@
         "plan": "docs/plans/f-0115.md"
       },
       "parent": "F-0115",
+      "removed": "merged into T-0721 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T09:53:07Z",
       "state": "New",
@@ -44146,7 +44646,9 @@
       "after": [
         "T-0722"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0721"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -44159,6 +44661,10 @@
         "plan": "docs/plans/f-0115.md"
       },
       "parent": "F-0115",
+      "removed": "merged into T-0721 (groom 2026-10-03)",
+      "reshape_declined": [
+        "split T-0723 . | asf | asf/workers | docs | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:53:07Z",
       "state": "New",
@@ -44180,7 +44686,8 @@
     "T-0724": {
       "backlinks": [
         "T-0725",
-        "T-0726"
+        "T-0726",
+        "T-0727"
       ],
       "children": [],
       "decided": true,
@@ -44193,6 +44700,11 @@
       "links": {
         "plan": "docs/plans/f-0116.md"
       },
+      "merged": [
+        "T-0725",
+        "T-0726",
+        "T-0727"
+      ],
       "parent": "F-0116",
       "schema_version": 1,
       "stage_since": "2026-09-30T09:53:07Z",
@@ -44207,14 +44719,22 @@
         "asf/env.py",
         "docs/guide/operating.md",
         "tests/test_session_identity.py",
-        "tests/test_worker_isolation.py"
+        "tests/test_worker_isolation.py",
+        "asf/workers/actions.py",
+        "asf/cli.py",
+        "asf/surface.py",
+        "asf/doctor.py",
+        "docs/config.example.yaml",
+        "tests/test_surface.py"
       ]
     },
     "T-0725": {
       "after": [
         "T-0724"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0724"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -44227,6 +44747,7 @@
         "plan": "docs/plans/f-0116.md"
       },
       "parent": "F-0116",
+      "removed": "merged into T-0724 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T09:53:07Z",
       "state": "New",
@@ -44242,7 +44763,9 @@
       "after": [
         "T-0724"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0724"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -44255,6 +44778,7 @@
         "plan": "docs/plans/f-0116.md"
       },
       "parent": "F-0116",
+      "removed": "merged into T-0724 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T09:53:07Z",
       "state": "New",
@@ -44272,7 +44796,9 @@
       ]
     },
     "T-0727": {
-      "backlinks": [],
+      "backlinks": [
+        "T-0724"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -44285,6 +44811,7 @@
         "plan": "docs/plans/f-0116.md"
       },
       "parent": "F-0116",
+      "removed": "merged into T-0724 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T09:53:07Z",
       "state": "New",
@@ -44297,7 +44824,11 @@
     },
     "T-0728": {
       "backlinks": [
-        "T-0729"
+        "T-0729",
+        "T-0730",
+        "T-0731",
+        "T-0732",
+        "T-0733"
       ],
       "children": [],
       "decided": true,
@@ -44311,6 +44842,10 @@
         "plan": "docs/plans/f-0117.md"
       },
       "parent": "F-0117",
+      "reshape_declined": [
+        "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
+        "split T-0728 asf | asf/workers | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
       "state": "New",
@@ -44329,8 +44864,11 @@
         "T-0728"
       ],
       "backlinks": [
+        "T-0728",
         "T-0730",
-        "T-0731"
+        "T-0731",
+        "T-0732",
+        "T-0733"
       ],
       "children": [],
       "decided": true,
@@ -44344,6 +44882,10 @@
         "plan": "docs/plans/f-0117.md"
       },
       "parent": "F-0117",
+      "reshape_declined": [
+        "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
+        "split T-0729 asf | asf/center | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
       "state": "New",
@@ -44364,6 +44906,10 @@
         "T-0729"
       ],
       "backlinks": [
+        "T-0728",
+        "T-0729",
+        "T-0731",
+        "T-0732",
         "T-0733"
       ],
       "children": [],
@@ -44378,6 +44924,10 @@
         "plan": "docs/plans/f-0117.md"
       },
       "parent": "F-0117",
+      "reshape_declined": [
+        "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
+        "split T-0730 asf | asf/center | asf/tick | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
       "state": "New",
@@ -44396,6 +44946,9 @@
         "T-0729"
       ],
       "backlinks": [
+        "T-0728",
+        "T-0729",
+        "T-0730",
         "T-0732",
         "T-0733"
       ],
@@ -44411,6 +44964,10 @@
         "plan": "docs/plans/f-0117.md"
       },
       "parent": "F-0117",
+      "reshape_declined": [
+        "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
+        "split T-0731 asf | asf/center | docs | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
       "state": "New",
@@ -44431,7 +44988,13 @@
       "after": [
         "T-0731"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0728",
+        "T-0729",
+        "T-0730",
+        "T-0731",
+        "T-0733"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -44444,6 +45007,10 @@
         "plan": "docs/plans/f-0117.md"
       },
       "parent": "F-0117",
+      "reshape_declined": [
+        "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
+        "split T-0732 .claude-plugin | asf | asf/views | docs | docs/guide | plugin/.claude-plugin | plugin/hooks | plugin/skills | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
       "state": "New",
@@ -44469,7 +45036,13 @@
         "T-0730",
         "T-0731"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0728",
+        "T-0729",
+        "T-0730",
+        "T-0731",
+        "T-0732"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -44482,6 +45055,9 @@
         "plan": "docs/plans/f-0117.md"
       },
       "parent": "F-0117",
+      "reshape_declined": [
+        "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
       "state": "New",
@@ -44510,6 +45086,9 @@
       "links": {
         "plan": "docs/plans/f-0118.md"
       },
+      "merged": [
+        "T-0735"
+      ],
       "parent": "F-0118",
       "schema_version": 1,
       "stage_since": "2026-09-30T10:07:16Z",
@@ -44520,14 +45099,18 @@
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
-        "tests/test_tick.py"
+        "tests/test_tick.py",
+        "asf/cli.py",
+        "tests/test_views.py"
       ]
     },
     "T-0735": {
       "after": [
         "T-0734"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0734"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -44540,6 +45123,7 @@
         "plan": "docs/plans/f-0118.md"
       },
       "parent": "F-0118",
+      "removed": "merged into T-0734 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T10:07:16Z",
       "state": "New",
@@ -44680,6 +45264,9 @@
       "links": {
         "plan": "docs/plans/f-0132.md"
       },
+      "merged": [
+        "T-0742"
+      ],
       "parent": "F-0132",
       "schema_version": 1,
       "stage_since": "2026-09-30T11:00:10Z",
@@ -44691,7 +45278,10 @@
         "asf/record/core.py",
         "asf/record/check.py",
         "tests/test_backlog.py",
-        "tests/test_check_staged.py"
+        "tests/test_check_staged.py",
+        "asf/record/index.py",
+        "asf/record/match.py",
+        "tests/test_match.py"
       ]
     },
     "T-0741": {
@@ -44726,7 +45316,9 @@
       "after": [
         "T-0740"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0740"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -44739,6 +45331,7 @@
         "plan": "docs/plans/f-0132.md"
       },
       "parent": "F-0132",
+      "removed": "merged into T-0740 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T11:00:10Z",
       "state": "New",
@@ -44860,7 +45453,10 @@
         "T-0745"
       ],
       "backlinks": [
-        "T-0747"
+        "T-0747",
+        "T-0748",
+        "T-0749",
+        "T-0750"
       ],
       "children": [],
       "decided": true,
@@ -44874,6 +45470,10 @@
         "plan": "docs/plans/f-0130.md"
       },
       "parent": "F-0130",
+      "reshape_declined": [
+        "merge T-0746+T-0747+T-0748+T-0749+T-0750",
+        "split T-0746 asf/backfill | asf/evidence | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T11:21:27Z",
       "state": "New",
@@ -44894,7 +45494,10 @@
         "T-0746"
       ],
       "backlinks": [
-        "T-0748"
+        "T-0746",
+        "T-0748",
+        "T-0749",
+        "T-0750"
       ],
       "children": [],
       "decided": true,
@@ -44908,6 +45511,10 @@
         "plan": "docs/plans/f-0130.md"
       },
       "parent": "F-0130",
+      "reshape_declined": [
+        "merge T-0746+T-0747+T-0748+T-0749+T-0750",
+        "split T-0747 asf/backfill | asf/record | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T11:21:27Z",
       "state": "New",
@@ -44926,7 +45533,10 @@
         "T-0747"
       ],
       "backlinks": [
-        "T-0749"
+        "T-0746",
+        "T-0747",
+        "T-0749",
+        "T-0750"
       ],
       "children": [],
       "decided": true,
@@ -44940,6 +45550,9 @@
         "plan": "docs/plans/f-0130.md"
       },
       "parent": "F-0130",
+      "reshape_declined": [
+        "merge T-0746+T-0747+T-0748+T-0749+T-0750"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T11:21:27Z",
       "state": "New",
@@ -44956,6 +45569,9 @@
         "T-0748"
       ],
       "backlinks": [
+        "T-0746",
+        "T-0747",
+        "T-0748",
         "T-0750"
       ],
       "children": [],
@@ -44970,6 +45586,9 @@
         "plan": "docs/plans/f-0130.md"
       },
       "parent": "F-0130",
+      "reshape_declined": [
+        "merge T-0746+T-0747+T-0748+T-0749+T-0750"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T11:21:27Z",
       "state": "New",
@@ -44985,7 +45604,12 @@
       "after": [
         "T-0749"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0746",
+        "T-0747",
+        "T-0748",
+        "T-0749"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -44998,6 +45622,10 @@
         "plan": "docs/plans/f-0130.md"
       },
       "parent": "F-0130",
+      "reshape_declined": [
+        "merge T-0746+T-0747+T-0748+T-0749+T-0750",
+        "split T-0750 asf | asf/backfill | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T11:21:27Z",
       "state": "New",
@@ -45195,6 +45823,10 @@
       "links": {
         "plan": "docs/plans/f-0164.md"
       },
+      "merged": [
+        "T-0757",
+        "T-0758"
+      ],
       "parent": "F-0164",
       "schema_version": 1,
       "stage_since": "2026-09-30T12:24:19Z",
@@ -45204,7 +45836,13 @@
       "updated": "2026-10-03T00:00:37Z",
       "writes": [
         "asf/workers/health.py",
-        "tests/test_health_publish_steps.py"
+        "tests/test_health_publish_steps.py",
+        "asf/gitpush.py",
+        "asf/workers/lifecycle.py",
+        "tests/test_gitpush.py",
+        "tests/test_lifecycle.py",
+        "asf/conventions.py",
+        "tests/test_conventions.py"
       ]
     },
     "T-0757": {
@@ -45212,6 +45850,7 @@
         "T-0756"
       ],
       "backlinks": [
+        "T-0756",
         "T-0758"
       ],
       "children": [],
@@ -45226,6 +45865,7 @@
         "plan": "docs/plans/f-0164.md"
       },
       "parent": "F-0164",
+      "removed": "merged into T-0756 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T12:24:19Z",
       "state": "New",
@@ -45246,7 +45886,9 @@
         "T-0756",
         "T-0757"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0756"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -45259,6 +45901,7 @@
         "plan": "docs/plans/f-0164.md"
       },
       "parent": "F-0164",
+      "removed": "merged into T-0756 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T12:24:19Z",
       "state": "New",
@@ -45345,6 +45988,9 @@
         "plan": "docs/plans/f-0172.md"
       },
       "parent": "F-0172",
+      "reshape_declined": [
+        "split T-0761 asf/views | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T13:40:52Z",
       "state": "New",
@@ -45402,6 +46048,9 @@
       "links": {
         "plan": "docs/plans/f-0165.md"
       },
+      "merged": [
+        "T-0764"
+      ],
       "parent": "F-0165",
       "schema_version": 1,
       "stage_since": "2026-09-30T13:48:06Z",
@@ -45419,14 +46068,18 @@
         "asf/workers/health.py",
         "asf/workers/lifecycle.py",
         "tests/test_gitpush.py",
-        "tests/test_lane.py"
+        "tests/test_lane.py",
+        "tests/test_lifecycle.py",
+        "tests/test_workers.py"
       ]
     },
     "T-0764": {
       "after": [
         "T-0763"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0763"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -45439,6 +46092,7 @@
         "plan": "docs/plans/f-0165.md"
       },
       "parent": "F-0165",
+      "removed": "merged into T-0763 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T13:48:06Z",
       "state": "New",
@@ -45507,6 +46161,9 @@
       "links": {
         "plan": "docs/plans/f-0191.md"
       },
+      "merged": [
+        "T-0767"
+      ],
       "parent": "F-0191",
       "schema_version": 1,
       "stage_since": "2026-09-30T14:30:18Z",
@@ -45516,14 +46173,17 @@
       "updated": "2026-10-03T00:00:37Z",
       "writes": [
         "asf/harvest/lane.py",
-        "tests/test_lane.py"
+        "tests/test_lane.py",
+        "asf/tick/summary.py"
       ]
     },
     "T-0767": {
       "after": [
         "T-0766"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0766"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -45536,6 +46196,7 @@
         "plan": "docs/plans/f-0191.md"
       },
       "parent": "F-0191",
+      "removed": "merged into T-0766 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T14:30:18Z",
       "state": "New",
@@ -45563,6 +46224,9 @@
       "links": {
         "plan": "docs/plans/f-0226.md"
       },
+      "merged": [
+        "T-0769"
+      ],
       "parent": "F-0226",
       "schema_version": 1,
       "stage_since": "2026-09-30T15:11:14Z",
@@ -45576,14 +46240,19 @@
         "tests/test_feeder.py",
         "tests/test_invariants.py",
         "tests/test_ingest.py",
-        "tests/test_land_spec.py"
+        "tests/test_land_spec.py",
+        "asf/tick/land_spec.py",
+        "asf/harvest/lane.py",
+        "tests/test_lane.py"
       ]
     },
     "T-0769": {
       "after": [
         "T-0768"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0768"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -45596,6 +46265,7 @@
         "plan": "docs/plans/f-0226.md"
       },
       "parent": "F-0226",
+      "removed": "merged into T-0768 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T15:11:14Z",
       "state": "New",
@@ -45815,6 +46485,9 @@
       "links": {
         "plan": "docs/plans/f-0217.md"
       },
+      "merged": [
+        "T-0777"
+      ],
       "parent": "F-0217",
       "schema_version": 1,
       "stage_since": "2026-09-30T15:17:52Z",
@@ -45826,14 +46499,17 @@
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
         "tests/test_lifecycle.py",
-        "tests/test_workers.py"
+        "tests/test_workers.py",
+        "asf/tick/step_health.py"
       ]
     },
     "T-0777": {
       "after": [
         "T-0776"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0776"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -45846,6 +46522,7 @@
         "plan": "docs/plans/f-0217.md"
       },
       "parent": "F-0217",
+      "removed": "merged into T-0776 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-30T15:17:52Z",
       "state": "New",
@@ -45872,6 +46549,9 @@
         "plan": "docs/plans/f-0221.md"
       },
       "parent": "F-0221",
+      "reshape_declined": [
+        "split T-0778 asf/views | tests | tests/fixtures"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T15:17:53Z",
       "state": "New",
