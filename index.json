@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03T07:00:23Z",
+  "generated": "2026-10-03T07:12:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -10605,6 +10605,8 @@
       "parent": "E-0004",
       "rank": 123,
       "reshape": "cut to Tasks 1 and 2",
+      "reshape_applied": "bc84bd0fa59e",
+      "reshape_applied_at": "2026-10-03T07:12:10Z",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T10:07:15Z",
@@ -11220,7 +11222,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/2 tasks Closed",
+        "0/1 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -11236,7 +11238,7 @@
       "state": "Active",
       "title": "Intake silently ignores an explicit type: line \u2014 an operator's 'type: bug' card is minted as a Feature",
       "type": "feature",
-      "updated": "2026-10-03T06:48:03Z"
+      "updated": "2026-10-03T07:12:08Z"
     },
     "F-0135": {
       "backlinks": [],
@@ -12274,6 +12276,8 @@
       "parent": "E-0004",
       "rank": 56,
       "reshape": "cut to Task 3",
+      "reshape_applied": "cdcfd081dba8",
+      "reshape_applied_at": "2026-10-03T07:12:10Z",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T12:24:19Z",
@@ -12521,7 +12525,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/2 tasks Closed",
+        "0/1 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -12537,7 +12541,7 @@
       "state": "Active",
       "title": "A removed or moved Feature still shows a derived stage (plan-approved) in index and tables",
       "type": "feature",
-      "updated": "2026-10-03T06:40:17Z"
+      "updated": "2026-10-03T07:12:08Z"
     },
     "F-0173": {
       "backlinks": [
@@ -45288,6 +45292,7 @@
       ]
     },
     "T-0734": {
+      "after": [],
       "backlinks": [
         "T-0735"
       ],
@@ -45300,7 +45305,7 @@
       "folder": "tasks",
       "id": "T-0734",
       "links": {
-        "plan": "docs/plans/f-0118.md"
+        "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
       "merged": [
         "T-0735"
@@ -45309,7 +45314,7 @@
       "schema_version": 1,
       "stage_since": "2026-09-30T10:07:16Z",
       "state": "New",
-      "title": "the tick leaves a snapshot behind it, atomically",
+      "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
       "updated": "2026-10-03T00:00:37Z",
       "writes": [
@@ -45368,6 +45373,7 @@
         "plan": "docs/plans/f-0118.md"
       },
       "parent": "F-0118",
+      "removed": "replan F-0118: the decision cuts to Tasks 1 and 2; this is the plan's Task 3, the install that writes the statusLine setting",
       "schema_version": 1,
       "stage_since": "2026-09-30T10:07:16Z",
       "state": "New",
@@ -45397,6 +45403,7 @@
         "plan": "docs/plans/f-0118.md"
       },
       "parent": "F-0118",
+      "removed": "replan F-0118: the decision cuts to Tasks 1 and 2; this is the plan's Task 4, the doctor row",
       "schema_version": 1,
       "stage_since": "2026-09-30T10:07:16Z",
       "state": "New",
@@ -46041,6 +46048,7 @@
       ]
     },
     "T-0756": {
+      "after": [],
       "backlinks": [
         "T-0757",
         "T-0758"
@@ -46054,7 +46062,7 @@
       "folder": "tasks",
       "id": "T-0756",
       "links": {
-        "plan": "docs/plans/f-0164.md"
+        "plan": "docs/plans/replans/f-0164-cdcfd081dba8.md"
       },
       "merged": [
         "T-0757",
@@ -46064,18 +46072,17 @@
       "schema_version": 1,
       "stage_since": "2026-09-30T12:24:19Z",
       "state": "New",
-      "title": "the health pass says what its publishes cost",
+      "stories": [],
+      "title": "the factory publishes only a branch it could have minted",
       "type": "task",
       "updated": "2026-10-03T00:00:37Z",
       "writes": [
-        "asf/workers/health.py",
-        "tests/test_health_publish_steps.py",
-        "asf/gitpush.py",
-        "asf/workers/lifecycle.py",
-        "tests/test_gitpush.py",
-        "tests/test_lifecycle.py",
         "asf/conventions.py",
-        "tests/test_conventions.py"
+        "asf/workers/lifecycle.py",
+        "asf/workers/health.py",
+        "tests/test_conventions.py",
+        "tests/test_lifecycle.py",
+        "tests/test_health_publish_steps.py"
       ]
     },
     "T-0757": {
