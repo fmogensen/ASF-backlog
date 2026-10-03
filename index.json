@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03T07:36:42Z",
+  "generated": "2026-10-03T07:43:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6124,12 +6124,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 360.73,
+      "spend_usd": 361.24,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-10-03T07:36:38Z"
+      "updated": "2026-10-03T07:43:11Z"
     },
     "E-0005": {
       "backlinks": [
@@ -10501,7 +10501,8 @@
         "T-0724",
         "T-0725",
         "T-0726",
-        "T-0727"
+        "T-0727",
+        "T-0793"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -10525,6 +10526,8 @@
       "parent": "E-0004",
       "rank": 114,
       "reshape": "cut to Tasks 1 and 3",
+      "reshape_applied": "8266efca4547",
+      "reshape_applied_at": "2026-10-03T07:43:02Z",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T09:53:06Z",
@@ -44896,10 +44899,12 @@
       ]
     },
     "T-0724": {
+      "after": [],
       "backlinks": [
         "T-0725",
         "T-0726",
-        "T-0727"
+        "T-0727",
+        "T-0793"
       ],
       "children": [],
       "decided": true,
@@ -44910,7 +44915,7 @@
       "folder": "tasks",
       "id": "T-0724",
       "links": {
-        "plan": "docs/plans/f-0116.md"
+        "plan": "docs/plans/replans/f-0116-8266efca4547.md"
       },
       "merged": [
         "T-0725",
@@ -44921,6 +44926,7 @@
       "schema_version": 1,
       "stage_since": "2026-09-30T09:53:07Z",
       "state": "New",
+      "stories": [],
       "title": "the session commits as itself \u2014 `asf/identity.py`, the `GIT_CONFIG_*` channel that beats every `.gitconfig` on the box, the session home rewritten as the agent, and the per-account override refused when malformed",
       "type": "task",
       "updated": "2026-10-03T00:00:37Z",
@@ -44932,12 +44938,10 @@
         "docs/guide/operating.md",
         "tests/test_session_identity.py",
         "tests/test_worker_isolation.py",
-        "asf/workers/actions.py",
-        "asf/cli.py",
-        "asf/surface.py",
-        "asf/doctor.py",
-        "docs/config.example.yaml",
-        "tests/test_surface.py"
+        "asf/hermetic.py",
+        "tests/__init__.py",
+        "tests/test_00_home.py",
+        "tests/test_hermetic.py"
       ]
     },
     "T-0725": {
@@ -46564,12 +46568,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "tokens_cache_read": 5363456,
-        "tokens_cache_write": 153804,
-        "tokens_input": 196,
-        "tokens_output": 41198,
-        "usd": 2.1
+        "sessions": 4,
+        "tokens_cache_read": 6350704,
+        "tokens_cache_write": 198084,
+        "tokens_input": 238,
+        "tokens_output": 55311,
+        "usd": 2.62
       },
       "decided": true,
       "evidence": [
@@ -46588,7 +46592,7 @@
       "state": "Active",
       "title": "the retirement rule gets the first test it has ever had",
       "type": "task",
-      "updated": "2026-09-30T15:57:59Z",
+      "updated": "2026-10-03T07:43:11Z",
       "writes": [
         "tests/test_retired_derived.py"
       ]
@@ -47309,6 +47313,35 @@
       "writes": [
         "asf/ci_gate.py",
         "tests/test_ci_gate.py"
+      ]
+    },
+    "T-0793": {
+      "after": [
+        "T-0724"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0793",
+      "links": {
+        "plan": "docs/plans/replans/f-0116-8266efca4547.md"
+      },
+      "parent": "F-0116",
+      "schema_version": 1,
+      "stage_since": "2026-10-03T07:43:02Z",
+      "state": "New",
+      "title": "the check \u2014 read-only, no fetch, the product's own prefixes, the last 24 hours, one line per offending commit that never repeats the name it found, exit 1, and the doctor row that proves it ran",
+      "type": "task",
+      "updated": "2026-10-03T07:43:02Z",
+      "writes": [
+        "asf/identity.py",
+        "asf/cli.py",
+        "asf/surface.py",
+        "asf/doctor.py",
+        "docs/config.example.yaml",
+        "tests/test_session_identity.py",
+        "tests/test_surface.py"
       ]
     }
   },
