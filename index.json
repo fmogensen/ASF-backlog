@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03T06:20:03Z",
+  "generated": "2026-10-03T06:26:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6126,12 +6126,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 319.12,
+      "spend_usd": 321.38,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-10-03T05:13:13Z"
+      "updated": "2026-10-03T06:26:38Z"
     },
     "E-0005": {
       "backlinks": [
@@ -10027,8 +10027,8 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed",
-        "rule: documented"
+        "2/2 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0104",
@@ -10038,12 +10038,12 @@
       "reshape_applied": "a9784c4e4b2c",
       "reshape_applied_at": "2026-10-03T06:19:49Z",
       "schema_version": 1,
-      "stage": "building 2/3",
-      "stage_since": "2026-09-30T00:41:43Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-03T06:26:26Z",
+      "state": "Closed",
       "title": "Products tick on a pinned live install; `asf upgrade` moves it to the merged head",
       "type": "feature",
-      "updated": "2026-10-03T06:06:17Z"
+      "updated": "2026-10-03T06:26:26Z"
     },
     "F-0105": {
       "backlinks": [
@@ -11609,12 +11609,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 11516238,
-        "tokens_cache_write": 223989,
-        "tokens_input": 290,
-        "tokens_output": 104043,
-        "usd": 10.6
+        "sessions": 3,
+        "tokens_cache_read": 13358987,
+        "tokens_cache_write": 293008,
+        "tokens_input": 352,
+        "tokens_output": 129647,
+        "usd": 12.85
       },
       "decided": true,
       "evidence": [
@@ -11634,7 +11634,7 @@
       "state": "Active",
       "title": "The record pre-commit hook should rebuild and stage a stale index.json instead of refusing",
       "type": "feature",
-      "updated": "2026-09-30T12:48:41Z"
+      "updated": "2026-10-03T06:26:38Z"
     },
     "F-0147": {
       "backlinks": [],
@@ -12663,7 +12663,8 @@
       "children": [
         "T-0671",
         "T-0672",
-        "T-0673"
+        "T-0673",
+        "T-0788"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -12687,6 +12688,8 @@
       "parent": "E-0002",
       "rank": 58,
       "reshape": "cut to Tasks 1 and 2",
+      "reshape_applied": "bc84bd0fa59e",
+      "reshape_applied_at": "2026-10-03T06:26:28Z",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T07:41:52Z",
@@ -13841,7 +13844,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/3 tasks Closed",
+        "1/2 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -13852,12 +13855,12 @@
       "reshape_applied": "cdcfd081dba8",
       "reshape_applied_at": "2026-10-03T06:19:49Z",
       "schema_version": 1,
-      "stage": "building 1/3",
-      "stage_since": "2026-09-30T08:36:05Z",
+      "stage": "building 1/2",
+      "stage_since": "2026-10-03T06:26:26Z",
       "state": "Active",
       "title": "Session model per class within a kind (e.g. S2 fix-bug reviews on the light model)",
       "type": "feature",
-      "updated": "2026-10-03T06:06:17Z"
+      "updated": "2026-10-03T06:26:26Z"
     },
     "F-0212": {
       "backlinks": [],
@@ -13942,6 +13945,8 @@
       "parent": "E-0002",
       "rank": 67,
       "reshape": "cut to Task 1",
+      "reshape_applied": "a9784c4e4b2c",
+      "reshape_applied_at": "2026-10-03T06:26:28Z",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-09-30T07:41:52Z",
@@ -41509,8 +41514,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-03)",
-        "rule: planned"
+        "F-0104 Closed (commit 44f5667)",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0630",
@@ -41520,11 +41525,11 @@
       "parent": "F-0104",
       "removed": "replan F-0104: cut to Task 1 \u2014 the upgrade half is out of the Feature's scope; nothing of it had landed, so nothing is reverted",
       "schema_version": 1,
-      "stage_since": "2026-09-29T23:16:18Z",
-      "state": "New",
+      "stage_since": "2026-10-03T06:26:26Z",
+      "state": "Closed",
       "title": "`asf upgrade` reinstalls the venvs the clocks name, and the sha a rollback needs is recorded and printed",
       "type": "task",
-      "updated": "2026-10-03T00:00:37Z",
+      "updated": "2026-10-03T06:26:26Z",
       "writes": [
         "asf/upgrade.py",
         "docs/guide/upgrading.md",
@@ -42890,9 +42895,11 @@
       ]
     },
     "T-0671": {
+      "after": [],
       "backlinks": [
         "T-0672",
-        "T-0673"
+        "T-0673",
+        "T-0788"
       ],
       "children": [],
       "decided": true,
@@ -42903,7 +42910,7 @@
       "folder": "tasks",
       "id": "T-0671",
       "links": {
-        "plan": "docs/plans/f-0177.md"
+        "plan": "docs/plans/replans/f-0177-bc84bd0fa59e.md"
       },
       "merged": [
         "T-0672",
@@ -42913,6 +42920,7 @@
       "schema_version": 1,
       "stage_since": "2026-09-30T07:41:52Z",
       "state": "New",
+      "stories": [],
       "title": "a read the pass already made costs no second process, and anything that writes empties the cache",
       "type": "task",
       "updated": "2026-10-03T00:00:37Z",
@@ -43476,6 +43484,7 @@
       ]
     },
     "T-0688": {
+      "after": [],
       "backlinks": [
         "T-0689",
         "T-0690"
@@ -43489,7 +43498,7 @@
       "folder": "tasks",
       "id": "T-0688",
       "links": {
-        "plan": "docs/plans/f-0214.md"
+        "plan": "docs/plans/replans/f-0214-a9784c4e4b2c.md"
       },
       "merged": [
         "T-0689",
@@ -43503,6 +43512,7 @@
       "schema_version": 1,
       "stage_since": "2026-09-30T07:41:54Z",
       "state": "New",
+      "stories": [],
       "title": "the health step prunes the shared build cache \u2014 the module, the conventions block, the wrapper",
       "type": "task",
       "updated": "2026-10-03T00:00:37Z",
@@ -43512,9 +43522,7 @@
         "asf/tick/step_health.py",
         "tests/test_cache_prune.py",
         "tests/test_tick_steps.py",
-        "tests/test_conventions.py",
-        "asf/doctor.py",
-        "asf/views/status.py"
+        "tests/test_conventions.py"
       ]
     },
     "T-0689": {
@@ -47105,6 +47113,32 @@
         "asf/credentials.py",
         "tests/test_connectors.py",
         "tests/test_credentials.py"
+      ]
+    },
+    "T-0788": {
+      "after": [
+        "T-0671"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0788",
+      "links": {
+        "plan": "docs/plans/replans/f-0177-bc84bd0fa59e.md"
+      },
+      "parent": "F-0177",
+      "schema_version": 1,
+      "stage_since": "2026-10-03T06:26:27Z",
+      "state": "New",
+      "title": "the reads go out eight at a time, and the pass does not depend on it",
+      "type": "task",
+      "updated": "2026-10-03T06:26:27Z",
+      "writes": [
+        "asf/harvest/harvest.py",
+        "asf/harvest/lane.py",
+        "tests/test_harvest.py",
+        "tests/test_lane.py"
       ]
     }
   },
