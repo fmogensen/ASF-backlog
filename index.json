@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03T05:26:36Z",
+  "generated": "2026-10-03T05:33:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5981,12 +5981,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2439.09,
+      "spend_usd": 2446.0,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-03T05:26:06Z"
+      "updated": "2026-10-03T05:32:47Z"
     },
     "E-0002": {
       "backlinks": [
@@ -10552,7 +10552,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/6 tasks Closed",
+        "0/5 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -10568,7 +10568,7 @@
       "state": "Active",
       "title": "Command center: follow every product's factory live and talk to each product's orchestrator; each product keeps its own controller",
       "type": "feature",
-      "updated": "2026-10-03T05:13:13Z"
+      "updated": "2026-10-03T05:32:37Z"
     },
     "F-0118": {
       "backlinks": [],
@@ -11056,7 +11056,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/6 tasks Closed",
+        "0/5 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -11072,7 +11072,7 @@
       "state": "Active",
       "title": "backfill: reconcile a partly-built product's history into the record (asf backfill)",
       "type": "feature",
-      "updated": "2026-10-03T05:13:13Z"
+      "updated": "2026-10-03T05:32:37Z"
     },
     "F-0131": {
       "backlinks": [],
@@ -12751,7 +12751,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/3 tasks Closed",
+        "0/2 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -12767,7 +12767,7 @@
       "state": "Active",
       "title": "ci_pool runs-on reader can't resolve fromJSON(format()) + event ternary (botseon #849)",
       "type": "feature",
-      "updated": "2026-10-03T04:53:07Z"
+      "updated": "2026-10-03T05:32:37Z"
     },
     "F-0180": {
       "backlinks": [],
@@ -14654,12 +14654,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 8370283,
-        "tokens_cache_write": 242591,
-        "tokens_input": 118,
-        "tokens_output": 139946,
-        "usd": 10.11
+        "sessions": 2,
+        "tokens_cache_read": 16808111,
+        "tokens_cache_write": 366301,
+        "tokens_input": 326,
+        "tokens_output": 198379,
+        "usd": 17.03
       },
       "decided": true,
       "evidence": [
@@ -14676,7 +14676,7 @@
       "state": "New",
       "title": "19 PRs sit open with no update for 3 days",
       "type": "feature",
-      "updated": "2026-10-03T05:25:54Z"
+      "updated": "2026-10-03T05:32:47Z"
     },
     "R-0001": {
       "backlinks": [
@@ -34711,6 +34711,9 @@
         "T-0440"
       ],
       "parent": "F-0113",
+      "reshape_declined": [
+        "split T-0438 asf/feeder | asf/tick | tests | tests/fixtures"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-28T13:21:48Z",
       "state": "New",
@@ -41178,6 +41181,9 @@
       "links": {
         "plan": "docs/plans/f-0232.md"
       },
+      "merged": [
+        "T-0622"
+      ],
       "parent": "F-0232",
       "schema_version": 1,
       "stage_since": "2026-09-29T23:03:39Z",
@@ -41189,14 +41195,20 @@
         "asf/record/check.py",
         "asf/briefs/build.py",
         "tests/test_check_staged.py",
-        "tests/test_briefs.py"
+        "tests/test_briefs.py",
+        "asf/briefs/templates/plan.md",
+        "asf/briefs/templates/spec-plan.md",
+        "tests/fixtures/briefs/golden/plan.md",
+        "tests/fixtures/briefs/golden/spec-plan.md"
       ]
     },
     "T-0622": {
       "after": [
         "T-0621"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0621"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -41209,6 +41221,7 @@
         "plan": "docs/plans/f-0232.md"
       },
       "parent": "F-0232",
+      "removed": "merged into T-0621 (groom 2026-10-03)",
       "schema_version": 1,
       "stage_since": "2026-09-29T23:03:39Z",
       "state": "New",
@@ -42254,7 +42267,8 @@
     },
     "T-0654": {
       "backlinks": [
-        "T-0655"
+        "T-0655",
+        "T-0656"
       ],
       "children": [],
       "decided": true,
@@ -42267,7 +42281,14 @@
       "links": {
         "plan": "docs/plans/f-0138.md"
       },
+      "merged": [
+        "T-0655",
+        "T-0656"
+      ],
       "parent": "F-0138",
+      "reshape_declined": [
+        "split T-0654 asf | asf/workers | docs | tests"
+      ],
       "schema_version": 1,
       "stage_since": "2026-09-30T05:12:29Z",
       "state": "New",
@@ -42288,6 +42309,7 @@
         "T-0654"
       ],
       "backlinks": [
+        "T-0654",
         "T-0656"
       ],
       "children": [],
@@ -42302,6 +42324,7 @@
         "plan": "docs/plans/f-0138.md"
       },
       "parent": "F-0138",
+      "removed": "merged into T-0654 (groom 2026-10-03)",
       "reshape_declined": [
         "split T-0655 asf/workers | tests"
       ],
@@ -42320,7 +42343,9 @@
       "after": [
         "T-0655"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0654"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -42333,6 +42358,7 @@
         "plan": "docs/plans/f-0138.md"
       },
       "parent": "F-0138",
+      "removed": "merged into T-0654 (groom 2026-10-03)",
       "reshape_declined": [
         "split T-0656 asf/workers | tests"
       ],
@@ -44962,7 +44988,8 @@
       "parent": "F-0117",
       "reshape_declined": [
         "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
-        "split T-0728 asf | asf/workers | tests"
+        "split T-0728 asf | asf/workers | tests",
+        "merge T-0728+T-0729+T-0730+T-0732+T-0733"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
@@ -45003,7 +45030,8 @@
       "parent": "F-0117",
       "reshape_declined": [
         "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
-        "split T-0729 asf | asf/center | tests"
+        "split T-0729 asf | asf/center | tests",
+        "merge T-0728+T-0729+T-0730+T-0732+T-0733"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
@@ -45045,7 +45073,8 @@
       "parent": "F-0117",
       "reshape_declined": [
         "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
-        "split T-0730 asf | asf/center | asf/tick | tests"
+        "split T-0730 asf | asf/center | asf/tick | tests",
+        "merge T-0728+T-0729+T-0730+T-0732+T-0733"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
@@ -45130,7 +45159,9 @@
       "parent": "F-0117",
       "reshape_declined": [
         "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
-        "split T-0732 .claude-plugin | asf | asf/views | docs | docs/guide | plugin/.claude-plugin | plugin/hooks | plugin/skills | tests"
+        "split T-0732 .claude-plugin | asf | asf/views | docs | docs/guide | plugin/.claude-plugin | plugin/hooks | plugin/skills | tests",
+        "merge T-0728+T-0729+T-0730+T-0732+T-0733",
+        "split T-0732 .claude-plugin | asf | asf/views | docs | docs/guide | plugin/.claude-plugin | plugin/skills | tests"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
@@ -45175,7 +45206,8 @@
       },
       "parent": "F-0117",
       "reshape_declined": [
-        "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733"
+        "merge T-0728+T-0729+T-0730+T-0731+T-0732+T-0733",
+        "merge T-0728+T-0729+T-0730+T-0732+T-0733"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-30T09:59:39Z",
@@ -45593,7 +45625,8 @@
       "parent": "F-0130",
       "reshape_declined": [
         "merge T-0746+T-0747+T-0748+T-0749+T-0750",
-        "split T-0746 asf/backfill | asf/evidence | tests"
+        "split T-0746 asf/backfill | asf/evidence | tests",
+        "merge T-0746+T-0747+T-0748+T-0750"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-30T11:21:27Z",
@@ -45635,7 +45668,8 @@
       "parent": "F-0130",
       "reshape_declined": [
         "merge T-0746+T-0747+T-0748+T-0749+T-0750",
-        "split T-0747 asf/backfill | asf/record | tests"
+        "split T-0747 asf/backfill | asf/record | tests",
+        "merge T-0746+T-0747+T-0748+T-0750"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-30T11:21:27Z",
@@ -45674,7 +45708,8 @@
       },
       "parent": "F-0130",
       "reshape_declined": [
-        "merge T-0746+T-0747+T-0748+T-0749+T-0750"
+        "merge T-0746+T-0747+T-0748+T-0749+T-0750",
+        "merge T-0746+T-0747+T-0748+T-0750"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-30T11:21:27Z",
@@ -45749,7 +45784,8 @@
       "parent": "F-0130",
       "reshape_declined": [
         "merge T-0746+T-0747+T-0748+T-0749+T-0750",
-        "split T-0750 asf | asf/backfill | tests"
+        "split T-0750 asf | asf/backfill | tests",
+        "merge T-0746+T-0747+T-0748+T-0750"
       ],
       "schema_version": 1,
       "stage_since": "2026-09-30T11:21:27Z",
@@ -45869,6 +45905,7 @@
       "backlinks": [
         "T-0755"
       ],
+      "budget_sessions": 5,
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -46438,6 +46475,7 @@
     },
     "T-0771": {
       "backlinks": [],
+      "budget_sessions": 5,
       "children": [],
       "cost": {
         "fix_rounds": 0,
