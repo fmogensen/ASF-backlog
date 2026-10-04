@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T10:53:31Z",
+  "generated": "2026-10-04T11:03:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6001,12 +6001,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2522.81,
+      "spend_usd": 2528.13,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-04T10:49:29Z"
+      "updated": "2026-10-04T11:03:01Z"
     },
     "E-0002": {
       "backlinks": [
@@ -12689,20 +12689,20 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed",
-        "rule: documented"
+        "3/3 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0176",
       "parent": "E-0001",
       "rank": 13,
       "schema_version": 1,
-      "stage": "building 2/3",
-      "stage_since": "2026-10-04T06:51:42Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-04T10:59:52Z",
+      "state": "Closed",
       "title": "B-0123 loop: 'died without a result' while both logs end in a ruling; ready branch never published",
       "type": "feature",
-      "updated": "2026-10-04T06:51:42Z"
+      "updated": "2026-10-04T10:59:52Z"
     },
     "F-0177": {
       "backlinks": [
@@ -13564,12 +13564,12 @@
       "rank": 68,
       "reshape": "cut to Task 2, keeping its guard",
       "schema_version": 1,
-      "stage": "building 0/2",
-      "stage_since": "2026-09-29T21:18:29Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-04T10:59:52Z",
       "state": "Active",
       "title": "Landed spec/plan branches keep their worker worktree",
       "type": "feature",
-      "updated": "2026-09-29T21:18:29Z"
+      "updated": "2026-10-04T10:59:52Z"
     },
     "F-0202": {
       "backlinks": [],
@@ -28166,12 +28166,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "tokens_cache_read": 47457899,
-        "tokens_cache_write": 449910,
-        "tokens_input": 724,
-        "tokens_output": 159821,
-        "usd": 12.89
+        "sessions": 4,
+        "tokens_cache_read": 56143185,
+        "tokens_cache_write": 568011,
+        "tokens_input": 898,
+        "tokens_output": 191027,
+        "usd": 15.41
       },
       "decided": true,
       "evidence": [
@@ -28189,7 +28189,7 @@
       "state": "Active",
       "title": "the `PRECHECK` state, its facts, and the feeder row that launches the pass",
       "type": "task",
-      "updated": "2026-09-29T22:44:43Z",
+      "updated": "2026-10-04T11:03:01Z",
       "writes": [
         "asf/conventions.py",
         "asf/harvest/lane.py",
@@ -39184,7 +39184,8 @@
       "decided": true,
       "evidence": [
         "merge d8665bf of worker/T-0557 lands T-0557 (PR #732)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0557",
@@ -39198,11 +39199,11 @@
       },
       "parent": "F-0176",
       "schema_version": 1,
-      "stage_since": "2026-10-04T10:48:35Z",
-      "state": "Resolved",
+      "stage_since": "2026-10-04T10:59:52Z",
+      "state": "Closed",
       "title": "a log that ends in a result record is never called a death",
       "type": "task",
-      "updated": "2026-10-04T10:49:29Z",
+      "updated": "2026-10-04T10:59:52Z",
       "writes": [
         "asf/tick/step_health.py",
         "tests/test_quota_headroom.py",
@@ -39811,30 +39812,35 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 7588525,
-        "tokens_cache_write": 150403,
-        "tokens_input": 124,
-        "tokens_output": 52023,
-        "usd": 2.64
+        "sessions": 2,
+        "tokens_cache_read": 11643165,
+        "tokens_cache_write": 260656,
+        "tokens_input": 232,
+        "tokens_output": 79373,
+        "usd": 4.17
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0574",
-        "rule: in-flight"
+        "merge 704b900 of worker/T-0574 lands T-0574 (PR #402)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0574",
+      "landing": {
+        "as_of": "2026-10-04T10:59:52Z",
+        "by": "pr-merge",
+        "sha": "704b900b43bf52a6b4bff896e95341aa6f27bd5b"
+      },
       "links": {
         "plan": "docs/plans/f-0189.md"
       },
       "parent": "F-0189",
       "schema_version": 1,
-      "stage_since": "2026-09-29T19:47:32Z",
-      "state": "Active",
+      "stage_since": "2026-10-04T10:59:52Z",
+      "state": "Resolved",
       "title": "`Pool.take` is a compare-and-set, and the pick sees every product's claims",
       "type": "task",
-      "updated": "2026-10-03T23:26:17Z",
+      "updated": "2026-10-04T11:03:01Z",
       "writes": [
         "asf/workers/pool.py",
         "tests/test_seat_claims.py"
@@ -40322,30 +40328,35 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 3404070,
-        "tokens_cache_write": 74924,
-        "tokens_input": 102,
-        "tokens_output": 21019,
-        "usd": 1.19
+        "sessions": 2,
+        "tokens_cache_read": 7125156,
+        "tokens_cache_write": 150750,
+        "tokens_input": 212,
+        "tokens_output": 43323,
+        "usd": 2.46
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0589",
-        "rule: in-flight"
+        "merge 96a3929 of worker/T-0589 lands T-0589 (PR #424)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0589",
+      "landing": {
+        "as_of": "2026-10-04T10:59:52Z",
+        "by": "pr-merge",
+        "sha": "96a3929da6a164ff64b8fa3a3044bdcf4bcc6bae"
+      },
       "links": {
         "plan": "docs/plans/f-0201.md"
       },
       "parent": "F-0201",
       "schema_version": 1,
-      "stage_since": "2026-09-29T21:18:29Z",
-      "state": "Active",
+      "stage_since": "2026-10-04T10:59:52Z",
+      "state": "Resolved",
       "title": "the verdict asks what the tree holds before it asks what origin has",
       "type": "task",
-      "updated": "2026-10-04T05:03:34Z",
+      "updated": "2026-10-04T11:03:01Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py",
