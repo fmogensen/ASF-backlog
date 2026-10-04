@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T05:03:34Z",
+  "generated": "2026-10-04T05:18:04Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4226,7 +4226,7 @@
     "B-0138": {
       "backlinks": [],
       "children": [],
-      "count": 6,
+      "count": 7,
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-04)",
@@ -4235,7 +4235,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0138",
-      "last_filed": "2026-09-30",
+      "last_filed": "2026-10-04",
       "parent": "E-0001",
       "places": 3,
       "schema_version": 1,
@@ -5977,12 +5977,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2495.69,
+      "spend_usd": 2499.26,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-04T04:45:33Z"
+      "updated": "2026-10-04T05:12:20Z"
     },
     "E-0002": {
       "backlinks": [
@@ -19415,6 +19415,7 @@
         "T-0601",
         "T-0604",
         "T-0661",
+        "T-0687",
         "T-0719",
         "B-0138"
       ],
@@ -21331,12 +21332,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "tokens_cache_read": 13893154,
-        "tokens_cache_write": 284407,
-        "tokens_input": 310,
-        "tokens_output": 126370,
-        "usd": 8.17
+        "sessions": 4,
+        "tokens_cache_read": 18998233,
+        "tokens_cache_write": 377778,
+        "tokens_input": 442,
+        "tokens_output": 164893,
+        "usd": 9.95
       },
       "decided": true,
       "evidence": [
@@ -21357,7 +21358,7 @@
       "state": "Active",
       "title": "a reconciled item closes through the ordinary rules",
       "type": "task",
-      "updated": "2026-10-04T04:31:49Z",
+      "updated": "2026-10-04T05:12:20Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -22511,7 +22512,8 @@
         "T-0271",
         "T-0301",
         "T-0524",
-        "T-0574"
+        "T-0574",
+        "T-0687"
       ],
       "children": [],
       "cost": {
@@ -27495,18 +27497,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 3635125,
-        "tokens_cache_write": 79715,
-        "tokens_input": 104,
-        "tokens_output": 16982,
-        "usd": 1.22
+        "sessions": 2,
+        "tokens_cache_read": 9509576,
+        "tokens_cache_write": 176602,
+        "tokens_input": 242,
+        "tokens_output": 40074,
+        "usd": 3.01
       },
       "decided": true,
       "evidence": [
-        "PR #483 OPEN",
-        "branch worker/T-0256",
-        "rule: in-flight"
+        "merge 05e978f of worker/T-0256 lands T-0256 (PR #483)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0256",
@@ -27515,11 +27516,11 @@
       },
       "parent": "F-0046",
       "schema_version": 1,
-      "stage_since": "2026-09-30T05:47:08Z",
-      "state": "Active",
+      "stage_since": "2026-10-04T05:11:25Z",
+      "state": "Resolved",
       "title": "`asf check` fails a supersession that dangles, cycles or is written once",
       "type": "task",
-      "updated": "2026-10-03T21:59:59Z",
+      "updated": "2026-10-04T05:12:20Z",
       "writes": [
         "asf/record/check.py",
         "asf/record/new.py",
@@ -29294,7 +29295,9 @@
         "T-0271"
       ],
       "backlinks": [
-        "T-0601"
+        "T-0601",
+        "T-0687",
+        "B-0138"
       ],
       "children": [],
       "cost": {
@@ -43560,13 +43563,19 @@
       ]
     },
     "T-0687": {
-      "after": [],
-      "backlinks": [],
+      "after": [
+        "T-0056",
+        "T-0130",
+        "T-0301"
+      ],
+      "backlinks": [
+        "B-0138"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-04)",
-        "rule: planned"
+        "branch worker/T-0687",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0687",
@@ -43575,12 +43584,12 @@
       },
       "parent": "F-0211",
       "schema_version": 1,
-      "stage_since": "2026-09-30T07:41:54Z",
-      "state": "New",
+      "stage_since": "2026-10-04T05:11:25Z",
+      "state": "Active",
       "stories": [],
       "title": "a models map reaches model_for through a real product file \u2014 every shape the landed guide shows",
       "type": "task",
-      "updated": "2026-10-04T00:05:14Z",
+      "updated": "2026-10-04T05:11:25Z",
       "writes": [
         "tests/test_briefs.py"
       ]
