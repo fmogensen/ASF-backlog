@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T10:27:31Z",
+  "generated": "2026-10-04T10:53:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6001,12 +6001,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2519.37,
+      "spend_usd": 2522.81,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-04T10:06:23Z"
+      "updated": "2026-10-04T10:49:29Z"
     },
     "E-0002": {
       "backlinks": [
@@ -12667,7 +12667,9 @@
       "updated": "2026-10-03T06:19:48Z"
     },
     "F-0176": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0162"
+      ],
       "children": [
         "T-0557",
         "T-0558",
@@ -13090,7 +13092,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/5 tasks Closed",
+        "3/5 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -13099,12 +13101,12 @@
       "rank": 115,
       "reshape": "cut to Task 4",
       "schema_version": 1,
-      "stage": "building 2/5",
-      "stage_since": "2026-10-03T04:39:43Z",
+      "stage": "building 3/5",
+      "stage_since": "2026-10-04T10:48:35Z",
       "state": "Active",
       "title": "conventions.shared_paths: lock files overlap every Task \u2014 serialise them at merge, not in the feeder",
       "type": "feature",
-      "updated": "2026-10-03T04:39:43Z"
+      "updated": "2026-10-04T10:48:35Z"
     },
     "F-0188": {
       "backlinks": [],
@@ -21390,12 +21392,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 6,
-        "tokens_cache_read": 28780949,
-        "tokens_cache_write": 582499,
-        "tokens_input": 678,
-        "tokens_output": 226045,
-        "usd": 13.34
+        "sessions": 7,
+        "tokens_cache_read": 34972346,
+        "tokens_cache_write": 699805,
+        "tokens_input": 815,
+        "tokens_output": 271354,
+        "usd": 15.5
       },
       "decided": true,
       "evidence": [
@@ -21416,7 +21418,7 @@
       "state": "Active",
       "title": "a reconciled item closes through the ordinary rules",
       "type": "task",
-      "updated": "2026-10-04T06:38:36Z",
+      "updated": "2026-10-04T10:49:29Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -39165,36 +39167,42 @@
         "T-0166",
         "T-0189"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-0162"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 4294765,
-        "tokens_cache_write": 99457,
-        "tokens_input": 96,
-        "tokens_output": 23300,
-        "usd": 1.49
+        "sessions": 2,
+        "tokens_cache_read": 8023720,
+        "tokens_cache_write": 176532,
+        "tokens_input": 200,
+        "tokens_output": 45618,
+        "usd": 2.77
       },
       "decided": true,
       "evidence": [
-        "PR #732 OPEN",
-        "branch worker/T-0557",
-        "rule: in-flight"
+        "merge d8665bf of worker/T-0557 lands T-0557 (PR #732)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0557",
+      "landing": {
+        "as_of": "2026-10-04T10:48:35Z",
+        "by": "pr-merge",
+        "sha": "d8665bf98a91df76b3b4121fb2bfd6b6ca66fcb9"
+      },
       "links": {
         "plan": "docs/plans/f-0176.md"
       },
       "parent": "F-0176",
       "schema_version": 1,
-      "stage_since": "2026-10-04T06:02:35Z",
-      "state": "Active",
+      "stage_since": "2026-10-04T10:48:35Z",
+      "state": "Resolved",
       "title": "a log that ends in a result record is never called a death",
       "type": "task",
-      "updated": "2026-10-04T06:38:36Z",
+      "updated": "2026-10-04T10:49:29Z",
       "writes": [
         "asf/tick/step_health.py",
         "tests/test_quota_headroom.py",
@@ -39394,7 +39402,8 @@
       "decided": true,
       "evidence": [
         "merge 1dde921 of worker/T-0562 lands T-0562 (PR #392)",
-        "rule: landed"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0562",
@@ -39408,11 +39417,11 @@
       },
       "parent": "F-0187",
       "schema_version": 1,
-      "stage_since": "2026-10-04T10:23:50Z",
-      "state": "Resolved",
+      "stage_since": "2026-10-04T10:48:35Z",
+      "state": "Closed",
       "title": "the groomer stops proposing that every dependency-adding Task be one session",
       "type": "task",
-      "updated": "2026-10-04T10:23:50Z",
+      "updated": "2026-10-04T10:48:35Z",
       "writes": [
         "asf/groom/shape.py",
         "asf/groom/groom.py",
