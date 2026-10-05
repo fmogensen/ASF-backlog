@@ -1,0 +1,17 @@
+→ F-0244
+
+# Stale means act, not flag: every factory leftover has an owner and a deadline, and ASF acts past it
+
+Operator 2026-10-06: "what does asf do today programatically to keep the factory floor clean?"
+
+Today ASF reaps worktrees, local and remote branches (archive/ 14 d, legacy 7 d), venvs, snapshots, state files and cloud brief refs. But several leftovers are only *flagged*, never acted on: `asf stale` reports stage overruns and the lane marks PR branches STALE, and nothing closes, rebuilds or reruns them.
+
+Rule: every leftover has an owner and a deadline; past the deadline ASF ACTS (close+archive, replan/rebuild, rerun, or reap), records what it did, and only escalates to the console when no rule applies.
+
+Acceptance (each a hermetic test):
+1. An open product PR the lane marks STALE for > stage limit: archive its tip to archive/pr-<n>, close the PR with a one-line reason, and queue a replan for its item if the item is still open (19 ASF PRs open since #36 on 2026-10-06).
+2. A Task in one stage past 3x its limit with its branch > N commits behind trunk is replanned from current trunk instead of corrected (T-0056, since 09-24, ~1,100 commits behind).
+3. A removed/closed item never renders a row in `asf next` (T-0335 removed, still showed PARKED).
+4. A leftover worktree directory with no .git is removed by the reaper (T-0091, 10-04), and a launch refuses to reuse one.
+5. A CI run whose batch ref is gone is cancelled unless its head_sha is trunk's or a live batch's without a newer success for every required check (batch 2f664a9 `site` held a heavy runner 4 h).
+6. A cloud run with no heartbeat for 2 x interval (5 min) is ended dead and relaunched from its last push (see the cloud-heartbeat item).

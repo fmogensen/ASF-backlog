@@ -20,3 +20,6 @@ Connector kinds (v1 = interface + the listed default; others later):
 
 Acceptance: each v1 kind has a Protocol, a registry reading `connectors.<kind>: <name>` from config, the default implementation moved behind it with no behaviour change, a fake implementation used by tests, and a lint/test that fails if `gh`, `claude`, `launchctl` or `pipx` is invoked outside its connector module. `asf doctor` lists the active connector per kind. docs/guide gets "Writing a connector".
 Release scope: kinds 1, 2, 3, 5 (plus 4 and 9 in command form) must exist as interfaces before public release; additional implementations are post-release.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

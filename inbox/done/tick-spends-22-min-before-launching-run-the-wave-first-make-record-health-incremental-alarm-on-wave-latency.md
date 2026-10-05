@@ -1,0 +1,8 @@
+→ F-0245
+
+# Tick spends 22 min before launching: run the wave first, make record/health incremental, alarm on wave latency
+
+ASF's own tick (asf product, clock record-health-wave-prs-harvest, StartInterval 300 s) spends ~22 min before its wave step on 2026-10-06 01:0x–01:20: [step:record] 756 s (backfill 259, ingest 181, rollup 142, plan-order 77, file-bugs 55, index 21), [step:health] 494 s, [step:groom] 65 s. Launches therefore happen at most ~every 25 min; free seats and the new cloud-primary lane wait on bookkeeping.
+Fix: launch first. (1) Run the wave on a fast path right after a minimal record refresh (only what placement needs), and move backfill/rollup/index/plan-order/file-bugs and the slow health parts to their own clock or to every Nth tick. (2) Make each slow step incremental (backfill/ingest only what changed since the last tick). (3) Add a metric + dwell breach `wave_latency` (tick start → wave start), default limit 2 min.
+Acceptance: on a fixture record of this size, tick start → wave start ≤ 120 s; the deferred steps still run at least hourly; `asf status` shows wave latency; breach raised past the limit.
+Generic: applies to every product; step cadence configurable per clock (`clocks.<name>.every_n: {step: n}`).

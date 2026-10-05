@@ -13,3 +13,6 @@ Amendments (each an acceptance test on a fixture "minimal product"):
 7. Versioning: a product's version is its own tag scheme if it has one (configurable `version.tag_pattern`), else the short sha; CHANGELOG generation is opt-in per product; ASF's own release notes stay mandatory for ASF.
 8. Floor-clean limits scale with defaults sane for a small repo (stale PR 3 d, run 30 min, branch retention 14 d) and every kind can be disabled.
 9. No product names, account names, hostnames, provider names (Hetzner/Contabo) or operator paths in code, tests, docs or defaults; check_generic stays clean.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

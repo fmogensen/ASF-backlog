@@ -14,3 +14,6 @@ Add, each stored per tick in metrics/ticks/<day>.jsonl and rolled up in `asf sco
 7. CI runner utilisation and queue wait: busy runner-minutes / available per class; queue wait p50/p90 per class.
 8. Quota burn rate: per-account %/hour and projected time-to-cap from successive readings.
 Acceptance: hermetic tests per metric (computed from fixture streams); `asf scorecard` shows each with its 7-day trend; alarms raise one dwell-style breach line.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

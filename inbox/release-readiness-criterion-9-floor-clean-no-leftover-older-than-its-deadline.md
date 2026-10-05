@@ -13,3 +13,6 @@ Evidence column lists counts and the oldest of each. Thresholds are `release.flo
 
 Acceptance: hermetic tests per leftover kind (red past limit, green under it); `asf release-readiness` prints the row; `asf doctor` mirrors it.
 Depends on: "Stale means act, not flag" (the actions that make this criterion pass).
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
