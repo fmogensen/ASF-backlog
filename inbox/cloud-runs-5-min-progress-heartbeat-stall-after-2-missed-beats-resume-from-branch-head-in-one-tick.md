@@ -1,0 +1,104 @@
+# Cloud runs: 5-min progress heartbeat, stall after 2 missed beats, resume from branch head in one tick
+
+## Defect: a hung cloud run can be invisible for up to 4 hours
+
+A `claude-remote` run that stays alive but stops making progress (idle, waiting on a permission
+prompt or question, looping) is caught only by `cloud.timeout_min` (240). `asf/workers/stall.py`
+`classify` returns None for every cloud token ("its time limit is the lane's"), and
+`remote.evidence` reads only the routine's `last_run` (fired_at / finished_at / status, polled
+every `cloud.poll_min` = 15). Nothing reads progress. A dead run's retry
+(`stall.correct_once`) is a cold local retry. It runs in the worktree that `cloud.catch_up`
+fast-forwarded to `origin/<branch>`, so pushed commits are kept. It gets the original brief plus
+the log tail, which for a cloud run holds only ASF's own `asf/cloud` JSON lines: there is no
+transcript and no notes. Unpushed cloud work is lost. `RemoteRuntime.continue_run` returns None.
+`retire` only disables the routine, which stops future fires. It does not stop the live session,
+so after a timeout the old session can still push next to the retry.
+
+Evidence (sessions.jsonl + cloud-sessions.json + tick-botseon-tick.log, 2026-10-06):
+- Last 7 days (09-29..10-06): botseon had 39 claude-remote runs. asf had 0 (its cloud lane is
+  enabled, primary, and has never launched). 34 finished with a report: median 20 m wall, p90
+  39 m, max 58 m. 2 were dead with the routine ended "succeeded" without the report commit:
+  coder-t-0619 trig_01VYPNv2pqoPnjLKNoUCioD4, settled 5.0 m after the routine finished;
+  review-t-0607 trig_01TgRw47fUCSsyZLmUxdH3Z1, settled 1.7 m after. 3 were ended "empty branch"
+  at 8–9 m while their routine was still pending: reshape-t-0389, delivery-code-t-0377 and
+  reshape-t-0091. Those were false ends from an earlier run's result in a reused log, fixed
+  10-04 by 79aaa8250. 0 timeouts and 0 open runs. No multi-hour stall in this window.
+- 09-26..09-28 (73 runs): 1 timeout, adjudicate-f-0003 trig_017gc5nUcnBKzYF8LXwb8vJx. It
+  fired 23:20Z, the API never reported it finished, and it was settled only at the 240 m
+  timeout (03:22Z): about 4 h of a held seat with no signal. 9 dead-without-report runs were
+  settled 1.3–23 m after their routine finished. Worst: adjudicate-f-0007
+  trig_01QTKSvJyGm2VT5NhTLG7qPQ at 23 m, spec-f-0109 trig_01UncJM5xZuBhQLzFEMLAo3d at 17 m,
+  fix-bug-b-1381 trig_01DmoduVvmBt9RY8cRHfoPqh at 15 m. That lag comes from poll_min 15.
+- What the API exposes (CLI 2.1.289 RemoteTrigger): `list_runs` (GET
+  /v1/code/sessions?trigger_id=) returns per run {id, title, status, worker_status,
+  created_at, last_event_at, url}, with worker_status running / idle / requires_action.
+  `get_run_log` (GET /v1/code/sessions/{id}/events) returns the newest 200 condensed events:
+  tool calls, permission prompts, API retries and the final result. ASF uses neither. Each
+  call costs one haiku `claude -p` helper.
+
+## Design (operator decision 2026-10-06: a 5-minute heartbeat, stalled after 2 missed beats)
+
+1. Brief (`cloud_brief` CLOUD block). Every `cloud.heartbeat_min` minutes (default 5), the
+   session pushes its work in progress to `<branch>` as a `wip:` commit with the
+   `ASF-Session` trailer and a `NOTES.asf.md` checkpoint: what is done, what is next, open
+   questions. With nothing to commit, it force-pushes a heartbeat ref
+   `refs/asf/hb/<job>` (one commit whose message is the UTC time and the next step).
+   Heartbeat commands run in the background of the session's shell loop, not by the model's
+   memory alone.
+2. Detection (`cloud.sync`, every tick, no LLM): a single `git ls-remote origin <branch>
+   refs/asf/hb/<job>` gives the last movement. The movement time is the newest of the commit
+   time on either ref, the run's start, and the last change ASF saw. A run is STALLED when
+   `now - last_movement > cloud.heartbeat_min * cloud.heartbeat_missed` (defaults 5 and 2,
+   about 10–12 min with tick jitter). Grace for the first beat: setup time
+   (`cloud.heartbeat_grace_min`, default 10). On STALLED, one `list_runs` call records
+   worker_status and last_event_at in the cloud status file and in the reason
+   (`stalled: no beat 11m; worker_status=requires_action`). That is diagnostic only. The
+   heartbeat decides.
+3. Settle and resume within the same tick: retire the routine, delete `refs/asf/hb/<job>`,
+   record DEAD `stalled`, then relaunch at once as a continuation, not a cold retry. The
+   continuation starts from the branch head, which keeps the WIP commits. Its brief is the
+   original plus a CONTINUE block: the last pushed sha, `NOTES.asf.md`, and a summary of the
+   dead run's last `get_run_log` events (tool calls and errors, capped at about 2 KB). Implement
+   it as `RemoteRuntime.continue_run`, or as a cloud-aware `correct_once`. A fresh ASF-Session
+   fences the dead session: harvest and the report check accept only the new session's
+   trailer, and a push by the old session after the relaunch is logged
+   `zombie push` and ignored.
+4. `cloud.timeout_min` stays as a backstop (240). `poll_min` is no longer on the stall path.
+   Trade-offs: (a) heartbeat ref + WIP push is cheap (git only, every tick), uses the
+   CI-heartbeat model and leaves the work resumable. It costs one brief rule and a little ref
+   noise, and it misses a session that keeps beating but loops; the 240 m backstop covers that.
+   (b) Polling the API alone costs a haiku helper per run per tick, and last_event_at moves
+   while the session is stuck retrying, so it serves as a diagnostic, not the detector.
+   (c) Shorter timeouts alone kill healthy long runs (max 58 m, p90 39 m) and still resume
+   cold.
+
+## Config keys
+
+`cloud.heartbeat_min` (default 5), `cloud.heartbeat_missed` (default 2),
+`cloud.heartbeat_grace_min` (default 10). All three are validated in `config_problems`: a
+positive number, with heartbeat_missed >= 1. They are listed in `config_keys.py` and
+docs/config.example.yaml.
+
+## Acceptance tests (hermetic, tests/test_cloud.py / tests/test_remote.py)
+
+- Defaults: `settings({})` gives heartbeat_min 5 and heartbeat_missed 2. Explicit values
+  (3, 4) are read, and bad values (0, -1, "x") are config problems.
+- Interval: with the defaults, a run whose last beat is 9 m old is WORKING and one 11 m old is
+  STALLED (DEAD, why starts with `stalled`). With heartbeat_min 3 and heartbeat_missed 2, 7 m is
+  STALLED. With heartbeat_min 5 and heartbeat_missed 4, 19 m is WORKING and 21 m is STALLED.
+- Missed-beat count: with the interval fixed at 5, heartbeat_missed 1 stalls at 6 m and
+  heartbeat_missed 3 does not stall at 14 m.
+- Movement sources: a newer commit on `<branch>` alone, or on `refs/asf/hb/<job>` alone,
+  resets the clock. A run inside heartbeat_grace_min with no beat is WORKING.
+- Detection uses no helper: the stall path makes zero TriggerClient calls apart from the one
+  diagnostic `list_runs` on the STALLED transition. Its worker_status lands in the status file
+  and the reason.
+- Resume in one tick: a STALLED run gets, in the same `sync` and health pass, a continuation
+  launch on the same branch whose brief carries the last pushed sha, NOTES.asf.md and the
+  run-log summary. The routine is disabled and the hb ref deleted. WIP commits are on the
+  branch the continuation starts from.
+- Fencing: a push carrying the old run's ASF-Session after the relaunch never finishes either
+  run and is reported `zombie push`.
+- Brief: `cloud_brief` output contains the heartbeat rule with the configured interval and the
+  ref name `refs/asf/hb/<job>` (a golden test).
+- Backstop: a run that keeps beating past `timeout_min` still ends `timed out`.
