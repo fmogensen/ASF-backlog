@@ -1,0 +1,15 @@
+# Genericity pass on the 10-06 items: work for one developer, one account, no cloud, no merge queue, any forge
+
+Operator 2026-10-06: "review this with generic eyes, as ASF will be suited for any developer developing any product".
+This item amends the items filed 2026-10-06 (cloud heartbeat, stale-means-act, criteria 9 and 10, throughput metrics, versioning). Each must work for the smallest setup — one developer, one model account, no cloud lane, GitHub-hosted (or no) CI, no merge queue — and for other forges, with no product-specific names.
+
+Amendments (each an acceptance test on a fixture "minimal product"):
+1. Heartbeat is runtime-agnostic: the same 5-min progress heartbeat (`workers.heartbeat_min`, `heartbeat_missed`) and continue-from-last-push relaunch apply to every runtime — local, actions, claude-remote — not only the cloud lane. Config lives under `workers:`, with `cloud:` able to override.
+2. Forge abstraction: stale-PR close/archive, run reaping, CI metrics and PR first-pass rate go through one forge module (GitHub implemented; a no-forge/plain-git product degrades to branch-only cleanup and skips PR/CI metrics with a "not applicable" row, never a red one).
+3. CI runner metrics and reaping are no-ops (n/a) when the product has no self-hosted runners; queue-wait is still measured from run timestamps.
+4. Seat utilisation (criterion 10) counts available seats from whatever lanes the product has: 1 local seat and no cloud is valid; with no quota reader configured, every account is available (existing 0/0 behaviour). Thresholds are `release.seats.*`.
+5. Cost metrics: when sessions run on a subscription (no per-token price), $ metrics show "n/a" and quota-% burn is reported instead; the $150/Feature alarm is off unless a price table is configured.
+6. Release readiness is a per-product gate: "no hand fix for 7 d" is ASF's own policy (`release.max_hand_fixes`), default off for products — a developer committing by hand is normal; the factory-only merge rule is opt-in (`conventions.merge.factory_only`, default false).
+7. Versioning: a product's version is its own tag scheme if it has one (configurable `version.tag_pattern`), else the short sha; CHANGELOG generation is opt-in per product; ASF's own release notes stay mandatory for ASF.
+8. Floor-clean limits scale with defaults sane for a small repo (stale PR 3 d, run 30 min, branch retention 14 d) and every kind can be disabled.
+9. No product names, account names, hostnames, provider names (Hetzner/Contabo) or operator paths in code, tests, docs or defaults; check_generic stays clean.
