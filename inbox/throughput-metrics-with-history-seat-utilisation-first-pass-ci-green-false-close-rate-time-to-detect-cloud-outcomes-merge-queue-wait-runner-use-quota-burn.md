@@ -1,0 +1,16 @@
+# Throughput metrics with history: seat utilisation, first-pass CI green, false-close rate, time-to-detect, cloud outcomes, merge-queue wait, runner use, quota burn
+
+Operator 2026-10-06: "what important metrics does asf monitor in code, and whats missing?"
+
+ASF has rich weekly outcome metrics (scorecard: lead days, $/Feature with a $150 alarm, repair/Feature, dead sessions, forge clutter) and live point-in-time checks (dwell breaches, quota band, capacity, CI queue). Missing are the throughput metrics the operator judged the factory on tonight ("you literally lose time"), and history for the live ones.
+
+Add, each stored per tick in metrics/ticks/<day>.jsonl and rolled up in `asf scorecard` with a status row and an alarm:
+1. Seat utilisation: busy local seats / local share and busy cloud / cloud max, per tick; hourly %; alarm when < 60% for 30 min while launchable rows exist (tonight: 1–3/8 for 50+ min, unalerted).
+2. First-pass PR CI green rate: PRs whose first attempt was green / PRs opened, per week (target set in pr-ci-done-targets).
+3. False-close rate: landed items later reopened (reopens + audit-proofs reopenings) / closes, per week; alarm > 0 (88 Stories reopened 10-05).
+4. Time-to-detect: for each dwell breach/stall/dead run, first-observable-moment → ASF-noticed; p50/p90.
+5. Cloud run outcomes: finished/dead/timeout rate, duration, $ per run, cloud vs local.
+6. Merge-queue throughput and wait: PR green → landed minutes (p50/p90), batches/hour, refused/red batch rate.
+7. CI runner utilisation and queue wait: busy runner-minutes / available per class; queue wait p50/p90 per class.
+8. Quota burn rate: per-account %/hour and projected time-to-cap from successive readings.
+Acceptance: hermetic tests per metric (computed from fixture streams); `asf scorecard` shows each with its 7-day trend; alarms raise one dwell-style breach line.
