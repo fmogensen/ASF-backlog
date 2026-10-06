@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T08:18:22Z",
+  "generated": "2026-10-06T08:44:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -12142,20 +12142,21 @@
       },
       "decided": true,
       "evidence": [
-        "spec on origin/main",
-        "rule: documented"
+        "commit 683fe10 names F-0109",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "features",
       "id": "F-0109",
       "parent": "E-0001",
       "rank": 0,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-09-28T10:34:56Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-06T08:34:50Z",
+      "state": "Closed",
       "title": "install.sh: the operating session cannot run it, it leaves the pre-ASF clocks running, and it installs hooks without the human-now approval",
       "type": "feature",
-      "updated": "2026-10-06T08:02:41Z"
+      "updated": "2026-10-06T08:34:50Z"
     },
     "F-0110": {
       "backlinks": [],
@@ -17056,7 +17057,7 @@
       },
       "decided": true,
       "evidence": [
-        "PR #821 OPEN",
+        "no evidence found (2026-10-06)",
         "rule: card"
       ],
       "folder": "features",
@@ -17069,7 +17070,7 @@
       "state": "New",
       "title": "Generic release: hardcoded policy values become config keys; names check_generic misses",
       "type": "feature",
-      "updated": "2026-10-06T08:02:41Z"
+      "updated": "2026-10-06T08:34:50Z"
     },
     "F-0248": {
       "backlinks": [
@@ -21865,6 +21866,7 @@
         "T-0266",
         "T-0271",
         "T-0301",
+        "T-0411",
         "T-0501",
         "T-0531",
         "T-0544",
@@ -23494,7 +23496,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1382 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1387 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -24585,6 +24587,7 @@
         "T-0239",
         "T-0301",
         "T-0346",
+        "T-0411",
         "T-0524",
         "T-0548",
         "T-0645"
@@ -25032,6 +25035,7 @@
         "T-0271",
         "T-0301",
         "T-0346",
+        "T-0411",
         "T-0524",
         "T-0528",
         "T-0548",
@@ -27453,6 +27457,7 @@
         "T-0341",
         "T-0350",
         "T-0363",
+        "T-0411",
         "T-0412",
         "T-0494",
         "T-0501",
@@ -27462,6 +27467,7 @@
         "T-0594",
         "T-0648",
         "T-0654",
+        "T-0680",
         "T-0700",
         "T-0778"
       ],
@@ -27600,8 +27606,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0192",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0192",
@@ -27613,11 +27619,11 @@
         "split T-0192 asf | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-24T03:54:49Z",
-      "state": "New",
+      "stage_since": "2026-10-06T08:34:50Z",
+      "state": "Active",
       "title": "the recorder, wired \u2014 `asf hook chores` and the install",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T08:34:50Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_install.py"
@@ -29141,6 +29147,7 @@
         "T-0189"
       ],
       "backlinks": [
+        "T-0411",
         "T-0441",
         "T-0501",
         "T-0604",
@@ -29486,10 +29493,12 @@
         "T-0244",
         "T-0245",
         "T-0271",
+        "T-0411",
         "T-0412",
         "T-0495",
         "T-0654",
         "T-0665",
+        "T-0680",
         "T-0700",
         "B-0198",
         "B-0202",
@@ -36659,7 +36668,14 @@
       ]
     },
     "T-0411": {
-      "after": [],
+      "after": [
+        "T-0056",
+        "T-0119",
+        "T-0130",
+        "T-0189",
+        "T-0231",
+        "T-0239"
+      ],
       "backlinks": [
         "T-0261",
         "T-0264",
@@ -36675,8 +36691,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0411",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0411",
@@ -36689,12 +36705,12 @@
         "merge T-0261+T-0264+T-0411+T-0412+T-0413+T-0414+T-0415+T-0416"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-28T11:22:45Z",
-      "state": "New",
+      "stage_since": "2026-10-06T08:34:50Z",
+      "state": "Active",
       "stories": [],
       "title": "`asf/docs.py` \u2014 the resolver, the anchors, the tree at a sha, and `asf docs check`",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T08:34:50Z",
       "writes": [
         "asf/docs.py",
         "asf/cli.py",
@@ -46371,6 +46387,7 @@
       "backlinks": [
         "T-0666",
         "T-0667",
+        "T-0680",
         "B-0213"
       ],
       "children": [],
@@ -46961,15 +46978,19 @@
       ]
     },
     "T-0680": {
-      "after": [],
+      "after": [
+        "T-0189",
+        "T-0239",
+        "T-0665"
+      ],
       "backlinks": [
         "T-0684"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0680",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0680",
@@ -46978,12 +46999,12 @@
       },
       "parent": "F-0184",
       "schema_version": 1,
-      "stage_since": "2026-09-30T07:41:53Z",
-      "state": "New",
+      "stage_since": "2026-10-06T08:34:50Z",
+      "state": "Active",
       "stories": [],
       "title": "the census row, the slow box, the flaky box and the baseline that grew \u2014 four doctor rows off two files and no host call",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T08:34:50Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
