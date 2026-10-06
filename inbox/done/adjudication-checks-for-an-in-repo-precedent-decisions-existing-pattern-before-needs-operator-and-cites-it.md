@@ -1,3 +1,5 @@
+→ F-0262
+
 # Adjudication checks for an in-repo precedent (decisions, existing pattern) before NEEDS OPERATOR, and cites it
 
 Parent: E-0001
