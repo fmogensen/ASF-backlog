@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T13:16:59Z",
+  "generated": "2026-10-06T13:25:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7210,6 +7210,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0254",
@@ -7222,7 +7226,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0745",
       "type": "bug",
-      "updated": "2026-10-06T13:16:58Z"
+      "updated": "2026-10-06T13:22:16Z"
     },
     "D-0001": {
       "backlinks": [
@@ -13117,12 +13121,12 @@
       "reshape_applied": "7071e678b38d",
       "reshape_applied_at": "2026-10-03T05:25:56Z",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T09:59:38Z",
+      "stage": "building 0/5",
+      "stage_since": "2026-10-06T13:22:16Z",
       "state": "Active",
       "title": "Command center: follow every product's factory live and talk to each product's orchestrator; each product keeps its own controller",
       "type": "feature",
-      "updated": "2026-10-03T05:32:37Z"
+      "updated": "2026-10-06T13:22:16Z"
     },
     "F-0118": {
       "backlinks": [
@@ -16237,12 +16241,12 @@
       "parent": "E-0002",
       "rank": 32,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T20:48:46Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T13:22:16Z",
       "state": "Active",
       "title": "merge_skipped: a missing non-Actions required check counts as path-filtered",
       "type": "feature",
-      "updated": "2026-09-29T20:54:53Z"
+      "updated": "2026-10-06T13:22:16Z"
     },
     "F-0205": {
       "backlinks": [
@@ -20325,7 +20329,7 @@
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-06)",
-        "rule: no-rule"
+        "rule: task-active"
       ],
       "folder": "stories",
       "id": "S-0002",
@@ -20334,11 +20338,11 @@
       "rank": 3,
       "schema_version": 1,
       "source": "operator-direct 2026-09-21",
-      "stage_since": "2026-09-21T16:25:04Z",
-      "state": "New",
+      "stage_since": "2026-10-06T13:22:16Z",
+      "state": "Active",
       "title": "Ingest adds mergeable and opened so CONFLICT \u2192 REBASE rows and the incident clock work",
       "type": "story",
-      "updated": "2026-10-06T00:05:50Z"
+      "updated": "2026-10-06T13:22:16Z"
     },
     "S-0003": {
       "area": "factory",
@@ -22517,6 +22521,7 @@
         "T-0189",
         "T-0226",
         "T-0231",
+        "T-0233",
         "T-0239",
         "T-0256",
         "T-0266",
@@ -22526,6 +22531,7 @@
         "T-0501",
         "T-0531",
         "T-0544",
+        "T-0591",
         "T-0601",
         "T-0604",
         "T-0620",
@@ -25248,6 +25254,7 @@
         "T-0411",
         "T-0524",
         "T-0548",
+        "T-0591",
         "T-0645"
       ],
       "children": [],
@@ -25699,9 +25706,11 @@
         "T-0528",
         "T-0548",
         "T-0574",
+        "T-0591",
         "T-0645",
         "T-0654",
         "T-0687",
+        "T-0728",
         "T-0745"
       ],
       "children": [],
@@ -28112,6 +28121,7 @@
         "T-0218",
         "T-0226",
         "T-0231",
+        "T-0233",
         "T-0239",
         "T-0257",
         "T-0266",
@@ -29606,6 +29616,7 @@
         "T-0227",
         "T-0229",
         "T-0230",
+        "T-0233",
         "T-0271",
         "T-0278",
         "T-0350",
@@ -29841,6 +29852,7 @@
         "T-0189"
       ],
       "backlinks": [
+        "T-0233",
         "T-0411",
         "T-0441",
         "T-0501",
@@ -29932,19 +29944,25 @@
     },
     "T-0233": {
       "after": [
-        "T-0232"
+        "T-0232",
+        "T-0056",
+        "T-0189",
+        "T-0226",
+        "T-0231"
       ],
       "backlinks": [
         "T-0234",
         "T-0235",
         "T-0238",
+        "T-0411",
+        "T-0775",
         "B-0239"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0233",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0233",
@@ -29962,14 +29980,14 @@
         "split T-0233 asf | asf/evidence | asf/feeder | asf/record | sample/backlog | tests | tests/fixtures"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-27T03:59:03Z",
-      "state": "New",
+      "stage_since": "2026-10-06T13:22:16Z",
+      "state": "Active",
       "stories": [
         "S-0002"
       ],
       "title": "every host read of the evidence pass goes behind the seam",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T13:22:16Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/cli.py",
@@ -30192,6 +30210,7 @@
         "T-0411",
         "T-0412",
         "T-0495",
+        "T-0591",
         "T-0654",
         "T-0665",
         "T-0680",
@@ -37372,7 +37391,8 @@
         "T-0130",
         "T-0189",
         "T-0231",
-        "T-0239"
+        "T-0239",
+        "T-0233"
       ],
       "backlinks": [
         "T-0261",
@@ -37384,6 +37404,7 @@
         "T-0416",
         "T-0418",
         "T-0419",
+        "T-0591",
         "T-0745",
         "B-0207"
       ],
@@ -41882,6 +41903,7 @@
       "backlinks": [
         "T-0529",
         "T-0530",
+        "T-0532",
         "T-0775",
         "B-0238"
       ],
@@ -42054,17 +42076,19 @@
     },
     "T-0532": {
       "after": [
-        "T-0531"
+        "T-0531",
+        "T-0528"
       ],
       "backlinks": [
         "T-0533",
+        "T-0647",
         "B-0253"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0532",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0532",
@@ -42076,11 +42100,11 @@
       ],
       "parent": "F-0235",
       "schema_version": 1,
-      "stage_since": "2026-09-29T15:14:42Z",
-      "state": "New",
+      "stage_since": "2026-10-06T13:22:16Z",
+      "state": "Active",
       "title": "a refusal the session already retried is routed on the first hold",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T13:22:16Z",
       "writes": [
         "asf/workers/report.py",
         "asf/workers/health.py",
@@ -44363,7 +44387,17 @@
       ]
     },
     "T-0591": {
+      "after": [
+        "T-0056",
+        "T-0119",
+        "T-0130",
+        "T-0239",
+        "T-0411"
+      ],
       "backlinks": [
+        "T-0665",
+        "T-0671",
+        "T-0700",
         "B-0195"
       ],
       "children": [],
@@ -44379,8 +44413,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0591",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0591",
@@ -44389,11 +44423,11 @@
       },
       "parent": "F-0204",
       "schema_version": 1,
-      "stage_since": "2026-09-29T20:48:47Z",
-      "state": "New",
+      "stage_since": "2026-10-06T13:22:16Z",
+      "state": "Active",
       "title": "a missing required check is Actions' to skip only against a job the head's own workflows declare \u2014 the scan, the read at the head, the rule, the refusal in words, and the three documents",
       "type": "task",
-      "updated": "2026-10-06T12:54:26Z",
+      "updated": "2026-10-06T13:22:16Z",
       "writes": [
         "asf/ci_pool.py",
         "asf/harvest/lane.py",
@@ -46501,7 +46535,8 @@
     "T-0647": {
       "after": [
         "T-0645",
-        "T-0506"
+        "T-0506",
+        "T-0532"
       ],
       "backlinks": [
         "B-0235"
@@ -46777,6 +46812,7 @@
         "T-0655",
         "T-0656",
         "T-0700",
+        "T-0728",
         "B-0211"
       ],
       "children": [],
@@ -47145,7 +47181,8 @@
         "T-0140",
         "T-0239",
         "T-0412",
-        "T-0495"
+        "T-0495",
+        "T-0591"
       ],
       "backlinks": [
         "T-0666",
@@ -47389,7 +47426,8 @@
         "T-0166",
         "T-0271",
         "T-0566",
-        "T-0617"
+        "T-0617",
+        "T-0591"
       ],
       "backlinks": [
         "T-0672",
@@ -48520,7 +48558,8 @@
         "T-0226",
         "T-0239",
         "T-0350",
-        "T-0654"
+        "T-0654",
+        "T-0591"
       ],
       "backlinks": [
         "T-0701",
@@ -49641,7 +49680,10 @@
       ]
     },
     "T-0728": {
-      "after": [],
+      "after": [
+        "T-0130",
+        "T-0654"
+      ],
       "backlinks": [
         "T-0729",
         "T-0730",
@@ -49653,8 +49695,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0728",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0728",
@@ -49668,12 +49710,12 @@
         "merge T-0728+T-0729+T-0730+T-0732+T-0733"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-30T09:59:39Z",
-      "state": "New",
+      "stage_since": "2026-10-06T13:22:16Z",
+      "state": "Active",
       "stories": [],
       "title": "no reader creates a directory \u2014 three path helpers compose, their writers make their own, and a fresh operator home survives a full read",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T13:22:16Z",
       "writes": [
         "asf/capacity.py",
         "asf/workers/pool.py",
@@ -51500,7 +51542,8 @@
         "T-0301",
         "T-0604",
         "T-0761",
-        "T-0528"
+        "T-0528",
+        "T-0233"
       ],
       "backlinks": [
         "B-0209",
