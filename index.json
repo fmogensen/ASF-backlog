@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T15:41:48Z",
+  "generated": "2026-10-06T15:49:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7348,6 +7348,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0260",
@@ -7360,7 +7364,26 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0204",
       "type": "bug",
-      "updated": "2026-10-06T15:41:46Z"
+      "updated": "2026-10-06T15:47:05Z"
+    },
+    "B-0261": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0261",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #860@83a2ecb0d",
+      "stage_since": "2026-10-06T15:49:40Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #860@83a2ecb0d",
+      "type": "bug",
+      "updated": "2026-10-06T15:49:40Z"
     },
     "D-0001": {
       "backlinks": [
@@ -8523,7 +8546,8 @@
         "B-0257",
         "B-0258",
         "B-0259",
-        "B-0260"
+        "B-0260",
+        "B-0261"
       ],
       "decided": true,
       "evidence": [
@@ -14228,20 +14252,20 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed",
-        "rule: documented"
+        "3/3 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0142",
       "parent": "E-0002",
       "rank": 87,
       "schema_version": 1,
-      "stage": "building 2/3",
-      "stage_since": "2026-10-06T06:58:28Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-06T15:47:05Z",
+      "state": "Closed",
       "title": "tick: a start/end line per step (owner, pid, time) and doctor's SCHEDULER shows the current step",
       "type": "feature",
-      "updated": "2026-10-06T06:58:28Z"
+      "updated": "2026-10-06T15:47:05Z"
     },
     "F-0143": {
       "backlinks": [],
@@ -24327,7 +24351,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1416 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1417 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -30143,7 +30167,8 @@
         "T-0411",
         "T-0537",
         "T-0775",
-        "B-0239"
+        "B-0239",
+        "B-0261"
       ],
       "children": [],
       "cost": {
@@ -40876,22 +40901,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #854 OPEN",
-        "branch worker/T-0496",
-        "rule: in-flight"
+        "merge b8d37f6 of worker/T-0496 lands T-0496 (PR #854)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0496",
+      "landing": {
+        "as_of": "2026-10-06T15:47:05Z",
+        "by": "pr-merge",
+        "sha": "b8d37f60dbb34842566b9871be0a7b86ab68c980"
+      },
       "links": {
         "plan": "docs/plans/f-0142.md"
       },
       "parent": "F-0142",
       "schema_version": 1,
-      "stage_since": "2026-10-06T12:55:11Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T15:47:05Z",
+      "state": "Closed",
       "title": "the guide says both shapes \u2014 the pair in the log, the field on the row",
       "type": "task",
-      "updated": "2026-10-06T15:41:18Z",
+      "updated": "2026-10-06T15:47:05Z",
       "writes": [
         "docs/guide/operating.md",
         "docs/guide/getting-started.md",

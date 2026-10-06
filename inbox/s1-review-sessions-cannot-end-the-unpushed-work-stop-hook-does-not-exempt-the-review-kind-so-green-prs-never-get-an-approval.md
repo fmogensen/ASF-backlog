@@ -12,3 +12,6 @@ This is a deadlock for any product under `factory_only`: the fix's own PR needs 
 - A refused heartbeat loop does not mark a session stalled while it is still producing events. Tested.
 - A review whose worktree is gone is recreated or relaunched once, not left DEAD.
 - A PR with green required checks on its head and no review verdict for that head for more than N minutes (configurable) raises one watchdog breach naming the blocking stage, and shows as a row in `asf status` and `asf doctor`.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
