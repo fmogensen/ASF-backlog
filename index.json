@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T09:44:57Z",
+  "generated": "2026-10-06T09:59:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6814,6 +6814,44 @@
       "type": "bug",
       "updated": "2026-10-06T09:41:51Z"
     },
+    "B-0238": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0238",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #842@2b3af7350",
+      "stage_since": "2026-10-06T09:59:30Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #842@2b3af7350",
+      "type": "bug",
+      "updated": "2026-10-06T09:59:30Z"
+    },
+    "B-0239": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0239",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0233",
+      "stage_since": "2026-10-06T09:59:32Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0233",
+      "type": "bug",
+      "updated": "2026-10-06T09:59:32Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -7951,7 +7989,9 @@
         "B-0234",
         "B-0235",
         "B-0236",
-        "B-0237"
+        "B-0237",
+        "B-0238",
+        "B-0239"
       ],
       "decided": true,
       "evidence": [
@@ -12593,7 +12633,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/3 tasks Closed",
+        "1/3 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -12602,12 +12642,12 @@
       "rank": 23,
       "reshape": "stale: T-0719 Active for 5d (over 3x its limit), 318 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
-      "stage": "building 0/3",
-      "stage_since": "2026-10-03T04:33:11Z",
+      "stage": "building 1/3",
+      "stage_since": "2026-10-06T09:51:38Z",
       "state": "Active",
       "title": "Worker sessions are refused the repo's own lint (check_conventions) and printenv",
       "type": "feature",
-      "updated": "2026-10-03T04:33:11Z"
+      "updated": "2026-10-06T09:51:38Z"
     },
     "F-0116": {
       "backlinks": [],
@@ -23699,7 +23739,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1397 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1403 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -29476,7 +29516,8 @@
       "backlinks": [
         "T-0234",
         "T-0235",
-        "T-0238"
+        "T-0238",
+        "B-0239"
       ],
       "children": [],
       "decided": true,
@@ -41404,7 +41445,8 @@
       "backlinks": [
         "T-0529",
         "T-0530",
-        "T-0775"
+        "T-0775",
+        "B-0238"
       ],
       "children": [],
       "cost": {
@@ -48824,22 +48866,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #828 OPEN",
-        "branch worker/T-0720",
-        "rule: in-flight"
+        "merge 6160b55 of worker/T-0720 lands T-0720 (PR #828)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0720",
+      "landing": {
+        "as_of": "2026-10-06T09:51:38Z",
+        "by": "pr-merge",
+        "sha": "6160b554c1d59125cfe2a97b0bb278af74399c10"
+      },
       "links": {
         "plan": "docs/plans/f-0115.md"
       },
       "parent": "F-0115",
       "schema_version": 1,
-      "stage_since": "2026-10-06T06:58:28Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T09:51:38Z",
+      "state": "Closed",
       "title": "`printenv` joins the approvals hook's read-only register",
       "type": "task",
-      "updated": "2026-10-06T09:36:24Z",
+      "updated": "2026-10-06T09:51:38Z",
       "writes": [
         "asf/approvals.py",
         "tests/test_approvals.py"
