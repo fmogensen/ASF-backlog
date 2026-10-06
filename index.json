@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T02:23:42Z",
+  "generated": "2026-10-06T02:32:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5760,6 +5760,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0198",
@@ -5772,7 +5776,26 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0239",
       "type": "bug",
-      "updated": "2026-10-06T02:23:42Z"
+      "updated": "2026-10-06T02:29:01Z"
+    },
+    "B-0199": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0199",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0313",
+      "stage_since": "2026-10-06T02:32:28Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0313",
+      "type": "bug",
+      "updated": "2026-10-06T02:32:28Z"
     },
     "D-0001": {
       "backlinks": [
@@ -6918,7 +6941,8 @@
         "B-0195",
         "B-0196",
         "B-0197",
-        "B-0198"
+        "B-0198",
+        "B-0199"
       ],
       "decided": true,
       "evidence": [
@@ -22333,6 +22357,7 @@
       ],
       "backlinks": [
         "T-0094",
+        "T-0548",
         "T-0562"
       ],
       "children": [],
@@ -23435,7 +23460,8 @@
         "T-0163",
         "T-0301",
         "T-0346",
-        "T-0524"
+        "T-0524",
+        "T-0548"
       ],
       "children": [],
       "cost": {
@@ -23878,6 +23904,7 @@
         "T-0301",
         "T-0346",
         "T-0524",
+        "T-0548",
         "T-0574",
         "T-0687"
       ],
@@ -25224,6 +25251,7 @@
         "T-0226",
         "T-0346",
         "T-0524",
+        "T-0548",
         "B-0138"
       ],
       "children": [],
@@ -26259,6 +26287,7 @@
         "T-0494",
         "T-0501",
         "T-0541",
+        "T-0548",
         "T-0557"
       ],
       "children": [],
@@ -27653,6 +27682,7 @@
         "T-0230",
         "T-0271",
         "T-0350",
+        "T-0548",
         "T-0605"
       ],
       "children": [],
@@ -31248,7 +31278,8 @@
       "backlinks": [
         "T-0312",
         "T-0314",
-        "T-0316"
+        "T-0316",
+        "B-0199"
       ],
       "children": [],
       "decided": true,
@@ -40304,15 +40335,22 @@
       ]
     },
     "T-0548": {
-      "after": [],
+      "after": [
+        "T-0093",
+        "T-0119",
+        "T-0130",
+        "T-0163",
+        "T-0189",
+        "T-0226"
+      ],
       "backlinks": [
         "T-0549"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0548",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0548",
@@ -40321,12 +40359,12 @@
       },
       "parent": "F-0175",
       "schema_version": 1,
-      "stage_since": "2026-09-29T17:54:45Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:29:01Z",
+      "state": "Active",
       "stories": [],
       "title": "the pass reaches its own watermark, buys nothing twice, says what it did \u2014 and one function parses the facts",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:29:01Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/tick/tick.py",
@@ -42836,8 +42874,15 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #793 OPEN",
         "branch worker/T-0617",
         "rule: in-flight"
       ],
@@ -42853,7 +42898,7 @@
       "stories": [],
       "title": "a merge is never attempted under a PR number nobody has",
       "type": "task",
-      "updated": "2026-10-06T02:10:58Z",
+      "updated": "2026-10-06T02:29:10Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py"
@@ -43673,7 +43718,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 6,
+        "sessions": 7,
         "tokens_cache_read": 5344087,
         "tokens_cache_write": 107720,
         "tokens_input": 104,
@@ -43696,7 +43741,7 @@
       "state": "Active",
       "title": "the trunk is asked before a Task is minted, and a typed `landed:` finally closes one",
       "type": "task",
-      "updated": "2026-10-06T02:20:22Z",
+      "updated": "2026-10-06T02:29:10Z",
       "writes": [
         "asf/record/trunk_check.py",
         "asf/record/plan_tasks.py",
@@ -47219,6 +47264,16 @@
     "T-0738": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 0,
+        "tokens_cache_write": 0,
+        "tokens_input": 0,
+        "tokens_output": 0,
+        "usd": 0.0
+      },
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-06)",
@@ -47235,7 +47290,7 @@
       "state": "New",
       "title": "the gate's third route, and the four skips that speak",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:29:10Z",
       "writes": [
         "asf/record/plan_tasks.py",
         "tests/test_plan_tasks.py",
