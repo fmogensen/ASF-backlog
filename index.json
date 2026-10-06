@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T01:31:51Z",
+  "generated": "2026-10-06T01:42:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5275,7 +5275,7 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 2,
+        "sessions": 3,
         "tokens_cache_read": 4971147,
         "tokens_cache_write": 132576,
         "tokens_input": 104,
@@ -5299,7 +5299,7 @@
       "state": "Active",
       "title": "CI box list has three hand-kept copies that drift: one source (ci.pool / runner connector) for watchdog, installer and doctor",
       "type": "bug",
-      "updated": "2026-10-06T01:23:42Z"
+      "updated": "2026-10-06T01:37:37Z"
     },
     "B-0179": {
       "backlinks": [
@@ -5645,6 +5645,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0193",
@@ -5657,7 +5661,45 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 PR-0785",
       "type": "bug",
-      "updated": "2026-10-06T01:31:50Z"
+      "updated": "2026-10-06T01:37:16Z"
+    },
+    "B-0194": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0194",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #769@20ffe4d2b",
+      "stage_since": "2026-10-06T01:42:22Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #769@20ffe4d2b",
+      "type": "bug",
+      "updated": "2026-10-06T01:42:22Z"
+    },
+    "B-0195": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0195",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0591",
+      "stage_since": "2026-10-06T01:42:23Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0591",
+      "type": "bug",
+      "updated": "2026-10-06T01:42:23Z"
     },
     "D-0001": {
       "backlinks": [
@@ -6798,7 +6840,9 @@
         "B-0190",
         "B-0191",
         "B-0192",
-        "B-0193"
+        "B-0193",
+        "B-0194",
+        "B-0195"
       ],
       "decided": true,
       "evidence": [
@@ -6808,12 +6852,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2559.8,
+      "spend_usd": 2563.46,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-06T01:23:42Z"
+      "updated": "2026-10-06T01:37:37Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7646,7 +7690,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 12,
+        "sessions": 13,
         "tokens_cache_read": 37418640,
         "tokens_cache_write": 1127601,
         "tokens_input": 1040,
@@ -7674,7 +7718,7 @@
       "state": "Active",
       "title": "P5 \u2014 launch",
       "type": "feature",
-      "updated": "2026-10-06T00:54:57Z"
+      "updated": "2026-10-06T01:37:37Z"
     },
     "F-0022": {
       "area": "factory",
@@ -24278,7 +24322,6 @@
       },
       "decided": true,
       "evidence": [
-        "PR #489 OPEN",
         "branch worker/T-0142",
         "rule: in-flight"
       ],
@@ -24293,7 +24336,7 @@
       "state": "Active",
       "title": "the key \u2014 `ci.factory_only_paths`, validated, read, and documented where the operator writes it",
       "type": "task",
-      "updated": "2026-10-05T23:35:59Z",
+      "updated": "2026-10-06T01:37:16Z",
       "writes": [
         "asf/env.py",
         "docs/products.example.yaml",
@@ -24680,6 +24723,7 @@
         "T-0156",
         "T-0189",
         "T-0231",
+        "T-0441",
         "T-0744"
       ],
       "children": [],
@@ -27752,9 +27796,11 @@
         "T-0189"
       ],
       "backlinks": [
+        "T-0441",
         "T-0604",
         "T-0744",
-        "B-0138"
+        "B-0138",
+        "B-0194"
       ],
       "children": [],
       "cost": {
@@ -32701,6 +32747,12 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0350",
@@ -32717,7 +32769,7 @@
       "state": "Active",
       "title": "the tick probes, stops and lets the branch relaunch it \u2014 and holds the second time",
       "type": "task",
-      "updated": "2026-10-06T00:54:22Z",
+      "updated": "2026-10-06T01:37:37Z",
       "writes": [
         "asf/tick/step_health.py",
         "asf/workers/runtime.py",
@@ -36267,15 +36319,30 @@
       ]
     },
     "T-0441": {
-      "after": [],
+      "after": [
+        "T-0153",
+        "T-0231"
+      ],
       "backlinks": [
-        "T-0438"
+        "T-0438",
+        "T-0744"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 10234016,
+        "tokens_cache_write": 192084,
+        "tokens_input": 139,
+        "tokens_output": 84323,
+        "usd": 3.66
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "PR #788 OPEN",
+        "branch worker/T-0441",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0441",
@@ -36284,11 +36351,11 @@
       },
       "parent": "F-0113",
       "schema_version": 1,
-      "stage_since": "2026-09-28T13:21:48Z",
-      "state": "New",
+      "stage_since": "2026-10-06T01:37:16Z",
+      "state": "Active",
       "title": "`asf status` \u2014 one plan per table, and an `S1 gate` row that only speaks when it holds",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T01:37:37Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_views.py"
@@ -36898,7 +36965,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 8551407,
         "tokens_cache_write": 152593,
         "tokens_input": 134,
@@ -36921,7 +36988,7 @@
       "state": "Active",
       "title": "the two chained bodies, and the branch that renames a foreign hook behind them",
       "type": "task",
-      "updated": "2026-10-06T01:23:42Z",
+      "updated": "2026-10-06T01:37:37Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hook_chain.py",
@@ -38571,11 +38638,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 7,
-        "tokens_cache_read": 12649234,
-        "tokens_cache_write": 327735,
-        "tokens_input": 414,
-        "tokens_output": 78698,
+        "sessions": 8,
+        "tokens_cache_read": 12778190,
+        "tokens_cache_write": 328367,
+        "tokens_input": 418,
+        "tokens_output": 78710,
         "usd": 5.28
       },
       "decided": true,
@@ -38594,7 +38661,7 @@
       "state": "Active",
       "title": "the ladder \u2014 a Bug under an Epic, a branch that names the card, and the share left over",
       "type": "task",
-      "updated": "2026-10-06T01:23:42Z",
+      "updated": "2026-10-06T01:37:37Z",
       "writes": [
         "asf/scorecard/score.py",
         "asf/scorecard/diagnose.py",
@@ -39875,8 +39942,15 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #789 OPEN",
         "branch worker/T-0541",
         "rule: in-flight"
       ],
@@ -39891,7 +39965,7 @@
       "state": "Active",
       "title": "the class written on the ledger, and the key the card verifies itself on left exactly where it is",
       "type": "task",
-      "updated": "2026-10-06T00:54:22Z",
+      "updated": "2026-10-06T01:37:37Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -41159,7 +41233,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
+        "sessions": 5,
         "tokens_cache_read": 23792109,
         "tokens_cache_write": 243319,
         "tokens_input": 256,
@@ -41186,7 +41260,7 @@
       "state": "Active",
       "title": "the row whose seat went, and the hand launch that claims before it spawns",
       "type": "task",
-      "updated": "2026-10-06T01:23:42Z",
+      "updated": "2026-10-06T01:37:37Z",
       "writes": [
         "asf/workers/wave.py",
         "asf/workers/__init__.py",
@@ -41736,7 +41810,9 @@
       ]
     },
     "T-0591": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0195"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -43465,7 +43541,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 5344087,
         "tokens_cache_write": 107720,
         "tokens_input": 104,
@@ -43488,7 +43564,7 @@
       "state": "Active",
       "title": "the trunk is asked before a Task is minted, and a typed `landed:` finally closes one",
       "type": "task",
-      "updated": "2026-10-06T00:54:57Z",
+      "updated": "2026-10-06T01:37:37Z",
       "writes": [
         "asf/record/trunk_check.py",
         "asf/record/plan_tasks.py",
@@ -47202,7 +47278,8 @@
     "T-0744": {
       "after": [
         "T-0153",
-        "T-0231"
+        "T-0231",
+        "T-0441"
       ],
       "backlinks": [
         "B-0138"
