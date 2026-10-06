@@ -6,3 +6,6 @@ From a product session (2026-10-06): required jobs needing `self-hosted,<provide
 - [ ] `asf doctor` (ci pool/classes row) and the CI reserve step flag "an idle runner of a declared pool size class lacks a label a queued required job asks for", naming runner, missing label and the queued job — UNLESS the runner carries a declared exclusion (`ci.pool.<runner>.exclude_labels` / reason) — then it is shown as "held: <reason>", never suggested.
 - [ ] `asf ci reconcile` lists live runners missing from `ci.pool` and can write them as declared entries (dry-run by default).
 - [ ] Hermetic tests with fixture runner lists and queued jobs; no provider or host names in code.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
