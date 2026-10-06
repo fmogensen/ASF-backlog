@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T16:32:05Z",
+  "generated": "2026-10-06T16:42:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7459,6 +7459,25 @@
       "type": "bug",
       "updated": "2026-10-06T16:11:53Z"
     },
+    "B-0265": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0265",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #860@e65dce31a",
+      "stage_since": "2026-10-06T16:42:57Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #860@e65dce31a",
+      "type": "bug",
+      "updated": "2026-10-06T16:42:57Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -8624,7 +8643,8 @@
         "B-0261",
         "B-0262",
         "B-0263",
-        "B-0264"
+        "B-0264",
+        "B-0265"
       ],
       "decided": true,
       "evidence": [
@@ -30248,7 +30268,8 @@
         "T-0537",
         "T-0775",
         "B-0239",
-        "B-0261"
+        "B-0261",
+        "B-0265"
       ],
       "children": [],
       "cost": {
@@ -44744,6 +44765,7 @@
         "T-0665",
         "T-0671",
         "T-0700",
+        "T-0715",
         "T-0766",
         "B-0195"
       ],
@@ -47793,6 +47815,7 @@
         "T-0672",
         "T-0673",
         "T-0695",
+        "T-0715",
         "T-0719",
         "T-0766",
         "T-0788",
@@ -48756,6 +48779,7 @@
         "T-0696",
         "T-0697",
         "T-0698",
+        "T-0715",
         "T-0766",
         "B-0220",
         "B-0227",
@@ -49565,18 +49589,22 @@
     },
     "T-0715": {
       "after": [
-        "T-0714"
+        "T-0714",
+        "T-0591",
+        "T-0671",
+        "T-0695"
       ],
       "backlinks": [
         "T-0716",
         "T-0717",
-        "T-0718"
+        "T-0718",
+        "T-0766"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0715",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0715",
@@ -49589,12 +49617,12 @@
         "merge T-0715+T-0716+T-0718"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-30T09:40:11Z",
-      "state": "New",
+      "stage_since": "2026-10-06T16:37:24Z",
+      "state": "Active",
       "stories": [],
       "title": "every relief cancel says which kind it was, and every claim says what it cost",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T16:37:24Z",
       "writes": [
         "asf/ci_queue.py",
         "asf/harvest/lane.py",
@@ -51640,7 +51668,8 @@
         "T-0153",
         "T-0591",
         "T-0671",
-        "T-0695"
+        "T-0695",
+        "T-0715"
       ],
       "backlinks": [
         "T-0767",
@@ -51655,6 +51684,7 @@
       },
       "decided": true,
       "evidence": [
+        "PR #865 OPEN",
         "branch worker/T-0766",
         "rule: in-flight"
       ],
@@ -51672,7 +51702,7 @@
       "state": "Active",
       "title": "the lane writes down what the branch carried",
       "type": "task",
-      "updated": "2026-10-06T16:32:03Z",
+      "updated": "2026-10-06T16:37:24Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
