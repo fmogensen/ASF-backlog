@@ -1,4 +1,8 @@
+→ F-0248
+
 # Genericity pass on the 10-06 items: work for one developer, one account, no cloud, no merge queue, any forge
+type: feature
+parent: E-0001
 
 Operator 2026-10-06: "review this with generic eyes, as ASF will be suited for any developer developing any product".
 This item amends the items filed 2026-10-06 (cloud heartbeat, stale-means-act, criteria 9 and 10, throughput metrics, versioning). Each must work for the smallest setup — one developer, one model account, no cloud lane, GitHub-hosted (or no) CI, no merge queue — and for other forges, with no product-specific names.
@@ -13,6 +17,3 @@ Amendments (each an acceptance test on a fixture "minimal product"):
 7. Versioning: a product's version is its own tag scheme if it has one (configurable `version.tag_pattern`), else the short sha; CHANGELOG generation is opt-in per product; ASF's own release notes stay mandatory for ASF.
 8. Floor-clean limits scale with defaults sane for a small repo (stale PR 3 d, run 30 min, branch retention 14 d) and every kind can be disabled.
 9. No product names, account names, hostnames, provider names (Hetzner/Contabo) or operator paths in code, tests, docs or defaults; check_generic stays clean.
-
-## Question
-This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

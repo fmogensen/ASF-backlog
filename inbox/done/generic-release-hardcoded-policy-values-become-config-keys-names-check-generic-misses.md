@@ -1,4 +1,8 @@
+→ F-0247
+
 # Generic release: hardcoded policy values become config keys; names check_generic misses
+type: feature
+parent: E-0001
 
 Genericity audit before the public release: hardcoded policy values and operator-specific names
 
@@ -50,6 +54,3 @@ Further tunables of the same shape below the top 25 (about 160 constants, about 
 - docs/config.example.yaml (or products.example.yaml for product-level keys) documents each one, and C's gaps reach zero.
 - tools/forbidden-names.txt gains the patterns above, and check_generic is clean.
 - A test proves that a minimal product runs a tick with zero product-specific config: one account, no cloud, no merge queue, GitHub-hosted CI, no cux lock and no product yaml beyond its name and repo.
-
-## Question
-This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.

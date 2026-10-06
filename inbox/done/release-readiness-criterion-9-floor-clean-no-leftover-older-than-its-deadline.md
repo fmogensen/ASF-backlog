@@ -1,4 +1,8 @@
+→ F-0250
+
 # Release readiness criterion 9: floor clean — no leftover older than its deadline
+type: feature
+parent: E-0001
 
 Operator 2026-10-06: "is the factory floor cleanup something we need to have in place as part of public release?" Answer: yes, for what a public user sees or pays for.
 
@@ -13,6 +17,3 @@ Evidence column lists counts and the oldest of each. Thresholds are `release.flo
 
 Acceptance: hermetic tests per leftover kind (red past limit, green under it); `asf release-readiness` prints the row; `asf doctor` mirrors it.
 Depends on: "Stale means act, not flag" (the actions that make this criterion pass).
-
-## Question
-This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>; or an ## Acceptance list if it is new work.
