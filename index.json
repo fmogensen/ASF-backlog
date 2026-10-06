@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T17:18:23Z",
+  "generated": "2026-10-06T17:35:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4874,7 +4874,7 @@
     "B-0162": {
       "backlinks": [],
       "children": [],
-      "count": 2,
+      "count": 3,
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-06)",
@@ -4883,7 +4883,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0162",
-      "last_filed": "2026-10-05",
+      "last_filed": "2026-10-06",
       "parent": "E-0001",
       "places": 1,
       "schema_version": 1,
@@ -5289,7 +5289,6 @@
       "decided": true,
       "evidence": [
         "merge ed716f1 of fix/B-0178 lands B-0178 (PR #787)",
-        "CI green on main at or after it",
         "rule: fixed"
       ],
       "folder": "bugs",
@@ -5308,7 +5307,7 @@
       "state": "Resolved",
       "title": "CI box list has three hand-kept copies that drift: one source (ci.pool / runner connector) for watchdog, installer and doctor",
       "type": "bug",
-      "updated": "2026-10-06T14:47:55Z"
+      "updated": "2026-10-06T17:23:59Z"
     },
     "B-0179": {
       "backlinks": [
@@ -7505,6 +7504,25 @@
       "type": "bug",
       "updated": "2026-10-06T17:15:43Z"
     },
+    "B-0267": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0267",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0092",
+      "stage_since": "2026-10-06T17:35:07Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0092",
+      "type": "bug",
+      "updated": "2026-10-06T17:35:07Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -8672,7 +8690,8 @@
         "B-0263",
         "B-0264",
         "B-0265",
-        "B-0266"
+        "B-0266",
+        "B-0267"
       ],
       "decided": true,
       "evidence": [
@@ -10253,7 +10272,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
+        "sessions": 4,
         "usd": 10.22
       },
       "decided": true,
@@ -10275,7 +10294,7 @@
       "state": "Active",
       "title": "Same-session correction: review findings go back to the writer's own session; a fixer only for a dead one",
       "type": "feature",
-      "updated": "2026-09-26T05:08:19Z"
+      "updated": "2026-10-06T17:34:53Z"
     },
     "F-0040": {
       "area": "factory",
@@ -10853,7 +10872,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 25,
-        "sessions": 4,
+        "sessions": 5,
         "tokens_cache_read": 15846050,
         "tokens_cache_write": 319966,
         "tokens_input": 280,
@@ -10880,7 +10899,7 @@
       "state": "Active",
       "title": "Failure classification before any relaunch: credential, quota, transport or work",
       "type": "feature",
-      "updated": "2026-10-06T16:32:03Z"
+      "updated": "2026-10-06T17:34:53Z"
     },
     "F-0055": {
       "area": "factory",
@@ -12339,7 +12358,8 @@
         "F-0166",
         "F-0198",
         "F-0226",
-        "T-0770"
+        "T-0770",
+        "B-0267"
       ],
       "budget_sessions": 12,
       "budget_usd": 20,
@@ -12354,7 +12374,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 25,
         "sessions": 3,
         "tokens_cache_read": 10019959,
         "tokens_cache_write": 296720,
@@ -12380,7 +12400,7 @@
       "state": "Active",
       "title": "An item has a budget: three sessions or $10, then it stops and says why",
       "type": "feature",
-      "updated": "2026-10-06T17:03:11Z"
+      "updated": "2026-10-06T17:34:53Z"
     },
     "F-0093": {
       "area": "factory",
@@ -12439,7 +12459,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
+        "sessions": 6,
         "tokens_cache_read": 27433691,
         "tokens_cache_write": 475928,
         "tokens_input": 472,
@@ -12466,7 +12486,7 @@
       "state": "Active",
       "title": "A decided Epic with no Features never starts: no row breaks an Epic into Features",
       "type": "feature",
-      "updated": "2026-10-06T17:03:11Z"
+      "updated": "2026-10-06T17:34:53Z"
     },
     "F-0095": {
       "backlinks": [
@@ -16088,7 +16108,9 @@
       "updated": "2026-09-29T21:18:29Z"
     },
     "F-0191": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0162"
+      ],
       "children": [
         "T-0766",
         "T-0767"
@@ -18013,9 +18035,9 @@
       "children": [],
       "decided": true,
       "evidence": [
+        "held Closed; landed would say Resolved",
         "commit 013a154 names F-0248",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "rule: closed-terminal"
       ],
       "folder": "features",
       "id": "F-0248",
@@ -18027,7 +18049,7 @@
       "state": "Closed",
       "title": "Genericity pass on the 10-06 items: work for one developer, one account, no cloud, no merge queue, any forge",
       "type": "feature",
-      "updated": "2026-10-06T14:47:55Z"
+      "updated": "2026-10-06T17:23:59Z"
     },
     "F-0249": {
       "backlinks": [
@@ -20640,7 +20662,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 37,
+        "runner_min": 43,
         "sessions": 0,
         "usd": null
       },
@@ -20660,7 +20682,7 @@
       "state": "Active",
       "title": "Ingest adds mergeable and opened so CONFLICT \u2192 REBASE rows and the incident clock work",
       "type": "story",
-      "updated": "2026-10-06T17:03:11Z"
+      "updated": "2026-10-06T17:34:53Z"
     },
     "S-0003": {
       "area": "factory",
@@ -24479,7 +24501,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1425 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1427 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -29114,7 +29136,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 65,
-        "sessions": 3,
+        "sessions": 4,
         "usd": null
       },
       "decided": true,
@@ -29137,7 +29159,7 @@
       "state": "Active",
       "title": "the rate and the repeat \u2014 two sources over the `sessions` stream",
       "type": "task",
-      "updated": "2026-10-06T17:03:11Z",
+      "updated": "2026-10-06T17:34:53Z",
       "writes": [
         "asf/tick/file_bugs.py",
         "tests/test_file_bugs.py"
@@ -30314,7 +30336,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 37,
+        "runner_min": 43,
         "sessions": 6,
         "usd": null
       },
@@ -30347,7 +30369,7 @@
       ],
       "title": "every host read of the evidence pass goes behind the seam",
       "type": "task",
-      "updated": "2026-10-06T17:03:11Z",
+      "updated": "2026-10-06T17:34:53Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/cli.py",
@@ -33665,6 +33687,12 @@
         "T-0411"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0312",
@@ -33685,7 +33713,7 @@
       "state": "Active",
       "title": "`asf credentials check` \u2014 the cache, the CREDENTIALS table, `--json`, and `--quiet` as the rule contract",
       "type": "task",
-      "updated": "2026-10-06T16:57:29Z",
+      "updated": "2026-10-06T17:34:53Z",
       "writes": [
         "asf/credentials.py",
         "asf/cli.py",
@@ -34530,6 +34558,12 @@
         "T-0339"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0332",
@@ -34549,7 +34583,7 @@
       "state": "Active",
       "title": "`events` is the sixth validated stream \u2014 the schema, the natural key, `product` on every line, one product per file, and `emit` as the one append path",
       "type": "task",
-      "updated": "2026-10-06T16:48:09Z",
+      "updated": "2026-10-06T17:34:53Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/metrics/log.py",
@@ -35819,7 +35853,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 128,
+        "runner_min": 181,
         "sessions": 12,
         "tokens_cache_read": 30996774,
         "tokens_cache_write": 989835,
@@ -35845,7 +35879,7 @@
       "stories": [],
       "title": "`sev=` and `sig=` \u2014 a place's own severity, and a place as its own Bug",
       "type": "task",
-      "updated": "2026-10-06T15:09:17Z",
+      "updated": "2026-10-06T17:34:53Z",
       "writes": [
         "asf/rules/rules.py",
         "asf/tick/file_bugs.py",
@@ -41010,8 +41044,8 @@
       "decided": true,
       "evidence": [
         "merge 787b8b3 of worker/T-0495 lands T-0495 (PR #809)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0495",
@@ -41029,7 +41063,7 @@
       "state": "Closed",
       "title": "the doctor's SCHEDULER row reads the start line \u2014 one bounded reader, one field, one YELLOW",
       "type": "task",
-      "updated": "2026-10-06T14:47:55Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -41058,8 +41092,8 @@
       "decided": true,
       "evidence": [
         "merge b8d37f6 of worker/T-0496 lands T-0496 (PR #854)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0496",
@@ -41077,7 +41111,7 @@
       "state": "Closed",
       "title": "the guide says both shapes \u2014 the pair in the log, the field on the row",
       "type": "task",
-      "updated": "2026-10-06T15:47:05Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "docs/guide/operating.md",
         "docs/guide/getting-started.md",
@@ -42672,7 +42706,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 27,
+        "runner_min": 51,
         "sessions": 5,
         "tokens_cache_read": 9854784,
         "tokens_cache_write": 273018,
@@ -42683,8 +42717,8 @@
       "decided": true,
       "evidence": [
         "merge fb20530 of worker/T-0537 lands T-0537 (PR #858)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0537",
@@ -42705,7 +42739,7 @@
       "state": "Closed",
       "title": "a Bug's severity is settable, and the record keeps the reason it moved",
       "type": "task",
-      "updated": "2026-10-06T17:15:43Z",
+      "updated": "2026-10-06T17:34:53Z",
       "writes": [
         "asf/record/new.py",
         "asf/record/setfield.py",
@@ -46632,11 +46666,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 10763187,
-        "tokens_cache_write": 202232,
-        "tokens_input": 292,
-        "tokens_output": 788,
+        "sessions": 2,
+        "tokens_cache_read": 19429923,
+        "tokens_cache_write": 392854,
+        "tokens_input": 548,
+        "tokens_output": 1403,
         "usd": null
       },
       "decided": true,
@@ -46656,7 +46690,7 @@
       "stories": [],
       "title": "a new product grooms by default, and one that does not is told so",
       "type": "task",
-      "updated": "2026-10-06T17:03:11Z",
+      "updated": "2026-10-06T17:34:53Z",
       "writes": [
         "asf/init.py",
         "asf/approvals.py",
@@ -46753,8 +46787,8 @@
       "decided": true,
       "evidence": [
         "merge b502f17 of worker/T-0641 lands T-0641 (PR #461)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0641",
@@ -46773,7 +46807,7 @@
       "state": "Closed",
       "title": "the trunk is asked before a Task is minted, and a typed `landed:` finally closes one",
       "type": "task",
-      "updated": "2026-10-06T14:47:55Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "asf/record/trunk_check.py",
         "asf/record/plan_tasks.py",
@@ -46947,8 +46981,8 @@
       "decided": true,
       "evidence": [
         "merge 594bf8b of worker/T-0646 lands T-0646 (PR #818)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0646",
@@ -46971,7 +47005,7 @@
       "stories": [],
       "title": "the scorecard names the cause",
       "type": "task",
-      "updated": "2026-10-06T14:47:55Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
@@ -48151,8 +48185,8 @@
       "decided": true,
       "evidence": [
         "merge f29c8d6 of worker/T-0677 lands T-0677 (PR #857)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0677",
@@ -48171,7 +48205,7 @@
       "stories": [],
       "title": "the `ci` stream matches the workflow by file name too, and carries seconds, queue wait and wall time",
       "type": "task",
-      "updated": "2026-10-06T15:34:16Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
@@ -48285,8 +48319,8 @@
       "decided": true,
       "evidence": [
         "merge 1025e60 of worker/T-0680 lands T-0680 (PR #850)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0680",
@@ -48305,7 +48339,7 @@
       "stories": [],
       "title": "the census row, the slow box, the flaky box and the baseline that grew \u2014 four doctor rows off two files and no host call",
       "type": "task",
-      "updated": "2026-10-06T15:34:16Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -49888,8 +49922,8 @@
       "decided": true,
       "evidence": [
         "merge 6160b55 of worker/T-0720 lands T-0720 (PR #828)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0720",
@@ -49907,7 +49941,7 @@
       "state": "Closed",
       "title": "`printenv` joins the approvals hook's read-only register",
       "type": "task",
-      "updated": "2026-10-06T14:47:55Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "asf/approvals.py",
         "tests/test_approvals.py"
@@ -51158,8 +51192,8 @@
       "decided": true,
       "evidence": [
         "merge f4b0fc2 of worker/T-0751 lands T-0751 (PR #819)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0751",
@@ -51178,7 +51212,7 @@
       "stories": [],
       "title": "a header line is never a title, a refusal names the line, and I13 is measured on real mints",
       "type": "task",
-      "updated": "2026-10-06T14:47:55Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/shape.py",
@@ -51326,8 +51360,8 @@
       "decided": true,
       "evidence": [
         "merge 86aa38a of worker/T-0755 lands T-0755 (PR #859)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0755",
@@ -51345,7 +51379,7 @@
       "state": "Closed",
       "title": "the doctor says how many snapshots there are and whether the launcher is stale",
       "type": "task",
-      "updated": "2026-10-06T16:06:34Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "asf/scheduler.py",
         "asf/doctor.py",
@@ -51754,23 +51788,28 @@
       ],
       "backlinks": [
         "T-0767",
+        "B-0162",
         "B-0259"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 19,
+        "runner_min": 66,
         "sessions": 3,
         "usd": null
       },
       "decided": true,
       "evidence": [
-        "PR #865 OPEN",
-        "branch worker/T-0766",
-        "rule: in-flight"
+        "merge d3ff1e5 of worker/T-0766 lands T-0766 (PR #865)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0766",
+      "landing": {
+        "as_of": "2026-10-06T17:23:59Z",
+        "by": "pr-merge",
+        "sha": "d3ff1e588f2d4069599febb1e3cdf17598cc612a"
+      },
       "links": {
         "plan": "docs/plans/f-0191.md"
       },
@@ -51779,11 +51818,11 @@
       ],
       "parent": "F-0191",
       "schema_version": 1,
-      "stage_since": "2026-10-06T15:54:51Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T17:23:59Z",
+      "state": "Resolved",
       "title": "the lane writes down what the branch carried",
       "type": "task",
-      "updated": "2026-10-06T17:03:11Z",
+      "updated": "2026-10-06T17:34:53Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
@@ -52200,8 +52239,8 @@
       "decided": true,
       "evidence": [
         "merge cdc074e of worker/T-0778 lands T-0778 (PR #829)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0778",
@@ -52222,7 +52261,7 @@
       "state": "Closed",
       "title": "the Stale row reads the cadence the tick measured, and an upgrade hold names itself",
       "type": "task",
-      "updated": "2026-10-06T14:47:55Z",
+      "updated": "2026-10-06T17:23:59Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_tick.py",
