@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T02:39:49Z",
+  "generated": "2026-10-06T02:52:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5801,6 +5801,25 @@
       "type": "bug",
       "updated": "2026-10-06T02:37:49Z"
     },
+    "B-0200": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0200",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0236",
+      "stage_since": "2026-10-06T02:52:15Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0236",
+      "type": "bug",
+      "updated": "2026-10-06T02:52:15Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -6946,7 +6965,8 @@
         "B-0196",
         "B-0197",
         "B-0198",
-        "B-0199"
+        "B-0199",
+        "B-0200"
       ],
       "decided": true,
       "evidence": [
@@ -14521,12 +14541,12 @@
       "parent": "E-0001",
       "rank": 44,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T20:36:24Z",
+      "stage": "building 0/2",
+      "stage_since": "2026-10-06T02:46:57Z",
       "state": "Active",
       "title": "Intake: an S1 card stuck on a signature question sits silently; the 'S1:' title prefix is ignored",
       "type": "feature",
-      "updated": "2026-09-29T20:42:39Z"
+      "updated": "2026-10-06T02:46:57Z"
     },
     "F-0201": {
       "backlinks": [],
@@ -15733,7 +15753,9 @@
       "updated": "2026-10-06T02:37:49Z"
     },
     "F-0236": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0200"
+      ],
       "children": [
         "T-0789",
         "T-0790",
@@ -20759,6 +20781,7 @@
         "T-0189",
         "T-0226",
         "T-0231",
+        "T-0239",
         "T-0256",
         "T-0266",
         "T-0271",
@@ -20898,6 +20921,7 @@
         "T-0093",
         "T-0544",
         "T-0562",
+        "T-0581",
         "B-0181"
       ],
       "children": [],
@@ -22364,7 +22388,8 @@
       "backlinks": [
         "T-0094",
         "T-0548",
-        "T-0562"
+        "T-0562",
+        "T-0581"
       ],
       "children": [],
       "cost": {
@@ -23465,6 +23490,7 @@
         "T-0140",
         "T-0142",
         "T-0163",
+        "T-0239",
         "T-0301",
         "T-0346",
         "T-0524",
@@ -23907,6 +23933,7 @@
         "T-0133",
         "T-0142",
         "T-0163",
+        "T-0239",
         "T-0271",
         "T-0301",
         "T-0346",
@@ -24324,6 +24351,7 @@
         "F-0241",
         "T-0189",
         "T-0218",
+        "T-0239",
         "T-0412",
         "T-0541",
         "B-0122",
@@ -24419,6 +24447,7 @@
       "backlinks": [
         "T-0143",
         "T-0146",
+        "T-0239",
         "T-0464"
       ],
       "budget_sessions": 5,
@@ -26286,6 +26315,7 @@
         "T-0218",
         "T-0226",
         "T-0231",
+        "T-0239",
         "T-0257",
         "T-0266",
         "T-0341",
@@ -28245,17 +28275,37 @@
       ]
     },
     "T-0239": {
+      "after": [
+        "T-0056",
+        "T-0119",
+        "T-0130",
+        "T-0140",
+        "T-0142",
+        "T-0189"
+      ],
       "backlinks": [
         "T-0241",
         "T-0244",
         "T-0245",
+        "T-0271",
+        "T-0412",
         "B-0198"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 0,
+        "tokens_cache_write": 0,
+        "tokens_input": 0,
+        "tokens_output": 0,
+        "usd": 0.0
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0239",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0239",
@@ -28264,11 +28314,11 @@
       },
       "parent": "F-0013",
       "schema_version": 1,
-      "stage_since": "2026-09-27T07:19:26Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:46:57Z",
+      "state": "Active",
       "title": "the conventions \u2014 nine fields, one shaped `stage_limits`, one doctor finding",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:47:10Z",
       "writes": [
         "asf/conventions.py",
         "asf/doctor.py",
@@ -29570,7 +29620,8 @@
         "T-0056",
         "T-0130",
         "T-0166",
-        "T-0226"
+        "T-0226",
+        "T-0239"
       ],
       "backlinks": [
         "T-0196",
@@ -35326,7 +35377,8 @@
     "T-0412": {
       "after": [
         "T-0140",
-        "T-0189"
+        "T-0189",
+        "T-0239"
       ],
       "backlinks": [
         "T-0416",
@@ -38781,11 +38833,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 10,
-        "tokens_cache_read": 13036102,
-        "tokens_cache_write": 329631,
-        "tokens_input": 426,
-        "tokens_output": 78734,
+        "sessions": 11,
+        "tokens_cache_read": 13165058,
+        "tokens_cache_write": 330263,
+        "tokens_input": 430,
+        "tokens_output": 78746,
         "usd": 5.28
       },
       "decided": true,
@@ -38804,7 +38856,7 @@
       "state": "Active",
       "title": "the ladder \u2014 a Bug under an Epic, a branch that names the card, and the share left over",
       "type": "task",
-      "updated": "2026-10-06T02:20:22Z",
+      "updated": "2026-10-06T02:47:10Z",
       "writes": [
         "asf/scorecard/score.py",
         "asf/scorecard/diagnose.py",
@@ -40368,7 +40420,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "tokens_cache_read": 16415892,
         "tokens_cache_write": 209147,
         "tokens_input": 212,
@@ -40393,7 +40445,7 @@
       "stories": [],
       "title": "the pass reaches its own watermark, buys nothing twice, says what it did \u2014 and one function parses the facts",
       "type": "task",
-      "updated": "2026-10-06T02:37:58Z",
+      "updated": "2026-10-06T02:47:10Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/tick/tick.py",
@@ -41637,6 +41689,10 @@
       ]
     },
     "T-0581": {
+      "after": [
+        "T-0058",
+        "T-0093"
+      ],
       "backlinks": [
         "T-0582",
         "B-0197"
@@ -41644,8 +41700,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0581",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0581",
@@ -41654,11 +41710,11 @@
       },
       "parent": "F-0200",
       "schema_version": 1,
-      "stage_since": "2026-09-29T20:36:25Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:46:57Z",
+      "state": "Active",
       "title": "an `S1:` title is a severity, and a body error line is the signature the card was asked for",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:46:57Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/shape.py",
@@ -42916,7 +42972,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -42937,7 +42993,7 @@
       "stories": [],
       "title": "a merge is never attempted under a PR number nobody has",
       "type": "task",
-      "updated": "2026-10-06T02:29:10Z",
+      "updated": "2026-10-06T02:47:10Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py"
@@ -43029,8 +43085,15 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #795 OPEN",
         "branch worker/T-0620",
         "rule: in-flight"
       ],
@@ -43045,7 +43108,7 @@
       "state": "Active",
       "title": "the row and the `NEEDS OPERATOR` line name the globs being dragged to the console",
       "type": "task",
-      "updated": "2026-10-06T02:37:49Z",
+      "updated": "2026-10-06T02:47:10Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/approvals.py",
