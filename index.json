@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T05:42:23Z",
+  "generated": "2026-10-06T05:50:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6123,6 +6123,25 @@
       "type": "bug",
       "updated": "2026-10-06T05:38:39Z"
     },
+    "B-0214": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0214",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #814@b431085e6",
+      "stage_since": "2026-10-06T05:50:49Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #814@b431085e6",
+      "type": "bug",
+      "updated": "2026-10-06T05:50:49Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -7282,7 +7301,8 @@
         "B-0210",
         "B-0211",
         "B-0212",
-        "B-0213"
+        "B-0213",
+        "B-0214"
       ],
       "decided": true,
       "evidence": [
@@ -9310,8 +9330,8 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "4/5 tasks Closed",
-        "rule: documented"
+        "5/5 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0052",
@@ -9320,12 +9340,12 @@
       "priority": "nice",
       "rank": 89,
       "schema_version": 1,
-      "stage": "building 4/5",
-      "stage_since": "2026-09-27T20:37:00Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-06T05:47:48Z",
+      "state": "Closed",
       "title": "Budget enforcement per Epic",
       "type": "feature",
-      "updated": "2026-09-27T20:37:00Z"
+      "updated": "2026-10-06T05:47:48Z"
     },
     "F-0053": {
       "area": "factory",
@@ -13880,8 +13900,8 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/1 tasks Closed",
-        "rule: documented"
+        "1/1 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0172",
@@ -13891,12 +13911,12 @@
       "reshape_applied": "a9784c4e4b2c",
       "reshape_applied_at": "2026-10-03T06:59:53Z",
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-10-06T04:53:54Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-06T05:47:48Z",
+      "state": "Closed",
       "title": "A removed or moved Feature still shows a derived stage (plan-approved) in index and tables",
       "type": "feature",
-      "updated": "2026-10-06T04:53:54Z"
+      "updated": "2026-10-06T05:47:48Z"
     },
     "F-0173": {
       "backlinks": [
@@ -30343,22 +30363,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #811 OPEN",
-        "branch worker/T-0278",
-        "rule: in-flight"
+        "merge a5f39a7 of worker/T-0278 lands T-0278 (PR #811)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0278",
+      "landing": {
+        "as_of": "2026-10-06T05:47:48Z",
+        "by": "pr-merge",
+        "sha": "a5f39a7f3f1d4607c51e3a859f2d8501370d01cf"
+      },
       "links": {
         "plan": "docs/plans/f-0052.md"
       },
       "parent": "F-0052",
       "schema_version": 1,
-      "stage_since": "2026-10-06T04:25:10Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T05:47:48Z",
+      "state": "Closed",
       "title": "the wave raises one line per held Epic, on a busy tick too, and records it",
       "type": "task",
-      "updated": "2026-10-06T05:30:21Z",
+      "updated": "2026-10-06T05:47:48Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_tick_steps.py"
@@ -42720,7 +42745,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -42745,7 +42770,7 @@
       "state": "Active",
       "title": "the owed install becomes a durable record, and whichever process finishes last takes it",
       "type": "task",
-      "updated": "2026-10-06T05:21:21Z",
+      "updated": "2026-10-06T05:48:02Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -43495,8 +43520,15 @@
         "B-0204"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #815 OPEN",
         "branch worker/T-0615",
         "rule: in-flight"
       ],
@@ -43511,7 +43543,7 @@
       "state": "Active",
       "title": "one grace, one predicate, one index \u2014 and the stop reading them instead of its own arithmetic",
       "type": "task",
-      "updated": "2026-10-06T05:30:06Z",
+      "updated": "2026-10-06T05:48:02Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -44622,8 +44654,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0646",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0646",
@@ -44636,12 +44668,12 @@
         "split T-0646 asf | asf/metrics | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-29T23:53:12Z",
-      "state": "New",
+      "stage_since": "2026-10-06T05:47:48Z",
+      "state": "Active",
       "stories": [],
       "title": "the scorecard names the cause",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T05:47:48Z",
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
@@ -45527,7 +45559,8 @@
         "T-0673",
         "T-0719",
         "T-0788",
-        "B-0212"
+        "B-0212",
+        "B-0214"
       ],
       "children": [],
       "cost": {
@@ -48874,8 +48907,15 @@
         "T-0760"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #816 OPEN",
         "branch worker/T-0759",
         "rule: in-flight"
       ],
@@ -48890,7 +48930,7 @@
       "state": "Active",
       "title": "the hook derives the index it cannot find",
       "type": "task",
-      "updated": "2026-10-06T05:30:06Z",
+      "updated": "2026-10-06T05:48:02Z",
       "writes": [
         "asf/record/check.py",
         "tests/test_check_staged.py"
@@ -48953,12 +48993,17 @@
       },
       "decided": true,
       "evidence": [
-        "PR #810 OPEN",
-        "branch worker/T-0761",
-        "rule: in-flight"
+        "merge 21c8c84 of worker/T-0761 lands T-0761 (PR #810)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0761",
+      "landing": {
+        "as_of": "2026-10-06T05:47:48Z",
+        "by": "pr-merge",
+        "sha": "21c8c842cc10f9dfe2f7d3a746b59c4ffa6516b7"
+      },
       "links": {
         "plan": "docs/plans/replans/f-0172-a9784c4e4b2c.md"
       },
@@ -48967,11 +49012,11 @@
         "split T-0761 asf/views | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-06T04:53:54Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T05:47:48Z",
+      "state": "Closed",
       "title": "one retirement rule \u2014 a moved card is retired to the index reader too",
       "type": "task",
-      "updated": "2026-10-06T05:30:21Z",
+      "updated": "2026-10-06T05:47:48Z",
       "writes": [
         "asf/views/index_reader.py",
         "tests/test_views.py",
@@ -48986,22 +49031,27 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "F-0172 Closed",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0762",
+      "landing": {
+        "as_of": "2026-10-06T05:47:48Z",
+        "by": "descent",
+        "sha": ""
+      },
       "links": {
         "plan": "docs/plans/f-0172.md"
       },
       "parent": "F-0172",
       "removed": "replan F-0172: the groom's reshape cuts F-0172 to Task 1, and the retirement label is the half it cuts",
       "schema_version": 1,
-      "stage_since": "2026-09-30T13:40:52Z",
-      "state": "New",
+      "stage_since": "2026-10-06T05:47:48Z",
+      "state": "Closed",
       "title": "the retirement is the stage \u2014 on the card, and in the index",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T05:47:48Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/ingest.py",
