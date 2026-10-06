@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T23:13:46Z",
+  "generated": "2026-10-06T23:15:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7696,6 +7696,7 @@
       },
       "decided": true,
       "evidence": [
+        "PR #906 OPEN",
         "branch fix/B-0274",
         "rule: fixer"
       ],
@@ -7710,7 +7711,7 @@
       "state": "Active",
       "title": "Merge queue: drop a batch as soon as a required job is red, without waiting for non-required jobs",
       "type": "bug",
-      "updated": "2026-10-06T22:59:50Z"
+      "updated": "2026-10-06T23:13:27Z"
     },
     "B-0275": {
       "backlinks": [
@@ -9656,6 +9657,7 @@
       "count": 1,
       "decided": true,
       "evidence": [
+        "PR #907 OPEN",
         "branch fix/B-0356",
         "rule: fixer"
       ],
@@ -9677,7 +9679,7 @@
       "state": "Active",
       "title": "CI red: tests (3.13): the suite is hermetic (env -i, an operator home, ASF_PRODUCT set, foreign default branch)",
       "type": "bug",
-      "updated": "2026-10-06T23:05:20Z"
+      "updated": "2026-10-06T23:13:27Z"
     },
     "B-0357": {
       "backlinks": [],
@@ -9896,6 +9898,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0366",
@@ -9908,7 +9914,7 @@
       "state": "New",
       "title": "Watchdog: an approval hold no grant can release past 0 min \u2014 F-0061/touch_amendable_set",
       "type": "bug",
-      "updated": "2026-10-06T23:08:13Z"
+      "updated": "2026-10-06T23:13:27Z"
     },
     "D-0001": {
       "backlinks": [
@@ -15550,7 +15556,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/3 tasks Closed",
+        "2/3 tasks Closed",
         "3/3 stories open: S-51600, S-51601, S-51602",
         "rule: documented"
       ],
@@ -15562,12 +15568,12 @@
       "reshape_applied": "5fe2e9d3338d",
       "reshape_applied_at": "2026-10-06T21:41:20Z",
       "schema_version": 1,
-      "stage": "building 1/3",
-      "stage_since": "2026-10-06T09:41:51Z",
+      "stage": "building 2/3",
+      "stage_since": "2026-10-06T23:13:27Z",
       "state": "Active",
       "title": "Plans cut Tasks already on trunk, and depend on ids that were never minted: coders end with an empty branch",
       "type": "feature",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T23:13:27Z"
     },
     "F-0107": {
       "backlinks": [
@@ -20558,6 +20564,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0242",
         "0/2 tasks Closed",
         "4/4 stories open: S-53504, S-53505, S-53506, S-53507",
         "rule: documented"
@@ -20572,7 +20579,7 @@
       "state": "Active",
       "title": "Repair load \u2264 3 per Feature for the release gate: count rework, not the planned first review, and cut rework",
       "type": "feature",
-      "updated": "2026-10-06T22:59:50Z"
+      "updated": "2026-10-06T23:13:27Z"
     },
     "F-0243": {
       "backlinks": [
@@ -28598,7 +28605,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1457 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1459 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -51225,22 +51232,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #903 OPEN",
-        "branch worker/T-0643",
-        "rule: in-flight"
+        "merge 701d2d3 of worker/T-0643 lands T-0643 (PR #903)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0643",
+      "landing": {
+        "as_of": "2026-10-06T23:13:27Z",
+        "by": "pr-merge",
+        "sha": "701d2d36792b8a4e7ae7a0e105e741dede2c6e2e"
+      },
       "links": {
         "plan": "docs/plans/f-0106.md"
       },
       "parent": "F-0106",
       "schema_version": 1,
-      "stage_since": "2026-10-06T22:06:07Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T23:13:27Z",
+      "state": "Closed",
       "title": "the wave asks the trunk again, at the seat, and closes what it finds",
       "type": "task",
-      "updated": "2026-10-06T22:59:50Z",
+      "updated": "2026-10-06T23:13:27Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_trunk_check.py"
