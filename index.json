@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T22:16:24Z",
+  "generated": "2026-10-06T22:27:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7660,6 +7660,12 @@
         "F-0259"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "branch fix/B-0273",
@@ -7676,7 +7682,7 @@
       "state": "Active",
       "title": "Item ids with 5+ digits never match in landing attribution and evidence (\\d{4} regex)",
       "type": "bug",
-      "updated": "2026-10-06T22:14:03Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "B-0274": {
       "backlinks": [],
@@ -7706,8 +7712,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: filed"
+        "branch fix/B-0275",
+        "rule: fixer"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -7716,11 +7722,11 @@
       "schema_version": 1,
       "severity": "S1",
       "signature": "lane rewrite force-pushes a batched or land-requested PR head and its CI is lost",
-      "stage_since": "2026-10-06T19:03:38Z",
-      "state": "New",
+      "stage_since": "2026-10-06T22:21:33Z",
+      "state": "Active",
       "title": "naming reword force-pushes a green, land-requested PR (identical tree) and throws away its CI",
       "type": "bug",
-      "updated": "2026-10-06T19:08:45Z"
+      "updated": "2026-10-06T22:21:33Z"
     },
     "B-0276": {
       "backlinks": [
@@ -8122,17 +8128,19 @@
       "updated": "2026-10-06T20:53:57Z"
     },
     "B-0293": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0358"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 26,
-        "sessions": 2,
-        "tokens_cache_read": 2366951,
-        "tokens_cache_write": 56199,
-        "tokens_input": 86,
-        "tokens_output": 22390,
-        "usd": 0.92
+        "runner_min": 50,
+        "sessions": 3,
+        "tokens_cache_read": 4733902,
+        "tokens_cache_write": 112398,
+        "tokens_input": 172,
+        "tokens_output": 44780,
+        "usd": 1.84
       },
       "count": 1,
       "decided": true,
@@ -8153,15 +8161,17 @@
       "state": "Active",
       "title": "18 % of sessions end \"dead pid\" (threshold 10 %, 74 of 407 in 24h)",
       "type": "bug",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "B-0294": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0360"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 29,
-        "sessions": 1,
+        "runner_min": 58,
+        "sessions": 2,
         "usd": null
       },
       "count": 1,
@@ -8183,7 +8193,7 @@
       "state": "Active",
       "title": "21 % of sessions end \"other\" (threshold 10 %, 85 of 407 in 24h)",
       "type": "bug",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "B-0295": {
       "backlinks": [],
@@ -9644,6 +9654,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0357",
@@ -9656,7 +9670,64 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-0356",
       "type": "bug",
-      "updated": "2026-10-06T22:16:20Z"
+      "updated": "2026-10-06T22:21:33Z"
+    },
+    "B-0358": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0358",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "repeat: B-0293: dead pid",
+      "stage_since": "2026-10-06T22:26:59Z",
+      "state": "New",
+      "title": "B-0293 has ended \"dead pid\" 2 times in 24h",
+      "type": "bug",
+      "updated": "2026-10-06T22:26:59Z"
+    },
+    "B-0359": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0359",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "repeat: F-0069: other",
+      "stage_since": "2026-10-06T22:26:59Z",
+      "state": "New",
+      "title": "F-0069 has ended \"other\" 2 times in 24h",
+      "type": "bug",
+      "updated": "2026-10-06T22:26:59Z"
+    },
+    "B-0360": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0360",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: B-0294",
+      "stage_since": "2026-10-06T22:27:41Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-0294",
+      "type": "bug",
+      "updated": "2026-10-06T22:27:41Z"
     },
     "D-0001": {
       "backlinks": [
@@ -10923,7 +10994,10 @@
         "B-0354",
         "B-0355",
         "B-0356",
-        "B-0357"
+        "B-0357",
+        "B-0358",
+        "B-0359",
+        "B-0360"
       ],
       "decided": true,
       "evidence": [
@@ -10933,12 +11007,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1836.77,
+      "spend_usd": 1837.69,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11053,12 +11127,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 1386.84,
+      "spend_usd": 1388.5,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "E-0003": {
       "backlinks": [
@@ -11939,7 +12013,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 29,
-        "sessions": 10,
+        "sessions": 11,
         "tokens_cache_read": 7491372,
         "tokens_cache_write": 420788,
         "tokens_input": 260,
@@ -11967,7 +12041,7 @@
       "state": "Active",
       "title": "The grill: a request is interrogated before it is spent on",
       "type": "feature",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "F-0024": {
       "area": "factory",
@@ -11987,7 +12061,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 28,
         "sessions": 4,
         "tokens_cache_read": 13731376,
         "tokens_cache_write": 218100,
@@ -12015,7 +12089,7 @@
       "state": "Active",
       "title": "Self-amendment policy: the factory proposes, humans approve and merge",
       "type": "feature",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "F-0025": {
       "area": "factory",
@@ -13780,7 +13854,8 @@
     "F-0069": {
       "area": "security",
       "backlinks": [
-        "F-0261"
+        "F-0261",
+        "B-0359"
       ],
       "children": [
         "T-0358",
@@ -13797,11 +13872,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
-        "tokens_cache_read": 30147161,
-        "tokens_cache_write": 707238,
-        "tokens_input": 546,
-        "tokens_output": 175729,
+        "sessions": 5,
+        "tokens_cache_read": 40290496,
+        "tokens_cache_write": 968925,
+        "tokens_input": 746,
+        "tokens_output": 176127,
         "usd": 14.52
       },
       "decided": true,
@@ -13825,7 +13900,7 @@
       "state": "Active",
       "title": "Security checks by code: a review pass on sensitive paths, secret and dependency scanning as rules",
       "type": "feature",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "F-0070": {
       "area": "ci",
@@ -18010,12 +18085,12 @@
       "reshape_applied": "d04bed53bc41",
       "reshape_applied_at": "2026-10-03T04:59:44Z",
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-10-06T22:06:07Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-06T22:21:33Z",
       "state": "Active",
       "title": "CI artifact storage quota: daily prune + quota monitor (recurring red jobs on botseon)",
       "type": "feature",
-      "updated": "2026-10-06T22:06:07Z"
+      "updated": "2026-10-06T22:21:33Z"
     },
     "F-0179": {
       "backlinks": [
@@ -18188,7 +18263,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 28,
-        "sessions": 4,
+        "sessions": 5,
         "tokens_cache_read": 21979101,
         "tokens_cache_write": 476009,
         "tokens_input": 380,
@@ -18215,7 +18290,7 @@
       "state": "Active",
       "title": "CI without hand-kept labels: ASF discovers runners, measures them, and places and paces jobs itself",
       "type": "feature",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "F-0185": {
       "backlinks": [
@@ -20159,12 +20234,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 28,
-        "sessions": 5,
-        "tokens_cache_read": 12124993,
-        "tokens_cache_write": 310055,
-        "tokens_input": 370,
-        "tokens_output": 43435,
-        "usd": 3.41
+        "sessions": 6,
+        "tokens_cache_read": 12216778,
+        "tokens_cache_write": 310993,
+        "tokens_input": 372,
+        "tokens_output": 43548,
+        "usd": 5.07
       },
       "decided": true,
       "evidence": [
@@ -20182,7 +20257,7 @@
       "state": "Active",
       "title": "Operator ruling at the round cap never lifts a stalemate park (History not in digest)",
       "type": "feature",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T22:27:15Z"
     },
     "F-0240": {
       "backlinks": [],
@@ -34576,7 +34651,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 25,
+        "runner_min": 40,
         "sessions": 6,
         "tokens_cache_read": 86318718,
         "tokens_cache_write": 1144424,
@@ -34604,7 +34679,7 @@
       "state": "Active",
       "title": "seventeen first lines, one shape \u2014 and the two stale docstrings",
       "type": "task",
-      "updated": "2026-10-06T22:00:35Z",
+      "updated": "2026-10-06T22:27:15Z",
       "writes": [
         "asf/views/status.py",
         "asf/views/board.py",
@@ -50625,7 +50700,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 0,
+        "sessions": 1,
         "usd": null
       },
       "decided": true,
@@ -50644,7 +50719,7 @@
       "state": "Active",
       "title": "the wave asks the trunk again, at the seat, and closes what it finds",
       "type": "task",
-      "updated": "2026-10-06T22:06:07Z",
+      "updated": "2026-10-06T22:27:15Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_trunk_check.py"
@@ -51591,7 +51666,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 58367883,
         "tokens_cache_write": 1019631,
         "tokens_input": 1006,
@@ -51600,8 +51675,8 @@
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0668",
-        "rule: in-flight"
+        "no evidence found (2026-10-06)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0668",
@@ -51616,12 +51691,12 @@
       ],
       "parent": "F-0178",
       "schema_version": 1,
-      "stage_since": "2026-10-06T22:06:07Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T22:21:33Z",
+      "state": "New",
       "stories": [],
       "title": "the reader, the age rule, the configuration and the daily prune",
       "type": "task",
-      "updated": "2026-10-06T22:06:07Z",
+      "updated": "2026-10-06T22:27:15Z",
       "writes": [
         "asf/ci_artifacts.py",
         "asf/env.py",
