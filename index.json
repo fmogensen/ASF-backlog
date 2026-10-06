@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T15:09:23Z",
+  "generated": "2026-10-06T15:18:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -15660,7 +15660,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "6/9 tasks Closed",
+        "7/9 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -15671,12 +15671,12 @@
       "reshape_applied": "0253219221ab",
       "reshape_applied_at": "2026-10-03T05:19:34Z",
       "schema_version": 1,
-      "stage": "building 6/9",
-      "stage_since": "2026-10-06T12:43:51Z",
+      "stage": "building 7/9",
+      "stage_since": "2026-10-06T15:15:02Z",
       "state": "Active",
       "title": "CI without hand-kept labels: ASF discovers runners, measures them, and places and paces jobs itself",
       "type": "feature",
-      "updated": "2026-10-06T12:43:51Z"
+      "updated": "2026-10-06T15:15:02Z"
     },
     "F-0185": {
       "backlinks": [
@@ -28263,6 +28263,7 @@
         "T-0193",
         "T-0197",
         "T-0203",
+        "T-0204",
         "T-0218",
         "T-0226",
         "T-0231",
@@ -28916,16 +28917,18 @@
     "T-0204": {
       "after": [
         "T-0201",
-        "T-0202"
+        "T-0202",
+        "T-0189"
       ],
       "backlinks": [
-        "T-0205"
+        "T-0205",
+        "T-0363"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0204",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0204",
@@ -28937,11 +28940,11 @@
       ],
       "parent": "F-0103",
       "schema_version": 1,
-      "stage_since": "2026-09-24T03:54:50Z",
-      "state": "New",
+      "stage_since": "2026-10-06T15:15:02Z",
+      "state": "Active",
       "title": "the rate and the repeat \u2014 two sources over the `sessions` stream",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T15:15:02Z",
       "writes": [
         "asf/tick/file_bugs.py",
         "tests/test_file_bugs.py"
@@ -30117,6 +30120,7 @@
       },
       "decided": true,
       "evidence": [
+        "PR #860 OPEN",
         "branch worker/T-0233",
         "rule: in-flight"
       ],
@@ -30143,7 +30147,7 @@
       ],
       "title": "every host read of the evidence pass goes behind the seam",
       "type": "task",
-      "updated": "2026-10-06T14:42:16Z",
+      "updated": "2026-10-06T15:15:02Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/cli.py",
@@ -35592,7 +35596,8 @@
     "T-0363": {
       "after": [
         "T-0362",
-        "T-0189"
+        "T-0189",
+        "T-0204"
       ],
       "backlinks": [
         "B-0206"
@@ -42246,6 +42251,7 @@
       "backlinks": [
         "T-0533",
         "T-0647",
+        "T-0683",
         "B-0253"
       ],
       "children": [],
@@ -46734,6 +46740,7 @@
         "T-0532"
       ],
       "backlinks": [
+        "T-0683",
         "B-0235"
       ],
       "children": [],
@@ -47896,23 +47903,28 @@
       },
       "decided": true,
       "evidence": [
-        "PR #857 OPEN",
-        "branch worker/T-0677",
-        "rule: in-flight"
+        "merge f29c8d6 of worker/T-0677 lands T-0677 (PR #857)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0677",
+      "landing": {
+        "as_of": "2026-10-06T15:15:02Z",
+        "by": "pr-merge",
+        "sha": "f29c8d6287e913e026848e7b85a2347e093a9825"
+      },
       "links": {
         "plan": "docs/plans/replans/f-0184-0253219221ab.md"
       },
       "parent": "F-0184",
       "schema_version": 1,
-      "stage_since": "2026-10-06T13:52:28Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T15:15:02Z",
+      "state": "Closed",
       "stories": [],
       "title": "the `ci` stream matches the workflow by file name too, and carries seconds, queue wait and wall time",
       "type": "task",
-      "updated": "2026-10-06T15:09:17Z",
+      "updated": "2026-10-06T15:15:02Z",
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
@@ -48131,7 +48143,10 @@
       ]
     },
     "T-0683": {
-      "after": [],
+      "after": [
+        "T-0532",
+        "T-0647"
+      ],
       "backlinks": [
         "B-0251"
       ],
@@ -48148,8 +48163,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0683",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0683",
@@ -48158,12 +48173,12 @@
       },
       "parent": "F-0184",
       "schema_version": 1,
-      "stage_since": "2026-09-30T07:41:53Z",
-      "state": "New",
+      "stage_since": "2026-10-06T15:15:02Z",
+      "state": "Active",
       "stories": [],
       "title": "queue wait per Feature, beside CI minutes per Feature, in both scorecard tables",
       "type": "task",
-      "updated": "2026-10-06T15:09:17Z",
+      "updated": "2026-10-06T15:15:02Z",
       "writes": [
         "asf/scorecard/score.py",
         "asf/views/scorecard.py",
