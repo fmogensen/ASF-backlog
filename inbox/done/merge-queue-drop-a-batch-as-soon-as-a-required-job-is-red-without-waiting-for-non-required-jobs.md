@@ -1,4 +1,8 @@
+→ B-0274
+
 # Merge queue: drop a batch as soon as a required job is red, without waiting for non-required jobs
+signature: merge queue holds a batch with a red required check until non-required jobs finish
+severity: S2
 
 A batch whose required check concluded red stays pending while its workflow run is still live, because the triage waits to re-run it (merge_queue.py: "A red the triage will re-run keeps the chain"). A non-required job, such as botseon's `site`, keeps the run live for a long time. The batch and every batch stacked above it then hold the queue with no chance of landing. Seen 2026-10-06 on botseon batch 1ce016d (#1122, #1194, #1195): gate-tests was red and `site` was still in progress.
 
@@ -7,6 +11,3 @@ A batch whose required check concluded red stays pending while its workflow run 
 - A re-run under the triage's rule cancels the live run first, so the host accepts the re-run. It does not wait for the run to end.
 - On a drop, the batches stacked above it are cut again onto the trunk in the same pass, and the dropped batch's live runs are cancelled (MQ_DROPPED).
 - Tests: required red + non-required in_progress → drop (or cancel + re-run) in one pass; stacked batches recut; all-required-green + non-required running → unchanged behaviour.
-
-## Question
-This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.

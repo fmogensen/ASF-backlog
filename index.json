@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T19:02:49Z",
+  "generated": "2026-10-06T19:03:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6478,6 +6478,7 @@
         ]
       },
       "parent": "E-0001",
+      "removed": "green since 074b64170 (groom 2026-10-06)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "tests (3.12): check generic",
@@ -6527,6 +6528,7 @@
         ]
       },
       "parent": "E-0001",
+      "removed": "green since 074b64170 (groom 2026-10-06)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "tests (3.12): tests",
@@ -6561,6 +6563,7 @@
         ]
       },
       "parent": "E-0001",
+      "removed": "green since 0a3c17d66 (groom 2026-10-06)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "tests (3.13): check generic",
@@ -6622,6 +6625,7 @@
         ]
       },
       "parent": "E-0001",
+      "removed": "green since 0a3c17d66 (groom 2026-10-06)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "tests (3.13): tests",
@@ -7020,6 +7024,7 @@
         ]
       },
       "parent": "E-0001",
+      "removed": "green since 683fe10ec (groom 2026-10-06)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "install-clean-macos: install from zero to a green doctor",
@@ -7642,6 +7647,74 @@
       "title": "Watchdog: a record checkout off its origin past 15 min \u2014 backlog_dir",
       "type": "bug",
       "updated": "2026-10-06T18:31:09Z"
+    },
+    "B-0273": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0273",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "ID_TOKEN \\d{4} never matches a 5-digit item id in landing attribution",
+      "stage_since": "2026-10-06T19:03:38Z",
+      "state": "New",
+      "title": "Item ids with 5+ digits never match in landing attribution and evidence (\\d{4} regex)",
+      "type": "bug",
+      "updated": "2026-10-06T19:03:38Z"
+    },
+    "B-0274": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0274",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "merge queue holds a batch with a red required check until non-required jobs finish",
+      "stage_since": "2026-10-06T19:03:38Z",
+      "state": "New",
+      "title": "Merge queue: drop a batch as soon as a required job is red, without waiting for non-required jobs",
+      "type": "bug",
+      "updated": "2026-10-06T19:03:38Z"
+    },
+    "B-0275": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0275",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "lane rewrite force-pushes a batched or land-requested PR head and its CI is lost",
+      "stage_since": "2026-10-06T19:03:38Z",
+      "state": "New",
+      "title": "naming reword force-pushes a green, land-requested PR (identical tree) and throws away its CI",
+      "type": "bug",
+      "updated": "2026-10-06T19:03:38Z"
+    },
+    "B-0276": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0276",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "Stop hook asf hook unpushed refuses to end a review session (NO_LANDING_KINDS lacks review)",
+      "stage_since": "2026-10-06T19:03:38Z",
+      "state": "New",
+      "title": "review sessions cannot end \u2014 the unpushed-work Stop hook does not exempt the review kind, so green PRs never get an approval",
+      "type": "bug",
+      "updated": "2026-10-06T19:03:38Z"
     },
     "D-0001": {
       "backlinks": [
@@ -8579,6 +8652,11 @@
         "F-0251",
         "F-0252",
         "F-0253",
+        "F-0255",
+        "F-0256",
+        "F-0257",
+        "F-0258",
+        "F-0259",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -8816,7 +8894,11 @@
         "B-0269",
         "B-0270",
         "B-0271",
-        "B-0272"
+        "B-0272",
+        "B-0273",
+        "B-0274",
+        "B-0275",
+        "B-0276"
       ],
       "decided": true,
       "evidence": [
@@ -18331,6 +18413,76 @@
       "title": "CI queue: a priority PR's waiting required jobs preempt lower-rank QUEUED PR runs of the same runner class, re-dispatched afterwards",
       "type": "feature",
       "updated": "2026-10-06T14:03:35Z"
+    },
+    "F-0255": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0255",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-06T19:03:38Z",
+      "state": "New",
+      "title": "CI: flag idle runners missing a required label while required jobs queue (respecting declared exclusions); ci reconcile declares live runners",
+      "type": "feature",
+      "updated": "2026-10-06T19:03:38Z"
+    },
+    "F-0256": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0256",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-06T19:03:38Z",
+      "state": "New",
+      "title": "Merge queue: a red batch's drop reason names the member PR whose files the failing test covers",
+      "type": "feature",
+      "updated": "2026-10-06T19:03:38Z"
+    },
+    "F-0257": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0257",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-06T19:03:38Z",
+      "state": "New",
+      "title": "Proves: a qualified/partial claim (\"only\", \"partial\", \"half\") never proves a line; briefs say whole or Not proved",
+      "type": "feature",
+      "updated": "2026-10-06T19:03:38Z"
+    },
+    "F-0258": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0258",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-06T19:03:38Z",
+      "state": "New",
+      "title": "Reserved identifiers (migration numbers, bands) are checked against every open PR head, and a brief-named reservation is honoured",
+      "type": "feature",
+      "updated": "2026-10-06T19:03:38Z"
+    },
+    "F-0259": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0259",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-06T19:03:38Z",
+      "state": "New",
+      "title": "S1/S2 inbox cards never wait on an intake question; intake decides Epic and kind by rule",
+      "type": "feature",
+      "updated": "2026-10-06T19:03:38Z"
     },
     "R-0001": {
       "backlinks": [

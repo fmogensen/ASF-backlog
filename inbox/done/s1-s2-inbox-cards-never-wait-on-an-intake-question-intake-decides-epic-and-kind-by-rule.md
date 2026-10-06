@@ -1,3 +1,5 @@
+→ F-0259
+
 # S1/S2 inbox cards never wait on an intake question; intake decides Epic and kind by rule
 
 Parent: E-0001

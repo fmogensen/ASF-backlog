@@ -1,0 +1,14 @@
+→ B-0275
+
+# S1: naming reword force-pushes a green, land-requested PR (identical tree) and throws away its CI
+signature: lane rewrite force-pushes a batched or land-requested PR head and its CI is lost
+severity: S1
+
+S1: signature: lane naming reword force-pushed a green, land-requested PR head (trees identical) and its required CI had to rerun from scratch.
+
+The lane's naming reword force-pushed a PR branch whose PR had just gone green on every required check and carried a `land --priority` request ("reword <branch>: 1 subjects, trees identical — pushed"). The new head has an identical tree but no CI, so the merge queue waits "pending at <new head> — gate (queued)" and a full rerun on a saturated pool costs 45–60 min plus the batch — on a product's goal day this lost the goal PR's window.
+
+## Acceptance
+- [ ] The naming reword never rewrites a branch whose PR has a land request, any green required check on its head, or a CI run in flight; it defers the reword until after landing (the squash subject is set at merge time instead).
+- [ ] When a new head's tree is byte-identical to a previous head of the same PR whose required checks were all green, the merge queue and landing gate accept that green for the new head (tree-equivalence), recording "green carried from <old head> (identical tree)".
+- [ ] Hermetic tests: reword skipped with a land request / green checks / run in flight; identical-tree green carried; a different tree is not carried.
