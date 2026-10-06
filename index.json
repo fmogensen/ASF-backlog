@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T09:10:40Z",
+  "generated": "2026-10-06T09:21:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6681,6 +6681,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0232",
@@ -6693,13 +6697,17 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #826@e817f3f4b",
       "type": "bug",
-      "updated": "2026-10-06T09:10:40Z"
+      "updated": "2026-10-06T09:15:55Z"
     },
     "B-0233": {
       "backlinks": [],
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0233",
@@ -6712,7 +6720,45 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #828@30f21f321",
       "type": "bug",
-      "updated": "2026-10-06T09:10:40Z"
+      "updated": "2026-10-06T09:15:55Z"
+    },
+    "B-0234": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0234",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0537",
+      "stage_since": "2026-10-06T09:21:29Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0537",
+      "type": "bug",
+      "updated": "2026-10-06T09:21:29Z"
+    },
+    "B-0235": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0235",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0647",
+      "stage_since": "2026-10-06T09:21:30Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0647",
+      "type": "bug",
+      "updated": "2026-10-06T09:21:30Z"
     },
     "D-0001": {
       "backlinks": [
@@ -7847,7 +7893,9 @@
         "B-0230",
         "B-0231",
         "B-0232",
-        "B-0233"
+        "B-0233",
+        "B-0234",
+        "B-0235"
       ],
       "decided": true,
       "evidence": [
@@ -23595,7 +23643,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1389 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1393 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -41311,6 +41359,7 @@
       },
       "decided": true,
       "evidence": [
+        "PR #842 OPEN",
         "branch worker/T-0528",
         "rule: in-flight"
       ],
@@ -41332,7 +41381,7 @@
       "state": "Active",
       "title": "health stops a live process that wrote its result and will not exit",
       "type": "task",
-      "updated": "2026-10-06T08:59:46Z",
+      "updated": "2026-10-06T09:15:55Z",
       "writes": [
         "asf/workers/health.py",
         "tests/test_ended_run_liveness.py",
@@ -41642,7 +41691,8 @@
     },
     "T-0537": {
       "backlinks": [
-        "T-0538"
+        "T-0538",
+        "B-0234"
       ],
       "children": [],
       "decided": true,
@@ -45895,7 +45945,9 @@
       "after": [
         "T-0645"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-0235"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
