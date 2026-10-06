@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T02:32:28Z",
+  "generated": "2026-10-06T02:39:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5783,6 +5783,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0199",
@@ -5795,7 +5799,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0313",
       "type": "bug",
-      "updated": "2026-10-06T02:32:28Z"
+      "updated": "2026-10-06T02:37:49Z"
     },
     "D-0001": {
       "backlinks": [
@@ -6952,12 +6956,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2563.46,
+      "spend_usd": 2568.37,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-06T01:37:37Z"
+      "updated": "2026-10-06T02:37:58Z"
     },
     "E-0002": {
       "backlinks": [
@@ -14149,20 +14153,20 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed",
-        "rule: documented"
+        "3/3 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0189",
       "parent": "E-0001",
       "rank": 60,
       "schema_version": 1,
-      "stage": "building 2/3",
-      "stage_since": "2026-10-04T11:26:54Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-06T02:37:49Z",
+      "state": "Closed",
       "title": "Cross-product seat overcommit: two waves launch on one account at once (6 of cap 4)",
       "type": "feature",
-      "updated": "2026-10-04T11:26:54Z"
+      "updated": "2026-10-06T02:37:49Z"
     },
     "F-0190": {
       "backlinks": [
@@ -15721,12 +15725,12 @@
       "parent": "E-0001",
       "rank": 2,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T15:14:40Z",
+      "stage": "building 0/2",
+      "stage_since": "2026-10-06T02:37:49Z",
       "state": "Active",
       "title": "Sessions die with 'failed: hook refused' 19.5 times a week",
       "type": "feature",
-      "updated": "2026-10-03T04:33:11Z"
+      "updated": "2026-10-06T02:37:49Z"
     },
     "F-0236": {
       "backlinks": [],
@@ -20760,9 +20764,11 @@
         "T-0271",
         "T-0301",
         "T-0501",
+        "T-0531",
         "T-0544",
         "T-0601",
         "T-0604",
+        "T-0620",
         "T-0661",
         "T-0687",
         "T-0719",
@@ -23058,6 +23064,7 @@
         "T-0341",
         "T-0342",
         "T-0350",
+        "T-0531",
         "T-0541",
         "T-0557",
         "T-0558",
@@ -27683,7 +27690,8 @@
         "T-0271",
         "T-0350",
         "T-0548",
-        "T-0605"
+        "T-0605",
+        "T-0620"
       ],
       "children": [],
       "cost": {
@@ -29575,7 +29583,8 @@
         "T-0589",
         "T-0605",
         "T-0612",
-        "T-0617"
+        "T-0617",
+        "T-0620"
       ],
       "budget_sessions": 12,
       "budget_usd": 25,
@@ -30780,7 +30789,9 @@
       ],
       "backlinks": [
         "F-0241",
+        "T-0531",
         "T-0601",
+        "T-0620",
         "T-0687",
         "B-0138"
       ],
@@ -37076,6 +37087,7 @@
         "T-0460",
         "T-0461",
         "T-0462",
+        "T-0531",
         "B-0172",
         "B-0185"
       ],
@@ -38596,7 +38608,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -38616,7 +38628,7 @@
       "state": "Active",
       "title": "the help names the forms, and the guide stops being wrong about what `asf set` does",
       "type": "task",
-      "updated": "2026-10-06T02:11:08Z",
+      "updated": "2026-10-06T02:37:58Z",
       "writes": [
         "asf/cli.py",
         "docs/guide/operating.md",
@@ -39711,14 +39723,20 @@
       ]
     },
     "T-0531": {
+      "after": [
+        "T-0056",
+        "T-0110",
+        "T-0301",
+        "T-0459"
+      ],
       "backlinks": [
         "T-0532"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0531",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0531",
@@ -39727,11 +39745,11 @@
       },
       "parent": "F-0235",
       "schema_version": 1,
-      "stage_since": "2026-09-29T15:14:42Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:37:49Z",
+      "state": "Active",
       "title": "the brief names the push-free gate, and says a refused push ends no turn",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:37:49Z",
       "writes": [
         "asf/hooks.py",
         "asf/briefs/facts.py",
@@ -40347,8 +40365,19 @@
         "T-0549"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 16415892,
+        "tokens_cache_write": 209147,
+        "tokens_input": 212,
+        "tokens_output": 78938,
+        "usd": 4.91
+      },
       "decided": true,
       "evidence": [
+        "PR #794 OPEN",
         "branch worker/T-0548",
         "rule: in-flight"
       ],
@@ -40364,7 +40393,7 @@
       "stories": [],
       "title": "the pass reaches its own watermark, buys nothing twice, says what it did \u2014 and one function parses the facts",
       "type": "task",
-      "updated": "2026-10-06T02:29:01Z",
+      "updated": "2026-10-06T02:37:58Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/tick/tick.py",
@@ -41387,12 +41416,17 @@
       },
       "decided": true,
       "evidence": [
-        "PR #784 OPEN",
-        "branch worker/T-0575",
-        "rule: in-flight"
+        "merge 198b0bb of worker/T-0575 lands T-0575 (PR #784)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0575",
+      "landing": {
+        "as_of": "2026-10-06T02:37:49Z",
+        "by": "pr-merge",
+        "sha": "198b0bbf3773363560c149285eb1edae096f2d85"
+      },
       "links": {
         "plan": "docs/plans/f-0189.md"
       },
@@ -41401,11 +41435,11 @@
       ],
       "parent": "F-0189",
       "schema_version": 1,
-      "stage_since": "2026-10-06T00:25:37Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T02:37:49Z",
+      "state": "Closed",
       "title": "the row whose seat went, and the hand launch that claims before it spawns",
       "type": "task",
-      "updated": "2026-10-06T02:20:22Z",
+      "updated": "2026-10-06T02:37:49Z",
       "writes": [
         "asf/workers/wave.py",
         "asf/workers/__init__.py",
@@ -41424,22 +41458,27 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "F-0189 Closed",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0576",
+      "landing": {
+        "as_of": "2026-10-06T02:37:49Z",
+        "by": "descent",
+        "sha": ""
+      },
       "links": {
         "plan": "docs/plans/f-0189.md"
       },
       "parent": "F-0189",
       "removed": "merged into T-0575 (groom 2026-10-03)",
       "schema_version": 1,
-      "stage_since": "2026-09-29T18:57:56Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:37:49Z",
+      "state": "Closed",
       "title": "two real waves, one account, four seats \u2014 the card's own test",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:37:49Z",
       "writes": [
         "tests/test_seat_claims.py"
       ]
@@ -42982,14 +43021,18 @@
     },
     "T-0620": {
       "after": [
-        "T-0619"
+        "T-0619",
+        "T-0056",
+        "T-0226",
+        "T-0271",
+        "T-0301"
       ],
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0620",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0620",
@@ -42998,11 +43041,11 @@
       },
       "parent": "F-0232",
       "schema_version": 1,
-      "stage_since": "2026-09-29T23:03:39Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:37:49Z",
+      "state": "Active",
       "title": "the row and the `NEEDS OPERATOR` line name the globs being dragged to the console",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:37:49Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/approvals.py",
@@ -47339,7 +47382,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "tokens_cache_read": 11740223,
         "tokens_cache_write": 192200,
         "tokens_input": 152,
@@ -47366,7 +47409,7 @@
       "state": "Active",
       "title": "the check names the card that holds the name, and no index entry copies it",
       "type": "task",
-      "updated": "2026-10-06T02:20:22Z",
+      "updated": "2026-10-06T02:37:58Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
