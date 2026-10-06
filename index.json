@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T00:35:22Z",
+  "generated": "2026-10-06T00:48:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5191,7 +5191,8 @@
     },
     "B-0175": {
       "backlinks": [
-        "B-0176"
+        "B-0176",
+        "B-0185"
       ],
       "children": [],
       "count": 1,
@@ -5218,7 +5219,8 @@
     "B-0176": {
       "backlinks": [
         "B-0179",
-        "B-0180"
+        "B-0180",
+        "B-0185"
       ],
       "children": [],
       "count": 1,
@@ -5281,8 +5283,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: filed"
+        "branch fix/B-0178",
+        "rule: fixer"
       ],
       "folder": "bugs",
       "found_in": "dev",
@@ -5291,15 +5293,16 @@
       "schema_version": 1,
       "severity": "S2",
       "signature": "the heartbeat fleet installer and the watchdog each keep their own copy of the CI box list, so a pool box with no heartbeat is neither installed nor reported",
-      "stage_since": "2026-10-06T00:08:43Z",
-      "state": "New",
+      "stage_since": "2026-10-06T00:44:02Z",
+      "state": "Active",
       "title": "CI box list has three hand-kept copies that drift: one source (ci.pool / runner connector) for watchdog, installer and doctor",
       "type": "bug",
-      "updated": "2026-10-06T00:35:18Z"
+      "updated": "2026-10-06T00:44:02Z"
     },
     "B-0179": {
       "backlinks": [
-        "B-0180"
+        "B-0180",
+        "B-0185"
       ],
       "children": [],
       "count": 1,
@@ -5324,7 +5327,9 @@
       "updated": "2026-10-06T00:17:02Z"
     },
     "B-0180": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0185"
+      ],
       "children": [],
       "count": 1,
       "decided": false,
@@ -5426,7 +5431,7 @@
       "backlinks": [],
       "children": [],
       "count": 1,
-      "decided": false,
+      "decided": true,
       "evidence": [
         "no evidence found (2026-10-06)",
         "rule: filed"
@@ -5446,7 +5451,9 @@
       "updated": "2026-10-06T00:25:37Z"
     },
     "B-0185": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0186"
+      ],
       "children": [],
       "count": 1,
       "decided": false,
@@ -5459,6 +5466,7 @@
       "id": "B-0185",
       "last_filed": "2026-10-06",
       "parent": "E-0001",
+      "removed": "the same `watchdog launchable_idle` class ruled `no` on B-0175, B-0176, B-0179 and B-0180, filed once per row at count 1; T-0459's parent F-0121 is building 0/4 at rank 105, so 104 higher-ranked Features sit ahead of it and a free seat beside it is the feeder's ordering working as designed, not a defect in the row (groom 2026-10-06)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "watchdog launchable_idle: T-0459",
@@ -5482,6 +5490,7 @@
       "id": "B-0186",
       "last_filed": "2026-10-06",
       "parent": "E-0001",
+      "removed": "the same `watchdog launchable_idle` class as B-0185, count 1; T-0641's parent F-0106 is building 0/3 and is spoken for by a RESHAPE \u2192 REPLAN in this very groom file, so its Tasks are deliberately not launchable while the plan is being reshaped (groom 2026-10-06)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "watchdog launchable_idle: T-0641",
@@ -5490,6 +5499,63 @@
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0641",
       "type": "bug",
       "updated": "2026-10-06T00:34:58Z"
+    },
+    "B-0187": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0187",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #490@47063f98b",
+      "stage_since": "2026-10-06T00:48:53Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #490@47063f98b",
+      "type": "bug",
+      "updated": "2026-10-06T00:48:53Z"
+    },
+    "B-0188": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0188",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #782@8b9897338",
+      "stage_since": "2026-10-06T00:48:53Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #782@8b9897338",
+      "type": "bug",
+      "updated": "2026-10-06T00:48:53Z"
+    },
+    "B-0189": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0189",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: PR-0782",
+      "stage_since": "2026-10-06T00:48:53Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 PR-0782",
+      "type": "bug",
+      "updated": "2026-10-06T00:48:53Z"
     },
     "D-0001": {
       "backlinks": [
@@ -6623,7 +6689,10 @@
         "B-0183",
         "B-0184",
         "B-0185",
-        "B-0186"
+        "B-0186",
+        "B-0187",
+        "B-0188",
+        "B-0189"
       ],
       "decided": true,
       "evidence": [
@@ -6633,12 +6702,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2554.49,
+      "spend_usd": 2554.88,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-06T00:35:18Z"
+      "updated": "2026-10-06T00:44:15Z"
     },
     "E-0002": {
       "backlinks": [
@@ -10759,7 +10828,8 @@
     },
     "F-0106": {
       "backlinks": [
-        "F-0208"
+        "F-0208",
+        "B-0186"
       ],
       "children": [
         "T-0641",
@@ -11380,7 +11450,9 @@
       "updated": "2026-09-29T16:17:56Z"
     },
     "F-0121": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0185"
+      ],
       "children": [
         "T-0459",
         "T-0460",
@@ -20574,8 +20646,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "usd": 0.46
+        "sessions": 3,
+        "tokens_cache_read": 470256,
+        "tokens_cache_write": 22731,
+        "tokens_input": 24,
+        "tokens_output": 2939,
+        "usd": 0.68
       },
       "decided": true,
       "evidence": [
@@ -20593,7 +20669,7 @@
       "state": "Active",
       "title": "intake resolves a forward reference, and one tree becomes an Epic with Features, Stories and acceptance",
       "type": "task",
-      "updated": "2026-10-05T23:50:35Z",
+      "updated": "2026-10-06T00:44:15Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/shape.py",
@@ -31579,12 +31655,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 15,
-        "tokens_cache_read": 17452218,
-        "tokens_cache_write": 649726,
-        "tokens_input": 712,
-        "tokens_output": 160881,
-        "usd": 6.74
+        "sessions": 16,
+        "tokens_cache_read": 17677615,
+        "tokens_cache_write": 673518,
+        "tokens_input": 724,
+        "tokens_output": 164710,
+        "usd": 6.92
       },
       "decided": true,
       "evidence": [
@@ -31608,7 +31684,7 @@
       "state": "Active",
       "title": "the coder's table \u2014 every row paired, every grant one entry over `bare`",
       "type": "task",
-      "updated": "2026-10-05T23:50:35Z",
+      "updated": "2026-10-06T00:44:15Z",
       "writes": [
         "tools/spike/f-0065/**",
         "docs/research/sandboxed-worker-shell.md"
@@ -34933,7 +35009,8 @@
       ],
       "backlinks": [
         "T-0416",
-        "T-0421"
+        "T-0421",
+        "B-0187"
       ],
       "children": [],
       "cost": {
@@ -40935,7 +41012,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "tokens_cache_read": 23792109,
         "tokens_cache_write": 243319,
         "tokens_input": 256,
@@ -40944,6 +41021,7 @@
       },
       "decided": true,
       "evidence": [
+        "PR #784 OPEN",
         "branch worker/T-0575",
         "rule: in-flight"
       ],
@@ -40961,7 +41039,7 @@
       "state": "Active",
       "title": "the row whose seat went, and the hand launch that claims before it spawns",
       "type": "task",
-      "updated": "2026-10-06T00:35:18Z",
+      "updated": "2026-10-06T00:44:15Z",
       "writes": [
         "asf/workers/wave.py",
         "asf/workers/__init__.py",
