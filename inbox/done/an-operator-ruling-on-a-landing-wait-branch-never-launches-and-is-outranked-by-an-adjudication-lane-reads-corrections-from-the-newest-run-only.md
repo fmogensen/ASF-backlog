@@ -1,0 +1,20 @@
+→ F-0264
+
+# S1: an operator ruling on a landing-wait branch never launches and is outranked by an adjudication (lane reads corrections from the newest run only)
+
+Parent: E-0001
+severity: S1
+
+An operator ruling (`asf correct`) recorded on a branch that is waiting to land never launches, and an adjudication's ruling outranks it. Three causes in the code, live on main:
+- The lane's facts and `occupancy` read a pending correction only from the branch's newest run (asf/harvest/lane.py:1697, `lifecycle.pending_correction(run)`). The feeder reads across all of the item's runs (`lifecycle.correction_of`). A ruling recorded on an earlier job is invisible to the lane, which therefore stays in WAITING_CI. The item then counts as busy (feeder/rows.py:2415), and `correction_rows` skips it (rows.py:974).
+- `correction_turns_back` (lane.py:219-232) needs the correction to be at or after `head_at`. A lane rewrite of the head 17 s after the ruling (a naming reword) moves `head_at` past it, so the ruling reads as answered.
+- `lifecycle.overruling` (lifecycle.py:1181) takes a CHANGES review to GATE on an adjudication's ruling, with no check for a later operator ruling.
+Seen 2026-10-06 on botseon T-42278: an operator ruling was recorded at 23:01:39Z, the lane reworded the head at 23:01:56Z, and the row showed PUSHED → LAND with no reason. The PR would have landed a reverted feature with a `Proves:` claim.
+
+## Acceptance
+- [ ] A pending operator ruling written on any run of the item turns a landing-wait branch BACK, whichever run is the branch's newest. The lane and occupancy read it item-wide.
+- [ ] A lane-made head move (reword, restack, sign-off, drop copies) after the ruling does not answer it. Only a session run started at or after the ruling, or a head that session pushed, does.
+- [ ] An adjudication overrule never takes a review to GATE while a later operator ruling is pending on the item.
+- [ ] `asf land --withdraw` neither drops nor hides a pending correction.
+- [ ] A pending correction with no launch row has its cause named in `asf next` and `asf status`: live session, lane state, cap or parked. Never a bare "WAITS ON landing". One test per cause.
+- [ ] A regression test replays this sequence: adjudicate finished, review run, correction on an older run, lane reword 17 s later, WAITING_CI. It expects a FIX → CORRECT row.
