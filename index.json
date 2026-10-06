@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T23:15:15Z",
+  "generated": "2026-10-06T23:28:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7662,8 +7662,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 27,
-        "sessions": 2,
+        "runner_min": 52,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
@@ -7683,15 +7683,15 @@
       "state": "Active",
       "title": "Item ids with 5+ digits never match in landing attribution and evidence (\\d{4} regex)",
       "type": "bug",
-      "updated": "2026-10-06T22:59:50Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "B-0274": {
       "backlinks": [],
       "children": [],
       "cost": {
-        "fix_rounds": 1,
-        "runner_min": 0,
-        "sessions": 1,
+        "fix_rounds": 2,
+        "runner_min": 25,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -7711,7 +7711,7 @@
       "state": "Active",
       "title": "Merge queue: drop a batch as soon as a required job is red, without waiting for non-required jobs",
       "type": "bug",
-      "updated": "2026-10-06T23:13:27Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "B-0275": {
       "backlinks": [
@@ -7721,7 +7721,7 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -7741,17 +7741,18 @@
       "state": "Active",
       "title": "naming reword force-pushes a green, land-requested PR (identical tree) and throws away its CI",
       "type": "bug",
-      "updated": "2026-10-06T23:05:20Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "B-0276": {
       "backlinks": [
-        "F-0259"
+        "F-0259",
+        "B-0379"
       ],
       "children": [],
       "cost": {
-        "fix_rounds": 1,
+        "fix_rounds": 2,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -7770,7 +7771,7 @@
       "state": "Active",
       "title": "review sessions cannot end \u2014 the unpushed-work Stop hook does not exempt the review kind, so green PRs never get an approval",
       "type": "bug",
-      "updated": "2026-10-06T22:59:50Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "B-0277": {
       "backlinks": [],
@@ -8155,7 +8156,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 50,
+        "runner_min": 104,
         "sessions": 4,
         "tokens_cache_read": 4733902,
         "tokens_cache_write": 112398,
@@ -8166,23 +8167,28 @@
       "count": 1,
       "decided": true,
       "evidence": [
-        "PR #894 OPEN",
-        "branch fix/B-0293",
-        "rule: fixer"
+        "merge 0ea7994 of fix/B-0293 lands B-0293 (PR #894)",
+        "CI green on main at or after it",
+        "rule: fixed"
       ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0293",
+      "landing": {
+        "as_of": "2026-10-06T23:20:26Z",
+        "by": "pr-merge",
+        "sha": "0ea79949722acc450f4c8d327cc3220689c67c97"
+      },
       "last_filed": "2026-10-06",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S2",
       "signature": "outcome: dead pid",
-      "stage_since": "2026-10-06T21:04:08Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T23:20:26Z",
+      "state": "Resolved",
       "title": "18 % of sessions end \"dead pid\" (threshold 10 %, 74 of 407 in 24h)",
       "type": "bug",
-      "updated": "2026-10-06T22:59:50Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "B-0294": {
       "backlinks": [
@@ -8191,8 +8197,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 87,
-        "sessions": 3,
+        "runner_min": 138,
+        "sessions": 4,
         "usd": null
       },
       "count": 1,
@@ -8214,7 +8220,7 @@
       "state": "Active",
       "title": "21 % of sessions end \"other\" (threshold 10 %, 85 of 407 in 24h)",
       "type": "bug",
-      "updated": "2026-10-06T22:59:50Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "B-0295": {
       "backlinks": [],
@@ -9645,14 +9651,14 @@
       ],
       "children": [],
       "cost": {
-        "fix_rounds": 1,
-        "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 5917044,
-        "tokens_cache_write": 133828,
-        "tokens_input": 206,
-        "tokens_output": 542,
-        "usd": null
+        "fix_rounds": 2,
+        "runner_min": 18,
+        "sessions": 3,
+        "tokens_cache_read": 13134579,
+        "tokens_cache_write": 251959,
+        "tokens_input": 380,
+        "tokens_output": 44359,
+        "usd": 2.35
       },
       "count": 1,
       "decided": true,
@@ -9679,7 +9685,7 @@
       "state": "Active",
       "title": "CI red: tests (3.13): the suite is hermetic (env -i, an operator home, ASF_PRODUCT set, foreign default branch)",
       "type": "bug",
-      "updated": "2026-10-06T23:13:27Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "B-0357": {
       "backlinks": [],
@@ -9915,6 +9921,265 @@
       "title": "Watchdog: an approval hold no grant can release past 0 min \u2014 F-0061/touch_amendable_set",
       "type": "bug",
       "updated": "2026-10-06T23:13:27Z"
+    },
+    "B-0367": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0367",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-53561 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-53561 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0368": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0368",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-53562 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-53562 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0369": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0369",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54804 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54804 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0370": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0370",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54805 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54805 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0371": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0371",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54806 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54806 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0372": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0372",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54807 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54807 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0373": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0373",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54808 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54808 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0374": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0374",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54809 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54809 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0375": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0375",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54810 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54810 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0376": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0376",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54811 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54811 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0377": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0377",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54812 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54812 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0378": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0378",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "places": 1,
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "record error: story S-54813 has no Task listing it in stories:",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "Record error: story S-54813 has no Task listing it in stories:",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
+    },
+    "B-0379": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0379",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "repeat: B-0276: other",
+      "stage_since": "2026-10-06T23:28:39Z",
+      "state": "New",
+      "title": "B-0276 has ended \"other\" 2 times in 24h",
+      "type": "bug",
+      "updated": "2026-10-06T23:28:39Z"
     },
     "D-0001": {
       "backlinks": [
@@ -11191,7 +11456,20 @@
         "B-0363",
         "B-0364",
         "B-0365",
-        "B-0366"
+        "B-0366",
+        "B-0367",
+        "B-0368",
+        "B-0369",
+        "B-0370",
+        "B-0371",
+        "B-0372",
+        "B-0373",
+        "B-0374",
+        "B-0375",
+        "B-0376",
+        "B-0377",
+        "B-0378",
+        "B-0379"
       ],
       "decided": true,
       "evidence": [
@@ -11201,12 +11479,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1837.69,
+      "spend_usd": 1840.05,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-06T22:27:15Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "E-0002": {
       "backlinks": [
@@ -11321,12 +11599,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 1388.5,
+      "spend_usd": 1401.49,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-10-06T22:27:15Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "E-0003": {
       "backlinks": [
@@ -12314,12 +12592,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 29,
-        "sessions": 6,
-        "tokens_cache_read": 6575249,
-        "tokens_cache_write": 153159,
-        "tokens_input": 189,
-        "tokens_output": 52188,
-        "usd": 10.14
+        "sessions": 7,
+        "tokens_cache_read": 16572947,
+        "tokens_cache_write": 342758,
+        "tokens_input": 353,
+        "tokens_output": 141088,
+        "usd": 13.79
       },
       "decided": true,
       "evidence": [
@@ -12342,7 +12620,7 @@
       "state": "Active",
       "title": "Typed envelopes: every job ends with a machine-readable report beside its prose",
       "type": "feature",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "F-0026": {
       "area": "factory",
@@ -12905,7 +13183,17 @@
       "area": "factory",
       "backlinks": [
         "F-0086",
-        "F-0102"
+        "F-0102",
+        "B-0369",
+        "B-0370",
+        "B-0371",
+        "B-0372",
+        "B-0373",
+        "B-0374",
+        "B-0375",
+        "B-0376",
+        "B-0377",
+        "B-0378"
       ],
       "children": [
         "S-54804",
@@ -12932,18 +13220,19 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 2480275,
-        "tokens_cache_write": 111153,
-        "tokens_input": 58,
-        "tokens_output": 42056,
-        "usd": 8.63
+        "sessions": 3,
+        "tokens_cache_read": 9407519,
+        "tokens_cache_write": 239882,
+        "tokens_input": 200,
+        "tokens_output": 81142,
+        "usd": 14.36
       },
       "decided": true,
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
         "1/4 tasks Closed",
+        "10/10 stories open: S-54804, S-54805, S-54806, S-54807, S-54808, S-54809, S-54810, S-54811, S-54812, S-54813",
         "rule: documented"
       ],
       "folder": "features",
@@ -12958,7 +13247,7 @@
       "state": "Active",
       "title": "Small-Task trains: size class from the footprint, one train per lane, one CI run and one review per train",
       "type": "feature",
-      "updated": "2026-09-26T18:43:37Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "F-0042": {
       "area": "factory",
@@ -13706,12 +13995,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 26,
-        "sessions": 3,
-        "tokens_cache_read": 8864651,
-        "tokens_cache_write": 224655,
-        "tokens_input": 212,
-        "tokens_output": 98358,
-        "usd": 9.14
+        "sessions": 4,
+        "tokens_cache_read": 20136557,
+        "tokens_cache_write": 379203,
+        "tokens_input": 414,
+        "tokens_output": 172431,
+        "usd": 12.75
       },
       "decided": true,
       "evidence": [
@@ -13732,7 +14021,7 @@
       "state": "Active",
       "title": "Hooks as rule enforcement inside every worker session",
       "type": "feature",
-      "updated": "2026-10-06T22:00:35Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "F-0062": {
       "area": "security",
@@ -14067,7 +14356,9 @@
         "B-0362",
         "B-0363",
         "B-0364",
-        "B-0365"
+        "B-0365",
+        "B-0367",
+        "B-0368"
       ],
       "children": [
         "S-53556",
@@ -14090,7 +14381,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 1,
+        "runner_min": 29,
         "sessions": 6,
         "tokens_cache_read": 54105858,
         "tokens_cache_write": 1182295,
@@ -14120,7 +14411,7 @@
       "state": "Active",
       "title": "Security checks by code: a review pass on sensitive paths, secret and dependency scanning as rules",
       "type": "feature",
-      "updated": "2026-10-06T23:05:20Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "F-0070": {
       "area": "ci",
@@ -20454,11 +20745,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 49,
-        "sessions": 7,
-        "tokens_cache_read": 12216778,
-        "tokens_cache_write": 310993,
-        "tokens_input": 372,
-        "tokens_output": 43548,
+        "sessions": 8,
+        "tokens_cache_read": 18916475,
+        "tokens_cache_write": 444102,
+        "tokens_input": 584,
+        "tokens_output": 44170,
         "usd": 5.07
       },
       "decided": true,
@@ -20478,7 +20769,7 @@
       "state": "Active",
       "title": "Operator ruling at the round cap never lifts a stalemate park (History not in digest)",
       "type": "feature",
-      "updated": "2026-10-06T23:05:20Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "F-0240": {
       "backlinks": [],
@@ -20554,7 +20845,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 37,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 3806566,
         "tokens_cache_write": 90564,
         "tokens_input": 116,
@@ -20579,7 +20870,7 @@
       "state": "Active",
       "title": "Repair load \u2264 3 per Feature for the release gate: count rework, not the planned first review, and cut rework",
       "type": "feature",
-      "updated": "2026-10-06T23:13:27Z"
+      "updated": "2026-10-06T23:28:48Z"
     },
     "F-0243": {
       "backlinks": [
@@ -24697,7 +24988,8 @@
     },
     "S-53561": {
       "backlinks": [
-        "F-0069"
+        "F-0069",
+        "B-0367"
       ],
       "children": [],
       "evidence": [
@@ -24716,7 +25008,8 @@
     },
     "S-53562": {
       "backlinks": [
-        "F-0069"
+        "F-0069",
+        "B-0368"
       ],
       "children": [],
       "evidence": [
@@ -24734,8 +25027,15 @@
       "updated": "2026-10-06T23:05:20Z"
     },
     "S-54804": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0369"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54804",
       "parent": "F-0041",
@@ -24744,11 +25044,18 @@
       "state": "New",
       "title": "The size classifier \u2014 a footprint and a threshold table become a class, a kind and a sentence",
       "type": "story",
-      "updated": "2026-10-06T23:01:13Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "S-54805": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0370"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54805",
       "parent": "F-0041",
@@ -24757,11 +25064,18 @@
       "state": "New",
       "title": "The thresholds are configuration \u2014 `size:` and `train:` fold onto documented Conventions fields",
       "type": "story",
-      "updated": "2026-10-06T23:01:19Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "S-54806": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0371"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54806",
       "parent": "F-0041",
@@ -24770,11 +25084,18 @@
       "state": "New",
       "title": "Every Task carries its size \u2014 derived by the ingest, carried by `index.json`",
       "type": "story",
-      "updated": "2026-10-06T23:01:26Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "S-54807": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0372"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54807",
       "parent": "F-0041",
@@ -24783,11 +25104,18 @@
       "state": "New",
       "title": "The train registry \u2014 one open train per lane per product, and `asf train status`",
       "type": "story",
-      "updated": "2026-10-06T23:01:34Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "S-54808": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0373"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54808",
       "parent": "F-0041",
@@ -24796,11 +25124,18 @@
       "state": "New",
       "title": "The small Task's coder \u2014 the row carries the open train and the branch is cut from its head",
       "type": "story",
-      "updated": "2026-10-06T23:01:41Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "S-54809": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0374"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54809",
       "parent": "F-0041",
@@ -24809,11 +25144,18 @@
       "state": "New",
       "title": "The append \u2014 the tick's `train` step, and nothing lands a trained Task twice",
       "type": "story",
-      "updated": "2026-10-06T23:01:50Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "S-54810": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0375"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54810",
       "parent": "F-0041",
@@ -24822,11 +25164,18 @@
       "state": "New",
       "title": "The cut \u2014 six Tasks or two hours closes the train into one pull request or one gate",
       "type": "story",
-      "updated": "2026-10-06T23:01:58Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "S-54811": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0376"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54811",
       "parent": "F-0041",
@@ -24835,11 +25184,18 @@
       "state": "New",
       "title": "The red Task \u2014 narrowed from the failing output, reverted, and handed back as medium",
       "type": "story",
-      "updated": "2026-10-06T23:02:05Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "S-54812": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0377"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54812",
       "parent": "F-0041",
@@ -24848,11 +25204,18 @@
       "state": "New",
       "title": "One review per train \u2014 a check table per Task, from the brief rather than the reader",
       "type": "story",
-      "updated": "2026-10-06T23:02:12Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "S-54813": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0041",
+        "B-0378"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-54813",
       "parent": "F-0041",
@@ -24861,7 +25224,7 @@
       "state": "New",
       "title": "The measurement \u2014 runner-minutes per small Task, so the 60 % is a number the rollup prints",
       "type": "story",
-      "updated": "2026-10-06T23:02:18Z"
+      "updated": "2026-10-06T23:20:26Z"
     },
     "T-0001": {
       "backlinks": [
@@ -28605,7 +28968,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1459 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1461 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -37810,6 +38173,7 @@
         "T-0309"
       ],
       "backlinks": [
+        "F-0061",
         "T-0304",
         "T-0305",
         "T-0306",
@@ -51226,7 +51590,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 24,
+        "runner_min": 69,
         "sessions": 2,
         "usd": null
       },
@@ -51252,7 +51616,7 @@
       "state": "Closed",
       "title": "the wave asks the trunk again, at the seat, and closes what it finds",
       "type": "task",
-      "updated": "2026-10-06T23:13:27Z",
+      "updated": "2026-10-06T23:28:48Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_trunk_check.py"
