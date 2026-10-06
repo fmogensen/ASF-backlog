@@ -12,3 +12,6 @@ The "NEEDS OPERATOR" row tells the operator to answer an inbox question in groom
 - An operator edit to a groom file in the record checkout is committed by the record step and pushed (rebased onto origin) before the pull, and never silently blocks the sync. Tested with a dirty groom file.
 - The record step reports `record behind N` (not `ok`) when the checkout is behind origin after its sync. A watchdog breach fires when that lasts more than 2 ticks. Tested.
 - `asf groom --apply` refuses to mint ids on a checkout that is behind origin (it fetches first), and names the remedy. Tested.
+
+## Second case (2026-10-06 21:19)
+A spec-amend session's `asf new story` committed S-51600 to S-51602 locally. Its push was refused because the record was behind, and nothing retried. The checkout sat 3 ahead and 9 behind, with index.json in conflict on rebase. Add to the acceptance: a refused record push is retried with fetch, rebase and a rebuilt index.json (`asf index`) on the next record step, never left diverged. Tested.
