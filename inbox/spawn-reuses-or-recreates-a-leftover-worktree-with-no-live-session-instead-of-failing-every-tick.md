@@ -12,3 +12,6 @@ A session spawn fails on every tick with "worktree already exists: <state>/workt
   - (c) Dirty: the spawn saves the dirty state to a recovery ref or stash first, then recreates it, and logs the ref.
 - A worktree held by a live session (by pid or heartbeat) is never touched. The spawn defers, with that reason in the log.
 - No spawn fails twice in a row for "worktree already exists". Tests cover a, b, c and the live-session case.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.

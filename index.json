@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T19:08:58Z",
+  "generated": "2026-10-06T19:26:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7736,6 +7736,25 @@
       "type": "bug",
       "updated": "2026-10-06T19:08:45Z"
     },
+    "B-0277": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0277",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0489",
+      "stage_since": "2026-10-06T19:26:27Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0489",
+      "type": "bug",
+      "updated": "2026-10-06T19:26:27Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -8919,7 +8938,8 @@
         "B-0273",
         "B-0274",
         "B-0275",
-        "B-0276"
+        "B-0276",
+        "B-0277"
       ],
       "decided": true,
       "evidence": [
@@ -9154,6 +9174,7 @@
     "F-0001": {
       "area": "factory",
       "backlinks": [
+        "F-0228",
         "T-0010",
         "T-0031",
         "T-0035",
@@ -14139,12 +14160,12 @@
       "parent": "E-0002",
       "rank": 107,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-28T16:15:48Z",
+      "stage": "building 0/5",
+      "stage_since": "2026-10-06T19:21:25Z",
       "state": "Active",
       "title": "asf config check/migrate: an old or hand-made product yaml maps onto the schema without a hand rewrite",
       "type": "feature",
-      "updated": "2026-09-28T16:31:04Z"
+      "updated": "2026-10-06T19:21:25Z"
     },
     "F-0130": {
       "backlinks": [],
@@ -18534,15 +18555,20 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: card"
+      ],
       "folder": "features",
       "id": "F-0260",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage_since": "2026-10-06T19:08:52Z",
+      "stage": "card",
+      "stage_since": "2026-10-06T19:21:25Z",
       "state": "New",
       "title": "Groom answers in today's file are not applied by the tick, and a dirty record checkout stalls the sync while 'record ok' is logged",
       "type": "feature",
-      "updated": "2026-10-06T19:08:52Z"
+      "updated": "2026-10-06T19:21:25Z"
     },
     "R-0001": {
       "backlinks": [
@@ -23212,6 +23238,7 @@
         "T-0301",
         "T-0312",
         "T-0411",
+        "T-0489",
         "T-0501",
         "T-0531",
         "T-0537",
@@ -25942,6 +25969,7 @@
         "T-0332",
         "T-0346",
         "T-0411",
+        "T-0489",
         "T-0524",
         "T-0548",
         "T-0591",
@@ -26395,6 +26423,7 @@
         "T-0332",
         "T-0346",
         "T-0411",
+        "T-0489",
         "T-0524",
         "T-0528",
         "T-0548",
@@ -30947,6 +30976,7 @@
         "T-0271",
         "T-0411",
         "T-0412",
+        "T-0489",
         "T-0495",
         "T-0591",
         "T-0638",
@@ -38188,6 +38218,7 @@
         "T-0416",
         "T-0418",
         "T-0419",
+        "T-0489",
         "T-0537",
         "T-0591",
         "T-0636",
@@ -41180,8 +41211,18 @@
       ]
     },
     "T-0489": {
+      "after": [
+        "T-0056",
+        "T-0119",
+        "T-0130",
+        "T-0239",
+        "T-0411"
+      ],
       "backlinks": [
-        "T-0490"
+        "T-0490",
+        "T-0591",
+        "T-0654",
+        "B-0277"
       ],
       "children": [],
       "cost": {
@@ -41196,8 +41237,9 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "PR #874 OPEN",
+        "branch worker/T-0489",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0489",
@@ -41206,11 +41248,11 @@
       },
       "parent": "F-0129",
       "schema_version": 1,
-      "stage_since": "2026-09-28T16:16:01Z",
-      "state": "New",
+      "stage_since": "2026-10-06T19:21:25Z",
+      "state": "Active",
       "title": "the schema \u2014 `x-unmapped:` declared, and a shape for `ci:` and `deploy_sha:`",
       "type": "task",
-      "updated": "2026-10-06T19:02:42Z",
+      "updated": "2026-10-06T19:21:25Z",
       "writes": [
         "asf/env.py",
         "docs/products.example.yaml",
@@ -45254,7 +45296,8 @@
         "T-0119",
         "T-0130",
         "T-0239",
-        "T-0411"
+        "T-0411",
+        "T-0489"
       ],
       "backlinks": [
         "T-0638",
@@ -47709,7 +47752,8 @@
         "T-0142",
         "T-0189",
         "T-0239",
-        "T-0464"
+        "T-0464",
+        "T-0489"
       ],
       "backlinks": [
         "T-0655",
