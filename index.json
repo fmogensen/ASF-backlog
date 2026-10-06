@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T10:52:16Z",
+  "generated": "2026-10-06T11:11:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7072,6 +7072,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0248",
@@ -7084,7 +7088,45 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0427",
       "type": "bug",
-      "updated": "2026-10-06T10:52:16Z"
+      "updated": "2026-10-06T10:57:43Z"
+    },
+    "B-0249": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0249",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #846@e8b4014c2",
+      "stage_since": "2026-10-06T11:10:55Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #846@e8b4014c2",
+      "type": "bug",
+      "updated": "2026-10-06T11:10:55Z"
+    },
+    "B-0250": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0250",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0728",
+      "stage_since": "2026-10-06T11:10:57Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0728",
+      "type": "bug",
+      "updated": "2026-10-06T11:10:57Z"
     },
     "D-0001": {
       "backlinks": [
@@ -8234,7 +8276,9 @@
         "B-0245",
         "B-0246",
         "B-0247",
-        "B-0248"
+        "B-0248",
+        "B-0249",
+        "B-0250"
       ],
       "decided": true,
       "evidence": [
@@ -13490,12 +13534,12 @@
       "reshape_applied": "47df67914dbf",
       "reshape_applied_at": "2026-10-03T05:25:56Z",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T11:21:27Z",
+      "stage": "building 0/4",
+      "stage_since": "2026-10-06T10:57:43Z",
       "state": "Active",
       "title": "backfill: reconcile a partly-built product's history into the record (asf backfill)",
       "type": "feature",
-      "updated": "2026-10-06T07:08:32Z"
+      "updated": "2026-10-06T10:57:43Z"
     },
     "F-0131": {
       "backlinks": [
@@ -22370,6 +22414,7 @@
         "T-0687",
         "T-0719",
         "T-0740",
+        "T-0745",
         "T-0761",
         "T-0775",
         "B-0138"
@@ -25536,7 +25581,8 @@
         "T-0574",
         "T-0645",
         "T-0654",
-        "T-0687"
+        "T-0687",
+        "T-0745"
       ],
       "children": [],
       "cost": {
@@ -30029,6 +30075,7 @@
         "T-0665",
         "T-0680",
         "T-0700",
+        "T-0745",
         "B-0198",
         "B-0202",
         "B-0208",
@@ -37215,6 +37262,7 @@
         "T-0416",
         "T-0418",
         "T-0419",
+        "T-0745",
         "B-0207"
       ],
       "children": [],
@@ -46083,8 +46131,8 @@
       "decided": true,
       "evidence": [
         "merge b502f17 of worker/T-0641 lands T-0641 (PR #461)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0641",
@@ -46103,7 +46151,7 @@
       "state": "Closed",
       "title": "the trunk is asked before a Task is minted, and a typed `landed:` finally closes one",
       "type": "task",
-      "updated": "2026-10-06T09:41:51Z",
+      "updated": "2026-10-06T10:57:43Z",
       "writes": [
         "asf/record/trunk_check.py",
         "asf/record/plan_tasks.py",
@@ -46318,6 +46366,7 @@
       "children": [],
       "decided": true,
       "evidence": [
+        "PR #849 OPEN",
         "branch worker/T-0647",
         "rule: in-flight"
       ],
@@ -46333,7 +46382,7 @@
       "stories": [],
       "title": "a job that times out or loses its runner is finally red in the diagnosis",
       "type": "task",
-      "updated": "2026-10-06T10:32:26Z",
+      "updated": "2026-10-06T10:57:43Z",
       "writes": [
         "asf/scorecard/diagnose.py",
         "tests/test_scorecard.py"
@@ -49129,8 +49178,8 @@
       "decided": true,
       "evidence": [
         "merge 6160b55 of worker/T-0720 lands T-0720 (PR #828)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0720",
@@ -49148,7 +49197,7 @@
       "state": "Closed",
       "title": "`printenv` joins the approvals hook's read-only register",
       "type": "task",
-      "updated": "2026-10-06T10:41:07Z",
+      "updated": "2026-10-06T10:57:43Z",
       "writes": [
         "asf/approvals.py",
         "tests/test_approvals.py"
@@ -49426,7 +49475,8 @@
         "T-0730",
         "T-0731",
         "T-0732",
-        "T-0733"
+        "T-0733",
+        "B-0250"
       ],
       "children": [],
       "decided": true,
@@ -50096,7 +50146,12 @@
       ]
     },
     "T-0745": {
-      "after": [],
+      "after": [
+        "T-0056",
+        "T-0130",
+        "T-0239",
+        "T-0411"
+      ],
       "backlinks": [
         "T-0746",
         "T-0747",
@@ -50116,8 +50171,9 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "PR #848 OPEN",
+        "branch plan/T-0745",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0745",
@@ -50133,12 +50189,12 @@
         "merge T-0745+T-0746+T-0747+T-0750"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-30T11:21:27Z",
-      "state": "New",
+      "stage_since": "2026-10-06T10:57:43Z",
+      "state": "Active",
       "stories": [],
       "title": "the product declares its pre-ASF branch convention, and a misshapen declaration is loud",
       "type": "task",
-      "updated": "2026-10-06T10:41:07Z",
+      "updated": "2026-10-06T10:57:43Z",
       "writes": [
         "asf/conventions.py",
         "tests/test_conventions.py",
@@ -51390,8 +51446,8 @@
       "decided": true,
       "evidence": [
         "merge cdc074e of worker/T-0778 lands T-0778 (PR #829)",
-        "CI green on main at or after it",
-        "rule: landed-green"
+        "held Closed; landed would say Resolved",
+        "rule: closed-terminal"
       ],
       "folder": "tasks",
       "id": "T-0778",
@@ -51412,7 +51468,7 @@
       "state": "Closed",
       "title": "the Stale row reads the cadence the tick measured, and an upgrade hold names itself",
       "type": "task",
-      "updated": "2026-10-06T10:12:06Z",
+      "updated": "2026-10-06T10:57:43Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_tick.py",
