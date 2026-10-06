@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T15:24:43Z",
+  "generated": "2026-10-06T15:41:48Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7343,6 +7343,25 @@
       "type": "bug",
       "updated": "2026-10-06T14:47:55Z"
     },
+    "B-0260": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0260",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0204",
+      "stage_since": "2026-10-06T15:41:46Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0204",
+      "type": "bug",
+      "updated": "2026-10-06T15:41:46Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -8503,7 +8522,8 @@
         "B-0256",
         "B-0257",
         "B-0258",
-        "B-0259"
+        "B-0259",
+        "B-0260"
       ],
       "decided": true,
       "evidence": [
@@ -8633,12 +8653,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 1345.24,
+      "spend_usd": 1346.62,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-10-06T15:09:17Z"
+      "updated": "2026-10-06T15:41:18Z"
     },
     "E-0003": {
       "backlinks": [
@@ -10683,8 +10703,8 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 2,
+        "runner_min": 1,
+        "sessions": 3,
         "tokens_cache_read": 15846050,
         "tokens_cache_write": 319966,
         "tokens_input": 280,
@@ -10711,7 +10731,7 @@
       "state": "Active",
       "title": "Failure classification before any relaunch: credential, quota, transport or work",
       "type": "feature",
-      "updated": "2026-09-27T15:40:52Z"
+      "updated": "2026-10-06T15:41:18Z"
     },
     "F-0055": {
       "area": "factory",
@@ -13057,7 +13077,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 15614844,
         "tokens_cache_write": 379883,
         "tokens_input": 332,
@@ -13084,7 +13104,7 @@
       "state": "Active",
       "title": "An S1 silently holds all Feature work, and NEXT plans from different inputs than the tick",
       "type": "feature",
-      "updated": "2026-10-03T06:12:55Z"
+      "updated": "2026-10-06T15:41:18Z"
     },
     "F-0114": {
       "backlinks": [
@@ -17468,7 +17488,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 23,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 7523956,
         "tokens_cache_write": 220723,
         "tokens_input": 200,
@@ -17492,7 +17512,7 @@
       "state": "Active",
       "title": "Sessions die with 'failed: hook refused' 19.5 times a week",
       "type": "feature",
-      "updated": "2026-10-06T14:19:26Z"
+      "updated": "2026-10-06T15:41:18Z"
     },
     "F-0236": {
       "backlinks": [
@@ -20467,6 +20487,12 @@
         "F-0019"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 9,
+        "sessions": 0,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-06)",
@@ -20483,7 +20509,7 @@
       "state": "Active",
       "title": "Ingest adds mergeable and opened so CONFLICT \u2192 REBASE rows and the incident clock work",
       "type": "story",
-      "updated": "2026-10-06T13:22:16Z"
+      "updated": "2026-10-06T15:41:18Z"
     },
     "S-0003": {
       "area": "factory",
@@ -28922,11 +28948,19 @@
       ],
       "backlinks": [
         "T-0205",
-        "T-0363"
+        "T-0363",
+        "B-0260"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #863 OPEN",
         "branch worker/T-0204",
         "rule: in-flight"
       ],
@@ -28944,7 +28978,7 @@
       "state": "Active",
       "title": "the rate and the repeat \u2014 two sources over the `sessions` stream",
       "type": "task",
-      "updated": "2026-10-06T15:15:02Z",
+      "updated": "2026-10-06T15:41:18Z",
       "writes": [
         "asf/tick/file_bugs.py",
         "tests/test_file_bugs.py"
@@ -30114,7 +30148,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 9,
         "sessions": 3,
         "usd": null
       },
@@ -30147,7 +30181,7 @@
       ],
       "title": "every host read of the evidence pass goes behind the seam",
       "type": "task",
-      "updated": "2026-10-06T15:15:02Z",
+      "updated": "2026-10-06T15:41:18Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/cli.py",
@@ -38674,6 +38708,7 @@
         "T-0437"
       ],
       "backlinks": [
+        "F-0113",
         "T-0439",
         "T-0440"
       ],
@@ -38788,6 +38823,7 @@
         "T-0231"
       ],
       "backlinks": [
+        "F-0113",
         "T-0438",
         "T-0582",
         "T-0744",
@@ -40830,13 +40866,13 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 20,
-        "sessions": 5,
-        "tokens_cache_read": 6244968,
-        "tokens_cache_write": 113066,
-        "tokens_input": 222,
-        "tokens_output": 41881,
-        "usd": 2.12
+        "runner_min": 71,
+        "sessions": 6,
+        "tokens_cache_read": 7815620,
+        "tokens_cache_write": 148611,
+        "tokens_input": 294,
+        "tokens_output": 58375,
+        "usd": 2.74
       },
       "decided": true,
       "evidence": [
@@ -40855,7 +40891,7 @@
       "state": "Active",
       "title": "the guide says both shapes \u2014 the pair in the log, the field on the row",
       "type": "task",
-      "updated": "2026-10-06T15:09:17Z",
+      "updated": "2026-10-06T15:41:18Z",
       "writes": [
         "docs/guide/operating.md",
         "docs/guide/getting-started.md",
@@ -47510,11 +47546,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 34432730,
-        "tokens_cache_write": 489363,
-        "tokens_input": 466,
-        "tokens_output": 1154,
+        "sessions": 2,
+        "tokens_cache_read": 47745836,
+        "tokens_cache_write": 805343,
+        "tokens_input": 732,
+        "tokens_output": 1738,
         "usd": null
       },
       "decided": true,
@@ -47540,7 +47576,7 @@
       "stories": [],
       "title": "the reader, the age rule, the configuration and the daily prune",
       "type": "task",
-      "updated": "2026-10-06T15:09:17Z",
+      "updated": "2026-10-06T15:41:18Z",
       "writes": [
         "asf/ci_artifacts.py",
         "asf/env.py",
@@ -47904,8 +47940,8 @@
       "decided": true,
       "evidence": [
         "merge f29c8d6 of worker/T-0677 lands T-0677 (PR #857)",
-        "held Closed; landed would say Resolved",
-        "rule: closed-terminal"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0677",
@@ -47924,7 +47960,7 @@
       "stories": [],
       "title": "the `ci` stream matches the workflow by file name too, and carries seconds, queue wait and wall time",
       "type": "task",
-      "updated": "2026-10-06T15:24:43Z",
+      "updated": "2026-10-06T15:34:16Z",
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
@@ -48038,8 +48074,8 @@
       "decided": true,
       "evidence": [
         "merge 1025e60 of worker/T-0680 lands T-0680 (PR #850)",
-        "held Closed; landed would say Resolved",
-        "rule: closed-terminal"
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0680",
@@ -48058,7 +48094,7 @@
       "stories": [],
       "title": "the census row, the slow box, the flaky box and the baseline that grew \u2014 four doctor rows off two files and no host call",
       "type": "task",
-      "updated": "2026-10-06T15:24:43Z",
+      "updated": "2026-10-06T15:34:16Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -48153,13 +48189,13 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 2,
-        "tokens_cache_read": 12890295,
-        "tokens_cache_write": 241775,
-        "tokens_input": 289,
-        "tokens_output": 777,
-        "usd": 0.0
+        "runner_min": 29,
+        "sessions": 3,
+        "tokens_cache_read": 14699206,
+        "tokens_cache_write": 292742,
+        "tokens_input": 352,
+        "tokens_output": 19286,
+        "usd": 0.75
       },
       "decided": true,
       "evidence": [
@@ -48179,7 +48215,7 @@
       "stories": [],
       "title": "queue wait per Feature, beside CI minutes per Feature, in both scorecard tables",
       "type": "task",
-      "updated": "2026-10-06T15:24:43Z",
+      "updated": "2026-10-06T15:41:18Z",
       "writes": [
         "asf/scorecard/score.py",
         "asf/views/scorecard.py",
@@ -48442,11 +48478,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 12995595,
-        "tokens_cache_write": 240929,
-        "tokens_input": 288,
-        "tokens_output": 738,
+        "sessions": 2,
+        "tokens_cache_read": 15126040,
+        "tokens_cache_write": 335922,
+        "tokens_input": 370,
+        "tokens_output": 894,
         "usd": null
       },
       "decided": true,
@@ -48465,7 +48501,7 @@
       "state": "New",
       "title": "the pair a refusal is remembered by, the skip it earns, and the hold that keeps it from being a dead end",
       "type": "task",
-      "updated": "2026-10-06T15:09:17Z",
+      "updated": "2026-10-06T15:41:18Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -51060,8 +51096,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 1,
+        "runner_min": 25,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
@@ -51081,7 +51117,7 @@
       "state": "Active",
       "title": "the doctor says how many snapshots there are and whether the launcher is stale",
       "type": "task",
-      "updated": "2026-10-06T15:02:46Z",
+      "updated": "2026-10-06T15:41:18Z",
       "writes": [
         "asf/scheduler.py",
         "asf/doctor.py",
