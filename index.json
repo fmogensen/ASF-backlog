@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T15:49:41Z",
+  "generated": "2026-10-06T15:56:29Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7371,6 +7371,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0261",
@@ -7383,7 +7387,45 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #860@83a2ecb0d",
       "type": "bug",
-      "updated": "2026-10-06T15:49:40Z"
+      "updated": "2026-10-06T15:54:51Z"
+    },
+    "B-0262": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0262",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0094",
+      "stage_since": "2026-10-06T15:56:28Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0094",
+      "type": "bug",
+      "updated": "2026-10-06T15:56:28Z"
+    },
+    "B-0263": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0263",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0179",
+      "stage_since": "2026-10-06T15:56:28Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0179",
+      "type": "bug",
+      "updated": "2026-10-06T15:56:28Z"
     },
     "D-0001": {
       "backlinks": [
@@ -8547,7 +8589,9 @@
         "B-0258",
         "B-0259",
         "B-0260",
-        "B-0261"
+        "B-0261",
+        "B-0262",
+        "B-0263"
       ],
       "decided": true,
       "evidence": [
@@ -12304,7 +12348,8 @@
         "F-0218",
         "T-0524",
         "T-0558",
-        "T-0606"
+        "T-0606",
+        "B-0262"
       ],
       "children": [
         "T-0639",
@@ -14181,20 +14226,20 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed",
-        "rule: documented"
+        "3/3 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0140",
       "parent": "E-0004",
       "rank": 65,
       "schema_version": 1,
-      "stage": "building 2/3",
-      "stage_since": "2026-10-06T00:05:50Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-06T15:54:51Z",
+      "state": "Closed",
       "title": "The factory's own clock imports from the live dev checkout \u2014 a tick mid-update gets a torn tree; tick from a snapshot",
       "type": "feature",
-      "updated": "2026-10-06T00:05:50Z"
+      "updated": "2026-10-06T15:54:51Z"
     },
     "F-0141": {
       "backlinks": [],
@@ -15527,7 +15572,8 @@
     },
     "F-0179": {
       "backlinks": [
-        "F-0183"
+        "F-0183",
+        "B-0263"
       ],
       "children": [
         "T-0665",
@@ -15988,12 +16034,12 @@
       "parent": "E-0004",
       "rank": 38,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T14:30:17Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T15:54:51Z",
       "state": "Active",
       "title": "DONE table credits 'landed <sha>' to a run with no commits of its own",
       "type": "feature",
-      "updated": "2026-10-03T04:33:11Z"
+      "updated": "2026-10-06T15:54:51Z"
     },
     "F-0192": {
       "backlinks": [],
@@ -24351,7 +24397,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1417 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 12d (over 3x its limit), 1420 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -26852,6 +26898,7 @@
         "T-0582",
         "T-0744",
         "T-0761",
+        "T-0766",
         "T-0778"
       ],
       "children": [],
@@ -44664,6 +44711,7 @@
         "T-0665",
         "T-0671",
         "T-0700",
+        "T-0766",
         "B-0195"
       ],
       "children": [],
@@ -47712,6 +47760,7 @@
         "T-0673",
         "T-0695",
         "T-0719",
+        "T-0766",
         "T-0788",
         "B-0212",
         "B-0214",
@@ -48673,6 +48722,7 @@
         "T-0696",
         "T-0697",
         "T-0698",
+        "T-0766",
         "B-0220",
         "B-0227",
         "B-0229",
@@ -51132,22 +51182,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #859 OPEN",
-        "branch worker/T-0755",
-        "rule: in-flight"
+        "merge 86aa38a of worker/T-0755 lands T-0755 (PR #859)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0755",
+      "landing": {
+        "as_of": "2026-10-06T15:54:51Z",
+        "by": "pr-merge",
+        "sha": "86aa38a9e96fc54f510bca710010455d8615f7b2"
+      },
       "links": {
         "plan": "docs/plans/f-0140.md"
       },
       "parent": "F-0140",
       "schema_version": 1,
-      "stage_since": "2026-10-06T12:55:11Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T15:54:51Z",
+      "state": "Closed",
       "title": "the doctor says how many snapshots there are and whether the launcher is stale",
       "type": "task",
-      "updated": "2026-10-06T15:41:18Z",
+      "updated": "2026-10-06T15:54:51Z",
       "writes": [
         "asf/scheduler.py",
         "asf/doctor.py",
@@ -51547,6 +51602,12 @@
       ]
     },
     "T-0766": {
+      "after": [
+        "T-0153",
+        "T-0591",
+        "T-0671",
+        "T-0695"
+      ],
       "backlinks": [
         "T-0767",
         "B-0259"
@@ -51554,8 +51615,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0766",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0766",
@@ -51567,11 +51628,11 @@
       ],
       "parent": "F-0191",
       "schema_version": 1,
-      "stage_since": "2026-09-30T14:30:18Z",
-      "state": "New",
+      "stage_since": "2026-10-06T15:54:51Z",
+      "state": "Active",
       "title": "the lane writes down what the branch carried",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T15:54:51Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
