@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T23:34:14Z",
+  "generated": "2026-10-06T23:46:04Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7715,7 +7715,8 @@
     },
     "B-0275": {
       "backlinks": [
-        "F-0259"
+        "F-0259",
+        "B-0381"
       ],
       "children": [],
       "cost": {
@@ -10233,6 +10234,42 @@
       "type": "bug",
       "updated": "2026-10-06T23:33:56Z"
     },
+    "B-0380": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0380",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "worktree already exists on spawn of a job with no live session",
+      "stage_since": "2026-10-06T23:44:57Z",
+      "state": "New",
+      "title": "Spawn reuses or recreates a leftover worktree with no live session instead of failing every tick",
+      "type": "bug",
+      "updated": "2026-10-06T23:44:57Z"
+    },
+    "B-0381": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0381",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #905@48c636507",
+      "stage_since": "2026-10-06T23:45:59Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #905@48c636507",
+      "type": "bug",
+      "updated": "2026-10-06T23:45:59Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -11523,7 +11560,9 @@
         "B-0376",
         "B-0377",
         "B-0378",
-        "B-0379"
+        "B-0379",
+        "B-0380",
+        "B-0381"
       ],
       "decided": true,
       "evidence": [
@@ -12667,6 +12706,8 @@
       "priority": "need",
       "rank": 76,
       "reshape": "stale: T-0110 Active for 11d (over 3x its limit), 823 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape_applied": "76785003e55a",
+      "reshape_applied_at": "2026-10-06T23:42:35Z",
       "schema_version": 1,
       "source": "prototype:core/gates.ts",
       "stage": "plan-approved",
@@ -21389,29 +21430,39 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: card"
+      ],
       "folder": "features",
       "id": "F-0263",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage_since": "2026-10-06T23:34:05Z",
+      "stage": "card",
+      "stage_since": "2026-10-06T23:42:28Z",
       "state": "New",
       "title": "asf reslot <item>: retire a wedged item and carry its branch into a fresh sibling in one step",
       "type": "feature",
-      "updated": "2026-10-06T23:34:05Z"
+      "updated": "2026-10-06T23:42:28Z"
     },
     "F-0264": {
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: card"
+      ],
       "folder": "features",
       "id": "F-0264",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage_since": "2026-10-06T23:34:05Z",
+      "stage": "card",
+      "stage_since": "2026-10-06T23:42:28Z",
       "state": "New",
       "title": "an operator ruling on a landing-wait branch never launches and is outranked by an adjudication (lane reads corrections from the newest run only)",
       "type": "feature",
-      "updated": "2026-10-06T23:34:05Z"
+      "updated": "2026-10-06T23:42:28Z"
     },
     "R-0001": {
       "backlinks": [
@@ -29050,7 +29101,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1461 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1463 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -29723,11 +29774,7 @@
       ]
     },
     "T-0110": {
-      "after": [
-        "T-0130",
-        "T-0545",
-        "T-0073"
-      ],
+      "after": [],
       "backlinks": [
         "F-0025",
         "T-0111",
@@ -29773,7 +29820,7 @@
       "folder": "tasks",
       "id": "T-0110",
       "links": {
-        "plan": "docs/plans/f-0025.md"
+        "plan": "docs/plans/replans/f-0025-76785003e55a.md"
       },
       "parent": "F-0025",
       "reshape": "footprint: needs asf/workers/health.py asf/workers/lifecycle.py asf/briefs/build.py",
@@ -29783,6 +29830,7 @@
       "schema_version": 1,
       "stage_since": "2026-10-06T06:58:28Z",
       "state": "New",
+      "stories": [],
       "title": "the schema module, and every prose reader it replaces",
       "type": "task",
       "updated": "2026-10-06T06:58:28Z",
@@ -29793,7 +29841,16 @@
         "tests/test_brief_facts.py",
         "tests/test_workers.py",
         "tests/test_lifecycle.py",
-        "tests/test_tick_steps.py"
+        "tests/test_tick_steps.py",
+        "asf/workers/lifecycle.py",
+        "asf/workers/health.py",
+        "asf/workers/relaunch.py",
+        "asf/harvest/lane.py",
+        "tests/test_lane.py",
+        "asf/workers/trunkclose.py",
+        "tests/test_trunkclose.py",
+        "asf/tick/rejudge.py",
+        "tests/test_rejudge.py"
       ]
     },
     "T-0111": {
@@ -29812,12 +29869,13 @@
       "folder": "tasks",
       "id": "T-0111",
       "links": {
-        "plan": "docs/plans/f-0025.md"
+        "plan": "docs/plans/replans/f-0025-76785003e55a.md"
       },
       "parent": "F-0025",
       "schema_version": 1,
       "stage_since": "2026-09-24T00:39:03Z",
       "state": "New",
+      "stories": [],
       "title": "the contract every brief prints, and no template of its own",
       "type": "task",
       "updated": "2026-10-06T00:05:50Z",
@@ -29835,6 +29893,13 @@
         "asf/briefs/templates/reshape.md",
         "asf/briefs/templates/review.md",
         "asf/briefs/templates/spec.md",
+        "asf/briefs/templates/spec-amend.md",
+        "asf/briefs/templates/groom-clerk.md",
+        "asf/briefs/templates/spec-plan.md",
+        "asf/briefs/templates/direct.md",
+        "asf/briefs/templates/delivery-plan.md",
+        "asf/briefs/templates/delivery-code.md",
+        "asf/briefs/templates/replan.md",
         "tests/fixtures/briefs/golden/adjudicate.md",
         "tests/fixtures/briefs/golden/close.md",
         "tests/fixtures/briefs/golden/coder.md",
@@ -29847,6 +29912,13 @@
         "tests/fixtures/briefs/golden/reshape.md",
         "tests/fixtures/briefs/golden/review.md",
         "tests/fixtures/briefs/golden/spec.md",
+        "tests/fixtures/briefs/golden/spec-amend.md",
+        "tests/fixtures/briefs/golden/groom-clerk.md",
+        "tests/fixtures/briefs/golden/spec-plan.md",
+        "tests/fixtures/briefs/golden/direct.md",
+        "tests/fixtures/briefs/golden/delivery-plan.md",
+        "tests/fixtures/briefs/golden/delivery-code.md",
+        "tests/fixtures/briefs/golden/replan.md",
         "tests/test_briefs.py"
       ]
     },
@@ -29868,7 +29940,7 @@
       "folder": "tasks",
       "id": "T-0112",
       "links": {
-        "plan": "docs/plans/f-0025.md"
+        "plan": "docs/plans/replans/f-0025-76785003e55a.md"
       },
       "merged": [
         "T-0113",
@@ -29879,6 +29951,7 @@
       "schema_version": 1,
       "stage_since": "2026-09-24T00:39:03Z",
       "state": "New",
+      "stories": [],
       "title": "the fake runtime emits a report, and so does every fixture",
       "type": "task",
       "updated": "2026-10-06T00:05:50Z",
@@ -29889,11 +29962,7 @@
         "tests/test_tick_steps.py",
         "tests/test_session_identity.py",
         "tests/test_sample_product.py",
-        "asf/workers/lifecycle.py",
-        "asf/workers/health.py",
-        "asf/metrics/metrics.py",
-        "asf/tick/step_health.py",
-        "tests/test_metrics.py"
+        "tests/test_continuation.py"
       ]
     },
     "T-0113": {
@@ -30599,6 +30668,7 @@
         "T-0133",
         "T-0142",
         "T-0163",
+        "T-0189",
         "T-0203",
         "T-0221",
         "T-0239",
@@ -33025,7 +33095,8 @@
         "T-0073",
         "T-0110",
         "T-0153",
-        "T-0140"
+        "T-0140",
+        "T-0130"
       ],
       "backlinks": [
         "F-0229",
