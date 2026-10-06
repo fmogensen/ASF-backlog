@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T05:21:24Z",
+  "generated": "2026-10-06T05:33:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -6100,6 +6100,25 @@
       "type": "bug",
       "updated": "2026-10-06T04:33:57Z"
     },
+    "B-0213": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0213",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0665",
+      "stage_since": "2026-10-06T05:33:15Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0665",
+      "type": "bug",
+      "updated": "2026-10-06T05:33:15Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -7258,7 +7277,8 @@
         "B-0209",
         "B-0210",
         "B-0211",
-        "B-0212"
+        "B-0212",
+        "B-0213"
       ],
       "decided": true,
       "evidence": [
@@ -12967,12 +12987,12 @@
       "reshape_applied": "a9784c4e4b2c",
       "reshape_applied_at": "2026-10-03T06:40:03Z",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T12:31:23Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T05:30:06Z",
       "state": "Active",
       "title": "The record pre-commit hook should rebuild and stage a stale index.json instead of refusing",
       "type": "feature",
-      "updated": "2026-10-03T06:47:25Z"
+      "updated": "2026-10-06T05:30:06Z"
     },
     "F-0147": {
       "backlinks": [],
@@ -15536,12 +15556,12 @@
       "parent": "E-0004",
       "rank": 47,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T15:17:51Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T05:30:06Z",
       "state": "Active",
       "title": "The Stale row judges the tick's real cadence, and names an upgrade hold instead of calling it stale",
       "type": "feature",
-      "updated": "2026-09-30T15:24:33Z"
+      "updated": "2026-10-06T05:30:06Z"
     },
     "F-0222": {
       "backlinks": [],
@@ -15742,12 +15762,12 @@
       "parent": "E-0001",
       "rank": 6,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T22:57:34Z",
+      "stage": "building 0/2",
+      "stage_since": "2026-10-06T05:30:06Z",
       "state": "Active",
       "title": "An ended worker run whose pid stays alive blocks its item forever (T-0196)",
       "type": "feature",
-      "updated": "2026-09-29T23:03:38Z"
+      "updated": "2026-10-06T05:30:06Z"
     },
     "F-0228": {
       "backlinks": [],
@@ -23407,6 +23427,7 @@
         "T-0589",
         "T-0601",
         "T-0605",
+        "T-0615",
         "B-0163"
       ],
       "children": [],
@@ -25183,7 +25204,8 @@
         "T-0441",
         "T-0582",
         "T-0744",
-        "T-0761"
+        "T-0761",
+        "T-0778"
       ],
       "children": [],
       "cost": {
@@ -25742,6 +25764,7 @@
         "T-0559",
         "T-0589",
         "T-0605",
+        "T-0615",
         "T-0671",
         "T-0719"
       ],
@@ -26650,7 +26673,8 @@
         "T-0557",
         "T-0594",
         "T-0648",
-        "T-0654"
+        "T-0654",
+        "T-0778"
       ],
       "children": [],
       "cost": {
@@ -29998,6 +30022,7 @@
         "T-0589",
         "T-0605",
         "T-0612",
+        "T-0615",
         "T-0617",
         "T-0620",
         "T-0671",
@@ -30289,7 +30314,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -30309,7 +30334,7 @@
       "state": "Active",
       "title": "the wave raises one line per held Epic, on a busy tick too, and records it",
       "type": "task",
-      "updated": "2026-10-06T05:03:36Z",
+      "updated": "2026-10-06T05:30:21Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_tick_steps.py"
@@ -36915,7 +36940,8 @@
         "T-0438",
         "T-0582",
         "T-0744",
-        "T-0761"
+        "T-0761",
+        "T-0778"
       ],
       "children": [],
       "cost": {
@@ -43074,7 +43100,8 @@
       "backlinks": [
         "T-0606",
         "T-0607",
-        "T-0608"
+        "T-0608",
+        "T-0615"
       ],
       "children": [],
       "cost": {
@@ -43433,6 +43460,12 @@
       ]
     },
     "T-0615": {
+      "after": [
+        "T-0110",
+        "T-0166",
+        "T-0271",
+        "T-0605"
+      ],
       "backlinks": [
         "T-0616",
         "B-0204"
@@ -43440,8 +43473,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0615",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0615",
@@ -43450,11 +43483,11 @@
       },
       "parent": "F-0227",
       "schema_version": 1,
-      "stage_since": "2026-09-29T22:57:35Z",
-      "state": "New",
+      "stage_since": "2026-10-06T05:30:06Z",
+      "state": "Active",
       "title": "one grace, one predicate, one index \u2014 and the stop reading them instead of its own arithmetic",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T05:30:06Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -44403,7 +44436,8 @@
         "asf/record/trunk_check.py",
         "asf/record/plan_tasks.py",
         "asf/record/ingest.py",
-        "tests/test_trunk_check.py"
+        "tests/test_trunk_check.py",
+        "docs/plans/f-0106.md"
       ]
     },
     "T-0642": {
@@ -44863,7 +44897,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -44890,7 +44924,7 @@
       "state": "Active",
       "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
       "type": "task",
-      "updated": "2026-10-06T05:12:25Z",
+      "updated": "2026-10-06T05:30:21Z",
       "writes": [
         "asf/workers/headroom.py",
         "asf/workers/pool.py",
@@ -45224,7 +45258,8 @@
       "after": [],
       "backlinks": [
         "T-0666",
-        "T-0667"
+        "T-0667",
+        "B-0213"
       ],
       "children": [],
       "decided": true,
@@ -48248,6 +48283,7 @@
       ],
       "backlinks": [
         "T-0761",
+        "T-0778",
         "B-0138"
       ],
       "children": [],
@@ -48809,8 +48845,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0759",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0759",
@@ -48819,11 +48855,11 @@
       },
       "parent": "F-0146",
       "schema_version": 1,
-      "stage_since": "2026-09-30T12:31:23Z",
-      "state": "New",
+      "stage_since": "2026-10-06T05:30:06Z",
+      "state": "Active",
       "title": "the hook derives the index it cannot find",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T05:30:06Z",
       "writes": [
         "asf/record/check.py",
         "tests/test_check_staged.py"
@@ -48877,7 +48913,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "tokens_cache_read": 5020897,
         "tokens_cache_write": 98161,
         "tokens_input": 110,
@@ -48904,7 +48940,7 @@
       "state": "Active",
       "title": "one retirement rule \u2014 a moved card is retired to the index reader too",
       "type": "task",
-      "updated": "2026-10-06T04:54:12Z",
+      "updated": "2026-10-06T05:30:21Z",
       "writes": [
         "asf/views/index_reader.py",
         "tests/test_views.py",
@@ -49472,12 +49508,18 @@
       ]
     },
     "T-0778": {
+      "after": [
+        "T-0153",
+        "T-0189",
+        "T-0441",
+        "T-0744"
+      ],
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0778",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0778",
@@ -49489,11 +49531,11 @@
         "split T-0778 asf/views | tests | tests/fixtures"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-30T15:17:53Z",
-      "state": "New",
+      "stage_since": "2026-10-06T05:30:06Z",
+      "state": "Active",
       "title": "the Stale row reads the cadence the tick measured, and an upgrade hold names itself",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T05:30:06Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_tick.py",
