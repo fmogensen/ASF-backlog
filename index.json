@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T04:02:08Z",
+  "generated": "2026-10-06T04:09:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5275,7 +5275,7 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 10,
+        "sessions": 11,
         "tokens_cache_read": 4971147,
         "tokens_cache_write": 132576,
         "tokens_input": 104,
@@ -5299,7 +5299,7 @@
       "state": "Active",
       "title": "CI box list has three hand-kept copies that drift: one source (ci.pool / runner connector) for watchdog, installer and doctor",
       "type": "bug",
-      "updated": "2026-10-06T03:57:39Z"
+      "updated": "2026-10-06T04:07:41Z"
     },
     "B-0179": {
       "backlinks": [
@@ -5944,6 +5944,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0206",
@@ -5956,13 +5960,17 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0363",
       "type": "bug",
-      "updated": "2026-10-06T04:02:07Z"
+      "updated": "2026-10-06T04:07:30Z"
     },
     "B-0207": {
       "backlinks": [],
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0207",
@@ -5975,7 +5983,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0411",
       "type": "bug",
-      "updated": "2026-10-06T04:02:07Z"
+      "updated": "2026-10-06T04:07:30Z"
     },
     "D-0001": {
       "backlinks": [
@@ -15905,7 +15913,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/2 tasks Closed",
+        "1/2 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -15913,12 +15921,12 @@
       "parent": "E-0001",
       "rank": 2,
       "schema_version": 1,
-      "stage": "building 0/2",
-      "stage_since": "2026-10-06T02:37:49Z",
+      "stage": "building 1/2",
+      "stage_since": "2026-10-06T04:07:30Z",
       "state": "Active",
       "title": "Sessions die with 'failed: hook refused' 19.5 times a week",
       "type": "feature",
-      "updated": "2026-10-06T02:37:49Z"
+      "updated": "2026-10-06T04:07:30Z"
     },
     "F-0236": {
       "backlinks": [
@@ -23254,6 +23262,7 @@
         "T-0166",
         "T-0168",
         "T-0189",
+        "T-0197",
         "T-0226",
         "T-0341",
         "T-0342",
@@ -26485,6 +26494,7 @@
         "T-0190",
         "T-0191",
         "T-0193",
+        "T-0197",
         "T-0218",
         "T-0226",
         "T-0231",
@@ -26831,14 +26841,18 @@
     },
     "T-0197": {
       "after": [
-        "T-0194"
+        "T-0194",
+        "T-0110",
+        "T-0189"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0226"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0197",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0197",
@@ -26850,11 +26864,11 @@
         "split T-0197 asf/tick | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-24T03:54:50Z",
-      "state": "New",
+      "stage_since": "2026-10-06T04:07:30Z",
+      "state": "Active",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T04:07:30Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -27901,7 +27915,8 @@
         "T-0163",
         "T-0166",
         "T-0189",
-        "T-0221"
+        "T-0221",
+        "T-0197"
       ],
       "backlinks": [
         "T-0227",
@@ -40040,22 +40055,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #796 OPEN",
-        "branch worker/T-0531",
-        "rule: in-flight"
+        "merge d647d77 of worker/T-0531 lands T-0531 (PR #796)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0531",
+      "landing": {
+        "as_of": "2026-10-06T04:07:30Z",
+        "by": "pr-merge",
+        "sha": "d647d7778a2a1a4da82d9afee247b15a7d60726a"
+      },
       "links": {
         "plan": "docs/plans/f-0235.md"
       },
       "parent": "F-0235",
       "schema_version": 1,
-      "stage_since": "2026-10-06T02:37:49Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T04:07:30Z",
+      "state": "Closed",
       "title": "the brief names the push-free gate, and says a refused push ends no turn",
       "type": "task",
-      "updated": "2026-10-06T03:30:17Z",
+      "updated": "2026-10-06T04:07:30Z",
       "writes": [
         "asf/hooks.py",
         "asf/briefs/facts.py",
@@ -42010,8 +42030,15 @@
         "T-0744"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #807 OPEN",
         "branch worker/T-0582",
         "rule: in-flight"
       ],
@@ -42029,7 +42056,7 @@
       "state": "Active",
       "title": "an S1 card left on a question says so, every tick, naming its file",
       "type": "task",
-      "updated": "2026-10-06T03:39:28Z",
+      "updated": "2026-10-06T04:07:41Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/groom.py",
@@ -47789,7 +47816,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
+        "sessions": 5,
         "tokens_cache_read": 11740223,
         "tokens_cache_write": 192200,
         "tokens_input": 152,
@@ -47816,7 +47843,7 @@
       "state": "Active",
       "title": "the check names the card that holds the name, and no index entry copies it",
       "type": "task",
-      "updated": "2026-10-06T03:57:39Z",
+      "updated": "2026-10-06T04:07:41Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
@@ -49038,7 +49065,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "tokens_cache_read": 9469526,
         "tokens_cache_write": 126444,
         "tokens_input": 176,
@@ -49062,7 +49089,7 @@
       "state": "Active",
       "title": "every branch that gives an S1/S2 Bug no session is a WAITS row, and the row names the fact that holds it",
       "type": "task",
-      "updated": "2026-10-06T03:48:35Z",
+      "updated": "2026-10-06T04:07:41Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
