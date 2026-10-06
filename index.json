@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T03:48:37Z",
+  "generated": "2026-10-06T04:02:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5275,7 +5275,7 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 9,
+        "sessions": 10,
         "tokens_cache_read": 4971147,
         "tokens_cache_write": 132576,
         "tokens_input": 104,
@@ -5299,7 +5299,7 @@
       "state": "Active",
       "title": "CI box list has three hand-kept copies that drift: one source (ci.pool / runner connector) for watchdog, installer and doctor",
       "type": "bug",
-      "updated": "2026-10-06T03:30:17Z"
+      "updated": "2026-10-06T03:57:39Z"
     },
     "B-0179": {
       "backlinks": [
@@ -5938,6 +5938,44 @@
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0720",
       "type": "bug",
       "updated": "2026-10-06T03:39:28Z"
+    },
+    "B-0206": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0206",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0363",
+      "stage_since": "2026-10-06T04:02:07Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0363",
+      "type": "bug",
+      "updated": "2026-10-06T04:02:07Z"
+    },
+    "B-0207": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0207",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0411",
+      "stage_since": "2026-10-06T04:02:07Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0411",
+      "type": "bug",
+      "updated": "2026-10-06T04:02:07Z"
     },
     "D-0001": {
       "backlinks": [
@@ -7090,7 +7128,9 @@
         "B-0202",
         "B-0203",
         "B-0204",
-        "B-0205"
+        "B-0205",
+        "B-0206",
+        "B-0207"
       ],
       "decided": true,
       "evidence": [
@@ -11951,7 +11991,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/2 tasks Closed",
+        "1/2 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -11959,12 +11999,12 @@
       "parent": "E-0004",
       "rank": 42,
       "schema_version": 1,
-      "stage": "building 0/2",
-      "stage_since": "2026-10-06T02:57:45Z",
+      "stage": "building 1/2",
+      "stage_since": "2026-10-06T03:57:24Z",
       "state": "Active",
       "title": "record: a date-prefixed plan file mints no Tasks after it lands",
       "type": "feature",
-      "updated": "2026-10-06T02:57:45Z"
+      "updated": "2026-10-06T03:57:24Z"
     },
     "F-0124": {
       "backlinks": [
@@ -33572,7 +33612,9 @@
       "after": [
         "T-0362"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-0206"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -35506,7 +35548,8 @@
         "T-0415",
         "T-0416",
         "T-0418",
-        "T-0419"
+        "T-0419",
+        "B-0207"
       ],
       "children": [],
       "decided": true,
@@ -44327,8 +44370,15 @@
         "B-0196"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #806 OPEN",
         "branch worker/T-0648",
         "rule: in-flight"
       ],
@@ -44344,7 +44394,7 @@
       "stories": [],
       "title": "an absent `steps.batch` is off, both refusals go, and the five pinned expectations are corrected",
       "type": "task",
-      "updated": "2026-10-06T03:30:04Z",
+      "updated": "2026-10-06T03:57:39Z",
       "writes": [
         "asf/tick/steps.py",
         "tests/test_tick.py",
@@ -47669,22 +47719,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #802 OPEN",
-        "branch worker/T-0738",
-        "rule: in-flight"
+        "merge 17136b0 of worker/T-0738 lands T-0738 (PR #802)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0738",
+      "landing": {
+        "as_of": "2026-10-06T03:57:24Z",
+        "by": "pr-merge",
+        "sha": "17136b0e0bf8a500ca4a5945394c8db1089e73b5"
+      },
       "links": {
         "plan": "docs/plans/f-0123.md"
       },
       "parent": "F-0123",
       "schema_version": 1,
-      "stage_since": "2026-10-06T02:57:45Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T03:57:24Z",
+      "state": "Closed",
       "title": "the gate's third route, and the four skips that speak",
       "type": "task",
-      "updated": "2026-10-06T03:39:39Z",
+      "updated": "2026-10-06T03:57:24Z",
       "writes": [
         "asf/record/plan_tasks.py",
         "tests/test_plan_tasks.py",
@@ -47734,7 +47789,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 11740223,
         "tokens_cache_write": 192200,
         "tokens_input": 152,
@@ -47761,7 +47816,7 @@
       "state": "Active",
       "title": "the check names the card that holds the name, and no index entry copies it",
       "type": "task",
-      "updated": "2026-10-06T03:30:17Z",
+      "updated": "2026-10-06T03:57:39Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
@@ -47769,7 +47824,9 @@
         "asf/record/match.py",
         "tests/test_backlog.py",
         "tests/test_check_staged.py",
-        "tests/test_match.py"
+        "tests/test_match.py",
+        "docs/specs/f-0132.md",
+        "docs/plans/replans/f-0132-8266efca4547.md"
       ]
     },
     "T-0741": {
