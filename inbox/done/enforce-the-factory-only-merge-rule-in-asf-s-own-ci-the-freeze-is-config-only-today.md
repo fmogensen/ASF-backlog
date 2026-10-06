@@ -1,3 +1,5 @@
+→ F-0253
+
 # Enforce the factory-only merge rule in ASF's own CI (the freeze is config-only today)
 
 The hand-build freeze is on (2026-10-06): ASF's own product config sets `conventions.merge: {mode: auto, factory_only: true}`. But ASF's CI does not run the check yet (`python3 -m asf.factory_only`, added in round E, #780), so a hand PR into main still passes CI — the rule exists only in config the CI cannot read (operator config lives outside the repo).
