@@ -1,3 +1,5 @@
+→ F-0254
+
 # CI queue: a priority PR's waiting required jobs preempt lower-rank QUEUED PR runs of the same runner class, re-dispatched afterwards
 
 From a product session (2026-10-06, on 0.1.195): a `land --priority` PR's required jobs waited 40 min for the heavy runner class while 6 lower-rank PR runs sat queued ahead of it; the product session force-cancelled the 6 by hand. Round D (#13) made a priority PR's own run "S1: first in line, never cancelled by relief", but GitHub hands runners out FIFO, so "first in line" in ASF's queue does not reach the runner.

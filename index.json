@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T13:47:13Z",
+  "generated": "2026-10-06T13:58:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7233,6 +7233,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0255",
@@ -7245,7 +7249,26 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 inbox:ci-flag-idle-runners-missing-a-required-label-while-required-jobs-queue-respecting-declared-exclusions-ci-reconcile-declares-live-runners.md",
       "type": "bug",
-      "updated": "2026-10-06T13:47:12Z"
+      "updated": "2026-10-06T13:52:28Z"
+    },
+    "B-0256": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0256",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0113",
+      "stage_since": "2026-10-06T13:58:13Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0113",
+      "type": "bug",
+      "updated": "2026-10-06T13:58:13Z"
     },
     "D-0001": {
       "backlinks": [
@@ -8403,7 +8426,8 @@
         "B-0252",
         "B-0253",
         "B-0254",
-        "B-0255"
+        "B-0255",
+        "B-0256"
       ],
       "decided": true,
       "evidence": [
@@ -8601,6 +8625,7 @@
         "F-0225",
         "F-0226",
         "F-0245",
+        "F-0254",
         "B-0146"
       ],
       "decided": true,
@@ -12943,7 +12968,8 @@
       "backlinks": [
         "F-0202",
         "F-0208",
-        "B-0151"
+        "B-0151",
+        "B-0256"
       ],
       "children": [
         "T-0437",
@@ -17886,6 +17912,20 @@
       "title": "Enforce the factory-only merge rule in ASF's own CI (the freeze is config-only today)",
       "type": "feature",
       "updated": "2026-10-06T12:55:11Z"
+    },
+    "F-0254": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0254",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-10-06T13:52:31Z",
+      "state": "New",
+      "title": "CI queue: a priority PR's waiting required jobs preempt lower-rank QUEUED PR runs of the same runner class, re-dispatched afterwards",
+      "type": "feature",
+      "updated": "2026-10-06T13:52:31Z"
     },
     "R-0001": {
       "backlinks": [
@@ -25275,7 +25315,8 @@
         "T-0524",
         "T-0548",
         "T-0591",
-        "T-0645"
+        "T-0645",
+        "T-0677"
       ],
       "children": [],
       "cost": {
@@ -25729,6 +25770,7 @@
         "T-0591",
         "T-0645",
         "T-0654",
+        "T-0677",
         "T-0687",
         "T-0728",
         "T-0745"
@@ -27106,6 +27148,7 @@
         "T-0524",
         "T-0548",
         "T-0645",
+        "T-0677",
         "B-0138"
       ],
       "children": [],
@@ -28748,7 +28791,8 @@
         "T-0197"
       ],
       "backlinks": [
-        "T-0226"
+        "T-0226",
+        "T-0677"
       ],
       "children": [],
       "cost": {
@@ -29645,6 +29689,7 @@
         "T-0605",
         "T-0620",
         "T-0645",
+        "T-0677",
         "T-0700",
         "T-0761",
         "T-0775"
@@ -47704,7 +47749,13 @@
       ]
     },
     "T-0677": {
-      "after": [],
+      "after": [
+        "T-0119",
+        "T-0130",
+        "T-0163",
+        "T-0203",
+        "T-0226"
+      ],
       "backlinks": [
         "B-0243"
       ],
@@ -47721,8 +47772,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0677",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0677",
@@ -47731,12 +47782,12 @@
       },
       "parent": "F-0184",
       "schema_version": 1,
-      "stage_since": "2026-09-30T07:41:53Z",
-      "state": "New",
+      "stage_since": "2026-10-06T13:52:28Z",
+      "state": "Active",
       "stories": [],
       "title": "the `ci` stream matches the workflow by file name too, and carries seconds, queue wait and wall time",
       "type": "task",
-      "updated": "2026-10-06T13:46:52Z",
+      "updated": "2026-10-06T13:52:28Z",
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
