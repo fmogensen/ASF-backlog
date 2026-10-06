@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T23:53:44Z",
+  "generated": "2026-10-06T23:57:29Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7662,7 +7662,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 52,
+        "runner_min": 102,
         "sessions": 3,
         "usd": null
       },
@@ -7683,15 +7683,15 @@
       "state": "Active",
       "title": "Item ids with 5+ digits never match in landing attribution and evidence (\\d{4} regex)",
       "type": "bug",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "B-0274": {
       "backlinks": [],
       "children": [],
       "cost": {
         "fix_rounds": 2,
-        "runner_min": 25,
-        "sessions": 2,
+        "runner_min": 75,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
@@ -7711,18 +7711,20 @@
       "state": "Active",
       "title": "Merge queue: drop a batch as soon as a required job is red, without waiting for non-required jobs",
       "type": "bug",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "B-0275": {
       "backlinks": [
         "F-0259",
-        "B-0381"
+        "B-0381",
+        "B-0382",
+        "B-0383"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 0,
-        "sessions": 2,
+        "runner_min": 1,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
@@ -7742,7 +7744,7 @@
       "state": "Active",
       "title": "naming reword force-pushes a green, land-requested PR (identical tree) and throws away its CI",
       "type": "bug",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "B-0276": {
       "backlinks": [
@@ -7751,13 +7753,14 @@
       ],
       "children": [],
       "cost": {
-        "fix_rounds": 2,
+        "fix_rounds": 3,
         "runner_min": 0,
-        "sessions": 2,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
       "evidence": [
+        "PR #913 OPEN",
         "branch fix/B-0276",
         "rule: fixer"
       ],
@@ -7772,7 +7775,7 @@
       "state": "Active",
       "title": "review sessions cannot end \u2014 the unpushed-work Stop hook does not exempt the review kind, so green PRs never get an approval",
       "type": "bug",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "B-0277": {
       "backlinks": [],
@@ -8198,8 +8201,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 138,
-        "sessions": 4,
+        "runner_min": 182,
+        "sessions": 5,
         "usd": null
       },
       "count": 1,
@@ -8221,7 +8224,7 @@
       "state": "Active",
       "title": "21 % of sessions end \"other\" (threshold 10 %, 85 of 407 in 24h)",
       "type": "bug",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "B-0295": {
       "backlinks": [],
@@ -9653,7 +9656,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 2,
-        "runner_min": 18,
+        "runner_min": 76,
         "sessions": 3,
         "tokens_cache_read": 13134579,
         "tokens_cache_write": 251959,
@@ -9664,13 +9667,18 @@
       "count": 1,
       "decided": true,
       "evidence": [
-        "PR #907 OPEN",
-        "branch fix/B-0356",
-        "rule: fixer"
+        "merge 49a731e of fix/B-0356 lands B-0356 (PR #907)",
+        "CI green on main at or after it",
+        "rule: fixed"
       ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0356",
+      "landing": {
+        "as_of": "2026-10-06T23:51:15Z",
+        "by": "pr-merge",
+        "sha": "49a731ecdb8fac4473396bd65c2f01ff54e36c03"
+      },
       "last_filed": "2026-10-06",
       "links": {
         "runs": [
@@ -9682,11 +9690,11 @@
       "schema_version": 1,
       "severity": "S2",
       "signature": "tests (3.13): the suite is hermetic (env -i, an operator home, ASF_PRODUCT set, foreign default branch)",
-      "stage_since": "2026-10-06T23:05:20Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T23:51:15Z",
+      "state": "Resolved",
       "title": "CI red: tests (3.13): the suite is hermetic (env -i, an operator home, ASF_PRODUCT set, foreign default branch)",
       "type": "bug",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "B-0357": {
       "backlinks": [],
@@ -10238,6 +10246,10 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0380",
@@ -10249,13 +10261,17 @@
       "state": "New",
       "title": "Spawn reuses or recreates a leftover worktree with no live session instead of failing every tick",
       "type": "bug",
-      "updated": "2026-10-06T23:44:57Z"
+      "updated": "2026-10-06T23:51:15Z"
     },
     "B-0381": {
       "backlinks": [],
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0381",
@@ -10268,7 +10284,76 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #905@48c636507",
       "type": "bug",
-      "updated": "2026-10-06T23:45:59Z"
+      "updated": "2026-10-06T23:51:15Z"
+    },
+    "B-0382": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0382",
+      "last_filed": "2026-10-06",
+      "links": {
+        "runs": [
+          37543633909,
+          37546608703
+        ]
+      },
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "tests (3.12): no new raw gh/git call site (the client ratchet)",
+      "stage_since": "2026-10-06T23:56:55Z",
+      "state": "New",
+      "title": "CI red: tests (3.12): no new raw gh/git call site (the client ratchet)",
+      "type": "bug",
+      "updated": "2026-10-06T23:56:55Z"
+    },
+    "B-0383": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0383",
+      "last_filed": "2026-10-06",
+      "links": {
+        "runs": [
+          37543633909,
+          37546608703
+        ]
+      },
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "tests (3.13): no new raw gh/git call site (the client ratchet)",
+      "stage_since": "2026-10-06T23:56:55Z",
+      "state": "New",
+      "title": "CI red: tests (3.13): no new raw gh/git call site (the client ratchet)",
+      "type": "bug",
+      "updated": "2026-10-06T23:56:55Z"
+    },
+    "B-0384": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0384",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0431",
+      "stage_since": "2026-10-06T23:57:20Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0431",
+      "type": "bug",
+      "updated": "2026-10-06T23:57:20Z"
     },
     "D-0001": {
       "backlinks": [
@@ -11562,7 +11647,10 @@
         "B-0378",
         "B-0379",
         "B-0380",
-        "B-0381"
+        "B-0381",
+        "B-0382",
+        "B-0383",
+        "B-0384"
       ],
       "decided": true,
       "evidence": [
@@ -11717,12 +11805,12 @@
       "id": "E-0003",
       "rank": 3,
       "schema_version": 1,
-      "spend_usd": 68.37,
+      "spend_usd": 70.24,
       "stage_since": "2026-09-30T07:54:54Z",
       "state": "Active",
       "title": "ASF 0.3 \u2014 autonomous delivery",
       "type": "epic",
-      "updated": "2026-10-03T06:33:26Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "E-0004": {
       "backlinks": [
@@ -12577,8 +12665,8 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 58,
-        "sessions": 11,
+        "runner_min": 66,
+        "sessions": 12,
         "tokens_cache_read": 7491372,
         "tokens_cache_write": 420788,
         "tokens_input": 260,
@@ -12608,7 +12696,7 @@
       "state": "Active",
       "title": "The grill: a request is interrogated before it is spent on",
       "type": "feature",
-      "updated": "2026-10-06T22:59:50Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "F-0024": {
       "area": "factory",
@@ -12684,7 +12772,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 29,
+        "runner_min": 48,
         "sessions": 7,
         "tokens_cache_read": 16572947,
         "tokens_cache_write": 342758,
@@ -12715,7 +12803,7 @@
       "state": "Active",
       "title": "Typed envelopes: every job ends with a machine-readable report beside its prose",
       "type": "feature",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "F-0026": {
       "area": "factory",
@@ -13314,7 +13402,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 28,
         "sessions": 3,
         "tokens_cache_read": 9407519,
         "tokens_cache_write": 239882,
@@ -13342,7 +13430,7 @@
       "state": "Active",
       "title": "Small-Task trains: size class from the footprint, one train per lane, one CI run and one review per train",
       "type": "feature",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "F-0042": {
       "area": "factory",
@@ -14041,7 +14129,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
+        "sessions": 3,
         "tokens_cache_read": 7226858,
         "tokens_cache_write": 245867,
         "tokens_input": 164,
@@ -14067,7 +14155,7 @@
       "state": "Active",
       "title": "A mechanical correctness pass before the human-standard review",
       "type": "feature",
-      "updated": "2026-10-06T07:08:32Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "F-0061": {
       "area": "factory",
@@ -14089,7 +14177,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 26,
+        "runner_min": 49,
         "sessions": 4,
         "tokens_cache_read": 20136557,
         "tokens_cache_write": 379203,
@@ -14116,7 +14204,7 @@
       "state": "Active",
       "title": "Hooks as rule enforcement inside every worker session",
       "type": "feature",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "F-0062": {
       "area": "security",
@@ -17758,11 +17846,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
-        "tokens_cache_read": 13953756,
-        "tokens_cache_write": 414404,
-        "tokens_input": 364,
-        "tokens_output": 171926,
+        "sessions": 5,
+        "tokens_cache_read": 15331044,
+        "tokens_cache_write": 474122,
+        "tokens_input": 440,
+        "tokens_output": 172114,
         "usd": 15.47
       },
       "decided": true,
@@ -17785,7 +17873,7 @@
       "state": "Active",
       "title": "Naming reword retries a refused push every tick (144 log lines, 3 branches)",
       "type": "feature",
-      "updated": "2026-10-06T06:16:53Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "F-0154": {
       "backlinks": [],
@@ -19250,12 +19338,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
-        "tokens_cache_read": 19993667,
-        "tokens_cache_write": 439210,
-        "tokens_input": 380,
-        "tokens_output": 181051,
-        "usd": 18.92
+        "sessions": 4,
+        "tokens_cache_read": 25601231,
+        "tokens_cache_write": 540515,
+        "tokens_input": 524,
+        "tokens_output": 215103,
+        "usd": 20.78
       },
       "decided": true,
       "evidence": [
@@ -19277,7 +19365,7 @@
       "state": "Active",
       "title": "External CI on any VM (ci.provider: vm) \u2014 drop the GitHub Actions dependency",
       "type": "feature",
-      "updated": "2026-10-03T05:19:33Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "F-0195": {
       "backlinks": [
@@ -20844,7 +20932,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 49,
-        "sessions": 8,
+        "sessions": 9,
         "tokens_cache_read": 18916475,
         "tokens_cache_write": 444102,
         "tokens_input": 584,
@@ -20868,7 +20956,7 @@
       "state": "Active",
       "title": "Operator ruling at the round cap never lifts a stalemate park (History not in digest)",
       "type": "feature",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "F-0240": {
       "backlinks": [],
@@ -20943,8 +21031,8 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 37,
-        "sessions": 4,
+        "runner_min": 46,
+        "sessions": 5,
         "tokens_cache_read": 3806566,
         "tokens_cache_write": 90564,
         "tokens_input": 116,
@@ -20969,7 +21057,7 @@
       "state": "Active",
       "title": "Repair load \u2264 3 per Feature for the release gate: count rework, not the planned first review, and cut rework",
       "type": "feature",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-06T23:57:04Z"
     },
     "F-0243": {
       "backlinks": [
@@ -25364,7 +25452,9 @@
       "updated": "2026-10-06T23:20:26Z"
     },
     "S-55454": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0194"
+      ],
       "children": [],
       "folder": "stories",
       "id": "S-55454",
@@ -25377,7 +25467,9 @@
       "updated": "2026-10-06T23:41:56Z"
     },
     "S-55455": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0194"
+      ],
       "children": [],
       "folder": "stories",
       "id": "S-55455",
@@ -25390,7 +25482,9 @@
       "updated": "2026-10-06T23:42:17Z"
     },
     "S-55456": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0194"
+      ],
       "children": [],
       "folder": "stories",
       "id": "S-55456",
@@ -25403,7 +25497,9 @@
       "updated": "2026-10-06T23:42:31Z"
     },
     "S-55457": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0194"
+      ],
       "children": [],
       "folder": "stories",
       "id": "S-55457",
@@ -27545,7 +27641,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 8,
         "sessions": 1,
         "tokens_cache_read": 527016,
         "tokens_cache_write": 1133,
@@ -27580,7 +27676,7 @@
       "state": "Active",
       "title": "the tree grammar, the record-first filter, `asf idea apply`, the front door, `asf idea --enrich`, the feeder's `CARD \u2192 ENRICH`, the refine brief, and the harvest bounce",
       "type": "task",
-      "updated": "2026-09-24T12:25:04Z",
+      "updated": "2026-10-06T23:57:04Z",
       "writes": [
         "asf/idea/__init__.py",
         "asf/idea/tree.py",
@@ -27672,7 +27768,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 8,
         "sessions": 3,
         "tokens_cache_read": 470256,
         "tokens_cache_write": 22731,
@@ -27697,7 +27793,7 @@
       "state": "New",
       "title": "intake resolves a forward reference, and one tree becomes an Epic with Features, Stories and acceptance",
       "type": "task",
-      "updated": "2026-10-06T06:58:28Z",
+      "updated": "2026-10-06T23:57:04Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/shape.py",
@@ -29157,7 +29253,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1463 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1465 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -36515,7 +36611,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 35,
+        "runner_min": 44,
         "sessions": 3,
         "tokens_cache_read": 13499975,
         "tokens_cache_write": 212002,
@@ -36548,7 +36644,7 @@
       "state": "Closed",
       "title": "`asf review-checks` \u2014 the mechanical pre-review, and what it refuses",
       "type": "task",
-      "updated": "2026-10-06T22:00:35Z",
+      "updated": "2026-10-06T23:57:04Z",
       "writes": [
         "asf/review_checks.py",
         "asf/cli.py",
@@ -43500,7 +43596,8 @@
         "T-0433",
         "T-0434",
         "T-0435",
-        "B-0355"
+        "B-0355",
+        "B-0384"
       ],
       "children": [],
       "cost": {
@@ -54405,6 +54502,7 @@
     "T-0708": {
       "after": [],
       "backlinks": [
+        "F-0194",
         "T-0709",
         "T-0710",
         "T-0711",
@@ -54448,6 +54546,7 @@
         "T-0708"
       ],
       "backlinks": [
+        "F-0194",
         "T-0708",
         "T-0710",
         "T-0711",
@@ -54487,6 +54586,7 @@
         "T-0709"
       ],
       "backlinks": [
+        "F-0194",
         "T-0708",
         "T-0709",
         "T-0711",
@@ -54528,6 +54628,7 @@
         "T-0709"
       ],
       "backlinks": [
+        "F-0194",
         "T-0708",
         "T-0709",
         "T-0710",
@@ -54571,6 +54672,7 @@
         "T-0709"
       ],
       "backlinks": [
+        "F-0194",
         "T-0708",
         "T-0709",
         "T-0710",
@@ -54614,6 +54716,7 @@
         "T-0712"
       ],
       "backlinks": [
+        "F-0194",
         "T-0708",
         "T-0709",
         "T-0710",
