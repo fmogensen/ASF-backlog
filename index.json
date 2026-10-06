@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T04:46:13Z",
+  "generated": "2026-10-06T04:55:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -7268,12 +7268,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2577.1,
+      "spend_usd": 2579.69,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-06T03:48:35Z"
+      "updated": "2026-10-06T04:54:12Z"
     },
     "E-0002": {
       "backlinks": [
@@ -7418,12 +7418,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 368.55,
+      "spend_usd": 370.2,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-10-06T03:48:35Z"
+      "updated": "2026-10-06T04:54:12Z"
     },
     "E-0005": {
       "backlinks": [
@@ -12588,8 +12588,8 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/1 tasks Closed",
-        "rule: documented"
+        "1/1 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0135",
@@ -12599,12 +12599,12 @@
       "reshape_applied": "a9784c4e4b2c",
       "reshape_applied_at": "2026-10-03T06:47:29Z",
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-10-06T03:30:04Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-06T04:53:54Z",
+      "state": "Closed",
       "title": "Native PR landing: merge an ASF-opened PR when approved and green, so PR products need no merge-queue script",
       "type": "feature",
-      "updated": "2026-10-06T03:30:04Z"
+      "updated": "2026-10-06T04:53:54Z"
     },
     "F-0136": {
       "backlinks": [],
@@ -13867,12 +13867,12 @@
       "reshape_applied": "a9784c4e4b2c",
       "reshape_applied_at": "2026-10-03T06:59:53Z",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T13:40:51Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T04:53:54Z",
       "state": "Active",
       "title": "A removed or moved Feature still shows a derived stage (plan-approved) in index and tables",
       "type": "feature",
-      "updated": "2026-10-03T07:12:08Z"
+      "updated": "2026-10-06T04:53:54Z"
     },
     "F-0173": {
       "backlinks": [
@@ -21093,6 +21093,7 @@
         "T-0687",
         "T-0719",
         "T-0740",
+        "T-0761",
         "T-0775",
         "B-0138"
       ],
@@ -25173,7 +25174,8 @@
         "T-0231",
         "T-0441",
         "T-0582",
-        "T-0744"
+        "T-0744",
+        "T-0761"
       ],
       "children": [],
       "cost": {
@@ -28068,6 +28070,7 @@
         "T-0605",
         "T-0620",
         "T-0645",
+        "T-0761",
         "T-0775"
       ],
       "children": [],
@@ -28297,6 +28300,7 @@
         "T-0501",
         "T-0604",
         "T-0744",
+        "T-0761",
         "B-0138",
         "B-0194"
       ],
@@ -29989,6 +29993,7 @@
         "T-0617",
         "T-0620",
         "T-0671",
+        "T-0761",
         "T-0775"
       ],
       "budget_sessions": 12,
@@ -31204,6 +31209,7 @@
         "T-0601",
         "T-0620",
         "T-0687",
+        "T-0761",
         "T-0775",
         "B-0138"
       ],
@@ -36893,7 +36899,8 @@
       "backlinks": [
         "T-0438",
         "T-0582",
-        "T-0744"
+        "T-0744",
+        "T-0761"
       ],
       "children": [],
       "cost": {
@@ -38852,8 +38859,19 @@
         "T-0496"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 8596212,
+        "tokens_cache_write": 122415,
+        "tokens_input": 170,
+        "tokens_output": 38060,
+        "usd": 2.59
+      },
       "decided": true,
       "evidence": [
+        "PR #809 OPEN",
         "branch worker/T-0495",
         "rule: in-flight"
       ],
@@ -38868,7 +38886,7 @@
       "state": "Active",
       "title": "the doctor's SCHEDULER row reads the start line \u2014 one bounded reader, one field, one YELLOW",
       "type": "task",
-      "updated": "2026-10-06T04:43:55Z",
+      "updated": "2026-10-06T04:54:12Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -39246,11 +39264,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 15,
-        "tokens_cache_read": 13680882,
-        "tokens_cache_write": 332791,
-        "tokens_input": 446,
-        "tokens_output": 78794,
+        "sessions": 16,
+        "tokens_cache_read": 13809838,
+        "tokens_cache_write": 333423,
+        "tokens_input": 450,
+        "tokens_output": 78806,
         "usd": 5.28
       },
       "decided": true,
@@ -39270,7 +39288,7 @@
       "state": "Active",
       "title": "the ladder \u2014 a Bug under an Epic, a branch that names the card, and the share left over",
       "type": "task",
-      "updated": "2026-10-06T04:25:21Z",
+      "updated": "2026-10-06T04:54:12Z",
       "writes": [
         "asf/scorecard/score.py",
         "asf/scorecard/diagnose.py",
@@ -44470,7 +44488,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -44495,7 +44513,7 @@
       "stories": [],
       "title": "every cancelled job carries why it was cancelled, written at import",
       "type": "task",
-      "updated": "2026-10-06T04:34:19Z",
+      "updated": "2026-10-06T04:54:12Z",
       "writes": [
         "asf/ci_jobs.py",
         "asf/metrics/metrics.py",
@@ -44584,23 +44602,28 @@
       },
       "decided": true,
       "evidence": [
-        "PR #806 OPEN",
-        "branch worker/T-0648",
-        "rule: in-flight"
+        "merge 492720a of worker/T-0648 lands T-0648 (PR #806)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0648",
+      "landing": {
+        "as_of": "2026-10-06T04:53:54Z",
+        "by": "pr-merge",
+        "sha": "492720ab5f555b842b3f7fde391fea4e2c524c44"
+      },
       "links": {
         "plan": "docs/plans/replans/f-0135-a9784c4e4b2c.md"
       },
       "parent": "F-0135",
       "schema_version": 1,
-      "stage_since": "2026-10-06T03:30:04Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T04:53:54Z",
+      "state": "Closed",
       "stories": [],
       "title": "an absent `steps.batch` is off, both refusals go, and the five pinned expectations are corrected",
       "type": "task",
-      "updated": "2026-10-06T04:44:11Z",
+      "updated": "2026-10-06T04:53:54Z",
       "writes": [
         "asf/tick/steps.py",
         "tests/test_tick.py",
@@ -44614,22 +44637,27 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "F-0135 Closed",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0649",
+      "landing": {
+        "as_of": "2026-10-06T04:53:54Z",
+        "by": "descent",
+        "sha": ""
+      },
       "links": {
         "plan": "docs/plans/f-0135.md"
       },
       "parent": "F-0135",
       "removed": "replan F-0135: it is Task 2, and Task 2 is what \"cut to Task 1\" cuts \u2014 the spec's own guard for the surviving Task leaves the Feature with it",
       "schema_version": 1,
-      "stage_since": "2026-09-30T00:24:17Z",
-      "state": "New",
+      "stage_since": "2026-10-06T04:53:54Z",
+      "state": "Closed",
       "title": "an inferred landing mode is named where configuration is judged, and it is red",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T04:53:54Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -44644,22 +44672,27 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "F-0135 Closed",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0650",
+      "landing": {
+        "as_of": "2026-10-06T04:53:54Z",
+        "by": "descent",
+        "sha": ""
+      },
       "links": {
         "plan": "docs/plans/f-0135.md"
       },
       "parent": "F-0135",
       "removed": "replan F-0135: the operator-facing copy of two Stories, one of which is also dropped \u2014 and it is the strike the old plan's own `NEEDS OPERATOR` line offered",
       "schema_version": 1,
-      "stage_since": "2026-09-30T00:24:17Z",
-      "state": "New",
+      "stage_since": "2026-10-06T04:53:54Z",
+      "state": "Closed",
       "title": "the guide stops promising a refusal that no longer happens, and names the row that replaced it",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T04:53:54Z",
       "writes": [
         "docs/guide/product-config.md",
         "docs/guide/troubleshooting.md",
@@ -48159,6 +48192,7 @@
         "T-0582"
       ],
       "backlinks": [
+        "T-0761",
         "B-0138"
       ],
       "children": [],
@@ -48770,15 +48804,36 @@
       ]
     },
     "T-0761": {
-      "after": [],
+      "after": [
+        "T-0056",
+        "T-0153",
+        "T-0226",
+        "T-0231",
+        "T-0271",
+        "T-0301",
+        "T-0441",
+        "T-0744"
+      ],
       "backlinks": [
-        "T-0762"
+        "T-0762",
+        "T-0775"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 5020897,
+        "tokens_cache_write": 98161,
+        "tokens_input": 110,
+        "tokens_output": 25267,
+        "usd": 1.65
+      },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "PR #810 OPEN",
+        "branch worker/T-0761",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0761",
@@ -48790,11 +48845,11 @@
         "split T-0761 asf/views | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-30T13:40:52Z",
-      "state": "New",
+      "stage_since": "2026-10-06T04:53:54Z",
+      "state": "Active",
       "title": "one retirement rule \u2014 a moved card is retired to the index reader too",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T04:54:12Z",
       "writes": [
         "asf/views/index_reader.py",
         "tests/test_views.py",
@@ -49254,7 +49309,8 @@
         "T-0226",
         "T-0271",
         "T-0301",
-        "T-0604"
+        "T-0604",
+        "T-0761"
       ],
       "backlinks": [
         "B-0209"
