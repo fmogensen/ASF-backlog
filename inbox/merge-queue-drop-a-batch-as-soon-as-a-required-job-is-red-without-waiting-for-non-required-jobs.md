@@ -7,3 +7,6 @@ A batch whose required check concluded red stays pending while its workflow run 
 - A re-run under the triage's rule cancels the live run first, so the host accepts the re-run. It does not wait for the run to end.
 - On a drop, the batches stacked above it are cut again onto the trunk in the same pass, and the dropped batch's live runs are cancelled (MQ_DROPPED).
 - Tests: required red + non-required in_progress → drop (or cancel + re-run) in one pass; stacked batches recut; all-required-green + non-required running → unchanged behaviour.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
