@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T02:13:12Z",
+  "generated": "2026-10-06T02:23:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5755,6 +5755,25 @@
       "type": "bug",
       "updated": "2026-10-06T02:10:58Z"
     },
+    "B-0198": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0198",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0239",
+      "stage_since": "2026-10-06T02:23:42Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0239",
+      "type": "bug",
+      "updated": "2026-10-06T02:23:42Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -6898,7 +6917,8 @@
         "B-0194",
         "B-0195",
         "B-0196",
-        "B-0197"
+        "B-0197",
+        "B-0198"
       ],
       "decided": true,
       "evidence": [
@@ -7058,12 +7078,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 362.15,
+      "spend_usd": 365.79,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-10-04T10:06:23Z"
+      "updated": "2026-10-06T02:20:22Z"
     },
     "E-0005": {
       "backlinks": [
@@ -14878,20 +14898,20 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/1 tasks Closed",
-        "rule: documented"
+        "1/1 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0212",
       "parent": "E-0001",
       "rank": 24,
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-10-06T01:48:04Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-06T02:20:12Z",
+      "state": "Closed",
       "title": "The approvals hook holds a read-only 'git config core.hooksPath' as a security write",
       "type": "feature",
-      "updated": "2026-10-06T01:48:04Z"
+      "updated": "2026-10-06T02:20:12Z"
     },
     "F-0213": {
       "backlinks": [],
@@ -15229,12 +15249,12 @@
       "parent": "E-0001",
       "rank": 4,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T21:42:28Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T02:20:12Z",
       "state": "Active",
       "title": "Sessions die with 'failed' 6.5 times a week",
       "type": "feature",
-      "updated": "2026-10-03T04:33:11Z"
+      "updated": "2026-10-06T02:20:12Z"
     },
     "F-0224": {
       "backlinks": [
@@ -23020,6 +23040,7 @@
         "T-0584",
         "T-0589",
         "T-0601",
+        "T-0605",
         "B-0163"
       ],
       "children": [],
@@ -25337,6 +25358,7 @@
         "T-0558",
         "T-0559",
         "T-0589",
+        "T-0605",
         "T-0719"
       ],
       "children": [],
@@ -27630,7 +27652,8 @@
         "T-0229",
         "T-0230",
         "T-0271",
-        "T-0350"
+        "T-0350",
+        "T-0605"
       ],
       "children": [],
       "cost": {
@@ -28187,7 +28210,8 @@
       "backlinks": [
         "T-0241",
         "T-0244",
-        "T-0245"
+        "T-0245",
+        "B-0198"
       ],
       "children": [],
       "decided": true,
@@ -29519,6 +29543,7 @@
         "T-0559",
         "T-0566",
         "T-0589",
+        "T-0605",
         "T-0612",
         "T-0617"
       ],
@@ -32806,7 +32831,9 @@
         "T-0189",
         "T-0226"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0605"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -37025,7 +37052,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 5,
+        "sessions": 6,
         "tokens_cache_read": 8551407,
         "tokens_cache_write": 152593,
         "tokens_input": 134,
@@ -37048,7 +37075,7 @@
       "state": "Active",
       "title": "the two chained bodies, and the branch that renames a foreign hook behind them",
       "type": "task",
-      "updated": "2026-10-06T01:49:03Z",
+      "updated": "2026-10-06T02:20:22Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hook_chain.py",
@@ -38703,6 +38730,7 @@
       "backlinks": [
         "T-0507",
         "T-0508",
+        "T-0605",
         "T-0612",
         "B-0183"
       ],
@@ -38710,11 +38738,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 9,
-        "tokens_cache_read": 12907146,
-        "tokens_cache_write": 328999,
-        "tokens_input": 422,
-        "tokens_output": 78722,
+        "sessions": 10,
+        "tokens_cache_read": 13036102,
+        "tokens_cache_write": 329631,
+        "tokens_input": 426,
+        "tokens_output": 78734,
         "usd": 5.28
       },
       "decided": true,
@@ -38733,7 +38761,7 @@
       "state": "Active",
       "title": "the ladder \u2014 a Bug under an Epic, a branch that names the card, and the share left over",
       "type": "task",
-      "updated": "2026-10-06T02:11:08Z",
+      "updated": "2026-10-06T02:20:22Z",
       "writes": [
         "asf/scorecard/score.py",
         "asf/scorecard/diagnose.py",
@@ -41312,7 +41340,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 6,
+        "sessions": 7,
         "tokens_cache_read": 23792109,
         "tokens_cache_write": 243319,
         "tokens_input": 256,
@@ -41339,7 +41367,7 @@
       "state": "Active",
       "title": "the row whose seat went, and the hand launch that claims before it spawns",
       "type": "task",
-      "updated": "2026-10-06T02:11:08Z",
+      "updated": "2026-10-06T02:20:22Z",
       "writes": [
         "asf/workers/wave.py",
         "asf/workers/__init__.py",
@@ -42310,22 +42338,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #790 OPEN",
-        "branch worker/T-0603",
-        "rule: in-flight"
+        "merge 27caf84 of worker/T-0603 lands T-0603 (PR #790)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0603",
+      "landing": {
+        "as_of": "2026-10-06T02:20:12Z",
+        "by": "pr-merge",
+        "sha": "27caf8485f24555e605a7ac4123474b0148919af"
+      },
       "links": {
         "plan": "docs/plans/f-0212.md"
       },
       "parent": "F-0212",
       "schema_version": 1,
-      "stage_since": "2026-10-06T01:48:04Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T02:20:12Z",
+      "state": "Closed",
       "title": "`git config` is judged by git's own grammar \u2014 every read form passes, every set form of the hooks path holds",
       "type": "task",
-      "updated": "2026-10-06T02:11:08Z",
+      "updated": "2026-10-06T02:20:12Z",
       "writes": [
         "asf/approvals.py",
         "tests/test_approvals.py"
@@ -42376,6 +42409,14 @@
       ]
     },
     "T-0605": {
+      "after": [
+        "T-0110",
+        "T-0166",
+        "T-0226",
+        "T-0271",
+        "T-0350",
+        "T-0506"
+      ],
       "backlinks": [
         "T-0606",
         "T-0607",
@@ -42384,8 +42425,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0605",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0605",
@@ -42402,11 +42443,11 @@
         "split T-0605 asf/improve | asf/scorecard | asf/tick | asf/workers | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-29T21:42:29Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:20:12Z",
+      "state": "Active",
       "title": "the runtime's own word \u2014 read, recorded, and printed as the `failed` class's sub-causes",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:20:12Z",
       "writes": [
         "asf/workers/runtime.py",
         "asf/workers/lifecycle.py",
@@ -43632,7 +43673,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 5,
+        "sessions": 6,
         "tokens_cache_read": 5344087,
         "tokens_cache_write": 107720,
         "tokens_input": 104,
@@ -43655,7 +43696,7 @@
       "state": "Active",
       "title": "the trunk is asked before a Task is minted, and a typed `landed:` finally closes one",
       "type": "task",
-      "updated": "2026-10-06T01:49:03Z",
+      "updated": "2026-10-06T02:20:22Z",
       "writes": [
         "asf/record/trunk_check.py",
         "asf/record/plan_tasks.py",
@@ -47240,8 +47281,19 @@
         "T-0742"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 11740223,
+        "tokens_cache_write": 192200,
+        "tokens_input": 152,
+        "tokens_output": 52466,
+        "usd": 3.64
+      },
       "decided": true,
       "evidence": [
+        "PR #792 OPEN",
         "branch worker/T-0740",
         "rule: in-flight"
       ],
@@ -47259,7 +47311,7 @@
       "state": "Active",
       "title": "the check names the card that holds the name, and no index entry copies it",
       "type": "task",
-      "updated": "2026-10-06T02:00:39Z",
+      "updated": "2026-10-06T02:20:22Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
