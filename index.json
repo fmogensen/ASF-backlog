@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T16:51:31Z",
+  "generated": "2026-10-06T17:03:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -12331,7 +12331,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
+        "sessions": 3,
         "tokens_cache_read": 10019959,
         "tokens_cache_write": 296720,
         "tokens_input": 200,
@@ -12356,7 +12356,7 @@
       "state": "Active",
       "title": "An item has a budget: three sessions or $10, then it stops and says why",
       "type": "feature",
-      "updated": "2026-09-28T05:20:19Z"
+      "updated": "2026-10-06T17:03:11Z"
     },
     "F-0093": {
       "area": "factory",
@@ -12415,7 +12415,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 27433691,
         "tokens_cache_write": 475928,
         "tokens_input": 472,
@@ -12442,7 +12442,7 @@
       "state": "Active",
       "title": "A decided Epic with no Features never starts: no row breaks an Epic into Features",
       "type": "feature",
-      "updated": "2026-10-03T04:53:07Z"
+      "updated": "2026-10-06T17:03:11Z"
     },
     "F-0095": {
       "backlinks": [
@@ -15639,8 +15639,8 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 4,
+        "runner_min": 20,
+        "sessions": 5,
         "tokens_cache_read": 11840605,
         "tokens_cache_write": 428462,
         "tokens_input": 276,
@@ -15667,7 +15667,7 @@
       "state": "Active",
       "title": "ci_pool runs-on reader can't resolve fromJSON(format()) + event ternary (botseon #849)",
       "type": "feature",
-      "updated": "2026-10-06T06:16:53Z"
+      "updated": "2026-10-06T17:03:11Z"
     },
     "F-0180": {
       "backlinks": [],
@@ -20616,7 +20616,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 20,
+        "runner_min": 37,
         "sessions": 0,
         "usd": null
       },
@@ -20636,7 +20636,7 @@
       "state": "Active",
       "title": "Ingest adds mergeable and opened so CONFLICT \u2192 REBASE rows and the incident clock work",
       "type": "story",
-      "updated": "2026-10-06T16:32:03Z"
+      "updated": "2026-10-06T17:03:11Z"
     },
     "S-0003": {
       "area": "factory",
@@ -22821,6 +22821,7 @@
         "T-0266",
         "T-0271",
         "T-0301",
+        "T-0312",
         "T-0411",
         "T-0501",
         "T-0531",
@@ -28429,6 +28430,7 @@
         "T-0257",
         "T-0266",
         "T-0278",
+        "T-0312",
         "T-0332",
         "T-0341",
         "T-0350",
@@ -29087,8 +29089,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 24,
-        "sessions": 2,
+        "runner_min": 65,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
@@ -29111,7 +29113,7 @@
       "state": "Active",
       "title": "the rate and the repeat \u2014 two sources over the `sessions` stream",
       "type": "task",
-      "updated": "2026-10-06T16:32:03Z",
+      "updated": "2026-10-06T17:03:11Z",
       "writes": [
         "asf/tick/file_bugs.py",
         "tests/test_file_bugs.py"
@@ -30172,6 +30174,7 @@
       ],
       "backlinks": [
         "T-0233",
+        "T-0312",
         "T-0411",
         "T-0441",
         "T-0501",
@@ -30274,6 +30277,7 @@
         "T-0234",
         "T-0235",
         "T-0238",
+        "T-0312",
         "T-0332",
         "T-0411",
         "T-0537",
@@ -30285,8 +30289,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 20,
-        "sessions": 5,
+        "runner_min": 37,
+        "sessions": 6,
         "usd": null
       },
       "decided": true,
@@ -30318,7 +30322,7 @@
       ],
       "title": "every host read of the evidence pass goes behind the seam",
       "type": "task",
-      "updated": "2026-10-06T16:32:03Z",
+      "updated": "2026-10-06T17:03:11Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/cli.py",
@@ -33622,19 +33626,24 @@
     },
     "T-0312": {
       "after": [
-        "T-0311"
+        "T-0311",
+        "T-0056",
+        "T-0189",
+        "T-0231",
+        "T-0233"
       ],
       "backlinks": [
         "T-0313",
         "T-0314",
         "T-0315",
-        "T-0316"
+        "T-0316",
+        "T-0411"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0312",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0312",
@@ -33647,11 +33656,11 @@
         "split T-0312 asf | asf/views | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-27T18:47:47Z",
-      "state": "New",
+      "stage_since": "2026-10-06T16:57:29Z",
+      "state": "Active",
       "title": "`asf credentials check` \u2014 the cache, the CREDENTIALS table, `--json`, and `--quiet` as the rule contract",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T16:57:29Z",
       "writes": [
         "asf/credentials.py",
         "asf/cli.py",
@@ -37733,7 +37742,8 @@
         "T-0189",
         "T-0231",
         "T-0239",
-        "T-0233"
+        "T-0233",
+        "T-0312"
       ],
       "backlinks": [
         "T-0261",
@@ -42638,7 +42648,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 27,
-        "sessions": 3,
+        "sessions": 5,
         "tokens_cache_read": 9854784,
         "tokens_cache_write": 273018,
         "tokens_input": 234,
@@ -42665,7 +42675,7 @@
       "state": "Active",
       "title": "a Bug's severity is settable, and the record keeps the reason it moved",
       "type": "task",
-      "updated": "2026-10-06T16:32:03Z",
+      "updated": "2026-10-06T17:03:11Z",
       "writes": [
         "asf/record/new.py",
         "asf/record/setfield.py",
@@ -46584,6 +46594,16 @@
       "after": [],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 10763187,
+        "tokens_cache_write": 202232,
+        "tokens_input": 292,
+        "tokens_output": 788,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-06)",
@@ -46601,7 +46621,7 @@
       "stories": [],
       "title": "a new product grooms by default, and one that does not is told so",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T17:03:11Z",
       "writes": [
         "asf/init.py",
         "asf/approvals.py",
@@ -49621,6 +49641,12 @@
         "T-0766"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0715",
@@ -49642,7 +49668,7 @@
       "stories": [],
       "title": "every relief cancel says which kind it was, and every claim says what it cost",
       "type": "task",
-      "updated": "2026-10-06T16:37:24Z",
+      "updated": "2026-10-06T17:03:11Z",
       "writes": [
         "asf/ci_queue.py",
         "asf/harvest/lane.py",
@@ -51698,8 +51724,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 2,
+        "runner_min": 19,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
@@ -51722,7 +51748,7 @@
       "state": "Active",
       "title": "the lane writes down what the branch carried",
       "type": "task",
-      "updated": "2026-10-06T16:37:24Z",
+      "updated": "2026-10-06T17:03:11Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
