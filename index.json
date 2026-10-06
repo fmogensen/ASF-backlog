@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T03:06:01Z",
+  "generated": "2026-10-06T03:13:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5275,7 +5275,7 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 6,
+        "sessions": 7,
         "tokens_cache_read": 4971147,
         "tokens_cache_write": 132576,
         "tokens_input": 104,
@@ -5299,7 +5299,7 @@
       "state": "Active",
       "title": "CI box list has three hand-kept copies that drift: one source (ci.pool / runner connector) for watchdog, installer and doctor",
       "type": "bug",
-      "updated": "2026-10-06T02:58:13Z"
+      "updated": "2026-10-06T03:11:33Z"
     },
     "B-0179": {
       "backlinks": [
@@ -5829,6 +5829,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0201",
@@ -5841,7 +5845,7 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #792@759ef3e62",
       "type": "bug",
-      "updated": "2026-10-06T03:05:59Z"
+      "updated": "2026-10-06T03:11:22Z"
     },
     "D-0001": {
       "backlinks": [
@@ -15649,7 +15653,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/3 tasks Closed",
+        "2/3 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -15657,12 +15661,12 @@
       "parent": "E-0001",
       "rank": 13,
       "schema_version": 1,
-      "stage": "building 1/3",
-      "stage_since": "2026-10-03T05:39:15Z",
+      "stage": "building 2/3",
+      "stage_since": "2026-10-06T03:11:22Z",
       "state": "Active",
       "title": "Route a Task whose writes: touch the amendable set to the console at plan time, not a worker launch",
       "type": "feature",
-      "updated": "2026-10-03T05:39:15Z"
+      "updated": "2026-10-06T03:11:22Z"
     },
     "F-0233": {
       "backlinks": [],
@@ -15695,12 +15699,12 @@
       "parent": "E-0001",
       "rank": 40,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T23:03:38Z",
+      "stage": "building 0/5",
+      "stage_since": "2026-10-06T03:11:22Z",
       "state": "Active",
       "title": "Stories/Features of a deploying product never close: _in_prod needs checked.txt, which nothing writes",
       "type": "feature",
-      "updated": "2026-09-29T23:09:51Z"
+      "updated": "2026-10-06T03:11:22Z"
     },
     "F-0234": {
       "backlinks": [
@@ -28319,7 +28323,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "tokens_cache_read": 0,
         "tokens_cache_write": 0,
         "tokens_input": 0,
@@ -28328,6 +28332,7 @@
       },
       "decided": true,
       "evidence": [
+        "PR #798 OPEN",
         "branch worker/T-0239",
         "rule: in-flight"
       ],
@@ -28342,7 +28347,7 @@
       "state": "Active",
       "title": "the conventions \u2014 nine fields, one shaped `stage_limits`, one doctor finding",
       "type": "task",
-      "updated": "2026-10-06T02:47:10Z",
+      "updated": "2026-10-06T03:11:33Z",
       "writes": [
         "asf/conventions.py",
         "asf/doctor.py",
@@ -31371,7 +31376,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "tokens_cache_read": 0,
         "tokens_cache_write": 0,
         "tokens_input": 0,
@@ -31397,7 +31402,7 @@
       "state": "New",
       "title": "`owner:` on a rule card \u2014 an operator-owned violation files no Bug and prints one line a day",
       "type": "task",
-      "updated": "2026-10-06T02:58:13Z",
+      "updated": "2026-10-06T03:11:33Z",
       "writes": [
         "asf/record/new.py",
         "asf/rules/rules.py",
@@ -41201,6 +41206,7 @@
       ],
       "backlinks": [
         "T-0617",
+        "T-0623",
         "T-0738"
       ],
       "children": [],
@@ -41758,7 +41764,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -41778,7 +41784,7 @@
       "state": "Active",
       "title": "an `S1:` title is a severity, and a body error line is the signature the card was asked for",
       "type": "task",
-      "updated": "2026-10-06T02:58:13Z",
+      "updated": "2026-10-06T03:11:33Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/shape.py",
@@ -43157,22 +43163,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #795 OPEN",
-        "branch worker/T-0620",
-        "rule: in-flight"
+        "merge fa06981 of worker/T-0620 lands T-0620 (PR #795)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0620",
+      "landing": {
+        "as_of": "2026-10-06T03:11:22Z",
+        "by": "pr-merge",
+        "sha": "fa0698199d4eae698b0a1e1c68f5e4769e7dcf46"
+      },
       "links": {
         "plan": "docs/plans/f-0232.md"
       },
       "parent": "F-0232",
       "schema_version": 1,
-      "stage_since": "2026-10-06T02:37:49Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T03:11:22Z",
+      "state": "Closed",
       "title": "the row and the `NEEDS OPERATOR` line name the globs being dragged to the console",
       "type": "task",
-      "updated": "2026-10-06T02:58:13Z",
+      "updated": "2026-10-06T03:11:22Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/approvals.py",
@@ -43254,6 +43265,9 @@
       ]
     },
     "T-0623": {
+      "after": [
+        "T-0566"
+      ],
       "backlinks": [
         "T-0624",
         "T-0625",
@@ -43263,8 +43277,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0623",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0623",
@@ -43276,11 +43290,11 @@
         "merge T-0623+T-0624+T-0625+T-0626"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-29T23:03:39Z",
-      "state": "New",
+      "stage_since": "2026-10-06T03:11:22Z",
+      "state": "Active",
       "title": "the checked list gets one owner, a per-product home, and a format a person can read and edit",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T03:11:22Z",
       "writes": [
         "asf/evidence/checked.py",
         "asf/evidence/evidence.py",
@@ -43889,7 +43903,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 8,
+        "sessions": 9,
         "tokens_cache_read": 5344087,
         "tokens_cache_write": 107720,
         "tokens_input": 104,
@@ -43912,7 +43926,7 @@
       "state": "Active",
       "title": "the trunk is asked before a Task is minted, and a typed `landed:` finally closes one",
       "type": "task",
-      "updated": "2026-10-06T02:58:13Z",
+      "updated": "2026-10-06T03:11:33Z",
       "writes": [
         "asf/record/trunk_check.py",
         "asf/record/plan_tasks.py",
