@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T01:55:16Z",
+  "generated": "2026-10-06T02:05:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5275,7 +5275,7 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 4,
+        "sessions": 5,
         "tokens_cache_read": 4971147,
         "tokens_cache_write": 132576,
         "tokens_input": 104,
@@ -5299,7 +5299,7 @@
       "state": "Active",
       "title": "CI box list has three hand-kept copies that drift: one source (ci.pool / runner connector) for watchdog, installer and doctor",
       "type": "bug",
-      "updated": "2026-10-06T01:49:03Z"
+      "updated": "2026-10-06T02:00:56Z"
     },
     "B-0179": {
       "backlinks": [
@@ -5714,6 +5714,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0196",
@@ -5726,7 +5730,26 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0648",
       "type": "bug",
-      "updated": "2026-10-06T01:55:15Z"
+      "updated": "2026-10-06T02:00:39Z"
+    },
+    "B-0197": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0197",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0581",
+      "stage_since": "2026-10-06T02:05:37Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0581",
+      "type": "bug",
+      "updated": "2026-10-06T02:05:37Z"
     },
     "D-0001": {
       "backlinks": [
@@ -6870,7 +6893,8 @@
         "B-0193",
         "B-0194",
         "B-0195",
-        "B-0196"
+        "B-0196",
+        "B-0197"
       ],
       "decided": true,
       "evidence": [
@@ -15605,20 +15629,20 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed",
-        "rule: documented"
+        "3/3 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0234",
       "parent": "E-0001",
       "rank": 5,
       "schema_version": 1,
-      "stage": "building 2/3",
-      "stage_since": "2026-09-29T18:00:46Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-06T02:00:39Z",
+      "state": "Closed",
       "title": "Sessions die with 'dead pid' 5.5 times a week",
       "type": "feature",
-      "updated": "2026-09-29T18:00:46Z"
+      "updated": "2026-10-06T02:00:39Z"
     },
     "F-0235": {
       "backlinks": [],
@@ -20687,12 +20711,14 @@
         "T-0266",
         "T-0271",
         "T-0301",
+        "T-0501",
         "T-0544",
         "T-0601",
         "T-0604",
         "T-0661",
         "T-0687",
         "T-0719",
+        "T-0740",
         "B-0138"
       ],
       "children": [],
@@ -26205,6 +26231,7 @@
         "T-0350",
         "T-0412",
         "T-0494",
+        "T-0501",
         "T-0541",
         "T-0557"
       ],
@@ -27825,6 +27852,7 @@
       ],
       "backlinks": [
         "T-0441",
+        "T-0501",
         "T-0604",
         "T-0744",
         "B-0138",
@@ -35245,7 +35273,6 @@
       },
       "decided": true,
       "evidence": [
-        "PR #490 OPEN",
         "branch worker/T-0412",
         "rule: in-flight"
       ],
@@ -35263,7 +35290,7 @@
       "state": "Active",
       "title": "`doctor.ROWS` \u2014 the 34 rows the code can print, held to the source by `ast`",
       "type": "task",
-      "updated": "2026-10-06T00:35:18Z",
+      "updated": "2026-10-06T02:00:39Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py",
@@ -38494,14 +38521,19 @@
     },
     "T-0501": {
       "after": [
-        "T-0500"
+        "T-0500",
+        "T-0056",
+        "T-0189",
+        "T-0231"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0604"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0501",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0501",
@@ -38510,11 +38542,11 @@
       },
       "parent": "F-0144",
       "schema_version": 1,
-      "stage_since": "2026-09-28T18:44:46Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:00:39Z",
+      "state": "Active",
       "title": "the help names the forms, and the guide stops being wrong about what `asf set` does",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:00:39Z",
       "writes": [
         "asf/cli.py",
         "docs/guide/operating.md",
@@ -39978,22 +40010,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #789 OPEN",
-        "branch worker/T-0541",
-        "rule: in-flight"
+        "merge 66a5c35 of worker/T-0541 lands T-0541 (PR #789)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0541",
+      "landing": {
+        "as_of": "2026-10-06T02:00:39Z",
+        "by": "pr-merge",
+        "sha": "66a5c3546c164952c3f0b878b45ba662b4f60654"
+      },
       "links": {
         "plan": "docs/plans/f-0234.md"
       },
       "parent": "F-0234",
       "schema_version": 1,
-      "stage_since": "2026-10-06T00:54:22Z",
-      "state": "Active",
+      "stage_since": "2026-10-06T02:00:39Z",
+      "state": "Closed",
       "title": "the class written on the ledger, and the key the card verifies itself on left exactly where it is",
       "type": "task",
-      "updated": "2026-10-06T01:49:03Z",
+      "updated": "2026-10-06T02:00:39Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -41482,7 +41519,8 @@
     },
     "T-0581": {
       "backlinks": [
-        "T-0582"
+        "T-0582",
+        "B-0197"
       ],
       "children": [],
       "decided": true,
@@ -42250,8 +42288,15 @@
     "T-0603": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #790 OPEN",
         "branch worker/T-0603",
         "rule: in-flight"
       ],
@@ -42266,7 +42311,7 @@
       "state": "Active",
       "title": "`git config` is judged by git's own grammar \u2014 every read form passes, every set form of the hooks path holds",
       "type": "task",
-      "updated": "2026-10-06T01:48:04Z",
+      "updated": "2026-10-06T02:00:56Z",
       "writes": [
         "asf/approvals.py",
         "tests/test_approvals.py"
@@ -42275,7 +42320,8 @@
     "T-0604": {
       "after": [
         "T-0056",
-        "T-0231"
+        "T-0231",
+        "T-0501"
       ],
       "backlinks": [
         "F-0241",
@@ -47169,7 +47215,9 @@
       ]
     },
     "T-0740": {
-      "after": [],
+      "after": [
+        "T-0056"
+      ],
       "backlinks": [
         "T-0741",
         "T-0742"
@@ -47177,8 +47225,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0740",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0740",
@@ -47190,11 +47238,11 @@
       ],
       "parent": "F-0132",
       "schema_version": 1,
-      "stage_since": "2026-09-30T11:00:10Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:00:39Z",
+      "state": "Active",
       "title": "the check names the card that holds the name, and no index entry copies it",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:00:39Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
