@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T04:34:22Z",
+  "generated": "2026-10-06T04:46:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5275,7 +5275,7 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 12,
+        "sessions": 13,
         "tokens_cache_read": 4971147,
         "tokens_cache_write": 132576,
         "tokens_input": 104,
@@ -5299,7 +5299,7 @@
       "state": "Active",
       "title": "CI box list has three hand-kept copies that drift: one source (ci.pool / runner connector) for watchdog, installer and doctor",
       "type": "bug",
-      "updated": "2026-10-06T04:34:19Z"
+      "updated": "2026-10-06T04:44:11Z"
     },
     "B-0179": {
       "backlinks": [
@@ -12693,12 +12693,12 @@
       "parent": "E-0002",
       "rank": 96,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T05:12:29Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T04:43:55Z",
       "state": "Active",
       "title": "Predictive capacity: place a launch on the account that can finish it, by provider kind",
       "type": "feature",
-      "updated": "2026-10-03T05:39:15Z"
+      "updated": "2026-10-06T04:43:55Z"
     },
     "F-0139": {
       "backlinks": [],
@@ -14041,12 +14041,12 @@
       "reshape_applied": "bc84bd0fa59e",
       "reshape_applied_at": "2026-10-03T06:26:28Z",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T07:41:52Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T04:43:55Z",
       "state": "Active",
       "title": "botseon wave step (69-505s): gh/git subprocess fan-out dominates, not CPU",
       "type": "feature",
-      "updated": "2026-10-04T04:31:06Z"
+      "updated": "2026-10-06T04:43:55Z"
     },
     "F-0178": {
       "backlinks": [
@@ -15082,12 +15082,12 @@
       "reshape_applied": "bc84bd0fa59e",
       "reshape_applied_at": "2026-10-03T06:06:08Z",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T20:54:53Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T04:43:55Z",
       "state": "Active",
       "title": "Pending upgrade starves: every owner tick defers because another owner tick is running",
       "type": "feature",
-      "updated": "2026-10-03T06:12:55Z"
+      "updated": "2026-10-06T04:43:55Z"
     },
     "F-0208": {
       "backlinks": [],
@@ -21089,6 +21089,7 @@
         "T-0604",
         "T-0620",
         "T-0661",
+        "T-0671",
         "T-0687",
         "T-0719",
         "T-0740",
@@ -24243,6 +24244,7 @@
         "T-0548",
         "T-0574",
         "T-0645",
+        "T-0654",
         "T-0687"
       ],
       "children": [],
@@ -24751,7 +24753,8 @@
         "T-0143",
         "T-0146",
         "T-0239",
-        "T-0464"
+        "T-0464",
+        "T-0654"
       ],
       "budget_sessions": 5,
       "children": [],
@@ -25729,6 +25732,7 @@
         "T-0559",
         "T-0589",
         "T-0605",
+        "T-0671",
         "T-0719"
       ],
       "children": [],
@@ -26634,7 +26638,9 @@
         "T-0541",
         "T-0548",
         "T-0557",
-        "T-0648"
+        "T-0594",
+        "T-0648",
+        "T-0654"
       ],
       "children": [],
       "cost": {
@@ -28630,6 +28636,8 @@
         "T-0245",
         "T-0271",
         "T-0412",
+        "T-0495",
+        "T-0654",
         "B-0198",
         "B-0202",
         "B-0208"
@@ -29980,6 +29988,7 @@
         "T-0612",
         "T-0617",
         "T-0620",
+        "T-0671",
         "T-0775"
       ],
       "budget_sessions": 12,
@@ -35751,6 +35760,7 @@
       "backlinks": [
         "T-0416",
         "T-0421",
+        "T-0495",
         "T-0541",
         "B-0187"
       ],
@@ -37518,6 +37528,7 @@
         "T-0462",
         "T-0497",
         "T-0531",
+        "T-0594",
         "B-0172",
         "B-0185"
       ],
@@ -37691,7 +37702,8 @@
       ],
       "backlinks": [
         "T-0465",
-        "T-0466"
+        "T-0466",
+        "T-0654"
       ],
       "children": [],
       "cost": {
@@ -38832,7 +38844,9 @@
     },
     "T-0495": {
       "after": [
-        "T-0494"
+        "T-0494",
+        "T-0239",
+        "T-0412"
       ],
       "backlinks": [
         "T-0496"
@@ -38840,8 +38854,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0495",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0495",
@@ -38850,11 +38864,11 @@
       },
       "parent": "F-0142",
       "schema_version": 1,
-      "stage_since": "2026-09-28T16:31:24Z",
-      "state": "New",
+      "stage_since": "2026-10-06T04:43:55Z",
+      "state": "Active",
       "title": "the doctor's SCHEDULER row reads the start line \u2014 one bounded reader, one field, one YELLOW",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T04:43:55Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -38896,7 +38910,8 @@
       ],
       "backlinks": [
         "T-0498",
-        "T-0531"
+        "T-0531",
+        "T-0594"
       ],
       "children": [],
       "cost": {
@@ -39249,6 +39264,7 @@
         "plan": "docs/plans/f-0149.md"
       },
       "parent": "F-0149",
+      "reshape": "footprint: needs docs/reviews/2-t-0506.md",
       "schema_version": 1,
       "stage_since": "2026-09-28T19:54:20Z",
       "state": "Active",
@@ -41573,6 +41589,7 @@
       "backlinks": [
         "T-0617",
         "T-0623",
+        "T-0671",
         "T-0738"
       ],
       "children": [],
@@ -42176,7 +42193,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -42199,7 +42216,7 @@
       "state": "Active",
       "title": "an S1 card left on a question says so, every tick, naming its file",
       "type": "task",
-      "updated": "2026-10-06T04:07:41Z",
+      "updated": "2026-10-06T04:44:11Z",
       "writes": [
         "asf/groom/inbox.py",
         "asf/groom/groom.py",
@@ -42598,7 +42615,11 @@
       ]
     },
     "T-0594": {
-      "after": [],
+      "after": [
+        "T-0189",
+        "T-0459",
+        "T-0497"
+      ],
       "backlinks": [
         "T-0595",
         "T-0596",
@@ -42609,8 +42630,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0594",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0594",
@@ -42624,11 +42645,11 @@
       ],
       "parent": "F-0207",
       "schema_version": 1,
-      "stage_since": "2026-09-29T20:54:54Z",
-      "state": "New",
+      "stage_since": "2026-10-06T04:43:55Z",
+      "state": "Active",
       "title": "the owed install becomes a durable record, and whichever process finishes last takes it",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T04:43:55Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -43429,6 +43450,7 @@
         "T-0566"
       ],
       "backlinks": [
+        "T-0671",
         "B-0203"
       ],
       "children": [],
@@ -44557,7 +44579,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -44578,7 +44600,7 @@
       "stories": [],
       "title": "an absent `steps.batch` is off, both refusals go, and the five pinned expectations are corrected",
       "type": "task",
-      "updated": "2026-10-06T03:57:39Z",
+      "updated": "2026-10-06T04:44:11Z",
       "writes": [
         "asf/tick/steps.py",
         "tests/test_tick.py",
@@ -44759,6 +44781,13 @@
       ]
     },
     "T-0654": {
+      "after": [
+        "T-0130",
+        "T-0142",
+        "T-0189",
+        "T-0239",
+        "T-0464"
+      ],
       "backlinks": [
         "T-0655",
         "T-0656",
@@ -44767,8 +44796,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0654",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0654",
@@ -44784,11 +44813,11 @@
         "split T-0654 asf | asf/workers | docs | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-30T05:12:29Z",
-      "state": "New",
+      "stage_since": "2026-10-06T04:43:55Z",
+      "state": "Active",
       "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T04:43:55Z",
       "writes": [
         "asf/workers/headroom.py",
         "asf/workers/pool.py",
@@ -45354,18 +45383,25 @@
       ]
     },
     "T-0671": {
-      "after": [],
+      "after": [
+        "T-0056",
+        "T-0166",
+        "T-0271",
+        "T-0566",
+        "T-0617"
+      ],
       "backlinks": [
         "T-0672",
         "T-0673",
+        "T-0719",
         "T-0788",
         "B-0212"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0671",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0671",
@@ -45379,12 +45415,12 @@
       ],
       "parent": "F-0177",
       "schema_version": 1,
-      "stage_since": "2026-09-30T07:41:52Z",
-      "state": "New",
+      "stage_since": "2026-10-06T04:43:55Z",
+      "state": "Active",
       "stories": [],
       "title": "a read the pass already made costs no second process, and anything that writes empties the cache",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T04:43:55Z",
       "writes": [
         "asf/harvest/harvest.py",
         "asf/harvest/lane.py",
@@ -47172,7 +47208,8 @@
     "T-0719": {
       "after": [
         "T-0056",
-        "T-0166"
+        "T-0166",
+        "T-0671"
       ],
       "backlinks": [
         "F-0241",
@@ -47975,7 +48012,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 6,
+        "sessions": 7,
         "tokens_cache_read": 11740223,
         "tokens_cache_write": 192200,
         "tokens_input": 152,
@@ -48002,7 +48039,7 @@
       "state": "Active",
       "title": "the check names the card that holds the name, and no index entry copies it",
       "type": "task",
-      "updated": "2026-10-06T04:25:21Z",
+      "updated": "2026-10-06T04:44:11Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
