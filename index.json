@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T02:05:38Z",
+  "generated": "2026-10-06T02:13:12Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5737,6 +5737,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0197",
@@ -5749,7 +5753,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0581",
       "type": "bug",
-      "updated": "2026-10-06T02:05:37Z"
+      "updated": "2026-10-06T02:10:58Z"
     },
     "D-0001": {
       "backlinks": [
@@ -29515,7 +29519,8 @@
         "T-0559",
         "T-0566",
         "T-0589",
-        "T-0612"
+        "T-0612",
+        "T-0617"
       ],
       "budget_sessions": 12,
       "budget_usd": 25,
@@ -36386,7 +36391,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "tokens_cache_read": 10234016,
         "tokens_cache_write": 192084,
         "tokens_input": 139,
@@ -36410,7 +36415,7 @@
       "state": "Active",
       "title": "`asf status` \u2014 one plan per table, and an `S1 gate` row that only speaks when it holds",
       "type": "task",
-      "updated": "2026-10-06T01:37:37Z",
+      "updated": "2026-10-06T02:11:08Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_views.py"
@@ -38530,8 +38535,15 @@
         "T-0604"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #791 OPEN",
         "branch worker/T-0501",
         "rule: in-flight"
       ],
@@ -38546,7 +38558,7 @@
       "state": "Active",
       "title": "the help names the forms, and the guide stops being wrong about what `asf set` does",
       "type": "task",
-      "updated": "2026-10-06T02:00:39Z",
+      "updated": "2026-10-06T02:11:08Z",
       "writes": [
         "asf/cli.py",
         "docs/guide/operating.md",
@@ -38698,11 +38710,11 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 8,
-        "tokens_cache_read": 12778190,
-        "tokens_cache_write": 328367,
-        "tokens_input": 418,
-        "tokens_output": 78710,
+        "sessions": 9,
+        "tokens_cache_read": 12907146,
+        "tokens_cache_write": 328999,
+        "tokens_input": 422,
+        "tokens_output": 78722,
         "usd": 5.28
       },
       "decided": true,
@@ -38721,7 +38733,7 @@
       "state": "Active",
       "title": "the ladder \u2014 a Bug under an Epic, a branch that names the card, and the share left over",
       "type": "task",
-      "updated": "2026-10-06T01:37:37Z",
+      "updated": "2026-10-06T02:11:08Z",
       "writes": [
         "asf/scorecard/score.py",
         "asf/scorecard/diagnose.py",
@@ -40984,7 +40996,9 @@
         "T-0102",
         "T-0271"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0617"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -41298,7 +41312,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 5,
+        "sessions": 6,
         "tokens_cache_read": 23792109,
         "tokens_cache_write": 243319,
         "tokens_input": 256,
@@ -41325,7 +41339,7 @@
       "state": "Active",
       "title": "the row whose seat went, and the hand launch that claims before it spawns",
       "type": "task",
-      "updated": "2026-10-06T01:37:37Z",
+      "updated": "2026-10-06T02:11:08Z",
       "writes": [
         "asf/workers/wave.py",
         "asf/workers/__init__.py",
@@ -42291,7 +42305,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -42311,7 +42325,7 @@
       "state": "Active",
       "title": "`git config` is judged by git's own grammar \u2014 every read form passes, every set form of the hooks path holds",
       "type": "task",
-      "updated": "2026-10-06T02:00:56Z",
+      "updated": "2026-10-06T02:11:08Z",
       "writes": [
         "asf/approvals.py",
         "tests/test_approvals.py"
@@ -42775,13 +42789,16 @@
       ]
     },
     "T-0617": {
-      "after": [],
+      "after": [
+        "T-0271",
+        "T-0566"
+      ],
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0617",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0617",
@@ -42790,12 +42807,12 @@
       },
       "parent": "F-0229",
       "schema_version": 1,
-      "stage_since": "2026-09-29T23:03:39Z",
-      "state": "New",
+      "stage_since": "2026-10-06T02:10:58Z",
+      "state": "Active",
       "stories": [],
       "title": "a merge is never attempted under a PR number nobody has",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T02:10:58Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py"
