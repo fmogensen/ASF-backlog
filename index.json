@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T01:42:24Z",
+  "generated": "2026-10-06T01:55:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5275,7 +5275,7 @@
       "cost": {
         "fix_rounds": 1,
         "runner_min": 0,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 4971147,
         "tokens_cache_write": 132576,
         "tokens_input": 104,
@@ -5299,7 +5299,7 @@
       "state": "Active",
       "title": "CI box list has three hand-kept copies that drift: one source (ci.pool / runner connector) for watchdog, installer and doctor",
       "type": "bug",
-      "updated": "2026-10-06T01:37:37Z"
+      "updated": "2026-10-06T01:49:03Z"
     },
     "B-0179": {
       "backlinks": [
@@ -5668,6 +5668,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0194",
@@ -5680,13 +5684,17 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #769@20ffe4d2b",
       "type": "bug",
-      "updated": "2026-10-06T01:42:22Z"
+      "updated": "2026-10-06T01:48:04Z"
     },
     "B-0195": {
       "backlinks": [],
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-06)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0195",
@@ -5699,7 +5707,26 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0591",
       "type": "bug",
-      "updated": "2026-10-06T01:42:23Z"
+      "updated": "2026-10-06T01:48:04Z"
+    },
+    "B-0196": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0196",
+      "last_filed": "2026-10-06",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0648",
+      "stage_since": "2026-10-06T01:55:15Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0648",
+      "type": "bug",
+      "updated": "2026-10-06T01:55:15Z"
     },
     "D-0001": {
       "backlinks": [
@@ -6842,7 +6869,8 @@
         "B-0192",
         "B-0193",
         "B-0194",
-        "B-0195"
+        "B-0195",
+        "B-0196"
       ],
       "decided": true,
       "evidence": [
@@ -14830,12 +14858,12 @@
       "parent": "E-0001",
       "rank": 24,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T21:12:21Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-06T01:48:04Z",
       "state": "Active",
       "title": "The approvals hook holds a read-only 'git config core.hooksPath' as a security write",
       "type": "feature",
-      "updated": "2026-09-29T21:18:29Z"
+      "updated": "2026-10-06T01:48:04Z"
     },
     "F-0213": {
       "backlinks": [],
@@ -36965,7 +36993,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
+        "sessions": 5,
         "tokens_cache_read": 8551407,
         "tokens_cache_write": 152593,
         "tokens_input": 134,
@@ -36988,7 +37016,7 @@
       "state": "Active",
       "title": "the two chained bodies, and the branch that renames a foreign hook behind them",
       "type": "task",
-      "updated": "2026-10-06T01:37:37Z",
+      "updated": "2026-10-06T01:49:03Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hook_chain.py",
@@ -39945,7 +39973,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -39965,7 +39993,7 @@
       "state": "Active",
       "title": "the class written on the ledger, and the key the card verifies itself on left exactly where it is",
       "type": "task",
-      "updated": "2026-10-06T01:37:37Z",
+      "updated": "2026-10-06T01:49:03Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -42224,8 +42252,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-06)",
-        "rule: planned"
+        "branch worker/T-0603",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0603",
@@ -42234,11 +42262,11 @@
       },
       "parent": "F-0212",
       "schema_version": 1,
-      "stage_since": "2026-09-29T21:12:21Z",
-      "state": "New",
+      "stage_since": "2026-10-06T01:48:04Z",
+      "state": "Active",
       "title": "`git config` is judged by git's own grammar \u2014 every read form passes, every set form of the hooks path holds",
       "type": "task",
-      "updated": "2026-10-06T00:05:50Z",
+      "updated": "2026-10-06T01:48:04Z",
       "writes": [
         "asf/approvals.py",
         "tests/test_approvals.py"
@@ -43541,7 +43569,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 4,
+        "sessions": 5,
         "tokens_cache_read": 5344087,
         "tokens_cache_write": 107720,
         "tokens_input": 104,
@@ -43564,7 +43592,7 @@
       "state": "Active",
       "title": "the trunk is asked before a Task is minted, and a typed `landed:` finally closes one",
       "type": "task",
-      "updated": "2026-10-06T01:37:37Z",
+      "updated": "2026-10-06T01:49:03Z",
       "writes": [
         "asf/record/trunk_check.py",
         "asf/record/plan_tasks.py",
@@ -43769,7 +43797,8 @@
     "T-0648": {
       "after": [],
       "backlinks": [
-        "T-0650"
+        "T-0650",
+        "B-0196"
       ],
       "children": [],
       "decided": true,
