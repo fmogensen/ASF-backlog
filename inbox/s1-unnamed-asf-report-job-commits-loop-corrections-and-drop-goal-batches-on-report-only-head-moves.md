@@ -11,3 +11,7 @@ The report-commit naming loop drops goal batches. The cloud brief (asf/workers/c
 - A head move that adds only report commits (an empty tree diff against the previous head) neither turns the lane BACK nor drops the batch. The batch keeps the PR at its previous head, or carries the green over an identical tree (B-0275 tree equivalence). Tested.
 - A `kind=naming` hold whose only cause is trunk copies is cleared by the lane's own rebuild first, with no session (the same line as the dead-review relaunch item). Tested.
 - A batch dropped for a member's head move re-cuts its other members in the same pass. Tested: a 2-member batch, one member's report-only move, the other still lands.
+
+## Root of the "copies" bail (botseon, 12:20)
+`git cherry` marks the branch's EMPTY report commits as copies of origin/main, because their empty patch matches the empty report commits already on main. So the lane's copies check (asf/harvest/lane.py ~659, ~2642) fires on every branch that carries an empty report commit, and that is what blocks the naming reword. Added acceptance:
+- [ ] The copies check ignores empty commits (and REPORT_SUBJECT commits). An empty report commit is never counted as a trunk copy. Tested: a branch with one fix commit and two empty report commits has 0 copies.
