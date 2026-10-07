@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T20:12:06Z",
+  "generated": "2026-10-07T20:19:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -15084,6 +15084,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0559",
@@ -15096,7 +15100,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0365",
       "type": "bug",
-      "updated": "2026-10-07T20:11:55Z"
+      "updated": "2026-10-07T20:14:26Z"
     },
     "D-0001": {
       "backlinks": [
@@ -16077,6 +16081,7 @@
         "F-0285",
         "F-0286",
         "F-0287",
+        "F-0288",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -18235,8 +18240,8 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 10,
-        "sessions": 3,
+        "runner_min": 12,
+        "sessions": 4,
         "usd": 6.56
       },
       "decided": true,
@@ -18260,7 +18265,7 @@
       "state": "Active",
       "title": "A factory-only CI class: a push touching only factory code runs lint and the factory tests",
       "type": "feature",
-      "updated": "2026-10-07T19:26:53Z"
+      "updated": "2026-10-07T20:19:21Z"
     },
     "F-0039": {
       "area": "factory",
@@ -21120,12 +21125,12 @@
       "reshape_applied": "1f6926c55799",
       "reshape_applied_at": "2026-10-03T06:33:16Z",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-29T23:22:27Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-07T20:14:26Z",
       "state": "Active",
       "title": "The landing gate runs 15\u201325 min on the operator's machine next to 8 sessions: gate on CI instead",
       "type": "feature",
-      "updated": "2026-10-06T13:46:52Z"
+      "updated": "2026-10-07T20:14:26Z"
     },
     "F-0106": {
       "backlinks": [
@@ -23369,12 +23374,12 @@
       "reshape_applied": "e944f3972f7b",
       "reshape_applied_at": "2026-10-07T19:33:05Z",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-10-07T18:01:39Z",
+      "stage": "building 0/3",
+      "stage_since": "2026-10-07T20:14:26Z",
       "state": "Active",
       "title": "Health records a session ended at its first result while the process keeps working",
       "type": "feature",
-      "updated": "2026-10-07T19:40:30Z"
+      "updated": "2026-10-07T20:14:26Z"
     },
     "F-0161": {
       "backlinks": [],
@@ -27237,7 +27242,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 51,
-        "sessions": 2,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
@@ -27256,7 +27261,7 @@
       "state": "Active",
       "title": "A run that ends without its report carries the session's last ASF refusal as its dead reason (naming, pre-push, refguard)",
       "type": "feature",
-      "updated": "2026-10-07T19:48:58Z"
+      "updated": "2026-10-07T20:19:21Z"
     },
     "F-0267": {
       "backlinks": [],
@@ -27268,8 +27273,8 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 59,
-        "sessions": 2,
+        "runner_min": 60,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
@@ -27287,7 +27292,7 @@
       "state": "Active",
       "title": "CI queue relief re-run of a cancelled PR run holds the queue head for hours, mislabelled as a batch",
       "type": "feature",
-      "updated": "2026-10-07T20:00:29Z"
+      "updated": "2026-10-07T20:19:21Z"
     },
     "F-0268": {
       "backlinks": [],
@@ -27718,6 +27723,20 @@
       "title": "A PR is cut into a batch before its review verdict; a later 'changes' verdict launches a correction that pushes onto the batched PR",
       "type": "feature",
       "updated": "2026-10-07T20:08:46Z"
+    },
+    "F-0288": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0288",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T20:14:53Z",
+      "state": "New",
+      "title": "A delivery member struck from the lead's PR stays bound (delivered_by not settable); it can't build on its own",
+      "type": "feature",
+      "updated": "2026-10-07T20:14:53Z"
     },
     "R-0001": {
       "backlinks": [
@@ -34359,6 +34378,12 @@
         "F-0267"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 1,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-07)",
         "rule: no-rule"
@@ -34371,13 +34396,19 @@
       "state": "New",
       "title": "A run's kind is read, never inferred",
       "type": "story",
-      "updated": "2026-10-07T20:00:29Z"
+      "updated": "2026-10-07T20:19:21Z"
     },
     "S-65655": {
       "backlinks": [
         "F-0267"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 1,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-07)",
         "rule: no-rule"
@@ -34390,13 +34421,19 @@
       "state": "New",
       "title": "A push run is a branch run everywhere the queue sizes, sweeps and starts",
       "type": "story",
-      "updated": "2026-10-07T20:00:29Z"
+      "updated": "2026-10-07T20:19:21Z"
     },
     "S-65656": {
       "backlinks": [
         "F-0267"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 1,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-07)",
         "rule: no-rule"
@@ -34409,13 +34446,19 @@
       "state": "New",
       "title": "A record the queue has given up on holds no place in the line",
       "type": "story",
-      "updated": "2026-10-07T20:00:29Z"
+      "updated": "2026-10-07T20:19:21Z"
     },
     "S-65657": {
       "backlinks": [
         "F-0267"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 1,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-07)",
         "rule: no-rule"
@@ -34428,7 +34471,7 @@
       "state": "New",
       "title": "And it leaves the line on a bound",
       "type": "story",
-      "updated": "2026-10-07T20:00:29Z"
+      "updated": "2026-10-07T20:19:21Z"
     },
     "T-0001": {
       "backlinks": [
@@ -36550,6 +36593,7 @@
         "T-0312",
         "T-0313",
         "T-0336",
+        "T-0365",
         "T-0411",
         "T-0431",
         "T-0432",
@@ -36565,6 +36609,7 @@
         "T-0604",
         "T-0610",
         "T-0620",
+        "T-0631",
         "T-0636",
         "T-0638",
         "T-0640",
@@ -38845,6 +38890,7 @@
         "T-0107",
         "T-0108",
         "T-0119",
+        "T-0631",
         "T-0657"
       ],
       "children": [],
@@ -39353,6 +39399,7 @@
         "T-0548",
         "T-0569",
         "T-0591",
+        "T-0631",
         "T-0638",
         "T-0643",
         "T-0645",
@@ -39821,6 +39868,7 @@
         "T-0569",
         "T-0574",
         "T-0591",
+        "T-0631",
         "T-0638",
         "T-0643",
         "T-0645",
@@ -40786,7 +40834,8 @@
         "T-0744",
         "T-0761",
         "T-0766",
-        "T-0778"
+        "T-0778",
+        "T-0816"
       ],
       "children": [],
       "cost": {
@@ -42277,6 +42326,7 @@
         "T-0341",
         "T-0350",
         "T-0363",
+        "T-0365",
         "T-0411",
         "T-0412",
         "T-0427",
@@ -42299,7 +42349,8 @@
         "T-0700",
         "T-0755",
         "T-0778",
-        "T-0802"
+        "T-0802",
+        "T-0816"
       ],
       "children": [],
       "cost": {
@@ -42903,6 +42954,7 @@
         "T-0677",
         "T-0688",
         "T-0794",
+        "T-0816",
         "B-0301",
         "B-0548",
         "B-0558"
@@ -42911,7 +42963,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 76,
+        "runner_min": 101,
         "sessions": 8,
         "tokens_cache_read": 13737822,
         "tokens_cache_write": 326274,
@@ -42937,7 +42989,7 @@
       "stories": [],
       "title": "the wave writes down what held it, and the tick line carries it",
       "type": "task",
-      "updated": "2026-10-07T19:54:21Z",
+      "updated": "2026-10-07T20:19:21Z",
       "writes": [
         "asf/tick/step_wave.py",
         "asf/tick/tick.py",
@@ -44177,6 +44229,7 @@
         "T-0312",
         "T-0313",
         "T-0332",
+        "T-0365",
         "T-0411",
         "T-0432",
         "T-0448",
@@ -44866,6 +44919,7 @@
         "T-0640",
         "T-0657",
         "T-0668",
+        "T-0816",
         "B-0227",
         "B-0229",
         "B-0293",
@@ -46071,6 +46125,7 @@
         "T-0289",
         "T-0313",
         "T-0332",
+        "T-0365",
         "B-0500"
       ],
       "children": [],
@@ -46678,6 +46733,7 @@
         "T-0294",
         "T-0312",
         "T-0313",
+        "T-0365",
         "T-0432",
         "T-0448",
         "B-0293",
@@ -47726,6 +47782,7 @@
         "T-0312",
         "T-0314",
         "T-0316",
+        "T-0365",
         "T-0432",
         "T-0688",
         "B-0199",
@@ -48590,7 +48647,8 @@
         "T-0339",
         "T-0663",
         "T-0768",
-        "T-0805"
+        "T-0805",
+        "T-0816"
       ],
       "children": [],
       "cost": {
@@ -50000,17 +50058,24 @@
     },
     "T-0365": {
       "after": [
-        "T-0362"
+        "T-0362",
+        "T-0056",
+        "T-0189",
+        "T-0233",
+        "T-0275",
+        "T-0289",
+        "T-0313"
       ],
       "backlinks": [
         "T-0366",
+        "T-0432",
         "B-0559"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-07)",
-        "rule: planned"
+        "branch worker/T-0365",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0365",
@@ -50022,12 +50087,12 @@
         "split T-0365 asf | asf/security | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-28T07:31:06Z",
-      "state": "New",
+      "stage_since": "2026-10-07T20:14:26Z",
+      "state": "Active",
       "stories": [],
       "title": "`asf security alerts --check` \u2014 one parser, one subcommand, the `--check` contract",
       "type": "task",
-      "updated": "2026-10-07T00:02:39Z",
+      "updated": "2026-10-07T20:14:26Z",
       "writes": [
         "asf/cli.py",
         "asf/security/cmd.py",
@@ -52836,7 +52901,8 @@
         "T-0233",
         "T-0289",
         "T-0431",
-        "T-0313"
+        "T-0313",
+        "T-0365"
       ],
       "backlinks": [
         "T-0431",
@@ -54991,6 +55057,7 @@
         "T-0490",
         "T-0569",
         "T-0591",
+        "T-0631",
         "T-0654",
         "T-0668",
         "T-0800",
@@ -56537,7 +56604,9 @@
       ]
     },
     "T-0528": {
-      "after": [],
+      "after": [
+        "T-0166"
+      ],
       "backlinks": [
         "F-0160",
         "F-0279",
@@ -56568,8 +56637,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-07)",
-        "rule: planned"
+        "branch worker/T-0528",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0528",
@@ -56585,12 +56654,12 @@
         "split T-0528 asf/workers | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-07T18:01:39Z",
-      "state": "New",
+      "stage_since": "2026-10-07T20:14:26Z",
+      "state": "Active",
       "stories": [],
       "title": "health stops a live process that wrote its result and will not exit",
       "type": "task",
-      "updated": "2026-10-07T19:26:53Z",
+      "updated": "2026-10-07T20:14:26Z",
       "writes": [
         "asf/workers/health.py",
         "tests/test_ended_run_liveness.py"
@@ -58237,6 +58306,7 @@
         "T-0571",
         "T-0572",
         "T-0591",
+        "T-0631",
         "T-0800",
         "B-0501"
       ],
@@ -59112,6 +59182,7 @@
         "T-0569"
       ],
       "backlinks": [
+        "T-0631",
         "T-0638",
         "T-0657",
         "T-0665",
@@ -60700,18 +60771,28 @@
       ]
     },
     "T-0631": {
-      "after": [],
+      "after": [
+        "T-0056",
+        "T-0109",
+        "T-0119",
+        "T-0130",
+        "T-0489",
+        "T-0569",
+        "T-0591"
+      ],
       "backlinks": [
         "T-0632",
         "T-0634",
         "T-0635",
+        "T-0638",
+        "T-0657",
         "T-0792"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-07)",
-        "rule: planned"
+        "branch worker/T-0631",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0631",
@@ -60730,12 +60811,12 @@
         "split T-0631 .github/workflows | asf | asf/harvest | docs | docs/guide | tests | tools"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-29T23:22:28Z",
-      "state": "New",
+      "stage_since": "2026-10-07T20:14:26Z",
+      "state": "Active",
       "stories": [],
       "title": "the landing gate can be moved to the product's CI, and then starts no suite on this host",
       "type": "task",
-      "updated": "2026-10-07T00:02:39Z",
+      "updated": "2026-10-07T20:14:26Z",
       "writes": [
         "asf/conventions.py",
         "asf/ci_gate.py",
@@ -60973,7 +61054,8 @@
         "T-0411",
         "T-0591",
         "T-0427",
-        "T-0432"
+        "T-0432",
+        "T-0631"
       ],
       "backlinks": [
         "T-0668",
@@ -61785,7 +61867,8 @@
         "T-0130",
         "T-0189",
         "T-0248",
-        "T-0591"
+        "T-0591",
+        "T-0631"
       ],
       "backlinks": [
         "T-0658",
@@ -66798,8 +66881,15 @@
         "T-0777"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
+        "PR #1034 OPEN",
         "branch worker/T-0776",
         "rule: in-flight"
       ],
@@ -66817,7 +66907,7 @@
       "state": "Active",
       "title": "a factory publish is recorded on the run it belongs to, and the loop guard counts it",
       "type": "task",
-      "updated": "2026-10-07T19:40:30Z",
+      "updated": "2026-10-07T20:19:21Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -68341,14 +68431,21 @@
       ]
     },
     "T-0816": {
+      "after": [
+        "T-0153",
+        "T-0189",
+        "T-0203",
+        "T-0248",
+        "T-0332"
+      ],
       "backlinks": [
         "T-0818"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-07)",
-        "rule: planned"
+        "branch worker/T-0816",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0816",
@@ -68357,11 +68454,11 @@
       },
       "parent": "F-0260",
       "schema_version": 1,
-      "stage_since": "2026-10-07T18:19:33Z",
-      "state": "New",
+      "stage_since": "2026-10-07T20:14:26Z",
+      "state": "Active",
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-07T18:26:30Z",
+      "updated": "2026-10-07T20:14:26Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -68379,8 +68476,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 55,
-        "sessions": 1,
+        "runner_min": 67,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -68400,7 +68497,7 @@
       "state": "Active",
       "title": "every mint in a record checkout with an origin is claimed on origin, over a floor read from origin's trunk",
       "type": "task",
-      "updated": "2026-10-07T19:54:21Z",
+      "updated": "2026-10-07T20:19:21Z",
       "writes": [
         "asf/record/ids.py",
         "tests/test_record_ids_origin.py",
@@ -68447,8 +68544,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 1,
+        "runner_min": 40,
+        "sessions": 2,
         "tokens_cache_read": 6724074,
         "tokens_cache_write": 165264,
         "tokens_input": 112,
@@ -68472,7 +68569,7 @@
       "state": "Active",
       "title": "the in-repo decision register, the citation's grammar, and the one REPORT field it is read out of",
       "type": "task",
-      "updated": "2026-10-07T20:00:29Z",
+      "updated": "2026-10-07T20:19:21Z",
       "writes": [
         "asf/evidence/precedent.py",
         "asf/workers/report.py",
