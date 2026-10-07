@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T22:39:19Z",
+  "generated": "2026-10-07T22:49:21Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -15588,6 +15588,44 @@
       "type": "bug",
       "updated": "2026-10-07T22:39:17Z"
     },
+    "B-0580": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0580",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0111",
+      "stage_since": "2026-10-07T22:49:19Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0111",
+      "type": "bug",
+      "updated": "2026-10-07T22:49:19Z"
+    },
+    "B-0581": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0581",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0121",
+      "stage_since": "2026-10-07T22:49:20Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0121",
+      "type": "bug",
+      "updated": "2026-10-07T22:49:20Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -16574,6 +16612,7 @@
         "F-0292",
         "F-0293",
         "F-0294",
+        "F-0295",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -17118,7 +17157,9 @@
         "B-0576",
         "B-0577",
         "B-0578",
-        "B-0579"
+        "B-0579",
+        "B-0580",
+        "B-0581"
       ],
       "decided": true,
       "evidence": [
@@ -19946,6 +19987,8 @@
       "priority": "need",
       "rank": 78,
       "reshape": "stale: T-0332 Active for 1d (over 3x its limit), 201 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape_applied": "22c55e8ac5a3",
+      "reshape_applied_at": "2026-10-07T22:46:37Z",
       "schema_version": 1,
       "stage": "building 1/8",
       "stage_since": "2026-10-07T18:01:39Z",
@@ -21901,7 +21944,8 @@
     },
     "F-0111": {
       "backlinks": [
-        "T-0628"
+        "T-0628",
+        "B-0580"
       ],
       "children": [
         "T-0427",
@@ -22326,7 +22370,8 @@
     },
     "F-0121": {
       "backlinks": [
-        "B-0185"
+        "B-0185",
+        "B-0581"
       ],
       "children": [
         "T-0459",
@@ -27658,7 +27703,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "3/4 tasks Closed",
+        "4/4 tasks Closed",
         "5/5 stories open: S-62054, S-62055, S-62056, S-62057, S-62058",
         "rule: documented"
       ],
@@ -27666,12 +27711,12 @@
       "id": "F-0262",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "building 3/4",
-      "stage_since": "2026-10-07T20:32:54Z",
+      "stage": "landed",
+      "stage_since": "2026-10-07T22:46:31Z",
       "state": "Active",
       "title": "Adjudication checks for an in-repo precedent (decisions, existing pattern) before NEEDS OPERATOR, and cites it",
       "type": "feature",
-      "updated": "2026-10-07T20:32:54Z"
+      "updated": "2026-10-07T22:46:31Z"
     },
     "F-0263": {
       "backlinks": [
@@ -28499,6 +28544,20 @@
       "title": "Session leftovers are wip-committed onto batched/land-requested PRs, dropping goal batches; stranded staged record writes block the sync",
       "type": "feature",
       "updated": "2026-10-07T22:22:52Z"
+    },
+    "F-0295": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0295",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T22:48:10Z",
+      "state": "New",
+      "title": "Phantom-failure runs (completed/failure with queued jobs, no failed job) and lost-runner jobs are read as reds instead of auto re-run once",
+      "type": "feature",
+      "updated": "2026-10-07T22:48:10Z"
     },
     "R-0001": {
       "backlinks": [
@@ -33151,6 +33210,7 @@
     "S-57654": {
       "backlinks": [
         "F-0064",
+        "T-0332",
         "B-0444"
       ],
       "children": [],
@@ -33171,6 +33231,7 @@
     "S-57655": {
       "backlinks": [
         "F-0064",
+        "T-0332",
         "B-0445"
       ],
       "children": [],
@@ -33191,6 +33252,7 @@
     "S-57656": {
       "backlinks": [
         "F-0064",
+        "T-0332",
         "B-0446"
       ],
       "children": [],
@@ -33211,6 +33273,7 @@
     "S-57657": {
       "backlinks": [
         "F-0064",
+        "T-0333",
         "B-0447"
       ],
       "children": [],
@@ -33231,6 +33294,7 @@
     "S-57658": {
       "backlinks": [
         "F-0064",
+        "T-0334",
         "B-0448"
       ],
       "children": [],
@@ -33251,6 +33315,7 @@
     "S-57659": {
       "backlinks": [
         "F-0064",
+        "T-0333",
         "B-0449"
       ],
       "children": [],
@@ -33271,6 +33336,7 @@
     "S-57660": {
       "backlinks": [
         "F-0064",
+        "T-0335",
         "B-0450"
       ],
       "children": [],
@@ -33291,6 +33357,7 @@
     "S-57661": {
       "backlinks": [
         "F-0064",
+        "T-0335",
         "B-0451"
       ],
       "children": [],
@@ -33331,6 +33398,7 @@
     "S-57663": {
       "backlinks": [
         "F-0064",
+        "T-0337",
         "B-0453"
       ],
       "children": [],
@@ -33351,6 +33419,7 @@
     "S-57664": {
       "backlinks": [
         "F-0064",
+        "T-0337",
         "B-0454"
       ],
       "children": [],
@@ -33371,6 +33440,7 @@
     "S-57665": {
       "backlinks": [
         "F-0064",
+        "T-0338",
         "B-0455"
       ],
       "children": [],
@@ -33391,6 +33461,7 @@
     "S-57666": {
       "backlinks": [
         "F-0064",
+        "T-0339",
         "B-0456"
       ],
       "children": [],
@@ -39370,7 +39441,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1635 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1639 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -49776,16 +49847,7 @@
       ]
     },
     "T-0332": {
-      "after": [
-        "T-0119",
-        "T-0130",
-        "T-0163",
-        "T-0189",
-        "T-0203",
-        "T-0226",
-        "T-0233",
-        "T-0275"
-      ],
+      "after": [],
       "backlinks": [
         "F-0064",
         "T-0333",
@@ -49815,7 +49877,7 @@
       "folder": "tasks",
       "id": "T-0332",
       "links": {
-        "plan": "docs/plans/f-0064.md"
+        "plan": "docs/plans/replans/f-0064-22c55e8ac5a3.md"
       },
       "parent": "F-0064",
       "reshape_declined": [
@@ -49824,6 +49886,11 @@
       "schema_version": 1,
       "stage_since": "2026-10-07T21:46:09Z",
       "state": "New",
+      "stories": [
+        "S-57654",
+        "S-57655",
+        "S-57656"
+      ],
       "title": "`events` is the sixth validated stream \u2014 the schema, the natural key, `product` on every line, one product per file, and `emit` as the one append path",
       "type": "task",
       "updated": "2026-10-07T21:46:09Z",
@@ -49864,7 +49931,7 @@
       "folder": "tasks",
       "id": "T-0333",
       "links": {
-        "plan": "docs/plans/f-0064.md"
+        "plan": "docs/plans/replans/f-0064-22c55e8ac5a3.md"
       },
       "parent": "F-0064",
       "reshape_declined": [
@@ -49874,6 +49941,10 @@
       "schema_version": 1,
       "stage_since": "2026-09-27T19:19:23Z",
       "state": "New",
+      "stories": [
+        "S-57657",
+        "S-57659"
+      ],
       "title": "every tool appends its own event, and the tick line's five counters are counted from them",
       "type": "task",
       "updated": "2026-10-07T22:33:49Z",
@@ -49919,7 +49990,7 @@
       "folder": "tasks",
       "id": "T-0334",
       "links": {
-        "plan": "docs/plans/f-0064.md"
+        "plan": "docs/plans/replans/f-0064-22c55e8ac5a3.md"
       },
       "parent": "F-0064",
       "reshape_declined": [
@@ -49930,6 +50001,9 @@
       "schema_version": 1,
       "stage_since": "2026-09-27T19:19:23Z",
       "state": "New",
+      "stories": [
+        "S-57658"
+      ],
       "title": "one helper composes `NEEDS OPERATOR:`, and nothing else in `asf/` composes a log line",
       "type": "task",
       "updated": "2026-10-07T22:33:49Z",
@@ -49983,7 +50057,7 @@
       "folder": "tasks",
       "id": "T-0335",
       "links": {
-        "plan": "docs/plans/f-0064.md"
+        "plan": "docs/plans/replans/f-0064-22c55e8ac5a3.md"
       },
       "parent": "F-0064",
       "reshape_declined": [
@@ -49994,6 +50068,10 @@
       "schema_version": 1,
       "stage_since": "2026-09-27T19:19:23Z",
       "state": "New",
+      "stories": [
+        "S-57660",
+        "S-57661"
+      ],
       "title": "`asf log` \u2014 the human view rendered from the streams, byte-stable, with the needs-operator footer",
       "type": "task",
       "updated": "2026-10-07T22:33:49Z",
@@ -50065,8 +50143,7 @@
     },
     "T-0337": {
       "after": [
-        "T-0332",
-        "T-0336"
+        "T-0332"
       ],
       "backlinks": [
         "T-0332",
@@ -50092,7 +50169,7 @@
       "folder": "tasks",
       "id": "T-0337",
       "links": {
-        "plan": "docs/plans/f-0064.md"
+        "plan": "docs/plans/replans/f-0064-22c55e8ac5a3.md"
       },
       "parent": "F-0064",
       "reshape_declined": [
@@ -50103,6 +50180,10 @@
       "schema_version": 1,
       "stage_since": "2026-09-27T19:19:23Z",
       "state": "New",
+      "stories": [
+        "S-57663",
+        "S-57664"
+      ],
       "title": "cost stops being null \u2014 the model that ran, a dated price table in operator config, `usd_source`, and the coverage measure",
       "type": "task",
       "updated": "2026-10-07T22:33:49Z",
@@ -50153,7 +50234,7 @@
       "folder": "tasks",
       "id": "T-0338",
       "links": {
-        "plan": "docs/plans/f-0064.md"
+        "plan": "docs/plans/replans/f-0064-22c55e8ac5a3.md"
       },
       "parent": "F-0064",
       "reshape_declined": [
@@ -50163,6 +50244,9 @@
       "schema_version": 1,
       "stage_since": "2026-09-27T19:19:23Z",
       "state": "New",
+      "stories": [
+        "S-57665"
+      ],
       "title": "the brief is stable text first and the variable row last, and cache-read per session is on the TOKENS view and the scorecard",
       "type": "task",
       "updated": "2026-10-07T22:33:49Z",
@@ -50206,7 +50290,7 @@
       "folder": "tasks",
       "id": "T-0339",
       "links": {
-        "plan": "docs/plans/f-0064.md"
+        "plan": "docs/plans/replans/f-0064-22c55e8ac5a3.md"
       },
       "parent": "F-0064",
       "reshape_declined": [
@@ -50216,6 +50300,9 @@
       "schema_version": 1,
       "stage_since": "2026-09-27T19:19:23Z",
       "state": "New",
+      "stories": [
+        "S-57666"
+      ],
       "title": "the grant audit \u2014 every added directory, every deny-rule change and every secret write is a `grant` event with its item and its account",
       "type": "task",
       "updated": "2026-10-07T22:33:49Z",
@@ -69983,22 +70070,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1054 OPEN",
-        "branch worker/T-0822",
-        "rule: in-flight"
+        "merge b10dbc8 of worker/T-0822 lands T-0822 (PR #1054)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0822",
+      "landing": {
+        "as_of": "2026-10-07T22:46:31Z",
+        "by": "pr-merge",
+        "sha": "b10dbc865860e2c168e2524db9dd8ceebf224023"
+      },
       "links": {
         "plan": "docs/plans/f-0262.md"
       },
       "parent": "F-0262",
       "schema_version": 1,
-      "stage_since": "2026-10-07T22:18:06Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T22:46:31Z",
+      "state": "Closed",
       "title": "the citation reaches the record on the ruling's own History line, where rulings.standing reads it back",
       "type": "task",
-      "updated": "2026-10-07T22:33:49Z",
+      "updated": "2026-10-07T22:46:31Z",
       "writes": [
         "asf/tick/step_health.py",
         "tests/test_tick_steps.py"
