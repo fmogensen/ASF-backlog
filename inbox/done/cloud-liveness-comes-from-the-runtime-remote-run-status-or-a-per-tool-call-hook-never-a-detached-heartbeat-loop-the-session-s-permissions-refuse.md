@@ -1,3 +1,5 @@
+→ F-0265
+
 # S1: cloud liveness comes from the runtime (remote run status or a per-tool-call hook), never a detached heartbeat loop the session's permissions refuse
 
 Parent: E-0001

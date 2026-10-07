@@ -8,3 +8,6 @@ tests/test_tick.py:500-503 (the stale-cell test) fails whenever it runs within 4
 ## Acceptance
 - The test pins "now" through an injectable clock or a fixed time, and clears every metrics/ticks file between cases. It passes for a fixed now of 00:10Z, 00:39Z and 12:00Z (parametrised).
 - A repo-wide check finds no other test that builds a day file name from the real clock, or is fixed by the same seam.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
