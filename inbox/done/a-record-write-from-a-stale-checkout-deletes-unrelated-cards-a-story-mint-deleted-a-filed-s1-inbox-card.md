@@ -1,3 +1,5 @@
+→ F-0282
+
 # S1: a record write from a stale checkout deletes unrelated cards (a story mint deleted a filed S1 inbox card)
 
 Parent: E-0001

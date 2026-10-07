@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T11:36:17Z",
+  "generated": "2026-10-07T11:43:40Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -9960,23 +9960,28 @@
       "count": 1,
       "decided": true,
       "evidence": [
-        "PR #926 OPEN",
-        "branch fix/B-0351",
-        "rule: fixer"
+        "merge 30d5164 of fix/B-0351 lands B-0351 (PR #926)",
+        "CI green on main at or after it",
+        "rule: fixed"
       ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0351",
+      "landing": {
+        "as_of": "2026-10-07T11:38:31Z",
+        "by": "pr-merge",
+        "sha": "30d5164d1e450a880868a74a76b4ac813ab1d15a"
+      },
       "last_filed": "2026-10-06",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S2",
       "signature": "watchdog ungrantable_hold: F-0024/touch_amendable_set",
-      "stage_since": "2026-10-07T04:38:16Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T11:38:31Z",
+      "state": "Resolved",
       "title": "Watchdog: an approval hold no grant can release past 0 min \u2014 F-0024/touch_amendable_set",
       "type": "bug",
-      "updated": "2026-10-07T11:32:44Z"
+      "updated": "2026-10-07T11:38:31Z"
     },
     "B-0352": {
       "backlinks": [],
@@ -12787,6 +12792,25 @@
       "type": "bug",
       "updated": "2026-10-07T11:13:41Z"
     },
+    "B-0464": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0464",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0258",
+      "stage_since": "2026-10-07T11:43:26Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0258",
+      "type": "bug",
+      "updated": "2026-10-07T11:43:26Z"
+    },
     "D-0001": {
       "backlinks": [
         "T-0256",
@@ -13750,6 +13774,8 @@
         "F-0278",
         "F-0279",
         "F-0280",
+        "F-0281",
+        "F-0282",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -14178,7 +14204,8 @@
         "B-0460",
         "B-0461",
         "B-0462",
-        "B-0463"
+        "B-0463",
+        "B-0464"
       ],
       "decided": true,
       "evidence": [
@@ -22557,12 +22584,12 @@
       "rank": 30,
       "reshape": "stale: T-0775 Active for 1d (over 3x its limit), 204 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-10-06T03:39:28Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-07T11:38:31Z",
       "state": "Active",
       "title": "NEXT drops S1/S2 bugs silently (busy, blocked, Active, over limit) \u2014 show a WAITS row with the reason",
       "type": "feature",
-      "updated": "2026-10-06T03:39:28Z"
+      "updated": "2026-10-07T11:38:31Z"
     },
     "F-0206": {
       "backlinks": [],
@@ -24296,6 +24323,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/1 tasks Closed",
         "3/3 stories open: S-58804, S-58805, S-58806",
         "rule: documented"
       ],
@@ -24308,7 +24336,7 @@
       "state": "Active",
       "title": "Merge queue: a red batch's drop reason names the member PR whose files the failing test covers",
       "type": "feature",
-      "updated": "2026-10-07T11:32:44Z"
+      "updated": "2026-10-07T11:38:31Z"
     },
     "F-0257": {
       "backlinks": [],
@@ -24347,7 +24375,10 @@
       "updated": "2026-10-07T11:32:44Z"
     },
     "F-0258": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0282",
+        "B-0464"
+      ],
       "children": [
         "S-59304",
         "S-59305",
@@ -24367,7 +24398,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "3/3 stories open: S-59304, S-59305, S-59306",
+        "4/4 stories open: S-59304, S-59305, S-59306, S-59307",
         "rule: documented"
       ],
       "folder": "features",
@@ -24379,7 +24410,7 @@
       "state": "Active",
       "title": "Reserved identifiers (migration numbers, bands) are checked against every open PR head, and a brief-named reservation is honoured",
       "type": "feature",
-      "updated": "2026-10-07T11:32:44Z"
+      "updated": "2026-10-07T11:38:31Z"
     },
     "F-0259": {
       "backlinks": [
@@ -24696,6 +24727,7 @@
     },
     "F-0273": {
       "backlinks": [
+        "F-0281",
         "B-0433"
       ],
       "children": [],
@@ -24866,6 +24898,34 @@
       "title": "Spec/plan-lane PRs that carry code are never reviewed (pushed_ids covers Tasks and Bugs only)",
       "type": "feature",
       "updated": "2026-10-07T11:13:41Z"
+    },
+    "F-0281": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0281",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T11:39:02Z",
+      "state": "New",
+      "title": "A test's git identity (Test <test@example.com>) leaked into a real record repo; tests must never git config outside temp fixtures",
+      "type": "feature",
+      "updated": "2026-10-07T11:39:02Z"
+    },
+    "F-0282": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0282",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T11:39:02Z",
+      "state": "New",
+      "title": "a record write from a stale checkout deletes unrelated cards (a story mint deleted a filed S1 inbox card)",
+      "type": "feature",
+      "updated": "2026-10-07T11:39:02Z"
     },
     "R-0001": {
       "backlinks": [
@@ -30236,8 +30296,15 @@
       "updated": "2026-10-07T11:03:28Z"
     },
     "S-59307": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0258",
+        "F-0282"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-59307",
       "parent": "F-0258",
@@ -30246,7 +30313,7 @@
       "state": "New",
       "title": "A card that reserves no number, a card that has not booked yet, and a product that declares no sequence are never refused",
       "type": "story",
-      "updated": "2026-10-07T10:59:02Z"
+      "updated": "2026-10-07T11:38:31Z"
     },
     "T-0001": {
       "backlinks": [
@@ -34000,7 +34067,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1531 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1533 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -62181,9 +62248,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #805 OPEN",
-        "branch worker/T-0775",
-        "rule: in-flight"
+        "no evidence found (2026-10-07)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0775",
@@ -62192,11 +62258,11 @@
       },
       "parent": "F-0205",
       "schema_version": 1,
-      "stage_since": "2026-10-06T03:39:28Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T11:38:31Z",
+      "state": "New",
       "title": "every branch that gives an S1/S2 Bug no session is a WAITS row, and the row names the fact that holds it",
       "type": "task",
-      "updated": "2026-10-06T08:02:41Z",
+      "updated": "2026-10-07T11:38:31Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -63103,6 +63169,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0801",
       "links": {
@@ -63114,7 +63184,7 @@
       "state": "New",
       "title": "the queue names the culprit PR in the drop reason \u2014 out of the log it already reads, and out of the test that covers the member's files",
       "type": "task",
-      "updated": "2026-10-07T11:28:44Z",
+      "updated": "2026-10-07T11:38:31Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
