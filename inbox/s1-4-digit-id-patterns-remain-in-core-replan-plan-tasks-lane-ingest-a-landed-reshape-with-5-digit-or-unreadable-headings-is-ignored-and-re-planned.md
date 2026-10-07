@@ -16,3 +16,6 @@ Also, a landed reshape plan that the replan reader cannot apply is silently igno
 - One shared id pattern (`[A-Z]-\d{4,}`) is used by every record, feeder, harvest and evidence parser. A repo-wide test fails if any `\d{4}\b` id regex outside date or time parsing remains. Tests use 5-digit fixtures for core id validation, replan headings, `stories:`, lane item ids and merged-into.
 - The reshape brief tells the session the exact readable output: a file under plans/replans/ with a `replan:` header and `### Task new N:` / `### Task <id>:` / `### Drop <id>:` headings. Or the applier also reads a Feature plan's "reshaped from <id>" section. Tested both ways.
 - When a reshape or replan for an item has landed but cannot be applied, the item gets an INPUT or doctor row ("reshape landed but unreadable: <why>"). It never gets a fresh RESHAPE launch. Tested.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
