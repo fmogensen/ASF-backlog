@@ -1,3 +1,5 @@
+→ F-0273
+
 # S1: redact counts moved lines as new — a re-rendered index.json blocks record pushes on text origin already holds
 
 Parent: E-0001
