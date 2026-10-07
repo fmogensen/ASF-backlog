@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T23:00:06Z",
+  "generated": "2026-10-07T23:08:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -15634,6 +15634,25 @@
       "type": "bug",
       "updated": "2026-10-07T22:54:33Z"
     },
+    "B-0582": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0582",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #1021@cc8574e81",
+      "stage_since": "2026-10-07T23:08:31Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1021@cc8574e81",
+      "type": "bug",
+      "updated": "2026-10-07T23:08:31Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -16427,6 +16446,7 @@
     "E-0001": {
       "backlinks": [
         "F-0043",
+        "F-0055",
         "F-0096",
         "F-0097",
         "T-0031",
@@ -17167,7 +17187,8 @@
         "B-0578",
         "B-0579",
         "B-0580",
-        "B-0581"
+        "B-0581",
+        "B-0582"
       ],
       "decided": true,
       "evidence": [
@@ -22314,7 +22335,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/3 tasks Closed",
+        "2/3 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -22322,12 +22343,12 @@
       "parent": "E-0002",
       "rank": 124,
       "schema_version": 1,
-      "stage": "building 1/3",
-      "stage_since": "2026-09-28T15:31:38Z",
+      "stage": "building 2/3",
+      "stage_since": "2026-10-07T23:05:29Z",
       "state": "Active",
       "title": "asf pr-hygiene --lanes: a machine-readable listing product rule checks can call",
       "type": "feature",
-      "updated": "2026-09-28T15:31:38Z"
+      "updated": "2026-10-07T23:05:29Z"
     },
     "F-0120": {
       "backlinks": [
@@ -27882,6 +27903,7 @@
     },
     "F-0267": {
       "backlinks": [
+        "F-0055",
         "B-0565"
       ],
       "children": [
@@ -39470,7 +39492,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1641 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1644 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -54694,22 +54716,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1057 OPEN",
-        "branch worker/T-0443",
-        "rule: in-flight"
+        "merge e4a0483 of worker/T-0443 lands T-0443 (PR #1057)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0443",
+      "landing": {
+        "as_of": "2026-10-07T23:05:29Z",
+        "by": "pr-merge",
+        "sha": "e4a0483594443dd90cf953042c50274ec2c7c048"
+      },
       "links": {
         "plan": "docs/plans/f-0119.md"
       },
       "parent": "F-0119",
       "schema_version": 1,
-      "stage_since": "2026-10-07T22:22:52Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T23:05:29Z",
+      "state": "Closed",
       "title": "`--lanes` prints the listing, owns its exit code, and reaches the module",
       "type": "task",
-      "updated": "2026-10-07T23:00:03Z",
+      "updated": "2026-10-07T23:05:29Z",
       "writes": [
         "asf/harvest/pr_hygiene.py",
         "asf/cli.py",
@@ -69912,7 +69939,8 @@
         "B-0547",
         "B-0550",
         "B-0560",
-        "B-0576"
+        "B-0576",
+        "B-0582"
       ],
       "children": [],
       "cost": {
