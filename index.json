@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T22:19:59Z",
+  "generated": "2026-10-07T22:22:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2908,6 +2908,7 @@
     },
     "B-0094": {
       "backlinks": [
+        "F-0294",
         "T-0110"
       ],
       "children": [],
@@ -7857,8 +7858,10 @@
         "F-0116",
         "F-0214",
         "F-0259",
+        "F-0293",
         "S-60908",
-        "T-0817"
+        "T-0817",
+        "B-0575"
       ],
       "budget_sessions": 12,
       "children": [],
@@ -13563,6 +13566,7 @@
         ]
       },
       "parent": "E-0001",
+      "removed": "green since 013df8393 (groom 2026-10-07)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "tests (3.12): one record writer (no card written in place)",
@@ -13592,6 +13596,7 @@
         ]
       },
       "parent": "E-0001",
+      "removed": "green since dff866215 (groom 2026-10-07)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "tests (3.13): one record writer (no card written in place)",
@@ -15160,6 +15165,7 @@
         ]
       },
       "parent": "E-0001",
+      "removed": "green since 013df8393 (groom 2026-10-07)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "tests (3.12): the factory-only merge rule (a hand branch into main is refused)",
@@ -15190,6 +15196,7 @@
         ]
       },
       "parent": "E-0001",
+      "removed": "green since dff866215 (groom 2026-10-07)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "tests (3.13): the factory-only merge rule (a hand branch into main is refused)",
@@ -15457,6 +15464,61 @@
       "title": "Record error: story S-64359 has no Task listing it in stories:",
       "type": "bug",
       "updated": "2026-10-07T21:46:09Z"
+    },
+    "B-0575": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0575",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S2",
+      "signature": "tests/test_tick.py:481 \u203a test_a_13_3m_tick_silences_the_row_through_20m_and_it_still_stales_at_40m \u2014 AssertionError: None != 'STALE since 23:41 \u2026'",
+      "stage_since": "2026-10-07T22:18:15Z",
+      "state": "New",
+      "title": "test_tick stale-cell test fails within 40 min after midnight UTC (leftover day file; real clock)",
+      "type": "bug",
+      "updated": "2026-10-07T22:18:15Z"
+    },
+    "B-0576": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0576",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #1021@d36e98ab5",
+      "stage_since": "2026-10-07T22:22:12Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1021@d36e98ab5",
+      "type": "bug",
+      "updated": "2026-10-07T22:22:12Z"
+    },
+    "B-0577": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0577",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #1047@c520ea950",
+      "stage_since": "2026-10-07T22:22:12Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1047@c520ea950",
+      "type": "bug",
+      "updated": "2026-10-07T22:22:12Z"
     },
     "D-0001": {
       "backlinks": [
@@ -16439,6 +16501,11 @@
         "F-0287",
         "F-0288",
         "F-0289",
+        "F-0290",
+        "F-0291",
+        "F-0292",
+        "F-0293",
+        "F-0294",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -16978,7 +17045,10 @@
         "B-0571",
         "B-0572",
         "B-0573",
-        "B-0574"
+        "B-0574",
+        "B-0575",
+        "B-0576",
+        "B-0577"
       ],
       "decided": true,
       "evidence": [
@@ -17708,6 +17778,7 @@
       "parent": "E-0002",
       "priority": "need",
       "rank": 14,
+      "reshape": "stale: T-0248 Active for 1d (over 3x its limit), 201 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage": "building 1/7",
       "stage_since": "2026-09-28T05:20:19Z",
@@ -22098,6 +22169,7 @@
     },
     "F-0119": {
       "backlinks": [
+        "F-0293",
         "T-0625"
       ],
       "children": [
@@ -22525,12 +22597,12 @@
       "rank": 107,
       "reshape": "stale: T-0489 Active for 1d (over 3x its limit), 202 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
-      "stage": "building 0/5",
-      "stage_since": "2026-10-06T19:21:25Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-07T22:18:06Z",
       "state": "Active",
       "title": "asf config check/migrate: an old or hand-made product yaml maps onto the schema without a hand rewrite",
       "type": "feature",
-      "updated": "2026-10-06T19:21:25Z"
+      "updated": "2026-10-07T22:18:06Z"
     },
     "F-0130": {
       "backlinks": [],
@@ -22649,8 +22721,8 @@
       "parent": "E-0002",
       "rank": 83,
       "reshape": "stale: T-0647 Active for 1d (over 3x its limit), 202 commits behind the trunk \u2014 re-cut from the current trunk",
-      "reshape_applied": "7e8dbb4f82a0",
-      "reshape_applied_at": "2026-10-03T04:59:44Z",
+      "reshape_applied": "505677d12d60",
+      "reshape_applied_at": "2026-10-07T22:18:12Z",
       "schema_version": 1,
       "stage": "building 3/4",
       "stage_since": "2026-10-06T06:58:28Z",
@@ -25397,6 +25469,8 @@
       "parent": "E-0002",
       "rank": 32,
       "reshape": "stale: T-0591 Active for 1d (over 3x its limit), 201 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape_applied": "20a16fece99a",
+      "reshape_applied_at": "2026-10-07T22:18:13Z",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-10-07T20:41:50Z",
@@ -26214,7 +26288,7 @@
       "id": "F-0226",
       "parent": "E-0004",
       "rank": 62,
-      "reshape": "cut to Tasks 1 and 2",
+      "reshape": "stale: T-0768 Active for 1d (over 3x its limit), 203 commits behind the trunk \u2014 re-cut from the current trunk",
       "reshape_applied": "bc84bd0fa59e",
       "reshape_applied_at": "2026-10-03T06:47:31Z",
       "schema_version": 1,
@@ -28160,7 +28234,9 @@
       "updated": "2026-10-07T22:13:08Z"
     },
     "F-0286": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0292"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -28247,6 +28323,76 @@
       "title": "Cloud correction sessions on a CONFLICTING PR end without a commit; conflict rebases should route local",
       "type": "feature",
       "updated": "2026-10-07T21:34:30Z"
+    },
+    "F-0290": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0290",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T22:18:15Z",
+      "state": "New",
+      "title": "A product tick takes ~50 min (health 25 min, record:file-bugs ~15 min): record lags, upgrade windows miss",
+      "type": "feature",
+      "updated": "2026-10-07T22:18:15Z"
+    },
+    "F-0291": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0291",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T22:18:15Z",
+      "state": "New",
+      "title": "Hardening leftovers: four allowlisted 4-digit id sites, the local heartbeat brief text, proves known= wiring",
+      "type": "feature",
+      "updated": "2026-10-07T22:18:15Z"
+    },
+    "F-0292": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0292",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T22:18:15Z",
+      "state": "New",
+      "title": "Port the old ci-heartbeat watchdog's OOM re-run into asf ci stall-watch so the host script can be retired",
+      "type": "feature",
+      "updated": "2026-10-07T22:18:15Z"
+    },
+    "F-0293": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0293",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T22:18:15Z",
+      "state": "New",
+      "title": "4-digit id patterns remain in core/replan/plan_tasks/lane/ingest; a landed reshape with 5-digit or unreadable headings is ignored and re-planned",
+      "type": "feature",
+      "updated": "2026-10-07T22:18:15Z"
+    },
+    "F-0294": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0294",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T22:18:15Z",
+      "state": "New",
+      "title": "Session leftovers are wip-committed onto batched/land-requested PRs, dropping goal batches; stranded staged record writes block the sync",
+      "type": "feature",
+      "updated": "2026-10-07T22:18:15Z"
     },
     "R-0001": {
       "backlinks": [
@@ -31395,6 +31541,7 @@
     "S-53060": {
       "backlinks": [
         "F-0131",
+        "T-0647",
         "B-0336"
       ],
       "children": [],
@@ -38979,7 +39126,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1631 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1635 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -45653,6 +45800,7 @@
         "T-0239"
       ],
       "backlinks": [
+        "F-0014",
         "F-0279",
         "T-0249",
         "T-0250",
@@ -47506,9 +47654,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #876 OPEN",
-        "branch worker/T-0289",
-        "rule: in-flight"
+        "no evidence found (2026-10-07)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0289",
@@ -47521,11 +47668,11 @@
         "split T-0289 asf | asf/evals | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-06T19:43:48Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T22:18:06Z",
+      "state": "New",
       "title": "`asf/evals/run.py` \u2014 the reading, the exemption, and the loud unrecorded lever",
       "type": "task",
-      "updated": "2026-10-06T20:08:09Z",
+      "updated": "2026-10-07T22:18:06Z",
       "writes": [
         "asf/evals/run.py",
         "asf/evals/adapters.py",
@@ -48538,6 +48685,7 @@
         "T-0432",
         "T-0688",
         "T-0815",
+        "T-0822",
         "B-0199",
         "B-0308"
       ],
@@ -55857,9 +56005,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #874 OPEN",
-        "branch worker/T-0489",
-        "rule: in-flight"
+        "no evidence found (2026-10-07)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0489",
@@ -55868,11 +56015,11 @@
       },
       "parent": "F-0129",
       "schema_version": 1,
-      "stage_since": "2026-10-06T19:21:25Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T22:18:06Z",
+      "state": "New",
       "title": "the schema \u2014 `x-unmapped:` declared, and a shape for `ci:` and `deploy_sha:`",
       "type": "task",
-      "updated": "2026-10-06T21:28:54Z",
+      "updated": "2026-10-07T22:18:06Z",
       "writes": [
         "asf/env.py",
         "docs/products.example.yaml",
@@ -59949,16 +60096,7 @@
       ]
     },
     "T-0591": {
-      "after": [
-        "T-0056",
-        "T-0119",
-        "T-0130",
-        "T-0239",
-        "T-0411",
-        "T-0489",
-        "T-0248",
-        "T-0569"
-      ],
+      "after": [],
       "backlinks": [
         "F-0204",
         "T-0631",
@@ -59995,7 +60133,7 @@
       "folder": "tasks",
       "id": "T-0591",
       "links": {
-        "plan": "docs/plans/f-0204.md"
+        "plan": "docs/plans/replans/f-0204-20a16fece99a.md"
       },
       "parent": "F-0204",
       "schema_version": 1,
@@ -62157,8 +62295,7 @@
         "T-0226"
       ],
       "backlinks": [
-        "T-0646",
-        "T-0647"
+        "T-0646"
       ],
       "children": [],
       "cost": {
@@ -62251,8 +62388,6 @@
     },
     "T-0647": {
       "after": [
-        "T-0645",
-        "T-0506",
         "T-0532"
       ],
       "backlinks": [
@@ -62275,13 +62410,15 @@
       "folder": "tasks",
       "id": "T-0647",
       "links": {
-        "plan": "docs/plans/replans/f-0131-7e8dbb4f82a0.md"
+        "plan": "docs/plans/replans/f-0131-505677d12d60.md"
       },
       "parent": "F-0131",
       "schema_version": 1,
       "stage_since": "2026-10-07T20:08:46Z",
       "state": "New",
-      "stories": [],
+      "stories": [
+        "S-53060"
+      ],
       "title": "a job that times out or loses its runner is finally red in the diagnosis",
       "type": "task",
       "updated": "2026-10-07T22:13:08Z",
@@ -62660,7 +62797,8 @@
         "T-0658",
         "T-0665",
         "T-0688",
-        "B-0531"
+        "B-0531",
+        "B-0577"
       ],
       "children": [],
       "cost": {
@@ -62782,7 +62920,8 @@
         "T-0532"
       ],
       "backlinks": [
-        "F-0277"
+        "F-0277",
+        "F-0293"
       ],
       "children": [],
       "cost": {
@@ -63994,7 +64133,8 @@
         "T-0745",
         "T-0776",
         "T-0797",
-        "T-0815"
+        "T-0815",
+        "T-0822"
       ],
       "children": [],
       "cost": {
@@ -67345,6 +67485,7 @@
         "T-0640"
       ],
       "backlinks": [
+        "F-0226",
         "T-0769",
         "T-0770",
         "T-0775",
@@ -69237,7 +69378,9 @@
         "T-0313",
         "T-0688"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0822"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -69321,7 +69464,8 @@
       "backlinks": [
         "B-0547",
         "B-0550",
-        "B-0560"
+        "B-0560",
+        "B-0576"
       ],
       "children": [],
       "cost": {
@@ -69495,7 +69639,10 @@
     },
     "T-0822": {
       "after": [
-        "T-0819"
+        "T-0819",
+        "T-0313",
+        "T-0688",
+        "T-0815"
       ],
       "backlinks": [],
       "children": [],
@@ -69511,8 +69658,9 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-07)",
-        "rule: planned"
+        "PR #1054 OPEN",
+        "branch worker/T-0822",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0822",
@@ -69521,11 +69669,11 @@
       },
       "parent": "F-0262",
       "schema_version": 1,
-      "stage_since": "2026-10-07T19:21:27Z",
-      "state": "New",
+      "stage_since": "2026-10-07T22:18:06Z",
+      "state": "Active",
       "title": "the citation reaches the record on the ruling's own History line, where rulings.standing reads it back",
       "type": "task",
-      "updated": "2026-10-07T22:13:08Z",
+      "updated": "2026-10-07T22:18:06Z",
       "writes": [
         "asf/tick/step_health.py",
         "tests/test_tick_steps.py"

@@ -1,3 +1,5 @@
+→ F-0294
+
 # Session leftovers are wip-committed onto batched/land-requested PRs, dropping goal batches; stranded staged record writes block the sync
 
 Parent: E-0001

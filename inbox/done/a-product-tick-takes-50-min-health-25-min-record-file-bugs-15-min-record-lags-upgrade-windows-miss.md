@@ -1,4 +1,7 @@
+→ F-0290
+
 # A product tick takes ~50 min (health 25 min, record:file-bugs ~15 min): record lags, upgrade windows miss
+type: feature
 
 Parent: E-0001
 severity: S2
@@ -14,6 +17,3 @@ A botseon tick took 50 min (pid 20126, 08:49–09:39Z on 2026-10-07), so record 
 - `record:file-bugs` stays within 60 s on a record of botseon's size (fixture of about 1,500 items). It does incremental work (only cards or signatures changed since the last pass) with a bounded number of host calls per pass. Tested with a call-count fake.
 - Worktree reaping runs in the background, or is capped per tick (configurable, default 3), so health never blocks on deleting large trees. Tested.
 - One tick of the default step set finishes within `tick.budget_s` (configurable, default 600). A step over its budget logs a watchdog breach naming the step. Tested.
-
-## Question
-This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
