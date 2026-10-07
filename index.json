@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T20:03:35Z",
+  "generated": "2026-10-07T20:12:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -15061,6 +15061,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0558",
@@ -15073,7 +15077,26 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1027@6a34c3725",
       "type": "bug",
-      "updated": "2026-10-07T20:03:24Z"
+      "updated": "2026-10-07T20:08:46Z"
+    },
+    "B-0559": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0559",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0365",
+      "stage_since": "2026-10-07T20:11:55Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0365",
+      "type": "bug",
+      "updated": "2026-10-07T20:11:55Z"
     },
     "D-0001": {
       "backlinks": [
@@ -16577,7 +16600,8 @@
         "B-0555",
         "B-0556",
         "B-0557",
-        "B-0558"
+        "B-0558",
+        "B-0559"
       ],
       "decided": true,
       "evidence": [
@@ -27680,15 +27704,20 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: card"
+      ],
       "folder": "features",
       "id": "F-0287",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage_since": "2026-10-07T20:00:54Z",
+      "stage": "card",
+      "stage_since": "2026-10-07T20:08:46Z",
       "state": "New",
       "title": "A PR is cut into a batch before its review verdict; a later 'changes' verdict launches a correction that pushes onto the batched PR",
       "type": "feature",
-      "updated": "2026-10-07T20:00:54Z"
+      "updated": "2026-10-07T20:08:46Z"
     },
     "R-0001": {
       "backlinks": [
@@ -49974,7 +50003,8 @@
         "T-0362"
       ],
       "backlinks": [
-        "T-0366"
+        "T-0366",
+        "B-0559"
       ],
       "children": [],
       "decided": true,
@@ -61371,9 +61401,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #849 OPEN",
-        "branch worker/T-0647",
-        "rule: in-flight"
+        "no evidence found (2026-10-07)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0647",
@@ -61382,12 +61411,12 @@
       },
       "parent": "F-0131",
       "schema_version": 1,
-      "stage_since": "2026-10-06T10:32:26Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T20:08:46Z",
+      "state": "New",
       "stories": [],
       "title": "a job that times out or loses its runner is finally red in the diagnosis",
       "type": "task",
-      "updated": "2026-10-06T12:12:55Z",
+      "updated": "2026-10-07T20:08:46Z",
       "writes": [
         "asf/scorecard/diagnose.py",
         "tests/test_scorecard.py"
@@ -68374,7 +68403,8 @@
       "updated": "2026-10-07T19:54:21Z",
       "writes": [
         "asf/record/ids.py",
-        "tests/test_record_ids_origin.py"
+        "tests/test_record_ids_origin.py",
+        "tests/test_e2e_lane.py"
       ]
     },
     "T-0818": {
