@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T00:05:11Z",
+  "generated": "2026-10-07T00:13:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1846,6 +1846,7 @@
         "T-0437",
         "T-0538",
         "T-0749",
+        "T-0796",
         "B-0040",
         "B-0061",
         "B-0065",
@@ -8214,23 +8215,28 @@
       "count": 1,
       "decided": true,
       "evidence": [
-        "PR #895 OPEN",
-        "branch fix/B-0294",
-        "rule: fixer"
+        "merge 3d2098e of fix/B-0294 lands B-0294 (PR #895)",
+        "CI green on main at or after it",
+        "rule: fixed"
       ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0294",
+      "landing": {
+        "as_of": "2026-10-07T00:10:22Z",
+        "by": "pr-merge",
+        "sha": "3d2098ee2f1662fcf059e51cdb80b69ca38f762e"
+      },
       "last_filed": "2026-10-06",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S2",
       "signature": "outcome: other",
-      "stage_since": "2026-10-06T21:04:08Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T00:10:22Z",
+      "state": "Resolved",
       "title": "21 % of sessions end \"other\" (threshold 10 %, 85 of 407 in 24h)",
       "type": "bug",
-      "updated": "2026-10-06T23:57:04Z"
+      "updated": "2026-10-07T00:10:22Z"
     },
     "B-0295": {
       "backlinks": [],
@@ -10378,6 +10384,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0385",
@@ -10390,7 +10400,26 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #905@afc3ce2b4",
       "type": "bug",
-      "updated": "2026-10-07T00:05:07Z"
+      "updated": "2026-10-07T00:10:22Z"
+    },
+    "B-0386": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0386",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0097",
+      "stage_since": "2026-10-07T00:13:39Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0097",
+      "type": "bug",
+      "updated": "2026-10-07T00:13:39Z"
     },
     "D-0001": {
       "backlinks": [
@@ -11688,7 +11717,8 @@
         "B-0382",
         "B-0383",
         "B-0384",
-        "B-0385"
+        "B-0385",
+        "B-0386"
       ],
       "decided": true,
       "evidence": [
@@ -15671,7 +15701,8 @@
         "T-0174",
         "T-0175",
         "T-0176",
-        "T-0177"
+        "T-0177",
+        "B-0386"
       ],
       "children": [
         "T-0152",
@@ -20966,7 +20997,10 @@
       "children": [
         "S-53454",
         "S-53455",
-        "S-53456"
+        "S-53456",
+        "T-0794",
+        "T-0795",
+        "T-0796"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -20981,7 +21015,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0239",
+        "plan on origin/main",
         "3/3 stories open: S-53454, S-53455, S-53456",
         "rule: documented"
       ],
@@ -20990,12 +21024,12 @@
       "parent": "E-0002",
       "rank": 35,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-06T20:41:39Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-07T00:10:22Z",
       "state": "Active",
       "title": "Operator ruling at the round cap never lifts a stalemate park (History not in digest)",
       "type": "feature",
-      "updated": "2026-10-06T23:57:04Z"
+      "updated": "2026-10-07T00:10:22Z"
     },
     "F-0240": {
       "backlinks": [],
@@ -24976,7 +25010,8 @@
     },
     "S-53454": {
       "backlinks": [
-        "F-0239"
+        "F-0239",
+        "T-0794"
       ],
       "children": [],
       "evidence": [
@@ -24995,7 +25030,8 @@
     },
     "S-53455": {
       "backlinks": [
-        "F-0239"
+        "F-0239",
+        "T-0796"
       ],
       "children": [],
       "evidence": [
@@ -25014,7 +25050,8 @@
     },
     "S-53456": {
       "backlinks": [
-        "F-0239"
+        "F-0239",
+        "T-0795"
       ],
       "children": [],
       "evidence": [
@@ -29308,7 +29345,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1469 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1472 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -30022,7 +30059,7 @@
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0110",
+        "branch plan/T-0110",
         "rule: in-flight"
       ],
       "folder": "tasks",
@@ -30041,7 +30078,7 @@
       "stories": [],
       "title": "the schema module, and every prose reader it replaces",
       "type": "task",
-      "updated": "2026-10-07T00:02:39Z",
+      "updated": "2026-10-07T00:10:22Z",
       "writes": [
         "asf/workers/report.py",
         "tests/test_report.py",
@@ -39795,7 +39832,8 @@
         "T-0336",
         "T-0337",
         "T-0339",
-        "T-0501"
+        "T-0501",
+        "T-0795"
       ],
       "children": [],
       "decided": true,
@@ -56558,6 +56596,7 @@
     "T-0756": {
       "after": [],
       "backlinks": [
+        "F-0164",
         "T-0757",
         "T-0758"
       ],
@@ -58030,6 +58069,86 @@
         "docs/config.example.yaml",
         "tests/test_session_identity.py",
         "tests/test_surface.py"
+      ]
+    },
+    "T-0794": {
+      "backlinks": [
+        "T-0795",
+        "T-0796"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0794",
+      "links": {
+        "plan": "docs/plans/f-0239.md"
+      },
+      "parent": "F-0239",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T00:10:27Z",
+      "state": "New",
+      "title": "the release an operator can write, and the park that reads it",
+      "type": "task",
+      "updated": "2026-10-07T00:10:27Z",
+      "writes": [
+        "asf/tick/step_wave.py",
+        "asf/workers/unpark.py",
+        "tests/test_hidden_work.py",
+        "tests/test_cli.py"
+      ]
+    },
+    "T-0795": {
+      "after": [
+        "T-0794"
+      ],
+      "backlinks": [
+        "T-0796"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0795",
+      "links": {
+        "plan": "docs/plans/f-0239.md"
+      },
+      "parent": "F-0239",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T00:10:27Z",
+      "state": "New",
+      "title": "the park names the two commands that end it, in the row and in the cell",
+      "type": "task",
+      "updated": "2026-10-07T00:10:27Z",
+      "writes": [
+        "asf/feeder/rows.py",
+        "asf/views/status.py",
+        "tests/test_cli.py",
+        "tests/test_hidden_work.py",
+        "tests/test_relaunch.py"
+      ]
+    },
+    "T-0796": {
+      "after": [
+        "T-0794",
+        "T-0795"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0796",
+      "links": {
+        "plan": "docs/plans/f-0239.md"
+      },
+      "parent": "F-0239",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T00:10:27Z",
+      "state": "New",
+      "title": "a Bug past the attempt limit is judged, not shelved",
+      "type": "task",
+      "updated": "2026-10-07T00:10:27Z",
+      "writes": [
+        "asf/feeder/rows.py",
+        "tests/test_feeder.py"
       ]
     }
   },
