@@ -1,3 +1,5 @@
+→ F-0284
+
 # A CONFLICTING PR gets no CI run; its priority land request shows 'not started' forever instead of triggering a rebase
 
 Parent: E-0001
