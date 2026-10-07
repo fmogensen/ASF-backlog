@@ -19,3 +19,7 @@ Also, a landed reshape plan that the replan reader cannot apply is silently igno
 
 ## Question
 This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
+
+## Two snags from the hand-applied reshape (botseon, 2026-10-07 13:47)
+- [ ] `asf new` leaves an uncommitted card file behind when the pre-commit check refuses the commit (orphan T-51301). On refusal it removes the card and reverts index.json and the parent link lines, leaving the tree clean. Tested.
+- [ ] Plan and reshape bodies cite decision-register entries as bare `D165`/`D43`, and the record check blocks those as malformed ids. The check accepts `D<n>` that resolves to an existing docs/decisions entry, or the applier rewrites it to the record's id form, so a reshape that cites decisions applies cleanly. Tested.
