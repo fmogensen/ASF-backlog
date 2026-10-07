@@ -12,3 +12,6 @@ Seen 2026-10-07 on botseon: #1143 run 37641485608 at head 47be7bdd1 (phantom), a
 - The CI health pass classifies each red run. A phantom (conclusion failure, no failed job, jobs still queued or missing) and a lost runner (failed job with no runner and no failed step) are both infra, never a test red. Tested on fixture run JSON.
 - An infra red on the PR's current head is re-run once automatically (`rerun --failed`, head-matched) and recorded with its class in the cancels/infra ledger. A second infra red on the same head raises one watchdog breach naming the class. Tested.
 - Status and the land-request line show "infra red: re-run queued", not a red check. Tested.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
