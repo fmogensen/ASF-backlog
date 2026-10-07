@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T17:46:48Z",
+  "generated": "2026-10-07T17:56:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -13859,6 +13859,25 @@
       "type": "bug",
       "updated": "2026-10-07T17:43:37Z"
     },
+    "B-0508": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-0508",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0272",
+      "stage_since": "2026-10-07T17:56:16Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0272",
+      "type": "bug",
+      "updated": "2026-10-07T17:56:16Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -15304,7 +15323,8 @@
         "B-0504",
         "B-0505",
         "B-0506",
-        "B-0507"
+        "B-0507",
+        "B-0508"
       ],
       "decided": true,
       "evidence": [
@@ -16848,6 +16868,7 @@
       "parent": "E-0002",
       "priority": "need",
       "rank": 99,
+      "reshape": "stale: T-0192 Active for 1d (over 3x its limit), 203 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage": "building 0/2",
       "stage_since": "2026-09-26T16:45:56Z",
@@ -22015,6 +22036,7 @@
       "id": "F-0160",
       "parent": "E-0002",
       "rank": 11,
+      "reshape": "stale: T-0528 Active for 1d (over 3x its limit), 203 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage": "building 0/1",
       "stage_since": "2026-10-06T08:08:42Z",
@@ -23389,8 +23411,8 @@
       "parent": "E-0004",
       "rank": 61,
       "reshape": "stale: T-0771 Active for 5d (over 3x its limit), 263 commits behind the trunk \u2014 re-cut from the current trunk",
-      "reshape_applied": "bc84bd0fa59e",
-      "reshape_applied_at": "2026-10-03T06:59:53Z",
+      "reshape_applied": "6e7acfed47a3",
+      "reshape_applied_at": "2026-10-07T17:53:00Z",
       "schema_version": 1,
       "stage": "building 2/3",
       "stage_since": "2026-09-30T15:51:19Z",
@@ -25635,6 +25657,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0260",
         "5/5 stories open: S-60904, S-60905, S-60906, S-60907, S-60908",
         "rule: documented"
       ],
@@ -25648,7 +25671,7 @@
       "state": "Active",
       "title": "Groom answers in today's file are not applied by the tick, and a dirty record checkout stalls the sync while 'record ok' is logged",
       "type": "feature",
-      "updated": "2026-10-07T17:14:03Z"
+      "updated": "2026-10-07T17:52:48Z"
     },
     "F-0261": {
       "backlinks": [
@@ -25973,7 +25996,9 @@
       "updated": "2026-10-07T04:47:00Z"
     },
     "F-0272": {
-      "backlinks": [],
+      "backlinks": [
+        "B-0508"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -34384,6 +34409,7 @@
         "T-0061",
         "T-0062",
         "T-0073",
+        "T-0109",
         "T-0119",
         "T-0130",
         "T-0142",
@@ -36053,7 +36079,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1581 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 13d (over 3x its limit), 1585 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -36686,18 +36712,20 @@
     "T-0109": {
       "after": [
         "T-0105",
-        "T-0106"
+        "T-0106",
+        "T-0056"
       ],
       "backlinks": [
         "F-0024",
         "T-0107",
-        "T-0108"
+        "T-0108",
+        "T-0119"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-07)",
-        "rule: planned"
+        "branch worker/T-0109",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0109",
@@ -36709,11 +36737,11 @@
         "merge T-0107+T-0108+T-0109"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-24T00:39:03Z",
-      "state": "New",
+      "stage_since": "2026-10-07T17:52:48Z",
+      "state": "Active",
       "title": "the set is printed, the doctor rows it, a Task cannot declare it, and the config says so",
       "type": "task",
-      "updated": "2026-10-07T00:02:39Z",
+      "updated": "2026-10-07T17:52:48Z",
       "writes": [
         "asf/amendable.py",
         "asf/doctor.py",
@@ -37165,7 +37193,8 @@
       "after": [
         "T-0118",
         "T-0056",
-        "T-0073"
+        "T-0073",
+        "T-0109"
       ],
       "backlinks": [
         "F-0241",
@@ -40265,6 +40294,7 @@
         "T-0190"
       ],
       "backlinks": [
+        "F-0035",
         "T-0427",
         "T-0432",
         "T-0638",
@@ -46613,12 +46643,16 @@
       },
       "decided": true,
       "evidence": [
-        "PR #997 OPEN",
-        "branch worker/T-0336",
-        "rule: in-flight"
+        "merge 12171a2 of worker/T-0336 lands T-0336 (PR #997)",
+        "rule: landed"
       ],
       "folder": "tasks",
       "id": "T-0336",
+      "landing": {
+        "as_of": "2026-10-07T17:52:48Z",
+        "by": "pr-merge",
+        "sha": "12171a22e6c7a3eb4851bdba382afacab0586465"
+      },
       "links": {
         "plan": "docs/plans/f-0064.md"
       },
@@ -46628,11 +46662,11 @@
         "merge T-0333+T-0334+T-0335+T-0336+T-0337+T-0338+T-0339"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-07T16:23:50Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T17:52:48Z",
+      "state": "Resolved",
       "title": "the legacy log parser and `--format legacy-log` are deleted",
       "type": "task",
-      "updated": "2026-10-07T17:37:38Z",
+      "updated": "2026-10-07T17:52:48Z",
       "writes": [
         "asf/metrics/import_sessions.py",
         "asf/conventions.py",
@@ -54341,6 +54375,7 @@
         "T-0496"
       ],
       "backlinks": [
+        "F-0160",
         "F-0279",
         "T-0529",
         "T-0530",
@@ -54350,6 +54385,7 @@
         "T-0688",
         "T-0691",
         "T-0775",
+        "T-0813",
         "B-0238",
         "B-0315"
       ],
@@ -64347,7 +64383,7 @@
       "folder": "tasks",
       "id": "T-0771",
       "links": {
-        "plan": "docs/plans/replans/f-0196-bc84bd0fa59e.md"
+        "plan": "docs/plans/replans/f-0196-6e7acfed47a3.md"
       },
       "parent": "F-0196",
       "schema_version": 1,
@@ -65841,6 +65877,7 @@
       "children": [],
       "decided": true,
       "evidence": [
+        "PR #1011 OPEN",
         "branch worker/T-0810",
         "rule: in-flight"
       ],
@@ -65855,7 +65892,7 @@
       "state": "Active",
       "title": "the vocabulary \u2014 `BY_RULE` beside `RULES`",
       "type": "task",
-      "updated": "2026-10-07T17:43:37Z",
+      "updated": "2026-10-07T17:52:48Z",
       "writes": [
         "asf/groom/shape.py"
       ]
@@ -65896,6 +65933,7 @@
       "children": [],
       "decided": true,
       "evidence": [
+        "PR #1012 OPEN",
         "branch worker/T-0812",
         "rule: in-flight"
       ],
@@ -65910,19 +65948,22 @@
       "state": "Active",
       "title": "the placeholder fix \u2014 an unfilled slot is not an answer",
       "type": "task",
-      "updated": "2026-10-07T17:43:37Z",
+      "updated": "2026-10-07T17:52:48Z",
       "writes": [
         "asf/groom/groom.py",
         "tests/test_groom.py"
       ]
     },
     "T-0813": {
+      "after": [
+        "T-0528"
+      ],
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-07)",
-        "rule: planned"
+        "branch worker/T-0813",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0813",
@@ -65931,11 +65972,11 @@
       },
       "parent": "F-0259",
       "schema_version": 1,
-      "stage_since": "2026-10-07T17:14:18Z",
-      "state": "New",
+      "stage_since": "2026-10-07T17:52:48Z",
+      "state": "Active",
       "title": "the guide",
       "type": "task",
-      "updated": "2026-10-07T17:23:21Z",
+      "updated": "2026-10-07T17:52:48Z",
       "writes": [
         "docs/guide/operating.md"
       ]
@@ -65949,6 +65990,7 @@
       "children": [],
       "decided": true,
       "evidence": [
+        "PR #1013 OPEN",
         "branch worker/T-0814",
         "rule: in-flight"
       ],
@@ -65963,7 +66005,7 @@
       "state": "Active",
       "title": "the block is spent from its own floor \u2014 `next_in_block`, the one branch that calls it, the refusal that says why, and the rule written down",
       "type": "task",
-      "updated": "2026-10-07T17:31:50Z",
+      "updated": "2026-10-07T17:52:48Z",
       "writes": [
         "asf/record/ids.py",
         "docs/guide/product-config.md",
