@@ -23,3 +23,8 @@ This reads as a defect. A Bug carries a signature — add signature: <the failin
 ## Two snags from the hand-applied reshape (botseon, 2026-10-07 13:47)
 - [ ] `asf new` leaves an uncommitted card file behind when the pre-commit check refuses the commit (orphan T-51301). On refusal it removes the card and reverts index.json and the parent link lines, leaving the tree clean. Tested.
 - [ ] Plan and reshape bodies cite decision-register entries as bare `D165`/`D43`, and the record check blocks those as malformed ids. The check accepts `D<n>` that resolves to an existing docs/decisions entry, or the applier rewrites it to the record's id form, so a reshape that cites decisions applies cleanly. Tested.
+
+## No supported way to mark a reshape applied (botseon F-0119, 15:12)
+Replan #1232 (replans/f-0119-4f3bce5eea00.md) landed but couldn't be read: non-Task sections, and T-4733x ids. The operator minted its Tasks by hand, but F-0119 keeps `reshape:` with no `reshape_applied`, so every Task under it reads "WAITS ON replan F-0119". Neither `reshape` nor `reshape_applied` is settable (asf/record/new.py SETTABLE), so no CLI marks a reshape carried out. Added acceptance:
+- [ ] `asf replan --mark-applied <fid> --why <text>` (or `asf set <fid> reshape_applied=current`) writes `reshape_applied: <digest of the current reshape>` plus `reshape_applied_at`, with a History line, and the waits clear on the next pass. Tested.
+- [ ] Replan sections other than Task, new or Drop are ignored with a note, never failing the whole file. Tested.
