@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T15:33:34Z",
+  "generated": "2026-10-07T15:39:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -13721,6 +13721,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0502",
@@ -13733,13 +13737,17 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0336",
       "type": "bug",
-      "updated": "2026-10-07T15:33:17Z"
+      "updated": "2026-10-07T15:34:02Z"
     },
     "B-0503": {
       "backlinks": [],
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0503",
@@ -13752,7 +13760,26 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0798",
       "type": "bug",
-      "updated": "2026-10-07T15:33:17Z"
+      "updated": "2026-10-07T15:34:02Z"
+    },
+    "B-0504": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-0504",
+      "last_filed": "2026-10-07",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "repeat: T-0315: dead pid",
+      "stage_since": "2026-10-07T15:38:33Z",
+      "state": "New",
+      "title": "T-0315 has ended \"dead pid\" 2 times in 24h",
+      "type": "bug",
+      "updated": "2026-10-07T15:38:33Z"
     },
     "D-0001": {
       "backlinks": [
@@ -15189,7 +15216,8 @@
         "B-0500",
         "B-0501",
         "B-0502",
-        "B-0503"
+        "B-0503",
+        "B-0504"
       ],
       "decided": true,
       "evidence": [
@@ -15199,12 +15227,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 1955.49,
+      "spend_usd": 1957.8,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-07T13:51:06Z"
+      "updated": "2026-10-07T15:38:59Z"
     },
     "E-0002": {
       "backlinks": [
@@ -15325,12 +15353,12 @@
       "id": "E-0002",
       "rank": 2,
       "schema_version": 1,
-      "spend_usd": 1464.95,
+      "spend_usd": 1480.16,
       "stage_since": "2026-09-23T17:40:51Z",
       "state": "Active",
       "title": "ASF 0.2 \u2014 self-improvement",
       "type": "epic",
-      "updated": "2026-10-07T14:52:32Z"
+      "updated": "2026-10-07T15:38:59Z"
     },
     "E-0003": {
       "backlinks": [
@@ -25524,8 +25552,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 28,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "tokens_cache_read": 2164953,
+        "tokens_cache_write": 71252,
+        "tokens_input": 84,
+        "tokens_output": 20439,
+        "usd": 2.31
       },
       "decided": true,
       "evidence": [
@@ -25542,7 +25574,7 @@
       "state": "Active",
       "title": "A job's claimed BACKLOG_ID_RANGE for Story ids goes exhausted before use once the record's id tip passes its hi",
       "type": "feature",
-      "updated": "2026-10-07T15:29:11Z"
+      "updated": "2026-10-07T15:38:59Z"
     },
     "F-0262": {
       "backlinks": [],
@@ -25572,6 +25604,12 @@
     "F-0263": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 2,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "spec on origin/main",
@@ -25586,7 +25624,7 @@
       "state": "Active",
       "title": "asf reslot <item>: retire a wedged item and carry its branch into a fresh sibling in one step",
       "type": "feature",
-      "updated": "2026-10-07T15:19:51Z"
+      "updated": "2026-10-07T15:38:59Z"
     },
     "F-0264": {
       "backlinks": [],
@@ -45027,13 +45065,14 @@
         "T-0248"
       ],
       "backlinks": [
-        "T-0665"
+        "T-0665",
+        "B-0504"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 2,
+        "runner_min": 28,
+        "sessions": 3,
         "tokens_cache_read": 8364275,
         "tokens_cache_write": 127880,
         "tokens_input": 172,
@@ -45057,7 +45096,7 @@
       "state": "Active",
       "title": "the doctor's `credentials` row",
       "type": "task",
-      "updated": "2026-10-07T15:02:16Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -50637,7 +50676,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 2,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -50665,7 +50704,7 @@
       "stories": [],
       "title": "`asf move` \u2014 the selection, the all-or-nothing round-trip, `--remove`, `--to` and the deduped import",
       "type": "task",
-      "updated": "2026-10-07T14:52:32Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/record/move.py",
         "asf/record/setfield.py",
@@ -55411,6 +55450,16 @@
         "B-0501"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 28,
+        "sessions": 1,
+        "tokens_cache_read": 1062755,
+        "tokens_cache_write": 5730,
+        "tokens_input": 8,
+        "tokens_output": 1724,
+        "usd": 6.89
+      },
       "decided": true,
       "evidence": [
         "PR #988 OPEN",
@@ -55428,7 +55477,7 @@
       "state": "Active",
       "title": "the product declares its references \u2014 one declared key, one per-entry checker, one resolved property, and the example that documents it",
       "type": "task",
-      "updated": "2026-10-07T15:19:51Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/env.py",
         "docs/products.example.yaml",
@@ -59011,6 +59060,16 @@
         "F-0277"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 23,
+        "sessions": 2,
+        "tokens_cache_read": 3849423,
+        "tokens_cache_write": 15023,
+        "tokens_input": 30,
+        "tokens_output": 9621,
+        "usd": 8.32
+      },
       "decided": true,
       "evidence": [
         "PR #986 OPEN",
@@ -59029,7 +59088,7 @@
       "stories": [],
       "title": "one `git status` per worktree per version of that worktree, and the mid-pass commit is still seen",
       "type": "task",
-      "updated": "2026-10-07T15:02:16Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -64588,7 +64647,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 26,
+        "runner_min": 75,
         "sessions": 2,
         "usd": null
       },
@@ -64614,7 +64673,7 @@
       "state": "Closed",
       "title": "the park names the two commands that end it, in the row and in the cell",
       "type": "task",
-      "updated": "2026-10-07T15:02:16Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/views/status.py",
@@ -64666,7 +64725,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 22,
+        "runner_min": 48,
         "sessions": 2,
         "usd": null
       },
@@ -64692,7 +64751,7 @@
       "state": "Closed",
       "title": "a factory prefix stops being enough",
       "type": "task",
-      "updated": "2026-10-07T15:29:11Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/conventions.py",
         "asf/factory_only.py",
@@ -64913,8 +64972,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 30,
-        "sessions": 1,
+        "runner_min": 50,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -64939,7 +64998,7 @@
       "state": "Closed",
       "title": "the refusal travels with the evidence",
       "type": "task",
-      "updated": "2026-10-07T15:29:11Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/evidence/evidence.py",
         "tests/test_evidence.py"
@@ -64957,8 +65016,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 1,
+        "runner_min": 52,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -64983,7 +65042,7 @@
       "state": "Closed",
       "title": "the record reports the refused claim, while the Story is Active, and ticks nothing",
       "type": "task",
-      "updated": "2026-10-07T15:29:11Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_no_test_no_done.py",
@@ -65001,8 +65060,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 1,
+        "runner_min": 25,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -65022,7 +65081,7 @@
       "state": "Active",
       "title": "the pull request says which lines are not proved",
       "type": "task",
-      "updated": "2026-10-07T14:53:58Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py"
@@ -65040,7 +65099,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 4,
-        "sessions": 2,
+        "sessions": 3,
         "usd": null
       },
       "decided": true,
@@ -65060,7 +65119,7 @@
       "state": "Active",
       "title": "the readers the brief states and the check enforces, in one function each",
       "type": "task",
-      "updated": "2026-10-07T14:52:32Z",
+      "updated": "2026-10-07T15:38:59Z",
       "writes": [
         "asf/reservations.py",
         "tests/test_reservations.py"
