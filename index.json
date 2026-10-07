@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T11:43:40Z",
+  "generated": "2026-10-07T11:50:10Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -12797,6 +12797,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0464",
@@ -12809,7 +12813,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0258",
       "type": "bug",
-      "updated": "2026-10-07T11:43:26Z"
+      "updated": "2026-10-07T11:48:55Z"
     },
     "D-0001": {
       "backlinks": [
@@ -13776,6 +13780,7 @@
         "F-0280",
         "F-0281",
         "F-0282",
+        "F-0283",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -16062,7 +16067,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/4 tasks Closed",
+        "2/4 tasks Closed",
         "8/8 stories open: S-56054, S-56055, S-56056, S-56058, S-56059, S-56061, S-56062, S-56063",
         "rule: documented"
       ],
@@ -16073,12 +16078,12 @@
       "priority": "need",
       "rank": 77,
       "schema_version": 1,
-      "stage": "building 1/4",
-      "stage_since": "2026-10-07T04:38:16Z",
+      "stage": "building 2/4",
+      "stage_since": "2026-10-07T11:48:55Z",
       "state": "Active",
       "title": "Credentials as a rule: a daily check that every signed-in tool is valid for three more days",
       "type": "feature",
-      "updated": "2026-10-07T04:38:16Z"
+      "updated": "2026-10-07T11:48:55Z"
     },
     "F-0043": {
       "area": "factory",
@@ -24728,6 +24733,7 @@
     "F-0273": {
       "backlinks": [
         "F-0281",
+        "F-0283",
         "B-0433"
       ],
       "children": [],
@@ -24903,29 +24909,53 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: card"
+      ],
       "folder": "features",
       "id": "F-0281",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage_since": "2026-10-07T11:39:02Z",
+      "stage": "card",
+      "stage_since": "2026-10-07T11:48:55Z",
       "state": "New",
       "title": "A test's git identity (Test <test@example.com>) leaked into a real record repo; tests must never git config outside temp fixtures",
       "type": "feature",
-      "updated": "2026-10-07T11:39:02Z"
+      "updated": "2026-10-07T11:48:55Z"
     },
     "F-0282": {
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: card"
+      ],
       "folder": "features",
       "id": "F-0282",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage_since": "2026-10-07T11:39:02Z",
+      "stage": "card",
+      "stage_since": "2026-10-07T11:48:55Z",
       "state": "New",
       "title": "a record write from a stale checkout deletes unrelated cards (a story mint deleted a filed S1 inbox card)",
       "type": "feature",
-      "updated": "2026-10-07T11:39:02Z"
+      "updated": "2026-10-07T11:48:55Z"
+    },
+    "F-0283": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0283",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T11:49:31Z",
+      "state": "New",
+      "title": "product git hooks exec the global unpinned asf (v0.1.106), so pre-commit/pre-push never run the product's pinned build",
+      "type": "feature",
+      "updated": "2026-10-07T11:49:31Z"
     },
     "R-0001": {
       "backlinks": [
@@ -43462,12 +43492,17 @@
       },
       "decided": true,
       "evidence": [
-        "PR #878 OPEN",
-        "branch worker/T-0312",
-        "rule: in-flight"
+        "merge c78f2d1 of worker/T-0312 lands T-0312 (PR #878)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0312",
+      "landing": {
+        "as_of": "2026-10-07T11:48:55Z",
+        "by": "pr-merge",
+        "sha": "c78f2d160b431c614f8c515daa9550ede8d38e4c"
+      },
       "links": {
         "plan": "docs/plans/f-0042.md"
       },
@@ -43477,11 +43512,11 @@
         "split T-0312 asf | asf/views | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-06T16:57:29Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T11:48:55Z",
+      "state": "Closed",
       "title": "`asf credentials check` \u2014 the cache, the CREDENTIALS table, `--json`, and `--quiet` as the rule contract",
       "type": "task",
-      "updated": "2026-10-07T11:32:44Z",
+      "updated": "2026-10-07T11:48:55Z",
       "writes": [
         "asf/credentials.py",
         "asf/cli.py",
