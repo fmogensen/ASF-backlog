@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T21:49:50Z",
+  "generated": "2026-10-07T21:59:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -14,6 +14,7 @@
         "T-0235",
         "T-0237",
         "T-0487",
+        "T-0831",
         "B-0020",
         "B-0027",
         "B-0030",
@@ -17532,6 +17533,9 @@
         "T-0236",
         "T-0237",
         "T-0238",
+        "T-0830",
+        "T-0831",
+        "T-0832",
         "B-0020"
       ],
       "cost": {
@@ -17558,6 +17562,8 @@
       "priority": "need",
       "rank": 10,
       "reshape": "stale: T-0233 Active for 1d (over 3x its limit), 201 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape_applied": "ea3bae1048bd",
+      "reshape_applied_at": "2026-10-07T21:56:15Z",
       "schema_version": 1,
       "stage": "building 2/4",
       "stage_since": "2026-09-27T09:58:35Z",
@@ -19216,12 +19222,12 @@
       "priority": "need",
       "rank": 136,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-28T07:55:00Z",
+      "stage": "building 0/7",
+      "stage_since": "2026-10-07T21:55:48Z",
       "state": "Active",
       "title": "The production verification probe: a real customer journey after every deploy",
       "type": "feature",
-      "updated": "2026-09-29T13:00:07Z"
+      "updated": "2026-10-07T21:55:48Z"
     },
     "F-0052": {
       "area": "factory",
@@ -20032,7 +20038,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "4/7 tasks Closed",
+        "5/7 tasks Closed",
         "7/7 stories open: S-53556, S-53557, S-53558, S-53559, S-53560, S-53561, S-53562",
         "rule: documented"
       ],
@@ -20045,12 +20051,12 @@
       "reshape_applied": "cf8d63721a07",
       "reshape_applied_at": "2026-09-29T15:45:10Z",
       "schema_version": 1,
-      "stage": "building 4/7",
-      "stage_since": "2026-10-06T17:44:24Z",
+      "stage": "building 5/7",
+      "stage_since": "2026-10-07T21:55:48Z",
       "state": "Active",
       "title": "Security checks by code: a review pass on sensitive paths, secret and dependency scanning as rules",
       "type": "feature",
-      "updated": "2026-10-06T23:28:48Z"
+      "updated": "2026-10-07T21:55:48Z"
     },
     "F-0070": {
       "area": "ci",
@@ -20104,7 +20110,8 @@
       "area": "factory",
       "backlinks": [
         "F-0073",
-        "T-0235"
+        "T-0235",
+        "T-0831"
       ],
       "children": [
         "S-0003"
@@ -28061,20 +28068,20 @@
       },
       "decided": false,
       "evidence": [
-        "PR #1048 OPEN",
-        "branch fix/F-0282-record-integrity",
-        "rule: card"
+        "merge f89da6b of fix/F-0282-record-integrity lands F-0282 (PR #1048)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "features",
       "id": "F-0282",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-10-07T11:48:55Z",
-      "state": "New",
+      "stage": "landed",
+      "stage_since": "2026-10-07T21:55:48Z",
+      "state": "Closed",
       "title": "a record write from a stale checkout deletes unrelated cards (a story mint deleted a filed S1 inbox card)",
       "type": "feature",
-      "updated": "2026-10-07T21:39:30Z"
+      "updated": "2026-10-07T21:55:48Z"
     },
     "F-0283": {
       "backlinks": [],
@@ -28137,7 +28144,7 @@
       },
       "decided": false,
       "evidence": [
-        "commit 73d7a2a names F-0285",
+        "merge 73d7a2a of fix/F-0285-ids-parsing lands F-0285 (PR #1046)",
         "CI green on main at or after it",
         "rule: landed-green"
       ],
@@ -28150,7 +28157,7 @@
       "state": "Closed",
       "title": "Specs/plans and Proves lines cite Story ids that were never minted (cloud spec sessions can't reach the record)",
       "type": "feature",
-      "updated": "2026-10-07T21:46:09Z"
+      "updated": "2026-10-07T21:55:48Z"
     },
     "F-0286": {
       "backlinks": [],
@@ -30689,10 +30696,12 @@
       "area": "factory",
       "backlinks": [
         "F-0010",
-        "T-0233",
         "T-0234",
         "T-0235",
-        "T-0238"
+        "T-0238",
+        "T-0830",
+        "T-0831",
+        "T-0832"
       ],
       "blocked": true,
       "blockedBy": [
@@ -35288,6 +35297,7 @@
     "T-0007": {
       "backlinks": [
         "T-0234",
+        "T-0830",
         "B-0067",
         "B-0076"
       ],
@@ -37165,6 +37175,7 @@
         "T-0313",
         "T-0336",
         "T-0365",
+        "T-0368",
         "T-0411",
         "T-0431",
         "T-0432",
@@ -38820,7 +38831,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1626 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1629 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -39462,6 +39473,7 @@
         "T-0108",
         "T-0119",
         "T-0239",
+        "T-0368",
         "T-0631",
         "T-0657"
       ],
@@ -39964,6 +39976,7 @@
         "T-0332",
         "T-0336",
         "T-0346",
+        "T-0368",
         "T-0411",
         "T-0431",
         "T-0489",
@@ -40431,6 +40444,7 @@
         "T-0332",
         "T-0336",
         "T-0346",
+        "T-0368",
         "T-0411",
         "T-0431",
         "T-0489",
@@ -43526,6 +43540,7 @@
       "backlinks": [
         "F-0103",
         "T-0226",
+        "T-0275",
         "T-0313",
         "T-0332",
         "T-0336",
@@ -44754,7 +44769,8 @@
     "T-0232": {
       "backlinks": [
         "T-0233",
-        "T-0236"
+        "T-0236",
+        "T-0832"
       ],
       "children": [],
       "cost": {
@@ -44794,11 +44810,7 @@
     },
     "T-0233": {
       "after": [
-        "T-0232",
-        "T-0056",
-        "T-0189",
-        "T-0226",
-        "T-0231"
+        "T-0232"
       ],
       "backlinks": [
         "F-0010",
@@ -44822,6 +44834,8 @@
         "T-0663",
         "T-0768",
         "T-0775",
+        "T-0830",
+        "T-0832",
         "B-0239",
         "B-0261",
         "B-0265",
@@ -44846,7 +44860,7 @@
       "folder": "tasks",
       "id": "T-0233",
       "links": {
-        "plan": "docs/plans/f-0010.md"
+        "plan": "docs/plans/replans/f-0010-ea3bae1048bd.md"
       },
       "merged": [
         "T-0234",
@@ -44861,25 +44875,16 @@
       "schema_version": 1,
       "stage_since": "2026-10-07T20:55:26Z",
       "state": "New",
-      "stories": [
-        "S-0002"
-      ],
+      "stories": [],
       "title": "every host read of the evidence pass goes behind the seam",
       "type": "task",
       "updated": "2026-10-07T21:39:30Z",
       "writes": [
         "asf/evidence/evidence.py",
+        "asf/evidence/sources.py",
         "asf/cli.py",
         "tests/test_evidence.py",
-        "tests/test_evidence_sources.py",
-        "asf/record/ingest.py",
-        "tests/test_ingest.py",
-        "tests/test_feeder.py",
-        "asf/schema.py",
-        "asf/feeder/render.py",
-        "sample/backlog/**",
-        "tests/test_schema_version.py",
-        "tests/fixtures/evidence/live/**"
+        "tests/test_evidence_sources.py"
       ]
     },
     "T-0234": {
@@ -44929,7 +44934,6 @@
       ],
       "backlinks": [
         "T-0233",
-        "T-0237",
         "T-0238"
       ],
       "children": [],
@@ -44971,7 +44975,9 @@
       "after": [
         "T-0232"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0832"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -45012,9 +45018,11 @@
     },
     "T-0237": {
       "after": [
-        "T-0235"
+        "T-0831"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-0832"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -45030,7 +45038,7 @@
       "folder": "tasks",
       "id": "T-0237",
       "links": {
-        "plan": "docs/plans/f-0010.md"
+        "plan": "docs/plans/replans/f-0010-ea3bae1048bd.md"
       },
       "parent": "F-0010",
       "reshape_declined": [
@@ -45039,6 +45047,7 @@
       "schema_version": 1,
       "stage_since": "2026-09-27T03:59:03Z",
       "state": "New",
+      "stories": [],
       "title": "the sample product, end to end, with no host at all",
       "type": "task",
       "updated": "2026-10-07T21:39:30Z",
@@ -46711,7 +46720,8 @@
         "T-0130",
         "T-0163",
         "T-0189",
-        "T-0233"
+        "T-0233",
+        "T-0203"
       ],
       "backlinks": [
         "F-0060",
@@ -50675,12 +50685,17 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1045 OPEN",
-        "branch worker/T-0365",
-        "rule: in-flight"
+        "merge a79edff of worker/T-0365 lands T-0365 (PR #1045)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0365",
+      "landing": {
+        "as_of": "2026-10-07T21:55:48Z",
+        "by": "pr-merge",
+        "sha": "a79edff69ccc3e253a77694e51db59d63b5693f6"
+      },
       "links": {
         "plan": "docs/plans/replans/f-0069-cf8d63721a07.md"
       },
@@ -50689,12 +50704,12 @@
         "split T-0365 asf | asf/security | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-07T20:14:26Z",
-      "state": "Active",
+      "stage_since": "2026-10-07T21:55:48Z",
+      "state": "Closed",
       "stories": [],
       "title": "`asf security alerts --check` \u2014 one parser, one subcommand, the `--check` contract",
       "type": "task",
-      "updated": "2026-10-07T21:39:30Z",
+      "updated": "2026-10-07T21:55:48Z",
       "writes": [
         "asf/cli.py",
         "asf/security/cmd.py",
@@ -50776,17 +50791,24 @@
       ]
     },
     "T-0368": {
+      "after": [
+        "T-0056",
+        "T-0109",
+        "T-0119",
+        "T-0130"
+      ],
       "backlinks": [
         "T-0369",
         "T-0370",
         "T-0371",
-        "T-0372"
+        "T-0372",
+        "T-0489"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-07)",
-        "rule: planned"
+        "branch worker/T-0368",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0368",
@@ -50798,11 +50820,11 @@
         "split T-0368 asf | asf/probe | docs | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-28T07:55:01Z",
-      "state": "New",
+      "stage_since": "2026-10-07T21:55:48Z",
+      "state": "Active",
       "title": "the `probe:` block \u2014 validated, defaulted, documented, and off when unset",
       "type": "task",
-      "updated": "2026-10-07T00:02:39Z",
+      "updated": "2026-10-07T21:55:48Z",
       "writes": [
         "asf/probe/__init__.py",
         "asf/probe/config.py",
@@ -55654,7 +55676,8 @@
         "T-0130",
         "T-0239",
         "T-0411",
-        "T-0431"
+        "T-0431",
+        "T-0368"
       ],
       "backlinks": [
         "T-0490",
@@ -69576,6 +69599,97 @@
       "updated": "2026-10-07T20:41:50Z",
       "writes": [
         "tests/test_dead_reason.py"
+      ]
+    },
+    "T-0830": {
+      "after": [
+        "T-0233"
+      ],
+      "backlinks": [
+        "T-0831"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0830",
+      "links": {
+        "plan": "docs/plans/replans/f-0010-ea3bae1048bd.md"
+      },
+      "parent": "F-0010",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T21:56:13Z",
+      "state": "New",
+      "stories": [
+        "S-0002"
+      ],
+      "title": "`mergeable` reaches the row that was written for it",
+      "type": "task",
+      "updated": "2026-10-07T21:56:13Z",
+      "writes": [
+        "asf/evidence/evidence.py",
+        "asf/record/ingest.py",
+        "tests/test_evidence.py",
+        "tests/test_ingest.py",
+        "tests/test_feeder.py"
+      ]
+    },
+    "T-0831": {
+      "after": [
+        "T-0830"
+      ],
+      "backlinks": [
+        "T-0237",
+        "T-0832"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0831",
+      "links": {
+        "plan": "docs/plans/replans/f-0010-ea3bae1048bd.md"
+      },
+      "parent": "F-0010",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T21:56:13Z",
+      "state": "New",
+      "stories": [
+        "S-0002"
+      ],
+      "title": "`opened` does not move, and the S1 clock runs from it",
+      "type": "task",
+      "updated": "2026-10-07T21:56:13Z",
+      "writes": [
+        "asf/record/ingest.py",
+        "asf/schema.py",
+        "asf/feeder/render.py",
+        "sample/backlog/**",
+        "tests/test_ingest.py",
+        "tests/test_schema_version.py",
+        "tests/test_feeder.py"
+      ]
+    },
+    "T-0832": {
+      "after": [
+        "T-0831"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-0832",
+      "links": {
+        "plan": "docs/plans/replans/f-0010-ea3bae1048bd.md"
+      },
+      "parent": "F-0010",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T21:56:14Z",
+      "state": "New",
+      "title": "the redacted live snapshot derives the same machine block, offline",
+      "type": "task",
+      "updated": "2026-10-07T21:56:14Z",
+      "writes": [
+        "tests/fixtures/evidence/live/**",
+        "tests/test_evidence.py"
       ]
     }
   }
