@@ -10,3 +10,7 @@ The CI-box stall watchdog (ci-heartbeat, mode=act) cancels a running job's whole
 - A stall-cancelled run on a PR's current head is re-run once automatically (head-matched). A second stall on the same head breaches the watchdog and is not cancelled again. Tested.
 - The stall rule acts only when the job is both silent and idle (cpu below a configurable floor). A job past its max but still busy gets a warning line, not a cancel. The max comes from the job's measured p95 baseline times a configurable factor, with a floor. Tested.
 - For a land-requested or priority PR, the stall act defers to a warning unless silence exceeds a larger configurable limit. Tested.
+
+## Interim (2026-10-07 21:5x)
+The max table is the hand-kept ~/.ASF/state/ci-heartbeat/job-max.json, built from baselines of 10-01..04 that nothing refreshes. gate-tests (hetzner) was raised by hand from 1183 s to 1800 s; a backup sits beside it. Acceptance adds:
+- [ ] job-max is derived from the live runner baseline (asf ci baseline, p95 times a factor) and refreshed daily. No hand-kept table. Tested.
