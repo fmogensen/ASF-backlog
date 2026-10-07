@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T19:34:53Z",
+  "generated": "2026-10-07T19:42:59Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -15890,6 +15890,7 @@
         "F-0283",
         "F-0284",
         "F-0285",
+        "F-0286",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -23162,7 +23163,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/1 tasks Closed",
+        "0/3 tasks Closed",
         "4/4 stories open: S-52254, S-52255, S-52256, S-52257",
         "rule: documented"
       ],
@@ -23179,7 +23180,7 @@
       "state": "Active",
       "title": "Health records a session ended at its first result while the process keeps working",
       "type": "feature",
-      "updated": "2026-10-07T19:26:53Z"
+      "updated": "2026-10-07T19:40:30Z"
     },
     "F-0161": {
       "backlinks": [],
@@ -25270,12 +25271,12 @@
       "parent": "E-0004",
       "rank": 15,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-09-30T15:17:51Z",
+      "stage": "building 0/1",
+      "stage_since": "2026-10-07T19:40:30Z",
       "state": "Active",
       "title": "Loop guard parks on the head read before the same tick's publish",
       "type": "feature",
-      "updated": "2026-10-03T04:33:11Z"
+      "updated": "2026-10-07T19:40:30Z"
     },
     "F-0218": {
       "backlinks": [
@@ -27472,6 +27473,20 @@
       "title": "Specs/plans and Proves lines cite Story ids that were never minted (cloud spec sessions can't reach the record)",
       "type": "feature",
       "updated": "2026-10-07T18:12:31Z"
+    },
+    "F-0286": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0286",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-07T19:40:56Z",
+      "state": "New",
+      "title": "ci-heartbeat stall-cancels busy jobs without logging to ci-cancels.json or re-running; it cancelled a priority land-requested PR",
+      "type": "feature",
+      "updated": "2026-10-07T19:40:56Z"
     },
     "R-0001": {
       "backlinks": [
@@ -39505,6 +39520,7 @@
         "T-0691",
         "T-0728",
         "T-0745",
+        "T-0776",
         "T-0794",
         "T-0797",
         "T-0802"
@@ -41036,7 +41052,8 @@
         "T-0671",
         "T-0688",
         "T-0691",
-        "T-0719"
+        "T-0719",
+        "T-0776"
       ],
       "children": [],
       "cost": {
@@ -56377,6 +56394,7 @@
         "T-0660",
         "T-0683",
         "T-0691",
+        "T-0776",
         "B-0253"
       ],
       "children": [],
@@ -59511,7 +59529,8 @@
         "F-0242",
         "T-0611",
         "T-0640",
-        "T-0768"
+        "T-0768",
+        "T-0776"
       ],
       "children": [],
       "cost": {
@@ -60714,7 +60733,8 @@
         "T-0610"
       ],
       "backlinks": [
-        "T-0768"
+        "T-0768",
+        "T-0776"
       ],
       "children": [],
       "cost": {
@@ -62755,6 +62775,7 @@
         "T-0690",
         "T-0700",
         "T-0745",
+        "T-0776",
         "T-0797"
       ],
       "children": [],
@@ -66417,14 +66438,22 @@
       ]
     },
     "T-0776": {
+      "after": [
+        "T-0130",
+        "T-0166",
+        "T-0532",
+        "T-0610",
+        "T-0640",
+        "T-0688"
+      ],
       "backlinks": [
         "T-0777"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-07)",
-        "rule: planned"
+        "branch worker/T-0776",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0776",
@@ -66436,11 +66465,11 @@
       ],
       "parent": "F-0217",
       "schema_version": 1,
-      "stage_since": "2026-09-30T15:17:52Z",
-      "state": "New",
+      "stage_since": "2026-10-07T19:40:30Z",
+      "state": "Active",
       "title": "a factory publish is recorded on the run it belongs to, and the loop guard counts it",
       "type": "task",
-      "updated": "2026-10-07T00:02:39Z",
+      "updated": "2026-10-07T19:40:30Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -68181,6 +68210,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0823",
       "links": {
@@ -68192,7 +68225,7 @@
       "state": "New",
       "title": "a live pid is never judged \u2014 the rule, and the two call sites that guard does not survive",
       "type": "task",
-      "updated": "2026-10-07T19:33:04Z",
+      "updated": "2026-10-07T19:40:30Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/workers/health.py",
@@ -68207,6 +68240,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-07)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-0824",
       "links": {
@@ -68218,7 +68255,7 @@
       "state": "New",
       "title": "a live run with a result stops being invisible, and the prose stops stating the old rule",
       "type": "task",
-      "updated": "2026-10-07T19:33:04Z",
+      "updated": "2026-10-07T19:40:30Z",
       "writes": [
         "asf/workers/stall.py",
         "asf/tick/step_health.py",
