@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T15:37:34Z",
+  "generated": "2026-10-08T15:44:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17726,6 +17726,25 @@
       "type": "bug",
       "updated": "2026-10-08T15:21:14Z"
     },
+    "B-80650": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-80650",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0312",
+      "stage_since": "2026-10-08T15:44:31Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0312",
+      "type": "bug",
+      "updated": "2026-10-08T15:44:31Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -19350,7 +19369,8 @@
         "B-79745",
         "B-80447",
         "B-80548",
-        "B-80549"
+        "B-80549",
+        "B-80650"
       ],
       "decided": true,
       "evidence": [
@@ -31542,6 +31562,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/7 tasks Closed",
         "5/5 stories open: S-79604, S-79605, S-79606, S-79607, S-79608",
         "rule: documented"
       ],
@@ -31556,7 +31577,7 @@
       "state": "Active",
       "title": "Release rehearsal: every main push runs the CLI and hooks end to end on a real-record snapshot before a version can be offered",
       "type": "feature",
-      "updated": "2026-10-08T15:37:30Z"
+      "updated": "2026-10-08T15:42:55Z"
     },
     "F-0307": {
       "backlinks": [
@@ -31648,7 +31669,9 @@
       "updated": "2026-10-08T12:44:07Z"
     },
     "F-0312": {
-      "backlinks": [],
+      "backlinks": [
+        "B-80650"
+      ],
       "children": [
         "S-80454",
         "S-80455",
@@ -77458,6 +77481,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-80572",
       "links": {
@@ -77472,7 +77499,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-08T15:34:07Z",
+      "updated": "2026-10-08T15:42:55Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -77493,6 +77520,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-80573",
       "links": {
@@ -77507,7 +77538,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-08T15:34:11Z",
+      "updated": "2026-10-08T15:42:55Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -77523,6 +77554,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-80574",
       "links": {
@@ -77537,7 +77572,7 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-08T15:34:15Z",
+      "updated": "2026-10-08T15:42:55Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_record.py",
@@ -77553,6 +77588,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-80575",
       "links": {
@@ -77567,7 +77606,7 @@
       ],
       "title": "the `tags` act \u2014 every version reader over annotated tags",
       "type": "task",
-      "updated": "2026-10-08T15:34:18Z",
+      "updated": "2026-10-08T15:42:55Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_tags.py"
@@ -77579,6 +77618,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-80576",
       "links": {
@@ -77593,7 +77636,7 @@
       ],
       "title": "the criterion \u2014 the rehearsal in both gates, with its own step lookup",
       "type": "task",
-      "updated": "2026-10-08T15:34:22Z",
+      "updated": "2026-10-08T15:42:55Z",
       "writes": [
         "asf/release.py",
         "asf/release_preview.py",
@@ -77611,6 +77654,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-80577",
       "links": {
@@ -77625,7 +77672,7 @@
       ],
       "title": "the edge \u2014 the `rehearsal` job and the two `needs:` lines",
       "type": "task",
-      "updated": "2026-10-08T15:34:25Z",
+      "updated": "2026-10-08T15:42:55Z",
       "writes": [
         ".github/workflows/release.yml",
         "tests/test_version.py"
@@ -77640,6 +77687,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-80578",
       "links": {
@@ -77654,7 +77705,7 @@
       ],
       "title": "the gate bites \u2014 one line out, on a trunk where the rehearsal is already green",
       "type": "task",
-      "updated": "2026-10-08T15:34:29Z",
+      "updated": "2026-10-08T15:42:55Z",
       "writes": [
         ".github/workflows/release.yml"
       ]
