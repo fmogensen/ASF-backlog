@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T02:10:53Z",
+  "generated": "2026-10-08T02:20:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16078,6 +16078,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-70500",
@@ -16090,13 +16094,17 @@
       "state": "New",
       "title": "F-0226 has ended \"dead pid\" 2 times in 24h",
       "type": "bug",
-      "updated": "2026-10-08T02:10:38Z"
+      "updated": "2026-10-08T02:16:14Z"
     },
     "B-70501": {
       "backlinks": [],
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-70501",
@@ -16109,7 +16117,45 @@
       "state": "New",
       "title": "T-0651 has ended \"dead pid\" 2 times in 24h",
       "type": "bug",
-      "updated": "2026-10-08T02:10:41Z"
+      "updated": "2026-10-08T02:16:14Z"
+    },
+    "B-70702": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-70702",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0084",
+      "stage_since": "2026-10-08T02:20:19Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0084",
+      "type": "bug",
+      "updated": "2026-10-08T02:20:19Z"
+    },
+    "B-70703": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-70703",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0148",
+      "stage_since": "2026-10-08T02:20:22Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0148",
+      "type": "bug",
+      "updated": "2026-10-08T02:20:22Z"
     },
     "D-0001": {
       "backlinks": [
@@ -17668,7 +17714,9 @@
         "B-0597",
         "B-0598",
         "B-70500",
-        "B-70501"
+        "B-70501",
+        "B-70702",
+        "B-70703"
       ],
       "decided": true,
       "evidence": [
@@ -21275,7 +21323,8 @@
     },
     "F-0084": {
       "backlinks": [
-        "E-0001"
+        "E-0001",
+        "B-70702"
       ],
       "children": [
         "T-0397",
@@ -23580,7 +23629,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/1 tasks Closed",
+        "1/1 tasks Closed",
         "3/3 stories open: S-64904, S-64906, S-64907",
         "rule: documented"
       ],
@@ -23589,12 +23638,12 @@
       "parent": "E-0002",
       "rank": 95,
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-10-07T23:42:34Z",
+      "stage": "landed",
+      "stage_since": "2026-10-08T02:16:14Z",
       "state": "Active",
       "title": "Pause one product: the tick keeps recording and harvesting but launches nothing",
       "type": "feature",
-      "updated": "2026-10-07T23:42:34Z"
+      "updated": "2026-10-08T02:16:14Z"
     },
     "F-0138": {
       "backlinks": [
@@ -23944,7 +23993,9 @@
       "updated": "2026-09-25T16:44:13Z"
     },
     "F-0148": {
-      "backlinks": [],
+      "backlinks": [
+        "B-70703"
+      ],
       "children": [
         "T-0502",
         "T-0503",
@@ -40064,7 +40115,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1665 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1669 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -63715,12 +63766,17 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1080 OPEN",
-        "branch worker/T-0651",
-        "rule: in-flight"
+        "merge dfd14dc of worker/T-0651 lands T-0651 (PR #1080)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0651",
+      "landing": {
+        "as_of": "2026-10-08T02:16:14Z",
+        "by": "pr-merge",
+        "sha": "dfd14dc344b2a678825afd18902e7c5dd7ced324"
+      },
       "links": {
         "plan": "docs/plans/f-0137.md"
       },
@@ -63734,11 +63790,11 @@
         "split T-0651 asf | asf/tick | asf/views | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-07T23:42:34Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T02:16:14Z",
+      "state": "Closed",
       "title": "the pause record, the one predicate, and the two verbs that write it",
       "type": "task",
-      "updated": "2026-10-08T02:10:50Z",
+      "updated": "2026-10-08T02:16:14Z",
       "writes": [
         "asf/pause.py",
         "asf/cli.py",
