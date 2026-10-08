@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T06:51:52Z",
+  "generated": "2026-10-08T06:59:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -5326,7 +5326,8 @@
         "B-0582",
         "B-0588",
         "B-0593",
-        "B-0598"
+        "B-0598",
+        "B-74462"
       ],
       "children": [],
       "count": 2,
@@ -6526,7 +6527,8 @@
         "B-70754",
         "B-70756",
         "B-73359",
-        "B-73360"
+        "B-73360",
+        "B-74261"
       ],
       "children": [],
       "count": 3,
@@ -16715,6 +16717,7 @@
       "id": "B-74261",
       "last_filed": "2026-10-08",
       "parent": "E-0001",
+      "removed": "the same launchable_idle class as B-0219 (decided, S3, count 3), filed once per row, which is the ruling this class has taken on 2026-10-06, 2026-10-07 and 2026-10-08; it is no defect of F-0286's, whose spec session is in flight, and the \"8 seat(s) free\" is not a seat this row could take, since step_wave.would_start computes seats as the local share plus the cloud lane's max_inflight while the last capacity record before the breach read the product cap at 6 with 8 sessions already in flight (groom 2026-10-08)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "watchdog launchable_idle: F-0286",
@@ -16738,6 +16741,7 @@
       "id": "B-74462",
       "last_filed": "2026-10-08",
       "parent": "E-0001",
+      "removed": "the same check_cancelled class as B-0174 (decided, S3), filed once per run, with F-0131 owning the classification and F-0219 the cancelled-run waste; the live check adds that #1132 has moved past 229a0207b to head 734ef379, where tests (3.12) and tests (3.13) read pending and the other seven jobs pass, so the cancellation this card's acceptance names is on a superseded head (groom 2026-10-08)",
       "schema_version": 1,
       "severity": "S3",
       "signature": "watchdog check_cancelled: #1132@229a0207b",
@@ -16746,6 +16750,44 @@
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1132@229a0207b",
       "type": "bug",
       "updated": "2026-10-08T06:48:22Z"
+    },
+    "B-74913": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-74913",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0289",
+      "stage_since": "2026-10-08T06:59:45Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0289",
+      "type": "bug",
+      "updated": "2026-10-08T06:59:45Z"
+    },
+    "B-74914": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-74914",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0291",
+      "stage_since": "2026-10-08T06:59:48Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0291",
+      "type": "bug",
+      "updated": "2026-10-08T06:59:48Z"
     },
     "D-0001": {
       "backlinks": [
@@ -18320,7 +18362,9 @@
         "B-73359",
         "B-73360",
         "B-74261",
-        "B-74462"
+        "B-74462",
+        "B-74913",
+        "B-74914"
       ],
       "decided": true,
       "evidence": [
@@ -24005,7 +24049,8 @@
         "B-0404",
         "B-0405",
         "B-0426",
-        "B-0432"
+        "B-0432",
+        "B-74462"
       ],
       "children": [
         "S-53054",
@@ -27376,7 +27421,8 @@
         "B-0405",
         "B-0426",
         "B-0432",
-        "B-0549"
+        "B-0549",
+        "B-74462"
       ],
       "children": [
         "T-0714",
@@ -29605,19 +29651,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0284",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0284",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-10-08T06:16:50Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-10-08T06:57:10Z",
+      "state": "Active",
       "title": "A CONFLICTING PR gets no CI run; its priority land request shows 'not started' forever instead of triggering a rebase",
       "type": "feature",
-      "updated": "2026-10-08T06:51:50Z"
+      "updated": "2026-10-08T06:57:10Z"
     },
     "F-0285": {
       "backlinks": [
@@ -29729,7 +29775,9 @@
       "updated": "2026-10-08T06:40:40Z"
     },
     "F-0289": {
-      "backlinks": [],
+      "backlinks": [
+        "B-74913"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -29767,7 +29815,9 @@
       "updated": "2026-10-08T00:00:35Z"
     },
     "F-0291": {
-      "backlinks": [],
+      "backlinks": [
+        "B-74914"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -37893,6 +37943,7 @@
         "sessions": 0,
         "usd": null
       },
+      "decided": true,
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -37918,6 +37969,7 @@
         "sessions": 0,
         "usd": null
       },
+      "decided": true,
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -41722,7 +41774,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1714 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1715 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
