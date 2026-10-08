@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T13:30:21Z",
+  "generated": "2026-10-08T13:36:04Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17565,6 +17565,44 @@
       "type": "bug",
       "updated": "2026-10-08T13:02:42Z"
     },
+    "B-79543": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-79543",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0242",
+      "stage_since": "2026-10-08T13:36:00Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0242",
+      "type": "bug",
+      "updated": "2026-10-08T13:36:00Z"
+    },
+    "B-79544": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-79544",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-78307",
+      "stage_since": "2026-10-08T13:36:04Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-78307",
+      "type": "bug",
+      "updated": "2026-10-08T13:36:04Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -19181,7 +19219,9 @@
         "B-78589",
         "B-78590",
         "B-78591",
-        "B-79092"
+        "B-79092",
+        "B-79543",
+        "B-79544"
       ],
       "decided": true,
       "evidence": [
@@ -29184,7 +29224,8 @@
         "B-0519",
         "B-0520",
         "B-0521",
-        "B-0522"
+        "B-0522",
+        "B-79543"
       ],
       "budget_sessions": 12,
       "children": [
@@ -43835,7 +43876,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1772 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1773 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -75970,6 +76011,7 @@
       },
       "decided": true,
       "evidence": [
+        "PR #1196 OPEN",
         "branch worker/T-78306",
         "rule: in-flight"
       ],
@@ -75987,7 +76029,7 @@
       ],
       "title": "the session shim's trunk check runs the pin or refuses the push",
       "type": "task",
-      "updated": "2026-10-08T12:57:08Z",
+      "updated": "2026-10-08T13:34:05Z",
       "writes": [
         "asf/workers/githooks.py",
         "tests/test_session_push_guard.py",
@@ -76000,7 +76042,8 @@
         "T-78154"
       ],
       "backlinks": [
-        "T-78358"
+        "T-78358",
+        "B-79544"
       ],
       "children": [],
       "decided": true,
