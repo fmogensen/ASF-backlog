@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T08:51:23Z",
+  "generated": "2026-10-08T09:03:12Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17078,6 +17078,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-76677",
@@ -17090,7 +17094,26 @@
       "state": "New",
       "title": "Watchdog: an approval hold no grant can release past 0 min \u2014 F-0283/touch_amendable_set",
       "type": "bug",
-      "updated": "2026-10-08T08:51:06Z"
+      "updated": "2026-10-08T08:56:39Z"
+    },
+    "B-76678": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-76678",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0256",
+      "stage_since": "2026-10-08T09:03:10Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0256",
+      "type": "bug",
+      "updated": "2026-10-08T09:03:10Z"
     },
     "D-0001": {
       "backlinks": [
@@ -18680,7 +18703,8 @@
         "B-76374",
         "B-76375",
         "B-76376",
-        "B-76677"
+        "B-76677",
+        "B-76678"
       ],
       "decided": true,
       "evidence": [
@@ -18690,12 +18714,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2065.98,
+      "spend_usd": 2076.58,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-08T08:33:52Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "E-0002": {
       "backlinks": [
@@ -20626,8 +20650,8 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed",
-        "rule: documented"
+        "3/3 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0043",
@@ -20636,12 +20660,12 @@
       "priority": "need",
       "rank": 85,
       "schema_version": 1,
-      "stage": "building 2/3",
-      "stage_since": "2026-10-08T07:05:00Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-08T08:56:39Z",
+      "state": "Closed",
       "title": "CI waste targets on the scorecard, and a week over target files a Bug",
       "type": "feature",
-      "updated": "2026-10-08T07:05:00Z"
+      "updated": "2026-10-08T08:56:39Z"
     },
     "F-0044": {
       "area": "factory",
@@ -23920,7 +23944,7 @@
       "id": "F-0120",
       "parent": "E-0002",
       "rank": 111,
-      "reshape": "make it the one onboarding pass: flag cards that belong to another product and move or remove them in bulk (asf move), and adopt that product's in-flight PRs so native landing drains them, which is F-0125's scope closed into this card; asf config check/migrate stays F-0129's own card",
+      "reshape": "stale: T-0448 Active for 21h (over 3x its limit), 202 commits behind the trunk \u2014 re-cut from the current trunk",
       "reshape_applied": "53be601e3f22",
       "reshape_applied_at": "2026-09-29T16:37:13Z",
       "schema_version": 1,
@@ -27562,7 +27586,7 @@
       "id": "F-0214",
       "parent": "E-0002",
       "rank": 70,
-      "reshape": "cut to Task 1",
+      "reshape": "stale: T-0688 Active for 21h (over 3x its limit), 202 commits behind the trunk \u2014 re-cut from the current trunk",
       "reshape_applied": "a9784c4e4b2c",
       "reshape_applied_at": "2026-10-03T06:26:28Z",
       "schema_version": 1,
@@ -29010,7 +29034,8 @@
       "backlinks": [
         "B-0481",
         "B-0482",
-        "B-0483"
+        "B-0483",
+        "B-76678"
       ],
       "budget_sessions": 5,
       "children": [
@@ -29042,12 +29067,12 @@
       "parent": "E-0001",
       "reshape": "stale: T-0801 Active for 19h (over 3x its limit), 202 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-10-07T13:36:38Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T08:56:39Z",
       "state": "Active",
       "title": "Merge queue: a red batch's drop reason names the member PR whose files the failing test covers",
       "type": "feature",
-      "updated": "2026-10-07T13:36:38Z"
+      "updated": "2026-10-08T08:56:39Z"
     },
     "F-0257": {
       "backlinks": [
@@ -29795,7 +29820,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 56,
+        "runner_min": 85,
         "sessions": 5,
         "tokens_cache_read": 10152681,
         "tokens_cache_write": 180538,
@@ -29807,6 +29832,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/3 tasks Closed",
         "2/2 stories open: S-74154, S-74155",
         "rule: documented"
       ],
@@ -29819,7 +29845,7 @@
       "state": "Active",
       "title": "Ingest keeps a landed Task Active from a stale PR cache although the trunk carries its merge-queue commit",
       "type": "feature",
-      "updated": "2026-10-08T08:47:55Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "F-0278": {
       "backlinks": [],
@@ -29874,7 +29900,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 86,
-        "sessions": 4,
+        "sessions": 5,
         "usd": null
       },
       "decided": true,
@@ -29891,7 +29917,7 @@
       "state": "Active",
       "title": "Spec/plan-lane PRs that carry code are never reviewed (pushed_ids covers Tasks and Bugs only)",
       "type": "feature",
-      "updated": "2026-10-08T08:33:52Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "F-0281": {
       "backlinks": [
@@ -29901,8 +29927,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 89,
-        "sessions": 4,
+        "runner_min": 112,
+        "sessions": 5,
         "usd": null
       },
       "decided": true,
@@ -29919,7 +29945,7 @@
       "state": "Active",
       "title": "A test's git identity (Test <test@example.com>) leaked into a real record repo; tests must never git config outside temp fixtures",
       "type": "feature",
-      "updated": "2026-10-08T08:33:52Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "F-0282": {
       "backlinks": [],
@@ -29968,6 +29994,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "6/6 stories open: S-76254, S-76255, S-76256, S-76257, S-76258, S-76259",
         "rule: documented"
       ],
       "folder": "features",
@@ -29979,7 +30006,7 @@
       "state": "Active",
       "title": "product git hooks exec the global unpinned asf (v0.1.106), so pre-commit/pre-push never run the product's pinned build",
       "type": "feature",
-      "updated": "2026-10-08T08:33:52Z"
+      "updated": "2026-10-08T08:56:39Z"
     },
     "F-0284": {
       "backlinks": [
@@ -29992,9 +30019,13 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 57,
-        "sessions": 2,
-        "usd": null
+        "runner_min": 65,
+        "sessions": 3,
+        "tokens_cache_read": 4449611,
+        "tokens_cache_write": 80541,
+        "tokens_input": 134,
+        "tokens_output": 30038,
+        "usd": 3.78
       },
       "decided": true,
       "evidence": [
@@ -30011,7 +30042,7 @@
       "state": "Active",
       "title": "A CONFLICTING PR gets no CI run; its priority land request shows 'not started' forever instead of triggering a rebase",
       "type": "feature",
-      "updated": "2026-10-08T08:39:27Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "F-0285": {
       "backlinks": [
@@ -30063,9 +30094,13 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 50,
-        "sessions": 2,
-        "usd": null
+        "runner_min": 58,
+        "sessions": 3,
+        "tokens_cache_read": 3552100,
+        "tokens_cache_write": 65680,
+        "tokens_input": 122,
+        "tokens_output": 26947,
+        "usd": 3.11
       },
       "decided": true,
       "evidence": [
@@ -30082,7 +30117,7 @@
       "state": "Active",
       "title": "ci-heartbeat stall-cancels busy jobs without logging to ci-cancels.json or re-running; it cancelled a priority land-requested PR",
       "type": "feature",
-      "updated": "2026-10-08T08:39:27Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "F-0287": {
       "backlinks": [],
@@ -30121,7 +30156,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 38,
-        "sessions": 3,
+        "sessions": 4,
         "tokens_cache_read": 7052659,
         "tokens_cache_write": 108007,
         "tokens_input": 176,
@@ -30144,7 +30179,7 @@
       "state": "Active",
       "title": "A delivery member struck from the lead's PR stays bound (delivered_by not settable); it can't build on its own",
       "type": "feature",
-      "updated": "2026-10-08T08:47:55Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "F-0289": {
       "backlinks": [
@@ -30158,8 +30193,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 27,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "tokens_cache_read": 4317795,
+        "tokens_cache_write": 81075,
+        "tokens_input": 128,
+        "tokens_output": 29516,
+        "usd": 3.71
       },
       "decided": true,
       "evidence": [
@@ -30176,7 +30215,7 @@
       "state": "Active",
       "title": "Cloud correction sessions on a CONFLICTING PR end without a commit; conflict rebases should route local",
       "type": "feature",
-      "updated": "2026-10-08T08:47:55Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "F-0290": {
       "backlinks": [
@@ -30186,7 +30225,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 23,
-        "sessions": 1,
+        "sessions": 2,
         "tokens_cache_read": 3839419,
         "tokens_cache_write": 15055,
         "tokens_input": 20,
@@ -30207,7 +30246,7 @@
       "state": "Active",
       "title": "A product tick takes ~50 min (health 25 min, record:file-bugs ~15 min): record lags, upgrade windows miss",
       "type": "feature",
-      "updated": "2026-10-08T08:33:52Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "F-0291": {
       "backlinks": [
@@ -30217,7 +30256,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 30,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -30234,7 +30273,7 @@
       "state": "Active",
       "title": "Hardening leftovers: four allowlisted 4-digit id sites, the local heartbeat brief text, proves known= wiring",
       "type": "feature",
-      "updated": "2026-10-08T08:13:05Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "F-0292": {
       "backlinks": [
@@ -38511,6 +38550,12 @@
         "F-0284"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 8,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -38523,13 +38568,19 @@
       "state": "New",
       "title": "An asf land request whose required checks can never start leaves the wait on the pass that sees it, by the one route its owner can take",
       "type": "story",
-      "updated": "2026-10-08T08:39:27Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "S-75955": {
       "backlinks": [
         "F-0284"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 8,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -38542,13 +38593,19 @@
       "state": "New",
       "title": "Whether a head's required checks can start is read from GitHub's own merge and, where GitHub has not answered yet, from git's",
       "type": "story",
-      "updated": "2026-10-08T08:39:27Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "S-76004": {
       "backlinks": [
         "F-0286"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 9,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -38561,7 +38618,7 @@
       "state": "New",
       "title": "The pass records itself, and its record survives the reaper",
       "type": "story",
-      "updated": "2026-10-08T08:39:27Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "S-76005": {
       "backlinks": [
@@ -38587,6 +38644,12 @@
         "F-0286"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 9,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -38599,13 +38662,19 @@
       "state": "New",
       "title": "A cancel this watch made is always finished",
       "type": "story",
-      "updated": "2026-10-08T08:39:27Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "S-76104": {
       "backlinks": [
         "F-0289"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -38618,13 +38687,19 @@
       "state": "New",
       "title": "A correction whose answer rebases its branch never leaves the factory host",
       "type": "story",
-      "updated": "2026-10-08T08:47:55Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "S-76105": {
       "backlinks": [
         "F-0289"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -38637,11 +38712,17 @@
       "state": "New",
       "title": "A cloud run that ends on a push git refused as a non-fast-forward says that, not what the lane asked it for",
       "type": "story",
-      "updated": "2026-10-08T08:47:55Z"
+      "updated": "2026-10-08T09:02:50Z"
     },
     "S-76254": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0283"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-76254",
       "parent": "F-0283",
@@ -38650,11 +38731,17 @@
       "state": "New",
       "title": "A product's git hooks will not silently run an asf that is not its pinned build",
       "type": "story",
-      "updated": "2026-10-08T08:45:52Z"
+      "updated": "2026-10-08T08:56:39Z"
     },
     "S-76255": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0283"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-76255",
       "parent": "F-0283",
@@ -38663,11 +38750,17 @@
       "state": "New",
       "title": "A hook that is not the body this build writes is reported, not silently stale",
       "type": "story",
-      "updated": "2026-10-08T08:45:56Z"
+      "updated": "2026-10-08T08:56:39Z"
     },
     "S-76256": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0283"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-76256",
       "parent": "F-0283",
@@ -38676,11 +38769,17 @@
       "state": "New",
       "title": "A link that takes the dispatcher's path back is undone within one tick",
       "type": "story",
-      "updated": "2026-10-08T08:45:59Z"
+      "updated": "2026-10-08T08:56:39Z"
     },
     "S-76257": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0283"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-76257",
       "parent": "F-0283",
@@ -38689,11 +38788,17 @@
       "state": "New",
       "title": "Every hook asf writes names the dispatcher, and a launch no longer moves them off it",
       "type": "story",
-      "updated": "2026-10-08T08:46:03Z"
+      "updated": "2026-10-08T08:56:39Z"
     },
     "S-76258": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0283"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-76258",
       "parent": "F-0283",
@@ -38702,11 +38807,17 @@
       "state": "New",
       "title": "The session shim's trunk check runs the pin or refuses the push",
       "type": "story",
-      "updated": "2026-10-08T08:46:06Z"
+      "updated": "2026-10-08T08:56:39Z"
     },
     "S-76259": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0283"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-76259",
       "parent": "F-0283",
@@ -38715,7 +38826,7 @@
       "state": "New",
       "title": "The record's own hooks run the product's pin, not whatever was installed last",
       "type": "story",
-      "updated": "2026-10-08T08:46:10Z"
+      "updated": "2026-10-08T08:56:39Z"
     },
     "T-0001": {
       "backlinks": [
@@ -42514,7 +42625,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1735 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1737 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -45982,7 +46093,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 25,
+        "runner_min": 56,
         "sessions": 2,
         "usd": null
       },
@@ -46006,7 +46117,7 @@
       "state": "Active",
       "title": "the selection rule, the budget and the three ceilings",
       "type": "task",
-      "updated": "2026-10-08T08:33:52Z",
+      "updated": "2026-10-08T09:02:50Z",
       "writes": [
         "asf/groom/delivery.py",
         "asf/conventions.py",
@@ -47922,28 +48033,33 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 27,
+        "runner_min": 55,
         "sessions": 2,
         "usd": null
       },
       "decided": true,
       "evidence": [
-        "PR #1155 OPEN",
-        "branch worker/T-0217",
-        "rule: in-flight"
+        "merge 5c94c90 of worker/T-0217 lands T-0217 (PR #1155)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0217",
+      "landing": {
+        "as_of": "2026-10-08T08:56:39Z",
+        "by": "pr-merge",
+        "sha": "5c94c907ae84aca4fcce99f9804850cc87a5fb54"
+      },
       "links": {
         "plan": "docs/plans/f-0043.md"
       },
       "parent": "F-0043",
       "schema_version": 1,
-      "stage_since": "2026-10-08T07:12:46Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T08:56:39Z",
+      "state": "Closed",
       "title": "the two numbers, computed once, and the two rows that print them",
       "type": "task",
-      "updated": "2026-10-08T08:33:52Z",
+      "updated": "2026-10-08T09:02:50Z",
       "writes": [
         "asf/metrics/metrics.py",
         "tests/test_metrics.py"
@@ -48012,22 +48128,27 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "F-0043 Closed",
+        "rule: parent-closed"
       ],
       "folder": "tasks",
       "id": "T-0219",
+      "landing": {
+        "as_of": "2026-10-08T08:56:39Z",
+        "by": "descent",
+        "sha": ""
+      },
       "links": {
         "plan": "docs/plans/f-0043.md"
       },
       "parent": "F-0043",
       "removed": "merged into T-0218 (groom 2026-09-27)",
       "schema_version": 1,
-      "stage_since": "2026-09-24T04:20:08Z",
-      "state": "New",
+      "stage_since": "2026-10-08T08:56:39Z",
+      "state": "Closed",
       "title": "the fourth source \u2014 a seven-day mean over target is a Bug, at most weekly",
       "type": "task",
-      "updated": "2026-10-08T00:00:35Z",
+      "updated": "2026-10-08T08:56:39Z",
       "writes": [
         "asf/tick/file_bugs.py",
         "tests/test_file_bugs.py"
@@ -69693,7 +69814,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 1,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -69719,7 +69840,7 @@
       "stories": [],
       "title": "the session commits as itself \u2014 `asf/identity.py`, the `GIT_CONFIG_*` channel that beats every `.gitconfig` on the box, the session home rewritten as the agent, and the per-account override refused when malformed",
       "type": "task",
-      "updated": "2026-10-08T08:33:52Z",
+      "updated": "2026-10-08T09:02:50Z",
       "writes": [
         "asf/identity.py",
         "asf/workers/runtime.py",
@@ -72966,8 +73087,8 @@
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0801",
-        "rule: in-flight"
+        "no evidence found (2026-10-08)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0801",
@@ -72976,11 +73097,11 @@
       },
       "parent": "F-0256",
       "schema_version": 1,
-      "stage_since": "2026-10-07T13:36:38Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T08:56:39Z",
+      "state": "New",
       "title": "the queue names the culprit PR in the drop reason \u2014 out of the log it already reads, and out of the test that covers the member's files",
       "type": "task",
-      "updated": "2026-10-07T13:51:06Z",
+      "updated": "2026-10-08T08:56:39Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
@@ -74230,6 +74351,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-76350",
       "links": {
@@ -74244,7 +74369,7 @@
       ],
       "title": "the trunk's landed PR numbers become one fact both readers can import",
       "type": "task",
-      "updated": "2026-10-08T08:48:03Z",
+      "updated": "2026-10-08T08:56:39Z",
       "writes": [
         "asf/trunk_watch.py",
         "asf/evidence/evidence.py",
@@ -74258,6 +74383,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-76351",
       "links": {
@@ -74272,7 +74401,7 @@
       ],
       "title": "the Task's own state reads the trunk, so a landed PR is Closed and not Active",
       "type": "task",
-      "updated": "2026-10-08T08:48:07Z",
+      "updated": "2026-10-08T08:56:39Z",
       "writes": [
         "asf/evidence/evidence.py",
         "tests/test_pr_cache_trunk.py"
@@ -74285,6 +74414,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-76352",
       "links": {
@@ -74299,7 +74432,7 @@
       ],
       "title": "the lane releases an item whose PR the trunk carries, so the Feature's next Task launches",
       "type": "task",
-      "updated": "2026-10-08T08:48:11Z",
+      "updated": "2026-10-08T08:56:39Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/tick/step_wave.py",
