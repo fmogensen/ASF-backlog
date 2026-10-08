@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T19:44:02Z",
+  "generated": "2026-10-08T19:51:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18036,6 +18036,25 @@
       "type": "bug",
       "updated": "2026-10-08T19:41:28Z"
     },
+    "B-83413": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-83413",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0315",
+      "stage_since": "2026-10-08T19:51:37Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0315",
+      "type": "bug",
+      "updated": "2026-10-08T19:51:37Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -19706,7 +19725,8 @@
         "B-82809",
         "B-82960",
         "B-83261",
-        "B-83312"
+        "B-83312",
+        "B-83413"
       ],
       "decided": true,
       "evidence": [
@@ -31635,7 +31655,11 @@
         "S-80804",
         "S-80805",
         "S-80806",
-        "S-80807"
+        "S-80807",
+        "T-83349",
+        "T-83350",
+        "T-83351",
+        "T-83352"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -31650,7 +31674,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0295",
+        "plan on origin/main",
         "4/4 stories open: S-80804, S-80805, S-80806, S-80807",
         "rule: documented"
       ],
@@ -31658,12 +31682,12 @@
       "id": "F-0295",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T10:01:13Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T19:49:15Z",
       "state": "Active",
       "title": "Phantom-failure runs (completed/failure with queued jobs, no failed job) and lost-runner jobs are read as reds instead of auto re-run once",
       "type": "feature",
-      "updated": "2026-10-08T19:35:22Z"
+      "updated": "2026-10-08T19:49:15Z"
     },
     "F-0296": {
       "backlinks": [],
@@ -31773,6 +31797,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/4 tasks Closed",
         "4/4 stories open: S-78054, S-78055, S-78056, S-78057",
         "rule: documented"
       ],
@@ -31787,7 +31812,7 @@
       "state": "Active",
       "title": "Cheap adjudication: rule pass (cosmetic waiver, precedent citation) before any adjudicate session",
       "type": "feature",
-      "updated": "2026-10-08T19:41:28Z"
+      "updated": "2026-10-08T19:49:15Z"
     },
     "F-0301": {
       "backlinks": [
@@ -32210,7 +32235,8 @@
     },
     "F-0315": {
       "backlinks": [
-        "F-0316"
+        "F-0316",
+        "B-83413"
       ],
       "children": [
         "S-82204",
@@ -41757,7 +41783,9 @@
     },
     "S-80804": {
       "backlinks": [
-        "F-0295"
+        "F-0295",
+        "T-83350",
+        "T-83352"
       ],
       "children": [],
       "evidence": [
@@ -41776,7 +41804,9 @@
     },
     "S-80805": {
       "backlinks": [
-        "F-0295"
+        "F-0295",
+        "T-83350",
+        "T-83352"
       ],
       "children": [],
       "evidence": [
@@ -41795,7 +41825,10 @@
     },
     "S-80806": {
       "backlinks": [
-        "F-0295"
+        "F-0295",
+        "T-83349",
+        "T-83351",
+        "T-83352"
       ],
       "children": [],
       "evidence": [
@@ -41814,7 +41847,8 @@
     },
     "S-80807": {
       "backlinks": [
-        "F-0295"
+        "F-0295",
+        "T-83352"
       ],
       "children": [],
       "evidence": [
@@ -46238,7 +46272,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1821 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1822 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -60409,6 +60443,7 @@
         "T-0688",
         "T-0745",
         "T-0797",
+        "T-79565",
         "B-0207"
       ],
       "children": [],
@@ -78772,7 +78807,9 @@
       ]
     },
     "T-79565": {
-      "after": [],
+      "after": [
+        "T-0411"
+      ],
       "backlinks": [
         "T-0452",
         "T-79566",
@@ -79889,6 +79926,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-83345",
       "links": {
@@ -79903,7 +79944,7 @@
       ],
       "title": "the table \u2014 `rulepass.py`, the flag, and what the landed readers read back",
       "type": "task",
-      "updated": "2026-10-08T19:41:35Z",
+      "updated": "2026-10-08T19:49:15Z",
       "writes": [
         "asf/evidence/rulepass.py",
         "asf/conventions.py",
@@ -79921,6 +79962,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-83346",
       "links": {
@@ -79935,7 +79980,7 @@
       ],
       "title": "the feeder stands down \u2014 one `waived` membership, two branches, and the S1 lane's word",
       "type": "task",
-      "updated": "2026-10-08T19:41:39Z",
+      "updated": "2026-10-08T19:49:15Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -79950,6 +79995,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-83347",
       "links": {
@@ -79965,7 +80014,7 @@
       ],
       "title": "the check in `screen`, the `RULED` kind, and the `waivers` map",
       "type": "task",
-      "updated": "2026-10-08T19:41:42Z",
+      "updated": "2026-10-08T19:49:15Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_rulepass.py"
@@ -79978,6 +80027,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-83348",
       "links": {
@@ -79992,10 +80045,120 @@
       ],
       "title": "the cell \u2014 what the pass ruled, and what it did not spawn",
       "type": "task",
-      "updated": "2026-10-08T19:41:46Z",
+      "updated": "2026-10-08T19:49:15Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_views.py"
+      ]
+    },
+    "T-83349": {
+      "backlinks": [
+        "T-83350",
+        "T-83351",
+        "T-83352"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83349",
+      "links": {
+        "plan": "docs/plans/f-0295.md"
+      },
+      "parent": "F-0295",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:49:22Z",
+      "state": "New",
+      "stories": [
+        "S-80806"
+      ],
+      "title": "the reader reads every run behind the checks \u2014 `_run_ids`, and one probe record per run id",
+      "type": "task",
+      "updated": "2026-10-08T19:49:22Z",
+      "writes": [
+        "asf/flake.py",
+        "tests/test_ci_red_class.py"
+      ]
+    },
+    "T-83350": {
+      "after": [
+        "T-83349"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83350",
+      "links": {
+        "plan": "docs/plans/f-0295.md"
+      },
+      "parent": "F-0295",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:49:26Z",
+      "state": "New",
+      "stories": [
+        "S-80804",
+        "S-80805"
+      ],
+      "title": "the landing gate answers both infra reds \u2014 `infra_gate`, `judged_pending`, three call sites",
+      "type": "task",
+      "updated": "2026-10-08T19:49:26Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "tests/test_gate_infra_red.py"
+      ]
+    },
+    "T-83351": {
+      "after": [
+        "T-83349"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83351",
+      "links": {
+        "plan": "docs/plans/f-0295.md"
+      },
+      "parent": "F-0295",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:49:29Z",
+      "state": "New",
+      "stories": [
+        "S-80806"
+      ],
+      "title": "the land probe stops standing down on a running check",
+      "type": "task",
+      "updated": "2026-10-08T19:49:29Z",
+      "writes": [
+        "asf/merge_queue.py",
+        "tests/test_merge_queue.py"
+      ]
+    },
+    "T-83352": {
+      "after": [
+        "T-83349"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83352",
+      "links": {
+        "plan": "docs/plans/f-0295.md"
+      },
+      "parent": "F-0295",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:49:32Z",
+      "state": "New",
+      "stories": [
+        "S-80807"
+      ],
+      "title": "`asf status` says the factory re-ran a head, and when it refused to twice",
+      "type": "task",
+      "updated": "2026-10-08T19:49:32Z",
+      "writes": [
+        "asf/flake.py",
+        "tests/test_flake_triage.py"
       ]
     }
   }
