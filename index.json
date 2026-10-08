@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T18:29:05Z",
+  "generated": "2026-10-08T18:32:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17910,6 +17910,25 @@
       "type": "bug",
       "updated": "2026-10-08T18:14:38Z"
     },
+    "B-82658": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-82658",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #1233@4a831f9c8",
+      "stage_since": "2026-10-08T18:32:02Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1233@4a831f9c8",
+      "type": "bug",
+      "updated": "2026-10-08T18:32:02Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -19552,7 +19571,8 @@
         "B-82154",
         "B-82155",
         "B-82356",
-        "B-82407"
+        "B-82407",
+        "B-82658"
       ],
       "decided": true,
       "evidence": [
@@ -19562,12 +19582,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2192.62,
+      "spend_usd": 2209.89,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-08T18:09:10Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "E-0002": {
       "backlinks": [
@@ -19715,12 +19735,12 @@
       "id": "E-0003",
       "rank": 3,
       "schema_version": 1,
-      "spend_usd": 109.54,
+      "spend_usd": 111.59,
       "stage_since": "2026-09-30T07:54:54Z",
       "state": "Active",
       "title": "ASF 0.3 \u2014 autonomous delivery",
       "type": "epic",
-      "updated": "2026-10-08T16:52:47Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "E-0004": {
       "backlinks": [
@@ -19770,12 +19790,12 @@
       "id": "E-0004",
       "rank": 9,
       "schema_version": 1,
-      "spend_usd": 427.72,
+      "spend_usd": 429.77,
       "stage_since": "2026-09-30T08:29:34Z",
       "state": "Active",
       "title": "Control plane \u2014 the factory's dashboard, served from the record",
       "type": "epic",
-      "updated": "2026-10-08T10:47:30Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "E-0005": {
       "backlinks": [
@@ -29959,7 +29979,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 45,
+        "runner_min": 76,
         "sessions": 5,
         "usd": null
       },
@@ -29978,7 +29998,7 @@
       "state": "Active",
       "title": "CI queue: a priority PR's waiting required jobs preempt lower-rank QUEUED PR runs of the same runner class, re-dispatched afterwards",
       "type": "feature",
-      "updated": "2026-10-08T18:09:10Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "F-0255": {
       "backlinks": [],
@@ -30909,8 +30929,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 86,
-        "sessions": 5,
-        "usd": null
+        "sessions": 6,
+        "tokens_cache_read": 4384207,
+        "tokens_cache_write": 100159,
+        "tokens_input": 104,
+        "tokens_output": 38019,
+        "usd": 1.66
       },
       "decided": true,
       "evidence": [
@@ -30930,7 +30954,7 @@
       "state": "Active",
       "title": "Spec/plan-lane PRs that carry code are never reviewed (pushed_ids covers Tasks and Bugs only)",
       "type": "feature",
-      "updated": "2026-10-08T18:21:46Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "F-0281": {
       "backlinks": [
@@ -31682,13 +31706,13 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 104,
-        "sessions": 5,
-        "tokens_cache_read": 8297859,
-        "tokens_cache_write": 161343,
-        "tokens_input": 218,
-        "tokens_output": 49447,
-        "usd": 2.8
+        "runner_min": 105,
+        "sessions": 6,
+        "tokens_cache_read": 12793634,
+        "tokens_cache_write": 275970,
+        "tokens_input": 328,
+        "tokens_output": 90349,
+        "usd": 7.22
       },
       "decided": true,
       "evidence": [
@@ -31708,7 +31732,7 @@
       "state": "Active",
       "title": "asf upgrade --to <version> resolves an annotated tag to the tag object, so the CI read 422s",
       "type": "feature",
-      "updated": "2026-10-08T17:43:30Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "F-0304": {
       "backlinks": [],
@@ -31871,7 +31895,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 79,
-        "sessions": 4,
+        "sessions": 5,
         "tokens_cache_read": 2563821,
         "tokens_cache_write": 68731,
         "tokens_input": 88,
@@ -31895,7 +31919,7 @@
       "state": "Active",
       "title": "Release channels: edge (ASF itself, every green tag) and stable (weekly, after rehearsal plus 48 h on edge with no S1)",
       "type": "feature",
-      "updated": "2026-10-08T17:43:30Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "F-0309": {
       "backlinks": [
@@ -32020,12 +32044,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 56,
-        "sessions": 2,
-        "tokens_cache_read": 5760091,
-        "tokens_cache_write": 122332,
-        "tokens_input": 140,
-        "tokens_output": 56768,
-        "usd": 5.52
+        "sessions": 4,
+        "tokens_cache_read": 7819112,
+        "tokens_cache_write": 179246,
+        "tokens_input": 226,
+        "tokens_output": 74985,
+        "usd": 7.58
       },
       "decided": true,
       "evidence": [
@@ -32044,7 +32068,7 @@
       "state": "Active",
       "title": "delivery pass binds a lead to every started Task of its Feature, not only ones whose writes intersect, starving the launch queue",
       "type": "feature",
-      "updated": "2026-10-08T18:21:46Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "F-0316": {
       "backlinks": [],
@@ -40720,7 +40744,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 3,
+        "runner_min": 4,
         "sessions": 0,
         "usd": null
       },
@@ -40737,7 +40761,7 @@
       "state": "Active",
       "title": "The hook runs the checks matched to the paths the push adds, and a red one refuses",
       "type": "story",
-      "updated": "2026-10-08T18:09:10Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "S-77505": {
       "backlinks": [
@@ -40748,7 +40772,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 3,
+        "runner_min": 4,
         "sessions": 0,
         "usd": null
       },
@@ -40765,7 +40789,7 @@
       "state": "Active",
       "title": "A push outside the Feature footprint is refused, with the needs writes: line to report",
       "type": "story",
-      "updated": "2026-10-08T18:09:10Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "S-77506": {
       "backlinks": [
@@ -40871,6 +40895,12 @@
         "T-80572"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: task-active"
@@ -40883,7 +40913,7 @@
       "state": "Active",
       "title": "The snapshot: a record-shaped fixture built by one command, stating its own shape, carrying no real prose",
       "type": "story",
-      "updated": "2026-10-08T18:14:38Z"
+      "updated": "2026-10-08T18:31:45Z"
     },
     "S-79605": {
       "backlinks": [
@@ -73491,9 +73521,13 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 36,
-        "sessions": 4,
-        "usd": null
+        "runner_min": 49,
+        "sessions": 5,
+        "tokens_cache_read": 5432633,
+        "tokens_cache_write": 119153,
+        "tokens_input": 142,
+        "tokens_output": 48591,
+        "usd": 2.05
       },
       "decided": true,
       "evidence": [
@@ -73515,7 +73549,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-08T18:09:10Z",
+      "updated": "2026-10-08T18:31:45Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -78369,7 +78403,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 3,
+        "runner_min": 4,
         "sessions": 7,
         "tokens_cache_read": 2615153,
         "tokens_cache_write": 23966,
@@ -78398,7 +78432,7 @@
       ],
       "title": "the door \u2014 the convention, the matcher, `asf pre-push`, and one call in the shim",
       "type": "task",
-      "updated": "2026-10-08T18:09:10Z",
+      "updated": "2026-10-08T18:31:45Z",
       "writes": [
         "asf/conventions.py",
         "asf/prepush.py",
@@ -78638,9 +78672,20 @@
         "T-79565"
       ],
       "backlinks": [
-        "T-80573"
+        "T-80573",
+        "B-82658"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 40041142,
+        "tokens_cache_write": 341441,
+        "tokens_input": 384,
+        "tokens_output": 182018,
+        "usd": 11.19
+      },
       "decided": true,
       "evidence": [
         "PR #1233 OPEN",
@@ -78661,7 +78706,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-08T18:21:46Z",
+      "updated": "2026-10-08T18:31:45Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -78792,7 +78837,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 16,
+        "runner_min": 46,
         "sessions": 2,
         "tokens_cache_read": 25194313,
         "tokens_cache_write": 294706,
@@ -78825,7 +78870,7 @@
       ],
       "title": "the criterion \u2014 the rehearsal in both gates, with its own step lookup",
       "type": "task",
-      "updated": "2026-10-08T18:21:46Z",
+      "updated": "2026-10-08T18:31:45Z",
       "writes": [
         "asf/release.py",
         "asf/release_preview.py",
