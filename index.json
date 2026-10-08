@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T19:16:38Z",
+  "generated": "2026-10-08T19:22:29Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2912,6 +2912,7 @@
     "B-0094": {
       "backlinks": [
         "F-0294",
+        "F-0321",
         "S-76556",
         "T-0110"
       ],
@@ -17967,22 +17968,27 @@
       },
       "decided": false,
       "evidence": [
-        "PR #1239 OPEN",
-        "branch fix/B-82960-parked-footprint",
-        "rule: fixer"
+        "merge 14b963b of fix/B-82960-parked-footprint lands B-82960 (PR #1239)",
+        "CI green on main at or after it",
+        "rule: fixed"
       ],
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-82960",
+      "landing": {
+        "as_of": "2026-10-08T19:22:06Z",
+        "by": "pr-merge",
+        "sha": "14b963ba1f06055363d19b6268d606bda67545e2"
+      },
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S1",
       "signature": "writes: intersects Active task of a priority later Feature",
-      "stage_since": "2026-10-08T18:57:10Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T19:22:06Z",
+      "state": "Resolved",
       "title": "parked (priority later) Active Tasks still hold their footprint; I3 keeps ranked Tasks after: them forever",
       "type": "bug",
-      "updated": "2026-10-08T19:16:34Z"
+      "updated": "2026-10-08T19:22:06Z"
     },
     "D-0001": {
       "backlinks": [
@@ -19027,6 +19033,8 @@
         "F-0313",
         "F-0314",
         "F-0318",
+        "F-0320",
+        "F-0321",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -19860,6 +19868,7 @@
         "F-0316",
         "F-0317",
         "F-0319",
+        "F-0322",
         "B-0146"
       ],
       "decided": true,
@@ -30618,12 +30627,12 @@
       "priority": "later",
       "reshape": "stale: T-0825 Active for 21h (over 3x its limit), 202 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
-      "stage": "building 0/4",
-      "stage_since": "2026-10-08T04:26:34Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T19:22:06Z",
       "state": "Active",
       "title": "A run that ends without its report carries the session's last ASF refusal as its dead reason (naming, pre-push, refguard)",
       "type": "feature",
-      "updated": "2026-10-08T04:26:34Z"
+      "updated": "2026-10-08T19:22:06Z"
     },
     "F-0267": {
       "backlinks": [
@@ -31029,6 +31038,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
+        "0/3 tasks Closed",
         "3/3 stories open: S-73204, S-73205, S-73206",
         "rule: documented"
       ],
@@ -31043,7 +31053,7 @@
       "state": "Active",
       "title": "Spec/plan-lane PRs that carry code are never reviewed (pushed_ids covers Tasks and Bugs only)",
       "type": "feature",
-      "updated": "2026-10-08T19:16:34Z"
+      "updated": "2026-10-08T19:22:06Z"
     },
     "F-0281": {
       "backlinks": [
@@ -32265,6 +32275,48 @@
       "title": "capacity.ci caps the feeder's ci_free even when runners are readable, halving Features in build while runners sit idle",
       "type": "feature",
       "updated": "2026-10-08T18:48:28Z"
+    },
+    "F-0320": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0320",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:22:17Z",
+      "state": "New",
+      "title": "an ASF rebase drops the approved review verdict even when the range-diff is identical; the item re-reviews to the cap",
+      "type": "feature",
+      "updated": "2026-10-08T19:22:17Z"
+    },
+    "F-0321": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0321",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:22:21Z",
+      "state": "New",
+      "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
+      "type": "feature",
+      "updated": "2026-10-08T19:22:21Z"
+    },
+    "F-0322": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0322",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:22:24Z",
+      "state": "New",
+      "title": "status keeps a retired item's relaunch-cap park",
+      "type": "feature",
+      "updated": "2026-10-08T19:22:24Z"
     },
     "R-0001": {
       "backlinks": [
@@ -60784,6 +60836,7 @@
     },
     "T-0422": {
       "backlinks": [
+        "F-0320",
         "T-0423"
       ],
       "children": [],
@@ -65451,6 +65504,7 @@
         "T-0411"
       ],
       "backlinks": [
+        "F-0321",
         "T-0506",
         "T-0538",
         "T-0775",
@@ -77693,8 +77747,8 @@
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0825",
-        "rule: in-flight"
+        "no evidence found (2026-10-08)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0825",
@@ -77703,11 +77757,11 @@
       },
       "parent": "F-0266",
       "schema_version": 1,
-      "stage_since": "2026-10-07T21:30:32Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T19:22:06Z",
+      "state": "New",
       "title": "the one owner \u2014 a refusal's kind, its text, its clause, and the record's own refusals read off it",
       "type": "task",
-      "updated": "2026-10-07T22:13:08Z",
+      "updated": "2026-10-08T19:22:06Z",
       "writes": [
         "asf/workers/refusals.py",
         "tests/test_refusals.py",
@@ -79504,6 +79558,7 @@
       },
       "decided": true,
       "evidence": [
+        "PR #1241 OPEN",
         "branch worker/T-82785",
         "rule: in-flight"
       ],
@@ -79524,7 +79579,7 @@
       ],
       "title": "the peel asked for by name, the Unknown that says why, and a test real git answers",
       "type": "task",
-      "updated": "2026-10-08T19:16:34Z",
+      "updated": "2026-10-08T19:22:06Z",
       "writes": [
         "asf/upgrade.py",
         "tests/test_tag_resolution.py",
@@ -79751,6 +79806,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-83142",
       "links": {
@@ -79765,7 +79824,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-08T19:11:52Z",
+      "updated": "2026-10-08T19:22:06Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
@@ -79780,6 +79839,10 @@
       ],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-83143",
       "links": {
@@ -79794,7 +79857,7 @@
       ],
       "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
       "type": "task",
-      "updated": "2026-10-08T19:11:56Z",
+      "updated": "2026-10-08T19:22:06Z",
       "writes": [
         "asf/reviews.py",
         "asf/harvest/lane.py",
@@ -79810,6 +79873,10 @@
       "backlinks": [],
       "children": [],
       "decided": true,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: planned"
+      ],
       "folder": "tasks",
       "id": "T-83144",
       "links": {
@@ -79824,7 +79891,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-08T19:12:00Z",
+      "updated": "2026-10-08T19:22:06Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",

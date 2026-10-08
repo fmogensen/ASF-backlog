@@ -13,3 +13,6 @@ Reported by botseon on 2026-10-08. Rulings and session reports with a machine-re
 - A report line `needs writes: <paths>` widens the Task's `writes:` (through the widening rule) or refuses by name. It is never left for a relaunch to repeat. A test covers it.
 - A groom reshape answer is applied by the next replan. A test covers it.
 - A session report repeating an already-recorded finding counts as `same` toward the cap, not as new.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
