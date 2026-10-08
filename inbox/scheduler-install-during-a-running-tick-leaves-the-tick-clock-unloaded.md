@@ -7,3 +7,6 @@ Reported by botseon on 2026-10-08. `scheduler install` ran at about 18:55Z while
 ## Acceptance
 - `scheduler install` ends with every declared clock loaded. A clock whose job is running is re-bootstrapped once the running process ends, or is loaded without killing it, and the output names every clock with its state. A test covers it: install while the tick lock is held → the tick clock reports loaded (or "loads when pid N ends") and is loaded afterwards.
 - `asf doctor` shows one red row when a declared clock is not loaded.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

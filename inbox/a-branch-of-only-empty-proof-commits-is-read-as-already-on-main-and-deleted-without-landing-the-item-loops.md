@@ -7,3 +7,6 @@ Reported by botseon on 2026-10-08. A branch whose commits are all empty (proof-o
 ## Acceptance
 - A branch with commits not reachable from the trunk is not "already on main" because its tree matches. Commits whose messages carry a proof, a ticked acceptance or an item id the trunk doesn't name land, or are refused by name, and are never deleted silently. A test covers it: a branch of two empty proof commits on the trunk head is not reaped, and draws a landing row.
 - A branch whose every commit is a patch-equivalent of a trunk commit (`git cherry` all `-`) is still reaped as today. The existing test stays green.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
