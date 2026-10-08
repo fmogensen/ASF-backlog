@@ -8,3 +8,6 @@ Reported by botseon on 2026-10-08. The merge queue dropped batch …163914-e6eb3
 - A batch whose run was cancelled by the host (a timeout or cancel classified "not a verdict"), and whose other required jobs are `skipped`, is requeued with its members intact, not dropped. A test covers the e6eb3a8 shape.
 - The merge queue never names a `skipped` job as a red reason. A required job that is skipped because an upstream job was cancelled reads as "no verdict".
 - A batch with a real `failure` on a required job is still dropped, and its members are bisected as they are today (the existing test stays green).
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.

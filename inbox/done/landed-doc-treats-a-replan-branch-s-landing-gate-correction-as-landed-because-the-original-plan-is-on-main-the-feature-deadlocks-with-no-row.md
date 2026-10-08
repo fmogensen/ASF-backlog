@@ -1,3 +1,5 @@
+→ F-0317
+
 # landed_doc treats a replan branch's landing-gate correction as landed because the original plan is on main; the Feature deadlocks with no row
 
 Severity: S1
