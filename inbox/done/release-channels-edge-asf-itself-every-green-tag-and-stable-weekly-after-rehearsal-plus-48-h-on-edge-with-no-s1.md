@@ -1,3 +1,5 @@
+→ F-0308
+
 # Release channels: edge (ASF itself, every green tag) and stable (weekly, after rehearsal plus 48 h on edge with no S1)
 
 Parent: E-0001

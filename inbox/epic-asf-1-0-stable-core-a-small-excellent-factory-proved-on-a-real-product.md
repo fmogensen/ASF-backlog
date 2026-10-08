@@ -40,3 +40,6 @@ Approved by the operator, 2026-10-08 ("Sounds right .. create a plan for this").
 - No hand-built code. Everything goes through the factory, except when production fully stops and the operator says so.
 - One bottleneck at a time: the ranking above is the order.
 - The operator gets one daily line (scorecard plus readiness) and one weekly review.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.

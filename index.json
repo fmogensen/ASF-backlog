@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T12:38:24Z",
+  "generated": "2026-10-08T12:38:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17453,6 +17453,44 @@
       "type": "bug",
       "updated": "2026-10-08T12:24:51Z"
     },
+    "B-78590": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-78590",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0306",
+      "stage_since": "2026-10-08T12:38:36Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0306",
+      "type": "bug",
+      "updated": "2026-10-08T12:38:36Z"
+    },
+    "B-78591": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-78591",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-78560",
+      "stage_since": "2026-10-08T12:38:41Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-78560",
+      "type": "bug",
+      "updated": "2026-10-08T12:38:41Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -18459,6 +18497,9 @@
         "F-0304",
         "F-0305",
         "F-0306",
+        "F-0307",
+        "F-0308",
+        "F-0309",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -19062,7 +19103,9 @@
         "B-77936",
         "B-77987",
         "B-78088",
-        "B-78589"
+        "B-78589",
+        "B-78590",
+        "B-78591"
       ],
       "decided": true,
       "evidence": [
@@ -28023,8 +28066,8 @@
       "priority": "later",
       "rank": 70,
       "reshape": "stale: T-0688 Active for 21h (over 3x its limit), 202 commits behind the trunk \u2014 re-cut from the current trunk",
-      "reshape_applied": "a9784c4e4b2c",
-      "reshape_applied_at": "2026-10-03T06:26:28Z",
+      "reshape_applied": "9c9059cbcbe9",
+      "reshape_applied_at": "2026-10-08T12:34:32Z",
       "schema_version": 1,
       "stage": "plan-approved",
       "stage_since": "2026-10-08T09:08:26Z",
@@ -31151,7 +31194,9 @@
       "updated": "2026-10-08T12:28:54Z"
     },
     "F-0306": {
-      "backlinks": [],
+      "backlinks": [
+        "B-78590"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -31170,6 +31215,48 @@
       "title": "Release rehearsal: every main push runs the CLI and hooks end to end on a real-record snapshot before a version can be offered",
       "type": "feature",
       "updated": "2026-10-08T12:06:58Z"
+    },
+    "F-0307": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0307",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T12:34:46Z",
+      "state": "New",
+      "title": "Feeder S1 gate: no new Feature work launches while an S1 Bug is open (stability first, in code)",
+      "type": "feature",
+      "updated": "2026-10-08T12:34:46Z"
+    },
+    "F-0308": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0308",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T12:34:50Z",
+      "state": "New",
+      "title": "Release channels: edge (ASF itself, every green tag) and stable (weekly, after rehearsal plus 48 h on edge with no S1)",
+      "type": "feature",
+      "updated": "2026-10-08T12:34:50Z"
+    },
+    "F-0309": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0309",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T12:34:54Z",
+      "state": "New",
+      "title": "Weekly learning review (defect classes seen twice) and a daily per-product scorecard, computed from the record",
+      "type": "feature",
+      "updated": "2026-10-08T12:34:54Z"
     },
     "R-0001": {
       "backlinks": [
@@ -34009,6 +34096,7 @@
     "S-52354": {
       "backlinks": [
         "F-0214",
+        "T-0688",
         "B-0465"
       ],
       "children": [],
@@ -43583,7 +43671,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1762 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1763 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -59534,6 +59622,7 @@
         "T-0651",
         "T-0724",
         "T-0734",
+        "T-0815",
         "T-78155"
       ],
       "children": [],
@@ -66702,6 +66791,7 @@
         "T-0638",
         "T-0657",
         "T-0708",
+        "T-0745",
         "T-0756",
         "T-0763",
         "T-0792"
@@ -67837,6 +67927,7 @@
         "T-0665",
         "T-0688",
         "T-0724",
+        "T-0745",
         "T-0756",
         "T-0763",
         "B-0246",
@@ -69158,18 +69249,7 @@
       ]
     },
     "T-0688": {
-      "after": [
-        "T-0056",
-        "T-0130",
-        "T-0166",
-        "T-0189",
-        "T-0203",
-        "T-0411",
-        "T-0528",
-        "T-0336",
-        "T-0657",
-        "T-0313"
-      ],
+      "after": [],
       "backlinks": [
         "F-0214",
         "T-0689",
@@ -69198,7 +69278,7 @@
       "folder": "tasks",
       "id": "T-0688",
       "links": {
-        "plan": "docs/plans/replans/f-0214-a9784c4e4b2c.md"
+        "plan": "docs/plans/replans/f-0214-9c9059cbcbe9.md"
       },
       "merged": [
         "T-0689",
@@ -69212,7 +69292,9 @@
       "schema_version": 1,
       "stage_since": "2026-10-08T09:08:26Z",
       "state": "New",
-      "stories": [],
+      "stories": [
+        "S-52354"
+      ],
       "title": "the health step prunes the shared build cache \u2014 the module, the conventions block, the wrapper",
       "type": "task",
       "updated": "2026-10-08T12:28:54Z",
@@ -71692,7 +71774,9 @@
         "T-0130",
         "T-0239",
         "T-0411",
-        "T-0688"
+        "T-0688",
+        "T-0631",
+        "T-0657"
       ],
       "backlinks": [
         "F-0279",
@@ -74675,7 +74759,8 @@
         "T-0189",
         "T-0203",
         "T-0313",
-        "T-0688"
+        "T-0688",
+        "T-0452"
       ],
       "backlinks": [
         "T-0822"
@@ -75783,7 +75868,8 @@
     },
     "T-78560": {
       "backlinks": [
-        "T-78561"
+        "T-78561",
+        "B-78591"
       ],
       "children": [],
       "decided": true,
