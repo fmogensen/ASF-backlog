@@ -7,3 +7,6 @@ Bug. Green, mergeable, non-parked factory PRs (#1191 T-78560, #1184 T-76352, #11
 - [ ] A review that ended `status done` with a REPORT but no filed entry is never counted as a launched review by the park rule (the row is not PARKED on "launched 1 time(s)")
 - [ ] The wave prints one waits line naming the unfiled review and the action taken, never a silent park
 - [ ] A test builds a review worktree whose gitdir is missing, runs the harvest, and asserts a review entry exists or a relaunch is queued, and the row is not parked
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

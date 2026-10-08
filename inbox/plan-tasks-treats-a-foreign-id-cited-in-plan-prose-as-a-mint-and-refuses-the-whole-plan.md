@@ -9,3 +9,6 @@ Severity: S2
 - A plan whose prose (outside `### Task N:` / `### S-…:` headings and their declared id fields) mentions an id that is not in the record and not in the claim is minted. A test pins this with the F-0288 shape: a Task table plus a prose line citing `B-1377`.
 - An id that a Task or Story heading actually declares outside the claimed block is still refused by name (the existing refusal test stays green).
 - A mention of an id that the record holds for another card, inside a Task body, still refuses as today.
+
+## Question
+A Story is one PR with one acceptance list — add an ## Acceptance checklist.

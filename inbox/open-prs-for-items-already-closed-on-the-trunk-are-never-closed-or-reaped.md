@@ -7,3 +7,6 @@ Bug. Open PRs whose item is already Closed (landed on main through another PR) a
 - [ ] Its branch is archived or deleted per branch retention, and the `stray` line stops appearing for it
 - [ ] A PR whose item is Closed but whose diff is NOT carried by the trunk is not closed; the pass reports it once as needing a decision
 - [ ] A test covers both cases: Closed item with a trunk commit naming it (PR closed) and Closed item with no such commit (PR left, one report)
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
