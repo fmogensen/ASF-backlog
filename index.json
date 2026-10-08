@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T05:19:23Z",
+  "generated": "2026-10-08T05:27:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16651,6 +16651,25 @@
       "type": "bug",
       "updated": "2026-10-08T04:19:01Z"
     },
+    "B-73359": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-73359",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0284",
+      "stage_since": "2026-10-08T05:27:55Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0284",
+      "type": "bug",
+      "updated": "2026-10-08T05:27:55Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -18220,7 +18239,8 @@
         "B-70755",
         "B-70756",
         "B-71207",
-        "B-71908"
+        "B-71908",
+        "B-73359"
       ],
       "decided": true,
       "evidence": [
@@ -29239,19 +29259,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0274",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0274",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-10-08T04:57:29Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-10-08T05:24:39Z",
+      "state": "Active",
       "title": "asf next drops all Task rows of a Feature with any live session, with no reason row",
       "type": "feature",
-      "updated": "2026-10-08T05:19:20Z"
+      "updated": "2026-10-08T05:24:39Z"
     },
     "F-0275": {
       "backlinks": [],
@@ -29470,7 +29490,9 @@
       "updated": "2026-10-08T00:00:35Z"
     },
     "F-0284": {
-      "backlinks": [],
+      "backlinks": [
+        "B-73359"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -39854,6 +39876,7 @@
         "T-0301",
         "T-0312",
         "T-0313",
+        "T-0318",
         "T-0336",
         "T-0365",
         "T-0368",
@@ -41520,7 +41543,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1698 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1699 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -42171,6 +42194,7 @@
         "T-0207",
         "T-0216",
         "T-0239",
+        "T-0318",
         "T-0368",
         "T-0452",
         "T-0591",
@@ -45652,6 +45676,7 @@
         "T-0289",
         "T-0312",
         "T-0313",
+        "T-0318",
         "T-0332",
         "T-0341",
         "T-0350",
@@ -49532,6 +49557,7 @@
         "F-0060",
         "T-0289",
         "T-0313",
+        "T-0318",
         "T-0332",
         "T-0365",
         "T-0398",
@@ -51195,6 +51221,7 @@
         "T-0312",
         "T-0314",
         "T-0316",
+        "T-0318",
         "T-0365",
         "T-0398",
         "T-0432",
@@ -51434,7 +51461,12 @@
     },
     "T-0318": {
       "after": [
-        "T-0317"
+        "T-0317",
+        "T-0056",
+        "T-0109",
+        "T-0189",
+        "T-0275",
+        "T-0313"
       ],
       "backlinks": [
         "T-0134",
@@ -51442,13 +51474,14 @@
         "T-0321",
         "T-0322",
         "T-0323",
-        "T-0324"
+        "T-0324",
+        "T-0398"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "branch worker/T-0318",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0318",
@@ -51462,11 +51495,11 @@
         "merge T-0134+T-0318+T-0320+T-0321+T-0322+T-0323+T-0324"
       ],
       "schema_version": 1,
-      "stage_since": "2026-09-27T18:47:47Z",
-      "state": "New",
+      "stage_since": "2026-10-08T05:24:39Z",
+      "state": "Active",
       "title": "the per-role worker settings file, its deny rules, `asf worker-permissions`, and the three doctor rows",
       "type": "task",
-      "updated": "2026-10-08T00:00:35Z",
+      "updated": "2026-10-08T05:24:39Z",
       "writes": [
         "asf/workers/worker_settings.py",
         "asf/cli.py",
@@ -54897,7 +54930,8 @@
         "T-0189",
         "T-0203",
         "T-0275",
-        "T-0313"
+        "T-0313",
+        "T-0318"
       ],
       "backlinks": [
         "T-0399",
