@@ -7,3 +7,6 @@ Minting a declared Story (`idcheck.declared_stories` / `plan_tasks`) strips back
 ## Acceptance
 - [ ] a Story minted from a declaration keeps each acceptance line byte-for-byte, code spans included: a test with a backticked line, through `declared_stories` and `plan_tasks`
 - [ ] `declared_stories` still ignores `### S-…` headings inside fenced code blocks
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
