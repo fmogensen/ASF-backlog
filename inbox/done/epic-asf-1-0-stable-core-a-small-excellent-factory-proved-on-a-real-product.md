@@ -1,3 +1,5 @@
+→ closed (groom 2026-10-08, adjudicator, groom-clerk-2026-10-08)
+
 # Epic: ASF 1.0 — stable core: a small, excellent factory proved on a real product
 
 ASF 1.0, stable core: a small, excellent factory, proved on a real product.
