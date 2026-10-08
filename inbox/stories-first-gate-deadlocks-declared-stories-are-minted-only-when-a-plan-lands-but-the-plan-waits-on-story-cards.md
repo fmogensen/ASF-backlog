@@ -9,3 +9,6 @@ The stories-first gate deadlocks every Feature whose spec is written by a sessio
 - A spec-amend that adds a Story mints that Story the same way on its landing.
 - A declared Story whose id is already a card is not minted twice, and a declared id outside the claim is refused by name.
 - The `NO STORIES → SPEC-AMEND` row fires only when the landed spec declares no Story at all.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
