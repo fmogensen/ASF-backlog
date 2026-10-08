@@ -1,3 +1,5 @@
+→ F-0306
+
 # Release rehearsal: every main push runs the CLI and hooks end to end on a real-record snapshot before a version can be offered
 
 Parent: E-0001
