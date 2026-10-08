@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T11:22:43Z",
+  "generated": "2026-10-08T11:29:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18286,6 +18286,7 @@
         "F-0302",
         "F-0303",
         "F-0304",
+        "F-0305",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -21974,7 +21975,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "5/7 tasks Closed",
+        "6/7 tasks Closed",
         "7/7 stories open: S-53556, S-53557, S-53558, S-53559, S-53560, S-53561, S-53562",
         "rule: documented"
       ],
@@ -21987,12 +21988,12 @@
       "reshape_applied": "cf8d63721a07",
       "reshape_applied_at": "2026-09-29T15:45:10Z",
       "schema_version": 1,
-      "stage": "building 5/7",
-      "stage_since": "2026-10-07T21:55:48Z",
+      "stage": "building 6/7",
+      "stage_since": "2026-10-08T11:28:44Z",
       "state": "Active",
       "title": "Security checks by code: a review pass on sensitive paths, secret and dependency scanning as rules",
       "type": "feature",
-      "updated": "2026-10-07T21:55:48Z"
+      "updated": "2026-10-08T11:28:44Z"
     },
     "F-0070": {
       "area": "ci",
@@ -30137,7 +30138,9 @@
       "updated": "2026-10-08T09:02:50Z"
     },
     "F-0282": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0305"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 1,
@@ -30211,7 +30214,8 @@
       ],
       "children": [
         "S-75954",
-        "S-75955"
+        "S-75955",
+        "T-77803"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -30226,7 +30230,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0284",
+        "plan on origin/main",
         "2/2 stories open: S-75954, S-75955",
         "rule: documented"
       ],
@@ -30234,12 +30238,12 @@
       "id": "F-0284",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T06:57:10Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T11:28:44Z",
       "state": "Active",
       "title": "A CONFLICTING PR gets no CI run; its priority land request shows 'not started' forever instead of triggering a rebase",
       "type": "feature",
-      "updated": "2026-10-08T11:14:45Z"
+      "updated": "2026-10-08T11:28:44Z"
     },
     "F-0285": {
       "backlinks": [
@@ -30794,6 +30798,20 @@
       "title": "doctor ci-pool flags workflow labels the product declares in ci.pool as undeclared roles",
       "type": "feature",
       "updated": "2026-10-08T10:08:44Z"
+    },
+    "F-0305": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0305",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T11:29:00Z",
+      "state": "New",
+      "title": "S1 regression: F-0282 staged-guard refuses groom's inbox\u2192done move, so no answered inbox card can be minted",
+      "type": "feature",
+      "updated": "2026-10-08T11:29:00Z"
     },
     "R-0001": {
       "backlinks": [
@@ -38929,7 +38947,8 @@
     },
     "S-75954": {
       "backlinks": [
-        "F-0284"
+        "F-0284",
+        "T-77803"
       ],
       "children": [],
       "cost": {
@@ -38954,7 +38973,8 @@
     },
     "S-75955": {
       "backlinks": [
-        "F-0284"
+        "F-0284",
+        "T-77803"
       ],
       "children": [],
       "cost": {
@@ -55425,12 +55445,17 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1170 OPEN",
-        "branch worker/T-0367",
-        "rule: in-flight"
+        "merge 585cf0b of worker/T-0367 lands T-0367 (PR #1170)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0367",
+      "landing": {
+        "as_of": "2026-10-08T11:28:44Z",
+        "by": "pr-merge",
+        "sha": "585cf0b4855e48613969bb4897819d6f69912d4f"
+      },
       "links": {
         "plan": "docs/plans/replans/f-0069-cf8d63721a07.md"
       },
@@ -55439,12 +55464,12 @@
         "split T-0367 asf | asf/security | docs | docs/guide | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-08T09:14:59Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T11:28:44Z",
+      "state": "Closed",
       "stories": [],
       "title": "the doctor's `security` row, the guide, and the documented block",
       "type": "task",
-      "updated": "2026-10-08T11:14:45Z",
+      "updated": "2026-10-08T11:28:44Z",
       "writes": [
         "asf/doctor.py",
         "asf/security/doctor.py",
@@ -73499,8 +73524,8 @@
       },
       "decided": true,
       "evidence": [
-        "branch worker/T-0796",
-        "rule: in-flight"
+        "no evidence found (2026-10-08)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0796",
@@ -73509,11 +73534,11 @@
       },
       "parent": "F-0239",
       "schema_version": 1,
-      "stage_since": "2026-10-07T16:14:00Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T11:28:44Z",
+      "state": "New",
       "title": "a Bug past the attempt limit is judged, not shelved",
       "type": "task",
-      "updated": "2026-10-07T16:14:00Z",
+      "updated": "2026-10-08T11:28:44Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -75121,6 +75146,32 @@
         "asf/workers/lifecycle.py",
         "asf/tick/step_wave.py",
         "tests/test_occupancy_trunk_landed.py"
+      ]
+    },
+    "T-77803": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-77803",
+      "links": {
+        "plan": "docs/plans/f-0284.md"
+      },
+      "parent": "F-0284",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T11:28:52Z",
+      "state": "New",
+      "stories": [
+        "S-75954",
+        "S-75955"
+      ],
+      "title": "the one read, the three outcomes, and the red's own words",
+      "type": "task",
+      "updated": "2026-10-08T11:28:52Z",
+      "writes": [
+        "asf/merge_queue.py",
+        "tests/test_merge_queue.py",
+        "tests/test_tree_green.py"
       ]
     }
   }

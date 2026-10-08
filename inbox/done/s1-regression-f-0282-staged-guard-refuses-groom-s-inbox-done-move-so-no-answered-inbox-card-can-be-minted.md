@@ -1,3 +1,5 @@
+→ F-0305
+
 # S1 regression: F-0282 staged-guard refuses groom's inbox→done move, so no answered inbox card can be minted
 
 Parent: E-0001
