@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T09:26:53Z",
+  "generated": "2026-10-08T09:36:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17121,6 +17121,25 @@
       "type": "bug",
       "updated": "2026-10-08T09:08:26Z"
     },
+    "B-76879": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-76879",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0724",
+      "stage_since": "2026-10-08T09:36:35Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0724",
+      "type": "bug",
+      "updated": "2026-10-08T09:36:35Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -18118,6 +18137,8 @@
         "F-0295",
         "F-0296",
         "F-0297",
+        "F-0298",
+        "F-0299",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -18710,7 +18731,8 @@
         "B-76375",
         "B-76376",
         "B-76677",
-        "B-76678"
+        "B-76678",
+        "B-76879"
       ],
       "decided": true,
       "evidence": [
@@ -30179,7 +30201,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0288",
+        "plan on origin/main",
         "4/4 stories open: S-75404, S-75405, S-75406, S-75407",
         "rule: documented"
       ],
@@ -30187,12 +30209,12 @@
       "id": "F-0288",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T07:22:23Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T09:32:25Z",
       "state": "Active",
       "title": "A delivery member struck from the lead's PR stays bound (delivered_by not settable); it can't build on its own",
       "type": "feature",
-      "updated": "2026-10-08T09:26:49Z"
+      "updated": "2026-10-08T09:32:25Z"
     },
     "F-0289": {
       "backlinks": [
@@ -30348,6 +30370,7 @@
     },
     "F-0294": {
       "backlinks": [
+        "F-0284",
         "B-76375"
       ],
       "children": [
@@ -30386,24 +30409,25 @@
     },
     "F-0295": {
       "backlinks": [
+        "F-0284",
         "B-76376"
       ],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
+        "spec on spec/F-0295",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0295",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-10-07T22:54:33Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-10-08T09:32:25Z",
       "state": "New",
       "title": "Phantom-failure runs (completed/failure with queued jobs, no failed job) and lost-runner jobs are read as reds instead of auto re-run once",
       "type": "feature",
-      "updated": "2026-10-08T00:00:35Z"
+      "updated": "2026-10-08T09:32:25Z"
     },
     "F-0296": {
       "backlinks": [],
@@ -30442,6 +30466,34 @@
       "title": "CI ci-job:notes is red 6 times a week",
       "type": "feature",
       "updated": "2026-10-08T04:10:29Z"
+    },
+    "F-0298": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0298",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T09:32:40Z",
+      "state": "New",
+      "title": "An open Story with unproved lines and no launchable Task is flagged daily and optionally re-planned",
+      "type": "feature",
+      "updated": "2026-10-08T09:32:40Z"
+    },
+    "F-0299": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0299",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T09:32:44Z",
+      "state": "New",
+      "title": "Batch size by path class (light-path batches larger), configurable",
+      "type": "feature",
+      "updated": "2026-10-08T09:32:44Z"
     },
     "R-0001": {
       "backlinks": [
@@ -42762,7 +42814,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1742 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1743 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -69234,6 +69286,7 @@
       ],
       "backlinks": [
         "F-0194",
+        "F-0284",
         "T-0708",
         "T-0710",
         "T-0711",
@@ -69951,7 +70004,8 @@
         "T-0726",
         "T-0727",
         "T-0775",
-        "T-0793"
+        "T-0793",
+        "B-76879"
       ],
       "children": [],
       "cost": {
