@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T07:58:04Z",
+  "generated": "2026-10-08T08:07:52Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16894,6 +16894,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-75669",
@@ -16906,7 +16910,45 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0277",
       "type": "bug",
-      "updated": "2026-10-08T07:58:02Z"
+      "updated": "2026-10-08T08:03:18Z"
+    },
+    "B-75720": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-75720",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0280",
+      "stage_since": "2026-10-08T08:07:48Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0280",
+      "type": "bug",
+      "updated": "2026-10-08T08:07:48Z"
+    },
+    "B-75721": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-75721",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: F-0281",
+      "stage_since": "2026-10-08T08:07:52Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0281",
+      "type": "bug",
+      "updated": "2026-10-08T08:07:52Z"
     },
     "D-0001": {
       "backlinks": [
@@ -18488,7 +18530,9 @@
         "B-75316",
         "B-75617",
         "B-75618",
-        "B-75669"
+        "B-75669",
+        "B-75720",
+        "B-75721"
       ],
       "decided": true,
       "evidence": [
@@ -18498,12 +18542,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2051.8,
+      "spend_usd": 2062.22,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-08T07:17:01Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "E-0002": {
       "backlinks": [
@@ -29646,7 +29690,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 86,
-        "sessions": 3,
+        "sessions": 4,
         "usd": null
       },
       "decided": true,
@@ -29663,10 +29707,12 @@
       "state": "Active",
       "title": "A review that ends 'needs input' because the heartbeat cannot start parks the PR for good",
       "type": "feature",
-      "updated": "2026-10-08T07:40:51Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "F-0280": {
-      "backlinks": [],
+      "backlinks": [
+        "B-75720"
+      ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -29692,7 +29738,8 @@
     },
     "F-0281": {
       "backlinks": [
-        "F-0277"
+        "F-0277",
+        "B-75721"
       ],
       "children": [],
       "cost": {
@@ -29748,7 +29795,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 60,
+        "runner_min": 87,
         "sessions": 3,
         "usd": null
       },
@@ -29766,7 +29813,7 @@
       "state": "Active",
       "title": "product git hooks exec the global unpinned asf (v0.1.106), so pre-commit/pre-push never run the product's pinned build",
       "type": "feature",
-      "updated": "2026-10-08T07:40:51Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "F-0284": {
       "backlinks": [
@@ -29841,8 +29888,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 22,
-        "sessions": 1,
+        "runner_min": 50,
+        "sessions": 2,
         "usd": null
       },
       "decided": true,
@@ -29859,7 +29906,7 @@
       "state": "Active",
       "title": "ci-heartbeat stall-cancels busy jobs without logging to ci-cancels.json or re-running; it cancelled a priority land-requested PR",
       "type": "feature",
-      "updated": "2026-10-08T07:22:23Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "F-0287": {
       "backlinks": [],
@@ -29897,9 +29944,13 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 29,
-        "sessions": 1,
-        "usd": null
+        "runner_min": 38,
+        "sessions": 2,
+        "tokens_cache_read": 7052659,
+        "tokens_cache_write": 108007,
+        "tokens_input": 176,
+        "tokens_output": 47880,
+        "usd": 5.8
       },
       "decided": true,
       "evidence": [
@@ -29916,7 +29967,7 @@
       "state": "Active",
       "title": "A delivery member struck from the lead's PR stays bound (delivered_by not settable); it can't build on its own",
       "type": "feature",
-      "updated": "2026-10-08T07:55:38Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "F-0289": {
       "backlinks": [
@@ -29926,7 +29977,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 27,
         "sessions": 1,
         "usd": null
       },
@@ -29944,13 +29995,23 @@
       "state": "Active",
       "title": "Cloud correction sessions on a CONFLICTING PR end without a commit; conflict rebases should route local",
       "type": "feature",
-      "updated": "2026-10-08T07:46:22Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "F-0290": {
       "backlinks": [
         "F-0277"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 3839419,
+        "tokens_cache_write": 15055,
+        "tokens_input": 20,
+        "tokens_output": 39,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-08)",
@@ -29965,13 +30026,19 @@
       "state": "New",
       "title": "A product tick takes ~50 min (health 25 min, record:file-bugs ~15 min): record lags, upgrade windows miss",
       "type": "feature",
-      "updated": "2026-10-08T00:00:35Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "F-0291": {
       "backlinks": [
         "B-74914"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 30,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0291",
@@ -29986,11 +30053,17 @@
       "state": "New",
       "title": "Hardening leftovers: four allowlisted 4-digit id sites, the local heartbeat brief text, proves known= wiring",
       "type": "feature",
-      "updated": "2026-10-08T07:22:23Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "F-0292": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0292",
@@ -30005,11 +30078,21 @@
       "state": "New",
       "title": "Port the old ci-heartbeat watchdog's OOM re-run into asf ci stall-watch so the host script can be retired",
       "type": "feature",
-      "updated": "2026-10-08T07:37:29Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "F-0293": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 1,
+        "sessions": 1,
+        "tokens_cache_read": 4846568,
+        "tokens_cache_write": 101392,
+        "tokens_input": 138,
+        "tokens_output": 47031,
+        "usd": 4.61
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0293",
@@ -30024,7 +30107,7 @@
       "state": "New",
       "title": "4-digit id patterns remain in core/replan/plan_tasks/lane/ingest; a landed reshape with 5-digit or unreadable headings is ignored and re-planned",
       "type": "feature",
-      "updated": "2026-10-08T07:55:38Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "F-0294": {
       "backlinks": [],
@@ -38146,6 +38229,12 @@
         "F-0288"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 9,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -38158,7 +38247,7 @@
       "state": "New",
       "title": "undelivers: is the ruling's fourth mechanism field, read last so a stray line claims nothing",
       "type": "story",
-      "updated": "2026-10-08T07:46:22Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "S-75405": {
       "backlinks": [
@@ -38203,6 +38292,12 @@
         "F-0288"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 9,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: no-rule"
@@ -38215,7 +38310,7 @@
       "state": "New",
       "title": "A struck member builds on its own lane and stops holding its lead's pull request",
       "type": "story",
-      "updated": "2026-10-08T07:55:38Z"
+      "updated": "2026-10-08T08:07:35Z"
     },
     "T-0001": {
       "backlinks": [
@@ -45482,7 +45577,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 25,
         "sessions": 1,
         "usd": null
       },
@@ -45506,7 +45601,7 @@
       "state": "Active",
       "title": "the selection rule, the budget and the three ceilings",
       "type": "task",
-      "updated": "2026-10-08T07:40:51Z",
+      "updated": "2026-10-08T08:07:35Z",
       "writes": [
         "asf/groom/delivery.py",
         "asf/conventions.py",
@@ -70844,7 +70939,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 721,
         "sessions": 3,
         "tokens_cache_read": 26463325,
         "tokens_cache_write": 229308,
@@ -70872,7 +70967,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-08T03:00:57Z",
+      "updated": "2026-10-08T08:07:35Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
