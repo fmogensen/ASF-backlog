@@ -14,3 +14,6 @@ The feeder shows them as "WAITS ON T-0056 (parked: F-0023 later)". At this check
 - An Active Task whose Feature is `priority: later`, or whose row is parked, holds no footprint. I3 and the feeder's footprint gate skip it, and `after:` edges to it are dropped from Tasks of non-later Features (with a History line naming the parked holder). A test covers it: a need Task with `after: [T-p]`, where T-p is Active under a later Feature with intersecting writes → the need Task draws a launching row, and `asf set … after-=T-p` is accepted.
 - When a later Feature is raised again, its Active Tasks get their `after:` order back behind whatever landed meanwhile and rebase before they build. A test covers it.
 - `asf next` names a ranked Task held only by later-priority holders as such, so the stall is visible in one line.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
