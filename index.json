@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T21:58:37Z",
+  "generated": "2026-10-08T22:05:10Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -21570,7 +21570,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "3/4 tasks Closed",
+        "4/4 tasks Closed",
         "1/1 stories open: S-0005",
         "rule: documented"
       ],
@@ -21582,12 +21582,12 @@
       "reshape": "stale: T-0140 Active for 6d (over 3x its limit), 367 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "source": "prototype:docs/prior-art.md",
-      "stage": "building 3/4",
-      "stage_since": "2026-09-26T17:31:21Z",
+      "stage": "landed",
+      "stage_since": "2026-10-08T22:05:08Z",
       "state": "Active",
       "title": "The README carries the argument, the mental model and the manual on one page",
       "type": "feature",
-      "updated": "2026-10-06T09:36:24Z"
+      "updated": "2026-10-08T22:05:08Z"
     },
     "F-0031": {
       "area": "factory",
@@ -22458,12 +22458,12 @@
       "rank": 136,
       "reshape": "stale: T-0368 Active for 1d (over 3x its limit), 201 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
-      "stage": "building 0/7",
-      "stage_since": "2026-10-07T21:55:48Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T22:05:08Z",
       "state": "Active",
       "title": "The production verification probe: a real customer journey after every deploy",
       "type": "feature",
-      "updated": "2026-10-08T04:37:31Z"
+      "updated": "2026-10-08T22:05:08Z"
     },
     "F-0052": {
       "area": "factory",
@@ -32745,6 +32745,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0315",
         "5/5 stories open: S-82204, S-82205, S-82206, S-82207, S-82208",
         "rule: documented"
       ],
@@ -32759,7 +32760,7 @@
       "state": "Active",
       "title": "delivery pass binds a lead to every started Task of its Feature, not only ones whose writes intersect, starving the launch queue",
       "type": "feature",
-      "updated": "2026-10-08T19:41:28Z"
+      "updated": "2026-10-08T22:05:08Z"
     },
     "F-0316": {
       "backlinks": [],
@@ -49172,12 +49173,17 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1247 OPEN",
-        "branch worker/T-0140",
-        "rule: in-flight"
+        "merge 6c2cabb of worker/T-0140 lands T-0140 (PR #1247)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0140",
+      "landing": {
+        "as_of": "2026-10-08T22:05:08Z",
+        "by": "pr-merge",
+        "sha": "6c2cabb5d292894e471f204991ee236eb2ae244c"
+      },
       "links": {
         "plan": "docs/plans/f-0030.md"
       },
@@ -49187,11 +49193,11 @@
         "split T-0140 asf | asf/tick | sample | sample/repo | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-08T20:59:27Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T22:05:08Z",
+      "state": "Closed",
       "title": "drift is visible \u2014 the sample product renders, doctor shows it, file-bugs files it",
       "type": "task",
-      "updated": "2026-10-08T21:49:31Z",
+      "updated": "2026-10-08T22:05:08Z",
       "writes": [
         "asf/doctor.py",
         "asf/tick/file_bugs.py",
@@ -59363,9 +59369,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1071 OPEN",
-        "branch worker/T-0368",
-        "rule: in-flight"
+        "no evidence found (2026-10-08)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0368",
@@ -59377,11 +59382,11 @@
         "split T-0368 asf | asf/probe | docs | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-07T21:55:48Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T22:05:08Z",
+      "state": "New",
       "title": "the `probe:` block \u2014 validated, defaulted, documented, and off when unset",
       "type": "task",
-      "updated": "2026-10-08T01:26:53Z",
+      "updated": "2026-10-08T22:05:08Z",
       "writes": [
         "asf/probe/__init__.py",
         "asf/probe/config.py",
@@ -62168,6 +62173,7 @@
       },
       "decided": true,
       "evidence": [
+        "PR #1255 OPEN",
         "branch worker/T-0432",
         "rule: in-flight"
       ],
@@ -62185,7 +62191,7 @@
       "state": "Active",
       "title": "the release primitives \u2014 the hourly shared cache, the version tuple, and an install that can be handed a tag",
       "type": "task",
-      "updated": "2026-10-08T21:25:38Z",
+      "updated": "2026-10-08T22:05:08Z",
       "writes": [
         "asf/upgrade.py",
         "asf/cli.py",
