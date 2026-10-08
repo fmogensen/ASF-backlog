@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T12:07:01Z",
+  "generated": "2026-10-08T12:19:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17351,6 +17351,25 @@
       "type": "bug",
       "updated": "2026-10-08T11:54:58Z"
     },
+    "B-78589": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-78589",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #1183@4b1d12af6",
+      "stage_since": "2026-10-08T12:19:36Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1183@4b1d12af6",
+      "type": "bug",
+      "updated": "2026-10-08T12:19:36Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -18959,7 +18978,8 @@
         "B-77535",
         "B-77936",
         "B-77987",
-        "B-78088"
+        "B-78088",
+        "B-78589"
       ],
       "decided": true,
       "evidence": [
@@ -30281,12 +30301,12 @@
       "id": "F-0283",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-10-08T11:54:58Z",
+      "stage": "building 0/6",
+      "stage_since": "2026-10-08T12:15:04Z",
       "state": "Active",
       "title": "product git hooks exec the global unpinned asf (v0.1.106), so pre-commit/pre-push never run the product's pinned build",
       "type": "feature",
-      "updated": "2026-10-08T12:06:58Z"
+      "updated": "2026-10-08T12:15:04Z"
     },
     "F-0284": {
       "backlinks": [
@@ -30374,7 +30394,10 @@
       "children": [
         "S-76004",
         "S-76005",
-        "S-76006"
+        "S-76006",
+        "T-78560",
+        "T-78561",
+        "T-78562"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -30389,7 +30412,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0286",
+        "plan on origin/main",
         "3/3 stories open: S-76004, S-76005, S-76006",
         "rule: documented"
       ],
@@ -30397,12 +30420,12 @@
       "id": "F-0286",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T07:22:23Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T12:15:04Z",
       "state": "Active",
       "title": "ci-heartbeat stall-cancels busy jobs without logging to ci-cancels.json or re-running; it cancelled a priority land-requested PR",
       "type": "feature",
-      "updated": "2026-10-08T12:01:24Z"
+      "updated": "2026-10-08T12:15:04Z"
     },
     "F-0287": {
       "backlinks": [],
@@ -39115,7 +39138,8 @@
     },
     "S-76004": {
       "backlinks": [
-        "F-0286"
+        "F-0286",
+        "T-78560"
       ],
       "children": [],
       "cost": {
@@ -39140,7 +39164,8 @@
     },
     "S-76005": {
       "backlinks": [
-        "F-0286"
+        "F-0286",
+        "T-78561"
       ],
       "children": [],
       "evidence": [
@@ -39159,7 +39184,8 @@
     },
     "S-76006": {
       "backlinks": [
-        "F-0286"
+        "F-0286",
+        "T-78562"
       ],
       "children": [],
       "cost": {
@@ -39246,17 +39272,17 @@
       },
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "rule: task-active"
       ],
       "folder": "stories",
       "id": "S-76254",
       "parent": "F-0283",
       "schema_version": 1,
-      "stage_since": "2026-10-08T08:45:52Z",
-      "state": "New",
+      "stage_since": "2026-10-08T12:15:04Z",
+      "state": "Active",
       "title": "A product's git hooks will not silently run an asf that is not its pinned build",
       "type": "story",
-      "updated": "2026-10-08T09:26:49Z"
+      "updated": "2026-10-08T12:15:04Z"
     },
     "S-76255": {
       "backlinks": [
@@ -39287,17 +39313,17 @@
       "children": [],
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "rule: task-active"
       ],
       "folder": "stories",
       "id": "S-76256",
       "parent": "F-0283",
       "schema_version": 1,
-      "stage_since": "2026-10-08T08:45:59Z",
-      "state": "New",
+      "stage_since": "2026-10-08T12:15:04Z",
+      "state": "Active",
       "title": "A link that takes the dispatcher's path back is undone within one tick",
       "type": "story",
-      "updated": "2026-10-08T08:56:39Z"
+      "updated": "2026-10-08T12:15:04Z"
     },
     "S-76257": {
       "backlinks": [
@@ -39327,17 +39353,17 @@
       "children": [],
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "rule: task-active"
       ],
       "folder": "stories",
       "id": "S-76258",
       "parent": "F-0283",
       "schema_version": 1,
-      "stage_since": "2026-10-08T08:46:06Z",
-      "state": "New",
+      "stage_since": "2026-10-08T12:15:04Z",
+      "state": "Active",
       "title": "The session shim's trunk check runs the pin or refuses the push",
       "type": "story",
-      "updated": "2026-10-08T08:56:39Z"
+      "updated": "2026-10-08T12:15:04Z"
     },
     "S-76259": {
       "backlinks": [
@@ -43338,7 +43364,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1761 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1762 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -47535,7 +47561,8 @@
         "T-0778",
         "T-0802",
         "T-0815",
-        "T-0816"
+        "T-0816",
+        "T-78155"
       ],
       "children": [],
       "cost": {
@@ -47684,6 +47711,7 @@
         "T-0427",
         "T-0432",
         "T-0638",
+        "T-78154",
         "B-0300",
         "B-0597"
       ],
@@ -48162,6 +48190,7 @@
         "T-0794",
         "T-0815",
         "T-0816",
+        "T-78155",
         "B-0301",
         "B-0548",
         "B-0558"
@@ -56845,7 +56874,8 @@
         "T-0432",
         "T-0503",
         "T-0724",
-        "T-0734"
+        "T-0734",
+        "T-78155"
       ],
       "budget_sessions": 5,
       "children": [],
@@ -59284,7 +59314,8 @@
         "T-0503",
         "T-0651",
         "T-0724",
-        "T-0734"
+        "T-0734",
+        "T-78155"
       ],
       "children": [],
       "cost": {
@@ -71010,6 +71041,7 @@
         "F-0252",
         "T-0735",
         "T-0816",
+        "T-78155",
         "B-77333",
         "B-77535"
       ],
@@ -74111,7 +74143,8 @@
         "B-0383",
         "B-0493",
         "B-0494",
-        "B-0498"
+        "B-0498",
+        "B-78589"
       ],
       "budget_sessions": 6,
       "children": [],
@@ -74474,7 +74507,8 @@
         "T-0734"
       ],
       "backlinks": [
-        "T-0818"
+        "T-0818",
+        "T-78155"
       ],
       "children": [],
       "cost": {
@@ -75325,6 +75359,9 @@
       ]
     },
     "T-78154": {
+      "after": [
+        "T-0192"
+      ],
       "backlinks": [
         "T-78307",
         "T-78358",
@@ -75333,8 +75370,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "branch worker/T-78154",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-78154",
@@ -75343,26 +75380,34 @@
       },
       "parent": "F-0283",
       "schema_version": 1,
-      "stage_since": "2026-10-08T11:55:06Z",
-      "state": "New",
+      "stage_since": "2026-10-08T12:15:04Z",
+      "state": "Active",
       "stories": [
         "S-76254"
       ],
       "title": "the hook body checks the asf it is about to exec, and `ensure_git_hooks` bakes the guard exactly when the product is pinned",
       "type": "task",
-      "updated": "2026-10-08T12:06:58Z",
+      "updated": "2026-10-08T12:15:04Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_pin_defects.py"
       ]
     },
     "T-78155": {
+      "after": [
+        "T-0189",
+        "T-0203",
+        "T-0398",
+        "T-0452",
+        "T-0734",
+        "T-0816"
+      ],
       "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "branch worker/T-78155",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-78155",
@@ -75371,14 +75416,14 @@
       },
       "parent": "F-0283",
       "schema_version": 1,
-      "stage_since": "2026-10-08T11:55:10Z",
-      "state": "New",
+      "stage_since": "2026-10-08T12:15:04Z",
+      "state": "Active",
       "stories": [
         "S-76256"
       ],
       "title": "`dispatch.reassert()` puts the dispatcher back, and `cmd_tick` calls it once per pass before the lock",
       "type": "task",
-      "updated": "2026-10-08T12:06:58Z",
+      "updated": "2026-10-08T12:15:04Z",
       "writes": [
         "asf/dispatch.py",
         "asf/tick/tick.py",
@@ -75391,8 +75436,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "branch worker/T-78306",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-78306",
@@ -75401,14 +75446,14 @@
       },
       "parent": "F-0283",
       "schema_version": 1,
-      "stage_since": "2026-10-08T11:55:22Z",
-      "state": "New",
+      "stage_since": "2026-10-08T12:15:04Z",
+      "state": "Active",
       "stories": [
         "S-76258"
       ],
       "title": "the session shim's trunk check runs the pin or refuses the push",
       "type": "task",
-      "updated": "2026-10-08T12:06:58Z",
+      "updated": "2026-10-08T12:15:04Z",
       "writes": [
         "asf/workers/githooks.py",
         "tests/test_session_push_guard.py"
@@ -75515,6 +75560,95 @@
         "tests/test_hooks_recognise.py",
         "tests/test_install.py",
         "tests/test_hooks.py"
+      ]
+    },
+    "T-78560": {
+      "backlinks": [
+        "T-78561"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-78560",
+      "links": {
+        "plan": "docs/plans/f-0286.md"
+      },
+      "parent": "F-0286",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T12:15:14Z",
+      "state": "New",
+      "stories": [
+        "S-76004"
+      ],
+      "title": "the pass stamps itself, and the reaper stops calling this watch's files orphans",
+      "type": "task",
+      "updated": "2026-10-08T12:15:14Z",
+      "writes": [
+        "asf/ci_stall.py",
+        "asf/state/registry.py",
+        "tests/test_ci_stall.py",
+        "tests/test_state_store.py"
+      ]
+    },
+    "T-78561": {
+      "after": [
+        "T-78560"
+      ],
+      "backlinks": [
+        "T-78562"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-78561",
+      "links": {
+        "plan": "docs/plans/f-0286.md"
+      },
+      "parent": "F-0286",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T12:15:18Z",
+      "state": "New",
+      "stories": [
+        "S-76005"
+      ],
+      "title": "the doctor table names which watcher acts on a CI stall",
+      "type": "task",
+      "updated": "2026-10-08T12:15:18Z",
+      "writes": [
+        "asf/ci_stall.py",
+        "asf/doctor.py",
+        "asf/config_keys.py",
+        "docs/config.example.yaml",
+        "tests/test_ci_stall.py",
+        "tests/test_doctor.py",
+        "tests/test_config_keys.py"
+      ]
+    },
+    "T-78562": {
+      "after": [
+        "T-78561"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-78562",
+      "links": {
+        "plan": "docs/plans/f-0286.md"
+      },
+      "parent": "F-0286",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T12:15:22Z",
+      "state": "New",
+      "stories": [
+        "S-76006"
+      ],
+      "title": "a cancel this watch made is finished, in either mode, and a refusal is retried",
+      "type": "task",
+      "updated": "2026-10-08T12:15:22Z",
+      "writes": [
+        "asf/ci_stall.py",
+        "tests/test_ci_stall.py"
       ]
     }
   }
