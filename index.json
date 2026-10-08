@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T22:26:49Z",
+  "generated": "2026-10-08T22:32:52Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -32203,7 +32203,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/4 tasks Closed",
+        "1/4 tasks Closed",
         "4/4 stories open: S-80804, S-80805, S-80806, S-80807",
         "rule: documented"
       ],
@@ -32211,12 +32211,12 @@
       "id": "F-0295",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "building 0/4",
-      "stage_since": "2026-10-08T21:34:33Z",
+      "stage": "building 1/4",
+      "stage_since": "2026-10-08T22:32:50Z",
       "state": "Active",
       "title": "Phantom-failure runs (completed/failure with queued jobs, no failed job) and lost-runner jobs are read as reds instead of auto re-run once",
       "type": "feature",
-      "updated": "2026-10-08T21:34:33Z"
+      "updated": "2026-10-08T22:32:50Z"
     },
     "F-0296": {
       "backlinks": [],
@@ -32771,19 +32771,19 @@
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0314",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0314",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-10-08T21:54:56Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-10-08T22:32:50Z",
+      "state": "Active",
       "title": "Open PRs for items already Closed on the trunk are never closed or reaped",
       "type": "feature",
-      "updated": "2026-10-08T22:19:34Z"
+      "updated": "2026-10-08T22:32:50Z"
     },
     "F-0315": {
       "backlinks": [
@@ -81030,6 +81030,7 @@
     },
     "T-83349": {
       "backlinks": [
+        "S-80806",
         "T-83350",
         "T-83351",
         "T-83352",
@@ -81044,25 +81045,30 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1254 OPEN",
-        "branch worker/T-83349",
-        "rule: in-flight"
+        "merge 01c5e57 of worker/T-83349 lands T-83349 (PR #1254)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-83349",
+      "landing": {
+        "as_of": "2026-10-08T22:32:50Z",
+        "by": "pr-merge",
+        "sha": "01c5e573b414da053bfacd6b5000fd5227a2da8f"
+      },
       "links": {
         "plan": "docs/plans/f-0295.md"
       },
       "parent": "F-0295",
       "schema_version": 1,
-      "stage_since": "2026-10-08T21:34:33Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T22:32:50Z",
+      "state": "Closed",
       "stories": [
         "S-80806"
       ],
       "title": "the reader reads every run behind the checks \u2014 `_run_ids`, and one probe record per run id",
       "type": "task",
-      "updated": "2026-10-08T22:19:34Z",
+      "updated": "2026-10-08T22:32:50Z",
       "writes": [
         "asf/flake.py",
         "tests/test_ci_red_class.py"
