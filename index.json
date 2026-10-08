@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T16:28:38Z",
+  "generated": "2026-10-08T16:35:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17749,6 +17749,25 @@
       "type": "bug",
       "updated": "2026-10-08T15:49:43Z"
     },
+    "B-81201": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-81201",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #1222@d64724317",
+      "stage_since": "2026-10-08T16:35:56Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1222@d64724317",
+      "type": "bug",
+      "updated": "2026-10-08T16:35:56Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -17771,7 +17790,8 @@
     "D-0002": {
       "backlinks": [
         "S-62054",
-        "T-0822"
+        "T-0822",
+        "T-81130"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -17805,7 +17825,9 @@
     "D-0004": {
       "backlinks": [
         "T-0822",
-        "T-0833"
+        "T-0833",
+        "T-81129",
+        "T-81131"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -17820,7 +17842,10 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "D-0005": {
-      "backlinks": [],
+      "backlinks": [
+        "T-81129",
+        "T-81131"
+      ],
       "children": [],
       "date": "2026-09-21",
       "decided_by": "operator",
@@ -17834,7 +17859,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "D-0006": {
-      "backlinks": [],
+      "backlinks": [
+        "T-81130"
+      ],
       "children": [],
       "date": "2026-09-21",
       "decided_by": "operator",
@@ -17904,7 +17931,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "D-0011": {
-      "backlinks": [],
+      "backlinks": [
+        "T-81129"
+      ],
       "children": [],
       "date": "2026-09-21",
       "decided_by": "operator",
@@ -19374,7 +19403,8 @@
         "B-80447",
         "B-80548",
         "B-80549",
-        "B-80650"
+        "B-80650",
+        "B-81201"
       ],
       "decided": true,
       "evidence": [
@@ -31684,7 +31714,13 @@
         "S-80456",
         "S-80457",
         "S-80458",
-        "S-80459"
+        "S-80459",
+        "T-81129",
+        "T-81130",
+        "T-81131",
+        "T-81132",
+        "T-81133",
+        "T-81134"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -31699,7 +31735,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0312",
+        "plan on origin/main",
         "6/6 stories open: S-80454, S-80455, S-80456, S-80457, S-80458, S-80459",
         "rule: documented"
       ],
@@ -31709,12 +31745,12 @@
       "priority": "need",
       "rank": 4,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T15:03:28Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T16:33:58Z",
       "state": "Active",
       "title": "Bug fixes must ship the regression test that fails before the fix (checked mechanically by the lane)",
       "type": "feature",
-      "updated": "2026-10-08T16:28:35Z"
+      "updated": "2026-10-08T16:33:58Z"
     },
     "F-0313": {
       "backlinks": [],
@@ -31761,7 +31797,7 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
+        "spec on spec/F-0315",
         "rule: card"
       ],
       "folder": "features",
@@ -31770,12 +31806,12 @@
       "priority": "need",
       "rank": 1,
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-10-08T15:10:51Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-10-08T16:33:58Z",
       "state": "New",
       "title": "delivery pass binds a lead to every started Task of its Feature, not only ones whose writes intersect, starving the launch queue",
       "type": "feature",
-      "updated": "2026-10-08T15:10:51Z"
+      "updated": "2026-10-08T16:33:58Z"
     },
     "F-0316": {
       "backlinks": [],
@@ -40803,7 +40839,8 @@
     },
     "S-80454": {
       "backlinks": [
-        "F-0312"
+        "F-0312",
+        "T-81129"
       ],
       "children": [],
       "cost": {
@@ -40828,7 +40865,8 @@
     },
     "S-80455": {
       "backlinks": [
-        "F-0312"
+        "F-0312",
+        "T-81130"
       ],
       "children": [],
       "evidence": [
@@ -40847,7 +40885,8 @@
     },
     "S-80456": {
       "backlinks": [
-        "F-0312"
+        "F-0312",
+        "T-81131"
       ],
       "children": [],
       "evidence": [
@@ -40866,7 +40905,8 @@
     },
     "S-80457": {
       "backlinks": [
-        "F-0312"
+        "F-0312",
+        "T-81132"
       ],
       "children": [],
       "evidence": [
@@ -40885,7 +40925,8 @@
     },
     "S-80458": {
       "backlinks": [
-        "F-0312"
+        "F-0312",
+        "T-81133"
       ],
       "children": [],
       "evidence": [
@@ -40904,7 +40945,8 @@
     },
     "S-80459": {
       "backlinks": [
-        "F-0312"
+        "F-0312",
+        "T-81134"
       ],
       "children": [],
       "cost": {
@@ -44733,7 +44775,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1797 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1802 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -77284,7 +77326,8 @@
       "backlinks": [
         "T-79566",
         "T-79568",
-        "B-80548"
+        "B-80548",
+        "B-81201"
       ],
       "children": [],
       "cost": {
@@ -77778,6 +77821,178 @@
       "updated": "2026-10-08T15:42:55Z",
       "writes": [
         ".github/workflows/release.yml"
+      ]
+    },
+    "T-81129": {
+      "backlinks": [
+        "T-81130",
+        "T-81133"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-81129",
+      "links": {
+        "plan": "docs/plans/f-0312.md"
+      },
+      "parent": "F-0312",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T16:34:05Z",
+      "state": "New",
+      "stories": [
+        "S-80454"
+      ],
+      "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
+      "type": "task",
+      "updated": "2026-10-08T16:34:05Z",
+      "writes": [
+        "asf/harvest/regression.py",
+        "tests/test_regression_gate.py"
+      ]
+    },
+    "T-81130": {
+      "after": [
+        "T-81129"
+      ],
+      "backlinks": [
+        "T-81131"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-81130",
+      "links": {
+        "plan": "docs/plans/f-0312.md"
+      },
+      "parent": "F-0312",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T16:34:09Z",
+      "state": "New",
+      "stories": [
+        "S-80455"
+      ],
+      "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
+      "type": "task",
+      "updated": "2026-10-08T16:34:09Z",
+      "writes": [
+        "asf/harvest/regression.py",
+        "tests/test_regression_gate.py"
+      ]
+    },
+    "T-81131": {
+      "after": [
+        "T-81130"
+      ],
+      "backlinks": [
+        "T-81132"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-81131",
+      "links": {
+        "plan": "docs/plans/f-0312.md"
+      },
+      "parent": "F-0312",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T16:34:12Z",
+      "state": "New",
+      "stories": [
+        "S-80456"
+      ],
+      "title": "the lane holds a fix branch whose tests were never red, and the text says what to write",
+      "type": "task",
+      "updated": "2026-10-08T16:34:12Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "asf/workers/lifecycle.py",
+        "asf/harvest/regression.py",
+        "tests/test_regression_gate.py"
+      ]
+    },
+    "T-81132": {
+      "after": [
+        "T-81131"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-81132",
+      "links": {
+        "plan": "docs/plans/f-0312.md"
+      },
+      "parent": "F-0312",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T16:34:16Z",
+      "state": "New",
+      "stories": [
+        "S-80457"
+      ],
+      "title": "a waiver is a decision the register holds, or it is not a waiver",
+      "type": "task",
+      "updated": "2026-10-08T16:34:16Z",
+      "writes": [
+        "asf/harvest/regression.py",
+        "tests/test_regression_gate.py"
+      ]
+    },
+    "T-81133": {
+      "after": [
+        "T-81129"
+      ],
+      "backlinks": [
+        "T-81134"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-81133",
+      "links": {
+        "plan": "docs/plans/f-0312.md"
+      },
+      "parent": "F-0312",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T16:34:19Z",
+      "state": "New",
+      "stories": [
+        "S-80458"
+      ],
+      "title": "the four regression flags, off by default, a malformed one said and not acted on",
+      "type": "task",
+      "updated": "2026-10-08T16:34:19Z",
+      "writes": [
+        "asf/conventions.py",
+        "tests/test_conventions.py",
+        "tests/test_regression_gate.py"
+      ]
+    },
+    "T-81134": {
+      "after": [
+        "T-81133"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-81134",
+      "links": {
+        "plan": "docs/plans/f-0312.md"
+      },
+      "parent": "F-0312",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T16:34:22Z",
+      "state": "New",
+      "stories": [
+        "S-80459"
+      ],
+      "title": "the fix-bug brief carries the pre-fix base and the command the lane will run",
+      "type": "task",
+      "updated": "2026-10-08T16:34:22Z",
+      "writes": [
+        "asf/briefs/templates/fix-bug.md",
+        "asf/briefs/build.py",
+        "tests/test_briefs.py"
       ]
     }
   }
