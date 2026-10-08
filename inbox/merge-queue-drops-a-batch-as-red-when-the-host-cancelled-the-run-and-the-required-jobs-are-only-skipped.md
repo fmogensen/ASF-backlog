@@ -1,4 +1,5 @@
 # merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped
+type: feature
 
 Severity: S2
 
@@ -10,4 +11,4 @@ Reported by botseon on 2026-10-08. The merge queue dropped batch …163914-e6eb3
 - A batch with a real `failure` on a required job is still dropped, and its members are bisected as they are today (the existing test stays green).
 
 ## Question
-This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
+Which Epic is this under? No open Epic shares a title word with it.

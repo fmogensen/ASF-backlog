@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T18:38:50Z",
+  "generated": "2026-10-08T18:43:17Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17933,6 +17933,25 @@
       "type": "bug",
       "updated": "2026-10-08T18:34:16Z"
     },
+    "B-82809": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-82809",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #1177@505cfad1e",
+      "stage_since": "2026-10-08T18:43:16Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1177@505cfad1e",
+      "type": "bug",
+      "updated": "2026-10-08T18:43:16Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -19577,7 +19596,8 @@
         "B-82155",
         "B-82356",
         "B-82407",
-        "B-82658"
+        "B-82658",
+        "B-82809"
       ],
       "decided": true,
       "evidence": [
@@ -19786,6 +19806,7 @@
         "F-0254",
         "F-0316",
         "F-0317",
+        "F-0319",
         "B-0146"
       ],
       "decided": true,
@@ -31121,6 +31142,7 @@
         "F-0121",
         "F-0123",
         "F-0148",
+        "F-0184",
         "F-0275",
         "F-0279",
         "F-0283",
@@ -31623,6 +31645,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0300",
         "4/4 stories open: S-78054, S-78055, S-78056, S-78057",
         "rule: documented"
       ],
@@ -31637,7 +31660,7 @@
       "state": "Active",
       "title": "Cheap adjudication: rule pass (cosmetic waiver, precedent citation) before any adjudicate session",
       "type": "feature",
-      "updated": "2026-10-08T18:34:16Z"
+      "updated": "2026-10-08T18:41:21Z"
     },
     "F-0301": {
       "backlinks": [
@@ -31716,7 +31739,8 @@
         "S-81154",
         "S-81155",
         "S-81156",
-        "S-81157"
+        "S-81157",
+        "T-82785"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -31731,7 +31755,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0303",
+        "plan on origin/main",
         "4/4 stories open: S-81154, S-81155, S-81156, S-81157",
         "rule: documented"
       ],
@@ -31741,12 +31765,12 @@
       "priority": "need",
       "rank": 7,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T14:08:18Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T18:41:21Z",
       "state": "Active",
       "title": "asf upgrade --to <version> resolves an annotated tag to the tag object, so the CI read 422s",
       "type": "feature",
-      "updated": "2026-10-08T18:31:45Z"
+      "updated": "2026-10-08T18:41:21Z"
     },
     "F-0304": {
       "backlinks": [],
@@ -32108,29 +32132,53 @@
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: card"
+      ],
       "folder": "features",
       "id": "F-0317",
       "parent": "E-0004",
       "schema_version": 1,
-      "stage_since": "2026-10-08T18:34:28Z",
+      "stage": "card",
+      "stage_since": "2026-10-08T18:41:21Z",
       "state": "New",
       "title": "landed_doc treats a replan branch's landing-gate correction as landed because the original plan is on main; the Feature deadlocks with no row",
       "type": "feature",
-      "updated": "2026-10-08T18:34:28Z"
+      "updated": "2026-10-08T18:41:21Z"
     },
     "F-0318": {
       "backlinks": [],
       "children": [],
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: card"
+      ],
       "folder": "features",
       "id": "F-0318",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage_since": "2026-10-08T18:34:31Z",
+      "stage": "card",
+      "stage_since": "2026-10-08T18:41:21Z",
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-08T18:34:31Z"
+      "updated": "2026-10-08T18:41:21Z"
+    },
+    "F-0319": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0319",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T18:41:34Z",
+      "state": "New",
+      "title": "capacity.ci caps the feeder's ci_free even when runners are readable, halving Features in build while runners sit idle",
+      "type": "feature",
+      "updated": "2026-10-08T18:41:34Z"
     },
     "R-0001": {
       "backlinks": [
@@ -37876,17 +37924,17 @@
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "rule: task-active"
       ],
       "folder": "stories",
       "id": "S-60906",
       "parent": "F-0260",
       "schema_version": 1,
-      "stage_since": "2026-10-07T13:57:05Z",
-      "state": "New",
+      "stage_since": "2026-10-08T18:41:21Z",
+      "state": "Active",
       "title": "A record checkout the tick cannot fast-forward is a NEEDS OPERATOR line carrying its drift, its record-relative paths and a read-only command, said every tick, with the record step still ok",
       "type": "story",
-      "updated": "2026-10-08T00:00:35Z"
+      "updated": "2026-10-08T18:41:21Z"
     },
     "S-60907": {
       "backlinks": [
@@ -37898,17 +37946,17 @@
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "rule: task-active"
       ],
       "folder": "stories",
       "id": "S-60907",
       "parent": "F-0260",
       "schema_version": 1,
-      "stage_since": "2026-10-07T13:57:26Z",
-      "state": "New",
+      "stage_since": "2026-10-08T18:41:21Z",
+      "state": "Active",
       "title": "record-health.json and asf status's Stale row name the record checkout that is behind instead of blaming a factory that ticked",
       "type": "story",
-      "updated": "2026-10-08T00:00:35Z"
+      "updated": "2026-10-08T18:41:21Z"
     },
     "S-60908": {
       "backlinks": [
@@ -41573,7 +41621,8 @@
     },
     "S-81154": {
       "backlinks": [
-        "F-0303"
+        "F-0303",
+        "T-82785"
       ],
       "children": [],
       "cost": {
@@ -41598,7 +41647,8 @@
     },
     "S-81155": {
       "backlinks": [
-        "F-0303"
+        "F-0303",
+        "T-82785"
       ],
       "children": [],
       "evidence": [
@@ -41617,7 +41667,8 @@
     },
     "S-81156": {
       "backlinks": [
-        "F-0303"
+        "F-0303",
+        "T-82785"
       ],
       "children": [],
       "evidence": [
@@ -41636,7 +41687,8 @@
     },
     "S-81157": {
       "backlinks": [
-        "F-0303"
+        "F-0303",
+        "T-82785"
       ],
       "children": [],
       "cost": {
@@ -45942,7 +45994,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1813 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1814 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -59476,6 +59528,7 @@
         "T-0503",
         "T-0724",
         "T-0734",
+        "T-0816",
         "T-78155",
         "T-79565",
         "T-80572"
@@ -61919,6 +61972,7 @@
         "T-0724",
         "T-0734",
         "T-0815",
+        "T-0816",
         "T-78155",
         "T-78358",
         "T-79565",
@@ -71372,6 +71426,7 @@
         "T-0647"
       ],
       "backlinks": [
+        "F-0184",
         "B-0251",
         "B-0322"
       ],
@@ -73663,7 +73718,8 @@
         "T-80572",
         "B-77333",
         "B-77535",
-        "B-82356"
+        "B-82356",
+        "B-82809"
       ],
       "children": [],
       "cost": {
@@ -77134,7 +77190,14 @@
       ]
     },
     "T-0816": {
-      "after": [],
+      "after": [
+        "T-0153",
+        "T-0189",
+        "T-0203",
+        "T-0398",
+        "T-0452",
+        "T-0734"
+      ],
       "backlinks": [
         "T-0818",
         "T-78155"
@@ -77148,8 +77211,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "branch worker/T-0816",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0816",
@@ -77158,15 +77221,15 @@
       },
       "parent": "F-0260",
       "schema_version": 1,
-      "stage_since": "2026-10-08T17:07:36Z",
-      "state": "New",
+      "stage_since": "2026-10-08T18:41:21Z",
+      "state": "Active",
       "stories": [
         "S-60906",
         "S-60907"
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-08T17:07:36Z",
+      "updated": "2026-10-08T18:41:21Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -79297,6 +79360,34 @@
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/build.py",
         "tests/test_briefs.py"
+      ]
+    },
+    "T-82785": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-82785",
+      "links": {
+        "plan": "docs/plans/f-0303.md"
+      },
+      "parent": "F-0303",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T18:41:27Z",
+      "state": "New",
+      "stories": [
+        "S-81154",
+        "S-81155",
+        "S-81156",
+        "S-81157"
+      ],
+      "title": "the peel asked for by name, the Unknown that says why, and a test real git answers",
+      "type": "task",
+      "updated": "2026-10-08T18:41:27Z",
+      "writes": [
+        "asf/upgrade.py",
+        "tests/test_tag_resolution.py",
+        "tests/test_install.py"
       ]
     }
   }
