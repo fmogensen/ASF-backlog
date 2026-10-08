@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T01:04:28Z",
+  "generated": "2026-10-08T01:09:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16055,6 +16055,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0598",
@@ -16067,7 +16071,7 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1071@cb27207cb",
       "type": "bug",
-      "updated": "2026-10-08T01:04:28Z"
+      "updated": "2026-10-08T01:09:39Z"
     },
     "D-0001": {
       "backlinks": [
@@ -22783,20 +22787,20 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "2/3 tasks Closed",
-        "rule: documented"
+        "3/3 tasks Closed",
+        "rule: children-closed"
       ],
       "folder": "features",
       "id": "F-0119",
       "parent": "E-0002",
       "rank": 124,
       "schema_version": 1,
-      "stage": "building 2/3",
-      "stage_since": "2026-10-07T23:05:29Z",
-      "state": "Active",
+      "stage": "landed",
+      "stage_since": "2026-10-08T01:09:39Z",
+      "state": "Closed",
       "title": "asf pr-hygiene --lanes: a machine-readable listing product rule checks can call",
       "type": "feature",
-      "updated": "2026-10-07T23:05:29Z"
+      "updated": "2026-10-08T01:09:39Z"
     },
     "F-0120": {
       "backlinks": [
@@ -28439,7 +28443,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "0/1 tasks Closed",
+        "1/1 tasks Closed",
         "4/4 stories open: S-67254, S-67255, S-67256, S-67257",
         "rule: documented"
       ],
@@ -28447,12 +28451,12 @@
       "id": "F-0269",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-10-08T00:54:07Z",
+      "stage": "landed",
+      "stage_since": "2026-10-08T01:09:39Z",
       "state": "Active",
       "title": "CI ci-job:tests (3.13) is red 36.5 times a week",
       "type": "feature",
-      "updated": "2026-10-08T01:04:19Z"
+      "updated": "2026-10-08T01:09:39Z"
     },
     "F-0270": {
       "backlinks": [
@@ -36065,7 +36069,7 @@
       "children": [],
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "rule: task-active"
       ],
       "folder": "stories",
       "id": "S-67012",
@@ -36075,7 +36079,7 @@
       "state": "Active",
       "title": "The recorder is installed into the controlling account, or the operator is handed the entry",
       "type": "story",
-      "updated": "2026-10-08T00:39:05Z"
+      "updated": "2026-10-08T01:09:39Z"
     },
     "S-67013": {
       "backlinks": [
@@ -36111,17 +36115,24 @@
       },
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "unproved line 1 \u2014 With the default retry, a run whose one red module sits among green ones star... (no proof)",
+        "unproved line 2 \u2014 A module red on its first attempt and green on its second leaves the run's ex... (no proof)",
+        "unproved line 3 \u2014 That module's second result replaces its first in results: the summary prints... (no proof)",
+        "unproved line 4 \u2014 The summary's module count stays the number of modules the suite ran, and Ran... (no proof)",
+        "unproved line 5 \u2014 A retry: <modules> line naming every module of the second pass is printed bef... (no proof)",
+        "unproved line 6 \u2014 The second attempt's ASF_TESTS_HOME is a path the first attempt did not use (no proof)",
+        "unproved line 7 \u2014 Acceptance test: python3 -m unittest -v tests.test_run_tests.RetryPassTests (no proof)",
+        "rule: unproved"
       ],
       "folder": "stories",
       "id": "S-67254",
       "parent": "F-0269",
       "schema_version": 1,
-      "stage_since": "2026-10-07T22:28:13Z",
-      "state": "New",
+      "stage_since": "2026-10-08T01:09:39Z",
+      "state": "Active",
       "title": "The runner runs a red module a second time",
       "type": "story",
-      "updated": "2026-10-08T00:00:35Z"
+      "updated": "2026-10-08T01:09:39Z"
     },
     "S-67255": {
       "backlinks": [
@@ -36131,17 +36142,27 @@
       "children": [],
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "unproved line 1 \u2014 flaky_rows(module, rc, output) is pure: it answers from its three arguments a... (no proof)",
+        "unproved line 2 \u2014 A failure block whose traceback carries a File \"\u2026/tests/test_x.py\", line N fr... (no proof)",
+        "unproved line 3 \u2014 The row's title is <Class>.<test>, read off the dotted name in parentheses on... (no proof)",
+        "unproved line 4 \u2014 A failure block with no frame under the tests package falls back to tests/<mo... (no proof)",
+        "unproved line 5 \u2014 An attempt that never reached a summary yields exactly one row, titled <modul... (no proof)",
+        "unproved line 6 \u2014 Two failing tests in one module yield two rows, in the order the output names... (no proof)",
+        "unproved line 7 \u2014 The rows print after the summary's verdict as an N flaky head line and one li... (no proof)",
+        "unproved line 8 \u2014 asf.tick.flaky.parse_flaky over the runner's own output returns one row per f... (no proof)",
+        "unproved line 9 \u2014 A run with no red module prints no N flaky head: its output ends at the verdict (no proof)",
+        "unproved line 10 \u2014 Acceptance test: python3 -m unittest -v tests.test_run_tests.FlakyBlockTests ... (no proof)",
+        "rule: unproved"
       ],
       "folder": "stories",
       "id": "S-67255",
       "parent": "F-0269",
       "schema_version": 1,
-      "stage_since": "2026-10-07T22:28:27Z",
-      "state": "New",
+      "stage_since": "2026-10-08T01:09:39Z",
+      "state": "Active",
       "title": "A module that passed on its retry is reported as a flake",
       "type": "story",
-      "updated": "2026-10-08T00:00:35Z"
+      "updated": "2026-10-08T01:09:39Z"
     },
     "S-67256": {
       "backlinks": [
@@ -36151,17 +36172,24 @@
       "children": [],
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "unproved line 1 \u2014 --retry N is on build_parser with default RETRY = 1, and --retry-max N with d... (no proof)",
+        "unproved line 2 \u2014 run takes retry=RETRY, retry_max=RETRY_MAX after only, so every existing call... (no proof)",
+        "unproved line 3 \u2014 main passes both flags through to run (no proof)",
+        "unproved line 4 \u2014 --retry 0 over a red module runs no second attempt: no retry: line, no flaky ... (no proof)",
+        "unproved line 5 \u2014 More red modules than --retry-max prints retry: skipped \u2014 N red module(s) ove... (no proof)",
+        "unproved line 6 \u2014 Exactly --retry-max red modules still gets the second pass \u2014 the bound is inc... (no proof)",
+        "unproved line 7 \u2014 Acceptance test: python3 -m unittest -v tests.test_run_tests.RetryBoundsTests (no proof)",
+        "rule: unproved"
       ],
       "folder": "stories",
       "id": "S-67256",
       "parent": "F-0269",
       "schema_version": 1,
-      "stage_since": "2026-10-07T22:28:37Z",
-      "state": "New",
+      "stage_since": "2026-10-08T01:09:39Z",
+      "state": "Active",
       "title": "The second pass is bounded and switchable",
       "type": "story",
-      "updated": "2026-10-08T00:00:35Z"
+      "updated": "2026-10-08T01:09:39Z"
     },
     "S-67257": {
       "backlinks": [
@@ -36177,17 +36205,24 @@
       },
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "unproved line 1 \u2014 A module red on both attempts keeps the run's exit status non-zero (no proof)",
+        "unproved line 2 \u2014 A module red twice is named on the summary's red: line under a FAILED verdict (no proof)",
+        "unproved line 3 \u2014 A module that never reaches a summary on either attempt is still counted an e... (no proof)",
+        "unproved line 4 \u2014 Both attempts of a module red twice are streamed, each under its own --- <mod... (no proof)",
+        "unproved line 5 \u2014 The hook-leak check runs after the second pass: it still reddens a run whose ... (no proof)",
+        "unproved line 6 \u2014 Every case in tests/test_run_tests.py written before this card passes unchanged (no proof)",
+        "unproved line 7 \u2014 Acceptance test: python3 -m unittest -v tests.test_run_tests (no proof)",
+        "rule: unproved"
       ],
       "folder": "stories",
       "id": "S-67257",
       "parent": "F-0269",
       "schema_version": 1,
-      "stage_since": "2026-10-07T22:28:49Z",
-      "state": "New",
+      "stage_since": "2026-10-08T01:09:39Z",
+      "state": "Active",
       "title": "A reproducible failure is never hidden",
       "type": "story",
-      "updated": "2026-10-08T00:00:35Z"
+      "updated": "2026-10-08T01:09:39Z"
     },
     "T-0001": {
       "backlinks": [
@@ -44263,8 +44298,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "branch worker/T-0192",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0192",
@@ -44276,14 +44311,14 @@
         "split T-0192 asf | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-08T00:39:05Z",
-      "state": "New",
+      "stage_since": "2026-10-08T01:09:39Z",
+      "state": "Active",
       "stories": [
         "S-67012"
       ],
       "title": "the recorder, wired \u2014 `asf hook chores` and the install",
       "type": "task",
-      "updated": "2026-10-08T00:42:40Z",
+      "updated": "2026-10-08T01:09:39Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_install.py"
@@ -55296,22 +55331,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1072 OPEN",
-        "branch worker/T-0444",
-        "rule: in-flight"
+        "merge 4b8865c of worker/T-0444 lands T-0444 (PR #1072)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0444",
+      "landing": {
+        "as_of": "2026-10-08T01:09:39Z",
+        "by": "pr-merge",
+        "sha": "4b8865ce57ba1180090e9f5d0d9d7cdaa4bb68c8"
+      },
       "links": {
         "plan": "docs/plans/f-0119.md"
       },
       "parent": "F-0119",
       "schema_version": 1,
-      "stage_since": "2026-10-07T23:13:44Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T01:09:39Z",
+      "state": "Closed",
       "title": "the rule-check contract says how a product check asks what ASF already owns",
       "type": "task",
-      "updated": "2026-10-08T01:04:19Z",
+      "updated": "2026-10-08T01:09:39Z",
       "writes": [
         "docs/guide/product-config.md",
         "tests/test_readme.py"
@@ -71117,19 +71157,25 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "commit b9ec3fc names T-0833",
+        "CI green on main at or after it",
+        "rule: reconciled"
       ],
       "folder": "tasks",
       "id": "T-0833",
       "landed": "b9ec3fc392e338355294ebab9a8fb4aed8738cf6",
+      "landing": {
+        "as_of": "2026-10-08T01:09:39Z",
+        "by": "console",
+        "sha": "b9ec3fc392e338355294ebab9a8fb4aed8738cf6"
+      },
       "links": {
         "plan": "docs/plans/f-0269.md"
       },
       "parent": "F-0269",
       "schema_version": 1,
-      "stage_since": "2026-10-08T00:54:11Z",
-      "state": "New",
+      "stage_since": "2026-10-08T01:09:39Z",
+      "state": "Closed",
       "stories": [
         "S-67254",
         "S-67255",
@@ -71138,7 +71184,7 @@
       ],
       "title": "a red module runs again, a flake is counted instead of hidden, and a real red still fails the job",
       "type": "task",
-      "updated": "2026-10-08T01:01:01Z",
+      "updated": "2026-10-08T01:09:39Z",
       "writes": [
         "tools/run_tests.py",
         "tests/test_run_tests.py",
