@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T18:00:10Z",
+  "generated": "2026-10-08T18:09:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17869,6 +17869,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-82356",
@@ -17881,7 +17885,26 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1177@28c89aea3",
       "type": "bug",
-      "updated": "2026-10-08T18:00:04Z"
+      "updated": "2026-10-08T18:05:24Z"
+    },
+    "B-82407": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-82407",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #1222@ff96aa716",
+      "stage_since": "2026-10-08T18:09:26Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1222@ff96aa716",
+      "type": "bug",
+      "updated": "2026-10-08T18:09:26Z"
     },
     "D-0001": {
       "backlinks": [
@@ -19524,7 +19547,8 @@
         "B-81853",
         "B-82154",
         "B-82155",
-        "B-82356"
+        "B-82356",
+        "B-82407"
       ],
       "decided": true,
       "evidence": [
@@ -19534,12 +19558,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2187.13,
+      "spend_usd": 2192.62,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-08T17:43:30Z"
+      "updated": "2026-10-08T18:09:10Z"
     },
     "E-0002": {
       "backlinks": [
@@ -29918,7 +29942,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 45,
-        "sessions": 3,
+        "sessions": 5,
         "usd": null
       },
       "decided": true,
@@ -29936,7 +29960,7 @@
       "state": "Active",
       "title": "CI queue: a priority PR's waiting required jobs preempt lower-rank QUEUED PR runs of the same runner class, re-dispatched afterwards",
       "type": "feature",
-      "updated": "2026-10-08T17:19:37Z"
+      "updated": "2026-10-08T18:09:10Z"
     },
     "F-0255": {
       "backlinks": [],
@@ -30193,7 +30217,7 @@
       ],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 114,
+        "runner_min": 145,
         "sessions": 7,
         "tokens_cache_read": 23545349,
         "tokens_cache_write": 400682,
@@ -30214,13 +30238,15 @@
       "parent": "E-0001",
       "priority": "need",
       "reshape": "stale: T-0815 Active for 20h (over 3x its limit), 201 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape_applied": "710ab73e6bdd",
+      "reshape_applied_at": "2026-10-08T18:05:33Z",
       "schema_version": 1,
       "stage": "building 1/4",
       "stage_since": "2026-10-08T01:24:14Z",
       "state": "Active",
       "title": "Groom answers in today's file are not applied by the tick, and a dirty record checkout stalls the sync while 'record ok' is logged",
       "type": "feature",
-      "updated": "2026-10-08T17:43:30Z"
+      "updated": "2026-10-08T18:09:10Z"
     },
     "F-0261": {
       "backlinks": [
@@ -30871,6 +30897,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "3/3 stories open: S-73204, S-73205, S-73206",
         "rule: documented"
       ],
       "folder": "features",
@@ -30884,7 +30911,7 @@
       "state": "Active",
       "title": "Spec/plan-lane PRs that carry code are never reviewed (pushed_ids covers Tasks and Bugs only)",
       "type": "feature",
-      "updated": "2026-10-08T09:02:50Z"
+      "updated": "2026-10-08T18:05:24Z"
     },
     "F-0281": {
       "backlinks": [
@@ -31949,7 +31976,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 30,
+        "runner_min": 56,
         "sessions": 2,
         "tokens_cache_read": 5760091,
         "tokens_cache_write": 122332,
@@ -31973,7 +32000,7 @@
       "state": "Active",
       "title": "delivery pass binds a lead to every started Task of its Feature, not only ones whose writes intersect, starving the launch queue",
       "type": "feature",
-      "updated": "2026-10-08T17:43:30Z"
+      "updated": "2026-10-08T18:09:10Z"
     },
     "F-0316": {
       "backlinks": [],
@@ -39983,6 +40010,10 @@
         "F-0280"
       ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-73204",
       "parent": "F-0280",
@@ -39991,13 +40022,17 @@
       "state": "New",
       "title": "A Feature whose document branch the lane holds gets the row the lane asked for, and exactly one",
       "type": "story",
-      "updated": "2026-10-08T17:56:37Z"
+      "updated": "2026-10-08T18:05:24Z"
     },
     "S-73205": {
       "backlinks": [
         "F-0280"
       ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-73205",
       "parent": "F-0280",
@@ -40006,13 +40041,17 @@
       "state": "New",
       "title": "A document branch that carries code must answer the code checklist too, and one review satisfies both readers",
       "type": "story",
-      "updated": "2026-10-08T17:56:37Z"
+      "updated": "2026-10-08T18:05:24Z"
     },
     "S-73206": {
       "backlinks": [
         "F-0280"
       ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-73206",
       "parent": "F-0280",
@@ -40021,7 +40060,7 @@
       "state": "New",
       "title": "The review brief asks for the checklist of the branch in front of it",
       "type": "story",
-      "updated": "2026-10-08T17:56:37Z"
+      "updated": "2026-10-08T18:05:24Z"
     },
     "S-74154": {
       "backlinks": [
@@ -40637,7 +40676,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 2,
+        "runner_min": 3,
         "sessions": 0,
         "usd": null
       },
@@ -40654,7 +40693,7 @@
       "state": "Active",
       "title": "The hook runs the checks matched to the paths the push adds, and a red one refuses",
       "type": "story",
-      "updated": "2026-10-08T17:19:37Z"
+      "updated": "2026-10-08T18:09:10Z"
     },
     "S-77505": {
       "backlinks": [
@@ -40665,7 +40704,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 2,
+        "runner_min": 3,
         "sessions": 0,
         "usd": null
       },
@@ -40682,7 +40721,7 @@
       "state": "Active",
       "title": "A push outside the Feature footprint is refused, with the needs writes: line to report",
       "type": "story",
-      "updated": "2026-10-08T17:19:37Z"
+      "updated": "2026-10-08T18:09:10Z"
     },
     "S-77506": {
       "backlinks": [
@@ -40814,6 +40853,12 @@
         "T-80578"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 16,
+        "sessions": 0,
+        "usd": null
+      },
       "evidence": [
         "no evidence found (2026-10-08)",
         "rule: task-active"
@@ -40826,7 +40871,7 @@
       "state": "Active",
       "title": "No version is offered until the rehearsal is green on that sha",
       "type": "story",
-      "updated": "2026-10-08T17:39:28Z"
+      "updated": "2026-10-08T18:09:10Z"
     },
     "S-80104": {
       "backlinks": [
@@ -41057,7 +41102,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 13,
+        "runner_min": 18,
         "sessions": 0,
         "usd": null
       },
@@ -41073,7 +41118,7 @@
       "state": "Active",
       "title": "the regression predicate \u2014 who is gated, what is a test, which cases failed, what that proves",
       "type": "story",
-      "updated": "2026-10-08T17:43:30Z"
+      "updated": "2026-10-08T18:09:10Z"
     },
     "S-80455": {
       "backlinks": [
@@ -45190,7 +45235,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1809 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1810 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -72909,7 +72954,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 26,
+        "runner_min": 36,
         "sessions": 4,
         "usd": null
       },
@@ -72933,7 +72978,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-08T17:43:30Z",
+      "updated": "2026-10-08T18:09:10Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -76357,6 +76402,7 @@
         "plan": "docs/plans/f-0260.md"
       },
       "parent": "F-0260",
+      "removed": "replan F-0260: its whole scope landed in commit `f89da6b`, outside this plan, with its own tests green on `origin/main`",
       "schema_version": 1,
       "stage_since": "2026-10-08T17:07:36Z",
       "state": "New",
@@ -76370,15 +76416,7 @@
       ]
     },
     "T-0816": {
-      "after": [
-        "T-0153",
-        "T-0189",
-        "T-0203",
-        "T-0248",
-        "T-0332",
-        "T-0651",
-        "T-0734"
-      ],
+      "after": [],
       "backlinks": [
         "T-0818",
         "T-78155"
@@ -76398,12 +76436,16 @@
       "folder": "tasks",
       "id": "T-0816",
       "links": {
-        "plan": "docs/plans/f-0260.md"
+        "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
       "parent": "F-0260",
       "schema_version": 1,
       "stage_since": "2026-10-08T17:07:36Z",
       "state": "New",
+      "stories": [
+        "S-60906",
+        "S-60907"
+      ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
       "updated": "2026-10-08T17:07:36Z",
@@ -76481,12 +76523,15 @@
       "folder": "tasks",
       "id": "T-0818",
       "links": {
-        "plan": "docs/plans/f-0260.md"
+        "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
       "parent": "F-0260",
       "schema_version": 1,
       "stage_since": "2026-10-07T18:19:33Z",
       "state": "New",
+      "stories": [
+        "S-60908"
+      ],
       "title": "a card a push discards add/add is named by its id, and a modify/modify resolution still prints exactly one line",
       "type": "task",
       "updated": "2026-10-08T00:00:35Z",
@@ -77481,6 +77526,16 @@
         "T-78359"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 3234642,
+        "tokens_cache_write": 81178,
+        "tokens_input": 88,
+        "tokens_output": 25071,
+        "usd": 1.22
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-78358",
@@ -77500,7 +77555,7 @@
       ],
       "title": "a hook whose body is older than this build writes is reported, not silently stale",
       "type": "task",
-      "updated": "2026-10-08T17:39:28Z",
+      "updated": "2026-10-08T18:09:10Z",
       "writes": [
         "asf/hooks.py",
         "asf/doctor.py",
@@ -77770,18 +77825,19 @@
         "B-81201",
         "B-81552",
         "B-81853",
-        "B-82154"
+        "B-82154",
+        "B-82407"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 2,
-        "sessions": 6,
-        "tokens_cache_read": 2186604,
-        "tokens_cache_write": 22152,
-        "tokens_input": 60,
-        "tokens_output": 8673,
-        "usd": 1.05
+        "runner_min": 3,
+        "sessions": 7,
+        "tokens_cache_read": 2615153,
+        "tokens_cache_write": 23966,
+        "tokens_input": 66,
+        "tokens_output": 9242,
+        "usd": 3.6
       },
       "decided": true,
       "evidence": [
@@ -77804,7 +77860,7 @@
       ],
       "title": "the door \u2014 the convention, the matcher, `asf pre-push`, and one call in the shim",
       "type": "task",
-      "updated": "2026-10-08T17:19:37Z",
+      "updated": "2026-10-08T18:09:10Z",
       "writes": [
         "asf/conventions.py",
         "asf/prepush.py",
@@ -78185,13 +78241,13 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 1,
-        "tokens_cache_read": 22464726,
-        "tokens_cache_write": 221203,
-        "tokens_input": 312,
-        "tokens_output": 90028,
-        "usd": 6.28
+        "runner_min": 16,
+        "sessions": 2,
+        "tokens_cache_read": 25194313,
+        "tokens_cache_write": 294706,
+        "tokens_input": 390,
+        "tokens_output": 111932,
+        "usd": 7.34
       },
       "decided": true,
       "evidence": [
@@ -78213,7 +78269,7 @@
       ],
       "title": "the criterion \u2014 the rehearsal in both gates, with its own step lookup",
       "type": "task",
-      "updated": "2026-10-08T17:49:05Z",
+      "updated": "2026-10-08T18:09:10Z",
       "writes": [
         "asf/release.py",
         "asf/release_preview.py",
@@ -78296,13 +78352,13 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 13,
-        "sessions": 2,
-        "tokens_cache_read": 1803508,
-        "tokens_cache_write": 52765,
-        "tokens_input": 64,
-        "tokens_output": 11337,
-        "usd": 0.69
+        "runner_min": 18,
+        "sessions": 3,
+        "tokens_cache_read": 3607900,
+        "tokens_cache_write": 92595,
+        "tokens_input": 140,
+        "tokens_output": 26007,
+        "usd": 1.35
       },
       "decided": true,
       "evidence": [
@@ -78324,7 +78380,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-08T17:43:30Z",
+      "updated": "2026-10-08T18:09:10Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py"
