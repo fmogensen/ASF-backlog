@@ -1,3 +1,5 @@
+→ F-0300
+
 # Cheap adjudication: rule pass (cosmetic waiver, precedent citation) before any adjudicate session
 
 Parent: E-0001
