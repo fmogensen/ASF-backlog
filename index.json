@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T22:32:52Z",
+  "generated": "2026-10-08T22:44:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17871,7 +17871,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 1,
-        "runner_min": 54,
+        "runner_min": 85,
         "sessions": 4,
         "tokens_cache_read": 12957851,
         "tokens_cache_write": 304670,
@@ -17903,7 +17903,7 @@
       "state": "Resolved",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1227@ff1adf377",
       "type": "bug",
-      "updated": "2026-10-08T22:25:03Z"
+      "updated": "2026-10-08T22:44:09Z"
     },
     "B-82356": {
       "backlinks": [],
@@ -18576,7 +18576,8 @@
         "S-62054",
         "T-0822",
         "T-81130",
-        "T-82991"
+        "T-82991",
+        "T-84804"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -18593,7 +18594,8 @@
     "D-0003": {
       "backlinks": [
         "S-62054",
-        "T-0833"
+        "T-0833",
+        "T-84804"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -18632,7 +18634,8 @@
         "T-81129",
         "T-81131",
         "T-82987",
-        "T-82989"
+        "T-82989",
+        "T-84805"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -27319,7 +27322,7 @@
       "parent": "E-0004",
       "priority": "later",
       "rank": 33,
-      "reshape": "cut to Task 3",
+      "reshape": "stale: T-0756 Active for 1d (over 3x its limit), 202 commits behind the trunk \u2014 re-cut from the current trunk",
       "reshape_applied": "cdcfd081dba8",
       "reshape_applied_at": "2026-10-03T07:12:10Z",
       "schema_version": 1,
@@ -32740,32 +32743,32 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 25,
         "sessions": 1,
         "usd": null
       },
       "decided": true,
       "evidence": [
-        "spec on spec/F-0313",
-        "rule: card"
+        "spec on origin/main",
+        "rule: documented"
       ],
       "folder": "features",
       "id": "F-0313",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "spec-draft",
-      "stage_since": "2026-10-08T21:54:56Z",
-      "state": "New",
+      "stage": "spec-approved",
+      "stage_since": "2026-10-08T22:40:17Z",
+      "state": "Active",
       "title": "Finished reviews are dropped when the review worktree is not a checkout, so green PRs get no approval and the row parks",
       "type": "feature",
-      "updated": "2026-10-08T22:19:34Z"
+      "updated": "2026-10-08T22:44:09Z"
     },
     "F-0314": {
       "backlinks": [],
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 32,
         "sessions": 1,
         "usd": null
       },
@@ -32783,7 +32786,7 @@
       "state": "Active",
       "title": "Open PRs for items already Closed on the trunk are never closed or reaped",
       "type": "feature",
-      "updated": "2026-10-08T22:32:50Z"
+      "updated": "2026-10-08T22:44:09Z"
     },
     "F-0315": {
       "backlinks": [
@@ -32795,11 +32798,13 @@
         "S-82205",
         "S-82206",
         "S-82207",
-        "S-82208"
+        "S-82208",
+        "T-84804",
+        "T-84805"
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 65,
+        "runner_min": 93,
         "sessions": 6,
         "tokens_cache_read": 7819112,
         "tokens_cache_write": 179246,
@@ -32810,7 +32815,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0315",
+        "plan on origin/main",
         "5/5 stories open: S-82204, S-82205, S-82206, S-82207, S-82208",
         "rule: documented"
       ],
@@ -32820,12 +32825,12 @@
       "priority": "need",
       "rank": 2,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T16:58:35Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T22:40:17Z",
       "state": "Active",
       "title": "delivery pass binds a lead to every started Task of its Feature, not only ones whose writes intersect, starving the launch queue",
       "type": "feature",
-      "updated": "2026-10-08T22:19:34Z"
+      "updated": "2026-10-08T22:44:09Z"
     },
     "F-0316": {
       "backlinks": [],
@@ -41903,6 +41908,12 @@
         "T-83345"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 16,
+        "sessions": 0,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-08)",
@@ -41916,7 +41927,7 @@
       "state": "Active",
       "title": "The rule table waives the cosmetic and the already-settled finding, and stands down on everything else",
       "type": "story",
-      "updated": "2026-10-08T21:54:56Z"
+      "updated": "2026-10-08T22:44:09Z"
     },
     "S-78055": {
       "backlinks": [
@@ -42930,7 +42941,8 @@
     },
     "S-82204": {
       "backlinks": [
-        "F-0315"
+        "F-0315",
+        "T-84804"
       ],
       "children": [],
       "cost": {
@@ -42956,7 +42968,8 @@
     },
     "S-82205": {
       "backlinks": [
-        "F-0315"
+        "F-0315",
+        "T-84805"
       ],
       "children": [],
       "decided": true,
@@ -42976,7 +42989,8 @@
     },
     "S-82206": {
       "backlinks": [
-        "F-0315"
+        "F-0315",
+        "T-84805"
       ],
       "children": [],
       "decided": true,
@@ -42996,7 +43010,8 @@
     },
     "S-82207": {
       "backlinks": [
-        "F-0315"
+        "F-0315",
+        "T-84805"
       ],
       "children": [],
       "decided": true,
@@ -43016,7 +43031,8 @@
     },
     "S-82208": {
       "backlinks": [
-        "F-0315"
+        "F-0315",
+        "T-84805"
       ],
       "children": [],
       "cost": {
@@ -43379,7 +43395,8 @@
         "T-0738",
         "T-0772",
         "T-80369",
-        "T-80370"
+        "T-80370",
+        "T-84805"
       ],
       "children": [],
       "cost": {
@@ -43639,6 +43656,7 @@
     "T-0009": {
       "backlinks": [
         "T-0517",
+        "T-84805",
         "B-0137"
       ],
       "children": [],
@@ -47119,7 +47137,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 15d (over 3x its limit), 1832 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 15d (over 3x its limit), 1837 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -80897,7 +80915,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 16,
         "sessions": 1,
         "usd": null
       },
@@ -80921,7 +80939,7 @@
       ],
       "title": "the table \u2014 `rulepass.py`, the flag, and what the landed readers read back",
       "type": "task",
-      "updated": "2026-10-08T22:25:03Z",
+      "updated": "2026-10-08T22:44:09Z",
       "writes": [
         "asf/evidence/rulepass.py",
         "asf/conventions.py",
@@ -81039,7 +81057,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 13,
+        "runner_min": 41,
         "sessions": 2,
         "usd": null
       },
@@ -81068,7 +81086,7 @@
       ],
       "title": "the reader reads every run behind the checks \u2014 `_run_ids`, and one probe record per run id",
       "type": "task",
-      "updated": "2026-10-08T22:32:50Z",
+      "updated": "2026-10-08T22:44:09Z",
       "writes": [
         "asf/flake.py",
         "tests/test_ci_red_class.py"
@@ -81206,6 +81224,66 @@
         "tests/test_retention.py",
         "tests/test_ingest.py",
         "tests/test_workers.py"
+      ]
+    },
+    "T-84804": {
+      "backlinks": [
+        "T-84805"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-84804",
+      "links": {
+        "plan": "docs/plans/f-0315.md"
+      },
+      "parent": "F-0315",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T22:40:23Z",
+      "state": "New",
+      "stories": [
+        "S-82204"
+      ],
+      "title": "the witness \u2014 `footprint.first_intersection`, and the overlap invariant refactored onto it",
+      "type": "task",
+      "updated": "2026-10-08T22:40:23Z",
+      "writes": [
+        "asf/feeder/footprint.py",
+        "asf/invariants.py",
+        "tests/test_shared_paths.py",
+        "tests/test_invariants.py"
+      ]
+    },
+    "T-84805": {
+      "after": [
+        "T-84804"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-84805",
+      "links": {
+        "plan": "docs/plans/f-0315.md"
+      },
+      "parent": "F-0315",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T22:40:27Z",
+      "state": "New",
+      "stories": [
+        "S-82205",
+        "S-82206",
+        "S-82207",
+        "S-82208"
+      ],
+      "title": "the pass \u2014 the rule, the line that says why, the skip, and the `undeliver` line read back",
+      "type": "task",
+      "updated": "2026-10-08T22:40:27Z",
+      "writes": [
+        "asf/record/slice.py",
+        "asf/record/undeliver.py",
+        "tests/test_feature_delivery.py",
+        "tests/test_retire.py"
       ]
     }
   }
