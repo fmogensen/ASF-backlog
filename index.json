@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T19:43:54Z",
+  "generated": "2026-10-08T19:44:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18018,6 +18018,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-83312",
@@ -18030,7 +18034,7 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1237@2edb03326",
       "type": "bug",
-      "updated": "2026-10-08T19:36:07Z"
+      "updated": "2026-10-08T19:41:28Z"
     },
     "D-0001": {
       "backlinks": [
@@ -31749,7 +31753,11 @@
         "S-78054",
         "S-78055",
         "S-78056",
-        "S-78057"
+        "S-78057",
+        "T-83345",
+        "T-83346",
+        "T-83347",
+        "T-83348"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -31764,7 +31772,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0300",
+        "plan on origin/main",
         "4/4 stories open: S-78054, S-78055, S-78056, S-78057",
         "rule: documented"
       ],
@@ -31774,12 +31782,12 @@
       "priority": "need",
       "rank": 6,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T11:02:56Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T19:41:28Z",
       "state": "Active",
       "title": "Cheap adjudication: rule pass (cosmetic waiver, precedent citation) before any adjudicate session",
       "type": "feature",
-      "updated": "2026-10-08T19:35:22Z"
+      "updated": "2026-10-08T19:41:28Z"
     },
     "F-0301": {
       "backlinks": [
@@ -32224,7 +32232,6 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0315",
         "5/5 stories open: S-82204, S-82205, S-82206, S-82207, S-82208",
         "rule: documented"
       ],
@@ -32239,7 +32246,7 @@
       "state": "Active",
       "title": "delivery pass binds a lead to every started Task of its Feature, not only ones whose writes intersect, starving the launch queue",
       "type": "feature",
-      "updated": "2026-10-08T19:35:22Z"
+      "updated": "2026-10-08T19:41:28Z"
     },
     "F-0316": {
       "backlinks": [],
@@ -41126,7 +41133,8 @@
     },
     "S-78054": {
       "backlinks": [
-        "F-0300"
+        "F-0300",
+        "T-83345"
       ],
       "children": [],
       "evidence": [
@@ -41145,7 +41153,8 @@
     },
     "S-78055": {
       "backlinks": [
-        "F-0300"
+        "F-0300",
+        "T-83347"
       ],
       "children": [],
       "evidence": [
@@ -41164,7 +41173,9 @@
     },
     "S-78056": {
       "backlinks": [
-        "F-0300"
+        "F-0300",
+        "T-83346",
+        "T-83347"
       ],
       "children": [],
       "evidence": [
@@ -41183,7 +41194,8 @@
     },
     "S-78057": {
       "backlinks": [
-        "F-0300"
+        "F-0300",
+        "T-83348"
       ],
       "children": [],
       "evidence": [
@@ -60412,8 +60424,8 @@
       },
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "branch worker/T-0411",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-0411",
@@ -60427,12 +60439,12 @@
         "merge T-0261+T-0264+T-0411+T-0412+T-0413+T-0414+T-0415+T-0416"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-07T14:45:31Z",
-      "state": "New",
+      "stage_since": "2026-10-08T19:41:28Z",
+      "state": "Active",
       "stories": [],
       "title": "`asf/docs.py` \u2014 the resolver, the anchors, the tree at a sha, and `asf docs check`",
       "type": "task",
-      "updated": "2026-10-08T00:00:35Z",
+      "updated": "2026-10-08T19:41:28Z",
       "writes": [
         "asf/docs.py",
         "asf/cli.py",
@@ -79867,6 +79879,123 @@
         "asf/briefs/build.py",
         "asf/briefs/templates/review.md",
         "tests/test_doc_lane_review.py"
+      ]
+    },
+    "T-83345": {
+      "backlinks": [
+        "T-83346",
+        "T-83347",
+        "T-83348"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83345",
+      "links": {
+        "plan": "docs/plans/f-0300.md"
+      },
+      "parent": "F-0300",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:41:35Z",
+      "state": "New",
+      "stories": [
+        "S-78054"
+      ],
+      "title": "the table \u2014 `rulepass.py`, the flag, and what the landed readers read back",
+      "type": "task",
+      "updated": "2026-10-08T19:41:35Z",
+      "writes": [
+        "asf/evidence/rulepass.py",
+        "asf/conventions.py",
+        "docs/products.example.yaml",
+        "tests/test_rulepass.py",
+        "tests/test_env.py"
+      ]
+    },
+    "T-83346": {
+      "after": [
+        "T-83345"
+      ],
+      "backlinks": [
+        "T-83347"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83346",
+      "links": {
+        "plan": "docs/plans/f-0300.md"
+      },
+      "parent": "F-0300",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:41:39Z",
+      "state": "New",
+      "stories": [
+        "S-78056"
+      ],
+      "title": "the feeder stands down \u2014 one `waived` membership, two branches, and the S1 lane's word",
+      "type": "task",
+      "updated": "2026-10-08T19:41:39Z",
+      "writes": [
+        "asf/feeder/rows.py",
+        "asf/feeder/tiers.py",
+        "tests/test_feeder.py"
+      ]
+    },
+    "T-83347": {
+      "after": [
+        "T-83345",
+        "T-83346"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83347",
+      "links": {
+        "plan": "docs/plans/f-0300.md"
+      },
+      "parent": "F-0300",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:41:42Z",
+      "state": "New",
+      "stories": [
+        "S-78055",
+        "S-78056"
+      ],
+      "title": "the check in `screen`, the `RULED` kind, and the `waivers` map",
+      "type": "task",
+      "updated": "2026-10-08T19:41:42Z",
+      "writes": [
+        "asf/tick/step_wave.py",
+        "tests/test_rulepass.py"
+      ]
+    },
+    "T-83348": {
+      "after": [
+        "T-83345"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83348",
+      "links": {
+        "plan": "docs/plans/f-0300.md"
+      },
+      "parent": "F-0300",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:41:46Z",
+      "state": "New",
+      "stories": [
+        "S-78057"
+      ],
+      "title": "the cell \u2014 what the pass ruled, and what it did not spawn",
+      "type": "task",
+      "updated": "2026-10-08T19:41:46Z",
+      "writes": [
+        "asf/views/status.py",
+        "tests/test_views.py"
       ]
     }
   }
