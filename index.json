@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T02:52:07Z",
+  "generated": "2026-10-08T03:01:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16188,6 +16188,44 @@
       "type": "bug",
       "updated": "2026-10-08T02:51:05Z"
     },
+    "B-70755": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-70755",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "repeat: T-0763: dead pid",
+      "stage_since": "2026-10-08T03:00:50Z",
+      "state": "New",
+      "title": "T-0763 has ended \"dead pid\" 2 times in 24h",
+      "type": "bug",
+      "updated": "2026-10-08T03:00:50Z"
+    },
+    "B-70756": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-70756",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog launchable_idle: T-0708",
+      "stage_since": "2026-10-08T03:01:08Z",
+      "state": "New",
+      "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0708",
+      "type": "bug",
+      "updated": "2026-10-08T03:01:08Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -17748,7 +17786,9 @@
         "B-70501",
         "B-70702",
         "B-70703",
-        "B-70754"
+        "B-70754",
+        "B-70755",
+        "B-70756"
       ],
       "decided": true,
       "evidence": [
@@ -21368,7 +21408,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
+        "runner_min": 30,
         "sessions": 3,
         "tokens_cache_read": 6313037,
         "tokens_cache_write": 220862,
@@ -21393,7 +21433,7 @@
       "state": "Active",
       "title": "The command surface reads as one product: names, one voice, and \"writes\" marked",
       "type": "feature",
-      "updated": "2026-10-08T02:37:27Z"
+      "updated": "2026-10-08T03:00:57Z"
     },
     "F-0085": {
       "backlinks": [
@@ -40234,7 +40274,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1672 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1673 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -53536,6 +53576,12 @@
         "T-0432"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-0398",
@@ -53555,7 +53601,7 @@
       "state": "Active",
       "title": "`backlog` \u2192 `board` \u2014 the command, the title, the artifact and the skill",
       "type": "task",
-      "updated": "2026-10-08T02:25:46Z",
+      "updated": "2026-10-08T03:00:57Z",
       "writes": [
         "asf/cli.py",
         "asf/views/board.py",
@@ -66355,9 +66401,20 @@
         "T-0710",
         "T-0711",
         "T-0712",
-        "T-0713"
+        "T-0713",
+        "B-70756"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "tokens_cache_read": 838540,
+        "tokens_cache_write": 2890,
+        "tokens_input": 10,
+        "tokens_output": 32,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "PR #1092 OPEN",
@@ -66382,7 +66439,7 @@
       "stories": [],
       "title": "`ci.provider: vm` is a configuration a product can hold \u2014 two keys, two blocks, and the file that refuses every way of saying it wrong",
       "type": "task",
-      "updated": "2026-10-08T02:51:05Z",
+      "updated": "2026-10-08T03:00:57Z",
       "writes": [
         "asf/ci_vm.py",
         "asf/env.py",
@@ -68691,13 +68748,14 @@
       "backlinks": [
         "T-0764",
         "T-0801",
-        "T-0825"
+        "T-0825",
+        "B-70755"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 0,
-        "sessions": 2,
+        "sessions": 3,
         "tokens_cache_read": 26463325,
         "tokens_cache_write": 229308,
         "tokens_input": 330,
@@ -68724,7 +68782,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-08T02:37:27Z",
+      "updated": "2026-10-08T03:00:57Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
