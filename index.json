@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T06:59:49Z",
+  "generated": "2026-10-08T07:07:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16756,6 +16756,10 @@
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-74913",
@@ -16768,13 +16772,17 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0289",
       "type": "bug",
-      "updated": "2026-10-08T06:59:45Z"
+      "updated": "2026-10-08T07:05:00Z"
     },
     "B-74914": {
       "backlinks": [],
       "children": [],
       "count": 1,
       "decided": false,
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: filed"
+      ],
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-74914",
@@ -16787,7 +16795,26 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0291",
       "type": "bug",
-      "updated": "2026-10-08T06:59:48Z"
+      "updated": "2026-10-08T07:05:00Z"
+    },
+    "B-75015": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "ci",
+      "id": "B-75015",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "watchdog check_cancelled: #1132@734ef3798",
+      "stage_since": "2026-10-08T07:07:33Z",
+      "state": "New",
+      "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1132@734ef3798",
+      "type": "bug",
+      "updated": "2026-10-08T07:07:33Z"
     },
     "D-0001": {
       "backlinks": [
@@ -18364,7 +18391,8 @@
         "B-74261",
         "B-74462",
         "B-74913",
-        "B-74914"
+        "B-74914",
+        "B-75015"
       ],
       "decided": true,
       "evidence": [
@@ -20310,7 +20338,7 @@
       "evidence": [
         "spec on origin/main",
         "plan on origin/main",
-        "1/3 tasks Closed",
+        "2/3 tasks Closed",
         "rule: documented"
       ],
       "folder": "features",
@@ -20320,12 +20348,12 @@
       "priority": "need",
       "rank": 85,
       "schema_version": 1,
-      "stage": "building 1/3",
-      "stage_since": "2026-10-05T23:03:19Z",
+      "stage": "building 2/3",
+      "stage_since": "2026-10-08T07:05:00Z",
       "state": "Active",
       "title": "CI waste targets on the scorecard, and a week over target files a Bug",
       "type": "feature",
-      "updated": "2026-10-07T08:49:10Z"
+      "updated": "2026-10-08T07:05:00Z"
     },
     "F-0044": {
       "area": "factory",
@@ -23703,7 +23731,9 @@
       "updated": "2026-09-29T13:00:07Z"
     },
     "F-0123": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0274"
+      ],
       "children": [
         "T-0738",
         "T-0739"
@@ -29781,19 +29811,19 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
+        "spec on spec/F-0289",
         "rule: card"
       ],
       "folder": "features",
       "id": "F-0289",
       "parent": "E-0001",
       "schema_version": 1,
-      "stage": "card",
-      "stage_since": "2026-10-07T21:34:30Z",
+      "stage": "spec-draft",
+      "stage_since": "2026-10-08T07:05:00Z",
       "state": "New",
       "title": "Cloud correction sessions on a CONFLICTING PR end without a commit; conflict rebases should route local",
       "type": "feature",
-      "updated": "2026-10-08T00:00:35Z"
+      "updated": "2026-10-08T07:05:00Z"
     },
     "F-0290": {
       "backlinks": [],
@@ -41774,7 +41804,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1715 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1718 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -47111,22 +47141,27 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1127 OPEN",
-        "branch worker/T-0216",
-        "rule: in-flight"
+        "merge 937ce3a of worker/T-0216 lands T-0216 (PR #1127)",
+        "CI green on main at or after it",
+        "rule: landed-green"
       ],
       "folder": "tasks",
       "id": "T-0216",
+      "landing": {
+        "as_of": "2026-10-08T07:05:00Z",
+        "by": "pr-merge",
+        "sha": "937ce3ae6139fb05231f75a58c1b6eec19487c8e"
+      },
       "links": {
         "plan": "docs/plans/f-0043.md"
       },
       "parent": "F-0043",
       "schema_version": 1,
-      "stage_since": "2026-10-08T04:57:29Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T07:05:00Z",
+      "state": "Closed",
       "title": "the two targets, the two floors and the provider are product configuration",
       "type": "task",
-      "updated": "2026-10-08T06:51:50Z",
+      "updated": "2026-10-08T07:05:00Z",
       "writes": [
         "asf/conventions.py",
         "asf/env.py",
@@ -51715,7 +51750,8 @@
         "T-0323",
         "T-0324",
         "T-0398",
-        "B-74462"
+        "B-74462",
+        "B-75015"
       ],
       "children": [],
       "cost": {
