@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T19:04:10Z",
+  "generated": "2026-10-08T19:16:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17959,6 +17959,12 @@
     "B-82960": {
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 1,
+        "runner_min": 31,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": false,
       "evidence": [
         "PR #1239 OPEN",
@@ -17976,7 +17982,7 @@
       "state": "Active",
       "title": "parked (priority later) Active Tasks still hold their footprint; I3 keeps ranked Tasks after: them forever",
       "type": "bug",
-      "updated": "2026-10-08T18:57:10Z"
+      "updated": "2026-10-08T19:16:34Z"
     },
     "D-0001": {
       "backlinks": [
@@ -27404,7 +27410,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 28,
+        "runner_min": 57,
         "sessions": 6,
         "tokens_cache_read": 33542920,
         "tokens_cache_write": 604606,
@@ -27434,7 +27440,7 @@
       "state": "Active",
       "title": "CI without hand-kept labels: ASF discovers runners, measures them, and places and paces jobs itself",
       "type": "feature",
-      "updated": "2026-10-08T18:51:49Z"
+      "updated": "2026-10-08T19:16:34Z"
     },
     "F-0185": {
       "backlinks": [
@@ -30610,6 +30616,7 @@
       "id": "F-0266",
       "parent": "E-0001",
       "priority": "later",
+      "reshape": "stale: T-0825 Active for 21h (over 3x its limit), 202 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage": "building 0/4",
       "stage_since": "2026-10-08T04:26:34Z",
@@ -31003,11 +31010,14 @@
       "children": [
         "S-73204",
         "S-73205",
-        "S-73206"
+        "S-73206",
+        "T-83142",
+        "T-83143",
+        "T-83144"
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 86,
+        "runner_min": 107,
         "sessions": 7,
         "tokens_cache_read": 11752949,
         "tokens_cache_write": 234172,
@@ -31018,7 +31028,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0280",
+        "plan on origin/main",
         "3/3 stories open: S-73204, S-73205, S-73206",
         "rule: documented"
       ],
@@ -31028,12 +31038,12 @@
       "priority": "need",
       "rank": 1,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T06:08:52Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T19:11:41Z",
       "state": "Active",
       "title": "Spec/plan-lane PRs that carry code are never reviewed (pushed_ids covers Tasks and Bugs only)",
       "type": "feature",
-      "updated": "2026-10-08T18:51:49Z"
+      "updated": "2026-10-08T19:16:34Z"
     },
     "F-0281": {
       "backlinks": [
@@ -31690,7 +31700,7 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 71,
-        "sessions": 6,
+        "sessions": 7,
         "tokens_cache_read": 1366099,
         "tokens_cache_write": 65037,
         "tokens_input": 50,
@@ -31715,7 +31725,7 @@
       "state": "Active",
       "title": "Cheap adjudication: rule pass (cosmetic waiver, precedent citation) before any adjudicate session",
       "type": "feature",
-      "updated": "2026-10-08T18:51:49Z"
+      "updated": "2026-10-08T19:16:34Z"
     },
     "F-0301": {
       "backlinks": [
@@ -32019,12 +32029,12 @@
       "parent": "E-0001",
       "rank": 8,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-10-08T18:57:10Z",
+      "stage": "building 0/6",
+      "stage_since": "2026-10-08T19:11:41Z",
       "state": "Active",
       "title": "Release channels: edge (ASF itself, every green tag) and stable (weekly, after rehearsal plus 48 h on edge with no S1)",
       "type": "feature",
-      "updated": "2026-10-08T19:04:07Z"
+      "updated": "2026-10-08T19:11:41Z"
     },
     "F-0309": {
       "backlinks": [
@@ -32160,6 +32170,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "plan on plan/F-0315",
         "5/5 stories open: S-82204, S-82205, S-82206, S-82207, S-82208",
         "rule: documented"
       ],
@@ -32174,7 +32185,7 @@
       "state": "Active",
       "title": "delivery pass binds a lead to every started Task of its Feature, not only ones whose writes intersect, starving the launch queue",
       "type": "feature",
-      "updated": "2026-10-08T18:51:49Z"
+      "updated": "2026-10-08T19:11:41Z"
     },
     "F-0316": {
       "backlinks": [],
@@ -40241,7 +40252,8 @@
     },
     "S-73204": {
       "backlinks": [
-        "F-0280"
+        "F-0280",
+        "T-83142"
       ],
       "children": [],
       "evidence": [
@@ -40260,7 +40272,8 @@
     },
     "S-73205": {
       "backlinks": [
-        "F-0280"
+        "F-0280",
+        "T-83143"
       ],
       "children": [],
       "evidence": [
@@ -40279,7 +40292,8 @@
     },
     "S-73206": {
       "backlinks": [
-        "F-0280"
+        "F-0280",
+        "T-83144"
       ],
       "children": [],
       "evidence": [
@@ -41794,17 +41808,17 @@
       "children": [],
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "rule: task-active"
       ],
       "folder": "stories",
       "id": "S-81204",
       "parent": "F-0308",
       "schema_version": 1,
-      "stage_since": "2026-10-08T16:42:45Z",
-      "state": "New",
+      "stage_since": "2026-10-08T19:11:41Z",
+      "state": "Active",
       "title": "a channel resolves to its version tag from one listing, read by the peel",
       "type": "story",
-      "updated": "2026-10-08T16:48:31Z"
+      "updated": "2026-10-08T19:11:41Z"
     },
     "S-81205": {
       "backlinks": [
@@ -44465,6 +44479,7 @@
         "T-79565",
         "T-80572",
         "T-80576",
+        "T-82986",
         "B-0138",
         "B-82960"
       ],
@@ -46088,7 +46103,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1816 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1820 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -47274,7 +47289,8 @@
         "T-0794",
         "T-78813",
         "T-79565",
-        "T-80576"
+        "T-80576",
+        "T-82986"
       ],
       "children": [],
       "cost": {
@@ -47466,7 +47482,8 @@
         "T-0216",
         "T-0797",
         "T-79565",
-        "T-80576"
+        "T-80576",
+        "T-82986"
       ],
       "children": [],
       "cost": {
@@ -47785,7 +47802,8 @@
         "T-0802",
         "T-78813",
         "T-79565",
-        "T-80576"
+        "T-80576",
+        "T-82986"
       ],
       "children": [],
       "cost": {
@@ -49563,6 +49581,7 @@
         "T-0207",
         "T-79565",
         "T-80576",
+        "T-82986",
         "B-75618"
       ],
       "children": [],
@@ -51113,7 +51132,8 @@
         "T-0216",
         "T-0368",
         "T-79565",
-        "T-80576"
+        "T-80576",
+        "T-82986"
       ],
       "children": [],
       "cost": {
@@ -58400,6 +58420,7 @@
         "T-0724",
         "T-79565",
         "T-80576",
+        "T-82986",
         "B-0229",
         "B-0593",
         "B-0598"
@@ -70250,6 +70271,7 @@
         "T-0724",
         "T-0728",
         "T-78813",
+        "T-82986",
         "B-0211"
       ],
       "budget_sessions": 6,
@@ -73363,6 +73385,7 @@
         "T-78813",
         "T-79565",
         "T-80572",
+        "T-82986",
         "B-76879"
       ],
       "children": [],
@@ -77300,8 +77323,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 11,
-        "sessions": 2,
+        "runner_min": 41,
+        "sessions": 3,
         "tokens_cache_read": 8773208,
         "tokens_cache_write": 187022,
         "tokens_input": 152,
@@ -77329,7 +77352,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-08T18:51:49Z",
+      "updated": "2026-10-08T19:16:34Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -77654,6 +77677,7 @@
         "T-0763"
       ],
       "backlinks": [
+        "F-0266",
         "T-0826",
         "T-0827",
         "T-0828",
@@ -78703,6 +78727,7 @@
         "T-79568",
         "T-80572",
         "T-80576",
+        "T-82986",
         "B-80548",
         "B-81201",
         "B-81552",
@@ -79471,6 +79496,12 @@
       ],
       "backlinks": [],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 0,
+        "sessions": 1,
+        "usd": null
+      },
       "decided": true,
       "evidence": [
         "branch worker/T-82785",
@@ -79493,7 +79524,7 @@
       ],
       "title": "the peel asked for by name, the Unknown that says why, and a test real git answers",
       "type": "task",
-      "updated": "2026-10-08T18:48:28Z",
+      "updated": "2026-10-08T19:16:34Z",
       "writes": [
         "asf/upgrade.py",
         "tests/test_tag_resolution.py",
@@ -79501,6 +79532,18 @@
       ]
     },
     "T-82986": {
+      "after": [
+        "T-0056",
+        "T-0119",
+        "T-0123",
+        "T-0130",
+        "T-0172",
+        "T-0207",
+        "T-0368",
+        "T-0654",
+        "T-0724",
+        "T-79565"
+      ],
       "backlinks": [
         "T-82987",
         "T-82991"
@@ -79508,8 +79551,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "branch worker/T-82986",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-82986",
@@ -79518,14 +79561,14 @@
       },
       "parent": "F-0308",
       "schema_version": 1,
-      "stage_since": "2026-10-08T18:57:16Z",
-      "state": "New",
+      "stage_since": "2026-10-08T19:11:41Z",
+      "state": "Active",
       "stories": [
         "S-81204"
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-08T19:04:07Z",
+      "updated": "2026-10-08T19:11:41Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -79700,6 +79743,93 @@
         "tools/install.sh",
         "tests/test_channels.py",
         "tests/test_install.py"
+      ]
+    },
+    "T-83142": {
+      "backlinks": [
+        "T-83143"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83142",
+      "links": {
+        "plan": "docs/plans/f-0280.md"
+      },
+      "parent": "F-0280",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:11:52Z",
+      "state": "New",
+      "stories": [
+        "S-73204"
+      ],
+      "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
+      "type": "task",
+      "updated": "2026-10-08T19:11:52Z",
+      "writes": [
+        "asf/feeder/rows.py",
+        "tests/test_doc_lane_review.py"
+      ]
+    },
+    "T-83143": {
+      "after": [
+        "T-83142"
+      ],
+      "backlinks": [
+        "T-83144"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83143",
+      "links": {
+        "plan": "docs/plans/f-0280.md"
+      },
+      "parent": "F-0280",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:11:56Z",
+      "state": "New",
+      "stories": [
+        "S-73205"
+      ],
+      "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
+      "type": "task",
+      "updated": "2026-10-08T19:11:56Z",
+      "writes": [
+        "asf/reviews.py",
+        "asf/harvest/lane.py",
+        "asf/workers/lifecycle.py",
+        "asf/feeder/rows.py",
+        "tests/test_doc_lane_review.py"
+      ]
+    },
+    "T-83144": {
+      "after": [
+        "T-83143"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-83144",
+      "links": {
+        "plan": "docs/plans/f-0280.md"
+      },
+      "parent": "F-0280",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T19:12:00Z",
+      "state": "New",
+      "stories": [
+        "S-73206"
+      ],
+      "title": "the review brief asks for the table of the branch in front of it",
+      "type": "task",
+      "updated": "2026-10-08T19:12:00Z",
+      "writes": [
+        "asf/reviews.py",
+        "asf/briefs/build.py",
+        "asf/briefs/templates/review.md",
+        "tests/test_doc_lane_review.py"
       ]
     }
   }

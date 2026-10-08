@@ -14,3 +14,6 @@ These sat for hours with cloud at 2–9 of 32. On ASF the same day, ranked Tasks
 - **Escalation:** a parked, relaunch-capped or "needs input" item that blocks 3 or more rows gets an adjudicate row at once, with no wait for the daily cap to reset. Its brief names the blocked count and the waiters, and the session uses the strongest configured model. A test covers it: a capped item with 3 waiters → an ADJUDICATE row with `blocked: 3` in the brief.
 - **Visibility:** `asf next` and `asf status` open with a "top blockers" block listing each blocking item, its blocked count and why it's stuck, for the top 5. A test covers the render.
 - **Incomplete delivery:** when a delivery is incomplete and a member is still unbuilt, the next pass undelivers that member and lands what was built, instead of parking the lead. A test covers it: a lead whose member never built → member undelivered, lead lands its built members.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
