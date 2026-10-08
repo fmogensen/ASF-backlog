@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T16:43:19Z",
+  "generated": "2026-10-08T16:52:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17772,6 +17772,25 @@
       "type": "bug",
       "updated": "2026-10-08T16:41:09Z"
     },
+    "B-81552": {
+      "backlinks": [],
+      "children": [],
+      "count": 1,
+      "decided": false,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-81552",
+      "last_filed": "2026-10-08",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "repeat: T-79565: dead pid",
+      "stage_since": "2026-10-08T16:52:35Z",
+      "state": "New",
+      "title": "T-79565 has ended \"dead pid\" 2 times in 24h",
+      "type": "bug",
+      "updated": "2026-10-08T16:52:35Z"
+    },
     "D-0001": {
       "backlinks": [
         "S-62054",
@@ -19408,7 +19427,8 @@
         "B-80548",
         "B-80549",
         "B-80650",
-        "B-81201"
+        "B-81201",
+        "B-81552"
       ],
       "decided": true,
       "evidence": [
@@ -19418,12 +19438,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2173.17,
+      "spend_usd": 2177.01,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-08T16:28:35Z"
+      "updated": "2026-10-08T16:52:47Z"
     },
     "E-0002": {
       "backlinks": [
@@ -19571,12 +19591,12 @@
       "id": "E-0003",
       "rank": 3,
       "schema_version": 1,
-      "spend_usd": 104.01,
+      "spend_usd": 109.54,
       "stage_since": "2026-09-30T07:54:54Z",
       "state": "Active",
       "title": "ASF 0.3 \u2014 autonomous delivery",
       "type": "epic",
-      "updated": "2026-10-08T16:01:00Z"
+      "updated": "2026-10-08T16:52:47Z"
     },
     "E-0004": {
       "backlinks": [
@@ -29801,7 +29821,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 22,
+        "runner_min": 45,
         "sessions": 2,
         "usd": null
       },
@@ -29820,7 +29840,7 @@
       "state": "Active",
       "title": "CI queue: a priority PR's waiting required jobs preempt lower-rank QUEUED PR runs of the same runner class, re-dispatched afterwards",
       "type": "feature",
-      "updated": "2026-10-08T16:28:35Z"
+      "updated": "2026-10-08T16:52:47Z"
     },
     "F-0255": {
       "backlinks": [],
@@ -31670,12 +31690,17 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 55,
-        "sessions": 2,
-        "usd": null
+        "sessions": 3,
+        "tokens_cache_read": 2563821,
+        "tokens_cache_write": 68731,
+        "tokens_input": 88,
+        "tokens_output": 22563,
+        "usd": 2.53
       },
       "decided": true,
       "evidence": [
         "spec on origin/main",
+        "3/3 stories open: S-81204, S-81205, S-81206",
         "rule: documented"
       ],
       "folder": "features",
@@ -31688,7 +31713,7 @@
       "state": "Active",
       "title": "Release channels: edge (ASF itself, every green tag) and stable (weekly, after rehearsal plus 48 h on edge with no S1)",
       "type": "feature",
-      "updated": "2026-10-08T16:28:35Z"
+      "updated": "2026-10-08T16:52:47Z"
     },
     "F-0309": {
       "backlinks": [
@@ -31733,12 +31758,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 88,
-        "sessions": 3,
-        "tokens_cache_read": 5624783,
-        "tokens_cache_write": 92504,
-        "tokens_input": 158,
-        "tokens_output": 34064,
-        "usd": 4.59
+        "sessions": 4,
+        "tokens_cache_read": 8843501,
+        "tokens_cache_write": 182424,
+        "tokens_input": 238,
+        "tokens_output": 63656,
+        "usd": 5.89
       },
       "decided": true,
       "evidence": [
@@ -31754,12 +31779,12 @@
       "priority": "need",
       "rank": 4,
       "schema_version": 1,
-      "stage": "plan-approved",
-      "stage_since": "2026-10-08T16:33:58Z",
+      "stage": "building 0/6",
+      "stage_since": "2026-10-08T16:48:31Z",
       "state": "Active",
       "title": "Bug fixes must ship the regression test that fails before the fix (checked mechanically by the lane)",
       "type": "feature",
-      "updated": "2026-10-08T16:41:09Z"
+      "updated": "2026-10-08T16:52:47Z"
     },
     "F-0313": {
       "backlinks": [],
@@ -31804,6 +31829,16 @@
         "F-0316"
       ],
       "children": [],
+      "cost": {
+        "fix_rounds": 0,
+        "runner_min": 1,
+        "sessions": 1,
+        "tokens_cache_read": 5760091,
+        "tokens_cache_write": 122332,
+        "tokens_input": 140,
+        "tokens_output": 56768,
+        "usd": 5.52
+      },
       "decided": true,
       "evidence": [
         "spec on spec/F-0315",
@@ -31820,7 +31855,7 @@
       "state": "New",
       "title": "delivery pass binds a lead to every started Task of its Feature, not only ones whose writes intersect, starving the launch queue",
       "type": "feature",
-      "updated": "2026-10-08T16:33:58Z"
+      "updated": "2026-10-08T16:52:47Z"
     },
     "F-0316": {
       "backlinks": [],
@@ -39835,7 +39870,7 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 40,
+        "runner_min": 77,
         "sessions": 1,
         "tokens_cache_read": 2326520,
         "tokens_cache_write": 66405,
@@ -39856,7 +39891,7 @@
       "state": "Active",
       "title": "A Task whose PR the trunk carries as landed derives Closed on `landed-green`, not Active on `in-flight`",
       "type": "story",
-      "updated": "2026-10-08T16:28:35Z"
+      "updated": "2026-10-08T16:52:47Z"
     },
     "S-74155": {
       "backlinks": [
@@ -40860,17 +40895,17 @@
       },
       "evidence": [
         "no evidence found (2026-10-08)",
-        "rule: no-rule"
+        "rule: task-active"
       ],
       "folder": "stories",
       "id": "S-80454",
       "parent": "F-0312",
       "schema_version": 1,
-      "stage_since": "2026-10-08T15:09:07Z",
-      "state": "New",
+      "stage_since": "2026-10-08T16:48:31Z",
+      "state": "Active",
       "title": "the regression predicate \u2014 who is gated, what is a test, which cases failed, what that proves",
       "type": "story",
-      "updated": "2026-10-08T16:01:00Z"
+      "updated": "2026-10-08T16:48:31Z"
     },
     "S-80455": {
       "backlinks": [
@@ -40979,8 +41014,14 @@
       "updated": "2026-10-08T16:01:00Z"
     },
     "S-81204": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0308"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-81204",
       "parent": "F-0308",
@@ -40989,11 +41030,17 @@
       "state": "New",
       "title": "a channel resolves to its version tag from one listing, read by the peel",
       "type": "story",
-      "updated": "2026-10-08T16:42:45Z"
+      "updated": "2026-10-08T16:48:31Z"
     },
     "S-81205": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0308"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-81205",
       "parent": "F-0308",
@@ -41002,11 +41049,17 @@
       "state": "New",
       "title": "edge publishes the newest green tag, and nothing else",
       "type": "story",
-      "updated": "2026-10-08T16:42:59Z"
+      "updated": "2026-10-08T16:48:31Z"
     },
     "S-81206": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0308"
+      ],
       "children": [],
+      "evidence": [
+        "no evidence found (2026-10-08)",
+        "rule: no-rule"
+      ],
       "folder": "stories",
       "id": "S-81206",
       "parent": "F-0308",
@@ -41015,7 +41068,7 @@
       "state": "New",
       "title": "stable promotes only when all four criteria are met, and names the one that is not",
       "type": "story",
-      "updated": "2026-10-08T16:43:13Z"
+      "updated": "2026-10-08T16:48:31Z"
     },
     "T-0001": {
       "backlinks": [
@@ -44823,7 +44876,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1802 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1803 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -76752,8 +76805,8 @@
       "children": [],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 0,
-        "sessions": 1,
+        "runner_min": 38,
+        "sessions": 2,
         "tokens_cache_read": 10308780,
         "tokens_cache_write": 147134,
         "tokens_input": 190,
@@ -76780,7 +76833,7 @@
       ],
       "title": "the Task's own state reads the trunk, so a landed PR is Closed and not Active",
       "type": "task",
-      "updated": "2026-10-08T16:28:35Z",
+      "updated": "2026-10-08T16:52:47Z",
       "writes": [
         "asf/evidence/evidence.py",
         "tests/test_pr_cache_trunk.py"
@@ -77375,13 +77428,14 @@
         "T-79566",
         "T-79568",
         "B-80548",
-        "B-81201"
+        "B-81201",
+        "B-81552"
       ],
       "children": [],
       "cost": {
         "fix_rounds": 0,
         "runner_min": 1,
-        "sessions": 4,
+        "sessions": 5,
         "tokens_cache_read": 2186604,
         "tokens_cache_write": 22152,
         "tokens_input": 60,
@@ -77409,7 +77463,7 @@
       ],
       "title": "the door \u2014 the convention, the matcher, `asf pre-push`, and one call in the shim",
       "type": "task",
-      "updated": "2026-10-08T16:28:35Z",
+      "updated": "2026-10-08T16:52:47Z",
       "writes": [
         "asf/conventions.py",
         "asf/prepush.py",
@@ -77879,8 +77933,8 @@
       "children": [],
       "decided": true,
       "evidence": [
-        "no evidence found (2026-10-08)",
-        "rule: planned"
+        "branch worker/T-81129",
+        "rule: in-flight"
       ],
       "folder": "tasks",
       "id": "T-81129",
@@ -77889,14 +77943,14 @@
       },
       "parent": "F-0312",
       "schema_version": 1,
-      "stage_since": "2026-10-08T16:34:05Z",
-      "state": "New",
+      "stage_since": "2026-10-08T16:48:31Z",
+      "state": "Active",
       "stories": [
         "S-80454"
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-08T16:41:09Z",
+      "updated": "2026-10-08T16:48:31Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py"
