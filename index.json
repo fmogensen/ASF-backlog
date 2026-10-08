@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T15:27:57Z",
+  "generated": "2026-10-08T15:37:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19360,12 +19360,12 @@
       "id": "E-0001",
       "rank": 1,
       "schema_version": 1,
-      "spend_usd": 2149.01,
+      "spend_usd": 2153.6,
       "stage_since": "2026-09-22T13:17:07Z",
       "state": "Active",
       "title": "ASF 0.1 \u2014 a working factory",
       "type": "epic",
-      "updated": "2026-10-08T15:15:25Z"
+      "updated": "2026-10-08T15:37:30Z"
     },
     "E-0002": {
       "backlinks": [
@@ -25507,13 +25507,14 @@
       "parent": "E-0002",
       "priority": "later",
       "rank": 94,
+      "reshape": "stale: T-0657 Active for 20h (over 3x its limit), 201 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
-      "stage": "building 0/1",
-      "stage_since": "2026-10-07T19:21:13Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T15:33:59Z",
       "state": "Active",
       "title": "The landing gate refuses a branch that adds a debug-toggle marker",
       "type": "feature",
-      "updated": "2026-10-07T19:26:53Z"
+      "updated": "2026-10-08T15:33:59Z"
     },
     "F-0142": {
       "backlinks": [],
@@ -29376,7 +29377,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 46,
+        "runner_min": 71,
         "sessions": 6,
         "tokens_cache_read": 26299247,
         "tokens_cache_write": 324528,
@@ -29405,7 +29406,7 @@
       "state": "Active",
       "title": "Repair load \u2264 3 per Feature for the release gate: count rework, not the planned first review, and cut rework",
       "type": "feature",
-      "updated": "2026-10-08T15:15:25Z"
+      "updated": "2026-10-08T15:37:30Z"
     },
     "F-0243": {
       "backlinks": [
@@ -31118,7 +31119,7 @@
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 59,
+        "runner_min": 87,
         "sessions": 3,
         "tokens_cache_read": 1446433,
         "tokens_cache_write": 38523,
@@ -31142,7 +31143,7 @@
       "state": "Active",
       "title": "Port the old ci-heartbeat watchdog's OOM re-run into asf ci stall-watch so the host script can be retired",
       "type": "feature",
-      "updated": "2026-10-08T15:15:25Z"
+      "updated": "2026-10-08T15:37:30Z"
     },
     "F-0293": {
       "backlinks": [
@@ -31518,11 +31519,18 @@
         "S-79605",
         "S-79606",
         "S-79607",
-        "S-79608"
+        "S-79608",
+        "T-80572",
+        "T-80573",
+        "T-80574",
+        "T-80575",
+        "T-80576",
+        "T-80577",
+        "T-80578"
       ],
       "cost": {
         "fix_rounds": 0,
-        "runner_min": 59,
+        "runner_min": 89,
         "sessions": 3,
         "tokens_cache_read": 17253266,
         "tokens_cache_write": 281084,
@@ -31533,7 +31541,7 @@
       "decided": true,
       "evidence": [
         "spec on origin/main",
-        "plan on plan/F-0306",
+        "plan on origin/main",
         "5/5 stories open: S-79604, S-79605, S-79606, S-79607, S-79608",
         "rule: documented"
       ],
@@ -31543,12 +31551,12 @@
       "priority": "need",
       "rank": 2,
       "schema_version": 1,
-      "stage": "spec-approved",
-      "stage_since": "2026-10-08T13:28:42Z",
+      "stage": "plan-approved",
+      "stage_since": "2026-10-08T15:33:59Z",
       "state": "Active",
       "title": "Release rehearsal: every main push runs the CLI and hooks end to end on a real-record snapshot before a version can be offered",
       "type": "feature",
-      "updated": "2026-10-08T15:15:25Z"
+      "updated": "2026-10-08T15:37:30Z"
     },
     "F-0307": {
       "backlinks": [
@@ -31652,8 +31660,12 @@
       "cost": {
         "fix_rounds": 0,
         "runner_min": 25,
-        "sessions": 1,
-        "usd": null
+        "sessions": 2,
+        "tokens_cache_read": 5624783,
+        "tokens_cache_write": 92504,
+        "tokens_input": 158,
+        "tokens_output": 34064,
+        "usd": 4.59
       },
       "decided": true,
       "evidence": [
@@ -31672,7 +31684,7 @@
       "state": "Active",
       "title": "Bug fixes must ship the regression test that fails before the fix (checked mechanically by the lane)",
       "type": "feature",
-      "updated": "2026-10-08T15:21:14Z"
+      "updated": "2026-10-08T15:37:30Z"
     },
     "F-0313": {
       "backlinks": [],
@@ -40403,7 +40415,8 @@
     },
     "S-79604": {
       "backlinks": [
-        "F-0306"
+        "F-0306",
+        "T-80572"
       ],
       "children": [],
       "evidence": [
@@ -40422,7 +40435,8 @@
     },
     "S-79605": {
       "backlinks": [
-        "F-0306"
+        "F-0306",
+        "T-80573"
       ],
       "children": [],
       "evidence": [
@@ -40441,7 +40455,8 @@
     },
     "S-79606": {
       "backlinks": [
-        "F-0306"
+        "F-0306",
+        "T-80574"
       ],
       "children": [],
       "evidence": [
@@ -40460,7 +40475,8 @@
     },
     "S-79607": {
       "backlinks": [
-        "F-0306"
+        "F-0306",
+        "T-80575"
       ],
       "children": [],
       "evidence": [
@@ -40479,7 +40495,10 @@
     },
     "S-79608": {
       "backlinks": [
-        "F-0306"
+        "F-0306",
+        "T-80576",
+        "T-80577",
+        "T-80578"
       ],
       "children": [],
       "evidence": [
@@ -44637,7 +44656,7 @@
         "plan": "docs/plans/f-0099.md"
       },
       "parent": "F-0099",
-      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1794 commits behind the trunk \u2014 re-cut from the current trunk",
+      "reshape": "stale: T-0093 Active for 14d (over 3x its limit), 1796 commits behind the trunk \u2014 re-cut from the current trunk",
       "schema_version": 1,
       "stage_since": "2026-09-23T21:10:24Z",
       "state": "Active",
@@ -68912,6 +68931,7 @@
         "T-0651"
       ],
       "backlinks": [
+        "F-0141",
         "T-0658",
         "T-0665",
         "T-0688",
@@ -68933,9 +68953,8 @@
       },
       "decided": true,
       "evidence": [
-        "PR #1047 OPEN",
-        "branch worker/T-0657",
-        "rule: in-flight"
+        "no evidence found (2026-10-08)",
+        "rule: planned"
       ],
       "folder": "tasks",
       "id": "T-0657",
@@ -68950,11 +68969,11 @@
         "split T-0657 asf | asf/harvest | tests"
       ],
       "schema_version": 1,
-      "stage_since": "2026-10-07T19:21:13Z",
-      "state": "Active",
+      "stage_since": "2026-10-08T15:33:59Z",
+      "state": "New",
       "title": "the recogniser, the waiver, and the refusal on both of the marker gate's seams",
       "type": "task",
-      "updated": "2026-10-07T22:33:49Z",
+      "updated": "2026-10-08T15:33:59Z",
       "writes": [
         "asf/debug_toggles.py",
         "asf/conventions.py",
@@ -77431,6 +77450,213 @@
         "tests/test_strike.py",
         "tests/test_retire.py",
         "tests/test_feature_delivery.py"
+      ]
+    },
+    "T-80572": {
+      "backlinks": [
+        "T-80573"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-80572",
+      "links": {
+        "plan": "docs/plans/f-0306.md"
+      },
+      "parent": "F-0306",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T15:34:07Z",
+      "state": "New",
+      "stories": [
+        "S-79604"
+      ],
+      "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
+      "type": "task",
+      "updated": "2026-10-08T15:34:07Z",
+      "writes": [
+        "asf/rehearsal.py",
+        "asf/cli.py",
+        "asf/surface.py",
+        "tests/test_surface.py",
+        "tests/test_rehearsal_snapshot.py",
+        "tests/rehearsal/**"
+      ]
+    },
+    "T-80573": {
+      "after": [
+        "T-80572"
+      ],
+      "backlinks": [
+        "T-80574",
+        "T-80575",
+        "T-80577"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-80573",
+      "links": {
+        "plan": "docs/plans/f-0306.md"
+      },
+      "parent": "F-0306",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T15:34:11Z",
+      "state": "New",
+      "stories": [
+        "S-79605"
+      ],
+      "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
+      "type": "task",
+      "updated": "2026-10-08T15:34:11Z",
+      "writes": [
+        "asf/rehearsal.py",
+        "asf/cli.py",
+        "tests/test_rehearsal_ids.py"
+      ]
+    },
+    "T-80574": {
+      "after": [
+        "T-80573"
+      ],
+      "backlinks": [
+        "T-80578"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-80574",
+      "links": {
+        "plan": "docs/plans/f-0306.md"
+      },
+      "parent": "F-0306",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T15:34:15Z",
+      "state": "New",
+      "stories": [
+        "S-79606"
+      ],
+      "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
+      "type": "task",
+      "updated": "2026-10-08T15:34:15Z",
+      "writes": [
+        "asf/rehearsal.py",
+        "tests/test_rehearsal_record.py",
+        "tests/rehearsal/record/**"
+      ]
+    },
+    "T-80575": {
+      "after": [
+        "T-80573"
+      ],
+      "backlinks": [
+        "T-80578"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-80575",
+      "links": {
+        "plan": "docs/plans/f-0306.md"
+      },
+      "parent": "F-0306",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T15:34:18Z",
+      "state": "New",
+      "stories": [
+        "S-79607"
+      ],
+      "title": "the `tags` act \u2014 every version reader over annotated tags",
+      "type": "task",
+      "updated": "2026-10-08T15:34:18Z",
+      "writes": [
+        "asf/rehearsal.py",
+        "tests/test_rehearsal_tags.py"
+      ]
+    },
+    "T-80576": {
+      "backlinks": [
+        "T-80577"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-80576",
+      "links": {
+        "plan": "docs/plans/f-0306.md"
+      },
+      "parent": "F-0306",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T15:34:22Z",
+      "state": "New",
+      "stories": [
+        "S-79608"
+      ],
+      "title": "the criterion \u2014 the rehearsal in both gates, with its own step lookup",
+      "type": "task",
+      "updated": "2026-10-08T15:34:22Z",
+      "writes": [
+        "asf/release.py",
+        "asf/release_preview.py",
+        "docs/products.example.yaml",
+        "tests/test_release_rehearsal_criterion.py"
+      ]
+    },
+    "T-80577": {
+      "after": [
+        "T-80573",
+        "T-80576"
+      ],
+      "backlinks": [
+        "T-80578"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-80577",
+      "links": {
+        "plan": "docs/plans/f-0306.md"
+      },
+      "parent": "F-0306",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T15:34:25Z",
+      "state": "New",
+      "stories": [
+        "S-79608"
+      ],
+      "title": "the edge \u2014 the `rehearsal` job and the two `needs:` lines",
+      "type": "task",
+      "updated": "2026-10-08T15:34:25Z",
+      "writes": [
+        ".github/workflows/release.yml",
+        "tests/test_version.py"
+      ]
+    },
+    "T-80578": {
+      "after": [
+        "T-80574",
+        "T-80575",
+        "T-80577"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-80578",
+      "links": {
+        "plan": "docs/plans/f-0306.md"
+      },
+      "parent": "F-0306",
+      "schema_version": 1,
+      "stage_since": "2026-10-08T15:34:29Z",
+      "state": "New",
+      "stories": [
+        "S-79608"
+      ],
+      "title": "the gate bites \u2014 one line out, on a trunk where the rehearsal is already green",
+      "type": "task",
+      "updated": "2026-10-08T15:34:29Z",
+      "writes": [
+        ".github/workflows/release.yml"
       ]
     }
   }
