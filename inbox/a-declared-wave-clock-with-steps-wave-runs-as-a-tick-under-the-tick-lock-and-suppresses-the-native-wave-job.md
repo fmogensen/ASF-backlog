@@ -7,3 +7,6 @@ A product that declares its own clock named `wave` with `steps: [wave]` (as bots
 ## Acceptance
 - A declared clock named `wave` whose steps are exactly `[wave]` is installed as the native `asf wave` job (its own lock and snapshot), not as a tick. Either the scheduler maps it, or the config check refuses it with the fix named. A test covers it.
 - `asf doctor` prints one red row when a product's wave job runs under the tick lock, naming the yaml line to remove.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
