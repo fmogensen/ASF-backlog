@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T20:39:20Z",
+  "generated": "2026-10-09T20:42:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3308,7 +3308,7 @@
       "state": "New",
       "title": "Failed tick step logs no traceback",
       "type": "bug",
-      "updated": "2026-10-09T20:39:17Z"
+      "updated": "2026-10-09T20:42:22Z"
     },
     "B-0107": {
       "backlinks": [],
@@ -3629,7 +3629,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0117",
-      "kernel_state": "landing",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3638,7 +3638,7 @@
       "state": "New",
       "title": "Status Prod row names ci.deploy_workflow but the product schema rejects it",
       "type": "bug",
-      "updated": "2026-10-09T20:39:17Z"
+      "updated": "2026-10-09T20:42:22Z"
     },
     "B-0118": {
       "backlinks": [],
@@ -63252,7 +63252,11 @@
         "asf/upgrade.py:631 \u2014 `installed_release()` now prepends `v` to the tag so `version_tuple`/`newer` can parse it; add a test (e.g. in `tests/test_release_channel.py`, stubbing `cli._release`/`drift.installed_commit`) asserting `upgrade.installed_release()` returns a `RELEASE_RE`-matching tag \u2014 currently this function has zero test coverage anywhere in the suite."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "a session reads the reason and fixes the cause",
+      "kernel_stuck_owner": "session",
+      "kernel_stuck_reason": "ended without a REPORT: That monitor has served its purpose and naturally expired \u2014 no action needed. My final report above stands: work is committed on `worker/T-0432` but not yet pushed due to sust\u2026",
+      "kernel_stuck_since": "2026-10-09T20:42:10Z",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63265,7 +63269,7 @@
       "state": "Active",
       "title": "the release primitives \u2014 the hourly shared cache, the version tuple, and an install that can be handed a tag",
       "type": "task",
-      "updated": "2026-10-09T17:32:29Z",
+      "updated": "2026-10-09T20:42:22Z",
       "writes": [
         "asf/upgrade.py",
         "asf/cli.py",
