@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T16:24:07Z",
+  "generated": "2026-10-09T16:28:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18118,11 +18118,11 @@
         "commit 5300de3e072ae8092681fcaa10a46d728a197c6c on fix/B-82809 adds docs/reviews/1-b-82809.md \u2014 a prior review session's own report, committed in violation of the never-touch-the-branch rule \u2014 drop it so the PR head returns to bfec9d831dfd2415b2ea48cb7ce0227a5b5b931c (the writer's actual fix)"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
-      "kernel_stuck_next": "a session reads the last line and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "Message ID: msg_011CfrwoFegk4YPbTCyeJUCe",
-      "kernel_stuck_since": "2026-10-09T16:05:23Z",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "conflict: PR #1252 after 2 fix rounds",
+      "kernel_stuck_since": "2026-10-09T16:28:20Z",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18132,7 +18132,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1177@505cfad1e",
       "type": "bug",
-      "updated": "2026-10-09T16:24:04Z"
+      "updated": "2026-10-09T16:28:32Z"
     },
     "B-82960": {
       "backlinks": [
@@ -18227,7 +18227,11 @@
         "rebase: PR #1253 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "rebase PR #1253 onto its base by hand and push, or close it and reopen the item",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "conflict the rebase session could not resolve: PR #1253 still conflicts on head 883724246b49f40aaae78854bab8773198a33940",
+      "kernel_stuck_since": "2026-10-09T16:28:20Z",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18237,7 +18241,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1237@2edb03326",
       "type": "bug",
-      "updated": "2026-10-09T16:24:04Z"
+      "updated": "2026-10-09T16:28:32Z"
     },
     "B-83413": {
       "backlinks": [],
@@ -80306,7 +80310,7 @@
       ],
       "folder": "tasks",
       "id": "T-78560",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80319,7 +80323,7 @@
       ],
       "title": "the pass stamps itself, and the reaper stops calling this watch's files orphans",
       "type": "task",
-      "updated": "2026-10-09T16:12:49Z",
+      "updated": "2026-10-09T16:28:32Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/state/registry.py",
@@ -81089,8 +81093,8 @@
       ],
       "folder": "tasks",
       "id": "T-81129",
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -81103,7 +81107,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-09T16:24:04Z",
+      "updated": "2026-10-09T16:28:32Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py"
