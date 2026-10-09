@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T16:19:08Z",
+  "generated": "2026-10-09T16:24:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18067,11 +18067,10 @@
         "conflict: PR #1251: update-branch #1251: rc 1: gh: merge conflict between base and head (HTTP 422)"
       ],
       "kernel_findings": [
-        "docs/reviews/1-b-82658.md \u2014 review session `57b14a947` committed and pushed the round-1 review file onto `fix/B-82658` itself, violating \"the review never touches the branch.\" Fix with a follow-up commit `git rm docs/reviews/1-b-82658.md` (no rebase/force-push).",
-        "rebase: PR #1251 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
+        "docs/reviews/1-b-82658.md \u2014 review session `57b14a947` committed and pushed the round-1 review file onto `fix/B-82658` itself, violating \"the review never touches the branch.\" Fix with a follow-up commit `git rm docs/reviews/1-b-82658.md` (no rebase/force-push)."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "stuck",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "kernel_stuck_next": "a session reads the last line and fixes the cause",
       "kernel_stuck_owner": "session",
       "kernel_stuck_reason": "```",
@@ -18085,7 +18084,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1233@4a831f9c8",
       "type": "bug",
-      "updated": "2026-10-09T16:09:15Z"
+      "updated": "2026-10-09T16:24:04Z"
     },
     "B-82809": {
       "backlinks": [
@@ -18118,8 +18117,8 @@
       "kernel_findings": [
         "commit 5300de3e072ae8092681fcaa10a46d728a197c6c on fix/B-82809 adds docs/reviews/1-b-82809.md \u2014 a prior review session's own report, committed in violation of the never-touch-the-branch rule \u2014 drop it so the PR head returns to bfec9d831dfd2415b2ea48cb7ce0227a5b5b931c (the writer's actual fix)"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "stuck",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "kernel_stuck_next": "a session reads the last line and fixes the cause",
       "kernel_stuck_owner": "session",
       "kernel_stuck_reason": "Message ID: msg_011CfrwoFegk4YPbTCyeJUCe",
@@ -18133,7 +18132,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1177@505cfad1e",
       "type": "bug",
-      "updated": "2026-10-09T16:05:43Z"
+      "updated": "2026-10-09T16:24:04Z"
     },
     "B-82960": {
       "backlinks": [
@@ -18228,11 +18227,7 @@
         "rebase: PR #1253 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the last line and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "```",
-      "kernel_stuck_since": "2026-10-09T16:12:34Z",
+      "kernel_state": "ready",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18242,7 +18237,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1237@2edb03326",
       "type": "bug",
-      "updated": "2026-10-09T16:12:49Z"
+      "updated": "2026-10-09T16:24:04Z"
     },
     "B-83413": {
       "backlinks": [],
@@ -79780,7 +79775,7 @@
       ],
       "folder": "tasks",
       "id": "T-0833",
-      "kernel_state": "review",
+      "kernel_state": "new",
       "landed": "b9ec3fc392e338355294ebab9a8fb4aed8738cf6",
       "landing": {
         "as_of": "2026-10-08T01:09:39Z",
@@ -79802,7 +79797,7 @@
       ],
       "title": "a red module runs again, a flake is counted instead of hidden, and a real red still fails the job",
       "type": "task",
-      "updated": "2026-10-09T16:09:15Z",
+      "updated": "2026-10-09T16:24:04Z",
       "writes": [
         "tools/run_tests.py",
         "tests/test_run_tests.py",
@@ -81095,11 +81090,7 @@
       "folder": "tasks",
       "id": "T-81129",
       "kernel_fix_rounds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the last line and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "```",
-      "kernel_stuck_since": "2026-10-09T15:50:05Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -81112,7 +81103,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-09T15:50:12Z",
+      "updated": "2026-10-09T16:24:04Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py"
