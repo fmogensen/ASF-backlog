@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T17:24:30Z",
+  "generated": "2026-10-09T17:32:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -63062,10 +63062,10 @@
         "review: no VERDICT line"
       ],
       "kernel_findings": [
-        "asf/upgrade.py:630 \u2014 prefix the tag before returning: `tag = cli._release(...); return (f'v{tag}' if tag else None), drift.installed_commit()`, so `version_tuple()`/`newer()` (which require a leading `v`) can actually parse the installed release instead of always reading it as unreadable."
+        "asf/upgrade.py:631 \u2014 `installed_release()` now prepends `v` to the tag so `version_tuple`/`newer` can parse it; add a test (e.g. in `tests/test_release_channel.py`, stubbing `cli._release`/`drift.installed_commit`) asserting `upgrade.installed_release()` returns a `RELEASE_RE`-matching tag \u2014 currently this function has zero test coverage anywhere in the suite."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63078,7 +63078,7 @@
       "state": "Active",
       "title": "the release primitives \u2014 the hourly shared cache, the version tuple, and an install that can be handed a tag",
       "type": "task",
-      "updated": "2026-10-09T17:10:54Z",
+      "updated": "2026-10-09T17:32:29Z",
       "writes": [
         "asf/upgrade.py",
         "asf/cli.py",
