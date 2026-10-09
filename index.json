@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T16:31:24Z",
+  "generated": "2026-10-09T16:34:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18070,11 +18070,11 @@
         "docs/reviews/1-b-82658.md \u2014 review session `57b14a947` committed and pushed the round-1 review file onto `fix/B-82658` itself, violating \"the review never touches the branch.\" Fix with a follow-up commit `git rm docs/reviews/1-b-82658.md` (no rebase/force-push)."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
-      "kernel_stuck_next": "a session reads the last line and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "```",
-      "kernel_stuck_since": "2026-10-09T16:08:46Z",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "conflict: PR #1251 after 2 fix rounds",
+      "kernel_stuck_since": "2026-10-09T16:34:12Z",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18084,7 +18084,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1233@4a831f9c8",
       "type": "bug",
-      "updated": "2026-10-09T16:24:04Z"
+      "updated": "2026-10-09T16:34:22Z"
     },
     "B-82809": {
       "backlinks": [
@@ -63425,7 +63425,7 @@
         "docs/reviews/1-t-0441.md:1 \u2014 a prior review session committed its own (now stale, wrong-head) review file onto `worker/T-0441` outside `writes:`; remove it with a new commit (`git rm docs/reviews/1-t-0441.md`, reporting `needs writes: docs/reviews/1-t-0441.md`) so it never lands on `main` via this PR."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0113-8266efca4547.md"
       },
@@ -63435,7 +63435,7 @@
       "state": "Active",
       "title": "`asf status` \u2014 one plan per table, and an `S1 gate` row that only speaks when it holds",
       "type": "task",
-      "updated": "2026-10-09T16:09:15Z",
+      "updated": "2026-10-09T16:34:22Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_views.py"
@@ -80323,7 +80323,7 @@
       ],
       "title": "the pass stamps itself, and the reaper stops calling this watch's files orphans",
       "type": "task",
-      "updated": "2026-10-09T16:31:22Z",
+      "updated": "2026-10-09T16:34:22Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/state/registry.py",
@@ -81094,7 +81094,11 @@
       "folder": "tasks",
       "id": "T-81129",
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "partial: NEEDS OPERATOR: widen T-81129's `writes:` to include `asf/conventions.py` and `docs/guide/product-config.md` (or land a Task that registers `regression.exempt_found_in` in `conventions.KNOWN\u2026",
+      "kernel_stuck_since": "2026-10-09T16:34:12Z",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -81107,7 +81111,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-09T16:28:32Z",
+      "updated": "2026-10-09T16:34:22Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py"
