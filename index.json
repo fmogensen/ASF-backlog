@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T16:05:45Z",
+  "generated": "2026-10-09T16:09:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18071,7 +18071,11 @@
         "rebase: PR #1251 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "a session reads the last line and fixes the cause",
+      "kernel_stuck_owner": "session",
+      "kernel_stuck_reason": "```",
+      "kernel_stuck_since": "2026-10-09T16:08:46Z",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18081,7 +18085,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1233@4a831f9c8",
       "type": "bug",
-      "updated": "2026-10-09T15:59:19Z"
+      "updated": "2026-10-09T16:09:15Z"
     },
     "B-82809": {
       "backlinks": [
@@ -63414,7 +63418,11 @@
       ],
       "folder": "tasks",
       "id": "T-0441",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "docs/reviews/1-t-0441.md:1 \u2014 a prior review session committed its own (now stale, wrong-head) review file onto `worker/T-0441` outside `writes:`; remove it with a new commit (`git rm docs/reviews/1-t-0441.md`, reporting `needs writes: docs/reviews/1-t-0441.md`) so it never lands on `main` via this PR."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0113-8266efca4547.md"
       },
@@ -63424,7 +63432,7 @@
       "state": "Active",
       "title": "`asf status` \u2014 one plan per table, and an `S1 gate` row that only speaks when it holds",
       "type": "task",
-      "updated": "2026-10-09T15:59:19Z",
+      "updated": "2026-10-09T16:09:15Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_views.py"
@@ -79768,7 +79776,7 @@
       ],
       "folder": "tasks",
       "id": "T-0833",
-      "kernel_state": "landing",
+      "kernel_state": "review",
       "landed": "b9ec3fc392e338355294ebab9a8fb4aed8738cf6",
       "landing": {
         "as_of": "2026-10-08T01:09:39Z",
@@ -79790,7 +79798,7 @@
       ],
       "title": "a red module runs again, a flake is counted instead of hidden, and a real red still fails the job",
       "type": "task",
-      "updated": "2026-10-09T16:05:43Z",
+      "updated": "2026-10-09T16:09:15Z",
       "writes": [
         "tools/run_tests.py",
         "tests/test_run_tests.py",
@@ -80299,7 +80307,7 @@
       ],
       "folder": "tasks",
       "id": "T-78560",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80312,7 +80320,7 @@
       ],
       "title": "the pass stamps itself, and the reaper stops calling this watch's files orphans",
       "type": "task",
-      "updated": "2026-10-09T15:56:18Z",
+      "updated": "2026-10-09T16:09:15Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/state/registry.py",
