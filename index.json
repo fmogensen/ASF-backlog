@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T21:15:47Z",
+  "generated": "2026-10-09T21:19:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2211,11 +2211,10 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0070",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: the branch is committed and clean locally but still not on origin \u2014 this host has run under sustained heavy contention for this entire session (load avg 22-30, many concurrent s\u2026",
-      "kernel_stuck_since": "2026-10-09T20:05:51Z",
+      "kernel_answers": [
+        "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
+      ],
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -2224,7 +2223,7 @@
       "state": "New",
       "title": "The lane duplicates a fix the operator is already carrying by hand",
       "type": "bug",
-      "updated": "2026-10-09T20:06:01Z"
+      "updated": "2026-10-09T21:19:20Z"
     },
     "B-0071": {
       "area": "asf.testing",
@@ -4284,7 +4283,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-0138",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "last_filed": "2026-10-06",
       "parent": "E-0001",
       "places": 14,
@@ -4295,7 +4294,7 @@
       "state": "New",
       "title": "Record error: writes: \u2026 intersects Active task \u2026's \u2026",
       "type": "bug",
-      "updated": "2026-10-09T19:43:10Z"
+      "updated": "2026-10-09T21:19:20Z"
     },
     "B-0139": {
       "backlinks": [],
@@ -18556,7 +18555,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-83575",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18566,7 +18565,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-82809",
       "type": "bug",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-09T21:19:20Z"
     },
     "B-83576": {
       "backlinks": [],
@@ -52651,6 +52650,9 @@
       ],
       "folder": "tasks",
       "id": "T-0196",
+      "kernel_answers": [
+        "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
+      ],
       "kernel_attempts": [
         "conflict: PR #731: update-branch #731: rc 1: gh: merge conflict between base and head (HTTP 422)"
       ],
@@ -52664,10 +52666,10 @@
       ],
       "kernel_fix_rounds": 1,
       "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_next": "rebase PR #731 onto its base by hand and push, or close it and reopen the item",
       "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: the branch is rebased and ready but not on origin \u2014 `git push --force-with-lease origin worker/T-0196` (this session's permission system denied running it twice; it is read-only\u2026",
-      "kernel_stuck_since": "2026-10-09T19:50:19Z",
+      "kernel_stuck_reason": "conflict the rebase session could not resolve: PR #731 still conflicts on head f8d8f2405c1d251cbb45bd34f513a6321e10eb27",
+      "kernel_stuck_since": "2026-10-09T21:19:06Z",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -52677,7 +52679,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-09T19:50:39Z",
+      "updated": "2026-10-09T21:19:20Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
