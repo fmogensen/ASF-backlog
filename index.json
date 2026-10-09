@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T22:09:42Z",
+  "generated": "2026-10-09T22:13:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18431,7 +18431,7 @@
       "kernel_notes": [
         "PR #1275: install-clean-linux is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "review",
       "last_filed": "2026-10-08",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18441,7 +18441,7 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1241@d84337ab7",
       "type": "bug",
-      "updated": "2026-10-09T22:05:43Z"
+      "updated": "2026-10-09T22:13:47Z"
     },
     "B-83470": {
       "backlinks": [
@@ -18460,7 +18460,7 @@
         "build-b-83470-1791575838: NEEDS OPERATOR: the installed CLI on this host predates the fix, so `asf next` will keep showing the symptom until it is reinstalled from the trunk \u2014 `asf --version` (prints the installed sha; compare with `origin/m\u2026",
         "PR #1271: install-clean-linux is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S1",
@@ -18469,7 +18469,7 @@
       "state": "New",
       "title": "a FIX \u2192 CORRECT row still waits on an Active priority-later holder (B-82960 follow-up)",
       "type": "bug",
-      "updated": "2026-10-09T21:54:23Z"
+      "updated": "2026-10-09T22:13:47Z"
     },
     "B-83471": {
       "backlinks": [],
@@ -18560,7 +18560,12 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-83574",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/tick/step_wave.py:1294,1299 \u2014 thread `cloud_inflight = cloud_mod.inflight_all() if cloud.on else 0` into both `split_hold` calls inside `launch_now`, matching `would_start`/`launch`",
+        "asf/views/status.py:117,122 \u2014 thread the same `inflight=` into both `step_wave.split_hold` calls so `asf status` stays \"same as would_start\" per the file's own comment at :111-112"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18570,7 +18575,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-82658",
       "type": "bug",
-      "updated": "2026-10-09T21:54:23Z"
+      "updated": "2026-10-09T22:13:47Z"
     },
     "B-83575": {
       "backlinks": [],
@@ -18611,7 +18616,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-83576",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18621,7 +18626,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-83312",
       "type": "bug",
-      "updated": "2026-10-09T21:37:19Z"
+      "updated": "2026-10-09T22:13:47Z"
     },
     "B-83577": {
       "backlinks": [],
