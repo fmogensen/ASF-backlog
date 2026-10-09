@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T23:03:11Z",
+  "generated": "2026-10-09T23:04:55Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18799,7 +18799,11 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84833",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/views/status.py:127-129 \u2014 `_plan()`'s `step_wave.screen(...)` call still omits `paused=`, so `asf status`'s own Ready-to-launch cell stays pause-blind; add `paused=pause_mod.held(product)` there too (or correct the overclaiming docstring at tests/test_pause.py:350-353 and disclose the gap)."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18809,7 +18813,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-09T22:43:53Z"
+      "updated": "2026-10-09T23:04:53Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -18823,7 +18827,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84834",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18833,7 +18837,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83352",
       "type": "bug",
-      "updated": "2026-10-09T22:59:25Z"
+      "updated": "2026-10-09T23:04:53Z"
     },
     "B-84835": {
       "backlinks": [],
@@ -18895,7 +18899,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84837",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18905,7 +18909,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-83470",
       "type": "bug",
-      "updated": "2026-10-09T22:55:38Z"
+      "updated": "2026-10-09T23:04:53Z"
     },
     "D-0001": {
       "backlinks": [
@@ -33303,7 +33307,7 @@
       ],
       "folder": "features",
       "id": "F-0318",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33311,7 +33315,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-09T22:47:47Z"
+      "updated": "2026-10-09T23:04:53Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33463,7 +33467,7 @@
       ],
       "folder": "features",
       "id": "F-0326",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33471,7 +33475,7 @@
       "state": "New",
       "title": "a pushed Task with an open PR gets no landing request and no row while others wait on it",
       "type": "feature",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-09T23:04:53Z"
     },
     "F-0327": {
       "backlinks": [],
