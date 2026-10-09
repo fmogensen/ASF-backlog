@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T23:34:05Z",
+  "generated": "2026-10-09T23:34:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18205,19 +18205,15 @@
       "found_in": "dev",
       "id": "B-82960",
       "kernel_findings": [
-        "asf/kernel/ports.py:354 \u2014 `failing_files` cuts one dotted part too few for the four-part `FAIL: test_x (tests.test_mod.Case.test_x)` name this product's Python 3.14.7 emits, yielding `tests/test_mod/Case.py`; `on_pr` (decide.py:510) then finds a non-empty file list meeting none of `pr.files`, so every required red goes Rerun \u2192 Stuck(owner=ci) (decide.py:478-483) instead of the fix round at decide.py:476. Replace the `n == len(parts) - 1` fallback with the prefix before the first capitalised component (`cut = next((i for i, p in enumerate(parts) if p[:1].isupper()), max(len(parts) - 1, 1))`) and pin the four-part form beside the three-part one at tests/kernel/test_ports.py:122.",
-        "asf/kernel/decide.py:656 \u2014 a container that *derives* `State.PARKED` (every child parked, decide.py:626-629) is not in `parked` (decide.py:441), so `_visible` calls it a live holder and a ranked Task with `after:` to it stays New for ever (repro: `[B.item('F-0001'), B.task('T-0001', parent='F-0001', priority='later'), B.task('T-0002', rank=1, after=['F-0001'])]` \u2192 `F-0001 PARKED, T-0002 NEW, launched []`). Change the test to `states[a][0] not in (State.DONE, State.PARKED)` here and in `_idle` at decide.py:761-762, and add that repro as a test.",
-        "asf/kernel/briefs.py:95 \u2014 `VERDICT_RE` rejects `VERDICT: approved` and any trailing remark, while the review template appended to the same brief writes the verdict block as `verdict: approved` (asf/briefs/templates/review.md:23); the review is then recorded as NO_VERDICT (apply.py:179) and the second one wedges the item Stuck(owner=loop) at `max_attempts=2`. Use `r'^\\s*VERDICT:\\s*(approve|approved|changes)\\b.*$'` and normalise `approved`\u2192`approve` at briefs.py:185.",
-        "asf/kernel/ports.py:305 \u2014 `PR_FIELDS` never asks for `isDraft` and `M.PR` has no `draft` field, so an approved draft PR reaches Landing and `A.EnableAutoMerge` (decide.py:493-494) is planned every tick; GitHub refuses auto-merge on a draft, `enable_auto_merge` (ports.py:554-559) raises through `_write`, and unlike `UpdateBranch` it records no attempt \u2014 the item sits in Landing silently for ever. PR #1266 is itself a draft. Add `isDraft` to PR_FIELDS, `draft: bool = False` to model.py:140-141, fill it at ports.py:440, and hold a draft out of Landing with a `NoteItem` before decide.py:493, as every other reader in this product does (ci_queue.py:3599, dwell.py:404, harvest/lane.py:132).",
-        "asf/kernel/decide.py:334 \u2014 `_claimed_on_origin`'s docstring promises \"the origin branch is at that sha or has moved past it\" but discards the sha (`_sha`) and tests only the branch name, so a refused push reported as `pushed: yes <sha>` counts as pushed (decide.py:310) and opens a PR on the previous round's head; `Branch.head_sha` is filled at ports.py:584 and read nowhere in decide.py. Compare the claim against that head, or strike the sha promise from the docstring.",
-        "docs/plans/b-82960.md:1 \u2014 the file does not exist, nor does docs/specs/b-82960.md, while B-82960 is a Bug already `state: Resolved` and landed (`landing.sha 14b963ba`, PR #1244, its fix on the trunk at asf/invariants.py:249 and asf/feeder/rows.py:644) and all 18 commit subjects read `kernel(0.2): \u2026` with no item id \u2014 which harvest refuses (\"the id inside the branch name does not count\"). Either mint the Epic/Feature the 0.2 kernel belongs to and write its spec, plan and `writes:` footprint, retitle PR #1266 and name that id in every commit subject from the next push on, or reopen B-82960 and write docs/specs/b-82960.md and docs/plans/b-82960.md for this work \u2014 the operator picks the id first (see NEEDS OPERATOR above)."
+        "asf/kernel/ports.py:131 \u2014 after the `kernel_state` read, let a closed floor state win: `if machine.get('state') in CLOSED_STATES: state, stuck = M.State.DONE, None`, so a card the floor closed (T-0833, T-0196) is not judged Ready/Stuck and relaunched; an open PR is unaffected, `_judge` reaches `_judge_pr` (decide.py:270) before it reads `it.state is State.DONE`",
+        "asf/kernel/ports.py:355 \u2014 skip a dotted name that cannot be a module path, so the list stays empty and `on_pr` reads the red as the PR's own: `if parts[:2] == ['unittest', 'loader'] or parts[0][:1].isupper(): continue`; add a case for `ERROR: test_x (unittest.loader._FailedTest.test_x)` to `Helpers.test_failing_files_read_both_unittest_name_forms`, and correct the plan's third accepted cost, which claims this case yields no file at all"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1266: install-clean-linux is red but not a required check \u2014 ignored",
         "build-b-82960-1791585077: NEEDS OPERATOR: which id this 0.2-kernel work belongs to \u2014 B-82960 is already `state: Resolved` with its own fix landed (`14b963ba`, PR #1244), so this branch either reopens that card or needs an Epic/Feature minted\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "landing": {
         "as_of": "2026-10-08T19:22:06Z",
         "by": "pr-merge",
@@ -18231,7 +18227,7 @@
       "state": "Resolved",
       "title": "parked (priority later) Active Tasks still hold their footprint; I3 keeps ranked Tasks after: them forever",
       "type": "bug",
-      "updated": "2026-10-09T23:16:21Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "B-83261": {
       "backlinks": [],
@@ -18520,7 +18516,7 @@
       "kernel_notes": [
         "PR #1272: install-clean-linux is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S2",
@@ -18529,7 +18525,7 @@
       "state": "New",
       "title": "repo .githooks fail in cloud sessions with no asf binary on PATH",
       "type": "bug",
-      "updated": "2026-10-09T21:41:50Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "B-83573": {
       "backlinks": [],
@@ -18730,7 +18726,7 @@
       "kernel_attempts": [
         "conflict: PR #1288: update-branch #1288: rc 1: gh: merge conflict between base and head (HTTP 422)"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18740,7 +18736,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-79745",
       "type": "bug",
-      "updated": "2026-10-09T23:19:55Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "B-84831": {
       "backlinks": [],
@@ -18781,7 +18777,7 @@
       "kernel_attempts": [
         "conflict: PR #1289: update-branch #1289: rc 1: gh: merge conflict between base and head (HTTP 422)"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18791,7 +18787,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83350",
       "type": "bug",
-      "updated": "2026-10-09T23:19:55Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "B-84833": {
       "backlinks": [],
@@ -18809,7 +18805,7 @@
         "asf/views/status.py:127-129 \u2014 `_plan()`'s `step_wave.screen(...)` call still omits `paused=`, so `asf status`'s own Ready-to-launch cell stays pause-blind; add `paused=pause_mod.held(product)` there too (or correct the overclaiming docstring at tests/test_pause.py:350-353 and disclose the gap)."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18819,7 +18815,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-09T23:19:55Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -18836,7 +18832,7 @@
       "kernel_attempts": [
         "conflict: PR #1294: update-branch #1294: rc 1: gh: merge conflict between base and head (HTTP 422)"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18846,7 +18842,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83352",
       "type": "bug",
-      "updated": "2026-10-09T23:23:38Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "B-84835": {
       "backlinks": [],
@@ -18863,7 +18859,7 @@
       "kernel_attempts": [
         "conflict: PR #1293: update-branch #1293: rc 1: gh: merge conflict between base and head (HTTP 422)"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18873,7 +18869,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0313",
       "type": "bug",
-      "updated": "2026-10-09T23:19:55Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "B-84836": {
       "backlinks": [],
@@ -20898,8 +20894,7 @@
         "T-0772",
         "T-80371",
         "B-0030",
-        "B-0063",
-        "B-82960"
+        "B-0063"
       ],
       "children": [],
       "cost": {
@@ -33495,7 +33490,7 @@
       ],
       "folder": "features",
       "id": "F-0326",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33503,7 +33498,7 @@
       "state": "New",
       "title": "a pushed Task with an open PR gets no landing request and no row while others wait on it",
       "type": "feature",
-      "updated": "2026-10-09T23:04:53Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "F-0327": {
       "backlinks": [],
@@ -33550,7 +33545,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-09T23:31:01Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33582,7 +33577,7 @@
       ],
       "folder": "features",
       "id": "F-0330",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33590,7 +33585,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-09T23:34:55Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -44417,8 +44412,7 @@
         "T-80371",
         "B-0040",
         "B-0067",
-        "B-0074",
-        "B-82960"
+        "B-0074"
       ],
       "children": [],
       "cost": {
@@ -44465,8 +44459,7 @@
         "T-0772",
         "T-80369",
         "T-80370",
-        "T-84805",
-        "B-82960"
+        "T-84805"
       ],
       "children": [],
       "cost": {
@@ -52755,7 +52748,8 @@
         "F-0227",
         "T-0615",
         "T-0616",
-        "B-0168"
+        "B-0168",
+        "B-82960"
       ],
       "children": [],
       "cost": {
@@ -80098,7 +80092,8 @@
     },
     "T-0833": {
       "backlinks": [
-        "F-0314"
+        "F-0314",
+        "B-82960"
       ],
       "children": [],
       "cost": {
