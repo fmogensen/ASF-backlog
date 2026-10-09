@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T19:47:16Z",
+  "generated": "2026-10-09T19:50:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2913,7 +2913,7 @@
       "state": "New",
       "title": "asf status: Runners/Prod say 'not configured' for a product with hosted CI and no deploy",
       "type": "bug",
-      "updated": "2026-10-09T19:47:09Z"
+      "updated": "2026-10-09T19:50:39Z"
     },
     "B-0094": {
       "backlinks": [
@@ -3752,7 +3752,11 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0121",
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "a session reads the reason and fixes the cause",
+      "kernel_stuck_owner": "session",
+      "kernel_stuck_reason": "done without a push: pushed: no \u2014 hook refused twice: `bash tools/check_generic.sh && bash tools/check_conventions.sh && bash tools/check_clients.sh --against origin/main && python3 -m unittest -q te\u2026",
+      "kernel_stuck_since": "2026-10-09T19:50:19Z",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3761,7 +3765,7 @@
       "state": "New",
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
-      "updated": "2026-10-09T18:25:55Z"
+      "updated": "2026-10-09T19:50:39Z"
     },
     "B-0122": {
       "backlinks": [],
@@ -18409,7 +18413,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-83418",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "last_filed": "2026-10-08",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18419,7 +18423,7 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1241@d84337ab7",
       "type": "bug",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-09T19:50:39Z"
     },
     "B-83470": {
       "backlinks": [
@@ -52656,7 +52660,11 @@
         "rebase: PR #731 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "done: NEEDS OPERATOR: the branch is rebased and ready but not on origin \u2014 `git push --force-with-lease origin worker/T-0196` (this session's permission system denied running it twice; it is read-only\u2026",
+      "kernel_stuck_since": "2026-10-09T19:50:19Z",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -52666,7 +52674,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-09T17:16:26Z",
+      "updated": "2026-10-09T19:50:39Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
