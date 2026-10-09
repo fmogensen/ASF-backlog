@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T15:56:20Z",
+  "generated": "2026-10-09T15:59:21Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18066,7 +18066,12 @@
       "kernel_attempts": [
         "conflict: PR #1251: update-branch #1251: rc 1: gh: merge conflict between base and head (HTTP 422)"
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "docs/reviews/1-b-82658.md \u2014 review session `57b14a947` committed and pushed the round-1 review file onto `fix/B-82658` itself, violating \"the review never touches the branch.\" Fix with a follow-up commit `git rm docs/reviews/1-b-82658.md` (no rebase/force-push).",
+        "rebase: PR #1251 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18076,7 +18081,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1233@4a831f9c8",
       "type": "bug",
-      "updated": "2026-10-09T15:53:17Z"
+      "updated": "2026-10-09T15:59:19Z"
     },
     "B-82809": {
       "backlinks": [
@@ -63393,7 +63398,7 @@
       ],
       "folder": "tasks",
       "id": "T-0441",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0113-8266efca4547.md"
       },
@@ -63403,7 +63408,7 @@
       "state": "Active",
       "title": "`asf status` \u2014 one plan per table, and an `S1 gate` row that only speaks when it holds",
       "type": "task",
-      "updated": "2026-10-09T15:38:16Z",
+      "updated": "2026-10-09T15:59:19Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_views.py"
