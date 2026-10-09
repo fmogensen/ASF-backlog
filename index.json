@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T21:23:29Z",
+  "generated": "2026-10-09T21:26:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3628,11 +3628,10 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0117",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "fix or rerun the red check outside this PR",
-      "kernel_stuck_owner": "ci",
-      "kernel_stuck_reason": "red off the PR after 1 rerun(s): install-clean-linux",
-      "kernel_stuck_since": "2026-10-09T21:15:25Z",
+      "kernel_notes": [
+        "PR #1270: install-clean-linux is red but not a required check \u2014 ignored"
+      ],
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3641,7 +3640,7 @@
       "state": "New",
       "title": "Status Prod row names ci.deploy_workflow but the product schema rejects it",
       "type": "bug",
-      "updated": "2026-10-09T21:15:39Z"
+      "updated": "2026-10-09T21:26:38Z"
     },
     "B-0118": {
       "backlinks": [],
@@ -4469,6 +4468,11 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0144",
+      "kernel_notes": [
+        "PR #1274: linux-container is red but not a required check \u2014 ignored",
+        "PR #1274: install-clean-linux is red but not a required check \u2014 ignored",
+        "PR #1274: install-clean-macos is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
@@ -4478,7 +4482,7 @@
       "state": "New",
       "title": "one-factory is always RED for the asf product: its repo is the factory source",
       "type": "bug",
-      "updated": "2026-10-09T21:23:23Z"
+      "updated": "2026-10-09T21:26:38Z"
     },
     "B-0145": {
       "backlinks": [],
@@ -18408,6 +18412,9 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-83418",
+      "kernel_notes": [
+        "PR #1275: install-clean-linux is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "last_filed": "2026-10-08",
       "parent": "E-0001",
@@ -18418,7 +18425,7 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1241@d84337ab7",
       "type": "bug",
-      "updated": "2026-10-09T21:23:23Z"
+      "updated": "2026-10-09T21:26:38Z"
     },
     "B-83470": {
       "backlinks": [
@@ -18434,13 +18441,10 @@
       "found_in": "dev",
       "id": "B-83470",
       "kernel_notes": [
-        "build-b-83470-1791575838: NEEDS OPERATOR: the installed CLI on this host predates the fix, so `asf next` will keep showing the symptom until it is reinstalled from the trunk \u2014 `asf --version` (prints the installed sha; compare with `origin/m\u2026"
+        "build-b-83470-1791575838: NEEDS OPERATOR: the installed CLI on this host predates the fix, so `asf next` will keep showing the symptom until it is reinstalled from the trunk \u2014 `asf --version` (prints the installed sha; compare with `origin/m\u2026",
+        "PR #1271: install-clean-linux is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "fix or rerun the red check outside this PR",
-      "kernel_stuck_owner": "ci",
-      "kernel_stuck_reason": "red off the PR after 1 rerun(s): install-clean-linux",
-      "kernel_stuck_since": "2026-10-09T21:03:58Z",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S1",
@@ -18449,7 +18453,7 @@
       "state": "New",
       "title": "a FIX \u2192 CORRECT row still waits on an Active priority-later holder (B-82960 follow-up)",
       "type": "bug",
-      "updated": "2026-10-09T21:04:09Z"
+      "updated": "2026-10-09T21:26:38Z"
     },
     "B-83471": {
       "backlinks": [],
@@ -79338,11 +79342,7 @@
       ],
       "folder": "tasks",
       "id": "T-0816",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "fix or rerun the red check outside this PR",
-      "kernel_stuck_owner": "ci",
-      "kernel_stuck_reason": "red off the PR after 1 rerun(s): tests (3.12)",
-      "kernel_stuck_since": "2026-10-09T15:07:53Z",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -79356,7 +79356,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-09T15:08:47Z",
+      "updated": "2026-10-09T21:26:38Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -80739,11 +80739,7 @@
       ],
       "folder": "tasks",
       "id": "T-79565",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "fix or rerun the red check outside this PR",
-      "kernel_stuck_owner": "ci",
-      "kernel_stuck_reason": "red off the PR after 2 rerun(s): tests (3.12)",
-      "kernel_stuck_since": "2026-10-09T21:07:43Z",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -80757,7 +80753,7 @@
       ],
       "title": "the door \u2014 the convention, the matcher, `asf pre-push`, and one call in the shim",
       "type": "task",
-      "updated": "2026-10-09T21:08:01Z",
+      "updated": "2026-10-09T21:26:38Z",
       "writes": [
         "asf/conventions.py",
         "asf/prepush.py",
