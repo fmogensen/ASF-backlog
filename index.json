@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T21:58:05Z",
+  "generated": "2026-10-09T22:02:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2214,10 +2214,14 @@
       "kernel_answers": [
         "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
+      "kernel_findings": [
+        "tests/test_feeder.py:562, tests/test_ingest.py:1040 \u2014 rename `test_in_progress_by_gets_no_row_at_all` \u2192 `test_a_card_in_progress_by_the_operator_emits_no_row` and `test_landing_clears_in_progress_by` \u2192 `test_the_landing_clears_in_progress` to match the card's `## Tests` line byte-for-byte (behavior is already correct and green; pure rename)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1276: install-clean-linux is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -2226,7 +2230,7 @@
       "state": "New",
       "title": "The lane duplicates a fix the operator is already carrying by hand",
       "type": "bug",
-      "updated": "2026-10-09T21:58:03Z"
+      "updated": "2026-10-09T22:01:59Z"
     },
     "B-0071": {
       "area": "asf.testing",
@@ -4479,7 +4483,7 @@
         "PR #1274: install-clean-linux is red but not a required check \u2014 ignored",
         "PR #1274: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -4488,7 +4492,7 @@
       "state": "New",
       "title": "one-factory is always RED for the asf product: its repo is the factory source",
       "type": "bug",
-      "updated": "2026-10-09T21:37:19Z"
+      "updated": "2026-10-09T22:01:59Z"
     },
     "B-0145": {
       "backlinks": [],
@@ -18478,7 +18482,10 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-83471",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "build-b-83471-1791577445: NEEDS OPERATOR: the amendable `asf/briefs/templates/correct.md` still carries the ambiguous sentence that let a session treat a clean `git status` as \"nothing to fix\" on a conflict correction; `asf propose` (the san\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S2",
@@ -18487,7 +18494,7 @@
       "state": "New",
       "title": "an optional-job red or a CONFLICTING PR keeps launching correction sessions that cannot act",
       "type": "bug",
-      "updated": "2026-10-09T20:24:20Z"
+      "updated": "2026-10-09T22:01:59Z"
     },
     "B-83472": {
       "backlinks": [],
@@ -18628,7 +18635,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-83577",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "last_filed": "2026-10-08",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18638,7 +18645,7 @@
       "state": "New",
       "title": "Watchdog: an approval hold no grant can release past 0 min \u2014 B-79745/touch_amendable_set",
       "type": "bug",
-      "updated": "2026-10-09T21:50:16Z"
+      "updated": "2026-10-09T22:01:59Z"
     },
     "B-83628": {
       "backlinks": [],
@@ -18652,7 +18659,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-83628",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18662,7 +18669,7 @@
       "state": "New",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1245@921bc4cbb",
       "type": "bug",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-09T22:01:59Z"
     },
     "B-84029": {
       "backlinks": [],
@@ -18676,7 +18683,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84029",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18686,7 +18693,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83345",
       "type": "bug",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-09T22:01:59Z"
     },
     "B-84830": {
       "backlinks": [],
@@ -18700,7 +18707,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84830",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18710,7 +18717,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-79745",
       "type": "bug",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-09T22:01:59Z"
     },
     "B-84831": {
       "backlinks": [],
@@ -18724,7 +18731,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84831",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18734,7 +18741,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0412",
       "type": "bug",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-09T22:01:59Z"
     },
     "B-84832": {
       "backlinks": [],
