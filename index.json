@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T12:49:27Z",
+  "generated": "2026-10-10T12:55:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2939,8 +2939,7 @@
         "F-0294",
         "F-0321",
         "S-76556",
-        "T-0110",
-        "T-0709"
+        "T-0110"
       ],
       "children": [],
       "cost": {
@@ -33392,7 +33391,7 @@
       ],
       "folder": "features",
       "id": "F-0316",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33400,7 +33399,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T12:38:59Z"
+      "updated": "2026-10-10T12:55:04Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33484,7 +33483,7 @@
       "kernel_notes": [
         "plan-f-0319-1791634316: NEEDS OPERATOR: cannot verify from a cloud session that the three Story ids this plan cites on its `stories:` line are covered by a claim whose claimant names F-0319 \u2014 `idclaim.claims` reads `refs/asf/ids/*` in the\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33492,7 +33491,7 @@
       "state": "New",
       "title": "capacity.ci caps the feeder's ci_free even when runners are readable, halving Features in build while runners sit idle",
       "type": "feature",
-      "updated": "2026-10-10T12:43:51Z"
+      "updated": "2026-10-10T12:55:04Z"
     },
     "F-0320": {
       "backlinks": [],
@@ -33573,7 +33572,7 @@
       "state": "New",
       "title": "status keeps a retired item's relaunch-cap park",
       "type": "feature",
-      "updated": "2026-10-10T12:49:23Z"
+      "updated": "2026-10-10T12:55:04Z"
     },
     "F-0323": {
       "backlinks": [],
@@ -33695,7 +33694,7 @@
         "PR #1305: install-clean-macos is red but not a required check \u2014 ignored",
         "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33703,7 +33702,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T12:31:07Z"
+      "updated": "2026-10-10T12:55:04Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33733,9 +33732,10 @@
         "plan-f-0328-1791624270: NEEDS OPERATOR: whether this plan should land from a branch that also carries the closed hotfix the spec refuses \u2014 `fix/F-0328-pending-not-red` adds `c6cb1a21f` (the `verdict()` change) and `6a81462dc` (an unrelated\u2026",
         "plan-f-0328-1791629407: NEEDS OPERATOR: whether fix/F-0328-pending-not-red may land carrying the closed hotfix (c6cb1a21f, the verdict() change the spec's Out table refuses, plus 6a81462dc, an unrelated defect) alongside this plan \u2014 a plan\u2026",
         "plan-f-0328-1791631578: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` adds five commits over `47466e997`, two of which are the spec's\u2026",
-        "plan-f-0328-1791633802: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` is 5 behind and 8 ahead of the trunk over `47466e997`, and two o\u2026"
+        "plan-f-0328-1791633802: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` is 5 behind and 8 ahead of the trunk over `47466e997`, and two o\u2026",
+        "plan-f-0328-1791635656: NEEDS OPERATOR: `fix/F-0328-pending-not-red` carries commit `418bdb402` (\"the merge queue reads not-yet-run required jobs as pending, never red\"), the closed hotfix the spec's `Out` table refuses on two separate row\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33743,7 +33743,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T12:34:48Z"
+      "updated": "2026-10-10T12:55:04Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -49893,18 +49893,10 @@
       "kernel_answers": [
         "Granted: asf/harvest/lane.py is added to writes (card updated); the kernel's overlap rule now serialises this Task against other lane.py writers. Keep the lane.py change minimal; nothing else outside writes."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: Granted: asf/harvest/lane.py is added to writes (card updated); the kernel's overlap rule now serialises this Task against other lane.py writers. Keep the lane.py change minimal; nothing else outside writes.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "session ran past its max age"
-      ],
-      "kernel_findings": [
-        "C1 \u2014 no single file:line (missing work) \u2014 `asf/harvest/harvest.py` carries none of Task 3/4's screen/archive/re-admission logic; it now lives in `asf/harvest/lane.py` (outside `writes:`), confirmed by `grep -n \"deliverable_of\\|already_on_trunk\\|lane_refusal\\|land_already\" asf/harvest/harvest.py` returning nothing. No code fix is possible inside this card's current footprint \u2014 adjudicate `writes:`/`grant:` to include `asf/harvest/lane.py` (or amend the plan), then implement the remaining Steps there.",
-        "C2 \u2014 tests/test_harvest.py (whole file) \u2014 `BoundaryHoldTests` and the `f0026`/`discard`-tagged `ProductHarvestTests` cases the plan's acceptance names do not exist. Write them once C1's code has somewhere to live.",
-        "escalated: the previous session stopped (partial: left out: C1 and C2 are unchanged from the review's finding and the prior coder report \u2014 re-verified, not re-fixable inside this card's writes:. `grep -n \"deliverable_of\\|already_on_trunk\\|l\u2026) \u2014 pick up from its report and branch, and finish the item"
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0026.md"
       },
@@ -49918,7 +49910,7 @@
       "state": "Active",
       "title": "`asf/boundary.py` \u2014 the matcher, the grant resolver, the law, and `conventions.boundary`",
       "type": "task",
-      "updated": "2026-10-10T12:49:23Z",
+      "updated": "2026-10-10T12:55:04Z",
       "writes": [
         "asf/boundary.py",
         "tests/test_boundary.py",
@@ -63772,9 +63764,13 @@
       ],
       "folder": "tasks",
       "id": "T-0433",
+      "kernel_answers": [
+        "granted asf/doctor.py tests/test_doctor.py; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_attempts": [
         "session ran past its max age",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted asf/doctor.py tests/test_doctor.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
@@ -63786,7 +63782,7 @@
         "PR #1346: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1346: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63803,7 +63799,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T12:12:44Z",
+      "updated": "2026-10-10T12:55:04Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -63814,7 +63810,9 @@
         "tests/test_drift.py",
         "tests/test_release_readiness.py",
         "asf/tick/file_bugs.py",
-        "tests/test_file_bugs.py"
+        "tests/test_file_bugs.py",
+        "asf/doctor.py",
+        "tests/test_doctor.py"
       ]
     },
     "T-0434": {
@@ -75197,13 +75195,16 @@
       "folder": "tasks",
       "id": "T-0709",
       "kernel_findings": [
-        "docs/reviews/2-t-0709.md:1 \u2014 drop the file from the branch (`git rm docs/reviews/2-t-0709.md`); it is round 2's own review report, landed on worker/T-0709 by the factory's wip-cleanup commit 36406b4 (B-0094), and sits outside this card's `writes:`."
+        "asf/ci_vm.py:272-292 \u2014 REMOTE_START resolves $rundir relative: `git -C \"$root/repo.git\" worktree add \u2026 \"$rundir/src\"` (:277) lands the worktree inside repo.git, and run.sh's relative $0 (:281) breaks every later dirname after the cd, so with the default root `.asf-ci` the command runs in the ssh login directory and the pass concludes the required job `passed` for a sha never checked out. Make the root absolute once: after `mkdir -p \"$root/runs\"` insert `root=$(cd \"$root\" && pwd)`, then compute `rundir=\"$root/runs/{run_id}\"` and `mkdir -p \"$rundir\"`; add `root=$(cd \"$root\" 2>/dev/null && pwd || echo \"$root\")` before `rundir=` in REMOTE_CLEANUP (:325-329).",
+        "tests/test_ci_vm.py:307-320 \u2014 the plan's own T-0709 acceptance \"after a conclusion <root> holds only repo.git and an empty runs/\" is asserted nowhere, and FakeSsh.setUp:229 / add_host:266 always use an absolute root, so no case exercises the default that C1 breaks. Add `self.assertEqual(sorted(os.listdir(host.root)), ['repo.git', 'runs'])` plus an empty-`runs/` assertion to the green case, and one case running a pass with a relative root that asserts the command ran in `runs/<run_id>/src`.",
+        "tests/test_ci_vm.py:308-320 \u2014 the acceptance case is not byte-identical to docs/plans/replans/f-0194-87b236e237ad.md:349-357: the RUNNING assertion is split into two lines, wait_for_exit's trailing comment is dropped, two lines are inserted mid-snippet, and :320's comment gap is two spaces not three. Restore the plan's eight lines verbatim and append the added remote_read assertion after them.",
+        "asf/ci_vm.py:539,628 \u2014 a --dry-run pass writes real verdicts into the store (:575-578, :587-588) while the REMOTE_CLEANUP call (:579-580) is refused by the guard, so runs/<run_id> is left on the host and, the row now being concluded, no later pass ever cleans it. Add `if mutation_guard.is_active(): return 0` as the first statement of _collect and _time_out, and `if mutation_guard.is_active(): return` in _supersede."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1142: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0194-87b236e237ad.md"
       },
@@ -75223,7 +75224,7 @@
       "stories": [],
       "title": "a sha runs on an ssh-reachable machine and comes back \u2014 the transport, the three remote scripts, the store, and the pass that dispatches, collects, supersedes and times out",
       "type": "task",
-      "updated": "2026-10-10T11:41:33Z",
+      "updated": "2026-10-10T12:55:04Z",
       "writes": [
         "asf/ci_vm.py",
         "tests/test_ci_vm.py",
@@ -76827,10 +76828,14 @@
       "kernel_attempts": [
         "review: no VERDICT line"
       ],
+      "kernel_findings": [
+        "docs/reviews/1-t-0745.md:1 \u2014 remove it from the branch (`git rm docs/reviews/1-t-0745.md`); it was swept into wip commit `71b3583d0` by mistake, is outside the Task's `writes:` (`asf/conventions.py`, `tests/test_conventions.py`), and carries a stale verdict for a different head."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #848: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0130-47df67914dbf.md"
       },
@@ -76848,7 +76853,7 @@
       "stories": [],
       "title": "the product declares its pre-ASF branch convention, and a misshapen declaration is loud",
       "type": "task",
-      "updated": "2026-10-10T11:41:33Z",
+      "updated": "2026-10-10T12:55:04Z",
       "writes": [
         "asf/conventions.py",
         "tests/test_conventions.py",
@@ -82314,7 +82319,7 @@
         "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82327,7 +82332,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T12:34:48Z",
+      "updated": "2026-10-10T12:55:04Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82746,7 +82751,7 @@
       "id": "T-83346",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82759,7 +82764,7 @@
       ],
       "title": "the feeder stands down \u2014 one `waived` membership, two branches, and the S1 lane's word",
       "type": "task",
-      "updated": "2026-10-10T12:49:23Z",
+      "updated": "2026-10-10T12:55:04Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -82786,6 +82791,7 @@
       "kernel_notes": [
         "groom-fill-t-83347-1791633881: groom-fill raised risk high: Acceptance was the only DoR gap; the plan doc (docs/plans/f-0300.md Task 3) already specifies the screen/waivers behavior byte-for-byte, so the lines just needed naming against concrete tests in the card's own writes."
       ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82799,7 +82805,7 @@
       ],
       "title": "the check in `screen`, the `RULED` kind, and the `waivers` map",
       "type": "task",
-      "updated": "2026-10-10T12:12:44Z",
+      "updated": "2026-10-10T12:55:04Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_rulepass.py"
