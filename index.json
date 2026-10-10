@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T05:42:00Z",
+  "generated": "2026-10-10T05:52:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2767,7 +2767,7 @@
         "asf/views/board.py:41 (render) / asf/cli.py:415-417 \u2014 the default, unflagged `asf backlog` is unchanged by this diff and still prints the full 339-line/67 KB board; implement the card's `Expected` collapsing default (full rows for moving/landed Features per Epic, one-line summaries for undecided and Closed/on-prod groups, `--all` as the opt-out), with `--epic` as an additional narrowing on top of that rather than the whole fix."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -2775,7 +2775,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T05:52:03Z"
     },
     "B-0089": {
       "backlinks": [
@@ -18834,13 +18834,14 @@
       "found_in": "ci",
       "id": "B-84833",
       "kernel_attempts": [
-        "launch: no free seat: local 10/10, cloud 3/8 (the launch needs the host)"
+        "launch: no free seat: local 10/10, cloud 3/8 (the launch needs the host)",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "asf/tick/step_wave.py:1328 \u2014 bind `paused = pause_mod.held(product)` (as `launch` does at :1156) and pass `paused=paused` into `launch_now`'s `screen(...)` call at :1328-1329, returning 0 before `_wave` the way `launch()` does, so the wave clock's live spawn path actually honors the operator's pause instead of still launching a paused product's row (reproduced: `step_wave.launch_now` launches `fix-bug-b-0001` under an active `pause.pause()`)."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18850,7 +18851,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-10T05:33:56Z"
+      "updated": "2026-10-10T05:52:03Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -33465,7 +33466,7 @@
       ],
       "folder": "features",
       "id": "F-0322",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33473,7 +33474,7 @@
       "state": "New",
       "title": "status keeps a retired item's relaunch-cap park",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T05:52:03Z"
     },
     "F-0323": {
       "backlinks": [],
@@ -33488,7 +33489,7 @@
       "kernel_notes": [
         "spec-f-0323-1791586286: NEEDS OPERATOR: (none)"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33496,7 +33497,7 @@
       "state": "New",
       "title": "an item resolved by one landing can't take a follow-up fix: the lane closes the PR and asf reopen is refused",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T05:52:03Z"
     },
     "F-0324": {
       "backlinks": [],
@@ -33610,11 +33611,13 @@
       ],
       "folder": "features",
       "id": "F-0328",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: whether the id claim covering this spec's four Stories is still on the record's origin. D11 keeps S-91805..S-91808, minted from the block S:91805-91854 that this item's first sp\u2026",
-      "kernel_stuck_since": "2026-10-10T05:39:49Z",
+      "kernel_answers": [
+        "Decided: keep S-91805..S-91808 (D11 stands). Checked 2026-10-10 in the record repo: idclaim.claims covers all four through refs/asf/ids/S-91805 (S:91805-91854, claimant spec-f-0328-1791587536), and the ref is on the record's origin. No re-mint; the spec is done \u2014 proceed to review and landing."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Decided: keep S-91805..S-91808 (D11 stands). Checked 2026-10-10 in the record repo: idclaim.claims covers all four through refs/asf/ids/S-91805 (S:91805-91854, claimant spec-f-0328-1791587536), and the ref is on the record's origin. No re-mint; the spec is done \u2014 proceed to review and landing."
+      ],
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33622,7 +33625,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T05:41:55Z"
+      "updated": "2026-10-10T05:52:03Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33686,7 +33689,7 @@
       "kernel_notes": [
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33694,7 +33697,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T05:52:03Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -52936,7 +52939,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T05:41:55Z",
+      "updated": "2026-10-10T05:52:03Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -53051,7 +53054,7 @@
       "state": "New",
       "title": "the rule and its check",
       "type": "task",
-      "updated": "2026-10-10T05:41:55Z",
+      "updated": "2026-10-10T05:52:03Z",
       "writes": [
         "asf/rules/story_proof.py",
         "asf/cli.py",
@@ -70653,7 +70656,7 @@
       ],
       "folder": "tasks",
       "id": "T-0610",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0242-5da80eab4169.md"
       },
@@ -70667,7 +70670,7 @@
       "stories": [],
       "title": "no second reviewer is bought for a head whose reviewers filed nothing, and the review loop has the ceiling the document lane already has",
       "type": "task",
-      "updated": "2026-10-10T05:29:32Z",
+      "updated": "2026-10-10T05:52:03Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/feeder/rows.py",
@@ -80803,7 +80806,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T05:41:55Z",
+      "updated": "2026-10-10T05:52:03Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
