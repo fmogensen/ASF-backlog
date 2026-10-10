@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T19:44:17Z",
+  "generated": "2026-10-10T19:44:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16830,6 +16830,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-136993",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.21.post2+g070daf94",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -16839,7 +16841,7 @@
       "state": "New",
       "title": "Bug: a cloud routine is polled under the ambient CLI login when its account does not resolve",
       "type": "bug",
-      "updated": "2026-10-10T19:40:50Z"
+      "updated": "2026-10-10T19:44:41Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -34980,6 +34982,8 @@
       "decided": false,
       "folder": "features",
       "id": "F-0350",
+      "kernel_fix_rounds": 0,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34987,7 +34991,7 @@
       "state": "New",
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
-      "updated": "2026-10-10T19:43:50Z"
+      "updated": "2026-10-10T19:44:41Z"
     },
     "R-0001": {
       "backlinks": [
@@ -83851,7 +83855,7 @@
         "asf/evidence/review_store.py:249-267 \u2014 replace the `recover` docstring with the spec's text verbatim (`docs/specs/f-0313.md:295-312`); the plan's Task 3 explicitly requires \"the spec's docstring verbatim\" and the shipped docstring is a full rewrite, not that text."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -83864,7 +83868,7 @@
       ],
       "title": "the filing \u2014 `review_store.recover`, with a head of its own",
       "type": "task",
-      "updated": "2026-10-10T19:35:43Z",
+      "updated": "2026-10-10T19:44:41Z",
       "writes": [
         "asf/evidence/review_store.py",
         "tests/test_review_store.py"
@@ -84050,7 +84054,8 @@
       "kernel_dor_fills_ver": "0.2.19",
       "kernel_notes": [
         "groom-fill-t-129173-1791655626: groom-fill raised risk high: card already carries Task 1's acceptance/writes verbatim (F-0343 backfill); the parent-Done DoR gap is stale \u2014 F-0343's own fix (dce5aac92) makes a Feature's state derive from its Task children once any exist, and F-0318 already has Task children (T-129173, T-129174) that are New, so F-0318 reads New under current logic and the next tick's judge pass clears this on its own.",
-        "groom-fill-t-129173-1791657630: groom-fill raised risk high: F-0318's \"Done\" is a same-tick derived-state artifact (a container is Done only when every Task child is, and T-129173 itself is a New child of F-0318); the card's acceptance/writes already satisfy DoR (i)-(iii), and asf/record/spec_stories.py, spec_ref, doc_alias and own_doc are all absent from trunk, confirming the work is unbuilt, not superseded."
+        "groom-fill-t-129173-1791657630: groom-fill raised risk high: F-0318's \"Done\" is a same-tick derived-state artifact (a container is Done only when every Task child is, and T-129173 itself is a New child of F-0318); the card's acceptance/writes already satisfy DoR (i)-(iii), and asf/record/spec_stories.py, spec_ref, doc_alias and own_doc are all absent from trunk, confirming the work is unbuilt, not superseded.",
+        "groom-fill-t-129173-1791660411: groom-fill raised risk high: card content is already DoR-complete (acceptance + writes match plan Task 1, verified against origin/main); the sole gap is parent F-0318 showing Done while none of its 3-Task plan is built anywhere \u2014 a stale parent state no verdict field can repair, not grounds to supersede"
       ],
       "links": {
         "plan": "docs/plans/f-0318.md"
@@ -84067,7 +84072,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-10T19:27:23Z",
+      "updated": "2026-10-10T19:44:41Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -84981,7 +84986,7 @@
       "kernel_notes": [
         "build-t-129205-1791657838-local: NEEDS OPERATOR: repin the product's CLI past the commit that added `asf pre-push` (`aa56423fd`), or make the pre-push hook tolerate a pinned CLI lacking the subcommand \u2014 `asf upgrade --product asf`"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -84994,7 +84999,7 @@
       ],
       "title": "the module \u2014 the declaration, the JWT, the mint, the cache, and `openssl` as the ratchet's newest kind",
       "type": "task",
-      "updated": "2026-10-10T19:35:43Z",
+      "updated": "2026-10-10T19:44:41Z",
       "writes": [
         "asf/ghapp.py",
         "tools/check_clients.py",
