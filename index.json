@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T11:28:35Z",
+  "generated": "2026-10-10T11:29:52Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3049,7 +3049,7 @@
         "docs/plans/b-0097.md:1 \u2014 write the missing plan documenting the Task this branch delivers (the in-tick backoff retry `_push_retrying` in `asf/workers/lifecycle.py` and its tests at `tests/test_lifecycle.py:1896-1955`); every item on this product, including an S3 bug fix, carries a `docs/plans/<id>.md`."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -3058,7 +3058,7 @@
       "state": "New",
       "title": "A network blip on push scores finished work as 'failed: not pushed' and costs a correction round",
       "type": "bug",
-      "updated": "2026-10-10T11:19:04Z"
+      "updated": "2026-10-10T11:29:48Z"
     },
     "B-0098": {
       "backlinks": [],
@@ -3787,7 +3787,7 @@
         "operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3796,7 +3796,7 @@
       "state": "New",
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
-      "updated": "2026-10-10T11:28:27Z"
+      "updated": "2026-10-10T11:29:48Z"
     },
     "B-0122": {
       "backlinks": [],
@@ -58583,27 +58583,16 @@
       "kernel_answers": [
         "granted tests/test_env.py; nothing else outside writes (card updated by the kernel). T-79565 also writes tests/test_env.py (Review): the overlap rule serialises them."
       ],
-      "kernel_attempts": [
-        "relaunch: escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item",
-        "escalated: one more fix round on the strong model, with every finding",
-        "relaunch: operator answer: granted tests/test_env.py; nothing else outside writes (card updated by the kernel). T-79565 also writes tests/test_env.py (Review): the overlap rule serialises them."
-      ],
-      "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item",
-        "escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item"
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1132: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1132: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1132: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1132: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0062.md"
       },
@@ -58618,7 +58607,7 @@
       "state": "Active",
       "title": "the per-role worker settings file, its deny rules, `asf worker-permissions`, and the three doctor rows",
       "type": "task",
-      "updated": "2026-10-10T11:17:07Z",
+      "updated": "2026-10-10T11:29:48Z",
       "writes": [
         "asf/workers/worker_settings.py",
         "asf/cli.py",
@@ -72775,10 +72764,11 @@
         "launch: no cloud account with a free seat"
       ],
       "kernel_findings": [
-        "rebase: PR #1087 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+        "asf/workers/headroom.py:280-282 \u2014 compute `usd[key]` dollar medians for every (kind, family) group unconditionally (outside the `five_h_usd` truthiness guard in `estimate`); only skip populating the legacy `shares[key]` pct when `five_h_usd` is falsy. As written, a config using only `quota_guards.window_usd` (no pool-wide `five_h_usd`, no `default`-kind account \u2014 the Description's own example) never learns per-(kind,family) dollars, so `CostTable.share` falls back to the same static default percentage for every provider kind.",
+        "tests/test_quota_provider.py:122 \u2014 make `SampleRecordTests` a direct `unittest.TestCase` with its own `setUp`/`tearDown` using `tempfile.TemporaryDirectory()` for `env.ASF_HOME`, instead of subclassing `tests.test_quota_headroom.HomeCase` (the plan's Files section calls for a direct `unittest.TestCase` per class, and Step 8 says \"None subclasses another module's harness\")."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0138-26a33fc30108.md"
       },
@@ -72795,7 +72785,7 @@
       "state": "Active",
       "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
       "type": "task",
-      "updated": "2026-10-10T11:11:24Z",
+      "updated": "2026-10-10T11:29:48Z",
       "writes": [
         "asf/workers/headroom.py",
         "asf/workers/pool.py",
@@ -81232,8 +81222,14 @@
       "id": "T-78814",
       "kernel_dor_fills": 2,
       "kernel_notes": [
-        "groom-fill-t-78814-1791630621: groom-fill verdict rejected: no GROOM-FILL block"
+        "groom-fill-t-78814-1791630621: groom-fill verdict rejected: no GROOM-FILL block",
+        "groom-fill-t-78814-1791631343: groom-fill raised risk high: Acceptance/Gate were cut from the card by the 4000-char Task-description limit (plan PD14); docs/plans/f-0289.md Task 2 gives a fully-measured, buildable design (PD5-PD8) against the current trunk, so filling the card from the plan's own Gate/Acceptance is sufficient \u2014 no reshape needed."
       ],
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "dor: no test named in Acceptance or Gate \u2014 2 groom-fill session(s) could not make it ready",
+      "kernel_stuck_since": "2026-10-10T11:29:23Z",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81246,7 +81242,7 @@
       ],
       "title": "git's own refusal of a rewritten push is a kind of its own, and the dead run reads its log for it",
       "type": "task",
-      "updated": "2026-10-10T11:23:30Z",
+      "updated": "2026-10-10T11:29:48Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/workers/refusals.py",
@@ -81611,14 +81607,9 @@
       ],
       "folder": "tasks",
       "id": "T-80572",
-      "kernel_attempts": [
-        "conflict: PR #1233: update-branch #1233: rc 1: gh: merge conflict between base and head (HTTP 422)",
-        "review: no VERDICT line"
-      ],
-      "kernel_findings": [
-        "rebase: PR #1233 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
-      ],
-      "kernel_fix_rounds": 1,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
       "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0306.md"
@@ -81632,7 +81623,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T10:17:59Z",
+      "updated": "2026-10-10T11:29:48Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
