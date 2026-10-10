@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T05:34:01Z",
+  "generated": "2026-10-10T05:42:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4652,7 +4652,11 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0150",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "tests/test_ci_pool.py:423 \u2014 the added test only asserts the absence of the one `'provider-like label in runs-on:'` finding; the fixture leaves two `stranded` findings and one `unsatisfiable` finding standing, so the row does not come out ok as the card's Wanted requires. Give one `heavy` runner the reserve label itself and add a plain-`heavy` runs-on job, then assert the full, unfiltered `ci_pool.drift(...)` result is `[(True, ...)]`."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -4661,7 +4665,7 @@
       "state": "New",
       "title": "doctor ci-pool row flags ASF's own ci_pool.reserve label as undeclared",
       "type": "bug",
-      "updated": "2026-10-10T05:33:56Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "B-0151": {
       "backlinks": [
@@ -18223,11 +18227,6 @@
         "build-b-82960-1791585077: NEEDS OPERATOR: which id this 0.2-kernel work belongs to \u2014 B-82960 is already `state: Resolved` with its own fix landed (`14b963ba`, PR #1244), so this branch either reopens that card or needs an Epic/Feature minted\u2026",
         "build-b-82960-1791588882: NEEDS OPERATOR: B-82960 is `state: Resolved` with its own fix already landed (`14b963ba`, PR #1244), so this 0.2 kernel work either reopens that card or belongs to an id that does not exist yet \u2014 nothing here mints\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 2 fix rounds",
-      "kernel_stuck_since": "2026-10-10T00:08:11Z",
       "landing": {
         "as_of": "2026-10-08T19:22:06Z",
         "by": "pr-merge",
@@ -18242,7 +18241,7 @@
       "state": "Resolved",
       "title": "parked (priority later) Active Tasks still hold their footprint; I3 keeps ranked Tasks after: them forever",
       "type": "bug",
-      "updated": "2026-10-10T00:08:11Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "B-83261": {
       "backlinks": [],
@@ -18558,11 +18557,7 @@
       "kernel_notes": [
         "PR #1279: install-clean-linux is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "rebase PR #1279 onto its base by hand and push, or close it and reopen the item",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "conflict the rebase session could not resolve: PR #1279 still conflicts on head f8b077e2026fde7737d985d8d83c015aa7c9b524",
-      "kernel_stuck_since": "2026-10-10T01:02:34Z",
+      "kernel_state": "done",
       "last_filed": "2026-10-08",
       "parent": "E-0001",
       "removed": "retired: Watchdog noise from the old floor (a launchable row while a seat is free). The ASF 0.2 kernel has no such row model and an idle alarm instead. Retired by the console on the operator's delegation; the closed PR's work is at archive/fix/B-83573.",
@@ -18573,7 +18568,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-82407",
       "type": "bug",
-      "updated": "2026-10-10T01:03:23Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "B-83574": {
       "backlinks": [],
@@ -18757,11 +18752,7 @@
         "rebase: PR #1288 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "rebase PR #1288 onto its base by hand and push, or close it and reopen the item",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "conflict the rebase session could not resolve: PR #1288 still conflicts on head 4f71b831bfe4488e4c7e743c9968131c0e98b249",
-      "kernel_stuck_since": "2026-10-09T23:48:47Z",
+      "kernel_state": "done",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "removed": "retired: Watchdog noise from the old floor (a launchable row while a seat is free). The ASF 0.2 kernel has no such row model and an idle alarm instead. Retired by the console on the operator's delegation; the closed PR's work is at archive/fix/B-84830.",
@@ -18772,7 +18763,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 B-79745",
       "type": "bug",
-      "updated": "2026-10-09T23:49:08Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "B-84831": {
       "backlinks": [],
@@ -18817,11 +18808,7 @@
         "rebase: PR #1289 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "partial: NEEDS OPERATOR: grant permission for, or run directly, the force-with-lease push this rebase requires (denied twice at the tool-permission layer in this session, not refused by git or the pr\u2026",
-      "kernel_stuck_since": "2026-10-09T23:48:47Z",
+      "kernel_state": "done",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "removed": "retired: Watchdog noise from the old floor (a launchable row while a seat is free). The ASF 0.2 kernel has no such row model and an idle alarm instead. Retired by the console on the operator's delegation; the closed PR's work is at archive/fix/B-84832.",
@@ -18832,7 +18819,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83350",
       "type": "bug",
-      "updated": "2026-10-09T23:49:08Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "B-84833": {
       "backlinks": [],
@@ -18884,11 +18871,7 @@
         "rebase: PR #1294 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "rebase PR #1294 onto its base by hand and push, or close it and reopen the item",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "conflict the rebase session could not resolve: PR #1294 still conflicts on head c871e870a9140f3628581c1a6b875f8a400f5b0f",
-      "kernel_stuck_since": "2026-10-09T23:52:45Z",
+      "kernel_state": "done",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "removed": "retired: Watchdog noise from the old floor (a launchable row while a seat is free). The ASF 0.2 kernel has no such row model and an idle alarm instead. Retired by the console on the operator's delegation; the closed PR's work is at archive/fix/B-84834.",
@@ -18899,7 +18882,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83352",
       "type": "bug",
-      "updated": "2026-10-09T23:53:21Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "B-84835": {
       "backlinks": [],
@@ -18920,11 +18903,7 @@
         "rebase: PR #1293 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the reason and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "partial: tests: `python3 -m unittest -q tests.test_dwell tests.test_ready_count` \u2014 Ran 39 tests in 0.890s, OK",
-      "kernel_stuck_since": "2026-10-09T23:56:55Z",
+      "kernel_state": "done",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "removed": "retired: Watchdog noise from the old floor (a launchable row while a seat is free). The ASF 0.2 kernel has no such row model and an idle alarm instead. Retired by the console on the operator's delegation; the closed PR's work is at archive/fix/B-84835.",
@@ -18935,7 +18914,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 F-0313",
       "type": "bug",
-      "updated": "2026-10-09T23:57:28Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "B-84836": {
       "backlinks": [],
@@ -33182,8 +33161,7 @@
         "T-81130",
         "T-81131",
         "T-81132",
-        "T-81133",
-        "T-81134"
+        "T-81133"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -33360,7 +33338,7 @@
       "kernel_attempts": [
         "launch: no cloud account with a free seat"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33368,7 +33346,7 @@
       "state": "New",
       "title": "landed_doc treats a replan branch's landing-gate correction as landed because the original plan is on main; the Feature deadlocks with no row",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "F-0318": {
       "backlinks": [
@@ -33394,7 +33372,7 @@
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
         "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33402,7 +33380,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33414,7 +33392,7 @@
       ],
       "folder": "features",
       "id": "F-0319",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33422,7 +33400,7 @@
       "state": "New",
       "title": "capacity.ci caps the feeder's ci_free even when runners are readable, halving Features in build while runners sit idle",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "F-0320": {
       "backlinks": [],
@@ -33632,7 +33610,11 @@
       ],
       "folder": "features",
       "id": "F-0328",
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "done: NEEDS OPERATOR: whether the id claim covering this spec's four Stories is still on the record's origin. D11 keeps S-91805..S-91808, minted from the block S:91805-91854 that this item's first sp\u2026",
+      "kernel_stuck_since": "2026-10-10T05:39:49Z",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33640,7 +33622,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33729,7 +33711,7 @@
         "spec-f-0332-1791598835: NEEDS OPERATOR: which number the ceiling carries \u2014 6 (ships: 0.143 share, 23 % fall, ~2 parks a day, 0.007 of margin on the 0.15 threshold while the cause has drifted 0.158 \u2192 0.186) or 4 (0.123, a 34 % fall, ~4.5 pa\u2026",
         "spec-f-0332-1791602807: NEEDS OPERATOR: which number the ceiling should carry \u2014 the spec ships 6 (0.143 share, 23 % fall, only 0.007 of margin on the 0.15 threshold while the cause drifts up from 0.158 to 0.186); 4 measures at 0.123 and a\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33737,7 +33719,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T05:41:55Z"
     },
     "R-0001": {
       "backlinks": [
@@ -43431,8 +43413,7 @@
     },
     "S-80459": {
       "backlinks": [
-        "F-0312",
-        "T-81134"
+        "F-0312"
       ],
       "children": [],
       "cost": {
@@ -52942,7 +52923,7 @@
       ],
       "folder": "tasks",
       "id": "T-0197",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -52955,7 +52936,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T05:29:32Z",
+      "updated": "2026-10-10T05:41:55Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -53057,7 +53038,7 @@
       ],
       "folder": "tasks",
       "id": "T-0200",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53070,7 +53051,7 @@
       "state": "New",
       "title": "the rule and its check",
       "type": "task",
-      "updated": "2026-10-10T05:29:32Z",
+      "updated": "2026-10-10T05:41:55Z",
       "writes": [
         "asf/rules/story_proof.py",
         "asf/cli.py",
@@ -63665,7 +63646,7 @@
       ],
       "folder": "tasks",
       "id": "T-0436",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63675,7 +63656,7 @@
       "state": "New",
       "title": "the standing views \u2014 the doctor's `upgrade` row and the guide's release-channel section",
       "type": "task",
-      "updated": "2026-10-09T17:34:22Z",
+      "updated": "2026-10-10T05:41:55Z",
       "writes": [
         "asf/doctor.py",
         "docs/guide/upgrading.md",
@@ -80809,7 +80790,7 @@
         "tests/test_ci_stall.py:354-374 \u2014 `test_a_claim_in_each_bad_state_draws_one_row_each` never asserts the claim's age appears in any row, though the acceptance bullet requires the row to name \"the tries and the age\" \u2014 add `self.assertIn('19 min', details)`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80822,7 +80803,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T05:29:32Z",
+      "updated": "2026-10-10T05:41:55Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
@@ -81716,8 +81697,7 @@
         "T-81129"
       ],
       "backlinks": [
-        "T-81130",
-        "T-81134"
+        "T-81130"
       ],
       "children": [],
       "decided": true,
