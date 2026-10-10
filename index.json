@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T00:18:11Z",
+  "generated": "2026-10-10T00:22:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4485,7 +4485,7 @@
         "PR #1274: install-clean-linux is red but not a required check \u2014 ignored",
         "PR #1274: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -4494,7 +4494,7 @@
       "state": "New",
       "title": "one-factory is always RED for the asf product: its repo is the factory source",
       "type": "bug",
-      "updated": "2026-10-09T22:01:59Z"
+      "updated": "2026-10-10T00:22:12Z"
     },
     "B-0145": {
       "backlinks": [],
@@ -16310,7 +16310,7 @@
       "kernel_notes": [
         "PR #1277: install-clean-linux is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "landing",
       "last_filed": "2026-10-08",
       "parent": "E-0001",
       "schema_version": 1,
@@ -16320,7 +16320,7 @@
       "state": "New",
       "title": "F-0097 has ended \"empty branch\" 2 times in 24h",
       "type": "bug",
-      "updated": "2026-10-10T00:12:19Z"
+      "updated": "2026-10-10T00:22:12Z"
     },
     "B-0585": {
       "backlinks": [],
@@ -33360,7 +33360,7 @@
       "kernel_notes": [
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33368,7 +33368,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T00:18:08Z"
+      "updated": "2026-10-10T00:22:12Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33435,7 +33435,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T00:16:22Z"
+      "updated": "2026-10-10T00:22:12Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33525,7 +33525,7 @@
       "state": "New",
       "title": "a declared 'wave' clock with steps [wave] runs as a tick under the tick lock and suppresses the native wave job",
       "type": "feature",
-      "updated": "2026-10-10T00:16:22Z"
+      "updated": "2026-10-10T00:22:12Z"
     },
     "F-0326": {
       "backlinks": [],
@@ -33587,7 +33587,7 @@
       ],
       "folder": "features",
       "id": "F-0328",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33595,7 +33595,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T00:05:53Z"
+      "updated": "2026-10-10T00:22:12Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33610,7 +33610,7 @@
       "kernel_notes": [
         "spec-f-0329-1791587544: NEEDS OPERATOR: whether the second, co-occurring half of the same damage gets its own card \u2014 `CHECKBOX` matches one physical line, so a *wrapped* acceptance bullet (`docs/specs/f-0280.md:369-371`, the very declarati\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33618,7 +33618,7 @@
       "state": "New",
       "title": "minting a declared Story (idcheck.declared_stories / plan_tasks) strips backtick code spans from its acceptance lines",
       "type": "feature",
-      "updated": "2026-10-10T00:05:53Z"
+      "updated": "2026-10-10T00:22:12Z"
     },
     "F-0330": {
       "backlinks": [],
@@ -63437,10 +63437,11 @@
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
-        "asf/upgrade.py:631 \u2014 `installed_release()` now prepends `v` to the tag so `version_tuple`/`newer` can parse it; add a test (e.g. in `tests/test_release_channel.py`, stubbing `cli._release`/`drift.installed_commit`) asserting `upgrade.installed_release()` returns a `RELEASE_RE`-matching tag \u2014 currently this function has zero test coverage anywhere in the suite."
+        "asf/upgrade.py:631 \u2014 `installed_release()` now prepends `v` to the tag so `version_tuple`/`newer` can parse it; add a test (e.g. in `tests/test_release_channel.py`, stubbing `cli._release`/`drift.installed_commit`) asserting `upgrade.installed_release()` returns a `RELEASE_RE`-matching tag \u2014 currently this function has zero test coverage anywhere in the suite.",
+        "operator answer: One more fix round is granted (it blocks 30). Address the single review finding: add a test for installed_release() prepending 'v' (tests/test_release_channel.py, stub cli._release and drift.installed_commit), push, and report done."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63453,7 +63454,7 @@
       "state": "Active",
       "title": "the release primitives \u2014 the hourly shared cache, the version tuple, and an install that can be handed a tag",
       "type": "task",
-      "updated": "2026-10-10T00:18:08Z",
+      "updated": "2026-10-10T00:22:12Z",
       "writes": [
         "asf/upgrade.py",
         "asf/cli.py",
