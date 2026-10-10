@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T20:30:26Z",
+  "generated": "2026-10-10T20:36:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16862,6 +16862,9 @@
       "id": "B-138544",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
+      "kernel_notes": [
+        "groom-fill-b-138544-1791663891: groom-fill raised risk high: every claim in the card's evidence verified live against origin/main (ports.py._account/capacity/lane, remote.py._auth_note, cloud.py FAILURE_CLASSES/Breaker, pool.py.band/limit/blocked, headroom.LIMIT_RE/record_limit all match as described, just at slightly drifted line numbers); the card's own acceptance named tests/kernel/test_ports.py and tests/test_remote.py generically, but the real owning classes are tests/kernel/test_speedups.py::Launch (RealSessions._account/capacity/lane already live there) and tests/test_remote_auth_error.py::RemoteAuthError (the account_auth-parallel create-failure tests), so the fill resolves acceptance to those; writes is the four modules the fix touches, kernel + cloud/breaker code so risk_raise: high."
+      ],
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -16871,20 +16874,28 @@
       "state": "New",
       "title": "Bug: one cloud account's session limit trips the whole cloud lane",
       "type": "bug",
-      "updated": "2026-10-10T20:25:21Z"
+      "updated": "2026-10-10T20:36:01Z",
+      "writes": [
+        "asf/kernel/ports.py",
+        "asf/workers/pool.py",
+        "asf/workers/remote.py",
+        "asf/workers/cloud.py"
+      ]
     },
     "B-138845": {
       "backlinks": [],
       "children": [],
       "folder": "bugs",
       "id": "B-138845",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
       "rank": -1,
       "schema_version": 1,
       "stage_since": "2026-10-10T20:23:30Z",
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-10T20:23:30Z"
+      "updated": "2026-10-10T20:36:01Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -34660,10 +34671,11 @@
       ],
       "kernel_fix_rounds": 3,
       "kernel_notes": [
-        "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026"
+        "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026",
+        "spec-f-0340-1791663815: NEEDS OPERATOR: ASF's own live backlog_dir is outside this session's read roots, so \u00a71.1's rows"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34672,7 +34684,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T20:25:21Z"
+      "updated": "2026-10-10T20:36:01Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -35003,7 +35015,7 @@
         "docs/specs/f-0347.md:325 \u2014 \"`log_alive_at(path, now, limit_min)` answers \\\"is it alive?\\\" and throws the time away (`:536-539`)\" is false: `asf/workers/heartbeat.py:514-540` already returns the epoch (`min(ts, now)`) or `None`, not a bool \u2014 it already dates the event, which is exactly what this same spec's own P9 (line 88) says. Fix the premise (or drop the false framing) before motivating the `log_event_at`/`log_alive_at` split on it."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35011,7 +35023,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-10T20:15:16Z"
+      "updated": "2026-10-10T20:36:01Z"
     },
     "F-0348": {
       "backlinks": [
@@ -35037,7 +35049,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T20:30:25Z"
+      "updated": "2026-10-10T20:36:01Z"
     },
     "F-0349": {
       "backlinks": [],
@@ -35068,7 +35080,7 @@
       "kernel_notes": [
         "spec-f-0350-1791661450: NEEDS OPERATOR: the six Stories are declared in the spec but the record holds no card for any of them, and `feeder.stories_before_plan` counts Story cards and not declarations \u2014 so no plan session for F-0350 can sta\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35076,7 +35088,7 @@
       "state": "New",
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
-      "updated": "2026-10-10T20:25:21Z"
+      "updated": "2026-10-10T20:36:01Z"
     },
     "R-0001": {
       "backlinks": [
@@ -47227,9 +47239,11 @@
         "T-129190"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91605",
       "parent": "F-0326",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:44Z",
       "state": "New",
@@ -88079,15 +88093,22 @@
       "folder": "tasks",
       "id": "T-83144",
       "kernel_dor_fills": 1,
+      "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1435: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1435: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1435: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1435: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1435: part (3.13, 1) is red but not a required check \u2014 ignored",
-        "PR #1435: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1435: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1435: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1435: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -88100,7 +88121,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-10T20:15:16Z",
+      "updated": "2026-10-10T20:36:01Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
