@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T08:34:14Z",
+  "generated": "2026-10-10T08:42:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2769,7 +2769,10 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "build-b-0088-1791618708: NEEDS OPERATOR: the kernel prints a correction naming no cause when a review returns `changes` with an unparsed C list \u2014 `asf/kernel/briefs.py:129` falls back to `', '.join(reds) or 'unknown'`, and that kernel lives\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -2777,7 +2780,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-10T07:53:47Z"
+      "updated": "2026-10-10T08:42:03Z"
     },
     "B-0089": {
       "backlinks": [
@@ -18194,10 +18197,11 @@
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
-        "commit 5300de3e072ae8092681fcaa10a46d728a197c6c on fix/B-82809 adds docs/reviews/1-b-82809.md \u2014 a prior review session's own report, committed in violation of the never-touch-the-branch rule \u2014 drop it so the PR head returns to bfec9d831dfd2415b2ea48cb7ce0227a5b5b931c (the writer's actual fix)"
+        "rebase: PR #1319 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: Rebuild fresh from main. The old conflicting PR is closed and its branch is archived at archive/<branch>; read it there for reference only. Build the item anew on a new branch from main."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "landing",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18207,7 +18211,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1177@505cfad1e",
       "type": "bug",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T08:42:03Z"
     },
     "B-82960": {
       "backlinks": [
@@ -33281,7 +33285,7 @@
       "state": "Active",
       "title": "Open PRs for items already Closed on the trunk are never closed or reaped",
       "type": "feature",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T08:42:03Z"
     },
     "F-0315": {
       "backlinks": [
@@ -33449,7 +33453,7 @@
       "kernel_notes": [
         "spec-f-0320-1791586060: NEEDS OPERATOR: the design and the preconditions rest on the reporting product's own trace, which I read from its state dir but cannot attach \u2014 confirm the four resets are the ones reported for B-1496 and T-0422 wit\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33457,7 +33461,7 @@
       "state": "New",
       "title": "an ASF rebase drops the approved review verdict even when the range-diff is identical; the item re-reviews to the cap",
       "type": "feature",
-      "updated": "2026-10-10T08:34:03Z"
+      "updated": "2026-10-10T08:42:03Z"
     },
     "F-0321": {
       "backlinks": [],
@@ -33706,7 +33710,7 @@
       ],
       "folder": "features",
       "id": "F-0330",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33714,7 +33718,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T08:34:03Z"
+      "updated": "2026-10-10T08:42:03Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -33730,9 +33734,10 @@
         "review: no VERDICT line"
       ],
       "kernel_notes": [
-        "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026"
+        "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
+        "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33740,7 +33745,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T07:44:01Z"
+      "updated": "2026-10-10T08:42:03Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -53032,7 +53037,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T08:34:03Z",
+      "updated": "2026-10-10T08:42:03Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -81092,7 +81097,7 @@
       ],
       "folder": "tasks",
       "id": "T-79566",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81109,7 +81114,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-10T07:53:47Z",
+      "updated": "2026-10-10T08:42:03Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
@@ -81195,7 +81200,7 @@
       ],
       "title": "the number \u2014 first-push-green per landed branch, and the door's catches counted",
       "type": "task",
-      "updated": "2026-10-10T08:34:03Z",
+      "updated": "2026-10-10T08:42:03Z",
       "writes": [
         "asf/scorecard/facts.py",
         "asf/scorecard/score.py",
@@ -82271,6 +82276,9 @@
       ],
       "folder": "tasks",
       "id": "T-83345",
+      "kernel_attempts": [
+        "launch: no cloud account with a free seat"
+      ],
       "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0300.md"
@@ -82284,7 +82292,7 @@
       ],
       "title": "the table \u2014 `rulepass.py`, the flag, and what the landed readers read back",
       "type": "task",
-      "updated": "2026-10-10T08:34:03Z",
+      "updated": "2026-10-10T08:42:03Z",
       "writes": [
         "asf/evidence/rulepass.py",
         "asf/conventions.py",
