@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T20:57:14Z",
+  "generated": "2026-10-10T21:03:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16865,7 +16865,11 @@
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
       "kernel_notes": [
         "groom-fill-b-138544-1791663891: groom-fill raised risk high: every claim in the card's evidence verified live against origin/main (ports.py._account/capacity/lane, remote.py._auth_note, cloud.py FAILURE_CLASSES/Breaker, pool.py.band/limit/blocked, headroom.LIMIT_RE/record_limit all match as described, just at slightly drifted line numbers); the card's own acceptance named tests/kernel/test_ports.py and tests/test_remote.py generically, but the real owning classes are tests/kernel/test_speedups.py::Launch (RealSessions._account/capacity/lane already live there) and tests/test_remote_auth_error.py::RemoteAuthError (the account_auth-parallel create-failure tests), so the fill resolves acceptance to those; writes is the four modules the fix touches, kernel + cloud/breaker code so risk_raise: high.",
-        "satisfied on main at 50356a9f6: tests.kernel.test_speedups.Launch"
+        "satisfied on main at 50356a9f6: tests.kernel.test_speedups.Launch",
+        "PR #1449: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1449: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1449: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1449: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "E-0001",
@@ -16877,7 +16881,7 @@
       "state": "New",
       "title": "Bug: one cloud account's session limit trips the whole cloud lane",
       "type": "bug",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:03:16Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/workers/pool.py",
@@ -16888,17 +16892,22 @@
     "B-138845": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "bugs",
       "id": "B-138845",
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
+      "kernel_state": "ready",
+      "parent": "F-0114",
+      "priority": "need",
       "rank": -1,
       "schema_version": 1,
+      "severity": "S1",
       "stage_since": "2026-10-10T20:23:30Z",
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-10T20:48:54Z",
+      "updated": "2026-10-10T21:03:16Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -26072,7 +26081,8 @@
         "T-0455",
         "T-0456",
         "T-0457",
-        "T-0458"
+        "T-0458",
+        "B-138845"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -34754,7 +34764,8 @@
       "id": "F-0342",
       "kernel_fix_rounds": 0,
       "kernel_notes": [
-        "plan-f-0342-1791652500: NEEDS OPERATOR: `plan/F-0342` is committed at `bd59782a8` and cannot leave this host \u2014 `state/asf/install.json` pins `asf` to `14b963ba1` (2026-10-08, `policy: pinned`), whose `asf/cli.py` has no `pre-push` subcomma\u2026"
+        "plan-f-0342-1791652500: NEEDS OPERATOR: `plan/F-0342` is committed at `bd59782a8` and cannot leave this host \u2014 `state/asf/install.json` pins `asf` to `14b963ba1` (2026-10-08, `policy: pinned`), whose `asf/cli.py` has no `pre-push` subcomma\u2026",
+        "PR #1451: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "E-0001",
@@ -34764,7 +34775,7 @@
       "state": "New",
       "title": "asf upgrade --product on a kernel product reinstalls the paused 0.1 floor clocks; the pin cannot move",
       "type": "feature",
-      "updated": "2026-10-10T17:50:42Z"
+      "updated": "2026-10-10T21:03:16Z"
     },
     "F-0343": {
       "backlinks": [
@@ -34963,7 +34974,7 @@
       "kernel_notes": [
         "spec-f-0344-1791658092-local: NEEDS OPERATOR: the product's CLI pin is ~162 commits behind and lacks the `pre-push` subcommand its own hook shim invokes, so no session on this product can push \u2014 unblock by building a current pin with `asf upgrad\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34971,7 +34982,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-10T20:57:07Z"
+      "updated": "2026-10-10T21:03:16Z"
     },
     "F-0345": {
       "backlinks": [
@@ -35075,7 +35086,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T20:36:01Z"
+      "updated": "2026-10-10T21:03:16Z"
     },
     "F-0349": {
       "backlinks": [],
@@ -35095,7 +35106,7 @@
       "state": "New",
       "title": "Adopt GitHub's work-item model: type, parent, milestone, priority",
       "type": "feature",
-      "updated": "2026-10-10T20:57:07Z"
+      "updated": "2026-10-10T21:03:16Z"
     },
     "F-0350": {
       "backlinks": [],
@@ -47399,9 +47410,11 @@
         "T-129190"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91606",
       "parent": "F-0326",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:44Z",
       "state": "New",
@@ -67780,6 +67793,7 @@
         "T-0734",
         "T-0815",
         "T-0816",
+        "T-136825",
         "T-78155",
         "T-78358",
         "T-79565",
@@ -67806,7 +67820,9 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_notes": [
-        "groom-fill-t-0452-1791638006: groom-fill raised risk high: writes carries Task 3's doctor.py/capacity.py footprint merged in from T-0454, but Task 3 needs T-0453's (Task 2) env.py functions and T-0453 is after: T-0452 \u2014 a circular prerequisite; drop that footprint and keep only Task 1+4's (self-contained) scope, with the plan's own named tests."
+        "groom-fill-t-0452-1791638006: groom-fill raised risk high: writes carries Task 3's doctor.py/capacity.py footprint merged in from T-0454, but Task 3 needs T-0453's (Task 2) env.py functions and T-0453 is after: T-0452 \u2014 a circular prerequisite; drop that footprint and keep only Task 1+4's (self-contained) scope, with the plan's own named tests.",
+        "PR #1444: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1444: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -67823,7 +67839,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-10T20:48:54Z",
+      "updated": "2026-10-10T21:03:16Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -84052,7 +84068,9 @@
       "after": [
         "T-129162"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-136825"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -84119,7 +84137,8 @@
     "T-129165": {
       "backlinks": [
         "T-129167",
-        "T-129168"
+        "T-129168",
+        "T-136825"
       ],
       "children": [],
       "decided": true,
@@ -85359,7 +85378,9 @@
       "after": [
         "T-129205"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-136825"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -85367,7 +85388,10 @@
       "kernel_notes": [
         "PR #1448: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1448: checks (3.13) is red but not a required check \u2014 ignored",
-        "PR #1448: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1448: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "PR #1448: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1448: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1448: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -85383,7 +85407,7 @@
       ],
       "title": "the one map, and the host's two refresh doors",
       "type": "task",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:03:16Z",
       "writes": [
         "asf/env.py",
         "asf/kernel/loop.py",
@@ -85402,7 +85426,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129207",
-      "kernel_state": "building",
+      "kernel_attempts": [
+        "ended without a REPORT"
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85415,7 +85442,7 @@
       ],
       "title": "the one client's default identity, and the single caller that opts out",
       "type": "task",
-      "updated": "2026-10-10T20:43:08Z",
+      "updated": "2026-10-10T21:03:16Z",
       "writes": [
         "asf/github.py",
         "asf/upgrade.py",
@@ -85827,6 +85854,14 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131719",
+      "kernel_notes": [
+        "PR #1450: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1450: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1450: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1450: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1450: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1450: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0314.md"
@@ -85841,7 +85876,7 @@
       ],
       "title": "the trunk's own evidence, the `closed` fact it decides, and the PR closed against it",
       "type": "task",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:03:16Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_closed_item_prs.py"
@@ -85953,10 +85988,11 @@
         "PR #1434: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1434: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1434: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1434: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1434: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "build-t-131823-1791664197: NEEDS OPERATOR: the red checks on PR #1434 are a confirmed pre-existing trunk flake (same failure reproduced on origin/main HEAD itself) \u2014 rerun them: `gh run rerun 38082466422 --failed`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -85969,7 +86005,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T20:30:25Z",
+      "updated": "2026-10-10T21:03:16Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"
@@ -86011,6 +86047,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-136825",
+      "kernel_answers": [
+        "granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them."
+      ],
       "kernel_findings": [
         "red: tests (3.12)",
         "red: tests (3.13)"
@@ -86027,7 +86069,7 @@
         "PR #1438: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -86045,7 +86087,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-10T20:48:54Z",
+      "updated": "2026-10-10T21:03:16Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -86059,7 +86101,13 @@
         "docs/products.example.yaml",
         "tests/kernel/test_flake.py",
         "tests/kernel/fakes.py",
-        "tests/test_flake_triage.py"
+        "tests/test_flake_triage.py",
+        "asf/schema.py",
+        "asf/tick/tick.py",
+        "asf/env.py",
+        "tests/test_minimal_product.py",
+        "tests/test_tick.py",
+        "tests/test_tick_steps.py"
       ]
     },
     "T-76350": {
@@ -87254,7 +87302,11 @@
         "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "session ran past its max age",
+      "kernel_stuck_since": "2026-10-10T21:01:47Z",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -87267,7 +87319,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:03:16Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
