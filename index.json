@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T09:49:32Z",
+  "generated": "2026-10-10T09:52:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -27868,7 +27868,7 @@
       ],
       "folder": "features",
       "id": "F-0166",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0002",
       "priority": "later",
       "schema_version": 1,
@@ -27877,7 +27877,7 @@
       "state": "New",
       "title": "asf index drops hand-added card text when regenerating Backlinks",
       "type": "feature",
-      "updated": "2026-10-10T09:36:58Z"
+      "updated": "2026-10-10T09:52:20Z"
     },
     "F-0167": {
       "backlinks": [
@@ -33700,7 +33700,10 @@
         "relaunch: operator answer: Decided: keep S-91805..S-91808 (D11 stands). Checked 2026-10-10 in the record repo: idclaim.claims covers all four through refs/asf/ids/S-91805 (S:91805-91854, claimant spec-f-0328-1791587536), and the ref is on the record's origin. No re-mint; the spec is done \u2014 proceed to review and landing.",
         "review: no VERDICT line"
       ],
-      "kernel_state": "building",
+      "kernel_notes": [
+        "plan-f-0328-1791624270: NEEDS OPERATOR: whether this plan should land from a branch that also carries the closed hotfix the spec refuses \u2014 `fix/F-0328-pending-not-red` adds `c6cb1a21f` (the `verdict()` change) and `6a81462dc` (an unrelated\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33708,7 +33711,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T09:25:48Z"
+      "updated": "2026-10-10T09:52:20Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -53030,21 +53033,17 @@
         "ended without a REPORT"
       ],
       "kernel_findings": [
-        "asf/harvest/lane.py:753-772,807-809 \u2014 thread validate()'s `problems` into `proves_refusal_text` and name each one before the numbered acceptance list (Task 3 Step 4)",
-        "asf/harvest/harvest.py:956 \u2014 threading `product.backlog_dir` into every `Lane` activates the proves refusal against the e2e `sample` product's fixtures, which carry no `Proves:` trailer; `python3 tools/run_tests.py` is red (`tests.test_dry_run`, `tests.test_e2e_lane.RedTrunkPR` confirmed) \u2014 give the e2e scripts a trailer or gate the refusal before this lands",
-        "asf/harvest/lane.py, tests/test_lane.py \u2014 outside the card's currently-authorized `writes:` (widened, then reverted for overlapping T-0271, which still claims both files) \u2014 needs sequencing/replan, not just a code change",
-        "docs/plans/f-0040.md:293,297 / record card Acceptance fences \u2014 name `tests.test_harvest.ProvesRefusalTests`, which doesn't exist; the class is `tests/test_lane.py:2580`",
-        "tests/test_lane.py:2580 \u2014 ProvesRefusalTests is missing the \"not this Task's\" and \"no such line\" problem cases, and has no end-to-end assertion that a `proves` refusal blocks `land_ff`/`harvest: pr`",
-        "rebase: PR #731 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1332: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1332: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1332: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1332: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53054,7 +53053,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-10T09:41:00Z",
+      "updated": "2026-10-10T09:52:20Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
@@ -82164,7 +82163,7 @@
       ],
       "folder": "tasks",
       "id": "T-82987",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82177,7 +82176,7 @@
       ],
       "title": "the channel log \u2014 what was offered when, and the registry line that lets it be written",
       "type": "task",
-      "updated": "2026-10-10T09:36:58Z",
+      "updated": "2026-10-10T09:52:20Z",
       "writes": [
         "asf/channels.py",
         "asf/state/registry.py",
