@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T03:39:10Z",
+  "generated": "2026-10-10T03:43:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33531,7 +33531,7 @@
       "kernel_notes": [
         "spec-f-0325-1791586983: NEEDS OPERATOR: F-0325 has zero Story *cards* in the record, and `feeder.has_stories` counts cards via `ix.children`, not the spec's declarations \u2014 so once this spec is approved the feeder will emit `NO STORIES \u2192 SP\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33539,7 +33539,7 @@
       "state": "New",
       "title": "a declared 'wave' clock with steps [wave] runs as a tick under the tick lock and suppresses the native wave job",
       "type": "feature",
-      "updated": "2026-10-10T03:22:53Z"
+      "updated": "2026-10-10T03:43:23Z"
     },
     "F-0326": {
       "backlinks": [],
@@ -33576,7 +33576,7 @@
         "\"spec-f-0327-1791595557: NEEDS OPERATOR: confirm P4/P6's live totals on the reporting product, which this host cannot reach \u2014 `python3 -c \\\"from asf import env; from asf.ci_queue import feeder_rows",
         "dependents; rows = feeder_rows(env.load_pr\u2026\""
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33584,7 +33584,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T03:35:07Z"
+      "updated": "2026-10-10T03:43:23Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33673,7 +33673,7 @@
       "kernel_notes": [
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33681,7 +33681,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T03:31:23Z"
+      "updated": "2026-10-10T03:43:23Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -33695,9 +33695,10 @@
       "id": "F-0332",
       "kernel_notes": [
         "spec-f-0332-1791594186: NEEDS OPERATOR: which number the ceiling carries. The spec ships 6 (twice the per-finding round cap, and the daily cap's own number), measured at a 0.143 share and a 23 % fall \u2014 inside both of the card's bars but wi\u2026",
-        "spec-f-0332-1791598835: NEEDS OPERATOR: which number the ceiling carries \u2014 6 (ships: 0.143 share, 23 % fall, ~2 parks a day, 0.007 of margin on the 0.15 threshold while the cause has drifted 0.158 \u2192 0.186) or 4 (0.123, a 34 % fall, ~4.5 pa\u2026"
+        "spec-f-0332-1791598835: NEEDS OPERATOR: which number the ceiling carries \u2014 6 (ships: 0.143 share, 23 % fall, ~2 parks a day, 0.007 of margin on the 0.15 threshold while the cause has drifted 0.158 \u2192 0.186) or 4 (0.123, a 34 % fall, ~4.5 pa\u2026",
+        "spec-f-0332-1791602807: NEEDS OPERATOR: which number the ceiling should carry \u2014 the spec ships 6 (0.143 share, 23 % fall, only 0.007 of margin on the 0.15 threshold while the cause drifts up from 0.158 to 0.186); 4 measures at 0.123 and a\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33705,7 +33706,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T03:27:01Z"
+      "updated": "2026-10-10T03:43:23Z"
     },
     "R-0001": {
       "backlinks": [
@@ -78924,7 +78925,11 @@
         "asf/merge_queue.py:1764-1766 \u2014 `blame`'s `if not paths: return {}, False` is a hard early return that skips `cover_blame` whenever every failed check's `item['paths']` is empty, which is exactly the spec's own motivating case (an absolute-path Python traceback with no other `path:line` anywhere in the log \u2014 P4's measured example). Every shipped hop test routes around this by using a *relative* traceback path, which the pre-existing `_BARE_PATH_RE` fallback happens to catch, keeping `paths` non-empty; with an absolute-only log the hop never fires and the batch still bisects blind. Fix: don't early-`return` on empty `paths` \u2014 let the direct reading's `named` stay `{}` and fall through to the existing `if not named:` cover-hop check, then add a test that drives the hop with an absolute-path-only log."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 2 fix rounds",
+      "kernel_stuck_since": "2026-10-10T03:42:43Z",
       "links": {
         "plan": "docs/plans/f-0256.md"
       },
@@ -78934,7 +78939,7 @@
       "state": "New",
       "title": "the queue names the culprit PR in the drop reason \u2014 out of the log it already reads, and out of the test that covers the member's files",
       "type": "task",
-      "updated": "2026-10-10T03:31:23Z",
+      "updated": "2026-10-10T03:43:23Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
@@ -80763,7 +80768,12 @@
       ],
       "folder": "tasks",
       "id": "T-78561",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "tests/test_doctor.py:573-581 \u2014 `test_an_unreadable_ci_stall_file_is_one_unknown_row_and_never_raises` mocks `ci_stall.doctor_rows` to raise instead of driving a real malformed `ci-stall.json` through `doctor.check_ci_stall`; `ci_stall.load()` already swallows a JSON decode error and returns `{}`, so the acceptance's literal scenario (\"a `ci-stall.json` that is not JSON\") actually yields a normal row today, not the promised `(False, None, 'cannot read the ci stall file \u2014 \u2026')` row \u2014 fix the test to use a real file and make the code honor the acceptance for that input.",
+        "tests/test_ci_stall.py:354-374 \u2014 `test_a_claim_in_each_bad_state_draws_one_row_each` never asserts the claim's age appears in any row, though the acceptance bullet requires the row to name \"the tries and the age\" \u2014 add `self.assertIn('19 min', details)`."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80776,7 +80786,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T03:31:23Z",
+      "updated": "2026-10-10T03:43:23Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
@@ -82380,7 +82390,7 @@
       ],
       "title": "the land probe stops standing down on a running check",
       "type": "task",
-      "updated": "2026-10-10T03:31:23Z",
+      "updated": "2026-10-10T03:43:23Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
@@ -82401,7 +82411,7 @@
       ],
       "folder": "tasks",
       "id": "T-83352",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0295.md"
       },
@@ -82414,7 +82424,7 @@
       ],
       "title": "`asf status` says the factory re-ran a head, and when it refused to twice",
       "type": "task",
-      "updated": "2026-10-10T03:27:01Z",
+      "updated": "2026-10-10T03:43:23Z",
       "writes": [
         "asf/flake.py",
         "tests/test_flake_triage.py"
