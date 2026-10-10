@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T04:03:27Z",
+  "generated": "2026-10-10T04:17:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18840,7 +18840,7 @@
         "asf/views/status.py:127-129 \u2014 `_plan()`'s `step_wave.screen(...)` call still omits `paused=`, so `asf status`'s own Ready-to-launch cell stays pause-blind; add `paused=pause_mod.held(product)` there too (or correct the overclaiming docstring at tests/test_pause.py:350-353 and disclose the gap)."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "ready",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18850,7 +18850,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-09T23:34:55Z"
+      "updated": "2026-10-10T04:13:54Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -18934,7 +18934,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84836",
-      "kernel_state": "landing",
+      "kernel_state": "ready",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18944,7 +18944,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-84804",
       "type": "bug",
-      "updated": "2026-10-09T23:03:09Z"
+      "updated": "2026-10-10T04:13:54Z"
     },
     "B-84837": {
       "backlinks": [],
@@ -32838,6 +32838,10 @@
       ],
       "folder": "features",
       "id": "F-0301",
+      "kernel_notes": [
+        "PR #1316: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1316: part (3.13, 4) is red but not a required check \u2014 ignored"
+      ],
       "parent": "E-0001",
       "priority": "need",
       "rank": 5,
@@ -32847,7 +32851,7 @@
       "state": "Active",
       "title": "First-pass-right PRs: path-matched pre-push checks enforced by the hook, rubric checklist in briefs, first-push-green metric",
       "type": "feature",
-      "updated": "2026-10-08T20:41:23Z"
+      "updated": "2026-10-10T04:13:55Z"
     },
     "F-0302": {
       "backlinks": [
@@ -33528,7 +33532,7 @@
       "kernel_notes": [
         "spec-f-0325-1791586983: NEEDS OPERATOR: F-0325 has zero Story *cards* in the record, and `feeder.has_stories` counts cards via `ix.children`, not the spec's declarations \u2014 so once this spec is approved the feeder will emit `NO STORIES \u2192 SP\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33536,7 +33540,7 @@
       "state": "New",
       "title": "a declared 'wave' clock with steps [wave] runs as a tick under the tick lock and suppresses the native wave job",
       "type": "feature",
-      "updated": "2026-10-10T03:43:23Z"
+      "updated": "2026-10-10T04:13:55Z"
     },
     "F-0326": {
       "backlinks": [],
@@ -80770,7 +80774,7 @@
         "tests/test_ci_stall.py:354-374 \u2014 `test_a_claim_in_each_bad_state_draws_one_row_each` never asserts the claim's age appears in any row, though the acceptance bullet requires the row to name \"the tries and the age\" \u2014 add `self.assertIn('19 min', details)`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80783,7 +80787,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T04:03:08Z",
+      "updated": "2026-10-10T04:13:56Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
