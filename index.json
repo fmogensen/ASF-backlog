@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:38:47Z",
+  "generated": "2026-10-10T15:43:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16749,6 +16749,7 @@
       "id": "B-123640",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.1",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -16758,7 +16759,7 @@
       "state": "New",
       "title": "tests.test_workers TestSpawn: five failures on git 2.43.0 in cloud containers",
       "type": "bug",
-      "updated": "2026-10-10T15:32:31Z",
+      "updated": "2026-10-10T15:43:14Z",
       "writes": [
         "asf/workers/spawn.py"
       ]
@@ -33801,7 +33802,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T15:36:10Z"
+      "updated": "2026-10-10T15:43:14Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33903,7 +33904,11 @@
         "plan-f-0330-1791640370: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by four PLAN sessions in a row",
         "plan-f-0330-1791643018: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by five PLAN sessions in a row"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "done: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by six PLAN sessions in a row",
+      "kernel_stuck_since": "2026-10-10T15:42:15Z",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33911,7 +33916,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T15:21:27Z"
+      "updated": "2026-10-10T15:43:14Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -34076,7 +34081,7 @@
       "decided": true,
       "folder": "features",
       "id": "F-0338",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 3,
@@ -34085,7 +34090,7 @@
       "state": "New",
       "title": "Kernel mainline: cancelled trunk runs are no verdict; dispatch one trunk run when too many commits lack a result",
       "type": "feature",
-      "updated": "2026-10-10T15:21:27Z"
+      "updated": "2026-10-10T15:43:14Z"
     },
     "F-0339": {
       "backlinks": [],
@@ -64123,17 +64128,21 @@
         "granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel).",
         "operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1346: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1346: part (3.13, 3) is red but not a required check \u2014 ignored",
@@ -64148,7 +64157,7 @@
         "PR #1378: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -64165,7 +64174,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T15:38:46Z",
+      "updated": "2026-10-10T15:43:14Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -83043,7 +83052,8 @@
         "Fact check: origin/main was NOT rewritten. History is linear; #1266 (c34fd09) is a normal squash merge that ADDED the 0.2 kernel (+22,327/-101 lines, mostly asf/kernel and tests). Rebase this branch onto current origin/main, resolve conflicts in the few shared files (cli.py, frontmatter.py, cloud.py, groom/inbox.py), and continue."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Fact check: origin/main was NOT rewritten. History is linear; #1266 (c34fd09) is a normal squash merge that ADDED the 0.2 kernel (+22,327/-101 lines, mostly asf/kernel and tests). Rebase this branch onto current origin/main, resolve conflicts in the few shared files (cli.py, frontmatter.py, cloud.py, groom/inbox.py), and continue."
+        "relaunch: operator answer: Fact check: origin/main was NOT rewritten. History is linear; #1266 (c34fd09) is a normal squash merge that ADDED the 0.2 kernel (+22,327/-101 lines, mostly asf/kernel and tests). Rebase this branch onto current origin/main, resolve conflicts in the few shared files (cli.py, frontmatter.py, cloud.py, groom/inbox.py), and continue.",
+        "ended without a REPORT"
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
@@ -83062,7 +83072,7 @@
         "PR #1386: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1386: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -83075,7 +83085,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T15:21:27Z",
+      "updated": "2026-10-10T15:43:14Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
