@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T21:23:09Z",
+  "generated": "2026-10-10T21:24:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16877,7 +16877,11 @@
         "PR #1449: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1449: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "launch: launch: branch checked out in an external worktree ~/Code/fmogensen/ASF-wt-cloudquota; waits until it's released",
+      "kernel_stuck_since": "2026-10-10T21:24:15Z",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -16887,7 +16891,7 @@
       "state": "New",
       "title": "Bug: one cloud account's session limit trips the whole cloud lane",
       "type": "bug",
-      "updated": "2026-10-10T21:23:05Z",
+      "updated": "2026-10-10T21:24:32Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/workers/pool.py",
@@ -34798,7 +34802,8 @@
         "PR #1451: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1451: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1451: part (3.13, 3) is red but not a required check \u2014 ignored",
-        "PR #1451: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1451: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "PR #1451: part (3.12, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "E-0001",
@@ -34808,7 +34813,7 @@
       "state": "New",
       "title": "asf upgrade --product on a kernel product reinstalls the paused 0.1 floor clocks; the pin cannot move",
       "type": "feature",
-      "updated": "2026-10-10T21:23:05Z"
+      "updated": "2026-10-10T21:24:32Z"
     },
     "F-0343": {
       "backlinks": [
@@ -35133,10 +35138,11 @@
       "folder": "features",
       "id": "F-0349",
       "kernel_findings": [
-        "docs/specs/f-0349.md:18-19,58,222,654 \u2014 P2 and its restatements claim no test anywhere holds the four parent rules and that none of the twelve `does not exist` hits are about a parent; both are false (tests/test_check_staged.py:345, tests/test_groom_every_tick.py:94 assert the parent `does not exist` message verbatim; tests/test_backlog.py:911-922 and :938-942 already assert the `missing a parent` and `wrong type` substrings). Correct P2 to state that only `must not have a parent` has zero coverage today, and rewrite D12's and S-136855's framing to match."
+        "docs/specs/f-0349.md:116,216,630,631,633 \u2014 these cite schema.py:182-198, 191-197, 67-81, 82-98 and 196 for migrate_dir, stamp and stamp_cards; on origin/main the functions are at migrate_dir schema.py:316-331, stamp schema.py:335-347, stamp_cards schema.py:351-365, and the `migrate: schema {v-1} \u2192 {v}` commit line is schema.py:329 \u2014 fix the line numbers (confirmed by `grep -n \"^def migrate_dir\\|^def stamp\\b\\|^def stamp_cards\" asf/schema.py`).",
+        "docs/specs/f-0349.md:66 \u2014 says `parent <id> does not exist` is \"asserted verbatim\" at tests/test_groom_every_tick.py:94, but that line asserts `` `parent: E-0404` does not exist `` which is a different message, raised by asf/groom/shape.py:108 (`Question(f\"\\`parent: {parent}\\` does not exist \u2014 ...\")`), not asf/record/check.py's `parent {parent} does not exist` (check.py:298); drop that test as evidence for check.py's rule or correct the claim."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35144,7 +35150,7 @@
       "state": "New",
       "title": "Adopt GitHub's work-item model: type, parent, milestone, priority",
       "type": "feature",
-      "updated": "2026-10-10T21:23:05Z"
+      "updated": "2026-10-10T21:24:32Z"
     },
     "F-0350": {
       "backlinks": [],
@@ -47557,9 +47563,11 @@
         "T-129192"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91855",
       "parent": "F-0329",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:52Z",
       "state": "New",
@@ -67875,7 +67883,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -67890,7 +67898,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-10T21:18:17Z",
+      "updated": "2026-10-10T21:24:32Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -85682,6 +85690,7 @@
       "id": "T-129212",
       "kernel_attempts": [
         "session ran past its max age",
+        "launch: launch: branch checked out in an external worktree /private/tmp/claude-501/-Users-a worker account-Code-fmogensen-ASF/a634ee27-9ff3-433b-abf8-1058b56578ad/scratchpad/wt3def; waits until it's released",
         "launch: launch: branch checked out in an external worktree /private/tmp/claude-501/-Users-a worker account-Code-fmogensen-ASF/a634ee27-9ff3-433b-abf8-1058b56578ad/scratchpad/wt3def; waits until it's released"
       ],
       "kernel_notes": [
@@ -85708,7 +85717,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-10T21:13:18Z",
+      "updated": "2026-10-10T21:24:32Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -86184,7 +86193,7 @@
         "PR #1438: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -86202,7 +86211,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-10T21:08:01Z",
+      "updated": "2026-10-10T21:24:32Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -87782,7 +87791,7 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -87803,7 +87812,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:24:32Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
