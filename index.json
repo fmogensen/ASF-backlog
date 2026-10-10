@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:36:12Z",
+  "generated": "2026-10-10T15:38:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16704,7 +16704,7 @@
       "kernel_notes": [
         "groom-fill-b-121288-1791643848: groom-fill raised risk high: reproduced via parse_assignments/apply_list \u2014 a quoted \"a, b, c\" survives _as_list as one scalar, then widen.norm_writes's whitespace split (meant for packed plan entries) turns it into ['a,', 'b,', 'c']; real, fixable in asf/record/setfield.py."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -16713,7 +16713,7 @@
       "state": "New",
       "title": "asf set: comma-separated list values keep their commas (writes: [\"a,\", ...])",
       "type": "bug",
-      "updated": "2026-10-10T15:36:10Z",
+      "updated": "2026-10-10T15:38:46Z",
       "writes": [
         "asf/record/setfield.py",
         "tests/test_record_stage.py"
@@ -16758,7 +16758,10 @@
       "state": "New",
       "title": "tests.test_workers TestSpawn: five failures on git 2.43.0 in cloud containers",
       "type": "bug",
-      "updated": "2026-10-10T15:32:31Z"
+      "updated": "2026-10-10T15:32:31Z",
+      "writes": [
+        "asf/workers/spawn.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -33791,6 +33794,7 @@
       ],
       "kernel_state": "building",
       "parent": "E-0001",
+      "removed": "intake: describes old-floor park/relaunch-cap behavior (lifecycle.py, relaunch.py, harvest/lane.py) the kernel replaced; kernel.decide already weighs blocked_count for relaunch ordering and surfaces a top-blockers list in the tick summary (groom 2026-10-10)",
       "schema_version": 1,
       "stage": "card",
       "stage_since": "2026-10-08T20:41:23Z",
@@ -64139,7 +64143,9 @@
         "PR #1378: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1378: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1378: part (3.13, 2) is red but not a required check \u2014 ignored",
-        "PR #1378: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1378: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "PR #1378: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1378: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "review",
@@ -64159,7 +64165,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T15:36:10Z",
+      "updated": "2026-10-10T15:38:46Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -81688,7 +81694,7 @@
         "PR #1379: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1379: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81701,7 +81707,7 @@
       ],
       "title": "git's own refusal of a rewritten push is a kind of its own, and the dead run reads its log for it",
       "type": "task",
-      "updated": "2026-10-10T15:36:10Z",
+      "updated": "2026-10-10T15:38:46Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/workers/refusals.py",
