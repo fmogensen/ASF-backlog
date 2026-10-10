@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T05:52:06Z",
+  "generated": "2026-10-10T06:12:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2763,11 +2763,14 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0088",
+      "kernel_attempts": [
+        "launch: launch: git fetch -q origin fix/B-0088: error: cannot open '.git/FETCH_HEAD': No space left on device"
+      ],
       "kernel_findings": [
         "asf/views/board.py:41 (render) / asf/cli.py:415-417 \u2014 the default, unflagged `asf backlog` is unchanged by this diff and still prints the full 339-line/67 KB board; implement the card's `Expected` collapsing default (full rows for moving/landed Features per Epic, one-line summaries for undecided and Closed/on-prod groups, `--all` as the opt-out), with `--epic` as an additional narrowing on top of that rather than the whole fix."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -2775,7 +2778,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-10T05:52:03Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "B-0089": {
       "backlinks": [
@@ -3032,6 +3035,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0097",
+      "kernel_attempts": [
+        "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device"
+      ],
       "kernel_state": "review",
       "parent": "E-0002",
       "schema_version": 1,
@@ -3041,7 +3047,7 @@
       "state": "New",
       "title": "A network blip on push scores finished work as 'failed: not pushed' and costs a correction round",
       "type": "bug",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "B-0098": {
       "backlinks": [],
@@ -4652,11 +4658,14 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0150",
+      "kernel_attempts": [
+        "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device"
+      ],
       "kernel_findings": [
         "tests/test_ci_pool.py:423 \u2014 the added test only asserts the absence of the one `'provider-like label in runs-on:'` finding; the fixture leaves two `stranded` findings and one `unsatisfiable` finding standing, so the row does not come out ok as the card's Wanted requires. Give one `heavy` runner the reserve label itself and add a plain-`heavy` runs-on job, then assert the full, unfiltered `ci_pool.drift(...)` result is `[(True, ...)]`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -4665,7 +4674,7 @@
       "state": "New",
       "title": "doctor ci-pool row flags ASF's own ci_pool.reserve label as undeclared",
       "type": "bug",
-      "updated": "2026-10-10T05:41:55Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "B-0151": {
       "backlinks": [
@@ -18841,7 +18850,7 @@
         "asf/tick/step_wave.py:1328 \u2014 bind `paused = pause_mod.held(product)` (as `launch` does at :1156) and pass `paused=paused` into `launch_now`'s `screen(...)` call at :1328-1329, returning 0 before `_wave` the way `launch()` does, so the wave clock's live spawn path actually honors the operator's pause instead of still launching a paused product's row (reproduced: `step_wave.launch_now` launches `fix-bug-b-0001` under an active `pause.pause()`)."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18851,7 +18860,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-10T05:52:03Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -18937,7 +18946,7 @@
         "tests/test_pause.py:400-449 \u2014 delete `TheStatusPreviewSeesItToo` and its duplicate `test_a_paused_product_s_preview_holds_every_row_too` (near-verbatim copy of `ThePreviewAgrees.test_a_paused_products_preview_holds_the_row_it_never_starts_it` at tests/test_pause.py:551); fold the one genuinely new case, `test_the_same_preview_unpaused_starts_every_row`, into `ThePreviewAgrees` instead."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18947,7 +18956,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-84804",
       "type": "bug",
-      "updated": "2026-10-10T05:33:56Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "B-84837": {
       "backlinks": [],
@@ -25389,8 +25398,7 @@
         "F-0109",
         "F-0112",
         "F-0114",
-        "S-0005",
-        "T-0436"
+        "S-0005"
       ],
       "children": [
         "T-0261",
@@ -25581,8 +25589,7 @@
         "T-0432",
         "T-0433",
         "T-0434",
-        "T-0435",
-        "T-0436"
+        "T-0435"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -33324,7 +33331,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33339,7 +33346,7 @@
       "kernel_attempts": [
         "launch: no cloud account with a free seat"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33347,7 +33354,7 @@
       "state": "New",
       "title": "landed_doc treats a replan branch's landing-gate correction as landed because the original plan is on main; the Feature deadlocks with no row",
       "type": "feature",
-      "updated": "2026-10-10T05:41:55Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "F-0318": {
       "backlinks": [
@@ -33446,7 +33453,7 @@
         "spec-f-0321-1791586280: NEEDS OPERATOR: the copy of NOTES.asf.md tracked on the reporting product's trunk (first added by ef2566bf4) must come off the trunk, and only a human may push main. From inside that product's own checkout (repo_dir\u2026",
         "spec-f-0321-1791590222: NEEDS OPERATOR: the copy of `NOTES.asf.md` tracked on the reporting product's trunk (first added by `ef2566bf4`) must come off the trunk, and only a human may push `main`. Verified read-only from that product's chec\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33454,7 +33461,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T05:33:56Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33466,7 +33473,10 @@
       ],
       "folder": "features",
       "id": "F-0322",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0322-1791611510: NEEDS OPERATOR: whether to file the second defect P5 measures \u2014 a relaunch-cap park whose job was later reused by a run on another item is reachable by neither `asf unpark` nor health, so it can never be released \u2014\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33474,7 +33484,7 @@
       "state": "New",
       "title": "status keeps a retired item's relaunch-cap park",
       "type": "feature",
-      "updated": "2026-10-10T05:52:03Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "F-0323": {
       "backlinks": [],
@@ -33641,7 +33651,8 @@
         "Confirmed: the red step is the known trunk flake, not this branch. PR #1304 at f0eb52e75, run 38008654697, tests (3.13): the only failure is tests.test_sample_product.ReadmeRenderTests.test_refresh_is_a_no_op_the_second_time (Ran 36, failures=1), the same assertion that flakes on main; the branch changes only docs/specs/f-0329.md. Rerun the failed job and land the spec on green. The readme.py fix is routed: an inbox card \"readme refresh no-op test flakes across a second boundary\" is filed with the cause (asf/views/readme.py:246 generated stamp vs the whole-byte compare in asf/metrics/metrics.py:1054) and its acceptance test; do not fix it in this spec job. The wrapped-acceptance-bullet half (CHECKBOX matches one physical line) stays in this Feature as its own Story if the spec already declares it; otherwise it is Out and needs no card from you. Report status done with no NEEDS OPERATOR line."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Confirmed: the red step is the known trunk flake, not this branch. PR #1304 at f0eb52e75, run 38008654697, tests (3.13): the only failure is tests.test_sample_product.ReadmeRenderTests.test_refresh_is_a_no_op_the_second_time (Ran 36, failures=1), the same assertion that flakes on main; the branch changes only docs/specs/f-0329.md. Rerun the failed job and land the spec on green. The readme.py fix is routed: an inbox card \"readme refresh no-op test flakes across a second boundary\" is filed with the cause (asf/views/readme.py:246 generated stamp vs the whole-byte compare in asf/metrics/metrics.\u2026"
+        "relaunch: operator answer: Confirmed: the red step is the known trunk flake, not this branch. PR #1304 at f0eb52e75, run 38008654697, tests (3.13): the only failure is tests.test_sample_product.ReadmeRenderTests.test_refresh_is_a_no_op_the_second_time (Ran 36, failures=1), the same assertion that flakes on main; the branch changes only docs/specs/f-0329.md. Rerun the failed job and land the spec on green. The readme.py fix is routed: an inbox card \"readme refresh no-op test flakes across a second boundary\" is filed with the cause (asf/views/readme.py:246 generated stamp vs the whole-byte compare in asf/metrics/metrics.\u2026",
+        "launch: [Errno 28] No space left on device"
       ],
       "kernel_notes": [
         "spec-f-0329-1791587544: NEEDS OPERATOR: whether the second, co-occurring half of the same damage gets its own card \u2014 `CHECKBOX` matches one physical line, so a *wrapped* acceptance bullet (`docs/specs/f-0280.md:369-371`, the very declarati\u2026"
@@ -33654,7 +33665,7 @@
       "state": "New",
       "title": "minting a declared Story (idcheck.declared_stories / plan_tasks) strips backtick code spans from its acceptance lines",
       "type": "feature",
-      "updated": "2026-10-10T05:33:56Z"
+      "updated": "2026-10-10T06:12:42Z"
     },
     "F-0330": {
       "backlinks": [],
@@ -52873,7 +52884,8 @@
         "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
       "kernel_attempts": [
-        "conflict: PR #731: update-branch #731: rc 1: gh: merge conflict between base and head (HTTP 422)"
+        "conflict: PR #731: update-branch #731: rc 1: gh: merge conflict between base and head (HTTP 422)",
+        "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device"
       ],
       "kernel_findings": [
         "asf/harvest/lane.py:753-772,807-809 \u2014 thread validate()'s `problems` into `proves_refusal_text` and name each one before the numbered acceptance list (Task 3 Step 4)",
@@ -52884,7 +52896,7 @@
         "rebase: PR #731 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -52894,7 +52906,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-10T05:29:32Z",
+      "updated": "2026-10-10T06:12:42Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
@@ -63601,8 +63613,7 @@
         "T-0431",
         "T-0432",
         "T-0433",
-        "T-0434",
-        "T-0436"
+        "T-0434"
       ],
       "children": [],
       "decided": true,
@@ -70602,7 +70613,7 @@
       ],
       "folder": "tasks",
       "id": "T-0609",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/replans/f-0242-5da80eab4169.md"
       },
@@ -70613,7 +70624,7 @@
       "stories": [],
       "title": "a later review round reads the increment, not the whole diff against the trunk again",
       "type": "task",
-      "updated": "2026-10-10T05:29:32Z",
+      "updated": "2026-10-10T06:12:42Z",
       "writes": [
         "asf/briefs/preamble.py",
         "asf/briefs/build.py",
@@ -70656,6 +70667,9 @@
       ],
       "folder": "tasks",
       "id": "T-0610",
+      "kernel_attempts": [
+        "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0242-5da80eab4169.md"
@@ -70670,7 +70684,7 @@
       "stories": [],
       "title": "no second reviewer is bought for a head whose reviewers filed nothing, and the review loop has the ceiling the document lane already has",
       "type": "task",
-      "updated": "2026-10-10T05:52:03Z",
+      "updated": "2026-10-10T06:12:42Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/feeder/rows.py",
@@ -80788,6 +80802,9 @@
       ],
       "folder": "tasks",
       "id": "T-78561",
+      "kernel_attempts": [
+        "launch: launch: git worktree add -q -B worker/T-78561 ~/.ASF/state/asf/worktrees/review-t-78561-1791612724-local origin/worker/T-78561: fatal: cannot lock ref 'refs/heads/worker/T-78561': Unable to create '~/Code/fmogensen/ASF/.git/refs/heads/worker/T-78561.lock': No space left on device"
+      ],
       "kernel_findings": [
         "tests/test_doctor.py:573-581 \u2014 `test_an_unreadable_ci_stall_file_is_one_unknown_row_and_never_raises` mocks `ci_stall.doctor_rows` to raise instead of driving a real malformed `ci-stall.json` through `doctor.check_ci_stall`; `ci_stall.load()` already swallows a JSON decode error and returns `{}`, so the acceptance's literal scenario (\"a `ci-stall.json` that is not JSON\") actually yields a normal row today, not the promised `(False, None, 'cannot read the ci stall file \u2014 \u2026')` row \u2014 fix the test to use a real file and make the code honor the acceptance for that input.",
         "tests/test_ci_stall.py:354-374 \u2014 `test_a_claim_in_each_bad_state_draws_one_row_each` never asserts the claim's age appears in any row, though the acceptance bullet requires the row to name \"the tries and the age\" \u2014 add `self.assertIn('19 min', details)`."
@@ -80806,7 +80823,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T05:52:03Z",
+      "updated": "2026-10-10T06:12:42Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
