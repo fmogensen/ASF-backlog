@@ -1,4 +1,5 @@
 # Kernel STORY LIMBO: an unproved Story with no live Task is counted and listed
+type: feature
 
 STORY LIMBO: an unproved Story under a ranked, unparked Feature with no Task in a live state (Ready/Building/Review/Landing) is logged per tick and counted in the LIMBO line; knob kernel.limbo.stories. Acceptance: tests for a Story with no live Task (limbo) and with one (not).
 
