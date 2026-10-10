@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T18:41:05Z",
+  "generated": "2026-10-10T18:44:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -21077,6 +21077,7 @@
         "F-0336",
         "F-0338",
         "F-0343",
+        "F-0344",
         "B-126941"
       ],
       "decided": true,
@@ -34747,6 +34748,21 @@
       "title": "Kernel never mints Task cards from a merged plan, and reads landed docs from a stale checkout",
       "type": "feature",
       "updated": "2026-10-10T18:11:40Z"
+    },
+    "F-0344": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "features",
+      "id": "F-0344",
+      "parent": "E-0003",
+      "priority": "need",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T18:43:30Z",
+      "state": "New",
+      "title": "Centralized logging and metrics on flat files (Stage 1)",
+      "type": "feature",
+      "updated": "2026-10-10T18:43:30Z"
     },
     "R-0001": {
       "backlinks": [
@@ -83057,10 +83073,14 @@
       "id": "T-129157",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
+      "kernel_findings": [
+        "asf/feeder/rows.py:1704-1705 \u2014 held_feature_row's docstring says the Feature's PUSHED \u2192 LAND row (when review/landing occupancy backs it) is drawn by lane_rows; traced empirically against the PD8 fixture and it is drawn by replan_row (generally _doc_row/direct_row/spec_plan_row/land_doc_row, already named by the comment at :1666-1669) \u2014 lane_rows and pushed_rows both draw nothing for this case. Fix the :func: reference."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -83073,7 +83093,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T18:28:38Z",
+      "updated": "2026-10-10T18:44:33Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -83270,7 +83290,7 @@
       "kernel_notes": [
         "build-t-129164-1791655876: NEEDS OPERATOR: the installed dispatcher at ~/.local/bin/asf has no `pre-push` subcommand at all, blocking every push on this host until it is reinstalled/rebuilt \u2014 `\"$HOME/.local/bin/asf\" --help`"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -83283,7 +83303,7 @@
       ],
       "title": "the text \u2014 a finished session's REPORT verdict, as a review every reader reads alike",
       "type": "task",
-      "updated": "2026-10-10T18:33:26Z",
+      "updated": "2026-10-10T18:44:33Z",
       "writes": [
         "asf/evidence/review.py",
         "tests/test_review_reader.py"
@@ -84443,7 +84463,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129205",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/ghapp.py:272 \u2014 in `mint`, wrap the body from `bearer, why = jwt(app, now, run=run)` (:283) through `return _succeed(...)` (:305) in `try: \u2026 except Exception as exc: return _fail(product, app, slug, f'mint for {slug} failed: {type(exc).__name__}', installation_id=installation_id)` (binding `installation_id = app.installation_id` before the `try`), and make `refresh`'s `:328` `try: return mint(product, now=now, http=http, run=run)` / `except Exception as exc: return '', f'mint failed: {type(exc).__name__}'` \u2014 `Exception`, never `BaseException`, so `gh_limit.RateLimited` still escapes and latches; then add a `Refreshing` case where an `http` double raising `urllib.error.URLError` returns `('', why)`, writes no token file and leaves a seeded previous token exactly as it was"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -84456,7 +84480,7 @@
       ],
       "title": "the module \u2014 the declaration, the JWT, the mint, the cache, and `openssl` as the ratchet's newest kind",
       "type": "task",
-      "updated": "2026-10-10T18:33:26Z",
+      "updated": "2026-10-10T18:44:33Z",
       "writes": [
         "asf/ghapp.py",
         "tools/check_clients.py",
