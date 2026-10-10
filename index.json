@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T21:26:23Z",
+  "generated": "2026-10-10T21:32:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -35023,7 +35023,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-10T21:13:18Z"
+      "updated": "2026-10-10T21:32:08Z"
     },
     "F-0345": {
       "backlinks": [
@@ -35092,7 +35092,8 @@
       "folder": "features",
       "id": "F-0347",
       "kernel_attempts": [
-        "the session API failed"
+        "the session API failed",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "docs/specs/f-0347.md:155 \u2014 Precondition 4 and the `status` row at :298 claim `cloudpid` holds a cloud token's last status \"with its time\"; it holds none. `cloudpid.record`/`_record` (asf/workers/cloudpid.py:55-89) write only `status`, `why` and the caller's `**fields`, and no caller passes a time (cloud.py:717, :726, :836, :865, :910; actions.py:404; remote.py:520, :555, :675) \u2014 the `updated` key in cloudpid.py:10's own docstring is written by nothing. Either name a real time for the cloud lane (the status file's mtime, or add an `updated=` field to the sync's record call at cloud.py:865 as part of this card) or move `status` out of \u00a72's dated column; and correct the citation from `asf/workers/cloud.py:845-847` to `:865`.",
@@ -35101,7 +35102,7 @@
         "docs/specs/f-0347.md:172 \u2014 D7's quote \"a run that keeps beating but loops still ends timed out\" is at asf/workers/heartbeat.py:44-45, not `:41-42` (the zombie-push paragraph); and at :167 D2's \"benefit of the doubt\" is the comment at asf/workers/heartbeat.py:376, not `:395-397` (the tail of `settle`). That file is byte-identical at cb47b17c8 and this head, so neither was ever right.",
         "docs/specs/f-0347.md:6 \u2014 the frontmatter `stories:` lists six ids and omits S-138158, while :643 says \"Seven Stories\", :664-670 cite seven and :797 declares `### S-138158` (asf.kernel.stories.declared_stories reads 7 Stories and 119 acceptance lines from the body). Add S-138158 to the frontmatter list."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_state": "building",
       "parent": "E-0003",
       "priority": "later",
@@ -35110,7 +35111,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-10T21:08:01Z"
+      "updated": "2026-10-10T21:32:08Z"
     },
     "F-0348": {
       "backlinks": [
@@ -35124,11 +35125,15 @@
         "the session API failed"
       ],
       "kernel_findings": [
-        "asf/kernel/ports.py:1540 \u2014 the spec's D10/P10 citation for `archive_and_reset` names ports.py:1540, which is inside the `revert` method's conflict branch; the method is declared at ports.py:144 and implemented at ports.py:1711 \u2014 fix the line number",
-        "asf/kernel/decide.py:860-864 \u2014 the spec's P11 citation names a function `_hold_high_risk`, which does not exist; the code at those lines belongs to `hold_risky` (decide.py:821) \u2014 fix the function name"
+        "docs/specs/f-0348.md:75 (P1) \u2014 edge_open is asf/kernel/decide.py:1546, open_edges :1556, _apply_waits :1561, the Ready-only guard :1567 (each cited 10 lines low)",
+        "docs/specs/f-0348.md:77 (P3) \u2014 decide.early_plans is now at asf/kernel/decide.py:1798, not :1788",
+        "docs/specs/f-0348.md:100 (D2) \u2014 the file-overlap busy writes list is now at asf/kernel/decide.py:1682-1684, not :1672-1674",
+        "docs/specs/f-0348.md:79 (P5) \u2014 _open_pr's change_id assignment is now at asf/kernel/ports.py:1412, not :1347",
+        "docs/specs/f-0348.md:86 (P4) \u2014 ports.open_pr (def) is now at asf/kernel/ports.py:1759-1767, not :1694-1702",
+        "docs/specs/f-0348.md:254 (\u00a72.6) \u2014 the function is ports.config_for, not ports.config; its Config(...) call tail is now at asf/kernel/ports.py:2511-2520, not :2446-2455"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "later",
       "schema_version": 1,
@@ -35136,7 +35141,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T21:13:18Z"
+      "updated": "2026-10-10T21:32:08Z"
     },
     "F-0349": {
       "backlinks": [],
@@ -47632,6 +47637,7 @@
       "folder": "stories",
       "id": "S-92305",
       "parent": "F-0330",
+      "removed": "intake: S-92305 builds a ruling-applier onto the old floor's asf/tick/apply_rulings.py and asf/feeder/rows.py, which the 0.2 kernel already replaced \u2014 asf/kernel/apply.py + ports.record.supersede already retire-and-link a superseded card in one commit, the shape this story re-specifies for the floor. (groom 2026-10-10)",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:55Z",
       "state": "New",
@@ -84272,7 +84278,7 @@
         "PR #1432: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1432: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -84285,7 +84291,7 @@
       ],
       "title": "the cap and the reader \u2014 an unfiled review is no launch, once per head",
       "type": "task",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:32:08Z",
       "writes": [
         "asf/workers/relaunch.py",
         "asf/workers/lifecycle.py",
@@ -84505,8 +84511,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129173",
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
       "kernel_notes": [
         "groom-fill-t-129173-1791655626: groom-fill raised risk high: card already carries Task 1's acceptance/writes verbatim (F-0343 backfill); the parent-Done DoR gap is stale \u2014 F-0343's own fix (dce5aac92) makes a Feature's state derive from its Task children once any exist, and F-0318 already has Task children (T-129173, T-129174) that are New, so F-0318 reads New under current logic and the next tick's judge pass clears this on its own.",
         "groom-fill-t-129173-1791657630: groom-fill raised risk high: F-0318's \"Done\" is a same-tick derived-state artifact (a container is Done only when every Task child is, and T-129173 itself is a New child of F-0318); the card's acceptance/writes already satisfy DoR (i)-(iii), and asf/record/spec_stories.py, spec_ref, doc_alias and own_doc are all absent from trunk, confirming the work is unbuilt, not superseded.",
@@ -84529,7 +84535,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:32:08Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -85515,7 +85521,7 @@
         "PR #1448: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1448: part (3.12, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85529,7 +85535,7 @@
       ],
       "title": "the one map, and the host's two refresh doors",
       "type": "task",
-      "updated": "2026-10-10T21:18:17Z",
+      "updated": "2026-10-10T21:32:08Z",
       "writes": [
         "asf/env.py",
         "asf/kernel/loop.py",
@@ -85551,7 +85557,7 @@
       "kernel_attempts": [
         "ended without a REPORT"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85564,7 +85570,7 @@
       ],
       "title": "the one client's default identity, and the single caller that opts out",
       "type": "task",
-      "updated": "2026-10-10T21:03:16Z",
+      "updated": "2026-10-10T21:32:08Z",
       "writes": [
         "asf/github.py",
         "asf/upgrade.py",
@@ -85593,7 +85599,7 @@
         "PR #1442: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1442: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85606,7 +85612,7 @@
       ],
       "title": "what the operator sees \u2014 the shape check, the example file, one doctor row and the two guide pages",
       "type": "task",
-      "updated": "2026-10-10T21:08:01Z",
+      "updated": "2026-10-10T21:32:08Z",
       "writes": [
         "asf/conventions.py",
         "asf/doctor.py",
@@ -85966,7 +85972,7 @@
         "PR #1443: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1443: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -85981,7 +85987,7 @@
       ],
       "title": "the floor split \u2014 one installer per owner, the two-floor refusal, and the retire gate",
       "type": "task",
-      "updated": "2026-10-10T21:08:01Z",
+      "updated": "2026-10-10T21:32:08Z",
       "writes": [
         "asf/upgrade.py",
         "asf/scheduler.py",
@@ -86217,9 +86223,10 @@
       ],
       "kernel_findings": [
         "red: tests (3.12)",
-        "red: tests (3.13)"
+        "red: tests (3.13)",
+        "operator answer: granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "build-t-136825-1791661085: NEEDS OPERATOR: the push is refused by a stale local `asf` CLI install with no `pre-push` subcommand \u2014 upgrade `~/.local/bin/asf` on this host, then publish branch `worker/T-136825` \u2014 `git push origin worker/T-13682\u2026",
         "PR #1438: checks (3.12) is red but not a required check \u2014 ignored",
@@ -86231,7 +86238,7 @@
         "PR #1438: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -86249,7 +86256,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-10T21:24:32Z",
+      "updated": "2026-10-10T21:32:08Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
