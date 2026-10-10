@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T13:17:38Z",
+  "generated": "2026-10-10T13:21:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -52028,7 +52028,7 @@
       "state": "Active",
       "title": "the selection rule, the budget and the three ceilings",
       "type": "task",
-      "updated": "2026-10-10T13:17:36Z",
+      "updated": "2026-10-10T13:21:42Z",
       "writes": [
         "asf/groom/delivery.py",
         "asf/conventions.py",
@@ -64607,6 +64607,9 @@
       "id": "T-0452",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
+      "kernel_notes": [
+        "groom-fill-t-0452-1791638006: groom-fill raised risk high: writes carries Task 3's doctor.py/capacity.py footprint merged in from T-0454, but Task 3 needs T-0453's (Task 2) env.py functions and T-0453 is after: T-0452 \u2014 a circular prerequisite; drop that footprint and keep only Task 1+4's (self-contained) scope, with the plan's own named tests."
+      ],
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -64621,16 +64624,13 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-10T13:13:38Z",
+      "updated": "2026-10-10T13:21:42Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
+        "asf/tick/tick.py",
         "tests/test_schema_version.py",
         "tests/test_surface.py",
-        "asf/doctor.py",
-        "asf/capacity.py",
-        "tests/test_doctor.py",
-        "asf/tick/tick.py",
         "tests/test_tick_steps.py"
       ]
     },
@@ -64639,6 +64639,7 @@
         "T-0452"
       ],
       "backlinks": [
+        "T-0452",
         "T-0454"
       ],
       "children": [],
@@ -64749,6 +64750,8 @@
       ],
       "folder": "tasks",
       "id": "T-0456",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -64758,7 +64761,7 @@
       "state": "New",
       "title": "`asf/upgrade.py` \u2014 the upgrade migrates what it installed, and `--to` puts the snapshot back",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T13:21:42Z",
       "writes": [
         "asf/upgrade.py",
         "asf/init.py",
@@ -76845,7 +76848,7 @@
       "kernel_notes": [
         "PR #848: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0130-47df67914dbf.md"
       },
@@ -76863,7 +76866,7 @@
       "stories": [],
       "title": "the product declares its pre-ASF branch convention, and a misshapen declaration is loud",
       "type": "task",
-      "updated": "2026-10-10T13:17:36Z",
+      "updated": "2026-10-10T13:21:42Z",
       "writes": [
         "asf/conventions.py",
         "tests/test_conventions.py",
@@ -81704,7 +81707,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T13:17:36Z",
+      "updated": "2026-10-10T13:21:42Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -82466,7 +82469,7 @@
         "PR #1371: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1371: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82479,7 +82482,7 @@
       ],
       "title": "the stable gate \u2014 four rows, each met or unmet with its evidence",
       "type": "task",
-      "updated": "2026-10-10T13:08:03Z",
+      "updated": "2026-10-10T13:21:42Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py",
@@ -82543,7 +82546,7 @@
       "kernel_notes": [
         "groom-fill-t-82991-1791637677: groom-fill raised risk high: Task 1 (channels.NAMES/resolve/channel_tag) is already on trunk and the plan (docs/plans/f-0308.md:476-562) plus spec (docs/specs/f-0308.md:665-679) already give byte-for-byte Acceptance checkboxes, exact test classes and file-level design; PD2's \"already fixed on trunk\" claim checks out at resolve_ref (asf/upgrade.py:442-456) and resolve_target's rev-parse verify (:1236), just at shifted line numbers."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82556,7 +82559,7 @@
       ],
       "title": "the two consumers \u2014 `asf upgrade --to <channel>` and the bootstrap's default",
       "type": "task",
-      "updated": "2026-10-10T13:17:36Z",
+      "updated": "2026-10-10T13:21:42Z",
       "writes": [
         "asf/upgrade.py",
         "tools/install.sh",
