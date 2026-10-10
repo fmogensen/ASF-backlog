@@ -1,0 +1,31 @@
+# Centralized logging and metrics on flat files (Stage 1)
+parent: E-0003
+
+Centralized logging and metrics on flat files (operator-approved 2026-10-10; Stage 1 of 3, the only stage in 0.3).
+
+## Problem
+Logs and metrics are scattered: per-session transcripts in logs/jobs (3.1 GB, never deleted), several JSONL ledgers in state/<product>/ (kernel-waits, kernel-main-moves, kernel-reviews, gates, scorecard), and 3.6 GB of leftovers from the old floor (state/<p>/trunk-merge, worktrees, wave-record, stale tick-*/harvest-* logs). There is no history across days, no single place to read numbers, and no retention.
+
+## Decisions (operator)
+- Flat files are the source of truth: append-only JSONL. No database as source. A SQLite file may later be added only as a disposable cache rebuilt from the files.
+- Many writers, one merger: every writer appends only to its own spool file; only the kernel writes the day files. No locks.
+- Generic per product; knobs in the product yaml `kernel:` block.
+
+## Stage 1 scope (this Feature)
+1. Layout under state/<product>/metrics/: `spool/<job>.jsonl` (one writer each: sessions, kernel, watcher), `events/YYYY-MM-DD.jsonl` (merged by the kernel each tick), `daily/YYYY-MM-DD.json` (roll-up).
+2. Kernel ingest each tick: merge spool files into the day file, then its own observations (state changes, launches, session ends, PR open/merge, CI timings, waits, main moves). Ingest is idempotent (no duplicate events on re-run or crash); a half-written last line is skipped, never fatal.
+3. Move today's ledgers (kernel-waits, kernel-main-moves, kernel-reviews, gates, scorecard) onto the event stream; existing readers (`asf kernel waits`, `main-moves`, `gate`) read from it.
+4. Daily roll-up: merges, Tasks/Features landed, lead time p50/p90 (spec open → merge, PR open → merge), first-push-green, fix rounds, seat utilization, wait p50/p90 per class, main-red minutes, stuck item-hours.
+5. `asf metrics --product P [--days N] [--item ID]`: today, a trend over N days, one Feature.
+6. Retention (`kernel.retention.transcripts_compress_days: 2`, `transcripts_delete_days: 14`, `events_days: 90`; daily roll-ups kept forever), run by the kernel watch. A one-time cleanup of the old floor's leftovers (only paths no live kernel code reads; never unpushed work).
+
+## Later stages (not this Feature)
+- Stage 2: cloud agents push events to `refs/asf/log/<job>`, kernel fetches/merges/deletes the ref; cost per session/Feature (tokens, model, account); `asf log <item|job>`; dashboard page.
+- Stage 3: trend gates (e.g. lead-time p90 regression alarm).
+
+## Acceptance (Feature level)
+- Two concurrent writers plus the kernel merge produce a day file with every event exactly once (test).
+- Re-running ingest after a simulated crash mid-line adds no duplicates and loses no complete line (test).
+- `asf kernel waits` and `asf kernel gate` give the same numbers from the event stream as from the old ledgers on a fixture (test).
+- `asf metrics --days 7` prints the roll-up fields above on a fixture (test).
+- Retention deletes by age per the config and never touches a path outside metrics/ and logs/jobs/ (test).
