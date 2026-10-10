@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T10:15:43Z",
+  "generated": "2026-10-10T10:18:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3780,7 +3780,7 @@
         "operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3789,7 +3789,7 @@
       "state": "New",
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
-      "updated": "2026-10-10T09:55:46Z"
+      "updated": "2026-10-10T10:17:59Z"
     },
     "B-0122": {
       "backlinks": [],
@@ -80600,7 +80600,7 @@
         "asf/workers/lifecycle.py:1374-1382 \u2014 C2, docstring not verbatim to spec; asf/tick/step_wave.py:111-114 \u2014 C3, docstring not verbatim to spec; tests/test_occupancy_trunk_landed.py:110-157 \u2014 C1, no test proves `TRUNK_LANDED_DAYS` is actually passed as `days=` to `trunk_watch.first_parent`; docs/reviews/1-t-76352.md on HEAD (ee27a4b07) \u2014 C4, a prior review session committed and pushed a review artifact straight onto `worker/T-76352`, outside `writes:` and in violation of this item's own \"review never touches the branch\" rule \u2014 needs the factory's attention, not a code fix."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0277.md"
       },
@@ -80613,7 +80613,7 @@
       ],
       "title": "the lane releases an item whose PR the trunk carries, so the Feature's next Task launches",
       "type": "task",
-      "updated": "2026-10-10T09:56:55Z",
+      "updated": "2026-10-10T10:17:59Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/tick/step_wave.py",
@@ -81515,7 +81515,7 @@
         "rebase: PR #1233 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -81528,7 +81528,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T09:36:58Z",
+      "updated": "2026-10-10T10:17:59Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -82019,14 +82019,14 @@
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1324: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1324: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1324: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1324: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -82039,7 +82039,7 @@
       ],
       "title": "the fix-bug brief carries the pre-fix base and the command the lane will run",
       "type": "task",
-      "updated": "2026-10-10T10:15:39Z",
+      "updated": "2026-10-10T10:17:59Z",
       "writes": [
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/build.py",
@@ -82242,7 +82242,7 @@
       ],
       "folder": "tasks",
       "id": "T-82989",
-      "kernel_state": "ready",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82255,7 +82255,7 @@
       ],
       "title": "the stable gate \u2014 four rows, each met or unmet with its evidence",
       "type": "task",
-      "updated": "2026-10-10T09:55:46Z",
+      "updated": "2026-10-10T10:17:59Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py",
@@ -82514,7 +82514,7 @@
       ],
       "folder": "tasks",
       "id": "T-83346",
-      "kernel_state": "ready",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82527,7 +82527,7 @@
       ],
       "title": "the feeder stands down \u2014 one `waived` membership, two branches, and the S1 lane's word",
       "type": "task",
-      "updated": "2026-10-10T09:25:48Z",
+      "updated": "2026-10-10T10:17:59Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
