@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T19:38:20Z",
+  "generated": "2026-10-10T19:41:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16823,6 +16823,24 @@
       "type": "bug",
       "updated": "2026-10-10T19:35:43Z"
     },
+    "B-136993": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-136993",
+      "parent": "E-0001",
+      "priority": "need",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "Bug: a cloud routine is polled under the ambient CLI login when its account does not resolve",
+      "stage_since": "2026-10-10T19:40:50Z",
+      "state": "New",
+      "title": "Bug: a cloud routine is polled under the ambient CLI login when its account does not resolve",
+      "type": "bug",
+      "updated": "2026-10-10T19:40:50Z"
+    },
     "B-70500": {
       "backlinks": [],
       "children": [],
@@ -20852,6 +20870,7 @@
         "B-121288",
         "B-121289",
         "B-123640",
+        "B-136993",
         "B-70500",
         "B-70501",
         "B-70702",
@@ -34570,17 +34589,14 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "docs/specs/f-0340.md:119 \u2014 fix `asf/kernel/ports.py:321` \u2192 `:319` and `asf/kernel/decide.py:2125` \u2192 `:2126`",
-        "docs/specs/f-0340.md:120 \u2014 fix `SCHEMA_VERSION = 1` cite `:33` \u2192 `:31` and `MIGRATIONS` cite `:45` \u2192 `:43`",
-        "docs/specs/f-0340.md:123 \u2014 fix `dor.gate_lines` cite `:108` \u2192 `:109`",
-        "docs/specs/f-0340.md:124 \u2014 fix `proves.bullets` `:172`\u2192`:171`, `card_bullets` `:190`\u2192`:188`, `proves.tick` `:258`\u2192`:257`"
+        "docs/specs/f-0340.md:31 \u2014 \u00a71.1 and P16 both promise \"the NEEDS OPERATOR line at the end of this spec\" giving the read-only re-measurement command for ASF's own record, but no such line exists anywhere in the file (it ends at line 759, mid Story S-133164's checklist); either add that line or stop promising it."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34589,7 +34605,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T19:35:43Z"
+      "updated": "2026-10-10T19:41:11Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34879,11 +34895,14 @@
       "decided": true,
       "folder": "features",
       "id": "F-0346",
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/specs/f-0346.md:517 \u2014 `CLASSES is exactly row, session, subtree, parked, done and SINK, in that classification order` contradicts the module's own `CLASSES = ('done', 'parked', 'row', 'session', 'subtree', 'SINK')` at line 137 and the design prose at line ~176 (\"done comes before parked and parked before row\"); fix the acceptance line to state the order `done, parked, row, session, subtree, SINK`."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0346-1791658400-local: NEEDS OPERATOR: the push is refused by a stale installed dispatcher, not by the diff \u2014 `$HOME/.local/bin/asf` has no `pre-push` subcommand while `asf/cli.py:470` defines it. Confirm with `$HOME/.local/bin/asf --vers\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34891,7 +34910,7 @@
       "state": "New",
       "title": "Flow conservation: every step has a required successor, checked each tick",
       "type": "feature",
-      "updated": "2026-10-10T19:35:43Z"
+      "updated": "2026-10-10T19:41:11Z"
     },
     "F-0347": {
       "backlinks": [],
