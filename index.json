@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T21:45:19Z",
+  "generated": "2026-10-10T21:50:12Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -32254,6 +32254,7 @@
     },
     "F-0272": {
       "backlinks": [
+        "T-129175",
         "B-0508"
       ],
       "children": [
@@ -35109,7 +35110,7 @@
         "docs/specs/f-0347.md:6 \u2014 the frontmatter `stories:` lists six ids and omits S-138158, while :643 says \"Seven Stories\", :664-670 cite seven and :797 declares `### S-138158` (asf.kernel.stories.declared_stories reads 7 Stories and 119 acceptance lines from the body). Add S-138158 to the frontmatter list."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "later",
       "schema_version": 1,
@@ -35117,7 +35118,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-10T21:32:08Z"
+      "updated": "2026-10-10T21:50:08Z"
     },
     "F-0348": {
       "backlinks": [
@@ -67912,6 +67913,7 @@
         "T-0734",
         "T-0815",
         "T-0816",
+        "T-129157",
         "T-131719",
         "T-131823",
         "T-136825",
@@ -67947,7 +67949,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -67962,7 +67964,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-10T21:24:32Z",
+      "updated": "2026-10-10T21:50:08Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -84014,6 +84016,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129157",
+      "kernel_answers": [
+        "granted asf/schema.py asf/tick/tick.py asf/tick/migrate.py tests/test_tick.py tests/test_minimal_product.py tests/test_tick_steps.py asf/build-t-129157-1791667309@20261010T212200Z; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_tick.py tests/test_minimal_product.py (Review): the overlap rule serialises them. T-136825 also writes asf/schema.py asf/tick/tick.py tests/test_tick.py tests/test_minimal_product.py tests/test_tick_steps.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/schema.py asf/tick/tick.py asf/tick/migrate.py tests/test_tick.py tests/test_minimal_product.py tests/test_tick_steps.py asf/build-t-129157-1791667309@20261010T212200Z; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_tick.py tests/test_minimal_product.py (Review): the overlap rule serialises them. T-136825 also writes asf/schema.py asf/tick/tick.py tests/test_tick.py tests/test_minimal_product.py tests/test_t\u2026"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
       "kernel_extra_rounds": 0,
@@ -84033,7 +84041,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -84046,10 +84054,17 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T21:23:05Z",
+      "updated": "2026-10-10T21:50:08Z",
       "writes": [
         "asf/feeder/rows.py",
-        "tests/test_held_feature.py"
+        "tests/test_held_feature.py",
+        "asf/schema.py",
+        "asf/tick/tick.py",
+        "asf/tick/migrate.py",
+        "tests/test_tick.py",
+        "tests/test_minimal_product.py",
+        "tests/test_tick_steps.py",
+        "asf/build-t-129157-1791667309@20261010T212200Z"
       ]
     },
     "T-129158": {
@@ -84275,8 +84290,10 @@
     },
     "T-129165": {
       "backlinks": [
+        "T-129157",
         "T-129167",
         "T-129168",
+        "T-129188",
         "T-131719",
         "T-131823",
         "T-136825"
@@ -84289,7 +84306,8 @@
         "granted asf/schema.py tests/test_minimal_product.py tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/schema.py tests/test_minimal_product.py tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted asf/schema.py tests/test_minimal_product.py tests/test_tick.py; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "red: tests (3.12)",
@@ -84305,7 +84323,7 @@
         "PR #1432: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1432: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -84318,7 +84336,7 @@
       ],
       "title": "the cap and the reader \u2014 an unfiled review is no launch, once per head",
       "type": "task",
-      "updated": "2026-10-10T21:32:08Z",
+      "updated": "2026-10-10T21:50:08Z",
       "writes": [
         "asf/workers/relaunch.py",
         "asf/workers/lifecycle.py",
@@ -84585,7 +84603,7 @@
       "kernel_attempts": [
         "launch: launch: worktree already exists: ~/.ASF/state/asf/worktrees/groom-fill-t-129174-1791662163 \u2014 no run recorded it"
       ],
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
       "kernel_notes": [
         "groom-fill-t-129174-1791655632: groom-fill raised risk high: no Task of plan F-0318 has landed anywhere (code or PR) so the parent cannot legitimately be Done; the card's test-naming, writes, and after fields already clear DoR, and the parent-Done read is a transient container-derivation artifact from the plan PR minting siblings minutes earlier that self-corrects on the next tick.",
@@ -84607,7 +84625,7 @@
       ],
       "title": "the place \u2014 the pass in the tick's record step, the writer order, and the gate clearing",
       "type": "task",
-      "updated": "2026-10-10T21:45:16Z",
+      "updated": "2026-10-10T21:50:08Z",
       "writes": [
         "asf/tick/tick.py",
         "asf/record/stage.py",
@@ -84988,6 +85006,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129188",
+      "kernel_answers": [
+        "granted tests/test_minimal_product.py; nothing else outside writes (card updated by the kernel). T-129165 also writes tests/test_minimal_product.py (Review): the overlap rule serialises them. T-136825 also writes tests/test_minimal_product.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/test_minimal_product.py; nothing else outside writes (card updated by the kernel). T-129165 also writes tests/test_minimal_product.py (Review): the overlap rule serialises them. T-136825 also writes tests/test_minimal_product.py (Building): the overlap rule serialises them."
+      ],
       "kernel_findings": [
         "red: tests (3.12)",
         "red: tests (3.13)"
@@ -85003,7 +85027,7 @@
         "PR #1437: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1437: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0324.md"
       },
@@ -85018,11 +85042,12 @@
       ],
       "title": "a branch of only empty proof commits lands its proof instead of being deleted as already on main",
       "type": "task",
-      "updated": "2026-10-10T21:36:35Z",
+      "updated": "2026-10-10T21:50:08Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
-        "tests/test_harvest.py"
+        "tests/test_harvest.py",
+        "tests/test_minimal_product.py"
       ]
     },
     "T-129189": {
@@ -86262,6 +86287,8 @@
     },
     "T-136825": {
       "backlinks": [
+        "T-129157",
+        "T-129188",
         "T-131719",
         "T-131823"
       ],
@@ -86341,7 +86368,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-142126",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -86357,7 +86384,7 @@
       ],
       "title": "the law \u2014 `asf/flow.py`, and the feeder's severity bar gets one name",
       "type": "task",
-      "updated": "2026-10-10T21:26:20Z",
+      "updated": "2026-10-10T21:50:08Z",
       "writes": [
         "asf/flow.py",
         "asf/feeder/rows.py",
@@ -87994,7 +88021,8 @@
         "Granted: tests/test_env.py added to writes. Its report (commit e318af65f on worker/T-81130) asks for exactly this twice: add regression.check, regression.command, regression.exempt_found_in and regression.fail_re to _PLANNED_FLAG_VALUES in tests/test_env.py so PinnedReader.test_product_file_with_every_planned_key_loads matches conventions.KNOWN_FLAGS. Nothing else outside writes. Then finish and open the PR; Task 6 (S-80459) stays out of scope as reported."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Granted: tests/test_env.py added to writes. Its report (commit e318af65f on worker/T-81130) asks for exactly this twice: add regression.check, regression.command, regression.exempt_found_in and regression.fail_re to _PLANNED_FLAG_VALUES in tests/test_env.py so PinnedReader.test_product_file_with_every_planned_key_loads matches conventions.KNOWN_FLAGS. Nothing else outside writes. Then finish and open the PR; Task 6 (S-80459) stays out of scope as reported."
+        "relaunch: operator answer: Granted: tests/test_env.py added to writes. Its report (commit e318af65f on worker/T-81130) asks for exactly this twice: add regression.check, regression.command, regression.exempt_found_in and regression.fail_re to _PLANNED_FLAG_VALUES in tests/test_env.py so PinnedReader.test_product_file_with_every_planned_key_loads matches conventions.KNOWN_FLAGS. Nothing else outside writes. Then finish and open the PR; Task 6 (S-80459) stays out of scope as reported.",
+        "launch: launch: branch checked out in an external worktree /private/tmp/claude-501/-Users-a worker account-Code-fmogensen-ASF/a634ee27-9ff3-433b-abf8-1058b56578ad/scratchpad/wt-reportend; waits until it's released"
       ],
       "kernel_dor_fills": 1,
       "kernel_notes": [
@@ -88029,7 +88057,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T21:45:16Z",
+      "updated": "2026-10-10T21:50:08Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -88707,7 +88735,7 @@
         "PR #1435: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1435: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -88720,7 +88748,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-10T21:45:16Z",
+      "updated": "2026-10-10T21:50:08Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
