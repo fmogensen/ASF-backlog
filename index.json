@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T17:25:52Z",
+  "generated": "2026-10-10T17:30:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33816,19 +33816,8 @@
       ],
       "folder": "features",
       "id": "F-0327",
-      "kernel_attempts": [
-        "relaunch: escalated: the previous session stopped (done without a push: pushed: yes 09ec269b02af964eb85976f665d07d781098c4e9 (this report commit is pushed on top of it)) \u2014 pick up from its report and branch, and finish the item",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "docs/plans/f-0327.md:17 \u2014 \"four of the five Tasks write `asf/feeder/rows.py`\" reads \"three\": Tasks 1, 2 and 3 write it, Task 4 writes `asf/feeder/render.py`/`asf/views/status.py` and Task 5 `asf/feeder/blockers.py`/`tests/test_feature_delivery.py`; same fix in PD10's question cell at :68 (\"Four Tasks write\" \u2192 \"Three Tasks write\"). The same sentence's other two counts are right \u2014 `tests/test_feeder.py` is four (Tasks 1-4) and `asf/feeder/blockers.py` three (Tasks 1, 3, 5) \u2014 and PD10's conclusion is untouched.",
-        "docs/plans/f-0327.md:436 \u2014 \"which this file already does four times (`:311`, `:362`, `:375`, `:399`)\" reads \"seven times\" with `:518`, `:541`, `:1173` added to the list (`grep -n 'from asf.feeder import rows as feeder_rows' asf/tick/step_wave.py` returns all seven); add the same three to PD4's list of the sites at :62.",
-        "docs/plans/f-0327.md:67 \u2014 PD9's \"**no `T-` id anywhere in this document**\" and the Out list's \"No `T-` id appears in this document\" (:829) read \"no `T-` id is minted or declared in this document\": `T-0010` (:63, :316), `T-0056`/`T-0119`/`T-0313`/`T-0226`/`T-0547`/`T-0517` (:176, :203-207), `T-0517` (:657) and `T-0522` (:763) all appear. Every one is inside a code span or a fence, which `asf.record.idcheck._prose` strips \u2014 over the stripped plan `ID_TOKEN` finds only `S-91755`-`S-91759`, `DECL` nothing and `cited_stories` nothing \u2014 so the operative claim holds and only the sentence needs the qualifier.",
-        "docs/plans/f-0327.md:61 \u2014 in PD3's last sentence replace \"Task 3's Gate runs F6\" with \"Task 3's Gate runs a two-line probe over `LANE_LAUNCH_KINDS`\", matching Step 12 and the Gate block as commit 022606468 already corrected it there.",
-        "escalated: the previous session stopped (done without a push: pushed: yes 09ec269b02af964eb85976f665d07d781098c4e9 (this report commit is pushed on top of it)) \u2014 pick up from its report and branch, and finish the item",
-        "escalated: the previous session stopped (done without a push: pushed: yes 09ec269b02af964eb85976f665d07d781098c4e9 (this report commit is pushed on top of it)) \u2014 pick up from its report and branch, and finish the item"
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "spec-f-0327-1791587530: NEEDS OPERATOR: the five Story cards could not be minted (the record directory is outside this session's reachable paths); they are declared in the spec's `## Stories` block with ids from this session's range for `a\u2026",
         "\"\\\"spec-f-0327-1791595557: NEEDS OPERATOR: confirm P4/P6's live totals on the reporting product",
@@ -33836,9 +33825,11 @@
         "dependents; rows = feeder_rows(env.load_pr\u2026\", \"PR #1305: install-clean-macos is red but not a required check \u2014 ignored\"",
         "PR #1305: install-clean-macos is red but not a required check \u2014 ignored",
         "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026",
-        "plan-f-0327-1791636840: NEEDS OPERATOR: re-raise, still unanswered from plan-f-0327-1791634631 \u2014 harvest read that session's predecessor's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunc\u2026"
+        "plan-f-0327-1791636840: NEEDS OPERATOR: re-raise, still unanswered from plan-f-0327-1791634631 \u2014 harvest read that session's predecessor's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunc\u2026",
+        "plan-f-0327-1791652834: NEEDS OPERATOR: product `asf`'s CLI pin cannot run its own pre-push hook, so no session on this product can push; plan/F-0327's fix round sits one commit off origin and the Stop gate deadlocks against the same refus\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "parent": "E-0001",
       "removed": "intake: describes old-floor park/relaunch-cap behavior (lifecycle.py, relaunch.py, harvest/lane.py) the kernel replaced; kernel.decide already weighs blocked_count for relaunch ordering and surfaces a top-blockers list in the tick summary (groom 2026-10-10)",
       "schema_version": 1,
@@ -33847,7 +33838,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T17:25:50Z"
+      "updated": "2026-10-10T17:30:19Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -34080,15 +34071,17 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "docs/specs/f-0334.md:854 \u2014 the lending direction is inverted: `claim` returns the whole share when the demand record is missing or stale (asf/capacity.py:479-491) and `fair_share` adds `idle += max(0, theirs - claim(other, theirs))` (:518), so a product with no fresh record lends NOTHING, as write_demand's own docstring says (:441). Rewrite as \"Without it a kernel product lends nothing: it holds its whole share and no partner can borrow its idle slots\", and fix the same inversion in the acceptance line at :1446 to \"a partner with no fresh demand record lends nothing, as the capacity module already rules\".",
+        "docs/specs/f-0334.md:621 \u2014 \"a product with `lead_p90_max` unset (0)\" contradicts the Config table at :1203, which defaults the key to `4h`, and `settings.read` (asf/kernel/settings.py:328) fills that default for any key a product leaves out. Say \"set to 0\" rather than \"unset\", and change the acceptance line at :1339 from \"the target unset turns the whole rule off\" to \"the target set to 0 turns the whole rule off\".",
         "docs/specs/f-0334.md:73 \u2014 \"Every other block below is unaffected and reads the same at either base, with the one line number #1383 moved given for both\" is false: #1383 moved the lines P2, P5, P6, P8 and P9 cite (ports.py 658->823, 1521->1686, 1554->1719, 1559->1724, 1706->1871, 831->996; decide.py 1581->1585, 1619->1623, 1634->1638; loop.py 93->94, 105->110), and \u00a72's own citations (ports.py:653-680, :678, :705-712, :95) are the trunk's numbers and do not exist at this checkout. Replace the clause with one stating that every P-block line number is this checkout's (c34fd09) and that ports.py/decide.py/loop.py numbers shift on the trunk by +165/+4/+5, and mark \u00a72's citations as the trunk's."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "spec-f-0334-1791642615: NEEDS OPERATOR: which classes of question the console is answering \u2014 `asf kernel questions --product <p> --classify --since 2026-09-26T00:00:00Z`",
         "spec-f-0334-1791645911: NEEDS OPERATOR: every session's push of product `asf` on this host is refused \u2014 the pinned CLI predates the `pre-push` subcommand its own current hook shim calls, and no local build has it. Confirm read-only with `p\u2026",
         "spec-f-0334-1791651250: NEEDS OPERATOR: product `asf` is pinned to `14b963ba1` (2026-10-08), whose CLI has no `pre-push` subcommand, while `asf-hook:171` calls it \u2014 the door refuses every session's push on this host. Repin to a sha that ca\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34097,7 +34090,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T17:11:19Z"
+      "updated": "2026-10-10T17:30:19Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34154,7 +34147,8 @@
       "folder": "features",
       "id": "F-0337",
       "kernel_attempts": [
-        "session ran past its max age"
+        "session ran past its max age",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "docs/specs/f-0337.md:540 \u2014 `sweep_line`'s example says `1132 old cards left`, the whole parked pile less 3, but `Plan.sweep['waiting']` is defined at :305 as \"how many candidates were left\" and the showcase at :552 prints `136` (139 candidates less 3) for the same record; change `1132` to `136`",
@@ -34163,9 +34157,10 @@
       "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0337-1791648163: NEEDS OPERATOR: the product's CLI pin is pre-0.2, so the pre-push hook's footprint door refuses every session's push on this host \u2014 re-pin it to the current trunk and verify: `asf upgrade --product asf --to $(git -C\u2026",
-        "spec-f-0337-1791651258: NEEDS OPERATOR: the installed hook shim calls `asf pre-push`, which product ASF's pinned CLI (`14b963ba1`, 2026-10-08) does not have \u2014 `aa56423fd` added it today \u2014 so every session push on this host is refused after\u2026"
+        "spec-f-0337-1791651258: NEEDS OPERATOR: the installed hook shim calls `asf pre-push`, which product ASF's pinned CLI (`14b963ba1`, 2026-10-08) does not have \u2014 `aa56423fd` added it today \u2014 so every session push on this host is refused after\u2026",
+        "spec-f-0337-1791652842: NEEDS OPERATOR: product `ASF` is pinned to `14b963ba1`, whose CLI has no `pre-push` subcommand that this host's newer hook shim invokes, so the pre-push hook refuses every session's push \u2014 confirm with `~"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0002",
       "priority": "nice",
       "rank": 20,
@@ -34174,7 +34169,7 @@
       "state": "New",
       "title": "Kernel grooming Stage 4: continuous sweep of old New/Parked items on idle seats",
       "type": "feature",
-      "updated": "2026-10-10T17:20:57Z"
+      "updated": "2026-10-10T17:30:19Z"
     },
     "F-0338": {
       "backlinks": [],
@@ -34262,7 +34257,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T17:25:50Z"
+      "updated": "2026-10-10T17:30:19Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34287,7 +34282,7 @@
         "spec-f-0341-1791646559: NEEDS OPERATOR: the pre-push shim calls `asf pre-push`, which the pinned install (sha `14b963ba1`, policy `pinned`) does not declare \u2014 the door landed later, in `aa56423fd`. Decide whether to lift the pin to a sha a\u2026",
         "plan-f-0341-1791650731: NEEDS OPERATOR: whether the record holds a claim naming F-0341 that covers S-124005 and S-124006, and whether either is already a minted Story card \u2014 a cloud worker has no record to read and this origin carries no r\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "nice",
       "schema_version": 1,
@@ -34295,7 +34290,7 @@
       "state": "New",
       "title": "Proof claims on quarantined tests are refused",
       "type": "feature",
-      "updated": "2026-10-10T17:25:50Z"
+      "updated": "2026-10-10T17:30:19Z"
     },
     "F-0342": {
       "backlinks": [],
@@ -45884,7 +45879,6 @@
     },
     "T-0010": {
       "backlinks": [
-        "F-0327",
         "B-0067",
         "B-0074",
         "B-0137"
@@ -47622,7 +47616,6 @@
         "F-0170",
         "F-0241",
         "F-0244",
-        "F-0327",
         "T-0057",
         "T-0058",
         "T-0059",
@@ -50477,7 +50470,6 @@
       ],
       "backlinks": [
         "F-0241",
-        "F-0327",
         "T-0118",
         "T-0120",
         "T-0121",
@@ -55214,7 +55206,6 @@
         "T-0203"
       ],
       "backlinks": [
-        "F-0327",
         "T-0227",
         "T-0229",
         "T-0230",
@@ -59163,7 +59154,6 @@
       ],
       "backlinks": [
         "F-0042",
-        "F-0327",
         "T-0312",
         "T-0314",
         "T-0316",
@@ -64651,7 +64641,7 @@
         "PR #1378: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -64668,7 +64658,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T17:15:07Z",
+      "updated": "2026-10-10T17:30:19Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
