@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T17:01:49Z",
+  "generated": "2026-10-10T17:03:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33838,7 +33838,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T16:57:58Z"
+      "updated": "2026-10-10T17:03:14Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33864,7 +33864,13 @@
         "relaunch: operator answer: Decided: keep S-91805..S-91808 (D11 stands). Checked 2026-10-10 in the record repo: idclaim.claims covers all four through refs/asf/ids/S-91805 (S:91805-91854, claimant spec-f-0328-1791587536), and the ref is on the record's origin. No re-mint; the spec is done \u2014 proceed to review and landing.",
         "review: no VERDICT line"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_findings": [
+        "docs/plans/f-0328.md:212-636 \u2014 implement Tasks 1-3 as written (asf/merge_queue.py: _skip_only beside _skipped, run_cut_short beside skipped_behind, the four _judge edits, _contention_held; asf/ci_queue.py: CONTENTION_REFUSED and the two claim_cancel call-site edits; tests/test_mq_batch_survival.py: CutShortReads plus the Task 2/3 classes) on a base that does not carry the two commits below",
+        "asf/merge_queue.py (diff lines 568-591, commit 400b782) \u2014 drop this commit; the spec's Out table (docs/specs/f-0328.md, row \"Adopting the closed hotfix's reading...\") refuses this reading, and P12 (docs/specs/f-0328.md:213-250) measures that it does not cover the card's shape \u2014 a run that has completed cancelled leaves live_ids empty and the red falls through unchanged",
+        "asf/workers/remote.py, tests/test_remote.py (commit b1a00fc) \u2014 drop this commit; the spec names it as no part of this defect (docs/specs/f-0328.md:217-218) and it is outside every Task's writes:",
+        "tests/test_merge_queue.py:261-280 \u2014 remove test_required_jobs_skipped_while_their_run_is_in_flight_are_pending_not_red; it pins the rejected hotfix's behaviour rather than the spec's approved design"
+      ],
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "plan-f-0328-1791624270: NEEDS OPERATOR: whether this plan should land from a branch that also carries the closed hotfix the spec refuses \u2014 `fix/F-0328-pending-not-red` adds `c6cb1a21f` (the `verdict()` change) and `6a81462dc` (an unrelated\u2026",
         "plan-f-0328-1791629407: NEEDS OPERATOR: whether fix/F-0328-pending-not-red may land carrying the closed hotfix (c6cb1a21f, the verdict() change the spec's Out table refuses, plus 6a81462dc, an unrelated defect) alongside this plan \u2014 a plan\u2026",
@@ -33878,7 +33884,7 @@
         "plan-f-0328-1791647208: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 carried forward from the pr\u2026",
         "plan-f-0328-1791649455: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 carried forward unanswered\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -33887,7 +33893,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T16:50:50Z"
+      "updated": "2026-10-10T17:03:14Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -34213,7 +34219,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T16:57:58Z"
+      "updated": "2026-10-10T17:03:14Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -64252,6 +64258,7 @@
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/tick/tick.py:524-531 (via tests/test_tick_steps.py:66-74 `StepsTestCase.setUp`) \u2014 the fork's `upgrade.release_report(ctx)` call runs for real, unmocked, against the live GitHub repo for every test built on `StepsTestCase` (its fixture `repo_dir` has no `pyproject.toml`, so `drift.is_factory_source` is false); add a class-wide `mock.patch.object(upgrade, 'release_report', return_value='none')` in `StepsTestCase.setUp`, the same pattern `TickTestCase.setUp` already uses for `tick.run_step0` \u2014 confirmed reproducing 2 failures on this exact head (`OrderedTickTests.test_a_failing_step_never_stops_the_rest_and_exits_1`, `test_command_steps_alone_do_not_clone_the_record_to_log`).",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
@@ -64259,7 +64266,7 @@
         "operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel).",
         "operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1346: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1346: part (3.13, 3) is red but not a required check \u2014 ignored",
@@ -64274,7 +64281,7 @@
         "PR #1378: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -64291,7 +64298,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T16:54:39Z",
+      "updated": "2026-10-10T17:03:14Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -78151,10 +78158,11 @@
       "folder": "tasks",
       "id": "T-0763",
       "kernel_findings": [
-        "rebase: PR #1084 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0165.md"
       },
@@ -78167,7 +78175,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-10T16:38:23Z",
+      "updated": "2026-10-10T17:03:14Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
@@ -82623,13 +82631,14 @@
       "folder": "tasks",
       "id": "T-81130",
       "kernel_attempts": [
-        "session ran past its max age"
+        "session ran past its max age",
+        "ended without a REPORT"
       ],
       "kernel_dor_fills": 1,
       "kernel_notes": [
         "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py)."
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -82650,7 +82659,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T16:07:48Z",
+      "updated": "2026-10-10T17:03:14Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -83072,11 +83081,13 @@
       "folder": "tasks",
       "id": "T-82990",
       "kernel_answers": [
-        "granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0433 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them."
+        "granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0433 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them.",
+        "granted tests/test_scorecard.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
         "session ran past its max age",
-        "relaunch: operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0433 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them."
+        "relaunch: operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0433 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them.",
+        "relaunch: operator answer: granted tests/test_scorecard.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
@@ -83091,7 +83102,7 @@
         "PR #1398: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1398: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -83104,13 +83115,14 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T16:50:50Z",
+      "updated": "2026-10-10T17:03:14Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
         "asf/cli.py",
         "tests/test_channels.py",
-        "tests/test_tick_steps.py"
+        "tests/test_tick_steps.py",
+        "tests/test_scorecard.py"
       ]
     },
     "T-82991": {
