@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T18:37:33Z",
+  "generated": "2026-10-10T18:41:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -46322,6 +46322,7 @@
     "S-91008": {
       "backlinks": [
         "F-0318",
+        "S-91009",
         "T-129174"
       ],
       "children": [],
@@ -46349,6 +46350,7 @@
       "id": "S-91009",
       "parent": "F-0318",
       "priority": "need",
+      "removed": "intake: S-91009 is the other acceptance-half of F-0318's Task 2, obsoleted the same way its sibling S-91008 was already decided (close) \u2014 the 0.2 kernel's own asf.kernel.decide/asf.kernel.stories already mints a landed spec's declared Stories every tick independently, so patching the old floor's tick/record-step gate is moot. (groom 2026-10-10)",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:36:45Z",
       "state": "New",
@@ -46379,9 +46381,11 @@
         "T-129177"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91055",
       "parent": "F-0320",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:36:59Z",
       "state": "New",
@@ -46395,9 +46399,11 @@
         "T-129179"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91155",
       "parent": "F-0321",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:02Z",
       "state": "New",
@@ -83517,7 +83523,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129173",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
       "kernel_notes": [
         "groom-fill-t-129173-1791655626: groom-fill raised risk high: card already carries Task 1's acceptance/writes verbatim (F-0343 backfill); the parent-Done DoR gap is stale \u2014 F-0343's own fix (dce5aac92) makes a Feature's state derive from its Task children once any exist, and F-0318 already has Task children (T-129173, T-129174) that are New, so F-0318 reads New under current logic and the next tick's judge pass clears this on its own."
@@ -83537,7 +83543,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-10T18:33:26Z",
+      "updated": "2026-10-10T18:41:02Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -83556,7 +83562,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129174",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
       "kernel_notes": [
         "groom-fill-t-129174-1791655632: groom-fill raised risk high: no Task of plan F-0318 has landed anywhere (code or PR) so the parent cannot legitimately be Done; the card's test-naming, writes, and after fields already clear DoR, and the parent-Done read is a transient container-derivation artifact from the plan PR minting siblings minutes earlier that self-corrects on the next tick.",
@@ -83575,7 +83581,7 @@
       ],
       "title": "the place \u2014 the pass in the tick's record step, the writer order, and the gate clearing",
       "type": "task",
-      "updated": "2026-10-10T18:37:32Z",
+      "updated": "2026-10-10T18:41:02Z",
       "writes": [
         "asf/tick/tick.py",
         "asf/record/stage.py",
@@ -83590,6 +83596,9 @@
       "id": "T-129175",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
+      "kernel_notes": [
+        "groom-fill-t-129175-1791657428: groom-fill verdict rejected: no GROOM-FILL block"
+      ],
       "links": {
         "plan": "docs/plans/f-0318.md"
       },
@@ -83602,7 +83611,7 @@
       ],
       "title": "the briefs \u2014 ask for the form the record mints, and name the spec's own landing",
       "type": "task",
-      "updated": "2026-10-10T18:37:32Z",
+      "updated": "2026-10-10T18:41:02Z",
       "writes": [
         "asf/briefs/templates/spec.md",
         "asf/briefs/build.py",
