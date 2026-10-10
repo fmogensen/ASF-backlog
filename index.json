@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:32:32Z",
+  "generated": "2026-10-10T15:36:12Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16704,7 +16704,7 @@
       "kernel_notes": [
         "groom-fill-b-121288-1791643848: groom-fill raised risk high: reproduced via parse_assignments/apply_list \u2014 a quoted \"a, b, c\" survives _as_list as one scalar, then widen.norm_writes's whitespace split (meant for packed plan entries) turns it into ['a,', 'b,', 'c']; real, fixable in asf/record/setfield.py."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -16713,7 +16713,7 @@
       "state": "New",
       "title": "asf set: comma-separated list values keep their commas (writes: [\"a,\", ...])",
       "type": "bug",
-      "updated": "2026-10-10T15:26:03Z",
+      "updated": "2026-10-10T15:36:10Z",
       "writes": [
         "asf/record/setfield.py",
         "tests/test_record_stage.py"
@@ -20889,6 +20889,7 @@
         "F-0240",
         "F-0242",
         "F-0243",
+        "F-0333",
         "F-0337",
         "F-0339",
         "F-0340",
@@ -20999,7 +21000,6 @@
         "F-0317",
         "F-0319",
         "F-0322",
-        "F-0333",
         "F-0335",
         "B-0146"
       ],
@@ -33697,7 +33697,7 @@
         "S-91406",
         "S-91407"
       ],
-      "decided": false,
+      "decided": true,
       "evidence": [
         "no evidence found (2026-10-09)",
         "rule: card"
@@ -33712,6 +33712,7 @@
       ],
       "kernel_state": "review",
       "parent": "E-0001",
+      "priority": "need",
       "schema_version": 1,
       "stage": "card",
       "stage_since": "2026-10-08T20:41:23Z",
@@ -33788,7 +33789,7 @@
         "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026",
         "plan-f-0327-1791636840: NEEDS OPERATOR: re-raise, still unanswered from plan-f-0327-1791634631 \u2014 harvest read that session's predecessor's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunc\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33796,7 +33797,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T15:32:31Z"
+      "updated": "2026-10-10T15:36:10Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33973,7 +33974,7 @@
     "F-0333": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0333",
       "kernel_attempts": [
@@ -33983,13 +33984,14 @@
         "spec-f-0333-1791642645: NEEDS OPERATOR: the App itself cannot be created or proved from here \u2014 no App exists for this product and `openssl genpkey` is not runnable in this session, so the live mint is covered only by fakes in the acceptanc\u2026"
       ],
       "kernel_state": "review",
-      "parent": "E-0004",
+      "parent": "E-0002",
+      "priority": "nice",
       "schema_version": 1,
       "stage_since": "2026-10-10T14:28:20Z",
       "state": "New",
       "title": "Factory GitHub identity: GitHub App installation token instead of the operator's personal token",
       "type": "feature",
-      "updated": "2026-10-10T15:32:31Z"
+      "updated": "2026-10-10T15:36:10Z"
     },
     "F-0334": {
       "backlinks": [
@@ -34121,6 +34123,7 @@
       "decided": true,
       "folder": "features",
       "id": "F-0341",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "nice",
       "schema_version": 1,
@@ -34128,7 +34131,7 @@
       "state": "New",
       "title": "Proof claims on quarantined tests are refused",
       "type": "feature",
-      "updated": "2026-10-10T15:31:41Z"
+      "updated": "2026-10-10T15:36:10Z"
     },
     "R-0001": {
       "backlinks": [
@@ -64139,7 +64142,7 @@
         "PR #1378: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -64156,7 +64159,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T15:06:12Z",
+      "updated": "2026-10-10T15:36:10Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -81685,7 +81688,7 @@
         "PR #1379: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1379: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81698,7 +81701,7 @@
       ],
       "title": "git's own refusal of a rewritten push is a kind of its own, and the dead run reads its log for it",
       "type": "task",
-      "updated": "2026-10-10T15:26:03Z",
+      "updated": "2026-10-10T15:36:10Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/workers/refusals.py",
