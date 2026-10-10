@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T10:00:52Z",
+  "generated": "2026-10-10T10:04:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3045,7 +3045,7 @@
         "docs/plans/b-0097.md:1 \u2014 write the missing plan documenting the Task this branch delivers (the in-tick backoff retry `_push_retrying` in `asf/workers/lifecycle.py` and its tests at `tests/test_lifecycle.py:1896-1955`); every item on this product, including an S3 bug fix, carries a `docs/plans/<id>.md`."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -3054,7 +3054,7 @@
       "state": "New",
       "title": "A network blip on push scores finished work as 'failed: not pushed' and costs a correction round",
       "type": "bug",
-      "updated": "2026-10-10T09:44:37Z"
+      "updated": "2026-10-10T10:04:21Z"
     },
     "B-0098": {
       "backlinks": [],
@@ -32095,7 +32095,7 @@
       "kernel_attempts": [
         "relaunch: escalated: the previous session stopped (done without a push: pushed: yes bbc489a) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "spec-approved",
@@ -32103,7 +32103,7 @@
       "state": "Active",
       "title": "A review that ends 'needs input' because the heartbeat cannot start parks the PR for good",
       "type": "feature",
-      "updated": "2026-10-10T09:17:04Z"
+      "updated": "2026-10-10T10:04:21Z"
     },
     "F-0280": {
       "backlinks": [
@@ -53089,14 +53089,15 @@
         "Decision: keep the drift handling as built in 5628e3c. Leave asf/harvest/lane.py untouched (it already appends its own ## Proves via lane.commits_note); title_and_body's repo/trunk params default to None. No wider writes. Proceed to review."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Decision: keep the drift handling as built in 5628e3c. Leave asf/harvest/lane.py untouched (it already appends its own ## Proves via lane.commits_note); title_and_body's repo/trunk params default to None. No wider writes. Proceed to review."
+        "relaunch: operator answer: Decision: keep the drift handling as built in 5628e3c. Leave asf/harvest/lane.py untouched (it already appends its own ## Proves via lane.commits_note); title_and_body's repo/trunk params default to None. No wider writes. Proceed to review.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "asf/harvest/lane.py:4459-4465 \u2014 PrOps.open() is the only production caller of title_and_body and never passes repo=/trunk=, so the new ## Proves block Task 4 built is unreachable in a real pull request (only commits_note's older, differently-shaped F-0257 block appears there). Either wire repo=self.product.repo_dir, trunk=self.trunk into that call (and reconcile with commits_note so the body doesn't grow two ## Proves headings), or get an adjudicate ruling restating Task 4's call site and writes: against the current tree, the way Task 3 already has.",
         "operator answer: Decision: keep the drift handling as built in 5628e3c. Leave asf/harvest/lane.py untouched (it already appends its own ## Proves via lane.commits_note); title_and_body's repo/trunk params default to None. No wider writes. Proceed to review."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53109,7 +53110,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T09:49:09Z",
+      "updated": "2026-10-10T10:04:21Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -53361,7 +53362,11 @@
       ],
       "folder": "tasks",
       "id": "T-0203",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/09de040b-4c42-481c-bf87-c4c74c44f63f' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0103-35ace77a953d.md"
       },
@@ -53372,7 +53377,7 @@
       "stories": [],
       "title": "the wave writes down what held it, and the tick line carries it",
       "type": "task",
-      "updated": "2026-10-10T09:30:19Z",
+      "updated": "2026-10-10T10:04:21Z",
       "writes": [
         "asf/tick/step_wave.py",
         "asf/tick/tick.py",
@@ -78060,17 +78065,17 @@
       "folder": "tasks",
       "id": "T-0775",
       "kernel_findings": [
-        "asf/feeder/rows.py:2582-2588 \u2014 restore `occ['busy']` as the last (winning) source in the `held_by` merge (inflight first, then waiting_landing, then busy), matching plan Step 4/RC1, and add a test with the same id in both `inflight` and `occ['busy']` asserting the ledger's sentence wins.",
-        "docs/reviews/1-t-0775.md \u2014 drop this file from the branch (it was committed by a prior review round in violation of \"the review never touches the branch\"); it sits outside this card's `writes:`."
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1130: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1130: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1130: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1130: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0205-49a14d4ad507.md"
       },
@@ -78084,7 +78089,7 @@
       ],
       "title": "every branch that gives an S1/S2 Bug no session is a WAITS row, and the row names the fact that holds it",
       "type": "task",
-      "updated": "2026-10-10T09:36:58Z",
+      "updated": "2026-10-10T10:04:21Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -81806,7 +81811,8 @@
         "One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
+        "relaunch: operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
@@ -81814,6 +81820,10 @@
         "operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
       ],
       "kernel_fix_rounds": 3,
+      "kernel_notes": [
+        "PR #1227: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1227: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0312.md"
@@ -81827,7 +81837,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T10:00:48Z",
+      "updated": "2026-10-10T10:04:21Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -82122,7 +82132,7 @@
         "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "new",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82135,7 +82145,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T09:58:25Z",
+      "updated": "2026-10-10T10:04:21Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82824,7 +82834,7 @@
       ],
       "folder": "tasks",
       "id": "T-84805",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0315.md"
       },
@@ -82840,7 +82850,7 @@
       ],
       "title": "the pass \u2014 the rule, the line that says why, the skip, and the `undeliver` line read back",
       "type": "task",
-      "updated": "2026-10-10T10:00:48Z",
+      "updated": "2026-10-10T10:04:21Z",
       "writes": [
         "asf/record/slice.py",
         "asf/record/undeliver.py",
