@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:58:54Z",
+  "generated": "2026-10-10T16:02:52Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16759,7 +16759,7 @@
       "state": "New",
       "title": "tests.test_workers TestSpawn: five failures on git 2.43.0 in cloud containers",
       "type": "bug",
-      "updated": "2026-10-10T15:55:57Z",
+      "updated": "2026-10-10T16:02:51Z",
       "writes": [
         "asf/workers/spawn.py"
       ]
@@ -20966,7 +20966,8 @@
     },
     "E-0004": {
       "backlinks": [
-        "F-0094"
+        "F-0094",
+        "F-0333"
       ],
       "children": [
         "F-0115",
@@ -33803,7 +33804,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T15:58:53Z"
+      "updated": "2026-10-10T16:02:51Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33907,7 +33908,7 @@
         "plan-f-0330-1791640370: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by four PLAN sessions in a row",
         "plan-f-0330-1791643018: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by five PLAN sessions in a row"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -33916,7 +33917,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T15:51:33Z"
+      "updated": "2026-10-10T16:02:51Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -33990,9 +33991,10 @@
         "review: no VERDICT line"
       ],
       "kernel_notes": [
-        "spec-f-0333-1791642645: NEEDS OPERATOR: the App itself cannot be created or proved from here \u2014 no App exists for this product and `openssl genpkey` is not runnable in this session, so the live mint is covered only by fakes in the acceptanc\u2026"
+        "spec-f-0333-1791642645: NEEDS OPERATOR: the App itself cannot be created or proved from here \u2014 no App exists for this product and `openssl genpkey` is not runnable in this session, so the live mint is covered only by fakes in the acceptanc\u2026",
+        "spec-f-0333-1791647447: NEEDS OPERATOR: the spec's frontmatter says `epic: E-0004`; this session's brief says `Epic: E-0002 \u2014 ASF 0.2 \u2014 self-improvement`. I did not change it: every one of the 60+ specs in `docs/specs` declares `E-0004`, i\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "nice",
       "schema_version": 1,
@@ -34000,7 +34002,7 @@
       "state": "New",
       "title": "Factory GitHub identity: GitHub App installation token instead of the operator's personal token",
       "type": "feature",
-      "updated": "2026-10-10T15:51:33Z"
+      "updated": "2026-10-10T16:02:51Z"
     },
     "F-0334": {
       "backlinks": [
@@ -34068,6 +34070,7 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
+      "kernel_fix_rounds": 0,
       "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
@@ -34077,7 +34080,7 @@
       "state": "New",
       "title": "Kernel grooming Stage 4: continuous sweep of old New/Parked items on idle seats",
       "type": "feature",
-      "updated": "2026-10-10T15:58:53Z"
+      "updated": "2026-10-10T16:02:51Z"
     },
     "F-0338": {
       "backlinks": [],
@@ -34085,7 +34088,8 @@
       "decided": true,
       "folder": "features",
       "id": "F-0338",
-      "kernel_state": "landing",
+      "kernel_fix_rounds": 0,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 3,
@@ -34094,7 +34098,7 @@
       "state": "New",
       "title": "Kernel mainline: cancelled trunk runs are no verdict; dispatch one trunk run when too many commits lack a result",
       "type": "feature",
-      "updated": "2026-10-10T15:58:53Z"
+      "updated": "2026-10-10T16:02:51Z"
     },
     "F-0339": {
       "backlinks": [
@@ -34110,7 +34114,8 @@
       "kernel_attempts": [
         "relaunch: operator answer: Do not wait on the host pin. Run the gate directly as the product config's pre_push_check: bash tools/check_generic.sh && bash tools/check_conventions.sh && bash tools/check_clients.sh --against origin/main && python3 -m unittest -q tests.test_hermetic. The pin move (0.1.265 -> main) is held: asf upgrade --product would reinstall the paused 0.1 floor clocks next to the 0.2 kernel; that is filed as its own Bug. Proceed."
       ],
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 0,
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
       "rank": 7,
@@ -34119,7 +34124,7 @@
       "state": "New",
       "title": "Kernel: resolve the next two most frequent session questions in code",
       "type": "feature",
-      "updated": "2026-10-10T15:58:53Z"
+      "updated": "2026-10-10T16:02:51Z"
     },
     "F-0340": {
       "backlinks": [],
@@ -34147,7 +34152,10 @@
       "decided": true,
       "folder": "features",
       "id": "F-0341",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0341-1791646559: NEEDS OPERATOR: the pre-push shim calls `asf pre-push`, which the pinned install (sha `14b963ba1`, policy `pinned`) does not declare \u2014 the door landed later, in `aa56423fd`. Decide whether to lift the pin to a sha a\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "nice",
       "schema_version": 1,
@@ -34155,7 +34163,7 @@
       "state": "New",
       "title": "Proof claims on quarantined tests are refused",
       "type": "feature",
-      "updated": "2026-10-10T15:36:10Z"
+      "updated": "2026-10-10T16:02:51Z"
     },
     "F-0342": {
       "backlinks": [],
@@ -82159,7 +82167,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T15:55:57Z",
+      "updated": "2026-10-10T16:02:51Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -82531,6 +82539,9 @@
       ],
       "folder": "tasks",
       "id": "T-81130",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_dor_fills": 1,
       "kernel_notes": [
         "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py)."
@@ -82556,7 +82567,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T15:26:03Z",
+      "updated": "2026-10-10T16:02:51Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
