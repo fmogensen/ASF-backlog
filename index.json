@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T12:55:38Z",
+  "generated": "2026-10-10T13:00:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33483,7 +33483,7 @@
       "kernel_notes": [
         "plan-f-0319-1791634316: NEEDS OPERATOR: cannot verify from a cloud session that the three Story ids this plan cites on its `stories:` line are covered by a claim whose claimant names F-0319 \u2014 `idclaim.claims` reads `refs/asf/ids/*` in the\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33491,7 +33491,7 @@
       "state": "New",
       "title": "capacity.ci caps the feeder's ci_free even when runners are readable, halving Features in build while runners sit idle",
       "type": "feature",
-      "updated": "2026-10-10T12:55:04Z"
+      "updated": "2026-10-10T13:00:23Z"
     },
     "F-0320": {
       "backlinks": [],
@@ -33743,7 +33743,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T12:55:04Z"
+      "updated": "2026-10-10T13:00:23Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -52003,7 +52003,7 @@
       ],
       "folder": "tasks",
       "id": "T-0172",
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0102.md"
       },
@@ -52016,7 +52016,7 @@
       "state": "Active",
       "title": "the selection rule, the budget and the three ceilings",
       "type": "task",
-      "updated": "2026-10-10T10:43:25Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/groom/delivery.py",
         "asf/conventions.py",
@@ -63767,21 +63767,15 @@
       "kernel_answers": [
         "granted asf/doctor.py tests/test_doctor.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "session ran past its max age",
-        "escalated: one more fix round on the strong model, with every finding",
-        "relaunch: operator answer: granted asf/doctor.py tests/test_doctor.py; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "asf/upgrade.py:1044-1048 \u2014 check `shadow.push(root)`'s return value and print `upgrade: pushing the filed Bug failed \u2014 the next RED tick bumps it` to stderr when it returns False (the documented normal refusal path, not just on an exception), matching asf/tick/tick.py:304-307's existing convention for the same call."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1346: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1346: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1346: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1346: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1346: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
+      "kernel_rebuilds": 1,
       "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0112.md"
@@ -63799,7 +63793,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T12:55:04Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -72799,7 +72793,7 @@
         "tests/test_quota_provider.py:122 \u2014 make `SampleRecordTests` a direct `unittest.TestCase` with its own `setUp`/`tearDown` using `tempfile.TemporaryDirectory()` for `env.ASF_HOME`, instead of subclassing `tests.test_quota_headroom.HomeCase` (the plan's Files section calls for a direct `unittest.TestCase` per class, and Step 8 says \"None subclasses another module's harness\")."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/replans/f-0138-26a33fc30108.md"
       },
@@ -72816,7 +72810,7 @@
       "state": "Active",
       "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
       "type": "task",
-      "updated": "2026-10-10T12:43:51Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/workers/headroom.py",
         "asf/workers/pool.py",
@@ -76835,7 +76829,7 @@
       "kernel_notes": [
         "PR #848: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0130-47df67914dbf.md"
       },
@@ -76853,7 +76847,7 @@
       "stories": [],
       "title": "the product declares its pre-ASF branch convention, and a misshapen declaration is loud",
       "type": "task",
-      "updated": "2026-10-10T12:55:04Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/conventions.py",
         "tests/test_conventions.py",
@@ -81237,8 +81231,14 @@
         "groom-fill-t-78813-1791632262: groom-fill verdict rejected: risk_raise '' is not one of none | high",
         "groom-fill-t-78813-1791633327: groom-fill verdict rejected: acceptance line names no test: '...'",
         "groom-fill-t-78813-1791634897: groom-fill raised risk high: Acceptance/writes are already fully specified and verified sound against current trunk (line-number drift only, from unrelated landed work); the flagged after-deps are not real blockers \u2014 T-76352 already landed (12f28448f/#1184) and T-0775, though still unlanded, edits only bug_rows/candidates/session_of with zero overlap with this Task's Row/footprint_row/correction_rows edits.",
-        "groom-fill-t-78813-1791635680: groom-fill raised risk high: Content matches the approved spec/plan exactly (zero drift at base); the parked after: items are legitimate footprint sequencing (T-76352 shares step_wave.py, still mid-review) that clears on its own, not a card defect."
+        "groom-fill-t-78813-1791635680: groom-fill raised risk high: Content matches the approved spec/plan exactly (zero drift at base); the parked after: items are legitimate footprint sequencing (T-76352 shares step_wave.py, still mid-review) that clears on its own, not a card defect.",
+        "groom-fill-t-78813-1791636552: groom-fill raised risk high: Acceptance/writes already match the approved spec verbatim; T-76352 is landed (12f28448f, ancestor of HEAD) and T-0775's open work touches rows.py with zero line-level overlap on this Task's edits \u2014 the after: dependency is a real but harmless footprint-gate wait, not a card defect."
       ],
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "dor: after: parked: T-0775, T-76352 \u2014 2 groom-fill session(s) could not make it ready",
+      "kernel_stuck_since": "2026-10-10T12:58:50Z",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81251,7 +81251,7 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-10T12:49:23Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
@@ -81417,7 +81417,7 @@
         "PR #1342: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81434,7 +81434,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-10T12:38:59Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
@@ -81759,7 +81759,8 @@
       "kernel_notes": [
         "groom-fill-t-80574-1791632031: groom-fill verdict rejected: risk_raise '' is not one of none | high",
         "groom-fill-t-80574-1791632989: groom-fill verdict rejected: risk_raise '' is not one of none | high",
-        "groom-fill-t-80574-1791635460: groom-fill raised risk high: upstream Tasks (T-80572 Active, T-80573 New) haven't landed asf/rehearsal.py yet, which is why the writes read absent \u2014 correct sequencing per PD14, not a scope defect; filled acceptance from S-79606 and marked the genuinely-new test file."
+        "groom-fill-t-80574-1791635460: groom-fill raised risk high: upstream Tasks (T-80572 Active, T-80573 New) haven't landed asf/rehearsal.py yet, which is why the writes read absent \u2014 correct sequencing per PD14, not a scope defect; filled acceptance from S-79606 and marked the genuinely-new test file.",
+        "groom-fill-t-80574-1791636223: groom-fill raised risk high: still sequencing-blocked, not a scope defect \u2014 T-80572 (the builder, PR #1367) is open/unmerged and T-80573 (the runner and `ids` act this Task's `record` act appends after) has no implementation yet, so asf/rehearsal.py's ACTS table and tests/rehearsal/record/** remain absent from trunk; PD14 applies exactly as in the prior same-day groom-fill, and the staged_guard.py line refs this card cites still match trunk."
       ],
       "links": {
         "plan": "docs/plans/f-0306.md"
@@ -81773,10 +81774,11 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-10T12:43:51Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/rehearsal.py",
-        "tests/test_rehearsal_record.py"
+        "tests/test_rehearsal_record.py",
+        "tests/rehearsal/record/**"
       ]
     },
     "T-80575": {
@@ -81985,24 +81987,15 @@
         "Correction: asf/conventions.py cannot be added yet; T-79565 and T-83345 hold it. T-81129 now waits on both (after:) and gets the file once they land; docs/guide/product-config.md is added to writes now.",
         "One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push.",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_extra_rounds": 1,
-      "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/d94fa59f-dee1-4e98-a546-0937490c082a' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
-        "operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
-      ],
-      "kernel_fix_rounds": 4,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1227: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1227: part (3.13, 3) is red but not a required check \u2014 ignored",
         "build-t-81129-1791634419: NEEDS OPERATOR: plan Task 5 of docs/plans/f-0312.md registers `regression.exempt_found_in` but its `writes:` cannot reach the reader in `asf/harvest/regression.py`, so the flag would land registered and unread \u2014 add\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -82015,7 +82008,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T12:38:59Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -82197,8 +82190,8 @@
       "kernel_answers": [
         "Hold behind Task 5: T-81133 owns asf/conventions.py and the regression registry; this card already has after: [T-81133]. No extra writes granted. Trunk-red claim checked on the factory host at origin/main: tests.test_snapshot.LauncherRefreshTests.test_it_never_refuses_the_tick -> OK (root-only failure in the cloud sandbox, not a trunk red). Wait for T-81133 to land, then continue."
       ],
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_notes": [
@@ -82221,7 +82214,7 @@
       ],
       "title": "the fix-bug brief carries the pre-fix base and the command the lane will run",
       "type": "task",
-      "updated": "2026-10-10T11:57:59Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/build.py",
@@ -82315,10 +82308,10 @@
       "folder": "tasks",
       "id": "T-82986",
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        "rebase: PR #1245 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82331,7 +82324,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T12:55:04Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82443,7 +82436,7 @@
       "kernel_notes": [
         "groom-fill-t-82989-1791633895: groom-fill raised risk high: T-82987's landed commit already bundled Task 1's resolver into asf/channels.py, so every function and string this Task cites (release.Criterion, ci_verdict's \"<name> has no run\"/green detail, open_defects, Bug severity) is confirmed live on trunk; the DoR gap is only that tests/fixtures/channels/** is a genuinely new path the card's writes: didn't mark (new)."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82456,7 +82449,7 @@
       ],
       "title": "the stable gate \u2014 four rows, each met or unmet with its evidence",
       "type": "task",
-      "updated": "2026-10-10T12:49:23Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py",
@@ -82477,6 +82470,8 @@
       ],
       "folder": "tasks",
       "id": "T-82990",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82489,7 +82484,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
@@ -82559,18 +82554,18 @@
       ],
       "folder": "tasks",
       "id": "T-83142",
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
+      "kernel_answers": [
+        "T-0775 is retired (its work landed on main in c0e48b6's predecessor c0f84c778), so it no longer gates this Task; after: now holds only T-78813."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: T-0775 is retired (its work landed on main in c0e48b6's predecessor c0f84c778), so it no longer gates this Task; after: now holds only T-78813."
+      ],
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap.",
         "groom-fill-t-83142-1791633870: groom-fill raised risk high: card is byte-for-byte Task 1 of the landed plan/spec (F-0280 \u00a71), already fully specced with test-named acceptance; the after:T-0775/T-78813 block is the kernel's write-overlap serialization on asf/feeder/rows.py, not a card defect"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "dor: after: parked: T-0775 \u2014 2 groom-fill session(s) could not make it ready",
-      "kernel_stuck_since": "2026-10-10T12:47:28Z",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -82583,7 +82578,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T12:49:23Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
@@ -82789,7 +82784,7 @@
       "kernel_notes": [
         "groom-fill-t-83347-1791633881: groom-fill raised risk high: Acceptance was the only DoR gap; the plan doc (docs/plans/f-0300.md Task 3) already specifies the screen/waivers behavior byte-for-byte, so the lines just needed naming against concrete tests in the card's own writes."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82803,7 +82798,7 @@
       ],
       "title": "the check in `screen`, the `RULED` kind, and the `waivers` map",
       "type": "task",
-      "updated": "2026-10-10T12:55:04Z",
+      "updated": "2026-10-10T13:00:23Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_rulepass.py"
