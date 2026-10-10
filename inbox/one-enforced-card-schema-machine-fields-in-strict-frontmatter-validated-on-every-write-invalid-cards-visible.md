@@ -24,3 +24,6 @@ Referential integrity (operator 2026-10-10: "so many problems with cards getting
 - Retiring, closing, superseding or deleting a card is one operation that also resolves its incoming references in the same record commit: Done/retired → the edge is satisfied (kept for history, marked satisfied); superseded → the edge is re-pointed to superseded_by; deleted → the edge is removed with a note on the dependent card. No card ever points at a card that does not exist.
 - The kernel treats any reference it cannot resolve as LIMBO with the reason (never as "parked", never silently blocked) and a nightly record check reports 0 dangling references as a measured invariant.
 Today's live cases to use as fixtures: T-82991/T-82986 (launched before its after: landed), T-83142 and T-78813 (after: on retired T-0775/T-76352 read as parked), stories: ids never minted (12 of 38 Tasks), 140 after: edges onto parked legacy items.
+
+## Question
+`parent: F-0334 (ASF 0.3). Generic.` does not exist — name an existing item or remove the line.
