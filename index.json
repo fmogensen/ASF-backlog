@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T06:23:38Z",
+  "generated": "2026-10-10T06:27:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18844,7 +18844,8 @@
       "id": "B-84833",
       "kernel_attempts": [
         "launch: no free seat: local 10/10, cloud 3/8 (the launch needs the host)",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "review: no VERDICT line"
       ],
       "kernel_findings": [
         "asf/tick/step_wave.py:1328 \u2014 bind `paused = pause_mod.held(product)` (as `launch` does at :1156) and pass `paused=paused` into `launch_now`'s `screen(...)` call at :1328-1329, returning 0 before `_wave` the way `launch()` does, so the wave clock's live spawn path actually honors the operator's pause instead of still launching a paused product's row (reproduced: `step_wave.launch_now` launches `fix-bug-b-0001` under an active `pause.pause()`)."
@@ -18860,7 +18861,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-10T06:12:42Z"
+      "updated": "2026-10-10T06:27:41Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -33630,7 +33631,8 @@
         "Decided: keep S-91805..S-91808 (D11 stands). Checked 2026-10-10 in the record repo: idclaim.claims covers all four through refs/asf/ids/S-91805 (S:91805-91854, claimant spec-f-0328-1791587536), and the ref is on the record's origin. No re-mint; the spec is done \u2014 proceed to review and landing."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Decided: keep S-91805..S-91808 (D11 stands). Checked 2026-10-10 in the record repo: idclaim.claims covers all four through refs/asf/ids/S-91805 (S:91805-91854, claimant spec-f-0328-1791587536), and the ref is on the record's origin. No re-mint; the spec is done \u2014 proceed to review and landing."
+        "relaunch: operator answer: Decided: keep S-91805..S-91808 (D11 stands). Checked 2026-10-10 in the record repo: idclaim.claims covers all four through refs/asf/ids/S-91805 (S:91805-91854, claimant spec-f-0328-1791587536), and the ref is on the record's origin. No re-mint; the spec is done \u2014 proceed to review and landing.",
+        "review: no VERDICT line"
       ],
       "kernel_state": "review",
       "parent": "E-0001",
@@ -33640,7 +33642,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T05:52:03Z"
+      "updated": "2026-10-10T06:27:41Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33713,7 +33715,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T06:20:20Z"
+      "updated": "2026-10-10T06:27:41Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -53015,7 +53017,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T06:20:20Z",
+      "updated": "2026-10-10T06:27:42Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
