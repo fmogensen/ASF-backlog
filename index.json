@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T20:20:07Z",
+  "generated": "2026-10-10T20:25:22Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16860,6 +16860,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-138544",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -16869,7 +16871,20 @@
       "state": "New",
       "title": "Bug: one cloud account's session limit trips the whole cloud lane",
       "type": "bug",
-      "updated": "2026-10-10T20:18:30Z"
+      "updated": "2026-10-10T20:25:21Z"
+    },
+    "B-138845": {
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-138845",
+      "rank": -1,
+      "schema_version": 1,
+      "stage_since": "2026-10-10T20:23:30Z",
+      "state": "New",
+      "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
+      "type": "bug",
+      "updated": "2026-10-10T20:23:30Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -28311,7 +28326,9 @@
       "updated": "2026-10-03T05:59:21Z"
     },
     "F-0170": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0340"
+      ],
       "children": [
         "T-0544",
         "T-0545",
@@ -28371,7 +28388,9 @@
       "updated": "2026-09-27T04:20:34Z"
     },
     "F-0172": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0340"
+      ],
       "children": [
         "T-0761",
         "T-0762"
@@ -34466,7 +34485,9 @@
       "updated": "2026-10-10T16:41:35Z"
     },
     "F-0336": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0340"
+      ],
       "children": [
         "S-122805",
         "S-122806",
@@ -34617,18 +34638,25 @@
       "folder": "features",
       "id": "F-0340",
       "kernel_attempts": [
-        "session ran past its max age"
+        "session ran past its max age",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "docs/specs/f-0340.md:65 \u2014 replace the citation `F-0336` with `F-0172`: f-0336 is \"Kernel flake quarantine with a defect check\" and never mentions a retired card; the `after:`-onto-retired absorption is F-0172's P12 (and F-0170's P6b).",
+        "docs/specs/f-0340.md:232 \u2014 in D8 replace \"158 open Tasks depend on it\" with \"97 open Tasks depend on it\" (\u00a71.1:49; or \"208 across both roots\", \u00a71.1:49 + \u00a71.1:73): 158 matches no measured row.",
+        "docs/specs/f-0340.md:406 \u2014 drop `asf record close` from \u00a72.5's list of callers: no such command exists (`asf` has no `record` or `close` subcommand; the only `record` parser is `asf deploy record`, asf/harvest/deploy.py:1049). Name the kernel's own close (asf/kernel/apply.py:389) instead, or say the close entry point is new.",
+        "docs/specs/f-0340.md:419 \u2014 in \u00a72.6 replace \"`loop.questions_line`'s `LIMBO n`\" with \"`loop.print_summary`'s `LIMBO n`\": questions_line (asf/kernel/loop.py:110-118) returns the \"questions: resolved by code N\" line; the LIMBO count is printed at asf/kernel/loop.py:214.",
+        "docs/specs/f-0340.md:659 \u2014 in S-133157's preamble replace \"Twenty-nine writers\" with \"Twenty-five writers\": P1 (:203), D5 (:229) and the tree all say 25 `writer.write_card(` call sites in 14 modules.",
+        "docs/specs/f-0340.md:708 \u2014 in S-133159's preamble replace \"The 539 open Tasks\" with \"The 363 open Tasks\" (\u00a71.1:48; or \"638 across both roots\", \u00a71.1:48 + \u00a71.1:73): 539 matches no measured row.",
         "docs/specs/f-0340.md:31 \u2014 \u00a71.1 and P16 both promise \"the NEEDS OPERATOR line at the end of this spec\" giving the read-only re-measurement command for ASF's own record, but no such line exists anywhere in the file (it ends at line 759, mid Story S-133164's checklist); either add that line or stop promising it."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34637,7 +34665,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T20:10:09Z"
+      "updated": "2026-10-10T20:25:21Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34938,13 +34966,13 @@
       "folder": "features",
       "id": "F-0346",
       "kernel_findings": [
-        "docs/specs/f-0346.md:517 \u2014 `CLASSES is exactly row, session, subtree, parked, done and SINK, in that classification order` contradicts the module's own `CLASSES = ('done', 'parked', 'row', 'session', 'subtree', 'SINK')` at line 137 and the design prose at line ~176 (\"done comes before parked and parked before row\"); fix the acceptance line to state the order `done, parked, row, session, subtree, SINK`."
+        "docs/specs/f-0346.md:85 \u2014 change `asf/feeder/idle.py:46` to `asf/feeder/idle.py:45`, the actual line of the fourth `('S1', 'S2')` literal."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0346-1791658400-local: NEEDS OPERATOR: the push is refused by a stale installed dispatcher, not by the diff \u2014 `$HOME/.local/bin/asf` has no `pre-push` subcommand while `asf/cli.py:470` defines it. Confirm with `$HOME/.local/bin/asf --vers\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34952,7 +34980,7 @@
       "state": "New",
       "title": "Flow conservation: every step has a required successor, checked each tick",
       "type": "feature",
-      "updated": "2026-10-10T20:10:09Z"
+      "updated": "2026-10-10T20:25:21Z"
     },
     "F-0347": {
       "backlinks": [
@@ -34995,7 +35023,7 @@
         "asf/kernel/decide.py:860-864 \u2014 the spec's P11 citation names a function `_hold_high_risk`, which does not exist; the code at those lines belongs to `hold_risky` (decide.py:821) \u2014 fix the function name"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35003,7 +35031,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T20:15:16Z"
+      "updated": "2026-10-10T20:25:21Z"
     },
     "F-0349": {
       "backlinks": [],
@@ -35020,7 +35048,7 @@
       "state": "New",
       "title": "Adopt GitHub's work-item model: type, parent, milestone, priority",
       "type": "feature",
-      "updated": "2026-10-10T20:15:16Z"
+      "updated": "2026-10-10T20:25:21Z"
     },
     "F-0350": {
       "backlinks": [],
@@ -35031,6 +35059,9 @@
       "folder": "features",
       "id": "F-0350",
       "kernel_fix_rounds": 0,
+      "kernel_notes": [
+        "spec-f-0350-1791661450: NEEDS OPERATOR: the six Stories are declared in the spec but the record holds no card for any of them, and `feeder.stories_before_plan` counts Story cards and not declarations \u2014 so no plan session for F-0350 can sta\u2026"
+      ],
       "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
@@ -35039,7 +35070,7 @@
       "state": "New",
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
-      "updated": "2026-10-10T19:44:41Z"
+      "updated": "2026-10-10T20:25:21Z"
     },
     "R-0001": {
       "backlinks": [
@@ -67578,7 +67609,8 @@
         "T-78155",
         "T-78358",
         "T-79565",
-        "T-80572"
+        "T-80572",
+        "B-138845"
       ],
       "children": [],
       "cost": {
@@ -83626,7 +83658,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129156",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
       "kernel_notes": [
         "groom-fill-t-129156-1791654017: groom-fill raised risk high: design matches trunk exactly (constants, line ranges, fixture methods, helper signatures) and nothing named has been built yet; only the acceptance/gate lines were missing.",
@@ -83647,7 +83679,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-10T20:10:09Z",
+      "updated": "2026-10-10T20:25:21Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -85738,7 +85770,13 @@
       "folder": "tasks",
       "id": "T-136825",
       "kernel_notes": [
-        "build-t-136825-1791661085: NEEDS OPERATOR: the push is refused by a stale local `asf` CLI install with no `pre-push` subcommand \u2014 upgrade `~/.local/bin/asf` on this host, then publish branch `worker/T-136825` \u2014 `git push origin worker/T-13682\u2026"
+        "build-t-136825-1791661085: NEEDS OPERATOR: the push is refused by a stale local `asf` CLI install with no `pre-push` subcommand \u2014 upgrade `~/.local/bin/asf` on this host, then publish branch `worker/T-136825` \u2014 `git push origin worker/T-13682\u2026",
+        "PR #1438: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1438: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1438: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1438: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1438: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "PR #1438: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -85758,7 +85796,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-10T20:20:03Z",
+      "updated": "2026-10-10T20:25:21Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -87319,9 +87357,12 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_notes": [
-        "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py)."
+        "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py).",
+        "PR #1439: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1439: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1439: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -87342,7 +87383,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T20:15:16Z",
+      "updated": "2026-10-10T20:25:21Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
