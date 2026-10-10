@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T18:20:54Z",
+  "generated": "2026-10-10T18:24:29Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -46317,9 +46317,11 @@
         "T-129174"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91008",
       "parent": "F-0318",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:36:45Z",
       "state": "New",
@@ -83245,7 +83247,10 @@
       "id": "T-129164",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "build-t-129164-1791655876: NEEDS OPERATOR: the installed dispatcher at ~/.local/bin/asf has no `pre-push` subcommand at all, blocking every push on this host until it is reinstalled/rebuilt \u2014 `\"$HOME/.local/bin/asf\" --help`"
+      ],
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -83258,7 +83263,7 @@
       ],
       "title": "the text \u2014 a finished session's REPORT verdict, as a review every reader reads alike",
       "type": "task",
-      "updated": "2026-10-10T18:11:40Z",
+      "updated": "2026-10-10T18:24:27Z",
       "writes": [
         "asf/evidence/review.py",
         "tests/test_review_reader.py"
@@ -83411,7 +83416,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129170",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0317.md"
       },
@@ -83424,7 +83429,7 @@
       ],
       "title": "the suffix, minted and read back in one place",
       "type": "task",
-      "updated": "2026-10-10T18:13:28Z",
+      "updated": "2026-10-10T18:24:27Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -83499,6 +83504,9 @@
       "id": "T-129173",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.12",
+      "kernel_notes": [
+        "groom-fill-t-129173-1791655626: groom-fill raised risk high: card already carries Task 1's acceptance/writes verbatim (F-0343 backfill); the parent-Done DoR gap is stale \u2014 F-0343's own fix (dce5aac92) makes a Feature's state derive from its Task children once any exist, and F-0318 already has Task children (T-129173, T-129174) that are New, so F-0318 reads New under current logic and the next tick's judge pass clears this on its own."
+      ],
       "links": {
         "plan": "docs/plans/f-0318.md"
       },
@@ -83514,7 +83522,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-10T18:07:35Z",
+      "updated": "2026-10-10T18:24:27Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -83526,13 +83534,15 @@
       "after": [
         "T-129173"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-129173"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
       "id": "T-129174",
       "kernel_dor_fills": 1,
-      "kernel_dor_fills_ver": "0.2.12",
+      "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
       "kernel_notes": [
         "groom-fill-t-129174-1791655632: groom-fill raised risk high: no Task of plan F-0318 has landed anywhere (code or PR) so the parent cannot legitimately be Done; the card's test-naming, writes, and after fields already clear DoR, and the parent-Done read is a transient container-derivation artifact from the plan PR minting siblings minutes earlier that self-corrects on the next tick."
       ],
@@ -83549,7 +83559,7 @@
       ],
       "title": "the place \u2014 the pass in the tick's record step, the writer order, and the gate clearing",
       "type": "task",
-      "updated": "2026-10-10T18:20:53Z",
+      "updated": "2026-10-10T18:24:27Z",
       "writes": [
         "asf/tick/tick.py",
         "asf/record/stage.py",
@@ -84406,7 +84416,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129205",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -84419,7 +84429,7 @@
       ],
       "title": "the module \u2014 the declaration, the JWT, the mint, the cache, and `openssl` as the ratchet's newest kind",
       "type": "task",
-      "updated": "2026-10-10T18:02:11Z",
+      "updated": "2026-10-10T18:24:27Z",
       "writes": [
         "asf/ghapp.py",
         "tools/check_clients.py",
