@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T09:00:26Z",
+  "generated": "2026-10-10T09:05:55Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2772,7 +2772,7 @@
       "kernel_notes": [
         "build-b-0088-1791618708: NEEDS OPERATOR: the kernel prints a correction naming no cause when a review returns `changes` with an unparsed C list \u2014 `asf/kernel/briefs.py:129` falls back to `', '.join(reds) or 'unknown'`, and that kernel lives\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -2780,7 +2780,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-10T08:48:12Z"
+      "updated": "2026-10-10T09:05:52Z"
     },
     "B-0089": {
       "backlinks": [
@@ -33403,20 +33403,17 @@
       "folder": "features",
       "id": "F-0318",
       "kernel_answers": [
-        "id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-91005, S-91006, S-91007, S-91008, S-91009, S-91010 by refs/asf/ids/S-91005 02c12e8; S-95555 by refs/asf/ids/S-95555 125b285. No record item collides with them."
+        "id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-91005, S-91006, S-91007, S-91008, S-91009, S-91010 by refs/asf/ids/S-91005 02c12e8; S-95555 by refs/asf/ids/S-95555 125b285. No record item collides with them.",
+        "Confirmed on the factory host: bash tools/check_conventions.sh on plan/F-0318 at 6bf692a53 -> check_conventions: clean. Proceed."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-91005, S-91006, S-91007, S-91008, S-91009, S-91010 by refs/asf/ids/S-91005 02c12e8; S-95555 by refs/asf/ids/S-95555 125b285. No record item collides with them."
+        "relaunch: operator answer: Confirmed on the factory host: bash tools/check_conventions.sh on plan/F-0318 at 6bf692a53 -> check_conventions: clean. Proceed."
       ],
       "kernel_notes": [
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
         "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: `bash tools/check_conventions.sh` was not run directly in this session \u2014 the cloud runtime refused the scanning invocation; its scan was reproduced clean over its own 31 pattern\u2026",
-      "kernel_stuck_since": "2026-10-10T08:55:45Z",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33424,7 +33421,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T09:00:19Z"
+      "updated": "2026-10-10T09:05:52Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33467,7 +33464,7 @@
       "state": "New",
       "title": "an ASF rebase drops the approved review verdict even when the range-diff is identical; the item re-reviews to the cap",
       "type": "feature",
-      "updated": "2026-10-10T09:00:19Z"
+      "updated": "2026-10-10T09:05:52Z"
     },
     "F-0321": {
       "backlinks": [],
@@ -33743,7 +33740,7 @@
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33751,7 +33748,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T08:48:12Z"
+      "updated": "2026-10-10T09:05:52Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -33769,7 +33766,7 @@
         "spec-f-0332-1791602807: NEEDS OPERATOR: which number the ceiling should carry \u2014 the spec ships 6 (0.143 share, 23 % fall, only 0.007 of margin on the 0.15 threshold while the cause drifts up from 0.158 to 0.186); 4 measures at 0.123 and a\u2026",
         "plan-f-0332-1791618215: NEEDS OPERATOR: which number the ceiling carries \u2014 the spec ships loops.TOTAL_CAP = 6 (measured 0.143 share, a 23 % fall, inside both bars but with 0.007 of margin while the cause drifted 0.158 \u2192 0.186), where 4 mea\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33777,7 +33774,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T08:51:39Z"
+      "updated": "2026-10-10T09:05:52Z"
     },
     "R-0001": {
       "backlinks": [
@@ -80889,7 +80886,7 @@
         "tests/test_ci_stall.py:354-374 \u2014 `test_a_claim_in_each_bad_state_draws_one_row_each` never asserts the claim's age appears in any row, though the acceptance bullet requires the row to name \"the tries and the age\" \u2014 add `self.assertIn('19 min', details)`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80902,7 +80899,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T09:00:19Z",
+      "updated": "2026-10-10T09:05:52Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
@@ -80926,6 +80923,7 @@
       ],
       "folder": "tasks",
       "id": "T-78562",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80938,7 +80936,7 @@
       ],
       "title": "a cancel this watch made is finished, in either mode, and a refusal is retried",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T09:05:52Z",
       "writes": [
         "asf/ci_stall.py",
         "tests/test_ci_stall.py"
@@ -81196,7 +81194,7 @@
       ],
       "folder": "tasks",
       "id": "T-79568",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81209,7 +81207,7 @@
       ],
       "title": "the number \u2014 first-push-green per landed branch, and the door's catches counted",
       "type": "task",
-      "updated": "2026-10-10T08:42:03Z",
+      "updated": "2026-10-10T09:05:52Z",
       "writes": [
         "asf/scorecard/facts.py",
         "asf/scorecard/score.py",
