@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T20:10:11Z",
+  "generated": "2026-10-10T20:15:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34943,8 +34943,11 @@
       "kernel_attempts": [
         "the session API failed"
       ],
-      "kernel_fix_rounds": 0,
-      "kernel_state": "review",
+      "kernel_findings": [
+        "docs/specs/f-0347.md:325 \u2014 \"`log_alive_at(path, now, limit_min)` answers \\\"is it alive?\\\" and throws the time away (`:536-539`)\" is false: `asf/workers/heartbeat.py:514-540` already returns the epoch (`min(ts, now)`) or `None`, not a bool \u2014 it already dates the event, which is exactly what this same spec's own P9 (line 88) says. Fix the premise (or drop the false framing) before motivating the `log_event_at`/`log_alive_at` split on it."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34952,7 +34955,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-10T19:51:28Z"
+      "updated": "2026-10-10T20:15:16Z"
     },
     "F-0348": {
       "backlinks": [
@@ -34965,8 +34968,12 @@
       "kernel_attempts": [
         "the session API failed"
       ],
-      "kernel_fix_rounds": 0,
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/kernel/ports.py:1540 \u2014 the spec's D10/P10 citation for `archive_and_reset` names ports.py:1540, which is inside the `revert` method's conflict branch; the method is declared at ports.py:144 and implemented at ports.py:1711 \u2014 fix the line number",
+        "asf/kernel/decide.py:860-864 \u2014 the spec's P11 citation names a function `_hold_high_risk`, which does not exist; the code at those lines belongs to `hold_risky` (decide.py:821) \u2014 fix the function name"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34974,7 +34981,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T19:51:28Z"
+      "updated": "2026-10-10T20:15:16Z"
     },
     "F-0349": {
       "backlinks": [],
@@ -34991,7 +34998,7 @@
       "state": "New",
       "title": "Adopt GitHub's work-item model: type, parent, milestone, priority",
       "type": "feature",
-      "updated": "2026-10-10T20:10:09Z"
+      "updated": "2026-10-10T20:15:16Z"
     },
     "F-0350": {
       "backlinks": [],
@@ -45762,6 +45769,7 @@
     "S-80459": {
       "backlinks": [
         "F-0312",
+        "T-81130",
         "T-81134"
       ],
       "children": [],
@@ -67572,7 +67580,7 @@
       "kernel_notes": [
         "groom-fill-t-0452-1791638006: groom-fill raised risk high: writes carries Task 3's doctor.py/capacity.py footprint merged in from T-0454, but Task 3 needs T-0453's (Task 2) env.py functions and T-0453 is after: T-0452 \u2014 a circular prerequisite; drop that footprint and keep only Task 1+4's (self-contained) scope, with the plan's own named tests."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -67587,7 +67595,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-10T20:10:09Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -83884,6 +83892,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129165",
+      "kernel_notes": [
+        "PR #1432: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1432: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1432: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1432: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0313.md"
@@ -83897,7 +83911,7 @@
       ],
       "title": "the cap and the reader \u2014 an unfiled review is no launch, once per head",
       "type": "task",
-      "updated": "2026-10-10T20:10:09Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/workers/relaunch.py",
         "asf/workers/lifecycle.py",
@@ -84551,7 +84565,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129188",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0324.md"
       },
@@ -84566,7 +84580,7 @@
       ],
       "title": "a branch of only empty proof commits lands its proof instead of being deleted as already on main",
       "type": "task",
-      "updated": "2026-10-10T19:51:28Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
@@ -85050,7 +85064,7 @@
       "kernel_notes": [
         "build-t-129205-1791657838-local: NEEDS OPERATOR: repin the product's CLI past the commit that added `asf pre-push` (`aa56423fd`), or make the pre-push hook tolerate a pinned CLI lacking the subcommand \u2014 `asf upgrade --product asf`"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85063,7 +85077,7 @@
       ],
       "title": "the module \u2014 the declaration, the JWT, the mint, the cache, and `openssl` as the ratchet's newest kind",
       "type": "task",
-      "updated": "2026-10-10T19:51:28Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/ghapp.py",
         "tools/check_clients.py",
@@ -85339,6 +85353,14 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130214",
+      "kernel_notes": [
+        "PR #1433: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1433: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1433: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1433: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1433: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1433: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0328.md"
@@ -85353,7 +85375,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-10T20:10:09Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -85500,7 +85522,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131719",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -85514,7 +85536,7 @@
       ],
       "title": "the trunk's own evidence, the `closed` fact it decides, and the PR closed against it",
       "type": "task",
-      "updated": "2026-10-10T18:13:28Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_closed_item_prs.py"
@@ -85614,7 +85636,13 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_notes": [
-        "build-t-131823-1791659712: NEEDS OPERATOR: I could not execute `validate`'s record-side checks (that S-124005 is a Story card and holds the bullet `line 1` cites) \u2014 the record at the product's backlog dir is outside this worktree session's re\u2026"
+        "build-t-131823-1791659712: NEEDS OPERATOR: I could not execute `validate`'s record-side checks (that S-124005 is a Story card and holds the bullet `line 1` cites) \u2014 the record at the product's backlog dir is outside this worktree session's re\u2026",
+        "PR #1434: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1434: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1434: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1434: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1434: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "PR #1434: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "review",
@@ -85630,7 +85658,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T20:10:09Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"
@@ -86898,7 +86926,7 @@
         "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -86911,7 +86939,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-10T18:54:29Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -87243,21 +87271,17 @@
       ],
       "folder": "tasks",
       "id": "T-81130",
+      "kernel_answers": [
+        "Granted: tests/test_env.py added to writes. Its report (commit e318af65f on worker/T-81130) asks for exactly this twice: add regression.check, regression.command, regression.exempt_found_in and regression.fail_re to _PLANNED_FLAG_VALUES in tests/test_env.py so PinnedReader.test_product_file_with_every_planned_key_loads matches conventions.KNOWN_FLAGS. Nothing else outside writes. Then finish and open the PR; Task 6 (S-80459) stays out of scope as reported."
+      ],
       "kernel_attempts": [
-        "session ran past its max age",
-        "ended without a REPORT",
-        "relaunch: escalated: the previous session stopped (ended without a REPORT) \u2014 pick up from its report and branch, and finish the item",
-        "ended without a REPORT"
+        "relaunch: operator answer: Granted: tests/test_env.py added to writes. Its report (commit e318af65f on worker/T-81130) asks for exactly this twice: add regression.check, regression.command, regression.exempt_found_in and regression.fail_re to _PLANNED_FLAG_VALUES in tests/test_env.py so PinnedReader.test_product_file_with_every_planned_key_loads matches conventions.KNOWN_FLAGS. Nothing else outside writes. Then finish and open the PR; Task 6 (S-80459) stays out of scope as reported."
       ],
       "kernel_dor_fills": 1,
       "kernel_notes": [
         "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py)."
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "ended without a REPORT",
-      "kernel_stuck_since": "2026-10-10T20:06:34Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -87278,7 +87302,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T20:10:09Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -87935,6 +87959,14 @@
       "folder": "tasks",
       "id": "T-83144",
       "kernel_dor_fills": 1,
+      "kernel_notes": [
+        "PR #1435: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1435: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1435: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1435: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1435: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1435: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0280.md"
@@ -87948,7 +87980,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-10T20:10:09Z",
+      "updated": "2026-10-10T20:15:16Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
