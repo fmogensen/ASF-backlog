@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T08:51:40Z",
+  "generated": "2026-10-10T09:00:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18211,7 +18211,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1177@505cfad1e",
       "type": "bug",
-      "updated": "2026-10-10T08:51:39Z"
+      "updated": "2026-10-10T09:00:19Z"
     },
     "B-82960": {
       "backlinks": [
@@ -33412,7 +33412,11 @@
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
         "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "done: NEEDS OPERATOR: `bash tools/check_conventions.sh` was not run directly in this session \u2014 the cloud runtime refused the scanning invocation; its scan was reproduced clean over its own 31 pattern\u2026",
+      "kernel_stuck_since": "2026-10-10T08:55:45Z",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33420,7 +33424,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T08:34:03Z"
+      "updated": "2026-10-10T09:00:19Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33455,7 +33459,7 @@
       "kernel_notes": [
         "spec-f-0320-1791586060: NEEDS OPERATOR: the design and the preconditions rest on the reporting product's own trace, which I read from its state dir but cannot attach \u2014 confirm the four resets are the ones reported for B-1496 and T-0422 wit\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33463,7 +33467,7 @@
       "state": "New",
       "title": "an ASF rebase drops the approved review verdict even when the range-diff is identical; the item re-reviews to the cap",
       "type": "feature",
-      "updated": "2026-10-10T08:42:03Z"
+      "updated": "2026-10-10T09:00:19Z"
     },
     "F-0321": {
       "backlinks": [],
@@ -33556,7 +33560,7 @@
       ],
       "folder": "features",
       "id": "F-0324",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33564,7 +33568,7 @@
       "state": "New",
       "title": "a branch of only empty proof commits is read as already on main and deleted without landing; the item loops",
       "type": "feature",
-      "updated": "2026-10-10T08:34:03Z"
+      "updated": "2026-10-10T09:00:19Z"
     },
     "F-0325": {
       "backlinks": [],
@@ -33669,7 +33673,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T08:51:39Z"
+      "updated": "2026-10-10T09:00:19Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33720,7 +33724,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T08:51:39Z"
+      "updated": "2026-10-10T09:00:19Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -63632,7 +63636,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T08:51:39Z",
+      "updated": "2026-10-10T09:00:19Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -79029,10 +79033,11 @@
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
-        "asf/merge_queue.py:1764-1766 \u2014 `blame`'s `if not paths: return {}, False` is a hard early return that skips `cover_blame` whenever every failed check's `item['paths']` is empty, which is exactly the spec's own motivating case (an absolute-path Python traceback with no other `path:line` anywhere in the log \u2014 P4's measured example). Every shipped hop test routes around this by using a *relative* traceback path, which the pre-existing `_BARE_PATH_RE` fallback happens to catch, keeping `paths` non-empty; with an absolute-only log the hop never fires and the batch still bisects blind. Fix: don't early-`return` on empty `paths` \u2014 let the direct reading's `named` stay `{}` and fall through to the existing `if not named:` cover-hop check, then add a test that drives the hop with an absolute-path-only log."
+        "tests/test_merge_queue.py:888-923 \u2014 DropReasonTests' no-culprit, trunk-red and lone-member-no-file tests must each add `self.red_ledger_rows()` assertions (as the direct/hop tests already do) so the gate ledger row is asserted unchanged in every case, per docs/plans/f-0256.md:462-463.",
+        "operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0256.md"
       },
@@ -79042,7 +79047,7 @@
       "state": "New",
       "title": "the queue names the culprit PR in the drop reason \u2014 out of the log it already reads, and out of the test that covers the member's files",
       "type": "task",
-      "updated": "2026-10-10T08:34:03Z",
+      "updated": "2026-10-10T09:00:19Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
@@ -80463,7 +80468,11 @@
       ],
       "folder": "tasks",
       "id": "T-76352",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/workers/lifecycle.py:1374-1382 \u2014 C2, docstring not verbatim to spec; asf/tick/step_wave.py:111-114 \u2014 C3, docstring not verbatim to spec; tests/test_occupancy_trunk_landed.py:110-157 \u2014 C1, no test proves `TRUNK_LANDED_DAYS` is actually passed as `days=` to `trunk_watch.first_parent`; docs/reviews/1-t-76352.md on HEAD (ee27a4b07) \u2014 C4, a prior review session committed and pushed a review artifact straight onto `worker/T-76352`, outside `writes:` and in violation of this item's own \"review never touches the branch\" rule \u2014 needs the factory's attention, not a code fix."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0277.md"
       },
@@ -80476,7 +80485,7 @@
       ],
       "title": "the lane releases an item whose PR the trunk carries, so the Feature's next Task launches",
       "type": "task",
-      "updated": "2026-10-10T08:51:39Z",
+      "updated": "2026-10-10T09:00:19Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/tick/step_wave.py",
@@ -80880,7 +80889,7 @@
         "tests/test_ci_stall.py:354-374 \u2014 `test_a_claim_in_each_bad_state_draws_one_row_each` never asserts the claim's age appears in any row, though the acceptance bullet requires the row to name \"the tries and the age\" \u2014 add `self.assertIn('19 min', details)`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80893,7 +80902,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T07:47:55Z",
+      "updated": "2026-10-10T09:00:19Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
@@ -81361,7 +81370,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T08:51:39Z",
+      "updated": "2026-10-10T09:00:19Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -82283,7 +82292,7 @@
         "asf/evidence/rulepass.py:159-183 (precedent) \u2014 the plan's Step 4 (docs/plans/f-0300.md:167-174, 749-751) requires matching a finding's text against *either* a `D-nnnn` token *or* a path under `decisions.DOCS_DIR`; the landed `precedent()` only checks `decisions.ID_RE.findall(text)` and never references `decisions.DOCS_DIR` (the module imports `decisions` but never uses `DOCS_DIR`). Add a path-match branch before returning `None`, resolving against `precedent_mod.entries(...)` rows by their `'path'` field."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82296,7 +82305,7 @@
       ],
       "title": "the table \u2014 `rulepass.py`, the flag, and what the landed readers read back",
       "type": "task",
-      "updated": "2026-10-10T08:48:12Z",
+      "updated": "2026-10-10T09:00:19Z",
       "writes": [
         "asf/evidence/rulepass.py",
         "asf/conventions.py",
