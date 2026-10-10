@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T12:43:56Z",
+  "generated": "2026-10-10T12:49:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33547,7 +33547,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T12:43:51Z"
+      "updated": "2026-10-10T12:49:23Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33559,6 +33559,9 @@
       ],
       "folder": "features",
       "id": "F-0322",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_notes": [
         "spec-f-0322-1791611510: NEEDS OPERATOR: whether to file the second defect P5 measures \u2014 a relaunch-cap park whose job was later reused by a run on another item is reachable by neither `asf unpark` nor health, so it can never be released \u2014\u2026"
       ],
@@ -33570,7 +33573,7 @@
       "state": "New",
       "title": "status keeps a retired item's relaunch-cap park",
       "type": "feature",
-      "updated": "2026-10-10T12:12:44Z"
+      "updated": "2026-10-10T12:49:23Z"
     },
     "F-0323": {
       "backlinks": [],
@@ -33615,7 +33618,7 @@
       "kernel_notes": [
         "plan-f-0324-1791635172: NEEDS OPERATOR: the plan is pushed and reviewed, but no PR exists for `plan/F-0324` and a session may not open one \u2014 the lane does. To see whether the lane has picked the branch up: `gh pr list --head plan/F-0324 --\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33623,7 +33626,7 @@
       "state": "New",
       "title": "a branch of only empty proof commits is read as already on main and deleted without landing; the item loops",
       "type": "feature",
-      "updated": "2026-10-10T12:43:51Z"
+      "updated": "2026-10-10T12:49:23Z"
     },
     "F-0325": {
       "backlinks": [],
@@ -49892,7 +49895,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Granted: asf/harvest/lane.py is added to writes (card updated); the kernel's overlap rule now serialises this Task against other lane.py writers. Keep the lane.py change minimal; nothing else outside writes.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_findings": [
         "C1 \u2014 no single file:line (missing work) \u2014 `asf/harvest/harvest.py` carries none of Task 3/4's screen/archive/re-admission logic; it now lives in `asf/harvest/lane.py` (outside `writes:`), confirmed by `grep -n \"deliverable_of\\|already_on_trunk\\|lane_refusal\\|land_already\" asf/harvest/harvest.py` returning nothing. No code fix is possible inside this card's current footprint \u2014 adjudicate `writes:`/`grant:` to include `asf/harvest/lane.py` (or amend the plan), then implement the remaining Steps there.",
@@ -49914,7 +49918,7 @@
       "state": "Active",
       "title": "`asf/boundary.py` \u2014 the matcher, the grant resolver, the law, and `conventions.boundary`",
       "type": "task",
-      "updated": "2026-10-10T11:41:33Z",
+      "updated": "2026-10-10T12:49:23Z",
       "writes": [
         "asf/boundary.py",
         "tests/test_boundary.py",
@@ -81222,7 +81226,7 @@
       ],
       "folder": "tasks",
       "id": "T-78813",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "kernel_notes": [
         "groom-fill-t-78813-1791632262: groom-fill verdict rejected: risk_raise '' is not one of none | high",
@@ -81242,7 +81246,7 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-10T12:43:51Z",
+      "updated": "2026-10-10T12:49:23Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
@@ -82428,10 +82432,14 @@
       "id": "T-82989",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
+      "kernel_findings": [
+        "rebase: PR #1371 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-t-82989-1791633895: groom-fill raised risk high: T-82987's landed commit already bundled Task 1's resolver into asf/channels.py, so every function and string this Task cites (release.Criterion, ci_verdict's \"<name> has no run\"/green detail, open_defects, Bug severity) is confirmed live on trunk; the DoR gap is only that tests/fixtures/channels/** is a genuinely new path the card's writes: didn't mark (new)."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82444,7 +82452,7 @@
       ],
       "title": "the stable gate \u2014 four rows, each met or unmet with its evidence",
       "type": "task",
-      "updated": "2026-10-10T12:43:51Z",
+      "updated": "2026-10-10T12:49:23Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py",
@@ -82555,7 +82563,11 @@
         "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap.",
         "groom-fill-t-83142-1791633870: groom-fill raised risk high: card is byte-for-byte Task 1 of the landed plan/spec (F-0280 \u00a71), already fully specced with test-named acceptance; the after:T-0775/T-78813 block is the kernel's write-overlap serialization on asf/feeder/rows.py, not a card defect"
       ],
-      "kernel_state": "new",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "dor: after: parked: T-0775 \u2014 2 groom-fill session(s) could not make it ready",
+      "kernel_stuck_since": "2026-10-10T12:47:28Z",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -82568,7 +82580,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T12:38:59Z",
+      "updated": "2026-10-10T12:49:23Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
@@ -82734,7 +82746,7 @@
       "id": "T-83346",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82747,7 +82759,7 @@
       ],
       "title": "the feeder stands down \u2014 one `waived` membership, two branches, and the S1 lane's word",
       "type": "task",
-      "updated": "2026-10-10T12:34:48Z",
+      "updated": "2026-10-10T12:49:23Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
