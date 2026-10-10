@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T13:49:48Z",
+  "generated": "2026-10-10T13:54:03Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33402,7 +33402,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T13:49:47Z"
+      "updated": "2026-10-10T13:54:02Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33800,7 +33800,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: Decisions: (1) This plan session may amend docs/specs/f-0330.md (granted) to re-anchor the design on the current trunk: retire.py/test_retire.py, replan.task_pending and correct.py's parked gate are gone; design against what exists now (asf/record retire path via asf retire --landed, replan.pending(feature), and the kernel's ruling applier), then re-cut the four Tasks. (2) STORY_ID_RE: filed as its own Bug via the inbox (fix: \\d{4,}); land that first. F-0330's Tasks get after: on that Bug once it has an id; do not mint Tasks without Stories."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33808,7 +33808,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T13:42:02Z"
+      "updated": "2026-10-10T13:54:02Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -52030,7 +52030,7 @@
       "state": "Active",
       "title": "the selection rule, the budget and the three ceilings",
       "type": "task",
-      "updated": "2026-10-10T13:45:02Z",
+      "updated": "2026-10-10T13:54:02Z",
       "writes": [
         "asf/groom/delivery.py",
         "asf/conventions.py",
@@ -75262,7 +75262,7 @@
       "stories": [],
       "title": "a sha runs on an ssh-reachable machine and comes back \u2014 the transport, the three remote scripts, the store, and the pass that dispatches, collects, supersedes and times out",
       "type": "task",
-      "updated": "2026-10-10T13:49:47Z",
+      "updated": "2026-10-10T13:54:02Z",
       "writes": [
         "asf/ci_vm.py",
         "tests/test_ci_vm.py",
@@ -81282,7 +81282,8 @@
         "groom-fill-t-78813-1791633327: groom-fill verdict rejected: acceptance line names no test: '...'",
         "groom-fill-t-78813-1791634897: groom-fill raised risk high: Acceptance/writes are already fully specified and verified sound against current trunk (line-number drift only, from unrelated landed work); the flagged after-deps are not real blockers \u2014 T-76352 already landed (12f28448f/#1184) and T-0775, though still unlanded, edits only bug_rows/candidates/session_of with zero overlap with this Task's Row/footprint_row/correction_rows edits.",
         "groom-fill-t-78813-1791635680: groom-fill raised risk high: Content matches the approved spec/plan exactly (zero drift at base); the parked after: items are legitimate footprint sequencing (T-76352 shares step_wave.py, still mid-review) that clears on its own, not a card defect.",
-        "groom-fill-t-78813-1791636552: groom-fill raised risk high: Acceptance/writes already match the approved spec verbatim; T-76352 is landed (12f28448f, ancestor of HEAD) and T-0775's open work touches rows.py with zero line-level overlap on this Task's edits \u2014 the after: dependency is a real but harmless footprint-gate wait, not a card defect."
+        "groom-fill-t-78813-1791636552: groom-fill raised risk high: Acceptance/writes already match the approved spec verbatim; T-76352 is landed (12f28448f, ancestor of HEAD) and T-0775's open work touches rows.py with zero line-level overlap on this Task's edits \u2014 the after: dependency is a real but harmless footprint-gate wait, not a card defect.",
+        "PR #1376: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -81297,7 +81298,7 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-10T13:49:47Z",
+      "updated": "2026-10-10T13:54:02Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
@@ -82040,16 +82041,19 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/harvest/regression.py:19,42-58 \u2014 `gated` must read the override through `conv` (`exempt = conv.flag('regression.exempt_found_in', DEFAULT_EXEMPT_FOUND_IN)`, then `if found_in in exempt:`) instead of always comparing against the hard-coded `DEFAULT_EXEMPT_FOUND_IN` tuple, since no later Task in the plan (Task 5 writes only `asf/conventions.py`/`tests/test_conventions.py`) ever revisits `gated` to wire the flag in \u2014 add one `PredicateTest` case asserting a `conv` with `flags: {regression: {exempt_found_in: [...]}}` set changes the result."
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1227: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1227: part (3.13, 3) is red but not a required check \u2014 ignored",
-        "build-t-81129-1791634419: NEEDS OPERATOR: plan Task 5 of docs/plans/f-0312.md registers `regression.exempt_found_in` but its `writes:` cannot reach the reader in `asf/harvest/regression.py`, so the flag would land registered and unread \u2014 add\u2026"
+        "build-t-81129-1791634419: NEEDS OPERATOR: plan Task 5 of docs/plans/f-0312.md registers `regression.exempt_found_in` but its `writes:` cannot reach the reader in `asf/harvest/regression.py`, so the flag would land registered and unread \u2014 add\u2026",
+        "PR #1374: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1374: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -82062,7 +82066,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T13:49:47Z",
+      "updated": "2026-10-10T13:54:02Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
