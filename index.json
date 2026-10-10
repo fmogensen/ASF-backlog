@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T10:41:26Z",
+  "generated": "2026-10-10T10:43:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -49855,12 +49855,15 @@
       ],
       "folder": "tasks",
       "id": "T-0123",
+      "kernel_attempts": [
+        "relaunch: escalated: the previous session stopped (partial: left out: C1 and C2 are unchanged from the review's finding and the prior coder report \u2014 re-verified, not re-fixable inside this card's writes:. `grep -n \"deliverable_of\\|already_on_trunk\\|l\u2026) \u2014 pick up from its report and branch, and finish the item"
+      ],
       "kernel_findings": [
         "C1 \u2014 no single file:line (missing work) \u2014 `asf/harvest/harvest.py` carries none of Task 3/4's screen/archive/re-admission logic; it now lives in `asf/harvest/lane.py` (outside `writes:`), confirmed by `grep -n \"deliverable_of\\|already_on_trunk\\|lane_refusal\\|land_already\" asf/harvest/harvest.py` returning nothing. No code fix is possible inside this card's current footprint \u2014 adjudicate `writes:`/`grant:` to include `asf/harvest/lane.py` (or amend the plan), then implement the remaining Steps there.",
         "C2 \u2014 tests/test_harvest.py (whole file) \u2014 `BoundaryHoldTests` and the `f0026`/`discard`-tagged `ProductHarvestTests` cases the plan's acceptance names do not exist. Write them once C1's code has somewhere to live."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0026.md"
       },
@@ -49874,7 +49877,7 @@
       "state": "Active",
       "title": "`asf/boundary.py` \u2014 the matcher, the grant resolver, the law, and `conventions.boundary`",
       "type": "task",
-      "updated": "2026-10-10T10:36:11Z",
+      "updated": "2026-10-10T10:43:25Z",
       "writes": [
         "asf/boundary.py",
         "tests/test_boundary.py",
@@ -51966,7 +51969,7 @@
       ],
       "folder": "tasks",
       "id": "T-0172",
-      "kernel_state": "review",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0102.md"
       },
@@ -51979,7 +51982,7 @@
       "state": "Active",
       "title": "the selection rule, the budget and the three ceilings",
       "type": "task",
-      "updated": "2026-10-10T10:15:39Z",
+      "updated": "2026-10-10T10:43:25Z",
       "writes": [
         "asf/groom/delivery.py",
         "asf/conventions.py",
@@ -58566,10 +58569,16 @@
         "relaunch: escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
       "kernel_findings": [
-        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/efdb0fb0-7f78-4d43-8e54-d8e64ab89daa' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_notes": [
+        "PR #1132: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1132: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0062.md"
       },
@@ -58584,7 +58593,7 @@
       "state": "Active",
       "title": "the per-role worker settings file, its deny rules, `asf worker-permissions`, and the three doctor rows",
       "type": "task",
-      "updated": "2026-10-10T10:41:24Z",
+      "updated": "2026-10-10T10:43:25Z",
       "writes": [
         "asf/workers/worker_settings.py",
         "asf/cli.py",
@@ -63860,7 +63869,7 @@
       "kernel_attempts": [
         "launch: launch: git worktree add -q -B worker/T-0436 ~/.ASF/state/asf/worktrees/review-t-0436-1791612749 origin/worker/T-0436: error: unable to create file tests/test_session_identity.py: No space left on device\nerror: unable to create file tests/test_session_push_guard.py: No space left on device\nerror: unable to create file tests/test_set_parent_removed.py: No space left on device\nerror: unable to create file tests/test_shared_paths.py: No space left on device\nerror: unable to create file tests/test_size.py: No space left on device\nerror: unable to write file tests/test_stale_batch.py\nerror: unable to create file tests/test_state_store.py: No space left on device\nerror: unable to create file tests/test_stop.py: No space left on device\nerror: unable to create file tests/test_stories_first.py: No space left on device\nerror: unable to create file tests/test_surface.py: No space left on device\nerror: unable to create file tests/test_t10_gate.py: No space left on device\nerror: unable to create file tests/test_tables.py: No space left on device\nerror: unable to create file tests/test_tag_resolution.py: No space left on device\nerror: unable to create file tests/test_throughput.py: No space left on device\nerror: unable to create file tests/test_tick.py: No space left on device\nerror: unable to create file tests/test_tick_latency.py: No space left on device\nerror: unable to create file tests/test_tick_steps.py: No space left on device\nerror: unable to create file tests/test_tick_summary.py: No space left on device\nerror: unable to create file tests/test_tick_watchdog.py: No space left on device\nerror: unable to create file tests/test_tokens.py: No space left on device\nerror: unable to create file tests/test_transplant.py: No space left on device\nerror: unable to create file tests/test_tree_green.py: No space left on device\nerror: unable to create file tests/test_trunk_check.py: No space left on device\nerror: unable to create file tests/test_trunk_merge.py: No space left on device\nerror: unable to create file tests/test_trunk_red.py: No space left on device\nerror: unable to create file tests/test_trunkclose.py: No space left on device\nerror: unable to create file tests/test_tune.py: No space left on device\nerror: unable to create file tests/test_unpushed_gate.py: No space left on device\nerror: unable to create file tests/test_upgrade.py: No space left on device\nerror: unable to create file tests/test_upgrade_drain_bound.py: No space left on device\nerror: unable to create file tests/test_version.py: No space left on device\nerror: unable to create file tests/test_views.py: No space left on device\nerror: unable to create file tests/test_views_header.py: No space left on device\nerror: unable to create file tests/test_watch.py: No space left on device\nerror: unable to create file tests/test_wave_clock.py: No space left on device\nerror: unable to create file tests/test_widen.py: No space left on device\nerror: unable to create file tests/test_worker_env.py: No space left on device\nerror: unable to create file tests/test_worker_isolation.py: No space left on device\nerror: unable to create file tests/test_workers.py: No space left on device\nerror: unable to create file tests/test_workflow.py: No space left on device\nerror: unable to create file tests/test_worktree_reaper.py: No space left on device\nerror: unable to create file tests/test_worktrees_ensure.py: No space left on device\nfatal: cannot create directory at 'tools': No space left on device"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63870,7 +63879,7 @@
       "state": "New",
       "title": "the standing views \u2014 the doctor's `upgrade` row and the guide's release-channel section",
       "type": "task",
-      "updated": "2026-10-10T10:41:24Z",
+      "updated": "2026-10-10T10:43:25Z",
       "writes": [
         "asf/doctor.py",
         "docs/guide/upgrading.md",
@@ -66553,7 +66562,7 @@
       "state": "Active",
       "title": "the reader and its command \u2014 every product's stored week, and `asf scorecard --all`",
       "type": "task",
-      "updated": "2026-10-10T10:29:20Z",
+      "updated": "2026-10-10T10:43:25Z",
       "writes": [
         "asf/scorecard/loop.py",
         "asf/views/scorecard.py",
@@ -82173,7 +82182,7 @@
         "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "new",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82186,7 +82195,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T10:15:39Z",
+      "updated": "2026-10-10T10:43:25Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
