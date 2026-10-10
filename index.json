@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T07:53:55Z",
+  "generated": "2026-10-10T08:10:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18149,7 +18149,7 @@
         "docs/reviews/1-b-82658.md \u2014 review session `57b14a947` committed and pushed the round-1 review file onto `fix/B-82658` itself, violating \"the review never touches the branch.\" Fix with a follow-up commit `git rm docs/reviews/1-b-82658.md` (no rebase/force-push)."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18159,7 +18159,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1233@4a831f9c8",
       "type": "bug",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T08:08:59Z"
     },
     "B-82809": {
       "backlinks": [
@@ -18856,7 +18856,7 @@
         "asf/tick/step_wave.py:1328 \u2014 bind `paused = pause_mod.held(product)` (as `launch` does at :1156) and pass `paused=paused` into `launch_now`'s `screen(...)` call at :1328-1329, returning 0 before `_wave` the way `launch()` does, so the wave clock's live spawn path actually honors the operator's pause instead of still launching a paused product's row (reproduced: `step_wave.launch_now` launches `fix-bug-b-0001` under an active `pause.pause()`)."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18866,7 +18866,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-10T07:44:01Z"
+      "updated": "2026-10-10T08:09:00Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -19171,7 +19171,6 @@
     "D-0011": {
       "backlinks": [
         "T-81129",
-        "T-82986",
         "T-82987"
       ],
       "children": [],
@@ -32082,7 +32081,7 @@
       "state": "Active",
       "title": "A review that ends 'needs input' because the heartbeat cannot start parks the PR for good",
       "type": "feature",
-      "updated": "2026-10-10T07:53:47Z"
+      "updated": "2026-10-10T08:09:00Z"
     },
     "F-0280": {
       "backlinks": [
@@ -33105,7 +33104,6 @@
         "S-81207",
         "S-81208",
         "S-81209",
-        "T-82986",
         "T-82987",
         "T-82988",
         "T-82989",
@@ -33251,7 +33249,7 @@
       "state": "Active",
       "title": "Finished reviews are dropped when the review worktree is not a checkout, so green PRs get no approval and the row parks",
       "type": "feature",
-      "updated": "2026-10-10T07:53:47Z"
+      "updated": "2026-10-10T08:09:00Z"
     },
     "F-0314": {
       "backlinks": [],
@@ -33398,11 +33396,17 @@
       ],
       "folder": "features",
       "id": "F-0318",
+      "kernel_answers": [
+        "id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-91005, S-91006, S-91007, S-91008, S-91009, S-91010 by refs/asf/ids/S-91005 02c12e8; S-95555 by refs/asf/ids/S-95555 125b285. No record item collides with them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-91005, S-91006, S-91007, S-91008, S-91009, S-91010 by refs/asf/ids/S-91005 02c12e8; S-95555 by refs/asf/ids/S-95555 125b285. No record item collides with them."
+      ],
       "kernel_notes": [
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
         "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33410,7 +33414,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T08:09:00Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33453,7 +33457,7 @@
       "state": "New",
       "title": "an ASF rebase drops the approved review verdict even when the range-diff is identical; the item re-reviews to the cap",
       "type": "feature",
-      "updated": "2026-10-10T07:53:47Z"
+      "updated": "2026-10-10T08:09:00Z"
     },
     "F-0321": {
       "backlinks": [],
@@ -33554,7 +33558,7 @@
       "state": "New",
       "title": "a branch of only empty proof commits is read as already on main and deleted without landing; the item loops",
       "type": "feature",
-      "updated": "2026-10-10T07:10:57Z"
+      "updated": "2026-10-10T08:09:00Z"
     },
     "F-0325": {
       "backlinks": [],
@@ -33572,7 +33576,7 @@
       "kernel_notes": [
         "spec-f-0325-1791586983: NEEDS OPERATOR: F-0325 has zero Story *cards* in the record, and `feeder.has_stories` counts cards via `ix.children`, not the spec's declarations \u2014 so once this spec is approved the feeder will emit `NO STORIES \u2192 SP\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33580,7 +33584,7 @@
       "state": "New",
       "title": "a declared 'wave' clock with steps [wave] runs as a tick under the tick lock and suppresses the native wave job",
       "type": "feature",
-      "updated": "2026-10-10T07:44:01Z"
+      "updated": "2026-10-10T08:09:00Z"
     },
     "F-0326": {
       "backlinks": [],
@@ -43868,8 +43872,7 @@
     },
     "S-81204": {
       "backlinks": [
-        "F-0308",
-        "T-82986"
+        "F-0308"
       ],
       "children": [],
       "cost": {
@@ -46760,7 +46763,6 @@
         "T-78813",
         "T-80572",
         "T-80576",
-        "T-82986",
         "B-0138",
         "B-82960",
         "B-83470"
@@ -49570,8 +49572,7 @@
         "T-0708",
         "T-0794",
         "T-78813",
-        "T-80576",
-        "T-82986"
+        "T-80576"
       ],
       "children": [],
       "cost": {
@@ -49762,8 +49763,7 @@
         "T-0200",
         "T-0216",
         "T-0797",
-        "T-80576",
-        "T-82986"
+        "T-80576"
       ],
       "children": [],
       "cost": {
@@ -50081,8 +50081,7 @@
         "T-0797",
         "T-0802",
         "T-78813",
-        "T-80576",
-        "T-82986"
+        "T-80576"
       ],
       "children": [],
       "cost": {
@@ -51865,7 +51864,6 @@
         "T-0173",
         "T-0207",
         "T-80576",
-        "T-82986",
         "B-75618"
       ],
       "children": [],
@@ -53443,8 +53441,7 @@
         "T-0209",
         "T-0216",
         "T-0368",
-        "T-80576",
-        "T-82986"
+        "T-80576"
       ],
       "children": [],
       "cost": {
@@ -60730,7 +60727,6 @@
         "T-0708",
         "T-0724",
         "T-80576",
-        "T-82986",
         "B-0229",
         "B-0593",
         "B-0598"
@@ -72581,7 +72577,6 @@
         "T-0724",
         "T-0728",
         "T-78813",
-        "T-82986",
         "B-0211",
         "B-83471"
       ],
@@ -75694,7 +75689,6 @@
         "T-78358",
         "T-78813",
         "T-80572",
-        "T-82986",
         "B-76879"
       ],
       "children": [],
