@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T18:44:35Z",
+  "generated": "2026-10-10T18:48:58Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34755,6 +34755,8 @@
       "decided": true,
       "folder": "features",
       "id": "F-0344",
+      "kernel_fix_rounds": 0,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34762,7 +34764,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-10T18:43:30Z"
+      "updated": "2026-10-10T18:48:56Z"
     },
     "R-0001": {
       "backlinks": [
@@ -46432,9 +46434,11 @@
         "T-129180"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91156",
       "parent": "F-0321",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:02Z",
       "state": "New",
@@ -46448,9 +46452,11 @@
         "T-129181"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91157",
       "parent": "F-0321",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:02Z",
       "state": "New",
@@ -83290,7 +83296,7 @@
       "kernel_notes": [
         "build-t-129164-1791655876: NEEDS OPERATOR: the installed dispatcher at ~/.local/bin/asf has no `pre-push` subcommand at all, blocking every push on this host until it is reinstalled/rebuilt \u2014 `\"$HOME/.local/bin/asf\" --help`"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -83303,7 +83309,7 @@
       ],
       "title": "the text \u2014 a finished session's REPORT verdict, as a review every reader reads alike",
       "type": "task",
-      "updated": "2026-10-10T18:44:33Z",
+      "updated": "2026-10-10T18:48:56Z",
       "writes": [
         "asf/evidence/review.py",
         "tests/test_review_reader.py"
@@ -83349,6 +83355,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129166",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -83361,7 +83368,7 @@
       ],
       "title": "the filing \u2014 `review_store.recover`, with a head of its own",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-10T18:48:56Z",
       "writes": [
         "asf/evidence/review_store.py",
         "tests/test_review_store.py"
@@ -83586,7 +83593,8 @@
       "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
       "kernel_notes": [
         "groom-fill-t-129174-1791655632: groom-fill raised risk high: no Task of plan F-0318 has landed anywhere (code or PR) so the parent cannot legitimately be Done; the card's test-naming, writes, and after fields already clear DoR, and the parent-Done read is a transient container-derivation artifact from the plan PR minting siblings minutes earlier that self-corrects on the next tick.",
-        "groom-fill-t-129174-1791656640: groom-fill raised risk high: The parent-Done DoR hold is a stale, self-correcting Feature-state read (kernel_state: done is a leftover from closed PR #1262; the live F-0318.state is New since it now derives from its Task children per dce5aac92) \u2014 dor.missing() finds no actual gap: acceptance names real tests, writes sit on trunk, after (T-129173) is unparked, and parent is not Done."
+        "groom-fill-t-129174-1791656640: groom-fill raised risk high: The parent-Done DoR hold is a stale, self-correcting Feature-state read (kernel_state: done is a leftover from closed PR #1262; the live F-0318.state is New since it now derives from its Task children per dce5aac92) \u2014 dor.missing() finds no actual gap: acceptance names real tests, writes sit on trunk, after (T-129173) is unparked, and parent is not Done.",
+        "groom-fill-t-129174-1791657636: groom-fill raised risk high: Acceptance filled per docs/plans/f-0318.md Task 2 (S-91008/S-91009 lines mapped to the two test classes it adds); writes unchanged \u2014 all three paths exist already (test_spec_stories.py is created by its predecessor T-129173, which `after:` already gates), and the edit sits in the tick's record step and stage.WRITERS so risk is raised."
       ],
       "links": {
         "plan": "docs/plans/f-0318.md"
@@ -83601,7 +83609,7 @@
       ],
       "title": "the place \u2014 the pass in the tick's record step, the writer order, and the gate clearing",
       "type": "task",
-      "updated": "2026-10-10T18:41:02Z",
+      "updated": "2026-10-10T18:48:56Z",
       "writes": [
         "asf/tick/tick.py",
         "asf/record/stage.py",
@@ -83614,7 +83622,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129175",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
       "kernel_notes": [
         "groom-fill-t-129175-1791657428: groom-fill verdict rejected: no GROOM-FILL block"
@@ -83631,7 +83639,7 @@
       ],
       "title": "the briefs \u2014 ask for the form the record mints, and name the spec's own landing",
       "type": "task",
-      "updated": "2026-10-10T18:41:02Z",
+      "updated": "2026-10-10T18:48:56Z",
       "writes": [
         "asf/briefs/templates/spec.md",
         "asf/briefs/build.py",
@@ -85013,7 +85021,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131823",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/harvest/lane.py:1187-1196 \u2014 the branch carries no `Proves:` trailer while its Task card lists `stories: S-124005`, so `lane_refusal`'s proves gate is not skipped and `validate([], \u2026)` returns `no claim`, refusing the branch at landing; add a commit with `Proves: S-124005 line 1 \u2014 tests/test_proves.py::QuarantinedClaimTests::test_the_cards_own_acceptance_one_counted_one_refused` and push."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -85026,7 +85038,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T18:37:32Z",
+      "updated": "2026-10-10T18:48:56Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"
@@ -86247,6 +86259,9 @@
       ],
       "folder": "tasks",
       "id": "T-80573",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_dor_fills": 1,
       "kernel_state": "building",
       "links": {
@@ -86261,7 +86276,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-10T18:11:40Z",
+      "updated": "2026-10-10T18:48:56Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
