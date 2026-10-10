@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T19:18:01Z",
+  "generated": "2026-10-10T19:21:21Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34409,7 +34409,8 @@
       "folder": "features",
       "id": "F-0336",
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "review: no VERDICT line"
       ],
       "kernel_findings": [
         "docs/specs/f-0336.md:392 \u2014 the new module's docstring says `(ASF 0.3)`; this repo is at `v0.2.6` and all 24 modules carrying the marker say `(ASF 0.2)`, including `dor.py`, `waits.py` and `stories.py`, which were added during the 0.2 line. Change it to `\"\"\"asf.kernel.flake \u2014 one failure signature on several unrelated heads (ASF 0.2).`",
@@ -34430,7 +34431,7 @@
       "state": "New",
       "title": "Kernel flake quarantine with a defect check (unrelated heads only)",
       "type": "feature",
-      "updated": "2026-10-10T18:11:40Z"
+      "updated": "2026-10-10T19:21:18Z"
     },
     "F-0337": {
       "backlinks": [],
@@ -34540,12 +34541,18 @@
         "session ran past its max age"
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/specs/f-0340.md:119 \u2014 fix `asf/kernel/ports.py:321` \u2192 `:319` and `asf/kernel/decide.py:2125` \u2192 `:2126`",
+        "docs/specs/f-0340.md:120 \u2014 fix `SCHEMA_VERSION = 1` cite `:33` \u2192 `:31` and `MIGRATIONS` cite `:45` \u2192 `:43`",
+        "docs/specs/f-0340.md:123 \u2014 fix `dor.gate_lines` cite `:108` \u2192 `:109`",
+        "docs/specs/f-0340.md:124 \u2014 fix `proves.bullets` `:172`\u2192`:171`, `card_bullets` `:190`\u2192`:188`, `proves.tick` `:258`\u2192`:257`"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34554,7 +34561,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T19:11:45Z"
+      "updated": "2026-10-10T19:21:18Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -80231,7 +80238,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-10T19:01:13Z",
+      "updated": "2026-10-10T19:21:18Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
@@ -83212,6 +83219,9 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129157",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
       "kernel_findings": [
@@ -83219,9 +83229,10 @@
       ],
       "kernel_fix_rounds": 2,
       "kernel_notes": [
-        "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card."
+        "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card.",
+        "build-t-129157-1791659546: NEEDS OPERATOR: the host's installed `asf` CLI at ~/.local/bin/asf is stale (missing the `pre-push` subcommand the current worktree's asf/cli.py defines), so the pre-push hook refuses every push on this host until i\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -83234,7 +83245,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T19:12:34Z",
+      "updated": "2026-10-10T19:21:18Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -84879,7 +84890,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130213",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "satisfied on main at 14b963ba1: tests.test_mq_batch_survival.CutShortReads, tests.test_mq_batch_survival, tests.test_merge_queue, tests.test_mq_deterministic_red, tests.test_queue_reap, tests.test_flake_triage, tests.test_hermetic"
+      ],
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -84892,7 +84906,7 @@
       ],
       "title": "the run's own conclusion gets a reader, and the skip-only prefix stops being fooled by a judged leg",
       "type": "task",
-      "updated": "2026-10-10T18:58:32Z",
+      "updated": "2026-10-10T19:21:18Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_mq_batch_survival.py"
@@ -84909,6 +84923,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130214",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -84922,7 +84937,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-10T19:21:18Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
