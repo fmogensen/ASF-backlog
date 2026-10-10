@@ -1,0 +1,30 @@
+# Adopt GitHub's work-item model: type, parent, milestone, priority
+parent: E-0003
+
+Adopt GitHub's work-item model on the flat-file record: type, parent, milestone, priority (operator-approved 2026-10-10).
+
+## Problem
+Release scope is encoded in Epic titles (E-0001 "ASF 0.1 — a working factory", E-0002 "ASF 0.2 — self-improvement", E-0003 "ASF 0.3 — autonomous delivery"). An Epic is a theme: highest in the hierarchy, never under another Epic, may carry a priority, and normally has no version. A version cuts across Epics, the way a GitHub milestone does.
+
+## Model (mirrors GitHub issue types, sub-issues, milestones, Projects priority)
+- `type:` epic | feature | story | task | bug (exists).
+- `parent:` the hierarchy Epic > Feature > Story > Task; Bugs attach to an Epic, Feature or Story. An Epic never has a parent. Enforced by `asf check` and by intake.
+- `milestone:` new typed field, at most one per item, a version name such as `v0.3`. Milestones are declared in the product config or a record file (name, optional due date, state open/closed); an item naming an undeclared milestone fails `asf check`. Children inherit their parent's milestone unless they set their own.
+- `priority:` need | nice | later on any item, Epics included (exists; make sure Epics accept it).
+- Releases stay the git tag plus CHANGELOG notes, cut when shipping.
+
+## Change
+1. Card schema and `asf check`: the `milestone` field, the milestone declarations, the hierarchy rules above (works with F-0340's JSON card schema if that lands first).
+2. `asf release-readiness` and the gate read scope from `milestone:` (open vs closed items in the milestone, like a GitHub milestone progress bar), not from an Epic.
+3. A record migration by code (idempotent, one commit): retitle E-0001/E-0002/E-0003 as themes without version ("A working factory", "Self-improvement", "Autonomous delivery"); set `milestone: v0.1|v0.2|v0.3` on their open and closed Features from their current Epic; declare the milestones v0.1 and v0.2 closed, v0.3 open.
+4. `asf kernel status` and the watch show milestone progress ("v0.3: N of M closed").
+
+## Later (not this Feature, E-0004)
+A one-way sync of the record to GitHub Issues/Projects (issue types, sub-issues, milestones, a Priority field) for a phone view; the flat files stay the source of truth.
+
+## Acceptance
+- `asf check` rejects an Epic with a parent, a Feature whose parent is not an Epic, a Story whose parent is not a Feature, a Task whose parent is not a Feature or Story, and an undeclared milestone (test per rule).
+- An Epic with `priority: need` passes `asf check` and keeps it through intake (test).
+- A child without `milestone:` reports its parent's milestone; its own value wins when set (test).
+- `asf release-readiness --milestone v0.3` counts the milestone's open and closed items across Epics (test).
+- The migration run twice yields one identical commit's worth of changes and leaves every id and parent link intact (test on a fixture record).
