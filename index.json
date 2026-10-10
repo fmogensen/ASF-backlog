@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T14:57:09Z",
+  "generated": "2026-10-10T15:00:52Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16701,6 +16701,9 @@
       "id": "B-121288",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
+      "kernel_notes": [
+        "groom-fill-b-121288-1791643848: groom-fill raised risk high: reproduced via parse_assignments/apply_list \u2014 a quoted \"a, b, c\" survives _as_list as one scalar, then widen.norm_writes's whitespace split (meant for packed plan entries) turns it into ['a,', 'b,', 'c']; real, fixable in asf/record/setfield.py."
+      ],
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -16709,7 +16712,11 @@
       "state": "New",
       "title": "asf set: comma-separated list values keep their commas (writes: [\"a,\", ...])",
       "type": "bug",
-      "updated": "2026-10-10T14:50:59Z"
+      "updated": "2026-10-10T15:00:51Z",
+      "writes": [
+        "asf/record/setfield.py",
+        "tests/test_record_stage.py"
+      ]
     },
     "B-121289": {
       "backlinks": [],
@@ -33854,9 +33861,10 @@
         "relaunch: operator answer: Decisions: (1) This plan session may amend docs/specs/f-0330.md (granted) to re-anchor the design on the current trunk: retire.py/test_retire.py, replan.task_pending and correct.py's parked gate are gone; design against what exists now (asf/record retire path via asf retire --landed, replan.pending(feature), and the kernel's ruling applier), then re-cut the four Tasks. (2) STORY_ID_RE: filed as its own Bug via the inbox (fix: \\d{4,}); land that first. F-0330's Tasks get after: on that Bug once it has an id; do not mint Tasks without Stories."
       ],
       "kernel_notes": [
-        "plan-f-0330-1791640370: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by four PLAN sessions in a row"
+        "plan-f-0330-1791640370: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by four PLAN sessions in a row",
+        "plan-f-0330-1791643018: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by five PLAN sessions in a row"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33864,7 +33872,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T14:37:27Z"
+      "updated": "2026-10-10T15:00:51Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -33954,7 +33962,10 @@
       "decided": false,
       "folder": "features",
       "id": "F-0334",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0334-1791642615: NEEDS OPERATOR: which classes of question the console is answering \u2014 `asf kernel questions --product <p> --classify --since 2026-09-26T00:00:00Z`"
+      ],
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -33963,7 +33974,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T14:30:50Z"
+      "updated": "2026-10-10T15:00:51Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -63888,7 +63899,11 @@
       "folder": "tasks",
       "id": "T-0433",
       "kernel_answers": [
-        "granted asf/doctor.py tests/test_doctor.py; nothing else outside writes (card updated by the kernel)."
+        "granted asf/doctor.py tests/test_doctor.py; nothing else outside writes (card updated by the kernel).",
+        "granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
@@ -63910,7 +63925,7 @@
         "PR #1378: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63927,7 +63942,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T14:21:44Z",
+      "updated": "2026-10-10T15:00:51Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -63935,7 +63950,8 @@
         "tests/test_release_channel.py",
         "tests/test_tick_summary.py",
         "tests/test_tick.py",
-        "tests/test_drift.py"
+        "tests/test_drift.py",
+        "tests/test_tick_steps.py"
       ]
     },
     "T-0434": {
@@ -77785,7 +77801,11 @@
       ],
       "folder": "tasks",
       "id": "T-0763",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "rebase: PR #1084 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0165.md"
       },
@@ -77798,7 +77818,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-10T14:16:19Z",
+      "updated": "2026-10-10T15:00:51Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
@@ -82161,11 +82181,13 @@
         "Widened T-81129's writes to include asf/conventions.py and docs/guide/product-config.md (record). Continue on the same branch.",
         "Correction: asf/conventions.py cannot be added yet; T-79565 and T-83345 hold it. T-81129 now waits on both (after:) and gets the file once they land; docs/guide/product-config.md is added to writes now.",
         "One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push.",
-        "granted asf/conventions.py; nothing else outside writes (card updated by the kernel)."
+        "granted asf/conventions.py; nothing else outside writes (card updated by the kernel).",
+        "granted tests/test_env.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/conventions.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted tests/test_env.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -82185,7 +82207,7 @@
         "PR #1374: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -82198,12 +82220,13 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T14:16:19Z",
+      "updated": "2026-10-10T15:00:51Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
         "docs/guide/product-config.md",
-        "asf/conventions.py"
+        "asf/conventions.py",
+        "tests/test_env.py"
       ]
     },
     "T-81130": {
@@ -82776,7 +82799,7 @@
         "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap.",
         "groom-fill-t-83142-1791633870: groom-fill raised risk high: card is byte-for-byte Task 1 of the landed plan/spec (F-0280 \u00a71), already fully specced with test-named acceptance; the after:T-0775/T-78813 block is the kernel's write-overlap serialization on asf/feeder/rows.py, not a card defect"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -82789,7 +82812,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T14:57:07Z",
+      "updated": "2026-10-10T15:00:51Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
