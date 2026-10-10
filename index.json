@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T13:26:50Z",
+  "generated": "2026-10-10T13:30:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33394,7 +33394,7 @@
       "kernel_notes": [
         "plan-f-0316-1791636867: NEEDS OPERATOR: outside this card \u2014 18 landed plans write their Task `writes:` line space-separated with backticks, and `asf.tick.migrate.writes_lines` splits only on commas, so each of those Tasks was minted with o\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33402,7 +33402,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T13:17:36Z"
+      "updated": "2026-10-10T13:30:56Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33707,7 +33707,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T13:26:49Z"
+      "updated": "2026-10-10T13:30:56Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33738,9 +33738,10 @@
         "plan-f-0328-1791629407: NEEDS OPERATOR: whether fix/F-0328-pending-not-red may land carrying the closed hotfix (c6cb1a21f, the verdict() change the spec's Out table refuses, plus 6a81462dc, an unrelated defect) alongside this plan \u2014 a plan\u2026",
         "plan-f-0328-1791631578: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` adds five commits over `47466e997`, two of which are the spec's\u2026",
         "plan-f-0328-1791633802: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` is 5 behind and 8 ahead of the trunk over `47466e997`, and two o\u2026",
-        "plan-f-0328-1791635656: NEEDS OPERATOR: `fix/F-0328-pending-not-red` carries commit `418bdb402` (\"the merge queue reads not-yet-run required jobs as pending, never red\"), the closed hotfix the spec's `Out` table refuses on two separate row\u2026"
+        "plan-f-0328-1791635656: NEEDS OPERATOR: `fix/F-0328-pending-not-red` carries commit `418bdb402` (\"the merge queue reads not-yet-run required jobs as pending, never red\"), the closed hotfix the spec's `Out` table refuses on two separate row\u2026",
+        "plan-f-0328-1791637960: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. Re-measured this pass: origin/main was force-updated and the branch re-based, so every sha th\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33748,7 +33749,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T13:13:38Z"
+      "updated": "2026-10-10T13:30:56Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33829,7 +33830,7 @@
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33837,7 +33838,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T13:26:49Z"
+      "updated": "2026-10-10T13:30:56Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -64756,6 +64757,9 @@
       "id": "T-0456",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
+      "kernel_notes": [
+        "groom-fill-t-0456-1791638496: groom-fill raised risk high: Fully specified by docs/plans/f-0114.md's Task 5 (same writes, steps, and test names already named there and in the spec's own Acceptance tests section); every schema.* primitive it calls (CONFIG_VERSION, auto_migrate, tick_drain_s, product_version, snapshot/restore) is already implemented on the sequenced prerequisite T-0452 (commit 34d335c4f, not yet merged to main) \u2014 the card was just missing its acceptance/gate lines, now copied over from the plan."
+      ],
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -64765,7 +64769,7 @@
       "state": "New",
       "title": "`asf/upgrade.py` \u2014 the upgrade migrates what it installed, and `--to` puts the snapshot back",
       "type": "task",
-      "updated": "2026-10-10T13:21:42Z",
+      "updated": "2026-10-10T13:30:56Z",
       "writes": [
         "asf/upgrade.py",
         "asf/init.py",
@@ -64823,6 +64827,8 @@
       ],
       "folder": "tasks",
       "id": "T-0458",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -64832,7 +64838,7 @@
       "state": "New",
       "title": "`asf/release.py` \u2014 the ninth criterion, the migrations in a release's notes, and the guide brought into step",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T13:30:56Z",
       "writes": [
         "asf/release.py",
         "asf/metrics/metrics.py",
@@ -81429,10 +81435,11 @@
         "PR #1342: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1342: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1342: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "satisfied on main at a22019ced: tests.test_prepush"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81449,7 +81456,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-10T13:26:49Z",
+      "updated": "2026-10-10T13:30:56Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
@@ -82483,7 +82490,7 @@
       ],
       "title": "the stable gate \u2014 four rows, each met or unmet with its evidence",
       "type": "task",
-      "updated": "2026-10-10T13:21:42Z",
+      "updated": "2026-10-10T13:30:56Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py",
