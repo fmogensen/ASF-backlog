@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T07:11:02Z",
+  "generated": "2026-10-10T07:44:03Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2767,11 +2767,8 @@
         "launch: launch: git fetch -q origin fix/B-0088: error: cannot open '.git/FETCH_HEAD': No space left on device",
         "review: no VERDICT line"
       ],
-      "kernel_findings": [
-        "asf/views/board.py:41 (render) / asf/cli.py:415-417 \u2014 the default, unflagged `asf backlog` is unchanged by this diff and still prints the full 339-line/67 KB board; implement the card's `Expected` collapsing default (full rows for moving/landed Features per Epic, one-line summaries for undecided and Closed/on-prod groups, `--all` as the opt-out), with `--epic` as an additional narrowing on top of that rather than the whole fix."
-      ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -2779,7 +2776,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-10T07:04:36Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "B-0089": {
       "backlinks": [
@@ -3039,7 +3036,12 @@
       "kernel_attempts": [
         "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device"
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "fix/B-0097 commit `559f87485` \u2014 rewrite the trace to cite `e48caa821` (the commit carrying `Fixes: B-0097` and the actual `NETWORK_ERROR`/`HOOK_REFUSED` introduction), not `8066ecf4e` (unrelated spec commit), and drop the false \"no commit has ever named B-0097\" claim.",
+        "asf/workers/health.py:950 \u2014 implement an in-tick retry-with-backoff before falling back to the next-tick path, or narrow the card's acceptance text to the next-tick-only behavior that is actually in the tree, before closing B-0097 as already landed."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -3048,7 +3050,7 @@
       "state": "New",
       "title": "A network blip on push scores finished work as 'failed: not pushed' and costs a correction round",
       "type": "bug",
-      "updated": "2026-10-10T07:10:57Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "B-0098": {
       "backlinks": [],
@@ -18853,7 +18855,7 @@
         "asf/tick/step_wave.py:1328 \u2014 bind `paused = pause_mod.held(product)` (as `launch` does at :1156) and pass `paused=paused` into `launch_now`'s `screen(...)` call at :1328-1329, returning 0 before `_wave` the way `launch()` does, so the wave clock's live spawn path actually honors the operator's pause instead of still launching a paused product's row (reproduced: `step_wave.launch_now` launches `fix-bug-b-0001` under an active `pause.pause()`)."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18863,7 +18865,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-10T07:10:57Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -18950,7 +18952,7 @@
         "tests/test_pause.py:400-449 \u2014 delete `TheStatusPreviewSeesItToo` and its duplicate `test_a_paused_product_s_preview_holds_every_row_too` (near-verbatim copy of `ThePreviewAgrees.test_a_paused_products_preview_holds_the_row_it_never_starts_it` at tests/test_pause.py:551); fold the one genuinely new case, `test_the_same_preview_unpaused_starts_every_row`, into `ThePreviewAgrees` instead."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18960,7 +18962,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-84804",
       "type": "bug",
-      "updated": "2026-10-10T07:10:57Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "B-84837": {
       "backlinks": [],
@@ -31933,7 +31935,7 @@
       "state": "Active",
       "title": "asf next drops all Task rows of a Feature with any live session, with no reason row",
       "type": "feature",
-      "updated": "2026-10-10T07:10:57Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "F-0275": {
       "backlinks": [],
@@ -33332,7 +33334,7 @@
       ],
       "folder": "features",
       "id": "F-0316",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33340,7 +33342,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T07:04:36Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33514,7 +33516,7 @@
       "kernel_notes": [
         "spec-f-0323-1791586286: NEEDS OPERATOR: (none)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33522,7 +33524,7 @@
       "state": "New",
       "title": "an item resolved by one landing can't take a follow-up fix: the lane closes the PR and asf reopen is refused",
       "type": "feature",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "F-0324": {
       "backlinks": [],
@@ -33564,7 +33566,7 @@
       "kernel_notes": [
         "spec-f-0325-1791586983: NEEDS OPERATOR: F-0325 has zero Story *cards* in the record, and `feeder.has_stories` counts cards via `ix.children`, not the spec's declarations \u2014 so once this spec is approved the feeder will emit `NO STORIES \u2192 SP\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33572,7 +33574,7 @@
       "state": "New",
       "title": "a declared 'wave' clock with steps [wave] runs as a tick under the tick lock and suppresses the native wave job",
       "type": "feature",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "F-0326": {
       "backlinks": [],
@@ -33584,7 +33586,7 @@
       ],
       "folder": "features",
       "id": "F-0326",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33592,7 +33594,7 @@
       "state": "New",
       "title": "a pushed Task with an open PR gets no landing request and no row while others wait on it",
       "type": "feature",
-      "updated": "2026-10-10T07:04:36Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "F-0327": {
       "backlinks": [],
@@ -33643,7 +33645,7 @@
         "relaunch: operator answer: Decided: keep S-91805..S-91808 (D11 stands). Checked 2026-10-10 in the record repo: idclaim.claims covers all four through refs/asf/ids/S-91805 (S:91805-91854, claimant spec-f-0328-1791587536), and the ref is on the record's origin. No re-mint; the spec is done \u2014 proceed to review and landing.",
         "review: no VERDICT line"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33651,7 +33653,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T07:10:57Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33674,7 +33676,7 @@
       "kernel_notes": [
         "spec-f-0329-1791587544: NEEDS OPERATOR: whether the second, co-occurring half of the same damage gets its own card \u2014 `CHECKBOX` matches one physical line, so a *wrapped* acceptance bullet (`docs/specs/f-0280.md:369-371`, the very declarati\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33682,7 +33684,7 @@
       "state": "New",
       "title": "minting a declared Story (idcheck.declared_stories / plan_tasks) strips backtick code spans from its acceptance lines",
       "type": "feature",
-      "updated": "2026-10-10T07:04:36Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "F-0330": {
       "backlinks": [],
@@ -33694,7 +33696,7 @@
       ],
       "folder": "features",
       "id": "F-0330",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33702,7 +33704,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -33720,7 +33722,7 @@
       "kernel_notes": [
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33728,7 +33730,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T07:04:36Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -33745,7 +33747,7 @@
         "spec-f-0332-1791598835: NEEDS OPERATOR: which number the ceiling carries \u2014 6 (ships: 0.143 share, 23 % fall, ~2 parks a day, 0.007 of margin on the 0.15 threshold while the cause has drifted 0.158 \u2192 0.186) or 4 (0.123, a 34 % fall, ~4.5 pa\u2026",
         "spec-f-0332-1791602807: NEEDS OPERATOR: which number the ceiling should carry \u2014 the spec ships 6 (0.143 share, 23 % fall, only 0.007 of margin on the 0.15 threshold while the cause drifts up from 0.158 to 0.186); 4 measures at 0.123 and a\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33753,7 +33755,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T07:04:36Z"
+      "updated": "2026-10-10T07:44:01Z"
     },
     "R-0001": {
       "backlinks": [
@@ -53015,15 +53017,13 @@
       ],
       "folder": "tasks",
       "id": "T-0197",
-      "kernel_attempts": [
-        "review: no VERDICT line",
-        "review: no VERDICT line"
+      "kernel_answers": [
+        "The cloud review lost its verdict (a known kernel defect being fixed). Rerun the review; the code is unchanged."
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "review: no VERDICT line",
-      "kernel_stuck_since": "2026-10-10T07:03:27Z",
+      "kernel_attempts": [
+        "relaunch: operator answer: The cloud review lost its verdict (a known kernel defect being fixed). Rerun the review; the code is unchanged."
+      ],
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53036,7 +53036,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T07:04:36Z",
+      "updated": "2026-10-10T07:44:01Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -70756,7 +70756,7 @@
       "kernel_attempts": [
         "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/replans/f-0242-5da80eab4169.md"
       },
@@ -70770,7 +70770,7 @@
       "stories": [],
       "title": "no second reviewer is bought for a head whose reviewers filed nothing, and the review loop has the ceiling the document lane already has",
       "type": "task",
-      "updated": "2026-10-10T06:20:20Z",
+      "updated": "2026-10-10T07:44:01Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/feeder/rows.py",
@@ -80889,7 +80889,8 @@
       "folder": "tasks",
       "id": "T-78561",
       "kernel_attempts": [
-        "launch: launch: git worktree add -q -B worker/T-78561 ~/.ASF/state/asf/worktrees/review-t-78561-1791612724-local origin/worker/T-78561: fatal: cannot lock ref 'refs/heads/worker/T-78561': Unable to create '~/Code/fmogensen/ASF/.git/refs/heads/worker/T-78561.lock': No space left on device"
+        "launch: launch: git worktree add -q -B worker/T-78561 ~/.ASF/state/asf/worktrees/review-t-78561-1791612724-local origin/worker/T-78561: fatal: cannot lock ref 'refs/heads/worker/T-78561': Unable to create '~/Code/fmogensen/ASF/.git/refs/heads/worker/T-78561.lock': No space left on device",
+        "review: no VERDICT line"
       ],
       "kernel_findings": [
         "tests/test_doctor.py:573-581 \u2014 `test_an_unreadable_ci_stall_file_is_one_unknown_row_and_never_raises` mocks `ci_stall.doctor_rows` to raise instead of driving a real malformed `ci-stall.json` through `doctor.check_ci_stall`; `ci_stall.load()` already swallows a JSON decode error and returns `{}`, so the acceptance's literal scenario (\"a `ci-stall.json` that is not JSON\") actually yields a normal row today, not the promised `(False, None, 'cannot read the ci stall file \u2014 \u2026')` row \u2014 fix the test to use a real file and make the code honor the acceptance for that input.",
@@ -80909,7 +80910,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T06:20:20Z",
+      "updated": "2026-10-10T07:44:01Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
@@ -82538,7 +82539,7 @@
       ],
       "folder": "tasks",
       "id": "T-83352",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0295.md"
       },
@@ -82551,7 +82552,7 @@
       ],
       "title": "`asf status` says the factory re-ran a head, and when it refused to twice",
       "type": "task",
-      "updated": "2026-10-10T04:53:51Z",
+      "updated": "2026-10-10T07:44:01Z",
       "writes": [
         "asf/flake.py",
         "tests/test_flake_triage.py"
