@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T12:06:26Z",
+  "generated": "2026-10-10T12:08:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33416,7 +33416,7 @@
       "kernel_attempts": [
         "launch: no cloud account with a free seat"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33424,7 +33424,7 @@
       "state": "New",
       "title": "landed_doc treats a replan branch's landing-gate correction as landed because the original plan is on main; the Feature deadlocks with no row",
       "type": "feature",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T12:08:09Z"
     },
     "F-0318": {
       "backlinks": [
@@ -33533,7 +33533,7 @@
         "spec-f-0321-1791586280: NEEDS OPERATOR: the copy of NOTES.asf.md tracked on the reporting product's trunk (first added by ef2566bf4) must come off the trunk, and only a human may push main. From inside that product's own checkout (repo_dir\u2026",
         "spec-f-0321-1791590222: NEEDS OPERATOR: the copy of `NOTES.asf.md` tracked on the reporting product's trunk (first added by `ef2566bf4`) must come off the trunk, and only a human may push `main`. Verified read-only from that product's chec\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33541,7 +33541,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T12:06:13Z"
+      "updated": "2026-10-10T12:08:09Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -63753,7 +63753,8 @@
       "folder": "tasks",
       "id": "T-0433",
       "kernel_attempts": [
-        "session ran past its max age"
+        "session ran past its max age",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "asf/upgrade.py:1044-1048 \u2014 check `shadow.push(root)`'s return value and print `upgrade: pushing the filed Bug failed \u2014 the next RED tick bumps it` to stderr when it returns False (the documented normal refusal path, not just on an exception), matching asf/tick/tick.py:304-307's existing convention for the same call.",
@@ -63765,7 +63766,7 @@
         "PR #1346: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1346: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63782,7 +63783,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T12:06:13Z",
+      "updated": "2026-10-10T12:08:09Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -79954,7 +79955,8 @@
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
       "kernel_notes": [
         "groom-fill-t-0818-1791629851: groom-fill verdict rejected: no GROOM-FILL block",
-        "groom-fill-t-0818-1791631129: groom-fill verdict rejected: acceptance: missing or not a list"
+        "groom-fill-t-0818-1791631129: groom-fill verdict rejected: acceptance: missing or not a list",
+        "groom-fill-t-0818-1791632751: groom-fill raised risk high: design, line citations and dependency are verified against trunk and buildable; only the empty Acceptance checklist was missing, now filled from the card's own Gate/Description, and risk is raised because the change is in the tick kernel's push path."
       ],
       "kernel_state": "new",
       "links": {
@@ -79969,7 +79971,7 @@
       ],
       "title": "a card a push discards add/add is named by its id, and a modify/modify resolution still prints exactly one line",
       "type": "task",
-      "updated": "2026-10-10T11:45:57Z",
+      "updated": "2026-10-10T12:08:09Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -81323,7 +81325,7 @@
         "PR #1222: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1222: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81337,7 +81339,7 @@
       ],
       "title": "the door \u2014 the convention, the matcher, `asf pre-push`, and one call in the shim",
       "type": "task",
-      "updated": "2026-10-10T10:36:11Z",
+      "updated": "2026-10-10T12:08:09Z",
       "writes": [
         "asf/conventions.py",
         "asf/prepush.py",
@@ -81985,7 +81987,8 @@
       "backlinks": [
         "T-81131",
         "T-81132",
-        "T-81133"
+        "T-81133",
+        "T-81134"
       ],
       "children": [],
       "decided": true,
@@ -82686,7 +82689,7 @@
       "id": "T-83346",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
-      "kernel_state": "new",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82699,7 +82702,7 @@
       ],
       "title": "the feeder stands down \u2014 one `waived` membership, two branches, and the S1 lane's word",
       "type": "task",
-      "updated": "2026-10-10T11:50:30Z",
+      "updated": "2026-10-10T12:08:09Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -82755,7 +82758,7 @@
       ],
       "folder": "tasks",
       "id": "T-83348",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82768,7 +82771,7 @@
       ],
       "title": "the cell \u2014 what the pass ruled, and what it did not spawn",
       "type": "task",
-      "updated": "2026-10-10T11:41:33Z",
+      "updated": "2026-10-10T12:08:09Z",
       "writes": [
         "asf/views/status.py",
         "tests/test_views.py"
