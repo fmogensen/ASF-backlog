@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T21:32:09Z",
+  "generated": "2026-10-10T21:36:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33261,6 +33261,7 @@
       "backlinks": [
         "E-0001",
         "F-0327",
+        "F-0349",
         "B-82960"
       ],
       "budget_sessions": 6,
@@ -34511,7 +34512,8 @@
         "spec-f-0334-1791645911: NEEDS OPERATOR: every session's push of product `asf` on this host is refused \u2014 the pinned CLI predates the `pre-push` subcommand its own current hook shim calls, and no local build has it. Confirm read-only with `p\u2026",
         "spec-f-0334-1791651250: NEEDS OPERATOR: product `asf` is pinned to `14b963ba1` (2026-10-08), whose CLI has no `pre-push` subcommand, while `asf-hook:171` calls it \u2014 the door refuses every session's push on this host. Repin to a sha that ca\u2026",
         "spec-f-0334-1791655619: NEEDS OPERATOR: the pinned CLI blocks every push from this host, not this branch. Build a current pin (`asf upgrade --product asf`), or make the shim tolerate a pinned CLI lacking the subcommand the way its own `tru\u2026",
-        "plan-f-0334-1791664150: NEEDS OPERATOR: whether the second product's trunk requires branches to be up to date \u2014 if its ruleset is strict the merge train serialises updates and re-runs CI on every trunk move, and the 60-minute median is not\u2026"
+        "plan-f-0334-1791664150: NEEDS OPERATOR: whether the second product's trunk requires branches to be up to date \u2014 if its ruleset is strict the merge train serialises updates and re-runs CI on every trunk move, and the 60-minute median is not\u2026",
+        "plan-f-0334-1791666402: NEEDS OPERATOR: which card owns asf/kernel/sweep.py \u2014 F-0334's S-131010 (this plan's Task 5) or F-0337. Two approved specs on the trunk design the same module and the same tests/kernel/test_sweep.py under different\u2026"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "building",
@@ -34523,7 +34525,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T21:08:01Z"
+      "updated": "2026-10-10T21:36:35Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34735,7 +34737,7 @@
         "spec-f-0340-1791663815: NEEDS OPERATOR: ASF's own live backlog_dir is outside this session's read roots, so \u00a71.1's rows"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34744,7 +34746,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T21:23:05Z"
+      "updated": "2026-10-10T21:36:35Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -35154,7 +35156,10 @@
         "docs/specs/f-0349.md:66 \u2014 says `parent <id> does not exist` is \"asserted verbatim\" at tests/test_groom_every_tick.py:94, but that line asserts `` `parent: E-0404` does not exist `` which is a different message, raised by asf/groom/shape.py:108 (`Question(f\"\\`parent: {parent}\\` does not exist \u2014 ...\")`), not asf/record/check.py's `parent {parent} does not exist` (check.py:298); drop that test as evidence for check.py's rule or correct the claim."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0349-1791667464: NEEDS OPERATOR: the installed CLI at `~/.local/bin/asf` predates F-0301 and has no `pre-push` subcommand, so the pre-push hook's door step exits non-zero on a usage error; my first push was refused that way and the\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35162,7 +35167,7 @@
       "state": "New",
       "title": "Adopt GitHub's work-item model: type, parent, milestone, priority",
       "type": "feature",
-      "updated": "2026-10-10T21:24:32Z"
+      "updated": "2026-10-10T21:36:35Z"
     },
     "F-0350": {
       "backlinks": [],
@@ -38585,7 +38590,9 @@
       "updated": "2026-10-10T19:30:53Z"
     },
     "S-131010": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0334"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -47634,9 +47641,11 @@
         "T-129196"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-92305",
       "parent": "F-0330",
+      "priority": "need",
       "removed": "intake: S-92305 builds a ruling-applier onto the old floor's asf/tick/apply_rulings.py and asf/feeder/rows.py, which the 0.2 kernel already replaced \u2014 asf/kernel/apply.py + ports.record.supersede already retire-and-link a superseded card in one commit, the shape this story re-specifies for the floor. (groom 2026-10-10)",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:55Z",
@@ -67889,6 +67898,7 @@
         "T-0734",
         "T-0815",
         "T-0816",
+        "T-131719",
         "T-131823",
         "T-136825",
         "T-78155",
@@ -83954,7 +83964,8 @@
         "groom-fill-t-129156-1791655146: groom-fill raised risk high: design (constants, line ranges, fixture methods, helper signatures) matches trunk at af8aa11c exactly, and nothing named has been built yet \u2014 only acceptance/writes were missing.",
         "groom-fill-t-129156-1791656430: groom-fill raised risk high: design (constants at widen.py:46, revert_overlaps/serialize_overlaps at 560/620, run() adjacency, SerializeOverlapTests helpers at 592-620) still matches trunk at 96883ff2 exactly and nothing named is built yet; the live F-0272 record reads state: Active/stage: spec-approved, not Done, so that DoR reason is stale \u2014 acceptance/writes refilled unchanged.",
         "groom-fill-t-129156-1791660405: groom-fill raised risk high: parent F-0272 reads state: Active/stage: spec-approved (not Closed/Resolved) in both record and wave-record, so it parses to kernel State.NEW, not Done \u2014 the cited \"parent is Done\" gap does not hold; acceptance and writes are already filled and verified line-for-line against trunk at cb47b17c8 and the landed plan (76a4469d3), and nothing named is built yet.",
-        "groom-fill-t-129156-1791663897: groom-fill raised risk high: design matches trunk at 50356a9f6 exactly and nothing named is built yet \u2014 acceptance/writes unchanged; the real \"parent F-0272 is Done\" gap is a stale kernel_state:done written on F-0272 before its Stories/Task existed, now permanently un-writable per apply.py's container-skip (:552-556), so no groom-fill verdict on this card can clear it \u2014 F-0272's kernel_state field needs a direct fix."
+        "groom-fill-t-129156-1791663897: groom-fill raised risk high: design matches trunk at 50356a9f6 exactly and nothing named is built yet \u2014 acceptance/writes unchanged; the real \"parent F-0272 is Done\" gap is a stale kernel_state:done written on F-0272 before its Stories/Task existed, now permanently un-writable per apply.py's container-skip (:552-556), so no groom-fill verdict on this card can clear it \u2014 F-0272's kernel_state field needs a direct fix.",
+        "groom-fill-t-129156-1791667556: groom-fill raised risk high: design matches trunk exactly and nothing named is built; the \"parent F-0272 is Done\" gap is F-0272's stale kernel_state:done field, permanently un-writable by apply.py once it had children (confirmed via dor.py:194 + apply.py:552-569), not a real DoR failure."
       ],
       "links": {
         "plan": "docs/plans/f-0272.md"
@@ -83969,7 +83980,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-10T21:26:20Z",
+      "updated": "2026-10-10T21:36:35Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -84251,6 +84262,7 @@
       "backlinks": [
         "T-129167",
         "T-129168",
+        "T-131719",
         "T-131823",
         "T-136825"
       ],
@@ -84557,8 +84569,8 @@
       "kernel_attempts": [
         "launch: launch: worktree already exists: ~/.ASF/state/asf/worktrees/groom-fill-t-129174-1791662163 \u2014 no run recorded it"
       ],
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
       "kernel_notes": [
         "groom-fill-t-129174-1791655632: groom-fill raised risk high: no Task of plan F-0318 has landed anywhere (code or PR) so the parent cannot legitimately be Done; the card's test-naming, writes, and after fields already clear DoR, and the parent-Done read is a transient container-derivation artifact from the plan PR minting siblings minutes earlier that self-corrects on the next tick.",
         "groom-fill-t-129174-1791656640: groom-fill raised risk high: The parent-Done DoR hold is a stale, self-correcting Feature-state read (kernel_state: done is a leftover from closed PR #1262; the live F-0318.state is New since it now derives from its Task children per dce5aac92) \u2014 dor.missing() finds no actual gap: acceptance names real tests, writes sit on trunk, after (T-129173) is unparked, and parent is not Done.",
@@ -84578,7 +84590,7 @@
       ],
       "title": "the place \u2014 the pass in the tick's record step, the writer order, and the gate clearing",
       "type": "task",
-      "updated": "2026-10-10T21:18:17Z",
+      "updated": "2026-10-10T21:36:35Z",
       "writes": [
         "asf/tick/tick.py",
         "asf/record/stage.py",
@@ -84963,7 +84975,7 @@
         "red: tests (3.12)",
         "red: tests (3.13)"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1437: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1437: checks (3.13) is red but not a required check \u2014 ignored",
@@ -84974,7 +84986,7 @@
         "PR #1437: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1437: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0324.md"
       },
@@ -84989,7 +85001,7 @@
       ],
       "title": "a branch of only empty proof commits lands its proof instead of being deleted as already on main",
       "type": "task",
-      "updated": "2026-10-10T21:13:18Z",
+      "updated": "2026-10-10T21:36:35Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
@@ -85557,7 +85569,7 @@
       "kernel_attempts": [
         "ended without a REPORT"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85570,7 +85582,7 @@
       ],
       "title": "the one client's default identity, and the single caller that opts out",
       "type": "task",
-      "updated": "2026-10-10T21:32:08Z",
+      "updated": "2026-10-10T21:36:35Z",
       "writes": [
         "asf/github.py",
         "asf/upgrade.py",
@@ -85826,9 +85838,10 @@
         "PR #1433: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1433: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1433: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1433: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1433: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "build-t-130214-1791664185: NEEDS OPERATOR: every push on this host is refused because the pinned asf dispatcher (install.json: sha 14b963ba1, pinned 2026-10-10T21:56:11+02:00 by a worker account, 184 commits behind) predates `asf pre-push` \u2014 decide whet\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -85842,7 +85855,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-10T20:30:25Z",
+      "updated": "2026-10-10T21:36:35Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -85970,7 +85983,8 @@
         "PR #1443: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1443: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1443: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1443: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1443: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "PR #1443: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -85987,7 +86001,7 @@
       ],
       "title": "the floor split \u2014 one installer per owner, the two-floor refusal, and the retire gate",
       "type": "task",
-      "updated": "2026-10-10T21:32:08Z",
+      "updated": "2026-10-10T21:36:35Z",
       "writes": [
         "asf/upgrade.py",
         "asf/scheduler.py",
@@ -86004,6 +86018,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131719",
+      "kernel_answers": [
+        "granted tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py asf/schema.py asf/tick/migrate.py asf/init.py; nothing else outside writes (card updated by the kernel). T-0452 also writes tests/test_tick_steps.py asf/schema.py (Review): the overlap rule serialises them. T-129165 also writes tests/test_minimal_product.py tests/test_tick.py asf/schema.py (Review): the overlap rule serialises them. T-131823 also writes tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-136825 also writes tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py asf/schema.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py asf/schema.py asf/tick/migrate.py asf/init.py; nothing else outside writes (card updated by the kernel). T-0452 also writes tests/test_tick_steps.py asf/schema.py (Review): the overlap rule serialises them. T-129165 also writes tests/test_minimal_product.py tests/test_tick.py asf/schema.py (Review): the overlap rule serialises them. T-131823 also writes tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-136825 also writes tests/test_minimal_pro\u2026"
+      ],
       "kernel_findings": [
         "red: tests (3.12)",
         "red: tests (3.13)"
@@ -86019,7 +86039,7 @@
         "PR #1450: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1450: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -86033,10 +86053,16 @@
       ],
       "title": "the trunk's own evidence, the `closed` fact it decides, and the PR closed against it",
       "type": "task",
-      "updated": "2026-10-10T21:23:05Z",
+      "updated": "2026-10-10T21:36:35Z",
       "writes": [
         "asf/harvest/lane.py",
-        "tests/test_closed_item_prs.py"
+        "tests/test_closed_item_prs.py",
+        "tests/test_minimal_product.py",
+        "tests/test_tick.py",
+        "tests/test_tick_steps.py",
+        "asf/schema.py",
+        "asf/tick/migrate.py",
+        "asf/init.py"
       ]
     },
     "T-131720": {
@@ -86124,6 +86150,7 @@
     },
     "T-131823": {
       "backlinks": [
+        "T-131719",
         "T-131824"
       ],
       "children": [],
@@ -86209,6 +86236,7 @@
     },
     "T-136825": {
       "backlinks": [
+        "T-131719",
         "T-131823"
       ],
       "children": [],
