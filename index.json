@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T16:02:52Z",
+  "generated": "2026-10-10T16:07:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19911,6 +19911,7 @@
         "F-0096",
         "F-0097",
         "F-0114",
+        "F-0340",
         "T-0031",
         "T-0034",
         "T-0035",
@@ -21044,6 +21045,7 @@
       "area": "factory",
       "backlinks": [
         "F-0228",
+        "F-0340",
         "T-0010",
         "T-0031",
         "T-0035",
@@ -21096,6 +21098,7 @@
       "area": "factory",
       "backlinks": [
         "F-0317",
+        "F-0340",
         "T-0041",
         "T-0059",
         "T-0221",
@@ -33795,7 +33798,7 @@
         "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026",
         "plan-f-0327-1791636840: NEEDS OPERATOR: re-raise, still unanswered from plan-f-0327-1791634631 \u2014 harvest read that session's predecessor's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunc\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "removed": "intake: describes old-floor park/relaunch-cap behavior (lifecycle.py, relaunch.py, harvest/lane.py) the kernel replaced; kernel.decide already weighs blocked_count for relaunch ordering and surfaces a top-blockers list in the tick summary (groom 2026-10-10)",
       "schema_version": 1,
@@ -33804,7 +33807,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T16:02:51Z"
+      "updated": "2026-10-10T16:07:48Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33839,9 +33842,10 @@
         "plan-f-0328-1791637960: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. Re-measured this pass: origin/main was force-updated and the branch re-based, so every sha th\u2026",
         "plan-f-0328-1791640115: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 re-measured this pass and u\u2026",
         "plan-f-0328-1791641963: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 re-measured this pass and u\u2026",
-        "plan-f-0328-1791644041: NEEDS OPERATOR: the pinned `asf` at `~/.local/bin/asf` predates the `pre-push` subcommand its own git hook calls, so every push from this host is refused regardless of branch or content, and this session'\u2026"
+        "plan-f-0328-1791644041: NEEDS OPERATOR: the pinned `asf` at `~/.local/bin/asf` predates the `pre-push` subcommand its own git hook calls, so every push from this host is refused regardless of branch or content, and this session'\u2026",
+        "plan-f-0328-1791647208: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 carried forward from the pr\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -33850,7 +33854,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T15:47:39Z"
+      "updated": "2026-10-10T16:07:48Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33908,7 +33912,7 @@
         "plan-f-0330-1791640370: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by four PLAN sessions in a row",
         "plan-f-0330-1791643018: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by five PLAN sessions in a row"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -33917,7 +33921,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T16:02:51Z"
+      "updated": "2026-10-10T16:07:48Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -34002,7 +34006,7 @@
       "state": "New",
       "title": "Factory GitHub identity: GitHub App installation token instead of the operator's personal token",
       "type": "feature",
-      "updated": "2026-10-10T16:02:51Z"
+      "updated": "2026-10-10T16:07:48Z"
     },
     "F-0334": {
       "backlinks": [
@@ -34132,10 +34136,19 @@
       "decided": true,
       "folder": "features",
       "id": "F-0340",
+      "kernel_findings": [
+        "docs/specs/f-0340.md:419 \u2014 the `state` enum omits `Resolved`; the card's state vocabulary is `New, Active, Resolved, Closed` (`asf/evidence/closing.py:53`, and `DONE_STATES = ('Resolved', 'Closed')` in 14 modules), while `Ready`, `Review`, `Blocked`, `Stuck`, `Done` are kernel-derived states never stored on a card (`asf/kernel/model.py:16-39`). Under D3's closed object every landed card is refused. Replace the enum with the record's own four (plus `Rejected`/`Cancelled`/`Superseded`, which `asf/release_preview.py:48` tolerates) and cite `closing.py:53` as the source",
+        "docs/specs/f-0340.md:410 \u2014 the `priority` enum is `[\"now\", \"next\", \"later\", null]`; the record's vocabulary is `need`, `nice`, `later` (`asf/record/new.py:100-101`), and `sample/backlog/features/F-0001.md:6`, `F-0002.md:6`, `epics/E-0001.md:5` carry `need`/`nice`. This refuses three of the ten cards that acceptance block 6 (line 784) expects to migrate to `cards 10 errors 0`. Change the enum to `[\"need\", \"nice\", \"later\", null]`",
+        "docs/specs/f-0340.md:654 \u2014 the `gate` field is hoisted but loses its only ongoing producer: `asf/record/plan_tasks.py:253-255` mints a Task with `body = t['body']`, the plan section verbatim, which the templates say carries a `**Gate**` block \u2014 so every Task minted after the migration validates (gate is optional) with an empty `gate` while `dor.gate_lines` returns `[]`, which is P5's defect reborn. Add a \u00a78 row for `asf.record.plan_tasks` (and `asf.record.ids.write_new_item` for a Story's `acceptance`) and an S-122711 acceptance line for a Task minted from a plan carrying its Gate in the field; the row's \"two brief templates\" is also short \u2014 `asf/briefs/templates/replan.md:26` and `reshape.md:10` instruct a Gate block too",
+        "docs/specs/f-0340.md:581 \u2014 `e.findings[0].line` is not a field: \u00a72 declares `Finding` with `pointer` and `message` only (lines 479-482), and \u00a73 (line 522) puts the syntax error's position inside the message. `load_items` needs a line for its `(path, line, why)` tuple (`asf/record/core.py:133`). Either add `line` to `Finding` in \u00a72 or make \u00a76 append `(relpath, 0, str(e.findings[0]))`",
+        "docs/specs/f-0340.md:361 \u2014 the D1\u2013D20 choices table has no delimiter row, so the whole 20-row table renders as plain text; every sibling spec has one (`docs/specs/f-0332.md:379`, `f-0335.md:292`, `f-0173.md:108`). Insert `|---|---|---|---|` after line 361",
+        "docs/specs/f-0340.md:196 \u2014 \"12 call sites across 21 modules write through its three write functions\" cannot hold; the three functions appear in 10 modules (the 12 sites and the 1/4/7 split are right, and 21 is the count of modules that write a card at all, which is what \"In\" 4 and \u00a74 use it for). Reword to \"12 call sites across 10 modules\" and state the 21 separately"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34144,7 +34157,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T15:51:33Z"
+      "updated": "2026-10-10T16:07:48Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34163,7 +34176,7 @@
       "state": "New",
       "title": "Proof claims on quarantined tests are refused",
       "type": "feature",
-      "updated": "2026-10-10T16:02:51Z"
+      "updated": "2026-10-10T16:07:48Z"
     },
     "F-0342": {
       "backlinks": [],
@@ -82567,7 +82580,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T16:02:51Z",
+      "updated": "2026-10-10T16:07:48Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
