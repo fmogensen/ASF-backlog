@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T17:50:45Z",
+  "generated": "2026-10-10T17:55:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34004,7 +34004,10 @@
         "S-91805",
         "S-91806",
         "S-91807",
-        "S-91808"
+        "S-91808",
+        "T-130213",
+        "T-130214",
+        "T-130215"
       ],
       "cost": {
         "fix_rounds": 1,
@@ -34363,16 +34366,19 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "docs/specs/f-0337.md:865 \u2014 \"a sweep session that crashes is no failed attempt on the card\" (and :716 \"a card whose session crashes carries only this\") contradicts the design: EndSession counts the crash at apply.py:213 and the over-age stop at :211, both before the kind dispatch at :216-217 where \u00a73 puts groom_sweep, and READ_ONLY is read only at apply.py:223, guarding the NO_REPORT attempt alone. Fix: in \u00a73 dispatch the ended groom-sweep session before the s.alive / not s.ended branches, as intake.KIND does through its early return at apply.py:204-208, and narrow precondition 3 (:178-179) to the no-report path \u2014 or drop :865 and the \"carries only this\" sentence at :716.",
+        "docs/specs/f-0337.md:194 \u2014 precondition 8 cites edge_open at decide.py:1514; it is at decide.py:1506 (:1514 is the blank line after the function). Fix: cite decide.py:1506.",
+        "docs/specs/f-0337.md:115 and :395 \u2014 \"five lines in config_for\" / \"five config lines\", but \u00a74's block writes six (sweep, sweep_per_tick, sweep_max, sweep_min_age_d, sweep_max_concurrent, sweep_branch), matching the six Config fields \u00a75 lists. Fix: six.",
         "docs/specs/f-0337.md:540 \u2014 `sweep_line`'s example says `1132 old cards left`, the whole parked pile less 3, but `Plan.sweep['waiting']` is defined at :305 as \"how many candidates were left\" and the showcase at :552 prints `136` (139 candidates less 3) for the same record; change `1132` to `136`",
         "docs/specs/f-0337.md:210 \u2014 D7 cites \"(P9)\" for the operator answer re-arming a card's fill budget, but P9 is \"the record holds no Story for F-0337\"; cite item 9 of \"Preconditions the work depends on\" instead"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "spec-f-0337-1791648163: NEEDS OPERATOR: the product's CLI pin is pre-0.2, so the pre-push hook's footprint door refuses every session's push on this host \u2014 re-pin it to the current trunk and verify: `asf upgrade --product asf --to $(git -C\u2026",
         "spec-f-0337-1791651258: NEEDS OPERATOR: the installed hook shim calls `asf pre-push`, which product ASF's pinned CLI (`14b963ba1`, 2026-10-08) does not have \u2014 `aa56423fd` added it today \u2014 so every session push on this host is refused after\u2026",
         "spec-f-0337-1791652842: NEEDS OPERATOR: product `ASF` is pinned to `14b963ba1`, whose CLI has no `pre-push` subcommand that this host's newer hook shim invokes, so the pre-push hook refuses every session's push \u2014 confirm with `~"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "nice",
       "rank": 20,
@@ -34381,7 +34387,7 @@
       "state": "New",
       "title": "Kernel grooming Stage 4: continuous sweep of old New/Parked items on idle seats",
       "type": "feature",
-      "updated": "2026-10-10T17:34:09Z"
+      "updated": "2026-10-10T17:55:13Z"
     },
     "F-0338": {
       "backlinks": [],
@@ -34459,7 +34465,7 @@
         "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34468,7 +34474,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T17:50:42Z"
+      "updated": "2026-10-10T17:55:13Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34537,14 +34543,14 @@
       "folder": "features",
       "id": "F-0343",
       "kernel_fix_rounds": 0,
-      "kernel_state": "done",
+      "kernel_state": "review",
       "parent": "E-0003",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:24:18Z",
       "state": "New",
       "title": "Kernel never mints Task cards from a merged plan, and reads landed docs from a stale checkout",
       "type": "feature",
-      "updated": "2026-10-10T17:40:47Z"
+      "updated": "2026-10-10T17:55:13Z"
     },
     "R-0001": {
       "backlinks": [
@@ -37214,9 +37220,11 @@
         "T-129198"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-104406",
       "parent": "F-0331",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:11Z",
       "state": "New",
@@ -37265,9 +37273,11 @@
         "T-129201"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-104409",
       "parent": "F-0331",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:11Z",
       "state": "New",
@@ -46351,7 +46361,8 @@
     },
     "S-91805": {
       "backlinks": [
-        "F-0328"
+        "F-0328",
+        "T-130213"
       ],
       "children": [],
       "decided": true,
@@ -46366,7 +46377,9 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-91806": {
-      "backlinks": [],
+      "backlinks": [
+        "T-130214"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -46380,7 +46393,9 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-91807": {
-      "backlinks": [],
+      "backlinks": [
+        "T-130214"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -46395,7 +46410,8 @@
     },
     "S-91808": {
       "backlinks": [
-        "F-0328"
+        "F-0328",
+        "T-130215"
       ],
       "children": [],
       "decided": true,
@@ -46781,6 +46797,7 @@
         "T-0799",
         "T-0805",
         "T-0809",
+        "T-130215",
         "T-80371",
         "B-0040",
         "B-0067",
@@ -82782,6 +82799,7 @@
       "kernel_notes": [
         "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card."
       ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -82794,7 +82812,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T17:50:42Z",
+      "updated": "2026-10-10T17:55:13Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -84376,6 +84394,89 @@
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
         "tests/kernel/test_question_pushed_base.py"
+      ]
+    },
+    "T-130213": {
+      "backlinks": [
+        "T-130214"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-130213",
+      "links": {
+        "plan": "docs/plans/f-0328.md"
+      },
+      "parent": "F-0328",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:53:34Z",
+      "state": "New",
+      "stories": [
+        "S-91805"
+      ],
+      "title": "the run's own conclusion gets a reader, and the skip-only prefix stops being fooled by a judged leg",
+      "type": "task",
+      "updated": "2026-10-10T17:53:34Z",
+      "writes": [
+        "asf/merge_queue.py",
+        "tests/test_mq_batch_survival.py"
+      ]
+    },
+    "T-130214": {
+      "after": [
+        "T-130213"
+      ],
+      "backlinks": [
+        "T-130215"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-130214",
+      "links": {
+        "plan": "docs/plans/f-0328.md"
+      },
+      "parent": "F-0328",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:53:38Z",
+      "state": "New",
+      "stories": [
+        "S-91806",
+        "S-91807"
+      ],
+      "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
+      "type": "task",
+      "updated": "2026-10-10T17:53:38Z",
+      "writes": [
+        "asf/merge_queue.py",
+        "asf/ci_queue.py",
+        "tests/test_mq_batch_survival.py"
+      ]
+    },
+    "T-130215": {
+      "after": [
+        "T-130214"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-130215",
+      "links": {
+        "plan": "docs/plans/f-0328.md"
+      },
+      "parent": "F-0328",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:53:42Z",
+      "state": "New",
+      "stories": [
+        "S-91808"
+      ],
+      "title": "the three reds the rule must never swallow, pinned",
+      "type": "task",
+      "updated": "2026-10-10T17:53:42Z",
+      "writes": [
+        "tests/test_mq_batch_survival.py"
       ]
     },
     "T-76350": {
