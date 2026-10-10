@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:51:36Z",
+  "generated": "2026-10-10T15:55:59Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16749,7 +16749,7 @@
       "id": "B-123640",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.1",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -16759,7 +16759,7 @@
       "state": "New",
       "title": "tests.test_workers TestSpawn: five failures on git 2.43.0 in cloud containers",
       "type": "bug",
-      "updated": "2026-10-10T15:43:14Z",
+      "updated": "2026-10-10T15:55:57Z",
       "writes": [
         "asf/workers/spawn.py"
       ]
@@ -33802,7 +33802,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T15:51:33Z"
+      "updated": "2026-10-10T15:55:57Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -34006,14 +34006,14 @@
         "F-0335"
       ],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0334",
       "kernel_notes": [
         "spec-f-0334-1791642615: NEEDS OPERATOR: which classes of question the console is answering \u2014 `asf kernel questions --product <p> --classify --since 2026-09-26T00:00:00Z`",
         "spec-f-0334-1791645911: NEEDS OPERATOR: every session's push of product `asf` on this host is refused \u2014 the pinned CLI predates the `pre-push` subcommand its own current hook shim calls, and no local build has it. Confirm read-only with `p\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34022,7 +34022,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T15:51:33Z"
+      "updated": "2026-10-10T15:55:57Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34030,7 +34030,7 @@
       "decided": false,
       "folder": "features",
       "id": "F-0335",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0004",
       "priority": "need",
       "rank": 4,
@@ -34039,7 +34039,7 @@
       "state": "New",
       "title": "Idempotent reconcile of ledger-shaped proof claims into the record",
       "type": "feature",
-      "updated": "2026-10-10T15:26:03Z"
+      "updated": "2026-10-10T15:55:57Z"
     },
     "F-0336": {
       "backlinks": [],
@@ -34056,7 +34056,7 @@
       "state": "New",
       "title": "Kernel flake quarantine with a defect check (unrelated heads only)",
       "type": "feature",
-      "updated": "2026-10-10T15:51:33Z"
+      "updated": "2026-10-10T15:55:57Z"
     },
     "F-0337": {
       "backlinks": [],
@@ -82119,8 +82119,11 @@
         "asf/rehearsal.py:426 \u2014 manifest_holds never checks the annotated count that plan Step 2 names, so flipping one annotated flag among several in both manifest.json and repo/refs.json returns []. Have build() state 'refs_total': len(refs) and 'refs_annotated': sum(1 for r in refs if r['annotated']), compare the refs list against both in manifest_holds with one line per mismatch, and add the case to ManifestHoldsDetectsBreakage."
       ],
       "kernel_fix_rounds": 4,
+      "kernel_notes": [
+        "build-t-80572-1791646302: NEEDS OPERATOR: the 2026-10-10T15:15Z answer says to archive worker/T-80572 and rebuild this Task fresh from current main, while this session's brief says to correct the held branch and never recut or force it \u2014 the\u2026"
+      ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -82133,7 +82136,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T15:32:31Z",
+      "updated": "2026-10-10T15:55:57Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
