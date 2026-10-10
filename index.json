@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T21:03:19Z",
+  "generated": "2026-10-10T21:08:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -21049,6 +21049,7 @@
     "E-0002": {
       "backlinks": [
         "E-0001",
+        "F-0334",
         "F-0349",
         "T-0058",
         "T-0277",
@@ -33885,7 +33886,8 @@
         "PR #1447: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1447: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1447: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1447: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1447: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1447: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "done",
       "parent": "E-0001",
@@ -33895,7 +33897,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T20:57:07Z"
+      "updated": "2026-10-10T21:08:01Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -34465,8 +34467,17 @@
       "decided": true,
       "folder": "features",
       "id": "F-0334",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "docs/plans/f-0334.md:4 \u2014 the branch was cut from `8f237bd`, not `cb47b17c8`; say so, and re-anchor at `8f237bd`",
+        "docs/plans/f-0334.md:26-28 \u2014 `cb47b17c8` is not `git merge-base plan/F-0334 origin/main` (that is `8f237bdda1cf041e9e46986cbbcf48b9516fe68a`, fifteen commits later, which changed intake.py +91, ports.py +67, decide.py, loop.py, cli.py, actions.py); re-anchor the ~27 numbers in those six files: ports.py PR_FIELDS :965->:1030, merged listing :1320-1321->:1386, _prs :1306-1330->:1371-1395, _open_pr :1331->:1396, notes :795->:798, its M.Item :820-821->:828-829, _live :1828->:1893, _account :1847->:1912, capacity :1866-1888->:1931-1953, _spawn :2013->:2078, ANSWERS_FILE :107->:110; intake.py SPENT :71->:73, Verdict's fields :83-89->:85-91, is_note :102->:104, shortcut :124->:126, spent :148->:150, its early None :149-150->:153-154, plan :283->:301, its spent call :305->:323, the continue :307->:325, the return :313->:331; decide.py `pr.behind and facts.strict` :1290->:1293, FINISH_FIRST :1615->:1625, _launches :1629->:1639, the launch key :1653-1654->:1663-1664, cands.sort :1668->:1678, the intake.plan caller :1718->:1728, breaches :2127->:2137 and its moves :2132-2137->:2142-2147; loop.py save_plan :275->:277, seat_line :379->:387; cli.py p_kmoves :578-583->:580-584 and the dispatch :751-758->:750-756; actions.py RevertPR :218->:219",
+        "docs/plans/f-0334.md:91 \u2014 `test_main_landing` is 19 at this base, not 18 (#1425 added its DirectMerge class); fix the count here and at :358 and :986",
+        "docs/plans/f-0334.md:94 \u2014 F-0336's plan is cut: `docs/plans/f-0336.md`, one Task, 474 lines, #1409; drop \"no plan cut yet\"",
+        "docs/plans/f-0334.md:520 \u2014 name `docs/specs/f-0337.md` (E-0002, S-125155-9, landed #1399 before this branch was cut) in PC13 and in Task 5, and say which card owns `asf/kernel/sweep.py` and `tests/kernel/test_sweep.py` and which key block the sweep reads: F-0337 designs the same module under `kernel.groom.{enabled: False, sweep_per_tick: 3, max_sweeps: 2, sweep_min_age_d: 14}` against Task 1's `kernel.sweep.{enabled: True, max_per_tick: 5, retire_after: 30d}` (:152), and its own precondition states that `asf/kernel/sweep.py` does not exist and that no Config field matches `sweep`",
+        "docs/plans/f-0334.md:438-441 \u2014 \"nothing in the kernel can see it again\" is false at this base: `intake.unheard` (asf/kernel/intake.py:377) with SPENT_NOTE (:373) prints `INTAKE STUCK <key> [operator] \u2026` for a spent note every tick and `asf answer <note key>` applies it (#1424, #1427); restate the premise and say what Task 4 does with that branch, since \"nothing else in asf/kernel/intake.py moves\" leaves it live while S-131008's ninth line as quoted at :506 requires a spent note never to be an operator Stuck",
         "docs/plans/f-0334.md:147 \u2014 `SPEC` is `asf/kernel/settings.py:219` at `cb47b17c8`, not `:212` (`:212` is `try:` inside `parse_duration`); `:212` is the number at the spec's base `e82751c19`",
         "docs/plans/f-0334.md:156 \u2014 `problems` is `asf/kernel/settings.py:316`, not `:308`, and `read` is `:351`, not `:343` (`:343` is inside `problems`' own body)",
         "docs/plans/f-0334.md:135 \u2014 `_launches` is `asf/kernel/decide.py:1629`, not `:1622` (`:1622` is `open_prs`' docstring)",
@@ -34479,7 +34490,7 @@
         "docs/plans/f-0334.md:87 \u2014 PC6's \"twenty test modules\" is twenty-seven (the unique test modules on the `writes:` lines) and its \"Twelve exist and gain cases or classes\" is nineteen, which is what its own list enumerates; fix both counts (`:57` repeats \"twenty test modules\")",
         "docs/plans/f-0334.md:99 \u2014 the thirteen `### S-\u2026:` headings are `docs/specs/f-0334.md:1272-1473`, not `:1262-1420`; the cited range starts in the `## Stories` preamble and ends inside S-131014, omitting S-131015, S-131016 and S-131017"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "spec-f-0334-1791642615: NEEDS OPERATOR: which classes of question the console is answering \u2014 `asf kernel questions --product <p> --classify --since 2026-09-26T00:00:00Z`",
         "spec-f-0334-1791645911: NEEDS OPERATOR: every session's push of product `asf` on this host is refused \u2014 the pinned CLI predates the `pre-push` subcommand its own current hook shim calls, and no local build has it. Confirm read-only with `p\u2026",
@@ -34488,7 +34499,7 @@
         "plan-f-0334-1791664150: NEEDS OPERATOR: whether the second product's trunk requires branches to be up to date \u2014 if its ruleset is strict the merge train serialises updates and re-runs CI on every trunk move, and the 60-minute median is not\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34497,7 +34508,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T20:48:54Z"
+      "updated": "2026-10-10T21:08:01Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34529,6 +34540,7 @@
     },
     "F-0336": {
       "backlinks": [
+        "F-0334",
         "F-0340"
       ],
       "children": [
@@ -34569,7 +34581,9 @@
       "updated": "2026-10-10T19:27:23Z"
     },
     "F-0337": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0334"
+      ],
       "children": [
         "S-125155",
         "S-125156",
@@ -34700,7 +34714,11 @@
         "spec-f-0340-1791663815: NEEDS OPERATOR: ASF's own live backlog_dir is outside this session's read roots, so \u00a71.1's rows"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
+      "kernel_stuck_since": "2026-10-10T21:06:10Z",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34709,7 +34727,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T20:43:08Z"
+      "updated": "2026-10-10T21:08:01Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34765,7 +34783,11 @@
       "kernel_fix_rounds": 0,
       "kernel_notes": [
         "plan-f-0342-1791652500: NEEDS OPERATOR: `plan/F-0342` is committed at `bd59782a8` and cannot leave this host \u2014 `state/asf/install.json` pins `asf` to `14b963ba1` (2026-10-08, `policy: pinned`), whose `asf/cli.py` has no `pre-push` subcomma\u2026",
-        "PR #1451: install-clean-macos is red but not a required check \u2014 ignored"
+        "PR #1451: install-clean-macos is red but not a required check \u2014 ignored",
+        "PR #1451: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1451: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1451: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1451: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "E-0001",
@@ -34775,7 +34797,7 @@
       "state": "New",
       "title": "asf upgrade --product on a kernel product reinstalls the paused 0.1 floor clocks; the pin cannot move",
       "type": "feature",
-      "updated": "2026-10-10T21:03:16Z"
+      "updated": "2026-10-10T21:08:01Z"
     },
     "F-0343": {
       "backlinks": [
@@ -35025,7 +35047,8 @@
       ],
       "kernel_fix_rounds": 2,
       "kernel_notes": [
-        "spec-f-0346-1791658400-local: NEEDS OPERATOR: the push is refused by a stale installed dispatcher, not by the diff \u2014 `$HOME/.local/bin/asf` has no `pre-push` subcommand while `asf/cli.py:470` defines it. Confirm with `$HOME/.local/bin/asf --vers\u2026"
+        "spec-f-0346-1791658400-local: NEEDS OPERATOR: the push is refused by a stale installed dispatcher, not by the diff \u2014 `$HOME/.local/bin/asf` has no `pre-push` subcommand while `asf/cli.py:470` defines it. Confirm with `$HOME/.local/bin/asf --vers\u2026",
+        "plan-f-0346-1791664962: NEEDS OPERATOR: S-137106 and S-137607 are Stories of F-0346 that the approved spec does not deliver, and S-137106 is contradicted by it. No command to run; the answer needed is one of: (a) re-parent both to a new Fe\u2026"
       ],
       "kernel_state": "review",
       "parent": "E-0003",
@@ -35035,7 +35058,7 @@
       "state": "New",
       "title": "Flow conservation: every step has a required successor, checked each tick",
       "type": "feature",
-      "updated": "2026-10-10T20:30:25Z"
+      "updated": "2026-10-10T21:08:01Z"
     },
     "F-0347": {
       "backlinks": [
@@ -35049,10 +35072,14 @@
         "the session API failed"
       ],
       "kernel_findings": [
-        "docs/specs/f-0347.md:325 \u2014 \"`log_alive_at(path, now, limit_min)` answers \\\"is it alive?\\\" and throws the time away (`:536-539`)\" is false: `asf/workers/heartbeat.py:514-540` already returns the epoch (`min(ts, now)`) or `None`, not a bool \u2014 it already dates the event, which is exactly what this same spec's own P9 (line 88) says. Fix the premise (or drop the false framing) before motivating the `log_event_at`/`log_alive_at` split on it."
+        "docs/specs/f-0347.md:155 \u2014 Precondition 4 and the `status` row at :298 claim `cloudpid` holds a cloud token's last status \"with its time\"; it holds none. `cloudpid.record`/`_record` (asf/workers/cloudpid.py:55-89) write only `status`, `why` and the caller's `**fields`, and no caller passes a time (cloud.py:717, :726, :836, :865, :910; actions.py:404; remote.py:520, :555, :675) \u2014 the `updated` key in cloudpid.py:10's own docstring is written by nothing. Either name a real time for the cloud lane (the status file's mtime, or add an `updated=` field to the sync's record call at cloud.py:865 as part of this card) or move `status` out of \u00a72's dated column; and correct the citation from `asf/workers/cloud.py:845-847` to `:865`.",
+        "docs/specs/f-0347.md:358 \u2014 \"`remote.alive_at` is already shaped the way the beat wants it ... and is called as it stands\" is false and contradicts \u00a74's own argument: remote.alive_at (asf/workers/remote.py:629-641) carries the same freshness gate \u00a74 splits off log_alive_at for, returning None unless `worker_status` is in WORKER_LIVE = ('running',) (remote.py:96) and `last_event_at` is within limit_min (:638-640) \u2014 i.e. None in exactly the quiet case D5 probes for, and never a date for a stopped container. Split it as \u00a74 splits the log (an ungated `event_at`, or read `remote._event_ts(diagnose()['last_event_at'])` directly) and say so at :358.",
+        "docs/specs/f-0347.md:76 \u2014 the preconditions are headed \"measured in this worktree at `cb47b17c8`\", but this branch's base is `50356a9f6` (a descendant), and four cited files moved in between (decide.py +10, apply.py +9, ports.py +65, loop.py +12), so twelve citations point elsewhere at this head. Re-measure against `50356a9f6` and fix the header: `decide.py:2045-2057`\u2192`2055-2065` (:18, :80), `decide.py:2025-2042`\u2192`2035-2052` (:18, :81), `decide.py:2030-2036`/`:2060-2064`\u2192`2040-2046`/`2067-2074` (:95), `decide.py:2060-2084`\u2192`2067-2096` (:134), `ports.py:2017-2024`\u2192`2085-2089` (:57, :83), `ports.py:1648-1660`\u2192`1713-1734` (:92; `1648-1660` is enable_auto_merge/merge), `ports.py:1760-1798`\u2192`1825-1864` (:276), `loop.py:355-368`/`:309-319`\u2192`363-378`/`317-328` (:94), `loop.py:321-338`\u2192`330-348` (:174), `loop.py:282-283`\u2192`290-291` (:470).",
+        "docs/specs/f-0347.md:172 \u2014 D7's quote \"a run that keeps beating but loops still ends timed out\" is at asf/workers/heartbeat.py:44-45, not `:41-42` (the zombie-push paragraph); and at :167 D2's \"benefit of the doubt\" is the comment at asf/workers/heartbeat.py:376, not `:395-397` (the tail of `settle`). That file is byte-identical at cb47b17c8 and this head, so neither was ever right.",
+        "docs/specs/f-0347.md:6 \u2014 the frontmatter `stories:` lists six ids and omits S-138158, while :643 says \"Seven Stories\", :664-670 cite seven and :797 declares `### S-138158` (asf.kernel.stories.declared_stories reads 7 Stories and 119 acceptance lines from the body). Add S-138158 to the frontmatter list."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "later",
       "schema_version": 1,
@@ -35060,7 +35087,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-10T20:43:08Z"
+      "updated": "2026-10-10T21:08:01Z"
     },
     "F-0348": {
       "backlinks": [
@@ -38385,7 +38412,9 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-125155": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0334"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38497,7 +38526,9 @@
       "updated": "2026-10-10T19:30:53Z"
     },
     "S-131008": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0334"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38771,7 +38802,9 @@
       "updated": "2026-10-10T19:48:27Z"
     },
     "S-137106": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0346"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38785,7 +38818,9 @@
       "updated": "2026-10-10T19:48:31Z"
     },
     "S-137607": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0346"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -47427,9 +47462,11 @@
         "T-129191"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91607",
       "parent": "F-0326",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:44Z",
       "state": "New",
@@ -83899,10 +83936,12 @@
         "PR #1441: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1441: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1441: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1441: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1441: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1441: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -83915,7 +83954,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T20:48:54Z",
+      "updated": "2026-10-10T21:08:01Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -84443,7 +84482,7 @@
       "kernel_attempts": [
         "launch: launch: worktree already exists: ~/.ASF/state/asf/worktrees/groom-fill-t-129174-1791662163 \u2014 no run recorded it"
       ],
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
       "kernel_notes": [
         "groom-fill-t-129174-1791655632: groom-fill raised risk high: no Task of plan F-0318 has landed anywhere (code or PR) so the parent cannot legitimately be Done; the card's test-naming, writes, and after fields already clear DoR, and the parent-Done read is a transient container-derivation artifact from the plan PR minting siblings minutes earlier that self-corrects on the next tick.",
@@ -84463,7 +84502,7 @@
       ],
       "title": "the place \u2014 the pass in the tick's record step, the writer order, and the gate clearing",
       "type": "task",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:08:01Z",
       "writes": [
         "asf/tick/tick.py",
         "asf/record/stage.py",
@@ -85339,7 +85378,8 @@
       "backlinks": [
         "T-129206",
         "T-129207",
-        "T-129208"
+        "T-129208",
+        "T-80573"
       ],
       "children": [],
       "decided": true,
@@ -85458,13 +85498,20 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129208",
+      "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1442: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1442: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1442: part (3.12, 1) is red but not a required check \u2014 ignored",
-        "PR #1442: part (3.13, 1) is red but not a required check \u2014 ignored"
+        "PR #1442: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1442: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1442: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85477,7 +85524,7 @@
       ],
       "title": "what the operator sees \u2014 the shape check, the example file, one doctor row and the two guide pages",
       "type": "task",
-      "updated": "2026-10-10T20:48:54Z",
+      "updated": "2026-10-10T21:08:01Z",
       "writes": [
         "asf/conventions.py",
         "asf/doctor.py",
@@ -85600,7 +85647,8 @@
         "PR #1445: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1445: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1445: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1445: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1445: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1445: part (3.12, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -85618,7 +85666,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-10T20:48:54Z",
+      "updated": "2026-10-10T21:08:01Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -85814,15 +85862,22 @@
       "kernel_attempts": [
         "ended without a REPORT"
       ],
+      "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1443: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1443: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1443: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1443: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1443: part (3.13, 2) is red but not a required check \u2014 ignored",
-        "PR #1443: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1443: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1443: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1443: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -85837,7 +85892,7 @@
       ],
       "title": "the floor split \u2014 one installer per owner, the two-floor refusal, and the retire gate",
       "type": "task",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:08:01Z",
       "writes": [
         "asf/upgrade.py",
         "asf/scheduler.py",
@@ -85978,7 +86033,7 @@
         "red: tests (3.12)",
         "red: tests (3.13)"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "build-t-131823-1791659712: NEEDS OPERATOR: I could not execute `validate`'s record-side checks (that S-124005 is a Story card and holds the bullet `line 1` cites) \u2014 the record at the product's backlog dir is outside this worktree session's re\u2026",
         "PR #1434: checks (3.12) is red but not a required check \u2014 ignored",
@@ -85992,7 +86047,7 @@
         "build-t-131823-1791664197: NEEDS OPERATOR: the red checks on PR #1434 are a confirmed pre-existing trunk flake (same failure reproduced on origin/main HEAD itself) \u2014 rerun them: `gh run rerun 38082466422 --failed`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -86005,7 +86060,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T21:03:16Z",
+      "updated": "2026-10-10T21:08:01Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"
@@ -86069,7 +86124,7 @@
         "PR #1438: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -86087,7 +86142,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-10T21:03:16Z",
+      "updated": "2026-10-10T21:08:01Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -87297,16 +87352,14 @@
       ],
       "folder": "tasks",
       "id": "T-80573",
+      "kernel_answers": [
+        "Grant one more round, fresh session on worker/T-80573 picking up its branch. The previous session ran past its max age; a likely cause is a hanging test (main's test shard 4 currently hangs too, since T-129205). Run every test command under a timeout (e.g. timeout 600), run only the targeted modules for this Task, and if a test outside your writes hangs, report it as a finding instead of waiting. Push WIP commits at each green step."
+      ],
       "kernel_attempts": [
-        "session ran past its max age",
-        "session ran past its max age"
+        "relaunch: operator answer: Grant one more round, fresh session on worker/T-80573 picking up its branch. The previous session ran past its max age; a likely cause is a hanging test (main's test shard 4 currently hangs too, since T-129205). Run every test command under a timeout (e.g. timeout 600), run only the targeted modules for this Task, and if a test outside your writes hangs, report it as a finding instead of waiting. Push WIP commits at each green step."
       ],
       "kernel_dor_fills": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "session ran past its max age",
-      "kernel_stuck_since": "2026-10-10T21:01:47Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -87319,7 +87372,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-10T21:03:16Z",
+      "updated": "2026-10-10T21:08:01Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
