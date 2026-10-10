@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T04:17:25Z",
+  "generated": "2026-10-10T04:29:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2763,7 +2763,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0088",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -2771,7 +2771,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-10T04:29:06Z"
     },
     "B-0089": {
       "backlinks": [
@@ -18128,7 +18128,7 @@
         "docs/reviews/1-b-82658.md \u2014 review session `57b14a947` committed and pushed the round-1 review file onto `fix/B-82658` itself, violating \"the review never touches the branch.\" Fix with a follow-up commit `git rm docs/reviews/1-b-82658.md` (no rebase/force-push)."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18138,7 +18138,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1233@4a831f9c8",
       "type": "bug",
-      "updated": "2026-10-10T04:03:08Z"
+      "updated": "2026-10-10T04:29:06Z"
     },
     "B-82809": {
       "backlinks": [
@@ -18176,7 +18176,7 @@
         "commit 5300de3e072ae8092681fcaa10a46d728a197c6c on fix/B-82809 adds docs/reviews/1-b-82809.md \u2014 a prior review session's own report, committed in violation of the never-touch-the-branch rule \u2014 drop it so the PR head returns to bfec9d831dfd2415b2ea48cb7ce0227a5b5b931c (the writer's actual fix)"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18186,7 +18186,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1177@505cfad1e",
       "type": "bug",
-      "updated": "2026-10-10T04:03:08Z"
+      "updated": "2026-10-10T04:29:06Z"
     },
     "B-82960": {
       "backlinks": [
@@ -18297,7 +18297,7 @@
       ],
       "kernel_extra_rounds": 1,
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18307,7 +18307,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1237@2edb03326",
       "type": "bug",
-      "updated": "2026-10-10T04:03:08Z"
+      "updated": "2026-10-10T04:29:06Z"
     },
     "B-83413": {
       "backlinks": [],
@@ -18836,6 +18836,9 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84833",
+      "kernel_attempts": [
+        "launch: no free seat: local 10/10, cloud 3/8 (the launch needs the host)"
+      ],
       "kernel_findings": [
         "asf/views/status.py:127-129 \u2014 `_plan()`'s `step_wave.screen(...)` call still omits `paused=`, so `asf status`'s own Ready-to-launch cell stays pause-blind; add `paused=pause_mod.held(product)` there too (or correct the overclaiming docstring at tests/test_pause.py:350-353 and disclose the gap)."
       ],
@@ -18850,7 +18853,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-10T04:13:54Z"
+      "updated": "2026-10-10T04:29:06Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -18934,6 +18937,9 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84836",
+      "kernel_attempts": [
+        "launch: no free seat: local 10/10, cloud 3/8 (the launch needs the host)"
+      ],
       "kernel_state": "ready",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
@@ -18944,7 +18950,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-84804",
       "type": "bug",
-      "updated": "2026-10-10T04:13:54Z"
+      "updated": "2026-10-10T04:29:06Z"
     },
     "B-84837": {
       "backlinks": [],
@@ -33529,10 +33535,13 @@
       ],
       "folder": "features",
       "id": "F-0325",
+      "kernel_attempts": [
+        "launch: no free seat: local 10/10, cloud 0/8 (light-review is not in kernel.launch.cloud_kinds)"
+      ],
       "kernel_notes": [
         "spec-f-0325-1791586983: NEEDS OPERATOR: F-0325 has zero Story *cards* in the record, and `feeder.has_stories` counts cards via `ix.children`, not the spec's declarations \u2014 so once this spec is approved the feeder will emit `NO STORIES \u2192 SP\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33540,7 +33549,7 @@
       "state": "New",
       "title": "a declared 'wave' clock with steps [wave] runs as a tick under the tick lock and suppresses the native wave job",
       "type": "feature",
-      "updated": "2026-10-10T04:13:55Z"
+      "updated": "2026-10-10T04:29:06Z"
     },
     "F-0326": {
       "backlinks": [],
@@ -33604,7 +33613,7 @@
       ],
       "folder": "features",
       "id": "F-0328",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33612,7 +33621,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T04:03:08Z"
+      "updated": "2026-10-10T04:29:06Z"
     },
     "F-0329": {
       "backlinks": [],
