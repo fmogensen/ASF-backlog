@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T17:11:20Z",
+  "generated": "2026-10-10T17:15:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33839,7 +33839,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T17:11:19Z"
+      "updated": "2026-10-10T17:15:07Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -34117,7 +34117,7 @@
         "docs/specs/f-0336.md:304 \u2014 \"In\" item 8 says `decide.on_pr` reads the live entries, but `on_pr(check, pr)` (`asf/kernel/decide.py:1314`) takes no `facts` and so cannot; \u00a74.3 correctly leaves it unchanged and adds `quarantined(check, facts)` ANDed into `_judge_pr`'s `own` list \u2014 reword item 8 to \"`decide._judge_pr` reads the live entries (`decide.quarantined`), so a quarantined signature's red takes the shipped off-PR path\" so the scope list and the design name the same function"
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 5,
@@ -34126,7 +34126,7 @@
       "state": "New",
       "title": "Kernel flake quarantine with a defect check (unrelated heads only)",
       "type": "feature",
-      "updated": "2026-10-10T17:07:28Z"
+      "updated": "2026-10-10T17:15:07Z"
     },
     "F-0337": {
       "backlinks": [],
@@ -34205,7 +34205,7 @@
       "state": "New",
       "title": "Kernel: resolve the next two most frequent session questions in code",
       "type": "feature",
-      "updated": "2026-10-10T17:11:19Z"
+      "updated": "2026-10-10T17:15:07Z"
     },
     "F-0340": {
       "backlinks": [],
@@ -34262,12 +34262,8 @@
       "decided": true,
       "folder": "features",
       "id": "F-0342",
-      "kernel_findings": [
-        "docs/specs/f-0342.md:106 \u2014 the P10 citation \"tests/kernel/test_host.py:91 builds exactly that product\" is backwards: line 91 builds a product WITH a kernel block, not a cut-over product with none; retarget to tests/kernel/test_host.py:112, :114 or :355 (each builds env.Product('sample', {'repo_slug': 'o/r'}) with no kernel block)",
-        "docs/specs/f-0342.md:57 \u2014 P1 cites MOVE_PATTERN at upgrade.py:933; it is defined at upgrade.py:928 (off by 5); fix the line number"
-      ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_fix_rounds": 0,
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -34275,7 +34271,7 @@
       "state": "New",
       "title": "asf upgrade --product on a kernel product reinstalls the paused 0.1 floor clocks; the pin cannot move",
       "type": "feature",
-      "updated": "2026-10-10T17:11:19Z"
+      "updated": "2026-10-10T17:15:07Z"
     },
     "R-0001": {
       "backlinks": [
@@ -64313,7 +64309,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T17:11:19Z",
+      "updated": "2026-10-10T17:15:07Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
