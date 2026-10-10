@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T21:24:35Z",
+  "generated": "2026-10-10T21:26:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -87,6 +87,7 @@
       "area": "factory",
       "backlinks": [
         "S-134706",
+        "T-142126",
         "B-0025",
         "B-0026",
         "B-0045"
@@ -20172,6 +20173,7 @@
         "T-0639",
         "T-0812",
         "T-129169",
+        "T-142126",
         "B-135242"
       ],
       "children": [
@@ -21568,7 +21570,8 @@
     "F-0008": {
       "area": "factory",
       "backlinks": [
-        "S-134706"
+        "S-134706",
+        "T-142126"
       ],
       "children": [],
       "decided": false,
@@ -35053,7 +35056,11 @@
         "S-134711",
         "S-134712",
         "S-137106",
-        "S-137607"
+        "S-137607",
+        "T-142126",
+        "T-142127",
+        "T-142128",
+        "T-142129"
       ],
       "decided": true,
       "folder": "features",
@@ -38693,7 +38700,10 @@
       "updated": "2026-10-10T19:30:53Z"
     },
     "S-134705": {
-      "backlinks": [],
+      "backlinks": [
+        "T-142126",
+        "T-142129"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38707,7 +38717,10 @@
       "updated": "2026-10-10T20:47:07Z"
     },
     "S-134706": {
-      "backlinks": [],
+      "backlinks": [
+        "T-142126",
+        "T-142129"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38721,7 +38734,10 @@
       "updated": "2026-10-10T20:47:07Z"
     },
     "S-134707": {
-      "backlinks": [],
+      "backlinks": [
+        "T-142126",
+        "T-142129"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38735,7 +38751,10 @@
       "updated": "2026-10-10T20:47:07Z"
     },
     "S-134708": {
-      "backlinks": [],
+      "backlinks": [
+        "T-142127",
+        "T-142129"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38749,7 +38768,10 @@
       "updated": "2026-10-10T20:47:07Z"
     },
     "S-134709": {
-      "backlinks": [],
+      "backlinks": [
+        "T-142127",
+        "T-142129"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38763,7 +38785,10 @@
       "updated": "2026-10-10T20:47:07Z"
     },
     "S-134710": {
-      "backlinks": [],
+      "backlinks": [
+        "T-142128",
+        "T-142129"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38777,7 +38802,9 @@
       "updated": "2026-10-10T20:47:07Z"
     },
     "S-134711": {
-      "backlinks": [],
+      "backlinks": [
+        "T-142129"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38791,7 +38818,11 @@
       "updated": "2026-10-10T20:47:07Z"
     },
     "S-134712": {
-      "backlinks": [],
+      "backlinks": [
+        "T-142126",
+        "T-142127",
+        "T-142129"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38820,7 +38851,8 @@
     },
     "S-137106": {
       "backlinks": [
-        "F-0346"
+        "F-0346",
+        "T-142129"
       ],
       "children": [],
       "decided": true,
@@ -38836,7 +38868,8 @@
     },
     "S-137607": {
       "backlinks": [
-        "F-0346"
+        "F-0346",
+        "T-142129"
       ],
       "children": [],
       "decided": true,
@@ -48067,7 +48100,8 @@
     "T-0004": {
       "backlinks": [
         "S-134706",
-        "T-0772"
+        "T-0772",
+        "T-142126"
       ],
       "children": [],
       "cost": {
@@ -83907,8 +83941,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129156",
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
       "kernel_notes": [
         "groom-fill-t-129156-1791654017: groom-fill raised risk high: design matches trunk exactly (constants, line ranges, fixture methods, helper signatures) and nothing named has been built yet; only the acceptance/gate lines were missing.",
         "groom-fill-t-129156-1791655146: groom-fill raised risk high: design (constants, line ranges, fixture methods, helper signatures) matches trunk at af8aa11c exactly, and nothing named has been built yet \u2014 only acceptance/writes were missing.",
@@ -83929,7 +83963,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-10T20:43:08Z",
+      "updated": "2026-10-10T21:26:20Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -85701,7 +85735,11 @@
         "PR #1445: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "launch: launch: branch checked out in an external worktree /private/tmp/claude-501/-Users-a worker account-Code-fmogensen-ASF/a634ee27-9ff3-433b-abf8-1058b56578ad/scratchpad/wt3def; waits until it's\u2026",
+      "kernel_stuck_since": "2026-10-10T21:25:56Z",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -85717,7 +85755,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-10T21:24:32Z",
+      "updated": "2026-10-10T21:26:20Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -86232,6 +86270,124 @@
         "tests/test_minimal_product.py",
         "tests/test_tick.py",
         "tests/test_tick_steps.py"
+      ]
+    },
+    "T-142126": {
+      "backlinks": [
+        "T-142127"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-142126",
+      "kernel_state": "ready",
+      "links": {
+        "plan": "docs/plans/f-0346.md"
+      },
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T21:25:07Z",
+      "state": "New",
+      "stories": [
+        "S-134705",
+        "S-134706",
+        "S-134707",
+        "S-134712"
+      ],
+      "title": "the law \u2014 `asf/flow.py`, and the feeder's severity bar gets one name",
+      "type": "task",
+      "updated": "2026-10-10T21:26:20Z",
+      "writes": [
+        "asf/flow.py",
+        "asf/feeder/rows.py",
+        "tests/test_flow_conservation.py"
+      ]
+    },
+    "T-142127": {
+      "after": [
+        "T-142126"
+      ],
+      "backlinks": [
+        "T-142128",
+        "T-142129"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-142127",
+      "links": {
+        "plan": "docs/plans/f-0346.md"
+      },
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T21:25:10Z",
+      "state": "New",
+      "stories": [
+        "S-134708",
+        "S-134709",
+        "S-134712"
+      ],
+      "title": "`I16`, the `flow` scope, and the tick's check point",
+      "type": "task",
+      "updated": "2026-10-10T21:25:10Z",
+      "writes": [
+        "asf/invariants.py",
+        "tests/test_invariants.py",
+        "tests/test_flow_conservation.py"
+      ]
+    },
+    "T-142128": {
+      "after": [
+        "T-142127"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-142128",
+      "links": {
+        "plan": "docs/plans/f-0346.md"
+      },
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T21:25:15Z",
+      "state": "New",
+      "stories": [
+        "S-134710"
+      ],
+      "title": "the wave runs the check once, after the feeder's gate",
+      "type": "task",
+      "updated": "2026-10-10T21:25:15Z",
+      "writes": [
+        "asf/tick/step_wave.py",
+        "tests/test_flow_conservation.py"
+      ]
+    },
+    "T-142129": {
+      "after": [
+        "T-142127"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-142129",
+      "links": {
+        "plan": "docs/plans/f-0346.md"
+      },
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T21:25:18Z",
+      "state": "New",
+      "stories": [
+        "S-134711"
+      ],
+      "title": "`asf check --invariants` runs the flow scope read-only",
+      "type": "task",
+      "updated": "2026-10-10T21:25:18Z",
+      "writes": [
+        "asf/record/check.py",
+        "tests/test_flow_conservation.py"
       ]
     },
     "T-76350": {
