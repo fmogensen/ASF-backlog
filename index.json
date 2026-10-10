@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T09:25:57Z",
+  "generated": "2026-10-10T09:26:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2719,6 +2719,7 @@
         "F-0112",
         "B-0089",
         "B-0091",
+        "B-0121",
         "B-0124"
       ],
       "children": [],
@@ -3724,6 +3725,7 @@
     },
     "B-0120": {
       "backlinks": [
+        "B-0121",
         "B-0123"
       ],
       "children": [],
@@ -3775,7 +3777,14 @@
       "kernel_attempts": [
         "relaunch: operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "docs/plans/b-0121.md (missing) \u2014 no plan or spec exists on this branch or origin/main, so \"every Step of the Task is implemented\" and \"acceptance tests byte-identical to the plan's\" cannot be checked (same gap round 1 of B-0120 and B-0123 blocked on). Add the plan naming the Task (the configurable FACTORY STATUS feed started by the plugin) and its Steps \u2014 `asf/console_feed.py`'s parse_every/resolve_every/due/run_once/_ticks_since, the console-feed/console-feed-hint CLI wiring (asf/cli.py:435-441,749-751), the console_status_every flag (asf/conventions.py:425-429), and the second SessionStart hook (asf/plugin_build.py:112-134) \u2014 with Acceptance pointing at tests/test_console_feed.py and tests/test_plugin.py:113-128.",
+        "red: tests (3.12) \u2014 step 'tests' failed:\n\u2026gistryTests.test_plugin_views_are_a_subset_of_titles)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/ASF/ASF/tests/test_views_header.py\", line 73, in test_plugin_views_are_a_subset_of_titles\n    self.assertTrue(set(plugin_build.VIEWS) <= set(header.TITLES))\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n----------------------------------------------------------------------\nRan 20 tests in 0.503s\nFAILED (failures=1)\nretry: test_views_header\n--- test_views_header: FAILED (rc 1)\n...................F\n======================================================================\nFAIL: test_plugin_views_are_a_subset_of_titles (tests.test_views_header.RegistryTests.test_plugin_views_are_a_subset_of_titles)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/ASF/ASF/tests/test_views_header.py\", line 73, in test_plugin_views_are_a_subset_of_titles\n    self.assertTrue(set(plugin_build.VIEWS) <= set(header.TITLES))\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n----------------------------------------------------------------------\nRan 20 tests in 0.285s\nFAILED (failures=1)\nRan 10735 tests in 396.883s (300 module(s), 4 at a time)\nFAILED (failures=1, skipped=18)\nred: test_views_header\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'tests' failed:\n\u2026gistryTests.test_plugin_views_are_a_subset_of_titles)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/ASF/ASF/tests/test_views_header.py\", line 73, in test_plugin_views_are_a_subset_of_titles\n    self.assertTrue(set(plugin_build.VIEWS) <= set(header.TITLES))\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n----------------------------------------------------------------------\nRan 20 tests in 0.503s\nFAILED (failures=1)\nretry: test_views_header\n--- test_views_header: FAILED (rc 1)\n...................F\n======================================================================\nFAIL: test_plugin_views_are_a_subset_of_titles (tests.test_views_header.RegistryTests.test_plugin_views_are_a_subset_of_titles)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/ASF/ASF/tests/test_views_header.py\", line 73, in test_plugin_views_are_a_subset_of_titles\n    self.assertTrue(set(plugin_build.VIEWS) <= set(header.TITLES))\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n----------------------------------------------------------------------\nRan 20 tests in 0.285s\nFAILED (failures=1)\nRan 10735 tests in 396.883s (300 module(s), 4 at a time)\nFAILED (failures=1, skipped=18)\nred: test_views_header\n##[error]Process completed with exit code 1.",
+        "operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3784,7 +3793,7 @@
       "state": "New",
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
-      "updated": "2026-10-10T00:58:34Z"
+      "updated": "2026-10-10T01:03:23Z"
     },
     "B-0122": {
       "backlinks": [],
@@ -3823,7 +3832,8 @@
         "F-0176",
         "T-0073",
         "T-0557",
-        "T-0558"
+        "T-0558",
+        "B-0121"
       ],
       "budget_sessions": 24,
       "budget_usd": 30,
@@ -18629,8 +18639,7 @@
       "found_in": "ci",
       "id": "B-83575",
       "kernel_findings": [
-        "\"asf/tick/step_wave.py:851-862 \u2014 add `import traceback` and `say(traceback.format_exc().rstrip())` right after the existing one-line `say(...)` at line 860, matching the traceback-logging pattern already used for the same \\\"swallow one failure",
-        "keep going\\\" case at asf/tick/tick.py:905-911 and asf/tick/wave_clock.py:198-202 \u2014 right now the exception's traceback is discarded entirely, and this is exactly the failure (B-82809's brief build) whose root cause the writer's own report calls unknown.\""
+        "asf/tick/step_wave.py:851-862 \u2014 add `import traceback` and `say(traceback.format_exc().rstrip())` right after the existing one-line `say(...)` at line 860, matching the traceback-logging pattern already used for the same \"swallow one failure, keep going\" case at asf/tick/tick.py:905-911 and asf/tick/wave_clock.py:198-202 \u2014 right now the exception's traceback is discarded entirely, and this is exactly the failure (B-82809's brief build) whose root cause the writer's own report calls unknown."
       ],
       "kernel_fix_rounds": 1,
       "kernel_notes": [
@@ -19055,6 +19064,7 @@
       "backlinks": [
         "T-0822",
         "T-0833",
+        "T-81129",
         "T-81131",
         "T-82988"
       ],
@@ -19072,6 +19082,7 @@
     },
     "D-0005": {
       "backlinks": [
+        "T-81129",
         "T-81131",
         "T-82987",
         "T-82989",
@@ -19172,6 +19183,8 @@
     },
     "D-0011": {
       "backlinks": [
+        "T-81129",
+        "T-82986",
         "T-82987"
       ],
       "children": [],
@@ -20041,6 +20054,7 @@
         "F-0324",
         "F-0325",
         "F-0326",
+        "F-0327",
         "F-0328",
         "F-0329",
         "F-0330",
@@ -20135,6 +20149,7 @@
         "B-0118",
         "B-0119",
         "B-0120",
+        "B-0121",
         "B-0122",
         "B-0123",
         "B-0124",
@@ -25405,7 +25420,8 @@
         "F-0109",
         "F-0112",
         "F-0114",
-        "S-0005"
+        "S-0005",
+        "T-0436"
       ],
       "children": [
         "T-0261",
@@ -25596,7 +25612,8 @@
         "T-0432",
         "T-0433",
         "T-0434",
-        "T-0435"
+        "T-0435",
+        "T-0436"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -32828,6 +32845,7 @@
     "F-0301": {
       "backlinks": [
         "E-0001",
+        "F-0327",
         "B-82960"
       ],
       "budget_sessions": 6,
@@ -32837,6 +32855,8 @@
         "S-77505",
         "S-77506",
         "S-77507",
+        "T-79565",
+        "T-79566",
         "T-79567",
         "T-79568"
       ],
@@ -33004,6 +33024,7 @@
       "backlinks": [
         "E-0001",
         "F-0318",
+        "F-0327",
         "T-82989",
         "B-78590",
         "B-79745",
@@ -33112,6 +33133,7 @@
         "S-81207",
         "S-81208",
         "S-81209",
+        "T-82986",
         "T-82987",
         "T-82988",
         "T-82989",
@@ -33172,6 +33194,7 @@
     },
     "F-0312": {
       "backlinks": [
+        "F-0327",
         "B-80650",
         "B-82960",
         "B-83470"
@@ -33185,10 +33208,12 @@
         "S-80457",
         "S-80458",
         "S-80459",
+        "T-81129",
         "T-81130",
         "T-81131",
         "T-81132",
-        "T-81133"
+        "T-81133",
+        "T-81134"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -33626,10 +33651,11 @@
       "id": "F-0327",
       "kernel_notes": [
         "spec-f-0327-1791587530: NEEDS OPERATOR: the five Story cards could not be minted (the record directory is outside this session's reachable paths); they are declared in the spec's `## Stories` block with ids from this session's range for `a\u2026",
-        "\"spec-f-0327-1791595557: NEEDS OPERATOR: confirm P4/P6's live totals on the reporting product, which this host cannot reach \u2014 `python3 -c \\\"from asf import env; from asf.ci_queue import feeder_rows",
-        "dependents; rows = feeder_rows(env.load_pr\u2026\""
+        "\"\\\"spec-f-0327-1791595557: NEEDS OPERATOR: confirm P4/P6's live totals on the reporting product",
+        "which this host cannot reach \u2014 `python3 -c \\\\\\\"from asf import env; from asf.ci_queue import feeder_rows\"",
+        "dependents; rows = feeder_rows(env.load_pr\u2026\", \"PR #1305: install-clean-macos is red but not a required check \u2014 ignored\""
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33637,7 +33663,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T03:43:23Z"
+      "updated": "2026-10-10T04:53:50Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -42846,7 +42872,8 @@
     },
     "S-77504": {
       "backlinks": [
-        "F-0301"
+        "F-0301",
+        "T-79565"
       ],
       "children": [],
       "cost": {
@@ -42874,7 +42901,9 @@
     },
     "S-77505": {
       "backlinks": [
-        "F-0301"
+        "F-0301",
+        "T-79565",
+        "T-79566"
       ],
       "children": [],
       "cost": {
@@ -42903,6 +42932,7 @@
     "S-77506": {
       "backlinks": [
         "F-0301",
+        "T-79566",
         "T-79567"
       ],
       "children": [],
@@ -43398,7 +43428,8 @@
     },
     "S-80454": {
       "backlinks": [
-        "F-0312"
+        "F-0312",
+        "T-81129"
       ],
       "children": [],
       "cost": {
@@ -43516,7 +43547,8 @@
     },
     "S-80459": {
       "backlinks": [
-        "F-0312"
+        "F-0312",
+        "T-81134"
       ],
       "children": [],
       "cost": {
@@ -43879,7 +43911,8 @@
     },
     "S-81204": {
       "backlinks": [
-        "F-0308"
+        "F-0308",
+        "T-82986"
       ],
       "children": [],
       "cost": {
@@ -46768,8 +46801,10 @@
         "T-0794",
         "T-0797",
         "T-78813",
+        "T-79565",
         "T-80572",
         "T-80576",
+        "T-82986",
         "B-0138",
         "B-82960",
         "B-83470"
@@ -49055,7 +49090,8 @@
         "T-0651",
         "T-0657",
         "T-0708",
-        "T-0724"
+        "T-0724",
+        "T-79565"
       ],
       "children": [],
       "cost": {
@@ -49579,7 +49615,9 @@
         "T-0708",
         "T-0794",
         "T-78813",
-        "T-80576"
+        "T-79565",
+        "T-80576",
+        "T-82986"
       ],
       "children": [],
       "cost": {
@@ -49770,7 +49808,9 @@
         "T-0200",
         "T-0216",
         "T-0797",
-        "T-80576"
+        "T-79565",
+        "T-80576",
+        "T-82986"
       ],
       "children": [],
       "cost": {
@@ -50088,7 +50128,9 @@
         "T-0797",
         "T-0802",
         "T-78813",
-        "T-80576"
+        "T-79565",
+        "T-80576",
+        "T-82986"
       ],
       "children": [],
       "cost": {
@@ -51870,7 +51912,9 @@
         "F-0277",
         "T-0173",
         "T-0207",
+        "T-79565",
         "T-80576",
+        "T-82986",
         "B-75618"
       ],
       "children": [],
@@ -52606,6 +52650,7 @@
         "T-0815",
         "T-0816",
         "T-78155",
+        "T-79565",
         "T-80572"
       ],
       "children": [],
@@ -53458,7 +53503,9 @@
         "T-0209",
         "T-0216",
         "T-0368",
-        "T-80576"
+        "T-79565",
+        "T-80576",
+        "T-82986"
       ],
       "children": [],
       "cost": {
@@ -58212,6 +58259,7 @@
         "T-0734",
         "T-0815",
         "T-0822",
+        "T-79565",
         "B-0199",
         "B-0308"
       ],
@@ -58460,6 +58508,7 @@
         "T-0724",
         "T-0734",
         "T-78358",
+        "T-79565",
         "T-80572",
         "B-74462",
         "B-75015"
@@ -60743,7 +60792,9 @@
         "T-0654",
         "T-0708",
         "T-0724",
+        "T-79565",
         "T-80576",
+        "T-82986",
         "B-0229",
         "B-0593",
         "B-0598"
@@ -61968,6 +62019,7 @@
         "T-0734",
         "T-0816",
         "T-78155",
+        "T-79565",
         "T-80572"
       ],
       "budget_sessions": 5,
@@ -62598,6 +62650,7 @@
         "T-0688",
         "T-0745",
         "T-0797",
+        "T-79565",
         "B-0207"
       ],
       "children": [],
@@ -63098,6 +63151,7 @@
     "T-0422": {
       "backlinks": [
         "F-0320",
+        "F-0327",
         "T-0423"
       ],
       "children": [],
@@ -63547,6 +63601,7 @@
         "T-0638",
         "T-0651",
         "T-0724",
+        "T-79565",
         "T-82785",
         "B-83414"
       ],
@@ -63706,7 +63761,8 @@
         "T-0431",
         "T-0432",
         "T-0433",
-        "T-0434"
+        "T-0434",
+        "T-0436"
       ],
       "children": [],
       "decided": true,
@@ -63753,7 +63809,10 @@
       ],
       "folder": "tasks",
       "id": "T-0436",
-      "kernel_state": "building",
+      "kernel_attempts": [
+        "launch: launch: git worktree add -q -B worker/T-0436 ~/.ASF/state/asf/worktrees/review-t-0436-1791612749 origin/worker/T-0436: error: unable to create file tests/test_session_identity.py: No space left on device\nerror: unable to create file tests/test_session_push_guard.py: No space left on device\nerror: unable to create file tests/test_set_parent_removed.py: No space left on device\nerror: unable to create file tests/test_shared_paths.py: No space left on device\nerror: unable to create file tests/test_size.py: No space left on device\nerror: unable to write file tests/test_stale_batch.py\nerror: unable to create file tests/test_state_store.py: No space left on device\nerror: unable to create file tests/test_stop.py: No space left on device\nerror: unable to create file tests/test_stories_first.py: No space left on device\nerror: unable to create file tests/test_surface.py: No space left on device\nerror: unable to create file tests/test_t10_gate.py: No space left on device\nerror: unable to create file tests/test_tables.py: No space left on device\nerror: unable to create file tests/test_tag_resolution.py: No space left on device\nerror: unable to create file tests/test_throughput.py: No space left on device\nerror: unable to create file tests/test_tick.py: No space left on device\nerror: unable to create file tests/test_tick_latency.py: No space left on device\nerror: unable to create file tests/test_tick_steps.py: No space left on device\nerror: unable to create file tests/test_tick_summary.py: No space left on device\nerror: unable to create file tests/test_tick_watchdog.py: No space left on device\nerror: unable to create file tests/test_tokens.py: No space left on device\nerror: unable to create file tests/test_transplant.py: No space left on device\nerror: unable to create file tests/test_tree_green.py: No space left on device\nerror: unable to create file tests/test_trunk_check.py: No space left on device\nerror: unable to create file tests/test_trunk_merge.py: No space left on device\nerror: unable to create file tests/test_trunk_red.py: No space left on device\nerror: unable to create file tests/test_trunkclose.py: No space left on device\nerror: unable to create file tests/test_tune.py: No space left on device\nerror: unable to create file tests/test_unpushed_gate.py: No space left on device\nerror: unable to create file tests/test_upgrade.py: No space left on device\nerror: unable to create file tests/test_upgrade_drain_bound.py: No space left on device\nerror: unable to create file tests/test_version.py: No space left on device\nerror: unable to create file tests/test_views.py: No space left on device\nerror: unable to create file tests/test_views_header.py: No space left on device\nerror: unable to create file tests/test_watch.py: No space left on device\nerror: unable to create file tests/test_wave_clock.py: No space left on device\nerror: unable to create file tests/test_widen.py: No space left on device\nerror: unable to create file tests/test_worker_env.py: No space left on device\nerror: unable to create file tests/test_worker_isolation.py: No space left on device\nerror: unable to create file tests/test_workers.py: No space left on device\nerror: unable to create file tests/test_workflow.py: No space left on device\nerror: unable to create file tests/test_worktree_reaper.py: No space left on device\nerror: unable to create file tests/test_worktrees_ensure.py: No space left on device\nfatal: cannot create directory at 'tools': No space left on device"
+      ],
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63763,7 +63822,7 @@
       "state": "New",
       "title": "the standing views \u2014 the doctor's `upgrade` row and the guide's release-channel section",
       "type": "task",
-      "updated": "2026-10-10T05:41:55Z",
+      "updated": "2026-10-10T06:12:42Z",
       "writes": [
         "asf/doctor.py",
         "docs/guide/upgrading.md",
@@ -64422,6 +64481,7 @@
         "T-0816",
         "T-78155",
         "T-78358",
+        "T-79565",
         "T-80572"
       ],
       "children": [],
@@ -66414,6 +66474,7 @@
         "T-0532",
         "T-0724",
         "T-0734",
+        "T-79565",
         "T-80572"
       ],
       "children": [],
@@ -66943,6 +67004,7 @@
         "T-0516"
       ],
       "backlinks": [
+        "F-0327",
         "T-0516"
       ],
       "children": [],
@@ -67135,6 +67197,7 @@
         "T-0521"
       ],
       "backlinks": [
+        "F-0327",
         "T-0523"
       ],
       "children": [],
@@ -68190,6 +68253,7 @@
     },
     "T-0547": {
       "backlinks": [
+        "F-0327",
         "B-0158"
       ],
       "children": [],
@@ -71598,7 +71662,8 @@
         "T-0745",
         "T-0756",
         "T-0763",
-        "T-0792"
+        "T-0792",
+        "T-79565"
       ],
       "children": [],
       "cost": {
@@ -72598,6 +72663,7 @@
         "T-0724",
         "T-0728",
         "T-78813",
+        "T-82986",
         "B-0211",
         "B-83471"
       ],
@@ -72737,6 +72803,7 @@
         "T-0745",
         "T-0756",
         "T-0763",
+        "T-79565",
         "B-0246",
         "B-0531",
         "B-0577"
@@ -75709,7 +75776,9 @@
         "T-0793",
         "T-78358",
         "T-78813",
+        "T-79565",
         "T-80572",
+        "T-82986",
         "B-76879"
       ],
       "children": [],
@@ -76156,6 +76225,7 @@
         "T-0735",
         "T-0816",
         "T-78155",
+        "T-79565",
         "T-80572",
         "B-77333",
         "B-77535",
@@ -76607,6 +76677,7 @@
         "T-0756",
         "T-0763",
         "T-0797",
+        "T-79565",
         "B-0254",
         "B-0326",
         "B-0327"
@@ -77102,7 +77173,8 @@
         "T-0757",
         "T-0758",
         "T-0763",
-        "T-76352"
+        "T-76352",
+        "T-79565"
       ],
       "budget_sessions": 5,
       "children": [],
@@ -77407,6 +77479,7 @@
         "T-0825",
         "T-76352",
         "T-77803",
+        "T-79565",
         "B-70755",
         "B-76372"
       ],
@@ -81079,7 +81152,11 @@
       ],
       "folder": "tasks",
       "id": "T-79565",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/d2b750a1-3f4c-4beb-b1d4-05bffaf60ba1' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81093,7 +81170,7 @@
       ],
       "title": "the door \u2014 the convention, the matcher, `asf pre-push`, and one call in the shim",
       "type": "task",
-      "updated": "2026-10-10T07:04:36Z",
+      "updated": "2026-10-10T07:47:55Z",
       "writes": [
         "asf/conventions.py",
         "asf/prepush.py",
@@ -81123,7 +81200,18 @@
       ],
       "folder": "tasks",
       "id": "T-79566",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_notes": [
+        "PR #1342: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1342: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1342: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1342: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81140,7 +81228,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-10T08:42:03Z",
+      "updated": "2026-10-10T08:48:12Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
@@ -81163,7 +81251,9 @@
       "after": [
         "T-79566"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-79566"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -81672,8 +81762,12 @@
         "relaunch: operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
       ],
       "kernel_extra_rounds": 1,
-      "kernel_fix_rounds": 2,
-      "kernel_state": "new",
+      "kernel_findings": [
+        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/d94fa59f-dee1-4e98-a546-0937490c082a' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
+        "operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
+      ],
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -81686,7 +81780,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T05:29:32Z",
+      "updated": "2026-10-10T09:25:48Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -81816,7 +81910,8 @@
         "T-81129"
       ],
       "backlinks": [
-        "T-81130"
+        "T-81130",
+        "T-81134"
       ],
       "children": [],
       "decided": true,
@@ -81859,11 +81954,17 @@
       ],
       "folder": "tasks",
       "id": "T-81134",
+      "kernel_findings": [
+        "asf/briefs/build.py:453 \u2014 `regression_block` raises `IndexError` on a falsy `facts['head']` because `(facts['head'] or '').split()[0] or preamble_mod.UNKNOWN` indexes before the fallback can apply; compute `head = facts['head']; base = head.split()[0] if head else preamble_mod.UNKNOWN` instead, matching the existing fallback pattern at build.py:509. This is reachable from any brief kind (not just fix-bug) whenever `regression.check` is on and the repo head can't be resolved (missing/uncloned repo_dir, unresolvable rev, empty `git log` \u2014 all documented paths in `asf/briefs/facts.py:354,92-93`).",
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1324: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1324: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -81876,7 +81977,7 @@
       ],
       "title": "the fix-bug brief carries the pre-fix base and the command the lane will run",
       "type": "task",
-      "updated": "2026-10-10T05:33:56Z",
+      "updated": "2026-10-10T05:41:55Z",
       "writes": [
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/build.py",
@@ -81969,7 +82070,11 @@
       ],
       "folder": "tasks",
       "id": "T-82986",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -81982,7 +82087,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T07:53:47Z",
+      "updated": "2026-10-10T08:09:00Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82280,6 +82385,7 @@
         "T-82986"
       ],
       "backlinks": [
+        "T-81129",
         "T-83346",
         "T-83347",
         "T-83348",
