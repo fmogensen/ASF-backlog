@@ -1,3 +1,5 @@
+→ retired: Re-filed as a Story under F-0346 (Flow conservation): it is a flow-conservation rule, and the note's Feature-under-Feature shape could not be decided. (2026-10-10)
+
 # Kernel STORY LIMBO: an unproved Story with no live Task is counted and listed
 type: feature
 
