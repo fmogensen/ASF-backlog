@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T11:23:34Z",
+  "generated": "2026-10-10T11:28:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3787,7 +3787,7 @@
         "operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3796,7 +3796,7 @@
       "state": "New",
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
-      "updated": "2026-10-10T11:11:24Z"
+      "updated": "2026-10-10T11:28:27Z"
     },
     "B-0122": {
       "backlinks": [],
@@ -33456,7 +33456,7 @@
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
         "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33464,7 +33464,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T11:23:30Z"
+      "updated": "2026-10-10T11:28:27Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33612,7 +33612,7 @@
       "state": "New",
       "title": "a branch of only empty proof commits is read as already on main and deleted without landing; the item loops",
       "type": "feature",
-      "updated": "2026-10-10T09:30:19Z"
+      "updated": "2026-10-10T11:28:27Z"
     },
     "F-0325": {
       "backlinks": [],
@@ -33715,7 +33715,7 @@
         "plan-f-0328-1791624270: NEEDS OPERATOR: whether this plan should land from a branch that also carries the closed hotfix the spec refuses \u2014 `fix/F-0328-pending-not-red` adds `c6cb1a21f` (the `verdict()` change) and `6a81462dc` (an unrelated\u2026",
         "plan-f-0328-1791629407: NEEDS OPERATOR: whether fix/F-0328-pending-not-red may land carrying the closed hotfix (c6cb1a21f, the verdict() change the spec's Out table refuses, plus 6a81462dc, an unrelated defect) alongside this plan \u2014 a plan\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33723,7 +33723,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T11:17:07Z"
+      "updated": "2026-10-10T11:28:27Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33788,18 +33788,17 @@
       ],
       "folder": "features",
       "id": "F-0331",
+      "kernel_answers": [
+        "Full FINDINGS of review-f-0331-1791628439 (from the factory host's session log):\n1. docs/specs/f-0331.md:373 \u2014 escape both `|| true` in D7's cell as `\\|\\| true`; unescaped pipes split the row into eight cells against a four-column header, so GFM discards D7's whole Why column. (fixed already)\n2. docs/specs/f-0331.md:256-257 \u2014 drop the claim that `InstallStepsTests` is green on both hosts and that neither container failure is in this spec's acceptance: `test_idempotent_second_run` is a case of that class and the class is S-104407's acceptance (:752, :875); measured `Ran 31 tests / FAILED (failures=1)`. Say it is green only where `asf` is on PATH, and name the step-8 cases (or the one expected failure) in S-104407's acceptance.\n3. docs/specs/f-0331.md:719 \u2014 attribute the paused-clock pin to `PauseTest` (`tests/test_scheduler.py:645-651`), not `InstallTest`, and add `tests.test_scheduler.PauseTest` to S-104405's acceptance command (:700, :873) so that pin is actually run.\nFix 2 and 3, then report."
+      ],
       "kernel_attempts": [
-        "review: no VERDICT line"
+        "relaunch: operator answer: Full FINDINGS of review-f-0331-1791628439 (from the factory host's session log): 1. docs/specs/f-0331.md:373 \u2014 escape both `|| true` in D7's cell as `\\|\\| true`; unescaped pipes split the row into eight cells against a four-column header, so GFM discards D7's whole Why column. (fixed already) 2. docs/specs/f-0331.md:256-257 \u2014 drop the claim that `InstallStepsTests` is green on both hosts and that neither container failure is in this spec's acceptance: `test_idempotent_second_run` is a case of that class and the class is S-104407's acceptance (:752, :875); measured `Ran 31 tests / FAILED (fail\u2026"
       ],
       "kernel_notes": [
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: the reviewer's full FINDINGS list for round review-f-0331-1791628439, which the brief truncated at its field cap after the first finding - run this read-only command on the fact\u2026",
-      "kernel_stuck_since": "2026-10-10T11:13:21Z",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33807,7 +33806,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T11:14:58Z"
+      "updated": "2026-10-10T11:28:27Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -33831,7 +33830,7 @@
         "spec-f-0332-1791602807: NEEDS OPERATOR: which number the ceiling should carry \u2014 the spec ships 6 (0.143 share, 23 % fall, only 0.007 of margin on the 0.15 threshold while the cause drifts up from 0.158 to 0.186); 4 measures at 0.123 and a\u2026",
         "plan-f-0332-1791618215: NEEDS OPERATOR: which number the ceiling carries \u2014 the spec ships loops.TOTAL_CAP = 6 (measured 0.143 share, a 23 % fall, inside both bars but with 0.007 of margin while the cause drifted 0.158 \u2192 0.186), where 4 mea\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33839,7 +33838,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T11:14:58Z"
+      "updated": "2026-10-10T11:28:27Z"
     },
     "R-0001": {
       "backlinks": [
@@ -53128,7 +53127,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53141,7 +53140,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T10:36:11Z",
+      "updated": "2026-10-10T11:28:27Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -79947,8 +79946,14 @@
       "id": "T-0818",
       "kernel_dor_fills": 2,
       "kernel_notes": [
-        "groom-fill-t-0818-1791629851: groom-fill verdict rejected: no GROOM-FILL block"
+        "groom-fill-t-0818-1791629851: groom-fill verdict rejected: no GROOM-FILL block",
+        "groom-fill-t-0818-1791631129: groom-fill verdict rejected: acceptance: missing or not a list"
       ],
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "dor: no test named in Acceptance or Gate \u2014 2 groom-fill session(s) could not make it ready",
+      "kernel_stuck_since": "2026-10-10T11:26:11Z",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -79961,7 +79966,7 @@
       ],
       "title": "a card a push discards add/add is named by its id, and a modify/modify resolution still prints exactly one line",
       "type": "task",
-      "updated": "2026-10-10T11:19:04Z",
+      "updated": "2026-10-10T11:28:27Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -81012,8 +81017,14 @@
       "id": "T-78359",
       "kernel_dor_fills": 2,
       "kernel_notes": [
-        "groom-fill-t-78359-1791630148: groom-fill verdict rejected: no GROOM-FILL block"
+        "groom-fill-t-78359-1791630148: groom-fill verdict rejected: no GROOM-FILL block",
+        "groom-fill-t-78359-1791631136: groom-fill verdict rejected: acceptance: missing or not a list"
       ],
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "dor: no test named in Acceptance or Gate \u2014 2 groom-fill session(s) could not make it ready",
+      "kernel_stuck_since": "2026-10-10T11:26:11Z",
       "links": {
         "plan": "docs/plans/f-0283.md"
       },
@@ -81026,7 +81037,7 @@
       ],
       "title": "the record's own hooks are moved onto the pin by the command the row already names",
       "type": "task",
-      "updated": "2026-10-10T11:19:04Z",
+      "updated": "2026-10-10T11:28:27Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
@@ -82446,7 +82457,7 @@
       ],
       "folder": "tasks",
       "id": "T-83142",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block"
       ],
@@ -82462,7 +82473,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T11:23:30Z",
+      "updated": "2026-10-10T11:28:27Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
@@ -82483,7 +82494,7 @@
       ],
       "folder": "tasks",
       "id": "T-83143",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_notes": [
         "groom-fill-t-83143-1791630660: groom-fill verdict rejected: no GROOM-FILL block"
       ],
@@ -82499,7 +82510,7 @@
       ],
       "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
       "type": "task",
-      "updated": "2026-10-10T11:23:30Z",
+      "updated": "2026-10-10T11:28:27Z",
       "writes": [
         "asf/reviews.py",
         "asf/harvest/lane.py",
@@ -82521,6 +82532,7 @@
       ],
       "folder": "tasks",
       "id": "T-83144",
+      "kernel_dor_fills": 1,
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -82533,7 +82545,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T11:28:27Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
