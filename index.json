@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T09:05:55Z",
+  "generated": "2026-10-10T09:10:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2772,7 +2772,7 @@
       "kernel_notes": [
         "build-b-0088-1791618708: NEEDS OPERATOR: the kernel prints a correction naming no cause when a review returns `changes` with an unparsed C list \u2014 `asf/kernel/briefs.py:129` falls back to `', '.join(reds) or 'unknown'`, and that kernel lives\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -2780,7 +2780,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-10T09:05:52Z"
+      "updated": "2026-10-10T09:10:49Z"
     },
     "B-0089": {
       "backlinks": [
@@ -18201,7 +18201,7 @@
         "operator answer: Rebuild fresh from main. The old conflicting PR is closed and its branch is archived at archive/<branch>; read it there for reference only. Build the item anew on a new branch from main."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18211,7 +18211,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1177@505cfad1e",
       "type": "bug",
-      "updated": "2026-10-10T09:00:19Z"
+      "updated": "2026-10-10T09:10:49Z"
     },
     "B-82960": {
       "backlinks": [
@@ -18318,7 +18318,7 @@
       ],
       "kernel_extra_rounds": 1,
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "done",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18328,7 +18328,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1237@2edb03326",
       "type": "bug",
-      "updated": "2026-10-10T08:51:39Z"
+      "updated": "2026-10-10T09:10:49Z"
     },
     "B-83413": {
       "backlinks": [],
@@ -31237,6 +31237,7 @@
     },
     "F-0257": {
       "backlinks": [
+        "T-0197",
         "B-0471",
         "B-0472",
         "B-0473",
@@ -32862,6 +32863,9 @@
       ],
       "folder": "features",
       "id": "F-0301",
+      "kernel_attempts": [
+        "launch: launch: branch checked out in an external worktree /private/tmp/claude-501/-Users-a worker account-Code-fmogensen-ASF/a634ee27-9ff3-433b-abf8-1058b56578ad/scratchpad/wt-ci-fastpath; waits until it's released"
+      ],
       "kernel_notes": [
         "PR #1316: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1316: part (3.13, 4) is red but not a required check \u2014 ignored"
@@ -32875,7 +32879,7 @@
       "state": "Active",
       "title": "First-pass-right PRs: path-matched pre-push checks enforced by the hook, rubric checklist in briefs, first-push-green metric",
       "type": "feature",
-      "updated": "2026-10-10T04:13:55Z"
+      "updated": "2026-10-10T09:10:49Z"
     },
     "F-0302": {
       "backlinks": [
@@ -53027,7 +53031,11 @@
         "relaunch: operator answer: The cloud review lost its verdict (a known kernel defect being fixed). Rerun the review; the code is unchanged.",
         "review: no VERDICT line"
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/harvest/lane.py:4459-4465 \u2014 PrOps.open() is the only production caller of title_and_body and never passes repo=/trunk=, so the new ## Proves block Task 4 built is unreachable in a real pull request (only commits_note's older, differently-shaped F-0257 block appears there). Either wire repo=self.product.repo_dir, trunk=self.trunk into that call (and reconcile with commits_note so the body doesn't grow two ## Proves headings), or get an adjudicate ruling restating Task 4's call site and writes: against the current tree, the way Task 3 already has."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53040,7 +53048,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T08:51:39Z",
+      "updated": "2026-10-10T09:10:49Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -77944,7 +77952,12 @@
       ],
       "folder": "tasks",
       "id": "T-0775",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/feeder/rows.py:2582-2588 \u2014 restore `occ['busy']` as the last (winning) source in the `held_by` merge (inflight first, then waiting_landing, then busy), matching plan Step 4/RC1, and add a test with the same id in both `inflight` and `occ['busy']` asserting the ledger's sentence wins.",
+        "docs/reviews/1-t-0775.md \u2014 drop this file from the branch (it was committed by a prior review round in violation of \"the review never touches the branch\"); it sits outside this card's `writes:`."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0205-49a14d4ad507.md"
       },
@@ -77958,7 +77971,7 @@
       ],
       "title": "every branch that gives an S1/S2 Bug no session is a WAITS row, and the row names the fact that holds it",
       "type": "task",
-      "updated": "2026-10-10T08:51:39Z",
+      "updated": "2026-10-10T09:10:49Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -79034,7 +79047,7 @@
         "operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0256.md"
       },
@@ -79044,7 +79057,7 @@
       "state": "New",
       "title": "the queue names the culprit PR in the drop reason \u2014 out of the log it already reads, and out of the test that covers the member's files",
       "type": "task",
-      "updated": "2026-10-10T09:00:19Z",
+      "updated": "2026-10-10T09:10:49Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
@@ -81194,7 +81207,7 @@
       ],
       "folder": "tasks",
       "id": "T-79568",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81207,7 +81220,7 @@
       ],
       "title": "the number \u2014 first-push-green per landed branch, and the door's catches counted",
       "type": "task",
-      "updated": "2026-10-10T09:05:52Z",
+      "updated": "2026-10-10T09:10:49Z",
       "writes": [
         "asf/scorecard/facts.py",
         "asf/scorecard/score.py",
@@ -82303,7 +82316,7 @@
       ],
       "title": "the table \u2014 `rulepass.py`, the flag, and what the landed readers read back",
       "type": "task",
-      "updated": "2026-10-10T09:00:19Z",
+      "updated": "2026-10-10T09:10:49Z",
       "writes": [
         "asf/evidence/rulepass.py",
         "asf/conventions.py",
@@ -82474,7 +82487,7 @@
       "kernel_notes": [
         "PR #1313: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0295.md"
       },
@@ -82488,7 +82501,7 @@
       ],
       "title": "the landing gate answers both infra reds \u2014 `infra_gate`, `judged_pending`, three call sites",
       "type": "task",
-      "updated": "2026-10-10T05:01:30Z",
+      "updated": "2026-10-10T09:10:49Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_gate_infra_red.py"
@@ -82649,7 +82662,7 @@
       ],
       "folder": "tasks",
       "id": "T-84805",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0315.md"
       },
@@ -82665,7 +82678,7 @@
       ],
       "title": "the pass \u2014 the rule, the line that says why, the skip, and the `undeliver` line read back",
       "type": "task",
-      "updated": "2026-10-10T08:51:39Z",
+      "updated": "2026-10-10T09:10:49Z",
       "writes": [
         "asf/record/slice.py",
         "asf/record/undeliver.py",
