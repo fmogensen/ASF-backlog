@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T17:46:13Z",
+  "generated": "2026-10-10T17:50:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -32534,6 +32534,7 @@
         "F-0283",
         "F-0302",
         "S-91856",
+        "T-129157",
         "B-121289"
       ],
       "children": [],
@@ -34452,23 +34453,13 @@
       "decided": true,
       "folder": "features",
       "id": "F-0340",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "docs/specs/f-0340.md:769-771 \u2014 the whole-card example is not D10's canonical form: json.dumps(indent=2, ensure_ascii=False) emits one array element per line, so \"writes\": [\"src/count.py\", \"tests/test_count.py\"], \"stories\": [\"S-0001\"] and \"gate\": [...] cannot appear inline. Re-emit the block as json.dumps(obj, indent=2, ensure_ascii=False) output, with each element of writes, stories and gate on its own line.",
-        "docs/specs/f-0340.md:790 \u2014 tasks/T-0001.json:8 names the wrong line: writes is line 9 of the example card as printed, and line 9 once the block is canonical. Change :8 to :9.",
-        "docs/specs/f-0340.md:183 \u2014 P7 says \"at 29 call sites\"; it is 25 (`grep -rn \"writer.write_card\\|card_writer.write_card\" --include=*.py asf | wc -l` \u2192 25, in the 14 modules the block's own command counts, at 55d9ec2f1 and at head). Change \"29\" to \"25\".",
-        "docs/specs/f-0340.md:621 \u2014 \"`decide._stalled` already prints\" is wrong: the unreadable entry is added by `decide.limbo` at asf/kernel/decide.py:2032 (the line P10 itself cites); `_stalled` (decide.py:2092) only reasons about ACTIVE items. Name `decide.limbo` here and at :858 (where \"`decide`'s stalled map\" should be `Plan.limbo`).",
-        "docs/specs/f-0340.md:624 \u2014 the illustrated `LIMBO  T-0123  card unreadable, \u2026` is not what the tick prints; asf/kernel/loop.py:198 prints `  limbo T-0123: card unreadable, invisible to the kernel: \u2026` (uppercase LIMBO is only the count on the tick line, loop.py:194; tests/kernel/test_limbo.py:396 pins `limbo T-1:`). Fix the block here and the one at :760.",
-        "docs/specs/f-0340.md:627 \u2014 \"capped at `LIMBO_REASON_MAX`\" is wrong (same at :388 and \":858 capped at 160 characters\", and it misdirects the acceptance line at :989): LIMBO_REASON_MAX (160) is used only by `limbo_reason_stuck` (decide.py:2006-2009) for a Stuck reason, while an unreadable card's reason is capped at 120 by `ports.RealRecord.unreadable` (asf/kernel/ports.py:329, `why[:120]`). Cite the 120-character cap at ports.py:329 in all four places.",
-        "docs/specs/f-0340.md:587 \u2014 the example finding `stories/S-0003.json:4: S-0003: /acceptance/0/line: is required` contradicts :511 (a schema finding's `line` is 0, `validate` having no text to count lines in) and :917 (\"a required field missing is one finding on the object, not on the field\"). Make it `stories/S-0003.json:0: S-0003: /acceptance/0: line is required`, or state in \u00a72/\u00a75 how `asf check` resolves a pointer to a source line."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34477,7 +34468,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T17:30:19Z"
+      "updated": "2026-10-10T17:50:42Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34529,7 +34520,7 @@
       "kernel_notes": [
         "plan-f-0342-1791652500: NEEDS OPERATOR: `plan/F-0342` is committed at `bd59782a8` and cannot leave this host \u2014 `state/asf/install.json` pins `asf` to `14b963ba1` (2026-10-08, `policy: pinned`), whose `asf/cli.py` has no `pre-push` subcomma\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -34537,12 +34528,12 @@
       "state": "New",
       "title": "asf upgrade --product on a kernel product reinstalls the paused 0.1 floor clocks; the pin cannot move",
       "type": "feature",
-      "updated": "2026-10-10T17:46:10Z"
+      "updated": "2026-10-10T17:50:42Z"
     },
     "F-0343": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0343",
       "kernel_fix_rounds": 0,
@@ -36964,7 +36955,6 @@
         "F-0013",
         "F-0073",
         "F-0116",
-        "F-0340",
         "T-0031",
         "T-0035",
         "T-0051",
@@ -37046,9 +37036,7 @@
     },
     "S-0003": {
       "area": "factory",
-      "backlinks": [
-        "F-0340"
-      ],
+      "backlinks": [],
       "blocked": true,
       "blockedBy": [
         "F-0019"
@@ -37209,9 +37197,11 @@
         "T-129197"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-104405",
       "parent": "F-0331",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:11Z",
       "state": "New",
@@ -37240,9 +37230,11 @@
         "T-129199"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-104407",
       "parent": "F-0331",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:11Z",
       "state": "New",
@@ -37255,9 +37247,11 @@
         "T-129200"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-104408",
       "parent": "F-0331",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:11Z",
       "state": "New",
@@ -46766,7 +46760,6 @@
     },
     "T-0001": {
       "backlinks": [
-        "F-0340",
         "S-58755",
         "S-58756",
         "S-62105",
@@ -82741,11 +82734,17 @@
     "T-129156": {
       "backlinks": [],
       "children": [],
+      "creates": [
+        "tests/test_serialization_dropped.py"
+      ],
       "decided": true,
       "folder": "tasks",
       "id": "T-129156",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
+      "kernel_notes": [
+        "groom-fill-t-129156-1791654017: groom-fill raised risk high: design matches trunk exactly (constants, line ranges, fixture methods, helper signatures) and nothing named has been built yet; only the acceptance/gate lines were missing."
+      ],
       "links": {
         "plan": "docs/plans/f-0272.md"
       },
@@ -82759,7 +82758,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-10T17:40:47Z",
+      "updated": "2026-10-10T17:50:42Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -82772,11 +82771,17 @@
         "T-129158"
       ],
       "children": [],
+      "creates": [
+        "tests/test_held_feature.py"
+      ],
       "decided": true,
       "folder": "tasks",
       "id": "T-129157",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
+      "kernel_notes": [
+        "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card."
+      ],
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -82789,7 +82794,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T17:40:47Z",
+      "updated": "2026-10-10T17:50:42Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -82804,6 +82809,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129158",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -82816,7 +82823,7 @@
       ],
       "title": "the counter \u2014 the silence is counted, and `asf doctor` says which Feature",
       "type": "task",
-      "updated": "2026-10-10T17:35:55Z",
+      "updated": "2026-10-10T17:50:42Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/doctor.py",
@@ -82976,6 +82983,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129164",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -82988,7 +82997,7 @@
       ],
       "title": "the text \u2014 a finished session's REPORT verdict, as a review every reader reads alike",
       "type": "task",
-      "updated": "2026-10-10T17:36:16Z",
+      "updated": "2026-10-10T17:50:42Z",
       "writes": [
         "asf/evidence/review.py",
         "tests/test_review_reader.py"
@@ -86367,7 +86376,7 @@
         "PR #1398: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1398: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -86380,7 +86389,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T17:46:10Z",
+      "updated": "2026-10-10T17:50:42Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
