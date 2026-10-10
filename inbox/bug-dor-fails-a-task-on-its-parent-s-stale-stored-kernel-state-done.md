@@ -16,3 +16,6 @@ Features still store `kernel_state: done` from the old "plan merged -> Feature d
 ## Acceptance (tests)
 
 - tests/kernel/test_dor.py::StaleParentDone: a child Task under a Feature whose stored kernel_state is done but whose children are open passes the parent check; a parent the record closed still fails it.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.

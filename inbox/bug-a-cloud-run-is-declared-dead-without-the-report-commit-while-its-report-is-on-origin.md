@@ -18,3 +18,6 @@ Live 2026-10-10: 26 claude-remote runs were declared dead "without the report co
 ## Acceptance (tests)
 
 - tests/test_remote.py::AnEndedRunWaitsForItsReport (replays a real report body with a trailing Signed-off-by paragraph; an ended run with a live session is held; a dead verdict needs a fresh session answer).
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

@@ -16,3 +16,6 @@ Every tick logged `FAILED open PR worker/<item> ... GraphQL: No commits between 
 ## Acceptance (tests)
 
 - tests/kernel/test_failed_actions.py: the loop over three ticks for the no-commits path (back to Ready with the finding, still-needed gate first) and for the repeated-failure path (Stuck(loop) on the second consecutive failure, no third try), plus the decide-level cases.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.

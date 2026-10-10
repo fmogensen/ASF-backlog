@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T22:36:20Z",
+  "generated": "2026-10-10T22:39:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -21310,6 +21310,7 @@
         "F-0319",
         "F-0322",
         "F-0335",
+        "F-0351",
         "B-0146"
       ],
       "decided": true,
@@ -35217,7 +35218,7 @@
         "spec-f-0349-1791667464: NEEDS OPERATOR: the installed CLI at `~/.local/bin/asf` predates F-0301 and has no `pre-push` subcommand, so the pre-push hook's door step exits non-zero on a usage error; my first push was refused that way and the\u2026",
         "plan-f-0349-1791669271: NEEDS OPERATOR: two answers, neither of which blocks this plan \u2014 it is approvable at 6/6 either way. (a) Whether to declare a seventh Story for the spec's \u00a76 \u2014 \"a new record starts with a `milestones.md`, and the RE\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35225,10 +35226,11 @@
       "state": "New",
       "title": "Adopt GitHub's work-item model: type, parent, milestone, priority",
       "type": "feature",
-      "updated": "2026-10-10T22:36:16Z"
+      "updated": "2026-10-10T22:39:23Z"
     },
     "F-0350": {
       "backlinks": [
+        "F-0351",
         "B-145247"
       ],
       "children": [
@@ -35250,6 +35252,22 @@
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
       "updated": "2026-10-10T20:36:01Z"
+    },
+    "F-0351": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0351",
+      "kernel_fix_rounds": 0,
+      "kernel_state": "building",
+      "parent": "E-0004",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T22:37:53Z",
+      "state": "New",
+      "title": "Bug: plan_on_approve never mints an approved spec's declared Stories",
+      "type": "feature",
+      "updated": "2026-10-10T22:39:23Z"
     },
     "R-0001": {
       "backlinks": [
@@ -48062,9 +48080,11 @@
         "T-129203"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-99855",
       "parent": "F-0332",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:29Z",
       "state": "New",
@@ -85764,7 +85784,7 @@
         "PR #1448: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1448: part (3.12, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85778,7 +85798,7 @@
       ],
       "title": "the one map, and the host's two refresh doors",
       "type": "task",
-      "updated": "2026-10-10T22:36:16Z",
+      "updated": "2026-10-10T22:39:23Z",
       "writes": [
         "asf/env.py",
         "asf/kernel/loop.py",
@@ -85820,7 +85840,11 @@
         "PR #1453: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1453: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "ended without a REPORT",
+      "kernel_stuck_since": "2026-10-10T22:38:32Z",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85833,7 +85857,7 @@
       ],
       "title": "the one client's default identity, and the single caller that opts out",
       "type": "task",
-      "updated": "2026-10-10T22:36:16Z",
+      "updated": "2026-10-10T22:39:23Z",
       "writes": [
         "asf/github.py",
         "asf/upgrade.py",
@@ -87891,7 +87915,8 @@
       "kernel_notes": [
         "PR #1455: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1455: checks (3.13) is red but not a required check \u2014 ignored",
-        "PR #1455: part (3.12, 3) is red but not a required check \u2014 ignored"
+        "PR #1455: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1455: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -87906,7 +87931,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-10T22:36:16Z",
+      "updated": "2026-10-10T22:39:23Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
