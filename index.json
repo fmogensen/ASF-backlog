@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T22:39:27Z",
+  "generated": "2026-10-10T22:44:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -4446,7 +4446,8 @@
     },
     "B-0142": {
       "backlinks": [
-        "B-0145"
+        "B-0145",
+        "B-145246"
       ],
       "children": [],
       "cost": {
@@ -16942,7 +16943,11 @@
       "state": "New",
       "title": "Bug: an external worktree on an item-named branch blocks the item's build",
       "type": "bug",
-      "updated": "2026-10-10T22:36:16Z"
+      "updated": "2026-10-10T22:36:16Z",
+      "writes": [
+        "asf/workers/spawn.py",
+        "tests/test_workers.py"
+      ]
     },
     "B-145247": {
       "backlinks": [],
@@ -34797,7 +34802,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T22:30:03Z"
+      "updated": "2026-10-10T22:44:21Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -35080,7 +35085,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-10T22:36:16Z"
+      "updated": "2026-10-10T22:44:21Z"
     },
     "F-0345": {
       "backlinks": [
@@ -84477,6 +84482,7 @@
         "T-129168",
         "T-129188",
         "T-129206",
+        "T-129208",
         "T-131719",
         "T-131823",
         "T-136825"
@@ -84831,7 +84837,7 @@
       "kernel_notes": [
         "groom-fill-t-129175-1791657428: groom-fill verdict rejected: no GROOM-FILL block"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0318.md"
       },
@@ -84844,7 +84850,7 @@
       ],
       "title": "the briefs \u2014 ask for the form the record mints, and name the spec's own landing",
       "type": "task",
-      "updated": "2026-10-10T22:30:03Z",
+      "updated": "2026-10-10T22:44:21Z",
       "writes": [
         "asf/briefs/templates/spec.md",
         "asf/briefs/build.py",
@@ -85314,7 +85320,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129191",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0326.md"
       },
@@ -85327,7 +85333,7 @@
       ],
       "title": "the doctor \u2014 the second question, asked in the same row",
       "type": "task",
-      "updated": "2026-10-10T22:30:03Z",
+      "updated": "2026-10-10T22:44:21Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_pushed_work.py"
@@ -85757,6 +85763,7 @@
         "T-129205"
       ],
       "backlinks": [
+        "T-129208",
         "T-136825"
       ],
       "children": [],
@@ -85873,6 +85880,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129208",
+      "kernel_answers": [
+        "granted asf/tick/tick.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-129165 also writes tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-136825 also writes asf/tick/tick.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/tick/tick.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-129165 also writes tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-136825 also writes asf/tick/tick.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them."
+      ],
       "kernel_findings": [
         "red: tests (3.12)",
         "red: tests (3.13)"
@@ -85886,7 +85899,7 @@
         "PR #1442: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1442: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85899,7 +85912,7 @@
       ],
       "title": "what the operator sees \u2014 the shape check, the example file, one doctor row and the two guide pages",
       "type": "task",
-      "updated": "2026-10-10T22:26:44Z",
+      "updated": "2026-10-10T22:44:21Z",
       "writes": [
         "asf/conventions.py",
         "asf/doctor.py",
@@ -85908,7 +85921,11 @@
         "docs/guide/operating.md",
         "tests/test_conventions.py",
         "tests/test_env.py",
-        "tests/test_doctor.py"
+        "tests/test_doctor.py",
+        "asf/tick/tick.py",
+        "tests/test_minimal_product.py",
+        "tests/test_tick.py",
+        "tests/test_tick_steps.py"
       ]
     },
     "T-129209": {
@@ -85951,7 +85968,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129210",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0338.md"
       },
@@ -85965,7 +85982,7 @@
       ],
       "title": "the seam \u2014 the action, its one write, the knob, the line and the trigger",
       "type": "task",
-      "updated": "2026-10-10T22:30:03Z",
+      "updated": "2026-10-10T22:44:21Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/apply.py",
@@ -86250,7 +86267,8 @@
       "folder": "tasks",
       "id": "T-130968",
       "kernel_attempts": [
-        "ended without a REPORT"
+        "ended without a REPORT",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "red: tests (3.12)",
@@ -86268,7 +86286,7 @@
         "PR #1443: part (3.13, 4) is red but not a required check \u2014 ignored",
         "PR #1443: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -86283,7 +86301,7 @@
       ],
       "title": "the floor split \u2014 one installer per owner, the two-floor refusal, and the retire gate",
       "type": "task",
-      "updated": "2026-10-10T22:20:41Z",
+      "updated": "2026-10-10T22:44:21Z",
       "writes": [
         "asf/upgrade.py",
         "asf/scheduler.py",
@@ -86522,6 +86540,7 @@
         "T-129157",
         "T-129188",
         "T-129206",
+        "T-129208",
         "T-131719",
         "T-131823"
       ],
@@ -86605,7 +86624,8 @@
         "PR #1454: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1454: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1454: part (3.13, 3) is red but not a required check \u2014 ignored",
-        "PR #1454: checks (3.12) is red but not a required check \u2014 ignored"
+        "PR #1454: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1454: part (3.12, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -86623,7 +86643,7 @@
       ],
       "title": "the law \u2014 `asf/flow.py`, and the feeder's severity bar gets one name",
       "type": "task",
-      "updated": "2026-10-10T22:30:03Z",
+      "updated": "2026-10-10T22:44:21Z",
       "writes": [
         "asf/flow.py",
         "asf/feeder/rows.py",
@@ -88963,17 +88983,9 @@
       "kernel_answers": [
         "granted tests/test_reviews.py tests/test_briefs.py tests/fixtures/briefs/golden/review.md; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_reviews.py tests/test_briefs.py tests/fixtures/briefs/golden/review.md; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
       "kernel_dor_fills": 1,
-      "kernel_findings": [
-        "red: tests (3.12)",
-        "red: tests (3.13)",
-        "operator answer: granted tests/test_reviews.py tests/test_briefs.py tests/fixtures/briefs/golden/review.md; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1435: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1435: checks (3.13) is red but not a required check \u2014 ignored",
@@ -88982,9 +88994,11 @@
         "PR #1435: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1435: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1435: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1435: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1435: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "build-t-83144-1791670025: NEEDS OPERATOR: the installed `~/.local/bin/asf` has no `pre-push` subcommand, so the pre-push hook aborts every push of this branch after its own trunk-check passes; commit `03c53e53f` is local-only and needs publi\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -88997,7 +89011,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-10T22:08:25Z",
+      "updated": "2026-10-10T22:44:21Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
