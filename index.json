@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T19:27:25Z",
+  "generated": "2026-10-10T19:32:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16812,7 +16812,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-135242",
-      "kernel_state": "done",
+      "kernel_state": "review",
       "parent": "E-0003",
       "schema_version": 1,
       "severity": "S2",
@@ -16821,7 +16821,7 @@
       "state": "New",
       "title": "Intake cannot mint an Epic",
       "type": "bug",
-      "updated": "2026-10-10T19:11:45Z"
+      "updated": "2026-10-10T19:31:59Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -34337,7 +34337,21 @@
       "backlinks": [
         "F-0335"
       ],
-      "children": [],
+      "children": [
+        "S-131005",
+        "S-131006",
+        "S-131007",
+        "S-131008",
+        "S-131009",
+        "S-131010",
+        "S-131011",
+        "S-131012",
+        "S-131013",
+        "S-131014",
+        "S-131015",
+        "S-131016",
+        "S-131017"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0334",
@@ -34356,7 +34370,7 @@
         "spec-f-0334-1791655619: NEEDS OPERATOR: the pinned CLI blocks every push from this host, not this branch. Build a current pin (`asf upgrade --product asf`), or make the shim tolerate a pinned CLI lacking the subcommand the way its own `tru\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34365,7 +34379,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T19:17:57Z"
+      "updated": "2026-10-10T19:31:59Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34552,7 +34566,7 @@
         "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34561,7 +34575,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T19:21:18Z"
+      "updated": "2026-10-10T19:31:59Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34824,7 +34838,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-10T19:27:23Z"
+      "updated": "2026-10-10T19:31:59Z"
     },
     "F-0345": {
       "backlinks": [
@@ -34852,7 +34866,10 @@
       "folder": "features",
       "id": "F-0346",
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0346-1791658400-local: NEEDS OPERATOR: the push is refused by a stale installed dispatcher, not by the diff \u2014 `$HOME/.local/bin/asf` has no `pre-push` subcommand while `asf/cli.py:470` defines it. Confirm with `$HOME/.local/bin/asf --vers\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34860,7 +34877,7 @@
       "state": "New",
       "title": "Flow conservation: every step has a required successor, checked each tick",
       "type": "feature",
-      "updated": "2026-10-10T18:54:29Z"
+      "updated": "2026-10-10T19:31:59Z"
     },
     "F-0347": {
       "backlinks": [],
@@ -38144,6 +38161,175 @@
       "title": "the share rises, and the six covered classes do not move \u2014 acceptance: `python3 -m unittest tests.kernel.test_question_pushed_base.ShareRises tests.kernel.test_question_resolvers tests.kernel.test_question_needs_writes tests.kernel.test_question_gates_inbox tests.kernel.test_id_claim_answer`",
       "type": "story",
       "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-131005": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131005",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "the pull request's own clock, read in the two calls the ports already make, and the lead-time sample on the wait ledger \u2014 acceptance: `python3 -m unittest tests.kernel.test_lead_time.ThePRsOwnClock tests.kernel.test_lead_time.TheSampleOnTheLedger tests.kernel.test_ports.GitHub`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131006": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131006",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "the lead time folded, printed per class and held by two gate criteria \u2014 acceptance: `python3 -m unittest tests.kernel.test_lead_time.LeadFoldsTheLedger tests.kernel.test_lead_time.TheViewAndTheTickLine tests.kernel.test_gate.LeadCriteria`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131007": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131007",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "a pull request past its p90 target goes first in every queue the kernel owns, and says so \u2014 acceptance: `python3 -m unittest tests.kernel.test_lead_time.TheLeadBreach tests.kernel.test_waits tests.kernel.test_main_landing`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131008": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131008",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "every inbox note is decided by code once its sessions are spent, and the step is measured \u2014 acceptance: `python3 -m unittest tests.kernel.test_intake tests.kernel.test_ports.Record tests.kernel.test_gate.IntakeDecided tests.test_conventions`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131009": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131009",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "the Definition of Ready on by default, with the fills that answer it \u2014 acceptance: `python3 -m unittest tests.kernel.test_dor tests.kernel.test_finish_first tests.test_env.ProductFlags tests.test_env.TestExampleConfigsParse`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131010": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131010",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "parked work retired or revived on an idle seat, each with its reason on the card \u2014 acceptance: `python3 -m unittest tests.kernel.test_sweep tests.kernel.test_floor_starvation`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131011": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131011",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "the question ledger, the window's share and the console-share gate criterion \u2014 acceptance: `python3 -m unittest tests.kernel.test_questions.TheLedger tests.kernel.test_questions.TheShare tests.kernel.test_gate.ConsoleShare`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131012": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131012",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "the classifier over the operator's answers, which names the next class and codes none \u2014 acceptance: `python3 -m unittest tests.kernel.test_questions.TheClassifier tests.kernel.test_question_resolvers tests.kernel.test_question_gates_inbox`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131013": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131013",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "the kernel's seats are the host's, with the fair share and the quota band under them \u2014 acceptance: `python3 -m unittest tests.kernel.test_multi_product.SeatsComeFromCapacity tests.test_capacity tests.kernel.test_speedups`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131014": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131014",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "two products on one host, neither special-cased, and a launch that takes a host seat \u2014 acceptance: `python3 -m unittest tests.kernel.test_multi_product tests.test_seat_claims tests.kernel.test_host`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131015": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131015",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "the Story that was started finishes before another opens, and the flag off moves nothing \u2014 acceptance: `python3 -m unittest tests.kernel.test_stories_first tests.kernel.test_finish_first tests.kernel.test_decide`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131016": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131016",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "the pace cap, a green pull request landing on a moved main with no update and no re-run, and the cloud environments held \u2014 acceptance: `python3 -m unittest tests.kernel.test_pace tests.kernel.test_moved_main tests.kernel.test_cloud_reviews`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-131017": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-131017",
+      "parent": "F-0334",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:30:53Z",
+      "state": "New",
+      "title": "the incidents the risk flag exists to prevent, counted with the verdict it gave at the time \u2014 acceptance: `python3 -m unittest tests.kernel.test_incidents tests.kernel.test_risk tests.kernel.test_main_landing`",
+      "type": "story",
+      "updated": "2026-10-10T19:30:53Z"
     },
     "S-51600": {
       "backlinks": [
@@ -83222,20 +83408,16 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129157",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
-      "kernel_findings": [
-        "commit c05b45ae9a131a543ddec02509c66b77be31f8f4 (Proves: trailers, lines 5-8) \u2014 the four trailers are shifted one bullet against the card's own `## Acceptance` order; add a follow-up commit with the corrected four `Proves: S-72054 line N \u2014 test` lines (line5\u2192test_the_two_landed_cases_hold_steady\u2026, line6\u2192test_a_review_or_landing_occupancy\u2026, line7\u2192test_the_cards_transition_as_three_draws\u2026, line8\u2192test_the_needs_stories_exemption\u2026) \u2014 ticking is idempotent so this doesn't require touching the existing wrong ones."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card.",
         "build-t-129157-1791659546: NEEDS OPERATOR: the host's installed `asf` CLI at ~/.local/bin/asf is stale (missing the `pre-push` subcommand the current worktree's asf/cli.py defines), so the pre-push hook refuses every push on this host until i\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -83248,7 +83430,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T19:27:23Z",
+      "updated": "2026-10-10T19:31:59Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -83508,7 +83690,7 @@
         "asf/evidence/review_store.py:249-267 \u2014 replace the `recover` docstring with the spec's text verbatim (`docs/specs/f-0313.md:295-312`); the plan's Task 3 explicitly requires \"the spec's docstring verbatim\" and the shipped docstring is a full rewrite, not that text."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -83521,7 +83703,7 @@
       ],
       "title": "the filing \u2014 `review_store.recover`, with a head of its own",
       "type": "task",
-      "updated": "2026-10-10T19:17:57Z",
+      "updated": "2026-10-10T19:31:59Z",
       "writes": [
         "asf/evidence/review_store.py",
         "tests/test_review_store.py"
@@ -85194,14 +85376,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131823",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_notes": [
+        "build-t-131823-1791659712: NEEDS OPERATOR: I could not execute `validate`'s record-side checks (that S-124005 is a Story card and holds the bullet `line 1` cites) \u2014 the record at the product's backlog dir is outside this worktree session's re\u2026"
       ],
-      "kernel_findings": [
-        "asf/harvest/lane.py:1187-1196 \u2014 the branch carries no `Proves:` trailer while its Task card lists `stories: S-124005`, so `lane_refusal`'s proves gate is not skipped and `validate([], \u2026)` returns `no claim`, refusing the branch at landing; add a commit with `Proves: S-124005 line 1 \u2014 tests/test_proves.py::QuarantinedClaimTests::test_the_cards_own_acceptance_one_counted_one_refused` and push."
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -85214,7 +85395,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T19:15:31Z",
+      "updated": "2026-10-10T19:31:59Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"
