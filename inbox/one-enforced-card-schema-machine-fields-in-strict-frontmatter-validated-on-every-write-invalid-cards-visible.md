@@ -12,3 +12,9 @@ Change (staged, simple):
 5. A migration (`asf record-repair --apply`) moves body machine fields into the frontmatter and fixes existing cards; run it on each product's record before it moves to the kernel.
 
 Acceptance: the schema file exists and is validated by tests; writing an invalid card through any path fails with the schema error; the kernel lists invalid cards in LIMBO; record-repair on a copy of today's ASF record yields 0 schema errors.
+
+Operator decision 2026-10-10 ("we need something solid"): the card itself is JSON, not markdown with frontmatter.
+- Source of truth: one JSON file per card (e.g. tasks/T-0123.json), validated against the versioned JSON Schema on every write (record writer, record pre-commit hook, CI). Prose lives in string fields (summary, notes); acceptance is a list of {line, test}.
+- Humans read a generated view: `asf show <id>` renders markdown, and/or a generated, read-only .md next to the JSON that no tool parses.
+- Migration converts every existing card (frontmatter + body machine fields → JSON) with a round-trip check; old .md cards are read only by the migration.
+- No hand-parsed format anywhere in the kernel's read path.
