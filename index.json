@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T06:39:37Z",
+  "generated": "2026-10-10T06:52:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2764,7 +2764,8 @@
       "found_in": "dev",
       "id": "B-0088",
       "kernel_attempts": [
-        "launch: launch: git fetch -q origin fix/B-0088: error: cannot open '.git/FETCH_HEAD': No space left on device"
+        "launch: launch: git fetch -q origin fix/B-0088: error: cannot open '.git/FETCH_HEAD': No space left on device",
+        "review: no VERDICT line"
       ],
       "kernel_findings": [
         "asf/views/board.py:41 (render) / asf/cli.py:415-417 \u2014 the default, unflagged `asf backlog` is unchanged by this diff and still prints the full 339-line/67 KB board; implement the card's `Expected` collapsing default (full rows for moving/landed Features per Epic, one-line summaries for undecided and Closed/on-prod groups, `--all` as the opt-out), with `--epic` as an additional narrowing on top of that rather than the whole fix."
@@ -2778,7 +2779,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-10T06:20:20Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "B-0089": {
       "backlinks": [
@@ -18958,7 +18959,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-84804",
       "type": "bug",
-      "updated": "2026-10-10T06:39:31Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "B-84837": {
       "backlinks": [],
@@ -31920,6 +31921,7 @@
       ],
       "folder": "features",
       "id": "F-0274",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "spec-approved",
@@ -31927,7 +31929,7 @@
       "state": "Active",
       "title": "asf next drops all Task rows of a Feature with any live session, with no reason row",
       "type": "feature",
-      "updated": "2026-10-08T07:40:51Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0275": {
       "backlinks": [],
@@ -32062,6 +32064,7 @@
       ],
       "folder": "features",
       "id": "F-0279",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "spec-approved",
@@ -32069,7 +32072,7 @@
       "state": "Active",
       "title": "A review that ends 'needs input' because the heartbeat cannot start parks the PR for good",
       "type": "feature",
-      "updated": "2026-10-08T08:33:52Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0280": {
       "backlinks": [
@@ -33228,7 +33231,7 @@
       ],
       "folder": "features",
       "id": "F-0313",
-      "kernel_state": "done",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "spec-approved",
@@ -33236,7 +33239,7 @@
       "state": "Active",
       "title": "Finished reviews are dropped when the review worktree is not a checkout, so green PRs get no approval and the row parks",
       "type": "feature",
-      "updated": "2026-10-09T15:08:47Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0314": {
       "backlinks": [],
@@ -33260,7 +33263,7 @@
       ],
       "folder": "features",
       "id": "F-0314",
-      "kernel_state": "done",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "spec-approved",
@@ -33268,7 +33271,7 @@
       "state": "Active",
       "title": "Open PRs for items already Closed on the trunk are never closed or reaped",
       "type": "feature",
-      "updated": "2026-10-09T15:08:47Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0315": {
       "backlinks": [
@@ -33325,7 +33328,7 @@
       ],
       "folder": "features",
       "id": "F-0316",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33333,7 +33336,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T06:12:42Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33353,7 +33356,7 @@
       "kernel_attempts": [
         "launch: no cloud account with a free seat"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33361,7 +33364,7 @@
       "state": "New",
       "title": "landed_doc treats a replan branch's landing-gate correction as landed because the original plan is on main; the Feature deadlocks with no row",
       "type": "feature",
-      "updated": "2026-10-10T06:20:20Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0318": {
       "backlinks": [
@@ -33387,7 +33390,7 @@
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
         "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
       ],
-      "kernel_state": "done",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33395,7 +33398,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T05:41:55Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33430,7 +33433,7 @@
       "kernel_notes": [
         "spec-f-0320-1791586060: NEEDS OPERATOR: the design and the preconditions rest on the reporting product's own trace, which I read from its state dir but cannot attach \u2014 confirm the four resets are the ones reported for B-1496 and T-0422 wit\u2026"
       ],
-      "kernel_state": "done",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33438,7 +33441,7 @@
       "state": "New",
       "title": "an ASF rebase drops the approved review verdict even when the range-diff is identical; the item re-reviews to the cap",
       "type": "feature",
-      "updated": "2026-10-10T02:33:52Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0321": {
       "backlinks": [],
@@ -33469,7 +33472,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T06:39:31Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33507,7 +33510,7 @@
       "kernel_notes": [
         "spec-f-0323-1791586286: NEEDS OPERATOR: (none)"
       ],
-      "kernel_state": "done",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33515,7 +33518,7 @@
       "state": "New",
       "title": "an item resolved by one landing can't take a follow-up fix: the lane closes the PR and asf reopen is refused",
       "type": "feature",
-      "updated": "2026-10-10T05:52:03Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0324": {
       "backlinks": [],
@@ -33531,7 +33534,7 @@
       ],
       "folder": "features",
       "id": "F-0324",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33539,7 +33542,7 @@
       "state": "New",
       "title": "a branch of only empty proof commits is read as already on main and deleted without landing; the item loops",
       "type": "feature",
-      "updated": "2026-10-09T23:43:03Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0325": {
       "backlinks": [],
@@ -33557,7 +33560,7 @@
       "kernel_notes": [
         "spec-f-0325-1791586983: NEEDS OPERATOR: F-0325 has zero Story *cards* in the record, and `feeder.has_stories` counts cards via `ix.children`, not the spec's declarations \u2014 so once this spec is approved the feeder will emit `NO STORIES \u2192 SP\u2026"
       ],
-      "kernel_state": "done",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33565,7 +33568,7 @@
       "state": "New",
       "title": "a declared 'wave' clock with steps [wave] runs as a tick under the tick lock and suppresses the native wave job",
       "type": "feature",
-      "updated": "2026-10-10T06:20:20Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0326": {
       "backlinks": [],
@@ -33577,7 +33580,7 @@
       ],
       "folder": "features",
       "id": "F-0326",
-      "kernel_state": "landing",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33585,7 +33588,7 @@
       "state": "New",
       "title": "a pushed Task with an open PR gets no landing request and no row while others wait on it",
       "type": "feature",
-      "updated": "2026-10-10T05:29:32Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0327": {
       "backlinks": [],
@@ -33661,7 +33664,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Confirmed: the red step is the known trunk flake, not this branch. PR #1304 at f0eb52e75, run 38008654697, tests (3.13): the only failure is tests.test_sample_product.ReadmeRenderTests.test_refresh_is_a_no_op_the_second_time (Ran 36, failures=1), the same assertion that flakes on main; the branch changes only docs/specs/f-0329.md. Rerun the failed job and land the spec on green. The readme.py fix is routed: an inbox card \"readme refresh no-op test flakes across a second boundary\" is filed with the cause (asf/views/readme.py:246 generated stamp vs the whole-byte compare in asf/metrics/metrics.\u2026",
-        "launch: [Errno 28] No space left on device"
+        "launch: [Errno 28] No space left on device",
+        "review: no VERDICT line"
       ],
       "kernel_notes": [
         "spec-f-0329-1791587544: NEEDS OPERATOR: whether the second, co-occurring half of the same damage gets its own card \u2014 `CHECKBOX` matches one physical line, so a *wrapped* acceptance bullet (`docs/specs/f-0280.md:369-371`, the very declarati\u2026"
@@ -33674,7 +33678,7 @@
       "state": "New",
       "title": "minting a declared Story (idcheck.declared_stories / plan_tasks) strips backtick code spans from its acceptance lines",
       "type": "feature",
-      "updated": "2026-10-10T06:20:20Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0330": {
       "backlinks": [],
@@ -33686,7 +33690,7 @@
       ],
       "folder": "features",
       "id": "F-0330",
-      "kernel_state": "done",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33694,7 +33698,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T06:34:02Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -33706,6 +33710,9 @@
       ],
       "folder": "features",
       "id": "F-0331",
+      "kernel_attempts": [
+        "review: no VERDICT line"
+      ],
       "kernel_notes": [
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026"
       ],
@@ -33717,7 +33724,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T06:27:41Z"
+      "updated": "2026-10-10T06:52:25Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -53004,6 +53011,7 @@
       "folder": "tasks",
       "id": "T-0197",
       "kernel_attempts": [
+        "review: no VERDICT line",
         "review: no VERDICT line"
       ],
       "kernel_state": "review",
@@ -53019,7 +53027,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T06:27:42Z",
+      "updated": "2026-10-10T06:52:25Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
