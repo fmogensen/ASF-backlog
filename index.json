@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T12:34:50Z",
+  "generated": "2026-10-10T12:39:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33400,7 +33400,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T12:34:48Z"
+      "updated": "2026-10-10T12:38:59Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33420,7 +33420,7 @@
       "kernel_attempts": [
         "launch: no cloud account with a free seat"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33428,7 +33428,7 @@
       "state": "New",
       "title": "landed_doc treats a replan branch's landing-gate correction as landed because the original plan is on main; the Feature deadlocks with no row",
       "type": "feature",
-      "updated": "2026-10-10T12:08:09Z"
+      "updated": "2026-10-10T12:38:59Z"
     },
     "F-0318": {
       "backlinks": [
@@ -33481,7 +33481,10 @@
       ],
       "folder": "features",
       "id": "F-0319",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "plan-f-0319-1791634316: NEEDS OPERATOR: cannot verify from a cloud session that the three Story ids this plan cites on its `stories:` line are covered by a claim whose claimant names F-0319 \u2014 `idclaim.claims` reads `refs/asf/ids/*` in the\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33489,7 +33492,7 @@
       "state": "New",
       "title": "capacity.ci caps the feeder's ci_free even when runners are readable, halving Features in build while runners sit idle",
       "type": "feature",
-      "updated": "2026-10-10T12:12:44Z"
+      "updated": "2026-10-10T12:38:59Z"
     },
     "F-0320": {
       "backlinks": [],
@@ -33778,11 +33781,13 @@
       ],
       "folder": "features",
       "id": "F-0330",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "partial: NEEDS OPERATOR: the spec's design sections rest on seams the trunk has deleted, so F-0330's four Tasks cannot be",
-      "kernel_stuck_since": "2026-10-10T12:29:57Z",
+      "kernel_answers": [
+        "Decisions: (1) This plan session may amend docs/specs/f-0330.md (granted) to re-anchor the design on the current trunk: retire.py/test_retire.py, replan.task_pending and correct.py's parked gate are gone; design against what exists now (asf/record retire path via asf retire --landed, replan.pending(feature), and the kernel's ruling applier), then re-cut the four Tasks. (2) STORY_ID_RE: filed as its own Bug via the inbox (fix: \\d{4,}); land that first. F-0330's Tasks get after: on that Bug once it has an id; do not mint Tasks without Stories."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Decisions: (1) This plan session may amend docs/specs/f-0330.md (granted) to re-anchor the design on the current trunk: retire.py/test_retire.py, replan.task_pending and correct.py's parked gate are gone; design against what exists now (asf/record retire path via asf retire --landed, replan.pending(feature), and the kernel's ruling applier), then re-cut the four Tasks. (2) STORY_ID_RE: filed as its own Bug via the inbox (fix: \\d{4,}); land that first. F-0330's Tasks get after: on that Bug once it has an id; do not mint Tasks without Stories."
+      ],
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33790,7 +33795,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T12:31:07Z"
+      "updated": "2026-10-10T12:38:59Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -72788,7 +72793,7 @@
         "tests/test_quota_provider.py:122 \u2014 make `SampleRecordTests` a direct `unittest.TestCase` with its own `setUp`/`tearDown` using `tempfile.TemporaryDirectory()` for `env.ASF_HOME`, instead of subclassing `tests.test_quota_headroom.HomeCase` (the plan's Files section calls for a direct `unittest.TestCase` per class, and Step 8 says \"None subclasses another module's harness\")."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0138-26a33fc30108.md"
       },
@@ -72805,7 +72810,7 @@
       "state": "Active",
       "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
       "type": "task",
-      "updated": "2026-10-10T12:26:31Z",
+      "updated": "2026-10-10T12:38:59Z",
       "writes": [
         "asf/workers/headroom.py",
         "asf/workers/pool.py",
@@ -81385,9 +81390,11 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "rebase: PR #1342 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1342: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.12, 3) is red but not a required check \u2014 ignored",
@@ -81396,7 +81403,7 @@
         "PR #1342: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81413,7 +81420,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-10T12:34:48Z",
+      "updated": "2026-10-10T12:38:59Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
@@ -81616,6 +81623,7 @@
       "backlinks": [
         "T-0452",
         "T-80573",
+        "T-80574",
         "T-80575",
         "B-82658",
         "B-82960"
@@ -81722,6 +81730,9 @@
         "T-80578"
       ],
       "children": [],
+      "creates": [
+        "tests/test_rehearsal_record.py"
+      ],
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-09)",
@@ -81733,7 +81744,8 @@
       "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "kernel_notes": [
         "groom-fill-t-80574-1791632031: groom-fill verdict rejected: risk_raise '' is not one of none | high",
-        "groom-fill-t-80574-1791632989: groom-fill verdict rejected: risk_raise '' is not one of none | high"
+        "groom-fill-t-80574-1791632989: groom-fill verdict rejected: risk_raise '' is not one of none | high",
+        "groom-fill-t-80574-1791635460: groom-fill raised risk high: upstream Tasks (T-80572 Active, T-80573 New) haven't landed asf/rehearsal.py yet, which is why the writes read absent \u2014 correct sequencing per PD14, not a scope defect; filled acceptance from S-79606 and marked the genuinely-new test file."
       ],
       "links": {
         "plan": "docs/plans/f-0306.md"
@@ -81747,7 +81759,7 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-10T12:31:07Z",
+      "updated": "2026-10-10T12:38:59Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_record.py",
@@ -81990,7 +82002,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T12:34:48Z",
+      "updated": "2026-10-10T12:38:59Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -82372,7 +82384,7 @@
       "kernel_notes": [
         "build-t-82988-1791631383: NEEDS OPERATOR: whether the product whose repo_slug is ASF's own repo names conventions.landing_checks \u2014 with no names upgrade.ci_verdict answers Unknown, Unknown is never green (D4, P9), and neither channel ever pu\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82385,7 +82397,7 @@
       ],
       "title": "edge \u2014 the newest green tag, and one fast-forward through the guard",
       "type": "task",
-      "updated": "2026-10-10T12:34:48Z",
+      "updated": "2026-10-10T12:38:59Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py"
@@ -82531,7 +82543,7 @@
       ],
       "folder": "tasks",
       "id": "T-83142",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block",
@@ -82551,7 +82563,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T12:26:31Z",
+      "updated": "2026-10-10T12:38:59Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
