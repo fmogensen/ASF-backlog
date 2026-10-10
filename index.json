@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T13:21:43Z",
+  "generated": "2026-10-10T13:26:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33568,7 +33568,7 @@
         "spec-f-0322-1791611510: NEEDS OPERATOR: whether to file the second defect P5 measures \u2014 a relaunch-cap park whose job was later reused by a run on another item is reachable by neither `asf unpark` nor health, so it can never be released \u2014\u2026",
         "plan-f-0322-1791636892: NEEDS OPERATOR: whether to file the spec's P5 second defect as its own card \u2014 `asf unpark` and health's release rules are both keyed by job through a one-record-per-job map, so a park whose job name was later reused\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33576,7 +33576,7 @@
       "state": "New",
       "title": "status keeps a retired item's relaunch-cap park",
       "type": "feature",
-      "updated": "2026-10-10T13:13:38Z"
+      "updated": "2026-10-10T13:26:49Z"
     },
     "F-0323": {
       "backlinks": [],
@@ -33696,9 +33696,10 @@
         "which this host cannot reach \u2014 `python3 -c \\\\\\\"from asf import env; from asf.ci_queue import feeder_rows\"",
         "dependents; rows = feeder_rows(env.load_pr\u2026\", \"PR #1305: install-clean-macos is red but not a required check \u2014 ignored\"",
         "PR #1305: install-clean-macos is red but not a required check \u2014 ignored",
-        "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026"
+        "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026",
+        "plan-f-0327-1791636840: NEEDS OPERATOR: re-raise, still unanswered from plan-f-0327-1791634631 \u2014 harvest read that session's predecessor's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunc\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33706,7 +33707,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T12:55:04Z"
+      "updated": "2026-10-10T13:26:49Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33828,7 +33829,7 @@
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33836,7 +33837,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T13:09:55Z"
+      "updated": "2026-10-10T13:26:49Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -64652,6 +64653,9 @@
       "id": "T-0453",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
+      "kernel_notes": [
+        "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance."
+      ],
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -64661,7 +64665,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-10T13:13:38Z",
+      "updated": "2026-10-10T13:26:49Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -64785,6 +64789,8 @@
       ],
       "folder": "tasks",
       "id": "T-0457",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -64797,7 +64803,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T13:26:49Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -76842,13 +76848,13 @@
         "review: no VERDICT line"
       ],
       "kernel_findings": [
-        "docs/reviews/1-t-0745.md:1 \u2014 remove it from the branch (`git rm docs/reviews/1-t-0745.md`); it was swept into wip commit `71b3583d0` by mistake, is outside the Task's `writes:` (`asf/conventions.py`, `tests/test_conventions.py`), and carries a stale verdict for a different head."
+        "rebase: PR #848 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #848: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0130-47df67914dbf.md"
       },
@@ -76866,7 +76872,7 @@
       "stories": [],
       "title": "the product declares its pre-ASF branch convention, and a misshapen declaration is loud",
       "type": "task",
-      "updated": "2026-10-10T13:21:42Z",
+      "updated": "2026-10-10T13:26:49Z",
       "writes": [
         "asf/conventions.py",
         "tests/test_conventions.py",
@@ -81253,7 +81259,7 @@
         "groom-fill-t-78813-1791635680: groom-fill raised risk high: Content matches the approved spec/plan exactly (zero drift at base); the parked after: items are legitimate footprint sequencing (T-76352 shares step_wave.py, still mid-review) that clears on its own, not a card defect.",
         "groom-fill-t-78813-1791636552: groom-fill raised risk high: Acceptance/writes already match the approved spec verbatim; T-76352 is landed (12f28448f, ancestor of HEAD) and T-0775's open work touches rows.py with zero line-level overlap on this Task's edits \u2014 the after: dependency is a real but harmless footprint-gate wait, not a card defect."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81266,7 +81272,7 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-10T13:09:55Z",
+      "updated": "2026-10-10T13:26:49Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
@@ -81415,15 +81421,8 @@
       ],
       "folder": "tasks",
       "id": "T-79566",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "rebase: PR #1342 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1342: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.12, 3) is red but not a required check \u2014 ignored",
@@ -81432,7 +81431,8 @@
         "PR #1342: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81449,7 +81449,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-10T13:04:40Z",
+      "updated": "2026-10-10T13:26:49Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
@@ -82035,7 +82035,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T13:17:36Z",
+      "updated": "2026-10-10T13:26:49Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -82203,7 +82203,8 @@
     },
     "T-81134": {
       "after": [
-        "T-81133"
+        "T-81133",
+        "T-81130"
       ],
       "backlinks": [],
       "children": [],
@@ -82228,7 +82229,7 @@
         "PR #1324: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -82241,7 +82242,7 @@
       ],
       "title": "the fix-bug brief carries the pre-fix base and the command the lane will run",
       "type": "task",
-      "updated": "2026-10-10T13:17:36Z",
+      "updated": "2026-10-10T13:26:49Z",
       "writes": [
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/build.py",
@@ -82825,7 +82826,7 @@
       "kernel_notes": [
         "groom-fill-t-83347-1791633881: groom-fill raised risk high: Acceptance was the only DoR gap; the plan doc (docs/plans/f-0300.md Task 3) already specifies the screen/waivers behavior byte-for-byte, so the lines just needed naming against concrete tests in the card's own writes."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82839,7 +82840,7 @@
       ],
       "title": "the check in `screen`, the `RULED` kind, and the `waivers` map",
       "type": "task",
-      "updated": "2026-10-10T13:00:23Z",
+      "updated": "2026-10-10T13:26:49Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_rulepass.py"
