@@ -28,3 +28,6 @@ A one-way sync of the record to GitHub Issues/Projects (issue types, sub-issues,
 - A child without `milestone:` reports its parent's milestone; its own value wins when set (test).
 - `asf release-readiness --milestone v0.3` counts the milestone's open and closed items across Epics (test).
 - The migration run twice yields one identical commit's worth of changes and leaves every id and parent link intact (test on a fixture record).
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
