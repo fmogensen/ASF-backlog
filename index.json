@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T22:14:47Z",
+  "generated": "2026-10-10T22:20:48Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16856,7 +16856,9 @@
       ]
     },
     "B-138544": {
-      "backlinks": [],
+      "backlinks": [
+        "B-145246"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -16922,6 +16924,36 @@
       "writes": [
         "tests/test_tick.py"
       ]
+    },
+    "B-145246": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-145246",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "Bug: an external worktree on an item-named branch blocks the item's build",
+      "stage_since": "2026-10-10T22:17:56Z",
+      "state": "New",
+      "title": "Bug: an external worktree on an item-named branch blocks the item's build",
+      "type": "bug",
+      "updated": "2026-10-10T22:17:56Z"
+    },
+    "B-145247": {
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-145247",
+      "rank": -2,
+      "schema_version": 1,
+      "stage_since": "2026-10-10T22:19:07Z",
+      "state": "New",
+      "title": "main red at 2dac706fa: tests (3.12), tests (3.13) \u2014 10 candidate change(s)",
+      "type": "bug",
+      "updated": "2026-10-10T22:19:07Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -35063,7 +35095,9 @@
       "updated": "2026-10-10T18:54:29Z"
     },
     "F-0346": {
-      "backlinks": [],
+      "backlinks": [
+        "B-145247"
+      ],
       "children": [
         "S-134705",
         "S-134706",
@@ -35078,7 +35112,8 @@
         "T-142126",
         "T-142127",
         "T-142128",
-        "T-142129"
+        "T-142129",
+        "B-145246"
       ],
       "decided": true,
       "folder": "features",
@@ -35109,19 +35144,10 @@
       "decided": true,
       "folder": "features",
       "id": "F-0347",
-      "kernel_attempts": [
-        "the session API failed",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "docs/specs/f-0347.md:155 \u2014 Precondition 4 and the `status` row at :298 claim `cloudpid` holds a cloud token's last status \"with its time\"; it holds none. `cloudpid.record`/`_record` (asf/workers/cloudpid.py:55-89) write only `status`, `why` and the caller's `**fields`, and no caller passes a time (cloud.py:717, :726, :836, :865, :910; actions.py:404; remote.py:520, :555, :675) \u2014 the `updated` key in cloudpid.py:10's own docstring is written by nothing. Either name a real time for the cloud lane (the status file's mtime, or add an `updated=` field to the sync's record call at cloud.py:865 as part of this card) or move `status` out of \u00a72's dated column; and correct the citation from `asf/workers/cloud.py:845-847` to `:865`.",
-        "docs/specs/f-0347.md:358 \u2014 \"`remote.alive_at` is already shaped the way the beat wants it ... and is called as it stands\" is false and contradicts \u00a74's own argument: remote.alive_at (asf/workers/remote.py:629-641) carries the same freshness gate \u00a74 splits off log_alive_at for, returning None unless `worker_status` is in WORKER_LIVE = ('running',) (remote.py:96) and `last_event_at` is within limit_min (:638-640) \u2014 i.e. None in exactly the quiet case D5 probes for, and never a date for a stopped container. Split it as \u00a74 splits the log (an ungated `event_at`, or read `remote._event_ts(diagnose()['last_event_at'])` directly) and say so at :358.",
-        "docs/specs/f-0347.md:76 \u2014 the preconditions are headed \"measured in this worktree at `cb47b17c8`\", but this branch's base is `50356a9f6` (a descendant), and four cited files moved in between (decide.py +10, apply.py +9, ports.py +65, loop.py +12), so twelve citations point elsewhere at this head. Re-measure against `50356a9f6` and fix the header: `decide.py:2045-2057`\u2192`2055-2065` (:18, :80), `decide.py:2025-2042`\u2192`2035-2052` (:18, :81), `decide.py:2030-2036`/`:2060-2064`\u2192`2040-2046`/`2067-2074` (:95), `decide.py:2060-2084`\u2192`2067-2096` (:134), `ports.py:2017-2024`\u2192`2085-2089` (:57, :83), `ports.py:1648-1660`\u2192`1713-1734` (:92; `1648-1660` is enable_auto_merge/merge), `ports.py:1760-1798`\u2192`1825-1864` (:276), `loop.py:355-368`/`:309-319`\u2192`363-378`/`317-328` (:94), `loop.py:321-338`\u2192`330-348` (:174), `loop.py:282-283`\u2192`290-291` (:470).",
-        "docs/specs/f-0347.md:172 \u2014 D7's quote \"a run that keeps beating but loops still ends timed out\" is at asf/workers/heartbeat.py:44-45, not `:41-42` (the zombie-push paragraph); and at :167 D2's \"benefit of the doubt\" is the comment at asf/workers/heartbeat.py:376, not `:395-397` (the tail of `settle`). That file is byte-identical at cb47b17c8 and this head, so neither was ever right.",
-        "docs/specs/f-0347.md:6 \u2014 the frontmatter `stories:` lists six ids and omits S-138158, while :643 says \"Seven Stories\", :664-670 cite seven and :797 declares `### S-138158` (asf.kernel.stories.declared_stories reads 7 Stories and 119 acceptance lines from the body). Add S-138158 to the frontmatter list."
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "parent": "E-0003",
       "priority": "later",
       "schema_version": 1,
@@ -35129,7 +35155,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-10T21:55:13Z"
+      "updated": "2026-10-10T22:20:41Z"
     },
     "F-0348": {
       "backlinks": [
@@ -35162,7 +35188,9 @@
       "updated": "2026-10-10T21:59:42Z"
     },
     "F-0349": {
-      "backlinks": [],
+      "backlinks": [
+        "B-145247"
+      ],
       "children": [
         "S-136855",
         "S-136856",
@@ -35193,7 +35221,9 @@
       "updated": "2026-10-10T21:59:42Z"
     },
     "F-0350": {
-      "backlinks": [],
+      "backlinks": [
+        "B-145247"
+      ],
       "children": [
         "S-137105"
       ],
@@ -47870,9 +47900,11 @@
         "T-129186"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-93156",
       "parent": "F-0323",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:26Z",
       "state": "New",
@@ -47953,9 +47985,11 @@
         "T-129176"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-99355",
       "parent": "F-0319",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:36:55Z",
       "state": "New",
@@ -84609,7 +84643,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129171",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0317.md"
       },
@@ -84623,7 +84657,7 @@
       ],
       "title": "the three readers, in one diff",
       "type": "task",
-      "updated": "2026-10-10T18:28:38Z",
+      "updated": "2026-10-10T22:20:41Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/harvest/lane.py",
@@ -84849,7 +84883,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129178",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
       "links": {
         "plan": "docs/plans/f-0321.md"
@@ -84864,7 +84898,7 @@
       ],
       "title": "one owner for the factory's scratch paths, and this repo's ignore entry",
       "type": "task",
-      "updated": "2026-10-10T22:08:25Z",
+      "updated": "2026-10-10T22:20:41Z",
       "writes": [
         "asf/workers/scratch.py",
         "tests/test_scratch.py",
@@ -85629,7 +85663,8 @@
         "T-129206",
         "T-129207",
         "T-129208",
-        "T-80573"
+        "T-80573",
+        "B-145247"
       ],
       "children": [],
       "decided": true,
@@ -85907,7 +85942,9 @@
       ]
     },
     "T-129212": {
-      "backlinks": [],
+      "backlinks": [
+        "B-145246"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -86173,7 +86210,7 @@
       ],
       "title": "the floor split \u2014 one installer per owner, the two-floor refusal, and the retire gate",
       "type": "task",
-      "updated": "2026-10-10T22:14:43Z",
+      "updated": "2026-10-10T22:20:41Z",
       "writes": [
         "asf/upgrade.py",
         "asf/scheduler.py",
@@ -86490,7 +86527,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-142126",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -86506,7 +86543,7 @@
       ],
       "title": "the law \u2014 `asf/flow.py`, and the feeder's severity bar gets one name",
       "type": "task",
-      "updated": "2026-10-10T21:50:08Z",
+      "updated": "2026-10-10T22:20:41Z",
       "writes": [
         "asf/flow.py",
         "asf/feeder/rows.py",
@@ -88130,7 +88167,8 @@
         "T-81131",
         "T-81132",
         "T-81133",
-        "T-81134"
+        "T-81134",
+        "B-145246"
       ],
       "children": [],
       "decided": true,

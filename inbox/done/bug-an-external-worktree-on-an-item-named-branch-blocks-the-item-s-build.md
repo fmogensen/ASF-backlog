@@ -1,3 +1,5 @@
+→ B-145246
+
 # Bug: an external worktree on an item-named branch blocks the item's build
 parent: F-0346
 
