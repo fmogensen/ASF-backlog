@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:28:56Z",
+  "generated": "2026-10-10T15:32:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16747,6 +16747,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-123640",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.1",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -16756,7 +16758,7 @@
       "state": "New",
       "title": "tests.test_workers TestSpawn: five failures on git 2.43.0 in cloud containers",
       "type": "bug",
-      "updated": "2026-10-10T15:28:38Z"
+      "updated": "2026-10-10T15:32:31Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -20127,6 +20129,7 @@
         "F-0330",
         "F-0331",
         "F-0332",
+        "F-0341",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -33785,7 +33788,7 @@
         "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026",
         "plan-f-0327-1791636840: NEEDS OPERATOR: re-raise, still unanswered from plan-f-0327-1791634631 \u2014 harvest read that session's predecessor's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunc\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33793,7 +33796,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T15:26:03Z"
+      "updated": "2026-10-10T15:32:31Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33973,6 +33976,9 @@
       "decided": false,
       "folder": "features",
       "id": "F-0333",
+      "kernel_attempts": [
+        "review: no VERDICT line"
+      ],
       "kernel_notes": [
         "spec-f-0333-1791642645: NEEDS OPERATOR: the App itself cannot be created or proved from here \u2014 no App exists for this product and `openssl genpkey` is not runnable in this session, so the live mint is covered only by fakes in the acceptanc\u2026"
       ],
@@ -33983,7 +33989,7 @@
       "state": "New",
       "title": "Factory GitHub identity: GitHub App installation token instead of the operator's personal token",
       "type": "feature",
-      "updated": "2026-10-10T15:28:55Z"
+      "updated": "2026-10-10T15:32:31Z"
     },
     "F-0334": {
       "backlinks": [
@@ -34108,6 +34114,21 @@
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
       "updated": "2026-10-10T15:21:27Z"
+    },
+    "F-0341": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "features",
+      "id": "F-0341",
+      "parent": "E-0001",
+      "priority": "nice",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T15:31:41Z",
+      "state": "New",
+      "title": "Proof claims on quarantined tests are refused",
+      "type": "feature",
+      "updated": "2026-10-10T15:31:41Z"
     },
     "R-0001": {
       "backlinks": [
@@ -64079,7 +64100,8 @@
         "T-0431",
         "T-0432",
         "T-0434",
-        "T-0435"
+        "T-0435",
+        "T-82990"
       ],
       "children": [],
       "decided": true,
@@ -82059,6 +82081,10 @@
       "kernel_dor_fills": 1,
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/rehearsal.py:131 \u2014 clear every frontmatter string value except an explicit structural allowlist (id, type, state, stage, stage_since, updated, parent, schema_version, dates, rank, priority, severity, lane, size, writes, after, delivers, blockedBy, supersedes, superseded_by, legacy_id), keeping `removed` on the ids-kept path, so `reshape:`, `decided_by:` and a Rule's `reason:`/`check:` cannot reach the snapshot verbatim",
+        "asf/rehearsal.py:150 \u2014 replace the `else l` branch with `else clear_ids_kept(l)` so a `## History` continuation line is cleared too (blank lines stay blank)",
+        "asf/rehearsal.py:302 \u2014 write generated intake names (`open-note-<n>.md` / `done-note-<n>.md`, source sort order) and record those in `manifest['intake']` instead of the source file name, which `asf/groom/inbox.py:363,454` derives from the note's title",
+        "tests/rehearsal/manifest.json:3 \u2014 regenerate the fixture after the three clearing fixes; its `branches` claim is missing `revert/T-00001`, which a rebuild from the committed record now writes",
         "asf/rehearsal.py:286 \u2014 a done intake note's header is kept verbatim, and move_to_done writes headers that are free prose (asf/groom/inbox.py:343,427,631), so `\u2192 closed (groom <date>, <who>)` and a `~ path reach the snapshot intact; clear the header with the id-preserving clearer (keep `\u2192` and every core.ID_TOKEN_RE match, _clear_gap the rest) before writing it",
         "asf/rehearsal.py:230 \u2014 the no-annotated-tag fallback still stamps 'date': core.today(), so a tag-less source builds different bytes on a later day; use '' (what _repo_tags returns for an unreadable creatordate) and add a tag-less case to BuilderIsDeterministic",
         "tests/test_rehearsal_snapshot.py:180 \u2014 BuilderDoesNotMutateSource compares file paths only, so an in-place rewrite of a source file passes; compare {relpath: sha256(content)} maps before and after instead",
@@ -82066,9 +82092,9 @@
         "tests/rehearsal/manifest.json:1 \u2014 the committed fixture is not what the shipped builder writes: build() writes 'intake_dir' (asf/rehearsal.py:347, added in 4a51a8d) but the committed manifest.json (written in d5677cb) has no such key. Re-run the builder over the same synthetic stand-in source and commit the regenerated tests/rehearsal/ so manifest.json carries \"intake_dir\": \"inbox\", then drop the dead literal default at tests/test_rehearsal_snapshot.py:165 in favour of self.manifest['intake_dir'].",
         "asf/rehearsal.py:426 \u2014 manifest_holds never checks the annotated count that plan Step 2 names, so flipping one annotated flag among several in both manifest.json and repo/refs.json returns []. Have build() state 'refs_total': len(refs) and 'refs_annotated': sum(1 for r in refs if r['annotated']), compare the refs list against both in manifest_holds with one line per mismatch, and add the case to ManifestHoldsDetectsBreakage."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -82081,7 +82107,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T15:26:03Z",
+      "updated": "2026-10-10T15:32:31Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -82899,15 +82925,19 @@
       ],
       "folder": "tasks",
       "id": "T-82990",
+      "kernel_answers": [
+        "granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0433 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them."
+      ],
       "kernel_attempts": [
-        "session ran past its max age"
+        "session ran past its max age",
+        "relaunch: operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0433 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "kernel_notes": [
         "groom-fill-t-82990-1791637217: groom-fill raised risk high: the card's Acceptance is empty only because the 4000-char cut swallowed the plan's byte-for-byte S-81208 fence; copying it in (paired to AdvanceTest/ReportTest) satisfies DoR, and the Task lands in the kernel's daily step plus release-channel pushes so risk stays high."
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82920,12 +82950,13 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T14:50:59Z",
+      "updated": "2026-10-10T15:32:31Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
         "asf/cli.py",
-        "tests/test_channels.py"
+        "tests/test_channels.py",
+        "tests/test_tick_steps.py"
       ]
     },
     "T-82991": {
