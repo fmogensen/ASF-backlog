@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T21:41:11Z",
+  "generated": "2026-10-10T21:45:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -35147,7 +35147,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T21:41:10Z"
+      "updated": "2026-10-10T21:45:16Z"
     },
     "F-0349": {
       "backlinks": [],
@@ -47629,9 +47629,11 @@
         "T-129192"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91856",
       "parent": "F-0329",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:52Z",
       "state": "New",
@@ -47663,9 +47665,11 @@
         "T-129193"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-92306",
       "parent": "F-0330",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:55Z",
       "state": "New",
@@ -47678,9 +47682,11 @@
         "T-129193"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-92307",
       "parent": "F-0330",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:55Z",
       "state": "New",
@@ -47693,9 +47699,11 @@
         "T-129194"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-92308",
       "parent": "F-0330",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:55Z",
       "state": "New",
@@ -83971,7 +83979,8 @@
         "groom-fill-t-129156-1791656430: groom-fill raised risk high: design (constants at widen.py:46, revert_overlaps/serialize_overlaps at 560/620, run() adjacency, SerializeOverlapTests helpers at 592-620) still matches trunk at 96883ff2 exactly and nothing named is built yet; the live F-0272 record reads state: Active/stage: spec-approved, not Done, so that DoR reason is stale \u2014 acceptance/writes refilled unchanged.",
         "groom-fill-t-129156-1791660405: groom-fill raised risk high: parent F-0272 reads state: Active/stage: spec-approved (not Closed/Resolved) in both record and wave-record, so it parses to kernel State.NEW, not Done \u2014 the cited \"parent is Done\" gap does not hold; acceptance and writes are already filled and verified line-for-line against trunk at cb47b17c8 and the landed plan (76a4469d3), and nothing named is built yet.",
         "groom-fill-t-129156-1791663897: groom-fill raised risk high: design matches trunk at 50356a9f6 exactly and nothing named is built yet \u2014 acceptance/writes unchanged; the real \"parent F-0272 is Done\" gap is a stale kernel_state:done written on F-0272 before its Stories/Task existed, now permanently un-writable per apply.py's container-skip (:552-556), so no groom-fill verdict on this card can clear it \u2014 F-0272's kernel_state field needs a direct fix.",
-        "groom-fill-t-129156-1791667556: groom-fill raised risk high: design matches trunk exactly and nothing named is built; the \"parent F-0272 is Done\" gap is F-0272's stale kernel_state:done field, permanently un-writable by apply.py once it had children (confirmed via dor.py:194 + apply.py:552-569), not a real DoR failure."
+        "groom-fill-t-129156-1791667556: groom-fill raised risk high: design matches trunk exactly and nothing named is built; the \"parent F-0272 is Done\" gap is F-0272's stale kernel_state:done field, permanently un-writable by apply.py once it had children (confirmed via dor.py:194 + apply.py:552-569), not a real DoR failure.",
+        "groom-fill-t-129156-1791668445: groom-fill raised risk high: design matches trunk at aaa491cfc exactly and nothing named is built yet \u2014 acceptance/writes unchanged from prior rounds; the cited \"parent F-0272 is Done\" gap is a stale kernel_state:done written on F-0272 before its Stories/Task existed, permanently un-writable per apply.py's container-skip (:552-556) since F-0272 now has children \u2014 F-0272 itself reads state: Active/stage: spec-approved, so the gap is false and needs a direct operator fix to F-0272's kernel_state field, not another child groom-fill."
       ],
       "links": {
         "plan": "docs/plans/f-0272.md"
@@ -83986,7 +83995,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-10T21:41:10Z",
+      "updated": "2026-10-10T21:45:16Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -84529,7 +84538,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129173",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
       "kernel_notes": [
         "groom-fill-t-129173-1791655626: groom-fill raised risk high: card already carries Task 1's acceptance/writes verbatim (F-0343 backfill); the parent-Done DoR gap is stale \u2014 F-0343's own fix (dce5aac92) makes a Feature's state derive from its Task children once any exist, and F-0318 already has Task children (T-129173, T-129174) that are New, so F-0318 reads New under current logic and the next tick's judge pass clears this on its own.",
@@ -84554,7 +84563,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-10T21:41:10Z",
+      "updated": "2026-10-10T21:45:16Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -84582,7 +84591,8 @@
         "groom-fill-t-129174-1791655632: groom-fill raised risk high: no Task of plan F-0318 has landed anywhere (code or PR) so the parent cannot legitimately be Done; the card's test-naming, writes, and after fields already clear DoR, and the parent-Done read is a transient container-derivation artifact from the plan PR minting siblings minutes earlier that self-corrects on the next tick.",
         "groom-fill-t-129174-1791656640: groom-fill raised risk high: The parent-Done DoR hold is a stale, self-correcting Feature-state read (kernel_state: done is a leftover from closed PR #1262; the live F-0318.state is New since it now derives from its Task children per dce5aac92) \u2014 dor.missing() finds no actual gap: acceptance names real tests, writes sit on trunk, after (T-129173) is unparked, and parent is not Done.",
         "groom-fill-t-129174-1791657636: groom-fill raised risk high: Acceptance filled per docs/plans/f-0318.md Task 2 (S-91008/S-91009 lines mapped to the two test classes it adds); writes unchanged \u2014 all three paths exist already (test_spec_stories.py is created by its predecessor T-129173, which `after:` already gates), and the edit sits in the tick's record step and stage.WRITERS so risk is raised.",
-        "groom-fill-t-129174-1791666467: groom-fill raised risk high: parent F-0318 is not currently Done \u2014 asf next shows 0 Closed / 3 Tasks under it (T-129173 FIX\u2192CORRECT, T-129175 PUSHED\u2192LAND, this card New), so a Feature derives Done only once every Task under it is, which is not the case; the reported DoR gap is stale, and the card's writes/acceptance/after fields already satisfy the rest of the Definition of Ready (mint_spec_stories and tests/test_spec_stories.py genuinely absent from trunk, matching the card's scope)."
+        "groom-fill-t-129174-1791666467: groom-fill raised risk high: parent F-0318 is not currently Done \u2014 asf next shows 0 Closed / 3 Tasks under it (T-129173 FIX\u2192CORRECT, T-129175 PUSHED\u2192LAND, this card New), so a Feature derives Done only once every Task under it is, which is not the case; the reported DoR gap is stale, and the card's writes/acceptance/after fields already satisfy the rest of the Definition of Ready (mint_spec_stories and tests/test_spec_stories.py genuinely absent from trunk, matching the card's scope).",
+        "groom-fill-t-129174-1791668168: groom-fill raised risk high: card already carries correct acceptance/writes/after matching docs/plans/f-0318.md Task 2; the sole DoR gap, parent F-0318 is Done, is a stale kernel_state read \u2014 F-0318's own Task 1 module (asf/record/spec_stories.py) isn't on origin/main yet, and the exact defect (\"DoR reads the parent's state as the tick derives it, never a stale stored kernel_state\") is already fixed, unmerged, on origin/fix/F-0318-stale-parent-done (e961d947f)."
       ],
       "links": {
         "plan": "docs/plans/f-0318.md"
@@ -84597,7 +84607,7 @@
       ],
       "title": "the place \u2014 the pass in the tick's record step, the writer order, and the gate clearing",
       "type": "task",
-      "updated": "2026-10-10T21:36:35Z",
+      "updated": "2026-10-10T21:45:16Z",
       "writes": [
         "asf/tick/tick.py",
         "asf/record/stage.py",
@@ -84612,8 +84622,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129175",
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
       "kernel_notes": [
         "groom-fill-t-129175-1791657428: groom-fill verdict rejected: no GROOM-FILL block"
       ],
@@ -84629,7 +84639,7 @@
       ],
       "title": "the briefs \u2014 ask for the form the record mints, and name the spec's own landing",
       "type": "task",
-      "updated": "2026-10-10T20:57:07Z",
+      "updated": "2026-10-10T21:45:16Z",
       "writes": [
         "asf/briefs/templates/spec.md",
         "asf/briefs/build.py",
@@ -85576,6 +85586,14 @@
       "kernel_attempts": [
         "ended without a REPORT"
       ],
+      "kernel_notes": [
+        "PR #1453: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1453: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1453: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1453: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1453: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1453: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
@@ -85589,7 +85607,7 @@
       ],
       "title": "the one client's default identity, and the single caller that opts out",
       "type": "task",
-      "updated": "2026-10-10T21:36:35Z",
+      "updated": "2026-10-10T21:45:16Z",
       "writes": [
         "asf/github.py",
         "asf/upgrade.py",
@@ -87990,7 +88008,7 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -88011,7 +88029,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T21:24:32Z",
+      "updated": "2026-10-10T21:45:16Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -88667,6 +88685,12 @@
       ],
       "folder": "tasks",
       "id": "T-83144",
+      "kernel_answers": [
+        "granted tests/test_reviews.py tests/test_briefs.py tests/fixtures/briefs/golden/review.md; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/test_reviews.py tests/test_briefs.py tests/fixtures/briefs/golden/review.md; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_dor_fills": 1,
       "kernel_findings": [
         "red: tests (3.12)",
@@ -88683,7 +88707,7 @@
         "PR #1435: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1435: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -88696,12 +88720,15 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-10T21:18:17Z",
+      "updated": "2026-10-10T21:45:16Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
         "asf/briefs/templates/review.md",
-        "tests/test_doc_lane_review.py"
+        "tests/test_doc_lane_review.py",
+        "tests/test_reviews.py",
+        "tests/test_briefs.py",
+        "tests/fixtures/briefs/golden/review.md"
       ]
     },
     "T-83345": {
