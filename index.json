@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T19:15:34Z",
+  "generated": "2026-10-10T19:18:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34356,7 +34356,7 @@
         "spec-f-0334-1791655619: NEEDS OPERATOR: the pinned CLI blocks every push from this host, not this branch. Build a current pin (`asf upgrade --product asf`), or make the shim tolerate a pinned CLI lacking the subcommand the way its own `tru\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34365,7 +34365,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T19:06:29Z"
+      "updated": "2026-10-10T19:17:57Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -83490,7 +83490,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129166",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/evidence/review_store.py:249-267 \u2014 replace the `recover` docstring with the spec's text verbatim (`docs/specs/f-0313.md:295-312`); the plan's Task 3 explicitly requires \"the spec's docstring verbatim\" and the shipped docstring is a full rewrite, not that text."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -83503,7 +83507,7 @@
       ],
       "title": "the filing \u2014 `review_store.recover`, with a head of its own",
       "type": "task",
-      "updated": "2026-10-10T19:09:14Z",
+      "updated": "2026-10-10T19:17:57Z",
       "writes": [
         "asf/evidence/review_store.py",
         "tests/test_review_store.py"
@@ -84840,7 +84844,7 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -84856,7 +84860,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-10T19:15:31Z",
+      "updated": "2026-10-10T19:17:57Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
