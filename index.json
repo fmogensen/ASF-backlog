@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T11:30:19Z",
+  "generated": "2026-10-10T11:34:03Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33806,7 +33806,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T11:28:27Z"
+      "updated": "2026-10-10T11:34:00Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -63745,6 +63745,9 @@
       ],
       "folder": "tasks",
       "id": "T-0433",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_findings": [
         "asf/upgrade.py:1044-1048 \u2014 check `shadow.push(root)`'s return value and print `upgrade: pushing the filed Bug failed \u2014 the next RED tick bumps it` to stderr when it returns False (the documented normal refusal path, not just on an exception), matching asf/tick/tick.py:304-307's existing convention for the same call.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
@@ -63772,7 +63775,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T10:24:46Z",
+      "updated": "2026-10-10T11:34:00Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -81603,6 +81606,7 @@
       ],
       "folder": "tasks",
       "id": "T-80572",
+      "kernel_dor_fills": 1,
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
@@ -81619,7 +81623,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T11:29:48Z",
+      "updated": "2026-10-10T11:34:00Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -81646,6 +81650,7 @@
       ],
       "folder": "tasks",
       "id": "T-80573",
+      "kernel_dor_fills": 1,
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -81658,7 +81663,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T11:34:00Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -81680,6 +81685,7 @@
       ],
       "folder": "tasks",
       "id": "T-80574",
+      "kernel_dor_fills": 1,
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -81692,7 +81698,7 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T11:34:00Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_record.py",
@@ -82224,7 +82230,7 @@
         "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82237,7 +82243,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T11:30:16Z",
+      "updated": "2026-10-10T11:34:00Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82474,6 +82480,9 @@
         "T-83144"
       ],
       "children": [],
+      "creates": [
+        "tests/test_doc_lane_review.py"
+      ],
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-09)",
@@ -82483,8 +82492,14 @@
       "id": "T-83143",
       "kernel_dor_fills": 2,
       "kernel_notes": [
-        "groom-fill-t-83143-1791630660: groom-fill verdict rejected: no GROOM-FILL block"
+        "groom-fill-t-83143-1791630660: groom-fill verdict rejected: no GROOM-FILL block",
+        "groom-fill-t-83143-1791631612: groom-fill raised risk high: Card transcribes plan F-0280 Task 2 verbatim with live anchors on trunk; filled acceptance from S-73205's seven spec bullets, all proved by the one new test class the card already names; writes/after already correct, only missing the test-naming and new-file marker."
       ],
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "dor: no test named in Acceptance or Gate; writes not on trunk: tests/test_doc_lane_review.py \u2014 2 groom-fill session(s) could not make it ready",
+      "kernel_stuck_since": "2026-10-10T11:33:03Z",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -82497,7 +82512,7 @@
       ],
       "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
       "type": "task",
-      "updated": "2026-10-10T11:28:27Z",
+      "updated": "2026-10-10T11:34:00Z",
       "writes": [
         "asf/reviews.py",
         "asf/harvest/lane.py",
@@ -82512,6 +82527,9 @@
       ],
       "backlinks": [],
       "children": [],
+      "creates": [
+        "tests/test_doc_lane_review.py"
+      ],
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-09)",
