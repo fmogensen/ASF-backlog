@@ -7,3 +7,6 @@ Cases: test_a_review_on_a_branch_behind_main_pushes_nothing, test_b0046_correct_
 Found by plans F-0279, F-0313 and F-0314 (cloud sessions asked whether they are trunk reds; they are not).
 
 Acceptance: the five cases pass under git 2.43.0, or skip there with a stated reason, so cloud sessions stop seeing pre-existing reds.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.

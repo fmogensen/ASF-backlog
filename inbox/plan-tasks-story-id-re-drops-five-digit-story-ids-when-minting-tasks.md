@@ -4,3 +4,6 @@ Bug: asf/record/plan_tasks.py:34 STORY_ID_RE is r'\bS-\d{4}\b' (exactly four dig
 
 Fix: STORY_ID_RE accepts \d{4,}.
 Acceptance: tests/test_plan_tasks.py covers stories_of with a four-digit and a five-digit S-id, both minted onto the Task card.
+
+## Question
+Which Epic is this under? No open Epic shares a title word with it.
