@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:55:59Z",
+  "generated": "2026-10-10T15:58:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -20134,6 +20134,7 @@
         "F-0331",
         "F-0332",
         "F-0341",
+        "F-0342",
         "B-0001",
         "B-0002",
         "B-0003",
@@ -33802,7 +33803,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T15:55:57Z"
+      "updated": "2026-10-10T15:58:53Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -34039,7 +34040,7 @@
       "state": "New",
       "title": "Idempotent reconcile of ledger-shaped proof claims into the record",
       "type": "feature",
-      "updated": "2026-10-10T15:55:57Z"
+      "updated": "2026-10-10T15:58:53Z"
     },
     "F-0336": {
       "backlinks": [],
@@ -34064,6 +34065,9 @@
       "decided": true,
       "folder": "features",
       "id": "F-0337",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
@@ -34073,7 +34077,7 @@
       "state": "New",
       "title": "Kernel grooming Stage 4: continuous sweep of old New/Parked items on idle seats",
       "type": "feature",
-      "updated": "2026-10-10T15:21:27Z"
+      "updated": "2026-10-10T15:58:53Z"
     },
     "F-0338": {
       "backlinks": [],
@@ -34081,7 +34085,7 @@
       "decided": true,
       "folder": "features",
       "id": "F-0338",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0003",
       "priority": "need",
       "rank": 3,
@@ -34090,19 +34094,23 @@
       "state": "New",
       "title": "Kernel mainline: cancelled trunk runs are no verdict; dispatch one trunk run when too many commits lack a result",
       "type": "feature",
-      "updated": "2026-10-10T15:47:39Z"
+      "updated": "2026-10-10T15:58:53Z"
     },
     "F-0339": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0342"
+      ],
       "children": [],
       "decided": true,
       "folder": "features",
       "id": "F-0339",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "partial: NEEDS OPERATOR: re-pin the host's `asf` build so `asf pre-push` exists \u2014 the installed `0.1.265 (14b963ba1`, 2026-10-08) predates `aa56423fd` (T-79565, today), which added both `asf/prepush.\u2026",
-      "kernel_stuck_since": "2026-10-10T15:46:19Z",
+      "kernel_answers": [
+        "Do not wait on the host pin. Run the gate directly as the product config's pre_push_check: bash tools/check_generic.sh && bash tools/check_conventions.sh && bash tools/check_clients.sh --against origin/main && python3 -m unittest -q tests.test_hermetic. The pin move (0.1.265 -> main) is held: asf upgrade --product would reinstall the paused 0.1 floor clocks next to the 0.2 kernel; that is filed as its own Bug. Proceed."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Do not wait on the host pin. Run the gate directly as the product config's pre_push_check: bash tools/check_generic.sh && bash tools/check_conventions.sh && bash tools/check_clients.sh --against origin/main && python3 -m unittest -q tests.test_hermetic. The pin move (0.1.265 -> main) is held: asf upgrade --product would reinstall the paused 0.1 floor clocks next to the 0.2 kernel; that is filed as its own Bug. Proceed."
+      ],
+      "kernel_state": "ready",
       "parent": "E-0002",
       "priority": "need",
       "rank": 7,
@@ -34111,7 +34119,7 @@
       "state": "New",
       "title": "Kernel: resolve the next two most frequent session questions in code",
       "type": "feature",
-      "updated": "2026-10-10T15:47:39Z"
+      "updated": "2026-10-10T15:58:53Z"
     },
     "F-0340": {
       "backlinks": [],
@@ -34148,6 +34156,22 @@
       "title": "Proof claims on quarantined tests are refused",
       "type": "feature",
       "updated": "2026-10-10T15:36:10Z"
+    },
+    "F-0342": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0342",
+      "kernel_fix_rounds": 0,
+      "kernel_state": "building",
+      "parent": "E-0001",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T15:57:37Z",
+      "state": "New",
+      "title": "asf upgrade --product on a kernel product reinstalls the paused 0.1 floor clocks; the pin cannot move",
+      "type": "feature",
+      "updated": "2026-10-10T15:58:53Z"
     },
     "R-0001": {
       "backlinks": [
@@ -81737,7 +81761,6 @@
         "T-0432"
       ],
       "backlinks": [
-        "F-0339",
         "T-0318",
         "T-0452",
         "T-79566",
