@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T19:09:16Z",
+  "generated": "2026-10-10T19:11:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16812,7 +16812,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-135242",
-      "kernel_state": "review",
+      "kernel_state": "done",
       "parent": "E-0003",
       "schema_version": 1,
       "severity": "S2",
@@ -16821,7 +16821,7 @@
       "state": "New",
       "title": "Intake cannot mint an Epic",
       "type": "bug",
-      "updated": "2026-10-10T19:06:29Z"
+      "updated": "2026-10-10T19:11:45Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -34539,7 +34539,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T19:09:14Z"
+      "updated": "2026-10-10T19:11:45Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -85153,11 +85153,14 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131823",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
         "asf/harvest/lane.py:1187-1196 \u2014 the branch carries no `Proves:` trailer while its Task card lists `stories: S-124005`, so `lane_refusal`'s proves gate is not skipped and `validate([], \u2026)` returns `no claim`, refusing the branch at landing; add a commit with `Proves: S-124005 line 1 \u2014 tests/test_proves.py::QuarantinedClaimTests::test_the_cards_own_acceptance_one_counted_one_refused` and push."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -85170,7 +85173,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T19:03:52Z",
+      "updated": "2026-10-10T19:11:45Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"
