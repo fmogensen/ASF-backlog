@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T16:34:29Z",
+  "generated": "2026-10-10T16:38:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33813,7 +33813,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T16:34:28Z"
+      "updated": "2026-10-10T16:38:23Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -34057,7 +34057,7 @@
         "docs/plans/f-0335.md:49 \u2014 correct PD10's \"Exact at this base\" line citations, re-checked against the plan's own stated base 55d9ec2f141ca9ba79b091c8d64d1f0ceadcb3be: proves.validate's four refusals are at :222, :225, :228, :231 (plan says :221, :225, :229, :232); ingest.tick_proven's re-credit block starts at :1495, not :1494; its `PR #` clause starts at :1500, not :1499; reopen.cmd_audit_proofs's table starts at :272, not :273, and its `if canonical is None: return 1` (also cited at docs/plans/f-0335.md:47 and :207) is at :269-270, not :267-270; stage.py's `WRITERS` is at :29, not :30. PD10 discloses only two drifts (\"+2\", \"+1\") and calls the rest exact; these six additional misses are not disclosed and could misdirect the implementing coder."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0004",
       "priority": "later",
       "rank": 4,
@@ -34066,7 +34066,7 @@
       "state": "New",
       "title": "Idempotent reconcile of ledger-shaped proof claims into the record",
       "type": "feature",
-      "updated": "2026-10-10T16:25:06Z"
+      "updated": "2026-10-10T16:38:23Z"
     },
     "F-0336": {
       "backlinks": [],
@@ -34075,11 +34075,11 @@
       "folder": "features",
       "id": "F-0336",
       "kernel_findings": [
-        "docs/specs/f-0336.md:750 \u2014 `docs/products.example.yaml` has no `intake:` block; change \"between `dor:` and `intake:`\" to \"between `dor:` and `risk:`\" (the `dor:`/`intake:` pair is `asf/kernel/settings.py`'s example, lines 120 and 130)",
-        "docs/specs/f-0336.md:383 \u2014 the design touches seven existing kernel files (`model.py`, `actions.py`, `decide.py`, `apply.py`, `ports.py`, `loop.py`, `settings.py`); change \"Ten files: one new module, one new test module, six kernel files\" to \"Eleven files: one new module, one new test module, seven kernel files\""
+        "docs/specs/f-0336.md:383 \u2014 the count is twelve files, not eleven: S-122807's acceptance runs `tests.test_flake_triage.SightingsTests`, and `tests/test_flake_triage.py` holds no `SightingsTests` today (its classes are `FakeGH`, `Triage`, `RequiredJobsOnly`, `Door`, `Quarantine`, `BatchTriage`), so that existing test module is a thirteenth edit the enumeration \"one new module, one new test module, seven kernel files, `asf/flake.py` and the documented product block\" leaves out \u2014 rewrite as \"Twelve files: \u2026 `asf/flake.py`, `tests/test_flake_triage.py` and the documented product block\" (the \"Nothing outside `asf/kernel/`, `asf/flake.py`, `docs/` and `tests/`\" fence still holds)",
+        "docs/specs/f-0336.md:304 \u2014 \"In\" item 8 says `decide.on_pr` reads the live entries, but `on_pr(check, pr)` (`asf/kernel/decide.py:1314`) takes no `facts` and so cannot; \u00a74.3 correctly leaves it unchanged and adds `quarantined(check, facts)` ANDed into `_judge_pr`'s `own` list \u2014 reword item 8 to \"`decide._judge_pr` reads the live entries (`decide.quarantined`), so a quarantined signature's red takes the shipped off-PR path\" so the scope list and the design name the same function"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 5,
@@ -34088,7 +34088,7 @@
       "state": "New",
       "title": "Kernel flake quarantine with a defect check (unrelated heads only)",
       "type": "feature",
-      "updated": "2026-10-10T16:21:04Z"
+      "updated": "2026-10-10T16:38:23Z"
     },
     "F-0337": {
       "backlinks": [],
@@ -34112,7 +34112,7 @@
       "state": "New",
       "title": "Kernel grooming Stage 4: continuous sweep of old New/Parked items on idle seats",
       "type": "feature",
-      "updated": "2026-10-10T16:34:28Z"
+      "updated": "2026-10-10T16:38:23Z"
     },
     "F-0338": {
       "backlinks": [],
@@ -34150,7 +34150,7 @@
         "relaunch: operator answer: Do not wait on the host pin. Run the gate directly as the product config's pre_push_check: bash tools/check_generic.sh && bash tools/check_conventions.sh && bash tools/check_clients.sh --against origin/main && python3 -m unittest -q tests.test_hermetic. The pin move (0.1.265 -> main) is held: asf upgrade --product would reinstall the paused 0.1 floor clocks next to the 0.2 kernel; that is filed as its own Bug. Proceed."
       ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "landing",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
       "rank": 7,
@@ -34159,7 +34159,7 @@
       "state": "New",
       "title": "Kernel: resolve the next two most frequent session questions in code",
       "type": "feature",
-      "updated": "2026-10-10T16:34:28Z"
+      "updated": "2026-10-10T16:38:23Z"
     },
     "F-0340": {
       "backlinks": [],
@@ -64246,7 +64246,11 @@
         "PR #1378: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
+      "kernel_stuck_since": "2026-10-10T16:37:30Z",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -64263,7 +64267,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T16:21:04Z",
+      "updated": "2026-10-10T16:38:23Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -78126,7 +78130,7 @@
         "rebase: PR #1084 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0165.md"
       },
@@ -78139,7 +78143,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-10T15:21:27Z",
+      "updated": "2026-10-10T16:38:23Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
@@ -83057,7 +83061,7 @@
         "PR #1398: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1398: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -83070,7 +83074,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T16:34:28Z",
+      "updated": "2026-10-10T16:38:23Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
