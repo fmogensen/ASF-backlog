@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T21:36:38Z",
+  "generated": "2026-10-10T21:41:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34513,7 +34513,11 @@
         "spec-f-0334-1791651250: NEEDS OPERATOR: product `asf` is pinned to `14b963ba1` (2026-10-08), whose CLI has no `pre-push` subcommand, while `asf-hook:171` calls it \u2014 the door refuses every session's push on this host. Repin to a sha that ca\u2026",
         "spec-f-0334-1791655619: NEEDS OPERATOR: the pinned CLI blocks every push from this host, not this branch. Build a current pin (`asf upgrade --product asf`), or make the shim tolerate a pinned CLI lacking the subcommand the way its own `tru\u2026",
         "plan-f-0334-1791664150: NEEDS OPERATOR: whether the second product's trunk requires branches to be up to date \u2014 if its ruleset is strict the merge train serialises updates and re-runs CI on every trunk move, and the 60-minute median is not\u2026",
-        "plan-f-0334-1791666402: NEEDS OPERATOR: which card owns asf/kernel/sweep.py \u2014 F-0334's S-131010 (this plan's Task 5) or F-0337. Two approved specs on the trunk design the same module and the same tests/kernel/test_sweep.py under different\u2026"
+        "plan-f-0334-1791666402: NEEDS OPERATOR: which card owns asf/kernel/sweep.py \u2014 F-0334's S-131010 (this plan's Task 5) or F-0337. Two approved specs on the trunk design the same module and the same tests/kernel/test_sweep.py under different\u2026",
+        "PR #1430: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1430: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1430: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1430: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "building",
@@ -34525,7 +34529,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T21:36:35Z"
+      "updated": "2026-10-10T21:41:10Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34746,7 +34750,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T21:36:35Z"
+      "updated": "2026-10-10T21:41:10Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -35135,7 +35139,7 @@
         "docs/specs/f-0348.md:254 (\u00a72.6) \u2014 the function is ports.config_for, not ports.config; its Config(...) call tail is now at asf/kernel/ports.py:2511-2520, not :2446-2455"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "later",
       "schema_version": 1,
@@ -35143,7 +35147,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T21:32:08Z"
+      "updated": "2026-10-10T21:41:10Z"
     },
     "F-0349": {
       "backlinks": [],
@@ -35167,7 +35171,7 @@
       "state": "New",
       "title": "Adopt GitHub's work-item model: type, parent, milestone, priority",
       "type": "feature",
-      "updated": "2026-10-10T21:36:35Z"
+      "updated": "2026-10-10T21:41:10Z"
     },
     "F-0350": {
       "backlinks": [],
@@ -47704,9 +47708,11 @@
         "T-129195"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-92309",
       "parent": "F-0330",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:55Z",
       "state": "New",
@@ -83957,7 +83963,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129156",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
       "kernel_notes": [
         "groom-fill-t-129156-1791654017: groom-fill raised risk high: design matches trunk exactly (constants, line ranges, fixture methods, helper signatures) and nothing named has been built yet; only the acceptance/gate lines were missing.",
@@ -83980,7 +83986,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-10T21:36:35Z",
+      "updated": "2026-10-10T21:41:10Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -84530,7 +84536,8 @@
         "groom-fill-t-129173-1791657630: groom-fill raised risk high: F-0318's \"Done\" is a same-tick derived-state artifact (a container is Done only when every Task child is, and T-129173 itself is a New child of F-0318); the card's acceptance/writes already satisfy DoR (i)-(iii), and asf/record/spec_stories.py, spec_ref, doc_alias and own_doc are all absent from trunk, confirming the work is unbuilt, not superseded.",
         "groom-fill-t-129173-1791660411: groom-fill raised risk high: card content is already DoR-complete (acceptance + writes match plan Task 1, verified against origin/main); the sole gap is parent F-0318 showing Done while none of its 3-Task plan is built anywhere \u2014 a stale parent state no verdict field can repair, not grounds to supersede",
         "groom-fill-t-129173-1791662986: groom-fill raised risk high: Card's acceptance/writes already satisfy DoR; the only flagged gap is F-0318's stale `kernel_state: done` (a PR #1262 leftover) while its live `state` is New and no Task of its plan has landed on trunk \u2014 a false DoR read three prior groom-fill passes already identified, not a defect this verdict can fix.",
-        "groom-fill-t-129173-1791664952: groom-fill raised risk high: card already names real tests in Acceptance and valid writes with after: none; the sole DoR gap (parent F-0318 is Done) is a stale stored kernel_state \u2014 none of F-0318's three Tasks exist on origin/main, and fix/F-0318-stale-parent-done (e961d947f, unmerged) already diagnoses and fixes this exact staleness"
+        "groom-fill-t-129173-1791664952: groom-fill raised risk high: card already names real tests in Acceptance and valid writes with after: none; the sole DoR gap (parent F-0318 is Done) is a stale stored kernel_state \u2014 none of F-0318's three Tasks exist on origin/main, and fix/F-0318-stale-parent-done (e961d947f, unmerged) already diagnoses and fixes this exact staleness",
+        "groom-fill-t-129173-1791667904: groom-fill raised risk high: F-0318's real state is New (only a stale PR-#1262-leftover kernel_state reads \"done\", already flagged as spurious by five prior groom-fill passes); the card's acceptance and writes already match plan Task 1 verbatim and spec_stories.py/doc_alias/own_doc remain genuinely unbuilt on trunk."
       ],
       "links": {
         "plan": "docs/plans/f-0318.md"
@@ -84547,7 +84554,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-10T21:32:08Z",
+      "updated": "2026-10-10T21:41:10Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -85841,7 +85848,7 @@
         "PR #1433: part (3.13, 4) is red but not a required check \u2014 ignored",
         "build-t-130214-1791664185: NEEDS OPERATOR: every push on this host is refused because the pinned asf dispatcher (install.json: sha 14b963ba1, pinned 2026-10-10T21:56:11+02:00 by a worker account, 184 commits behind) predates `asf pre-push` \u2014 decide whet\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -85855,7 +85862,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-10T21:36:35Z",
+      "updated": "2026-10-10T21:41:10Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -86161,7 +86168,8 @@
         "granted tests/test_minimal_product.py tests/test_tick_steps.py tests/test_tick.py; nothing else outside writes (card updated by the kernel). T-0452 also writes tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-136825 also writes tests/test_minimal_product.py tests/test_tick_steps.py tests/test_tick.py (Review): the overlap rule serialises them."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_minimal_product.py tests/test_tick_steps.py tests/test_tick.py; nothing else outside writes (card updated by the kernel). T-0452 also writes tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-136825 also writes tests/test_minimal_product.py tests/test_tick_steps.py tests/test_tick.py (Review): the overlap rule serialises them."
+        "relaunch: operator answer: granted tests/test_minimal_product.py tests/test_tick_steps.py tests/test_tick.py; nothing else outside writes (card updated by the kernel). T-0452 also writes tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-136825 also writes tests/test_minimal_product.py tests/test_tick_steps.py tests/test_tick.py (Review): the overlap rule serialises them.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -86182,7 +86190,7 @@
         "build-t-131823-1791664197: NEEDS OPERATOR: the red checks on PR #1434 are a confirmed pre-existing trunk flake (same failure reproduced on origin/main HEAD itself) \u2014 rerun them: `gh run rerun 38082466422 --failed`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -86195,7 +86203,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T21:23:05Z",
+      "updated": "2026-10-10T21:41:10Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py",
