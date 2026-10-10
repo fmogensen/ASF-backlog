@@ -1,0 +1,25 @@
+# Story is the build unit: one PR per Story, Tasks as commits
+parent: E-0003
+
+Story is the build unit: one branch, PR, review and merge per Story; its Tasks are commits inside it (operator-approved 2026-10-10; restores the 2026-09-27 decision "Story is the delivery unit").
+
+## Problem
+The 0.2 kernel builds one PR per Task. Each PR pays CI (p50 10m / p90 15m), review (23m / 1.2h) and merge (5m / 36m), and dependent Tasks wait for each other to land: the `after` wait is p50 1.7h / p90 9.9h, 438 item-hours (`asf kernel waits`, 2026-10-10). For a Feature of ~3 Stories / ~8 Tasks that is ~8 reviews, CI runs and merges in series where the Tasks are chained.
+
+## Change
+1. The kernel launches one build session per Story whose Tasks are Ready (or whose only unmet `after:` edges are Tasks inside the same Story). The brief carries every Task of the Story as an ordered checklist; the session makes one commit per Task, Task id in the commit subject, on branch `worker/<story-id>`.
+2. One PR per Story; one review against the Acceptance of all its Tasks; Task cards close when the Story PR lands (each Task's Acceptance tests proven on main, as today).
+3. Size cap: a Story whose plan estimate is over `kernel.story.max_lines` (seed 800) builds per Task as today, or splits; a Story with one Task behaves like today.
+4. Stories in parallel on separate seats; dependencies between Stories use stacked builds (F-0348).
+5. Fix rounds and the heartbeat (F-0347) work per Story session; a fix round carries the findings for the Tasks they name.
+6. Switch: `kernel.build_unit: story | task` in the product yaml; start with `story` for the A/B Features below, `task` elsewhere.
+
+## A/B proof (part of acceptance)
+Build the next 3-4 0.3 Features with `build_unit: story` and compare against Features built per Task over the same period: lead time spec-merge -> last Task done (p50/p90), number of PRs, review and fix rounds per Feature, first-push-green, cost if measured (F-0344). Report the numbers; make `story` the default only if lead time improves without worse fix rounds or first-push-green.
+
+## Acceptance
+- A Story with three Ready Tasks launches one session with all three in its brief and opens one PR whose commits name each Task (test).
+- Landing that PR closes all three Tasks only when each Task's Acceptance tests are on main (test).
+- A Story over the size cap falls back to per-Task builds (test); `build_unit: task` reproduces today's behaviour (test).
+- Two independent Stories of one Feature build in parallel (test).
+- The A/B report exists with the numbers above for at least 3 Features.
