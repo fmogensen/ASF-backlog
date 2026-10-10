@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T22:30:07Z",
+  "generated": "2026-10-10T22:33:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3056,7 +3056,8 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
-        "docs/plans/b-0097.md:67 \u2014 the Acceptance bullet claims the run is \"recorded as `ended, publish pending`\", a string that appears nowhere in the tree and that the plan's own Cause section (docs/plans/b-0097.md:19) contradicts for the mechanism it cites (asf/workers/health.py:949-952 returns without marking the session ended at all); either cite a real mechanism matching that wording or reword the bullet to match what the code does.",
+        "\"docs/plans/b-0097.md:67 \u2014 the Acceptance bullet claims the run is \\\"recorded as `ended",
+        "publish pending`\\\", a string that appears nowhere in the tree and that the plan's own Cause section (docs/plans/b-0097.md:19) contradicts for the mechanism it cites (asf/workers/health.py:949-952 returns without marking the session ended at all); either cite a real mechanism matching that wording or reword the bullet to match what the code does.\"",
         "docs/plans/b-0097.md:14 and the commit message of ad308b3 \u2014 both cite commit `e48caa821` as carrying `Fixes: B-0097` trailers; that sha is not a valid object in this repository. The classification code they attribute to it (asf/workers/lifecycle.py:133-144) actually blames to afff26f6ce30c6b621a89fc7a5f41ea5f0077b37, whose message never mentions B-0097 and has no such trailer. Push a corrective commit citing the real sha and drop the false trailer claim, and fix the same citation in docs/plans/b-0097.md:14.",
         "docs/plans/b-0097.md:1 \u2014 write the missing plan documenting the Task this branch delivers (the in-tick backoff retry `_push_retrying` in `asf/workers/lifecycle.py` and its tests at `tests/test_lifecycle.py:1896-1955`); every item on this product, including an S3 bug fix, carries a `docs/plans/<id>.md`."
       ],
@@ -16716,7 +16717,9 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_notes": [
-        "groom-fill-b-121288-1791643848: groom-fill raised risk high: reproduced via parse_assignments/apply_list \u2014 a quoted \"a, b, c\" survives _as_list as one scalar, then widen.norm_writes's whitespace split (meant for packed plan entries) turns it into ['a,', 'b,', 'c']; real, fixable in asf/record/setfield.py."
+        "\"groom-fill-b-121288-1791643848: groom-fill raised risk high: reproduced via parse_assignments/apply_list \u2014 a quoted \\\"a",
+        "b",
+        "c\\\" survives _as_list as one scalar, then widen.norm_writes's whitespace split (meant for packed plan entries) turns it into ['a,', 'b,', 'c']; real, fixable in asf/record/setfield.py.\""
       ],
       "kernel_state": "done",
       "parent": "E-0001",
@@ -18905,7 +18908,8 @@
       "found_in": "ci",
       "id": "B-83575",
       "kernel_findings": [
-        "asf/tick/step_wave.py:851-862 \u2014 add `import traceback` and `say(traceback.format_exc().rstrip())` right after the existing one-line `say(...)` at line 860, matching the traceback-logging pattern already used for the same \"swallow one failure, keep going\" case at asf/tick/tick.py:905-911 and asf/tick/wave_clock.py:198-202 \u2014 right now the exception's traceback is discarded entirely, and this is exactly the failure (B-82809's brief build) whose root cause the writer's own report calls unknown."
+        "\"asf/tick/step_wave.py:851-862 \u2014 add `import traceback` and `say(traceback.format_exc().rstrip())` right after the existing one-line `say(...)` at line 860, matching the traceback-logging pattern already used for the same \\\"swallow one failure",
+        "keep going\\\" case at asf/tick/tick.py:905-911 and asf/tick/wave_clock.py:198-202 \u2014 right now the exception's traceback is discarded entirely, and this is exactly the failure (B-82809's brief build) whose root cause the writer's own report calls unknown.\""
       ],
       "kernel_fix_rounds": 1,
       "kernel_notes": [
@@ -19363,7 +19367,6 @@
         "T-129175",
         "T-129178",
         "T-129186",
-        "T-81129",
         "T-81131",
         "T-82988"
       ],
@@ -19387,10 +19390,8 @@
         "T-129186",
         "T-129193",
         "T-129204",
-        "T-81129",
         "T-81131",
-        "T-82987",
-        "T-82989"
+        "T-82987"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -19416,8 +19417,7 @@
         "T-129182",
         "T-129187",
         "T-129197",
-        "T-81130",
-        "T-82989"
+        "T-81130"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -19440,8 +19440,7 @@
         "T-129173",
         "T-129178",
         "T-129185",
-        "T-129196",
-        "T-82989"
+        "T-129196"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -19465,8 +19464,7 @@
         "T-129185",
         "T-129193",
         "T-129201",
-        "T-129203",
-        "T-82989"
+        "T-129203"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -19487,8 +19485,7 @@
         "T-129178",
         "T-129180",
         "T-129185",
-        "T-129193",
-        "T-82989"
+        "T-129193"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -19507,8 +19504,7 @@
         "T-129163",
         "T-129165",
         "T-129183",
-        "T-129212",
-        "T-82990"
+        "T-129212"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -19527,7 +19523,6 @@
         "T-129163",
         "T-129165",
         "T-129174",
-        "T-81129",
         "T-82986",
         "T-82987"
       ],
@@ -19547,8 +19542,7 @@
       "backlinks": [
         "T-129168",
         "T-129174",
-        "T-129197",
-        "T-82990"
+        "T-129197"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -20412,7 +20406,6 @@
         "F-0324",
         "F-0325",
         "F-0326",
-        "F-0327",
         "F-0328",
         "F-0329",
         "F-0330",
@@ -22876,7 +22869,6 @@
       "children": [
         "T-0194",
         "T-0195",
-        "T-0196",
         "T-0197",
         "T-0198",
         "T-0199",
@@ -26025,7 +26017,6 @@
         "S-69310",
         "T-0431",
         "T-0432",
-        "T-0433",
         "T-0434",
         "T-0435",
         "T-0436"
@@ -29797,8 +29788,7 @@
       ],
       "children": [
         "S-71204",
-        "S-71205",
-        "T-0775"
+        "S-71205"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -30263,9 +30253,7 @@
       "updated": "2026-10-07T21:46:09Z"
     },
     "F-0218": {
-      "backlinks": [
-        "T-0775"
-      ],
+      "backlinks": [],
       "children": [
         "T-0604"
       ],
@@ -32557,7 +32545,6 @@
         "S-73204",
         "S-73205",
         "S-73206",
-        "T-83142",
         "T-83143",
         "T-83144"
       ],
@@ -32901,8 +32888,7 @@
       "children": [
         "S-76104",
         "S-76105",
-        "T-78813",
-        "T-78814"
+        "T-78813"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -33295,7 +33281,6 @@
     "F-0301": {
       "backlinks": [
         "E-0001",
-        "F-0327",
         "F-0349",
         "B-82960"
       ],
@@ -33306,7 +33291,6 @@
         "S-77505",
         "S-77506",
         "S-77507",
-        "T-79565",
         "T-79566",
         "T-79567",
         "T-79568"
@@ -33478,9 +33462,7 @@
         "E-0001",
         "E-0006",
         "F-0318",
-        "F-0327",
         "F-0345",
-        "T-82989",
         "B-78590",
         "B-79745",
         "B-82960"
@@ -33598,8 +33580,6 @@
         "T-82986",
         "T-82987",
         "T-82988",
-        "T-82989",
-        "T-82990",
         "T-82991"
       ],
       "cost": {
@@ -33656,7 +33636,6 @@
     },
     "F-0312": {
       "backlinks": [
-        "F-0327",
         "B-80650",
         "B-82960",
         "B-83470"
@@ -33670,7 +33649,6 @@
         "S-80457",
         "S-80458",
         "S-80459",
-        "T-81129",
         "T-81130",
         "T-81131",
         "T-81132",
@@ -34280,7 +34258,8 @@
         "plan-f-0328-1791629407: NEEDS OPERATOR: whether fix/F-0328-pending-not-red may land carrying the closed hotfix (c6cb1a21f, the verdict() change the spec's Out table refuses, plus 6a81462dc, an unrelated defect) alongside this plan \u2014 a plan\u2026",
         "plan-f-0328-1791631578: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` adds five commits over `47466e997`, two of which are the spec's\u2026",
         "plan-f-0328-1791633802: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` is 5 behind and 8 ahead of the trunk over `47466e997`, and two o\u2026",
-        "plan-f-0328-1791635656: NEEDS OPERATOR: `fix/F-0328-pending-not-red` carries commit `418bdb402` (\"the merge queue reads not-yet-run required jobs as pending, never red\"), the closed hotfix the spec's `Out` table refuses on two separate row\u2026",
+        "\"plan-f-0328-1791635656: NEEDS OPERATOR: `fix/F-0328-pending-not-red` carries commit `418bdb402` (\\\"the merge queue reads not-yet-run required jobs as pending",
+        "never red\\\"), the closed hotfix the spec's `Out` table refuses on two separate row\u2026\"",
         "plan-f-0328-1791637960: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. Re-measured this pass: origin/main was force-updated and the branch re-based, so every sha th\u2026",
         "plan-f-0328-1791640115: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 re-measured this pass and u\u2026",
         "plan-f-0328-1791641963: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 re-measured this pass and u\u2026",
@@ -34404,7 +34383,7 @@
       "folder": "features",
       "id": "F-0331",
       "kernel_answers": [
-        "Full FINDINGS of review-f-0331-1791628439 (from the factory host's session log):\n1. docs/specs/f-0331.md:373 \u2014 escape both `|| true` in D7's cell as `\\|\\| true`; unescaped pipes split the row into eight cells against a four-column header, so GFM discards D7's whole Why column. (fixed already)\n2. docs/specs/f-0331.md:256-257 \u2014 drop the claim that `InstallStepsTests` is green on both hosts and that neither container failure is in this spec's acceptance: `test_idempotent_second_run` is a case of that class and the class is S-104407's acceptance (:752, :875); measured `Ran 31 tests / FAILED (failures=1)`. Say it is green only where `asf` is on PATH, and name the step-8 cases (or the one expected failure) in S-104407's acceptance.\n3. docs/specs/f-0331.md:719 \u2014 attribute the paused-clock pin to `PauseTest` (`tests/test_scheduler.py:645-651`), not `InstallTest`, and add `tests.test_scheduler.PauseTest` to S-104405's acceptance command (:700, :873) so that pin is actually run.\nFix 2 and 3, then report."
+        "Full FINDINGS of review-f-0331-1791628439 (from the factory host's session log):\\n1. docs/specs/f-0331.md:373 \u2014 escape both `|| true` in D7's cell as `\\|\\| true`; unescaped pipes split the row into eight cells against a four-column header, so GFM discards D7's whole Why column. (fixed already)\\n2. docs/specs/f-0331.md:256-257 \u2014 drop the claim that `InstallStepsTests` is green on both hosts and that neither container failure is in this spec's acceptance: `test_idempotent_second_run` is a case of that class and the class is S-104407's acceptance (:752, :875); measured `Ran 31 tests / FAILED (failures=1)`. Say it is green only where `asf` is on PATH, and name the step-8 cases (or the one expected failure) in S-104407's acceptance.\\n3. docs/specs/f-0331.md:719 \u2014 attribute the paused-clock pin to `PauseTest` (`tests/test_scheduler.py:645-651`), not `InstallTest`, and add `tests.test_scheduler.PauseTest` to S-104405's acceptance command (:700, :873) so that pin is actually run.\\nFix 2 and 3, then report."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Full FINDINGS of review-f-0331-1791628439 (from the factory host's session log): 1. docs/specs/f-0331.md:373 \u2014 escape both `|| true` in D7's cell as `\\|\\| true`; unescaped pipes split the row into eight cells against a four-column header, so GFM discards D7's whole Why column. (fixed already) 2. docs/specs/f-0331.md:256-257 \u2014 drop the claim that `InstallStepsTests` is green on both hosts and that neither container failure is in this spec's acceptance: `test_idempotent_second_run` is a case of that class and the class is S-104407's acceptance (:752, :875); measured `Ran 31 tests / FAILED (fail\u2026"
@@ -34473,8 +34452,6 @@
         "S-120858",
         "S-120859",
         "T-129205",
-        "T-129206",
-        "T-129207",
         "T-129208"
       ],
       "decided": true,
@@ -34539,7 +34516,8 @@
         "docs/plans/f-0334.md:254 \u2014 `asf/kernel/waits.py` `percentile` is `:253`, not `:246`, and `item_hours` is `:266`, not `:259`",
         "docs/plans/f-0334.md:257 \u2014 `asf/kernel/waits.py` `render` is `:377`, not `:370`, and `tick_line` is `:366`, not `:359`",
         "docs/plans/f-0334.md:285 \u2014 `asf/kernel/waits.py` `is_wait` is `:89`, not `:87`",
-        "docs/plans/f-0334.md:26 \u2014 the banner's \"Every anchor, count and probe below was read at `cb47b17c8`\" is false for the eleven anchors above, which carry their `e82751c19` numbers; either re-anchor them or say which files were read at the spec's base",
+        "\"docs/plans/f-0334.md:26 \u2014 the banner's \\\"Every anchor",
+        "count and probe below was read at `cb47b17c8`\\\" is false for the eleven anchors above, which carry their `e82751c19` numbers; either re-anchor them or say which files were read at the spec's base\"",
         "docs/plans/f-0334.md:87 \u2014 PC6's \"twenty test modules\" is twenty-seven (the unique test modules on the `writes:` lines) and its \"Twelve exist and gain cases or classes\" is nineteen, which is what its own list enumerates; fix both counts (`:57` repeats \"twenty test modules\")",
         "docs/plans/f-0334.md:99 \u2014 the thirteen `### S-\u2026:` headings are `docs/specs/f-0334.md:1272-1473`, not `:1262-1420`; the cited range starts in the `## Stories` preamble and ends inside S-131014, omitting S-131015, S-131016 and S-131017"
       ],
@@ -34620,10 +34598,22 @@
         "review: no VERDICT line"
       ],
       "kernel_findings": [
-        "docs/specs/f-0336.md:392 \u2014 the new module's docstring says `(ASF 0.3)`; this repo is at `v0.2.6` and all 24 modules carrying the marker say `(ASF 0.2)`, including `dor.py`, `waits.py` and `stories.py`, which were added during the 0.2 line. Change it to `\"\"\"asf.kernel.flake \u2014 one failure signature on several unrelated heads (ASF 0.2).`",
-        "docs/specs/f-0336.md:790 \u2014 the example tick prints `flakes: 1 watched, 1 quarantined` for a single signature whose verdict is `flake`, but \u00a71.4 step 7 and `VERDICTS` make `watch` the under-minimum verdict, so that count is 0. Either say what the counters count in \u00a77's `measure_flakes` docstring (e.g. \"`<n>` the signatures in the window, `<m>` those with a live entry\") or make the example line `flakes: 0 watched, 1 quarantined`.",
-        "docs/specs/f-0336.md:383 \u2014 the count is twelve files, not eleven: S-122807's acceptance runs `tests.test_flake_triage.SightingsTests`, and `tests/test_flake_triage.py` holds no `SightingsTests` today (its classes are `FakeGH`, `Triage`, `RequiredJobsOnly`, `Door`, `Quarantine`, `BatchTriage`), so that existing test module is a thirteenth edit the enumeration \"one new module, one new test module, seven kernel files, `asf/flake.py` and the documented product block\" leaves out \u2014 rewrite as \"Twelve files: \u2026 `asf/flake.py`, `tests/test_flake_triage.py` and the documented product block\" (the \"Nothing outside `asf/kernel/`, `asf/flake.py`, `docs/` and `tests/`\" fence still holds)",
-        "docs/specs/f-0336.md:304 \u2014 \"In\" item 8 says `decide.on_pr` reads the live entries, but `on_pr(check, pr)` (`asf/kernel/decide.py:1314`) takes no `facts` and so cannot; \u00a74.3 correctly leaves it unchanged and adds `quarantined(check, facts)` ANDed into `_judge_pr`'s `own` list \u2014 reword item 8 to \"`decide._judge_pr` reads the live entries (`decide.quarantined`), so a quarantined signature's red takes the shipped off-PR path\" so the scope list and the design name the same function"
+        "\"docs/specs/f-0336.md:392 \u2014 the new module's docstring says `(ASF 0.3)`; this repo is at `v0.2.6` and all 24 modules carrying the marker say `(ASF 0.2)`, including `dor.py`, `waits.py` and `stories.py`, which were added during the 0.2 line. Change it to `\\\"\\\"\\\"asf.kernel.flake \u2014 one failure signature on several unrelated heads (ASF 0.2).`\", \"docs/specs/f-0336.md:790 \u2014 the example tick prints `flakes: 1 watched",
+        "1 quarantined` for a single signature whose verdict is `flake`",
+        "but \u00a71.4 step 7 and `VERDICTS` make `watch` the under-minimum verdict",
+        "so that count is 0. Either say what the counters count in \u00a77's `measure_flakes` docstring (e.g. \\\"`<n>` the signatures in the window, `<m>` those with a live entry\\\") or make the example line `flakes: 0 watched",
+        "1 quarantined`.\", \"docs/specs/f-0336.md:383 \u2014 the count is twelve files",
+        "not eleven: S-122807's acceptance runs `tests.test_flake_triage.SightingsTests`",
+        "and `tests/test_flake_triage.py` holds no `SightingsTests` today (its classes are `FakeGH`",
+        "`Triage`",
+        "`RequiredJobsOnly`",
+        "`Door`",
+        "`Quarantine`",
+        "`BatchTriage`)",
+        "so that existing test module is a thirteenth edit the enumeration \\\"one new module, one new test module, seven kernel files, `asf/flake.py` and the documented product block\\\" leaves out \u2014 rewrite as \\\"Twelve files: \u2026 `asf/flake.py`, `tests/test_flake_triage.py` and the documented product block\\\" (the \\\"Nothing outside `asf/kernel/`, `asf/flake.py`, `docs/` and `tests/`\\\" fence still holds)\", \"docs/specs/f-0336.md:304 \u2014 \\\"In\\\" item 8 says `decide.on_pr` reads the live entries",
+        "but `on_pr(check",
+        "pr)` (`asf/kernel/decide.py:1314`) takes no `facts` and so cannot; \u00a74.3 correctly leaves it unchanged and adds `quarantined(check",
+        "facts)` ANDed into `_judge_pr`'s `own` list \u2014 reword item 8 to \\\"`decide._judge_pr` reads the live entries (`decide.quarantined`), so a quarantined signature's red takes the shipped off-PR path\\\" so the scope list and the design name the same function\""
       ],
       "kernel_fix_rounds": 3,
       "kernel_notes": [
@@ -34755,7 +34745,7 @@
       "folder": "features",
       "id": "F-0340",
       "kernel_answers": [
-        "Operator line answered: the spec's read-only block was run against ASF's live record root (origin/main checkout) at 2026-10-10 21:15Z. Output:\ncards                                  2693 {'task': 959, 'bug': 693, 'story': 493, 'feature': 348, 'rule': 142, 'decision': 52, 'epic': 6}\ncards the parser refuses               0 []\ncards with a value split over lines    0\nduplicate ids                          0\ntyped / machine keys                   38 / 25 (63 counted, 63 distinct)\nkeys with two value types              []\nkeys typed here, machine there         []\nreference-field edges                  4107 {'parent': 2493, 'after': 1358, 'stories': 247, 'blockedBy': 9}\nedges onto an id not on the record     0 {}\nedges onto a retired or moved card     300 {'parent': 165, 'after': 124, 'blockedBy': 9, 'stories': 2}\nafter: onto parked and unfinished      753 159 distinct blockers\nopen Tasks                             336\n  with no ## Acceptance line           145\n  with a body **Gate** block           192\nasf check findings                     1228 (0 protected-name, 1228 the rest)\nUse these rows in \u00a71.1 for the live root. One more fix round is granted, limited to the review's open findings plus filling in these live numbers; don't widen the spec. If the reviewer's remaining findings are only citation or wording issues, record them as non-blocking follow-ups.",
+        "Operator line answered: the spec's read-only block was run against ASF's live record root (origin/main checkout) at 2026-10-10 21:15Z. Output:\\ncards                                  2693 {'task': 959, 'bug': 693, 'story': 493, 'feature': 348, 'rule': 142, 'decision': 52, 'epic': 6}\\ncards the parser refuses               0 []\\ncards with a value split over lines    0\\nduplicate ids                          0\\ntyped / machine keys                   38 / 25 (63 counted, 63 distinct)\\nkeys with two value types              []\\nkeys typed here, machine there         []\\nreference-field edges                  4107 {'parent': 2493, 'after': 1358, 'stories': 247, 'blockedBy': 9}\\nedges onto an id not on the record     0 {}\\nedges onto a retired or moved card     300 {'parent': 165, 'after': 124, 'blockedBy': 9, 'stories': 2}\\nafter: onto parked and unfinished      753 159 distinct blockers\\nopen Tasks                             336\\n  with no ## Acceptance line           145\\n  with a body **Gate** block           192\\nasf check findings                     1228 (0 protected-name, 1228 the rest)\\nUse these rows in \u00a71.1 for the live root. One more fix round is granted, limited to the review's open findings plus filling in these live numbers; don't widen the spec. If the reviewer's remaining findings are only citation or wording issues, record them as non-blocking follow-ups.",
         "Final round granted (round 5), limited to the latest review's findings in kernel-reviews.jsonl. These are real correctness issues, not wording: (1) MIGRATIONS entries are Migration(apply, additive, note) NamedTuples: write MIGRATIONS[2] = Migration(_migrate_to_2, additive=False, note=...), and state in D10 that additive=False is what makes require() refuse. (2) asf check's positional paths are a filter, not a root: cd into the copy before both commands, or declare a root argument in S-133163; drop 'stays' about asf record-repair taking a path. (3) Add 'satisfied' to the closed schema's declared property set. Fix the rest of that review's list too. Reviewer for the next pass: verify these findings are fixed and block only on a new correctness defect. Citation, line-number or wording issues are non-blocking follow-ups, so approve if only those remain."
       ],
       "kernel_attempts": [
@@ -34765,10 +34755,15 @@
       "kernel_extra_rounds": 2,
       "kernel_findings": [
         "docs/specs/f-0340.md:470 \u2014 `MIGRATIONS` maps a version to a `Migration(apply, additive, note)` NamedTuple on the trunk this branch is really cut from (`asf/schema.py:69-80`, `:98`), not to a callable; write the entry as `MIGRATIONS[2] = Migration(_migrate_to_2, additive=False, note='\u2026')` and add to D10 (`:265`) that `additive=False` is what makes `require()` refuse, because `blocking()` records a gap only for a non-additive step (`asf/schema.py:208-223`, `:242-258`) \u2014 without that flag D10's \"every writing command refuse\" and S-133164's acceptance line at `:875` are both false.",
-        "docs/specs/f-0340.md:554 \u2014 `asf check`'s positional `paths` is a filter applied inside the record root the command already resolved from cwd/`--product` (`asf/record/check.py:180-183`, `asf/cli.py:648-671`), not a root argument, so `asf check /tmp/f0340-copy --schema-only` matches nothing and \"expect: 0 findings, exit 0\" passes whatever state the copy is in; `cd /tmp/f0340-copy` before both commands (or declare the root argument in S-133163), and drop \"stays\" from D10's claim at `:265` that `asf record-repair` already runs over \"a record root given by path\" \u2014 it takes only `--apply` and `--product` today (`asf/record/repair.py:67-74`).",
+        "\"docs/specs/f-0340.md:554 \u2014 `asf check`'s positional `paths` is a filter applied inside the record root the command already resolved from cwd/`--product` (`asf/record/check.py:180-183`, `asf/cli.py:648-671`), not a root argument, so `asf check /tmp/f0340-copy --schema-only` matches nothing and \\\"expect: 0 findings",
+        "exit 0\\\" passes whatever state the copy is in; `cd /tmp/f0340-copy` before both commands (or declare the root argument in S-133163), and drop \\\"stays\\\" from D10's claim at `:265` that `asf record-repair` already runs over \\\"a record root given by path\\\" \u2014 it takes only `--apply` and `--product` today (`asf/record/repair.py:67-74`).\"",
         "docs/specs/f-0340.md:325 \u2014 the closed schema's declared property set (the \u00a72.1 outline, \u00a71.1's 60 keys, the seventeen `kernel_*` keys) never includes `satisfied`, which D13 (`:268`), \u00a72.5 (`:430`, `:432`), \u00a74 (`:593`) and six of S-133161's acceptance lines all require, so with `additionalProperties: false` the first card the resolving operation writes fails its own write gate; declare `satisfied` in \u00a72.1 as an array of `{field, id, date}`.",
         "docs/specs/f-0340.md:218 \u2014 P15's \"at least ten test modules plus `tools/quickstart.sh` read it\" is false: `sample/backlog` is read by five test modules (test_sample_product, test_minimal_product, test_quickstart, test_readme_first_user by name, test_install_e2e by copying the whole `sample/` tree); replace \"at least ten test modules\" with \"five test modules\" (or name them).",
-        "docs/specs/f-0340.md:62 \u2014 \"The Definition of Ready reads both shapes and still finds nothing on 92% of them \u2014 on ASF's own clone, on 100%\" is false: `dor.missing`'s clause (i) is `if not acc and not gate`, so a test ref in a `**Gate**` fence satisfies it with no `## Acceptance` line, and 97 Gate-carrying open Tasks cannot fit inside the 32 that have an acceptance line (so at least 65 of the 363 are read by the gate; on the clone all 111 sit inside the 275). Replace with what was measured: \"363 of 395 open Tasks (92%) carry no acceptance line at all, so the Definition of Ready can only fall back to the unvalidated Gate fence, which 97 of them carry; on ASF's own clone every one of the 275 open Tasks carries no acceptance line, and 111 carry a Gate fence.\" \u2014 and relabel line 49's row \"\u2026of those\" as \"\u2026of the 395\", since the block that produced the 97 counts over all open Tasks.",
+        "\"docs/specs/f-0340.md:62 \u2014 \\\"The Definition of Ready reads both shapes and still finds nothing on 92% of them \u2014 on ASF's own clone",
+        "on 100%\\\" is false: `dor.missing`'s clause (i) is `if not acc and not gate`, so a test ref in a `**Gate**` fence satisfies it with no `## Acceptance` line, and 97 Gate-carrying open Tasks cannot fit inside the 32 that have an acceptance line (so at least 65 of the 363 are read by the gate; on the clone all 111 sit inside the 275). Replace with what was measured: \\\"363 of 395 open Tasks (92%) carry no acceptance line at all",
+        "so the Definition of Ready can only fall back to the unvalidated Gate fence",
+        "which 97 of them carry; on ASF's own clone every one of the 275 open Tasks carries no acceptance line",
+        "and 111 carry a Gate fence.\\\" \u2014 and relabel line 49's row \\\"\u2026of those\\\" as \\\"\u2026of the 395\\\", since the block that produced the 97 counts over all open Tasks.\"",
         "docs/specs/f-0340.md:65 \u2014 replace the citation `F-0336` with `F-0172`: f-0336 is \"Kernel flake quarantine with a defect check\" and never mentions a retired card; the `after:`-onto-retired absorption is F-0172's P12 (and F-0170's P6b).",
         "docs/specs/f-0340.md:232 \u2014 in D8 replace \"158 open Tasks depend on it\" with \"97 open Tasks depend on it\" (\u00a71.1:49; or \"208 across both roots\", \u00a71.1:49 + \u00a71.1:73): 158 matches no measured row.",
         "docs/specs/f-0340.md:406 \u2014 drop `asf record close` from \u00a72.5's list of callers: no such command exists (`asf` has no `record` or `close` subcommand; the only `record` parser is `asf deploy record`, asf/harvest/deploy.py:1049). Name the kernel's own close (asf/kernel/apply.py:389) instead, or say the close entry point is new.",
@@ -34781,7 +34776,8 @@
       ],
       "kernel_fix_rounds": 5,
       "kernel_notes": [
-        "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026",
+        "\"spec-f-0340-1791645582: NEEDS OPERATOR: the card's \\\"Operator decision 2026-10-10\\\" section reached this session cut off mid-sentence \u2014 it ends \\\"validated against the versioned JSON Schema on every write (record writer",
+        "record\\\". The spec rea\u2026\"",
         "spec-f-0340-1791663815: NEEDS OPERATOR: ASF's own live backlog_dir is outside this session's read roots, so \u00a71.1's rows"
       ],
       "kernel_rebuilds": 1,
@@ -34814,7 +34810,8 @@
         "relaunch: operator answer: id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-124005, S-124006 by refs/asf/ids/S-124005 c2d107f. No record item collides with them."
       ],
       "kernel_findings": [
-        "docs/plans/f-0341.md:43 \u2014 PD2 claims `grep -rn quarantine_file asf tests tools docs` at 0ef08e490 \"returns five hits, every one of them inside docs/specs/f-0341.md\"; the command actually returns 17 matching lines, all in docs/specs/f-0341.md. Fix the count to 17 (or drop the exact number and keep the qualitative claim that P3 no longer reads \"no match\").",
+        "\"docs/plans/f-0341.md:43 \u2014 PD2 claims `grep -rn quarantine_file asf tests tools docs` at 0ef08e490 \\\"returns five hits",
+        "every one of them inside docs/specs/f-0341.md\\\"; the command actually returns 17 matching lines, all in docs/specs/f-0341.md. Fix the count to 17 (or drop the exact number and keep the qualitative claim that P3 no longer reads \\\"no match\\\").\"",
         "operator answer: id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-124005, S-124006 by refs/asf/ids/S-124005 c2d107f. No record item collides with them."
       ],
       "kernel_fix_rounds": 2,
@@ -35001,8 +34998,6 @@
         "T-129203",
         "T-129204",
         "T-129205",
-        "T-129206",
-        "T-129207",
         "T-129208",
         "T-129209",
         "T-129210",
@@ -37998,9 +37993,7 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-120856": {
-      "backlinks": [
-        "T-129206"
-      ],
+      "backlinks": [],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38014,9 +38007,7 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-120857": {
-      "backlinks": [
-        "T-129207"
-      ],
+      "backlinks": [],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38030,9 +38021,7 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-120858": {
-      "backlinks": [
-        "T-129206"
-      ],
+      "backlinks": [],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -44584,8 +44573,7 @@
     },
     "S-71204": {
       "backlinks": [
-        "F-0205",
-        "T-0775"
+        "F-0205"
       ],
       "children": [],
       "cost": {
@@ -44612,8 +44600,7 @@
     },
     "S-71205": {
       "backlinks": [
-        "F-0205",
-        "T-0775"
+        "F-0205"
       ],
       "children": [],
       "cost": {
@@ -44794,8 +44781,7 @@
     "S-73204": {
       "backlinks": [
         "F-0280",
-        "F-0329",
-        "T-83142"
+        "F-0329"
       ],
       "children": [],
       "decided": true,
@@ -45243,8 +45229,7 @@
     },
     "S-76105": {
       "backlinks": [
-        "F-0289",
-        "T-78814"
+        "F-0289"
       ],
       "children": [],
       "cost": {
@@ -45550,8 +45535,7 @@
     },
     "S-77504": {
       "backlinks": [
-        "F-0301",
-        "T-79565"
+        "F-0301"
       ],
       "children": [],
       "cost": {
@@ -45580,7 +45564,6 @@
     "S-77505": {
       "backlinks": [
         "F-0301",
-        "T-79565",
         "T-79566"
       ],
       "children": [],
@@ -46118,8 +46101,7 @@
     },
     "S-80454": {
       "backlinks": [
-        "F-0312",
-        "T-81129"
+        "F-0312"
       ],
       "children": [],
       "cost": {
@@ -46652,8 +46634,7 @@
     },
     "S-81206": {
       "backlinks": [
-        "F-0308",
-        "T-82989"
+        "F-0308"
       ],
       "children": [],
       "decided": true,
@@ -46696,8 +46677,7 @@
     },
     "S-81208": {
       "backlinks": [
-        "F-0308",
-        "T-82990"
+        "F-0308"
       ],
       "children": [],
       "decided": true,
@@ -50320,11 +50300,9 @@
         "T-0761",
         "T-0763",
         "T-0768",
-        "T-0775",
         "T-0794",
         "T-0797",
         "T-78813",
-        "T-79565",
         "T-80572",
         "T-80576",
         "T-82986",
@@ -52614,8 +52592,7 @@
         "T-0651",
         "T-0657",
         "T-0708",
-        "T-0724",
-        "T-79565"
+        "T-0724"
       ],
       "children": [],
       "cost": {
@@ -53139,7 +53116,6 @@
         "T-0708",
         "T-0794",
         "T-78813",
-        "T-79565",
         "T-80576",
         "T-82986"
       ],
@@ -53333,7 +53309,6 @@
         "T-0200",
         "T-0216",
         "T-0797",
-        "T-79565",
         "T-80576",
         "T-82986",
         "B-121288"
@@ -53662,7 +53637,6 @@
         "T-0797",
         "T-0802",
         "T-78813",
-        "T-79565",
         "T-80576",
         "T-82986"
       ],
@@ -55446,7 +55420,6 @@
         "F-0277",
         "T-0173",
         "T-0207",
-        "T-79565",
         "T-80576",
         "T-82986",
         "B-75618"
@@ -56191,7 +56164,6 @@
         "T-0815",
         "T-0816",
         "T-78155",
-        "T-79565",
         "T-80572"
       ],
       "children": [],
@@ -56422,7 +56394,6 @@
     "T-0194": {
       "backlinks": [
         "T-0195",
-        "T-0196",
         "T-0197",
         "T-0198",
         "T-0199",
@@ -56466,9 +56437,7 @@
       "after": [
         "T-0194"
       ],
-      "backlinks": [
-        "T-0196"
-      ],
+      "backlinks": [],
       "children": [],
       "cost": {
         "fix_rounds": 0,
@@ -57045,7 +57014,6 @@
         "T-0209",
         "T-0216",
         "T-0368",
-        "T-79565",
         "T-80576",
         "T-82986"
       ],
@@ -57856,8 +57824,7 @@
         "T-0677",
         "T-0700",
         "T-0761",
-        "T-0768",
-        "T-0775"
+        "T-0768"
       ],
       "children": [],
       "cost": {
@@ -58205,7 +58172,6 @@
         "T-0640",
         "T-0663",
         "T-0768",
-        "T-0775",
         "T-0830",
         "T-0831",
         "T-0832",
@@ -59923,7 +59889,6 @@
       ],
       "backlinks": [
         "F-0060",
-        "T-0196",
         "T-0272",
         "T-0273",
         "T-0301",
@@ -59938,8 +59903,7 @@
         "T-0620",
         "T-0671",
         "T-0695",
-        "T-0761",
-        "T-0775"
+        "T-0761"
       ],
       "budget_sessions": 12,
       "budget_usd": 25,
@@ -61248,7 +61212,6 @@
         "T-0620",
         "T-0687",
         "T-0761",
-        "T-0775",
         "B-0138"
       ],
       "children": [],
@@ -61801,7 +61764,6 @@
         "T-0734",
         "T-0815",
         "T-0822",
-        "T-79565",
         "B-0199",
         "B-0308"
       ],
@@ -62050,7 +62012,6 @@
         "T-0724",
         "T-0734",
         "T-78358",
-        "T-79565",
         "T-80572",
         "B-74462",
         "B-75015"
@@ -64349,7 +64310,6 @@
         "T-0654",
         "T-0708",
         "T-0724",
-        "T-79565",
         "T-80576",
         "T-82986",
         "B-0229",
@@ -65576,7 +65536,6 @@
         "T-0734",
         "T-0816",
         "T-78155",
-        "T-79565",
         "T-80572"
       ],
       "budget_sessions": 5,
@@ -66207,7 +66166,6 @@
         "T-0688",
         "T-0745",
         "T-0797",
-        "T-79565",
         "B-0207"
       ],
       "children": [],
@@ -66708,7 +66666,6 @@
     "T-0422": {
       "backlinks": [
         "F-0320",
-        "F-0327",
         "T-0423",
         "T-129177"
       ],
@@ -67088,7 +67045,6 @@
         "F-0112",
         "F-0276",
         "T-0432",
-        "T-0433",
         "T-0434",
         "T-0435",
         "T-0489",
@@ -67149,7 +67105,6 @@
       "backlinks": [
         "F-0112",
         "T-0431",
-        "T-0433",
         "T-0434",
         "T-0435",
         "T-0443",
@@ -67159,7 +67114,6 @@
         "T-0638",
         "T-0651",
         "T-0724",
-        "T-79565",
         "T-82785",
         "B-83414"
       ],
@@ -67310,7 +67264,6 @@
       "backlinks": [
         "T-0431",
         "T-0432",
-        "T-0433",
         "T-0435"
       ],
       "children": [],
@@ -67349,7 +67302,6 @@
       "backlinks": [
         "T-0431",
         "T-0432",
-        "T-0433",
         "T-0434",
         "T-0436"
       ],
@@ -67400,7 +67352,7 @@
       "folder": "tasks",
       "id": "T-0436",
       "kernel_attempts": [
-        "launch: launch: git worktree add -q -B worker/T-0436 ~/.ASF/state/asf/worktrees/review-t-0436-1791612749 origin/worker/T-0436: error: unable to create file tests/test_session_identity.py: No space left on device\nerror: unable to create file tests/test_session_push_guard.py: No space left on device\nerror: unable to create file tests/test_set_parent_removed.py: No space left on device\nerror: unable to create file tests/test_shared_paths.py: No space left on device\nerror: unable to create file tests/test_size.py: No space left on device\nerror: unable to write file tests/test_stale_batch.py\nerror: unable to create file tests/test_state_store.py: No space left on device\nerror: unable to create file tests/test_stop.py: No space left on device\nerror: unable to create file tests/test_stories_first.py: No space left on device\nerror: unable to create file tests/test_surface.py: No space left on device\nerror: unable to create file tests/test_t10_gate.py: No space left on device\nerror: unable to create file tests/test_tables.py: No space left on device\nerror: unable to create file tests/test_tag_resolution.py: No space left on device\nerror: unable to create file tests/test_throughput.py: No space left on device\nerror: unable to create file tests/test_tick.py: No space left on device\nerror: unable to create file tests/test_tick_latency.py: No space left on device\nerror: unable to create file tests/test_tick_steps.py: No space left on device\nerror: unable to create file tests/test_tick_summary.py: No space left on device\nerror: unable to create file tests/test_tick_watchdog.py: No space left on device\nerror: unable to create file tests/test_tokens.py: No space left on device\nerror: unable to create file tests/test_transplant.py: No space left on device\nerror: unable to create file tests/test_tree_green.py: No space left on device\nerror: unable to create file tests/test_trunk_check.py: No space left on device\nerror: unable to create file tests/test_trunk_merge.py: No space left on device\nerror: unable to create file tests/test_trunk_red.py: No space left on device\nerror: unable to create file tests/test_trunkclose.py: No space left on device\nerror: unable to create file tests/test_tune.py: No space left on device\nerror: unable to create file tests/test_unpushed_gate.py: No space left on device\nerror: unable to create file tests/test_upgrade.py: No space left on device\nerror: unable to create file tests/test_upgrade_drain_bound.py: No space left on device\nerror: unable to create file tests/test_version.py: No space left on device\nerror: unable to create file tests/test_views.py: No space left on device\nerror: unable to create file tests/test_views_header.py: No space left on device\nerror: unable to create file tests/test_watch.py: No space left on device\nerror: unable to create file tests/test_wave_clock.py: No space left on device\nerror: unable to create file tests/test_widen.py: No space left on device\nerror: unable to create file tests/test_worker_env.py: No space left on device\nerror: unable to create file tests/test_worker_isolation.py: No space left on device\nerror: unable to create file tests/test_workers.py: No space left on device\nerror: unable to create file tests/test_workflow.py: No space left on device\nerror: unable to create file tests/test_worktree_reaper.py: No space left on device\nerror: unable to create file tests/test_worktrees_ensure.py: No space left on device\nfatal: cannot create directory at 'tools': No space left on device"
+        "launch: launch: git worktree add -q -B worker/T-0436 ~/.ASF/state/asf/worktrees/review-t-0436-1791612749 origin/worker/T-0436: error: unable to create file tests/test_session_identity.py: No space left on device\\nerror: unable to create file tests/test_session_push_guard.py: No space left on device\\nerror: unable to create file tests/test_set_parent_removed.py: No space left on device\\nerror: unable to create file tests/test_shared_paths.py: No space left on device\\nerror: unable to create file tests/test_size.py: No space left on device\\nerror: unable to write file tests/test_stale_batch.py\\nerror: unable to create file tests/test_state_store.py: No space left on device\\nerror: unable to create file tests/test_stop.py: No space left on device\\nerror: unable to create file tests/test_stories_first.py: No space left on device\\nerror: unable to create file tests/test_surface.py: No space left on device\\nerror: unable to create file tests/test_t10_gate.py: No space left on device\\nerror: unable to create file tests/test_tables.py: No space left on device\\nerror: unable to create file tests/test_tag_resolution.py: No space left on device\\nerror: unable to create file tests/test_throughput.py: No space left on device\\nerror: unable to create file tests/test_tick.py: No space left on device\\nerror: unable to create file tests/test_tick_latency.py: No space left on device\\nerror: unable to create file tests/test_tick_steps.py: No space left on device\\nerror: unable to create file tests/test_tick_summary.py: No space left on device\\nerror: unable to create file tests/test_tick_watchdog.py: No space left on device\\nerror: unable to create file tests/test_tokens.py: No space left on device\\nerror: unable to create file tests/test_transplant.py: No space left on device\\nerror: unable to create file tests/test_tree_green.py: No space left on device\\nerror: unable to create file tests/test_trunk_check.py: No space left on device\\nerror: unable to create file tests/test_trunk_merge.py: No space left on device\\nerror: unable to create file tests/test_trunk_red.py: No space left on device\\nerror: unable to create file tests/test_trunkclose.py: No space left on device\\nerror: unable to create file tests/test_tune.py: No space left on device\\nerror: unable to create file tests/test_unpushed_gate.py: No space left on device\\nerror: unable to create file tests/test_upgrade.py: No space left on device\\nerror: unable to create file tests/test_upgrade_drain_bound.py: No space left on device\\nerror: unable to create file tests/test_version.py: No space left on device\\nerror: unable to create file tests/test_views.py: No space left on device\\nerror: unable to create file tests/test_views_header.py: No space left on device\\nerror: unable to create file tests/test_watch.py: No space left on device\\nerror: unable to create file tests/test_wave_clock.py: No space left on device\\nerror: unable to create file tests/test_widen.py: No space left on device\\nerror: unable to create file tests/test_worker_env.py: No space left on device\\nerror: unable to create file tests/test_worker_isolation.py: No space left on device\\nerror: unable to create file tests/test_workers.py: No space left on device\\nerror: unable to create file tests/test_workflow.py: No space left on device\\nerror: unable to create file tests/test_worktree_reaper.py: No space left on device\\nerror: unable to create file tests/test_worktrees_ensure.py: No space left on device\\nfatal: cannot create directory at 'tools': No space left on device"
       ],
       "kernel_state": "done",
       "links": {
@@ -68075,7 +68027,6 @@
         "T-136825",
         "T-78155",
         "T-78358",
-        "T-79565",
         "T-80572",
         "B-138845"
       ],
@@ -70104,7 +70055,6 @@
         "T-0532",
         "T-0724",
         "T-0734",
-        "T-79565",
         "T-80572"
       ],
       "children": [],
@@ -70635,7 +70585,6 @@
         "T-0516"
       ],
       "backlinks": [
-        "F-0327",
         "T-0516"
       ],
       "children": [],
@@ -70828,7 +70777,6 @@
         "T-0521"
       ],
       "backlinks": [
-        "F-0327",
         "T-0523"
       ],
       "children": [],
@@ -71084,7 +71032,6 @@
         "T-0668",
         "T-0688",
         "T-0691",
-        "T-0775",
         "T-0813",
         "T-0823",
         "T-0824",
@@ -71478,7 +71425,6 @@
         "F-0330",
         "T-0506",
         "T-0538",
-        "T-0775",
         "T-129194",
         "B-0234",
         "B-0293",
@@ -71885,7 +71831,6 @@
     },
     "T-0547": {
       "backlinks": [
-        "F-0327",
         "B-0158"
       ],
       "children": [],
@@ -74186,7 +74131,6 @@
       "backlinks": [
         "F-0218",
         "F-0241",
-        "T-0775",
         "B-0164"
       ],
       "children": [],
@@ -74432,7 +74376,6 @@
         "T-0763",
         "T-0768",
         "T-0774",
-        "T-0775",
         "T-0776",
         "T-129165",
         "T-76352",
@@ -75297,8 +75240,7 @@
         "T-0745",
         "T-0756",
         "T-0763",
-        "T-0792",
-        "T-79565"
+        "T-0792"
       ],
       "children": [],
       "cost": {
@@ -76449,7 +76391,6 @@
         "T-0745",
         "T-0756",
         "T-0763",
-        "T-79565",
         "B-0246",
         "B-0531",
         "B-0577"
@@ -79425,11 +79366,9 @@
         "T-0726",
         "T-0727",
         "T-0734",
-        "T-0775",
         "T-0793",
         "T-78358",
         "T-78813",
-        "T-79565",
         "T-80572",
         "T-82986",
         "B-76879"
@@ -79879,7 +79818,6 @@
         "T-0735",
         "T-0816",
         "T-78155",
-        "T-79565",
         "T-80572",
         "B-77333",
         "B-77535",
@@ -80331,7 +80269,6 @@
         "T-0756",
         "T-0763",
         "T-0797",
-        "T-79565",
         "B-0254",
         "B-0326",
         "B-0327"
@@ -80838,8 +80775,7 @@
         "T-0757",
         "T-0758",
         "T-0763",
-        "T-76352",
-        "T-79565"
+        "T-76352"
       ],
       "budget_sessions": 5,
       "children": [],
@@ -81042,8 +80978,7 @@
         "T-0744"
       ],
       "backlinks": [
-        "T-0762",
-        "T-0775"
+        "T-0762"
       ],
       "children": [],
       "cost": {
@@ -81144,7 +81079,6 @@
         "T-0825",
         "T-76352",
         "T-77803",
-        "T-79565",
         "B-70755",
         "B-76372"
       ],
@@ -81384,7 +81318,6 @@
         "F-0226",
         "T-0769",
         "T-0770",
-        "T-0775",
         "T-0795",
         "T-0805",
         "T-0806",
@@ -84769,7 +84702,8 @@
         "groom-fill-t-129174-1791656640: groom-fill raised risk high: The parent-Done DoR hold is a stale, self-correcting Feature-state read (kernel_state: done is a leftover from closed PR #1262; the live F-0318.state is New since it now derives from its Task children per dce5aac92) \u2014 dor.missing() finds no actual gap: acceptance names real tests, writes sit on trunk, after (T-129173) is unparked, and parent is not Done.",
         "groom-fill-t-129174-1791657636: groom-fill raised risk high: Acceptance filled per docs/plans/f-0318.md Task 2 (S-91008/S-91009 lines mapped to the two test classes it adds); writes unchanged \u2014 all three paths exist already (test_spec_stories.py is created by its predecessor T-129173, which `after:` already gates), and the edit sits in the tick's record step and stage.WRITERS so risk is raised.",
         "groom-fill-t-129174-1791666467: groom-fill raised risk high: parent F-0318 is not currently Done \u2014 asf next shows 0 Closed / 3 Tasks under it (T-129173 FIX\u2192CORRECT, T-129175 PUSHED\u2192LAND, this card New), so a Feature derives Done only once every Task under it is, which is not the case; the reported DoR gap is stale, and the card's writes/acceptance/after fields already satisfy the rest of the Definition of Ready (mint_spec_stories and tests/test_spec_stories.py genuinely absent from trunk, matching the card's scope).",
-        "groom-fill-t-129174-1791668168: groom-fill raised risk high: card already carries correct acceptance/writes/after matching docs/plans/f-0318.md Task 2; the sole DoR gap, parent F-0318 is Done, is a stale kernel_state read \u2014 F-0318's own Task 1 module (asf/record/spec_stories.py) isn't on origin/main yet, and the exact defect (\"DoR reads the parent's state as the tick derives it, never a stale stored kernel_state\") is already fixed, unmerged, on origin/fix/F-0318-stale-parent-done (e961d947f).",
+        "\"groom-fill-t-129174-1791668168: groom-fill raised risk high: card already carries correct acceptance/writes/after matching docs/plans/f-0318.md Task 2; the sole DoR gap, parent F-0318 is Done, is a stale kernel_state read \u2014 F-0318's own Task 1 module (asf/record/spec_stories.py) isn't on origin/main yet, and the exact defect (\\\"DoR reads the parent's state as the tick derives it",
+        "never a stale stored kernel_state\\\") is already fixed, unmerged, on origin/fix/F-0318-stale-parent-done (e961d947f).\"",
         "groom-fill-t-129174-1791668979: groom-fill raised risk high: parent F-0318's stored kernel_state reads Done but none of its three Tasks have landed (spec_stories.py absent, tick.py/stage.py unwired) \u2014 this is the stale-stored-state DoR bug that F-0318 itself names in unmerged commit e961d947f, not a real gap in the card."
       ],
       "links": {
@@ -85686,8 +85620,6 @@
     },
     "T-129205": {
       "backlinks": [
-        "T-129206",
-        "T-129207",
         "T-129208",
         "T-80573",
         "B-145247"
@@ -87305,9 +87237,7 @@
         "T-76352"
       ],
       "backlinks": [
-        "F-0340",
-        "T-78814",
-        "T-83142"
+        "F-0340"
       ],
       "children": [],
       "cost": {
@@ -88540,8 +88470,7 @@
         "T-82986"
       ],
       "backlinks": [
-        "T-82988",
-        "T-82989"
+        "T-82988"
       ],
       "children": [],
       "decided": true,
@@ -88575,9 +88504,7 @@
       "after": [
         "T-82987"
       ],
-      "backlinks": [
-        "T-82990"
-      ],
+      "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
@@ -88964,7 +88891,6 @@
         "T-82986"
       ],
       "backlinks": [
-        "T-81129",
         "T-83346",
         "T-83347",
         "T-83348",
@@ -89069,7 +88995,10 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
       "kernel_findings": [
-        "asf/tick/step_wave.py:906-917 (and the `launch_now` call site at :1416-1417, which omits `record_root`) \u2014 `rulepass.apply`'s return is treated as an unconditional stand-down signal regardless of whether anything was actually written; on the wave-clock path (`launch_now`, no `record_root`) a waivable adjudicate row is screened `RULED`/`starts=False` forever instead of starting, contradicting the plan's own PD5 (\"launch_now gives none, so on the wave-clock path a waivable row starts, as today, with one line saying why\"). Fix: only let `ruled` stand the row down when `not act` (the preview/status-cell shape) or `record_root` was actually given; on `act=True` with no `record_root`, fall through so the row starts."
+        "\"asf/tick/step_wave.py:906-917 (and the `launch_now` call site at :1416-1417, which omits `record_root`) \u2014 `rulepass.apply`'s return is treated as an unconditional stand-down signal regardless of whether anything was actually written; on the wave-clock path (`launch_now`, no `record_root`) a waivable adjudicate row is screened `RULED`/`starts=False` forever instead of starting, contradicting the plan's own PD5 (\\\"launch_now gives none",
+        "so on the wave-clock path a waivable row starts",
+        "as today",
+        "with one line saying why\\\"). Fix: only let `ruled` stand the row down when `not act` (the preview/status-cell shape) or `record_root` was actually given; on `act=True` with no `record_root`, fall through so the row starts.\""
       ],
       "kernel_fix_rounds": 1,
       "kernel_notes": [
