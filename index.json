@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T00:08:14Z",
+  "generated": "2026-10-10T00:12:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3759,7 +3759,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3768,7 +3768,7 @@
       "state": "New",
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
-      "updated": "2026-10-10T00:08:11Z"
+      "updated": "2026-10-10T00:12:19Z"
     },
     "B-0122": {
       "backlinks": [],
@@ -16303,10 +16303,14 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0584",
+      "kernel_findings": [
+        "red: tests (3.12)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1277: install-clean-linux is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "building",
       "last_filed": "2026-10-08",
       "parent": "E-0001",
       "schema_version": 1,
@@ -16316,7 +16320,7 @@
       "state": "New",
       "title": "F-0097 has ended \"empty branch\" 2 times in 24h",
       "type": "bug",
-      "updated": "2026-10-09T22:05:43Z"
+      "updated": "2026-10-10T00:12:19Z"
     },
     "B-0585": {
       "backlinks": [],
@@ -31839,7 +31843,7 @@
       "state": "Active",
       "title": "A writes-overlap serialization (after:) is dropped when the overlapping path leaves either card's writes",
       "type": "feature",
-      "updated": "2026-10-10T00:08:11Z"
+      "updated": "2026-10-10T00:12:19Z"
     },
     "F-0273": {
       "backlinks": [
@@ -33462,7 +33466,7 @@
       "kernel_notes": [
         "spec-f-0323-1791586286: NEEDS OPERATOR: (none)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33470,7 +33474,7 @@
       "state": "New",
       "title": "an item resolved by one landing can't take a follow-up fix: the lane closes the PR and asf reopen is refused",
       "type": "feature",
-      "updated": "2026-10-10T00:01:37Z"
+      "updated": "2026-10-10T00:12:19Z"
     },
     "F-0324": {
       "backlinks": [],
@@ -33529,7 +33533,7 @@
       ],
       "folder": "features",
       "id": "F-0326",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33537,7 +33541,7 @@
       "state": "New",
       "title": "a pushed Task with an open PR gets no landing request and no row while others wait on it",
       "type": "feature",
-      "updated": "2026-10-09T23:57:28Z"
+      "updated": "2026-10-10T00:12:19Z"
     },
     "F-0327": {
       "backlinks": [],
@@ -63421,10 +63425,11 @@
       "folder": "tasks",
       "id": "T-0432",
       "kernel_answers": [
-        "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
+        "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done.",
+        "One more fix round is granted (it blocks 30). Address the single review finding: add a test for installed_release() prepending 'v' (tests/test_release_channel.py, stub cli._release and drift.installed_commit), push, and report done."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
+        "relaunch: operator answer: One more fix round is granted (it blocks 30). Address the single review finding: add a test for installed_release() prepending 'v' (tests/test_release_channel.py, stub cli._release and drift.installed_commit), push, and report done."
       ],
       "kernel_findings": [
         "asf/upgrade.py:631 \u2014 `installed_release()` now prepends `v` to the tag so `version_tuple`/`newer` can parse it; add a test (e.g. in `tests/test_release_channel.py`, stubbing `cli._release`/`drift.installed_commit`) asserting `upgrade.installed_release()` returns a `RELEASE_RE`-matching tag \u2014 currently this function has zero test coverage anywhere in the suite."
@@ -63447,7 +63452,7 @@
       "state": "Active",
       "title": "the release primitives \u2014 the hourly shared cache, the version tuple, and an install that can be handed a tag",
       "type": "task",
-      "updated": "2026-10-10T00:08:11Z",
+      "updated": "2026-10-10T00:12:19Z",
       "writes": [
         "asf/upgrade.py",
         "asf/cli.py",
