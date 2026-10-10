@@ -18,3 +18,9 @@ Operator decision 2026-10-10 ("we need something solid"): the card itself is JSO
 - Humans read a generated view: `asf show <id>` renders markdown, and/or a generated, read-only .md next to the JSON that no tool parses.
 - Migration converts every existing card (frontmatter + body machine fields → JSON) with a round-trip check; old .md cards are read only by the migration.
 - No hand-parsed format anywhere in the kernel's read path.
+
+Referential integrity (operator 2026-10-10: "so many problems with cards getting stuck because of dependencies on stories already finished or removed"):
+- Every reference field (parent, after, stories, superseded_by, fixes) must resolve to an existing card id on write; a dangling reference is refused by the writer, hook and CI.
+- Retiring, closing, superseding or deleting a card is one operation that also resolves its incoming references in the same record commit: Done/retired → the edge is satisfied (kept for history, marked satisfied); superseded → the edge is re-pointed to superseded_by; deleted → the edge is removed with a note on the dependent card. No card ever points at a card that does not exist.
+- The kernel treats any reference it cannot resolve as LIMBO with the reason (never as "parked", never silently blocked) and a nightly record check reports 0 dangling references as a measured invariant.
+Today's live cases to use as fixtures: T-82991/T-82986 (launched before its after: landed), T-83142 and T-78813 (after: on retired T-0775/T-76352 read as parked), stories: ids never minted (12 of 38 Tasks), 140 after: edges onto parked legacy items.
