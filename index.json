@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T16:25:08Z",
+  "generated": "2026-10-10T16:30:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33789,6 +33789,12 @@
       "kernel_attempts": [
         "relaunch: escalated: the previous session stopped (done without a push: pushed: yes 09ec269b02af964eb85976f665d07d781098c4e9 (this report commit is pushed on top of it)) \u2014 pick up from its report and branch, and finish the item"
       ],
+      "kernel_findings": [
+        "docs/plans/f-0327.md:65 \u2014 PD11 says \"the **three** paths the Out list protects by *not* appearing\" and then names five (`asf/workers/lifecycle.py`, `asf/workers/loops.py`, `asf/invariants.py`, `asf/harvest/lane.py`, `docs/guide/operating.md`); the spec's own footprint section names those same five. Change \"three paths\" to \"five paths\".",
+        "docs/plans/f-0327.md:21 \u2014 \"**Four** rows below correct it on a point of fact\" (bullets: PD3, PD4, PD6, PD12) contradicts PD11 at `:65` and the leave-out section at `:822`, which both say \"PD3, PD4, PD6, PD8 and PD12 \u2026 all five\". PD8 does correct the spec (P14's 34/777/147 read 35/806/170), so make `:21` \"Five rows\" and add the PD8 bullet \u2014 or drop PD8 from both \"all five\" sentences.",
+        "escalated: the previous session stopped (done without a push: pushed: yes 09ec269b02af964eb85976f665d07d781098c4e9 (this report commit is pushed on top of it)) \u2014 pick up from its report and branch, and finish the item"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0327-1791587530: NEEDS OPERATOR: the five Story cards could not be minted (the record directory is outside this session's reachable paths); they are declared in the spec's `## Stories` block with ids from this session's range for `a\u2026",
         "\"\\\"spec-f-0327-1791595557: NEEDS OPERATOR: confirm P4/P6's live totals on the reporting product",
@@ -33798,7 +33804,7 @@
         "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026",
         "plan-f-0327-1791636840: NEEDS OPERATOR: re-raise, still unanswered from plan-f-0327-1791634631 \u2014 harvest read that session's predecessor's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunc\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "removed": "intake: describes old-floor park/relaunch-cap behavior (lifecycle.py, relaunch.py, harvest/lane.py) the kernel replaced; kernel.decide already weighs blocked_count for relaunch ordering and surfaces a top-blockers list in the tick summary (groom 2026-10-10)",
       "schema_version": 1,
@@ -33807,7 +33813,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T16:25:06Z"
+      "updated": "2026-10-10T16:30:07Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -34011,7 +34017,7 @@
       "state": "New",
       "title": "Factory GitHub identity: GitHub App installation token instead of the operator's personal token",
       "type": "feature",
-      "updated": "2026-10-10T16:25:06Z"
+      "updated": "2026-10-10T16:30:07Z"
     },
     "F-0334": {
       "backlinks": [
@@ -34030,7 +34036,7 @@
         "spec-f-0334-1791642615: NEEDS OPERATOR: which classes of question the console is answering \u2014 `asf kernel questions --product <p> --classify --since 2026-09-26T00:00:00Z`",
         "spec-f-0334-1791645911: NEEDS OPERATOR: every session's push of product `asf` on this host is refused \u2014 the pinned CLI predates the `pre-push` subcommand its own current hook shim calls, and no local build has it. Confirm read-only with `p\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34039,7 +34045,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T16:16:45Z"
+      "updated": "2026-10-10T16:30:07Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34112,7 +34118,10 @@
       "folder": "features",
       "id": "F-0338",
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "plan-f-0338-1791648148: NEEDS OPERATOR: product `asf` is pinned to a venv predating the `asf pre-push` door its own githook now calls, so every worker push on this host is refused and `plan/F-0338` is committed at `2ac534e4f` but unpublish\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 3,
@@ -34121,7 +34130,7 @@
       "state": "New",
       "title": "Kernel mainline: cancelled trunk runs are no verdict; dispatch one trunk run when too many commits lack a result",
       "type": "feature",
-      "updated": "2026-10-10T16:02:51Z"
+      "updated": "2026-10-10T16:30:07Z"
     },
     "F-0339": {
       "backlinks": [
@@ -34176,7 +34185,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T16:25:06Z"
+      "updated": "2026-10-10T16:30:07Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34192,7 +34201,7 @@
       "kernel_notes": [
         "spec-f-0341-1791646559: NEEDS OPERATOR: the pre-push shim calls `asf pre-push`, which the pinned install (sha `14b963ba1`, policy `pinned`) does not declare \u2014 the door landed later, in `aa56423fd`. Decide whether to lift the pin to a sha a\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "nice",
       "schema_version": 1,
@@ -34200,23 +34209,24 @@
       "state": "New",
       "title": "Proof claims on quarantined tests are refused",
       "type": "feature",
-      "updated": "2026-10-10T16:21:04Z"
+      "updated": "2026-10-10T16:30:07Z"
     },
     "F-0342": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0342",
       "kernel_fix_rounds": 0,
       "kernel_state": "review",
       "parent": "E-0001",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T15:57:37Z",
       "state": "New",
       "title": "asf upgrade --product on a kernel product reinstalls the paused 0.1 floor clocks; the pin cannot move",
       "type": "feature",
-      "updated": "2026-10-10T16:25:06Z"
+      "updated": "2026-10-10T16:30:07Z"
     },
     "R-0001": {
       "backlinks": [
@@ -82166,14 +82176,14 @@
       "folder": "tasks",
       "id": "T-80572",
       "kernel_answers": [
-        "Three fix rounds did not satisfy the review. Archive the branch and rebuild this Task fresh from current main on the strong model, using the review's findings as input."
+        "Three fix rounds did not satisfy the review. Archive the branch and rebuild this Task fresh from current main on the strong model, using the review's findings as input.",
+        "Supersedes my 15:15Z answer: do NOT archive or rebuild. Grant one more fix round on the held branch worker/T-80572 (PR #1367), strong model. Fix exactly the 3 review findings: (1) rehearsal.py:183 keep only the record template's own ## headings verbatim, clear the rest, add a hand-written-heading card to _build_source; (2) rehearsal.py:78 widen _HISTORY_LINE_RE for timestamped History lines and use clear_ids_kept in the fallback, add that shape to DESCRIPTION; (3) rehearsal.py:380 write the mismatch done/ copy under its own note's stem, record intake.mismatch, check containment in manifest_holds, assert in IntakeThreeStates. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Three fix rounds did not satisfy the review. Archive the branch and rebuild this Task fresh from current main on the strong model, using the review's findings as input.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: Supersedes my 15:15Z answer: do NOT archive or rebuild. Grant one more fix round on the held branch worker/T-80572 (PR #1367), strong model. Fix exactly the 3 review findings: (1) rehearsal.py:183 keep only the record template's own ## headings verbatim, clear the rest, add a hand-written-heading card to _build_source; (2) rehearsal.py:78 widen _HISTORY_LINE_RE for timestamped History lines and use clear_ids_kept in the fallback, add that shape to DESCRIPTION; (3) rehearsal.py:380 write the mismatch done/ copy under its own note's stem, record intake.mismatch, check containment in manifest_ho\u2026"
       ],
       "kernel_dor_fills": 1,
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/rehearsal.py:131 \u2014 clear every frontmatter string value except an explicit structural allowlist (id, type, state, stage, stage_since, updated, parent, schema_version, dates, rank, priority, severity, lane, size, writes, after, delivers, blockedBy, supersedes, superseded_by, legacy_id), keeping `removed` on the ids-kept path, so `reshape:`, `decided_by:` and a Rule's `reason:`/`check:` cannot reach the snapshot verbatim",
         "asf/rehearsal.py:150 \u2014 replace the `else l` branch with `else clear_ids_kept(l)` so a `## History` continuation line is cleared too (blank lines stay blank)",
@@ -82191,11 +82201,7 @@
         "build-t-80572-1791646302: NEEDS OPERATOR: the 2026-10-10T15:15Z answer says to archive worker/T-80572 and rebuild this Task fresh from current main, while this session's brief says to correct the held branch and never recut or force it \u2014 the\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 4 fix rounds",
-      "kernel_stuck_since": "2026-10-10T16:24:12Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -82208,7 +82214,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T16:25:06Z",
+      "updated": "2026-10-10T16:30:07Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -83041,7 +83047,7 @@
       "kernel_notes": [
         "groom-fill-t-82990-1791637217: groom-fill raised risk high: the card's Acceptance is empty only because the 4000-char cut swallowed the plan's byte-for-byte S-81208 fence; copying it in (paired to AdvanceTest/ReportTest) satisfies DoR, and the Task lands in the kernel's daily step plus release-channel pushes so risk stays high."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -83054,7 +83060,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T16:16:45Z",
+      "updated": "2026-10-10T16:30:07Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
