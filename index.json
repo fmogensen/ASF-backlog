@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T13:08:05Z",
+  "generated": "2026-10-10T13:09:58Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33562,9 +33562,10 @@
         "session ran past its max age"
       ],
       "kernel_notes": [
-        "spec-f-0322-1791611510: NEEDS OPERATOR: whether to file the second defect P5 measures \u2014 a relaunch-cap park whose job was later reused by a run on another item is reachable by neither `asf unpark` nor health, so it can never be released \u2014\u2026"
+        "spec-f-0322-1791611510: NEEDS OPERATOR: whether to file the second defect P5 measures \u2014 a relaunch-cap park whose job was later reused by a run on another item is reachable by neither `asf unpark` nor health, so it can never be released \u2014\u2026",
+        "plan-f-0322-1791636892: NEEDS OPERATOR: whether to file the spec's P5 second defect as its own card \u2014 `asf unpark` and health's release rules are both keyed by job through a one-record-per-job map, so a park whose job name was later reused\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33572,7 +33573,7 @@
       "state": "New",
       "title": "status keeps a retired item's relaunch-cap park",
       "type": "feature",
-      "updated": "2026-10-10T12:55:04Z"
+      "updated": "2026-10-10T13:09:55Z"
     },
     "F-0323": {
       "backlinks": [],
@@ -33832,7 +33833,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T13:08:03Z"
+      "updated": "2026-10-10T13:09:55Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -75203,7 +75204,7 @@
       "kernel_notes": [
         "PR #1142: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0194-87b236e237ad.md"
       },
@@ -75223,7 +75224,7 @@
       "stories": [],
       "title": "a sha runs on an ssh-reachable machine and comes back \u2014 the transport, the three remote scripts, the store, and the pass that dispatches, collects, supersedes and times out",
       "type": "task",
-      "updated": "2026-10-10T12:55:04Z",
+      "updated": "2026-10-10T13:09:55Z",
       "writes": [
         "asf/ci_vm.py",
         "tests/test_ci_vm.py",
@@ -76834,7 +76835,7 @@
       "kernel_notes": [
         "PR #848: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0130-47df67914dbf.md"
       },
@@ -76852,7 +76853,7 @@
       "stories": [],
       "title": "the product declares its pre-ASF branch convention, and a misshapen declaration is loud",
       "type": "task",
-      "updated": "2026-10-10T13:04:40Z",
+      "updated": "2026-10-10T13:09:55Z",
       "writes": [
         "asf/conventions.py",
         "tests/test_conventions.py",
@@ -81239,11 +81240,7 @@
         "groom-fill-t-78813-1791635680: groom-fill raised risk high: Content matches the approved spec/plan exactly (zero drift at base); the parked after: items are legitimate footprint sequencing (T-76352 shares step_wave.py, still mid-review) that clears on its own, not a card defect.",
         "groom-fill-t-78813-1791636552: groom-fill raised risk high: Acceptance/writes already match the approved spec verbatim; T-76352 is landed (12f28448f, ancestor of HEAD) and T-0775's open work touches rows.py with zero line-level overlap on this Task's edits \u2014 the after: dependency is a real but harmless footprint-gate wait, not a card defect."
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "dor: after: parked: T-0775, T-76352 \u2014 2 groom-fill session(s) could not make it ready",
-      "kernel_stuck_since": "2026-10-10T12:58:50Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81256,7 +81253,7 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-10T13:00:23Z",
+      "updated": "2026-10-10T13:09:55Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
@@ -81778,11 +81775,7 @@
         "groom-fill-t-80574-1791635460: groom-fill raised risk high: upstream Tasks (T-80572 Active, T-80573 New) haven't landed asf/rehearsal.py yet, which is why the writes read absent \u2014 correct sequencing per PD14, not a scope defect; filled acceptance from S-79606 and marked the genuinely-new test file.",
         "groom-fill-t-80574-1791636223: groom-fill raised risk high: still sequencing-blocked, not a scope defect \u2014 T-80572 (the builder, PR #1367) is open/unmerged and T-80573 (the runner and `ids` act this Task's `record` act appends after) has no implementation yet, so asf/rehearsal.py's ACTS table and tests/rehearsal/record/** remain absent from trunk; PD14 applies exactly as in the prior same-day groom-fill, and the staged_guard.py line refs this card cites still match trunk."
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "dor: writes not on trunk: tests/rehearsal/record/** \u2014 2 groom-fill session(s) could not make it ready",
-      "kernel_stuck_since": "2026-10-10T13:03:01Z",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -81795,7 +81788,7 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-10T13:08:03Z",
+      "updated": "2026-10-10T13:09:55Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_record.py",
@@ -82332,7 +82325,7 @@
         "rebase: PR #1245 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "landing",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82345,7 +82338,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T13:08:03Z",
+      "updated": "2026-10-10T13:09:55Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
