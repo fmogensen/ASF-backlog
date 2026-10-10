@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T12:31:10Z",
+  "generated": "2026-10-10T12:34:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33133,7 +33133,7 @@
         "plan-f-0307-1791632343: NEEDS OPERATOR: whether the stale-record relaunch deserves its own Bug card \u2014 the kernel launched this plan session for F-0307 two hours after its plan landed and was approved, because the record card still reads st\u2026",
         "plan-f-0307-1791634662: NEEDS OPERATOR: whether F-0307's record row has empty `links.spec`/`links.plan` despite both docs being on the trunk, and whether its two Task cards were ever minted \u2014 the record is outside this worktree, so I could\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "rank": 3,
       "schema_version": 1,
@@ -33142,7 +33142,7 @@
       "state": "Active",
       "title": "Feeder S1 gate: no new Feature work launches while an S1 Bug is open (stability first, in code)",
       "type": "feature",
-      "updated": "2026-10-10T12:26:31Z"
+      "updated": "2026-10-10T12:34:48Z"
     },
     "F-0308": {
       "backlinks": [
@@ -33392,7 +33392,7 @@
       ],
       "folder": "features",
       "id": "F-0316",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33400,7 +33400,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T12:06:13Z"
+      "updated": "2026-10-10T12:34:48Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33725,7 +33725,7 @@
         "plan-f-0328-1791631578: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` adds five commits over `47466e997`, two of which are the spec's\u2026",
         "plan-f-0328-1791633802: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` is 5 behind and 8 ahead of the trunk over `47466e997`, and two o\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33733,7 +33733,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T12:21:45Z"
+      "updated": "2026-10-10T12:34:48Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -81214,7 +81214,7 @@
       "folder": "tasks",
       "id": "T-78813",
       "kernel_dor_fills": 1,
-      "kernel_dor_fills_ver": "0.1.270.post75+gffec72cb",
+      "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "kernel_notes": [
         "groom-fill-t-78813-1791632262: groom-fill verdict rejected: risk_raise '' is not one of none | high",
         "groom-fill-t-78813-1791633327: groom-fill verdict rejected: acceptance line names no test: '...'",
@@ -81232,7 +81232,7 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-10T12:31:07Z",
+      "updated": "2026-10-10T12:34:48Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
@@ -81396,7 +81396,7 @@
         "PR #1342: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81413,7 +81413,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-10T12:31:07Z",
+      "updated": "2026-10-10T12:34:48Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
@@ -81650,7 +81650,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -81663,7 +81663,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T12:14:31Z",
+      "updated": "2026-10-10T12:34:48Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -81974,9 +81974,10 @@
       "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1227: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1227: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1227: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "build-t-81129-1791634419: NEEDS OPERATOR: plan Task 5 of docs/plans/f-0312.md registers `regression.exempt_found_in` but its `writes:` cannot reach the reader in `asf/harvest/regression.py`, so the flag would land registered and unread \u2014 add\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -81989,7 +81990,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T12:14:31Z",
+      "updated": "2026-10-10T12:34:48Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -82292,7 +82293,7 @@
         "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82305,7 +82306,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T12:26:31Z",
+      "updated": "2026-10-10T12:34:48Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82371,7 +82372,7 @@
       "kernel_notes": [
         "build-t-82988-1791631383: NEEDS OPERATOR: whether the product whose repo_slug is ASF's own repo names conventions.landing_checks \u2014 with no names upgrade.ci_verdict answers Unknown, Unknown is never green (D4, P9), and neither channel ever pu\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82384,7 +82385,7 @@
       ],
       "title": "edge \u2014 the newest green tag, and one fast-forward through the guard",
       "type": "task",
-      "updated": "2026-10-10T12:22:41Z",
+      "updated": "2026-10-10T12:34:48Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py"
@@ -82729,7 +82730,7 @@
       ],
       "title": "the feeder stands down \u2014 one `waived` membership, two branches, and the S1 lane's word",
       "type": "task",
-      "updated": "2026-10-10T12:26:31Z",
+      "updated": "2026-10-10T12:34:48Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
