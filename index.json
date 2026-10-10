@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T20:43:13Z",
+  "generated": "2026-10-10T20:48:59Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -86,6 +86,7 @@
     "B-0003": {
       "area": "factory",
       "backlinks": [
+        "S-134706",
         "B-0025",
         "B-0026",
         "B-0045"
@@ -16889,7 +16890,7 @@
       "children": [],
       "folder": "bugs",
       "id": "B-138845",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
       "rank": -1,
       "schema_version": 1,
@@ -16897,7 +16898,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-10T20:36:01Z"
+      "updated": "2026-10-10T20:48:54Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -20134,6 +20135,7 @@
         "F-0097",
         "F-0114",
         "F-0349",
+        "S-134706",
         "T-0031",
         "T-0034",
         "T-0035",
@@ -21395,6 +21397,7 @@
         "F-0120",
         "F-0217",
         "F-0274",
+        "S-134706",
         "T-0175",
         "T-0221",
         "T-0487",
@@ -21540,7 +21543,9 @@
     },
     "F-0008": {
       "area": "factory",
-      "backlinks": [],
+      "backlinks": [
+        "S-134706"
+      ],
       "children": [],
       "decided": false,
       "evidence": [
@@ -33863,7 +33868,8 @@
       ],
       "kernel_notes": [
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
-        "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
+        "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026",
+        "PR #1447: checks (3.12) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "done",
       "parent": "E-0001",
@@ -33873,7 +33879,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T11:28:27Z"
+      "updated": "2026-10-10T20:48:54Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -34466,7 +34472,7 @@
         "plan-f-0334-1791664150: NEEDS OPERATOR: whether the second product's trunk requires branches to be up to date \u2014 if its ruleset is strict the merge train serialises updates and re-runs CI on every trunk move, and the 60-minute median is not\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34475,7 +34481,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T20:43:08Z"
+      "updated": "2026-10-10T20:48:54Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34980,6 +34986,14 @@
     "F-0346": {
       "backlinks": [],
       "children": [
+        "S-134705",
+        "S-134706",
+        "S-134707",
+        "S-134708",
+        "S-134709",
+        "S-134710",
+        "S-134711",
+        "S-134712",
         "S-137106",
         "S-137607"
       ],
@@ -35057,11 +35071,14 @@
     "F-0349": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0349",
-      "kernel_fix_rounds": 0,
-      "kernel_state": "review",
+      "kernel_findings": [
+        "docs/specs/f-0349.md:18-19,58,222,654 \u2014 P2 and its restatements claim no test anywhere holds the four parent rules and that none of the twelve `does not exist` hits are about a parent; both are false (tests/test_check_staged.py:345, tests/test_groom_every_tick.py:94 assert the parent `does not exist` message verbatim; tests/test_backlog.py:911-922 and :938-942 already assert the `missing a parent` and `wrong type` substrings). Correct P2 to state that only `must not have a parent` has zero coverage today, and rewrite D12's and S-136855's framing to match."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35069,7 +35086,7 @@
       "state": "New",
       "title": "Adopt GitHub's work-item model: type, parent, milestone, priority",
       "type": "feature",
-      "updated": "2026-10-10T20:25:21Z"
+      "updated": "2026-10-10T20:48:54Z"
     },
     "F-0350": {
       "backlinks": [],
@@ -38606,6 +38623,110 @@
       "title": "the incidents the risk flag exists to prevent, counted with the verdict it gave at the time \u2014 acceptance: `python3 -m unittest tests.kernel.test_incidents tests.kernel.test_risk tests.kernel.test_main_landing`",
       "type": "story",
       "updated": "2026-10-10T19:30:53Z"
+    },
+    "S-134705": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134705",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T20:47:07Z",
+      "state": "New",
+      "title": "the law is a module with one answer per item \u2014 acceptance: `python3 -m unittest -v tests.test_flow_conservation.TheLaw`",
+      "type": "story",
+      "updated": "2026-10-10T20:47:07Z"
+    },
+    "S-134706": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134706",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T20:47:07Z",
+      "state": "New",
+      "title": "the sinks of an index come out by name, and every other item says which class took it \u2014 acceptance: `python3 -m unittest -v tests.test_flow_conservation.SinksInTheFixture`",
+      "type": "story",
+      "updated": "2026-10-10T20:47:07Z"
+    },
+    "S-134707": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134707",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T20:47:07Z",
+      "state": "New",
+      "title": "a wait on something nothing will move names the thing, not the waiter \u2014 acceptance: `python3 -m unittest -v tests.test_flow_conservation.TheWaitChain`",
+      "type": "story",
+      "updated": "2026-10-10T20:47:07Z"
+    },
+    "S-134708": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134708",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T20:47:07Z",
+      "state": "New",
+      "title": "I16 is a registered invariant in a fourth scope that reports, drops nothing, and reads the uncut rows \u2014 acceptance: `python3 -m unittest -v tests.test_flow_conservation.I16Registered tests.test_flow_conservation.TheCutIsNotASink`",
+      "type": "story",
+      "updated": "2026-10-10T20:47:07Z"
+    },
+    "S-134709": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134709",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T20:47:07Z",
+      "state": "New",
+      "title": "each tick leaves a durable row per sink, under a flag that can be switched off \u2014 acceptance: `python3 -m unittest -v tests.test_flow_conservation.TheCheckPoint`",
+      "type": "story",
+      "updated": "2026-10-10T20:47:07Z"
+    },
+    "S-134710": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134710",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T20:47:07Z",
+      "state": "New",
+      "title": "the wave runs the check once, after the feeder's gate, on its own facts \u2014 acceptance: `python3 -m unittest -v tests.test_flow_conservation.TheWaveCallsIt`",
+      "type": "story",
+      "updated": "2026-10-10T20:47:07Z"
+    },
+    "S-134711": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134711",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T20:47:07Z",
+      "state": "New",
+      "title": "an operator can ask the question read-only and get an exit code \u2014 acceptance: `python3 -m unittest -v tests.test_flow_conservation.TheAudit`",
+      "type": "story",
+      "updated": "2026-10-10T20:47:07Z"
+    },
+    "S-134712": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134712",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T20:47:07Z",
+      "state": "New",
+      "title": "the ten landed invariants, R13 and the feeder's severity bar all still hold \u2014 acceptance: `python3 -m unittest -v tests.test_invariants tests.test_contracts tests.test_record_stage tests.test_feeder tests.test_idle`",
+      "type": "story",
+      "updated": "2026-10-10T20:47:07Z"
     },
     "S-137105": {
       "backlinks": [],
@@ -47857,6 +47978,7 @@
     },
     "T-0004": {
       "backlinks": [
+        "S-134706",
         "T-0772"
       ],
       "children": [],
@@ -67667,7 +67789,7 @@
       "kernel_notes": [
         "groom-fill-t-0452-1791638006: groom-fill raised risk high: writes carries Task 3's doctor.py/capacity.py footprint merged in from T-0454, but Task 3 needs T-0453's (Task 2) env.py functions and T-0453 is after: T-0452 \u2014 a circular prerequisite; drop that footprint and keep only Task 1+4's (self-contained) scope, with the plan's own named tests."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -67682,7 +67804,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-10T20:20:03Z",
+      "updated": "2026-10-10T20:48:54Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -83738,7 +83860,11 @@
       "kernel_fix_rounds": 0,
       "kernel_notes": [
         "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card.",
-        "build-t-129157-1791659546: NEEDS OPERATOR: the host's installed `asf` CLI at ~/.local/bin/asf is stale (missing the `pre-push` subcommand the current worktree's asf/cli.py defines), so the pre-push hook refuses every push on this host until i\u2026"
+        "build-t-129157-1791659546: NEEDS OPERATOR: the host's installed `asf` CLI at ~/.local/bin/asf is stale (missing the `pre-push` subcommand the current worktree's asf/cli.py defines), so the pre-push hook refuses every push on this host until i\u2026",
+        "PR #1441: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1441: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1441: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1441: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "review",
@@ -83754,7 +83880,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T20:43:08Z",
+      "updated": "2026-10-10T20:48:54Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -83999,7 +84125,7 @@
         "PR #1432: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1432: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -84012,7 +84138,7 @@
       ],
       "title": "the cap and the reader \u2014 an unfiled review is no launch, once per head",
       "type": "task",
-      "updated": "2026-10-10T20:43:08Z",
+      "updated": "2026-10-10T20:48:54Z",
       "writes": [
         "asf/workers/relaunch.py",
         "asf/workers/lifecycle.py",
@@ -85212,7 +85338,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129206",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -85226,7 +85352,7 @@
       ],
       "title": "the one map, and the host's two refresh doors",
       "type": "task",
-      "updated": "2026-10-10T20:20:03Z",
+      "updated": "2026-10-10T20:48:54Z",
       "writes": [
         "asf/env.py",
         "asf/kernel/loop.py",
@@ -85274,6 +85400,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129208",
+      "kernel_notes": [
+        "PR #1442: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1442: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1442: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1442: part (3.13, 1) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
@@ -85287,7 +85419,7 @@
       ],
       "title": "what the operator sees \u2014 the shape check, the example file, one doctor row and the two guide pages",
       "type": "task",
-      "updated": "2026-10-10T20:43:08Z",
+      "updated": "2026-10-10T20:48:54Z",
       "writes": [
         "asf/conventions.py",
         "asf/doctor.py",
@@ -85406,6 +85538,12 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
+      "kernel_notes": [
+        "PR #1445: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1445: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1445: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1445: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0339.md"
@@ -85422,7 +85560,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-10T19:17:57Z",
+      "updated": "2026-10-10T20:48:54Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -85618,6 +85756,13 @@
       "kernel_attempts": [
         "ended without a REPORT"
       ],
+      "kernel_notes": [
+        "PR #1443: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1443: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1443: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1443: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1443: part (3.13, 2) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0342.md"
@@ -85633,7 +85778,7 @@
       ],
       "title": "the floor split \u2014 one installer per owner, the two-floor refusal, and the retire gate",
       "type": "task",
-      "updated": "2026-10-10T20:43:08Z",
+      "updated": "2026-10-10T20:48:54Z",
       "writes": [
         "asf/upgrade.py",
         "asf/scheduler.py",
@@ -85834,6 +85979,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-136825",
+      "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "build-t-136825-1791661085: NEEDS OPERATOR: the push is refused by a stale local `asf` CLI install with no `pre-push` subcommand \u2014 upgrade `~/.local/bin/asf` on this host, then publish branch `worker/T-136825` \u2014 `git push origin worker/T-13682\u2026",
         "PR #1438: checks (3.12) is red but not a required check \u2014 ignored",
@@ -85842,9 +85992,10 @@
         "PR #1438: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1438: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1438: part (3.13, 3) is red but not a required check \u2014 ignored",
-        "PR #1438: part (3.12, 4) is red but not a required check \u2014 ignored"
+        "PR #1438: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -85862,7 +86013,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-10T20:43:08Z",
+      "updated": "2026-10-10T20:48:54Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -88124,7 +88275,7 @@
         "PR #1435: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1435: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -88137,7 +88288,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-10T20:36:01Z",
+      "updated": "2026-10-10T20:48:54Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
