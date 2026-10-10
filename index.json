@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T17:40:49Z",
+  "generated": "2026-10-10T17:46:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34287,7 +34287,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T17:40:47Z"
+      "updated": "2026-10-10T17:46:10Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34495,14 +34495,15 @@
         "relaunch: operator answer: id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-124005, S-124006 by refs/asf/ids/S-124005 c2d107f. No record item collides with them."
       ],
       "kernel_findings": [
-        "docs/plans/f-0341.md:109 \u2014 `_QUOTED_RE` is at `asf/proves.py:54` (verified at anchor sha `0ef08e490` and current HEAD), not `:79` as written; fix the citation."
+        "docs/plans/f-0341.md:43 \u2014 PD2 claims `grep -rn quarantine_file asf tests tools docs` at 0ef08e490 \"returns five hits, every one of them inside docs/specs/f-0341.md\"; the command actually returns 17 matching lines, all in docs/specs/f-0341.md. Fix the count to 17 (or drop the exact number and keep the qualitative claim that P3 no longer reads \"no match\").",
+        "operator answer: id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-124005, S-124006 by refs/asf/ids/S-124005 c2d107f. No record item collides with them."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0341-1791646559: NEEDS OPERATOR: the pre-push shim calls `asf pre-push`, which the pinned install (sha `14b963ba1`, policy `pinned`) does not declare \u2014 the door landed later, in `aa56423fd`. Decide whether to lift the pin to a sha a\u2026",
         "plan-f-0341-1791650731: NEEDS OPERATOR: whether the record holds a claim naming F-0341 that covers S-124005 and S-124006, and whether either is already a minted Story card \u2014 a cloud worker has no record to read and this origin carries no r\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "nice",
       "schema_version": 1,
@@ -34510,7 +34511,7 @@
       "state": "New",
       "title": "Proof claims on quarantined tests are refused",
       "type": "feature",
-      "updated": "2026-10-10T17:30:19Z"
+      "updated": "2026-10-10T17:46:10Z"
     },
     "F-0342": {
       "backlinks": [],
@@ -34525,6 +34526,9 @@
       "folder": "features",
       "id": "F-0342",
       "kernel_fix_rounds": 0,
+      "kernel_notes": [
+        "plan-f-0342-1791652500: NEEDS OPERATOR: `plan/F-0342` is committed at `bd59782a8` and cannot leave this host \u2014 `state/asf/install.json` pins `asf` to `14b963ba1` (2026-10-08, `policy: pinned`), whose `asf/cli.py` has no `pre-push` subcomma\u2026"
+      ],
       "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
@@ -34533,7 +34537,7 @@
       "state": "New",
       "title": "asf upgrade --product on a kernel product reinstalls the paused 0.1 floor clocks; the pin cannot move",
       "type": "feature",
-      "updated": "2026-10-10T17:15:07Z"
+      "updated": "2026-10-10T17:46:10Z"
     },
     "F-0343": {
       "backlinks": [],
@@ -37515,6 +37519,7 @@
     "S-122805": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122805",
       "parent": "F-0336",
@@ -37528,6 +37533,7 @@
     "S-122806": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122806",
       "parent": "F-0336",
@@ -37543,6 +37549,7 @@
         "F-0336"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122807",
       "parent": "F-0336",
@@ -37556,6 +37563,7 @@
     "S-122808": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122808",
       "parent": "F-0336",
@@ -37569,6 +37577,7 @@
     "S-122809": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122809",
       "parent": "F-0336",
@@ -37582,6 +37591,7 @@
     "S-122810": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122810",
       "parent": "F-0336",
@@ -79782,8 +79792,8 @@
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0165.md"
       },
@@ -79796,7 +79806,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-10T17:25:50Z",
+      "updated": "2026-10-10T17:46:10Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
@@ -83130,7 +83140,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129170",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0317.md"
       },
@@ -83143,7 +83153,7 @@
       ],
       "title": "the suffix, minted and read back in one place",
       "type": "task",
-      "updated": "2026-10-10T17:40:47Z",
+      "updated": "2026-10-10T17:46:10Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -86357,7 +86367,7 @@
         "PR #1398: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1398: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -86370,7 +86380,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T17:25:50Z",
+      "updated": "2026-10-10T17:46:10Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
@@ -86518,16 +86528,18 @@
       "folder": "tasks",
       "id": "T-83143",
       "kernel_answers": [
-        "tests/test_doc_lane_review.py is a NEW test file this Task creates; a new file under an existing directory (tests/) is allowed in writes. Proceed to build."
+        "tests/test_doc_lane_review.py is a NEW test file this Task creates; a new file under an existing directory (tests/) is allowed in writes. Proceed to build.",
+        "granted tests/test_feeder.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: tests/test_doc_lane_review.py is a NEW test file this Task creates; a new file under an existing directory (tests/) is allowed in writes. Proceed to build."
+        "relaunch: operator answer: tests/test_doc_lane_review.py is a NEW test file this Task creates; a new file under an existing directory (tests/) is allowed in writes. Proceed to build.",
+        "relaunch: operator answer: granted tests/test_feeder.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_notes": [
         "groom-fill-t-83143-1791630660: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-83143-1791631612: groom-fill raised risk high: Card transcribes plan F-0280 Task 2 verbatim with live anchors on trunk; filled acceptance from S-73205's seven spec bullets, all proved by the one new test class the card already names; writes/after already correct, only missing the test-naming and new-file marker."
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -86540,13 +86552,14 @@
       ],
       "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
       "type": "task",
-      "updated": "2026-10-10T17:25:50Z",
+      "updated": "2026-10-10T17:46:10Z",
       "writes": [
         "asf/reviews.py",
         "asf/harvest/lane.py",
         "asf/workers/lifecycle.py",
         "asf/feeder/rows.py",
-        "tests/test_doc_lane_review.py"
+        "tests/test_doc_lane_review.py",
+        "tests/test_feeder.py"
       ]
     },
     "T-83144": {
