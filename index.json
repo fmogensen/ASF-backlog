@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T14:08:26Z",
+  "generated": "2026-10-10T14:12:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33394,7 +33394,7 @@
       "kernel_notes": [
         "plan-f-0316-1791636867: NEEDS OPERATOR: outside this card \u2014 18 landed plans write their Task `writes:` line space-separated with backticks, and `asf.tick.migrate.writes_lines` splits only on commas, so each of those Tasks was minted with o\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33402,7 +33402,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T14:08:25Z"
+      "updated": "2026-10-10T14:12:13Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33579,7 +33579,7 @@
       "state": "New",
       "title": "status keeps a retired item's relaunch-cap park",
       "type": "feature",
-      "updated": "2026-10-10T14:08:25Z"
+      "updated": "2026-10-10T14:12:13Z"
     },
     "F-0323": {
       "backlinks": [],
@@ -63801,7 +63801,7 @@
         "groom-fill-t-0433-1791639294: groom-fill raised risk high: writes carry Task 4/5/6's own files (test_release_readiness.py, file_bugs.py, doctor.py per docs/plans/f-0112.md:373,466,558) that this Description neither describes nor defines, and the 'held' return value is promised with no step specifying it \u2014 narrowed to Task 3's 7-path scope (Steps 1-10) where every behavior is specified."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63818,7 +63818,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T13:49:47Z",
+      "updated": "2026-10-10T14:12:13Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -75235,22 +75235,13 @@
       ],
       "folder": "tasks",
       "id": "T-0709",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "asf/ci_vm.py:703 \u2014 give `REMOTE_START` a command timeout of its own instead of `CONNECT_TIMEOUT_S` (as `push_sha:254` does) and make it idempotent: after `rundir=\"$root/runs/{run_id}\"` insert `git -C \"$root/repo.git\" worktree remove --force \"$rundir/src\" 2>/dev/null || true` and `rm -rf \"$rundir\"`, so a start that times out after the worktree exists does not wedge that (sha, job) for ever with a running job no step can reach",
-        "asf/ci_vm.py:614 \u2014 supersede only a sha no ref still points at: replace `if not new_sha or new_sha == sha:` with `if not new_sha or sha in set(current.values()):` (plus the trunk's own sha), so a run at a sha that is still some branch's or the trunk's head is not cancelled into a permanent `red`/`ever_red` that sends a clean branch back with no evidence",
-        "asf/ci_vm.py:272-292 \u2014 REMOTE_START resolves $rundir relative: `git -C \"$root/repo.git\" worktree add \u2026 \"$rundir/src\"` (:277) lands the worktree inside repo.git, and run.sh's relative $0 (:281) breaks every later dirname after the cd, so with the default root `.asf-ci` the command runs in the ssh login directory and the pass concludes the required job `passed` for a sha never checked out. Make the root absolute once: after `mkdir -p \"$root/runs\"` insert `root=$(cd \"$root\" && pwd)`, then compute `rundir=\"$root/runs/{run_id}\"` and `mkdir -p \"$rundir\"`; add `root=$(cd \"$root\" 2>/dev/null && pwd || echo \"$root\")` before `rundir=` in REMOTE_CLEANUP (:325-329).",
-        "tests/test_ci_vm.py:307-320 \u2014 the plan's own T-0709 acceptance \"after a conclusion <root> holds only repo.git and an empty runs/\" is asserted nowhere, and FakeSsh.setUp:229 / add_host:266 always use an absolute root, so no case exercises the default that C1 breaks. Add `self.assertEqual(sorted(os.listdir(host.root)), ['repo.git', 'runs'])` plus an empty-`runs/` assertion to the green case, and one case running a pass with a relative root that asserts the command ran in `runs/<run_id>/src`.",
-        "tests/test_ci_vm.py:308-320 \u2014 the acceptance case is not byte-identical to docs/plans/replans/f-0194-87b236e237ad.md:349-357: the RUNNING assertion is split into two lines, wait_for_exit's trailing comment is dropped, two lines are inserted mid-snippet, and :320's comment gap is two spaces not three. Restore the plan's eight lines verbatim and append the added remote_read assertion after them.",
-        "asf/ci_vm.py:539,628 \u2014 a --dry-run pass writes real verdicts into the store (:575-578, :587-588) while the REMOTE_CLEANUP call (:579-580) is refused by the guard, so runs/<run_id> is left on the host and, the row now being concluded, no later pass ever cleans it. Add `if mutation_guard.is_active(): return 0` as the first statement of _collect and _time_out, and `if mutation_guard.is_active(): return` in _supersede."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1142: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0194-87b236e237ad.md"
       },
@@ -75270,7 +75261,7 @@
       "stories": [],
       "title": "a sha runs on an ssh-reachable machine and comes back \u2014 the transport, the three remote scripts, the store, and the pass that dispatches, collects, supersedes and times out",
       "type": "task",
-      "updated": "2026-10-10T13:54:02Z",
+      "updated": "2026-10-10T14:12:13Z",
       "writes": [
         "asf/ci_vm.py",
         "tests/test_ci_vm.py",
@@ -82049,7 +82040,8 @@
         "granted asf/conventions.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/conventions.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted asf/conventions.py; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -82062,7 +82054,9 @@
         "PR #1227: part (3.13, 3) is red but not a required check \u2014 ignored",
         "build-t-81129-1791634419: NEEDS OPERATOR: plan Task 5 of docs/plans/f-0312.md registers `regression.exempt_found_in` but its `writes:` cannot reach the reader in `asf/harvest/regression.py`, so the flag would land registered and unread \u2014 add\u2026",
         "PR #1374: part (3.12, 2) is red but not a required check \u2014 ignored",
-        "PR #1374: part (3.13, 2) is red but not a required check \u2014 ignored"
+        "PR #1374: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "PR #1374: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1374: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "ready",
@@ -82078,7 +82072,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T14:08:25Z",
+      "updated": "2026-10-10T14:12:13Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
