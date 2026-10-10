@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T19:21:21Z",
+  "generated": "2026-10-10T19:27:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34431,7 +34431,7 @@
       "state": "New",
       "title": "Kernel flake quarantine with a defect check (unrelated heads only)",
       "type": "feature",
-      "updated": "2026-10-10T19:21:18Z"
+      "updated": "2026-10-10T19:27:23Z"
     },
     "F-0337": {
       "backlinks": [],
@@ -34813,7 +34813,10 @@
       "folder": "features",
       "id": "F-0344",
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0344-1791658092-local: NEEDS OPERATOR: the product's CLI pin is ~162 commits behind and lacks the `pre-push` subcommand its own hook shim invokes, so no session on this product can push \u2014 unblock by building a current pin with `asf upgrad\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34821,7 +34824,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-10T18:48:56Z"
+      "updated": "2026-10-10T19:27:23Z"
     },
     "F-0345": {
       "backlinks": [
@@ -34869,7 +34872,7 @@
         "the session API failed"
       ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34877,7 +34880,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-10T18:58:32Z"
+      "updated": "2026-10-10T19:27:23Z"
     },
     "F-0348": {
       "backlinks": [],
@@ -34889,7 +34892,7 @@
         "the session API failed"
       ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34897,7 +34900,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T18:58:32Z"
+      "updated": "2026-10-10T19:27:23Z"
     },
     "R-0001": {
       "backlinks": [
@@ -83180,8 +83183,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129156",
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.19",
       "kernel_notes": [
         "groom-fill-t-129156-1791654017: groom-fill raised risk high: design matches trunk exactly (constants, line ranges, fixture methods, helper signatures) and nothing named has been built yet; only the acceptance/gate lines were missing.",
         "groom-fill-t-129156-1791655146: groom-fill raised risk high: design (constants, line ranges, fixture methods, helper signatures) matches trunk at af8aa11c exactly, and nothing named has been built yet \u2014 only acceptance/writes were missing.",
@@ -83200,7 +83203,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-10T18:37:32Z",
+      "updated": "2026-10-10T19:27:23Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -83227,12 +83230,12 @@
       "kernel_findings": [
         "commit c05b45ae9a131a543ddec02509c66b77be31f8f4 (Proves: trailers, lines 5-8) \u2014 the four trailers are shifted one bullet against the card's own `## Acceptance` order; add a follow-up commit with the corrected four `Proves: S-72054 line N \u2014 test` lines (line5\u2192test_the_two_landed_cases_hold_steady\u2026, line6\u2192test_a_review_or_landing_occupancy\u2026, line7\u2192test_the_cards_transition_as_three_draws\u2026, line8\u2192test_the_needs_stories_exemption\u2026) \u2014 ticking is idempotent so this doesn't require touching the existing wrong ones."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card.",
         "build-t-129157-1791659546: NEEDS OPERATOR: the host's installed `asf` CLI at ~/.local/bin/asf is stale (missing the `pre-push` subcommand the current worktree's asf/cli.py defines), so the pre-push hook refuses every push on this host until i\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -83245,7 +83248,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T19:21:18Z",
+      "updated": "2026-10-10T19:27:23Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -83700,8 +83703,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129173",
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.19",
       "kernel_notes": [
         "groom-fill-t-129173-1791655626: groom-fill raised risk high: card already carries Task 1's acceptance/writes verbatim (F-0343 backfill); the parent-Done DoR gap is stale \u2014 F-0343's own fix (dce5aac92) makes a Feature's state derive from its Task children once any exist, and F-0318 already has Task children (T-129173, T-129174) that are New, so F-0318 reads New under current logic and the next tick's judge pass clears this on its own.",
         "groom-fill-t-129173-1791657630: groom-fill raised risk high: F-0318's \"Done\" is a same-tick derived-state artifact (a container is Done only when every Task child is, and T-129173 itself is a New child of F-0318); the card's acceptance/writes already satisfy DoR (i)-(iii), and asf/record/spec_stories.py, spec_ref, doc_alias and own_doc are all absent from trunk, confirming the work is unbuilt, not superseded."
@@ -83721,7 +83724,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-10T18:54:29Z",
+      "updated": "2026-10-10T19:27:23Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -84923,7 +84926,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130214",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -84937,7 +84940,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-10T19:21:18Z",
+      "updated": "2026-10-10T19:27:23Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -86791,7 +86794,7 @@
       "kernel_notes": [
         "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py)."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -86812,7 +86815,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T17:03:14Z",
+      "updated": "2026-10-10T19:27:23Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -87468,7 +87471,7 @@
       "folder": "tasks",
       "id": "T-83144",
       "kernel_dor_fills": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -87481,7 +87484,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-10T19:12:34Z",
+      "updated": "2026-10-10T19:27:23Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
