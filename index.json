@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T03:27:03Z",
+  "generated": "2026-10-10T03:31:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33551,7 +33551,7 @@
       ],
       "folder": "features",
       "id": "F-0326",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33559,7 +33559,7 @@
       "state": "New",
       "title": "a pushed Task with an open PR gets no landing request and no row while others wait on it",
       "type": "feature",
-      "updated": "2026-10-10T02:42:23Z"
+      "updated": "2026-10-10T03:31:23Z"
     },
     "F-0327": {
       "backlinks": [],
@@ -33603,7 +33603,7 @@
       ],
       "folder": "features",
       "id": "F-0328",
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33611,7 +33611,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T03:27:01Z"
+      "updated": "2026-10-10T03:31:23Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33673,7 +33673,7 @@
       "kernel_notes": [
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33681,7 +33681,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T02:52:51Z"
+      "updated": "2026-10-10T03:31:23Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -78921,11 +78921,10 @@
       "folder": "tasks",
       "id": "T-0801",
       "kernel_findings": [
-        "tests/test_merge_queue.py:712-715 \u2014 add a full red-cycle test asserting `_send_back`'s `files == ['asf/audit.py']` for a cover-hit culprit (Acceptance B)",
-        "tests/test_merge_queue.py:826-838 \u2014 add `self.red_ledger_rows()` assertions (mirroring lines 817-818) to the hop-culprit drop-line test (Acceptance C)"
+        "asf/merge_queue.py:1764-1766 \u2014 `blame`'s `if not paths: return {}, False` is a hard early return that skips `cover_blame` whenever every failed check's `item['paths']` is empty, which is exactly the spec's own motivating case (an absolute-path Python traceback with no other `path:line` anywhere in the log \u2014 P4's measured example). Every shipped hop test routes around this by using a *relative* traceback path, which the pre-existing `_BARE_PATH_RE` fallback happens to catch, keeping `paths` non-empty; with an absolute-only log the hop never fires and the batch still bisects blind. Fix: don't early-`return` on empty `paths` \u2014 let the direct reading's `named` stay `{}` and fall through to the existing `if not named:` cover-hop check, then add a test that drives the hop with an absolute-path-only log."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0256.md"
       },
@@ -78935,7 +78934,7 @@
       "state": "New",
       "title": "the queue names the culprit PR in the drop reason \u2014 out of the log it already reads, and out of the test that covers the member's files",
       "type": "task",
-      "updated": "2026-10-10T03:22:53Z",
+      "updated": "2026-10-10T03:31:23Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
@@ -80764,7 +80763,7 @@
       ],
       "folder": "tasks",
       "id": "T-78561",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80777,7 +80776,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T02:52:51Z",
+      "updated": "2026-10-10T03:31:23Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
@@ -82330,7 +82329,7 @@
       ],
       "folder": "tasks",
       "id": "T-83350",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0295.md"
       },
@@ -82344,7 +82343,7 @@
       ],
       "title": "the landing gate answers both infra reds \u2014 `infra_gate`, `judged_pending`, three call sites",
       "type": "task",
-      "updated": "2026-10-10T02:20:50Z",
+      "updated": "2026-10-10T03:31:23Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_gate_infra_red.py"
@@ -82365,7 +82364,7 @@
       ],
       "folder": "tasks",
       "id": "T-83351",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0295.md"
       },
@@ -82378,7 +82377,7 @@
       ],
       "title": "the land probe stops standing down on a running check",
       "type": "task",
-      "updated": "2026-10-10T03:19:00Z",
+      "updated": "2026-10-10T03:31:23Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
