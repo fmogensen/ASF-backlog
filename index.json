@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:43:15Z",
+  "generated": "2026-10-10T15:47:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33802,7 +33802,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T15:43:14Z"
+      "updated": "2026-10-10T15:47:39Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33839,7 +33839,7 @@
         "plan-f-0328-1791641963: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 re-measured this pass and u\u2026",
         "plan-f-0328-1791644041: NEEDS OPERATOR: the pinned `asf` at `~/.local/bin/asf` predates the `pre-push` subcommand its own git hook calls, so every push from this host is refused regardless of branch or content, and this session'\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33847,7 +33847,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T15:28:55Z"
+      "updated": "2026-10-10T15:47:39Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33895,20 +33895,17 @@
       "folder": "features",
       "id": "F-0330",
       "kernel_answers": [
-        "Decisions: (1) This plan session may amend docs/specs/f-0330.md (granted) to re-anchor the design on the current trunk: retire.py/test_retire.py, replan.task_pending and correct.py's parked gate are gone; design against what exists now (asf/record retire path via asf retire --landed, replan.pending(feature), and the kernel's ruling applier), then re-cut the four Tasks. (2) STORY_ID_RE: filed as its own Bug via the inbox (fix: \\d{4,}); land that first. F-0330's Tasks get after: on that Bug once it has an id; do not mint Tasks without Stories."
+        "Decisions: (1) This plan session may amend docs/specs/f-0330.md (granted) to re-anchor the design on the current trunk: retire.py/test_retire.py, replan.task_pending and correct.py's parked gate are gone; design against what exists now (asf/record retire path via asf retire --landed, replan.pending(feature), and the kernel's ruling applier), then re-cut the four Tasks. (2) STORY_ID_RE: filed as its own Bug via the inbox (fix: \\d{4,}); land that first. F-0330's Tasks get after: on that Bug once it has an id; do not mint Tasks without Stories.",
+        "The plan is done: stop re-planning. PR #1345 (plan/F-0330) is green and clean; it goes to review and landing as is. Keep \u00a73 as written (0.1 path), with no kernel duplication. My earlier note that retire.py etc. were gone was wrong; your measurement stands."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Decisions: (1) This plan session may amend docs/specs/f-0330.md (granted) to re-anchor the design on the current trunk: retire.py/test_retire.py, replan.task_pending and correct.py's parked gate are gone; design against what exists now (asf/record retire path via asf retire --landed, replan.pending(feature), and the kernel's ruling applier), then re-cut the four Tasks. (2) STORY_ID_RE: filed as its own Bug via the inbox (fix: \\d{4,}); land that first. F-0330's Tasks get after: on that Bug once it has an id; do not mint Tasks without Stories."
+        "relaunch: operator answer: The plan is done: stop re-planning. PR #1345 (plan/F-0330) is green and clean; it goes to review and landing as is. Keep \u00a73 as written (0.1 path), with no kernel duplication. My earlier note that retire.py etc. were gone was wrong; your measurement stands."
       ],
       "kernel_notes": [
         "plan-f-0330-1791640370: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by four PLAN sessions in a row",
         "plan-f-0330-1791643018: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by five PLAN sessions in a row"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by six PLAN sessions in a row",
-      "kernel_stuck_since": "2026-10-10T15:42:15Z",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33916,7 +33913,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T15:43:14Z"
+      "updated": "2026-10-10T15:47:39Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -34090,7 +34087,7 @@
       "state": "New",
       "title": "Kernel mainline: cancelled trunk runs are no verdict; dispatch one trunk run when too many commits lack a result",
       "type": "feature",
-      "updated": "2026-10-10T15:43:14Z"
+      "updated": "2026-10-10T15:47:39Z"
     },
     "F-0339": {
       "backlinks": [],
@@ -34098,7 +34095,11 @@
       "decided": true,
       "folder": "features",
       "id": "F-0339",
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "partial: NEEDS OPERATOR: re-pin the host's `asf` build so `asf pre-push` exists \u2014 the installed `0.1.265 (14b963ba1`, 2026-10-08) predates `aa56423fd` (T-79565, today), which added both `asf/prepush.\u2026",
+      "kernel_stuck_since": "2026-10-10T15:46:19Z",
       "parent": "E-0002",
       "priority": "need",
       "rank": 7,
@@ -34107,7 +34108,7 @@
       "state": "New",
       "title": "Kernel: resolve the next two most frequent session questions in code",
       "type": "feature",
-      "updated": "2026-10-10T15:21:27Z"
+      "updated": "2026-10-10T15:47:39Z"
     },
     "F-0340": {
       "backlinks": [],
@@ -34115,7 +34116,10 @@
       "decided": true,
       "folder": "features",
       "id": "F-0340",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -34124,7 +34128,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T15:21:27Z"
+      "updated": "2026-10-10T15:47:39Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -81730,6 +81734,7 @@
         "T-0432"
       ],
       "backlinks": [
+        "F-0339",
         "T-0318",
         "T-0452",
         "T-79566",
@@ -83057,10 +83062,9 @@
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "operator answer: Fact check: origin/main was NOT rewritten. History is linear; #1266 (c34fd09) is a normal squash merge that ADDED the 0.2 kernel (+22,327/-101 lines, mostly asf/kernel and tests). Rebase this branch onto current origin/main, resolve conflicts in the few shared files (cli.py, frontmatter.py, cloud.py, groom/inbox.py), and continue."
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap.",
@@ -83072,7 +83076,7 @@
         "PR #1386: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1386: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -83085,7 +83089,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T15:43:14Z",
+      "updated": "2026-10-10T15:47:39Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
