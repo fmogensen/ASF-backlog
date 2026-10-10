@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T12:22:44Z",
+  "generated": "2026-10-10T12:26:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33130,7 +33130,8 @@
       ],
       "kernel_notes": [
         "plan-f-0307-1791618452: NEEDS OPERATOR: whether an S1 Bug marked `in_progress_by` should freeze new Feature work needs a ruling, and it is a card this session cannot raise (PD18). The spec's `D3` lists four triggers \u2014 a session on it, work\u2026",
-        "plan-f-0307-1791632343: NEEDS OPERATOR: whether the stale-record relaunch deserves its own Bug card \u2014 the kernel launched this plan session for F-0307 two hours after its plan landed and was approved, because the record card still reads st\u2026"
+        "plan-f-0307-1791632343: NEEDS OPERATOR: whether the stale-record relaunch deserves its own Bug card \u2014 the kernel launched this plan session for F-0307 two hours after its plan landed and was approved, because the record card still reads st\u2026",
+        "plan-f-0307-1791634662: NEEDS OPERATOR: whether F-0307's record row has empty `links.spec`/`links.plan` despite both docs being on the trunk, and whether its two Task cards were ever minted \u2014 the record is outside this worktree, so I could\u2026"
       ],
       "kernel_state": "building",
       "parent": "E-0001",
@@ -33141,7 +33142,7 @@
       "state": "Active",
       "title": "Feeder S1 gate: no new Feature work launches while an S1 Bug is open (stability first, in code)",
       "type": "feature",
-      "updated": "2026-10-10T12:17:51Z"
+      "updated": "2026-10-10T12:26:31Z"
     },
     "F-0308": {
       "backlinks": [
@@ -33524,23 +33525,17 @@
       "folder": "features",
       "id": "F-0321",
       "kernel_answers": [
-        "Decided: no operator action is needed for this spec, and nothing on the reporting product's trunk is removed now. Checked 2026-10-10: NOTES.asf.md is still tracked on that product's main and is still being rewritten by factory commits (latest 9381a60ee, 2026-10-09 09:34Z), so deleting it before this Feature's fix lands would only be re-added by the next auto-commit. Keep the removal Out of scope exactly as the spec says, and land the spec as it stands (spec/F-0321 at 2dfac43e2, Story ids S-91155..S-91159 stand). The cleanup is the last step of the plan, not a human push to main: the plan for F-0321 ends with a Task (after the Story that ships check_tracked_scratch / the doctor row) that removes the tracked copy through an ordinary PR on the product (git rm --cached NOTES.asf.md plus the exclude/ignore entry), merged by the factory on green like any other PR. Report status done with no NEEDS OPERATOR line."
+        "Decided: no operator action is needed for this spec, and nothing on the reporting product's trunk is removed now. Checked 2026-10-10: NOTES.asf.md is still tracked on that product's main and is still being rewritten by factory commits (latest 9381a60ee, 2026-10-09 09:34Z), so deleting it before this Feature's fix lands would only be re-added by the next auto-commit. Keep the removal Out of scope exactly as the spec says, and land the spec as it stands (spec/F-0321 at 2dfac43e2, Story ids S-91155..S-91159 stand). The cleanup is the last step of the plan, not a human push to main: the plan for F-0321 ends with a Task (after the Story that ships check_tracked_scratch / the doctor row) that removes the tracked copy through an ordinary PR on the product (git rm --cached NOTES.asf.md plus the exclude/ignore entry), merged by the factory on green like any other PR. Report status done with no NEEDS OPERATOR line.",
+        "Verified: a93f6aa is on origin plan/F-0321. The plan was pushed; open its PR and review it, no rebuild."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Decided: no operator action is needed for this spec, and nothing on the reporting product's trunk is removed now. Checked 2026-10-10: NOTES.asf.md is still tracked on that product's main and is still being rewritten by factory commits (latest 9381a60ee, 2026-10-09 09:34Z), so deleting it before this Feature's fix lands would only be re-added by the next auto-commit. Keep the removal Out of scope exactly as the spec says, and land the spec as it stands (spec/F-0321 at 2dfac43e2, Story ids S-91155..S-91159 stand). The cleanup is the last step of the plan, not a human push to main: the plan for\u2026",
-        "review: no VERDICT line",
-        "session ran past its max age",
-        "relaunch: escalated: the previous session stopped (done without a push: pushed: yes 6157610d731f07d7228a5071d3920ae456df358b) \u2014 pick up from its report and branch, and finish the item"
+        "relaunch: operator answer: Verified: a93f6aa is on origin plan/F-0321. The plan was pushed; open its PR and review it, no rebuild."
       ],
       "kernel_notes": [
         "spec-f-0321-1791586280: NEEDS OPERATOR: the copy of NOTES.asf.md tracked on the reporting product's trunk (first added by ef2566bf4) must come off the trunk, and only a human may push main. From inside that product's own checkout (repo_dir\u2026",
         "spec-f-0321-1791590222: NEEDS OPERATOR: the copy of `NOTES.asf.md` tracked on the reporting product's trunk (first added by `ef2566bf4`) must come off the trunk, and only a human may push `main`. Verified read-only from that product's chec\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the reason and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "done without a push: pushed: yes a93f6aacba3460dcf15d3e704a3702e98943640e",
-      "kernel_stuck_since": "2026-10-10T12:13:34Z",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33548,7 +33543,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T12:14:31Z"
+      "updated": "2026-10-10T12:26:31Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33621,7 +33616,7 @@
       "state": "New",
       "title": "a branch of only empty proof commits is read as already on main and deleted without landing; the item loops",
       "type": "feature",
-      "updated": "2026-10-10T12:14:31Z"
+      "updated": "2026-10-10T12:26:31Z"
     },
     "F-0325": {
       "backlinks": [],
@@ -33687,9 +33682,10 @@
         "\"\\\"spec-f-0327-1791595557: NEEDS OPERATOR: confirm P4/P6's live totals on the reporting product",
         "which this host cannot reach \u2014 `python3 -c \\\\\\\"from asf import env; from asf.ci_queue import feeder_rows\"",
         "dependents; rows = feeder_rows(env.load_pr\u2026\", \"PR #1305: install-clean-macos is red but not a required check \u2014 ignored\"",
-        "PR #1305: install-clean-macos is red but not a required check \u2014 ignored"
+        "PR #1305: install-clean-macos is red but not a required check \u2014 ignored",
+        "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33697,7 +33693,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T12:17:51Z"
+      "updated": "2026-10-10T12:26:31Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33812,7 +33808,7 @@
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33820,7 +33816,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T12:14:31Z"
+      "updated": "2026-10-10T12:26:31Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -53091,7 +53087,7 @@
         "PR #1332: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1332: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53101,7 +53097,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-10T12:22:41Z",
+      "updated": "2026-10-10T12:26:31Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py",
@@ -72783,11 +72779,12 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/workers/headroom.py:561 \u2014 in `table_from_config`, don't backfill `per['five_h']` from `learned[provider]` ahead of a configured pool-wide `quota_guards.five_h_usd`; give `CostTable._window_usd` (headroom.py:273) the spec's full six-branch first-hit-wins chain (exact override \u2192 configured kind `five_h` \u2192 configured pool-wide `five_h_usd` \u2192 learned kind `five_h` \u2192 learned pool-wide `five_h` \u2192 `None`) instead of the current collapsed three-tier merge.",
         "asf/workers/headroom.py:280-282 \u2014 compute `usd[key]` dollar medians for every (kind, family) group unconditionally (outside the `five_h_usd` truthiness guard in `estimate`); only skip populating the legacy `shares[key]` pct when `five_h_usd` is falsy. As written, a config using only `quota_guards.window_usd` (no pool-wide `five_h_usd`, no `default`-kind account \u2014 the Description's own example) never learns per-(kind,family) dollars, so `CostTable.share` falls back to the same static default percentage for every provider kind.",
         "tests/test_quota_provider.py:122 \u2014 make `SampleRecordTests` a direct `unittest.TestCase` with its own `setUp`/`tearDown` using `tempfile.TemporaryDirectory()` for `env.ASF_HOME`, instead of subclassing `tests.test_quota_headroom.HomeCase` (the plan's Files section calls for a direct `unittest.TestCase` per class, and Step 8 says \"None subclasses another module's harness\")."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0138-26a33fc30108.md"
       },
@@ -72804,7 +72801,7 @@
       "state": "Active",
       "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
       "type": "task",
-      "updated": "2026-10-10T12:17:51Z",
+      "updated": "2026-10-10T12:26:31Z",
       "writes": [
         "asf/workers/headroom.py",
         "asf/workers/pool.py",
@@ -81379,6 +81376,9 @@
       ],
       "folder": "tasks",
       "id": "T-79566",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
         "rebase: PR #1342 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
@@ -81391,7 +81391,7 @@
         "PR #1342: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81408,7 +81408,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-10T12:14:31Z",
+      "updated": "2026-10-10T12:26:31Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
@@ -82287,7 +82287,7 @@
         "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82300,7 +82300,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T12:14:31Z",
+      "updated": "2026-10-10T12:26:31Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82525,8 +82525,8 @@
       ],
       "folder": "tasks",
       "id": "T-83142",
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap.",
@@ -82545,7 +82545,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T12:17:51Z",
+      "updated": "2026-10-10T12:26:31Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
@@ -82711,7 +82711,7 @@
       "id": "T-83346",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82724,7 +82724,7 @@
       ],
       "title": "the feeder stands down \u2014 one `waived` membership, two branches, and the S1 lane's word",
       "type": "task",
-      "updated": "2026-10-10T12:08:09Z",
+      "updated": "2026-10-10T12:26:31Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
