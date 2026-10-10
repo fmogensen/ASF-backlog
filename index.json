@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T17:07:29Z",
+  "generated": "2026-10-10T17:11:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16774,9 +16774,10 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.5",
       "kernel_notes": [
-        "groom-fill-b-126941-1791650780: groom-fill raised risk high: today `check_cancelled` (asf/dwell.py:433) explicitly skips a PR with `not checks` \u2014 a head with no required-check run at all produces no Finding and no action; the fix is a new watchdog state/probe/action in the same table-driven module, reusing the close/reopen retrigger already proven in asf/stale_ref.py:315-322; touches the kernel's CI watchdog so risk is high."
+        "groom-fill-b-126941-1791650780: groom-fill raised risk high: today `check_cancelled` (asf/dwell.py:433) explicitly skips a PR with `not checks` \u2014 a head with no required-check run at all produces no Finding and no action; the fix is a new watchdog state/probe/action in the same table-driven module, reusing the close/reopen retrigger already proven in asf/stale_ref.py:315-322; touches the kernel's CI watchdog so risk is high.",
+        "satisfied on main at 14b963ba1: tests.test_dwell, tests.test_channels, tests.test_hermetic"
       ],
-      "kernel_state": "building",
+      "kernel_state": "done",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -16786,7 +16787,7 @@
       "state": "New",
       "title": "Kernel: a PR head with no required-check run gets a fresh CI run, not 'no action exists'",
       "type": "bug",
-      "updated": "2026-10-10T16:54:39Z",
+      "updated": "2026-10-10T17:11:19Z",
       "writes": [
         "asf/dwell.py",
         "tests/test_dwell.py"
@@ -33838,7 +33839,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T17:07:28Z"
+      "updated": "2026-10-10T17:11:19Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -34068,7 +34069,7 @@
         "spec-f-0334-1791645911: NEEDS OPERATOR: every session's push of product `asf` on this host is refused \u2014 the pinned CLI predates the `pre-push` subcommand its own current hook shim calls, and no local build has it. Confirm read-only with `p\u2026",
         "spec-f-0334-1791651250: NEEDS OPERATOR: product `asf` is pinned to `14b963ba1` (2026-10-08), whose CLI has no `pre-push` subcommand, while `asf-hook:171` calls it \u2014 the door refuses every session's push on this host. Repin to a sha that ca\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34077,7 +34078,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T17:07:28Z"
+      "updated": "2026-10-10T17:11:19Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34145,7 +34146,7 @@
         "spec-f-0337-1791648163: NEEDS OPERATOR: the product's CLI pin is pre-0.2, so the pre-push hook's footprint door refuses every session's push on this host \u2014 re-pin it to the current trunk and verify: `asf upgrade --product asf --to $(git -C\u2026",
         "spec-f-0337-1791651258: NEEDS OPERATOR: the installed hook shim calls `asf pre-push`, which product ASF's pinned CLI (`14b963ba1`, 2026-10-08) does not have \u2014 `aa56423fd` added it today \u2014 so every session push on this host is refused after\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "nice",
       "rank": 20,
@@ -34154,7 +34155,7 @@
       "state": "New",
       "title": "Kernel grooming Stage 4: continuous sweep of old New/Parked items on idle seats",
       "type": "feature",
-      "updated": "2026-10-10T17:07:28Z"
+      "updated": "2026-10-10T17:11:19Z"
     },
     "F-0338": {
       "backlinks": [],
@@ -34192,7 +34193,10 @@
         "relaunch: operator answer: Do not wait on the host pin. Run the gate directly as the product config's pre_push_check: bash tools/check_generic.sh && bash tools/check_conventions.sh && bash tools/check_clients.sh --against origin/main && python3 -m unittest -q tests.test_hermetic. The pin move (0.1.265 -> main) is held: asf upgrade --product would reinstall the paused 0.1 floor clocks next to the 0.2 kernel; that is filed as its own Bug. Proceed."
       ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "plan-f-0339-1791650292: NEEDS OPERATOR: the 15:55Z workaround does not unblock the push \u2014 running the product's `pre_push_check` by hand makes the gate pass, but every push on this host is still refused, because the refusal is the shim's o\u2026"
+      ],
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "nice",
       "rank": 21,
@@ -34201,7 +34205,7 @@
       "state": "New",
       "title": "Kernel: resolve the next two most frequent session questions in code",
       "type": "feature",
-      "updated": "2026-10-10T16:38:23Z"
+      "updated": "2026-10-10T17:11:19Z"
     },
     "F-0340": {
       "backlinks": [],
@@ -34250,7 +34254,7 @@
       "state": "New",
       "title": "Proof claims on quarantined tests are refused",
       "type": "feature",
-      "updated": "2026-10-10T17:07:28Z"
+      "updated": "2026-10-10T17:11:19Z"
     },
     "F-0342": {
       "backlinks": [],
@@ -34263,7 +34267,7 @@
         "docs/specs/f-0342.md:57 \u2014 P1 cites MOVE_PATTERN at upgrade.py:933; it is defined at upgrade.py:928 (off by 5); fix the line number"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -34271,7 +34275,7 @@
       "state": "New",
       "title": "asf upgrade --product on a kernel product reinstalls the paused 0.1 floor clocks; the pin cannot move",
       "type": "feature",
-      "updated": "2026-10-10T16:57:58Z"
+      "updated": "2026-10-10T17:11:19Z"
     },
     "R-0001": {
       "backlinks": [
@@ -64292,7 +64296,7 @@
         "PR #1378: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -64309,7 +64313,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T17:03:14Z",
+      "updated": "2026-10-10T17:11:19Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -82256,7 +82260,11 @@
         "build-t-80572-1791646302: NEEDS OPERATOR: the 2026-10-10T15:15Z answer says to archive worker/T-80572 and rebuild this Task fresh from current main, while this session's brief says to correct the held branch and never recut or force it \u2014 the\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 5 fix rounds",
+      "kernel_stuck_since": "2026-10-10T17:10:07Z",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -82269,7 +82277,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T16:54:39Z",
+      "updated": "2026-10-10T17:11:19Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -83105,15 +83113,15 @@
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
-        "operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0433 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them."
+        "operator answer: granted tests/test_scorecard.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-t-82990-1791637217: groom-fill raised risk high: the card's Acceptance is empty only because the 4000-char cut swallowed the plan's byte-for-byte S-81208 fence; copying it in (paired to AdvanceTest/ReportTest) satisfies DoR, and the Task lands in the kernel's daily step plus release-channel pushes so risk stays high.",
         "PR #1398: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1398: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -83126,7 +83134,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T17:03:14Z",
+      "updated": "2026-10-10T17:11:19Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
@@ -83234,7 +83242,7 @@
         "PR #1386: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1386: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -83247,7 +83255,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T17:07:28Z",
+      "updated": "2026-10-10T17:11:19Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py",
@@ -83282,7 +83290,7 @@
         "groom-fill-t-83143-1791630660: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-83143-1791631612: groom-fill raised risk high: Card transcribes plan F-0280 Task 2 verbatim with live anchors on trunk; filled acceptance from S-73205's seven spec bullets, all proved by the one new test class the card already names; writes/after already correct, only missing the test-naming and new-file marker."
       ],
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -83295,7 +83303,7 @@
       ],
       "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
       "type": "task",
-      "updated": "2026-10-10T11:39:13Z",
+      "updated": "2026-10-10T17:11:19Z",
       "writes": [
         "asf/reviews.py",
         "asf/harvest/lane.py",
