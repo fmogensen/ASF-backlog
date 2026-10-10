@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T17:19:22Z",
+  "generated": "2026-10-10T17:20:58Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2201,7 +2201,9 @@
     },
     "B-0070": {
       "area": "asf.feeder",
-      "backlinks": [],
+      "backlinks": [
+        "S-125105"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -33814,13 +33816,18 @@
       "folder": "features",
       "id": "F-0327",
       "kernel_attempts": [
-        "relaunch: escalated: the previous session stopped (done without a push: pushed: yes 09ec269b02af964eb85976f665d07d781098c4e9 (this report commit is pushed on top of it)) \u2014 pick up from its report and branch, and finish the item"
+        "relaunch: escalated: the previous session stopped (done without a push: pushed: yes 09ec269b02af964eb85976f665d07d781098c4e9 (this report commit is pushed on top of it)) \u2014 pick up from its report and branch, and finish the item",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "docs/plans/f-0327.md:17 \u2014 \"four of the five Tasks write `asf/feeder/rows.py`\" reads \"three\": Tasks 1, 2 and 3 write it, Task 4 writes `asf/feeder/render.py`/`asf/views/status.py` and Task 5 `asf/feeder/blockers.py`/`tests/test_feature_delivery.py`; same fix in PD10's question cell at :68 (\"Four Tasks write\" \u2192 \"Three Tasks write\"). The same sentence's other two counts are right \u2014 `tests/test_feeder.py` is four (Tasks 1-4) and `asf/feeder/blockers.py` three (Tasks 1, 3, 5) \u2014 and PD10's conclusion is untouched.",
+        "docs/plans/f-0327.md:436 \u2014 \"which this file already does four times (`:311`, `:362`, `:375`, `:399`)\" reads \"seven times\" with `:518`, `:541`, `:1173` added to the list (`grep -n 'from asf.feeder import rows as feeder_rows' asf/tick/step_wave.py` returns all seven); add the same three to PD4's list of the sites at :62.",
+        "docs/plans/f-0327.md:67 \u2014 PD9's \"**no `T-` id anywhere in this document**\" and the Out list's \"No `T-` id appears in this document\" (:829) read \"no `T-` id is minted or declared in this document\": `T-0010` (:63, :316), `T-0056`/`T-0119`/`T-0313`/`T-0226`/`T-0547`/`T-0517` (:176, :203-207), `T-0517` (:657) and `T-0522` (:763) all appear. Every one is inside a code span or a fence, which `asf.record.idcheck._prose` strips \u2014 over the stripped plan `ID_TOKEN` finds only `S-91755`-`S-91759`, `DECL` nothing and `cited_stories` nothing \u2014 so the operative claim holds and only the sentence needs the qualifier.",
         "docs/plans/f-0327.md:61 \u2014 in PD3's last sentence replace \"Task 3's Gate runs F6\" with \"Task 3's Gate runs a two-line probe over `LANE_LAUNCH_KINDS`\", matching Step 12 and the Gate block as commit 022606468 already corrected it there.",
+        "escalated: the previous session stopped (done without a push: pushed: yes 09ec269b02af964eb85976f665d07d781098c4e9 (this report commit is pushed on top of it)) \u2014 pick up from its report and branch, and finish the item",
         "escalated: the previous session stopped (done without a push: pushed: yes 09ec269b02af964eb85976f665d07d781098c4e9 (this report commit is pushed on top of it)) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "spec-f-0327-1791587530: NEEDS OPERATOR: the five Story cards could not be minted (the record directory is outside this session's reachable paths); they are declared in the spec's `## Stories` block with ids from this session's range for `a\u2026",
         "\"\\\"spec-f-0327-1791595557: NEEDS OPERATOR: confirm P4/P6's live totals on the reporting product",
@@ -33830,7 +33837,7 @@
         "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026",
         "plan-f-0327-1791636840: NEEDS OPERATOR: re-raise, still unanswered from plan-f-0327-1791634631 \u2014 harvest read that session's predecessor's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunc\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "removed": "intake: describes old-floor park/relaunch-cap behavior (lifecycle.py, relaunch.py, harvest/lane.py) the kernel replaced; kernel.decide already weighs blocked_count for relaunch ordering and surfaces a top-blockers list in the tick summary (groom 2026-10-10)",
       "schema_version": 1,
@@ -33839,11 +33846,16 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T17:19:21Z"
+      "updated": "2026-10-10T17:20:57Z"
     },
     "F-0328": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-91805",
+        "S-91806",
+        "S-91807",
+        "S-91808"
+      ],
       "cost": {
         "fix_rounds": 1,
         "runner_min": 73,
@@ -34027,7 +34039,13 @@
     },
     "F-0333": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-120855",
+        "S-120856",
+        "S-120857",
+        "S-120858",
+        "S-120859"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0333",
@@ -34047,7 +34065,7 @@
       "state": "New",
       "title": "Factory GitHub identity: GitHub App installation token instead of the operator's personal token",
       "type": "feature",
-      "updated": "2026-10-10T17:19:21Z"
+      "updated": "2026-10-10T17:20:57Z"
     },
     "F-0334": {
       "backlinks": [
@@ -34138,15 +34156,15 @@
         "session ran past its max age"
       ],
       "kernel_findings": [
-        "docs/specs/f-0337.md:357 \u2014 `_intake` returns `[A.Decide(...)] + [A.Launch(...)]` (decide.py:1691-1694), and only the Launches take a seat, so `len(intakes)` over-subtracts: replace `- len(intakes)` with `- sum(1 for a in intakes if isinstance(a, A.Launch))` here and in D3's prose at line 206. On the spec's own example tick (\"intake: minted 0, decided 2, launched 0\") this silently cuts the sweep's budget by 2.",
-        "docs/specs/f-0337.md:290 \u2014 `candidates`' \"it is `config.sweep_min_age_d` days old or more\" contradicts the acceptance line at :780 (\"a card exactly at the minimum age is not a candidate and one a day older is\") and D12/P1's \"past 14 days\" (139 cards, counted with `d > 14`): change it to \"more than `config.sweep_min_age_d` days old\"."
+        "docs/specs/f-0337.md:540 \u2014 `sweep_line`'s example says `1132 old cards left`, the whole parked pile less 3, but `Plan.sweep['waiting']` is defined at :305 as \"how many candidates were left\" and the showcase at :552 prints `136` (139 candidates less 3) for the same record; change `1132` to `136`",
+        "docs/specs/f-0337.md:210 \u2014 D7 cites \"(P9)\" for the operator answer re-arming a card's fill budget, but P9 is \"the record holds no Story for F-0337\"; cite item 9 of \"Preconditions the work depends on\" instead"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0337-1791648163: NEEDS OPERATOR: the product's CLI pin is pre-0.2, so the pre-push hook's footprint door refuses every session's push on this host \u2014 re-pin it to the current trunk and verify: `asf upgrade --product asf --to $(git -C\u2026",
         "spec-f-0337-1791651258: NEEDS OPERATOR: the installed hook shim calls `asf pre-push`, which product ASF's pinned CLI (`14b963ba1`, 2026-10-08) does not have \u2014 `aa56423fd` added it today \u2014 so every session push on this host is refused after\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "nice",
       "rank": 20,
@@ -34155,7 +34173,7 @@
       "state": "New",
       "title": "Kernel grooming Stage 4: continuous sweep of old New/Parked items on idle seats",
       "type": "feature",
-      "updated": "2026-10-10T17:11:19Z"
+      "updated": "2026-10-10T17:20:57Z"
     },
     "F-0338": {
       "backlinks": [],
@@ -34182,7 +34200,12 @@
       "backlinks": [
         "F-0342"
       ],
-      "children": [],
+      "children": [
+        "S-125105",
+        "S-125106",
+        "S-125107",
+        "S-125108"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0339",
@@ -34242,7 +34265,10 @@
     },
     "F-0341": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-124005",
+        "S-124006"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0341",
@@ -34266,7 +34292,13 @@
     },
     "F-0342": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-124905",
+        "S-124906",
+        "S-124907",
+        "S-124908",
+        "S-124909"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0342",
@@ -36920,6 +36952,218 @@
       "title": "the replan brief carries the Feature's Stories with their acceptance lines",
       "type": "story",
       "updated": "2026-10-10T06:23:32Z"
+    },
+    "S-120855": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-120855",
+      "parent": "F-0333",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the factory's own GitHub identity \u2014 an App's installation token, minted and cached by the host \u2014 acceptance: `python3 -m unittest -q tests.test_ghapp`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-120856": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-120856",
+      "parent": "F-0333",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the token joins the one auth map, and the map is unchanged when no App is declared \u2014 acceptance: `python3 -m unittest -q tests.test_auth_env.GitHubAppIdentity tests.test_auth_env.ProductAuthEnvConfig tests.test_auth_env.ProductAuthEnvRedaction`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-120857": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-120857",
+      "parent": "F-0333",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "a gh call that names no environment carries the factory's identity, and the one caller that must not opts out \u2014 acceptance: `python3 -m unittest -q tests.test_github.AmbientIdentity tests.test_github`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-120858": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-120858",
+      "parent": "F-0333",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the host refreshes before it builds its ports and before it launches a session \u2014 acceptance: `python3 -m unittest -q tests.kernel.test_loop.GitHubAppRefresh tests.test_workers`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-120859": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-120859",
+      "parent": "F-0333",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the operator declares the App in the product file and reads its state in one doctor row \u2014 acceptance: `python3 -m unittest -q tests.test_conventions tests.test_env.PinnedReader tests.test_env.TestExampleConfigsParse tests.test_doctor.GitHubIdentityRow`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-124005": {
+      "backlinks": [
+        "F-0341"
+      ],
+      "children": [],
+      "folder": "stories",
+      "id": "S-124005",
+      "parent": "F-0341",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "a claim whose named test the quarantine list holds is refused, and one whose test it does not hold is counted \u2014 acceptance: `python3 -m unittest tests.test_proves`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-124006": {
+      "backlinks": [
+        "F-0341"
+      ],
+      "children": [],
+      "folder": "stories",
+      "id": "S-124006",
+      "parent": "F-0341",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the product says where its quarantine list lives, and a landed claim is judged against that list at the sha it landed on \u2014 acceptance: `python3 -m unittest tests.test_conventions tests.test_evidence tests.test_no_test_no_done`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-124905": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-124905",
+      "parent": "F-0342",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the move waits out the kernel's own tick and watch before it touches the floor \u2014 acceptance: `python3 -m unittest tests.test_upgrade_kernel_floor.QuiesceTests`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-124906": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-124906",
+      "parent": "F-0342",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "a move on a kernel product re-renders the kernel's two jobs at the new pin \u2014 acceptance: `python3 -m unittest tests.test_upgrade_kernel_floor.PinMovesTests`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-124907": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-124907",
+      "parent": "F-0342",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "a floor the product retired is not written, not loaded and not retired by a move \u2014 acceptance: `python3 -m unittest tests.test_upgrade_kernel_floor.RetiredFloorTests`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-124908": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-124908",
+      "parent": "F-0342",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the smoke replays exactly the floor the move moved, each job's own command included \u2014 acceptance: `python3 -m unittest tests.test_upgrade_kernel_floor.SmokeTests`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-124909": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-124909",
+      "parent": "F-0342",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "every refusal and every rollback leaves the floor loaded on the pin that was running \u2014 acceptance: `python3 -m unittest tests.test_upgrade_kernel_floor.RollbackTests`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-125105": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-125105",
+      "parent": "F-0339",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the pushed class \u2014 whether a session's committed work is on origin, from facts the kernel already holds \u2014 acceptance: `python3 -m unittest tests.kernel.test_question_pushed_base.PushedClass`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-125106": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-125106",
+      "parent": "F-0339",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the trunk-base class \u2014 the merge base read off a refs-only probe, and the next act named \u2014 acceptance: `python3 -m unittest tests.kernel.test_question_pushed_base.TrunkBaseClass`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-125107": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-125107",
+      "parent": "F-0339",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "an unsure fact is never an answer \u2014 acceptance: `python3 -m unittest tests.kernel.test_question_pushed_base.LeftToTheConsole`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-125108": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-125108",
+      "parent": "F-0339",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the share rises, and the six covered classes do not move \u2014 acceptance: `python3 -m unittest tests.kernel.test_question_pushed_base.ShareRises tests.kernel.test_question_resolvers tests.kernel.test_question_needs_writes tests.kernel.test_question_gates_inbox tests.kernel.test_id_claim_answer`",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
     },
     "S-51600": {
       "backlinks": [
@@ -45170,6 +45414,62 @@
       "type": "story",
       "updated": "2026-10-09T23:34:04Z"
     },
+    "S-91805": {
+      "backlinks": [
+        "F-0328"
+      ],
+      "children": [],
+      "folder": "stories",
+      "id": "S-91805",
+      "parent": "F-0328",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "a workflow run the host cut short is no verdict, and one reader says so",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-91806": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-91806",
+      "parent": "F-0328",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "the batch judge reads the run after the graph and before the blame, re-runs it whole once, then cuts again",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-91807": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-91807",
+      "parent": "F-0328",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "a contention cancel is the CI start queue's re-run to own, and its refusal cuts the batch again",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
+    "S-91808": {
+      "backlinks": [
+        "F-0328"
+      ],
+      "children": [],
+      "folder": "stories",
+      "id": "S-91808",
+      "parent": "F-0328",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T17:20:09Z",
+      "state": "New",
+      "title": "a job a runner judged, a leg a runner judged, and a path-filtered skip on a healthy run, are still red",
+      "type": "story",
+      "updated": "2026-10-10T17:20:09Z"
+    },
     "T-0001": {
       "backlinks": [
         "F-0340",
@@ -45541,6 +45841,7 @@
     },
     "T-0010": {
       "backlinks": [
+        "F-0327",
         "B-0067",
         "B-0074",
         "B-0137"
@@ -47278,6 +47579,7 @@
         "F-0170",
         "F-0241",
         "F-0244",
+        "F-0327",
         "T-0057",
         "T-0058",
         "T-0059",
@@ -50132,6 +50434,7 @@
       ],
       "backlinks": [
         "F-0241",
+        "F-0327",
         "T-0118",
         "T-0120",
         "T-0121",
@@ -53549,6 +53852,7 @@
       ],
       "backlinks": [
         "F-0227",
+        "S-125105",
         "T-0615",
         "T-0616",
         "B-0168",
@@ -54867,6 +55171,7 @@
         "T-0203"
       ],
       "backlinks": [
+        "F-0327",
         "T-0227",
         "T-0229",
         "T-0230",
@@ -58815,6 +59120,7 @@
       ],
       "backlinks": [
         "F-0042",
+        "F-0327",
         "T-0312",
         "T-0314",
         "T-0316",
@@ -82241,11 +82547,13 @@
         "Grant one more fix round, scoped to review C1 only (kernel-reviews/review-t-80572-1791651265.md). 1) asf/rehearsal.py _STRUCTURAL_KEYS: add 'stories', 'delivered_by', 'split_from'. 2) tests/test_rehearsal_snapshot.py _card_fields tasks branch: write stories: [S-00001, S-00002]; assert task['stories'] == ['S-00001','S-00002'] in test_every_structural_field_is_kept_verbatim. Rebuild the committed fixture if it changes. I1 ('## Features' in _TEMPLATE_HEADINGS) is optional in the same push; I2-I4 are follow-ups, not this PR. Everything else in the review passed; do not reopen it."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Grant one more fix round, scoped to review C1 only (kernel-reviews/review-t-80572-1791651265.md). 1) asf/rehearsal.py _STRUCTURAL_KEYS: add 'stories', 'delivered_by', 'split_from'. 2) tests/test_rehearsal_snapshot.py _card_fields tasks branch: write stories: [S-00001, S-00002]; assert task['stories'] == ['S-00001','S-00002'] in test_every_structural_field_is_kept_verbatim. Rebuild the committed fixture if it changes. I1 ('## Features' in _TEMPLATE_HEADINGS) is optional in the same push; I2-I4 are follow-ups, not this PR. Everything else in the review passed; do not reopen it."
+        "relaunch: operator answer: Grant one more fix round, scoped to review C1 only (kernel-reviews/review-t-80572-1791651265.md). 1) asf/rehearsal.py _STRUCTURAL_KEYS: add 'stories', 'delivered_by', 'split_from'. 2) tests/test_rehearsal_snapshot.py _card_fields tasks branch: write stories: [S-00001, S-00002]; assert task['stories'] == ['S-00001','S-00002'] in test_every_structural_field_is_kept_verbatim. Rebuild the committed fixture if it changes. I1 ('## Features' in _TEMPLATE_HEADINGS) is optional in the same push; I2-I4 are follow-ups, not this PR. Everything else in the review passed; do not reopen it.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_extra_rounds": 3,
       "kernel_findings": [
+        "asf/rehearsal.py:151 \u2014 add `'stories'` to `_STRUCTURAL_KEYS` (beside `'after'`/`'delivers'`, with `'delivered_by'` and `'split_from'`), and in `tests/test_rehearsal_snapshot.py:144` give `_card_fields`' tasks branch a `stories: [S-00001, S-00002]` line, asserted in `test_every_structural_field_is_kept_verbatim` (`:510`) \u2014 today a Task's Story ids clear to filler, so `asf check` would report `stories references missing item` per Task and `ingest._ups` would lose every Task\u2192Story edge on the operator's refresh.",
         "asf/rehearsal.py:183 \u2014 in `_clear_card_body`, keep a `## ` heading verbatim only when it is one of the record template's own (`asf/record/new.py:207-214`); otherwise rewrite it as `'## ' + clear_ids_kept(...)` at the heading's own length, and add a card with a hand-written heading to `_build_source` \u2014 a real-record build leaks dates, PR numbers and a forbidden product name in 11 cards and `asf redact --tree` refuses it",
         "asf/rehearsal.py:78 \u2014 widen `_HISTORY_LINE_RE` to `^(-\\s\\d{4}-\\d{2}-\\d{2}(?:[ T]\\d{2}:\\d{2}(?::\\d{2})?Z?)?\\s+)(\\S+)(.*)$` and make the `:123` fallback `clear_ids_kept(line)`, not `clear_line(line)`; add the timestamped History shape to `DESCRIPTION` (tests/test_rehearsal_snapshot.py:19)",
         "asf/rehearsal.py:380 \u2014 write the mismatch `done/` copy under its own note's stem (`<intake>/done/open-note-1.md`) as a truncation of that note's cleared text, record the pair as `intake.mismatch = {note, done}`, check containment against the note's real text in `manifest_holds:555`, and assert `staged_guard._paired_done` plus non-containment in `IntakeThreeStates` (tests/test_rehearsal_snapshot.py:332)",
@@ -82259,14 +82567,15 @@
         "asf/rehearsal.py:117 \u2014 _PROSE_KEYS misses `removed:`, whose value may be a hand-written reason (asf/record/setfield.py:103), so that prose is copied verbatim; clear it id-preservingly, since asf/record/ingest.py:656 reads _MERGED_INTO back out of it",
         "tests/rehearsal/manifest.json:1 \u2014 the committed fixture is not what the shipped builder writes: build() writes 'intake_dir' (asf/rehearsal.py:347, added in 4a51a8d) but the committed manifest.json (written in d5677cb) has no such key. Re-run the builder over the same synthetic stand-in source and commit the regenerated tests/rehearsal/ so manifest.json carries \"intake_dir\": \"inbox\", then drop the dead literal default at tests/test_rehearsal_snapshot.py:165 in favour of self.manifest['intake_dir'].",
         "asf/rehearsal.py:426 \u2014 manifest_holds never checks the annotated count that plan Step 2 names, so flipping one annotated flag among several in both manifest.json and repo/refs.json returns []. Have build() state 'refs_total': len(refs) and 'refs_annotated': sum(1 for r in refs if r['annotated']), compare the refs list against both in manifest_holds with one line per mismatch, and add the case to ManifestHoldsDetectsBreakage.",
-        "operator answer: Supersedes my 15:15Z answer: do NOT archive or rebuild. Grant one more fix round on the held branch worker/T-80572 (PR #1367), strong model. Fix exactly the 3 review findings: (1) rehearsal.py:183 keep only the record template's own ## headings verbatim, clear the rest, add a hand-written-heading card to _build_source; (2) rehearsal.py:78 widen _HISTORY_LINE_RE for timestamped History lines and use clear_ids_kept in the fallback, add that shape to DESCRIPTION; (3) rehearsal.py:380 write the mismatch done/ copy under its own note's stem, record intake.mismatch, check containment in manifest_ho\u2026"
+        "operator answer: Supersedes my 15:15Z answer: do NOT archive or rebuild. Grant one more fix round on the held branch worker/T-80572 (PR #1367), strong model. Fix exactly the 3 review findings: (1) rehearsal.py:183 keep only the record template's own ## headings verbatim, clear the rest, add a hand-written-heading card to _build_source; (2) rehearsal.py:78 widen _HISTORY_LINE_RE for timestamped History lines and use clear_ids_kept in the fallback, add that shape to DESCRIPTION; (3) rehearsal.py:380 write the mismatch done/ copy under its own note's stem, record intake.mismatch, check containment in manifest_ho\u2026",
+        "operator answer: Grant one more fix round, scoped to review C1 only (kernel-reviews/review-t-80572-1791651265.md). 1) asf/rehearsal.py _STRUCTURAL_KEYS: add 'stories', 'delivered_by', 'split_from'. 2) tests/test_rehearsal_snapshot.py _card_fields tasks branch: write stories: [S-00001, S-00002]; assert task['stories'] == ['S-00001','S-00002'] in test_every_structural_field_is_kept_verbatim. Rebuild the committed fixture if it changes. I1 ('## Features' in _TEMPLATE_HEADINGS) is optional in the same push; I2-I4 are follow-ups, not this PR. Everything else in the review passed; do not reopen it."
       ],
-      "kernel_fix_rounds": 5,
+      "kernel_fix_rounds": 6,
       "kernel_notes": [
         "build-t-80572-1791646302: NEEDS OPERATOR: the 2026-10-10T15:15Z answer says to archive worker/T-80572 and rebuild this Task fresh from current main, while this session's brief says to correct the held branch and never recut or force it \u2014 the\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -82279,7 +82588,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T17:19:21Z",
+      "updated": "2026-10-10T17:20:57Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -83193,6 +83502,7 @@
       ],
       "backlinks": [
         "F-0340",
+        "S-125106",
         "T-83143"
       ],
       "children": [],
