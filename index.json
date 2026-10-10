@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T10:57:43Z",
+  "generated": "2026-10-10T11:02:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3040,13 +3040,16 @@
       "found_in": "dev",
       "id": "B-0097",
       "kernel_attempts": [
-        "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device"
+        "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "docs/plans/b-0097.md:67 \u2014 the Acceptance bullet claims the run is \"recorded as `ended, publish pending`\", a string that appears nowhere in the tree and that the plan's own Cause section (docs/plans/b-0097.md:19) contradicts for the mechanism it cites (asf/workers/health.py:949-952 returns without marking the session ended at all); either cite a real mechanism matching that wording or reword the bullet to match what the code does.",
+        "docs/plans/b-0097.md:14 and the commit message of ad308b3 \u2014 both cite commit `e48caa821` as carrying `Fixes: B-0097` trailers; that sha is not a valid object in this repository. The classification code they attribute to it (asf/workers/lifecycle.py:133-144) actually blames to afff26f6ce30c6b621a89fc7a5f41ea5f0077b37, whose message never mentions B-0097 and has no such trailer. Push a corrective commit citing the real sha and drop the false trailer claim, and fix the same citation in docs/plans/b-0097.md:14.",
         "docs/plans/b-0097.md:1 \u2014 write the missing plan documenting the Task this branch delivers (the in-tick backoff retry `_push_retrying` in `asf/workers/lifecycle.py` and its tests at `tests/test_lifecycle.py:1896-1955`); every item on this product, including an S3 bug fix, carries a `docs/plans/<id>.md`."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -3055,7 +3058,7 @@
       "state": "New",
       "title": "A network blip on push scores finished work as 'failed: not pushed' and costs a correction round",
       "type": "bug",
-      "updated": "2026-10-10T10:36:11Z"
+      "updated": "2026-10-10T11:02:43Z"
     },
     "B-0098": {
       "backlinks": [],
@@ -3784,7 +3787,7 @@
         "operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3793,7 +3796,7 @@
       "state": "New",
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
-      "updated": "2026-10-10T10:41:24Z"
+      "updated": "2026-10-10T11:02:43Z"
     },
     "B-0122": {
       "backlinks": [],
@@ -33453,7 +33456,7 @@
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
         "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33461,7 +33464,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T10:41:24Z"
+      "updated": "2026-10-10T11:02:43Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33744,7 +33747,7 @@
       "kernel_notes": [
         "spec-f-0329-1791587544: NEEDS OPERATOR: whether the second, co-occurring half of the same damage gets its own card \u2014 `CHECKBOX` matches one physical line, so a *wrapped* acceptance bullet (`docs/specs/f-0280.md:369-371`, the very declarati\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33752,7 +33755,7 @@
       "state": "New",
       "title": "minting a declared Story (idcheck.declared_stories / plan_tasks) strips backtick code spans from its acceptance lines",
       "type": "feature",
-      "updated": "2026-10-10T10:41:24Z"
+      "updated": "2026-10-10T11:02:43Z"
     },
     "F-0330": {
       "backlinks": [],
@@ -49857,8 +49860,12 @@
       ],
       "folder": "tasks",
       "id": "T-0123",
+      "kernel_answers": [
+        "Granted: asf/harvest/lane.py is added to writes (card updated); the kernel's overlap rule now serialises this Task against other lane.py writers. Keep the lane.py change minimal; nothing else outside writes."
+      ],
       "kernel_attempts": [
-        "relaunch: escalated: the previous session stopped (partial: left out: C1 and C2 are unchanged from the review's finding and the prior coder report \u2014 re-verified, not re-fixable inside this card's writes:. `grep -n \"deliverable_of\\|already_on_trunk\\|l\u2026) \u2014 pick up from its report and branch, and finish the item"
+        "relaunch: operator answer: Granted: asf/harvest/lane.py is added to writes (card updated); the kernel's overlap rule now serialises this Task against other lane.py writers. Keep the lane.py change minimal; nothing else outside writes.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "C1 \u2014 no single file:line (missing work) \u2014 `asf/harvest/harvest.py` carries none of Task 3/4's screen/archive/re-admission logic; it now lives in `asf/harvest/lane.py` (outside `writes:`), confirmed by `grep -n \"deliverable_of\\|already_on_trunk\\|lane_refusal\\|land_already\" asf/harvest/harvest.py` returning nothing. No code fix is possible inside this card's current footprint \u2014 adjudicate `writes:`/`grant:` to include `asf/harvest/lane.py` (or amend the plan), then implement the remaining Steps there.",
@@ -49866,11 +49873,7 @@
         "escalated: the previous session stopped (partial: left out: C1 and C2 are unchanged from the review's finding and the prior coder report \u2014 re-verified, not re-fixable inside this card's writes:. `grep -n \"deliverable_of\\|already_on_trunk\\|l\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "partial: NEEDS OPERATOR: a ruling on T-0123's writes:/grant: \u2014 either widen it to include",
-      "kernel_stuck_since": "2026-10-10T10:55:36Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0026.md"
       },
@@ -49884,7 +49887,7 @@
       "state": "Active",
       "title": "`asf/boundary.py` \u2014 the matcher, the grant resolver, the law, and `conventions.boundary`",
       "type": "task",
-      "updated": "2026-10-10T10:57:40Z",
+      "updated": "2026-10-10T11:02:43Z",
       "writes": [
         "asf/boundary.py,",
         "tests/test_boundary.py,",
@@ -58574,21 +58577,25 @@
       "folder": "tasks",
       "id": "T-0318",
       "kernel_attempts": [
-        "relaunch: escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item"
+        "relaunch: escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item",
         "escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1132: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1132: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1132: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1132: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0062.md"
       },
@@ -58603,7 +58610,7 @@
       "state": "Active",
       "title": "the per-role worker settings file, its deny rules, `asf worker-permissions`, and the three doctor rows",
       "type": "task",
-      "updated": "2026-10-10T10:57:40Z",
+      "updated": "2026-10-10T11:02:43Z",
       "writes": [
         "asf/workers/worker_settings.py",
         "asf/cli.py",
@@ -66559,7 +66566,7 @@
       ],
       "folder": "tasks",
       "id": "T-0503",
-      "kernel_state": "review",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0148.md"
       },
@@ -66572,7 +66579,7 @@
       "state": "Active",
       "title": "the reader and its command \u2014 every product's stored week, and `asf scorecard --all`",
       "type": "task",
-      "updated": "2026-10-10T10:43:25Z",
+      "updated": "2026-10-10T11:02:43Z",
       "writes": [
         "asf/scorecard/loop.py",
         "asf/views/scorecard.py",
@@ -72762,7 +72769,7 @@
         "rebase: PR #1087 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0138-26a33fc30108.md"
       },
@@ -72779,7 +72786,7 @@
       "state": "Active",
       "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
       "type": "task",
-      "updated": "2026-10-10T10:41:24Z",
+      "updated": "2026-10-10T11:02:43Z",
       "writes": [
         "asf/workers/headroom.py",
         "asf/workers/pool.py",
@@ -80656,6 +80663,7 @@
       ],
       "folder": "tasks",
       "id": "T-76352",
+      "kernel_dor_fills": 1,
       "kernel_findings": [
         "asf/workers/lifecycle.py:1374-1382 \u2014 C2, docstring not verbatim to spec; asf/tick/step_wave.py:111-114 \u2014 C3, docstring not verbatim to spec; tests/test_occupancy_trunk_landed.py:110-157 \u2014 C1, no test proves `TRUNK_LANDED_DAYS` is actually passed as `days=` to `trunk_watch.first_parent`; docs/reviews/1-t-76352.md on HEAD (ee27a4b07) \u2014 C4, a prior review session committed and pushed a review artifact straight onto `worker/T-76352`, outside `writes:` and in violation of this item's own \"review never touches the branch\" rule \u2014 needs the factory's attention, not a code fix."
       ],
@@ -80673,7 +80681,7 @@
       ],
       "title": "the lane releases an item whose PR the trunk carries, so the Feature's next Task launches",
       "type": "task",
-      "updated": "2026-10-10T10:17:59Z",
+      "updated": "2026-10-10T11:02:43Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/tick/step_wave.py",
@@ -80987,6 +80995,7 @@
       ],
       "folder": "tasks",
       "id": "T-78359",
+      "kernel_dor_fills": 1,
       "links": {
         "plan": "docs/plans/f-0283.md"
       },
@@ -80999,7 +81008,7 @@
       ],
       "title": "the record's own hooks are moved onto the pin by the command the row already names",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T11:02:43Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
@@ -81157,6 +81166,7 @@
       ],
       "folder": "tasks",
       "id": "T-78813",
+      "kernel_dor_fills": 1,
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81169,7 +81179,7 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-08T13:39:56Z",
+      "updated": "2026-10-10T11:02:43Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
