@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T13:30:57Z",
+  "generated": "2026-10-10T13:35:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33621,7 +33621,7 @@
       "kernel_notes": [
         "plan-f-0324-1791635172: NEEDS OPERATOR: the plan is pushed and reviewed, but no PR exists for `plan/F-0324` and a session may not open one \u2014 the lane does. To see whether the lane has picked the branch up: `gh pr list --head plan/F-0324 --\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33629,7 +33629,7 @@
       "state": "New",
       "title": "a branch of only empty proof commits is read as already on main and deleted without landing; the item loops",
       "type": "feature",
-      "updated": "2026-10-10T13:04:40Z"
+      "updated": "2026-10-10T13:34:59Z"
     },
     "F-0325": {
       "backlinks": [],
@@ -33749,7 +33749,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T13:30:56Z"
+      "updated": "2026-10-10T13:34:59Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -41443,7 +41443,8 @@
     },
     "S-69211": {
       "backlinks": [
-        "F-0114"
+        "F-0114",
+        "T-0457"
       ],
       "children": [],
       "folder": "stories",
@@ -63781,6 +63782,8 @@
       "kernel_answers": [
         "granted asf/doctor.py tests/test_doctor.py; nothing else outside writes (card updated by the kernel)."
       ],
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_notes": [
@@ -63807,7 +63810,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T13:04:40Z",
+      "updated": "2026-10-10T13:34:59Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -64786,6 +64789,10 @@
         "T-0458"
       ],
       "children": [],
+      "creates": [
+        "tools/upgrade_matrix.py",
+        "tests/test_upgrade_matrix.py"
+      ],
       "decided": true,
       "evidence": [
         "no evidence found (2026-10-09)",
@@ -64795,6 +64802,9 @@
       "id": "T-0457",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
+      "kernel_notes": [
+        "groom-fill-t-0457-1791638803: groom-fill raised risk high: Card's own Description already mirrors docs/plans/f-0114.md's Task 6 verbatim (same writes, same steps); filled the two acceptance lines from the plan's own canonical test classes (PlanTests, MixedVersionTests), confirmed tools/upgrade_matrix.py and tests/test_upgrade_matrix.py are absent from origin/main and .github/workflows/tests.yml has no plan/upgrade-matrix job yet; risk_raise high because writes touch CI (tests.yml). Separately: the Description's \"stories: S-32357\" is the pre-spec-amend id \u2014 the plan's own Task 6 (docs/plans/f-0114.md:44,611) already carries the live id S-69211, so the card's header is stale and worth a follow-up correction."
+      ],
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -64807,7 +64817,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-10T13:26:49Z",
+      "updated": "2026-10-10T13:34:59Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -75219,17 +75229,22 @@
       ],
       "folder": "tasks",
       "id": "T-0709",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
+        "asf/ci_vm.py:703 \u2014 give `REMOTE_START` a command timeout of its own instead of `CONNECT_TIMEOUT_S` (as `push_sha:254` does) and make it idempotent: after `rundir=\"$root/runs/{run_id}\"` insert `git -C \"$root/repo.git\" worktree remove --force \"$rundir/src\" 2>/dev/null || true` and `rm -rf \"$rundir\"`, so a start that times out after the worktree exists does not wedge that (sha, job) for ever with a running job no step can reach",
+        "asf/ci_vm.py:614 \u2014 supersede only a sha no ref still points at: replace `if not new_sha or new_sha == sha:` with `if not new_sha or sha in set(current.values()):` (plus the trunk's own sha), so a run at a sha that is still some branch's or the trunk's head is not cancelled into a permanent `red`/`ever_red` that sends a clean branch back with no evidence",
         "asf/ci_vm.py:272-292 \u2014 REMOTE_START resolves $rundir relative: `git -C \"$root/repo.git\" worktree add \u2026 \"$rundir/src\"` (:277) lands the worktree inside repo.git, and run.sh's relative $0 (:281) breaks every later dirname after the cd, so with the default root `.asf-ci` the command runs in the ssh login directory and the pass concludes the required job `passed` for a sha never checked out. Make the root absolute once: after `mkdir -p \"$root/runs\"` insert `root=$(cd \"$root\" && pwd)`, then compute `rundir=\"$root/runs/{run_id}\"` and `mkdir -p \"$rundir\"`; add `root=$(cd \"$root\" 2>/dev/null && pwd || echo \"$root\")` before `rundir=` in REMOTE_CLEANUP (:325-329).",
         "tests/test_ci_vm.py:307-320 \u2014 the plan's own T-0709 acceptance \"after a conclusion <root> holds only repo.git and an empty runs/\" is asserted nowhere, and FakeSsh.setUp:229 / add_host:266 always use an absolute root, so no case exercises the default that C1 breaks. Add `self.assertEqual(sorted(os.listdir(host.root)), ['repo.git', 'runs'])` plus an empty-`runs/` assertion to the green case, and one case running a pass with a relative root that asserts the command ran in `runs/<run_id>/src`.",
         "tests/test_ci_vm.py:308-320 \u2014 the acceptance case is not byte-identical to docs/plans/replans/f-0194-87b236e237ad.md:349-357: the RUNNING assertion is split into two lines, wait_for_exit's trailing comment is dropped, two lines are inserted mid-snippet, and :320's comment gap is two spaces not three. Restore the plan's eight lines verbatim and append the added remote_read assertion after them.",
         "asf/ci_vm.py:539,628 \u2014 a --dry-run pass writes real verdicts into the store (:575-578, :587-588) while the REMOTE_CLEANUP call (:579-580) is refused by the guard, so runs/<run_id> is left on the host and, the row now being concluded, no later pass ever cleans it. Add `if mutation_guard.is_active(): return 0` as the first statement of _collect and _time_out, and `if mutation_guard.is_active(): return` in _supersede."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1142: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0194-87b236e237ad.md"
       },
@@ -75249,7 +75264,7 @@
       "stories": [],
       "title": "a sha runs on an ssh-reachable machine and comes back \u2014 the transport, the three remote scripts, the store, and the pass that dispatches, collects, supersedes and times out",
       "type": "task",
-      "updated": "2026-10-10T13:17:36Z",
+      "updated": "2026-10-10T13:34:59Z",
       "writes": [
         "asf/ci_vm.py",
         "tests/test_ci_vm.py",
@@ -76860,7 +76875,7 @@
       "kernel_notes": [
         "PR #848: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0130-47df67914dbf.md"
       },
@@ -76878,7 +76893,7 @@
       "stories": [],
       "title": "the product declares its pre-ASF branch convention, and a misshapen declaration is loud",
       "type": "task",
-      "updated": "2026-10-10T13:26:49Z",
+      "updated": "2026-10-10T13:34:59Z",
       "writes": [
         "asf/conventions.py",
         "tests/test_conventions.py",
@@ -81256,6 +81271,12 @@
       ],
       "folder": "tasks",
       "id": "T-78813",
+      "kernel_answers": [
+        "granted tests/test_feeder.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/test_feeder.py; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "kernel_notes": [
@@ -81265,7 +81286,7 @@
         "groom-fill-t-78813-1791635680: groom-fill raised risk high: Content matches the approved spec/plan exactly (zero drift at base); the parked after: items are legitimate footprint sequencing (T-76352 shares step_wave.py, still mid-review) that clears on its own, not a card defect.",
         "groom-fill-t-78813-1791636552: groom-fill raised risk high: Acceptance/writes already match the approved spec verbatim; T-76352 is landed (12f28448f, ancestor of HEAD) and T-0775's open work touches rows.py with zero line-level overlap on this Task's edits \u2014 the after: dependency is a real but harmless footprint-gate wait, not a card defect."
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81278,13 +81299,14 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-10T13:26:49Z",
+      "updated": "2026-10-10T13:34:59Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
         "asf/tick/step_wave.py",
         "asf/workers/pool.py",
-        "tests/test_cloud.py"
+        "tests/test_cloud.py",
+        "tests/test_feeder.py"
       ]
     },
     "T-78814": {
@@ -82847,7 +82869,7 @@
       ],
       "title": "the check in `screen`, the `RULED` kind, and the `waivers` map",
       "type": "task",
-      "updated": "2026-10-10T13:26:49Z",
+      "updated": "2026-10-10T13:34:59Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_rulepass.py"
