@@ -1,3 +1,5 @@
+→ F-0347
+
 # Heartbeat: judge sessions by progress beats, not elapsed time
 parent: E-0003
 
