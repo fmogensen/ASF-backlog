@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T13:35:01Z",
+  "generated": "2026-10-10T13:38:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33800,7 +33800,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: Decisions: (1) This plan session may amend docs/specs/f-0330.md (granted) to re-anchor the design on the current trunk: retire.py/test_retire.py, replan.task_pending and correct.py's parked gate are gone; design against what exists now (asf/record retire path via asf retire --landed, replan.pending(feature), and the kernel's ruling applier), then re-cut the four Tasks. (2) STORY_ID_RE: filed as its own Bug via the inbox (fix: \\d{4,}); land that first. F-0330's Tasks get after: on that Bug once it has an id; do not mint Tasks without Stories."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33808,7 +33808,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T13:04:40Z"
+      "updated": "2026-10-10T13:38:44Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -52011,14 +52011,13 @@
       "folder": "tasks",
       "id": "T-0172",
       "kernel_findings": [
-        "asf/groom/delivery.py:237 \u2014 `releasable`'s lead-uncommitted branch treats a `Resolved` (already-landed) member as still open because it tests `_state(r) != 'Closed'`; change it to `_state(r) == 'New' and not r['meta'].get('evidence')` to match the sibling branch at `:246` and the spec's own D11/D12 wording.",
-        "docs/reviews/1-t-0172.md (via commit e34310ae6 on worker/T-0172) \u2014 a prior review session committed the review file itself to this branch, outside the Task's `writes:`; this needs an operator to decide how to clean the branch before merge, since removing it would require a force-push no session here may perform."
+        "docs/reviews/1-t-0172.md \u2014 outside this Task's `writes:`; added whole by commit `cf348a9` on `worker/T-0172` (a prior review session's own report, committed straight onto the branch). Fix: a follow-up commit removing it \u2014 `git rm docs/reviews/1-t-0172.md` \u2014 so the diff against `origin/main` is exactly the card's `writes:` line."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "build-t-0172-1791637668: NEEDS OPERATOR: docs/reviews/1-t-0172.md was committed to this branch (now at 61b05294, via the prior review session's commit, previously at sha e34310ae6 before this branch was rebased onto a newer origin/main) out\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0102.md"
       },
@@ -52031,7 +52030,7 @@
       "state": "Active",
       "title": "the selection rule, the budget and the three ceilings",
       "type": "task",
-      "updated": "2026-10-10T13:21:42Z",
+      "updated": "2026-10-10T13:38:44Z",
       "writes": [
         "asf/groom/delivery.py",
         "asf/conventions.py",
@@ -81286,7 +81285,7 @@
         "groom-fill-t-78813-1791635680: groom-fill raised risk high: Content matches the approved spec/plan exactly (zero drift at base); the parked after: items are legitimate footprint sequencing (T-76352 shares step_wave.py, still mid-review) that clears on its own, not a card defect.",
         "groom-fill-t-78813-1791636552: groom-fill raised risk high: Acceptance/writes already match the approved spec verbatim; T-76352 is landed (12f28448f, ancestor of HEAD) and T-0775's open work touches rows.py with zero line-level overlap on this Task's edits \u2014 the after: dependency is a real but harmless footprint-gate wait, not a card defect."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81299,7 +81298,7 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-10T13:34:59Z",
+      "updated": "2026-10-10T13:38:44Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
