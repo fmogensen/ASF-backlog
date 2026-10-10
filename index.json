@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T18:02:13Z",
+  "generated": "2026-10-10T18:07:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34303,7 +34303,7 @@
         "spec-f-0334-1791651250: NEEDS OPERATOR: product `asf` is pinned to `14b963ba1` (2026-10-08), whose CLI has no `pre-push` subcommand, while `asf-hook:171` calls it \u2014 the door refuses every session's push on this host. Repin to a sha that ca\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34312,7 +34312,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T18:02:11Z"
+      "updated": "2026-10-10T18:07:35Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34365,6 +34365,9 @@
         "docs/specs/f-0336.md:304 \u2014 \"In\" item 8 says `decide.on_pr` reads the live entries, but `on_pr(check, pr)` (`asf/kernel/decide.py:1314`) takes no `facts` and so cannot; \u00a74.3 correctly leaves it unchanged and adds `quarantined(check, facts)` ANDed into `_judge_pr`'s `own` list \u2014 reword item 8 to \"`decide._judge_pr` reads the live entries (`decide.quarantined`), so a quarantined signature's red takes the shipped off-PR path\" so the scope list and the design name the same function"
       ],
       "kernel_fix_rounds": 3,
+      "kernel_notes": [
+        "plan-f-0336-1791653644: NEEDS OPERATOR: this host's `asf` pin (`14b963ba1`, `policy: pinned`, 2026-10-08) predates the `pre-push` subcommand its own session shim invokes, so every push from this host is refused after both of the shim's rea\u2026"
+      ],
       "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
@@ -34374,7 +34377,7 @@
       "state": "New",
       "title": "Kernel flake quarantine with a defect check (unrelated heads only)",
       "type": "feature",
-      "updated": "2026-10-10T17:40:47Z"
+      "updated": "2026-10-10T18:07:35Z"
     },
     "F-0337": {
       "backlinks": [],
@@ -34399,7 +34402,7 @@
         "spec-f-0337-1791651258: NEEDS OPERATOR: the installed hook shim calls `asf pre-push`, which product ASF's pinned CLI (`14b963ba1`, 2026-10-08) does not have \u2014 `aa56423fd` added it today \u2014 so every session push on this host is refused after\u2026",
         "spec-f-0337-1791652842: NEEDS OPERATOR: product `ASF` is pinned to `14b963ba1`, whose CLI has no `pre-push` subcommand that this host's newer hook shim invokes, so the pre-push hook refuses every session's push \u2014 confirm with `~"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "nice",
       "rank": 20,
@@ -34408,7 +34411,7 @@
       "state": "New",
       "title": "Kernel grooming Stage 4: continuous sweep of old New/Parked items on idle seats",
       "type": "feature",
-      "updated": "2026-10-10T17:55:13Z"
+      "updated": "2026-10-10T18:07:35Z"
     },
     "F-0338": {
       "backlinks": [],
@@ -34538,7 +34541,10 @@
         "S-124906",
         "S-124907",
         "S-124908",
-        "S-124909"
+        "S-124909",
+        "T-130966",
+        "T-130967",
+        "T-130968"
       ],
       "decided": true,
       "folder": "features",
@@ -34722,14 +34728,14 @@
         "launch: launch: branch checked out in an external worktree ~/Code/fmogensen/ASF-wt-replan; waits until it's released"
       ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0003",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:24:18Z",
       "state": "New",
       "title": "Kernel never mints Task cards from a merged plan, and reads landed docs from a stale checkout",
       "type": "feature",
-      "updated": "2026-10-10T18:02:11Z"
+      "updated": "2026-10-10T18:07:35Z"
     },
     "R-0001": {
       "backlinks": [
@@ -37629,9 +37635,11 @@
         "T-129211"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122755",
       "parent": "F-0338",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:59Z",
       "state": "New",
@@ -37661,9 +37669,11 @@
         "T-129211"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122757",
       "parent": "F-0338",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:59Z",
       "state": "New",
@@ -37676,9 +37686,11 @@
         "T-129210"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122758",
       "parent": "F-0338",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:59Z",
       "state": "New",
@@ -37691,9 +37703,11 @@
         "T-129210"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-122759",
       "parent": "F-0338",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:59Z",
       "state": "New",
@@ -37820,7 +37834,9 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-124905": {
-      "backlinks": [],
+      "backlinks": [
+        "T-130966"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -37834,7 +37850,9 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-124906": {
-      "backlinks": [],
+      "backlinks": [
+        "T-130968"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -37848,7 +37866,10 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-124907": {
-      "backlinks": [],
+      "backlinks": [
+        "T-130967",
+        "T-130968"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -37862,7 +37883,9 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-124908": {
-      "backlinks": [],
+      "backlinks": [
+        "T-130967"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -37876,7 +37899,9 @@
       "updated": "2026-10-10T17:20:09Z"
     },
     "S-124909": {
-      "backlinks": [],
+      "backlinks": [
+        "T-130968"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -41598,9 +41623,11 @@
         "T-129156"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-63154",
       "parent": "F-0272",
+      "priority": "need",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:35:44Z",
       "state": "New",
@@ -82947,7 +82974,8 @@
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
       "kernel_notes": [
-        "groom-fill-t-129156-1791654017: groom-fill raised risk high: design matches trunk exactly (constants, line ranges, fixture methods, helper signatures) and nothing named has been built yet; only the acceptance/gate lines were missing."
+        "groom-fill-t-129156-1791654017: groom-fill raised risk high: design matches trunk exactly (constants, line ranges, fixture methods, helper signatures) and nothing named has been built yet; only the acceptance/gate lines were missing.",
+        "groom-fill-t-129156-1791655146: groom-fill raised risk high: design (constants, line ranges, fixture methods, helper signatures) matches trunk at af8aa11c exactly, and nothing named has been built yet \u2014 only acceptance/writes were missing."
       ],
       "links": {
         "plan": "docs/plans/f-0272.md"
@@ -82962,7 +82990,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-10T17:59:35Z",
+      "updated": "2026-10-10T18:07:35Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -82986,7 +83014,7 @@
       "kernel_notes": [
         "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -82999,7 +83027,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T17:55:13Z",
+      "updated": "2026-10-10T18:07:35Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -83141,7 +83169,7 @@
       ],
       "title": "the declaration \u2014 `stability: true` on a Feature or an Epic",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-10T18:07:35Z",
       "writes": [
         "asf/record/new.py",
         "tests/test_backlog.py",
@@ -83193,6 +83221,7 @@
       "id": "T-129164",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -83205,7 +83234,7 @@
       ],
       "title": "the text \u2014 a finished session's REPORT verdict, as a review every reader reads alike",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-10T18:07:35Z",
       "writes": [
         "asf/evidence/review.py",
         "tests/test_review_reader.py"
@@ -83358,7 +83387,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129170",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0317.md"
       },
@@ -83371,7 +83400,7 @@
       ],
       "title": "the suffix, minted and read back in one place",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-10T18:07:35Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -83444,6 +83473,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129173",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.12",
       "links": {
         "plan": "docs/plans/f-0318.md"
       },
@@ -83459,7 +83490,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-10T18:07:35Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -83476,6 +83507,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129174",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.12",
       "links": {
         "plan": "docs/plans/f-0318.md"
       },
@@ -83489,7 +83522,7 @@
       ],
       "title": "the place \u2014 the pass in the tick's record step, the writer order, and the gate clearing",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-10T18:07:35Z",
       "writes": [
         "asf/tick/tick.py",
         "asf/record/stage.py",
@@ -84673,6 +84706,100 @@
       "updated": "2026-10-10T17:59:58Z",
       "writes": [
         "tests/test_mq_batch_survival.py"
+      ]
+    },
+    "T-130966": {
+      "backlinks": [
+        "T-130967",
+        "T-130968"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-130966",
+      "kernel_state": "building",
+      "links": {
+        "plan": "docs/plans/f-0342.md"
+      },
+      "parent": "F-0342",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T18:05:26Z",
+      "state": "New",
+      "stories": [
+        "S-124905"
+      ],
+      "title": "the quiesce \u2014 the kernel's two argv shapes, its lock, and the module every Story shares",
+      "type": "task",
+      "updated": "2026-10-10T18:07:35Z",
+      "writes": [
+        "asf/kernel/loop.py",
+        "asf/upgrade.py",
+        "tests/test_upgrade_kernel_floor.py"
+      ]
+    },
+    "T-130967": {
+      "after": [
+        "T-130966"
+      ],
+      "backlinks": [
+        "T-130968"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-130967",
+      "links": {
+        "plan": "docs/plans/f-0342.md"
+      },
+      "parent": "F-0342",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T18:05:29Z",
+      "state": "New",
+      "stories": [
+        "S-124908"
+      ],
+      "title": "the smoke replays the floor that moved, and each kernel job has a no-op form",
+      "type": "task",
+      "updated": "2026-10-10T18:05:29Z",
+      "writes": [
+        "asf/scheduler.py",
+        "asf/upgrade.py",
+        "tests/test_upgrade_kernel_floor.py",
+        "tests/test_upgrade.py",
+        "tests/test_upgrade_drain_bound.py"
+      ]
+    },
+    "T-130968": {
+      "after": [
+        "T-130966",
+        "T-130967"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-130968",
+      "links": {
+        "plan": "docs/plans/f-0342.md"
+      },
+      "parent": "F-0342",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T18:05:33Z",
+      "state": "New",
+      "stories": [
+        "S-124906",
+        "S-124907",
+        "S-124909"
+      ],
+      "title": "the floor split \u2014 one installer per owner, the two-floor refusal, and the retire gate",
+      "type": "task",
+      "updated": "2026-10-10T18:05:33Z",
+      "writes": [
+        "asf/upgrade.py",
+        "asf/scheduler.py",
+        "tests/test_upgrade_kernel_floor.py",
+        "tests/test_upgrade.py",
+        "tests/test_upgrade_drain_bound.py"
       ]
     },
     "T-76350": {
