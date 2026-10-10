@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T14:04:53Z",
+  "generated": "2026-10-10T14:08:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33394,7 +33394,7 @@
       "kernel_notes": [
         "plan-f-0316-1791636867: NEEDS OPERATOR: outside this card \u2014 18 landed plans write their Task `writes:` line space-separated with backticks, and `asf.tick.migrate.writes_lines` splits only on commas, so each of those Tasks was minted with o\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33402,7 +33402,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T13:54:02Z"
+      "updated": "2026-10-10T14:08:25Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33561,19 +33561,17 @@
       ],
       "folder": "features",
       "id": "F-0322",
+      "kernel_answers": [
+        "The session timed out, not the work. Relaunch the plan once, fresh; keep the brief tight and push early."
+      ],
       "kernel_attempts": [
-        "session ran past its max age",
-        "session ran past its max age"
+        "relaunch: operator answer: The session timed out, not the work. Relaunch the plan once, fresh; keep the brief tight and push early."
       ],
       "kernel_notes": [
         "spec-f-0322-1791611510: NEEDS OPERATOR: whether to file the second defect P5 measures \u2014 a relaunch-cap park whose job was later reused by a run on another item is reachable by neither `asf unpark` nor health, so it can never be released \u2014\u2026",
         "plan-f-0322-1791636892: NEEDS OPERATOR: whether to file the spec's P5 second defect as its own card \u2014 `asf unpark` and health's release rules are both keyed by job through a one-record-per-job map, so a park whose job name was later reused\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "session ran past its max age",
-      "kernel_stuck_since": "2026-10-10T14:04:52Z",
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33581,7 +33579,7 @@
       "state": "New",
       "title": "status keeps a retired item's relaunch-cap park",
       "type": "feature",
-      "updated": "2026-10-10T14:04:52Z"
+      "updated": "2026-10-10T14:08:25Z"
     },
     "F-0323": {
       "backlinks": [],
@@ -33755,7 +33753,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T14:02:17Z"
+      "updated": "2026-10-10T14:08:25Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -52020,13 +52018,14 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "rebase: PR #1148 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "docs/reviews/1-t-0172.md \u2014 outside this Task's `writes:`; added whole by commit `cf348a9` on `worker/T-0172` (a prior review session's own report, committed straight onto the branch). Fix: a follow-up commit removing it \u2014 `git rm docs/reviews/1-t-0172.md` \u2014 so the diff against `origin/main` is exactly the card's `writes:` line."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "build-t-0172-1791637668: NEEDS OPERATOR: docs/reviews/1-t-0172.md was committed to this branch (now at 61b05294, via the prior review session's commit, previously at sha e34310ae6 before this branch was rebased onto a newer origin/main) out\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0102.md"
       },
@@ -52039,7 +52038,7 @@
       "state": "Active",
       "title": "the selection rule, the budget and the three ceilings",
       "type": "task",
-      "updated": "2026-10-10T14:04:52Z",
+      "updated": "2026-10-10T14:08:25Z",
       "writes": [
         "asf/groom/delivery.py",
         "asf/conventions.py",
@@ -82046,7 +82045,11 @@
       "kernel_answers": [
         "Widened T-81129's writes to include asf/conventions.py and docs/guide/product-config.md (record). Continue on the same branch.",
         "Correction: asf/conventions.py cannot be added yet; T-79565 and T-83345 hold it. T-81129 now waits on both (after:) and gets the file once they land; docs/guide/product-config.md is added to writes now.",
-        "One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
+        "One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push.",
+        "granted asf/conventions.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/conventions.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -82062,7 +82065,7 @@
         "PR #1374: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -82075,11 +82078,12 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T13:54:02Z",
+      "updated": "2026-10-10T14:08:25Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
-        "docs/guide/product-config.md"
+        "docs/guide/product-config.md",
+        "asf/conventions.py"
       ]
     },
     "T-81130": {
@@ -82885,7 +82889,7 @@
       ],
       "title": "the check in `screen`, the `RULED` kind, and the `waivers` map",
       "type": "task",
-      "updated": "2026-10-10T14:02:17Z",
+      "updated": "2026-10-10T14:08:25Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_rulepass.py"
