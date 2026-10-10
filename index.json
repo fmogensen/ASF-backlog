@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T16:12:01Z",
+  "generated": "2026-10-10T16:16:46Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16749,7 +16749,7 @@
       "id": "B-123640",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.1",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "priority": "need",
       "schema_version": 1,
@@ -16759,7 +16759,7 @@
       "state": "New",
       "title": "tests.test_workers TestSpawn: five failures on git 2.43.0 in cloud containers",
       "type": "bug",
-      "updated": "2026-10-10T16:12:00Z",
+      "updated": "2026-10-10T16:16:45Z",
       "writes": [
         "asf/workers/spawn.py"
       ]
@@ -33807,7 +33807,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T16:12:00Z"
+      "updated": "2026-10-10T16:16:45Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -34016,11 +34016,16 @@
       "decided": true,
       "folder": "features",
       "id": "F-0334",
+      "kernel_findings": [
+        "docs/specs/f-0334.md:963 \u2014 \u00a710's example tick shows the sweep acting (`4 retired, 1 revived, 176 held`) on a tick marked `(0 seats idle: not run)`, against \u00a74's rule at :716 (\"returns nothing at all unless `idle` is set\") and S-120810's acceptance at :1339; make the line `sweep: 181 parked -> 0 retired, 0 revived, 181 held (0 seats idle: not run)`, or give the tick an idle seat and \u00a74's wording.",
+        "docs/specs/f-0334.md:662 \u2014 \"`created` is a field of the Item it was handed\" gives no note an age: `RealRecord.notes` builds a note Item with only id/type/title/body/question (origin/main:asf/kernel/ports.py:678), as :634 of this spec itself states, so `created` is '' for every note and the `intake: {oldest}` key, the per-tick `oldest_s` and the `intake decided` gate row (:683) read blank for the population \u00a72 is about; name a note's age source \u2014 `RecordPort.notes` filling `created` from the intake file's mtime (or the inbox file's own created line) \u2014 and add `asf/kernel/ports.py` \u00a72 to the footprint for it."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0334-1791642615: NEEDS OPERATOR: which classes of question the console is answering \u2014 `asf kernel questions --product <p> --classify --since 2026-09-26T00:00:00Z`",
         "spec-f-0334-1791645911: NEEDS OPERATOR: every session's push of product `asf` on this host is refused \u2014 the pinned CLI predates the `pre-push` subcommand its own current hook shim calls, and no local build has it. Confirm read-only with `p\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34029,7 +34034,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T15:55:57Z"
+      "updated": "2026-10-10T16:16:45Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34063,7 +34068,7 @@
         "docs/specs/f-0336.md:383 \u2014 the design touches seven existing kernel files (`model.py`, `actions.py`, `decide.py`, `apply.py`, `ports.py`, `loop.py`, `settings.py`); change \"Ten files: one new module, one new test module, six kernel files\" to \"Eleven files: one new module, one new test module, seven kernel files\""
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 5,
@@ -34072,7 +34077,7 @@
       "state": "New",
       "title": "Kernel flake quarantine with a defect check (unrelated heads only)",
       "type": "feature",
-      "updated": "2026-10-10T16:12:00Z"
+      "updated": "2026-10-10T16:16:45Z"
     },
     "F-0337": {
       "backlinks": [],
@@ -34128,7 +34133,7 @@
         "relaunch: operator answer: Do not wait on the host pin. Run the gate directly as the product config's pre_push_check: bash tools/check_generic.sh && bash tools/check_conventions.sh && bash tools/check_clients.sh --against origin/main && python3 -m unittest -q tests.test_hermetic. The pin move (0.1.265 -> main) is held: asf upgrade --product would reinstall the paused 0.1 floor clocks next to the 0.2 kernel; that is filed as its own Bug. Proceed."
       ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "need",
       "rank": 7,
@@ -34137,7 +34142,7 @@
       "state": "New",
       "title": "Kernel: resolve the next two most frequent session questions in code",
       "type": "feature",
-      "updated": "2026-10-10T16:02:51Z"
+      "updated": "2026-10-10T16:16:45Z"
     },
     "F-0340": {
       "backlinks": [],
@@ -64218,7 +64223,7 @@
         "PR #1378: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -64235,7 +64240,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T15:43:14Z",
+      "updated": "2026-10-10T16:16:45Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -83022,7 +83027,7 @@
       "kernel_notes": [
         "groom-fill-t-82990-1791637217: groom-fill raised risk high: the card's Acceptance is empty only because the 4000-char cut swallowed the plan's byte-for-byte S-81208 fence; copying it in (paired to AdvanceTest/ReportTest) satisfies DoR, and the Task lands in the kernel's daily step plus release-channel pushes so risk stays high."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -83035,7 +83040,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T15:32:31Z",
+      "updated": "2026-10-10T16:16:45Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
@@ -83122,13 +83127,15 @@
       "kernel_attempts": [
         "relaunch: operator answer: Fact check: origin/main was NOT rewritten. History is linear; #1266 (c34fd09) is a normal squash merge that ADDED the 0.2 kernel (+22,327/-101 lines, mostly asf/kernel and tests). Rebase this branch onto current origin/main, resolve conflicts in the few shared files (cli.py, frontmatter.py, cloud.py, groom/inbox.py), and continue.",
         "ended without a REPORT",
-        "relaunch: operator answer: granted tests/test_land_spec.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/test_land_spec.py; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1."
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/test_land_spec.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap.",
@@ -83140,7 +83147,7 @@
         "PR #1386: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1386: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -83153,7 +83160,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T16:12:00Z",
+      "updated": "2026-10-10T16:16:45Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py",
