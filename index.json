@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T13:04:41Z",
+  "generated": "2026-10-10T13:08:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33538,7 +33538,7 @@
         "spec-f-0321-1791590222: NEEDS OPERATOR: the copy of `NOTES.asf.md` tracked on the reporting product's trunk (first added by `ef2566bf4`) must come off the trunk, and only a human may push `main`. Verified read-only from that product's chec\u2026",
         "plan-f-0321-1791635428: NEEDS OPERATOR: the review the 2026-10-10T12:25:01Z answer asked for is done, but that answer also said to open the branch's pull request and this brief forbids a session opening one (\"never open a pull request\"; \"L\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33546,7 +33546,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T13:04:40Z"
+      "updated": "2026-10-10T13:08:03Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33824,7 +33824,7 @@
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33832,7 +33832,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T12:31:07Z"
+      "updated": "2026-10-10T13:08:03Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -52003,7 +52003,12 @@
       ],
       "folder": "tasks",
       "id": "T-0172",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/groom/delivery.py:237 \u2014 `releasable`'s lead-uncommitted branch treats a `Resolved` (already-landed) member as still open because it tests `_state(r) != 'Closed'`; change it to `_state(r) == 'New' and not r['meta'].get('evidence')` to match the sibling branch at `:246` and the spec's own D11/D12 wording.",
+        "docs/reviews/1-t-0172.md (via commit e34310ae6 on worker/T-0172) \u2014 a prior review session committed the review file itself to this branch, outside the Task's `writes:`; this needs an operator to decide how to clean the branch before merge, since removing it would require a force-push no session here may perform."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0102.md"
       },
@@ -52016,7 +52021,7 @@
       "state": "Active",
       "title": "the selection rule, the budget and the three ceilings",
       "type": "task",
-      "updated": "2026-10-10T13:00:23Z",
+      "updated": "2026-10-10T13:08:03Z",
       "writes": [
         "asf/groom/delivery.py",
         "asf/conventions.py",
@@ -81761,8 +81766,12 @@
       ],
       "folder": "tasks",
       "id": "T-80574",
-      "kernel_dor_fills": 2,
-      "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
+      "kernel_answers": [
+        "Decision: no new tests/rehearsal/record/** tree. Keep the rehearsal record fixtures inline (or built in a temp dir at test time) inside tests/test_rehearsal_record.py; writes are now asf/rehearsal.py and tests/test_rehearsal_record.py."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Decision: no new tests/rehearsal/record/** tree. Keep the rehearsal record fixtures inline (or built in a temp dir at test time) inside tests/test_rehearsal_record.py; writes are now asf/rehearsal.py and tests/test_rehearsal_record.py."
+      ],
       "kernel_notes": [
         "groom-fill-t-80574-1791632031: groom-fill verdict rejected: risk_raise '' is not one of none | high",
         "groom-fill-t-80574-1791632989: groom-fill verdict rejected: risk_raise '' is not one of none | high",
@@ -81786,7 +81795,7 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-10T13:04:40Z",
+      "updated": "2026-10-10T13:08:03Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_record.py",
@@ -82323,7 +82332,7 @@
         "rebase: PR #1245 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82336,7 +82345,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T13:00:23Z",
+      "updated": "2026-10-10T13:08:03Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82442,15 +82451,16 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
       "kernel_findings": [
-        "rebase: PR #1371 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-t-82989-1791633895: groom-fill raised risk high: T-82987's landed commit already bundled Task 1's resolver into asf/channels.py, so every function and string this Task cites (release.Criterion, ci_verdict's \"<name> has no run\"/green detail, open_defects, Bug severity) is confirmed live on trunk; the DoR gap is only that tests/fixtures/channels/** is a genuinely new path the card's writes: didn't mark (new).",
         "PR #1371: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1371: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82463,7 +82473,7 @@
       ],
       "title": "the stable gate \u2014 four rows, each met or unmet with its evidence",
       "type": "task",
-      "updated": "2026-10-10T13:04:40Z",
+      "updated": "2026-10-10T13:08:03Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py",
@@ -82486,6 +82496,9 @@
       "id": "T-82990",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
+      "kernel_notes": [
+        "groom-fill-t-82990-1791637217: groom-fill raised risk high: the card's Acceptance is empty only because the 4000-char cut swallowed the plan's byte-for-byte S-81208 fence; copying it in (paired to AdvanceTest/ReportTest) satisfies DoR, and the Task lands in the kernel's daily step plus release-channel pushes so risk stays high."
+      ],
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82498,7 +82511,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T13:00:23Z",
+      "updated": "2026-10-10T13:08:03Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
@@ -82519,6 +82532,8 @@
       ],
       "folder": "tasks",
       "id": "T-82991",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
       "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0308.md"
@@ -82532,7 +82547,7 @@
       ],
       "title": "the two consumers \u2014 `asf upgrade --to <channel>` and the bootstrap's default",
       "type": "task",
-      "updated": "2026-10-10T10:00:48Z",
+      "updated": "2026-10-10T13:08:03Z",
       "writes": [
         "asf/upgrade.py",
         "tools/install.sh",
