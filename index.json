@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T07:04:49Z",
+  "generated": "2026-10-10T07:11:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3039,7 +3039,7 @@
       "kernel_attempts": [
         "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -3048,7 +3048,7 @@
       "state": "New",
       "title": "A network blip on push scores finished work as 'failed: not pushed' and costs a correction round",
       "type": "bug",
-      "updated": "2026-10-10T06:20:20Z"
+      "updated": "2026-10-10T07:10:57Z"
     },
     "B-0098": {
       "backlinks": [],
@@ -18849,10 +18849,11 @@
         "review: no VERDICT line"
       ],
       "kernel_findings": [
+        "asf/dwell.py:507 \u2014 `launchable_idle` must also exclude `step_wave.PAUSED` (`if not s.row.launches or s.kind in (step_wave.NO_SEAT, step_wave.PAUSED): continue`), with a `tests/test_dwell.py` test that pauses the product and asserts `launchable_idle(facts)` returns `[]` while seats are free \u2014 otherwise the watchdog breaches T-83351 again 10 minutes into any pause, exactly as the incident evidence shows.",
         "asf/tick/step_wave.py:1328 \u2014 bind `paused = pause_mod.held(product)` (as `launch` does at :1156) and pass `paused=paused` into `launch_now`'s `screen(...)` call at :1328-1329, returning 0 before `_wave` the way `launch()` does, so the wave clock's live spawn path actually honors the operator's pause instead of still launching a paused product's row (reproduced: `step_wave.launch_now` launches `fix-bug-b-0001` under an active `pause.pause()`)."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18862,7 +18863,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-10T06:34:02Z"
+      "updated": "2026-10-10T07:10:57Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -18949,7 +18950,7 @@
         "tests/test_pause.py:400-449 \u2014 delete `TheStatusPreviewSeesItToo` and its duplicate `test_a_paused_product_s_preview_holds_every_row_too` (near-verbatim copy of `ThePreviewAgrees.test_a_paused_products_preview_holds_the_row_it_never_starts_it` at tests/test_pause.py:551); fold the one genuinely new case, `test_the_same_preview_unpaused_starts_every_row`, into `ThePreviewAgrees` instead."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18959,7 +18960,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-84804",
       "type": "bug",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T07:10:57Z"
     },
     "B-84837": {
       "backlinks": [],
@@ -31921,6 +31922,9 @@
       ],
       "folder": "features",
       "id": "F-0274",
+      "kernel_attempts": [
+        "relaunch: escalated: the previous session stopped (done without a push: pushed: yes 9f0715d48e8b40d750ca022124f40f66eb2ea3d7) \u2014 pick up from its report and branch, and finish the item"
+      ],
       "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
@@ -31929,7 +31933,7 @@
       "state": "Active",
       "title": "asf next drops all Task rows of a Feature with any live session, with no reason row",
       "type": "feature",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T07:10:57Z"
     },
     "F-0275": {
       "backlinks": [],
@@ -33464,7 +33468,7 @@
         "spec-f-0321-1791586280: NEEDS OPERATOR: the copy of NOTES.asf.md tracked on the reporting product's trunk (first added by ef2566bf4) must come off the trunk, and only a human may push main. From inside that product's own checkout (repo_dir\u2026",
         "spec-f-0321-1791590222: NEEDS OPERATOR: the copy of `NOTES.asf.md` tracked on the reporting product's trunk (first added by `ef2566bf4`) must come off the trunk, and only a human may push `main`. Verified read-only from that product's chec\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33472,7 +33476,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T07:10:57Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33542,7 +33546,7 @@
       "state": "New",
       "title": "a branch of only empty proof commits is read as already on main and deleted without landing; the item loops",
       "type": "feature",
-      "updated": "2026-10-10T06:52:25Z"
+      "updated": "2026-10-10T07:10:57Z"
     },
     "F-0325": {
       "backlinks": [],
@@ -33639,7 +33643,7 @@
         "relaunch: operator answer: Decided: keep S-91805..S-91808 (D11 stands). Checked 2026-10-10 in the record repo: idclaim.claims covers all four through refs/asf/ids/S-91805 (S:91805-91854, claimant spec-f-0328-1791587536), and the ref is on the record's origin. No re-mint; the spec is done \u2014 proceed to review and landing.",
         "review: no VERDICT line"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33647,7 +33651,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T07:04:36Z"
+      "updated": "2026-10-10T07:10:57Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -52953,7 +52957,8 @@
       ],
       "kernel_attempts": [
         "conflict: PR #731: update-branch #731: rc 1: gh: merge conflict between base and head (HTTP 422)",
-        "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device"
+        "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device",
+        "review: no VERDICT line"
       ],
       "kernel_findings": [
         "asf/harvest/lane.py:753-772,807-809 \u2014 thread validate()'s `problems` into `proves_refusal_text` and name each one before the numbered acceptance list (Task 3 Step 4)",
@@ -52968,7 +52973,7 @@
         "PR #1332: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1332: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -52978,7 +52983,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-10T06:20:20Z",
+      "updated": "2026-10-10T07:10:57Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
