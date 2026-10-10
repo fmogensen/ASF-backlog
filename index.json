@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T12:14:41Z",
+  "generated": "2026-10-10T12:17:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33141,7 +33141,7 @@
       "state": "Active",
       "title": "Feeder S1 gate: no new Feature work launches while an S1 Bug is open (stability first, in code)",
       "type": "feature",
-      "updated": "2026-10-10T12:12:44Z"
+      "updated": "2026-10-10T12:17:51Z"
     },
     "F-0308": {
       "backlinks": [
@@ -33689,7 +33689,7 @@
         "dependents; rows = feeder_rows(env.load_pr\u2026\", \"PR #1305: install-clean-macos is red but not a required check \u2014 ignored\"",
         "PR #1305: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33697,7 +33697,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T12:12:44Z"
+      "updated": "2026-10-10T12:17:51Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33726,9 +33726,10 @@
       "kernel_notes": [
         "plan-f-0328-1791624270: NEEDS OPERATOR: whether this plan should land from a branch that also carries the closed hotfix the spec refuses \u2014 `fix/F-0328-pending-not-red` adds `c6cb1a21f` (the `verdict()` change) and `6a81462dc` (an unrelated\u2026",
         "plan-f-0328-1791629407: NEEDS OPERATOR: whether fix/F-0328-pending-not-red may land carrying the closed hotfix (c6cb1a21f, the verdict() change the spec's Out table refuses, plus 6a81462dc, an unrelated defect) alongside this plan \u2014 a plan\u2026",
-        "plan-f-0328-1791631578: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` adds five commits over `47466e997`, two of which are the spec's\u2026"
+        "plan-f-0328-1791631578: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` adds five commits over `47466e997`, two of which are the spec's\u2026",
+        "plan-f-0328-1791633802: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` is 5 behind and 8 ahead of the trunk over `47466e997`, and two o\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33736,7 +33737,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T12:06:13Z"
+      "updated": "2026-10-10T12:17:51Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -53140,7 +53141,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53153,7 +53154,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T12:14:31Z",
+      "updated": "2026-10-10T12:17:51Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -72778,14 +72779,15 @@
       "folder": "tasks",
       "id": "T-0654",
       "kernel_attempts": [
-        "launch: no cloud account with a free seat"
+        "launch: no cloud account with a free seat",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "asf/workers/headroom.py:280-282 \u2014 compute `usd[key]` dollar medians for every (kind, family) group unconditionally (outside the `five_h_usd` truthiness guard in `estimate`); only skip populating the legacy `shares[key]` pct when `five_h_usd` is falsy. As written, a config using only `quota_guards.window_usd` (no pool-wide `five_h_usd`, no `default`-kind account \u2014 the Description's own example) never learns per-(kind,family) dollars, so `CostTable.share` falls back to the same static default percentage for every provider kind.",
         "tests/test_quota_provider.py:122 \u2014 make `SampleRecordTests` a direct `unittest.TestCase` with its own `setUp`/`tearDown` using `tempfile.TemporaryDirectory()` for `env.ASF_HOME`, instead of subclassing `tests.test_quota_headroom.HomeCase` (the plan's Files section calls for a direct `unittest.TestCase` per class, and Step 8 says \"None subclasses another module's harness\")."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0138-26a33fc30108.md"
       },
@@ -72802,7 +72804,7 @@
       "state": "Active",
       "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
       "type": "task",
-      "updated": "2026-10-10T11:45:57Z",
+      "updated": "2026-10-10T12:17:51Z",
       "writes": [
         "asf/workers/headroom.py",
         "asf/workers/pool.py",
@@ -82527,7 +82529,8 @@
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block",
-        "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap."
+        "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap.",
+        "groom-fill-t-83142-1791633870: groom-fill raised risk high: card is byte-for-byte Task 1 of the landed plan/spec (F-0280 \u00a71), already fully specced with test-named acceptance; the after:T-0775/T-78813 block is the kernel's write-overlap serialization on asf/feeder/rows.py, not a card defect"
       ],
       "kernel_state": "new",
       "links": {
@@ -82542,7 +82545,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T12:06:13Z",
+      "updated": "2026-10-10T12:17:51Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
