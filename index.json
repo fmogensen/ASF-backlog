@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T11:11:48Z",
+  "generated": "2026-10-10T11:15:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -27880,7 +27880,7 @@
       "kernel_notes": [
         "PR #322: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "later",
       "schema_version": 1,
@@ -27889,7 +27889,7 @@
       "state": "New",
       "title": "asf index drops hand-added card text when regenerating Backlinks",
       "type": "feature",
-      "updated": "2026-10-10T10:57:40Z"
+      "updated": "2026-10-10T11:14:58Z"
     },
     "F-0167": {
       "backlinks": [
@@ -33712,9 +33712,10 @@
         "review: no VERDICT line"
       ],
       "kernel_notes": [
-        "plan-f-0328-1791624270: NEEDS OPERATOR: whether this plan should land from a branch that also carries the closed hotfix the spec refuses \u2014 `fix/F-0328-pending-not-red` adds `c6cb1a21f` (the `verdict()` change) and `6a81462dc` (an unrelated\u2026"
+        "plan-f-0328-1791624270: NEEDS OPERATOR: whether this plan should land from a branch that also carries the closed hotfix the spec refuses \u2014 `fix/F-0328-pending-not-red` adds `c6cb1a21f` (the `verdict()` change) and `6a81462dc` (an unrelated\u2026",
+        "plan-f-0328-1791629407: NEEDS OPERATOR: whether fix/F-0328-pending-not-red may land carrying the closed hotfix (c6cb1a21f, the verdict() change the spec's Out table refuses, plus 6a81462dc, an unrelated defect) alongside this plan \u2014 a plan\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33722,7 +33723,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T10:51:49Z"
+      "updated": "2026-10-10T11:14:58Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33767,7 +33768,7 @@
       ],
       "folder": "features",
       "id": "F-0330",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33775,7 +33776,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T10:29:20Z"
+      "updated": "2026-10-10T11:14:58Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -33794,7 +33795,11 @@
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "done: NEEDS OPERATOR: the reviewer's full FINDINGS list for round review-f-0331-1791628439, which the brief truncated at its field cap after the first finding - run this read-only command on the fact\u2026",
+      "kernel_stuck_since": "2026-10-10T11:13:21Z",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33802,7 +33807,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T10:57:40Z"
+      "updated": "2026-10-10T11:14:58Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -33834,7 +33839,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T11:11:24Z"
+      "updated": "2026-10-10T11:14:58Z"
     },
     "R-0001": {
       "backlinks": [
@@ -58576,9 +58581,13 @@
       ],
       "folder": "tasks",
       "id": "T-0318",
+      "kernel_answers": [
+        "granted tests/test_env.py; nothing else outside writes (card updated by the kernel). T-79565 also writes tests/test_env.py (Review): the overlap rule serialises them."
+      ],
       "kernel_attempts": [
         "relaunch: escalated: the previous session stopped (partial: tests: `tests.test_conventions_flags.KnownFlags.test_every_flag_read_in_asf_is_known` -> `AssertionError: {'secret_dirs': 'asf/workers/worker_settings.py'} != {}`. Reproduced unchanged on th\u2026) \u2014 pick up from its report and branch, and finish the item",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted tests/test_env.py; nothing else outside writes (card updated by the kernel). T-79565 also writes tests/test_env.py (Review): the overlap rule serialises them."
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
@@ -58595,7 +58604,7 @@
         "PR #1132: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1132: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0062.md"
       },
@@ -58610,13 +58619,14 @@
       "state": "Active",
       "title": "the per-role worker settings file, its deny rules, `asf worker-permissions`, and the three doctor rows",
       "type": "task",
-      "updated": "2026-10-10T11:02:43Z",
+      "updated": "2026-10-10T11:14:58Z",
       "writes": [
         "asf/workers/worker_settings.py",
         "asf/cli.py",
         "asf/doctor.py",
         "tests/test_worker_deny.py",
-        "tests/test_doctor.py"
+        "tests/test_doctor.py",
+        "tests/test_env.py"
       ]
     },
     "T-0319": {
@@ -80672,10 +80682,12 @@
       ],
       "kernel_fix_rounds": 1,
       "kernel_state": "new",
+      "landed": "12f28448f",
       "links": {
         "plan": "docs/plans/f-0277.md"
       },
       "parent": "F-0277",
+      "removed": "retired: superseded by 12f28448f \u2014 PR (landed 12f28448f)",
       "schema_version": 1,
       "stage_since": "2026-10-08T11:54:58Z",
       "state": "Active",
@@ -80999,6 +81011,9 @@
       "folder": "tasks",
       "id": "T-78359",
       "kernel_dor_fills": 1,
+      "kernel_notes": [
+        "groom-fill-t-78359-1791630148: groom-fill verdict rejected: no GROOM-FILL block"
+      ],
       "links": {
         "plan": "docs/plans/f-0283.md"
       },
@@ -81011,7 +81026,7 @@
       ],
       "title": "the record's own hooks are moved onto the pin by the command the row already names",
       "type": "task",
-      "updated": "2026-10-10T11:02:43Z",
+      "updated": "2026-10-10T11:14:58Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
@@ -81230,6 +81245,7 @@
         "T-0432"
       ],
       "backlinks": [
+        "T-0318",
         "T-0452",
         "T-79566",
         "T-79568",
