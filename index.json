@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:11:53Z",
+  "generated": "2026-10-10T15:15:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16695,7 +16695,7 @@
     "B-121288": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-121288",
@@ -16704,7 +16704,7 @@
       "kernel_notes": [
         "groom-fill-b-121288-1791643848: groom-fill raised risk high: reproduced via parse_assignments/apply_list \u2014 a quoted \"a, b, c\" survives _as_list as one scalar, then widen.norm_writes's whitespace split (meant for packed plan entries) turns it into ['a,', 'b,', 'c']; real, fixable in asf/record/setfield.py."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -16713,7 +16713,7 @@
       "state": "New",
       "title": "asf set: comma-separated list values keep their commas (writes: [\"a,\", ...])",
       "type": "bug",
-      "updated": "2026-10-10T15:06:12Z",
+      "updated": "2026-10-10T15:15:52Z",
       "writes": [
         "asf/record/setfield.py",
         "tests/test_record_stage.py"
@@ -20867,6 +20867,7 @@
         "F-0240",
         "F-0242",
         "F-0243",
+        "F-0340",
         "B-0087",
         "B-0088",
         "B-0089",
@@ -33991,6 +33992,22 @@
       "title": "Idempotent reconcile of ledger-shaped proof claims into the record",
       "type": "feature",
       "updated": "2026-10-10T15:08:13Z"
+    },
+    "F-0340": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "features",
+      "id": "F-0340",
+      "parent": "E-0002",
+      "priority": "need",
+      "rank": 2,
+      "schema_version": 1,
+      "stage_since": "2026-10-10T15:15:31Z",
+      "state": "New",
+      "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
+      "type": "feature",
+      "updated": "2026-10-10T15:15:31Z"
     },
     "R-0001": {
       "backlinks": [
@@ -50058,6 +50075,7 @@
         "T-0119"
       ],
       "backlinks": [
+        "F-0340",
         "T-0124",
         "T-0125",
         "T-0126",
@@ -78379,6 +78397,7 @@
       ],
       "backlinks": [
         "F-0205",
+        "F-0340",
         "T-0796",
         "T-78813",
         "T-83142",
@@ -80932,6 +80951,7 @@
       ],
       "backlinks": [
         "F-0313",
+        "F-0340",
         "T-78813"
       ],
       "children": [],
@@ -81454,6 +81474,7 @@
         "T-76352"
       ],
       "backlinks": [
+        "F-0340",
         "T-78814",
         "T-83142"
       ],
@@ -81542,7 +81563,7 @@
         "PR #1379: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1379: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81555,7 +81576,7 @@
       ],
       "title": "git's own refusal of a rewritten push is a kind of its own, and the dead run reads its log for it",
       "type": "task",
-      "updated": "2026-10-10T15:11:51Z",
+      "updated": "2026-10-10T15:15:52Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/workers/refusals.py",
@@ -82589,6 +82610,7 @@
         "T-79565"
       ],
       "backlinks": [
+        "F-0340",
         "T-82987",
         "T-82991",
         "T-83345",
@@ -82810,7 +82832,9 @@
       "after": [
         "T-82986"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "F-0340"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -82850,6 +82874,7 @@
         "T-78813"
       ],
       "backlinks": [
+        "F-0340",
         "T-83143"
       ],
       "children": [],
@@ -82883,7 +82908,13 @@
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap.",
-        "groom-fill-t-83142-1791633870: groom-fill raised risk high: card is byte-for-byte Task 1 of the landed plan/spec (F-0280 \u00a71), already fully specced with test-named acceptance; the after:T-0775/T-78813 block is the kernel's write-overlap serialization on asf/feeder/rows.py, not a card defect"
+        "groom-fill-t-83142-1791633870: groom-fill raised risk high: card is byte-for-byte Task 1 of the landed plan/spec (F-0280 \u00a71), already fully specced with test-named acceptance; the after:T-0775/T-78813 block is the kernel's write-overlap serialization on asf/feeder/rows.py, not a card defect",
+        "PR #1386: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1386: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1386: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1386: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1386: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1386: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -82898,7 +82929,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T15:11:51Z",
+      "updated": "2026-10-10T15:15:52Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
