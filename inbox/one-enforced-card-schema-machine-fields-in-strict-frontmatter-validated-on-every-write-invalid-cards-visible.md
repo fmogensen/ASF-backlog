@@ -1,4 +1,5 @@
 # One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible
+type: feature
 
 parent: F-0334 (ASF 0.3). Generic.
 
