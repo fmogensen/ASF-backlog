@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T12:12:45Z",
+  "generated": "2026-10-10T12:14:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33536,7 +33536,11 @@
         "spec-f-0321-1791586280: NEEDS OPERATOR: the copy of NOTES.asf.md tracked on the reporting product's trunk (first added by ef2566bf4) must come off the trunk, and only a human may push main. From inside that product's own checkout (repo_dir\u2026",
         "spec-f-0321-1791590222: NEEDS OPERATOR: the copy of `NOTES.asf.md` tracked on the reporting product's trunk (first added by `ef2566bf4`) must come off the trunk, and only a human may push `main`. Verified read-only from that product's chec\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "a session reads the reason and fixes the cause",
+      "kernel_stuck_owner": "session",
+      "kernel_stuck_reason": "done without a push: pushed: yes a93f6aacba3460dcf15d3e704a3702e98943640e",
+      "kernel_stuck_since": "2026-10-10T12:13:34Z",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33544,7 +33548,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T12:08:09Z"
+      "updated": "2026-10-10T12:14:31Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33617,7 +33621,7 @@
       "state": "New",
       "title": "a branch of only empty proof commits is read as already on main and deleted without landing; the item loops",
       "type": "feature",
-      "updated": "2026-10-10T11:57:59Z"
+      "updated": "2026-10-10T12:14:31Z"
     },
     "F-0325": {
       "backlinks": [],
@@ -33815,7 +33819,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T12:12:44Z"
+      "updated": "2026-10-10T12:14:31Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -53136,7 +53140,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53149,7 +53153,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T11:45:57Z",
+      "updated": "2026-10-10T12:14:31Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -53416,7 +53420,7 @@
       "stories": [],
       "title": "the wave writes down what held it, and the tick line carries it",
       "type": "task",
-      "updated": "2026-10-10T12:12:44Z",
+      "updated": "2026-10-10T12:14:31Z",
       "writes": [
         "asf/tick/step_wave.py",
         "asf/tick/tick.py",
@@ -81209,7 +81213,8 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
       "kernel_notes": [
-        "groom-fill-t-78813-1791632262: groom-fill verdict rejected: risk_raise '' is not one of none | high"
+        "groom-fill-t-78813-1791632262: groom-fill verdict rejected: risk_raise '' is not one of none | high",
+        "groom-fill-t-78813-1791633327: groom-fill verdict rejected: acceptance line names no test: '...'"
       ],
       "links": {
         "plan": "docs/plans/f-0289.md"
@@ -81223,7 +81228,7 @@
       ],
       "title": "the correction's kind travels to the lane door, and a rewrite never leaves the host",
       "type": "task",
-      "updated": "2026-10-10T11:57:59Z",
+      "updated": "2026-10-10T12:14:31Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/feeder/rows.py",
@@ -81325,9 +81330,10 @@
         "PR #1222: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1222: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1222: part (3.13, 3) is red but not a required check \u2014 ignored",
-        "PR #1222: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1222: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "satisfied on main at a22019ced: tests.test_prepush"
       ],
-      "kernel_state": "new",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81341,7 +81347,7 @@
       ],
       "title": "the door \u2014 the convention, the matcher, `asf pre-push`, and one call in the shim",
       "type": "task",
-      "updated": "2026-10-10T12:12:44Z",
+      "updated": "2026-10-10T12:14:31Z",
       "writes": [
         "asf/conventions.py",
         "asf/prepush.py",
@@ -81372,10 +81378,9 @@
       "folder": "tasks",
       "id": "T-79566",
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1."
+        "rebase: PR #1342 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1342: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.12, 3) is red but not a required check \u2014 ignored",
@@ -81384,7 +81389,7 @@
         "PR #1342: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "new",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -81401,7 +81406,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-10T09:30:20Z",
+      "updated": "2026-10-10T12:14:31Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
@@ -81638,7 +81643,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "new",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -81651,7 +81656,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T11:34:00Z",
+      "updated": "2026-10-10T12:14:31Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -81954,15 +81959,17 @@
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/d94fa59f-dee1-4e98-a546-0937490c082a' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
         "operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1227: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1227: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "new",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -81975,7 +81982,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T10:04:21Z",
+      "updated": "2026-10-10T12:14:31Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -82278,7 +82285,7 @@
         "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82291,7 +82298,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T11:34:00Z",
+      "updated": "2026-10-10T12:14:31Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82399,7 +82406,7 @@
       "kernel_notes": [
         "groom-fill-t-82989-1791633895: groom-fill raised risk high: T-82987's landed commit already bundled Task 1's resolver into asf/channels.py, so every function and string this Task cites (release.Criterion, ci_verdict's \"<name> has no run\"/green detail, open_defects, Bug severity) is confirmed live on trunk; the DoR gap is only that tests/fixtures/channels/** is a genuinely new path the card's writes: didn't mark (new)."
       ],
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82412,7 +82419,7 @@
       ],
       "title": "the stable gate \u2014 four rows, each met or unmet with its evidence",
       "type": "task",
-      "updated": "2026-10-10T12:12:44Z",
+      "updated": "2026-10-10T12:14:31Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py",
