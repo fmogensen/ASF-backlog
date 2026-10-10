@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T19:32:00Z",
+  "generated": "2026-10-10T19:35:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16812,7 +16812,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-135242",
-      "kernel_state": "review",
+      "kernel_state": "done",
       "parent": "E-0003",
       "schema_version": 1,
       "severity": "S2",
@@ -16821,7 +16821,7 @@
       "state": "New",
       "title": "Intake cannot mint an Epic",
       "type": "bug",
-      "updated": "2026-10-10T19:31:59Z"
+      "updated": "2026-10-10T19:35:43Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -34449,7 +34449,13 @@
     },
     "F-0337": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-125155",
+        "S-125156",
+        "S-125157",
+        "S-125158",
+        "S-125159"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0337",
@@ -34470,7 +34476,7 @@
         "spec-f-0337-1791651258: NEEDS OPERATOR: the installed hook shim calls `asf pre-push`, which product ASF's pinned CLI (`14b963ba1`, 2026-10-08) does not have \u2014 `aa56423fd` added it today \u2014 so every session push on this host is refused after\u2026",
         "spec-f-0337-1791652842: NEEDS OPERATOR: product `ASF` is pinned to `14b963ba1`, whose CLI has no `pre-push` subcommand that this host's newer hook shim invokes, so the pre-push hook refuses every session's push \u2014 confirm with `~"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "nice",
       "rank": 20,
@@ -34479,7 +34485,7 @@
       "state": "New",
       "title": "Kernel grooming Stage 4: continuous sweep of old New/Parked items on idle seats",
       "type": "feature",
-      "updated": "2026-10-10T18:28:38Z"
+      "updated": "2026-10-10T19:35:43Z"
     },
     "F-0338": {
       "backlinks": [],
@@ -34575,7 +34581,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T19:31:59Z"
+      "updated": "2026-10-10T19:35:43Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -34862,7 +34868,7 @@
     "F-0346": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0346",
       "kernel_fix_rounds": 0,
@@ -34877,7 +34883,7 @@
       "state": "New",
       "title": "Flow conservation: every step has a required successor, checked each tick",
       "type": "feature",
-      "updated": "2026-10-10T19:31:59Z"
+      "updated": "2026-10-10T19:35:43Z"
     },
     "F-0347": {
       "backlinks": [],
@@ -38162,9 +38168,75 @@
       "type": "story",
       "updated": "2026-10-10T17:20:09Z"
     },
+    "S-125155": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-125155",
+      "parent": "F-0337",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:34:28Z",
+      "state": "New",
+      "title": "the sweep's queue \u2014 New then Parked, oldest first, and nothing the kernel is already working on \u2014 acceptance: `python3 -m unittest tests.kernel.test_sweep.CandidateTests`",
+      "type": "story",
+      "updated": "2026-10-10T19:34:28Z"
+    },
+    "S-125156": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-125156",
+      "parent": "F-0337",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:34:28Z",
+      "state": "New",
+      "title": "the sweep never pre-empts a Ready launch and spends only the seats left idle \u2014 acceptance: `python3 -m unittest tests.kernel.test_sweep.SeatTests`",
+      "type": "story",
+      "updated": "2026-10-10T19:34:28Z"
+    },
+    "S-125157": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-125157",
+      "parent": "F-0337",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:34:28Z",
+      "state": "New",
+      "title": "one verdict block \u2014 retire, keep or revive \u2014 read, validated and asked for by the brief \u2014 acceptance: `python3 -m unittest tests.kernel.test_sweep.VerdictTests tests.kernel.test_sweep.BriefTests`",
+      "type": "story",
+      "updated": "2026-10-10T19:34:28Z"
+    },
+    "S-125158": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-125158",
+      "parent": "F-0337",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:34:28Z",
+      "state": "New",
+      "title": "code applies each verdict, and a verdict it cannot apply is a note and no marker \u2014 acceptance: `python3 -m unittest tests.kernel.test_sweep.ApplyTests`",
+      "type": "story",
+      "updated": "2026-10-10T19:34:28Z"
+    },
+    "S-125159": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-125159",
+      "parent": "F-0337",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T19:34:28Z",
+      "state": "New",
+      "title": "the parked-age histogram in asf kernel waits, the knobs behind it, and the tick's sweep line \u2014 acceptance: `python3 -m unittest tests.kernel.test_sweep.ViewTests tests.kernel.test_waits`",
+      "type": "story",
+      "updated": "2026-10-10T19:34:28Z"
+    },
     "S-131005": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131005",
       "parent": "F-0334",
@@ -38178,6 +38250,7 @@
     "S-131006": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131006",
       "parent": "F-0334",
@@ -38191,6 +38264,7 @@
     "S-131007": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131007",
       "parent": "F-0334",
@@ -38204,6 +38278,7 @@
     "S-131008": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131008",
       "parent": "F-0334",
@@ -38217,6 +38292,7 @@
     "S-131009": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131009",
       "parent": "F-0334",
@@ -38230,6 +38306,7 @@
     "S-131010": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131010",
       "parent": "F-0334",
@@ -38243,6 +38320,7 @@
     "S-131011": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131011",
       "parent": "F-0334",
@@ -38256,6 +38334,7 @@
     "S-131012": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131012",
       "parent": "F-0334",
@@ -38269,6 +38348,7 @@
     "S-131013": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131013",
       "parent": "F-0334",
@@ -38282,6 +38362,7 @@
     "S-131014": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131014",
       "parent": "F-0334",
@@ -38295,6 +38376,7 @@
     "S-131015": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131015",
       "parent": "F-0334",
@@ -38308,6 +38390,7 @@
     "S-131016": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131016",
       "parent": "F-0334",
@@ -38321,6 +38404,7 @@
     "S-131017": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-131017",
       "parent": "F-0334",
@@ -46874,9 +46958,11 @@
         "T-129189"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91505",
       "parent": "F-0325",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:41Z",
       "state": "New",
@@ -80404,17 +80490,10 @@
       "kernel_answers": [
         "granted asf/harvest/mechanical.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding",
-        "ended without a REPORT",
-        "relaunch: operator answer: granted asf/harvest/mechanical.py; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1."
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0165.md"
       },
@@ -80427,7 +80506,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-10T19:21:18Z",
+      "updated": "2026-10-10T19:35:43Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
@@ -83417,7 +83496,7 @@
         "build-t-129157-1791659546: NEEDS OPERATOR: the host's installed `asf` CLI at ~/.local/bin/asf is stale (missing the `pre-push` subcommand the current worktree's asf/cli.py defines), so the pre-push hook refuses every push on this host until i\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -83430,7 +83509,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T19:31:59Z",
+      "updated": "2026-10-10T19:35:43Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -83559,7 +83638,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129162",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -83572,7 +83651,7 @@
       ],
       "title": "the declaration \u2014 `stability: true` on a Feature or an Epic",
       "type": "task",
-      "updated": "2026-10-10T18:20:53Z",
+      "updated": "2026-10-10T19:35:43Z",
       "writes": [
         "asf/record/new.py",
         "tests/test_backlog.py",
@@ -83588,6 +83667,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129163",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -83604,7 +83684,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-10T19:35:43Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -83703,7 +83783,7 @@
       ],
       "title": "the filing \u2014 `review_store.recover`, with a head of its own",
       "type": "task",
-      "updated": "2026-10-10T19:31:59Z",
+      "updated": "2026-10-10T19:35:43Z",
       "writes": [
         "asf/evidence/review_store.py",
         "tests/test_review_store.py"
@@ -84813,13 +84893,14 @@
       "folder": "tasks",
       "id": "T-129205",
       "kernel_findings": [
-        "asf/ghapp.py:272 \u2014 in `mint`, wrap the body from `bearer, why = jwt(app, now, run=run)` (:283) through `return _succeed(...)` (:305) in `try: \u2026 except Exception as exc: return _fail(product, app, slug, f'mint for {slug} failed: {type(exc).__name__}', installation_id=installation_id)` (binding `installation_id = app.installation_id` before the `try`), and make `refresh`'s `:328` `try: return mint(product, now=now, http=http, run=run)` / `except Exception as exc: return '', f'mint failed: {type(exc).__name__}'` \u2014 `Exception`, never `BaseException`, so `gh_limit.RateLimited` still escapes and latches; then add a `Refreshing` case where an `http` double raising `urllib.error.URLError` returns `('', why)`, writes no token file and leaves a seeded previous token exactly as it was"
+        "tests/test_ghapp.py:377 \u2014 the dry-run scenario in the secrecy loop never reaches the dry-run branch: the mint seeded at :369 leaves 67,229,200 s of headroom against `REFRESH_MARGIN_S` = 900, so `refresh` returns from the cache at asf/ghapp.py:327 and `mutation_guard.is_active()` is never evaluated. Give `run_scenario` a `now` parameter, pass that scenario `now=ghapp._seconds_left('2026-01-01T01:00:00Z', 0) - 100`, and assert `why == 'dry run'` inside the loop so it goes red if it short-circuits again.",
+        "tests/test_ghapp.py:372 \u2014 \"a failed discovery\", one of the six paths the `Secrecy` docstring declares at :343, is in none of the five scenarios: every scenario uses `self.product(installation_id=987654)`, so `installation()` is skipped at asf/ghapp.py:288 and its failure reason never reaches `assertNothingSecret`. Add `dict(http=fake_http((404, 'Not Found')), run=fake_run(), product=self.product())` with a `product` override on `run_scenario`, or drop the claim from the docstring."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "build-t-129205-1791657838-local: NEEDS OPERATOR: repin the product's CLI past the commit that added `asf pre-push` (`aa56423fd`), or make the pre-push hook tolerate a pinned CLI lacking the subcommand \u2014 `asf upgrade --product asf`"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -84832,7 +84913,7 @@
       ],
       "title": "the module \u2014 the declaration, the JWT, the mint, the cache, and `openssl` as the ratchet's newest kind",
       "type": "task",
-      "updated": "2026-10-10T19:15:31Z",
+      "updated": "2026-10-10T19:35:43Z",
       "writes": [
         "asf/ghapp.py",
         "tools/check_clients.py",
@@ -85233,7 +85314,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130968",
-      "kernel_state": "building",
+      "kernel_attempts": [
+        "ended without a REPORT"
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -85248,7 +85332,7 @@
       ],
       "title": "the floor split \u2014 one installer per owner, the two-floor refusal, and the retire gate",
       "type": "task",
-      "updated": "2026-10-10T18:58:32Z",
+      "updated": "2026-10-10T19:35:43Z",
       "writes": [
         "asf/upgrade.py",
         "asf/scheduler.py",
@@ -85382,7 +85466,7 @@
         "build-t-131823-1791659712: NEEDS OPERATOR: I could not execute `validate`'s record-side checks (that S-124005 is a Story card and holds the bullet `line 1` cites) \u2014 the record at the product's backlog dir is outside this worktree session's re\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -85395,7 +85479,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T19:31:59Z",
+      "updated": "2026-10-10T19:35:43Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"

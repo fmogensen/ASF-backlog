@@ -30,3 +30,6 @@ Lane accounts A, B, C, D. A hits its 5h session limit. Next tick `_account` pick
 - tests/kernel/test_ports.py: `capacity()` excludes the free seats of a limited or auth-blocked lane account.
 - tests/test_cloud.py: `failure_class("You've hit your session limit · resets 9:20pm") == 'quota'`; three transport failures across different accounts still trip the breaker (lane-wide behaviour kept).
 - tests/test_remote.py: a helper limit refusal on create calls record_limit for the job's account.
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
