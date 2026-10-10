@@ -1,4 +1,7 @@
+→ F-0334
+
 # ASF 0.3 — run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity
+type: feature
 
 ASF 0.3 — a factory that runs any product, not just itself, faster and with less console.
 
@@ -18,6 +21,3 @@ Outcomes 0.3 must deliver (each measured, each proved by a test):
 Out of scope: rewriting the decide core; new product features.
 
 Sources: docs/specs and the 0.2 release notes (v0.2.0); the grooming design (stages 1–6 with triggers); botseon's swarm capability list (scripts/swarm on botseon's swarm/no-asf); the move plan for botseon.
-
-## Question
-This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.
