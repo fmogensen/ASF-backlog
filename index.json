@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T10:25:18Z",
+  "generated": "2026-10-10T10:29:22Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -27867,7 +27867,10 @@
       ],
       "folder": "features",
       "id": "F-0166",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "PR #322: install-clean-macos is red but not a required check \u2014 ignored"
+      ],
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "later",
       "schema_version": 1,
@@ -27876,7 +27879,7 @@
       "state": "New",
       "title": "asf index drops hand-added card text when regenerating Backlinks",
       "type": "feature",
-      "updated": "2026-10-10T10:15:39Z"
+      "updated": "2026-10-10T10:29:20Z"
     },
     "F-0167": {
       "backlinks": [
@@ -33310,7 +33313,7 @@
       ],
       "folder": "features",
       "id": "F-0314",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "spec-approved",
@@ -33318,7 +33321,7 @@
       "state": "Active",
       "title": "Open PRs for items already Closed on the trunk are never closed or reaped",
       "type": "feature",
-      "updated": "2026-10-10T09:17:04Z"
+      "updated": "2026-10-10T10:29:20Z"
     },
     "F-0315": {
       "backlinks": [
@@ -33452,7 +33455,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T10:21:35Z"
+      "updated": "2026-10-10T10:29:20Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33710,7 +33713,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T09:52:20Z"
+      "updated": "2026-10-10T10:29:20Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33761,7 +33764,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T09:55:46Z"
+      "updated": "2026-10-10T10:29:20Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -53042,7 +53045,11 @@
         "PR #1332: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1332: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "partial: NEEDS OPERATOR: tests/test_e2e_lane.py needs the trailer added in the two spots above to clear PR #1332's red CI; outside this item's adjudicated writes (asf/harvest/lane.py, tests/test_lane\u2026",
+      "kernel_stuck_since": "2026-10-10T10:27:49Z",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53052,7 +53059,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-10T09:52:20Z",
+      "updated": "2026-10-10T10:29:20Z",
       "writes": [
         "asf/harvest/harvest.py,",
         "tests/test_harvest.py,",
@@ -58551,7 +58558,11 @@
       ],
       "folder": "tasks",
       "id": "T-0318",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/efdb0fb0-7f78-4d43-8e54-d8e64ab89daa' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0062.md"
       },
@@ -58566,7 +58577,7 @@
       "state": "Active",
       "title": "the per-role worker settings file, its deny rules, `asf worker-permissions`, and the three doctor rows",
       "type": "task",
-      "updated": "2026-10-10T09:30:19Z",
+      "updated": "2026-10-10T10:29:20Z",
       "writes": [
         "asf/workers/worker_settings.py",
         "asf/cli.py",
@@ -66535,7 +66546,7 @@
       "state": "Active",
       "title": "the reader and its command \u2014 every product's stored week, and `asf scorecard --all`",
       "type": "task",
-      "updated": "2026-10-10T09:30:19Z",
+      "updated": "2026-10-10T10:29:20Z",
       "writes": [
         "asf/scorecard/loop.py",
         "asf/views/scorecard.py",
