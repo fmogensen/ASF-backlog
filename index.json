@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T20:25:22Z",
+  "generated": "2026-10-10T20:30:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34432,12 +34432,19 @@
       "id": "F-0334",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "docs/specs/f-0334.md:246 \u2014 `grep -c \"s.environments\" asf/workers/remote.py` returns 2, not 0, and the per-account environment resolver is `asf/workers/remote.py:400` (`return dict(s.environments).get(account_name) or s.environment_id or None`), not `cloud.py`'s: `asf/workers/cloud.py:400` is the closing `\"\"\"` of `local_only`'s docstring. Fix the count and cite remote.py:400 here and in the prose at :251",
-        "docs/specs/f-0334.md:67-71 \u2014 \"carries no commit of its own ... every line number in this document is both this checkout's and the trunk's\" is false: the branch carries d65bb08 (so `git rev-parse HEAD origin/main | uniq | wc -l` prints 2) and origin/main has moved past the stated base e82751c19, drifting 11 of 13 sampled citations (decide.py:1646, :2031, :1283, :1622; ports.py:902, :1765, :1803, :1950; settings.py:241; waits.py:176; loop.py:267). Re-word to name e82751c19 as the one base (\"no commit of its own yet\", as the sibling plans do), or merge main and re-measure",
-        "docs/specs/f-0334.md:188 \u2014 `grep -n \"^[A-Z_]*FILE = \" asf/kernel/*.py asf/kernel/loop.py | wc -l` prints 14, not 12, because loop.py is listed twice and its two hits are double-counted; drop the trailing `asf/kernel/loop.py` from the command",
-        "docs/specs/f-0334.md:356 \u2014 `grep -n \"getmtime\" asf/kernel/host.py | head -1` prints `149: siblings.sort(key=lambda n: os.path.getmtime(...))`, not the `485:` line the annotation shows; use `tail -1` (or `sed -n '485p'`), the cited content at :485 being correct"
+        "docs/plans/f-0334.md:147 \u2014 `SPEC` is `asf/kernel/settings.py:219` at `cb47b17c8`, not `:212` (`:212` is `try:` inside `parse_duration`); `:212` is the number at the spec's base `e82751c19`",
+        "docs/plans/f-0334.md:156 \u2014 `problems` is `asf/kernel/settings.py:316`, not `:308`, and `read` is `:351`, not `:343` (`:343` is inside `problems`' own body)",
+        "docs/plans/f-0334.md:135 \u2014 `_launches` is `asf/kernel/decide.py:1629`, not `:1622` (`:1622` is `open_prs`' docstring)",
+        "docs/plans/f-0334.md:245 \u2014 `asf/kernel/waits.py` `changes` is `:183`, not `:176`",
+        "docs/plans/f-0334.md:247 \u2014 `asf/kernel/waits.py` `_open_pr` is `:95`, not `:93`",
+        "docs/plans/f-0334.md:254 \u2014 `asf/kernel/waits.py` `percentile` is `:253`, not `:246`, and `item_hours` is `:266`, not `:259`",
+        "docs/plans/f-0334.md:257 \u2014 `asf/kernel/waits.py` `render` is `:377`, not `:370`, and `tick_line` is `:366`, not `:359`",
+        "docs/plans/f-0334.md:285 \u2014 `asf/kernel/waits.py` `is_wait` is `:89`, not `:87`",
+        "docs/plans/f-0334.md:26 \u2014 the banner's \"Every anchor, count and probe below was read at `cb47b17c8`\" is false for the eleven anchors above, which carry their `e82751c19` numbers; either re-anchor them or say which files were read at the spec's base",
+        "docs/plans/f-0334.md:87 \u2014 PC6's \"twenty test modules\" is twenty-seven (the unique test modules on the `writes:` lines) and its \"Twelve exist and gain cases or classes\" is nineteen, which is what its own list enumerates; fix both counts (`:57` repeats \"twenty test modules\")",
+        "docs/plans/f-0334.md:99 \u2014 the thirteen `### S-\u2026:` headings are `docs/specs/f-0334.md:1272-1473`, not `:1262-1420`; the cited range starts in the `## Stories` preamble and ends inside S-131014, omitting S-131015, S-131016 and S-131017"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0334-1791642615: NEEDS OPERATOR: which classes of question the console is answering \u2014 `asf kernel questions --product <p> --classify --since 2026-09-26T00:00:00Z`",
         "spec-f-0334-1791645911: NEEDS OPERATOR: every session's push of product `asf` on this host is refused \u2014 the pinned CLI predates the `pre-push` subcommand its own current hook shim calls, and no local build has it. Confirm read-only with `p\u2026",
@@ -34445,7 +34452,7 @@
         "spec-f-0334-1791655619: NEEDS OPERATOR: the pinned CLI blocks every push from this host, not this branch. Build a current pin (`asf upgrade --product asf`), or make the shim tolerate a pinned CLI lacking the subcommand the way its own `tru\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34454,7 +34461,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T20:10:09Z"
+      "updated": "2026-10-10T20:30:25Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34918,16 +34925,15 @@
       "folder": "features",
       "id": "F-0344",
       "kernel_findings": [
-        "docs/specs/f-0344.md:305 \u2014 \"The six hand-built paths of P1\" undercounts P1's seven: write \"seven\" and \"three `logs.path(...)` calls\", one each for install.py:763, harvest/product_checks.py:124 and harvest/rebuild_check.py:131; as written one minter stays hand-built and fails the card's own gate at :665 and S-134155's checkbox at :735.",
-        "docs/specs/f-0344.md:147 \u2014 \"All thirteen minters of P1\" (also :220 \"thirteen owners\", :726 \"Thirteen minters\") contradicts :19 \"Twelve call sites\"; the measured count is 7 hand-built + 5 via the helper = 12, so make all four say twelve.",
-        "docs/specs/f-0344.md:476 \u2014 the 2.6 GiB / \"none over cap\" row is the state after each clock's SECOND rotation, not its next run: rotate renames and no `.1` exists today (P3), so the first rotation moves the 291/179/49/44 MiB to `.log.1` and frees nothing. Reword :473 and :494 to the second rotation, and say which generation `over_cap` is judged on (:414-417, :817 leave it open; :693 implies the live file).",
-        "docs/specs/f-0344.md:196 \u2014 \"the 1.2 GiB in over-cap clock transcripts (P3)\" misreads P3: that 1.2 GiB is 96 files over the 4 MiB cap tree-wide, mostly job transcripts, while :485 puts all 23 clock transcripts at 0.57 GiB and :462 counts 4 groups over cap; cite 0.57 GiB and leave the rest to the reap (In 5)."
+        "docs/specs/f-0344.md:335 (and :663-664) \u2014 \"the two existing tests (`tests/test_approvals.py:732` and the gate's)\" names a pre-existing rotation test that does not exist: only `tests/test_approvals.py:733` covers a rotation (its sole `.1` assertion is at :744), and `harvest.keep_red_output`'s rotation has none (`GATE_RED_MAX_BYTES`/`keep_red_output` appear in `tests/` only in that test's docstring at :736; `tests/test_harvest.py:1299` asserts the red log's contents, not its rotation). Say one pre-existing test, at `tests/test_approvals.py:733`, covers the hook log, and that the gate log's delegation is covered by the new `tests.test_logs_tree.RotateTests` that S-134155 already declares. The same claim is repeated at :663-664 (\"the two pre-existing rotation tests ... are what proves the two delegated call sites did not move\") and needs the same fix.",
+        "docs/specs/f-0344.md:95 \u2014 \"`asf/doctor.py` `run()` appends 68 named rows\" is wrong: `run()` appends 63. 68 is the file-wide count of `rows.append(('<name>'` sites, the extra five being `('warn', detail)` findings tuples in `check_product_warnings` (`asf/doctor.py:868`, `:872`), `check_plan_headings` (`:902`) and `check_config_keys` (`:929`, `:933`), which are not doctor rows. Change 68 to 63, and fix the acceptance script's `P7 doctor rows:` print (line 563), which greps the same file-wide pattern and reproduces the mislabelling.",
+        "docs/reviews/1-f-0344.md \u2014 the full evidence table, plus four non-blocking notes (the troubleshooting-guide grep that will miss a `.log.1`; \u00a71's \"imports `asf.env` and nothing else of the package\" against \u00a74's registry and `metrics.STREAMS` reads; \"the 23 clock transcripts\" counting four non-clock logs; two loose line citations)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0344-1791658092-local: NEEDS OPERATOR: the product's CLI pin is ~162 commits behind and lacks the `pre-push` subcommand its own hook shim invokes, so no session on this product can push \u2014 unblock by building a current pin with `asf upgrad\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34935,7 +34941,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-10T20:10:09Z"
+      "updated": "2026-10-10T20:30:25Z"
     },
     "F-0345": {
       "backlinks": [
@@ -34972,7 +34978,7 @@
       "kernel_notes": [
         "spec-f-0346-1791658400-local: NEEDS OPERATOR: the push is refused by a stale installed dispatcher, not by the diff \u2014 `$HOME/.local/bin/asf` has no `pre-push` subcommand while `asf/cli.py:470` defines it. Confirm with `$HOME/.local/bin/asf --vers\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34980,7 +34986,7 @@
       "state": "New",
       "title": "Flow conservation: every step has a required successor, checked each tick",
       "type": "feature",
-      "updated": "2026-10-10T20:25:21Z"
+      "updated": "2026-10-10T20:30:25Z"
     },
     "F-0347": {
       "backlinks": [
@@ -35012,7 +35018,7 @@
         "F-0350"
       ],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0348",
       "kernel_attempts": [
@@ -35023,15 +35029,15 @@
         "asf/kernel/decide.py:860-864 \u2014 the spec's P11 citation names a function `_hold_high_risk`, which does not exist; the code at those lines belongs to `hold_risky` (decide.py:821) \u2014 fix the function name"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0003",
-      "priority": "need",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T18:51:41Z",
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T20:25:21Z"
+      "updated": "2026-10-10T20:30:25Z"
     },
     "F-0349": {
       "backlinks": [],
@@ -38523,7 +38529,9 @@
       "updated": "2026-10-10T19:30:53Z"
     },
     "S-131014": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0334"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38537,7 +38545,9 @@
       "updated": "2026-10-10T19:30:53Z"
     },
     "S-131015": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0334"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38551,7 +38561,9 @@
       "updated": "2026-10-10T19:30:53Z"
     },
     "S-131016": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0334"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -38565,7 +38577,9 @@
       "updated": "2026-10-10T19:30:53Z"
     },
     "S-131017": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0334"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -47196,9 +47210,11 @@
         "T-129189"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91507",
       "parent": "F-0325",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:41Z",
       "state": "New",
@@ -83946,13 +83962,20 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129165",
+      "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1432: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1432: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1432: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1432: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1432: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1432: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1432: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -83965,7 +83988,7 @@
       ],
       "title": "the cap and the reader \u2014 an unfiled review is no launch, once per head",
       "type": "task",
-      "updated": "2026-10-10T20:15:16Z",
+      "updated": "2026-10-10T20:30:25Z",
       "writes": [
         "asf/workers/relaunch.py",
         "asf/workers/lifecycle.py",
@@ -85422,15 +85445,22 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130214",
+      "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1433: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1433: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1433: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1433: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1433: part (3.13, 1) is red but not a required check \u2014 ignored",
-        "PR #1433: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1433: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1433: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1433: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -85444,7 +85474,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-10T20:15:16Z",
+      "updated": "2026-10-10T20:30:25Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -85703,7 +85733,11 @@
       "folder": "tasks",
       "id": "T-131823",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "build-t-131823-1791659712: NEEDS OPERATOR: I could not execute `validate`'s record-side checks (that S-124005 is a Story card and holds the bullet `line 1` cites) \u2014 the record at the product's backlog dir is outside this worktree session's re\u2026",
         "PR #1434: checks (3.12) is red but not a required check \u2014 ignored",
@@ -85711,10 +85745,12 @@
         "PR #1434: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1434: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1434: part (3.13, 2) is red but not a required check \u2014 ignored",
-        "PR #1434: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1434: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1434: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1434: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -85727,7 +85763,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T20:15:16Z",
+      "updated": "2026-10-10T20:30:25Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"
@@ -87360,7 +87396,10 @@
         "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py).",
         "PR #1439: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1439: checks (3.13) is red but not a required check \u2014 ignored",
-        "PR #1439: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1439: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1439: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1439: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1439: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -87383,7 +87422,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-10T20:25:21Z",
+      "updated": "2026-10-10T20:30:25Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
