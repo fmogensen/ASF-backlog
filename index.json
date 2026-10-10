@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T09:44:40Z",
+  "generated": "2026-10-10T09:49:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33445,7 +33445,7 @@
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
         "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33453,7 +33453,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T09:41:00Z"
+      "updated": "2026-10-10T09:49:09Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33778,7 +33778,7 @@
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33786,7 +33786,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T09:25:48Z"
+      "updated": "2026-10-10T09:49:09Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -33798,17 +33798,19 @@
       ],
       "folder": "features",
       "id": "F-0332",
+      "kernel_answers": [
+        "Ship loops.TOTAL_CAP = 6 as the spec and plan measured (0.143 share, inside both bars). Thin margin is acceptable: it is one constant, and the wait ledger will show if it needs moving. No change to the plan; proceed."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Ship loops.TOTAL_CAP = 6 as the spec and plan measured (0.143 share, inside both bars). Thin margin is acceptable: it is one constant, and the wait ledger will show if it needs moving. No change to the plan; proceed."
+      ],
       "kernel_notes": [
         "spec-f-0332-1791594186: NEEDS OPERATOR: which number the ceiling carries. The spec ships 6 (twice the per-finding round cap, and the daily cap's own number), measured at a 0.143 share and a 23 % fall \u2014 inside both of the card's bars but wi\u2026",
         "spec-f-0332-1791598835: NEEDS OPERATOR: which number the ceiling carries \u2014 6 (ships: 0.143 share, 23 % fall, ~2 parks a day, 0.007 of margin on the 0.15 threshold while the cause has drifted 0.158 \u2192 0.186) or 4 (0.123, a 34 % fall, ~4.5 pa\u2026",
         "spec-f-0332-1791602807: NEEDS OPERATOR: which number the ceiling should carry \u2014 the spec ships 6 (0.143 share, 23 % fall, only 0.007 of margin on the 0.15 threshold while the cause drifts up from 0.158 to 0.186); 4 measures at 0.123 and a\u2026",
         "plan-f-0332-1791618215: NEEDS OPERATOR: which number the ceiling carries \u2014 the spec ships loops.TOTAL_CAP = 6 (measured 0.143 share, a 23 % fall, inside both bars but with 0.007 of margin while the cause drifted 0.158 \u2192 0.186), where 4 mea\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: which number the ceiling carries. The spec and plan ship `loops.TOTAL_CAP = 6` (measured 0.143 share, a 23 % fall \u2014 inside both of the card's bars, but with only 0.007 of margin\u2026",
-      "kernel_stuck_since": "2026-10-10T09:34:05Z",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33816,7 +33818,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T09:36:58Z"
+      "updated": "2026-10-10T09:49:09Z"
     },
     "R-0001": {
       "backlinks": [
@@ -53092,10 +53094,11 @@
         "relaunch: operator answer: Decision: keep the drift handling as built in 5628e3c. Leave asf/harvest/lane.py untouched (it already appends its own ## Proves via lane.commits_note); title_and_body's repo/trunk params default to None. No wider writes. Proceed to review."
       ],
       "kernel_findings": [
-        "asf/harvest/lane.py:4459-4465 \u2014 PrOps.open() is the only production caller of title_and_body and never passes repo=/trunk=, so the new ## Proves block Task 4 built is unreachable in a real pull request (only commits_note's older, differently-shaped F-0257 block appears there). Either wire repo=self.product.repo_dir, trunk=self.trunk into that call (and reconcile with commits_note so the body doesn't grow two ## Proves headings), or get an adjudicate ruling restating Task 4's call site and writes: against the current tree, the way Task 3 already has."
+        "asf/harvest/lane.py:4459-4465 \u2014 PrOps.open() is the only production caller of title_and_body and never passes repo=/trunk=, so the new ## Proves block Task 4 built is unreachable in a real pull request (only commits_note's older, differently-shaped F-0257 block appears there). Either wire repo=self.product.repo_dir, trunk=self.trunk into that call (and reconcile with commits_note so the body doesn't grow two ## Proves headings), or get an adjudicate ruling restating Task 4's call site and writes: against the current tree, the way Task 3 already has.",
+        "operator answer: Decision: keep the drift handling as built in 5628e3c. Leave asf/harvest/lane.py untouched (it already appends its own ## Proves via lane.commits_note); title_and_body's repo/trunk params default to None. No wider writes. Proceed to review."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53108,7 +53111,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T09:36:58Z",
+      "updated": "2026-10-10T09:49:09Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
