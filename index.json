@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T14:34:00Z",
+  "generated": "2026-10-10T14:37:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33745,9 +33745,10 @@
         "plan-f-0328-1791633802: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` is 5 behind and 8 ahead of the trunk over `47466e997`, and two o\u2026",
         "plan-f-0328-1791635656: NEEDS OPERATOR: `fix/F-0328-pending-not-red` carries commit `418bdb402` (\"the merge queue reads not-yet-run required jobs as pending, never red\"), the closed hotfix the spec's `Out` table refuses on two separate row\u2026",
         "plan-f-0328-1791637960: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. Re-measured this pass: origin/main was force-updated and the branch re-based, so every sha th\u2026",
-        "plan-f-0328-1791640115: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 re-measured this pass and u\u2026"
+        "plan-f-0328-1791640115: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 re-measured this pass and u\u2026",
+        "plan-f-0328-1791641963: NEEDS OPERATOR: whether to land this plan from a branch that still carries the two pre-existing `fix(F-0328)` commits (`400b782`, `b1a00fc`) that the approved spec's `Out` table refuses \u2014 re-measured this pass and u\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33755,7 +33756,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T14:21:44Z"
+      "updated": "2026-10-10T14:37:27Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33809,7 +33810,7 @@
       "kernel_notes": [
         "plan-f-0330-1791640370: NEEDS OPERATOR: F-0330 has now had its plan written, gated and pushed by four PLAN sessions in a row"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33817,7 +33818,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T14:21:44Z"
+      "updated": "2026-10-10T14:37:27Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -81761,12 +81762,17 @@
       "kernel_dor_fills": 1,
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "asf/rehearsal.py:286 \u2014 a done intake note's header is kept verbatim, and move_to_done writes headers that are free prose (asf/groom/inbox.py:343,427,631), so `\u2192 closed (groom <date>, <who>)` and a `~ path reach the snapshot intact; clear the header with the id-preserving clearer (keep `\u2192` and every core.ID_TOKEN_RE match, _clear_gap the rest) before writing it",
+        "asf/rehearsal.py:230 \u2014 the no-annotated-tag fallback still stamps 'date': core.today(), so a tag-less source builds different bytes on a later day; use '' (what _repo_tags returns for an unreadable creatordate) and add a tag-less case to BuilderIsDeterministic",
+        "tests/test_rehearsal_snapshot.py:180 \u2014 BuilderDoesNotMutateSource compares file paths only, so an in-place rewrite of a source file passes; compare {relpath: sha256(content)} maps before and after instead",
+        "asf/rehearsal.py:117 \u2014 _PROSE_KEYS misses `removed:`, whose value may be a hand-written reason (asf/record/setfield.py:103), so that prose is copied verbatim; clear it id-preservingly, since asf/record/ingest.py:656 reads _MERGED_INTO back out of it",
+        "rebase: PR #1367 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "tests/rehearsal/manifest.json:1 \u2014 the committed fixture is not what the shipped builder writes: build() writes 'intake_dir' (asf/rehearsal.py:347, added in 4a51a8d) but the committed manifest.json (written in d5677cb) has no such key. Re-run the builder over the same synthetic stand-in source and commit the regenerated tests/rehearsal/ so manifest.json carries \"intake_dir\": \"inbox\", then drop the dead literal default at tests/test_rehearsal_snapshot.py:165 in favour of self.manifest['intake_dir'].",
         "asf/rehearsal.py:426 \u2014 manifest_holds never checks the annotated count that plan Step 2 names, so flipping one annotated flag among several in both manifest.json and repo/refs.json returns []. Have build() state 'refs_total': len(refs) and 'refs_annotated': sum(1 for r in refs if r['annotated']), compare the refs list against both in manifest_holds with one line per mismatch, and add the case to ManifestHoldsDetectsBreakage."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -81779,7 +81785,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T14:21:44Z",
+      "updated": "2026-10-10T14:37:27Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -82600,7 +82606,7 @@
       "kernel_notes": [
         "groom-fill-t-82990-1791637217: groom-fill raised risk high: the card's Acceptance is empty only because the 4000-char cut swallowed the plan's byte-for-byte S-81208 fence; copying it in (paired to AdvanceTest/ReportTest) satisfies DoR, and the Task lands in the kernel's daily step plus release-channel pushes so risk stays high."
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82613,7 +82619,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T14:33:59Z",
+      "updated": "2026-10-10T14:37:27Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
