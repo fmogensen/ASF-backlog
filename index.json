@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T14:54:09Z",
+  "generated": "2026-10-10T14:57:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33944,7 +33944,7 @@
       "state": "New",
       "title": "Factory GitHub identity: GitHub App installation token instead of the operator's personal token",
       "type": "feature",
-      "updated": "2026-10-10T14:54:08Z"
+      "updated": "2026-10-10T14:57:07Z"
     },
     "F-0334": {
       "backlinks": [
@@ -81855,7 +81855,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T14:50:59Z",
+      "updated": "2026-10-10T14:57:07Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -82765,22 +82765,18 @@
       "folder": "tasks",
       "id": "T-83142",
       "kernel_answers": [
-        "T-0775 is retired (its work landed on main in c0e48b6's predecessor c0f84c778), so it no longer gates this Task; after: now holds only T-78813."
+        "T-0775 is retired (its work landed on main in c0e48b6's predecessor c0f84c778), so it no longer gates this Task; after: now holds only T-78813.",
+        "Fact check: origin/main was NOT rewritten. History is linear; #1266 (c34fd09) is a normal squash merge that ADDED the 0.2 kernel (+22,327/-101 lines, mostly asf/kernel and tests). Rebase this branch onto current origin/main, resolve conflicts in the few shared files (cli.py, frontmatter.py, cloud.py, groom/inbox.py), and continue."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: T-0775 is retired (its work landed on main in c0e48b6's predecessor c0f84c778), so it no longer gates this Task; after: now holds only T-78813.",
-        "ended without a REPORT"
+        "relaunch: operator answer: Fact check: origin/main was NOT rewritten. History is linear; #1266 (c34fd09) is a normal squash merge that ADDED the 0.2 kernel (+22,327/-101 lines, mostly asf/kernel and tests). Rebase this branch onto current origin/main, resolve conflicts in the few shared files (cli.py, frontmatter.py, cloud.py, groom/inbox.py), and continue."
       ],
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-83142-1791631605: groom-fill raised risk high: F-0280's spec \u00a71 and plan Task 1 give exact, verified Files/Steps/Design and S-73204's ten acceptance lines, all re-confirmed byte-for-byte against the trunk at 9b061e982; filling in the acceptance-test mapping and writes clears the DoR gap.",
         "groom-fill-t-83142-1791633870: groom-fill raised risk high: card is byte-for-byte Task 1 of the landed plan/spec (F-0280 \u00a71), already fully specced with test-named acceptance; the after:T-0775/T-78813 block is the kernel's write-overlap serialization on asf/feeder/rows.py, not a card defect"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "blocked: NEEDS OPERATOR: origin/main was rewritten out from under every in-flight lane branch (including this one) by the merge of PR #1266 \"ASF 0.2 -- the kernel: decide over facts, landing via GitH\u2026",
-      "kernel_stuck_since": "2026-10-10T14:49:52Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -82793,7 +82789,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T14:50:59Z",
+      "updated": "2026-10-10T14:57:07Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
