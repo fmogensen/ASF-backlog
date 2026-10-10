@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T08:42:06Z",
+  "generated": "2026-10-10T08:48:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2780,7 +2780,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-10T08:42:03Z"
+      "updated": "2026-10-10T08:48:12Z"
     },
     "B-0089": {
       "backlinks": [
@@ -3045,7 +3045,7 @@
         "asf/workers/health.py:950 \u2014 implement an in-tick retry-with-backoff before falling back to the next-tick path, or narrow the card's acceptance text to the next-tick-only behavior that is actually in the tree, before closing B-0097 as already landed."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -3054,7 +3054,7 @@
       "state": "New",
       "title": "A network blip on push scores finished work as 'failed: not pushed' and costs a correction round",
       "type": "bug",
-      "updated": "2026-10-10T07:44:01Z"
+      "updated": "2026-10-10T08:48:12Z"
     },
     "B-0098": {
       "backlinks": [],
@@ -32085,7 +32085,7 @@
       "state": "Active",
       "title": "A review that ends 'needs input' because the heartbeat cannot start parks the PR for good",
       "type": "feature",
-      "updated": "2026-10-10T08:34:03Z"
+      "updated": "2026-10-10T08:48:12Z"
     },
     "F-0280": {
       "backlinks": [
@@ -32839,7 +32839,6 @@
         "S-77505",
         "S-77506",
         "S-77507",
-        "T-79566",
         "T-79567",
         "T-79568"
       ],
@@ -33086,6 +33085,9 @@
       ],
       "folder": "features",
       "id": "F-0307",
+      "kernel_notes": [
+        "plan-f-0307-1791618452: NEEDS OPERATOR: whether an S1 Bug marked `in_progress_by` should freeze new Feature work needs a ruling, and it is a card this session cannot raise (PD18). The spec's `D3` lists four triggers \u2014 a session on it, work\u2026"
+      ],
       "kernel_state": "building",
       "parent": "E-0001",
       "rank": 3,
@@ -33095,7 +33097,7 @@
       "state": "Active",
       "title": "Feeder S1 gate: no new Feature work launches while an S1 Bug is open (stability first, in code)",
       "type": "feature",
-      "updated": "2026-10-10T07:47:55Z"
+      "updated": "2026-10-10T08:48:12Z"
     },
     "F-0308": {
       "backlinks": [
@@ -33745,7 +33747,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T08:42:03Z"
+      "updated": "2026-10-10T08:48:12Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -33760,9 +33762,10 @@
       "kernel_notes": [
         "spec-f-0332-1791594186: NEEDS OPERATOR: which number the ceiling carries. The spec ships 6 (twice the per-finding round cap, and the daily cap's own number), measured at a 0.143 share and a 23 % fall \u2014 inside both of the card's bars but wi\u2026",
         "spec-f-0332-1791598835: NEEDS OPERATOR: which number the ceiling carries \u2014 6 (ships: 0.143 share, 23 % fall, ~2 parks a day, 0.007 of margin on the 0.15 threshold while the cause has drifted 0.158 \u2192 0.186) or 4 (0.123, a 34 % fall, ~4.5 pa\u2026",
-        "spec-f-0332-1791602807: NEEDS OPERATOR: which number the ceiling should carry \u2014 the spec ships 6 (0.143 share, 23 % fall, only 0.007 of margin on the 0.15 threshold while the cause drifts up from 0.158 to 0.186); 4 measures at 0.123 and a\u2026"
+        "spec-f-0332-1791602807: NEEDS OPERATOR: which number the ceiling should carry \u2014 the spec ships 6 (0.143 share, 23 % fall, only 0.007 of margin on the 0.15 threshold while the cause drifts up from 0.158 to 0.186); 4 measures at 0.123 and a\u2026",
+        "plan-f-0332-1791618215: NEEDS OPERATOR: which number the ceiling carries \u2014 the spec ships loops.TOTAL_CAP = 6 (measured 0.143 share, a 23 % fall, inside both bars but with 0.007 of margin while the cause drifted 0.158 \u2192 0.186), where 4 mea\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33770,7 +33773,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T07:44:01Z"
+      "updated": "2026-10-10T08:48:12Z"
     },
     "R-0001": {
       "backlinks": [
@@ -42869,8 +42872,7 @@
     },
     "S-77505": {
       "backlinks": [
-        "F-0301",
-        "T-79566"
+        "F-0301"
       ],
       "children": [],
       "cost": {
@@ -42899,7 +42901,6 @@
     "S-77506": {
       "backlinks": [
         "F-0301",
-        "T-79566",
         "T-79567"
       ],
       "children": [],
@@ -52960,7 +52961,8 @@
       "kernel_attempts": [
         "conflict: PR #731: update-branch #731: rc 1: gh: merge conflict between base and head (HTTP 422)",
         "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device",
-        "review: no VERDICT line"
+        "review: no VERDICT line",
+        "ended without a REPORT"
       ],
       "kernel_findings": [
         "asf/harvest/lane.py:753-772,807-809 \u2014 thread validate()'s `problems` into `proves_refusal_text` and name each one before the numbered acceptance list (Task 3 Step 4)",
@@ -52975,7 +52977,7 @@
         "PR #1332: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1332: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -52985,7 +52987,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-10T08:34:03Z",
+      "updated": "2026-10-10T08:48:12Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
@@ -81137,9 +81139,7 @@
       "after": [
         "T-79566"
       ],
-      "backlinks": [
-        "T-79566"
-      ],
+      "backlinks": [],
       "children": [],
       "decided": true,
       "evidence": [
@@ -81981,7 +81981,7 @@
       ],
       "folder": "tasks",
       "id": "T-82987",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -81994,7 +81994,7 @@
       ],
       "title": "the channel log \u2014 what was offered when, and the registry line that lets it be written",
       "type": "task",
-      "updated": "2026-10-10T08:34:03Z",
+      "updated": "2026-10-10T08:48:12Z",
       "writes": [
         "asf/channels.py",
         "asf/state/registry.py",
@@ -82279,7 +82279,11 @@
       "kernel_attempts": [
         "launch: no cloud account with a free seat"
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/evidence/rulepass.py:159-183 (precedent) \u2014 the plan's Step 4 (docs/plans/f-0300.md:167-174, 749-751) requires matching a finding's text against *either* a `D-nnnn` token *or* a path under `decisions.DOCS_DIR`; the landed `precedent()` only checks `decisions.ID_RE.findall(text)` and never references `decisions.DOCS_DIR` (the module imports `decisions` but never uses `DOCS_DIR`). Add a path-match branch before returning `None`, resolving against `precedent_mod.entries(...)` rows by their `'path'` field."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82292,7 +82296,7 @@
       ],
       "title": "the table \u2014 `rulepass.py`, the flag, and what the landed readers read back",
       "type": "task",
-      "updated": "2026-10-10T08:42:03Z",
+      "updated": "2026-10-10T08:48:12Z",
       "writes": [
         "asf/evidence/rulepass.py",
         "asf/conventions.py",
