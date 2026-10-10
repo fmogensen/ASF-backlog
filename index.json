@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T18:11:43Z",
+  "generated": "2026-10-10T18:13:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -26159,7 +26159,8 @@
       "backlinks": [
         "F-0293",
         "F-0326",
-        "T-0625"
+        "T-0625",
+        "T-131721"
       ],
       "children": [
         "T-0442",
@@ -33561,7 +33562,11 @@
         "S-84506",
         "S-84507",
         "S-84508",
-        "S-84509"
+        "S-84509",
+        "T-131719",
+        "T-131720",
+        "T-131721",
+        "T-131722"
       ],
       "cost": {
         "fix_rounds": 0,
@@ -46166,7 +46171,9 @@
       "updated": "2026-10-09T18:03:13Z"
     },
     "S-84505": {
-      "backlinks": [],
+      "backlinks": [
+        "T-131719"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -46181,7 +46188,9 @@
       "updated": "2026-10-09T18:03:13Z"
     },
     "S-84506": {
-      "backlinks": [],
+      "backlinks": [
+        "T-131719"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -46196,7 +46205,9 @@
       "updated": "2026-10-09T18:03:13Z"
     },
     "S-84507": {
-      "backlinks": [],
+      "backlinks": [
+        "T-131720"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -46211,7 +46222,9 @@
       "updated": "2026-10-09T18:03:13Z"
     },
     "S-84508": {
-      "backlinks": [],
+      "backlinks": [
+        "T-131721"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -46226,7 +46239,9 @@
       "updated": "2026-10-09T18:03:13Z"
     },
     "S-84509": {
-      "backlinks": [],
+      "backlinks": [
+        "T-131722"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -83401,7 +83416,7 @@
       ],
       "title": "the suffix, minted and read back in one place",
       "type": "task",
-      "updated": "2026-10-10T18:07:35Z",
+      "updated": "2026-10-10T18:13:28Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_feeder.py"
@@ -83444,7 +83459,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129172",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0317.md"
       },
@@ -83457,7 +83472,7 @@
       ],
       "title": "the replan brief carries the Stories, with their acceptance lines",
       "type": "task",
-      "updated": "2026-10-10T18:02:11Z",
+      "updated": "2026-10-10T18:13:28Z",
       "writes": [
         "asf/briefs/preamble.py",
         "asf/briefs/build.py",
@@ -84801,6 +84816,114 @@
         "tests/test_upgrade_kernel_floor.py",
         "tests/test_upgrade.py",
         "tests/test_upgrade_drain_bound.py"
+      ]
+    },
+    "T-131719": {
+      "backlinks": [
+        "T-131720"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-131719",
+      "kernel_state": "ready",
+      "links": {
+        "plan": "docs/plans/f-0314.md"
+      },
+      "parent": "F-0314",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T18:12:24Z",
+      "state": "New",
+      "stories": [
+        "S-84505",
+        "S-84506"
+      ],
+      "title": "the trunk's own evidence, the `closed` fact it decides, and the PR closed against it",
+      "type": "task",
+      "updated": "2026-10-10T18:13:28Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "tests/test_closed_item_prs.py"
+      ]
+    },
+    "T-131720": {
+      "after": [
+        "T-131719"
+      ],
+      "backlinks": [
+        "T-131722"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-131720",
+      "links": {
+        "plan": "docs/plans/f-0314.md"
+      },
+      "parent": "F-0314",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T18:12:28Z",
+      "state": "New",
+      "stories": [
+        "S-84507"
+      ],
+      "title": "the decision the lane cannot make, written once instead of printed every tick",
+      "type": "task",
+      "updated": "2026-10-10T18:12:28Z",
+      "writes": [
+        "asf/harvest/lane.py",
+        "tests/test_closed_item_prs.py"
+      ]
+    },
+    "T-131721": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-131721",
+      "kernel_state": "building",
+      "links": {
+        "plan": "docs/plans/f-0314.md"
+      },
+      "parent": "F-0314",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T18:12:31Z",
+      "state": "New",
+      "stories": [
+        "S-84508"
+      ],
+      "title": "the hygiene view's third lane \u2014 `CLOSED \u2192 DECIDE`, read off the lane registry alone",
+      "type": "task",
+      "updated": "2026-10-10T18:13:28Z",
+      "writes": [
+        "asf/harvest/pr_hygiene.py",
+        "tests/test_pr_hygiene.py"
+      ]
+    },
+    "T-131722": {
+      "after": [
+        "T-131720"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-131722",
+      "links": {
+        "plan": "docs/plans/f-0314.md"
+      },
+      "parent": "F-0314",
+      "schema_version": 1,
+      "stage_since": "2026-10-10T18:12:34Z",
+      "state": "New",
+      "stories": [
+        "S-84509"
+      ],
+      "title": "the `stray` line stops, and the orphan path keeps its own bar",
+      "type": "task",
+      "updated": "2026-10-10T18:12:34Z",
+      "writes": [
+        "tests/test_closed_item_prs.py"
       ]
     },
     "T-76350": {
