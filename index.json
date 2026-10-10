@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T10:55:39Z",
+  "generated": "2026-10-10T10:57:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2939,7 +2939,8 @@
         "F-0294",
         "F-0321",
         "S-76556",
-        "T-0110"
+        "T-0110",
+        "T-0709"
       ],
       "children": [],
       "cost": {
@@ -27885,7 +27886,7 @@
       "state": "New",
       "title": "asf index drops hand-added card text when regenerating Backlinks",
       "type": "feature",
-      "updated": "2026-10-10T10:36:11Z"
+      "updated": "2026-10-10T10:57:40Z"
     },
     "F-0167": {
       "backlinks": [
@@ -33790,7 +33791,7 @@
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33798,7 +33799,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T10:36:11Z"
+      "updated": "2026-10-10T10:57:40Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -49865,7 +49866,11 @@
         "escalated: the previous session stopped (partial: left out: C1 and C2 are unchanged from the review's finding and the prior coder report \u2014 re-verified, not re-fixable inside this card's writes:. `grep -n \"deliverable_of\\|already_on_trunk\\|l\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "partial: NEEDS OPERATOR: a ruling on T-0123's writes:/grant: \u2014 either widen it to include",
+      "kernel_stuck_since": "2026-10-10T10:55:36Z",
       "links": {
         "plan": "docs/plans/f-0026.md"
       },
@@ -49879,7 +49884,7 @@
       "state": "Active",
       "title": "`asf/boundary.py` \u2014 the matcher, the grant resolver, the law, and `conventions.boundary`",
       "type": "task",
-      "updated": "2026-10-10T10:46:41Z",
+      "updated": "2026-10-10T10:57:40Z",
       "writes": [
         "asf/boundary.py,",
         "tests/test_boundary.py,",
@@ -58579,9 +58584,11 @@
       "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1132: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1132: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1132: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1132: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1132: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0062.md"
       },
@@ -58596,7 +58603,7 @@
       "state": "Active",
       "title": "the per-role worker settings file, its deny rules, `asf worker-permissions`, and the three doctor rows",
       "type": "task",
-      "updated": "2026-10-10T10:43:25Z",
+      "updated": "2026-10-10T10:57:40Z",
       "writes": [
         "asf/workers/worker_settings.py",
         "asf/cli.py",
@@ -75150,10 +75157,14 @@
       ],
       "folder": "tasks",
       "id": "T-0709",
+      "kernel_findings": [
+        "docs/reviews/2-t-0709.md:1 \u2014 drop the file from the branch (`git rm docs/reviews/2-t-0709.md`); it is round 2's own review report, landed on worker/T-0709 by the factory's wip-cleanup commit 36406b4 (B-0094), and sits outside this card's `writes:`."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1142: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0194-87b236e237ad.md"
       },
@@ -75173,7 +75184,7 @@
       "stories": [],
       "title": "a sha runs on an ssh-reachable machine and comes back \u2014 the transport, the three remote scripts, the store, and the pass that dispatches, collects, supersedes and times out",
       "type": "task",
-      "updated": "2026-10-10T10:51:49Z",
+      "updated": "2026-10-10T10:57:40Z",
       "writes": [
         "asf/ci_vm.py",
         "tests/test_ci_vm.py",
@@ -76798,7 +76809,7 @@
       "stories": [],
       "title": "the product declares its pre-ASF branch convention, and a misshapen declaration is loud",
       "type": "task",
-      "updated": "2026-10-10T10:51:49Z",
+      "updated": "2026-10-10T10:57:40Z",
       "writes": [
         "asf/conventions.py",
         "tests/test_conventions.py",
@@ -79917,6 +79928,7 @@
       ],
       "folder": "tasks",
       "id": "T-0818",
+      "kernel_dor_fills": 1,
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -79929,7 +79941,7 @@
       ],
       "title": "a card a push discards add/add is named by its id, and a modify/modify resolution still prints exactly one line",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T10:57:40Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
