@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T10:29:22Z",
+  "generated": "2026-10-10T10:36:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -15,6 +15,7 @@
         "T-0235",
         "T-0237",
         "T-0487",
+        "T-0775",
         "T-0831",
         "B-0020",
         "B-0027",
@@ -3054,7 +3055,7 @@
       "state": "New",
       "title": "A network blip on push scores finished work as 'failed: not pushed' and costs a correction round",
       "type": "bug",
-      "updated": "2026-10-10T10:04:21Z"
+      "updated": "2026-10-10T10:36:11Z"
     },
     "B-0098": {
       "backlinks": [],
@@ -26582,6 +26583,7 @@
       "kernel_attempts": [
         "launch: no cloud account with a free seat"
       ],
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "later",
       "rank": 82,
@@ -26594,7 +26596,7 @@
       "state": "Active",
       "title": "Groom commits its own output; a foreign daily stamp never skips the native daily; new products groom by default",
       "type": "feature",
-      "updated": "2026-10-10T09:36:58Z"
+      "updated": "2026-10-10T10:36:11Z"
     },
     "F-0134": {
       "backlinks": [
@@ -27879,7 +27881,7 @@
       "state": "New",
       "title": "asf index drops hand-added card text when regenerating Backlinks",
       "type": "feature",
-      "updated": "2026-10-10T10:29:20Z"
+      "updated": "2026-10-10T10:36:11Z"
     },
     "F-0167": {
       "backlinks": [
@@ -31257,7 +31259,6 @@
     },
     "F-0257": {
       "backlinks": [
-        "T-0197",
         "B-0471",
         "B-0472",
         "B-0473",
@@ -33726,17 +33727,19 @@
       "folder": "features",
       "id": "F-0329",
       "kernel_answers": [
-        "Confirmed: the red step is the known trunk flake, not this branch. PR #1304 at f0eb52e75, run 38008654697, tests (3.13): the only failure is tests.test_sample_product.ReadmeRenderTests.test_refresh_is_a_no_op_the_second_time (Ran 36, failures=1), the same assertion that flakes on main; the branch changes only docs/specs/f-0329.md. Rerun the failed job and land the spec on green. The readme.py fix is routed: an inbox card \"readme refresh no-op test flakes across a second boundary\" is filed with the cause (asf/views/readme.py:246 generated stamp vs the whole-byte compare in asf/metrics/metrics.py:1054) and its acceptance test; do not fix it in this spec job. The wrapped-acceptance-bullet half (CHECKBOX matches one physical line) stays in this Feature as its own Story if the spec already declares it; otherwise it is Out and needs no card from you. Report status done with no NEEDS OPERATOR line."
+        "Confirmed: the red step is the known trunk flake, not this branch. PR #1304 at f0eb52e75, run 38008654697, tests (3.13): the only failure is tests.test_sample_product.ReadmeRenderTests.test_refresh_is_a_no_op_the_second_time (Ran 36, failures=1), the same assertion that flakes on main; the branch changes only docs/specs/f-0329.md. Rerun the failed job and land the spec on green. The readme.py fix is routed: an inbox card \"readme refresh no-op test flakes across a second boundary\" is filed with the cause (asf/views/readme.py:246 generated stamp vs the whole-byte compare in asf/metrics/metrics.py:1054) and its acceptance test; do not fix it in this spec job. The wrapped-acceptance-bullet half (CHECKBOX matches one physical line) stays in this Feature as its own Story if the spec already declares it; otherwise it is Out and needs no card from you. Report status done with no NEEDS OPERATOR line.",
+        "id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-91855 by refs/asf/ids/S-91855 a012736; S-93305 by refs/asf/ids/S-93305 025d080. No record item collides with them."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Confirmed: the red step is the known trunk flake, not this branch. PR #1304 at f0eb52e75, run 38008654697, tests (3.13): the only failure is tests.test_sample_product.ReadmeRenderTests.test_refresh_is_a_no_op_the_second_time (Ran 36, failures=1), the same assertion that flakes on main; the branch changes only docs/specs/f-0329.md. Rerun the failed job and land the spec on green. The readme.py fix is routed: an inbox card \"readme refresh no-op test flakes across a second boundary\" is filed with the cause (asf/views/readme.py:246 generated stamp vs the whole-byte compare in asf/metrics/metrics.\u2026",
         "launch: [Errno 28] No space left on device",
-        "review: no VERDICT line"
+        "review: no VERDICT line",
+        "relaunch: operator answer: id claim verified by the kernel: the claim stands \u2014 keep the ids you declared, do not re-mint. Verified: S-91855 by refs/asf/ids/S-91855 a012736; S-93305 by refs/asf/ids/S-93305 025d080. No record item collides with them."
       ],
       "kernel_notes": [
         "spec-f-0329-1791587544: NEEDS OPERATOR: whether the second, co-occurring half of the same damage gets its own card \u2014 `CHECKBOX` matches one physical line, so a *wrapped* acceptance bullet (`docs/specs/f-0280.md:369-371`, the very declarati\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33744,7 +33747,7 @@
       "state": "New",
       "title": "minting a declared Story (idcheck.declared_stories / plan_tasks) strips backtick code spans from its acceptance lines",
       "type": "feature",
-      "updated": "2026-10-10T10:15:39Z"
+      "updated": "2026-10-10T10:36:11Z"
     },
     "F-0330": {
       "backlinks": [],
@@ -33791,7 +33794,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T09:49:09Z"
+      "updated": "2026-10-10T10:36:11Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -33823,7 +33826,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T10:21:35Z"
+      "updated": "2026-10-10T10:36:11Z"
     },
     "R-0001": {
       "backlinks": [
@@ -49849,7 +49852,12 @@
       ],
       "folder": "tasks",
       "id": "T-0123",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "C1 \u2014 no single file:line (missing work) \u2014 `asf/harvest/harvest.py` carries none of Task 3/4's screen/archive/re-admission logic; it now lives in `asf/harvest/lane.py` (outside `writes:`), confirmed by `grep -n \"deliverable_of\\|already_on_trunk\\|lane_refusal\\|land_already\" asf/harvest/harvest.py` returning nothing. No code fix is possible inside this card's current footprint \u2014 adjudicate `writes:`/`grant:` to include `asf/harvest/lane.py` (or amend the plan), then implement the remaining Steps there.",
+        "C2 \u2014 tests/test_harvest.py (whole file) \u2014 `BoundaryHoldTests` and the `f0026`/`discard`-tagged `ProductHarvestTests` cases the plan's acceptance names do not exist. Write them once C1's code has somewhere to live."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0026.md"
       },
@@ -49863,7 +49871,7 @@
       "state": "Active",
       "title": "`asf/boundary.py` \u2014 the matcher, the grant resolver, the law, and `conventions.boundary`",
       "type": "task",
-      "updated": "2026-10-10T09:36:58Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/boundary.py",
         "tests/test_boundary.py",
@@ -53026,13 +53034,12 @@
       "folder": "tasks",
       "id": "T-0196",
       "kernel_answers": [
-        "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
+        "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done.",
+        "Approved: tests/test_e2e_lane.py is added to this Task's writes (card updated). Add the trailer there as the fixture needs, nothing else outside writes. Proceed."
       ],
       "kernel_attempts": [
-        "conflict: PR #731: update-branch #731: rc 1: gh: merge conflict between base and head (HTTP 422)",
-        "launch: launch: git fetch -q origin main: error: cannot open '.git/FETCH_HEAD': No space left on device",
-        "review: no VERDICT line",
-        "ended without a REPORT"
+        "relaunch: operator answer: Approved: tests/test_e2e_lane.py is added to this Task's writes (card updated). Add the trailer there as the fixture needs, nothing else outside writes. Proceed.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
@@ -53043,13 +53050,11 @@
         "PR #1332: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1332: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1332: part (3.12, 2) is red but not a required check \u2014 ignored",
-        "PR #1332: part (3.13, 2) is red but not a required check \u2014 ignored"
+        "PR #1332: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "PR #1332: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1332: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "partial: NEEDS OPERATOR: tests/test_e2e_lane.py needs the trailer added in the two spots above to clear PR #1332's red CI; outside this item's adjudicated writes (asf/harvest/lane.py, tests/test_lane\u2026",
-      "kernel_stuck_since": "2026-10-10T10:27:49Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53059,7 +53064,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-10T10:29:20Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/harvest/harvest.py,",
         "tests/test_harvest.py,",
@@ -53096,16 +53101,10 @@
         "The cloud review lost its verdict (a known kernel defect being fixed). Rerun the review; the code is unchanged.",
         "Decision: keep the drift handling as built in 5628e3c. Leave asf/harvest/lane.py untouched (it already appends its own ## Proves via lane.commits_note); title_and_body's repo/trunk params default to None. No wider writes. Proceed to review."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: Decision: keep the drift handling as built in 5628e3c. Leave asf/harvest/lane.py untouched (it already appends its own ## Proves via lane.commits_note); title_and_body's repo/trunk params default to None. No wider writes. Proceed to review.",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "asf/harvest/lane.py:4459-4465 \u2014 PrOps.open() is the only production caller of title_and_body and never passes repo=/trunk=, so the new ## Proves block Task 4 built is unreachable in a real pull request (only commits_note's older, differently-shaped F-0257 block appears there). Either wire repo=self.product.repo_dir, trunk=self.trunk into that call (and reconcile with commits_note so the body doesn't grow two ## Proves headings), or get an adjudicate ruling restating Task 4's call site and writes: against the current tree, the way Task 3 already has.",
-        "operator answer: Decision: keep the drift handling as built in 5628e3c. Leave asf/harvest/lane.py untouched (it already appends its own ## Proves via lane.commits_note); title_and_body's repo/trunk params default to None. No wider writes. Proceed to review."
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53118,7 +53117,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-10T10:24:46Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -53385,7 +53384,7 @@
       "stories": [],
       "title": "the wave writes down what held it, and the tick line carries it",
       "type": "task",
-      "updated": "2026-10-10T10:24:46Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/tick/step_wave.py",
         "asf/tick/tick.py",
@@ -72732,7 +72731,7 @@
       "kernel_attempts": [
         "launch: no cloud account with a free seat"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0138-26a33fc30108.md"
       },
@@ -72749,7 +72748,7 @@
       "state": "Active",
       "title": "the account declares its provider kind, and a window's dollars are read and learned per kind",
       "type": "task",
-      "updated": "2026-10-10T10:15:39Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/workers/headroom.py",
         "asf/workers/pool.py",
@@ -77555,7 +77554,7 @@
       ],
       "folder": "tasks",
       "id": "T-0763",
-      "kernel_state": "review",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0165.md"
       },
@@ -77568,7 +77567,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-10T09:36:58Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
@@ -78093,7 +78092,11 @@
         "PR #1130: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1130: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "partial: NEEDS OPERATOR: tests/test_sample_product.py:221's test_next_shows_the_bug_in_flight_and_a_feature_waiting asserts `[('B-0001', 'WAITS ON session')]` twice; verified live (real occupancy at\u2026",
+      "kernel_stuck_since": "2026-10-10T10:33:26Z",
       "links": {
         "plan": "docs/plans/replans/f-0205-49a14d4ad507.md"
       },
@@ -78107,7 +78110,7 @@
       ],
       "title": "every branch that gives an S1/S2 Bug no session is a WAITS row, and the row names the fact that holds it",
       "type": "task",
-      "updated": "2026-10-10T10:04:21Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -81072,7 +81075,7 @@
       ],
       "folder": "tasks",
       "id": "T-78562",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -81085,7 +81088,7 @@
       ],
       "title": "a cancel this watch made is finished, in either mode, and a refusal is retried",
       "type": "task",
-      "updated": "2026-10-10T10:21:35Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/ci_stall.py",
         "tests/test_ci_stall.py"
@@ -81238,7 +81241,7 @@
       ],
       "title": "the door \u2014 the convention, the matcher, `asf pre-push`, and one call in the shim",
       "type": "task",
-      "updated": "2026-10-10T10:24:46Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/conventions.py",
         "asf/prepush.py",
@@ -82044,7 +82047,11 @@
         "PR #1324: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1324: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "partial: NEEDS OPERATOR: whether to grant the three needs-writes paths to this card (registering regression.check / regression.command here) or to hold T-81134 behind Task 5, which owns that registry\u2026",
+      "kernel_stuck_since": "2026-10-10T10:33:26Z",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -82057,7 +82064,7 @@
       ],
       "title": "the fix-bug brief carries the pre-fix base and the command the lane will run",
       "type": "task",
-      "updated": "2026-10-10T10:17:59Z",
+      "updated": "2026-10-10T10:36:11Z",
       "writes": [
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/build.py",
