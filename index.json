@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T15:00:52Z",
+  "generated": "2026-10-10T15:06:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16704,6 +16704,7 @@
       "kernel_notes": [
         "groom-fill-b-121288-1791643848: groom-fill raised risk high: reproduced via parse_assignments/apply_list \u2014 a quoted \"a, b, c\" survives _as_list as one scalar, then widen.norm_writes's whitespace split (meant for packed plan entries) turns it into ['a,', 'b,', 'c']; real, fixable in asf/record/setfield.py."
       ],
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -16712,7 +16713,7 @@
       "state": "New",
       "title": "asf set: comma-separated list values keep their commas (writes: [\"a,\", ...])",
       "type": "bug",
-      "updated": "2026-10-10T15:00:51Z",
+      "updated": "2026-10-10T15:06:12Z",
       "writes": [
         "asf/record/setfield.py",
         "tests/test_record_stage.py"
@@ -33755,7 +33756,7 @@
         "plan-f-0327-1791634631: NEEDS OPERATOR: harvest read the prior session's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunched a finished item, costing a full session. The sha a report can\u2026",
         "plan-f-0327-1791636840: NEEDS OPERATOR: re-raise, still unanswered from plan-f-0327-1791634631 \u2014 harvest read that session's predecessor's \"pushed: yes <sha> (this report commit is pushed on top of it)\" as \"done without a push\" and relaunc\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33763,7 +33764,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T14:54:08Z"
+      "updated": "2026-10-10T15:06:12Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33872,7 +33873,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T15:00:51Z"
+      "updated": "2026-10-10T15:06:12Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -33974,7 +33975,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T15:00:51Z"
+      "updated": "2026-10-10T15:06:12Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -33982,14 +33983,14 @@
       "decided": false,
       "folder": "features",
       "id": "F-0335",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage_since": "2026-10-10T14:41:07Z",
       "state": "New",
       "title": "Idempotent reconcile of ledger-shaped proof claims into the record",
       "type": "feature",
-      "updated": "2026-10-10T14:44:09Z"
+      "updated": "2026-10-10T15:06:12Z"
     },
     "R-0001": {
       "backlinks": [
@@ -63909,10 +63910,11 @@
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1346: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1346: part (3.13, 3) is red but not a required check \u2014 ignored",
@@ -63925,7 +63927,7 @@
         "PR #1378: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63942,7 +63944,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T15:00:51Z",
+      "updated": "2026-10-10T15:06:12Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -81449,6 +81451,12 @@
       ],
       "folder": "tasks",
       "id": "T-78814",
+      "kernel_answers": [
+        "granted tests/test_refusals.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/test_refusals.py; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_dor_fills": 2,
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
@@ -81461,7 +81469,7 @@
         "PR #1379: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1379: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0289.md"
       },
@@ -81474,11 +81482,12 @@
       ],
       "title": "git's own refusal of a rewritten push is a kind of its own, and the dead run reads its log for it",
       "type": "task",
-      "updated": "2026-10-10T14:50:59Z",
+      "updated": "2026-10-10T15:06:12Z",
       "writes": [
         "asf/workers/cloud.py",
         "asf/workers/refusals.py",
-        "tests/test_cloud.py"
+        "tests/test_cloud.py",
+        "tests/test_refusals.py"
       ]
     },
     "T-79565": {
@@ -82207,7 +82216,7 @@
         "PR #1374: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -82220,7 +82229,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-10T15:00:51Z",
+      "updated": "2026-10-10T15:06:12Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
