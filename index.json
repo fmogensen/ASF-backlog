@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T11:58:32Z",
+  "generated": "2026-10-10T12:06:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -33138,7 +33138,7 @@
       "state": "Active",
       "title": "Feeder S1 gate: no new Feature work launches while an S1 Bug is open (stability first, in code)",
       "type": "feature",
-      "updated": "2026-10-10T11:50:30Z"
+      "updated": "2026-10-10T12:06:13Z"
     },
     "F-0308": {
       "backlinks": [
@@ -33388,7 +33388,7 @@
       ],
       "folder": "features",
       "id": "F-0316",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33396,7 +33396,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T08:51:39Z"
+      "updated": "2026-10-10T12:06:13Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33526,13 +33526,14 @@
       "kernel_attempts": [
         "relaunch: operator answer: Decided: no operator action is needed for this spec, and nothing on the reporting product's trunk is removed now. Checked 2026-10-10: NOTES.asf.md is still tracked on that product's main and is still being rewritten by factory commits (latest 9381a60ee, 2026-10-09 09:34Z), so deleting it before this Feature's fix lands would only be re-added by the next auto-commit. Keep the removal Out of scope exactly as the spec says, and land the spec as it stands (spec/F-0321 at 2dfac43e2, Story ids S-91155..S-91159 stand). The cleanup is the last step of the plan, not a human push to main: the plan for\u2026",
         "review: no VERDICT line",
-        "session ran past its max age"
+        "session ran past its max age",
+        "relaunch: escalated: the previous session stopped (done without a push: pushed: yes 6157610d731f07d7228a5071d3920ae456df358b) \u2014 pick up from its report and branch, and finish the item"
       ],
       "kernel_notes": [
         "spec-f-0321-1791586280: NEEDS OPERATOR: the copy of NOTES.asf.md tracked on the reporting product's trunk (first added by ef2566bf4) must come off the trunk, and only a human may push main. From inside that product's own checkout (repo_dir\u2026",
         "spec-f-0321-1791590222: NEEDS OPERATOR: the copy of `NOTES.asf.md` tracked on the reporting product's trunk (first added by `ef2566bf4`) must come off the trunk, and only a human may push `main`. Verified read-only from that product's chec\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33540,7 +33541,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T11:39:13Z"
+      "updated": "2026-10-10T12:06:13Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33717,7 +33718,7 @@
         "plan-f-0328-1791629407: NEEDS OPERATOR: whether fix/F-0328-pending-not-red may land carrying the closed hotfix (c6cb1a21f, the verdict() change the spec's Out table refuses, plus 6a81462dc, an unrelated defect) alongside this plan \u2014 a plan\u2026",
         "plan-f-0328-1791631578: NEEDS OPERATOR: whether to land this plan from a branch that also carries the closed hotfix the spec's Out table refuses. `fix/F-0328-pending-not-red` adds five commits over `47466e997`, two of which are the spec's\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33725,7 +33726,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T11:45:57Z"
+      "updated": "2026-10-10T12:06:13Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33770,7 +33771,7 @@
       ],
       "folder": "features",
       "id": "F-0330",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33778,7 +33779,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T11:41:33Z"
+      "updated": "2026-10-10T12:06:13Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -33800,7 +33801,11 @@
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026",
         "spec-f-0331-1791618207: NEEDS OPERATOR: these five Stories have now been renumbered four times (S-94505.. \u2192 S-99055.. \u2192 S-101655.. \u2192 S-104405..) because a spec-declared S- id is never minted, so every relaunch rewrites them into the writin\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "done: NEEDS OPERATOR: the reviewer's full FINDINGS list for round review-f-0331-1791631991, which the brief truncated at its field cap after the first finding - run this read-only command on the fact\u2026",
+      "kernel_stuck_since": "2026-10-10T12:02:41Z",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33808,7 +33813,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T11:50:30Z"
+      "updated": "2026-10-10T12:06:13Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -53395,10 +53400,10 @@
       "folder": "tasks",
       "id": "T-0203",
       "kernel_findings": [
-        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/09de040b-4c42-481c-bf87-c4c74c44f63f' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        "docs/reviews/1-t-0203.md:1 \u2014 a prior review session committed this file onto `worker/T-0203` outside T-0203's `writes:`, approving a now-orphaned head (`28f79900b7`); remove it with `git rm docs/reviews/1-t-0203.md` in a new commit (precedent: `b1d73ec99`)"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0103-35ace77a953d.md"
       },
@@ -53409,7 +53414,7 @@
       "stories": [],
       "title": "the wave writes down what held it, and the tick line carries it",
       "type": "task",
-      "updated": "2026-10-10T11:19:04Z",
+      "updated": "2026-10-10T12:06:13Z",
       "writes": [
         "asf/tick/step_wave.py",
         "asf/tick/tick.py",
@@ -63760,7 +63765,7 @@
         "PR #1346: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1346: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63777,7 +63782,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T11:39:13Z",
+      "updated": "2026-10-10T12:06:13Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -81711,7 +81716,8 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
       "kernel_notes": [
-        "groom-fill-t-80574-1791632031: groom-fill verdict rejected: risk_raise '' is not one of none | high"
+        "groom-fill-t-80574-1791632031: groom-fill verdict rejected: risk_raise '' is not one of none | high",
+        "groom-fill-t-80574-1791632989: groom-fill verdict rejected: risk_raise '' is not one of none | high"
       ],
       "links": {
         "plan": "docs/plans/f-0306.md"
@@ -81725,7 +81731,7 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-10T11:50:30Z",
+      "updated": "2026-10-10T12:06:13Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_record.py",
@@ -82376,6 +82382,8 @@
       ],
       "folder": "tasks",
       "id": "T-82989",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
       "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0308.md"
@@ -82389,7 +82397,7 @@
       ],
       "title": "the stable gate \u2014 four rows, each met or unmet with its evidence",
       "type": "task",
-      "updated": "2026-10-10T10:17:59Z",
+      "updated": "2026-10-10T12:06:13Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py",
@@ -82493,7 +82501,7 @@
       ],
       "folder": "tasks",
       "id": "T-83142",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
       "kernel_notes": [
         "groom-fill-t-83142-1791630638: groom-fill verdict rejected: no GROOM-FILL block",
@@ -82512,7 +82520,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T11:41:33Z",
+      "updated": "2026-10-10T12:06:13Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py"
@@ -82695,7 +82703,8 @@
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
-        "tests/test_feeder.py"
+        "tests/test_feeder.py",
+        "tests/test_s1_gate.py"
       ]
     },
     "T-83347": {
@@ -82712,6 +82721,8 @@
       ],
       "folder": "tasks",
       "id": "T-83347",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
       "links": {
         "plan": "docs/plans/f-0300.md"
       },
@@ -82725,7 +82736,7 @@
       ],
       "title": "the check in `screen`, the `RULED` kind, and the `waivers` map",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T12:06:13Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_rulepass.py"
