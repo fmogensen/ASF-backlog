@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T04:29:09Z",
+  "generated": "2026-10-10T04:34:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3028,7 +3028,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0097",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -3037,7 +3037,7 @@
       "state": "New",
       "title": "A network blip on push scores finished work as 'failed: not pushed' and costs a correction round",
       "type": "bug",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-10T04:34:46Z"
     },
     "B-0098": {
       "backlinks": [],
@@ -4648,7 +4648,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0150",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -4657,7 +4657,7 @@
       "state": "New",
       "title": "doctor ci-pool row flags ASF's own ci_pool.reserve label as undeclared",
       "type": "bug",
-      "updated": "2026-10-09T17:34:22Z"
+      "updated": "2026-10-10T04:34:46Z"
     },
     "B-0151": {
       "backlinks": [
@@ -18128,7 +18128,7 @@
         "docs/reviews/1-b-82658.md \u2014 review session `57b14a947` committed and pushed the round-1 review file onto `fix/B-82658` itself, violating \"the review never touches the branch.\" Fix with a follow-up commit `git rm docs/reviews/1-b-82658.md` (no rebase/force-push)."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18138,7 +18138,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1233@4a831f9c8",
       "type": "bug",
-      "updated": "2026-10-10T04:29:06Z"
+      "updated": "2026-10-10T04:34:46Z"
     },
     "B-82809": {
       "backlinks": [
@@ -18843,7 +18843,7 @@
         "asf/views/status.py:127-129 \u2014 `_plan()`'s `step_wave.screen(...)` call still omits `paused=`, so `asf status`'s own Ready-to-launch cell stays pause-blind; add `paused=pause_mod.held(product)` there too (or correct the overclaiming docstring at tests/test_pause.py:350-353 and disclose the gap)."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18853,7 +18853,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-10T04:29:06Z"
+      "updated": "2026-10-10T04:34:46Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -18940,7 +18940,7 @@
       "kernel_attempts": [
         "launch: no free seat: local 10/10, cloud 3/8 (the launch needs the host)"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18950,7 +18950,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-84804",
       "type": "bug",
-      "updated": "2026-10-10T04:29:06Z"
+      "updated": "2026-10-10T04:34:46Z"
     },
     "B-84837": {
       "backlinks": [],
@@ -31848,7 +31848,7 @@
       ],
       "folder": "features",
       "id": "F-0272",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "spec-approved",
@@ -31856,7 +31856,7 @@
       "state": "Active",
       "title": "A writes-overlap serialization (after:) is dropped when the overlapping path leaves either card's writes",
       "type": "feature",
-      "updated": "2026-10-10T00:33:49Z"
+      "updated": "2026-10-10T04:34:46Z"
     },
     "F-0273": {
       "backlinks": [
@@ -33549,7 +33549,7 @@
       "state": "New",
       "title": "a declared 'wave' clock with steps [wave] runs as a tick under the tick lock and suppresses the native wave job",
       "type": "feature",
-      "updated": "2026-10-10T04:29:06Z"
+      "updated": "2026-10-10T04:34:46Z"
     },
     "F-0326": {
       "backlinks": [],
@@ -67499,6 +67499,9 @@
       ],
       "folder": "tasks",
       "id": "T-0532",
+      "kernel_attempts": [
+        "launch: no cloud account with a free seat"
+      ],
       "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0235.md"
@@ -67512,7 +67515,7 @@
       "state": "New",
       "title": "a refusal the session already retried is routed on the first hold",
       "type": "task",
-      "updated": "2026-10-09T17:34:22Z",
+      "updated": "2026-10-10T04:34:46Z",
       "writes": [
         "asf/workers/report.py",
         "asf/workers/health.py",
