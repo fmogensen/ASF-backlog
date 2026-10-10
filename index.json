@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T18:55:42Z",
+  "generated": "2026-10-10T18:58:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34321,7 +34321,7 @@
         "spec-f-0334-1791655619: NEEDS OPERATOR: the pinned CLI blocks every push from this host, not this branch. Build a current pin (`asf upgrade --product asf`), or make the shim tolerate a pinned CLI lacking the subcommand the way its own `tru\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34330,7 +34330,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T18:54:29Z"
+      "updated": "2026-10-10T18:58:32Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34820,8 +34820,11 @@
       "decided": false,
       "folder": "features",
       "id": "F-0347",
+      "kernel_attempts": [
+        "the session API failed"
+      ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34829,7 +34832,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-10T18:54:29Z"
+      "updated": "2026-10-10T18:58:32Z"
     },
     "F-0348": {
       "backlinks": [],
@@ -34837,8 +34840,11 @@
       "decided": false,
       "folder": "features",
       "id": "F-0348",
+      "kernel_attempts": [
+        "the session API failed"
+      ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -34846,7 +34852,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-10T18:54:29Z"
+      "updated": "2026-10-10T18:58:32Z"
     },
     "R-0001": {
       "backlinks": [
@@ -46569,9 +46575,11 @@
         "T-129182"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-91159",
       "parent": "F-0321",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:37:02Z",
       "state": "New",
@@ -80159,16 +80167,20 @@
       ],
       "folder": "tasks",
       "id": "T-0763",
+      "kernel_answers": [
+        "granted asf/harvest/mechanical.py; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_attempts": [
         "escalated: one more fix round on the strong model, with every finding",
-        "ended without a REPORT"
+        "ended without a REPORT",
+        "relaunch: operator answer: granted asf/harvest/mechanical.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0165.md"
       },
@@ -80181,7 +80193,7 @@
       "state": "Active",
       "title": "two budgets, and every factory push takes the one its kind earns",
       "type": "task",
-      "updated": "2026-10-10T17:46:10Z",
+      "updated": "2026-10-10T18:58:32Z",
       "writes": [
         "asf/conventions.py",
         "asf/gitpush.py",
@@ -80194,7 +80206,8 @@
         "tests/test_gitpush.py",
         "tests/test_lane.py",
         "tests/test_lifecycle.py",
-        "tests/test_workers.py"
+        "tests/test_workers.py",
+        "asf/harvest/mechanical.py"
       ]
     },
     "T-0764": {
@@ -83183,7 +83196,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-10T18:54:29Z",
+      "updated": "2026-10-10T18:58:32Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py"
@@ -83769,6 +83782,9 @@
       "id": "T-129177",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
+      "kernel_notes": [
+        "groom-fill-t-129177-1791658451: groom-fill verdict rejected: no GROOM-FILL block"
+      ],
       "links": {
         "plan": "docs/plans/f-0320.md"
       },
@@ -83781,7 +83797,7 @@
       ],
       "title": "the review read from every living state, an unread review that spends no round, and the four acceptance classes",
       "type": "task",
-      "updated": "2026-10-10T18:54:29Z",
+      "updated": "2026-10-10T18:58:32Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py"
@@ -84565,7 +84581,7 @@
       "kernel_notes": [
         "build-t-129205-1791657838-local: NEEDS OPERATOR: repin the product's CLI past the commit that added `asf pre-push` (`aa56423fd`), or make the pre-push hook tolerate a pinned CLI lacking the subcommand \u2014 `asf upgrade --product asf`"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -84578,7 +84594,7 @@
       ],
       "title": "the module \u2014 the declaration, the JWT, the mint, the cache, and `openssl` as the ratchet's newest kind",
       "type": "task",
-      "updated": "2026-10-10T18:54:29Z",
+      "updated": "2026-10-10T18:58:32Z",
       "writes": [
         "asf/ghapp.py",
         "tools/check_clients.py",
@@ -84818,7 +84834,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130213",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -84831,7 +84847,7 @@
       ],
       "title": "the run's own conclusion gets a reader, and the skip-only prefix stops being fooled by a judged leg",
       "type": "task",
-      "updated": "2026-10-10T18:02:11Z",
+      "updated": "2026-10-10T18:58:32Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_mq_batch_survival.py"
@@ -84937,7 +84953,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130967",
-      "kernel_state": "building",
+      "kernel_notes": [
+        "satisfied on main at 14b963ba1: tests.test_upgrade_kernel_floor, tests.test_upgrade, tests.test_upgrade_drain_bound, tests.test_pin_defects, tests.test_scheduler, tests.test_connectors_scheduler, tests.kernel.test_host, tests.test_doctor, tests.test_hermetic"
+      ],
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -84950,7 +84969,7 @@
       ],
       "title": "the smoke replays the floor that moved, and each kernel job has a no-op form",
       "type": "task",
-      "updated": "2026-10-10T18:33:26Z",
+      "updated": "2026-10-10T18:58:32Z",
       "writes": [
         "asf/scheduler.py",
         "asf/upgrade.py",
@@ -84969,6 +84988,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130968",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -84983,7 +85003,7 @@
       ],
       "title": "the floor split \u2014 one installer per owner, the two-floor refusal, and the retire gate",
       "type": "task",
-      "updated": "2026-10-10T18:05:33Z",
+      "updated": "2026-10-10T18:58:32Z",
       "writes": [
         "asf/upgrade.py",
         "asf/scheduler.py",
@@ -85115,7 +85135,7 @@
         "asf/harvest/lane.py:1187-1196 \u2014 the branch carries no `Proves:` trailer while its Task card lists `stories: S-124005`, so `lane_refusal`'s proves gate is not skipped and `validate([], \u2026)` returns `no claim`, refusing the branch at landing; add a commit with `Proves: S-124005 line 1 \u2014 tests/test_proves.py::QuarantinedClaimTests::test_the_cards_own_acceptance_one_counted_one_refused` and push."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -85128,7 +85148,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T18:48:56Z",
+      "updated": "2026-10-10T18:58:32Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"
@@ -87343,7 +87363,7 @@
         "groom-fill-t-83143-1791630660: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-83143-1791631612: groom-fill raised risk high: Card transcribes plan F-0280 Task 2 verbatim with live anchors on trunk; filled acceptance from S-73205's seven spec bullets, all proved by the one new test class the card already names; writes/after already correct, only missing the test-naming and new-file marker."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -87356,7 +87376,7 @@
       ],
       "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
       "type": "task",
-      "updated": "2026-10-10T17:46:10Z",
+      "updated": "2026-10-10T18:58:32Z",
       "writes": [
         "asf/reviews.py",
         "asf/harvest/lane.py",
