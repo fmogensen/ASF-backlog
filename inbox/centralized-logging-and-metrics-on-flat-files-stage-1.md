@@ -29,3 +29,6 @@ Logs and metrics are scattered: per-session transcripts in logs/jobs (3.1 GB, ne
 - `asf kernel waits` and `asf kernel gate` give the same numbers from the event stream as from the old ledgers on a fixture (test).
 - `asf metrics --days 7` prints the roll-up fields above on a fixture (test).
 - Retention deletes by age per the config and never touches a path outside metrics/ and logs/jobs/ (test).
+
+## Question
+This reads as a defect. A Bug carries a signature — add signature: <the failing test or error line>, or paste that line into the body (an `Error:` line or a `file:line › test` line is read as one); or an ## Acceptance list if it is new work.

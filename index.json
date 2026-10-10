@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T18:33:29Z",
+  "generated": "2026-10-10T18:37:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34318,7 +34318,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T18:33:26Z"
+      "updated": "2026-10-10T18:37:32Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -34507,7 +34507,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-10T18:33:26Z"
+      "updated": "2026-10-10T18:37:32Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -46330,6 +46330,7 @@
       "id": "S-91008",
       "parent": "F-0318",
       "priority": "need",
+      "removed": "intake: extends the old 0.1 floor's tick record step to mint Stories from a landed spec, which asf/kernel/decide.py (declared_stories/_mint) already does natively under the 0.2 kernel. (groom 2026-10-10)",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:36:45Z",
       "state": "New",
@@ -83009,7 +83010,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129156",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
       "kernel_notes": [
         "groom-fill-t-129156-1791654017: groom-fill raised risk high: design matches trunk exactly (constants, line ranges, fixture methods, helper signatures) and nothing named has been built yet; only the acceptance/gate lines were missing.",
@@ -83029,7 +83030,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-10T18:33:26Z",
+      "updated": "2026-10-10T18:37:32Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -83486,7 +83487,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129172",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0317.md"
       },
@@ -83499,7 +83500,7 @@
       ],
       "title": "the replan brief carries the Stories, with their acceptance lines",
       "type": "task",
-      "updated": "2026-10-10T18:33:26Z",
+      "updated": "2026-10-10T18:37:32Z",
       "writes": [
         "asf/briefs/preamble.py",
         "asf/briefs/build.py",
@@ -83558,7 +83559,8 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
       "kernel_notes": [
-        "groom-fill-t-129174-1791655632: groom-fill raised risk high: no Task of plan F-0318 has landed anywhere (code or PR) so the parent cannot legitimately be Done; the card's test-naming, writes, and after fields already clear DoR, and the parent-Done read is a transient container-derivation artifact from the plan PR minting siblings minutes earlier that self-corrects on the next tick."
+        "groom-fill-t-129174-1791655632: groom-fill raised risk high: no Task of plan F-0318 has landed anywhere (code or PR) so the parent cannot legitimately be Done; the card's test-naming, writes, and after fields already clear DoR, and the parent-Done read is a transient container-derivation artifact from the plan PR minting siblings minutes earlier that self-corrects on the next tick.",
+        "groom-fill-t-129174-1791656640: groom-fill raised risk high: The parent-Done DoR hold is a stale, self-correcting Feature-state read (kernel_state: done is a leftover from closed PR #1262; the live F-0318.state is New since it now derives from its Task children per dce5aac92) \u2014 dor.missing() finds no actual gap: acceptance names real tests, writes sit on trunk, after (T-129173) is unparked, and parent is not Done."
       ],
       "links": {
         "plan": "docs/plans/f-0318.md"
@@ -83573,7 +83575,7 @@
       ],
       "title": "the place \u2014 the pass in the tick's record step, the writer order, and the gate clearing",
       "type": "task",
-      "updated": "2026-10-10T18:24:27Z",
+      "updated": "2026-10-10T18:37:32Z",
       "writes": [
         "asf/tick/tick.py",
         "asf/record/stage.py",
@@ -83586,6 +83588,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129175",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.13.post1+gb00fe4fd",
       "links": {
         "plan": "docs/plans/f-0318.md"
       },
@@ -83598,7 +83602,7 @@
       ],
       "title": "the briefs \u2014 ask for the form the record mints, and name the spec's own landing",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-10T18:37:32Z",
       "writes": [
         "asf/briefs/templates/spec.md",
         "asf/briefs/build.py",
@@ -84989,7 +84993,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-10T18:28:38Z",
+      "updated": "2026-10-10T18:37:32Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py"
