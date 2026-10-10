@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T09:52:24Z",
+  "generated": "2026-10-10T09:56:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3724,7 +3724,6 @@
     },
     "B-0120": {
       "backlinks": [
-        "B-0121",
         "B-0123"
       ],
       "children": [],
@@ -3777,13 +3776,11 @@
         "relaunch: operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
       "kernel_findings": [
-        "docs/plans/b-0121.md (missing) \u2014 no plan or spec exists on this branch or origin/main, so \"every Step of the Task is implemented\" and \"acceptance tests byte-identical to the plan's\" cannot be checked (same gap round 1 of B-0120 and B-0123 blocked on). Add the plan naming the Task (the configurable FACTORY STATUS feed started by the plugin) and its Steps \u2014 `asf/console_feed.py`'s parse_every/resolve_every/due/run_once/_ticks_since, the console-feed/console-feed-hint CLI wiring (asf/cli.py:435-441,749-751), the console_status_every flag (asf/conventions.py:425-429), and the second SessionStart hook (asf/plugin_build.py:112-134) \u2014 with Acceptance pointing at tests/test_console_feed.py and tests/test_plugin.py:113-128.",
-        "red: tests (3.12) \u2014 step 'tests' failed:\n\u2026gistryTests.test_plugin_views_are_a_subset_of_titles)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"~/work/ASF/ASF/tests/test_views_header.py\", line 73, in test_plugin_views_are_a_subset_of_titles\n    self.assertTrue(set(plugin_build.VIEWS) <= set(header.TITLES))\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n----------------------------------------------------------------------\nRan 20 tests in 0.503s\nFAILED (failures=1)\nretry: test_views_header\n--- test_views_header: FAILED (rc 1)\n...................F\n======================================================================\nFAIL: test_plugin_views_are_a_subset_of_titles (tests.test_views_header.RegistryTests.test_plugin_views_are_a_subset_of_titles)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"~/work/ASF/ASF/tests/test_views_header.py\", line 73, in test_plugin_views_are_a_subset_of_titles\n    self.assertTrue(set(plugin_build.VIEWS) <= set(header.TITLES))\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n----------------------------------------------------------------------\nRan 20 tests in 0.285s\nFAILED (failures=1)\nRan 10735 tests in 396.883s (300 module(s), 4 at a time)\nFAILED (failures=1, skipped=18)\nred: test_views_header\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'tests' failed:\n\u2026gistryTests.test_plugin_views_are_a_subset_of_titles)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"~/work/ASF/ASF/tests/test_views_header.py\", line 73, in test_plugin_views_are_a_subset_of_titles\n    self.assertTrue(set(plugin_build.VIEWS) <= set(header.TITLES))\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n----------------------------------------------------------------------\nRan 20 tests in 0.503s\nFAILED (failures=1)\nretry: test_views_header\n--- test_views_header: FAILED (rc 1)\n...................F\n======================================================================\nFAIL: test_plugin_views_are_a_subset_of_titles (tests.test_views_header.RegistryTests.test_plugin_views_are_a_subset_of_titles)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"~/work/ASF/ASF/tests/test_views_header.py\", line 73, in test_plugin_views_are_a_subset_of_titles\n    self.assertTrue(set(plugin_build.VIEWS) <= set(header.TITLES))\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n----------------------------------------------------------------------\nRan 20 tests in 0.285s\nFAILED (failures=1)\nRan 10735 tests in 396.883s (300 module(s), 4 at a time)\nFAILED (failures=1, skipped=18)\nred: test_views_header\n##[error]Process completed with exit code 1.",
+        "rebase: PR #1307 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3792,7 +3789,7 @@
       "state": "New",
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
-      "updated": "2026-10-10T09:44:37Z"
+      "updated": "2026-10-10T09:55:46Z"
     },
     "B-0122": {
       "backlinks": [],
@@ -3831,8 +3828,7 @@
         "F-0176",
         "T-0073",
         "T-0557",
-        "T-0558",
-        "B-0121"
+        "T-0558"
       ],
       "budget_sessions": 24,
       "budget_usd": 30,
@@ -33754,7 +33750,7 @@
       ],
       "folder": "features",
       "id": "F-0330",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33762,7 +33758,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T09:25:48Z"
+      "updated": "2026-10-10T09:55:46Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -80596,7 +80592,7 @@
         "asf/workers/lifecycle.py:1374-1382 \u2014 C2, docstring not verbatim to spec; asf/tick/step_wave.py:111-114 \u2014 C3, docstring not verbatim to spec; tests/test_occupancy_trunk_landed.py:110-157 \u2014 C1, no test proves `TRUNK_LANDED_DAYS` is actually passed as `days=` to `trunk_watch.first_parent`; docs/reviews/1-t-76352.md on HEAD (ee27a4b07) \u2014 C4, a prior review session committed and pushed a review artifact straight onto `worker/T-76352`, outside `writes:` and in violation of this item's own \"review never touches the branch\" rule \u2014 needs the factory's attention, not a code fix."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0277.md"
       },
@@ -80609,7 +80605,7 @@
       ],
       "title": "the lane releases an item whose PR the trunk carries, so the Feature's next Task launches",
       "type": "task",
-      "updated": "2026-10-10T09:30:20Z",
+      "updated": "2026-10-10T09:55:46Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/tick/step_wave.py",
@@ -82126,7 +82122,7 @@
         "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/a113f8ce-04ea-4bf0-bffe-7d50777db651' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82139,7 +82135,7 @@
       ],
       "title": "the resolver and the settings \u2014 one listing, read by the peel",
       "type": "task",
-      "updated": "2026-10-10T09:36:58Z",
+      "updated": "2026-10-10T09:55:46Z",
       "writes": [
         "asf/channels.py",
         "asf/env.py",
@@ -82163,7 +82159,7 @@
       ],
       "folder": "tasks",
       "id": "T-82987",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82176,7 +82172,7 @@
       ],
       "title": "the channel log \u2014 what was offered when, and the registry line that lets it be written",
       "type": "task",
-      "updated": "2026-10-10T09:52:20Z",
+      "updated": "2026-10-10T09:55:46Z",
       "writes": [
         "asf/channels.py",
         "asf/state/registry.py",
@@ -82198,6 +82194,7 @@
       ],
       "folder": "tasks",
       "id": "T-82988",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82210,7 +82207,7 @@
       ],
       "title": "edge \u2014 the newest green tag, and one fast-forward through the guard",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T09:55:46Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py"
@@ -82231,6 +82228,7 @@
       ],
       "folder": "tasks",
       "id": "T-82989",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -82243,7 +82241,7 @@
       ],
       "title": "the stable gate \u2014 four rows, each met or unmet with its evidence",
       "type": "task",
-      "updated": "2026-10-09T00:05:46Z",
+      "updated": "2026-10-10T09:55:46Z",
       "writes": [
         "asf/channels.py",
         "tests/test_channels.py",
