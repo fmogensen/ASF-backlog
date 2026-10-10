@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T05:03:20Z",
+  "generated": "2026-10-10T05:29:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2763,7 +2763,11 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0088",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/views/board.py:41 (render) / asf/cli.py:415-417 \u2014 the default, unflagged `asf backlog` is unchanged by this diff and still prints the full 339-line/67 KB board; implement the card's `Expected` collapsing default (full rows for moving/landed Features per Epic, one-line summaries for undecided and Closed/on-prod groups, `--all` as the opt-out), with `--epic` as an additional narrowing on top of that rather than the whole fix."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S3",
@@ -2771,7 +2775,7 @@
       "state": "New",
       "title": "asf backlog is 339 lines / 67 KB: the console truncates the board",
       "type": "bug",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "B-0089": {
       "backlinks": [
@@ -18176,7 +18180,7 @@
         "commit 5300de3e072ae8092681fcaa10a46d728a197c6c on fix/B-82809 adds docs/reviews/1-b-82809.md \u2014 a prior review session's own report, committed in violation of the never-touch-the-branch rule \u2014 drop it so the PR head returns to bfec9d831dfd2415b2ea48cb7ce0227a5b5b931c (the writer's actual fix)"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18186,7 +18190,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1177@505cfad1e",
       "type": "bug",
-      "updated": "2026-10-10T04:53:50Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "B-82960": {
       "backlinks": [
@@ -18298,7 +18302,7 @@
       ],
       "kernel_extra_rounds": 1,
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18308,7 +18312,7 @@
       "state": "Active",
       "title": "Watchdog: a required check cancelled or timed out past 10 min \u2014 #1237@2edb03326",
       "type": "bug",
-      "updated": "2026-10-10T04:53:50Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "B-83413": {
       "backlinks": [],
@@ -18780,7 +18784,7 @@
       "folder": "bugs",
       "found_in": "ci",
       "id": "B-84831",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18790,7 +18794,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-0412",
       "type": "bug",
-      "updated": "2026-10-09T22:43:53Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "B-84832": {
       "backlinks": [],
@@ -18847,7 +18851,7 @@
         "asf/views/status.py:127-129 \u2014 `_plan()`'s `step_wave.screen(...)` call still omits `paused=`, so `asf status`'s own Ready-to-launch cell stays pause-blind; add `paused=pause_mod.held(product)` there too (or correct the overclaiming docstring at tests/test_pause.py:350-353 and disclose the gap)."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "review",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18857,7 +18861,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-83351",
       "type": "bug",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "B-84834": {
       "backlinks": [],
@@ -18946,7 +18950,7 @@
       "kernel_attempts": [
         "launch: no free seat: local 10/10, cloud 3/8 (the launch needs the host)"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "review",
       "last_filed": "2026-10-09",
       "parent": "E-0001",
       "schema_version": 1,
@@ -18956,7 +18960,7 @@
       "state": "New",
       "title": "Watchdog: a launchable row while a seat is free past 10 min \u2014 T-84804",
       "type": "bug",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "B-84837": {
       "backlinks": [],
@@ -33334,7 +33338,7 @@
       "state": "New",
       "title": "groom drops an inbox note's Acceptance and Severity lines when it creates the card",
       "type": "feature",
-      "updated": "2026-10-10T04:53:50Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0317": {
       "backlinks": [],
@@ -33346,7 +33350,10 @@
       ],
       "folder": "features",
       "id": "F-0317",
-      "kernel_state": "building",
+      "kernel_attempts": [
+        "launch: no cloud account with a free seat"
+      ],
+      "kernel_state": "ready",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33354,7 +33361,7 @@
       "state": "New",
       "title": "landed_doc treats a replan branch's landing-gate correction as landed because the original plan is on main; the Feature deadlocks with no row",
       "type": "feature",
-      "updated": "2026-10-10T04:53:50Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0318": {
       "backlinks": [
@@ -33380,7 +33387,7 @@
         "spec-f-0318-1791589978: NEEDS OPERATOR: P11 is a pre-existing suite defect with no card \u2014 asf/tick/tick.py:107 sets $ASF_PRODUCT and nothing restores it, so any module driving the record step reddens tests.test_record_stage later in the sa\u2026",
         "spec-f-0318-1791604972: NEEDS OPERATOR: the record clone at the tick's record dir is one local commit ahead of its own stale `origin/main` ref and a day behind the record trunk. The tick's own `ensure_clone` discards that on its next run,\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33388,7 +33395,7 @@
       "state": "New",
       "title": "stories-first gate deadlocks: declared Stories are minted only when a plan lands, but the plan waits on Story cards",
       "type": "feature",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0319": {
       "backlinks": [],
@@ -33400,7 +33407,7 @@
       ],
       "folder": "features",
       "id": "F-0319",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33408,7 +33415,7 @@
       "state": "New",
       "title": "capacity.ci caps the feeder's ci_free even when runners are readable, halving Features in build while runners sit idle",
       "type": "feature",
-      "updated": "2026-10-10T04:53:50Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0320": {
       "backlinks": [],
@@ -33443,15 +33450,17 @@
       ],
       "folder": "features",
       "id": "F-0321",
+      "kernel_answers": [
+        "Decided: no operator action is needed for this spec, and nothing on the reporting product's trunk is removed now. Checked 2026-10-10: NOTES.asf.md is still tracked on that product's main and is still being rewritten by factory commits (latest 9381a60ee, 2026-10-09 09:34Z), so deleting it before this Feature's fix lands would only be re-added by the next auto-commit. Keep the removal Out of scope exactly as the spec says, and land the spec as it stands (spec/F-0321 at 2dfac43e2, Story ids S-91155..S-91159 stand). The cleanup is the last step of the plan, not a human push to main: the plan for F-0321 ends with a Task (after the Story that ships check_tracked_scratch / the doctor row) that removes the tracked copy through an ordinary PR on the product (git rm --cached NOTES.asf.md plus the exclude/ignore entry), merged by the factory on green like any other PR. Report status done with no NEEDS OPERATOR line."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Decided: no operator action is needed for this spec, and nothing on the reporting product's trunk is removed now. Checked 2026-10-10: NOTES.asf.md is still tracked on that product's main and is still being rewritten by factory commits (latest 9381a60ee, 2026-10-09 09:34Z), so deleting it before this Feature's fix lands would only be re-added by the next auto-commit. Keep the removal Out of scope exactly as the spec says, and land the spec as it stands (spec/F-0321 at 2dfac43e2, Story ids S-91155..S-91159 stand). The cleanup is the last step of the plan, not a human push to main: the plan for\u2026"
+      ],
       "kernel_notes": [
         "spec-f-0321-1791586280: NEEDS OPERATOR: the copy of NOTES.asf.md tracked on the reporting product's trunk (first added by ef2566bf4) must come off the trunk, and only a human may push main. From inside that product's own checkout (repo_dir\u2026",
         "spec-f-0321-1791590222: NEEDS OPERATOR: the copy of `NOTES.asf.md` tracked on the reporting product's trunk (first added by `ef2566bf4`) must come off the trunk, and only a human may push `main`. Verified read-only from that product's chec\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: the spec body (line 353) already names the one thing a human must do \u2014 the `NOTES.asf.md` copy tracked on the reporting product's trunk (first added by `ef2566bf4`) has to come\u2026",
-      "kernel_stuck_since": "2026-10-10T00:57:49Z",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33459,7 +33468,7 @@
       "state": "New",
       "title": "B-0094 leftover-work commit puts NOTES.asf.md on branches and one reached main (add/add conflicts)",
       "type": "feature",
-      "updated": "2026-10-10T00:58:34Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0322": {
       "backlinks": [],
@@ -33471,7 +33480,7 @@
       ],
       "folder": "features",
       "id": "F-0322",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0004",
       "schema_version": 1,
       "stage": "card",
@@ -33479,7 +33488,7 @@
       "state": "New",
       "title": "status keeps a retired item's relaunch-cap park",
       "type": "feature",
-      "updated": "2026-10-10T04:53:50Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0323": {
       "backlinks": [],
@@ -33494,7 +33503,7 @@
       "kernel_notes": [
         "spec-f-0323-1791586286: NEEDS OPERATOR: (none)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33502,7 +33511,7 @@
       "state": "New",
       "title": "an item resolved by one landing can't take a follow-up fix: the lane closes the PR and asf reopen is refused",
       "type": "feature",
-      "updated": "2026-10-10T04:53:50Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0324": {
       "backlinks": [],
@@ -33564,7 +33573,7 @@
       ],
       "folder": "features",
       "id": "F-0326",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33572,7 +33581,7 @@
       "state": "New",
       "title": "a pushed Task with an open PR gets no landing request and no row while others wait on it",
       "type": "feature",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0327": {
       "backlinks": [],
@@ -33616,7 +33625,7 @@
       ],
       "folder": "features",
       "id": "F-0328",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33624,7 +33633,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -33636,14 +33645,16 @@
       ],
       "folder": "features",
       "id": "F-0329",
+      "kernel_answers": [
+        "Confirmed: the red step is the known trunk flake, not this branch. PR #1304 at f0eb52e75, run 38008654697, tests (3.13): the only failure is tests.test_sample_product.ReadmeRenderTests.test_refresh_is_a_no_op_the_second_time (Ran 36, failures=1), the same assertion that flakes on main; the branch changes only docs/specs/f-0329.md. Rerun the failed job and land the spec on green. The readme.py fix is routed: an inbox card \"readme refresh no-op test flakes across a second boundary\" is filed with the cause (asf/views/readme.py:246 generated stamp vs the whole-byte compare in asf/metrics/metrics.py:1054) and its acceptance test; do not fix it in this spec job. The wrapped-acceptance-bullet half (CHECKBOX matches one physical line) stays in this Feature as its own Story if the spec already declares it; otherwise it is Out and needs no card from you. Report status done with no NEEDS OPERATOR line."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Confirmed: the red step is the known trunk flake, not this branch. PR #1304 at f0eb52e75, run 38008654697, tests (3.13): the only failure is tests.test_sample_product.ReadmeRenderTests.test_refresh_is_a_no_op_the_second_time (Ran 36, failures=1), the same assertion that flakes on main; the branch changes only docs/specs/f-0329.md. Rerun the failed job and land the spec on green. The readme.py fix is routed: an inbox card \"readme refresh no-op test flakes across a second boundary\" is filed with the cause (asf/views/readme.py:246 generated stamp vs the whole-byte compare in asf/metrics/metrics.\u2026"
+      ],
       "kernel_notes": [
         "spec-f-0329-1791587544: NEEDS OPERATOR: whether the second, co-occurring half of the same damage gets its own card \u2014 `CHECKBOX` matches one physical line, so a *wrapped* acceptance bullet (`docs/specs/f-0280.md:369-371`, the very declarati\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: confirm the red CI step is the known trunk flake and not this branch, then route the one-line fix (asf/views/readme.py) to a Bug \u2014 I hold a B- range but a spec job may not file\u2026",
-      "kernel_stuck_since": "2026-10-10T00:53:07Z",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33651,7 +33662,7 @@
       "state": "New",
       "title": "minting a declared Story (idcheck.declared_stories / plan_tasks) strips backtick code spans from its acceptance lines",
       "type": "feature",
-      "updated": "2026-10-10T00:53:20Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0330": {
       "backlinks": [],
@@ -33663,7 +33674,7 @@
       ],
       "folder": "features",
       "id": "F-0330",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33671,7 +33682,7 @@
       "state": "New",
       "title": "rulings and reports (superseded, reshape, needs writes) are never applied, so items relaunch on the same finding",
       "type": "feature",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0331": {
       "backlinks": [],
@@ -33686,7 +33697,7 @@
       "kernel_notes": [
         "spec-f-0331-1791593904: NEEDS OPERATOR: the card's own 18:55Z install output is not in the record and the race cannot be reproduced on a host with no live job \u2014 to confirm the refusal was launchd's bootstrap and not a second cause, read th\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33694,7 +33705,7 @@
       "state": "New",
       "title": "scheduler install during a running tick leaves the tick clock unloaded",
       "type": "feature",
-      "updated": "2026-10-10T04:53:51Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "F-0332": {
       "backlinks": [],
@@ -33711,7 +33722,7 @@
         "spec-f-0332-1791598835: NEEDS OPERATOR: which number the ceiling carries \u2014 6 (ships: 0.143 share, 23 % fall, ~2 parks a day, 0.007 of margin on the 0.15 threshold while the cause has drifted 0.158 \u2192 0.186) or 4 (0.123, a 34 % fall, ~4.5 pa\u2026",
         "spec-f-0332-1791602807: NEEDS OPERATOR: which number the ceiling should carry \u2014 the spec ships 6 (0.143 share, 23 % fall, only 0.007 of margin on the 0.15 threshold while the cause drifts up from 0.158 to 0.186); 4 measures at 0.123 and a\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "card",
@@ -33719,7 +33730,7 @@
       "state": "New",
       "title": "Repair sessions 'correct' take 16 % of session spend",
       "type": "feature",
-      "updated": "2026-10-10T05:01:30Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "R-0001": {
       "backlinks": [
@@ -36287,18 +36298,20 @@
       ],
       "folder": "stories",
       "id": "S-0005",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: D4 requires `after: <the Task minted for S-0005>` on T-0138 in F-0030's plan, and that file is outside this spec's footprint. Left undeclared, the tick's own serialisation picks\u2026",
-      "kernel_stuck_since": "2026-10-09T18:06:05Z",
+      "kernel_answers": [
+        "Decided: no `after:` edge is set, because its target no longer exists as work. T-0138 is retired: its card carries `removed: merged into T-0137 (groom 2026-09-24)`, T-0137 is Closed (landed eb52a09), and the kernel holds T-0138 as done, so it will never launch, the tick has no overlap to serialise, and the inverse order D4 feared cannot happen. The README on origin/main still has `## Quick start`, `## Configuration`, `## Upgrade` (55da5a24d), so the section-2 fixture holds. Drop D4/P11 as a launch-order requirement (keep the guard that survives a later demotion to `###`; it costs nothing), and land spec/S-0005 (68046aa9f) so its Task is minted from it with no `after:` beyond its own. If a future Task re-cuts the README into `###` sections, that Task's plan carries the dependency on S-0005's Task, not this spec. Report status done with no NEEDS OPERATOR line."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Decided: no `after:` edge is set, because its target no longer exists as work. T-0138 is retired: its card carries `removed: merged into T-0137 (groom 2026-09-24)`, T-0137 is Closed (landed eb52a09), and the kernel holds T-0138 as done, so it will never launch, the tick has no overlap to serialise, and the inverse order D4 feared cannot happen. The README on origin/main still has `## Quick start`, `## Configuration`, `## Upgrade` (55da5a24d), so the section-2 fixture holds. Drop D4/P11 as a launch-order requirement (keep the guard that survives a later demotion to `###`; it costs nothing), an\u2026"
+      ],
+      "kernel_state": "new",
       "parent": "F-0030",
       "schema_version": 1,
       "stage_since": "2026-10-05T23:27:13Z",
       "state": "New",
       "title": "README: Quick start, Configuration and Upgrade headings the release gate requires",
       "type": "story",
-      "updated": "2026-10-09T18:06:14Z"
+      "updated": "2026-10-10T05:29:32Z"
     },
     "S-51600": {
       "backlinks": [
@@ -50280,6 +50293,7 @@
         "T-0136"
       ],
       "backlinks": [
+        "S-0005",
         "T-0138",
         "T-0139",
         "T-0140"
@@ -52879,7 +52893,7 @@
         "rebase: PR #731 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, push"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -52889,7 +52903,7 @@
       "state": "Closed",
       "title": "the landing refuses a Task that proves nothing",
       "type": "task",
-      "updated": "2026-10-10T02:11:53Z",
+      "updated": "2026-10-10T05:29:32Z",
       "writes": [
         "asf/harvest/harvest.py",
         "tests/test_harvest.py"
@@ -52921,7 +52935,7 @@
       ],
       "folder": "tasks",
       "id": "T-0197",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -52934,7 +52948,7 @@
       "state": "New",
       "title": "the pull request carries the claims",
       "type": "task",
-      "updated": "2026-10-09T17:34:22Z",
+      "updated": "2026-10-10T05:29:32Z",
       "writes": [
         "asf/tick/step_prs.py",
         "tests/test_tick_steps.py"
@@ -53036,7 +53050,7 @@
       ],
       "folder": "tasks",
       "id": "T-0200",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0040.md"
       },
@@ -53049,7 +53063,7 @@
       "state": "New",
       "title": "the rule and its check",
       "type": "task",
-      "updated": "2026-10-09T17:34:22Z",
+      "updated": "2026-10-10T05:29:32Z",
       "writes": [
         "asf/rules/story_proof.py",
         "asf/cli.py",
@@ -67502,7 +67516,7 @@
       "kernel_attempts": [
         "launch: no cloud account with a free seat"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0235.md"
       },
@@ -67515,7 +67529,7 @@
       "state": "New",
       "title": "a refusal the session already retried is routed on the first hold",
       "type": "task",
-      "updated": "2026-10-10T04:53:51Z",
+      "updated": "2026-10-10T05:29:32Z",
       "writes": [
         "asf/workers/report.py",
         "asf/workers/health.py",
@@ -70597,7 +70611,7 @@
       ],
       "folder": "tasks",
       "id": "T-0609",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0242-5da80eab4169.md"
       },
@@ -70608,7 +70622,7 @@
       "stories": [],
       "title": "a later review round reads the increment, not the whole diff against the trunk again",
       "type": "task",
-      "updated": "2026-10-10T05:01:30Z",
+      "updated": "2026-10-10T05:29:32Z",
       "writes": [
         "asf/briefs/preamble.py",
         "asf/briefs/build.py",
@@ -70651,7 +70665,7 @@
       ],
       "folder": "tasks",
       "id": "T-0610",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0242-5da80eab4169.md"
       },
@@ -70665,7 +70679,7 @@
       "stories": [],
       "title": "no second reviewer is bought for a head whose reviewers filed nothing, and the review loop has the ceiling the document lane already has",
       "type": "task",
-      "updated": "2026-10-09T17:34:22Z",
+      "updated": "2026-10-10T05:29:32Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "asf/feeder/rows.py",
@@ -78933,15 +78947,18 @@
       ],
       "folder": "tasks",
       "id": "T-0801",
+      "kernel_answers": [
+        "One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
+      ],
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/merge_queue.py:1764-1766 \u2014 `blame`'s `if not paths: return {}, False` is a hard early return that skips `cover_blame` whenever every failed check's `item['paths']` is empty, which is exactly the spec's own motivating case (an absolute-path Python traceback with no other `path:line` anywhere in the log \u2014 P4's measured example). Every shipped hop test routes around this by using a *relative* traceback path, which the pre-existing `_BARE_PATH_RE` fallback happens to catch, keeping `paths` non-empty; with an absolute-only log the hop never fires and the batch still bisects blind. Fix: don't early-`return` on empty `paths` \u2014 let the direct reading's `named` stay `{}` and fall through to the existing `if not named:` cover-hop check, then add a test that drives the hop with an absolute-path-only log."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 2 fix rounds",
-      "kernel_stuck_since": "2026-10-10T03:42:43Z",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0256.md"
       },
@@ -78951,7 +78968,7 @@
       "state": "New",
       "title": "the queue names the culprit PR in the drop reason \u2014 out of the log it already reads, and out of the test that covers the member's files",
       "type": "task",
-      "updated": "2026-10-10T03:43:23Z",
+      "updated": "2026-10-10T05:29:32Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
@@ -80785,7 +80802,7 @@
         "tests/test_ci_stall.py:354-374 \u2014 `test_a_claim_in_each_bad_state_draws_one_row_each` never asserts the claim's age appears in any row, though the acceptance bullet requires the row to name \"the tries and the age\" \u2014 add `self.assertIn('19 min', details)`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0286.md"
       },
@@ -80798,7 +80815,7 @@
       ],
       "title": "the doctor table names which watcher acts on a CI stall",
       "type": "task",
-      "updated": "2026-10-10T04:13:56Z",
+      "updated": "2026-10-10T05:29:32Z",
       "writes": [
         "asf/ci_stall.py",
         "asf/doctor.py",
@@ -81541,14 +81558,15 @@
       "id": "T-81129",
       "kernel_answers": [
         "Widened T-81129's writes to include asf/conventions.py and docs/guide/product-config.md (record). Continue on the same branch.",
-        "Correction: asf/conventions.py cannot be added yet; T-79565 and T-83345 hold it. T-81129 now waits on both (after:) and gets the file once they land; docs/guide/product-config.md is added to writes now."
+        "Correction: asf/conventions.py cannot be added yet; T-79565 and T-83345 hold it. T-81129 now waits on both (after:) and gets the file once they land; docs/guide/product-config.md is added to writes now.",
+        "One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
       ],
+      "kernel_attempts": [
+        "relaunch: operator answer: One more fix round is granted by the console. Address the latest review findings and red checks exactly; keep the change minimal; run the touched tests before you push."
+      ],
+      "kernel_extra_rounds": 1,
       "kernel_fix_rounds": 2,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "red: tests (3.13) after 2 fix rounds",
-      "kernel_stuck_since": "2026-10-09T16:45:52Z",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -81561,7 +81579,7 @@
       ],
       "title": "the predicate \u2014 `gated`, `test_files`, `failing_cases` and `verdict`, with no git and no test run",
       "type": "task",
-      "updated": "2026-10-09T16:45:52Z",
+      "updated": "2026-10-10T05:29:32Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
