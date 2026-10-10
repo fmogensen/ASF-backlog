@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T00:05:56Z",
+  "generated": "2026-10-10T00:08:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3753,11 +3753,13 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-0121",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the reason and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "done without a push: pushed: no \u2014 hook refused twice: `bash tools/check_generic.sh && bash tools/check_conventions.sh && bash tools/check_clients.sh --against origin/main && python3 -m unittest -q te\u2026",
-      "kernel_stuck_since": "2026-10-09T19:50:19Z",
+      "kernel_answers": [
+        "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
+      ],
+      "kernel_state": "ready",
       "parent": "E-0001",
       "schema_version": 1,
       "severity": "S3",
@@ -3766,7 +3768,7 @@
       "state": "New",
       "title": "Every product console shows the FACTORY STATUS table every 5 minutes, by code",
       "type": "bug",
-      "updated": "2026-10-09T19:50:39Z"
+      "updated": "2026-10-10T00:08:11Z"
     },
     "B-0122": {
       "backlinks": [],
@@ -18214,7 +18216,11 @@
         "build-b-82960-1791585077: NEEDS OPERATOR: which id this 0.2-kernel work belongs to \u2014 B-82960 is already `state: Resolved` with its own fix landed (`14b963ba`, PR #1244), so this branch either reopens that card or needs an Epic/Feature minted\u2026",
         "build-b-82960-1791588882: NEEDS OPERATOR: B-82960 is `state: Resolved` with its own fix already landed (`14b963ba`, PR #1244), so this 0.2 kernel work either reopens that card or belongs to an id that does not exist yet \u2014 nothing here mints\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 2 fix rounds",
+      "kernel_stuck_since": "2026-10-10T00:08:11Z",
       "landing": {
         "as_of": "2026-10-08T19:22:06Z",
         "by": "pr-merge",
@@ -18228,7 +18234,7 @@
       "state": "Resolved",
       "title": "parked (priority later) Active Tasks still hold their footprint; I3 keeps ranked Tasks after: them forever",
       "type": "bug",
-      "updated": "2026-10-09T23:45:12Z"
+      "updated": "2026-10-10T00:08:11Z"
     },
     "B-83261": {
       "backlinks": [],
@@ -31825,7 +31831,7 @@
       ],
       "folder": "features",
       "id": "F-0272",
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0001",
       "schema_version": 1,
       "stage": "spec-approved",
@@ -31833,7 +31839,7 @@
       "state": "Active",
       "title": "A writes-overlap serialization (after:) is dropped when the overlapping path leaves either card's writes",
       "type": "feature",
-      "updated": "2026-10-10T00:05:53Z"
+      "updated": "2026-10-10T00:08:11Z"
     },
     "F-0273": {
       "backlinks": [
@@ -63414,18 +63420,21 @@
       ],
       "folder": "tasks",
       "id": "T-0432",
+      "kernel_answers": [
+        "Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
+      ],
       "kernel_attempts": [
-        "review: no VERDICT line"
+        "relaunch: operator answer: Retry: the host now pushes a rebased branch itself (force-with-lease, checked), the pre-push check no longer runs the slow touched-tests step, and a run's REPORT is read from its last result. Continue on the same branch; push, or report done."
       ],
       "kernel_findings": [
         "asf/upgrade.py:631 \u2014 `installed_release()` now prepends `v` to the tag so `version_tuple`/`newer` can parse it; add a test (e.g. in `tests/test_release_channel.py`, stubbing `cli._release`/`drift.installed_commit`) asserting `upgrade.installed_release()` returns a `RELEASE_RE`-matching tag \u2014 currently this function has zero test coverage anywhere in the suite."
       ],
       "kernel_fix_rounds": 2,
       "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the reason and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "ended without a REPORT: That monitor has served its purpose and naturally expired \u2014 no action needed. My final report above stands: work is committed on `worker/T-0432` but not yet pushed due to sust\u2026",
-      "kernel_stuck_since": "2026-10-09T20:42:10Z",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 2 fix rounds",
+      "kernel_stuck_since": "2026-10-10T00:08:11Z",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -63438,7 +63447,7 @@
       "state": "Active",
       "title": "the release primitives \u2014 the hourly shared cache, the version tuple, and an install that can be handed a tag",
       "type": "task",
-      "updated": "2026-10-09T20:42:22Z",
+      "updated": "2026-10-10T00:08:11Z",
       "writes": [
         "asf/upgrade.py",
         "asf/cli.py",
