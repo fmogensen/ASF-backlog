@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T16:46:27Z",
+  "generated": "2026-10-10T16:50:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16773,6 +16773,9 @@
       "id": "B-126941",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.5",
+      "kernel_notes": [
+        "groom-fill-b-126941-1791650780: groom-fill raised risk high: today `check_cancelled` (asf/dwell.py:433) explicitly skips a PR with `not checks` \u2014 a head with no required-check run at all produces no Finding and no action; the fix is a new watchdog state/probe/action in the same table-driven module, reusing the close/reopen retrigger already proven in asf/stale_ref.py:315-322; touches the kernel's CI watchdog so risk is high."
+      ],
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -16782,7 +16785,11 @@
       "state": "New",
       "title": "Kernel: a PR head with no required-check run gets a fresh CI run, not 'no action exists'",
       "type": "bug",
-      "updated": "2026-10-10T16:46:25Z"
+      "updated": "2026-10-10T16:50:50Z",
+      "writes": [
+        "asf/dwell.py",
+        "tests/test_dwell.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -33831,7 +33838,7 @@
       "state": "New",
       "title": "a stuck item blocking many rows just sits: no blocker weight, no escalation, no top-blockers view; incomplete deliveries park the lead",
       "type": "feature",
-      "updated": "2026-10-10T16:46:25Z"
+      "updated": "2026-10-10T16:50:50Z"
     },
     "F-0328": {
       "backlinks": [],
@@ -33880,7 +33887,7 @@
       "state": "New",
       "title": "merge queue drops a batch as red when the host cancelled the run and the required jobs are only skipped",
       "type": "feature",
-      "updated": "2026-10-10T16:46:25Z"
+      "updated": "2026-10-10T16:50:50Z"
     },
     "F-0329": {
       "backlinks": [],
@@ -34104,7 +34111,7 @@
       "state": "New",
       "title": "Kernel flake quarantine with a defect check (unrelated heads only)",
       "type": "feature",
-      "updated": "2026-10-10T16:46:25Z"
+      "updated": "2026-10-10T16:50:50Z"
     },
     "F-0337": {
       "backlinks": [],
@@ -34140,7 +34147,7 @@
       "kernel_notes": [
         "plan-f-0338-1791648148: NEEDS OPERATOR: product `asf` is pinned to a venv predating the `asf pre-push` door its own githook now calls, so every worker push on this host is refused and `plan/F-0338` is committed at `2ac534e4f` but unpublish\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0003",
       "priority": "need",
       "rank": 3,
@@ -34149,7 +34156,7 @@
       "state": "New",
       "title": "Kernel mainline: cancelled trunk runs are no verdict; dispatch one trunk run when too many commits lack a result",
       "type": "feature",
-      "updated": "2026-10-10T16:46:25Z"
+      "updated": "2026-10-10T16:50:50Z"
     },
     "F-0339": {
       "backlinks": [
@@ -64231,15 +64238,15 @@
       "id": "T-0433",
       "kernel_answers": [
         "granted asf/doctor.py tests/test_doctor.py; nothing else outside writes (card updated by the kernel).",
-        "granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel)."
+        "granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel).",
+        "Grant one more fix round on PR #1378, strong model. Fix exactly the one finding: tests built on StepsTestCase (tests/test_tick_steps.py:66-74) call upgrade.release_report(ctx) for real against live GitHub via tick.py:524-531; add a class-wide mock.patch.object of release_report in StepsTestCase.setUp (with addCleanup) so no test reaches the network. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: Grant one more fix round on PR #1378, strong model. Fix exactly the one finding: tests built on StepsTestCase (tests/test_tick_steps.py:66-74) call upgrade.release_report(ctx) for real against live GitHub via tick.py:524-531; add a class-wide mock.patch.object of release_report in StepsTestCase.setUp (with addCleanup) so no test reaches the network. Nothing else."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
@@ -64263,11 +64270,7 @@
         "PR #1378: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
-      "kernel_stuck_since": "2026-10-10T16:37:30Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0112.md"
       },
@@ -64284,7 +64287,7 @@
       "state": "New",
       "title": "`release_report` and the fork \u2014 two exclusive channels, and `notify` once per tag",
       "type": "task",
-      "updated": "2026-10-10T16:38:23Z",
+      "updated": "2026-10-10T16:50:50Z",
       "writes": [
         "asf/upgrade.py",
         "asf/tick/tick.py",
@@ -82230,7 +82233,7 @@
         "build-t-80572-1791646302: NEEDS OPERATOR: the 2026-10-10T15:15Z answer says to archive worker/T-80572 and rebuild this Task fresh from current main, while this session's brief says to correct the held branch and never recut or force it \u2014 the\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -82243,7 +82246,7 @@
       ],
       "title": "the snapshot \u2014 the builder, the manifest, `asf rehearse --build`, and the committed fixture",
       "type": "task",
-      "updated": "2026-10-10T16:34:28Z",
+      "updated": "2026-10-10T16:50:50Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -83073,12 +83076,18 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0433 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-t-82990-1791637217: groom-fill raised risk high: the card's Acceptance is empty only because the 4000-char cut swallowed the plan's byte-for-byte S-81208 fence; copying it in (paired to AdvanceTest/ReportTest) satisfies DoR, and the Task lands in the kernel's daily step plus release-channel pushes so risk stays high.",
         "PR #1398: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1398: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0308.md"
       },
@@ -83091,7 +83100,7 @@
       ],
       "title": "the mover and the report \u2014 the daily part, and `asf channels`",
       "type": "task",
-      "updated": "2026-10-10T16:38:23Z",
+      "updated": "2026-10-10T16:50:50Z",
       "writes": [
         "asf/channels.py",
         "asf/tick/step_daily.py",
@@ -83211,7 +83220,7 @@
       ],
       "title": "the feeder speaks for a Feature the lane holds \u2014 the branch-keyed gate, `lane_speaks`, and a Feature in the pushed set",
       "type": "task",
-      "updated": "2026-10-10T16:46:25Z",
+      "updated": "2026-10-10T16:50:50Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_doc_lane_review.py",
