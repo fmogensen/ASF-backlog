@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T20:02:06Z",
+  "generated": "2026-10-11T20:05:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16962,7 +16962,7 @@
         "build-b-138845-1791733799: NEEDS OPERATOR: the CI check names cited by the card (\"tests (3.12)\", \"tests (3.13)\") no longer exist on current origin/main's check-runs \u2014 the workflow was restructured into \"checks (3.X)\" / \"part (3.X, N)\" jobs so\u2026",
         "build-b-138845-1791747069: NEEDS OPERATOR: the review loop that has closed PR #1569/#1571/#1583/#1587/#1589 (and likely others) for \"the card's proving tests are not green on main\" keeps recurring even though every session's direct verificati\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16972,7 +16972,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T20:02:04Z",
+      "updated": "2026-10-11T20:05:05Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -89766,16 +89766,18 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "asf/kernel/ports.py:2237 \u2014 add `except NoSeat as e:` ahead of the generic `except PortError as e:` in `launch()`'s cloud retry loop: `self._creates -= 1`, append `acct.name` to `refused`, re-fire on `self._next_lane_account(s, refused)` when there is one, else `raise` \u2014 never `cloud.Breaker(...).fail()` and never `_account_refused` for a seat race; cover it with a cloud-lane case whose account is filled host-wide by another product's registered run.",
         "tests/kernel/test_multi_product.py:218 \u2014 add a case with room to want (a `F.FakeSessions` subclass whose `capacity()` returns 1, `B.config(max_sessions=4)`, a Story over three Ready Tasks) asserting `capacity.read_demand_record('lane-1') == (0, 2)`, so `wanted` and the derived-container exclusion are proven rather than zeroed by the room cap.",
         "operator answer: granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1567: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1567: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89789,7 +89791,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-11T18:20:11Z",
+      "updated": "2026-10-11T20:05:05Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -90260,7 +90262,8 @@
         "granted tests/test_scheduler.py tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_scheduler.py tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/test_scheduler.py tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "asf/logs.py:128 \u2014 guard the stamp against being the matched line itself: `if stamp is not None and stamp is not line:`, and add a `CarryTests` case that a line holding both an ISO stamp and a carried substring is carried once, with four successive rotations leaving the head at its first-rotation length.",
@@ -90271,7 +90274,7 @@
         "PR #1586: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1586: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90284,7 +90287,7 @@
       ],
       "title": "a clock transcript is capped by the run that wrote it, and the facts that outlive the cap are carried",
       "type": "task",
-      "updated": "2026-10-11T19:44:33Z",
+      "updated": "2026-10-11T20:05:05Z",
       "writes": [
         "asf/logs.py",
         "asf/cli.py",
@@ -90478,7 +90481,7 @@
         "PR #1582: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1582: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0350.md"
       },
@@ -90491,7 +90494,7 @@
       ],
       "title": "the delivery's Story is a field on the lead \u2014 written with delivers, refused when it is wrong, kept by the snapshot",
       "type": "task",
-      "updated": "2026-10-11T19:47:51Z",
+      "updated": "2026-10-11T20:05:05Z",
       "writes": [
         "asf/record/slice.py",
         "asf/record/check.py",
@@ -90621,7 +90624,7 @@
         "PR #1588: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1588: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90634,7 +90637,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T19:44:33Z",
+      "updated": "2026-10-11T20:05:06Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
