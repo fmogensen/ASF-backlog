@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T18:30:38Z",
+  "generated": "2026-10-11T18:37:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16957,7 +16957,7 @@
       "kernel_notes": [
         "build-b-138845-1791733799: NEEDS OPERATOR: the CI check names cited by the card (\"tests (3.12)\", \"tests (3.13)\") no longer exist on current origin/main's check-runs \u2014 the workflow was restructured into \"checks (3.X)\" / \"part (3.X, N)\" jobs so\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16967,7 +16967,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T18:17:00Z",
+      "updated": "2026-10-11T18:36:50Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17472,13 +17472,15 @@
       "children": [],
       "folder": "bugs",
       "id": "B-173611",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
       "rank": -4,
       "schema_version": 1,
       "stage_since": "2026-10-11T18:29:57Z",
       "state": "New",
       "title": "main red at 98533db97: tests (3.12), tests (3.13) \u2014 4 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T18:29:57Z"
+      "updated": "2026-10-11T18:36:50Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -85187,7 +85189,8 @@
         "Grant one more groom-fill: the earlier rejections came from a verdict-parser bug (multi-line lists), since fixed. Name at least one test in the Acceptance list in the schema's list form."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Grant one more groom-fill: the earlier rejections came from a verdict-parser bug (multi-line lists), since fixed. Name at least one test in the Acceptance list in the schema's list form."
+        "relaunch: operator answer: Grant one more groom-fill: the earlier rejections came from a verdict-parser bug (multi-line lists), since fixed. Name at least one test in the Acceptance list in the schema's list form.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
@@ -85204,7 +85207,7 @@
         "PR #1575: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1575: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -85217,7 +85220,7 @@
       ],
       "title": "a card a push discards add/add is named by its id, and a modify/modify resolution still prints exactly one line",
       "type": "task",
-      "updated": "2026-10-11T18:13:42Z",
+      "updated": "2026-10-11T18:36:50Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -89536,7 +89539,7 @@
         "operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89549,7 +89552,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T18:10:43Z",
+      "updated": "2026-10-11T18:36:50Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -89886,13 +89889,17 @@
         "granted asf/harvest/regression.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/kernel/settings.py:250 \u2014 change the block to `'stack': {'enabled': (False, bool), 'max_depth': (1, int)}` so the knob ships off until Tasks 3\u20135 land, and move the flip to `True` into Task 6; report `needs writes: asf/kernel/settings.py` (no test in `tests/kernel/test_stacked_builds.py` changes \u2014 `cfg()` opts in at `tests/kernel/test_stacked_builds.py:163` and `model.Config.stack` is already `False`)",
+        "rebase: PR #1581 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1562: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1562: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89905,7 +89912,7 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T18:30:17Z",
+      "updated": "2026-10-11T18:36:50Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -90489,7 +90496,7 @@
         "session ran past its max age",
         "relaunch: operator answer: granted tests/test_heartbeat.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90502,7 +90509,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T18:00:36Z",
+      "updated": "2026-10-11T18:36:50Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
