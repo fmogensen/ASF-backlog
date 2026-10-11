@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T13:46:34Z",
+  "generated": "2026-10-11T13:50:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2609,6 +2609,7 @@
     "B-0083": {
       "area": "factory",
       "backlinks": [
+        "T-0816",
         "B-0084"
       ],
       "children": [],
@@ -17401,7 +17402,7 @@
       "kernel_notes": [
         "groom-fill-b-160759-1791723358: groom-fill raised risk high: the card named no tests and no writes; the real suspects (RealSessions.capacity/seat_note/lane vs decide._free) and the missing status-line feature are concrete and locatable, so acceptance lines and writes can be filled from the code rather than invented."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "rank": 1,
       "schema_version": 1,
@@ -17411,7 +17412,7 @@
       "state": "New",
       "title": "Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)",
       "type": "bug",
-      "updated": "2026-10-11T13:10:55Z",
+      "updated": "2026-10-11T13:50:55Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/decide.py",
@@ -69644,10 +69645,14 @@
       "id": "T-0456",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
+      "kernel_findings": [
+        "tests/test_install.py:1019 \u2014 `test_force_installs_anyway` calls `self._migrate()` first, which leaves a snapshot covering the mocked target (1) before `force=True` is ever considered, so the test passes even with the `--force` bypass deleted from `asf/upgrade.py:1952`. Drop the `self._migrate()` call (mirror `test_no_snapshot_and_no_force_refuses_naming_the_file_and_key`'s empty-snapshot setup) so `schema.snapshots()` is genuinely empty and `force=True` is what makes the install proceed."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-t-0456-1791638496: groom-fill raised risk high: Fully specified by docs/plans/f-0114.md's Task 5 (same writes, steps, and test names already named there and in the spec's own Acceptance tests section); every schema.* primitive it calls (CONFIG_VERSION, auto_migrate, tick_drain_s, product_version, snapshot/restore) is already implemented on the sequenced prerequisite T-0452 (commit 34d335c4f, not yet merged to main) \u2014 the card was just missing its acceptance/gate lines, now copied over from the plan."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69657,7 +69662,7 @@
       "state": "New",
       "title": "`asf/upgrade.py` \u2014 the upgrade migrates what it installed, and `--to` puts the snapshot back",
       "type": "task",
-      "updated": "2026-10-11T13:36:14Z",
+      "updated": "2026-10-11T13:50:55Z",
       "writes": [
         "asf/upgrade.py",
         "asf/init.py",
@@ -84838,7 +84843,8 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_notes": [
-        "groom-fill-t-0816-1791725141: groom-fill verdict rejected: acceptance line names no test: \"PD4's git-call ceiling for asf/tick/shadow.py is re-measured against current tru\""
+        "groom-fill-t-0816-1791725141: groom-fill verdict rejected: acceptance line names no test: \"PD4's git-call ceiling for asf/tick/shadow.py is re-measured against current tru\"",
+        "groom-fill-t-0816-1791726076: groom-fill raised risk high: the card's Files/Steps describe sync_operator_checkout's pre-#1039 shape (ceiling 25, no ahead/marker handling); the approved replan docs/plans/replans/f-0260-710ab73e6bdd.md (RD3-RD6) already corrects this (ceiling 24, build around the landed ahead/stranded-commit machinery, drop DIRTY_MARKER per D5) but was never carried into the card body, and a prior attempt under this stale text (PR #1237) already closed without landing."
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "new",
@@ -84855,7 +84861,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T13:41:24Z",
+      "updated": "2026-10-11T13:50:55Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -86487,7 +86493,7 @@
         "relaunch: escalated: the previous session stopped (blocked: blocked_on: T-129178 NEEDS OPERATOR: none \u2014 operator already answered; this Task waits for T-129178 (asf/workers/scratch.py) to land on origin/main, then relaunch) \u2014 pick up from its report and branch, and finish the item",
         "ended without a REPORT"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86500,7 +86506,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T13:41:24Z",
+      "updated": "2026-10-11T13:50:55Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -87188,6 +87194,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129199",
+      "kernel_answers": [
+        "granted tests/test_upgrade_kernel_floor.py; nothing else outside writes (card updated by the kernel). T-130967 also writes tests/test_upgrade_kernel_floor.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/test_upgrade_kernel_floor.py; nothing else outside writes (card updated by the kernel). T-130967 also writes tests/test_upgrade_kernel_floor.py (Review): the overlap rule serialises them."
+      ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
@@ -87197,7 +87209,7 @@
         "PR #1535: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1535: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -87210,11 +87222,12 @@
       ],
       "title": "one owner for the labels launchd is not holding, and the install that reads its clocks back and exits non-zero",
       "type": "task",
-      "updated": "2026-10-11T13:41:24Z",
+      "updated": "2026-10-11T13:50:55Z",
       "writes": [
         "asf/scheduler.py",
         "asf/install.py",
-        "tests/test_scheduler.py"
+        "tests/test_scheduler.py",
+        "tests/test_upgrade_kernel_floor.py"
       ]
     },
     "T-129200": {
@@ -87941,6 +87954,7 @@
         "T-130966"
       ],
       "backlinks": [
+        "T-129199",
         "T-130968",
         "B-151303"
       ],
@@ -87968,7 +87982,7 @@
       ],
       "title": "the smoke replays the floor that moved, and each kernel job has a no-op form",
       "type": "task",
-      "updated": "2026-10-11T13:41:24Z",
+      "updated": "2026-10-11T13:50:55Z",
       "writes": [
         "asf/scheduler.py",
         "asf/upgrade.py",
@@ -89110,7 +89124,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159848",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89124,7 +89138,7 @@
       ],
       "title": "the pull request's own clock, the lead-time sample on the ledger, the fold, the view and the two gate criteria",
       "type": "task",
-      "updated": "2026-10-11T13:31:02Z",
+      "updated": "2026-10-11T13:50:55Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -89298,7 +89312,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89312,7 +89326,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T13:41:24Z",
+      "updated": "2026-10-11T13:50:55Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
