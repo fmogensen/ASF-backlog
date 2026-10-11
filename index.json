@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T12:45:18Z",
+  "generated": "2026-10-11T12:50:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17193,7 +17193,7 @@
         "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17202,7 +17202,7 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T12:39:51Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/dispatch.py",
         "asf/briefs/preamble.py",
@@ -17287,9 +17287,10 @@
       ],
       "kernel_fix_rounds": 3,
       "kernel_notes": [
-        "groom-fill-b-153355-1791712919: groom-fill raised risk high: two of the three acceptance lines are already implemented and tested (host-push safety net; B-151303's trunk-fetched done-judging landed today); only the kernel-status flow-violation count is new, scoped work."
+        "groom-fill-b-153355-1791712919: groom-fill raised risk high: two of the three acceptance lines are already implemented and tested (host-push safety net; B-151303's trunk-fetched done-judging landed today); only the kernel-status flow-violation count is new, scoped work.",
+        "PR #1513: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17298,7 +17299,7 @@
       "state": "New",
       "title": "Bug: a refused push strands a local session's work on a local-only branch",
       "type": "bug",
-      "updated": "2026-10-11T12:39:51Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/kernel/status.py",
         "tests/kernel/test_flow_violations.py"
@@ -34833,7 +34834,6 @@
     },
     "F-0330": {
       "backlinks": [
-        "T-129212",
         "B-121289"
       ],
       "children": [
@@ -35851,7 +35851,7 @@
         "spec-f-0350-1791661450: NEEDS OPERATOR: the six Stories are declared in the spec but the record holds no card for any of them, and `feeder.stories_before_plan` counts Story cards and not declarations \u2014 so no plan session for F-0350 can sta\u2026",
         "plan-f-0350-1791720969: NEEDS OPERATOR: S-137105 is a Story of F-0350 that the approved spec refuses by name \u2014 the answer needed is one of two words: reparent (S-137105 becomes its own Feature under E-0003 for the landing half, F-0350's co\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 3,
@@ -35860,7 +35860,7 @@
       "state": "New",
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
-      "updated": "2026-10-11T12:45:16Z"
+      "updated": "2026-10-11T12:50:20Z"
     },
     "F-0351": {
       "backlinks": [],
@@ -69294,7 +69294,7 @@
       "kernel_notes": [
         "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69304,7 +69304,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T12:36:07Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -81068,6 +81068,7 @@
       ],
       "folder": "tasks",
       "id": "T-0734",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81080,7 +81081,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-08T18:51:49Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -85380,7 +85381,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85393,7 +85394,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T12:45:16Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -86789,6 +86790,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129196",
+      "kernel_notes": [
+        "PR #1528: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1528: part (3.13, 2) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0330.md"
@@ -86802,7 +86807,7 @@
       ],
       "title": "the field \u2014 the shared TAIL offers `superseded_by:` to a fix or correct session",
       "type": "task",
-      "updated": "2026-10-11T12:45:16Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/briefs/build.py",
         "tests/fixtures/briefs/golden/*.md",
@@ -87442,21 +87447,8 @@
         "Relaunch on worker/T-129212: the external worktree that held the T-129212-named fix branch was removed, and that framework fix is now Bug B-147398 (PR #1460), not this Task's delivery. Build T-129212's own plan Task; if its branch has no commits beyond main, the new no-commits rule applies.",
         "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: Relaunch on worker/T-129212: the external worktree that held the T-129212-named fix branch was removed, and that framework fix is now Bug B-147398 (PR #1460), not this Task's delivery. Build T-129212's own plan Task; if its branch has no commits beyond main, the new no-commits rule applies.",
-        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "tests/kernel/test_question_pushed_base.py:78-83 \u2014 replace the invented `Q_ROUND` and `Q_LOST_VERDICT` with the operator log's own texts verbatim (`adjudicate-f-0308`, 558 chars; `plan-f-0330-1791633833`, 96 chars), per step 1's \"both verbatim\"; drop the `review-t-0197` \"lost verdict\" shape the plan ruled out, and rename the `it6` holder in `ShareRises._six` (:448-449) to the F-0330 item it then quotes",
-        "tests/kernel/test_question_pushed_base.py:130 \u2014 add the end-to-end `REBASE_FIRST` case step 11 names: a `Stuck(D.NOT_PUSHED + refusal, 'operator')` card with a `push_refused` session must yield exactly one `ApplyAnswer(by=R.PUSHED)` whose text contains `Rebase onto origin/main`",
-        "asf/kernel/resolvers.py:291 \u2014 move the `linear` gate so it only guards `BASE_OK`: return `NO_BASE % (branch, main, sha, branch)` whenever `base` is empty, before testing `result.get('linear')`, and add a `TrunkBaseClass` case asserting `NO_BASE` with `'linear': False` plus one driving the orphan branch off a harness trunk that carries a merge commit",
-        "asf/kernel/resolvers.py:108-110 \u2014 drop `ORIGIN_RE`'s unnegated `\\bon origin\\b` alternative, leaving `r'\\b(?:not|never|still not)\\s+(?:yet\\s+)?on origin\\b|\\bnot\\b[^.]*\\breached origin\\b|\\bpush(?:ed|ing)? (?:was )?(?:refused|denied)\\b'`, and add the red-CI text (\"I committed the fix but the required check on origin/main is red\u2026\") to `PushedClass` as a negative case beside line 94",
-        "asf/kernel/decide.py:995 \u2014 in `_pushed`, after `pushed_question(text)`, compute `probe = resolvers.match(text, resolvers.branch_of(it.id, facts.sessions, facts.prs))` and `return None` when `probe is not None and probe.cls == resolvers.TRUNK_BASE`, then pin the precedence with a case on a text carrying both forms",
-        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel).",
-        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1445: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1445: checks (3.13) is red but not a required check \u2014 ignored",
@@ -87465,7 +87457,8 @@
         "PR #1445: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -87481,7 +87474,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-11T12:31:18Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -88267,7 +88260,7 @@
         "PR #1468: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88280,7 +88273,7 @@
       ],
       "title": "a test per parent rule \u2014 the module the other six extend",
       "type": "task",
-      "updated": "2026-10-11T12:45:16Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "tests/test_work_item_model.py"
       ]
@@ -88299,6 +88292,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148631",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88311,7 +88305,7 @@
       ],
       "title": "`milestones.py`, the declaration, and the rule over it",
       "type": "task",
-      "updated": "2026-10-11T07:53:44Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/record/milestones.py",
         "asf/record/check.py",
@@ -88824,7 +88818,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159848",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -88838,7 +88832,7 @@
       ],
       "title": "the pull request's own clock, the lead-time sample on the ledger, the fold, the view and the two gate criteria",
       "type": "task",
-      "updated": "2026-10-11T11:57:29Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -89108,7 +89102,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160206",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89121,7 +89115,7 @@
       ],
       "title": "the stack as a fact \u2014 the card's key, the pull request's base, and the two knobs",
       "type": "task",
-      "updated": "2026-10-11T12:36:07Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -90871,13 +90865,16 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_findings": [
+        "asf/harvest/regression.py:380-381 \u2014 a non-string `flags.regression.command` reaches `resolved_command` and raises AttributeError out of `ask` \u2192 `branch_facts` (`lane.py:2050`), which nothing catches at `lane.py:1872`, so it stops the product's whole lane pass. Replace `tpl = conv.flag('regression.command') or conv.test_command` with a type check: `tpl = conv.flag('regression.command'); tpl = tpl if isinstance(tpl, str) and tpl.strip() else conv.test_command`. Plan Task 5 Step 3 requires the value never reach the runner; `validate_mapping` only reports it (`asf/env.py:815` collects the problem, the product still loads).",
+        "asf/harvest/regression.py:84-85 \u2014 a non-list `exempt_found_in` makes `if found_in in exempt` a substring test, so `exempt_found_in: ci` (a bare string) silently un-gates a card whose `found_in` is `c`. Guard the read: `exempt = conv.flag('regression.exempt_found_in', None)` then `if not isinstance(exempt, list) or any(not isinstance(v, str) for v in exempt): exempt = list(DEFAULT_EXEMPT_FOUND_IN)`.",
+        "asf/harvest/regression.py:112 \u2014 the `fail_re` guard catches `re.error` but not a non-string pattern, so `re.compile(7)` raises TypeError past it (and a list pattern raises `TypeError: unhashable type`). Add the type check before the compile: `if pattern is not None and not hasattr(pattern, 'search') and not isinstance(pattern, str): pattern = None`, or widen line 112 to `except (re.error, TypeError):`. This is the third malformed shape `validate_mapping:646-660` already names.",
         "asf/harvest/lane.py:2035 \u2014 carry the regression clause onto the recorded tick line: after `:2037` set `f['regression_clause'] = f\"regression: {f['regression'][1] or f['regression'][0]}\"` and append it to `reason` at `:2490` and `:2493`, so all six forms appear, including `proved` and `not gated \u2014 regression.check is off`, which today print nowhere",
         "asf/harvest/regression.py:329 \u2014 Task 2 Step 5 forbids the second test run: give `check` (`:371`) and `run_graft` (`:288`) an `after=(rc, output)` parameter, pass the gate's own head-run output from `ask` (`:472`), and delete the re-run at `:330-334` (fall back to it only when no head result exists for that sha) \u2014 or record the deviation and stop quoting Step 5 in the `run_graft` docstring at `:294-296`",
         "asf/harvest/regression.py:112 \u2014 guard the product-supplied `fail_re`: wrap `re.compile` at `:108` in `except re.error: rx = None`, drop a pattern with `rx.groups < 1` to `None`, and add a `flags.regression.fail_re` problem beside the other two in `asf/conventions.py:642` with its case in `tests/test_conventions.py`",
         "rebase: PR #1498 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "operator answer: Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py).",
         "PR #1439: checks (3.12) is red but not a required check \u2014 ignored",
@@ -90889,7 +90886,7 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -90910,7 +90907,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T12:20:39Z",
+      "updated": "2026-10-11T12:50:20Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
