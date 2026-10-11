@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T09:57:03Z",
+  "generated": "2026-10-11T10:02:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16795,7 +16795,7 @@
         "satisfied on main at 14b963ba1: tests.test_dwell, tests.test_channels, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: fix/B-126941 holds 1 commit(s) off it"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "reopened": [
@@ -16808,7 +16808,7 @@
       "state": "New",
       "title": "Kernel: a PR head with no required-check run gets a fresh CI run, not 'no action exists'",
       "type": "bug",
-      "updated": "2026-10-11T09:45:13Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/dwell.py",
         "tests/test_dwell.py"
@@ -16918,11 +16918,12 @@
       "folder": "bugs",
       "id": "B-138845",
       "kernel_attempts": [
-        "relaunch: PR #1481 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1481 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1494 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16932,7 +16933,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T09:56:58Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17232,7 +17233,7 @@
         "PR #1491: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1491: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "done",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17241,7 +17242,7 @@
       "state": "New",
       "title": "Bug: a failed intake decision parks a card over its priority",
       "type": "bug",
-      "updated": "2026-10-11T09:50:28Z"
+      "updated": "2026-10-11T10:02:12Z"
     },
     "B-153355": {
       "backlinks": [],
@@ -17250,6 +17251,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-153355",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.48",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17258,7 +17261,26 @@
       "state": "New",
       "title": "Bug: a refused push strands a local session's work on a local-only branch",
       "type": "bug",
-      "updated": "2026-10-11T09:38:07Z"
+      "updated": "2026-10-11T10:02:12Z"
+    },
+    "B-154656": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-154656",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.48",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "Bug: an answer never clears a container's Stuck; a local session limit makes the item Stuck",
+      "stage_since": "2026-10-11T10:00:07Z",
+      "state": "New",
+      "title": "Bug: an answer never clears a container's Stuck; a local session limit makes the item Stuck",
+      "type": "bug",
+      "updated": "2026-10-11T10:02:12Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -34836,7 +34858,8 @@
     },
     "F-0334": {
       "backlinks": [
-        "F-0335"
+        "F-0335",
+        "B-154656"
       ],
       "children": [
         "S-131005",
@@ -35484,7 +35507,8 @@
         "B-151002",
         "B-151303",
         "B-152404",
-        "B-153355"
+        "B-153355",
+        "B-154656"
       ],
       "decided": true,
       "folder": "features",
@@ -35517,10 +35541,13 @@
       "decided": true,
       "folder": "features",
       "id": "F-0347",
+      "kernel_attempts": [
+        "the session API failed"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -35529,7 +35556,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-11T09:56:58Z"
+      "updated": "2026-10-11T10:02:12Z"
     },
     "F-0348": {
       "backlinks": [
@@ -35621,6 +35648,9 @@
       "decided": true,
       "folder": "features",
       "id": "F-0350",
+      "kernel_attempts": [
+        "the session API failed"
+      ],
       "kernel_fix_rounds": 0,
       "kernel_notes": [
         "spec-f-0350-1791661450: NEEDS OPERATOR: the six Stories are declared in the spec but the record holds no card for any of them, and `feeder.stories_before_plan` counts Story cards and not declarations \u2014 so no plan session for F-0350 can sta\u2026"
@@ -35633,7 +35663,7 @@
       "state": "New",
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
-      "updated": "2026-10-11T09:56:58Z"
+      "updated": "2026-10-11T10:02:12Z"
     },
     "F-0351": {
       "backlinks": [],
@@ -68887,7 +68917,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -68902,7 +68932,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-11T09:56:58Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -84990,7 +85020,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85003,7 +85033,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T09:56:58Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85521,15 +85551,18 @@
     "T-129173": {
       "backlinks": [
         "T-129174",
-        "B-151303"
+        "B-151303",
+        "B-154656"
       ],
       "children": [],
       "decided": true,
       "folder": "tasks",
       "id": "T-129173",
+      "kernel_answers": [
+        "Relaunch on another account: the launch failed because one account hit its session limit (resets 14:40 local), not because of the item. Any account with free seats is fine."
+      ],
       "kernel_attempts": [
-        "the session API failed",
-        "the session API failed"
+        "relaunch: operator answer: Relaunch on another account: the launch failed because one account hit its session limit (resets 14:40 local), not because of the item. Any account with free seats is fine."
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
@@ -85543,11 +85576,7 @@
         "satisfied on main at 14b963ba1: tests.test_spec_stories, tests.test_plan_tasks, tests.test_spec_stories.TheDeclarationReader, tests.test_id_range_block, tests.test_idclaim, tests.test_record_stage, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_spec_stories, tests.test_spec_stories.TheDeclarationReader; worker/T-129173 holds 1 commit(s) off it"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "the session API failed: You've hit your session limit \u00b7 resets 2:40pm (Europe/Copenhagen)",
-      "kernel_stuck_since": "2026-10-11T09:54:58Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0318.md"
       },
@@ -85566,7 +85595,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-11T09:56:58Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -85747,11 +85776,15 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
+      "kernel_findings": [
+        "rebase: PR #1492 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "satisfied on main at 14b963ba1: tests.test_scratch.ScratchPathsTests, tests.test_scratch.ExcludeFileTests, tests.test_invariants.FactoryScratchIgnoredTests, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_scratch.ScratchPathsTests, tests.test_scratch.ExcludeFileTests, tests.test_invariants.FactoryScratchIgnoredTests; worker/T-129178 holds 1 commit(s) off it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85768,7 +85801,7 @@
       ],
       "title": "one owner for the factory's scratch paths, and this repo's ignore entry",
       "type": "task",
-      "updated": "2026-10-11T09:50:28Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/workers/scratch.py",
         "tests/test_scratch.py",
@@ -85952,7 +85985,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129184",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0322.md"
       },
@@ -85965,7 +85998,7 @@
       ],
       "title": "the Parked cell drops a park whose card the record retired or closed, by the feeder's own named rule",
       "type": "task",
-      "updated": "2026-10-11T09:50:28Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/views/status.py",
@@ -86135,7 +86168,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129189",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0325.md"
       },
@@ -86150,7 +86183,7 @@
       ],
       "title": "the declared wave clock is built as the wave job, and the shapes that cannot be are named",
       "type": "task",
-      "updated": "2026-10-11T09:56:58Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/scheduler.py",
         "asf/doctor.py",
@@ -86638,20 +86671,20 @@
       "after": [
         "T-129203"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-154656"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
       "id": "T-129204",
-      "kernel_attempts": [
-        "the session API failed",
-        "the session API failed"
+      "kernel_answers": [
+        "Relaunch on another account: the launch failed because one account hit its session limit (resets 14:40 local), not because of the item. Any account with free seats is fine."
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "the session API failed: You've hit your session limit \u00b7 resets 2:40pm (Europe/Copenhagen)",
-      "kernel_stuck_since": "2026-10-11T09:54:58Z",
+      "kernel_attempts": [
+        "relaunch: operator answer: Relaunch on another account: the launch failed because one account hit its session limit (resets 14:40 local), not because of the item. Any account with free seats is fine."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0332.md"
       },
@@ -86664,7 +86697,7 @@
       ],
       "title": "the pin \u2014 the measured loop as a fixture, and the two pinned loops unchanged",
       "type": "task",
-      "updated": "2026-10-11T09:56:58Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "tests/fixtures/replay/loop_total.jsonl",
         "tests/test_loops.py"
@@ -87034,7 +87067,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-11T09:50:28Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -87179,7 +87212,7 @@
         "satisfied on main at 14b963ba1: tests.test_upgrade_kernel_floor, tests.test_upgrade, tests.test_upgrade_drain_bound, tests.kernel.test_loop, tests.kernel.test_host, tests.test_scheduler, tests.test_doctor, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-130966 holds 1 commit(s) off it"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -87195,7 +87228,7 @@
       ],
       "title": "the quiesce \u2014 the kernel's two argv shapes, its lock, and the module every Story shares",
       "type": "task",
-      "updated": "2026-10-11T09:56:58Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/upgrade.py",
@@ -87372,7 +87405,7 @@
       "kernel_attempts": [
         "the session API failed"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -87385,7 +87418,7 @@
       ],
       "title": "the decision the lane cannot make, written once instead of printed every tick",
       "type": "task",
-      "updated": "2026-10-11T09:39:50Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_closed_item_prs.py"
@@ -87518,7 +87551,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131824",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -87531,7 +87564,7 @@
       ],
       "title": "the convention, and the claim judged at the sha it landed on",
       "type": "task",
-      "updated": "2026-10-11T09:45:13Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/conventions.py",
         "asf/evidence/evidence.py",
@@ -87677,7 +87710,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-142127",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -87692,7 +87725,7 @@
       ],
       "title": "`I16`, the `flow` scope, and the tick's check point",
       "type": "task",
-      "updated": "2026-10-11T09:50:28Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/invariants.py",
         "tests/test_invariants.py",
@@ -89867,7 +89900,7 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -89888,7 +89921,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T09:39:50Z",
+      "updated": "2026-10-11T10:02:12Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
