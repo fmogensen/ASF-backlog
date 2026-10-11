@@ -1,3 +1,5 @@
+→ retired: Duplicate note: re-filed as a typed Bug (B-148751 / B-148750). (2026-10-11)
+
 # Bug: a cloud run is declared dead without the report commit while its report is on origin
 
 Bug (defect): a cloud run is declared dead "without the report commit" while its report is on origin
