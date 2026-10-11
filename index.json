@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T10:42:01Z",
+  "generated": "2026-10-11T10:46:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16873,7 +16873,7 @@
       "state": "New",
       "title": "Bug: a cloud routine is polled under the ambient CLI login when its account does not resolve",
       "type": "bug",
-      "updated": "2026-10-11T10:38:41Z",
+      "updated": "2026-10-11T10:46:21Z",
       "writes": [
         "asf/workers/remote.py",
         "asf/workers/cloud.py",
@@ -17321,6 +17321,23 @@
         "tests/kernel/test_doc_fix_rounds.py",
         "tests/kernel/test_speedups.py"
       ]
+    },
+    "B-157007": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-157007",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "Bug: a session that quotes a session limit stops its account and costs seats",
+      "stage_since": "2026-10-11T10:44:40Z",
+      "state": "New",
+      "title": "Bug: a session that quotes a session limit stops its account and costs seats",
+      "type": "bug",
+      "updated": "2026-10-11T10:44:40Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -35514,22 +35531,26 @@
       "folder": "features",
       "id": "F-0344",
       "kernel_attempts": [
-        "review: no VERDICT line"
+        "review: no VERDICT line",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "docs/specs/f-0344.md:201 \u2014 P19's premise is false: the product yaml does have a `kernel:` block (`asf/kernel/settings.py`, 19 sections with documented defaults), read on every load by `env.Product.kernel` (`asf/env.py:1029-1032`), validated at `asf/env.py:796-801`, and listed in `env.DOCUMENTED_UNCHECKED_FIELDS` (`asf/env.py:633-634`) so `asf/env.py:768` never reports it as an unknown key. Rewrite P19's first clause to say what is actually absent \u2014 no `retention` section in that block's `SPEC`, and no reader of the card's three keys \u2014 and drop `conventions.py`/`config_keys.py` as evidence for it, since neither registry holds a product-yaml `kernel:` key.",
+        "docs/specs/f-0344.md:206 \u2014 the stated cost is wrong: `settings.problems` (`asf/kernel/settings.py:316-348`) warns once for a section not in `SPEC` and `continue`s without descending, so a product yaml carrying all three knobs gets ONE warning, `kernel.retention \u2014 is not a kernel key`, not one per key (measured: `settings.problems({'retention': {...}})` -> `([], [('kernel.retention', 'is not a kernel key')])`). Change \"one unknown-key warning per key\" to one warning for the unknown `kernel.retention` section, and state the route as `asf/env.py:800-801` -> `Product.warnings` -> `asf/doctor.py:860-874` rather than as an unknown product-yaml key. Same fix at line 410 (\"one unknown-key doctor warning per key\") and in D2 at line 373.",
+        "docs/specs/f-0344.md:373 \u2014 D2's two supporting arguments are unsound and must be replaced or dropped. `tests/test_config_keys.py`'s symmetry cannot make a registered-but-unread `kernel:` key red: it covers `~/.ASF/config.yaml`, which P19 itself calls \"a different file\", and no test under `tests/` references `asf/kernel/settings.SPEC` (no `tests/kernel/test_settings*.py` exists), so declaring `kernel.retention.*` unread would be green. And `conventions.branch_retention`'s \"three pieces of machinery per block\" is the wrong precedent for a kernel knob: `problems` and `read` are already generic over `SPEC`, so one `SPEC` entry (default plus kind) is the whole cost. Keep D7's reason for the refusal, which does not depend on any of this.",
         "docs/specs/f-0344.md:219 \u2014 `## Out` must account for the card's own Stage 1 scope: name items 1-5 of `record/features/F-0344.md` (`spool/<job>.jsonl` + kernel merge, idempotent ingest, the five ledgers onto the event stream, the daily roll-up fields, `asf metrics --product P [--days N] [--item ID]`) and its five Feature-level acceptance bullets as deferred, with the stage that takes each \u2014 or bring them in; as written the spec silently substitutes a different Stage 1.",
         "docs/specs/f-0344.md:272 \u2014 D2 must answer the card's operator decision \"knobs in the product yaml `kernel:` block\", which names `kernel.retention.transcripts_delete_days: 14` (the number D2 hard-codes) plus `transcripts_compress_days: 2` and `events_days: 90`: either read the keys or say in the `why` column why the card's declared knob is refused.",
         "docs/specs/f-0344.md:432 \u2014 drop the smoke from the list the pop protects and close it: `scheduler.smoke` runs every no-op command with `env=job_env` taken wholesale from the plist's `EnvironmentVariables` (`asf/scheduler.py:825`, `:848`), so popping `OWN_LOG_VAR` does not stop it \u2014 and the smoke runs in-process inside a clock run (`asf/tick/tick.py:559-572` \u2192 `asf/upgrade.py:1690`). Require `scheduler.smoke` to strip `OWN_LOG_VAR` from `job_env`, and add an S-134156 acceptance line that the smoke's child rotates nothing.",
         "docs/specs/f-0344.md:78 \u2014 re-measure P3's root logs with the spec's own script, which prints 24 root `.log` files, 4 detached-child logs and a 6-file asf-opened bucket: `product-checks-<p>.log` is in no tree on this host, while `ci-heartbeat.log` (6.05 MiB, live, over the 4 MiB cap), `ci-heartbeat-install.log` and `upgrade-<product>-<sha>.log` are, each created before 2026-10-10 and written by nothing in this repository \u2014 then state in In 2 and D10 which cap a tree log with no asf opener gets, since \"a cap on every transcript, enforced by whoever opens it\" cannot cover it and `check_logs` would otherwise warn for ever."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "spec-f-0344-1791658092-local: NEEDS OPERATOR: the product's CLI pin is ~162 commits behind and lacks the `pre-push` subcommand its own hook shim invokes, so no session on this product can push \u2014 unblock by building a current pin with `asf upgrad\u2026",
         "spec-f-0344-1791712134: NEEDS OPERATOR: the card's five Feature-level acceptance bullets, to defer them one by one in Out instead of as a set \u2014 `cat \"$(find ~/.ASF -path '*/features/F-0344.md' -print -quit)\"`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35537,7 +35558,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-11T10:26:40Z"
+      "updated": "2026-10-11T10:46:21Z"
     },
     "F-0345": {
       "backlinks": [
@@ -35582,7 +35603,8 @@
         "B-151303",
         "B-152404",
         "B-153355",
-        "B-154656"
+        "B-154656",
+        "B-157007"
       ],
       "decided": true,
       "folder": "features",
@@ -85072,7 +85094,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85085,7 +85107,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T10:41:59Z",
+      "updated": "2026-10-11T10:46:21Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85273,7 +85295,7 @@
         "PR #1483: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1483: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85290,7 +85312,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T10:41:59Z",
+      "updated": "2026-10-11T10:46:21Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -86754,7 +86776,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: Relaunch on another account: the launch failed because one account hit its session limit (resets 14:40 local), not because of the item. Any account with free seats is fine."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0332.md"
       },
@@ -86767,7 +86789,7 @@
       ],
       "title": "the pin \u2014 the measured loop as a fixture, and the two pinned loops unchanged",
       "type": "task",
-      "updated": "2026-10-11T10:36:31Z",
+      "updated": "2026-10-11T10:46:21Z",
       "writes": [
         "tests/fixtures/replay/loop_total.jsonl",
         "tests/test_loops.py"
@@ -87229,7 +87251,7 @@
         "PR #1433: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -87243,7 +87265,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-11T10:36:31Z",
+      "updated": "2026-10-11T10:46:21Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
