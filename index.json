@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T10:26:41Z",
+  "generated": "2026-10-11T10:31:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16794,12 +16794,16 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.5",
+      "kernel_findings": [
+        "docs/plans/b-126941.md:\u2014 \u2014 missing entirely (checked both `fix/B-126941` and `origin/main`); write the plan with its Steps and the pinned acceptance tests so the two plan-dependent rows have something to check the diff against."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-126941-1791650780: groom-fill raised risk high: today `check_cancelled` (asf/dwell.py:433) explicitly skips a PR with `not checks` \u2014 a head with no required-check run at all produces no Finding and no action; the fix is a new watchdog state/probe/action in the same table-driven module, reusing the close/reopen retrigger already proven in asf/stale_ref.py:315-322; touches the kernel's CI watchdog so risk is high.",
         "satisfied on main at 14b963ba1: tests.test_dwell, tests.test_channels, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: fix/B-126941 holds 1 commit(s) off it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "reopened": [
@@ -16812,7 +16816,7 @@
       "state": "New",
       "title": "Kernel: a PR head with no required-check run gets a fresh CI run, not 'no action exists'",
       "type": "bug",
-      "updated": "2026-10-11T10:19:39Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/dwell.py",
         "tests/test_dwell.py"
@@ -16847,11 +16851,15 @@
       "id": "B-136993",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.21.post2+g070daf94",
+      "kernel_findings": [
+        "docs/plans/b-136993.md (missing) \u2014 add the plan naming the Task as the fallback chain actually built (remote_config_dir recorded at launch in asf/workers/remote.py:546; _account() falling back to it then to a last_run-adopted account at :805-823; last_run() calling _discover() across every lane account at :573-605, raising LoginUnreadable when none reads it; evidence() reporting that as unreadable unless the branch already carries the report at :634-651; cloud.config_problems() requiring config_dir on every role: cloud account under claude-remote at asf/workers/cloud.py:239,257-263), and give its Acceptance as the four tests already in the diff (tests/test_remote.py:281,521,543,564)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "satisfied on main at 14b963ba1: tests.test_remote, tests.test_env, tests.test_cloud, tests.test_workers, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: fix/B-136993 holds 1 commit(s) off it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "reopened": [
@@ -16864,7 +16872,7 @@
       "state": "New",
       "title": "Bug: a cloud routine is polled under the ambient CLI login when its account does not resolve",
       "type": "bug",
-      "updated": "2026-10-11T10:14:27Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/workers/remote.py",
         "asf/workers/cloud.py",
@@ -17291,7 +17299,7 @@
       "kernel_notes": [
         "groom-fill-b-154656-1791712926: groom-fill raised risk high: Two confirmed, precisely-located kernel defects (container Stuck never stored \u2192 answer dropped; local session-limit end misclassified as a generic API failure) with a clear, bounded fix and a close precedent (#1449); buildable as scoped."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17300,7 +17308,7 @@
       "state": "New",
       "title": "Bug: an answer never clears a container's Stuck; a local session limit makes the item Stuck",
       "type": "bug",
-      "updated": "2026-10-11T10:19:39Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/kernel/apply.py",
         "asf/kernel/facts.py",
@@ -68926,7 +68934,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -68941,7 +68949,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-11T10:26:40Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -85029,7 +85037,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85042,7 +85050,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T10:26:40Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85596,7 +85604,7 @@
         "satisfied on main at 14b963ba1: tests.test_spec_stories, tests.test_plan_tasks, tests.test_spec_stories.TheDeclarationReader, tests.test_id_range_block, tests.test_idclaim, tests.test_record_stage, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_spec_stories, tests.test_spec_stories.TheDeclarationReader; worker/T-129173 holds 1 commit(s) off it"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0318.md"
       },
@@ -85615,7 +85623,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-11T10:19:39Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -85821,7 +85829,7 @@
       ],
       "title": "one owner for the factory's scratch paths, and this repo's ignore entry",
       "type": "task",
-      "updated": "2026-10-11T10:19:39Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/workers/scratch.py",
         "tests/test_scratch.py",
@@ -87126,7 +87134,7 @@
         "satisfied on main at 14b963ba1: tests.test_mq_batch_survival.CutShortReads, tests.test_mq_batch_survival, tests.test_merge_queue, tests.test_mq_deterministic_red, tests.test_queue_reap, tests.test_flake_triage, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_mq_batch_survival.CutShortReads; worker/T-130213 holds 1 commit(s) off it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -87142,7 +87150,7 @@
       ],
       "title": "the run's own conclusion gets a reader, and the skip-only prefix stops being fooled by a judged leg",
       "type": "task",
-      "updated": "2026-10-11T10:14:27Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_mq_batch_survival.py"
@@ -87245,7 +87253,9 @@
       "kernel_fix_rounds": 1,
       "kernel_notes": [
         "satisfied on main at 14b963ba1: tests.test_upgrade_kernel_floor, tests.test_upgrade, tests.test_upgrade_drain_bound, tests.kernel.test_loop, tests.kernel.test_host, tests.test_scheduler, tests.test_doctor, tests.test_hermetic",
-        "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-130966 holds 1 commit(s) off it"
+        "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-130966 holds 1 commit(s) off it",
+        "PR #1497: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1497: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -87263,7 +87273,7 @@
       ],
       "title": "the quiesce \u2014 the kernel's two argv shapes, its lock, and the module every Story shares",
       "type": "task",
-      "updated": "2026-10-11T10:26:40Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/upgrade.py",
@@ -87440,6 +87450,10 @@
       "kernel_attempts": [
         "the session API failed"
       ],
+      "kernel_notes": [
+        "PR #1509: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1509: part (3.13, 4) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0314.md"
@@ -87453,7 +87467,7 @@
       ],
       "title": "the decision the lane cannot make, written once instead of printed every tick",
       "type": "task",
-      "updated": "2026-10-11T10:26:40Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_closed_item_prs.py"
@@ -87471,7 +87485,7 @@
         "satisfied on main at 14b963ba1: tests.test_pr_hygiene.ClosedDecideRows, tests.test_pr_hygiene, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_pr_hygiene.ClosedDecideRows"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -87487,7 +87501,7 @@
       ],
       "title": "the hygiene view's third lane \u2014 `CLOSED \u2192 DECIDE`, read off the lane registry alone",
       "type": "task",
-      "updated": "2026-10-11T10:19:39Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/harvest/pr_hygiene.py",
         "tests/test_pr_hygiene.py"
@@ -87780,6 +87794,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-142128",
+      "kernel_notes": [
+        "PR #1510: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1510: part (3.13, 4) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0346.md"
@@ -87793,7 +87811,7 @@
       ],
       "title": "the wave runs the check once, after the feeder's gate",
       "type": "task",
-      "updated": "2026-10-11T10:26:40Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_flow_conservation.py"
@@ -88062,7 +88080,7 @@
       ],
       "title": "the card schema file, and the stdlib validator that enforces exactly what it declares",
       "type": "task",
-      "updated": "2026-10-11T10:19:39Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/record/cards.v2.schema.json",
         "asf/record/validate.py",
@@ -89966,7 +89984,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T10:26:40Z",
+      "updated": "2026-10-11T10:30:58Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
