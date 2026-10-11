@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T09:27:50Z",
+  "generated": "2026-10-11T09:34:55Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16847,7 +16847,7 @@
         "satisfied on main at 14b963ba1: tests.test_remote, tests.test_env, tests.test_cloud, tests.test_workers, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: fix/B-136993 holds 1 commit(s) off it"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "reopened": [
@@ -16860,7 +16860,7 @@
       "state": "New",
       "title": "Bug: a cloud routine is polled under the ambient CLI login when its account does not resolve",
       "type": "bug",
-      "updated": "2026-10-11T09:26:05Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/workers/remote.py",
         "asf/workers/cloud.py",
@@ -16922,7 +16922,7 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16932,7 +16932,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T09:25:25Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -35098,7 +35098,7 @@
         "plan-f-0340-1791706772: NEEDS OPERATOR: I could not confirm the spec session's `S:133155-133204` id claim is still in the record's mirror, so I cannot prove `idcheck.findings` will pass the ten Story ids when the record mints these Tasks \u2014\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -35107,7 +35107,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-11T09:18:47Z"
+      "updated": "2026-10-11T09:34:52Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -85114,7 +85114,7 @@
         "PR #1483: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1483: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85131,7 +85131,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T09:27:44Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -85753,11 +85753,7 @@
         "relaunch: operator answer: Correct: T-129178 was falsely closed as satisfied (judged on the old pin 14b963ba1). It's reopened and will build first. This Task waits for it via after:, so don't build ahead; end this round and relaunch once T-129178 lands.",
         "relaunch: escalated: the previous session stopped (blocked: blocked_on: T-129178 NEEDS OPERATOR: none \u2014 operator already answered; this Task waits for T-129178 (asf/workers/scratch.py) to land on origin/main, then relaunch) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the reason and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "blocked: tests: none run \u2014 blocked before any write, per after: Task 1 and the operator's answer",
-      "kernel_stuck_since": "2026-10-11T09:22:45Z",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85770,7 +85766,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T09:25:25Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -85792,7 +85788,7 @@
         "relaunch: operator answer: Correct: T-129178 was falsely marked satisfied (judged on the old pin 14b963ba1). A fix agent is re-judging it and recovering its commit, and it will build first. This Task waits for it via after:, so end this round; it relaunches once T-129178 lands.",
         "relaunch: escalated: the previous session stopped (blocked: left out: asf/workers/spawn.py and tests/test_workers.py untouched \u2014 Task 1 (T-129178, `asf/workers/scratch.py`, the `exclude()` this Task calls) is still not an ancestor of origin/main (its\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "building",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85805,7 +85801,7 @@
       ],
       "title": "the factory hardens the worktree when it makes it",
       "type": "task",
-      "updated": "2026-10-11T09:25:25Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -85828,7 +85824,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel). T-129179 also writes asf/workers/scratch.py (Building): the overlap rule serialises them."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85841,7 +85837,7 @@
       ],
       "title": "a factory scratch path tracked on a trunk is one named doctor row",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py",
@@ -85911,7 +85907,7 @@
         "satisfied on main at 14b963ba1: tests.test_closing.RefixingTests, tests.test_evidence.RefixFactTests, tests.test_ingest.RefixedBugTests, tests.test_closing, tests.test_evidence, tests.test_ingest, tests.test_landing_stamp, tests.test_invariants, tests.test_no_test_no_done, tests.test_scorecard, tests.test_tick_steps, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_closing.RefixingTests, tests.test_evidence.RefixFactTests, tests.test_ingest.RefixedBugTests; worker/T-129185 holds 1 commit(s) off it"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -85927,7 +85923,7 @@
       ],
       "title": "the derivation \u2014 the `refix` fact, the `refixing` rule, and the card ingest writes",
       "type": "task",
-      "updated": "2026-10-11T09:26:39Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/evidence/closing.py",
@@ -85980,11 +85976,7 @@
         "relaunch: operator answer: Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish.",
         "relaunch: escalated: the previous session stopped (partial: left out: the PD10 regression case \u2014 a Closed Bug whose fresh evidence carries a `refix` reopening to `Active` through the real `refixing` rule (ingest.derive needs no reopen.py change for i\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "partial: NEEDS OPERATOR: T-129187's PD10 regression case is blocked on T-129185 (Task 1 of the same plan, f-0323) landing on origin/main \u2014 this is a dependency-ordering gap for the factory to resolve\u2026",
-      "kernel_stuck_since": "2026-10-11T09:22:45Z",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -85997,7 +85989,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T09:25:25Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -86048,7 +86040,7 @@
       ],
       "title": "a branch of only empty proof commits lands its proof instead of being deleted as already on main",
       "type": "task",
-      "updated": "2026-10-11T09:25:25Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
@@ -86062,7 +86054,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129189",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0325.md"
       },
@@ -86077,7 +86069,7 @@
       ],
       "title": "the declared wave clock is built as the wave job, and the shapes that cannot be are named",
       "type": "task",
-      "updated": "2026-10-11T09:13:43Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/scheduler.py",
         "asf/doctor.py",
@@ -86370,7 +86362,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129198",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86383,7 +86375,7 @@
       ],
       "title": "a bootstrap launchd still refuses is retried once, and both outcomes are said",
       "type": "task",
-      "updated": "2026-10-11T09:13:43Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/scheduler.py",
         "tests/test_scheduler.py"
@@ -86932,7 +86924,7 @@
         "PR #1445: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -86948,7 +86940,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-11T09:25:25Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -87126,7 +87118,7 @@
         "satisfied on main at 14b963ba1: tests.test_upgrade_kernel_floor, tests.test_upgrade, tests.test_upgrade_drain_bound, tests.test_pin_defects, tests.test_scheduler, tests.test_connectors_scheduler, tests.kernel.test_host, tests.test_doctor, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-130967 holds 1 commit(s) off it"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -87142,7 +87134,7 @@
       ],
       "title": "the smoke replays the floor that moved, and each kernel job has a no-op form",
       "type": "task",
-      "updated": "2026-10-11T09:27:16Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/scheduler.py",
         "asf/upgrade.py",
@@ -87423,7 +87415,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131824",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -87436,7 +87428,7 @@
       ],
       "title": "the convention, and the claim judged at the sha it landed on",
       "type": "task",
-      "updated": "2026-10-11T09:02:04Z",
+      "updated": "2026-10-11T09:34:52Z",
       "writes": [
         "asf/conventions.py",
         "asf/evidence/evidence.py",
