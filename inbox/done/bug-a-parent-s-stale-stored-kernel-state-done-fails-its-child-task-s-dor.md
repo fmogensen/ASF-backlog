@@ -1,3 +1,5 @@
+→ B-148750
+
 # Bug: a parent's stale stored kernel_state done fails its child Task's DoR
 
 type: bug

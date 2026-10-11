@@ -1,3 +1,5 @@
+→ B-148751
+
 # Bug: an ended cloud run with its report still coming is declared dead without the report commit
 
 type: bug
