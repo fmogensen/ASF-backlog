@@ -1,3 +1,5 @@
+→ S-175311
+
 # The kernel installs its own merged fixes (auto-upgrade behind the shadow diff, with rollback)
 parent: F-0356
 
