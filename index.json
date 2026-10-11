@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:53:08Z",
+  "generated": "2026-10-11T15:56:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17422,7 +17422,7 @@
       "state": "New",
       "title": "Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)",
       "type": "bug",
-      "updated": "2026-10-11T15:50:22Z",
+      "updated": "2026-10-11T15:56:22Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/decide.py",
@@ -36027,7 +36027,7 @@
     "F-0356": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0356",
       "parent": "E-0006",
@@ -69789,11 +69789,13 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "tools/upgrade_matrix.py:339-342 \u2014 the mixed leg's two `asf doctor` calls run with `check=True`, and `asf doctor` exits 1 on any `NEEDS OPERATOR` row (`step watchdog is on no clock`), so `upgrade-matrix mixed versions` is red on 8/8 selected tags; capture the output with `check=False` and raise `LegFailed` only on a failing `config` row / collapsed table \u2014 the spec's \"neither `config.yaml` load raises\" \u2014 or add `watchdog` to a clock in the product file `_one_product` writes.",
+        "tools/upgrade_matrix.py:283 \u2014 the `--tag` leg passes `check=False` to the same doctor call, dropping spec \u00a76 step 7's \"`doctor` exits 0\"; assert the narrowed doctor condition from C1 here too, so both legs fail on exactly the same thing.",
+        "tests/test_upgrade_matrix.py:114-117 \u2014 `schema_version` is not in `env.PRODUCT_FIELDS`, so both products warn `(5, 'schema_version', 'is not a field of the product file')` and the assertion cannot tell the newer-stamped file from the at-version one; assert `('config', 'newer', schema.CONFIG_VERSION, newer) in schema.blocking('sample')` and that `sample2` has no `newer` entry.",
+        "tests/test_upgrade_matrix.py:122-129 \u2014 `check_config` is mocked to `(True, '', {}, product)`, which is the collapse the test claims never fires; unmocked, `doctor.run` returns `rows 1 ['config']` (\"missing repo_slug\") for both products. Add `repo_slug:` to both fixture product files and drop the `check_config` mock, keeping only the `check_cli_sessions`/`check_drift` patches.",
         "operator answer: granted tests/test_workflow.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-t-0457-1791638803: groom-fill raised risk high: Card's own Description already mirrors docs/plans/f-0114.md's Task 6 verbatim (same writes, same steps); filled the two acceptance lines from the plan's own canonical test classes (PlanTests, MixedVersionTests), confirmed tools/upgrade_matrix.py and tests/test_upgrade_matrix.py are absent from origin/main and .github/workflows/tests.yml has no plan/upgrade-matrix job yet; risk_raise high because writes touch CI (tests.yml). Separately: the Description's \"stories: S-32357\" is the pre-spec-amend id \u2014 the plan's own Task 6 (docs/plans/f-0114.md:44,611) already carries the live id S-69211, so the card's header is stale and worth a follow-up correction.",
         "PR #1556: part (3.12, 4) is red but not a required check \u2014 ignored",
@@ -69810,7 +69812,7 @@
         "PR #1556: upgrade-matrix (v0.2.102) is red but not a required check \u2014 ignored",
         "PR #1556: upgrade-matrix (v0.2.103) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69823,7 +69825,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T15:42:45Z",
+      "updated": "2026-10-11T15:56:22Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -81458,7 +81460,7 @@
         "PR #1177: part (3.13, 4) is red but not a required check \u2014 ignored",
         "build-t-0734-1791731552: NEEDS OPERATOR: tests/test_install_e2e.py's RecordTickAgainstALocalNonBareOriginTests leaks the same unstubbed `launchctl list` (a plain `asf init` never sets scheduler.kind, so cron_cell's scheduler.loaded_jobs() r\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81471,7 +81473,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-11T15:50:22Z",
+      "updated": "2026-10-11T15:56:22Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -89485,7 +89487,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89499,7 +89501,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-11T15:50:22Z",
+      "updated": "2026-10-11T15:56:22Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -89871,7 +89873,12 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/approvals.py asf/harvest/harvest.py asf/tick/step_harvest.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "review",
+      "kernel_findings": [
+        "rebase: PR #1564 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: granted asf/approvals.py asf/harvest/harvest.py asf/tick/step_harvest.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -89884,7 +89891,7 @@
       ],
       "title": "`asf/logs.py` \u2014 the tree, its paths and its caps",
       "type": "task",
-      "updated": "2026-10-11T15:46:20Z",
+      "updated": "2026-10-11T15:56:22Z",
       "writes": [
         "asf/logs.py",
         "asf/scheduler.py",
@@ -90250,7 +90257,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166574",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90263,7 +90270,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T15:34:44Z",
+      "updated": "2026-10-11T15:56:22Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -92124,7 +92131,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T15:50:22Z",
+      "updated": "2026-10-11T15:56:22Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
