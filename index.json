@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T11:21:21Z",
+  "generated": "2026-10-11T11:25:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -35708,8 +35708,12 @@
       "kernel_attempts": [
         "the session API failed"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_findings": [
+        "docs/plans/f-0348.md:188 \u2014 Task 2 says \"all 27\" acceptance lines for S-135956, but the spec's checklist (docs/specs/f-0348.md:378-409) has 26 `- [ ]` items; fix the count (or find the missing 27th line and cite it).",
+        "docs/plans/f-0348.md:433 \u2014 K6 cites `apply.Launch` at `:434`; at base `b6180c465` the handler is at asf/kernel/apply.py:435, fix the line number."
+      ],
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 2,
@@ -35718,7 +35722,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-11T11:14:11Z"
+      "updated": "2026-10-11T11:25:07Z"
     },
     "F-0349": {
       "backlinks": [
@@ -39665,7 +39669,9 @@
       "updated": "2026-10-11T09:22:47Z"
     },
     "S-135956": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0348"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -85378,7 +85384,7 @@
         "PR #1483: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1483: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85395,7 +85401,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T11:14:11Z",
+      "updated": "2026-10-11T11:25:07Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -87818,11 +87824,14 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "tests/kernel/test_flake.py:736 and tests/test_flake_triage.py:401 \u2014 Step 11's mandated pair of assertions is missing: no world holds a kernel entry and a red of another signature in the same job, so nothing pins PD5's asymmetry (asf.flake.active matches the job, decide.quarantined the signature). Add to FixRoundTests a case whose facts carry the `tests (3.12) / unit: test_one` entry while the PR's red is `tests (3.13)` with case `test_two`, asserting `quarantined(other, facts) is None` and `B.state(plan, 'T-1') == State.READY` (the fix round is still written); and to SightingsTests `self.assertTrue(flake.active(flake.load(self.state_dir, now=NOW), 'tests (3.13)', now=NOW))` with `assertFalse(... 'lint' ...)` beside it, on the same kernel_entry()",
+        "asf/kernel/ports.py:677 \u2014 the refresh branch replaces the entry's sources (`q['sources'] = self._scrub(list(action.sources))`) where asf/kernel/actions.py:261 states it \"takes the sources it lacks\", and the action's sources are rebuilt each tick from flake.seen, which drops a row whose PR is no longer open (asf/kernel/flake.py:128) or outside the window (:131-133) \u2014 so one head merging rewrites a three-head entry as two and `asf status` understates the evidence the live quarantine rests on. Merge by pull request instead: `rows = {s.get('pr'): s for s in (q.get('sources') or []) if isinstance(s, dict)}` then `for s in action.sources: rows.setdefault(s.get('pr'), s)` and `q['sources'] = self._scrub([rows[p] for p in sorted(rows, key=lambda p: (p is None, p))])`, the same in tests/kernel/fakes.py:97-104, with an EntryTests case asserting a merged source stays on the entry \u2014 or correct actions.py:261 and document the status row's count as \"heads still open\"",
+        "rebase: PR #1438 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "red: tests (3.12)",
         "red: tests (3.13)",
         "operator answer: granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "build-t-136825-1791661085: NEEDS OPERATOR: the push is refused by a stale local `asf` CLI install with no `pre-push` subcommand \u2014 upgrade `~/.local/bin/asf` on this host, then publish branch `worker/T-136825` \u2014 `git push origin worker/T-13682\u2026",
         "PR #1438: checks (3.12) is red but not a required check \u2014 ignored",
@@ -87834,7 +87843,7 @@
         "PR #1438: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -87852,7 +87861,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-10T22:49:11Z",
+      "updated": "2026-10-11T11:25:07Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -88042,15 +88051,16 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "inbox/1.md / inbox/done/1.md (added by commits `9ff888ff8 record: inbox 1.md`, `57c63f73f record: retire 1`) \u2014 drop these two commits from `worker/T-148630`; they sit outside `writes: tests/test_work_item_model.py` and neither subject names `T-148630` or matches the report-subject pattern, so `asf.harvest.lane.commits_name_items` (asf/harvest/lane.py:609-615) will hold the branch instead of landing it. The branch should be exactly `801ebcedd` + `6b59ce055` on top of `origin/main`.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1468: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1468: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88063,7 +88073,7 @@
       ],
       "title": "a test per parent rule \u2014 the module the other six extend",
       "type": "task",
-      "updated": "2026-10-11T11:21:19Z",
+      "updated": "2026-10-11T11:25:07Z",
       "writes": [
         "tests/test_work_item_model.py"
       ]
@@ -90176,7 +90186,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T10:51:30Z",
+      "updated": "2026-10-11T11:25:07Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
