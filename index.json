@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T21:53:13Z",
+  "generated": "2026-10-11T21:58:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16969,7 +16969,7 @@
         "build-b-138845-1791747069: NEEDS OPERATOR: the review loop that has closed PR #1569/#1571/#1583/#1587/#1589 (and likely others) for \"the card's proving tests are not green on main\" keeps recurring even though every session's direct verificati\u2026",
         "build-b-138845-1791751614: NEEDS OPERATOR: the review finding named PR #1598 having an empty diff with tests not green on main \u2014 that PR is now closed and current origin/main (41366c3c0) has both tests (3.12) and tests (3.13) green (verified\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16979,7 +16979,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T21:49:30Z",
+      "updated": "2026-10-11T21:58:05Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -36132,7 +36132,7 @@
         "spec-f-0352-1791748609: NEEDS OPERATOR: confirm F-0347 is still open and owns the WIP-push/beat work (if it is Done or retired, C4 needs re-opening under F-0352) \u2014 `asf check --product asf --item F-0347`",
         "plan-f-0352-1791750518: NEEDS OPERATOR: whether F-0352's Story S-176462 (\"Split the kernel's hub files (decide/ports/model/loop) so kernel Tasks stop serializing\") should keep that title, given that the approved spec relieves the same wait\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "priority": "need",
       "rank": 2,
@@ -36141,7 +36141,7 @@
       "state": "New",
       "title": "Adopt botseon's measured speed fixes: rebase cap, record lint, two holders, WIP push",
       "type": "feature",
-      "updated": "2026-10-11T21:42:36Z"
+      "updated": "2026-10-11T21:58:05Z"
     },
     "F-0353": {
       "backlinks": [],
@@ -69923,11 +69923,14 @@
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_extra_rounds": 2,
       "kernel_findings": [
+        "asf/env.py:653 \u2014 rewrite the comment to say `schema_version` is written by the package (`asf/init.py:228`, `asf/schema.py:409`), so the clause licensing every other `DOCUMENTED_UNCHECKED_FIELDS` entry does not hold for it, and rewrite `tests/test_env.py:1146-1148` to name the pinned reader's refusal as a known defect rather than intended behaviour; then raise the remedy (drop `8d5e25a62\u2026` from `tools/pinned-readers.txt`, or exclude a pinned product from `migrate_config`'s stamp set) as NEEDS OPERATOR rather than choosing silently.",
+        "asf/env.py:799 \u2014 a present but non-integer `schema_version` must be a fatal shape finding, not folded into \"absent\": add `raw = data.get('schema_version')` / `if raw is not None and (isinstance(raw, bool) or not isinstance(raw, int)): problems.append((lines.get('schema_version', 0), 'schema_version', f'must be a whole number, not {raw!r}'))` before the partition, give `config.yaml`'s stamp the same refusal in `load_config` (`asf/env.py:268-286`), and pin both in `ConfigSchemaVersionTests` \u2014 today `schema_version: oops` validates clean and then `ValueError`s out of `schema.config_version()` inside `require()`.",
+        "asf/config_keys.py:57 \u2014 add `'upgrade.migrate_drain_s'` to `KNOWN_CONFIG_KEYS` beside `'upgrade.drain_wait_s'`, and `'upgrade.migrate_drain_s': (NUM, 0, None)` to `TYPED` beside `'upgrade.pending_ttl_s'` (`asf/config_keys.py:165`), so the key `docs/config.example.yaml:415` now documents is not named as drift by `asf doctor`'s `config keys` row.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "tools/pinned-readers.txt:4 \u2014 restore the line `8d5e25a62d954a5ac46b46ec496330c01de2759b`, restore `self.assertIn(PINNED_SHA, pinned.pinned_shas())` at tests/test_env.py:1077, and instead of widening `PRODUCT_FIELDS` (asf/env.py:598) add `'schema_version'` to `DOCUMENTED_UNCHECKED_FIELDS` (asf/env.py:656) \u2014 a stamped file then validates clean with no error and no warning while `set(env.PRODUCT_FIELDS) <= PINNED_PRODUCT_FIELDS` keeps holding and every pinned test keeps running (precedent: docs/specs/f-0129.md:729)"
       ],
-      "kernel_fix_rounds": 4,
+      "kernel_fix_rounds": 5,
       "kernel_notes": [
         "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance.",
         "PR #1529: part (3.12, 2) is red but not a required check \u2014 ignored",
@@ -69939,7 +69942,7 @@
         "PR #1570: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69949,7 +69952,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T21:02:13Z",
+      "updated": "2026-10-11T21:58:05Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -70145,7 +70148,7 @@
         "PR #1585: upgrade-matrix (v0.2.118) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -70158,7 +70161,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T21:31:23Z",
+      "updated": "2026-10-11T21:58:05Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -86522,7 +86525,7 @@
       ],
       "title": "the line \u2014 one waits line names the unfiled review and the action taken",
       "type": "task",
-      "updated": "2026-10-11T21:49:30Z",
+      "updated": "2026-10-11T21:58:05Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
@@ -86539,7 +86542,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129168",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -86552,7 +86555,7 @@
       ],
       "title": "the harvest \u2014 recover, then mark, then one line, where the review is dropped today",
       "type": "task",
-      "updated": "2026-10-11T21:27:34Z",
+      "updated": "2026-10-11T21:58:05Z",
       "writes": [
         "asf/workers/health.py",
         "tests/test_non_checkout_worktree.py"
@@ -89478,10 +89481,11 @@
       "folder": "tasks",
       "id": "T-154340",
       "kernel_findings": [
-        "tools/check_card_readers.sh:21 \u2014 the `open\\([^)]*f['\"]\\{\u2026\\}\\.md` grep only matches a card path built inline inside the `open()` call, so it misses every real direct reader in the tree (`asf/evidence/rulings.py:57`\u2192`:73`, `asf/evidence/rulepass.py:284`\u2192`:288`, `asf/metrics/metrics.py:1066`\u2192`:1095`, `asf/scorecard/loop.py:266`\u2192`:234`) and passes green on four live breaches of the rule it exists to hold. Match the path-build shape instead (`grep -rnE --include='*.py' \"f['\\\"]\\{[A-Za-z_][A-Za-z0-9_]*\\}\\.md['\\\"]\" asf`), and carry a named `EXEMPT_RE` listing those four modules with the reason \u2014 the shape `tools/check_record_writers.sh:7,19` already uses for `asf/tick/flaky.py` \u2014 so the debt is recorded in the lint and a new reader is still refused; then add the split `path = \u2026; open(path)` shape to `tests/test_card_json.py:203` and keep `:241` green. Both files are inside `writes:`."
+        "asf/cli.py:315 \u2014 `asf show` renders a schema-1 `.md` card through `card.render`, which reads only the schema-2 typed fields (prose/acceptance/gate/history), so every section of the card prints empty and the command still exits 0 \u2014 and every card in every record is schema-1 until Task 10; branch on the card's format in `cmd_show` and render a `.md` card the way the record renders it, `frontmatter.render(meta, expected_body(rec, canonical, compute_derived(canonical), scrub))` (import `expected_body` at asf/cli.py:298 and `from asf.record import frontmatter`), keeping the `card.render` path for a `.json` card, and add the schema-1 case to tests/test_card_json.py \u2014 no test today covers a `.md` card.",
+        "asf/cli.py:986 \u2014 `resolve_record` announces `record: <path>` on stdout ahead of the rendered card, so `asf show`'s stdout is not the card's text that spec \u00a72.9 says is byte-identical to the view; dispatch it as the other value-on-stdout commands do, `return cmd_show(args, resolve_record(args, announce=_announce_stderr))`."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89494,7 +89498,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-11T21:38:38Z",
+      "updated": "2026-10-11T21:58:05Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89552,11 +89556,13 @@
       "folder": "tasks",
       "id": "T-154342",
       "kernel_answers": [
-        "granted asf/harvest/regression.py; nothing else outside writes (card updated by the kernel). B-172260 also writes asf/harvest/regression.py (Review): the overlap rule serialises them. T-160207 also writes asf/harvest/regression.py (Review): the overlap rule serialises them."
+        "granted asf/harvest/regression.py; nothing else outside writes (card updated by the kernel). B-172260 also writes asf/harvest/regression.py (Review): the overlap rule serialises them. T-160207 also writes asf/harvest/regression.py (Review): the overlap rule serialises them.",
+        "granted asf/record/writer.py asf/record/new.py; nothing else outside writes (card updated by the kernel). asf/record/writer.py asf/record/new.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/harvest/regression.py; nothing else outside writes (card updated by the kernel). B-172260 also writes asf/harvest/regression.py (Review): the overlap rule serialises them. T-160207 also writes asf/harvest/regression.py (Review): the overlap rule serialises them.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted asf/record/writer.py asf/record/new.py; nothing else outside writes (card updated by the kernel). asf/record/writer.py asf/record/new.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_findings": [
         "asf/record/writer.py:105 \u2014 pass the record root into the gate's verdict: derive `root = os.path.dirname(os.path.dirname(os.path.realpath(path)))` and call `card.validate(meta, root)` at `:105` and `card.validate(data, root)` at `:103`, keeping `root=None` when the directory above does not look like a record so the pre-commit's scratch tree stays shape-only (needs writes: asf/record/writer.py)",
@@ -89570,7 +89576,7 @@
         "PR #1578: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1578: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89583,13 +89589,15 @@
       ],
       "title": "every reference resolves to a card at the moment it is written",
       "type": "task",
-      "updated": "2026-10-11T21:08:21Z",
+      "updated": "2026-10-11T21:58:05Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/check.py",
         "asf/record/setfield.py",
         "tests/test_card_refs.py",
-        "asf/harvest/regression.py"
+        "asf/harvest/regression.py",
+        "asf/record/writer.py",
+        "asf/record/new.py"
       ]
     },
     "T-154343": {
@@ -90472,15 +90480,14 @@
       "folder": "tasks",
       "id": "T-164015",
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1."
+        "asf/scorecard/program.py:153 \u2014 offline_lines/_tick_lines no longer reset the carried stamp at a clock-transcript boundary, only within one transcript's rotated generations; a product with more than one clocks: entry now has offline lines in its second-processed transcript mis-dated with a stamp carried over from an unrelated transcript. Reset `stamp` per matched path (e.g. have _tick_lines yield a None sentinel between paths and have offline_lines reset stamp on it), keeping the single-path flat shape pinned by tests/test_logs_tree.py:819-828 and tests/test_scorecard.py's offline_lines([text]) call intact."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1601: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1601: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90493,7 +90500,7 @@
       ],
       "title": "every reader of a capped transcript reads its generations oldest-first, streamed",
       "type": "task",
-      "updated": "2026-10-11T21:42:36Z",
+      "updated": "2026-10-11T21:58:05Z",
       "writes": [
         "asf/logs.py",
         "asf/scorecard/program.py",
