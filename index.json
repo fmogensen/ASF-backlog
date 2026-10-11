@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T08:53:05Z",
+  "generated": "2026-10-11T08:57:29Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17143,6 +17143,25 @@
         "tests/test_env.py",
         "tests/test_remote.py"
       ]
+    },
+    "B-151002": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-151002",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.41",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "Bug: build sessions are told to run asf upgrade themselves",
+      "stage_since": "2026-10-11T08:55:38Z",
+      "state": "New",
+      "title": "Bug: build sessions are told to run asf upgrade themselves",
+      "type": "bug",
+      "updated": "2026-10-11T08:57:26Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -34996,7 +35015,8 @@
       "kernel_fix_rounds": 5,
       "kernel_notes": [
         "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026",
-        "spec-f-0340-1791663815: NEEDS OPERATOR: ASF's own live backlog_dir is outside this session's read roots, so \u00a71.1's rows"
+        "spec-f-0340-1791663815: NEEDS OPERATOR: ASF's own live backlog_dir is outside this session's read roots, so \u00a71.1's rows",
+        "plan-f-0340-1791706772: NEEDS OPERATOR: I could not confirm the spec session's `S:133155-133204` id claim is still in the record's mirror, so I cannot prove `idcheck.findings` will pass the ten Story ids when the record mints these Tasks \u2014\u2026"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "landing",
@@ -35008,7 +35028,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-11T08:19:51Z"
+      "updated": "2026-10-11T08:57:26Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -35325,7 +35345,8 @@
         "T-142127",
         "T-142128",
         "T-142129",
-        "B-145246"
+        "B-145246",
+        "B-151002"
       ],
       "decided": true,
       "folder": "features",
@@ -85282,7 +85303,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129176",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0319.md"
       },
@@ -85297,7 +85318,7 @@
       ],
       "title": "one law for the feeder's CI-free fact \u2014 the clamp dropped, the source named, the regression replayed",
       "type": "task",
-      "updated": "2026-10-10T22:30:03Z",
+      "updated": "2026-10-11T08:57:26Z",
       "writes": [
         "asf/capacity.py",
         "asf/feeder/rows.py",
@@ -85425,11 +85446,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129180",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "blocked: NEEDS OPERATOR: this Task's `after: Task 1` dependency (T-129178, `asf/workers/scratch.py` \u2014 PATHS/add_pathspec()/exclude(), per plan Task 1) is not on origin/main and has no open PR. Its on\u2026",
-      "kernel_stuck_since": "2026-10-11T08:51:25Z",
+      "kernel_answers": [
+        "Correct: T-129178 was falsely closed as satisfied (judged on the old pin 14b963ba1). It's reopened and will build first. This Task waits for it via after:, so don't build ahead; end this round and relaunch once T-129178 lands."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Correct: T-129178 was falsely closed as satisfied (judged on the old pin 14b963ba1). It's reopened and will build first. This Task waits for it via after:, so don't build ahead; end this round and relaunch once T-129178 lands."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85442,7 +85465,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T08:51:56Z",
+      "updated": "2026-10-11T08:57:26Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -85487,7 +85510,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129182",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85500,7 +85523,7 @@
       ],
       "title": "a factory scratch path tracked on a trunk is one named doctor row",
       "type": "task",
-      "updated": "2026-10-11T08:25:46Z",
+      "updated": "2026-10-11T08:57:26Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py"
@@ -85632,7 +85655,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -85645,7 +85668,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T08:43:46Z",
+      "updated": "2026-10-11T08:57:26Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -85776,7 +85799,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/feeder/rows.py tests/test_feeder.py; nothing else outside writes (card updated by the kernel). T-129157 also writes asf/feeder/rows.py (Building): the overlap rule serialises them."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0326.md"
       },
@@ -85789,7 +85812,7 @@
       ],
       "title": "the doctor \u2014 the second question, asked in the same row",
       "type": "task",
-      "updated": "2026-10-11T08:43:46Z",
+      "updated": "2026-10-11T08:57:26Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_pushed_work.py",
@@ -86175,7 +86198,7 @@
         "PR #1470: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1470: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0332.md"
       },
@@ -86191,7 +86214,7 @@
       ],
       "title": "the ceiling and its kind gate, in one diff",
       "type": "task",
-      "updated": "2026-10-11T08:48:29Z",
+      "updated": "2026-10-11T08:57:26Z",
       "writes": [
         "asf/workers/loops.py",
         "asf/workers/relaunch.py",
@@ -86658,7 +86681,7 @@
         "PR #1433: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -86672,7 +86695,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-11T08:48:29Z",
+      "updated": "2026-10-11T08:57:26Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -87006,7 +87029,7 @@
         "build-t-131823-1791664197: NEEDS OPERATOR: the red checks on PR #1434 are a confirmed pre-existing trunk flake (same failure reproduced on origin/main HEAD itself) \u2014 rerun them: `gh run rerun 38082466422 --failed`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -87019,7 +87042,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-11T08:48:29Z",
+      "updated": "2026-10-11T08:57:26Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py",
@@ -89792,7 +89815,7 @@
         "PR #1463: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -89805,7 +89828,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-11T08:48:29Z",
+      "updated": "2026-10-11T08:57:26Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
