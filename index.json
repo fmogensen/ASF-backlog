@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T13:25:52Z",
+  "generated": "2026-10-11T13:31:04Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3074,7 +3074,9 @@
       "updated": "2026-10-10T11:30:16Z"
     },
     "B-0098": {
-      "backlinks": [],
+      "backlinks": [
+        "S-161919"
+      ],
       "children": [],
       "decided": true,
       "evidence": [
@@ -16940,7 +16942,7 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16950,7 +16952,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T13:20:31Z",
+      "updated": "2026-10-11T13:31:02Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -35740,7 +35742,18 @@
         "F-0352",
         "B-152404"
       ],
-      "children": [],
+      "children": [
+        "S-161910",
+        "S-161911",
+        "S-161912",
+        "S-161913",
+        "S-161914",
+        "S-161915",
+        "S-161916",
+        "S-161917",
+        "S-161918",
+        "S-161919"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0347",
@@ -35750,7 +35763,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0003",
       "priority": "need",
       "rank": 4,
@@ -35759,7 +35772,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-11T13:10:55Z"
+      "updated": "2026-10-11T13:31:02Z"
     },
     "F-0348": {
       "backlinks": [
@@ -40209,6 +40222,136 @@
       "title": "Spec and plan reviews block only on correctness, never on citation drift",
       "type": "story",
       "updated": "2026-10-11T10:59:41Z"
+    },
+    "S-161910": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161910",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "the five beat verdicts are one pure function, and looping is one of them \u2014 acceptance: `python3 -m unittest -v tests.test_heartbeat_verdict`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
+    },
+    "S-161911": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161911",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "a kernel session is launched with a beat and writes nothing outside its worktree \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_kernel_heartbeat`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
+    },
+    "S-161912": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161912",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "one remote call a tick puts a beat observation on every live session \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_beat_facts`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
+    },
+    "S-161913": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161913",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "a beating session is not ended for being old, and a stalled one is ended at once \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_beat_decide`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
+    },
+    "S-161914": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161914",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "an ended session's work in progress lands on its branch and its notes reach the next brief \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_beat_settle`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
+    },
+    "S-161915": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161915",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "a cloud session is judged by the same rules as a local one, and a reported run that still beats is alive \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_beat_cloud`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
+    },
+    "S-161916": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161916",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "the kernel's own beat is readable with both of its launchd jobs unloaded \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_kernel_beat`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
+    },
+    "S-161917": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161917",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "an install that fails or is refused leaves the previous jobs loaded \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_install_rollback`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
+    },
+    "S-161918": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161918",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "a session's identity is opaque to the kernel and named only in a connector \u2014 acceptance: `python3 -m unittest -v tests.test_identity_connector`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
+    },
+    "S-161919": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-161919",
+      "parent": "F-0347",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:28:54Z",
+      "state": "New",
+      "title": "everything the heartbeat lands on top of is still green \u2014 acceptance: `python3 -m unittest -q tests.test_heartbeat tests.test_scratch tests.test_cloud tests.kernel.test_decide tests.kernel.test_ports tests.kernel.test_host tests.kernel.test_no_heartbeat tests.kernel.test_loop tests.kernel.test_scenarios tests.test_connectors tests.test_doctor tests.test_hermetic`",
+      "type": "story",
+      "updated": "2026-10-11T13:28:54Z"
     },
     "S-51600": {
       "backlinks": [
@@ -69332,17 +69475,19 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
-        "operator answer: granted tools/pinned-readers.txt; nothing else outside writes (card updated by the kernel). tools/pinned-readers.txt matches kernel.risk.high: this item is high-risk now."
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/test_product_check.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance.",
         "PR #1529: part (3.12, 2) is red but not a required check \u2014 ignored",
-        "PR #1529: part (3.13, 2) is red but not a required check \u2014 ignored"
+        "PR #1529: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "PR #1529: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1529: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69352,7 +69497,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T13:25:49Z",
+      "updated": "2026-10-11T13:31:02Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -85410,11 +85555,12 @@
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "rebase: PR #1441 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "red: tests (3.12)",
         "red: tests (3.13)",
         "operator answer: granted asf/schema.py asf/tick/tick.py asf/tick/migrate.py tests/test_tick.py tests/test_minimal_product.py tests/test_tick_steps.py asf/build-t-129157-1791667309@20261010T212200Z; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_tick.py tests/test_minimal_product.py (Review): the overlap rule serialises them. T-136825 also writes asf/schema.py asf/tick/tick.py tests/test_tick.py tests/test_minimal_product.py tests/test_t\u2026"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-t-129157-1791654023: groom-fill raised risk high: docs/plans/f-0274.md Task 1 already fully specifies this Task (files, steps, Gate, nine measured cases, approved spec S-72054) \u2014 the card is ready as soon as its own Acceptance/Gate name the tests the plan already pins; only the record's 4000-char cut left them off the card.",
         "build-t-129157-1791659546: NEEDS OPERATOR: the host's installed `asf` CLI at ~/.local/bin/asf is stale (missing the `pre-push` subcommand the current worktree's asf/cli.py defines), so the pre-push hook refuses every push on this host until i\u2026",
@@ -85426,7 +85572,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85439,7 +85585,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T13:10:55Z",
+      "updated": "2026-10-11T13:31:02Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85625,7 +85771,7 @@
         "PR #1483: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85642,7 +85788,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T13:25:49Z",
+      "updated": "2026-10-11T13:31:02Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -86284,7 +86430,7 @@
         "relaunch: escalated: the previous session stopped (blocked: blocked_on: T-129178 NEEDS OPERATOR: none \u2014 operator already answered; this Task waits for T-129178 (asf/workers/scratch.py) to land on origin/main, then relaunch) \u2014 pick up from its report and branch, and finish the item",
         "ended without a REPORT"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86297,7 +86443,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T13:06:48Z",
+      "updated": "2026-10-11T13:31:02Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -88363,6 +88509,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148631",
+      "kernel_notes": [
+        "PR #1537: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1537: checks (3.13) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0349.md"
@@ -88376,7 +88526,7 @@
       ],
       "title": "`milestones.py`, the declaration, and the rule over it",
       "type": "task",
-      "updated": "2026-10-11T13:25:49Z",
+      "updated": "2026-10-11T13:31:02Z",
       "writes": [
         "asf/record/milestones.py",
         "asf/record/check.py",
@@ -88571,7 +88721,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154338",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88584,7 +88734,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T13:20:31Z",
+      "updated": "2026-10-11T13:31:02Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
@@ -88904,7 +89054,7 @@
       ],
       "title": "the pull request's own clock, the lead-time sample on the ledger, the fold, the view and the two gate criteria",
       "type": "task",
-      "updated": "2026-10-11T13:20:31Z",
+      "updated": "2026-10-11T13:31:02Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -89191,10 +89341,11 @@
         "relaunch: operator answer: granted asf/record/cards.v2.schema.json tests/test_card_schema.py asf/build-t-160206-1791724712@20261011T131841Z; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_findings": [
-        "asf/record/cards.v2.schema.json:108 \u2014 the closed card schema does not declare the key this Task adds: insert `\"kernel_stack\": {\"type\": \"string\", \"owner\": \"machine\"},` after `kernel_reverted` (:107), and add `'kernel_stack',` to `measured_keys` in tests/test_card_schema.py:39 after `'kernel_reverted',`. Both files are outside writes:, so the correction reports `needs writes: asf/record/cards.v2.schema.json tests/test_card_schema.py`; nothing in asf/kernel/** changes. Measured on this head: validate.errors on a card carrying kernel_stack returns [('/kernel_stack', \"additional property 'kernel_stack' is not allowed\")], and neither docs/specs/f-0348.md nor docs/plans/f-0348.md mentions the schema at any Task, so no later Task of this Feature covers it."
+        "asf/record/cards.v2.schema.json:108 \u2014 the closed card schema does not declare the key this Task adds: insert `\"kernel_stack\": {\"type\": \"string\", \"owner\": \"machine\"},` after `kernel_reverted` (:107), and add `'kernel_stack',` to `measured_keys` in tests/test_card_schema.py:39 after `'kernel_reverted',`. Both files are outside writes:, so the correction reports `needs writes: asf/record/cards.v2.schema.json tests/test_card_schema.py`; nothing in asf/kernel/** changes. Measured on this head: validate.errors on a card carrying kernel_stack returns [('/kernel_stack', \"additional property 'kernel_stack' is not allowed\")], and neither docs/specs/f-0348.md nor docs/plans/f-0348.md mentions the schema at any Task, so no later Task of this Feature covers it.",
+        "operator answer: granted asf/record/cards.v2.schema.json tests/test_card_schema.py asf/build-t-160206-1791724712@20261011T131841Z; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89207,7 +89358,7 @@
       ],
       "title": "the stack as a fact \u2014 the card's key, the pull request's base, and the two knobs",
       "type": "task",
-      "updated": "2026-10-11T13:25:49Z",
+      "updated": "2026-10-11T13:31:02Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
