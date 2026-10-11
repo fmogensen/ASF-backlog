@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T21:49:32Z",
+  "generated": "2026-10-11T21:53:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17518,7 +17518,7 @@
         "groom-fill-b-173962-1791744740: groom-fill raised risk high: measured live (97 kernel_state:done Tasks/Bugs, 80 still state: New, 73 of those with a commit on origin/main naming them) and confirmed derive() already computes the correct Closed/Resolved result from current evidence \u2014 the gap is that this correct result isn't persisting across ticks, not a missing kernel->state coupling, which would contradict the shipped evidence-only closing design (F-0318) and the existing asf reopen path for the opposite case.",
         "build-b-173962-1791751793: NEEDS OPERATOR: C2's \"88% of the measured bug\" (73-of-80 cards like T-0818) is not an `ingest.py`/`evidence.py` logic bug \u2014 the new regression test proves `derive()`/`write_fields` already close a `kernel_state: don\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17527,7 +17527,7 @@
       "state": "New",
       "title": "Bug: kernel-done Tasks keep state New on their cards, so boards under-count done work",
       "type": "bug",
-      "updated": "2026-10-11T21:42:36Z",
+      "updated": "2026-10-11T21:53:12Z",
       "writes": [
         "asf/record/ingest.py",
         "asf/evidence/evidence.py",
@@ -90699,7 +90699,7 @@
         "operator answer: Decision: ship the code part now and open the PR without the two template edits (delivery-code.md, plan.md). Mark S-137009 lines 7 and 8 as 'Not proved:' in the PR. The amendable-set path for ASF's own brief templates is being fixed structurally (F-0356); once it lands, the template edits are a follow-up Task. Don't wait on the console."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0350.md"
       },
@@ -90712,7 +90712,7 @@
       ],
       "title": "the pull request, the delivery brief and the plan template say which Story the branch is for",
       "type": "task",
-      "updated": "2026-10-11T21:42:36Z",
+      "updated": "2026-10-11T21:53:12Z",
       "writes": [
         "asf/tick/step_prs.py",
         "asf/briefs/preamble.py",
@@ -92439,7 +92439,7 @@
         "build-t-80573-1791752876: NEEDS OPERATOR: two assumptions stand in for spec text this session could not read (`docs/specs/t-80573.md` is not in the record, only the plan at `docs/plans/f-0306.md`, which carries S-79605's acceptance fence ver\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -92452,7 +92452,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-11T21:49:30Z",
+      "updated": "2026-10-11T21:53:12Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -92494,7 +92494,7 @@
         "groom-fill-t-80574-1791635460: groom-fill raised risk high: upstream Tasks (T-80572 Active, T-80573 New) haven't landed asf/rehearsal.py yet, which is why the writes read absent \u2014 correct sequencing per PD14, not a scope defect; filled acceptance from S-79606 and marked the genuinely-new test file.",
         "groom-fill-t-80574-1791636223: groom-fill raised risk high: still sequencing-blocked, not a scope defect \u2014 T-80572 (the builder, PR #1367) is open/unmerged and T-80573 (the runner and `ids` act this Task's `record` act appends after) has no implementation yet, so asf/rehearsal.py's ACTS table and tests/rehearsal/record/** remain absent from trunk; PD14 applies exactly as in the prior same-day groom-fill, and the staged_guard.py line refs this card cites still match trunk."
       ],
-      "kernel_state": "new",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -92507,7 +92507,7 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-10T13:09:55Z",
+      "updated": "2026-10-11T21:53:12Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_record.py",
@@ -92533,6 +92533,7 @@
       "folder": "tasks",
       "id": "T-80575",
       "kernel_dor_fills": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -92545,7 +92546,7 @@
       ],
       "title": "the `tags` act \u2014 every version reader over annotated tags",
       "type": "task",
-      "updated": "2026-10-10T11:39:13Z",
+      "updated": "2026-10-11T21:53:12Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_tags.py"
