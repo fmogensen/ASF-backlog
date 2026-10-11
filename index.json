@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:17:32Z",
+  "generated": "2026-10-11T15:20:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -87346,7 +87346,7 @@
         "tools/cutover.sh:458 \u2014 the failure line is not \u00a74's and goes to the wrong stream: replace it with the spec's line verbatim (docs/specs/f-0331.md:552) `echo \"  $label: install exited $rc \u2014 the plist is written and recorded, the clock is not loaded\"`, dropping the `>&2` so it stays in the indented transcript the new `2>&1` at :449 keeps whole, and update tests/test_cutover.py:508 to `self.assertIn('asf.sample.daily: install exited 1', result.stdout)`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -87359,7 +87359,7 @@
       ],
       "title": "the exit status pinned, and the cutover that records its manifest row before it fails",
       "type": "task",
-      "updated": "2026-10-11T15:14:01Z",
+      "updated": "2026-10-11T15:20:42Z",
       "writes": [
         "tools/cutover.sh",
         "tests/test_cutover.py",
@@ -88753,7 +88753,7 @@
         "PR #1553: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1553: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88766,7 +88766,7 @@
       ],
       "title": "`priority` is one of three words, in one definition",
       "type": "task",
-      "updated": "2026-10-11T15:17:31Z",
+      "updated": "2026-10-11T15:20:42Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
@@ -88943,7 +88943,7 @@
         "asf/record/card.py:83 \u2014 `return json.dumps(ordered, indent=2, ensure_ascii=False) + '\\n'`: dumps leaves ensure_ascii at its default, so every card title's em dash is stored as `\u2014` (5 of 10 sample cards carry non-ASCII, this item's own title included); dumps is the canonical form, so fixing it after Task 10 writes the record rewrites every card in one diff, and the repo convention is already ensure_ascii=False (asf/record/ingest.py:146 and nine other sites)"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88956,7 +88956,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T15:04:40Z",
+      "updated": "2026-10-11T15:20:42Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
