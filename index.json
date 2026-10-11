@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T12:16:16Z",
+  "generated": "2026-10-11T12:20:46Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17189,7 +17189,7 @@
         "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17198,7 +17198,7 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T12:08:03Z",
+      "updated": "2026-10-11T12:20:39Z",
       "writes": [
         "asf/dispatch.py",
         "asf/briefs/preamble.py",
@@ -17290,7 +17290,7 @@
       "state": "New",
       "title": "Bug: a refused push strands a local session's work on a local-only branch",
       "type": "bug",
-      "updated": "2026-10-11T12:16:15Z",
+      "updated": "2026-10-11T12:20:39Z",
       "writes": [
         "asf/kernel/status.py",
         "tests/kernel/test_flow_violations.py"
@@ -17331,7 +17331,9 @@
       ]
     },
     "B-157007": {
-      "backlinks": [],
+      "backlinks": [
+        "B-160759"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -17364,6 +17366,23 @@
       "title": "Bug: test_host and test_clean_floor fail locally under the launchd guard",
       "type": "bug",
       "updated": "2026-10-11T10:49:26Z"
+    },
+    "B-160759": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-160759",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "severity": "S1",
+      "signature": "Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)",
+      "stage_since": "2026-10-11T12:19:03Z",
+      "state": "New",
+      "title": "Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)",
+      "type": "bug",
+      "updated": "2026-10-11T12:19:03Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -35673,7 +35692,8 @@
         "B-153355",
         "B-154656",
         "B-157007",
-        "B-157108"
+        "B-157108",
+        "B-160759"
       ],
       "decided": true,
       "folder": "features",
@@ -86859,7 +86879,7 @@
       ],
       "title": "a bootstrap launchd still refuses is retried once, and both outcomes are said",
       "type": "task",
-      "updated": "2026-10-11T12:08:03Z",
+      "updated": "2026-10-11T12:20:39Z",
       "writes": [
         "asf/scheduler.py",
         "tests/test_scheduler.py"
@@ -87605,7 +87625,7 @@
         "PR #1497: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1497: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -87621,7 +87641,7 @@
       ],
       "title": "the quiesce \u2014 the kernel's two argv shapes, its lock, and the module every Story shares",
       "type": "task",
-      "updated": "2026-10-11T12:03:45Z",
+      "updated": "2026-10-11T12:20:39Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/upgrade.py",
@@ -88206,7 +88226,7 @@
       ],
       "title": "`asf check --invariants` runs the flow scope read-only",
       "type": "task",
-      "updated": "2026-10-11T12:08:03Z",
+      "updated": "2026-10-11T12:20:39Z",
       "writes": [
         "asf/record/check.py",
         "tests/test_flow_conservation.py"
@@ -88227,7 +88247,7 @@
         "PR #1468: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88240,7 +88260,7 @@
       ],
       "title": "a test per parent rule \u2014 the module the other six extend",
       "type": "task",
-      "updated": "2026-10-11T12:03:45Z",
+      "updated": "2026-10-11T12:20:39Z",
       "writes": [
         "tests/test_work_item_model.py"
       ]
@@ -88434,7 +88454,7 @@
         "tests/test_card_schema.py:28 \u2014 C2: add a case that measures a readable record root instead of asserting a hand-written tuple \u2014 glob sample/backlog/**/*.md, frontmatter.parse + frontmatter.split_machine each card, and assert `keys - set(SCHEMA['properties']) == set()` \u2014 keeping measured_keys for the live-root keys this host cannot read. As written, acceptance line 2 (\"every key the record uses today is a declared property\") can only fail for a key someone remembered to type, which is how C1 survived commit 1fe7474, whose subject was \"declare the 15 measured keys the closed schema missed\". The new case fails with {'feature'} on this head and goes green with C1's one line."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88447,7 +88467,7 @@
       ],
       "title": "the card schema file, and the stdlib validator that enforces exactly what it declares",
       "type": "task",
-      "updated": "2026-10-11T12:03:45Z",
+      "updated": "2026-10-11T12:20:39Z",
       "writes": [
         "asf/record/cards.v2.schema.json",
         "asf/record/validate.py",
@@ -90848,7 +90868,7 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -90869,7 +90889,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T12:03:45Z",
+      "updated": "2026-10-11T12:20:39Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",

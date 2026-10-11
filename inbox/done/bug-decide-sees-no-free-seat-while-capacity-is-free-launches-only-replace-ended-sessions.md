@@ -1,3 +1,5 @@
+→ B-160759
+
 # Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)
 parent: F-0346
 
