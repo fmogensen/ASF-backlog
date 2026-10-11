@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:59:11Z",
+  "generated": "2026-10-11T16:01:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16945,14 +16945,15 @@
         "relaunch: PR #1533 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1539 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1550 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
-        "relaunch: PR #1555 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1555 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1568 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
       "kernel_notes": [
         "build-b-138845-1791733799: NEEDS OPERATOR: the CI check names cited by the card (\"tests (3.12)\", \"tests (3.13)\") no longer exist on current origin/main's check-runs \u2014 the workflow was restructured into \"checks (3.X)\" / \"part (3.X, N)\" jobs so\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16962,7 +16963,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T15:59:10Z",
+      "updated": "2026-10-11T16:01:48Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -88814,7 +88815,7 @@
         "PR #1553: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1553: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88827,7 +88828,7 @@
       ],
       "title": "`priority` is one of three words, in one definition",
       "type": "task",
-      "updated": "2026-10-11T15:42:45Z",
+      "updated": "2026-10-11T16:01:48Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
@@ -88909,6 +88910,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148635",
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1563: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1563: part (3.12, 2) is red but not a required check \u2014 ignored",
@@ -88917,7 +88923,7 @@
         "PR #1563: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1563: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88930,7 +88936,7 @@
       ],
       "title": "schema 1 \u2192 2 \u2014 the migration, and the nine cases the bump moves",
       "type": "task",
-      "updated": "2026-10-11T15:50:22Z",
+      "updated": "2026-10-11T16:01:48Z",
       "writes": [
         "asf/schema.py",
         "tests/test_install.py",
