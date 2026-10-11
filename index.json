@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:09:12Z",
+  "generated": "2026-10-11T15:14:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -81393,9 +81393,10 @@
       "folder": "tasks",
       "id": "T-0734",
       "kernel_findings": [
-        "rebase: PR #1177 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1177: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1177: checks (3.13) is red but not a required check \u2014 ignored",
@@ -81406,7 +81407,7 @@
         "PR #1177: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1177: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81419,7 +81420,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-11T14:19:34Z",
+      "updated": "2026-10-11T15:14:01Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -84938,7 +84939,7 @@
         "groom-fill-t-0816-1791726076: groom-fill raised risk high: the card's Files/Steps describe sync_operator_checkout's pre-#1039 shape (ceiling 25, no ahead/marker handling); the approved replan docs/plans/replans/f-0260-710ab73e6bdd.md (RD3-RD6) already corrects this (ceiling 24, build around the landed ahead/stranded-commit machinery, drop DIRTY_MARKER per D5) but was never carried into the card body, and a prior attempt under this stale text (PR #1237) already closed without landing."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84952,7 +84953,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T15:00:19Z",
+      "updated": "2026-10-11T15:14:01Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -87168,7 +87169,7 @@
         "PR #1554: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0330.md"
       },
@@ -87181,7 +87182,7 @@
       ],
       "title": "the field \u2014 the shared TAIL offers `superseded_by:` to a fix or correct session",
       "type": "task",
-      "updated": "2026-10-11T15:04:40Z",
+      "updated": "2026-10-11T15:14:01Z",
       "writes": [
         "asf/briefs/build.py",
         "tests/fixtures/briefs/golden/*.md",
@@ -87339,7 +87340,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129200",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "tests/test_cutover.py:509-510 \u2014 the manifest assertion cannot fail: AppliedTest's snapshot already holds prepare()'s scheduler_install row for asf.sample.daily and _manifest_rows() re-reads that same retired/<date>/manifest.tsv. Capture `rows_before = [r for r in self._manifest_rows() if r[0] == 'scheduler_install' and r[3] == 'asf.sample.daily']` as the case's first line (before os.remove(self.marker_path())), and replace :509-510 with the same comprehension as `rows_after` plus `self.assertEqual(len(rows_after), len(rows_before) + 1, combined)`.",
+        "tests/test_cutover.py:505-510 \u2014 nothing pins \"after its remaining steps rather than aborting at the failed install\": under `set -euo pipefail` an abort also exits 1, so the case passes with FAILED=1 replaced by exit 1. Add, after :507, `self.assertIn('== cutover event', combined)` (tools/cutover.sh:561, past the clock loop at :468-480) and `self.assertIn('generated by asf doctor', combined)` (the doctor tail at :580).",
+        "tools/cutover.sh:458 \u2014 the failure line is not \u00a74's and goes to the wrong stream: replace it with the spec's line verbatim (docs/specs/f-0331.md:552) `echo \"  $label: install exited $rc \u2014 the plist is written and recorded, the clock is not loaded\"`, dropping the `>&2` so it stays in the indented transcript the new `2>&1` at :449 keeps whole, and update tests/test_cutover.py:508 to `self.assertIn('asf.sample.daily: install exited 1', result.stdout)`."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -87352,7 +87359,7 @@
       ],
       "title": "the exit status pinned, and the cutover that records its manifest row before it fails",
       "type": "task",
-      "updated": "2026-10-11T14:56:17Z",
+      "updated": "2026-10-11T15:14:01Z",
       "writes": [
         "tools/cutover.sh",
         "tests/test_cutover.py",
@@ -88729,6 +88736,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148632",
+      "kernel_answers": [
+        "granted tests/test_groom_adjudicate_reach.py tests.test_groom_adjudicate_reach.ConsoleWritersPublish.test_asf_set_commits_and_pushes_the_card 0. new.FIELD_WORDS; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/test_groom_adjudicate_reach.py tests.test_groom_adjudicate_reach.ConsoleWritersPublish.test_asf_set_commits_and_pushes_the_card 0. new.FIELD_WORDS; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1."
@@ -88738,7 +88751,7 @@
         "PR #1553: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1553: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88751,13 +88764,17 @@
       ],
       "title": "`priority` is one of three words, in one definition",
       "type": "task",
-      "updated": "2026-10-11T15:00:19Z",
+      "updated": "2026-10-11T15:14:01Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
         "asf/record/new.py",
         "asf/groom/inbox.py",
-        "tests/test_work_item_model.py"
+        "tests/test_work_item_model.py",
+        "tests/test_groom_adjudicate_reach.py",
+        "tests.test_groom_adjudicate_reach.ConsoleWritersPublish.test_asf_set_commits_and_pushes_the_card",
+        "0.",
+        "new.FIELD_WORDS"
       ]
     },
     "T-148633": {
@@ -88828,7 +88845,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148635",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88841,7 +88858,7 @@
       ],
       "title": "schema 1 \u2192 2 \u2014 the migration, and the nine cases the bump moves",
       "type": "task",
-      "updated": "2026-10-11T14:32:02Z",
+      "updated": "2026-10-11T15:14:01Z",
       "writes": [
         "asf/schema.py",
         "tests/test_install.py",
@@ -89293,7 +89310,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T15:04:40Z",
+      "updated": "2026-10-11T15:14:01Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -90134,7 +90151,7 @@
       ],
       "title": "the verdict, the looping rule, and the `kernel.heartbeat` section",
       "type": "task",
-      "updated": "2026-10-11T15:04:40Z",
+      "updated": "2026-10-11T15:14:01Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/settings.py",
