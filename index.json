@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T10:56:39Z",
+  "generated": "2026-10-11T11:01:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16860,7 +16860,7 @@
         "satisfied on main at 14b963ba1: tests.test_remote, tests.test_env, tests.test_cloud, tests.test_workers, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: fix/B-136993 holds 1 commit(s) off it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0001",
       "priority": "need",
       "reopened": [
@@ -16873,7 +16873,7 @@
       "state": "New",
       "title": "Bug: a cloud routine is polled under the ambient CLI login when its account does not resolve",
       "type": "bug",
-      "updated": "2026-10-11T10:46:21Z",
+      "updated": "2026-10-11T11:01:11Z",
       "writes": [
         "asf/workers/remote.py",
         "asf/workers/cloud.py",
@@ -34957,6 +34957,7 @@
     "F-0334": {
       "backlinks": [
         "F-0335",
+        "S-157259",
         "B-154656"
       ],
       "children": [
@@ -35218,7 +35219,8 @@
     },
     "F-0340": {
       "backlinks": [
-        "F-0349"
+        "F-0349",
+        "S-157259"
       ],
       "children": [
         "S-133155",
@@ -35572,7 +35574,7 @@
         "spec-f-0344-1791712134: NEEDS OPERATOR: the card's five Feature-level acceptance bullets, to defer them one by one in Out instead of as a set \u2014 `cat \"$(find ~/.ASF -path '*/features/F-0344.md' -print -quit)\"`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35580,7 +35582,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-11T10:46:21Z"
+      "updated": "2026-10-11T11:01:11Z"
     },
     "F-0345": {
       "backlinks": [
@@ -35616,6 +35618,8 @@
         "S-134712",
         "S-137106",
         "S-137607",
+        "S-157258",
+        "S-157259",
         "T-142126",
         "T-142127",
         "T-142128",
@@ -39952,6 +39956,34 @@
       "title": "Intake never starves: an inbox note gets an intake seat within a bound",
       "type": "story",
       "updated": "2026-10-10T20:06:10Z"
+    },
+    "S-157258": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "stories",
+      "id": "S-157258",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T10:59:37Z",
+      "state": "New",
+      "title": "Intake and groom-fill decide by code where the record already has the answer",
+      "type": "story",
+      "updated": "2026-10-11T10:59:37Z"
+    },
+    "S-157259": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "stories",
+      "id": "S-157259",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T10:59:41Z",
+      "state": "New",
+      "title": "Spec and plan reviews block only on correctness, never on citation drift",
+      "type": "story",
+      "updated": "2026-10-11T10:59:41Z"
     },
     "S-51600": {
       "backlinks": [
@@ -69019,7 +69051,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69034,7 +69066,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-11T10:56:35Z",
+      "updated": "2026-10-11T11:01:11Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -69065,6 +69097,7 @@
       "kernel_notes": [
         "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance."
       ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69074,7 +69107,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-10T13:26:49Z",
+      "updated": "2026-10-11T11:01:11Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -69168,6 +69201,7 @@
       "kernel_notes": [
         "groom-fill-t-0456-1791638496: groom-fill raised risk high: Fully specified by docs/plans/f-0114.md's Task 5 (same writes, steps, and test names already named there and in the spec's own Acceptance tests section); every schema.* primitive it calls (CONFIG_VERSION, auto_migrate, tick_drain_s, product_version, snapshot/restore) is already implemented on the sequenced prerequisite T-0452 (commit 34d335c4f, not yet merged to main) \u2014 the card was just missing its acceptance/gate lines, now copied over from the plan."
       ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69177,7 +69211,7 @@
       "state": "New",
       "title": "`asf/upgrade.py` \u2014 the upgrade migrates what it installed, and `--to` puts the snapshot back",
       "type": "task",
-      "updated": "2026-10-10T13:30:56Z",
+      "updated": "2026-10-11T11:01:11Z",
       "writes": [
         "asf/upgrade.py",
         "asf/init.py",
@@ -71036,7 +71070,11 @@
       ],
       "folder": "tasks",
       "id": "T-0503",
-      "kernel_state": "new",
+      "kernel_findings": [
+        "none \u2014 no C-list code defect; the blocker is the unresolved --all flag-name collision (NEEDS OPERATOR above), a plan defect no coder footprint can fix without a naming decision."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0148.md"
       },
@@ -71049,7 +71087,7 @@
       "state": "Active",
       "title": "the reader and its command \u2014 every product's stored week, and `asf scorecard --all`",
       "type": "task",
-      "updated": "2026-10-10T11:02:43Z",
+      "updated": "2026-10-11T11:01:11Z",
       "writes": [
         "asf/scorecard/loop.py",
         "asf/views/scorecard.py",
@@ -84335,7 +84373,7 @@
       ],
       "folder": "tasks",
       "id": "T-0816",
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84349,7 +84387,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-09T21:26:38Z",
+      "updated": "2026-10-11T11:01:11Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -86602,9 +86640,10 @@
       "folder": "tasks",
       "id": "T-129198",
       "kernel_attempts": [
-        "session ran past its max age"
+        "session ran past its max age",
+        "failed: OpenPR worker/T-129198: open PR worker/T-129198: rc 1: pull request create failed: GraphQL: No commits between main and worker/T-129198 (createPullRequest)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86617,7 +86656,7 @@
       ],
       "title": "a bootstrap launchd still refuses is retried once, and both outcomes are said",
       "type": "task",
-      "updated": "2026-10-11T10:56:35Z",
+      "updated": "2026-10-11T11:01:11Z",
       "writes": [
         "asf/scheduler.py",
         "tests/test_scheduler.py"
@@ -87267,9 +87306,9 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/merge_queue.py:1611,1577,1212 and asf/ci_queue.py:2965 \u2014 restore the dropped (F-0328) / (F-0328 P7) / (F-0328 D2) / (F-0328 D6) / (F-0328 D7) provenance citations the spec's code fences carry verbatim (docs/specs/f-0328.md:331,348,354,356,501,549), matching this module's own existing convention (asf/merge_queue.py:198,1009,2901,2937)."
+        "rebase: PR #1479 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1433: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1433: checks (3.13) is red but not a required check \u2014 ignored",
@@ -87284,7 +87323,7 @@
         "PR #1433: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -87298,7 +87337,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-11T10:56:35Z",
+      "updated": "2026-10-11T11:01:11Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -88925,6 +88964,7 @@
       ],
       "folder": "tasks",
       "id": "T-78358",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0283.md"
       },
@@ -88937,7 +88977,7 @@
       ],
       "title": "a hook whose body is older than this build writes is reported, not silently stale",
       "type": "task",
-      "updated": "2026-10-08T18:09:10Z",
+      "updated": "2026-10-11T11:01:11Z",
       "writes": [
         "asf/hooks.py",
         "asf/doctor.py",
@@ -90775,15 +90815,14 @@
       "id": "T-83144",
       "kernel_answers": [
         "granted tests/test_reviews.py tests/test_briefs.py tests/fixtures/briefs/golden/review.md; nothing else outside writes (card updated by the kernel).",
-        "granted asf/kernel/briefs.py; nothing else outside writes (card updated by the kernel). asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/kernel/briefs.py; nothing else outside writes (card updated by the kernel). asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now.",
+        "One more fix round (4th), scoped to the two latest findings, which are real correctness issues: (1) asf/briefs/build.py:559 renders required()'s normalized names. Add reviews.checks(*kinds) beside required() (same dedupe-by-normalize loop, appending the display name) and render reviews.render_table(reviews.checks(*checklist_kinds(row)), reviews.EVIDENCE). (2) tests/test_doc_lane_review.py:180-190 builds 'expected' from the call under test. Assert the literal '| <name> | <pass|fail> | <hint> |' lines against the brief text instead. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/briefs.py; nothing else outside writes (card updated by the kernel). asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "session ran past its max age"
+        "relaunch: operator answer: One more fix round (4th), scoped to the two latest findings, which are real correctness issues: (1) asf/briefs/build.py:559 renders required()'s normalized names. Add reviews.checks(*kinds) beside required() (same dedupe-by-normalize loop, appending the display name) and render reviews.render_table(reviews.checks(*checklist_kinds(row)), reviews.EVIDENCE). (2) tests/test_doc_lane_review.py:180-190 builds 'expected' from the call under test. Assert the literal '| <name> | <pass|fail> | <hint> |' lines against the brief text instead. Nothing else."
       ],
       "kernel_dor_fills": 1,
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/briefs/build.py:559 \u2014 the brief must render the checklist's display names, not `required()`'s normalized ones: add `reviews.checks(*kinds)` beside `required()` (same dedupe-by-`normalize` loop, appending `name` instead of `n`), call it here as `reviews.render_table(reviews.checks(*checklist_kinds(row)), reviews.EVIDENCE)`, correct the false \"renders byte-identically to today's\" clause at `asf/reviews.py:249`, and restore the six row names (keeping the new `<pass\\|fail>` cell) in `tests/fixtures/briefs/golden/review.md:64-69`, `tests/test_briefs.py:373` and `tests/test_reviews.py:185` (`[reviews.normalize(c.name) for c in checks]`)",
         "tests/test_doc_lane_review.py:180-190 \u2014 the case that `Proves: S-73206 line 1` builds `expected` from the same call it is testing, so `assertIn(expected, text)` only checks substitution and the `count`/hint loop asserts against `expected` rather than `text`: assert the six literal `| <name> | <pass\\|fail> | <hint> |` lines against `text`, and do the same at `:197` for the eleven-row case (at minimum `self.assertIn('| `## Stories` is last, and every Story line names a test |', text)`)",
@@ -90814,11 +90853,7 @@
         "PR #1463: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
-      "kernel_stuck_since": "2026-10-11T10:55:21Z",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -90831,7 +90866,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-11T10:56:35Z",
+      "updated": "2026-10-11T11:01:12Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",

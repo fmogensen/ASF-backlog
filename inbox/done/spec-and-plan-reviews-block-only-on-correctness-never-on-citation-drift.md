@@ -1,3 +1,5 @@
+→ S-157259
+
 # Spec and plan reviews block only on correctness, never on citation drift
 parent: F-0346
 
