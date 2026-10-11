@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T10:38:45Z",
+  "generated": "2026-10-11T10:42:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34943,10 +34943,16 @@
         "Grant one final plan fix round now (the earlier answer reached the review before it ended Stuck). Fix exactly the latest review's five findings: re-anchor the base on 0224423 plus the mitigation; asf/ghapp.py exists (PC7/PC13 and the 4th NEEDS OPERATOR); PC10 includes openssl 0; swap the f-0337 :133/:226 citations; fix the two asf backlog commands. Reviewer after that: block only if a Task's code or acceptance would be wrong. Approve otherwise."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Grant one final plan fix round now (the earlier answer reached the review before it ended Stuck). Fix exactly the latest review's five findings: re-anchor the base on 0224423 plus the mitigation; asf/ghapp.py exists (PC7/PC13 and the 4th NEEDS OPERATOR); PC10 includes openssl 0; swap the f-0337 :133/:226 citations; fix the two asf backlog commands. Reviewer after that: block only if a Task's code or acceptance would be wrong. Approve otherwise."
+        "relaunch: operator answer: Grant one final plan fix round now (the earlier answer reached the review before it ended Stuck). Fix exactly the latest review's five findings: re-anchor the base on 0224423 plus the mitigation; asf/ghapp.py exists (PC7/PC13 and the 4th NEEDS OPERATOR); PC10 includes openssl 0; swap the f-0337 :133/:226 citations; fix the two asf backlog commands. Reviewer after that: block only if a Task's code or acceptance would be wrong. Approve otherwise.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "docs/plans/f-0334.md:4-6 \u2014 replace the base: `git merge-base plan/F-0334 origin/main` is `0224423d39cb2be85ba9886ffc55c671dc3c055d`, not `8f237bd`, and the plan's first commit `26dc60e` has `0224423` as its parent, 23 commits past `8f237bd`. Re-anchor the paragraph on `0224423`, and state the mitigation that makes the rest of the plan safe: no `asf/kernel/*` and no `tests/kernel/*` file changed across those 23 commits, so every kernel anchor and Gate count replays unchanged.",
+        "docs/plans/f-0334.md:106,112 \u2014 delete the two claims that `asf/ghapp.py` is absent (`PC7`'s \"`ls asf/ghapp.py` still absent\", `PC13`'s \"not yet landed\"): it exists at the real base and at this head, 335 lines, landed with `tests/test_ghapp.py` in #1414 (`50356a9`, T-129205). Say so in `PC13`, and note it in the fourth `NEEDS OPERATOR` at `:1203`, whose premise is outcome 6 being unbuilt \u2014 the Task-free boundary itself is still right.",
+        "docs/plans/f-0334.md:109 \u2014 `PC10`'s baseline must read `check_clients: ok \u2014 gh 14, git 298, claude 0, launchctl 0, systemctl 0, openssl 0`; `openssl` is the ratchet kind #1414 added. `check_generic: clean`, `check_conventions: clean` and `tests.test_hermetic` at 35 replay as written.",
+        "docs/plans/f-0334.md:114,600-601 \u2014 swap the two transposed `docs/specs/f-0337.md` citations: F-0337's \u00a71 heading (`asf/kernel/sweep.py` \u2014 the queue, the budget, the verdict, the histogram) is `:133`, and the Tests line naming `tests/kernel/test_sweep.py` is `:226`. The plan has them the other way round in both `PC15` and Task 5.",
+        "docs/plans/f-0334.md:1199,1205 \u2014 fix the two `NEEDS OPERATOR` commands: `asf backlog` takes only `--product`, `--epic` and `--all` (`asf/cli.py:491-499`), so `--priority later` and `--item F-0337` each exit 2. `--priority` exists only on `asf new` (`:258`). Use `asf backlog --product <p>` and read the parked rows off the board, or name a command that does take the filter.",
         "docs/plans/f-0334.md:4 \u2014 the branch was cut from `8f237bd`, not `cb47b17c8`; say so, and re-anchor at `8f237bd`",
         "docs/plans/f-0334.md:26-28 \u2014 `cb47b17c8` is not `git merge-base plan/F-0334 origin/main` (that is `8f237bdda1cf041e9e46986cbbcf48b9516fe68a`, fifteen commits later, which changed intake.py +91, ports.py +67, decide.py, loop.py, cli.py, actions.py); re-anchor the ~27 numbers in those six files: ports.py PR_FIELDS :965->:1030, merged listing :1320-1321->:1386, _prs :1306-1330->:1371-1395, _open_pr :1331->:1396, notes :795->:798, its M.Item :820-821->:828-829, _live :1828->:1893, _account :1847->:1912, capacity :1866-1888->:1931-1953, _spawn :2013->:2078, ANSWERS_FILE :107->:110; intake.py SPENT :71->:73, Verdict's fields :83-89->:85-91, is_note :102->:104, shortcut :124->:126, spent :148->:150, its early None :149-150->:153-154, plan :283->:301, its spent call :305->:323, the continue :307->:325, the return :313->:331; decide.py `pr.behind and facts.strict` :1290->:1293, FINISH_FIRST :1615->:1625, _launches :1629->:1639, the launch key :1653-1654->:1663-1664, cands.sort :1668->:1678, the intake.plan caller :1718->:1728, breaches :2127->:2137 and its moves :2132-2137->:2142-2147; loop.py save_plan :275->:277, seat_line :379->:387; cli.py p_kmoves :578-583->:580-584 and the dispatch :751-758->:750-756; actions.py RevertPR :218->:219",
         "docs/plans/f-0334.md:91 \u2014 `test_main_landing` is 19 at this base, not 18 (#1425 added its DirectMerge class); fix the count here and at :358 and :986",
@@ -34963,9 +34969,10 @@
         "docs/plans/f-0334.md:285 \u2014 `asf/kernel/waits.py` `is_wait` is `:89`, not `:87`",
         "docs/plans/f-0334.md:26 \u2014 the banner's \"Every anchor, count and probe below was read at `cb47b17c8`\" is false for the eleven anchors above, which carry their `e82751c19` numbers; either re-anchor them or say which files were read at the spec's base",
         "docs/plans/f-0334.md:87 \u2014 PC6's \"twenty test modules\" is twenty-seven (the unique test modules on the `writes:` lines) and its \"Twelve exist and gain cases or classes\" is nineteen, which is what its own list enumerates; fix both counts (`:57` repeats \"twenty test modules\")",
-        "docs/plans/f-0334.md:99 \u2014 the thirteen `### S-\u2026:` headings are `docs/specs/f-0334.md:1272-1473`, not `:1262-1420`; the cited range starts in the `## Stories` preamble and ends inside S-131014, omitting S-131015, S-131016 and S-131017"
+        "docs/plans/f-0334.md:99 \u2014 the thirteen `### S-\u2026:` headings are `docs/specs/f-0334.md:1272-1473`, not `:1262-1420`; the cited range starts in the `## Stories` preamble and ends inside S-131014, omitting S-131015, S-131016 and S-131017",
+        "operator answer: Grant one final plan fix round now (the earlier answer reached the review before it ended Stuck). Fix exactly the latest review's five findings: re-anchor the base on 0224423 plus the mitigation; asf/ghapp.py exists (PC7/PC13 and the 4th NEEDS OPERATOR); PC10 includes openssl 0; swap the f-0337 :133/:226 citations; fix the two asf backlog commands. Reviewer after that: block only if a Task's code or acceptance would be wrong. Approve otherwise."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "spec-f-0334-1791642615: NEEDS OPERATOR: which classes of question the console is answering \u2014 `asf kernel questions --product <p> --classify --since 2026-09-26T00:00:00Z`",
         "spec-f-0334-1791645911: NEEDS OPERATOR: every session's push of product `asf` on this host is refused \u2014 the pinned CLI predates the `pre-push` subcommand its own current hook shim calls, and no local build has it. Confirm read-only with `p\u2026",
@@ -34981,7 +34988,7 @@
         "PR #1430: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34990,7 +34997,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-11T10:38:41Z"
+      "updated": "2026-10-11T10:41:59Z"
     },
     "F-0335": {
       "backlinks": [
@@ -85065,7 +85072,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85078,7 +85085,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T10:38:41Z",
+      "updated": "2026-10-11T10:41:59Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85266,7 +85273,7 @@
         "PR #1483: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1483: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85283,7 +85290,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T10:38:41Z",
+      "updated": "2026-10-11T10:41:59Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -85844,7 +85851,7 @@
         "satisfied on main at 14b963ba1: tests.test_scratch.ScratchPathsTests, tests.test_scratch.ExcludeFileTests, tests.test_invariants.FactoryScratchIgnoredTests, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_scratch.ScratchPathsTests, tests.test_scratch.ExcludeFileTests, tests.test_invariants.FactoryScratchIgnoredTests; worker/T-129178 holds 1 commit(s) off it"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85861,7 +85868,7 @@
       ],
       "title": "one owner for the factory's scratch paths, and this repo's ignore entry",
       "type": "task",
-      "updated": "2026-10-11T10:38:41Z",
+      "updated": "2026-10-11T10:41:59Z",
       "writes": [
         "asf/workers/scratch.py",
         "tests/test_scratch.py",
@@ -85924,7 +85931,7 @@
         "relaunch: operator answer: Correct: T-129178 was falsely closed as satisfied (judged on the old pin 14b963ba1). It's reopened and will build first. This Task waits for it via after:, so don't build ahead; end this round and relaunch once T-129178 lands.",
         "relaunch: escalated: the previous session stopped (blocked: blocked_on: T-129178 NEEDS OPERATOR: none \u2014 operator already answered; this Task waits for T-129178 (asf/workers/scratch.py) to land on origin/main, then relaunch) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85937,7 +85944,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T09:34:52Z",
+      "updated": "2026-10-11T10:41:59Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -85959,7 +85966,7 @@
         "relaunch: operator answer: Correct: T-129178 was falsely marked satisfied (judged on the old pin 14b963ba1). A fix agent is re-judging it and recovering its commit, and it will build first. This Task waits for it via after:, so end this round; it relaunches once T-129178 lands.",
         "relaunch: escalated: the previous session stopped (blocked: left out: asf/workers/spawn.py and tests/test_workers.py untouched \u2014 Task 1 (T-129178, `asf/workers/scratch.py`, the `exclude()` this Task calls) is still not an ancestor of origin/main (its\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85972,7 +85979,7 @@
       ],
       "title": "the factory hardens the worktree when it makes it",
       "type": "task",
-      "updated": "2026-10-11T09:34:52Z",
+      "updated": "2026-10-11T10:41:59Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -85995,7 +86002,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel). T-129179 also writes asf/workers/scratch.py (Building): the overlap rule serialises them."
       ],
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86008,7 +86015,7 @@
       ],
       "title": "a factory scratch path tracked on a trunk is one named doctor row",
       "type": "task",
-      "updated": "2026-10-11T09:34:52Z",
+      "updated": "2026-10-11T10:41:59Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py",
@@ -86375,7 +86382,7 @@
       "kernel_attempts": [
         "review: no VERDICT line"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0330.md"
       },
@@ -86390,7 +86397,7 @@
       ],
       "title": "the applier \u2014 `asf/tick/apply_rulings.py`, its three arms, and the two seams it needs",
       "type": "task",
-      "updated": "2026-10-11T10:26:40Z",
+      "updated": "2026-10-11T10:41:59Z",
       "writes": [
         "asf/tick/apply_rulings.py",
         "asf/tick/widen_footprint.py",
@@ -86768,6 +86775,7 @@
     },
     "T-129205": {
       "backlinks": [
+        "F-0334",
         "T-129206",
         "T-129207",
         "T-129208",
@@ -87645,7 +87653,7 @@
         "asf/evidence/evidence.py:1551-1568 \u2014 extend landed_proves's docstring with the third refusal (a claim naming a quarantined test) and note it is judged against the quarantine list as it stood at the sha the claim landed on, per docs/plans/f-0341.md:294-295"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -87658,7 +87666,7 @@
       ],
       "title": "the convention, and the claim judged at the sha it landed on",
       "type": "task",
-      "updated": "2026-10-11T10:38:41Z",
+      "updated": "2026-10-11T10:41:59Z",
       "writes": [
         "asf/conventions.py",
         "asf/evidence/evidence.py",
