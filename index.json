@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T19:25:25Z",
+  "generated": "2026-10-11T19:28:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89047,7 +89047,7 @@
         "PR #1580: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1580: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -89060,7 +89060,7 @@
       ],
       "title": "`asf release-readiness --milestone <name>`",
       "type": "task",
-      "updated": "2026-10-11T19:10:13Z",
+      "updated": "2026-10-11T19:28:17Z",
       "writes": [
         "asf/release.py",
         "tests/test_work_item_model.py",
@@ -89586,13 +89586,16 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/kernel/decide.py:2245 \u2014 `_lead_target` reads `lead_p90_max_s`/`lead_p90_max` off `Config`, where neither exists now or after Task 1 (its key is `settings.SPEC['gate']`, read via `product.kernel['gate']` at gate.py:160, and ports.py:2683 maps no gate key onto `Config`), so the target is hardwired to `LEAD_P90_MAX` and `kernel.gate.lead_p90_max: 0` is dead: add `lead_p90_max_s: float = None` to `Config` (model.py:437) and fill it at ports.py:2683 with `lead_p90_max_s=(S.parse_duration(k['gate'].get('lead_p90_max')) if k['gate'].get('lead_p90_max') is not None else None)`, leaving `_lead_target`'s getattr chain as the test hook behind it",
+        "tests/kernel/test_lead_time.py:362 \u2014 `test_the_target_at_zero_leaves_the_plan_byte_identical_to_today` builds its off-config with `B.config(max_sessions=1)`, whose empty `wait_targets` makes `_lead_target` return 0 at decide.py:2244 before the knob is read, so the test passes with the knob removed: build both configs with `_breach_cfg(max_sessions=1)` so the lead target is the only difference between the two plans",
+        "rebase: PR #1558 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/decide.py:517 \u2014 a `'lead'` row with no action enters `stalled`, which is `limbo`'s \"auto-merge past its target\" input, so every green auto-merge PR older than the 4h target is reported in LIMBO while GitHub is still inside its merge target (the author's own test pins `not merged after 2m` against a 600s target, test_lead_time.py:318-332); filter the class out \u2014 `stalled = {b['item']: b for b in found if b['class'] != LEAD_CLASS and b['action'].startswith(NO_BREACH_ACTION)}` \u2014 revert the band-aid at decide.py:2483-2489 to its one-line original, and re-point that test at \"is a lead breach row and is not in plan.limbo\"",
         "asf/kernel/decide.py:2240 \u2014 `getattr(config, 'lead_p90_max', LEAD_P90_MAX)` reads a `Config` field that does not exist (model.py:520-568) and that `config_for` never fills (ports.py:2653-2707), so the rule is hard-wired at 4h, default-on, with no off switch a product can reach (`lead_p90_max: 0` works only because the tests set an attribute on a dataclass instance) and it bypasses `kernel.waits.breach` (settings.py:255, ports.py:2683-2690); the key's home is a duration *string* (`gate.py:191`), so Task 1 landing `lead_p90_max='4h'` makes `age_h * 3600 <= target` (decide.py:2254) a `TypeError` inside `decide`, while landing `lead_p90_max_s` leaves this reader on 4h for ever \u2014 either wire `Config.lead_p90_max_s` from `k['gate']['lead_p90_max']` with the granted writes, or coerce: `v = getattr(config, 'lead_p90_max_s', getattr(config, 'lead_p90_max', None)); target = S.parse_duration(v) if isinstance(v, str) else (LEAD_P90_MAX if v is None else v)`, same helper at decide.py:2334, and return `{}` when `config.wait_targets` is empty",
         "tests/kernel/test_lead_time.py:247 \u2014 Step 3's fix-round half is untested; add one case to `TheLeadBreach`: two Ready items each with an open PR (so `_kind` resolves to `'fix'`, decide.py:1788-1795), the worse-ranked one's PR 6h old, `max_sessions=1`, asserting the breached item is the single `Launch`",
         "operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89605,7 +89608,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T19:14:08Z",
+      "updated": "2026-10-11T19:28:17Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -90215,16 +90218,15 @@
         "relaunch: operator answer: granted tests/test_scheduler.py tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "asf/logs.py:128 \u2014 guard the stamp against being the matched line itself: `if stamp is not None and stamp is not line:`, and add a `CarryTests` case that a line holding both an ISO stamp and a carried substring is carried once, with four successive rotations leaving the head at its first-rotation length.",
         "operator answer: granted tests/test_scheduler.py tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1586: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1586: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90237,7 +90239,7 @@
       ],
       "title": "a clock transcript is capped by the run that wrote it, and the facts that outlive the cap are carried",
       "type": "task",
-      "updated": "2026-10-11T19:22:46Z",
+      "updated": "2026-10-11T19:28:17Z",
       "writes": [
         "asf/logs.py",
         "asf/cli.py",
@@ -90554,11 +90556,13 @@
       "folder": "tasks",
       "id": "T-166574",
       "kernel_answers": [
-        "granted tests/test_heartbeat.py; nothing else outside writes (card updated by the kernel)."
+        "granted tests/test_heartbeat.py; nothing else outside writes (card updated by the kernel).",
+        "granted tests/kernel/test_speedups.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
         "session ran past its max age",
-        "relaunch: operator answer: granted tests/test_heartbeat.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/test_heartbeat.py; nothing else outside writes (card updated by the kernel).",
+        "relaunch: operator answer: granted tests/kernel/test_speedups.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
@@ -90570,7 +90574,7 @@
         "PR #1588: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1588: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90583,7 +90587,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T19:10:13Z",
+      "updated": "2026-10-11T19:28:17Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -90592,7 +90596,8 @@
         "asf/kernel/ports.py",
         "tests/kernel/test_kernel_heartbeat.py",
         "tests/kernel/test_no_heartbeat.py",
-        "tests/test_heartbeat.py"
+        "tests/test_heartbeat.py",
+        "tests/kernel/test_speedups.py"
       ]
     },
     "T-166575": {
@@ -92770,7 +92775,7 @@
       ],
       "title": "the fix-bug brief carries the pre-fix base and the command the lane will run",
       "type": "task",
-      "updated": "2026-10-11T19:17:57Z",
+      "updated": "2026-10-11T19:28:17Z",
       "writes": [
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/build.py",
