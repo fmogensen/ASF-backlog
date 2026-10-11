@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T18:37:00Z",
+  "generated": "2026-10-11T18:42:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -85207,7 +85207,7 @@
         "PR #1575: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1575: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -85220,7 +85220,7 @@
       ],
       "title": "a card a push discards add/add is named by its id, and a modify/modify resolution still prints exactly one line",
       "type": "task",
-      "updated": "2026-10-11T18:36:50Z",
+      "updated": "2026-10-11T18:41:43Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -89530,7 +89530,8 @@
         "granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "asf/kernel/decide.py:517 \u2014 a `'lead'` row with no action enters `stalled`, which is `limbo`'s \"auto-merge past its target\" input, so every green auto-merge PR older than the 4h target is reported in LIMBO while GitHub is still inside its merge target (the author's own test pins `not merged after 2m` against a 600s target, test_lead_time.py:318-332); filter the class out \u2014 `stalled = {b['item']: b for b in found if b['class'] != LEAD_CLASS and b['action'].startswith(NO_BREACH_ACTION)}` \u2014 revert the band-aid at decide.py:2483-2489 to its one-line original, and re-point that test at \"is a lead breach row and is not in plan.limbo\"",
@@ -89539,7 +89540,7 @@
         "operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89552,7 +89553,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T18:36:50Z",
+      "updated": "2026-10-11T18:41:43Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -89969,7 +89970,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160209",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89982,7 +89983,7 @@
       ],
       "title": "the pull request opened against the base, and never merged into it",
       "type": "task",
-      "updated": "2026-10-11T17:38:13Z",
+      "updated": "2026-10-11T18:41:43Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stacked_builds.py"
