@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T17:46:36Z",
+  "generated": "2026-10-11T17:49:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89775,8 +89775,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160207",
+      "kernel_answers": [
+        "granted asf/harvest/regression.py; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted asf/harvest/regression.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
@@ -89789,7 +89793,7 @@
         "PR #1562: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1562: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89802,12 +89806,13 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T17:40:54Z",
+      "updated": "2026-10-11T17:49:19Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
-        "tests/kernel/test_stacked_builds.py"
+        "tests/kernel/test_stacked_builds.py",
+        "asf/harvest/regression.py"
       ]
     },
     "T-160208": {
