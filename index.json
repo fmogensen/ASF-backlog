@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T18:49:04Z",
+  "generated": "2026-10-11T18:52:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16950,14 +16950,15 @@
         "relaunch: PR #1571 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1577 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "ended without a REPORT",
-        "relaunch: PR #1583 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1583 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1587 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
       "kernel_notes": [
         "build-b-138845-1791733799: NEEDS OPERATOR: the CI check names cited by the card (\"tests (3.12)\", \"tests (3.13)\") no longer exist on current origin/main's check-runs \u2014 the workflow was restructured into \"checks (3.X)\" / \"part (3.X, N)\" jobs so\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16967,7 +16968,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T18:48:54Z",
+      "updated": "2026-10-11T18:52:44Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17444,7 +17445,8 @@
       "backlinks": [
         "S-173460",
         "T-0453",
-        "T-154342"
+        "T-154342",
+        "B-173611"
       ],
       "children": [],
       "decided": true,
@@ -17474,13 +17476,34 @@
       "id": "B-173611",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
+      "landed": "21c0c2c2f3d13adca24c7c0a09d9543c03f0cf0e",
       "rank": -4,
+      "removed": "retired: superseded by 21c0c2c2f3d13adca24c7c0a09d9543c03f0cf0e \u2014 The red run's failure (test_logs_tree.PathTests.test_no_other_module_hand_builds_a_path_under_the_tree, asf/harvest/regression.py hand-building a log path) was already fixed by 21c0c2c2f (B-172260, #1584); the test is green at current HEAD. (landed 21c0c2c2f3d13adca24c7c0a09d9543c03f0cf0e)",
       "schema_version": 1,
       "stage_since": "2026-10-11T18:29:57Z",
       "state": "New",
       "title": "main red at 98533db97: tests (3.12), tests (3.13) \u2014 4 candidate change(s)",
       "type": "bug",
       "updated": "2026-10-11T18:36:50Z"
+    },
+    "B-173962": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-173962",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "Bug: kernel-done Tasks keep state New on their cards, so boards under-count done work",
+      "stage_since": "2026-10-11T18:51:38Z",
+      "state": "New",
+      "title": "Bug: kernel-done Tasks keep state New on their cards, so boards under-count done work",
+      "type": "bug",
+      "updated": "2026-10-11T18:52:44Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -35802,7 +35825,8 @@
         "B-154656",
         "B-157007",
         "B-157108",
-        "B-160759"
+        "B-160759",
+        "B-173962"
       ],
       "decided": true,
       "folder": "features",
@@ -90497,6 +90521,10 @@
         "session ran past its max age",
         "relaunch: operator answer: granted tests/test_heartbeat.py; nothing else outside writes (card updated by the kernel)."
       ],
+      "kernel_notes": [
+        "PR #1588: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1588: part (3.13, 2) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
@@ -90510,7 +90538,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T18:48:54Z",
+      "updated": "2026-10-11T18:52:44Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -92669,7 +92697,8 @@
         "Decision: split it. Push your build.py change and tests now WITHOUT touching asf/briefs/templates/fix-bug.md. Supplying an extra regression_check key to the template's format() is harmless, and the template test may assert the key is provided. Open the PR. The console, acting as the approving person for the amendable set, then adds the one template line ('{pre_push_check}{regression_check}' at fix-bug.md:12) to your PR branch and approves it. Don't implement 'asf propose' in this Task (that belongs to F-0356)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Decision: split it. Push your build.py change and tests now WITHOUT touching asf/briefs/templates/fix-bug.md. Supplying an extra regression_check key to the template's format() is harmless, and the template test may assert the key is provided. Open the PR. The console, acting as the approving person for the amendable set, then adds the one template line ('{pre_push_check}{regression_check}' at fix-bug.md:12) to your PR branch and approves it. Don't implement 'asf propose' in this Task (that belongs to F-0356)."
+        "relaunch: operator answer: Decision: split it. Push your build.py change and tests now WITHOUT touching asf/briefs/templates/fix-bug.md. Supplying an extra regression_check key to the template's format() is harmless, and the template test may assert the key is provided. Open the PR. The console, acting as the approving person for the amendable set, then adds the one template line ('{pre_push_check}{regression_check}' at fix-bug.md:12) to your PR branch and approves it. Don't implement 'asf propose' in this Task (that belongs to F-0356).",
+        "relaunch: escalated: the previous session stopped (partial: left out: asf/briefs/templates/fix-bug.md \u2014 per the operator's 2026-10-11T17:55:32Z answer, left for the console (acting as approving person for the amendable set) to add `{pre_push_check}{r\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post77+g8fd5bd5b",
@@ -92682,7 +92711,7 @@
         "PR #1324: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -92695,7 +92724,7 @@
       ],
       "title": "the fix-bug brief carries the pre-fix base and the command the lane will run",
       "type": "task",
-      "updated": "2026-10-11T18:13:42Z",
+      "updated": "2026-10-11T18:52:44Z",
       "writes": [
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/build.py",

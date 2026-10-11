@@ -1,3 +1,5 @@
+→ B-173962
+
 # Bug: kernel-done Tasks keep state New on their cards, so boards under-count done work
 parent: F-0346
 
