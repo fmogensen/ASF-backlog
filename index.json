@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T16:21:41Z",
+  "generated": "2026-10-11T16:26:48Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89052,7 +89052,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154339",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/record/writer.py:87 \u2014 a parse failure must raise `CardInvalid`, not `FrontmatterError`: wrap `card.loads(text, path)` in `try/except frontmatter.FrontmatterError as e: raise CardInvalid(path, [('/', str(e))]) from e`, then validate the returned meta; add a case asserting `write_card(path, '{not json')` raises `CardInvalid` and leaves the directory empty.",
+        "asf/record/writer.py:77 \u2014 make the waiver keyword-only so it is the named argument and nothing else: `def write_card(path, text, *, validate=True):` (no call site passes a third positional argument).",
+        "tools/check_card_gate.sh:18 \u2014 the lint must catch a wrapped waiver: match the token alone, `grep -rnE --include='*.py' 'validate[[:space:]]*=[[:space:]]*False' asf`, excluding `^asf/schema\\.py:|^asf/record/repair\\.py:|^asf/record/writer\\.py:` (the token appears nowhere else in `asf/`), and add a `TheWaiverLintTests` case for a multi-line third waiver."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89065,7 +89071,7 @@
       ],
       "title": "the write gate \u2014 the one card writer refuses an invalid card and writes nothing",
       "type": "task",
-      "updated": "2026-10-11T16:05:07Z",
+      "updated": "2026-10-11T16:26:31Z",
       "writes": [
         "asf/record/writer.py",
         "tools/check_card_gate.sh",
