@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T14:46:50Z",
+  "generated": "2026-10-11T14:50:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16946,7 +16946,7 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16956,7 +16956,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T14:27:33Z",
+      "updated": "2026-10-11T14:50:00Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -69735,12 +69735,18 @@
       ],
       "folder": "tasks",
       "id": "T-0457",
+      "kernel_answers": [
+        "granted tests/test_workflow.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/test_workflow.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_notes": [
         "groom-fill-t-0457-1791638803: groom-fill raised risk high: Card's own Description already mirrors docs/plans/f-0114.md's Task 6 verbatim (same writes, same steps); filled the two acceptance lines from the plan's own canonical test classes (PlanTests, MixedVersionTests), confirmed tools/upgrade_matrix.py and tests/test_upgrade_matrix.py are absent from origin/main and .github/workflows/tests.yml has no plan/upgrade-matrix job yet; risk_raise high because writes touch CI (tests.yml). Separately: the Description's \"stories: S-32357\" is the pre-spec-amend id \u2014 the plan's own Task 6 (docs/plans/f-0114.md:44,611) already carries the live id S-69211, so the card's header is stale and worth a follow-up correction."
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69753,11 +69759,13 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T14:24:19Z",
+      "updated": "2026-10-11T14:50:00Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
-        "tests/test_upgrade_matrix.py"
+        "tests/test_upgrade_matrix.py",
+        "tests/test_workflow.py",
+        "tests/test_ci_pool.py"
       ]
     },
     "T-0458": {
@@ -84898,6 +84906,12 @@
       ],
       "folder": "tasks",
       "id": "T-0816",
+      "kernel_answers": [
+        "granted asf/cli.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/cli.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/cli.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/cli.py (Review): the overlap rule serialises them."
+      ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
       "kernel_extra_rounds": 0,
@@ -84907,7 +84921,7 @@
         "groom-fill-t-0816-1791726076: groom-fill raised risk high: the card's Files/Steps describe sync_operator_checkout's pre-#1039 shape (ceiling 25, no ahead/marker handling); the approved replan docs/plans/replans/f-0260-710ab73e6bdd.md (RD3-RD6) already corrects this (ceiling 24, build around the landed ahead/stranded-commit machinery, drop DIRTY_MARKER per D5) but was never carried into the card body, and a prior attempt under this stale text (PR #1237) already closed without landing."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84921,14 +84935,15 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T14:24:19Z",
+      "updated": "2026-10-11T14:50:00Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
         "asf/tick/record_health.py",
         "asf/views/status.py",
         "tests/test_operator_checkout_sync.py",
-        "tests/test_tick.py"
+        "tests/test_tick.py",
+        "asf/cli.py"
       ]
     },
     "T-0817": {
@@ -87340,7 +87355,7 @@
       ],
       "title": "the guide says what an install now does to a running tick",
       "type": "task",
-      "updated": "2026-10-11T14:38:54Z",
+      "updated": "2026-10-11T14:50:00Z",
       "writes": [
         "docs/guide/upgrading.md",
         "docs/guide/troubleshooting.md",
@@ -88687,6 +88702,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148632",
+      "kernel_notes": [
+        "PR #1553: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1553: part (3.13, 4) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0349.md"
@@ -88700,7 +88719,7 @@
       ],
       "title": "`priority` is one of three words, in one definition",
       "type": "task",
-      "updated": "2026-10-11T14:46:48Z",
+      "updated": "2026-10-11T14:50:00Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
@@ -89424,6 +89443,7 @@
         "T-159847"
       ],
       "backlinks": [
+        "T-0816",
         "T-159853",
         "T-159855"
       ],
@@ -89438,7 +89458,7 @@
         "asf/kernel/decide.py:965 \u2014 the line term prints `>=` where the flag uses `>` (and `< 0` when the cap is off); use `'>' if cap and lines > cap else '<='`, and render the clause as `'%d lines (risk.large_lines off)' % lines` when `cap` is 0"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89451,7 +89471,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-11T14:32:02Z",
+      "updated": "2026-10-11T14:50:00Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
