@@ -1,0 +1,26 @@
+# No human in the loop: per-account credential faults, budget pacing, kernel answers its own questions
+parent: E-0006
+
+type: feature
+parent: E-0006
+priority: need
+
+No human in the loop: the factory degrades and heals by itself (operator, 2026-10-11: "I really don't see an autonomous factory depending on humans").
+
+## Measured dependencies on a person (2026-10-10/11)
+- One account's expired OAuth ("OAuth session expired and could not be refreshed") tripped the whole cloud breaker (class auth), and capacity fell from 18 to 12 until someone re-logs.
+- 7-day quota: two of five accounts are at 92% and 97%, so the factory will starve mid-week without pacing.
+- Stuck(operator) rows: dozens per day, answered by the console with rule-like decisions (grant a scoped round on the latest findings; apply a one-line doc finding; relaunch on another account; re-judge a false satisfied; keep an existing flag and add a new one).
+- Old-floor and launchd incidents needed a person to run commands.
+
+## Change
+1. Credential faults are per account: an auth failure blocks only that account (like B-138544 for session limits), never the lane. The factory tries a refresh once; if that fails, the account is parked and named in status, and the other accounts carry on. Setup supports long-lived tokens (e.g. a `setup-token`-style credential per account) so expiry is rare; installing credentials remains the one human act, done once.
+2. Budget pacing by code: the scheduler spreads the 7-day budget across accounts to the reset (headroom per account per hour), prefers accounts with headroom, steps down to cheaper models as an account nears its guard, and keeps one seat class alive to the last account.
+3. The kernel answers its own operator questions by policy: a decision table for the recurring classes above (scoped final round with a correctness-only reviewer rule; relaunch elsewhere on quota or auth; re-judge on stale evidence; prefer additive flags). An LLM judge (cheap model, structured verdict) handles what the table can't. A person is asked only for money, credentials or an irreversible action, and that stays rare and visible.
+4. Every Stuck(operator) row carries its class, and status counts operator-only questions per day (target: 0 outside money or credentials).
+
+## Acceptance
+- An auth failure on one account leaves the other accounts launching on the next tick (test).
+- At 90%+ of the 7-day budget an account gets a lower launch share and a cheaper model, and capacity is never cut to zero while any account has headroom (test).
+- Each recurring Stuck class above is answered by the kernel's policy without the console (one test per class replaying a 2026-10-11 case).
+- Status reports operator questions per day by class.
