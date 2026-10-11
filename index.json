@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T22:31:53Z",
+  "generated": "2026-10-11T22:35:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16971,11 +16971,7 @@
         "build-b-138845-1791747069: NEEDS OPERATOR: the review loop that has closed PR #1569/#1571/#1583/#1587/#1589 (and likely others) for \"the card's proving tests are not green on main\" keeps recurring even though every session's direct verificati\u2026",
         "build-b-138845-1791751614: NEEDS OPERATOR: the review finding named PR #1598 having an empty diff with tests not green on main \u2014 that PR is now closed and current origin/main (41366c3c0) has both tests (3.12) and tests (3.13) green (verified\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "done: NEEDS OPERATOR: the review finding below (\"PR #1613 changed nothing and the card's proving tests are not green on main\") contradicts what this session verified directly against origin/main and\u2026",
-      "kernel_stuck_since": "2026-10-11T22:31:02Z",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16985,7 +16981,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T22:31:51Z",
+      "updated": "2026-10-11T22:35:23Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -89507,12 +89503,15 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154340",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
         "asf/cli.py:315 \u2014 `asf show` renders a schema-1 `.md` card through `card.render`, which reads only the schema-2 typed fields (prose/acceptance/gate/history), so every section of the card prints empty and the command still exits 0 \u2014 and every card in every record is schema-1 until Task 10; branch on the card's format in `cmd_show` and render a `.md` card the way the record renders it, `frontmatter.render(meta, expected_body(rec, canonical, compute_derived(canonical), scrub))` (import `expected_body` at asf/cli.py:298 and `from asf.record import frontmatter`), keeping the `card.render` path for a `.json` card, and add the schema-1 case to tests/test_card_json.py \u2014 no test today covers a `.md` card.",
         "asf/cli.py:986 \u2014 `resolve_record` announces `record: <path>` on stdout ahead of the rendered card, so `asf show`'s stdout is not the card's text that spec \u00a72.9 says is byte-identical to the view; dispatch it as the other value-on-stdout commands do, `return cmd_show(args, resolve_record(args, announce=_announce_stderr))`."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89525,7 +89524,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-11T22:16:07Z",
+      "updated": "2026-10-11T22:35:23Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89826,13 +89825,17 @@
         "granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/kernel/decide.py:521 \u2014 a lead-breach record reaches `stalled`, so a LANDING item whose PR is green with auto-merge on and within its merge target is reported in LIMBO (\"PR #N green with auto-merge on, not merged after 6.0h\") and cascades through `_blocked_for_good`; exclude the lead classes: `stalled = {b['item']: b for b in found if b['action'].startswith(NO_BREACH_ACTION) and not b['class'].startswith('lead ')}`",
+        "asf/kernel/decide.py:2383 \u2014 `_why_no_breach_action` has no case for a `lead PR #N` class, so the tick line reads `BREACH T-1 lead PR #10 6.0h -> none: no action exists` for a PR that is correctly waiting on GitHub auto-merge; before the final return, map the lead class onto the item's own wait class: `if cls.startswith('lead '): cls = (overdue(facts, config, states, same_class=False).get(iid) or ('',))[0]`"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "build-t-159849-1791746871: NEEDS OPERATOR: `worker/T-159849` is rebased and cannot fast-forward onto its own remote, so the Stop gate refuses it twice and the branch needs the factory's publish \u2014 `git -C ~/.asf/state/asf/worktrees/\u2026",
         "PR #1611: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89845,7 +89848,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T22:27:51Z",
+      "updated": "2026-10-11T22:35:23Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -90821,7 +90824,11 @@
       "id": "T-166574",
       "kernel_answers": [
         "granted tests/test_heartbeat.py; nothing else outside writes (card updated by the kernel).",
-        "granted tests/kernel/test_speedups.py; nothing else outside writes (card updated by the kernel)."
+        "granted tests/kernel/test_speedups.py; nothing else outside writes (card updated by the kernel).",
+        "granted asf/workers/runtime.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/workers/runtime.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
@@ -90831,7 +90838,7 @@
         "build-t-166574-1791751785: NEEDS OPERATOR: confirm kernel.test_clean_floor's host-only red is the worker-home artifact above and not a defect to file \u2014 `cd ~/.asf/state/asf/worktrees/build-t-166574-1791751785 && python3 -c \"from as\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90844,7 +90851,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T22:03:33Z",
+      "updated": "2026-10-11T22:35:23Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -90854,7 +90861,8 @@
         "tests/kernel/test_kernel_heartbeat.py",
         "tests/kernel/test_no_heartbeat.py",
         "tests/test_heartbeat.py",
-        "tests/kernel/test_speedups.py"
+        "tests/kernel/test_speedups.py",
+        "asf/workers/runtime.py"
       ]
     },
     "T-166575": {
