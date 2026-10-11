@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T13:55:17Z",
+  "generated": "2026-10-11T14:01:12Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1836,6 +1836,7 @@
         "T-0036",
         "T-0090",
         "T-0306",
+        "T-129157",
         "B-0123"
       ],
       "children": [],
@@ -17376,7 +17377,7 @@
       "kernel_notes": [
         "PR #1542: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17385,7 +17386,7 @@
       "state": "New",
       "title": "Bug: test_host and test_clean_floor fail locally under the launchd guard",
       "type": "bug",
-      "updated": "2026-10-11T13:46:31Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "tests/kernel/test_host.py"
       ]
@@ -35776,6 +35777,9 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
+      "kernel_notes": [
+        "plan-f-0347-1791725437: NEEDS OPERATOR: the claim check over the live record - this is a cloud session, there is no ~/.ASF, so neither the canonical record nor the claim ledger could be read here, and the ten Story ids the plan cites were\u2026"
+      ],
       "kernel_rebuilds": 1,
       "kernel_state": "landing",
       "parent": "E-0003",
@@ -35786,7 +35790,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-11T13:31:02Z"
+      "updated": "2026-10-11T14:01:11Z"
     },
     "F-0348": {
       "backlinks": [
@@ -69650,9 +69654,10 @@
       ],
       "kernel_fix_rounds": 1,
       "kernel_notes": [
-        "groom-fill-t-0456-1791638496: groom-fill raised risk high: Fully specified by docs/plans/f-0114.md's Task 5 (same writes, steps, and test names already named there and in the spec's own Acceptance tests section); every schema.* primitive it calls (CONFIG_VERSION, auto_migrate, tick_drain_s, product_version, snapshot/restore) is already implemented on the sequenced prerequisite T-0452 (commit 34d335c4f, not yet merged to main) \u2014 the card was just missing its acceptance/gate lines, now copied over from the plan."
+        "groom-fill-t-0456-1791638496: groom-fill raised risk high: Fully specified by docs/plans/f-0114.md's Task 5 (same writes, steps, and test names already named there and in the spec's own Acceptance tests section); every schema.* primitive it calls (CONFIG_VERSION, auto_migrate, tick_drain_s, product_version, snapshot/restore) is already implemented on the sequenced prerequisite T-0452 (commit 34d335c4f, not yet merged to main) \u2014 the card was just missing its acceptance/gate lines, now copied over from the plan.",
+        "build-t-0456-1791726595: NEEDS OPERATOR: the sandbox's pip/setuptools cannot build the asf-factory wheel (install_layout AttributeError), causing InstallStepsTests.test_idempotent_second_run and PackageDataTests.test_a_built_wheel_installed\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69662,7 +69667,7 @@
       "state": "New",
       "title": "`asf/upgrade.py` \u2014 the upgrade migrates what it installed, and `--to` puts the snapshot back",
       "type": "task",
-      "updated": "2026-10-11T13:50:55Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/upgrade.py",
         "asf/init.py",
@@ -81321,7 +81326,11 @@
       ],
       "folder": "tasks",
       "id": "T-0734",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "rebase: PR #1177 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81334,7 +81343,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-11T12:50:20Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -85632,10 +85641,11 @@
         "PR #1441: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1441: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1441: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "build-t-129157-1791725353: NEEDS OPERATOR: the stop gate records an `unpushed` defect against a session that followed B-0056 exactly \u2014 asf/workers/stopgate.py exempts only OPTIONAL_PUSH_KINDS = ('adjudicate',) with untouched(), so a `correct`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85648,7 +85658,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T13:31:02Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -86529,7 +86539,7 @@
         "relaunch: escalated: the previous session stopped (blocked: left out: asf/workers/spawn.py and tests/test_workers.py untouched \u2014 Task 1 (T-129178, `asf/workers/scratch.py`, the `exclude()` this Task calls) is still not an ancestor of origin/main (its\u2026) \u2014 pick up from its report and branch, and finish the item",
         "ended without a REPORT"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86542,7 +86552,7 @@
       ],
       "title": "the factory hardens the worktree when it makes it",
       "type": "task",
-      "updated": "2026-10-11T13:46:31Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -87203,14 +87213,15 @@
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/test_upgrade_kernel_floor.py; nothing else outside writes (card updated by the kernel). T-130967 also writes tests/test_upgrade_kernel_floor.py (Review): the overlap rule serialises them."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1535: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1535: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -87223,7 +87234,7 @@
       ],
       "title": "one owner for the labels launchd is not holding, and the install that reads its clocks back and exits non-zero",
       "type": "task",
-      "updated": "2026-10-11T13:50:55Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/scheduler.py",
         "asf/install.py",
@@ -88806,7 +88817,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154338",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/record/card.py:57 \u2014 after the `except json.JSONDecodeError` block in `loads`, add `if not isinstance(data, dict): raise frontmatter.FrontmatterError(path_, 1, 'a card must be a JSON object')`; without it a `.json` card whose top level is a list, a string or null raises TypeError/ValueError out of `core.load_items` (core.py:138) instead of appending to `parse_errors`, so one hand-edited or truncated card crashes every command that scans the record. Add the matching case to tests/test_card_api.py asserting `core.load_items` reports it in `parse_errors` and drops the card."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88819,7 +88834,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T13:41:24Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
@@ -89328,7 +89343,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T13:50:55Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -89353,7 +89368,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159854",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89366,7 +89381,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-11T13:46:31Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
@@ -89424,14 +89439,15 @@
         "granted asf/record/cards.v2.schema.json tests/test_card_schema.py asf/build-t-160206-1791724712@20261011T131841Z; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/record/cards.v2.schema.json tests/test_card_schema.py asf/build-t-160206-1791724712@20261011T131841Z; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted asf/record/cards.v2.schema.json tests/test_card_schema.py asf/build-t-160206-1791724712@20261011T131841Z; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "asf/record/cards.v2.schema.json:108 \u2014 the closed card schema does not declare the key this Task adds: insert `\"kernel_stack\": {\"type\": \"string\", \"owner\": \"machine\"},` after `kernel_reverted` (:107), and add `'kernel_stack',` to `measured_keys` in tests/test_card_schema.py:39 after `'kernel_reverted',`. Both files are outside writes:, so the correction reports `needs writes: asf/record/cards.v2.schema.json tests/test_card_schema.py`; nothing in asf/kernel/** changes. Measured on this head: validate.errors on a card carrying kernel_stack returns [('/kernel_stack', \"additional property 'kernel_stack' is not allowed\")], and neither docs/specs/f-0348.md nor docs/plans/f-0348.md mentions the schema at any Task, so no later Task of this Feature covers it.",
         "operator answer: granted asf/record/cards.v2.schema.json tests/test_card_schema.py asf/build-t-160206-1791724712@20261011T131841Z; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89444,7 +89460,7 @@
       ],
       "title": "the stack as a fact \u2014 the card's key, the pull request's base, and the two knobs",
       "type": "task",
-      "updated": "2026-10-11T13:46:31Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -90437,12 +90453,17 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post72+g977d319a",
+      "kernel_findings": [
+        "asf/hooks.py:378 (hook_upgrade) / tests/test_hooks_recognise.py:325 (HookUpgradeTests) \u2014 add a case building an older pre-redaction-gate init hook (init.PRE_COMMIT with STAGED_CHECK_LINE swapped for OLD_INIT_CHECK_LINE, and its \"exec asf redact --pre-commit\" line stripped) and assert hook_upgrade(old, 'pre-commit', dispatcher, 'demo', True) equals init_cli_upgrade(init.PRE_COMMIT, 'pre-commit', dispatcher) in one call, non-None, with a second call returning None \u2014 the Task's Step 8 / PD5's C16 promise currently has no test.",
+        "operator answer: Grant one more groom-fill: the earlier rejections came from a verdict-parser bug (multi-line lists), since fixed. Name at least one test in the Acceptance list in the schema's list form."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-t-78359-1791630148: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-t-78359-1791631136: groom-fill verdict rejected: acceptance: missing or not a list",
         "groom-fill-t-78359-1791632977: groom-fill raised risk high: well-specified, measured against current trunk (PRE_COMMIT/PRE_PUSH line counts and _own_upgrade's 5-arg shape confirmed), only missing the acceptance/test-naming the DoR requires; touches the record's own hook-install path so risk stays high"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0283.md"
       },
@@ -90455,7 +90476,7 @@
       ],
       "title": "the record's own hooks are moved onto the pin by the command the row already names",
       "type": "task",
-      "updated": "2026-10-11T13:55:16Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
@@ -91541,7 +91562,7 @@
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -91562,7 +91583,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T13:41:24Z",
+      "updated": "2026-10-11T14:01:11Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
