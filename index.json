@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T17:21:02Z",
+  "generated": "2026-10-11T17:24:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16947,14 +16947,15 @@
         "relaunch: PR #1550 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1555 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1568 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
-        "relaunch: PR #1571 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1571 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1577 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
       "kernel_notes": [
         "build-b-138845-1791733799: NEEDS OPERATOR: the CI check names cited by the card (\"tests (3.12)\", \"tests (3.13)\") no longer exist on current origin/main's check-runs \u2014 the workflow was restructured into \"checks (3.X)\" / \"part (3.X, N)\" jobs so\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16964,7 +16965,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T17:21:00Z",
+      "updated": "2026-10-11T17:24:00Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -49612,6 +49613,7 @@
         "T-129177",
         "T-129193",
         "T-154337",
+        "T-160207",
         "T-164021",
         "T-80371",
         "B-0040",
@@ -88985,7 +88987,7 @@
       "kernel_notes": [
         "build-t-148636-1791737406: NEEDS OPERATOR: whether to file a new Story so \u00a76 (the scaffold and README) is proved by one \u2014 K7's operator line in docs/plans/f-0349.md \u00a72 offers this but leaves it to a human; no command, just the decision"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88995,7 +88997,7 @@
       "state": "New",
       "title": "the record scaffold and the README",
       "type": "task",
-      "updated": "2026-10-11T17:13:41Z",
+      "updated": "2026-10-11T17:24:00Z",
       "writes": [
         "asf/init.py",
         "tests/test_install.py",
@@ -89645,7 +89647,7 @@
         "asf/kernel/incidents.py:140-147 \u2014 report() sums total/flagged over records, but the three kinds co-occur on one event (main-red + revert + reverted-merge for the same PR), so one incident reads as \"trigger: 3 incidents, 3 of them flagged\". Count over distinct incidents instead: key each record on its `pr` (falling back to `sha`), take total = the number of distinct keys and flagged = those with any flagged record. This contradicts the spec's \"one record per incident\" (docs/specs/f-0334.md:947, :1158) and distorts the flagged ratio the Stage-5 trigger is read for \u2014 a mixed ledger reads \"4 incidents, 3 of them flagged\" where the truth is \"2 incidents, 1 flagged\". Verified: the fix keeps \u00a78's example at 3 incidents and tests/kernel/test_incidents.py:126-137 green."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89658,7 +89660,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-11T17:17:12Z",
+      "updated": "2026-10-11T17:24:00Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
@@ -89762,10 +89764,11 @@
       "folder": "tasks",
       "id": "T-160207",
       "kernel_findings": [
-        "asf/kernel/decide.py:2016 \u2014 add `started = {a.item_id for a in launches}` before the loop and extend the refusal chain to `or iid in started or judged[iid].dor`, so a card the Definition of Ready holds is never stacked and a card already launched this tick is never launched twice; cover both with new cases on `tests.kernel.test_stacked_builds.StackedLaunch` and name the two preconditions in the docstring."
+        "asf/kernel/decide.py:2004 \u2014 drop the `it.stack` term from the first precondition: a stacked launch the applier cannot take (`P.NoSeat` on a lane limit `_free` does not model, `apply.py:505`/`ports.py:2138`) still has its `A.NoteStack` flushed (`apply.py:588`, `:598`), and the card is then skipped here for ever while `_launches` never sees it (Ready only, `decide.py:1792`) \u2014 reproduced: next tick plans nothing. Every live stack is already excluded by the session/own-PR checks at `:2021-2022`; add a `StackedLaunch` case for a card carrying `stack=` with no session and no PR being launched again.",
+        "tests/kernel/test_stacked_builds.py:185 \u2014 add an applier class modelled on `tests/kernel/test_plan_on_approve.py:162` `TheApplierAndTheBrief`: step 5 has no test, so `apply.py:515` (`if early or a.base` \u2014 the card stays New, ruling D1) can be reverted with all 28 cases still green; pin `rec.fields[iid][P.STACK] == 'worker/T-0001@abc1234'`, `P.STATE` absent, `sess.meta[-1]['base']`/`['base_sha']`, and `A.NoteStack(iid, '', '')` writing `{P.STACK: None}`."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89778,7 +89781,7 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T17:09:01Z",
+      "updated": "2026-10-11T17:24:00Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -89938,7 +89941,7 @@
         "operator answer: granted asf/approvals.py asf/harvest/harvest.py asf/tick/step_harvest.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -89951,7 +89954,7 @@
       ],
       "title": "`asf/logs.py` \u2014 the tree, its paths and its caps",
       "type": "task",
-      "updated": "2026-10-11T17:21:00Z",
+      "updated": "2026-10-11T17:24:00Z",
       "writes": [
         "asf/logs.py",
         "asf/scheduler.py",
@@ -89979,6 +89982,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164013",
+      "kernel_notes": [
+        "satisfied on main at 0067d9aa4: tests.test_logs_tree.RotateTests"
+      ],
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -89991,7 +89998,7 @@
       ],
       "title": "the rotation, written once",
       "type": "task",
-      "updated": "2026-10-11T13:34:06Z",
+      "updated": "2026-10-11T17:24:00Z",
       "writes": [
         "asf/logs.py",
         "asf/approvals.py",
@@ -90013,6 +90020,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164014",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90025,7 +90033,7 @@
       ],
       "title": "a clock transcript is capped by the run that wrote it, and the facts that outlive the cap are carried",
       "type": "task",
-      "updated": "2026-10-11T13:34:10Z",
+      "updated": "2026-10-11T17:24:00Z",
       "writes": [
         "asf/logs.py",
         "asf/cli.py",
@@ -90165,7 +90173,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164019",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0350.md"
       },
@@ -90179,7 +90187,7 @@
       ],
       "title": "the cut is by Story, the Feature's Story order decides the owner, and the three cases it cannot guess are each named",
       "type": "task",
-      "updated": "2026-10-11T17:09:01Z",
+      "updated": "2026-10-11T17:24:00Z",
       "writes": [
         "asf/record/slice.py",
         "tests/test_feature_delivery.py"
@@ -92179,7 +92187,7 @@
         "build-t-81130-1791736883: NEEDS OPERATOR: decide whether to keep the doubled cost of `run_graft`'s second full `test_command` run per fix-branch check, or amend docs/plans/f-0312.md Task 2 Step 5 (which says the head run should reuse the gat\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -92200,7 +92208,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T17:09:01Z",
+      "updated": "2026-10-11T17:24:00Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
