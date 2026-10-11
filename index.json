@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T14:19:35Z",
+  "generated": "2026-10-11T14:24:21Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16945,7 +16945,7 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16955,7 +16955,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T14:10:30Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17414,7 +17414,7 @@
       "state": "New",
       "title": "Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)",
       "type": "bug",
-      "updated": "2026-10-11T14:14:23Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/decide.py",
@@ -69666,7 +69666,7 @@
         "groom-fill-t-0456-1791638496: groom-fill raised risk high: Fully specified by docs/plans/f-0114.md's Task 5 (same writes, steps, and test names already named there and in the spec's own Acceptance tests section); every schema.* primitive it calls (CONFIG_VERSION, auto_migrate, tick_drain_s, product_version, snapshot/restore) is already implemented on the sequenced prerequisite T-0452 (commit 34d335c4f, not yet merged to main) \u2014 the card was just missing its acceptance/gate lines, now copied over from the plan.",
         "build-t-0456-1791726595: NEEDS OPERATOR: the sandbox's pip/setuptools cannot build the asf-factory wheel (install_layout AttributeError), causing InstallStepsTests.test_idempotent_second_run and PackageDataTests.test_a_built_wheel_installed\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69676,7 +69676,7 @@
       "state": "New",
       "title": "`asf/upgrade.py` \u2014 the upgrade migrates what it installed, and `--to` puts the snapshot back",
       "type": "task",
-      "updated": "2026-10-11T14:19:34Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "asf/upgrade.py",
         "asf/init.py",
@@ -69709,6 +69709,7 @@
       "kernel_notes": [
         "groom-fill-t-0457-1791638803: groom-fill raised risk high: Card's own Description already mirrors docs/plans/f-0114.md's Task 6 verbatim (same writes, same steps); filled the two acceptance lines from the plan's own canonical test classes (PlanTests, MixedVersionTests), confirmed tools/upgrade_matrix.py and tests/test_upgrade_matrix.py are absent from origin/main and .github/workflows/tests.yml has no plan/upgrade-matrix job yet; risk_raise high because writes touch CI (tests.yml). Separately: the Description's \"stories: S-32357\" is the pre-spec-amend id \u2014 the plan's own Task 6 (docs/plans/f-0114.md:44,611) already carries the live id S-69211, so the card's header is stale and worth a follow-up correction."
       ],
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69721,7 +69722,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-10T13:34:59Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -84875,7 +84876,7 @@
         "groom-fill-t-0816-1791726076: groom-fill raised risk high: the card's Files/Steps describe sync_operator_checkout's pre-#1039 shape (ceiling 25, no ahead/marker handling); the approved replan docs/plans/replans/f-0260-710ab73e6bdd.md (RD3-RD6) already corrects this (ceiling 24, build around the landed ahead/stranded-commit machinery, drop DIRTY_MARKER per D5) but was never carried into the card body, and a prior attempt under this stale text (PR #1237) already closed without landing."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84889,7 +84890,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T13:55:16Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -85664,7 +85665,7 @@
         "build-t-129157-1791725353: NEEDS OPERATOR: the stop gate records an `unpushed` defect against a session that followed B-0056 exactly \u2014 asf/workers/stopgate.py exempts only OPTIONAL_PUSH_KINDS = ('adjudicate',) with untouched(), so a `correct`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85677,7 +85678,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T14:10:30Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -87086,20 +87087,23 @@
         "granted asf/procedures/skills/report-shape/SKILL.md asf/build-t-129196-1791723261@20261011T125429Z; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/procedures/skills/report-shape/SKILL.md asf/build-t-129196-1791723261@20261011T125429Z; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted asf/procedures/skills/report-shape/SKILL.md asf/build-t-129196-1791723261@20261011T125429Z; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "docs/plans/f-0330.md:717-725 \u2014 run `bash tools/check_record_writers.sh` and `python3 tools/run_tests.py --touched origin/main --shards 2` locally (Task 4's own Gate) and include their output in the next REPORT's `tests:` line before pushing again.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted asf/procedures/skills/report-shape/SKILL.md asf/build-t-129196-1791723261@20261011T125429Z; nothing else outside writes (card updated by the kernel).",
         "operator answer: granted asf/procedures/skills/report-shape/SKILL.md asf/build-t-129196-1791723261@20261011T125429Z; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1528: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1528: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1528: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0330.md"
       },
@@ -87112,7 +87116,7 @@
       ],
       "title": "the field \u2014 the shared TAIL offers `superseded_by:` to a fix or correct session",
       "type": "task",
-      "updated": "2026-10-11T14:05:19Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "asf/briefs/build.py",
         "tests/fixtures/briefs/golden/*.md",
@@ -89348,7 +89352,13 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/kernel/loop.py:130 and :271-272 \u2014 Plan.pace never reaches the tick, so Step 5's `pace:` line is never printed (pace_line at decide.py:1772 has no caller; grep -c pace asf/kernel/loop.py is 0). Report `needs writes: asf/kernel/loop.py`, then extend loop.py:37 to `from asf.kernel.decide import blind_plan, decide, pace_line`, add `'pace': getattr(plan, 'pace', None),` beside the `'wip'` entry at :130, and after the wip_line block at :271-272 add `if summary.get('pace'): out(pace_line(summary['pace']))`.",
+        "asf/kernel/facts.py:301-313 \u2014 nothing ever sets Facts.ci_free, so decide.py:1839's `min(per_tick, ci_free)` can never bind in production and no Task of F-0334 writes facts.py. Report `needs writes: asf/kernel/facts.py`, add a `read_ci_free(ports)` mirroring read_seats (facts.py:182-191), pass `ci_free=read_ci_free(ports)` into the Facts(...) call at :310, and put the port method beside the real session port's capacity (ports.py:1931, already granted) returning `capacity.bandwidth(self.product, self.cfg())['ci_free']` (asf/capacity.py:319, already None when unread).",
+        "operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89362,7 +89372,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T14:01:11Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -89394,7 +89404,7 @@
         "asf/kernel/decide.py:965 \u2014 the line term prints `>=` where the flag uses `>` (and `< 0` when the cap is off); use `'>' if cap and lines > cap else '<='`, and render the clause as `'%d lines (risk.large_lines off)' % lines` when `cap` is 0"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89407,7 +89417,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-11T14:14:23Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
@@ -89474,7 +89484,7 @@
         "operator answer: granted asf/record/cards.v2.schema.json tests/test_card_schema.py asf/build-t-160206-1791724712@20261011T131841Z; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89487,7 +89497,7 @@
       ],
       "title": "the stack as a fact \u2014 the card's key, the pull request's base, and the two knobs",
       "type": "task",
-      "updated": "2026-10-11T14:14:23Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -91589,7 +91599,7 @@
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -91610,7 +91620,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T14:19:34Z",
+      "updated": "2026-10-11T14:24:19Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
