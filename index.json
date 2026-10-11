@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T21:23:53Z",
+  "generated": "2026-10-11T21:27:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17544,6 +17544,9 @@
       "id": "B-177713",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.117",
+      "kernel_notes": [
+        "groom-fill-b-177713-1791753390: groom-fill raised risk high: card bundles 6 disjoint-module mechanisms at uneven readiness (installs.prune already uninstalls old pipx venvs; F-0067's approved-but-unbuilt floor registry already owns worktree/branch/cache salvage via hold/<job>, conflicting with this card's own salvage/<name>); narrowed to the one confirmed, independent defect \u2014 non-git dirs worktrees.py keeps forever."
+      ],
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17552,7 +17555,12 @@
       "state": "New",
       "title": "Bug: the floor reaper leaves merged branches, worktrees, venvs, caches and orphan beat loops behind",
       "type": "bug",
-      "updated": "2026-10-11T21:16:36Z"
+      "updated": "2026-10-11T21:27:34Z",
+      "writes": [
+        "asf/workers/worktrees.py",
+        "asf/workers/trash.py",
+        "tests/test_worktree_reaper.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -24745,7 +24753,8 @@
         "T-0354",
         "T-0355",
         "T-0356",
-        "T-0357"
+        "T-0357",
+        "B-177713"
       ],
       "budget_sessions": 12,
       "budget_usd": 25,
@@ -36122,7 +36131,7 @@
         "spec-f-0352-1791748609: NEEDS OPERATOR: confirm F-0347 is still open and owns the WIP-push/beat work (if it is Done or retired, C4 needs re-opening under F-0352) \u2014 `asf check --product asf --item F-0347`",
         "plan-f-0352-1791750518: NEEDS OPERATOR: whether F-0352's Story S-176462 (\"Split the kernel's hub files (decide/ports/model/loop) so kernel Tasks stop serializing\") should keep that title, given that the approved spec relieves the same wait\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "priority": "need",
       "rank": 2,
@@ -36131,7 +36140,7 @@
       "state": "New",
       "title": "Adopt botseon's measured speed fixes: rebase cap, record lint, two holders, WIP push",
       "type": "feature",
-      "updated": "2026-10-11T21:11:51Z"
+      "updated": "2026-10-11T21:27:34Z"
     },
     "F-0353": {
       "backlinks": [],
@@ -86427,7 +86436,7 @@
         "PR #1579: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -86440,7 +86449,7 @@
       ],
       "title": "the cap and the reader \u2014 an unfiled review is no launch, once per head",
       "type": "task",
-      "updated": "2026-10-11T21:23:52Z",
+      "updated": "2026-10-11T21:27:34Z",
       "writes": [
         "asf/workers/relaunch.py",
         "asf/workers/lifecycle.py",
@@ -86496,6 +86505,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129167",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -86508,7 +86518,7 @@
       ],
       "title": "the line \u2014 one waits line names the unfiled review and the action taken",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-11T21:27:34Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
@@ -86525,6 +86535,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129168",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -86537,7 +86548,7 @@
       ],
       "title": "the harvest \u2014 recover, then mark, then one line, where the review is dropped today",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-11T21:27:34Z",
       "writes": [
         "asf/workers/health.py",
         "tests/test_non_checkout_worktree.py"
@@ -90711,7 +90722,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164022",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0350.md"
       },
@@ -90724,7 +90735,7 @@
       ],
       "title": "the scorecard tells a Story delivery from a Feature one",
       "type": "task",
-      "updated": "2026-10-11T21:20:06Z",
+      "updated": "2026-10-11T21:27:34Z",
       "writes": [
         "asf/scorecard/score.py",
         "tests/test_feature_delivery.py",
