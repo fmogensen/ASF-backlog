@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T16:41:45Z",
+  "generated": "2026-10-11T16:44:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16953,7 +16953,7 @@
       "kernel_notes": [
         "build-b-138845-1791733799: NEEDS OPERATOR: the CI check names cited by the card (\"tests (3.12)\", \"tests (3.13)\") no longer exist on current origin/main's check-runs \u2014 the workflow was restructured into \"checks (3.X)\" / \"part (3.X, N)\" jobs so\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16963,7 +16963,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T16:01:48Z",
+      "updated": "2026-10-11T16:44:30Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -81446,8 +81446,12 @@
       ],
       "folder": "tasks",
       "id": "T-0734",
+      "kernel_answers": [
+        "granted tests/test_install_e2e.py; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted tests/test_install_e2e.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
         "rebase: PR #1177 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
@@ -81466,7 +81470,7 @@
         "PR #1177: part (3.13, 4) is red but not a required check \u2014 ignored",
         "build-t-0734-1791731552: NEEDS OPERATOR: tests/test_install_e2e.py's RecordTickAgainstALocalNonBareOriginTests leaks the same unstubbed `launchctl list` (a plain `asf init` never sets scheduler.kind, so cron_cell's scheduler.loaded_jobs() r\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81479,13 +81483,14 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-11T15:59:10Z",
+      "updated": "2026-10-11T16:44:30Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
         "tests/test_tick.py",
         "asf/cli.py",
-        "tests/test_views.py"
+        "tests/test_views.py",
+        "tests/test_install_e2e.py"
       ]
     },
     "T-0735": {
@@ -89081,7 +89086,7 @@
       ],
       "title": "the write gate \u2014 the one card writer refuses an invalid card and writes nothing",
       "type": "task",
-      "updated": "2026-10-11T16:38:51Z",
+      "updated": "2026-10-11T16:44:30Z",
       "writes": [
         "asf/record/writer.py",
         "tools/check_card_gate.sh",
