@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T10:14:31Z",
+  "generated": "2026-10-11T10:19:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16811,7 +16811,7 @@
       "state": "New",
       "title": "Kernel: a PR head with no required-check run gets a fresh CI run, not 'no action exists'",
       "type": "bug",
-      "updated": "2026-10-11T10:14:27Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/dwell.py",
         "tests/test_dwell.py"
@@ -16922,11 +16922,12 @@
       "id": "B-138845",
       "kernel_attempts": [
         "relaunch: PR #1481 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
-        "relaunch: PR #1494 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1494 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1505 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16936,7 +16937,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T10:14:27Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17289,6 +17290,7 @@
       "kernel_notes": [
         "groom-fill-b-154656-1791712926: groom-fill raised risk high: Two confirmed, precisely-located kernel defects (container Stuck never stored \u2192 answer dropped; local session-limit end misclassified as a generic API failure) with a clear, bounded fix and a close precedent (#1449); buildable as scoped."
       ],
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17297,7 +17299,7 @@
       "state": "New",
       "title": "Bug: an answer never clears a container's Stuck; a local session limit makes the item Stuck",
       "type": "bug",
-      "updated": "2026-10-11T10:14:27Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/kernel/apply.py",
         "asf/kernel/facts.py",
@@ -35471,6 +35473,9 @@
       "decided": true,
       "folder": "features",
       "id": "F-0344",
+      "kernel_attempts": [
+        "review: no VERDICT line"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
         "docs/specs/f-0344.md:219 \u2014 `## Out` must account for the card's own Stage 1 scope: name items 1-5 of `record/features/F-0344.md` (`spool/<job>.jsonl` + kernel merge, idempotent ingest, the five ledgers onto the event stream, the daily roll-up fields, `asf metrics --product P [--days N] [--item ID]`) and its five Feature-level acceptance bullets as deferred, with the stage that takes each \u2014 or bring them in; as written the spec silently substitutes a different Stage 1.",
@@ -35492,7 +35497,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-11T10:14:27Z"
+      "updated": "2026-10-11T10:19:39Z"
     },
     "F-0345": {
       "backlinks": [
@@ -35607,7 +35612,7 @@
         "the session API failed"
       ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35615,7 +35620,7 @@
       "state": "New",
       "title": "Stacked builds: dependent Tasks start on the predecessor's branch",
       "type": "feature",
-      "updated": "2026-10-11T09:25:25Z"
+      "updated": "2026-10-11T10:19:39Z"
     },
     "F-0349": {
       "backlinks": [
@@ -85575,6 +85580,11 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.27.post3+gf71c4e72",
+      "kernel_findings": [
+        "rebase: PR #1506 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: Relaunch on another account: the launch failed because one account hit its session limit (resets 14:40 local), not because of the item. Any account with free seats is fine."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-t-129173-1791655626: groom-fill raised risk high: card already carries Task 1's acceptance/writes verbatim (F-0343 backfill); the parent-Done DoR gap is stale \u2014 F-0343's own fix (dce5aac92) makes a Feature's state derive from its Task children once any exist, and F-0318 already has Task children (T-129173, T-129174) that are New, so F-0318 reads New under current logic and the next tick's judge pass clears this on its own.",
         "groom-fill-t-129173-1791657630: groom-fill raised risk high: F-0318's \"Done\" is a same-tick derived-state artifact (a container is Done only when every Task child is, and T-129173 itself is a New child of F-0318); the card's acceptance/writes already satisfy DoR (i)-(iii), and asf/record/spec_stories.py, spec_ref, doc_alias and own_doc are all absent from trunk, confirming the work is unbuilt, not superseded.",
@@ -85585,7 +85595,7 @@
         "satisfied on main at 14b963ba1: tests.test_spec_stories, tests.test_plan_tasks, tests.test_spec_stories.TheDeclarationReader, tests.test_id_range_block, tests.test_idclaim, tests.test_record_stage, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_spec_stories, tests.test_spec_stories.TheDeclarationReader; worker/T-129173 holds 1 commit(s) off it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0318.md"
       },
@@ -85604,7 +85614,7 @@
       ],
       "title": "the pass \u2014 `asf/record/spec_stories.py`, and the three functions in `plan_tasks` it reads the Feature's spec through",
       "type": "task",
-      "updated": "2026-10-11T10:14:27Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/record/spec_stories.py",
         "asf/record/plan_tasks.py",
@@ -85793,7 +85803,7 @@
         "satisfied on main at 14b963ba1: tests.test_scratch.ScratchPathsTests, tests.test_scratch.ExcludeFileTests, tests.test_invariants.FactoryScratchIgnoredTests, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_scratch.ScratchPathsTests, tests.test_scratch.ExcludeFileTests, tests.test_invariants.FactoryScratchIgnoredTests; worker/T-129178 holds 1 commit(s) off it"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85810,7 +85820,7 @@
       ],
       "title": "one owner for the factory's scratch paths, and this repo's ignore entry",
       "type": "task",
-      "updated": "2026-10-11T10:02:12Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/workers/scratch.py",
         "tests/test_scratch.py",
@@ -86046,7 +86056,7 @@
       ],
       "title": "the derivation \u2014 the `refix` fact, the `refixing` rule, and the card ingest writes",
       "type": "task",
-      "updated": "2026-10-11T10:09:52Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/evidence/closing.py",
@@ -86321,6 +86331,9 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129193",
+      "kernel_attempts": [
+        "review: no VERDICT line"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0330.md"
@@ -86336,7 +86349,7 @@
       ],
       "title": "the applier \u2014 `asf/tick/apply_rulings.py`, its three arms, and the two seams it needs",
       "type": "task",
-      "updated": "2026-10-11T10:14:27Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/tick/apply_rulings.py",
         "asf/tick/widen_footprint.py",
@@ -87465,7 +87478,7 @@
       ],
       "title": "the hygiene view's third lane \u2014 `CLOSED \u2192 DECIDE`, read off the lane registry alone",
       "type": "task",
-      "updated": "2026-10-11T10:05:38Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/harvest/pr_hygiene.py",
         "tests/test_pr_hygiene.py"
@@ -87568,7 +87581,7 @@
         "asf/evidence/evidence.py:1551-1568 \u2014 extend landed_proves's docstring with the third refusal (a claim naming a quarantined test) and note it is judged against the quarantine list as it stood at the sha the claim landed on, per docs/plans/f-0341.md:294-295"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -87581,7 +87594,7 @@
       ],
       "title": "the convention, and the claim judged at the sha it landed on",
       "type": "task",
-      "updated": "2026-10-11T10:09:52Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/conventions.py",
         "asf/evidence/evidence.py",
@@ -88027,7 +88040,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154337",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88040,7 +88053,7 @@
       ],
       "title": "the card schema file, and the stdlib validator that enforces exactly what it declares",
       "type": "task",
-      "updated": "2026-10-11T09:56:58Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/record/cards.v2.schema.json",
         "asf/record/validate.py",
@@ -89943,7 +89956,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T10:02:12Z",
+      "updated": "2026-10-11T10:19:39Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
