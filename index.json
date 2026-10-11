@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T14:14:25Z",
+  "generated": "2026-10-11T14:19:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -35777,12 +35777,15 @@
         "the session API failed"
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/plans/f-0347.md:4 \u2014 the spec's landing sha is given as `feafbb9f8`, which is not a commit in this repo; the real landing commit is `feafbb916` (`feafbb916c8e7097e9e85c7e0b193b31eb7047d1`, \"spec(F-0347): judge sessions by progress beats, not elapsed time (#1532)\"). Fix the sha."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "plan-f-0347-1791725437: NEEDS OPERATOR: the claim check over the live record - this is a cloud session, there is no ~/.ASF, so neither the canonical record nor the claim ledger could be read here, and the ten Story ids the plan cites were\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 4,
@@ -35791,7 +35794,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-11T14:05:19Z"
+      "updated": "2026-10-11T14:19:34Z"
     },
     "F-0348": {
       "backlinks": [
@@ -69536,11 +69539,15 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_findings": [
+        "asf/env.py:268-286 \u2014 Step 4 (docs/plans/f-0114.md:265-269) is absent: load_config is byte-unchanged and config_warnings() exists nowhere. Partition load_config's findings on the file's own schema_version strictly greater than schema.CONFIG_VERSION, the way asf/env.py:793-796 does, raise only the fatal half, and add config_warnings() returning the tolerated half (empty today \u2014 neither validate_worker_pool nor cloud.config_problems emits an UNKNOWN_KEY finding, so the deliverable is the seam, not a behaviour change). Task 3 reads env.config_warnings (docs/plans/f-0114.md:353) and its own writes: (docs/plans/f-0114.md:327) cannot touch asf/env.py, so Task 3 is blocked until this lands.",
+        "tests/test_env.py:13-41 \u2014 the card's fifth acceptance line names TestExampleConfigsParse as its proof and nothing was added there; grep -rn migrate_drain_s tests/ has no hit, and test_config_example_parses would pass with a live schema_version: key. Add a case asserting (?m)^\\s*#\\s*schema_version: and ^\\s*#\\s*migrate_drain_s: in docs/config.example.yaml, ^\\s*#\\s*schema_version: in docs/products.example.yaml, and 'schema_version' not in env.loads(text) for both.",
+        "tools/pinned-readers.txt:1-8 \u2014 the file is left with no sha, so tests/test_env.py:1061, tests/test_env.py:1073 and tests/test_product_check.py:72-74 skip and the loops at tests/test_env.py:1033, tests/test_landing_stamp.py:440, tests/test_config_keys.py:361, tests/test_queue_store.py:171 and tests/test_record_writer.py:231 iterate zero times. Add the oldest released sha whose loader tolerates an unknown top-level key as a warning, so every loop keeps running against a real older reader; if the operator answers that none can be pinned, record that decision and the card that restores the guard in the file's header instead of leaving seven silent no-ops.",
+        "asf/env.py:622-624 and asf/env.py:632-640 \u2014 both comment blocks withhold release.floor, release.seats, release.gate, ci.hosts, ci.jobs, kernel and release.channels from the field tables because \"a pinned reader predates them\" and cite tests.test_env.PinnedReader.test_no_product_key_the_pinned_reader_would_refuse, which this diff turned into an unconditional skip (tests/test_env.py:1061). Say in those blocks that no reader is pinned, that the refusal test therefore skips, and what now decides whether such a key may be registered.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "operator answer: granted tests/test_product_check.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance.",
         "PR #1529: part (3.12, 2) is red but not a required check \u2014 ignored",
@@ -69548,7 +69555,7 @@
         "PR #1529: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1529: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69558,7 +69565,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T14:14:23Z",
+      "updated": "2026-10-11T14:19:34Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -69659,7 +69666,7 @@
         "groom-fill-t-0456-1791638496: groom-fill raised risk high: Fully specified by docs/plans/f-0114.md's Task 5 (same writes, steps, and test names already named there and in the spec's own Acceptance tests section); every schema.* primitive it calls (CONFIG_VERSION, auto_migrate, tick_drain_s, product_version, snapshot/restore) is already implemented on the sequenced prerequisite T-0452 (commit 34d335c4f, not yet merged to main) \u2014 the card was just missing its acceptance/gate lines, now copied over from the plan.",
         "build-t-0456-1791726595: NEEDS OPERATOR: the sandbox's pip/setuptools cannot build the asf-factory wheel (install_layout AttributeError), causing InstallStepsTests.test_idempotent_second_run and PackageDataTests.test_a_built_wheel_installed\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69669,7 +69676,7 @@
       "state": "New",
       "title": "`asf/upgrade.py` \u2014 the upgrade migrates what it installed, and `--to` puts the snapshot back",
       "type": "task",
-      "updated": "2026-10-11T14:05:19Z",
+      "updated": "2026-10-11T14:19:34Z",
       "writes": [
         "asf/upgrade.py",
         "asf/init.py",
@@ -81338,9 +81345,11 @@
         "PR #1177: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1177: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1177: part (3.13, 2) is red but not a required check \u2014 ignored",
-        "PR #1177: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1177: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1177: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1177: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81353,7 +81362,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-11T14:14:23Z",
+      "updated": "2026-10-11T14:19:34Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -88844,7 +88853,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T14:10:30Z",
+      "updated": "2026-10-11T14:19:34Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
@@ -90494,7 +90503,7 @@
       ],
       "title": "the record's own hooks are moved onto the pin by the command the row already names",
       "type": "task",
-      "updated": "2026-10-11T14:10:30Z",
+      "updated": "2026-10-11T14:19:34Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
@@ -91580,7 +91589,7 @@
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -91601,7 +91610,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T14:01:11Z",
+      "updated": "2026-10-11T14:19:34Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -92311,7 +92320,7 @@
         "build-t-83144-1791724217: NEEDS OPERATOR: decide whether `asf/kernel/briefs.py`'s `_TEST_ROW_REWRITES` replacements should also use the unanswered skeleton cell. I probed `reviews.parse`: `| \u2026 | pass \\| fail | <hint> |` parses as result `pas\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -92324,7 +92333,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-11T14:14:23Z",
+      "updated": "2026-10-11T14:19:34Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
