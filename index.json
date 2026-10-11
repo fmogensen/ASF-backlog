@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T11:25:09Z",
+  "generated": "2026-10-11T11:29:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17184,13 +17184,13 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.41",
       "kernel_findings": [
-        "docs/plans/b-151002.md:1 \u2014 write the plan naming the Task, its Steps, and the acceptance tests it claims to satisfy (no plan exists on this branch or origin/main; this product's convention requires one even for an S3 bug fix)"
+        "tests/fixtures/briefs/golden/*.md (19 files, e.g. tests/fixtures/briefs/golden/coder.md:50) are touched by this diff but are outside B-151002's declared `writes: asf/dispatch.py, asf/briefs/preamble.py, asf/briefs/build.py, tests/test_dispatch.py, tests/test_briefs.py`. They are mechanically required (SELF_UPGRADE_RULE is now unconditional in every brief, so GoldenBriefTest needs the one-line update in each), so the fix is not to revert them; report `needs writes: tests/fixtures/briefs/golden/*.md` in the next report, or have this adjudicated to fold them into B-151002's `writes:` (the `adjudicate-t-0175` precedent for an undeclared-but-necessary file)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17199,7 +17199,7 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T11:14:11Z",
+      "updated": "2026-10-11T11:29:32Z",
       "writes": [
         "asf/dispatch.py",
         "asf/briefs/preamble.py",
@@ -85382,7 +85382,9 @@
         "PR #1483: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1483: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1483: part (3.12, 2) is red but not a required check \u2014 ignored",
-        "PR #1483: part (3.13, 2) is red but not a required check \u2014 ignored"
+        "PR #1483: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "PR #1483: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1483: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -85401,7 +85403,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T11:25:07Z",
+      "updated": "2026-10-11T11:29:32Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -86512,7 +86514,7 @@
       ],
       "title": "the applier \u2014 `asf/tick/apply_rulings.py`, its three arms, and the two seams it needs",
       "type": "task",
-      "updated": "2026-10-11T11:14:11Z",
+      "updated": "2026-10-11T11:29:32Z",
       "writes": [
         "asf/tick/apply_rulings.py",
         "asf/tick/widen_footprint.py",
@@ -87252,7 +87254,7 @@
         "PR #1445: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -87268,7 +87270,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-11T11:10:38Z",
+      "updated": "2026-10-11T11:29:32Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -87410,7 +87412,8 @@
       "folder": "tasks",
       "id": "T-130966",
       "kernel_attempts": [
-        "the session API failed"
+        "the session API failed",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "red: tests (3.12)",
@@ -87423,7 +87426,7 @@
         "PR #1497: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1497: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -87439,7 +87442,7 @@
       ],
       "title": "the quiesce \u2014 the kernel's two argv shapes, its lock, and the module every Story shares",
       "type": "task",
-      "updated": "2026-10-11T11:14:11Z",
+      "updated": "2026-10-11T11:29:32Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/upgrade.py",
@@ -87988,9 +87991,10 @@
       "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1510: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1510: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1510: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "PR #1510: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -88003,7 +88007,7 @@
       ],
       "title": "the wave runs the check once, after the feeder's gate",
       "type": "task",
-      "updated": "2026-10-11T11:19:19Z",
+      "updated": "2026-10-11T11:29:32Z",
       "writes": [
         "asf/tick/step_wave.py",
         "tests/test_flow_conservation.py",
