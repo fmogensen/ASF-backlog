@@ -1,0 +1,26 @@
+# Acceptance lines cover every layer (UI, backend, docs, tests) and are proved at that layer
+parent: E-0006
+
+type: feature
+parent: E-0006
+priority: need
+
+Acceptance lines cover every layer the user meets, and are proved at that layer (operator ruling 2026-10-11, relayed by the botseon console: "ensuring cards and lines are reflective of not only backend but also ui, documentation, testing etc."). Supersedes the inbox note "Acceptance coverage, test strength and a human proof class".
+
+## Problem
+ASF proves a Story line with `Proves: S-x line N — <test>` (asf/proves.py), but nothing checks that lines cover the UI, documentation or the right test level, or that the test asserts the line. Botseon data: of 41 proved Stories, only 15 have a UI-level proving test; 26 are proved by backend tests alone, some user-facing with no screen built. Botseon's cards P-22..P-25 (coverage audit, test quality, human walkthrough, UI coverage) are input data.
+
+## Change
+1. Layers: each acceptance line declares a layer from the product config, `acceptance.layers` (default `ui, backend, docs`; products add e.g. `i18n`, `audit`, `privacy`), or the card declares `layers: backend-only` explicitly. Product config maps each layer to its proving test kinds (e.g. ui → component or e2e test paths; backend → unit or integration).
+2. Proof at the layer: a `Proves:` claim counts only when the named test's kind matches the line's layer, so a backend test never proves a ui line.
+3. Coverage gate at spec and plan review: by code first, each capability or Story lists the layers it needs, and a missing layer yields a gap list in the review verdict. An LLM judges only what code cannot.
+4. Proof quality: the named test exists on main, runs in CI and asserts the behaviour the line names (code checks first, LLM fallback).
+5. A strict `human` proof class (`Proves: S-x line N — human: <how verified>`) for lines only a person or a live system can verify, reported apart.
+6. Reporting: per Feature, the counts proved / human / UI-covered / docs-covered, in `asf backlog` and the release-readiness gate.
+
+## Acceptance
+- A ui line with only a backend-test claim stays unproved, and a matching e2e or component test proves it (test).
+- A card with no layer declaration and no `backend-only` fails DoR (test).
+- The spec and plan review output contains a per-capability layer gap list on a fixture spec missing ui lines (test).
+- A `human:` claim is counted apart and never as test-proved (test).
+- Release readiness shows proved / human / ui-covered per Feature (test).
