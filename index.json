@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T11:34:58Z",
+  "generated": "2026-10-11T11:40:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -2212,8 +2212,7 @@
     "B-0070": {
       "area": "asf.feeder",
       "backlinks": [
-        "S-125105",
-        "T-129212"
+        "S-125105"
       ],
       "children": [],
       "decided": true,
@@ -17181,6 +17180,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-151002",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.41",
       "kernel_findings": [
@@ -17190,7 +17192,7 @@
       "kernel_notes": [
         "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17199,7 +17201,7 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T11:29:32Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/dispatch.py",
         "asf/briefs/preamble.py",
@@ -21820,6 +21822,7 @@
         "T-0772",
         "T-129169",
         "T-148631",
+        "T-154337",
         "T-80371",
         "B-0030",
         "B-0063"
@@ -21862,6 +21865,7 @@
         "T-0772",
         "T-129169",
         "T-129170",
+        "T-154337",
         "B-0092"
       ],
       "children": [
@@ -35561,11 +35565,13 @@
       "decided": true,
       "folder": "features",
       "id": "F-0344",
-      "kernel_attempts": [
-        "review: no VERDICT line",
-        "escalated: one more fix round on the strong model, with every finding"
+      "kernel_answers": [
+        "Final round (4th), limited to the latest three findings. (1) and (2): correct the false claim that no test runs scheduler.smoke's body. tests/test_pin_defects.py::SmokeTest (:120-203) runs it unpatched in five tests; fix it at :1087-1088 and in S-134156 (:1228). (3) Add tests.test_pin_defects to the regression command at :1103-1108. Reviewer after that: block only if a Story's code, acceptance or tests would be wrong. Approve otherwise; citation drift is a follow-up."
       ],
-      "kernel_extra_rounds": 0,
+      "kernel_attempts": [
+        "relaunch: operator answer: Final round (4th), limited to the latest three findings. (1) and (2): correct the false claim that no test runs scheduler.smoke's body. tests/test_pin_defects.py::SmokeTest (:120-203) runs it unpatched in five tests; fix it at :1087-1088 and in S-134156 (:1228). (3) Add tests.test_pin_defects to the regression command at :1103-1108. Reviewer after that: block only if a Story's code, acceptance or tests would be wrong. Approve otherwise; citation drift is a follow-up."
+      ],
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "docs/specs/f-0344.md:201 \u2014 P19's premise is false: the product yaml does have a `kernel:` block (`asf/kernel/settings.py`, 19 sections with documented defaults), read on every load by `env.Product.kernel` (`asf/env.py:1029-1032`), validated at `asf/env.py:796-801`, and listed in `env.DOCUMENTED_UNCHECKED_FIELDS` (`asf/env.py:633-634`) so `asf/env.py:768` never reports it as an unknown key. Rewrite P19's first clause to say what is actually absent \u2014 no `retention` section in that block's `SPEC`, and no reader of the card's three keys \u2014 and drop `conventions.py`/`config_keys.py` as evidence for it, since neither registry holds a product-yaml `kernel:` key.",
         "docs/specs/f-0344.md:206 \u2014 the stated cost is wrong: `settings.problems` (`asf/kernel/settings.py:316-348`) warns once for a section not in `SPEC` and `continue`s without descending, so a product yaml carrying all three knobs gets ONE warning, `kernel.retention \u2014 is not a kernel key`, not one per key (measured: `settings.problems({'retention': {...}})` -> `([], [('kernel.retention', 'is not a kernel key')])`). Change \"one unknown-key warning per key\" to one warning for the unknown `kernel.retention` section, and state the route as `asf/env.py:800-801` -> `Product.warnings` -> `asf/doctor.py:860-874` rather than as an unknown product-yaml key. Same fix at line 410 (\"one unknown-key doctor warning per key\") and in D2 at line 373.",
@@ -35581,7 +35587,7 @@
         "spec-f-0344-1791712134: NEEDS OPERATOR: the card's five Feature-level acceptance bullets, to defer them one by one in Out instead of as a set \u2014 `cat \"$(find ~/.ASF -path '*/features/F-0344.md' -print -quit)\"`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35589,7 +35595,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-11T11:19:19Z"
+      "updated": "2026-10-11T11:40:22Z"
     },
     "F-0345": {
       "backlinks": [
@@ -39504,6 +39510,7 @@
     "S-133164": {
       "backlinks": [
         "F-0340",
+        "T-154337",
         "T-154346"
       ],
       "children": [],
@@ -49103,6 +49110,7 @@
         "T-0809",
         "T-129177",
         "T-129193",
+        "T-154337",
         "T-80371",
         "B-0040",
         "B-0067",
@@ -49153,6 +49161,7 @@
         "T-0772",
         "T-129191",
         "T-129193",
+        "T-154337",
         "T-80369",
         "T-80370"
       ],
@@ -71094,7 +71103,7 @@
         "operator answer: Decision: don't change or overload the existing --all (it keeps 'idle_hours counts every product's launches'; changing it would break current callers). Add the plan's new behaviour, every product's stored week, under a new flag --products (help: 'show every product's stored week'). Adjust the Task's acceptance to name --products instead of --all, and note the deviation from docs/plans/f-0148.md Task 2 in the PR."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0148.md"
       },
@@ -71107,7 +71116,7 @@
       "state": "Active",
       "title": "the reader and its command \u2014 every product's stored week, and `asf scorecard --all`",
       "type": "task",
-      "updated": "2026-10-11T11:21:19Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/scorecard/loop.py",
         "asf/views/scorecard.py",
@@ -84394,10 +84403,10 @@
       "folder": "tasks",
       "id": "T-0816",
       "kernel_findings": [
-        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/0ef1840f-3539-47a1-b5ac-405badb32591' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        "rebase: PR #1237 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84411,7 +84420,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T11:21:19Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -85375,10 +85384,12 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "rebase: PR #1483 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1483: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1483: checks (3.13) is red but not a required check \u2014 ignored",
@@ -85387,7 +85398,7 @@
         "PR #1483: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1483: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85404,7 +85415,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T11:34:55Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -87091,7 +87102,7 @@
         "PR #1442: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1442: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -87104,7 +87115,7 @@
       ],
       "title": "what the operator sees \u2014 the shape check, the example file, one doctor row and the two guide pages",
       "type": "task",
-      "updated": "2026-10-11T11:34:55Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/conventions.py",
         "asf/doctor.py",
@@ -87240,13 +87251,12 @@
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
-        "tests/kernel/test_question_pushed_base.py:233 \u2014 the archive path is pinned to the literal 'archive/worker/T-1'; plan step 6 and step 11 require one assertion against `ports.ARCHIVE_PREFIX + branch`, because resolvers.NO_BASE hardcodes `archive/%s` (resolvers.py:132-134) and may not import ports. Add `from asf.kernel import ports as P` and replace line 233 with `self.assertIn(P.ARCHIVE_PREFIX + 'worker/T-1', text)`",
-        "tests/kernel/test_question_pushed_base.py:99 \u2014 nothing asserts Q_83142 is not a `pushed` question, which plan step 3 orders (\"so assert that too\") because _pushed runs at decide.py:972 before resolvers.resolve at :976 and a cross-match would shadow trunk-base. Add after line 99: `def test_t83142s_question_is_not_the_pushed_class(self): self.assertFalse(R.pushed_question(Q_83142))`",
-        "tests/kernel/test_question_pushed_base.py:351-354 \u2014 test_a_knob_off_means_the_class_is_never_probed passes whether the knob works or not: TrunkProbe(None, ...) makes `not self.repo` (trunk.py:115) return {} before the `enabled` filter (trunk.py:114) matters, so S-125107's \"a knob turned off means the class is never probed\" is unasserted. Build it on TrunkBaseClass's harness repo instead \u2014 `off = T.TrunkProbe(self.repo, 'main', os.path.join(self.tmp, 'off-state'), python=sys.executable, timeout_s=60, trunk_base=False)`; assert `off.probe([p]) == {}` and `self.assertTrue(self.probe.probe([p]))`",
-        "tests/kernel/test_question_pushed_base.py:69-70 \u2014 R_0070 drops `push refused \u2014 `, which spec \u00a73.1 and plan step 1 both quote and which is decide.NOT_PUSHED's own prefix; D7 requires the fixture verbatim. Restore it: `R_0070 = ('no \u2014 hook refused twice: push refused \u2014 `bash tools/check_generic.sh && \u2026` failed on ' 'fix/B-0070 merged with origin/main: timed out after 900s both times')`",
+        "asf/kernel/resolvers.py:291 \u2014 move the `linear` gate so it only guards `BASE_OK`: return `NO_BASE % (branch, main, sha, branch)` whenever `base` is empty, before testing `result.get('linear')`, and add a `TrunkBaseClass` case asserting `NO_BASE` with `'linear': False` plus one driving the orphan branch off a harness trunk that carries a merge commit",
+        "asf/kernel/resolvers.py:108-110 \u2014 drop `ORIGIN_RE`'s unnegated `\\bon origin\\b` alternative, leaving `r'\\b(?:not|never|still not)\\s+(?:yet\\s+)?on origin\\b|\\bnot\\b[^.]*\\breached origin\\b|\\bpush(?:ed|ing)? (?:was )?(?:refused|denied)\\b'`, and add the red-CI text (\"I committed the fix but the required check on origin/main is red\u2026\") to `PushedClass` as a negative case beside line 94",
+        "asf/kernel/decide.py:995 \u2014 in `_pushed`, after `pushed_question(text)`, compute `probe = resolvers.match(text, resolvers.branch_of(it.id, facts.sessions, facts.prs))` and `return None` when `probe is not None and probe.cls == resolvers.TRUNK_BASE`, then pin the precedence with a case on a text carrying both forms",
         "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1445: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1445: checks (3.13) is red but not a required check \u2014 ignored",
@@ -87255,7 +87265,7 @@
         "PR #1445: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -87271,7 +87281,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-11T11:29:32Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -87417,17 +87427,19 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "tests/test_upgrade_kernel_floor.py:265-269 \u2014 the lock file does not exist at the assertion, so `loop.locked` short-circuits on `os.path.exists` and the release path is never tested; create it first (`with held_lock(os.path.join(state, loop.LOCK_FILE)): pass`), then `assertFalse(loop.locked(state))`, then `with loop.lock(state): pass`",
+        "tests/test_upgrade_kernel_floor.py:273-281 \u2014 `FakeOps()` defaults to `clocks=('tick', 'ci-queue')`, so no kernel job is in play; pass `FakeOps(clocks=('kernel', 'kernel-watch', 'tick'))`, assert `[c for c in ops.log if c[0] == 'bootout'] == []`, and give acceptance line 15 its own case and its own `Proves: S-124905 line 15` trailer instead of reusing line 13's test",
         "red: tests (3.12)",
         "red: tests (3.13)"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "satisfied on main at 14b963ba1: tests.test_upgrade_kernel_floor, tests.test_upgrade, tests.test_upgrade_drain_bound, tests.kernel.test_loop, tests.kernel.test_host, tests.test_scheduler, tests.test_doctor, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-130966 holds 1 commit(s) off it",
         "PR #1497: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1497: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -87443,7 +87455,7 @@
       ],
       "title": "the quiesce \u2014 the kernel's two argv shapes, its lock, and the module every Story shares",
       "type": "task",
-      "updated": "2026-10-11T11:29:32Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/upgrade.py",
@@ -87847,7 +87859,7 @@
         "PR #1438: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -87865,7 +87877,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-11T11:25:07Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -88051,21 +88063,14 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148630",
-      "kernel_attempts": [
-        "session ran past its max age",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "inbox/1.md / inbox/done/1.md (added by commits `9ff888ff8 record: inbox 1.md`, `57c63f73f record: retire 1`) \u2014 drop these two commits from `worker/T-148630`; they sit outside `writes: tests/test_work_item_model.py` and neither subject names `T-148630` or matches the report-subject pattern, so `asf.harvest.lane.commits_name_items` (asf/harvest/lane.py:609-615) will hold the branch instead of landing it. The branch should be exactly `801ebcedd` + `6b59ce055` on top of `origin/main`.",
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1468: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1468: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88078,7 +88083,7 @@
       ],
       "title": "a test per parent rule \u2014 the module the other six extend",
       "type": "task",
-      "updated": "2026-10-11T11:25:07Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "tests/test_work_item_model.py"
       ]
@@ -88268,13 +88273,11 @@
       "folder": "tasks",
       "id": "T-154337",
       "kernel_findings": [
-        "asf/record/cards.v2.schema.json:98 \u2014 declare the 15 keys ASF's own writers set but the closed schema omits (`supersedes`, `superseded_by`, `delivers`, `delivered_by`, `split_from`, `moved_to`, `reopened`, `local_only`, `stability`, `check`, `lane`, `size`, `ab_pair`, `dates`, `asf_ready`), each with its one type, its `owner` where `split_machine` puts it in the machine block, and `\"ref\": \"card\"` on the five reference fields; re-derive type and owner from the measurement over both readable record roots rather than from the review's list",
-        "tests/test_card_schema.py:28-41 \u2014 widen `measured_keys` to the union over both record roots, or better, walk a record root and assert zero undeclared keys, so the case cannot pass while the acceptance line it quotes (\"every key the record uses today is a declared property\") is false",
-        "asf/record/validate.py:151-154 \u2014 return an error for an unusable `pattern` instead of guessing it satisfied: `except re.error as e: out.append((pointer, 'schema pattern %r is not a usable regex: %s' % (pattern, e)))`, keeping `matched = True` so the no-raise contract holds",
-        "tests/test_card_schema.py:177-179 \u2014 add `{'pattern': '('}` to `garbage_schemas` and one case asserting an unusable pattern yields an error rather than silence, so validate.py:153-154 stops being dead to the suite"
+        "asf/record/cards.v2.schema.json:80 \u2014 C1: add `\"feature\": {\"type\": \"string\", \"pattern\": \"^F-[0-9]{4,}$\", \"ref\": \"card\"},` after `\"split_from\"`. The closed schema declares no `feature` property, so sample/backlog/tasks/T-0001.md:6 and T-0002.md:6 (`feature: F-0001`/`F-0002`) fail their own write gate \u2014 measured on this head: `('/feature', \"additional property 'feature' is not allowed\")` \u2014 while four modules read the key as a parent fallback (asf/ci_queue.py:902, asf/feeder/rows.py:803-804, asf/record/replan.py:275, asf/groom/shape.py:219). Step 1 wants one property per key the record uses, and S-133164's acceptance is 0 schema errors over the sample. Also add 'feature' to measured_keys in tests/test_card_schema.py:42-44.",
+        "tests/test_card_schema.py:28 \u2014 C2: add a case that measures a readable record root instead of asserting a hand-written tuple \u2014 glob sample/backlog/**/*.md, frontmatter.parse + frontmatter.split_machine each card, and assert `keys - set(SCHEMA['properties']) == set()` \u2014 keeping measured_keys for the live-root keys this host cannot read. As written, acceptance line 2 (\"every key the record uses today is a declared property\") can only fail for a key someone remembered to type, which is how C1 survived commit 1fe7474, whose subject was \"declare the 15 measured keys the closed schema missed\". The new case fails with {'feature'} on this head and goes green with C1's one line."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88287,7 +88290,7 @@
       ],
       "title": "the card schema file, and the stdlib validator that enforces exactly what it declares",
       "type": "task",
-      "updated": "2026-10-11T11:19:19Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/record/cards.v2.schema.json",
         "asf/record/validate.py",
@@ -90154,11 +90157,13 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_findings": [
-        "red: tests (3.12)",
-        "red: tests (3.13)",
-        "operator answer: Relaunch now: the external worktree that held a T-81130-named branch was removed at 22:20Z, so nothing holds worker/T-81130 any more. The earlier grant stands: tests/test_env.py is in writes."
+        "asf/harvest/lane.py:2035 \u2014 carry the regression clause onto the recorded tick line: after `:2037` set `f['regression_clause'] = f\"regression: {f['regression'][1] or f['regression'][0]}\"` and append it to `reason` at `:2490` and `:2493`, so all six forms appear, including `proved` and `not gated \u2014 regression.check is off`, which today print nowhere",
+        "asf/harvest/regression.py:329 \u2014 Task 2 Step 5 forbids the second test run: give `check` (`:371`) and `run_graft` (`:288`) an `after=(rc, output)` parameter, pass the gate's own head-run output from `ask` (`:472`), and delete the re-run at `:330-334` (fall back to it only when no head result exists for that sha) \u2014 or record the deviation and stop quoting Step 5 in the `run_graft` docstring at `:294-296`",
+        "asf/harvest/regression.py:112 \u2014 guard the product-supplied `fail_re`: wrap `re.compile` at `:108` in `except re.error: rx = None`, drop a pattern with `rx.groups < 1` to `None`, and add a `flags.regression.fail_re` problem beside the other two in `asf/conventions.py:642` with its case in `tests/test_conventions.py`",
+        "rebase: PR #1498 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py).",
         "PR #1439: checks (3.12) is red but not a required check \u2014 ignored",
@@ -90170,7 +90175,7 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -90191,7 +90196,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T11:25:07Z",
+      "updated": "2026-10-11T11:40:22Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
