@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T09:17:45Z",
+  "generated": "2026-10-11T09:18:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16911,7 +16911,7 @@
       "id": "B-138845",
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16921,7 +16921,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:18:47Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17185,6 +17185,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-151303",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17193,7 +17194,7 @@
       "state": "New",
       "title": "Bug: a session's done REPORT is judged satisfied on a sha that is not origin/main, tests unchecked",
       "type": "bug",
-      "updated": "2026-10-11T09:00:25Z"
+      "updated": "2026-10-11T09:18:47Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -21595,7 +21596,9 @@
     },
     "E-0006": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "F-0352"
+      ],
       "decided": true,
       "folder": "epics",
       "id": "E-0006",
@@ -35025,10 +35028,12 @@
         "Console applied the last blocking finding itself (e61312dc3: D2's keyword list now names minLength). The remaining finding was marked non-blocking by the reviewer. Run one last review on that head: approve if the minLength fix holds and no new correctness defect appears; file non-blocking notes as follow-ups."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Console applied the last blocking finding itself (e61312dc3: D2's keyword list now names minLength). The remaining finding was marked non-blocking by the reviewer. Run one last review on that head: approve if the minLength fix holds and no new correctness defect appears; file non-blocking notes as follow-ups."
+        "relaunch: operator answer: Console applied the last blocking finding itself (e61312dc3: D2's keyword list now names minLength). The remaining finding was marked non-blocking by the reviewer. Run one last review on that head: approve if the minLength fix holds and no new correctness defect appears; file non-blocking notes as follow-ups.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 3,
       "kernel_findings": [
+        "docs/plans/f-0340.md:4 \u2014 the spec already landed on `origin/main` at `c31fe95a6` (same commit the plan cites as its own `Base` two lines below; title \"F-0340 \u2014 One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible (#1420)\"), byte-identical to the cited `origin/spec/F-0340` tip `6171276e2eb38ab81ed285f870967b0b84a99c71` (same MD5) \u2014 change \"approved; on `origin/spec/F-0340` at `6171276e2eb38ab81ed285f870967b0b84a99c71`, not yet on the trunk\" to say the spec is on `origin/main` at `c31fe95a6`, not pending on a branch.",
         "docs/specs/f-0340.md:470 \u2014 `MIGRATIONS` maps a version to a `Migration(apply, additive, note)` NamedTuple on the trunk this branch is really cut from (`asf/schema.py:69-80`, `:98`), not to a callable; write the entry as `MIGRATIONS[2] = Migration(_migrate_to_2, additive=False, note='\u2026')` and add to D10 (`:265`) that `additive=False` is what makes `require()` refuse, because `blocking()` records a gap only for a non-additive step (`asf/schema.py:208-223`, `:242-258`) \u2014 without that flag D10's \"every writing command refuse\" and S-133164's acceptance line at `:875` are both false.",
         "docs/specs/f-0340.md:554 \u2014 `asf check`'s positional `paths` is a filter applied inside the record root the command already resolved from cwd/`--product` (`asf/record/check.py:180-183`, `asf/cli.py:648-671`), not a root argument, so `asf check /tmp/f0340-copy --schema-only` matches nothing and \"expect: 0 findings, exit 0\" passes whatever state the copy is in; `cd /tmp/f0340-copy` before both commands (or declare the root argument in S-133163), and drop \"stays\" from D10's claim at `:265` that `asf record-repair` already runs over \"a record root given by path\" \u2014 it takes only `--apply` and `--product` today (`asf/record/repair.py:67-74`).",
         "docs/specs/f-0340.md:325 \u2014 the closed schema's declared property set (the \u00a72.1 outline, \u00a71.1's 60 keys, the seventeen `kernel_*` keys) never includes `satisfied`, which D13 (`:268`), \u00a72.5 (`:430`, `:432`), \u00a74 (`:593`) and six of S-133161's acceptance lines all require, so with `additionalProperties: false` the first card the resolving operation writes fails its own write gate; declare `satisfied` in \u00a72.1 as an array of `{field, id, date}`.",
@@ -35042,16 +35047,17 @@
         "docs/specs/f-0340.md:708 \u2014 in S-133159's preamble replace \"The 539 open Tasks\" with \"The 363 open Tasks\" (\u00a71.1:48; or \"638 across both roots\", \u00a71.1:48 + \u00a71.1:73): 539 matches no measured row.",
         "docs/specs/f-0340.md:31 \u2014 \u00a71.1 and P16 both promise \"the NEEDS OPERATOR line at the end of this spec\" giving the read-only re-measurement command for ASF's own record, but no such line exists anywhere in the file (it ends at line 759, mid Story S-133164's checklist); either add that line or stop promising it.",
         "operator answer: Operator line answered: the spec's read-only block was run against ASF's live record root (origin/main checkout) at 2026-10-10 21:15Z. Output: cards 2693 {'task': 959, 'bug': 693, 'story': 493, 'feature': 348, 'rule': 142, 'decision': 52, 'epic': 6} cards the parser refuses 0 [] cards with a value split over lines 0 duplicate ids 0 typed / machine keys 38 / 25 (63 counted, 63 distinct) keys with two value types [] keys typed here, machine there [] reference-field edges 4107 {'parent': 2493, 'after': 1358, 'stories': 247, 'blockedBy': 9} edges onto an id not on the record 0 {} edges onto a ret\u2026",
-        "operator answer: Final round granted (round 5), limited to the latest review's findings in kernel-reviews.jsonl. These are real correctness issues, not wording: (1) MIGRATIONS entries are Migration(apply, additive, note) NamedTuples: write MIGRATIONS[2] = Migration(_migrate_to_2, additive=False, note=...), and state in D10 that additive=False is what makes require() refuse. (2) asf check's positional paths are a filter, not a root: cd into the copy before both commands, or declare a root argument in S-133163; drop 'stays' about asf record-repair taking a path. (3) Add 'satisfied' to the closed schema's declar\u2026"
+        "operator answer: Final round granted (round 5), limited to the latest review's findings in kernel-reviews.jsonl. These are real correctness issues, not wording: (1) MIGRATIONS entries are Migration(apply, additive, note) NamedTuples: write MIGRATIONS[2] = Migration(_migrate_to_2, additive=False, note=...), and state in D10 that additive=False is what makes require() refuse. (2) asf check's positional paths are a filter, not a root: cd into the copy before both commands, or declare a root argument in S-133163; drop 'stays' about asf record-repair taking a path. (3) Add 'satisfied' to the closed schema's declar\u2026",
+        "operator answer: Console applied the last blocking finding itself (e61312dc3: D2's keyword list now names minLength). The remaining finding was marked non-blocking by the reviewer. Run one last review on that head: approve if the minLength fix holds and no new correctness defect appears; file non-blocking notes as follow-ups."
       ],
-      "kernel_fix_rounds": 5,
+      "kernel_fix_rounds": 6,
       "kernel_notes": [
         "spec-f-0340-1791645582: NEEDS OPERATOR: the card's \"Operator decision 2026-10-10\" section reached this session cut off mid-sentence \u2014 it ends \"validated against the versioned JSON Schema on every write (record writer, record\". The spec rea\u2026",
         "spec-f-0340-1791663815: NEEDS OPERATOR: ASF's own live backlog_dir is outside this session's read roots, so \u00a71.1's rows",
         "plan-f-0340-1791706772: NEEDS OPERATOR: I could not confirm the spec session's `S:133155-133204` id claim is still in the record's mirror, so I cannot prove `idcheck.findings` will pass the ten Story ids when the record mints these Tasks \u2014\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0002",
       "priority": "need",
       "rank": 2,
@@ -35060,7 +35066,7 @@
       "state": "New",
       "title": "One enforced card schema: machine fields in strict frontmatter, validated on every write, invalid cards visible",
       "type": "feature",
-      "updated": "2026-10-11T09:02:04Z"
+      "updated": "2026-10-11T09:18:47Z"
     },
     "F-0341": {
       "backlinks": [],
@@ -35408,7 +35414,8 @@
     },
     "F-0347": {
       "backlinks": [
-        "F-0350"
+        "F-0350",
+        "F-0352"
       ],
       "children": [],
       "decided": true,
@@ -35541,6 +35548,20 @@
       "title": "Bug: plan_on_approve never mints an approved spec's declared Stories",
       "type": "feature",
       "updated": "2026-10-11T07:49:53Z"
+    },
+    "F-0352": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0352",
+      "parent": "E-0006",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T09:16:49Z",
+      "state": "New",
+      "title": "Adopt botseon's measured speed fixes: rebase cap, record lint, two holders, WIP push",
+      "type": "feature",
+      "updated": "2026-10-11T09:16:49Z"
     },
     "R-0001": {
       "backlinks": [
@@ -84616,7 +84637,7 @@
         "groom-fill-t-129156-1791667556: groom-fill raised risk high: design matches trunk exactly and nothing named is built; the \"parent F-0272 is Done\" gap is F-0272's stale kernel_state:done field, permanently un-writable by apply.py once it had children (confirmed via dor.py:194 + apply.py:552-569), not a real DoR failure.",
         "groom-fill-t-129156-1791668445: groom-fill raised risk high: design matches trunk at aaa491cfc exactly and nothing named is built yet \u2014 acceptance/writes unchanged from prior rounds; the cited \"parent F-0272 is Done\" gap is a stale kernel_state:done written on F-0272 before its Stories/Task existed, permanently un-writable per apply.py's container-skip (:552-556) since F-0272 now has children \u2014 F-0272 itself reads state: Active/stage: spec-approved, so the gap is false and needs a direct operator fix to F-0272's kernel_state field, not another child groom-fill."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0272.md"
       },
@@ -84630,7 +84651,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-11T08:43:46Z",
+      "updated": "2026-10-11T09:18:47Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -85531,9 +85552,10 @@
         "Correct: T-129178 was falsely marked satisfied (judged on the old pin 14b963ba1). A fix agent is re-judging it and recovering its commit, and it will build first. This Task waits for it via after:, so end this round; it relaunches once T-129178 lands."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Correct: T-129178 was falsely marked satisfied (judged on the old pin 14b963ba1). A fix agent is re-judging it and recovering its commit, and it will build first. This Task waits for it via after:, so end this round; it relaunches once T-129178 lands."
+        "relaunch: operator answer: Correct: T-129178 was falsely marked satisfied (judged on the old pin 14b963ba1). A fix agent is re-judging it and recovering its commit, and it will build first. This Task waits for it via after:, so end this round; it relaunches once T-129178 lands.",
+        "relaunch: escalated: the previous session stopped (blocked: left out: asf/workers/spawn.py and tests/test_workers.py untouched \u2014 Task 1 (T-129178, `asf/workers/scratch.py`, the `exclude()` this Task calls) is still not an ancestor of origin/main (its\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85546,7 +85568,7 @@
       ],
       "title": "the factory hardens the worktree when it makes it",
       "type": "task",
-      "updated": "2026-10-11T09:13:43Z",
+      "updated": "2026-10-11T09:18:47Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -85681,7 +85703,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129186",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -85694,7 +85716,7 @@
       ],
       "title": "the belt \u2014 `builds_on_landing`, and the three done-card reads that exempt a follow-up",
       "type": "task",
-      "updated": "2026-10-11T09:02:04Z",
+      "updated": "2026-10-11T09:18:47Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
@@ -85717,7 +85739,7 @@
         "relaunch: operator answer: Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish.",
         "relaunch: escalated: the previous session stopped (partial: left out: the PD10 regression case \u2014 a Closed Bug whose fresh evidence carries a `refix` reopening to `Active` through the real `refixing` rule (ingest.derive needs no reopen.py change for i\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -85730,7 +85752,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T09:13:43Z",
+      "updated": "2026-10-11T09:18:47Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -85904,7 +85926,7 @@
         "PR #1461: part (3.13, 4) is red but not a required check \u2014 ignored",
         "build-t-129192-1791706079: NEEDS OPERATOR: PR #1461's `tests (3.12)`/`tests (3.13)` may still read red on a re-run of this same push if the flake recurs \u2014 if it does twice in a row, the next session should look at whether `tests.test_minimal_\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0329.md"
       },
@@ -85919,7 +85941,7 @@
       ],
       "title": "the reader reads the document \u2014 the bytes, the fences, and the one line that keeps a minted title from refusing its own plan",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:18:47Z",
       "writes": [
         "asf/record/idcheck.py",
         "tests/test_plan_tasks.py",
@@ -86393,7 +86415,7 @@
         "PR #1448: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1448: part (3.12, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -86407,7 +86429,7 @@
       ],
       "title": "the one map, and the host's two refresh doors",
       "type": "task",
-      "updated": "2026-10-11T09:02:04Z",
+      "updated": "2026-10-11T09:18:47Z",
       "writes": [
         "asf/env.py",
         "asf/kernel/loop.py",
@@ -87294,7 +87316,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-142127",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -87309,7 +87331,7 @@
       ],
       "title": "`I16`, the `flow` scope, and the tick's check point",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:18:47Z",
       "writes": [
         "asf/invariants.py",
         "tests/test_invariants.py",
