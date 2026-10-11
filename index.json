@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T11:19:26Z",
+  "generated": "2026-10-11T11:21:21Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17275,10 +17275,15 @@
       "id": "B-153355",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.48",
+      "kernel_findings": [
+        "asf/kernel/status.py:111 \u2014 replace `health.pushed(wt, branch)`, which runs `git ls-remote --heads origin` per lane branch (asf/workers/lifecycle.py:1661-1669, no timeout) and reads an unreachable origin as \"branch not pushed\" \u2014 fabricating a violation for every already-pushed lane branch, on the status path the module docstring keeps free of remote reads \u2014 with a local count: `n = gitops.git(['rev-list', '--count', 'refs/heads/' + branch, '--not', '--remotes=origin'], product.repo_dir, timeout=60)`, appending `(branch, '%s commit(s) not pushed' % n.data)` only when it is > 0 (verified: 1 stranded, 0 pushed, 0 with origin unreachable, and `assertIn('not pushed', \u2026)` at tests/kernel/test_flow_violations.py:59 stays green).",
+        "asf/kernel/status.py:103-116 \u2014 move the `try` inside the `for branch, wt in health._lane_branches(product)` loop so one unreadable worktree costs only its own row instead of discarding every violation: a removed checkout that git still lists until `worktree prune` makes `health.pushed` run `subprocess.run(..., cwd=<missing dir>)`, which raises FileNotFoundError into the blanket `except Exception` and returns `[]` \u2014 append `(branch, 'unreadable \u2014 %s' % (str(e) or type(e).__name__))` for that branch and keep the outer `try` for `sess_port.sessions()` only."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-153355-1791712919: groom-fill raised risk high: two of the three acceptance lines are already implemented and tested (host-push safety net; B-151303's trunk-fetched done-judging landed today); only the kernel-status flow-violation count is new, scoped work."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17287,7 +17292,7 @@
       "state": "New",
       "title": "Bug: a refused push strands a local session's work on a local-only branch",
       "type": "bug",
-      "updated": "2026-10-11T11:06:47Z",
+      "updated": "2026-10-11T11:21:19Z",
       "writes": [
         "asf/kernel/status.py",
         "tests/kernel/test_flow_violations.py"
@@ -71079,10 +71084,11 @@
         "relaunch: operator answer: Decision: don't change or overload the existing --all (it keeps 'idle_hours counts every product's launches'; changing it would break current callers). Add the plan's new behaviour, every product's stored week, under a new flag --products (help: 'show every product's stored week'). Adjust the Task's acceptance to name --products instead of --all, and note the deviation from docs/plans/f-0148.md Task 2 in the PR."
       ],
       "kernel_findings": [
-        "none \u2014 no C-list code defect; the blocker is the unresolved --all flag-name collision (NEEDS OPERATOR above), a plan defect no coder footprint can fix without a naming decision."
+        "none \u2014 no C-list code defect; the blocker is the unresolved --all flag-name collision (NEEDS OPERATOR above), a plan defect no coder footprint can fix without a naming decision.",
+        "operator answer: Decision: don't change or overload the existing --all (it keeps 'idle_hours counts every product's launches'; changing it would break current callers). Add the plan's new behaviour, every product's stored week, under a new flag --products (help: 'show every product's stored week'). Adjust the Task's acceptance to name --products instead of --all, and note the deviation from docs/plans/f-0148.md Task 2 in the PR."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0148.md"
       },
@@ -71095,7 +71101,7 @@
       "state": "Active",
       "title": "the reader and its command \u2014 every product's stored week, and `asf scorecard --all`",
       "type": "task",
-      "updated": "2026-10-11T11:19:19Z",
+      "updated": "2026-10-11T11:21:19Z",
       "writes": [
         "asf/scorecard/loop.py",
         "asf/views/scorecard.py",
@@ -84385,7 +84391,7 @@
         "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/0ef1840f-3539-47a1-b5ac-405badb32591' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84399,7 +84405,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T11:19:19Z",
+      "updated": "2026-10-11T11:21:19Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -87339,7 +87345,7 @@
         "PR #1433: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -87353,7 +87359,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-11T11:01:11Z",
+      "updated": "2026-10-11T11:21:19Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -88044,7 +88050,7 @@
         "PR #1468: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1468: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88057,7 +88063,7 @@
       ],
       "title": "a test per parent rule \u2014 the module the other six extend",
       "type": "task",
-      "updated": "2026-10-11T11:10:38Z",
+      "updated": "2026-10-11T11:21:19Z",
       "writes": [
         "tests/test_work_item_model.py"
       ]
