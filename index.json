@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T12:20:46Z",
+  "generated": "2026-10-11T12:24:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -20,6 +20,7 @@
         "T-129169",
         "T-129185",
         "T-129186",
+        "T-129187",
         "B-0020",
         "B-0027",
         "B-0030",
@@ -17184,12 +17185,15 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.41",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/plans/b-151002.md:1 \u2014 write the plan naming the Task, its Steps, and the acceptance tests it claims to satisfy (no plan exists on this branch or origin/main; this product's convention requires one even for an S3 bug fix)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17198,7 +17202,7 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T12:20:39Z",
+      "updated": "2026-10-11T12:24:29Z",
       "writes": [
         "asf/dispatch.py",
         "asf/briefs/preamble.py",
@@ -69282,12 +69286,18 @@
       ],
       "folder": "tasks",
       "id": "T-0453",
+      "kernel_answers": [
+        "granted tools/pinned-readers.txt; nothing else outside writes (card updated by the kernel). tools/pinned-readers.txt matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tools/pinned-readers.txt; nothing else outside writes (card updated by the kernel). tools/pinned-readers.txt matches kernel.risk.high: this item is high-risk now."
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_notes": [
         "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance."
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69297,12 +69307,13 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T12:03:45Z",
+      "updated": "2026-10-11T12:24:29Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
         "docs/products.example.yaml",
-        "tests/test_env.py"
+        "tests/test_env.py",
+        "tools/pinned-readers.txt"
       ]
     },
     "T-0454": {
@@ -86462,7 +86473,12 @@
         "relaunch: operator answer: Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish.",
         "relaunch: escalated: the previous session stopped (partial: left out: the PD10 regression case \u2014 a Closed Bug whose fresh evidence carries a `refix` reopening to `Active` through the real `refixing` rule (ingest.derive needs no reopen.py change for i\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/record/reopen.py:171 \u2014 restore the spec's `-\u2026`: `where = f\" ({conv.branch('fix', iid)}-\u2026)\" if conv is not None else ''`, and tighten `tests/test_reopen.py:104` to `self.assertIn('fix/B-0001-\u2026', err)` so the shape is pinned",
+        "escalated: the previous session stopped (partial: left out: the PD10 regression case \u2014 a Closed Bug whose fresh evidence carries a `refix` reopening to `Active` through the real `refixing` rule (ingest.derive needs no reopen.py change for i\u2026) \u2014 pick up from its report and branch, and finish the item"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -86475,7 +86491,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T12:11:34Z",
+      "updated": "2026-10-11T12:24:29Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -87450,7 +87466,7 @@
         "PR #1445: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -87466,7 +87482,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-11T12:11:34Z",
+      "updated": "2026-10-11T12:24:29Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
