@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T12:11:38Z",
+  "generated": "2026-10-11T12:16:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17281,7 +17281,7 @@
       "kernel_notes": [
         "groom-fill-b-153355-1791712919: groom-fill raised risk high: two of the three acceptance lines are already implemented and tested (host-push safety net; B-151303's trunk-fetched done-judging landed today); only the kernel-status flow-violation count is new, scoped work."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17290,7 +17290,7 @@
       "state": "New",
       "title": "Bug: a refused push strands a local session's work on a local-only branch",
       "type": "bug",
-      "updated": "2026-10-11T12:08:03Z",
+      "updated": "2026-10-11T12:16:15Z",
       "writes": [
         "asf/kernel/status.py",
         "tests/kernel/test_flow_violations.py"
@@ -35842,7 +35842,7 @@
       "state": "New",
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
-      "updated": "2026-10-11T10:51:30Z"
+      "updated": "2026-10-11T12:16:15Z"
     },
     "F-0351": {
       "backlinks": [],
@@ -71254,7 +71254,10 @@
         "operator answer: Decision: don't change or overload the existing --all (it keeps 'idle_hours counts every product's launches'; changing it would break current callers). Add the plan's new behaviour, every product's stored week, under a new flag --products (help: 'show every product's stored week'). Adjust the Task's acceptance to name --products instead of --all, and note the deviation from docs/plans/f-0148.md Task 2 in the PR."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "build-t-0503-1791720460: NEEDS OPERATOR: the operator's answer asks that T-0503's acceptance name `--products` instead of `--all`, but that text is in the backlog record (a different repo from this product) and this job may not write it; th\u2026"
+      ],
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0148.md"
       },
@@ -71267,7 +71270,7 @@
       "state": "Active",
       "title": "the reader and its command \u2014 every product's stored week, and `asf scorecard --all`",
       "type": "task",
-      "updated": "2026-10-11T12:08:03Z",
+      "updated": "2026-10-11T12:16:15Z",
       "writes": [
         "asf/scorecard/loop.py",
         "asf/views/scorecard.py",
@@ -84553,11 +84556,14 @@
       ],
       "folder": "tasks",
       "id": "T-0816",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
         "rebase: PR #1237 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84571,7 +84577,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T11:57:29Z",
+      "updated": "2026-10-11T12:16:15Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -85344,7 +85350,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85357,7 +85363,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T12:11:34Z",
+      "updated": "2026-10-11T12:16:15Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -87554,7 +87560,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130215",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -87567,7 +87573,7 @@
       ],
       "title": "the three reds the rule must never swallow, pinned",
       "type": "task",
-      "updated": "2026-10-11T11:53:51Z",
+      "updated": "2026-10-11T12:16:15Z",
       "writes": [
         "tests/test_mq_batch_survival.py"
       ]
@@ -87869,7 +87875,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131722",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -87882,7 +87888,7 @@
       ],
       "title": "the `stray` line stops, and the orphan path keeps its own bar",
       "type": "task",
-      "updated": "2026-10-11T11:53:51Z",
+      "updated": "2026-10-11T12:16:15Z",
       "writes": [
         "tests/test_closed_item_prs.py"
       ]
@@ -90445,10 +90451,12 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.12)",
         "red: tests (3.13)"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1455: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1455: checks (3.13) is red but not a required check \u2014 ignored",
@@ -90458,7 +90466,7 @@
         "PR #1455: part (3.13, 4) is red but not a required check \u2014 ignored",
         "PR #1455: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -90471,7 +90479,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-11T08:09:07Z",
+      "updated": "2026-10-11T12:16:15Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -91486,7 +91494,7 @@
         "satisfied on main at 14b963ba1: tests.test_doc_lane_review, tests.test_feeder, tests.test_direct_lane, tests.test_pushed_work, tests.test_pushed_not_starved, tests.test_doc_lane_landing, tests.test_invariants_in_feeder, tests.test_correction_moves_to_open_branch, tests.test_reviews, tests.test_review_reader, tests.test_lane, tests.test_lifecycle, tests.test_briefs, tests.test_evidence, tests.test_harvest, tests.test_continuation, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-83143 holds 3 commit(s) off it"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -91502,7 +91510,7 @@
       ],
       "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
       "type": "task",
-      "updated": "2026-10-11T09:27:40Z",
+      "updated": "2026-10-11T12:16:15Z",
       "writes": [
         "asf/reviews.py",
         "asf/harvest/lane.py",
