@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T18:26:46Z",
+  "generated": "2026-10-11T18:30:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17466,6 +17466,19 @@
       "writes": [
         "asf/harvest/regression.py"
       ]
+    },
+    "B-173611": {
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-173611",
+      "rank": -4,
+      "schema_version": 1,
+      "stage_since": "2026-10-11T18:29:57Z",
+      "state": "New",
+      "title": "main red at 98533db97: tests (3.12), tests (3.13) \u2014 4 candidate change(s)",
+      "type": "bug",
+      "updated": "2026-10-11T18:29:57Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -35256,7 +35269,8 @@
         "F-0334",
         "T-159847",
         "T-159850",
-        "T-159855"
+        "T-159855",
+        "B-173611"
       ],
       "children": [
         "S-125155",
@@ -69692,7 +69706,8 @@
         "Its red tests (3.12/3.13) were inherited from main, red since deaf9f1c2 (test_logs_tree); the fix #1584 is merging now. Don't spend a round: once main is green, update the branch onto main and re-run CI. Grant one round only if it's still red after that."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Its red tests (3.12/3.13) were inherited from main, red since deaf9f1c2 (test_logs_tree); the fix #1584 is merging now. Don't spend a round: once main is green, update the branch onto main and re-run CI. Grant one round only if it's still red after that."
+        "relaunch: operator answer: Its red tests (3.12/3.13) were inherited from main, red since deaf9f1c2 (test_logs_tree); the fix #1584 is merging now. Don't spend a round: once main is green, update the branch onto main and re-run CI. Grant one round only if it's still red after that.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
@@ -69724,7 +69739,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T18:26:25Z",
+      "updated": "2026-10-11T18:30:17Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -89153,7 +89168,8 @@
       "backlinks": [
         "T-154340",
         "T-154342",
-        "B-172260"
+        "B-172260",
+        "B-173611"
       ],
       "children": [],
       "decided": true,
@@ -89876,7 +89892,7 @@
         "PR #1562: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89889,7 +89905,7 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T18:17:01Z",
+      "updated": "2026-10-11T18:30:17Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -90135,11 +90151,17 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/test_scheduler.py tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/test_scheduler.py tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1586: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1586: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90152,7 +90174,7 @@
       ],
       "title": "a clock transcript is capped by the run that wrote it, and the facts that outlive the cap are carried",
       "type": "task",
-      "updated": "2026-10-11T18:26:25Z",
+      "updated": "2026-10-11T18:30:17Z",
       "writes": [
         "asf/logs.py",
         "asf/cli.py",
@@ -90289,7 +90311,8 @@
       ],
       "backlinks": [
         "T-164020",
-        "B-172260"
+        "B-172260",
+        "B-173611"
       ],
       "children": [],
       "decided": true,
@@ -92434,7 +92457,8 @@
         "T-81134",
         "B-145246",
         "B-148751",
-        "B-172260"
+        "B-172260",
+        "B-173611"
       ],
       "children": [],
       "decided": true,
