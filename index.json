@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T20:39:00Z",
+  "generated": "2026-10-11T20:44:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -69872,7 +69872,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T20:36:32Z",
+      "updated": "2026-10-11T20:44:13Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -70014,11 +70014,13 @@
       "id": "T-0457",
       "kernel_answers": [
         "granted tests/test_workflow.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel).",
-        "granted asf/env.py; nothing else outside writes (card updated by the kernel). T-0453 also writes asf/env.py (Building): the overlap rule serialises them."
+        "granted asf/env.py; nothing else outside writes (card updated by the kernel). T-0453 also writes asf/env.py (Building): the overlap rule serialises them.",
+        "granted asf/schema.py tests/test_schema_version.py; nothing else outside writes (card updated by the kernel). T-129165 also writes asf/schema.py (Building): the overlap rule serialises them."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/env.py; nothing else outside writes (card updated by the kernel). T-0453 also writes asf/env.py (Building): the overlap rule serialises them.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted asf/schema.py tests/test_schema_version.py; nothing else outside writes (card updated by the kernel). T-129165 also writes asf/schema.py (Building): the overlap rule serialises them."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
@@ -70063,7 +70065,7 @@
         "PR #1585: upgrade-matrix (v0.2.118) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -70076,14 +70078,16 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T20:33:18Z",
+      "updated": "2026-10-11T20:44:13Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
         "tests/test_upgrade_matrix.py",
         "tests/test_workflow.py",
         "tests/test_ci_pool.py",
-        "asf/env.py"
+        "asf/env.py",
+        "asf/schema.py",
+        "tests/test_schema_version.py"
       ]
     },
     "T-0458": {
@@ -86313,6 +86317,7 @@
     },
     "T-129165": {
       "backlinks": [
+        "T-0457",
         "T-129157",
         "T-129167",
         "T-129168",
@@ -90336,7 +90341,7 @@
         "PR #1586: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1586: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90349,7 +90354,7 @@
       ],
       "title": "a clock transcript is capped by the run that wrote it, and the facts that outlive the cap are carried",
       "type": "task",
-      "updated": "2026-10-11T20:29:02Z",
+      "updated": "2026-10-11T20:44:13Z",
       "writes": [
         "asf/logs.py",
         "asf/cli.py",
