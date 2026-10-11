@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:20:44Z",
+  "generated": "2026-10-11T15:24:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -69585,9 +69585,10 @@
         "PR #1529: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1529: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1529: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1529: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1529: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "build-t-0453-1791728303: NEEDS OPERATOR: tools/pinned-readers.txt is documented as a deployment fact \u2014 \"the oldest asf sha whose loader still reads a live product file (a pinned product venv)\" \u2014 and this session cannot see which sha any pro\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69597,7 +69598,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T14:19:34Z",
+      "updated": "2026-10-11T15:24:43Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -88790,7 +88791,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148633",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88803,7 +88804,7 @@
       ],
       "title": "the effective milestone, and `milestone` settable on a card",
       "type": "task",
-      "updated": "2026-10-11T15:09:11Z",
+      "updated": "2026-10-11T15:24:43Z",
       "writes": [
         "asf/views/index_reader.py",
         "asf/record/new.py",
@@ -88943,7 +88944,7 @@
         "asf/record/card.py:83 \u2014 `return json.dumps(ordered, indent=2, ensure_ascii=False) + '\\n'`: dumps leaves ensure_ascii at its default, so every card title's em dash is stored as `\u2014` (5 of 10 sample cards carry non-ASCII, this item's own title included); dumps is the canonical form, so fixing it after Task 10 writes the record rewrites every card in one diff, and the repo convention is already ensure_ascii=False (asf/record/ingest.py:146 and nine other sites)"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88956,7 +88957,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T15:20:42Z",
+      "updated": "2026-10-11T15:24:43Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
@@ -88975,6 +88976,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154339",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88987,7 +88989,7 @@
       ],
       "title": "the write gate \u2014 the one card writer refuses an invalid card and writes nothing",
       "type": "task",
-      "updated": "2026-10-11T09:54:04Z",
+      "updated": "2026-10-11T15:24:43Z",
       "writes": [
         "asf/record/writer.py",
         "tools/check_card_gate.sh",
@@ -89407,7 +89409,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159852",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89421,7 +89429,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-11T14:38:54Z",
+      "updated": "2026-10-11T15:24:43Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -89431,7 +89439,8 @@
         "tests/test_capacity.py",
         "tests/test_seat_claims.py",
         "tests/kernel/test_host.py",
-        "tests/kernel/test_speedups.py"
+        "tests/kernel/test_speedups.py",
+        "tests/kernel/test_no_heartbeat.py"
       ]
     },
     "T-159853": {
@@ -89792,7 +89801,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/approvals.py asf/harvest/harvest.py asf/tick/step_harvest.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -89805,7 +89814,7 @@
       ],
       "title": "`asf/logs.py` \u2014 the tree, its paths and its caps",
       "type": "task",
-      "updated": "2026-10-11T14:38:54Z",
+      "updated": "2026-10-11T15:24:43Z",
       "writes": [
         "asf/logs.py",
         "asf/scheduler.py",
