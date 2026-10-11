@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T12:03:47Z",
+  "generated": "2026-10-11T12:08:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16933,11 +16933,12 @@
         "relaunch: PR #1481 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1494 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1505 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
-        "relaunch: PR #1512 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1512 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1517 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16947,7 +16948,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T12:03:45Z",
+      "updated": "2026-10-11T12:08:03Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17188,7 +17189,7 @@
         "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17197,7 +17198,7 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T11:53:50Z",
+      "updated": "2026-10-11T12:08:03Z",
       "writes": [
         "asf/dispatch.py",
         "asf/briefs/preamble.py",
@@ -17274,14 +17275,13 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.48",
       "kernel_findings": [
-        "asf/kernel/status.py:111 \u2014 replace `health.pushed(wt, branch)`, which runs `git ls-remote --heads origin` per lane branch (asf/workers/lifecycle.py:1661-1669, no timeout) and reads an unreachable origin as \"branch not pushed\" \u2014 fabricating a violation for every already-pushed lane branch, on the status path the module docstring keeps free of remote reads \u2014 with a local count: `n = gitops.git(['rev-list', '--count', 'refs/heads/' + branch, '--not', '--remotes=origin'], product.repo_dir, timeout=60)`, appending `(branch, '%s commit(s) not pushed' % n.data)` only when it is > 0 (verified: 1 stranded, 0 pushed, 0 with origin unreachable, and `assertIn('not pushed', \u2026)` at tests/kernel/test_flow_violations.py:59 stays green).",
-        "asf/kernel/status.py:103-116 \u2014 move the `try` inside the `for branch, wt in health._lane_branches(product)` loop so one unreadable worktree costs only its own row instead of discarding every violation: a removed checkout that git still lists until `worktree prune` makes `health.pushed` run `subprocess.run(..., cwd=<missing dir>)`, which raises FileNotFoundError into the blanket `except Exception` and returns `[]` \u2014 append `(branch, 'unreadable \u2014 %s' % (str(e) or type(e).__name__))` for that branch and keep the outer `try` for `sess_port.sessions()` only."
+        "asf/kernel/status.py:113 \u2014 `health._lane_branches(product)` sits outside the function's `try`, and it is bare `subprocess.run(..., cwd=product.repo_dir)` (asf/workers/health.py:353), so a configured-but-absent `repo_dir` raises FileNotFoundError out of `flow_violations`; `status()` calls it unguarded at asf/kernel/status.py:203, before the plan path branches, so the Needs-you block, the biggest wait, the Stuck rows, the counts and the Sessions block are all lost to a traceback \u2014 where before this diff the cached-plan path touched no repository at all. Move the call into the existing try: `branches = health._lane_branches(product)` as the third statement of the `try` at asf/kernel/status.py:107-109, `except Exception:  # noqa: BLE001 \u2014 a bad ledger or an unreadable checkout never hides the status` / `return []`, then `for branch, wt in branches:` at :113; and widen the docstring's last sentence at asf/kernel/status.py:102 to \"A bad session ledger or an unreadable checkout counts as no violation, never a failed status.\""
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-153355-1791712919: groom-fill raised risk high: two of the three acceptance lines are already implemented and tested (host-push safety net; B-151303's trunk-fetched done-judging landed today); only the kernel-status flow-violation count is new, scoped work."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17290,7 +17290,7 @@
       "state": "New",
       "title": "Bug: a refused push strands a local session's work on a local-only branch",
       "type": "bug",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T12:08:03Z",
       "writes": [
         "asf/kernel/status.py",
         "tests/kernel/test_flow_violations.py"
@@ -35578,7 +35578,13 @@
         "F-0347",
         "F-0350"
       ],
-      "children": [],
+      "children": [
+        "S-134155",
+        "S-134156",
+        "S-134157",
+        "S-134158",
+        "S-134159"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0344",
@@ -35609,7 +35615,7 @@
         "spec-f-0344-1791712134: NEEDS OPERATOR: the card's five Feature-level acceptance bullets, to defer them one by one in Out instead of as a set \u2014 `cat \"$(find ~/.ASF -path '*/features/F-0344.md' -print -quit)\"`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35617,7 +35623,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-11T11:53:51Z"
+      "updated": "2026-10-11T12:08:03Z"
     },
     "F-0345": {
       "backlinks": [
@@ -35728,7 +35734,13 @@
         "S-135957",
         "S-135958",
         "S-135959",
-        "S-135960"
+        "S-135960",
+        "T-160206",
+        "T-160207",
+        "T-160208",
+        "T-160209",
+        "T-160210",
+        "T-160211"
       ],
       "decided": true,
       "folder": "features",
@@ -39571,6 +39583,73 @@
       "type": "story",
       "updated": "2026-10-11T08:18:52Z"
     },
+    "S-134155": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134155",
+      "parent": "F-0344",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:07:13Z",
+      "state": "New",
+      "title": "one module owns every path under the transcript tree, and the rotation is written once \u2014 acceptance: `python3 -m unittest tests.test_logs_tree.PathTests tests.test_logs_tree.RotateTests`",
+      "type": "story",
+      "updated": "2026-10-11T12:07:13Z"
+    },
+    "S-134156": {
+      "backlinks": [
+        "F-0344"
+      ],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134156",
+      "parent": "F-0344",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:07:13Z",
+      "state": "New",
+      "title": "a clock transcript is capped by the run that wrote it, and the facts that outlive the cap are carried \u2014 acceptance: `python3 -m unittest tests.test_logs_tree.ClockRotateTests tests.test_logs_tree.CarryTests tests.test_logs_tree.SmokeEnvTests`",
+      "type": "story",
+      "updated": "2026-10-11T12:07:13Z"
+    },
+    "S-134157": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134157",
+      "parent": "F-0344",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:07:13Z",
+      "state": "New",
+      "title": "every reader of a capped transcript reads its generations oldest-first, streamed, and never whole \u2014 acceptance: `python3 -m unittest tests.test_logs_tree.GenerationsTests`",
+      "type": "story",
+      "updated": "2026-10-11T12:07:13Z"
+    },
+    "S-134158": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134158",
+      "parent": "F-0344",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:07:13Z",
+      "state": "New",
+      "title": "a job transcript outlives every window its readers read over, and no longer \u2014 acceptance: `python3 -m unittest tests.test_logs_tree.ReapTests`",
+      "type": "story",
+      "updated": "2026-10-11T12:07:13Z"
+    },
+    "S-134159": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-134159",
+      "parent": "F-0344",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:07:13Z",
+      "state": "New",
+      "title": "the doctor reports both flat-file trees, from what is on disk \u2014 acceptance: `python3 -m unittest tests.test_logs_tree.CensusTests tests.test_logs_tree.DoctorRowTests`",
+      "type": "story",
+      "updated": "2026-10-11T12:07:13Z"
+    },
     "S-134705": {
       "backlinks": [
         "T-142126",
@@ -39708,7 +39787,10 @@
       "updated": "2026-10-10T20:47:07Z"
     },
     "S-135955": {
-      "backlinks": [],
+      "backlinks": [
+        "T-160206",
+        "T-160211"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -39723,7 +39805,9 @@
     },
     "S-135956": {
       "backlinks": [
-        "F-0348"
+        "F-0348",
+        "T-160207",
+        "T-160211"
       ],
       "children": [],
       "decided": true,
@@ -39738,7 +39822,10 @@
       "updated": "2026-10-11T09:22:47Z"
     },
     "S-135957": {
-      "backlinks": [],
+      "backlinks": [
+        "T-160208",
+        "T-160211"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -39752,7 +39839,10 @@
       "updated": "2026-10-11T09:22:47Z"
     },
     "S-135958": {
-      "backlinks": [],
+      "backlinks": [
+        "T-160209",
+        "T-160211"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -39766,7 +39856,10 @@
       "updated": "2026-10-11T09:22:47Z"
     },
     "S-135959": {
-      "backlinks": [],
+      "backlinks": [
+        "T-160210",
+        "T-160211"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -39780,7 +39873,9 @@
       "updated": "2026-10-11T09:22:47Z"
     },
     "S-135960": {
-      "backlinks": [],
+      "backlinks": [
+        "T-160211"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -71143,14 +71238,17 @@
         "Decision: don't change or overload the existing --all (it keeps 'idle_hours counts every product's launches'; changing it would break current callers). Add the plan's new behaviour, every product's stored week, under a new flag --products (help: 'show every product's stored week'). Adjust the Task's acceptance to name --products instead of --all, and note the deviation from docs/plans/f-0148.md Task 2 in the PR."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Decision: don't change or overload the existing --all (it keeps 'idle_hours counts every product's launches'; changing it would break current callers). Add the plan's new behaviour, every product's stored week, under a new flag --products (help: 'show every product's stored week'). Adjust the Task's acceptance to name --products instead of --all, and note the deviation from docs/plans/f-0148.md Task 2 in the PR."
+        "relaunch: operator answer: Decision: don't change or overload the existing --all (it keeps 'idle_hours counts every product's launches'; changing it would break current callers). Add the plan's new behaviour, every product's stored week, under a new flag --products (help: 'show every product's stored week'). Adjust the Task's acceptance to name --products instead of --all, and note the deviation from docs/plans/f-0148.md Task 2 in the PR.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "docs/reviews/1-t-0503.md:1 \u2014 `git rm docs/reviews/1-t-0503.md` and commit on `worker/T-0503` to delete the review file an earlier round (`68ce1bf`) committed onto the branch, which violates \"the review never touches the branch\" and leaves the diff against `origin/main` carrying a file outside Task 2's `writes:` footprint; this round's own code commit (`168e6e2`) does not touch it and is otherwise correct.",
         "none \u2014 no C-list code defect; the blocker is the unresolved --all flag-name collision (NEEDS OPERATOR above), a plan defect no coder footprint can fix without a naming decision.",
+        "operator answer: Decision: don't change or overload the existing --all (it keeps 'idle_hours counts every product's launches'; changing it would break current callers). Add the plan's new behaviour, every product's stored week, under a new flag --products (help: 'show every product's stored week'). Adjust the Task's acceptance to name --products instead of --all, and note the deviation from docs/plans/f-0148.md Task 2 in the PR.",
         "operator answer: Decision: don't change or overload the existing --all (it keeps 'idle_hours counts every product's launches'; changing it would break current callers). Add the plan's new behaviour, every product's stored week, under a new flag --products (help: 'show every product's stored week'). Adjust the Task's acceptance to name --products instead of --all, and note the deviation from docs/plans/f-0148.md Task 2 in the PR."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0148.md"
       },
@@ -71163,7 +71261,7 @@
       "state": "Active",
       "title": "the reader and its command \u2014 every product's stored week, and `asf scorecard --all`",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T12:08:03Z",
       "writes": [
         "asf/scorecard/loop.py",
         "asf/views/scorecard.py",
@@ -86174,13 +86272,19 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel). T-129179 also writes asf/workers/scratch.py (Building): the overlap rule serialises them."
       ],
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel). T-129179 also writes asf/workers/scratch.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1516: install-clean-linux is red but not a required check \u2014 ignored",
         "PR #1516: install-clean-macos is red but not a required check \u2014 ignored",
         "PR #1516: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1516: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86193,7 +86297,7 @@
       ],
       "title": "a factory scratch path tracked on a trunk is one named doctor row",
       "type": "task",
-      "updated": "2026-10-11T11:57:29Z",
+      "updated": "2026-10-11T12:08:03Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py",
@@ -86739,7 +86843,7 @@
         "failed: OpenPR worker/T-129198: open PR worker/T-129198: rc 1: pull request create failed: GraphQL: No commits between main and worker/T-129198 (createPullRequest)",
         "relaunch: branch worker/T-129198 has no commits beyond main, so it cannot become a PR: make the change the card asks for and push it, or \u2014 when the work already landed \u2014 name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86752,7 +86856,7 @@
       ],
       "title": "a bootstrap launchd still refuses is retried once, and both outcomes are said",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T12:08:03Z",
       "writes": [
         "asf/scheduler.py",
         "tests/test_scheduler.py"
@@ -87891,19 +87995,8 @@
       "kernel_answers": [
         "granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them.",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "tests/kernel/test_flake.py:736 and tests/test_flake_triage.py:401 \u2014 Step 11's mandated pair of assertions is missing: no world holds a kernel entry and a red of another signature in the same job, so nothing pins PD5's asymmetry (asf.flake.active matches the job, decide.quarantined the signature). Add to FixRoundTests a case whose facts carry the `tests (3.12) / unit: test_one` entry while the PR's red is `tests (3.13)` with case `test_two`, asserting `quarantined(other, facts) is None` and `B.state(plan, 'T-1') == State.READY` (the fix round is still written); and to SightingsTests `self.assertTrue(flake.active(flake.load(self.state_dir, now=NOW), 'tests (3.13)', now=NOW))` with `assertFalse(... 'lint' ...)` beside it, on the same kernel_entry()",
-        "asf/kernel/ports.py:677 \u2014 the refresh branch replaces the entry's sources (`q['sources'] = self._scrub(list(action.sources))`) where asf/kernel/actions.py:261 states it \"takes the sources it lacks\", and the action's sources are rebuilt each tick from flake.seen, which drops a row whose PR is no longer open (asf/kernel/flake.py:128) or outside the window (:131-133) \u2014 so one head merging rewrites a three-head entry as two and `asf status` understates the evidence the live quarantine rests on. Merge by pull request instead: `rows = {s.get('pr'): s for s in (q.get('sources') or []) if isinstance(s, dict)}` then `for s in action.sources: rows.setdefault(s.get('pr'), s)` and `q['sources'] = self._scrub([rows[p] for p in sorted(rows, key=lambda p: (p is None, p))])`, the same in tests/kernel/fakes.py:97-104, with an EntryTests case asserting a merged source stays on the entry \u2014 or correct actions.py:261 and document the status row's count as \"heads still open\"",
-        "rebase: PR #1438 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
-        "red: tests (3.12)",
-        "red: tests (3.13)",
-        "operator answer: granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "build-t-136825-1791661085: NEEDS OPERATOR: the push is refused by a stale local `asf` CLI install with no `pre-push` subcommand \u2014 upgrade `~/.local/bin/asf` on this host, then publish branch `worker/T-136825` \u2014 `git push origin worker/T-13682\u2026",
         "PR #1438: checks (3.12) is red but not a required check \u2014 ignored",
@@ -87915,7 +88008,8 @@
         "PR #1438: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -87933,7 +88027,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T12:08:03Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -88092,7 +88186,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-142129",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -88105,7 +88199,7 @@
       ],
       "title": "`asf check --invariants` runs the flow scope read-only",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T12:08:03Z",
       "writes": [
         "asf/record/check.py",
         "tests/test_flow_conservation.py"
@@ -88957,6 +89051,199 @@
         "docs/KNOWN-ISSUES.md"
       ]
     },
+    "T-160206": {
+      "backlinks": [
+        "T-160207",
+        "T-160209"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-160206",
+      "kernel_state": "ready",
+      "links": {
+        "plan": "docs/plans/f-0348.md"
+      },
+      "parent": "F-0348",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:06:40Z",
+      "state": "New",
+      "stories": [
+        "S-135955"
+      ],
+      "title": "the stack as a fact \u2014 the card's key, the pull request's base, and the two knobs",
+      "type": "task",
+      "updated": "2026-10-11T12:08:03Z",
+      "writes": [
+        "asf/kernel/model.py",
+        "asf/kernel/ports.py",
+        "asf/kernel/settings.py",
+        "tests/kernel/test_stacked_builds.py"
+      ]
+    },
+    "T-160207": {
+      "after": [
+        "T-160206"
+      ],
+      "backlinks": [
+        "T-160208",
+        "T-160210"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-160207",
+      "links": {
+        "plan": "docs/plans/f-0348.md"
+      },
+      "parent": "F-0348",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:06:43Z",
+      "state": "New",
+      "stories": [
+        "S-135956"
+      ],
+      "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
+      "type": "task",
+      "updated": "2026-10-11T12:06:43Z",
+      "writes": [
+        "asf/kernel/actions.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/apply.py",
+        "tests/kernel/test_stacked_builds.py"
+      ]
+    },
+    "T-160208": {
+      "after": [
+        "T-160207"
+      ],
+      "backlinks": [
+        "T-160210"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-160208",
+      "links": {
+        "plan": "docs/plans/f-0348.md"
+      },
+      "parent": "F-0348",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:06:47Z",
+      "state": "New",
+      "stories": [
+        "S-135957"
+      ],
+      "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
+      "type": "task",
+      "updated": "2026-10-11T12:06:47Z",
+      "writes": [
+        "asf/workers/spawn.py",
+        "asf/workers/pool.py",
+        "asf/kernel/ports.py",
+        "asf/kernel/briefs.py",
+        "asf/briefs/build.py",
+        "asf/briefs/templates/coder.md",
+        "asf/briefs/templates/fix-bug.md",
+        "asf/briefs/templates/direct.md",
+        "asf/cli.py",
+        "tests/test_stacked_worktree.py"
+      ]
+    },
+    "T-160209": {
+      "after": [
+        "T-160206"
+      ],
+      "backlinks": [
+        "T-160210"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-160209",
+      "links": {
+        "plan": "docs/plans/f-0348.md"
+      },
+      "parent": "F-0348",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:06:50Z",
+      "state": "New",
+      "stories": [
+        "S-135958"
+      ],
+      "title": "the pull request opened against the base, and never merged into it",
+      "type": "task",
+      "updated": "2026-10-11T12:06:50Z",
+      "writes": [
+        "asf/kernel/decide.py",
+        "tests/kernel/test_stacked_builds.py"
+      ]
+    },
+    "T-160210": {
+      "after": [
+        "T-160207",
+        "T-160208",
+        "T-160209"
+      ],
+      "backlinks": [
+        "T-160211"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-160210",
+      "links": {
+        "plan": "docs/plans/f-0348.md"
+      },
+      "parent": "F-0348",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:06:54Z",
+      "state": "New",
+      "stories": [
+        "S-135959"
+      ],
+      "title": "the unstack \u2014 retargeted to the trunk, replayed onto it, torn down when the base is rebuilt",
+      "type": "task",
+      "updated": "2026-10-11T12:06:54Z",
+      "writes": [
+        "asf/kernel/actions.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/apply.py",
+        "asf/kernel/ports.py",
+        "asf/workers/spawn.py",
+        "tests/kernel/test_stacked_builds.py"
+      ]
+    },
+    "T-160211": {
+      "after": [
+        "T-160210"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-160211",
+      "links": {
+        "plan": "docs/plans/f-0348.md"
+      },
+      "parent": "F-0348",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T12:06:57Z",
+      "state": "New",
+      "stories": [
+        "S-135960"
+      ],
+      "title": "the knobs, the records, and a product that stacks nothing behaving exactly as today",
+      "type": "task",
+      "updated": "2026-10-11T12:06:57Z",
+      "writes": [
+        "asf/kernel/ports.py",
+        "asf/kernel/apply.py",
+        "asf/kernel/loop.py",
+        "docs/products.example.yaml",
+        "tests/kernel/test_stacked_builds.py"
+      ]
+    },
     "T-76350": {
       "after": [
         "T-0709"
@@ -89388,7 +89675,7 @@
       ],
       "folder": "tasks",
       "id": "T-78358",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0283.md"
       },
@@ -89401,7 +89688,7 @@
       ],
       "title": "a hook whose body is older than this build writes is reported, not silently stale",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T12:08:03Z",
       "writes": [
         "asf/hooks.py",
         "asf/doctor.py",
