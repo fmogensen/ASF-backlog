@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T16:50:19Z",
+  "generated": "2026-10-11T16:56:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16953,7 +16953,7 @@
       "kernel_notes": [
         "build-b-138845-1791733799: NEEDS OPERATOR: the CI check names cited by the card (\"tests (3.12)\", \"tests (3.13)\") no longer exist on current origin/main's check-runs \u2014 the workflow was restructured into \"checks (3.X)\" / \"part (3.X, N)\" jobs so\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16963,7 +16963,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T16:44:30Z",
+      "updated": "2026-10-11T16:56:10Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -85102,7 +85102,7 @@
         "groom-fill-t-0818-1791631129: groom-fill verdict rejected: acceptance: missing or not a list",
         "groom-fill-t-0818-1791632751: groom-fill raised risk high: design, line citations and dependency are verified against trunk and buildable; only the empty Acceptance checklist was missing, now filled from the card's own Gate/Description, and risk is raised because the change is in the tick kernel's push path."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -85115,7 +85115,7 @@
       ],
       "title": "a card a push discards add/add is named by its id, and a modify/modify resolution still prints exactly one line",
       "type": "task",
-      "updated": "2026-10-11T16:21:14Z",
+      "updated": "2026-10-11T16:56:10Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -89068,12 +89068,11 @@
       "folder": "tasks",
       "id": "T-154339",
       "kernel_findings": [
-        "asf/record/writer.py:87 \u2014 a parse failure must raise `CardInvalid`, not `FrontmatterError`: wrap `card.loads(text, path)` in `try/except frontmatter.FrontmatterError as e: raise CardInvalid(path, [('/', str(e))]) from e`, then validate the returned meta; add a case asserting `write_card(path, '{not json')` raises `CardInvalid` and leaves the directory empty.",
-        "asf/record/writer.py:77 \u2014 make the waiver keyword-only so it is the named argument and nothing else: `def write_card(path, text, *, validate=True):` (no call site passes a third positional argument).",
-        "tools/check_card_gate.sh:18 \u2014 the lint must catch a wrapped waiver: match the token alone, `grep -rnE --include='*.py' 'validate[[:space:]]*=[[:space:]]*False' asf`, excluding `^asf/schema\\.py:|^asf/record/repair\\.py:|^asf/record/writer\\.py:` (the token appears nowhere else in `asf/`), and add a `TheWaiverLintTests` case for a multi-line third waiver."
+        "asf/record/writer.py:88 \u2014 catch everything `card.loads` raises, not only `frontmatter.FrontmatterError`, and re-raise as `CardInvalid` carrying `card.validate`'s errors for the parsed object (fall back to the exception text when the text does not parse); add the case to `tests/test_card_write_gate.py:136` \u2014 `write_card(path, _text(acceptance=['do the thing']))` raises `CardInvalid` with pointers `['/acceptance/0']` and leaves no file. If you prefer fixing the cause (`card.loads` rendering the view lazily), report `needs writes: asf/record/card.py`.",
+        "tests/test_card_write_gate.py:97 \u2014 S-133157's lines 7-9 are three copies of line 2; replace them with one test per field-level writer (`frontmatter.write_typed`, `write_machine`, `merge_machine`) that calls the real writer on a schema-1 `.md` card with `frontmatter.writer.write_card` spied, asserting each one reached the gate with no waiver."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89086,7 +89085,7 @@
       ],
       "title": "the write gate \u2014 the one card writer refuses an invalid card and writes nothing",
       "type": "task",
-      "updated": "2026-10-11T16:44:30Z",
+      "updated": "2026-10-11T16:56:10Z",
       "writes": [
         "asf/record/writer.py",
         "tools/check_card_gate.sh",
@@ -89529,7 +89528,12 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/loop.py:435 \u2014 `wanted` must drop the derived container states and cap at the tick's real room: take `config` as a fourth argument, filter with `_derived(iid, facts.items, _children(facts.items))` (and `iid in facts.items`), then `wanted = min(rows, max(0, config.max_sessions - inflight - len(launched)))`; update the call at `asf/kernel/loop.py:540` and add the case to `tests/kernel/test_multi_product.py:TickWritesDemand` \u2014 a Story over three Ready Tasks with `max_sessions=1` records `wanted 0`, not `3`",
+        "operator answer: granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89543,7 +89547,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-11T16:30:59Z",
+      "updated": "2026-10-11T16:56:10Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -89587,7 +89591,7 @@
         "operator answer: granted asf/kernel/loop.py asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89601,7 +89605,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T16:41:41Z",
+      "updated": "2026-10-11T16:56:10Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -89826,7 +89830,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160209",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89839,7 +89843,7 @@
       ],
       "title": "the pull request opened against the base, and never merged into it",
       "type": "task",
-      "updated": "2026-10-11T14:32:02Z",
+      "updated": "2026-10-11T16:56:10Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stacked_builds.py"
@@ -89930,7 +89934,7 @@
         "operator answer: granted asf/approvals.py asf/harvest/harvest.py asf/tick/step_harvest.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -89943,7 +89947,7 @@
       ],
       "title": "`asf/logs.py` \u2014 the tree, its paths and its caps",
       "type": "task",
-      "updated": "2026-10-11T16:38:51Z",
+      "updated": "2026-10-11T16:56:10Z",
       "writes": [
         "asf/logs.py",
         "asf/scheduler.py",
