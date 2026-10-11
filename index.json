@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T12:56:18Z",
+  "generated": "2026-10-11T13:02:46Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17368,6 +17368,7 @@
       "id": "B-157108",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17376,7 +17377,7 @@
       "state": "New",
       "title": "Bug: test_host and test_clean_floor fail locally under the launchd guard",
       "type": "bug",
-      "updated": "2026-10-11T12:45:16Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "tests/kernel/test_host.py"
       ]
@@ -21819,7 +21820,8 @@
     "E-0006": {
       "backlinks": [],
       "children": [
-        "F-0352"
+        "F-0352",
+        "F-0353"
       ],
       "decided": true,
       "folder": "epics",
@@ -35898,6 +35900,21 @@
       "title": "Adopt botseon's measured speed fixes: rebase cap, record lint, two holders, WIP push",
       "type": "feature",
       "updated": "2026-10-11T09:16:49Z"
+    },
+    "F-0353": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "features",
+      "id": "F-0353",
+      "parent": "E-0006",
+      "priority": "nice",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T13:00:42Z",
+      "state": "New",
+      "title": "Session kinds run on the cheapest model that does the job (per-kind model map)",
+      "type": "feature",
+      "updated": "2026-10-11T13:00:42Z"
     },
     "R-0001": {
       "backlinks": [
@@ -69301,7 +69318,7 @@
         "PR #1529: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1529: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69311,7 +69328,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T12:56:15Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -69406,7 +69423,7 @@
       "kernel_notes": [
         "groom-fill-t-0456-1791638496: groom-fill raised risk high: Fully specified by docs/plans/f-0114.md's Task 5 (same writes, steps, and test names already named there and in the spec's own Acceptance tests section); every schema.* primitive it calls (CONFIG_VERSION, auto_migrate, tick_drain_s, product_version, snapshot/restore) is already implemented on the sequenced prerequisite T-0452 (commit 34d335c4f, not yet merged to main) \u2014 the card was just missing its acceptance/gate lines, now copied over from the plan."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69416,7 +69433,7 @@
       "state": "New",
       "title": "`asf/upgrade.py` \u2014 the upgrade migrates what it installed, and `--to` puts the snapshot back",
       "type": "task",
-      "updated": "2026-10-11T12:03:45Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/upgrade.py",
         "asf/init.py",
@@ -84615,7 +84632,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T12:56:15Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -85388,7 +85405,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85401,7 +85418,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T12:56:15Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -86240,9 +86257,10 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Correct: T-129178 was falsely closed as satisfied (judged on the old pin 14b963ba1). It's reopened and will build first. This Task waits for it via after:, so don't build ahead; end this round and relaunch once T-129178 lands.",
-        "relaunch: escalated: the previous session stopped (blocked: blocked_on: T-129178 NEEDS OPERATOR: none \u2014 operator already answered; this Task waits for T-129178 (asf/workers/scratch.py) to land on origin/main, then relaunch) \u2014 pick up from its report and branch, and finish the item"
+        "relaunch: escalated: the previous session stopped (blocked: blocked_on: T-129178 NEEDS OPERATOR: none \u2014 operator already answered; this Task waits for T-129178 (asf/workers/scratch.py) to land on origin/main, then relaunch) \u2014 pick up from its report and branch, and finish the item",
+        "ended without a REPORT"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86255,7 +86273,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -86326,7 +86344,7 @@
         "PR #1516: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1516: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86339,7 +86357,7 @@
       ],
       "title": "a factory scratch path tracked on a trunk is one named doctor row",
       "type": "task",
-      "updated": "2026-10-11T12:45:16Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py",
@@ -86486,7 +86504,7 @@
         "escalated: the previous session stopped (partial: left out: the PD10 regression case \u2014 a Closed Bug whose fresh evidence carries a `refix` reopening to `Active` through the real `refixing` rule (ingest.derive needs no reopen.py change for i\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -86499,7 +86517,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T12:45:16Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -86930,7 +86948,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129199",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86943,7 +86961,7 @@
       ],
       "title": "one owner for the labels launchd is not holding, and the install that reads its clocks back and exits non-zero",
       "type": "task",
-      "updated": "2026-10-11T09:13:43Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/scheduler.py",
         "asf/install.py",
@@ -87601,7 +87619,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130215",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -87614,7 +87632,7 @@
       ],
       "title": "the three reds the rule must never swallow, pinned",
       "type": "task",
-      "updated": "2026-10-11T12:56:15Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "tests/test_mq_batch_survival.py"
       ]
@@ -87916,7 +87934,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131722",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -87929,7 +87947,7 @@
       ],
       "title": "the `stray` line stops, and the orphan path keeps its own bar",
       "type": "task",
-      "updated": "2026-10-11T12:45:16Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "tests/test_closed_item_prs.py"
       ]
@@ -88825,6 +88843,7 @@
       ],
       "backlinks": [
         "T-159849",
+        "T-159853",
         "T-159855"
       ],
       "children": [],
@@ -89013,7 +89032,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159853",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89027,7 +89052,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T12:36:07Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -89035,7 +89060,10 @@
         "tests/kernel/test_moved_main.py",
         "tests/kernel/test_cloud_reviews.py",
         "tests/kernel/test_finish_first.py",
-        "tests/kernel/test_decide.py"
+        "tests/kernel/test_decide.py",
+        "asf/kernel/model.py",
+        "asf/kernel/ports.py",
+        "asf/kernel/actions.py"
       ]
     },
     "T-159854": {
@@ -89049,7 +89077,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159854",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89062,7 +89090,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-11T11:57:29Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
@@ -89108,6 +89136,7 @@
     },
     "T-160206": {
       "backlinks": [
+        "T-159853",
         "T-160207",
         "T-160209"
       ],
@@ -89128,7 +89157,7 @@
       ],
       "title": "the stack as a fact \u2014 the card's key, the pull request's base, and the two knobs",
       "type": "task",
-      "updated": "2026-10-11T12:50:20Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -89778,7 +89807,7 @@
         "groom-fill-t-78359-1791631136: groom-fill verdict rejected: acceptance: missing or not a list",
         "groom-fill-t-78359-1791632977: groom-fill raised risk high: well-specified, measured against current trunk (PRE_COMMIT/PRE_PUSH line counts and _own_upgrade's 5-arg shape confirmed), only missing the acceptance/test-naming the DoR requires; touches the record's own hook-install path so risk stays high"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0283.md"
       },
@@ -89791,7 +89820,7 @@
       ],
       "title": "the record's own hooks are moved onto the pin by the command the row already names",
       "type": "task",
-      "updated": "2026-10-11T12:45:16Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
@@ -91545,7 +91574,7 @@
         "satisfied on main at 14b963ba1: tests.test_doc_lane_review, tests.test_feeder, tests.test_direct_lane, tests.test_pushed_work, tests.test_pushed_not_starved, tests.test_doc_lane_landing, tests.test_invariants_in_feeder, tests.test_correction_moves_to_open_branch, tests.test_reviews, tests.test_review_reader, tests.test_lane, tests.test_lifecycle, tests.test_briefs, tests.test_evidence, tests.test_harvest, tests.test_continuation, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-83143 holds 3 commit(s) off it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -91561,7 +91590,7 @@
       ],
       "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
       "type": "task",
-      "updated": "2026-10-11T12:45:16Z",
+      "updated": "2026-10-11T13:02:43Z",
       "writes": [
         "asf/reviews.py",
         "asf/harvest/lane.py",

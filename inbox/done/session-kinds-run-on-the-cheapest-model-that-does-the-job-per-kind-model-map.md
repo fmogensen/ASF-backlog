@@ -1,8 +1,9 @@
+→ F-0353
+
 # Session kinds run on the cheapest model that does the job (per-kind model map)
+type: feature
 parent: E-0006
 
-type: story
-parent: E-0006
 
 Session kinds run on the cheapest model that does the job. Measured 2026-10-11: build, intake-decide and groom-fill ran on claude-sonnet-5, and plan sessions on claude-opus-5. Intake-decide and groom-fill (261 of 1471 launches) are classification tasks with a small structured verdict.
 
@@ -13,6 +14,3 @@ Session kinds run on the cheapest model that does the job. Measured 2026-10-11: 
 ## Acceptance
 - Each session kind launches on the model the map names, and an unmapped kind keeps today's default (test).
 - `asf kernel status` or the waits view shows sessions per model per day, so the cost effect is measured.
-
-## Question
-`type: story` is read, and this card is not shaped like one: a story needs a `parent:` naming a Feature, and an `## Acceptance` list. Add it, or change the `type:` line. The card reads as feature (default: one spec and one plan, landing as one deployable thing) and is not minted as one.
