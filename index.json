@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T13:06:49Z",
+  "generated": "2026-10-11T13:10:58Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16939,7 +16939,7 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16949,7 +16949,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T12:56:15Z",
+      "updated": "2026-10-11T13:10:55Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17394,6 +17394,7 @@
       "kernel_notes": [
         "groom-fill-b-160759-1791723358: groom-fill raised risk high: the card named no tests and no writes; the real suspects (RealSessions.capacity/seat_note/lane vs decide._free) and the missing status-line feature are concrete and locatable, so acceptance lines and writes can be filled from the code rather than invented."
       ],
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S1",
@@ -17402,7 +17403,7 @@
       "state": "New",
       "title": "Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)",
       "type": "bug",
-      "updated": "2026-10-11T13:06:48Z",
+      "updated": "2026-10-11T13:10:55Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/decide.py",
@@ -35757,7 +35758,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-11T13:06:48Z"
+      "updated": "2026-10-11T13:10:55Z"
     },
     "F-0348": {
       "backlinks": [
@@ -85425,7 +85426,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85438,7 +85439,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T13:06:48Z",
+      "updated": "2026-10-11T13:10:55Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -86840,6 +86841,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129196",
+      "kernel_answers": [
+        "granted asf/procedures/skills/report-shape/SKILL.md asf/build-t-129196-1791723261@20261011T125429Z; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/procedures/skills/report-shape/SKILL.md asf/build-t-129196-1791723261@20261011T125429Z; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1."
@@ -86849,7 +86856,7 @@
         "PR #1528: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1528: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0330.md"
       },
@@ -86862,12 +86869,14 @@
       ],
       "title": "the field \u2014 the shared TAIL offers `superseded_by:` to a fix or correct session",
       "type": "task",
-      "updated": "2026-10-11T12:56:15Z",
+      "updated": "2026-10-11T13:10:55Z",
       "writes": [
         "asf/briefs/build.py",
         "tests/fixtures/briefs/golden/*.md",
         "tests/test_briefs.py",
-        "tests/test_apply_rulings.py"
+        "tests/test_apply_rulings.py",
+        "asf/procedures/skills/report-shape/SKILL.md",
+        "asf/build-t-129196-1791723261@20261011T125429Z"
       ]
     },
     "T-129197": {
@@ -88281,7 +88290,7 @@
         "tests/test_flow_conservation.py:756-763 \u2014 replace `self.assertEqual([f for f in findings if f.scope == 'record'], [])` with an assertion that the flow pass *joins* the others: patch `invariants.run` with a spy that appends `scope` and delegates, then `self.assertEqual(scopes, ['feeder', 'lane', 'flow'])` alongside `self.assertEqual([f.subject for f in findings if f.invariant == 'I16'], ['T-0004'])` \u2014 as written the test asserts zero record findings, the opposite of the \"beside the record, feeder and lane findings\" it and `docs/specs/f-0346.md:605` claim, and would stay green if the flow pass had replaced the other scopes."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -88294,7 +88303,7 @@
       ],
       "title": "`asf check --invariants` runs the flow scope read-only",
       "type": "task",
-      "updated": "2026-10-11T12:56:15Z",
+      "updated": "2026-10-11T13:10:55Z",
       "writes": [
         "asf/record/check.py",
         "tests/test_flow_conservation.py"
@@ -90544,20 +90553,9 @@
         "Grant one more round, fresh session on worker/T-80573 picking up its branch. The previous session ran past its max age; a likely cause is a hanging test (main's test shard 4 currently hangs too, since T-129205). Run every test command under a timeout (e.g. timeout 600), run only the targeted modules for this Task, and if a test outside your writes hangs, report it as a finding instead of waiting. Push WIP commits at each green step.",
         "granted asf/schema.py asf/tick/tick.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-129157 also writes asf/schema.py asf/tick/tick.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py (Building): the overlap rule serialises them."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: Grant one more round, fresh session on worker/T-80573 picking up its branch. The previous session ran past its max age; a likely cause is a hanging test (main's test shard 4 currently hangs too, since T-129205). Run every test command under a timeout (e.g. timeout 600), run only the targeted modules for this Task, and if a test outside your writes hangs, report it as a finding instead of waiting. Push WIP commits at each green step.",
-        "session ran past its max age",
-        "relaunch: operator answer: granted asf/schema.py asf/tick/tick.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-129157 also writes asf/schema.py asf/tick/tick.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py (Building): the overlap rule serialises them.",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
       "kernel_dor_fills": 1,
-      "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.12)",
-        "red: tests (3.13)"
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1455: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1455: checks (3.13) is red but not a required check \u2014 ignored",
@@ -90567,7 +90565,8 @@
         "PR #1455: part (3.13, 4) is red but not a required check \u2014 ignored",
         "PR #1455: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -90580,7 +90579,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-11T12:56:15Z",
+      "updated": "2026-10-11T13:10:55Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
@@ -91654,11 +91653,12 @@
       "kernel_findings": [
         "asf/briefs/build.py:559 \u2014 the brief must render the checklist's display names, not `required()`'s normalized ones: add `reviews.checks(*kinds)` beside `required()` (same dedupe-by-`normalize` loop, appending `name` instead of `n`), call it here as `reviews.render_table(reviews.checks(*checklist_kinds(row)), reviews.EVIDENCE)`, correct the false \"renders byte-identically to today's\" clause at `asf/reviews.py:249`, and restore the six row names (keeping the new `<pass\\|fail>` cell) in `tests/fixtures/briefs/golden/review.md:64-69`, `tests/test_briefs.py:373` and `tests/test_reviews.py:185` (`[reviews.normalize(c.name) for c in checks]`)",
         "tests/test_doc_lane_review.py:180-190 \u2014 the case that `Proves: S-73206 line 1` builds `expected` from the same call it is testing, so `assertIn(expected, text)` only checks substitution and the `count`/hint loop asserts against `expected` rather than `text`: assert the six literal `| <name> | <pass\\|fail> | <hint> |` lines against `text`, and do the same at `:197` for the eleven-row case (at minimum `self.assertIn('| `## Stories` is last, and every Story line names a test |', text)`)",
+        "rebase: PR #1463 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "operator answer: granted asf/kernel/briefs.py; nothing else outside writes (card updated by the kernel). asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1435: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1435: checks (3.13) is red but not a required check \u2014 ignored",
@@ -91681,7 +91681,7 @@
         "PR #1463: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -91694,7 +91694,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-11T13:06:48Z",
+      "updated": "2026-10-11T13:10:55Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
