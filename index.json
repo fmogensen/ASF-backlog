@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T22:56:07Z",
+  "generated": "2026-10-11T23:00:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89519,11 +89519,13 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/record/index.py:39 \u2014 `only=` matches only `rec['relpath']`, so the view relpath `refresh` now returns at `:58` can never be fed back to it; `asf/record/publish.py:154-156` does exactly that round-trip, so a hand-edited view in the checkout is never regenerated (the commit lands the right bytes, the working tree keeps the stale ones, and `asf check` then reports `view is stale` with no automatic repair). Fix: `if only is not None and rec['relpath'] not in only and os.path.relpath(card.view_path(rec['path']), root) not in only: continue`.",
+        "asf/record/index.py:111 \u2014 `entry_relpath` hard-codes `.md`, so it never matches the `<folder>/<id>.json` relpath that `keep`/`broken` hold for a schema-2 card: `asf index` drops the `index.json` entry of a json card that fails to parse (against `write_index_json`'s docstring at `:74-75`), and `asf/record/check.py:510` reports a stale entry on top of the parse error (against `record_findings`' docstring at `:212-213`). Task 4 is the only Task in F-0340 whose `writes:` names this file, so no later Task fixes it. Fix: `def entry_relpath(iid, entry, ext='.md')` returning `f\"{folder}/{iid}{ext}\"`, and test both formats at `asf/record/index.py:100` and `asf/record/check.py:510`.",
         "asf/cli.py:315 \u2014 `asf show` renders a schema-1 `.md` card through `card.render`, which reads only the schema-2 typed fields (prose/acceptance/gate/history), so every section of the card prints empty and the command still exits 0 \u2014 and every card in every record is schema-1 until Task 10; branch on the card's format in `cmd_show` and render a `.md` card the way the record renders it, `frontmatter.render(meta, expected_body(rec, canonical, compute_derived(canonical), scrub))` (import `expected_body` at asf/cli.py:298 and `from asf.record import frontmatter`), keeping the `card.render` path for a `.json` card, and add the schema-1 case to tests/test_card_json.py \u2014 no test today covers a `.md` card.",
         "asf/cli.py:986 \u2014 `resolve_record` announces `record: <path>` on stdout ahead of the rendered card, so `asf show`'s stdout is not the card's text that spec \u00a72.9 says is byte-identical to the view; dispatch it as the other value-on-stdout commands do, `return cmd_show(args, resolve_record(args, announce=_announce_stderr))`."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89536,7 +89538,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-11T22:35:23Z",
+      "updated": "2026-10-11T23:00:22Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89617,7 +89619,7 @@
       ],
       "title": "every reference resolves to a card at the moment it is written",
       "type": "task",
-      "updated": "2026-10-11T22:49:11Z",
+      "updated": "2026-10-11T23:00:22Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/check.py",
@@ -89929,7 +89931,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159851",
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89943,7 +89945,7 @@
       ],
       "title": "the console's share \u2014 the question ledger, the window, the gate criterion and the classifier that codes nothing",
       "type": "task",
-      "updated": "2026-10-11T22:12:15Z",
+      "updated": "2026-10-11T23:00:22Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/kernel/loop.py",
@@ -89978,7 +89980,7 @@
         "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89992,7 +89994,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-11T20:15:53Z",
+      "updated": "2026-10-11T23:00:22Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -90567,7 +90569,7 @@
       ],
       "title": "a job transcript outlives every window its readers read over, and no longer",
       "type": "task",
-      "updated": "2026-10-11T22:49:11Z",
+      "updated": "2026-10-11T23:00:22Z",
       "writes": [
         "asf/logs.py",
         "asf/tick/step_health.py",
@@ -90850,7 +90852,7 @@
         "build-t-166574-1791751785: NEEDS OPERATOR: confirm kernel.test_clean_floor's host-only red is the worker-home artifact above and not a defect to file \u2014 `cd ~/.asf/state/asf/worktrees/build-t-166574-1791751785 && python3 -c \"from as\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90863,7 +90865,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T22:45:35Z",
+      "updated": "2026-10-11T23:00:22Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -92616,7 +92618,7 @@
         "groom-fill-t-80574-1791635460: groom-fill raised risk high: upstream Tasks (T-80572 Active, T-80573 New) haven't landed asf/rehearsal.py yet, which is why the writes read absent \u2014 correct sequencing per PD14, not a scope defect; filled acceptance from S-79606 and marked the genuinely-new test file.",
         "groom-fill-t-80574-1791636223: groom-fill raised risk high: still sequencing-blocked, not a scope defect \u2014 T-80572 (the builder, PR #1367) is open/unmerged and T-80573 (the runner and `ids` act this Task's `record` act appends after) has no implementation yet, so asf/rehearsal.py's ACTS table and tests/rehearsal/record/** remain absent from trunk; PD14 applies exactly as in the prior same-day groom-fill, and the staged_guard.py line refs this card cites still match trunk."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -92629,7 +92631,7 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-11T22:56:06Z",
+      "updated": "2026-10-11T23:00:22Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_record.py",
