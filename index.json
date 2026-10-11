@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:28:08Z",
+  "generated": "2026-10-11T15:31:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -69598,7 +69598,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T15:24:43Z",
+      "updated": "2026-10-11T15:31:36Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -85770,7 +85770,7 @@
       "id": "T-129158",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85783,7 +85783,7 @@
       ],
       "title": "the counter \u2014 the silence is counted, and `asf doctor` says which Feature",
       "type": "task",
-      "updated": "2026-10-11T15:09:11Z",
+      "updated": "2026-10-11T15:31:36Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/doctor.py",
@@ -87170,7 +87170,7 @@
         "PR #1554: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0330.md"
       },
@@ -87183,7 +87183,7 @@
       ],
       "title": "the field \u2014 the shared TAIL offers `superseded_by:` to a fix or correct session",
       "type": "task",
-      "updated": "2026-10-11T15:28:07Z",
+      "updated": "2026-10-11T15:31:36Z",
       "writes": [
         "asf/briefs/build.py",
         "tests/fixtures/briefs/golden/*.md",
@@ -89465,10 +89465,10 @@
       "kernel_findings": [
         "asf/kernel/loop.py:130 and :271-272 \u2014 Plan.pace never reaches the tick, so Step 5's `pace:` line is never printed (pace_line at decide.py:1772 has no caller; grep -c pace asf/kernel/loop.py is 0). Report `needs writes: asf/kernel/loop.py`, then extend loop.py:37 to `from asf.kernel.decide import blind_plan, decide, pace_line`, add `'pace': getattr(plan, 'pace', None),` beside the `'wip'` entry at :130, and after the wip_line block at :271-272 add `if summary.get('pace'): out(pace_line(summary['pace']))`.",
         "asf/kernel/facts.py:301-313 \u2014 nothing ever sets Facts.ci_free, so decide.py:1839's `min(per_tick, ci_free)` can never bind in production and no Task of F-0334 writes facts.py. Report `needs writes: asf/kernel/facts.py`, add a `read_ci_free(ports)` mirroring read_seats (facts.py:182-191), pass `ci_free=read_ci_free(ports)` into the Facts(...) call at :310, and put the port method beside the real session port's capacity (ports.py:1931, already granted) returning `capacity.bandwidth(self.product, self.cfg())['ci_free']` (asf/capacity.py:319, already None when unread).",
-        "operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
+        "operator answer: granted asf/kernel/loop.py asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89482,7 +89482,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T14:35:18Z",
+      "updated": "2026-10-11T15:31:36Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -89634,7 +89634,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160207",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89647,7 +89647,7 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T15:04:40Z",
+      "updated": "2026-10-11T15:31:36Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
