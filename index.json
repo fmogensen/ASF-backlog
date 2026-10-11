@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T22:55:11Z",
+  "generated": "2026-10-11T22:56:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16972,11 +16972,7 @@
         "build-b-138845-1791747069: NEEDS OPERATOR: the review loop that has closed PR #1569/#1571/#1583/#1587/#1589 (and likely others) for \"the card's proving tests are not green on main\" keeps recurring even though every session's direct verificati\u2026",
         "build-b-138845-1791751614: NEEDS OPERATOR: the review finding named PR #1598 having an empty diff with tests not green on main \u2014 that PR is now closed and current origin/main (41366c3c0) has both tests (3.12) and tests (3.13) green (verified\u2026"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the reason and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "done without a push: pushed: no \u2014 already landed in 0e7c6b9fdb79f8bedb47fca2832ddd188ea214a1 (task(T-130968): port PR #1444's test_tick fix for main's T-0452 schema-stamp red), confirmed an ancestor\u2026",
-      "kernel_stuck_since": "2026-10-11T22:52:09Z",
+      "kernel_state": "done",
       "landed": "0e7c6b9fd",
       "parent": "E-0001",
       "priority": "need",
@@ -16988,7 +16984,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T22:52:34Z",
+      "updated": "2026-10-11T22:56:06Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -70228,7 +70224,7 @@
       "kernel_notes": [
         "groom-fill-t-0458-1791639050: groom-fill raised risk high: Task 7 of F-0114's plan is buildable now (its Task 1/6 dependencies are correctly gated by \"after: T-0457\"); only filled the empty Acceptance with the steps' named tests, worded to avoid the plan's now-stale \"nine keys\" count (KEYS is ten long since #774 added floor/seats, so it becomes eleven, not nine)."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -70238,7 +70234,7 @@
       "state": "New",
       "title": "`asf/release.py` \u2014 the ninth criterion, the migrations in a release's notes, and the guide brought into step",
       "type": "task",
-      "updated": "2026-10-11T22:27:51Z",
+      "updated": "2026-10-11T22:56:06Z",
       "writes": [
         "asf/release.py",
         "asf/metrics/metrics.py",
@@ -91176,7 +91172,7 @@
         "asf/kernel/decide.py:645 \u2014 add the sweep's kind to the sessions filtered out of _judge (`s.kind not in (intake.KIND, S.KIND)`) and extend the comment at :642-643: a live groom-sweep session makes its card read State.REVIEW at :739-740 (its kind is now in READ_ONLY, so `builds` is empty), open_prs at :1792-1797 counts any REVIEW item whether or not it has a PR, so each live sweep adds one to the WIP count and holds back a build, plan or spec \u2014 the pre-emption D3 and S-125156's first line forbid. Add a SeatTests case: a New card with a live sweep session keeps State.NEW and adds nothing to Plan.wip."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91189,7 +91185,7 @@
       ],
       "title": "the seats \u2014 the sweep launches after the launches and after the intake, on what they left",
       "type": "task",
-      "updated": "2026-10-11T22:45:35Z",
+      "updated": "2026-10-11T22:56:06Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/actions.py",
@@ -91234,7 +91230,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-173236",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "rebase: PR #1617 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91247,7 +91247,7 @@
       ],
       "title": "code applies each verdict, and a verdict it cannot apply is a note and no marker",
       "type": "task",
-      "updated": "2026-10-11T22:49:11Z",
+      "updated": "2026-10-11T22:56:06Z",
       "writes": [
         "asf/kernel/apply.py",
         "tests/kernel/test_sweep.py"
@@ -91291,7 +91291,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-180938",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -91305,7 +91305,7 @@
       ],
       "title": "`overlap` is its own wait class, so `seat` stops hiding it",
       "type": "task",
-      "updated": "2026-10-11T22:49:11Z",
+      "updated": "2026-10-11T22:56:06Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/waits.py",
@@ -92616,7 +92616,7 @@
         "groom-fill-t-80574-1791635460: groom-fill raised risk high: upstream Tasks (T-80572 Active, T-80573 New) haven't landed asf/rehearsal.py yet, which is why the writes read absent \u2014 correct sequencing per PD14, not a scope defect; filled acceptance from S-79606 and marked the genuinely-new test file.",
         "groom-fill-t-80574-1791636223: groom-fill raised risk high: still sequencing-blocked, not a scope defect \u2014 T-80572 (the builder, PR #1367) is open/unmerged and T-80573 (the runner and `ids` act this Task's `record` act appends after) has no implementation yet, so asf/rehearsal.py's ACTS table and tests/rehearsal/record/** remain absent from trunk; PD14 applies exactly as in the prior same-day groom-fill, and the staged_guard.py line refs this card cites still match trunk."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -92629,7 +92629,7 @@
       ],
       "title": "the `record` act \u2014 the record's own writers, from a stale index, through the guard",
       "type": "task",
-      "updated": "2026-10-11T22:41:40Z",
+      "updated": "2026-10-11T22:56:06Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_record.py",
@@ -92655,7 +92655,7 @@
       "folder": "tasks",
       "id": "T-80575",
       "kernel_dor_fills": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -92668,7 +92668,7 @@
       ],
       "title": "the `tags` act \u2014 every version reader over annotated tags",
       "type": "task",
-      "updated": "2026-10-11T22:31:51Z",
+      "updated": "2026-10-11T22:56:06Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_tags.py"
