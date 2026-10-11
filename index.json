@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T11:51:41Z",
+  "generated": "2026-10-11T11:53:52Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17180,19 +17180,15 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-151002",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.41",
-      "kernel_findings": [
-        "tests/fixtures/briefs/golden/*.md (19 files, e.g. tests/fixtures/briefs/golden/coder.md:50) are touched by this diff but are outside B-151002's declared `writes: asf/dispatch.py, asf/briefs/preamble.py, asf/briefs/build.py, tests/test_dispatch.py, tests/test_briefs.py`. They are mechanically required (SELF_UPGRADE_RULE is now unconditional in every brief, so GoldenBriefTest needs the one-line update in each), so the fix is not to revert them; report `needs writes: tests/fixtures/briefs/golden/*.md` in the next report, or have this adjudicated to fold them into B-151002's `writes:` (the `adjudicate-t-0175` precedent for an undeclared-but-necessary file)."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17201,7 +17197,7 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T11:44:48Z",
+      "updated": "2026-10-11T11:53:50Z",
       "writes": [
         "asf/dispatch.py",
         "asf/briefs/preamble.py",
@@ -35600,7 +35596,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-11T11:51:39Z"
+      "updated": "2026-10-11T11:53:51Z"
     },
     "F-0345": {
       "backlinks": [
@@ -85198,7 +85194,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85211,7 +85207,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T11:14:11Z",
+      "updated": "2026-10-11T11:53:51Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -86132,6 +86128,12 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel). T-129179 also writes asf/workers/scratch.py (Building): the overlap rule serialises them."
       ],
+      "kernel_notes": [
+        "PR #1516: install-clean-linux is red but not a required check \u2014 ignored",
+        "PR #1516: install-clean-macos is red but not a required check \u2014 ignored",
+        "PR #1516: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1516: part (3.13, 2) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0321.md"
@@ -86145,7 +86147,7 @@
       ],
       "title": "a factory scratch path tracked on a trunk is one named doctor row",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T11:53:51Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py",
@@ -87287,7 +87289,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T11:53:51Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -87370,7 +87372,7 @@
         "PR #1433: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -87384,7 +87386,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T11:53:51Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -87401,6 +87403,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130215",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -87413,7 +87416,7 @@
       ],
       "title": "the three reds the rule must never swallow, pinned",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-11T11:53:51Z",
       "writes": [
         "tests/test_mq_batch_survival.py"
       ]
@@ -87652,7 +87655,7 @@
         "PR #1509: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1509: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -87665,7 +87668,7 @@
       ],
       "title": "the decision the lane cannot make, written once instead of printed every tick",
       "type": "task",
-      "updated": "2026-10-11T11:51:39Z",
+      "updated": "2026-10-11T11:53:51Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_closed_item_prs.py",
@@ -87715,6 +87718,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131722",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -87727,7 +87731,7 @@
       ],
       "title": "the `stray` line stops, and the orphan path keeps its own bar",
       "type": "task",
-      "updated": "2026-10-10T18:12:34Z",
+      "updated": "2026-10-11T11:53:51Z",
       "writes": [
         "tests/test_closed_item_prs.py"
       ]
@@ -90159,7 +90163,8 @@
         "Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings."
+        "relaunch: operator answer: Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_findings": [
@@ -90181,7 +90186,7 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -90202,7 +90207,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T11:40:22Z",
+      "updated": "2026-10-11T11:53:51Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
