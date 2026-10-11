@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T21:20:07Z",
+  "generated": "2026-10-11T21:23:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -70086,7 +70086,8 @@
         "One more fix round (4th, final), limited to the three latest findings. All three are real. (1) asf/schema.py:385-388: migrate_config must stamp only the running product's own config (take a product= argument), never sibling products/<other>.yaml; another product on an older install must still load. (2) tools/upgrade_matrix.py:257-274: refuse every RED doctor row except one named allow-list, ALLOWED_RED = ('redaction-hooks',). (3) tests/test_upgrade_matrix.py:131-132: assert the newer-stamp fact, not why == env.UNKNOWN_KEY, so it survives T-0453 registering schema_version. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more fix round (4th, final), limited to the three latest findings. All three are real. (1) asf/schema.py:385-388: migrate_config must stamp only the running product's own config (take a product= argument), never sibling products/<other>.yaml; another product on an older install must still load. (2) tools/upgrade_matrix.py:257-274: refuse every RED doctor row except one named allow-list, ALLOWED_RED = ('redaction-hooks',). (3) tests/test_upgrade_matrix.py:131-132: assert the newer-stamp fact, not why == env.UNKNOWN_KEY, so it survives T-0453 registering schema_version. Nothing else."
+        "relaunch: operator answer: One more fix round (4th, final), limited to the three latest findings. All three are real. (1) asf/schema.py:385-388: migrate_config must stamp only the running product's own config (take a product= argument), never sibling products/<other>.yaml; another product on an older install must still load. (2) tools/upgrade_matrix.py:257-274: refuse every RED doctor row except one named allow-list, ALLOWED_RED = ('redaction-hooks',). (3) tests/test_upgrade_matrix.py:131-132: assert the newer-stamp fact, not why == env.UNKNOWN_KEY, so it survives T-0453 registering schema_version. Nothing else.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
@@ -70144,7 +70145,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T21:20:06Z",
+      "updated": "2026-10-11T21:23:52Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -86426,7 +86427,7 @@
         "PR #1579: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -86439,7 +86440,7 @@
       ],
       "title": "the cap and the reader \u2014 an unfiled review is no launch, once per head",
       "type": "task",
-      "updated": "2026-10-11T21:11:51Z",
+      "updated": "2026-10-11T21:23:52Z",
       "writes": [
         "asf/workers/relaunch.py",
         "asf/workers/lifecycle.py",
@@ -89831,7 +89832,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89844,7 +89845,7 @@
       ],
       "title": "intake \u2014 every note decided by code once its sessions are spent, and the step measured",
       "type": "task",
-      "updated": "2026-10-11T20:50:09Z",
+      "updated": "2026-10-11T21:23:52Z",
       "writes": [
         "asf/kernel/intake.py",
         "asf/kernel/ports.py",
@@ -90806,7 +90807,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T21:16:36Z",
+      "updated": "2026-10-11T21:23:52Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -91076,7 +91077,7 @@
         "asf/kernel/sweep.py:62 \u2014 in `parked_by`, after the `it is None` guard, add `if it.priority == 'later': return ''  # parked by its own priority: a revive applies here (D8)`, so a card carrying its own `priority: later` yields `''` as the plan's fixed shape (`docs/plans/f-0337.md:102-103`) and the spec's \u00a76 (`docs/specs/f-0337.md:531-534`) both require, and `brief_facts` emits no `parked_by:` line for it."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91089,7 +91090,7 @@
       ],
       "title": "the pure module, the block grammar it shares with `dor`, the two fields, the five knobs and the two keys",
       "type": "task",
-      "updated": "2026-10-11T21:16:36Z",
+      "updated": "2026-10-11T21:23:52Z",
       "writes": [
         "asf/kernel/sweep.py",
         "asf/kernel/dor.py",
