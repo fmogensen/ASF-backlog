@@ -1,0 +1,13 @@
+# Bug: a failed intake decision parks a card over its priority
+
+type: bug
+parent: F-0346
+
+When intake-decide sessions give no valid verdict, the kernel decides by code `later` and writes `priority: later` over the card's existing priority (`INTAKE <id> -> later (code: no valid intake verdict after 2 session(s): parked)`). It silently parked 31 items on 2026-10-10, including operator-approved 0.3 Features with `priority: need` (F-0335, F-0347, F-0348, F-0350) and Stories under need Features.
+
+Causes seen in kernel-asf.log:
+- a session that hit the account's session limit (api_error, no INTAKE-DECIDE block) counted as a spent try;
+- a valid verdict ended in the same tick in which the plan also counted the key as spent (F-0347: `-> need` then `-> later` in one tick);
+- a Story under a Done parent is rejected (`parent F-xxxx is Done`) twice, then parked.
+
+Fix: a failed intake decision never changes an existing priority and never parks silently — keep the card's priority, a Story/Task inherits its parent's, else an operator Stuck row answerable with `asf answer`. Repair the 31 by code from the record history.
