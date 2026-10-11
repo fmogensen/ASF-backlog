@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T08:26:29Z",
+  "generated": "2026-10-11T08:43:48Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17048,6 +17048,12 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-148599",
+      "kernel_answers": [
+        "granted .github/workflows/tests.yml asf/upgrade.py tests/test_tick_steps.py tests/test_snapshot.py tests/test_rules.py asf/build-b-148599-1791705605@20261011T080019Z; nothing else outside writes (card updated by the kernel). T-0452 also writes tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129157 also writes tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129210 also writes .github/workflows/tests.yml (Review): the overlap rule serialises them. T-131823 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. .github/workflows/tests.yml matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted .github/workflows/tests.yml asf/upgrade.py tests/test_tick_steps.py tests/test_snapshot.py tests/test_rules.py asf/build-b-148599-1791705605@20261011T080019Z; nothing else outside writes (card updated by the kernel). T-0452 also writes tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129157 also writes tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129210 also writes .github/workflows/tests.yml (Review): the overlap rule serialises them. T-131823 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. .github/wor\u2026"
+      ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026/work/_temp/3b65bba7-81ed-40aa-87b9-a7afd7a3462a' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
         "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026/work/_temp/3b65bba7-81ed-40aa-87b9-a7afd7a3462a' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
@@ -17057,7 +17063,7 @@
         "PR #1464: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1464: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S1",
@@ -17066,7 +17072,15 @@
       "state": "New",
       "title": "Bug: an approved spec head's declared Stories are not minted under plan_on_approve",
       "type": "bug",
-      "updated": "2026-10-11T08:02:55Z"
+      "updated": "2026-10-11T08:43:46Z",
+      "writes": [
+        ".github/workflows/tests.yml",
+        "asf/upgrade.py",
+        "tests/test_tick_steps.py",
+        "tests/test_snapshot.py",
+        "tests/test_rules.py",
+        "asf/build-b-148599-1791705605@20261011T080019Z"
+      ]
     },
     "B-148750": {
       "backlinks": [],
@@ -17082,7 +17096,7 @@
         "PR #1466: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1466: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S1",
@@ -17091,7 +17105,7 @@
       "state": "New",
       "title": "Bug: a parent's stale stored kernel_state done fails its child Task's DoR",
       "type": "bug",
-      "updated": "2026-10-11T08:15:12Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/dor.py",
@@ -17114,7 +17128,7 @@
         "PR #1465: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1465: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0002",
       "schema_version": 1,
       "severity": "S1",
@@ -17123,7 +17137,7 @@
       "state": "New",
       "title": "Bug: an ended cloud run with its report still coming is declared dead without the report commit",
       "type": "bug",
-      "updated": "2026-10-11T08:19:51Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/config_keys.py",
         "asf/conventions.py",
@@ -34752,7 +34766,7 @@
         "PR #1430: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 1,
@@ -34761,7 +34775,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-10T21:59:42Z"
+      "updated": "2026-10-11T08:43:46Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -48483,9 +48497,11 @@
         "T-129203"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-99857",
       "parent": "F-0332",
+      "priority": "later",
       "schema_version": 1,
       "stage_since": "2026-10-10T17:38:29Z",
       "state": "New",
@@ -68474,7 +68490,8 @@
         "T-79565",
         "T-80572",
         "B-138845",
-        "B-145247"
+        "B-145247",
+        "B-148599"
       ],
       "children": [],
       "cost": {
@@ -68502,7 +68519,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -68517,7 +68534,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-11T08:19:51Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -84540,7 +84557,7 @@
         "groom-fill-t-129156-1791667556: groom-fill raised risk high: design matches trunk exactly and nothing named is built; the \"parent F-0272 is Done\" gap is F-0272's stale kernel_state:done field, permanently un-writable by apply.py once it had children (confirmed via dor.py:194 + apply.py:552-569), not a real DoR failure.",
         "groom-fill-t-129156-1791668445: groom-fill raised risk high: design matches trunk at aaa491cfc exactly and nothing named is built yet \u2014 acceptance/writes unchanged from prior rounds; the cited \"parent F-0272 is Done\" gap is a stale kernel_state:done written on F-0272 before its Stories/Task existed, permanently un-writable per apply.py's container-skip (:552-556) since F-0272 now has children \u2014 F-0272 itself reads state: Active/stage: spec-approved, so the gap is false and needs a direct operator fix to F-0272's kernel_state field, not another child groom-fill."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0272.md"
       },
@@ -84554,7 +84571,7 @@
       ],
       "title": "the reader for the edge the order pass writes, and the incident replayed from both sides",
       "type": "task",
-      "updated": "2026-10-11T08:25:45Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/feeder/widen.py",
         "asf/tick/widen_footprint.py",
@@ -84568,7 +84585,8 @@
         "T-129191",
         "T-129207",
         "T-80573",
-        "T-81130"
+        "T-81130",
+        "B-148599"
       ],
       "children": [],
       "creates": [
@@ -84581,7 +84599,8 @@
         "granted asf/schema.py asf/tick/tick.py asf/tick/migrate.py tests/test_tick.py tests/test_minimal_product.py tests/test_tick_steps.py asf/build-t-129157-1791667309@20261010T212200Z; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_tick.py tests/test_minimal_product.py (Review): the overlap rule serialises them. T-136825 also writes asf/schema.py asf/tick/tick.py tests/test_tick.py tests/test_minimal_product.py tests/test_tick_steps.py (Building): the overlap rule serialises them."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/schema.py asf/tick/tick.py asf/tick/migrate.py tests/test_tick.py tests/test_minimal_product.py tests/test_tick_steps.py asf/build-t-129157-1791667309@20261010T212200Z; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_tick.py tests/test_minimal_product.py (Review): the overlap rule serialises them. T-136825 also writes asf/schema.py asf/tick/tick.py tests/test_tick.py tests/test_minimal_product.py tests/test_t\u2026"
+        "relaunch: operator answer: granted asf/schema.py asf/tick/tick.py asf/tick/migrate.py tests/test_tick.py tests/test_minimal_product.py tests/test_tick_steps.py asf/build-t-129157-1791667309@20261010T212200Z; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_tick.py tests/test_minimal_product.py (Review): the overlap rule serialises them. T-136825 also writes asf/schema.py asf/tick/tick.py tests/test_tick.py tests/test_minimal_product.py tests/test_t\u2026",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
@@ -84603,7 +84622,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -84616,7 +84635,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T08:25:45Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85373,7 +85392,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129179",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85386,7 +85405,7 @@
       ],
       "title": "the leftover-work commit stages the session's work and never its scratch",
       "type": "task",
-      "updated": "2026-10-11T08:25:46Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py"
@@ -85401,7 +85420,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129180",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85414,7 +85433,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T08:25:46Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -85598,11 +85617,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129187",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "partial: NEEDS OPERATOR: the host's pinned `asf` CLI (sha `14b963ba1`) predates the `pre-push` subcommand and refuses every push's hook on this host (confirmed 4x, deterministic) \u2014 re-pin to a build\u2026",
-      "kernel_stuck_since": "2026-10-11T08:13:34Z",
+      "kernel_answers": [
+        "Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -85615,7 +85636,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T08:15:12Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -85746,7 +85767,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/feeder/rows.py tests/test_feeder.py; nothing else outside writes (card updated by the kernel). T-129157 also writes asf/feeder/rows.py (Building): the overlap rule serialises them."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0326.md"
       },
@@ -85759,7 +85780,7 @@
       ],
       "title": "the doctor \u2014 the second question, asked in the same row",
       "type": "task",
-      "updated": "2026-10-11T08:15:12Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_pushed_work.py",
@@ -85784,9 +85805,10 @@
         "PR #1461: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1461: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1461: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1461: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1461: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "build-t-129192-1791706079: NEEDS OPERATOR: PR #1461's `tests (3.12)`/`tests (3.13)` may still read red on a re-run of this same push if the flake recurs \u2014 if it does twice in a row, the next session should look at whether `tests.test_minimal_\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0329.md"
       },
@@ -85801,7 +85823,7 @@
       ],
       "title": "the reader reads the document \u2014 the bytes, the fences, and the one line that keeps a minted title from refusing its own plan",
       "type": "task",
-      "updated": "2026-10-11T08:09:07Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/record/idcheck.py",
         "tests/test_plan_tasks.py",
@@ -86133,7 +86155,7 @@
       "kernel_attempts": [
         "ended without a REPORT"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0332.md"
       },
@@ -86149,7 +86171,7 @@
       ],
       "title": "the ceiling and its kind gate, in one diff",
       "type": "task",
-      "updated": "2026-10-11T07:56:12Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/workers/loops.py",
         "asf/workers/relaunch.py",
@@ -86246,10 +86268,12 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1448: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1448: checks (3.13) is red but not a required check \u2014 ignored",
@@ -86260,7 +86284,7 @@
         "PR #1448: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1448: part (3.12, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -86274,7 +86298,7 @@
       ],
       "title": "the one map, and the host's two refresh doors",
       "type": "task",
-      "updated": "2026-10-10T22:59:26Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/env.py",
         "asf/kernel/loop.py",
@@ -86438,7 +86462,8 @@
     },
     "T-129210": {
       "backlinks": [
-        "T-129211"
+        "T-129211",
+        "B-148599"
       ],
       "children": [],
       "decided": true,
@@ -86458,7 +86483,7 @@
       ],
       "title": "the seam \u2014 the action, its one write, the knob, the line and the trigger",
       "type": "task",
-      "updated": "2026-10-11T08:25:46Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/apply.py",
@@ -86594,6 +86619,9 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-130214",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_notes": [
@@ -86624,7 +86652,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-11T07:56:12Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -86925,7 +86953,8 @@
     "T-131823": {
       "backlinks": [
         "T-131719",
-        "T-131824"
+        "T-131824",
+        "B-148599"
       ],
       "children": [],
       "decided": true,
@@ -86957,7 +86986,7 @@
         "build-t-131823-1791664197: NEEDS OPERATOR: the red checks on PR #1434 are a confirmed pre-existing trunk flake (same failure reproduced on origin/main HEAD itself) \u2014 rerun them: `gh run rerun 38082466422 --failed`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0341.md"
       },
@@ -86970,7 +86999,7 @@
       ],
       "title": "the grammar \u2014 the list, the match, and the sixth refusal word",
       "type": "task",
-      "updated": "2026-10-11T08:25:46Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/proves.py",
         "tests/test_proves.py",
@@ -87111,7 +87140,7 @@
         "PR #1454: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1454: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -87127,7 +87156,7 @@
       ],
       "title": "the law \u2014 `asf/flow.py`, and the feeder's severity bar gets one name",
       "type": "task",
-      "updated": "2026-10-11T08:25:46Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/flow.py",
         "asf/feeder/rows.py",
@@ -87229,10 +87258,16 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148630",
-      "kernel_notes": [
-        "PR #1468: part (3.12, 3) is red but not a required check \u2014 ignored"
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_state": "review",
+      "kernel_fix_rounds": 1,
+      "kernel_notes": [
+        "PR #1468: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1468: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -87245,7 +87280,7 @@
       ],
       "title": "a test per parent rule \u2014 the module the other six extend",
       "type": "task",
-      "updated": "2026-10-11T08:25:46Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "tests/test_work_item_model.py"
       ]
@@ -89701,7 +89736,11 @@
       "folder": "tasks",
       "id": "T-83144",
       "kernel_answers": [
-        "granted tests/test_reviews.py tests/test_briefs.py tests/fixtures/briefs/golden/review.md; nothing else outside writes (card updated by the kernel)."
+        "granted tests/test_reviews.py tests/test_briefs.py tests/fixtures/briefs/golden/review.md; nothing else outside writes (card updated by the kernel).",
+        "granted asf/kernel/briefs.py; nothing else outside writes (card updated by the kernel). asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/kernel/briefs.py; nothing else outside writes (card updated by the kernel). asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_dor_fills": 1,
       "kernel_extra_rounds": 0,
@@ -89730,7 +89769,7 @@
         "PR #1463: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -89743,7 +89782,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-11T08:15:12Z",
+      "updated": "2026-10-11T08:43:46Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
@@ -89751,7 +89790,8 @@
         "tests/test_doc_lane_review.py",
         "tests/test_reviews.py",
         "tests/test_briefs.py",
-        "tests/fixtures/briefs/golden/review.md"
+        "tests/fixtures/briefs/golden/review.md",
+        "asf/kernel/briefs.py"
       ]
     },
     "T-83345": {
