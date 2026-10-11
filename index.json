@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T16:26:48Z",
+  "generated": "2026-10-11T16:31:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -85994,7 +85994,7 @@
         "PR #1483: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -86011,7 +86011,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T16:05:07Z",
+      "updated": "2026-10-11T16:30:59Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -88816,7 +88816,7 @@
         "PR #1553: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1553: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88829,7 +88829,7 @@
       ],
       "title": "`priority` is one of three words, in one definition",
       "type": "task",
-      "updated": "2026-10-11T16:15:44Z",
+      "updated": "2026-10-11T16:30:59Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
@@ -89383,6 +89383,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159849",
+      "kernel_answers": [
+        "granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now."
+      ],
       "kernel_findings": [
         "asf/kernel/decide.py:2232 \u2014 `config.lead_p90_max` is on no `Config` and no F-0334 Task adds it (Task 1 writes neither `model.py` nor `ports.py`; landed Task 2 reads the same knob via `gate.py:47-52`), so the target is permanently the hardcoded 4h and `0` cannot turn the rule off: add `Config.lead_p90_max_s` (`asf/kernel/model.py:544`) filled in `asf/kernel/ports.py` beside `:2684` from `S.parse_duration(k['gate']['lead_p90_max'])`, read it with no `getattr`, and report both files as `needs writes:`",
         "asf/kernel/decide.py:2248 \u2014 the record reuses the item's wait class, so no line says `LEAD BREACH` or names the PR (Step 4, `docs/plans/f-0334.md:425-426`): emit the breach in its own `'lead'` class carrying the PR number and the target, widen `decide.py:487`'s front set to `c in ('train', 'merge', 'lead')`, and print the PR and the target on the line",
@@ -89390,7 +89396,7 @@
         "asf/kernel/decide.py:2472-2474 \u2014 a lead breach enters `stalled`, so LIMBO reports the PR's lifetime as the unmerged-green wait (`'not merged after 6.0h'` for a PR green one minute, inside its 10m target); exclude the lead class from `stalled`, or word the reason with the right clock"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89403,11 +89409,14 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T15:50:22Z",
+      "updated": "2026-10-11T16:30:59Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
-        "tests/kernel/test_main_landing.py"
+        "tests/kernel/test_main_landing.py",
+        "asf/kernel/model.py",
+        "asf/kernel/ports.py",
+        "asf/kernel/settings.py"
       ]
     },
     "T-159850": {
@@ -89492,6 +89501,7 @@
         "T-159847"
       ],
       "backlinks": [
+        "T-159849",
         "T-159855"
       ],
       "children": [],
@@ -89504,7 +89514,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89518,7 +89528,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-11T16:05:07Z",
+      "updated": "2026-10-11T16:30:59Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -89724,7 +89734,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160207",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/decide.py:2016 \u2014 add `started = {a.item_id for a in launches}` before the loop and extend the refusal chain to `or iid in started or judged[iid].dor`, so a card the Definition of Ready holds is never stacked and a card already launched this tick is never launched twice; cover both with new cases on `tests.kernel.test_stacked_builds.StackedLaunch` and name the two preconditions in the docstring."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89737,7 +89751,7 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T15:53:05Z",
+      "updated": "2026-10-11T16:30:59Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -90269,6 +90283,7 @@
         "T-166573"
       ],
       "backlinks": [
+        "T-159849",
         "T-166575"
       ],
       "children": [],
