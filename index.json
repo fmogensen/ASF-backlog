@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T22:07:49Z",
+  "generated": "2026-10-11T22:12:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -36129,15 +36129,22 @@
       "decided": true,
       "folder": "features",
       "id": "F-0352",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
+        "docs/plans/f-0352.md:41 \u2014 K1 claims `idcheck.cited_stories`/`phantom_stories` see only 3 Story ids, but the plan's \u00a74 cites a 4th (`S-177314`); re-run the probes and update the claimed results (actual: `cited_stories` has 4 ids, `phantom_stories` = `['S-177314']` with canon `{S-176462}`, `['S-176462','S-177314']` with empty canon).",
+        "docs/plans/f-0352.md:73 \u2014 \"the only three S-/T-/B- tokens in the whole document\" is wrong since \u00a74 added `S-177314`; fix to say four, consistent with K1's fix.",
+        "docs/plans/f-0352.md:58 \u2014 K18's `card_description` figures for Task 2 are wrong (claims 3951 chars ending on the Acceptance fence; actual is 3961 chars ending on the trailing `---` after the fence); re-measure and correct.",
+        "docs/plans/f-0352.md:50 \u2014 `tests/kernel/test_scenarios.py:67` is cited for `test_02_later_item_with_overlapping_files_blocks_nothing`; that test's `def` is actually at line 62 (also repeated at line 96's anchor list).",
         "docs/plans/f-0352.md:58 \u2014 close the K18 row's third (\"why\") cell on this line (move line 67's trailing sentence back into it) and move the nested `canonical | claims | idcheck.findings` table (lines 60-65) out of the cell into its own paragraph after the Decisions table ends, so the row does not break the GFM table across a blank line and strand K19 as unattached text."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "spec-f-0352-1791748609: NEEDS OPERATOR: confirm F-0347 is still open and owns the WIP-push/beat work (if it is Done or retired, C4 needs re-opening under F-0352) \u2014 `asf check --product asf --item F-0347`",
         "plan-f-0352-1791750518: NEEDS OPERATOR: whether F-0352's Story S-176462 (\"Split the kernel's hub files (decide/ports/model/loop) so kernel Tasks stop serializing\") should keep that title, given that the approved spec relieves the same wait\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0006",
       "priority": "need",
       "rank": 2,
@@ -36146,7 +36153,7 @@
       "state": "New",
       "title": "Adopt botseon's measured speed fixes: rebase cap, record lint, two holders, WIP push",
       "type": "feature",
-      "updated": "2026-10-11T21:58:05Z"
+      "updated": "2026-10-11T22:12:15Z"
     },
     "F-0353": {
       "backlinks": [],
@@ -40771,7 +40778,9 @@
       "updated": "2026-10-11T20:38:45Z"
     },
     "S-177314": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0352"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -69949,7 +69958,7 @@
         "PR #1570: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69959,7 +69968,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T22:07:47Z",
+      "updated": "2026-10-11T22:12:15Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -86520,7 +86529,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129167",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0313.md"
       },
@@ -86533,7 +86542,7 @@
       ],
       "title": "the line \u2014 one waits line names the unfiled review and the action taken",
       "type": "task",
-      "updated": "2026-10-11T22:07:47Z",
+      "updated": "2026-10-11T22:12:15Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
@@ -89493,7 +89502,7 @@
         "asf/cli.py:986 \u2014 `resolve_record` announces `record: <path>` on stdout ahead of the rendered card, so `asf show`'s stdout is not the card's text that spec \u00a72.9 says is byte-identical to the view; dispatch it as the other value-on-stdout commands do, `return cmd_show(args, resolve_record(args, announce=_announce_stderr))`."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89506,7 +89515,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-11T21:58:05Z",
+      "updated": "2026-10-11T22:12:15Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89836,7 +89845,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T22:07:47Z",
+      "updated": "2026-10-11T22:12:15Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -89864,7 +89873,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89877,7 +89886,7 @@
       ],
       "title": "intake \u2014 every note decided by code once its sessions are spent, and the step measured",
       "type": "task",
-      "updated": "2026-10-11T22:07:47Z",
+      "updated": "2026-10-11T22:12:15Z",
       "writes": [
         "asf/kernel/intake.py",
         "asf/kernel/ports.py",
@@ -89905,6 +89914,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159851",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89918,7 +89928,7 @@
       ],
       "title": "the console's share \u2014 the question ledger, the window, the gate criterion and the classifier that codes nothing",
       "type": "task",
-      "updated": "2026-10-11T11:56:38Z",
+      "updated": "2026-10-11T22:12:15Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/kernel/loop.py",
@@ -90496,7 +90506,7 @@
         "PR #1601: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1601: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90509,7 +90519,7 @@
       ],
       "title": "every reader of a capped transcript reads its generations oldest-first, streamed",
       "type": "task",
-      "updated": "2026-10-11T21:58:05Z",
+      "updated": "2026-10-11T22:12:15Z",
       "writes": [
         "asf/logs.py",
         "asf/scorecard/program.py",
@@ -91179,7 +91189,7 @@
       ],
       "title": "one verdict block, and the brief that asks for it",
       "type": "task",
-      "updated": "2026-10-11T22:03:33Z",
+      "updated": "2026-10-11T22:12:15Z",
       "writes": [
         "asf/kernel/briefs.py",
         "asf/workers/lifecycle.py",
