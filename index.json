@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T13:36:16Z",
+  "generated": "2026-10-11T13:41:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17372,6 +17372,9 @@
       "id": "B-157108",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
+      "kernel_notes": [
+        "PR #1542: install-clean-macos is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
@@ -17381,7 +17384,7 @@
       "state": "New",
       "title": "Bug: test_host and test_clean_floor fail locally under the launchd guard",
       "type": "bug",
-      "updated": "2026-10-11T13:36:14Z",
+      "updated": "2026-10-11T13:41:24Z",
       "writes": [
         "tests/kernel/test_host.py"
       ]
@@ -84829,7 +84832,7 @@
       ],
       "folder": "tasks",
       "id": "T-0816",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
@@ -84851,7 +84854,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T13:36:14Z",
+      "updated": "2026-10-11T13:41:24Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -86496,7 +86499,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T13:31:02Z",
+      "updated": "2026-10-11T13:41:24Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -87183,11 +87186,16 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129199",
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1535: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1535: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -87200,7 +87208,7 @@
       ],
       "title": "one owner for the labels launchd is not holding, and the install that reads its clocks back and exits non-zero",
       "type": "task",
-      "updated": "2026-10-11T13:25:49Z",
+      "updated": "2026-10-11T13:41:24Z",
       "writes": [
         "asf/scheduler.py",
         "asf/install.py",
@@ -87942,7 +87950,7 @@
         "satisfied on main at 14b963ba1: tests.test_upgrade_kernel_floor, tests.test_upgrade, tests.test_upgrade_drain_bound, tests.test_pin_defects, tests.test_scheduler, tests.test_connectors_scheduler, tests.kernel.test_host, tests.test_doctor, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-130967 holds 1 commit(s) off it"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -87958,7 +87966,7 @@
       ],
       "title": "the smoke replays the floor that moved, and each kernel job has a no-op form",
       "type": "task",
-      "updated": "2026-10-11T13:20:31Z",
+      "updated": "2026-10-11T13:41:24Z",
       "writes": [
         "asf/scheduler.py",
         "asf/upgrade.py",
@@ -88794,7 +88802,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T13:31:02Z",
+      "updated": "2026-10-11T13:41:24Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
@@ -89288,7 +89296,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89302,7 +89310,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:41:24Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -89405,7 +89413,7 @@
         "operator answer: granted asf/record/cards.v2.schema.json tests/test_card_schema.py asf/build-t-160206-1791724712@20261011T131841Z; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89418,7 +89426,7 @@
       ],
       "title": "the stack as a fact \u2014 the card's key, the pull request's base, and the two knobs",
       "type": "task",
-      "updated": "2026-10-11T13:31:02Z",
+      "updated": "2026-10-11T13:41:24Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -91500,22 +91508,9 @@
         "granted asf/schema.py asf/hermetic.py 3.12 3.13 footprint. 3.1x; nothing else outside writes (card updated by the kernel). T-129157 also writes asf/schema.py (Building): the overlap rule serialises them.",
         "Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings.",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
       "kernel_dor_fills": 1,
-      "kernel_findings": [
-        "asf/harvest/regression.py:380-381 \u2014 a non-string `flags.regression.command` reaches `resolved_command` and raises AttributeError out of `ask` \u2192 `branch_facts` (`lane.py:2050`), which nothing catches at `lane.py:1872`, so it stops the product's whole lane pass. Replace `tpl = conv.flag('regression.command') or conv.test_command` with a type check: `tpl = conv.flag('regression.command'); tpl = tpl if isinstance(tpl, str) and tpl.strip() else conv.test_command`. Plan Task 5 Step 3 requires the value never reach the runner; `validate_mapping` only reports it (`asf/env.py:815` collects the problem, the product still loads).",
-        "asf/harvest/regression.py:84-85 \u2014 a non-list `exempt_found_in` makes `if found_in in exempt` a substring test, so `exempt_found_in: ci` (a bare string) silently un-gates a card whose `found_in` is `c`. Guard the read: `exempt = conv.flag('regression.exempt_found_in', None)` then `if not isinstance(exempt, list) or any(not isinstance(v, str) for v in exempt): exempt = list(DEFAULT_EXEMPT_FOUND_IN)`.",
-        "asf/harvest/regression.py:112 \u2014 the `fail_re` guard catches `re.error` but not a non-string pattern, so `re.compile(7)` raises TypeError past it (and a list pattern raises `TypeError: unhashable type`). Add the type check before the compile: `if pattern is not None and not hasattr(pattern, 'search') and not isinstance(pattern, str): pattern = None`, or widen line 112 to `except (re.error, TypeError):`. This is the third malformed shape `validate_mapping:646-660` already names.",
-        "asf/harvest/lane.py:2035 \u2014 carry the regression clause onto the recorded tick line: after `:2037` set `f['regression_clause'] = f\"regression: {f['regression'][1] or f['regression'][0]}\"` and append it to `reason` at `:2490` and `:2493`, so all six forms appear, including `proved` and `not gated \u2014 regression.check is off`, which today print nowhere",
-        "asf/harvest/regression.py:329 \u2014 Task 2 Step 5 forbids the second test run: give `check` (`:371`) and `run_graft` (`:288`) an `after=(rc, output)` parameter, pass the gate's own head-run output from `ask` (`:472`), and delete the re-run at `:330-334` (fall back to it only when no head result exists for that sha) \u2014 or record the deviation and stop quoting Step 5 in the `run_graft` docstring at `:294-296`",
-        "asf/harvest/regression.py:112 \u2014 guard the product-supplied `fail_re`: wrap `re.compile` at `:108` in `except re.error: rx = None`, drop a pattern with `rx.groups < 1` to `None`, and add a `flags.regression.fail_re` problem beside the other two in `asf/conventions.py:642` with its case in `tests/test_conventions.py`",
-        "rebase: PR #1498 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
-        "operator answer: Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py).",
         "PR #1439: checks (3.12) is red but not a required check \u2014 ignored",
@@ -91527,7 +91522,8 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -91548,7 +91544,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T13:15:09Z",
+      "updated": "2026-10-11T13:41:24Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
