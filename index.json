@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T14:32:03Z",
+  "generated": "2026-10-11T14:35:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -88852,7 +88852,7 @@
         "asf/record/card.py:57 \u2014 after the `except json.JSONDecodeError` block in `loads`, add `if not isinstance(data, dict): raise frontmatter.FrontmatterError(path_, 1, 'a card must be a JSON object')`; without it a `.json` card whose top level is a list, a string or null raises TypeError/ValueError out of `core.load_items` (core.py:138) instead of appending to `parse_errors`, so one hand-edited or truncated card crashes every command that scans the record. Add the matching case to tests/test_card_api.py asserting `core.load_items` reports it in `parse_errors` and drops the card."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88865,7 +88865,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T14:19:34Z",
+      "updated": "2026-10-11T14:35:18Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
@@ -89208,7 +89208,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159849",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89221,7 +89221,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T13:55:16Z",
+      "updated": "2026-10-11T14:35:18Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -89355,10 +89355,12 @@
       "folder": "tasks",
       "id": "T-159853",
       "kernel_answers": [
-        "granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now.",
+        "granted asf/kernel/loop.py asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now.",
+        "relaunch: operator answer: granted asf/kernel/loop.py asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_findings": [
         "asf/kernel/loop.py:130 and :271-272 \u2014 Plan.pace never reaches the tick, so Step 5's `pace:` line is never printed (pace_line at decide.py:1772 has no caller; grep -c pace asf/kernel/loop.py is 0). Report `needs writes: asf/kernel/loop.py`, then extend loop.py:37 to `from asf.kernel.decide import blind_plan, decide, pace_line`, add `'pace': getattr(plan, 'pace', None),` beside the `'wip'` entry at :130, and after the wip_line block at :271-272 add `if summary.get('pace'): out(pace_line(summary['pace']))`.",
@@ -89366,7 +89368,7 @@
         "operator answer: granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89380,7 +89382,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T14:24:19Z",
+      "updated": "2026-10-11T14:35:18Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -89391,7 +89393,9 @@
         "tests/kernel/test_decide.py",
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
-        "asf/kernel/actions.py"
+        "asf/kernel/actions.py",
+        "asf/kernel/loop.py",
+        "asf/kernel/facts.py"
       ]
     },
     "T-159854": {
@@ -89399,6 +89403,7 @@
         "T-159847"
       ],
       "backlinks": [
+        "T-159853",
         "T-159855"
       ],
       "children": [],
@@ -90510,7 +90515,7 @@
         "groom-fill-t-78359-1791631136: groom-fill verdict rejected: acceptance: missing or not a list",
         "groom-fill-t-78359-1791632977: groom-fill raised risk high: well-specified, measured against current trunk (PRE_COMMIT/PRE_PUSH line counts and _own_upgrade's 5-arg shape confirmed), only missing the acceptance/test-naming the DoR requires; touches the record's own hook-install path so risk stays high"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0283.md"
       },
@@ -90523,7 +90528,7 @@
       ],
       "title": "the record's own hooks are moved onto the pin by the command the row already names",
       "type": "task",
-      "updated": "2026-10-11T14:32:02Z",
+      "updated": "2026-10-11T14:35:18Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
