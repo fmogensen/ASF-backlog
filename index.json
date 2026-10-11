@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T20:21:07Z",
+  "generated": "2026-10-11T20:25:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17507,7 +17507,7 @@
       "kernel_notes": [
         "groom-fill-b-173962-1791744740: groom-fill raised risk high: measured live (97 kernel_state:done Tasks/Bugs, 80 still state: New, 73 of those with a commit on origin/main naming them) and confirmed derive() already computes the correct Closed/Resolved result from current evidence \u2014 the gap is that this correct result isn't persisting across ticks, not a missing kernel->state coupling, which would contradict the shipped evidence-only closing design (F-0318) and the existing asf reopen path for the opposite case."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17516,7 +17516,7 @@
       "state": "New",
       "title": "Bug: kernel-done Tasks keep state New on their cards, so boards under-count done work",
       "type": "bug",
-      "updated": "2026-10-11T20:02:04Z",
+      "updated": "2026-10-11T20:25:47Z",
       "writes": [
         "asf/record/ingest.py",
         "asf/evidence/evidence.py",
@@ -36073,7 +36073,9 @@
     },
     "F-0352": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-176462"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0352",
@@ -40653,6 +40655,20 @@
       "title": "The kernel installs its own merged fixes (auto-upgrade behind the shadow diff, with rollback)",
       "type": "story",
       "updated": "2026-10-11T19:38:50Z"
+    },
+    "S-176462": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "stories",
+      "id": "S-176462",
+      "parent": "F-0352",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T20:25:32Z",
+      "state": "New",
+      "title": "Split the kernel's hub files (decide/ports/model/loop) so kernel Tasks stop serializing",
+      "type": "story",
+      "updated": "2026-10-11T20:25:32Z"
     },
     "S-51600": {
       "backlinks": [
