@@ -1,0 +1,18 @@
+# Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)
+parent: F-0346
+
+type: bug
+parent: F-0346
+severity: S1
+
+Bug: the decide loop sees no free seat while real capacity is free. Measured 2026-10-11 ~12:15Z on live b69dc8bd8:
+- RealSessions.seat_note(): local 4/10, cloud 5/8, capacity 14, so 9 alive and 5 free.
+- The last 300 log lines hold 42 × "-> none: no free seat" (16 × file overlap).
+- The last 4 ticks launched exactly as many sessions as ended (Launch 1/6/4/2 = EndSession 1/6/4/2), so the floor never grows past ~9 while Ready is 66.
+
+B-157007 fixed the false account stops, but the replace-only pattern remains. Suspects: _free() uses a session count that includes sessions seat_note doesn't (e.g. ended but not yet reaped, or intake/groom kinds); facts.seats is read at a different moment than the launch; or the launch loop is capped by a lane or account constraint that seat_note doesn't show.
+
+## Acceptance
+- A replay of this tick's facts (capacity 14, 9 alive, 66 Ready, no overlap for at least 5 of them) launches 5 (test).
+- `asf kernel status` prints the decide's own free-seat number and the seat_note capacity side by side, so a mismatch is visible (test).
+- Measured after install: sessions alive reach capacity within 2 ticks while Ready > capacity.
