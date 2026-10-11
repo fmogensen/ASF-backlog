@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:37:45Z",
+  "generated": "2026-10-11T15:42:46Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1367,7 +1367,8 @@
       "area": "asf.harvest",
       "backlinks": [
         "F-0054",
-        "F-0087"
+        "F-0087",
+        "T-0816"
       ],
       "children": [],
       "cost": {
@@ -17402,11 +17403,15 @@
       "id": "B-160759",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
+      "kernel_findings": [
+        "asf/kernel/status.py:218-222 \u2014 the saved-plan branch renders without `seats`, so the new line never shows on a ticking host: add `seats=''` to `save_plan` (asf/kernel/loop.py:313) writing `'seats': seats` into its data dict, pass `seats=seat_line(facts, config, ports)` at the call site (asf/kernel/loop.py:529), pass `seats=data.get('seats') or ''` in the `render(*rows_from_plan(...))` call (asf/kernel/status.py:220-222), and extend tests/kernel/test_loop.py:355 to tick into a `state_dir` first and assert the line with and without `live=True`"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-160759-1791723358: groom-fill raised risk high: the card named no tests and no writes; the real suspects (RealSessions.capacity/seat_note/lane vs decide._free) and the missing status-line feature are concrete and locatable, so acceptance lines and writes can be filled from the code rather than invented.",
         "build-b-160759-1791726648: NEEDS OPERATOR: the pure kernel layer already behaves correctly in every replay I could construct, so the measured incident's root cause may live in `RealSessions`' real account/lane plumbing (not reachable from a h\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "rank": 1,
       "schema_version": 1,
@@ -17416,7 +17421,7 @@
       "state": "New",
       "title": "Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)",
       "type": "bug",
-      "updated": "2026-10-11T14:38:54Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/decide.py",
@@ -21847,7 +21852,8 @@
       "backlinks": [],
       "children": [
         "F-0352",
-        "F-0353"
+        "F-0353",
+        "F-0354"
       ],
       "decided": true,
       "folder": "epics",
@@ -23376,6 +23382,7 @@
       "backlinks": [
         "F-0080",
         "F-0280",
+        "F-0354",
         "S-58755",
         "T-0269",
         "B-0457",
@@ -35983,6 +35990,20 @@
       "title": "Session kinds run on the cheapest model that does the job (per-kind model map)",
       "type": "feature",
       "updated": "2026-10-11T13:00:42Z"
+    },
+    "F-0354": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0354",
+      "parent": "E-0006",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T15:40:27Z",
+      "state": "New",
+      "title": "Acceptance coverage, test strength and a human proof class for Story lines",
+      "type": "feature",
+      "updated": "2026-10-11T15:40:27Z"
     },
     "R-0001": {
       "backlinks": [
@@ -69780,7 +69801,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T15:34:44Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -81409,9 +81430,10 @@
         "PR #1177: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1177: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1177: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1177: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1177: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "build-t-0734-1791731552: NEEDS OPERATOR: tests/test_install_e2e.py's RecordTickAgainstALocalNonBareOriginTests leaks the same unstubbed `launchctl list` (a plain `asf init` never sets scheduler.kind, so cron_cell's scheduler.loaded_jobs() r\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81424,7 +81446,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-11T15:14:01Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -84937,13 +84959,17 @@
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/tick/tick.py:322-323 \u2014 the NEEDS OPERATOR line's embedded command `asf prod --record-dir` does not exist (verified live: \"unrecognized arguments: --record-dir\"); add a `--record-dir` flag to `asf prod` in asf/cli.py that prints env.load_product(...).backlog_dir bare to stdout, so the line this tick prints every time the checkout is stale is actually copy-pasteable (S-60906, B-0042). Already surfaced in the coder's own report (commit 4898e76) as `needs writes: asf/cli.py`, still unresolved on this head \u2014 the fix is outside T-0816's declared writes:, so this needs a writes: correction or a follow-up card, not a same-footprint patch.",
+        "operator answer: granted asf/cli.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/cli.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-t-0816-1791725141: groom-fill verdict rejected: acceptance line names no test: \"PD4's git-call ceiling for asf/tick/shadow.py is re-measured against current tru\"",
         "groom-fill-t-0816-1791726076: groom-fill raised risk high: the card's Files/Steps describe sync_operator_checkout's pre-#1039 shape (ceiling 25, no ahead/marker handling); the approved replan docs/plans/replans/f-0260-710ab73e6bdd.md (RD3-RD6) already corrects this (ceiling 24, build around the landed ahead/stranded-commit machinery, drop DIRTY_MARKER per D5) but was never carried into the card body, and a prior attempt under this stale text (PR #1237) already closed without landing."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84957,7 +84983,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T15:17:31Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -85935,7 +85961,7 @@
         "PR #1483: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85952,7 +85978,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T15:09:11Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -88747,17 +88773,17 @@
         "relaunch: operator answer: granted tests/test_groom_adjudicate_reach.py tests.test_groom_adjudicate_reach.ConsoleWritersPublish.test_asf_set_commits_and_pushes_the_card 0. new.FIELD_WORDS; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1."
+        "rebase: PR #1553 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: granted tests/test_groom_adjudicate_reach.py tests.test_groom_adjudicate_reach.ConsoleWritersPublish.test_asf_set_commits_and_pushes_the_card 0. new.FIELD_WORDS; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1553: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1553: part (3.13, 4) is red but not a required check \u2014 ignored",
         "PR #1553: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1553: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88770,7 +88796,7 @@
       ],
       "title": "`priority` is one of three words, in one definition",
       "type": "task",
-      "updated": "2026-10-11T15:20:42Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/check.py",
@@ -88852,7 +88878,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148635",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88865,7 +88891,7 @@
       ],
       "title": "schema 1 \u2192 2 \u2014 the migration, and the nine cases the bump moves",
       "type": "task",
-      "updated": "2026-10-11T15:14:01Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "asf/schema.py",
         "tests/test_install.py",
@@ -89472,7 +89498,7 @@
         "operator answer: granted asf/kernel/loop.py asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89486,7 +89512,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T15:31:36Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -89651,7 +89677,7 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T15:31:36Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -92020,7 +92046,10 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/harvest/regression.py:401,406 \u2014 `check()` takes `setup` and `pattern` and uses neither, and `key()` hashes only the command, so a corrected `flags.regression.fail_re` or `worktree_setup` is served the stale cached verdict for up to KEEP_S (two days) and the branch stays held on it. Fix: make it `def key(repo, trunk_sha, branch_sha, command, setup=None, pattern=None):` at :182, hash `f'{setup or \"\"}\\0{pattern or \"\"}\\0{command or \"\"}'` at :200 as `asf/harvest/rebuild_check.py:52` already does, and call `key(repo, trunk_sha, branch_sha, command, setup, pattern)` at :406."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-t-81130-1791632276: groom-fill raised risk high: T-81130 is the merge survivor of T-81131/T-81132/T-81133 (index `merged:` + `stories: [S-80455..S-80458]`), so its true scope is all four Stories' worth of acceptance, not just the Description's stale S-80455-only text; the writes list and cited anchors (lane.py:1007, conventions.py:403, widen.py:101) check out on trunk, and \"writes not on trunk\" is only T-81129 (regression.py's four pure functions) not yet landed ahead of it \u2014 expected given `after: T-81129`, not a readiness defect; raised for touching the lane's push-gating path (asf/harvest/lane.py).",
         "PR #1439: checks (3.12) is red but not a required check \u2014 ignored",
@@ -92033,7 +92062,7 @@
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -92054,7 +92083,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T14:24:19Z",
+      "updated": "2026-10-11T15:42:45Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
