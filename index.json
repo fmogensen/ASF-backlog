@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T21:08:23Z",
+  "generated": "2026-10-11T21:11:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -36092,12 +36092,16 @@
       "decided": true,
       "folder": "features",
       "id": "F-0352",
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/plans/f-0352.md:317 \u2014 `asf show F-0352 --stories` does not exist (no `show` subcommand); replace with a real read-only command that lists this Feature's Stories, or drop the line.",
+        "docs/plans/f-0352.md:321 \u2014 `asf check --item F-0352 --plan docs/plans/f-0352.md` does not exist (`check` has no `--item`/`--plan` flags); replace with the actual command that validates a plan's id-claims against the record."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0352-1791748609: NEEDS OPERATOR: confirm F-0347 is still open and owns the WIP-push/beat work (if it is Done or retired, C4 needs re-opening under F-0352) \u2014 `asf check --product asf --item F-0347`",
         "plan-f-0352-1791750518: NEEDS OPERATOR: whether F-0352's Story S-176462 (\"Split the kernel's hub files (decide/ports/model/loop) so kernel Tasks stop serializing\") should keep that title, given that the approved spec relieves the same wait\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0006",
       "priority": "need",
       "rank": 2,
@@ -36106,7 +36110,7 @@
       "state": "New",
       "title": "Adopt botseon's measured speed fixes: rebase cap, record lint, two holders, WIP push",
       "type": "feature",
-      "updated": "2026-10-11T20:59:21Z"
+      "updated": "2026-10-11T21:11:51Z"
     },
     "F-0353": {
       "backlinks": [],
@@ -86417,7 +86421,7 @@
       ],
       "title": "the cap and the reader \u2014 an unfiled review is no launch, once per head",
       "type": "task",
-      "updated": "2026-10-11T20:56:38Z",
+      "updated": "2026-10-11T21:11:51Z",
       "writes": [
         "asf/workers/relaunch.py",
         "asf/workers/lifecycle.py",
@@ -90432,6 +90436,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164015",
+      "kernel_notes": [
+        "PR #1601: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1601: part (3.13, 4) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0344.md"
@@ -90445,7 +90453,7 @@
       ],
       "title": "every reader of a capped transcript reads its generations oldest-first, streamed",
       "type": "task",
-      "updated": "2026-10-11T21:05:04Z",
+      "updated": "2026-10-11T21:11:51Z",
       "writes": [
         "asf/logs.py",
         "asf/scorecard/program.py",
@@ -90679,7 +90687,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164022",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0350.md"
       },
@@ -90692,7 +90700,7 @@
       ],
       "title": "the scorecard tells a Story delivery from a Feature one",
       "type": "task",
-      "updated": "2026-10-11T20:33:18Z",
+      "updated": "2026-10-11T21:11:51Z",
       "writes": [
         "asf/scorecard/score.py",
         "tests/test_feature_delivery.py",
