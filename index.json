@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T14:05:20Z",
+  "generated": "2026-10-11T14:10:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16945,7 +16945,7 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16955,7 +16955,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T13:36:14Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -81330,7 +81330,7 @@
         "rebase: PR #1177 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81343,7 +81343,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-11T14:01:11Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -85658,7 +85658,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T14:01:11Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85844,7 +85844,7 @@
         "PR #1483: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85861,7 +85861,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T13:31:02Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -87221,7 +87221,7 @@
         "PR #1535: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1535: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -87234,7 +87234,7 @@
       ],
       "title": "one owner for the labels launchd is not holding, and the install that reads its clocks back and exits non-zero",
       "type": "task",
-      "updated": "2026-10-11T14:01:11Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "asf/scheduler.py",
         "asf/install.py",
@@ -87978,7 +87978,7 @@
         "satisfied on main at 14b963ba1: tests.test_upgrade_kernel_floor, tests.test_upgrade, tests.test_upgrade_drain_bound, tests.test_pin_defects, tests.test_scheduler, tests.test_connectors_scheduler, tests.kernel.test_host, tests.test_doctor, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-130967 holds 1 commit(s) off it"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -87994,7 +87994,7 @@
       ],
       "title": "the smoke replays the floor that moved, and each kernel job has a no-op form",
       "type": "task",
-      "updated": "2026-10-11T14:05:19Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "asf/scheduler.py",
         "asf/upgrade.py",
@@ -88821,7 +88821,7 @@
         "asf/record/card.py:57 \u2014 after the `except json.JSONDecodeError` block in `loads`, add `if not isinstance(data, dict): raise frontmatter.FrontmatterError(path_, 1, 'a card must be a JSON object')`; without it a `.json` card whose top level is a list, a string or null raises TypeError/ValueError out of `core.load_items` (core.py:138) instead of appending to `parse_errors`, so one hand-edited or truncated card crashes every command that scans the record. Add the matching case to tests/test_card_api.py asserting `core.load_items` reports it in `parse_errors` and drops the card."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88834,7 +88834,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T14:01:11Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
@@ -89447,7 +89447,7 @@
         "operator answer: granted asf/record/cards.v2.schema.json tests/test_card_schema.py asf/build-t-160206-1791724712@20261011T131841Z; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "landing",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89460,7 +89460,7 @@
       ],
       "title": "the stack as a fact \u2014 the card's key, the pull request's base, and the two knobs",
       "type": "task",
-      "updated": "2026-10-11T14:05:19Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -89642,7 +89642,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164012",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -89655,7 +89655,7 @@
       ],
       "title": "`asf/logs.py` \u2014 the tree, its paths and its caps",
       "type": "task",
-      "updated": "2026-10-11T13:36:14Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "asf/logs.py",
         "asf/scheduler.py",
@@ -90463,7 +90463,7 @@
         "groom-fill-t-78359-1791631136: groom-fill verdict rejected: acceptance: missing or not a list",
         "groom-fill-t-78359-1791632977: groom-fill raised risk high: well-specified, measured against current trunk (PRE_COMMIT/PRE_PUSH line counts and _own_upgrade's 5-arg shape confirmed), only missing the acceptance/test-naming the DoR requires; touches the record's own hook-install path so risk stays high"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0283.md"
       },
@@ -90476,7 +90476,7 @@
       ],
       "title": "the record's own hooks are moved onto the pin by the command the row already names",
       "type": "task",
-      "updated": "2026-10-11T14:01:11Z",
+      "updated": "2026-10-11T14:10:30Z",
       "writes": [
         "asf/hooks.py",
         "tests/test_hooks_recognise.py",
