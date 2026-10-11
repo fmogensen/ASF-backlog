@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T23:39:01Z",
+  "generated": "2026-10-11T23:51:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -69974,7 +69974,7 @@
         "PR #1570: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69984,7 +69984,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T23:10:52Z",
+      "updated": "2026-10-11T23:51:20Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -89606,7 +89606,7 @@
         "PR #1578: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89619,7 +89619,7 @@
       ],
       "title": "every reference resolves to a card at the moment it is written",
       "type": "task",
-      "updated": "2026-10-11T23:38:16Z",
+      "updated": "2026-10-11T23:51:20Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/check.py",
@@ -89639,6 +89639,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154343",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89651,7 +89652,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-11T09:54:20Z",
+      "updated": "2026-10-11T23:51:20Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89669,6 +89670,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154344",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89681,7 +89683,7 @@
       ],
       "title": "an invalid card and an unresolvable reference are LIMBO with the reason, never dropped",
       "type": "task",
-      "updated": "2026-10-11T09:54:24Z",
+      "updated": "2026-10-11T23:51:20Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_limbo_invalid_card.py",
@@ -89699,6 +89701,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154345",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89711,7 +89714,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-11T09:54:28Z",
+      "updated": "2026-10-11T23:51:20Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
@@ -89931,7 +89934,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159851",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89945,7 +89948,7 @@
       ],
       "title": "the console's share \u2014 the question ledger, the window, the gate criterion and the classifier that codes nothing",
       "type": "task",
-      "updated": "2026-10-11T23:00:22Z",
+      "updated": "2026-10-11T23:51:20Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/kernel/loop.py",
@@ -89980,7 +89983,7 @@
         "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89994,7 +89997,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-11T23:00:22Z",
+      "updated": "2026-10-11T23:51:20Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -90585,7 +90588,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164017",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90598,7 +90601,7 @@
       ],
       "title": "the doctor reports both flat-file trees, from what is on disk",
       "type": "task",
-      "updated": "2026-10-11T23:14:48Z",
+      "updated": "2026-10-11T23:51:20Z",
       "writes": [
         "asf/logs.py",
         "asf/doctor.py",
@@ -90846,14 +90849,18 @@
         "relaunch: operator answer: granted asf/workers/runtime.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "tests/kernel/test_kernel_heartbeat.py:179 \u2014 C1: the only case for acceptance line 7 (\"a worktree whose exclude file cannot be written still launches, with the script written and one line said\") asserts neither \"still launches\" nor \"with the script written\": it calls scratch.exclude(wt, log=lambda) directly and never reaches spawn.make_worktree (asf/workers/spawn.py:694) or spawn.spawn (asf/workers/spawn.py:1327-1333), so make_worktree's own log-to-stderr wiring is untested too. Fix: add a case to PortAndLedgerTests, same root skipIf, that chmods <repo>/.git/info/exclude to 0o400 (addCleanup restores 0o600), runs spawn_mod.spawn(self.product, s1_row(), self.acct(), 'fix the bug\\n', runtime=runtime_mod.FakeRuntime([{'running': True, 'pid': 4244}]), cfg=self.cfg, heartbeat=True) under contextlib.redirect_stderr, and asserts the record came back, os.path.exists(os.path.join(rec['worktree'], scratch.SCRIPT_NAME)), and 'could not harden the shared exclude file' in the captured stderr.",
+        "operator answer: granted asf/workers/runtime.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1588: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1588: part (3.13, 2) is red but not a required check \u2014 ignored",
         "build-t-166574-1791751785: NEEDS OPERATOR: confirm kernel.test_clean_floor's host-only red is the worker-home artifact above and not a defect to file \u2014 `cd ~/.asf/state/asf/worktrees/build-t-166574-1791751785 && python3 -c \"from as\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90866,7 +90873,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T23:07:11Z",
+      "updated": "2026-10-11T23:51:20Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
