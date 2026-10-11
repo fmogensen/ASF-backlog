@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T22:45:37Z",
+  "generated": "2026-10-11T22:49:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -36126,7 +36126,9 @@
         "S-175862",
         "S-175863",
         "S-176462",
-        "S-177314"
+        "S-177314",
+        "T-180938",
+        "T-180939"
       ],
       "decided": true,
       "folder": "features",
@@ -40722,7 +40724,9 @@
       "updated": "2026-10-11T19:38:50Z"
     },
     "S-175862": {
-      "backlinks": [],
+      "backlinks": [
+        "T-180938"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -40736,7 +40740,9 @@
       "updated": "2026-10-11T20:28:08Z"
     },
     "S-175863": {
-      "backlinks": [],
+      "backlinks": [
+        "T-180939"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -40751,7 +40757,9 @@
     },
     "S-176462": {
       "backlinks": [
-        "F-0352"
+        "F-0352",
+        "T-180938",
+        "T-180939"
       ],
       "children": [],
       "decided": true,
@@ -40781,7 +40789,8 @@
     },
     "S-177314": {
       "backlinks": [
-        "F-0352"
+        "F-0352",
+        "T-180939"
       ],
       "children": [],
       "decided": true,
@@ -69941,6 +69950,9 @@
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_extra_rounds": 3,
       "kernel_findings": [
+        "asf/config_keys.py:189 \u2014 add `'upgrade.migrate_drain_s': (NUM, 0, None),   # asf.schema.TICK_DRAIN_S` to TYPED beside `'upgrade.drain_wait_s'`; the diff documents the key and `asf/schema.py:62-63` reads it, but `config_keys.unknown_keys({'upgrade': {'migrate_drain_s': 120}})` returns `['upgrade.migrate_drain_s']`, so doctor calls the documented key unread (asf/config_keys.py is granted)",
+        "tests/test_env.py:1195 \u2014 after `from tests import pinned`, add `if PINNED_SHA not in pinned.pinned_shas(): self.fail(f'{PINNED_SHA} is no longer a pinned reader: the schema_version strand is closed \u2014 delete this test and the note in asf/env.py:666-679')`; without it the test keeps passing after remedy (a), so it cannot go red as its own comment promises",
+        "asf/env.py:800-801 \u2014 replace \"Forward tolerance means the *next* pinned reader never strands a product file the current one writes.\" with the conditional form: a reader never strands a file stamped *newer* than itself, while a file stamped at or below its own `CONFIG_VERSION` is held strictly, so a release that declares a new product field must bump `CONFIG_VERSION`",
         "asf/env.py:653 \u2014 rewrite the comment to say `schema_version` is written by the package (`asf/init.py:228`, `asf/schema.py:409`), so the clause licensing every other `DOCUMENTED_UNCHECKED_FIELDS` entry does not hold for it, and rewrite `tests/test_env.py:1146-1148` to name the pinned reader's refusal as a known defect rather than intended behaviour; then raise the remedy (drop `8d5e25a62\u2026` from `tools/pinned-readers.txt`, or exclude a pinned product from `migrate_config`'s stamp set) as NEEDS OPERATOR rather than choosing silently.",
         "asf/env.py:799 \u2014 a present but non-integer `schema_version` must be a fatal shape finding, not folded into \"absent\": add `raw = data.get('schema_version')` / `if raw is not None and (isinstance(raw, bool) or not isinstance(raw, int)): problems.append((lines.get('schema_version', 0), 'schema_version', f'must be a whole number, not {raw!r}'))` before the partition, give `config.yaml`'s stamp the same refusal in `load_config` (`asf/env.py:268-286`), and pin both in `ConfigSchemaVersionTests` \u2014 today `schema_version: oops` validates clean and then `ValueError`s out of `schema.config_version()` inside `require()`.",
         "asf/config_keys.py:57 \u2014 add `'upgrade.migrate_drain_s'` to `KNOWN_CONFIG_KEYS` beside `'upgrade.drain_wait_s'`, and `'upgrade.migrate_drain_s': (NUM, 0, None)` to `TYPED` beside `'upgrade.pending_ttl_s'` (`asf/config_keys.py:165`), so the key `docs/config.example.yaml:415` now documents is not named as drift by `asf doctor`'s `config keys` row.",
@@ -69948,7 +69960,7 @@
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "tools/pinned-readers.txt:4 \u2014 restore the line `8d5e25a62d954a5ac46b46ec496330c01de2759b`, restore `self.assertIn(PINNED_SHA, pinned.pinned_shas())` at tests/test_env.py:1077, and instead of widening `PRODUCT_FIELDS` (asf/env.py:598) add `'schema_version'` to `DOCUMENTED_UNCHECKED_FIELDS` (asf/env.py:656) \u2014 a stamped file then validates clean with no error and no warning while `set(env.PRODUCT_FIELDS) <= PINNED_PRODUCT_FIELDS` keeps holding and every pinned test keeps running (precedent: docs/specs/f-0129.md:729)"
       ],
-      "kernel_fix_rounds": 5,
+      "kernel_fix_rounds": 6,
       "kernel_notes": [
         "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance.",
         "PR #1529: part (3.12, 2) is red but not a required check \u2014 ignored",
@@ -69960,7 +69972,7 @@
         "PR #1570: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69970,7 +69982,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T22:41:40Z",
+      "updated": "2026-10-11T22:49:11Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -89589,7 +89601,7 @@
         "PR #1578: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89602,7 +89614,7 @@
       ],
       "title": "every reference resolves to a card at the moment it is written",
       "type": "task",
-      "updated": "2026-10-11T22:23:34Z",
+      "updated": "2026-10-11T22:49:11Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/check.py",
@@ -90539,7 +90551,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164016",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90552,7 +90564,7 @@
       ],
       "title": "a job transcript outlives every window its readers read over, and no longer",
       "type": "task",
-      "updated": "2026-10-11T22:27:51Z",
+      "updated": "2026-10-11T22:49:11Z",
       "writes": [
         "asf/logs.py",
         "asf/tick/step_health.py",
@@ -91215,7 +91227,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-173236",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91228,7 +91240,7 @@
       ],
       "title": "code applies each verdict, and a verdict it cannot apply is a note and no marker",
       "type": "task",
-      "updated": "2026-10-11T22:45:35Z",
+      "updated": "2026-10-11T22:49:11Z",
       "writes": [
         "asf/kernel/apply.py",
         "tests/kernel/test_sweep.py"
@@ -91262,6 +91274,73 @@
         "asf/kernel/loop.py",
         "tests/kernel/test_sweep.py",
         "tests/kernel/test_waits.py"
+      ]
+    },
+    "T-180938": {
+      "backlinks": [
+        "T-180939"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-180938",
+      "kernel_state": "ready",
+      "links": {
+        "plan": "docs/plans/f-0352.md"
+      },
+      "parent": "F-0352",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T22:48:23Z",
+      "state": "New",
+      "stories": [
+        "S-176462",
+        "S-175862"
+      ],
+      "title": "`overlap` is its own wait class, so `seat` stops hiding it",
+      "type": "task",
+      "updated": "2026-10-11T22:49:11Z",
+      "writes": [
+        "asf/kernel/settings.py",
+        "asf/kernel/waits.py",
+        "asf/kernel/actions.py",
+        "asf/kernel/decide.py",
+        "tests/kernel/test_overlap_wait.py"
+      ]
+    },
+    "T-180939": {
+      "after": [
+        "T-180938"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "id": "T-180939",
+      "links": {
+        "plan": "docs/plans/f-0352.md"
+      },
+      "parent": "F-0352",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T22:48:26Z",
+      "state": "New",
+      "stories": [
+        "S-176462",
+        "S-175863",
+        "S-177314"
+      ],
+      "title": "a second item may hold a file another is building, and its brief names the holder",
+      "type": "task",
+      "updated": "2026-10-11T22:48:26Z",
+      "writes": [
+        "asf/kernel/settings.py",
+        "asf/kernel/model.py",
+        "asf/kernel/ports.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/briefs.py",
+        "tests/kernel/test_two_holders.py",
+        "tests/kernel/test_decide.py",
+        "tests/kernel/test_scenarios.py",
+        "tests/kernel/test_loop.py"
       ]
     },
     "T-76350": {
