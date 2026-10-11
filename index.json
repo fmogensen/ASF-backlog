@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T19:22:50Z",
+  "generated": "2026-10-11T19:25:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -69925,10 +69925,12 @@
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1."
+        "asf/schema.py:387-388 \u2014 `migrate_config` stamps `schema_version:` into every `products/*.yaml`, poisoning a product file owned by an older install; stamp only `env.config_path()` plus the file(s) of the product being migrated, leaving `config_files()` as the snapshot set (needs writes: asf/schema.py). The `upgrade-matrix (v0.1.0)` leg is red until this lands.",
+        "tools/upgrade_matrix.py:257-265 \u2014 `_assert_doctor_config_ok` reads only `^config\\s+RED`, so Step 3.7's \"doctor exits 0\" is not implemented and HEAD's own `product warn ... 'schema_version' is not a field of the product file` passes unnoticed; also refuse a `^product\\s+RED` row and an `UNKNOWN_KEY` warning on a key HEAD wrote, and add `'schema_version': _INT` to `PRODUCT_FIELDS` at asf/env.py:581.",
+        "tests/test_upgrade_matrix.py:117-124 \u2014 drop `:119` and the unfailable `:123-124` (`blocking` emits `'newer'` only when `v > target`, and its config half ignores the product argument); assert the skew by sequence \u2014 `sample2` at `CONFIG_VERSION` with no `'newer'` entry, then `sample` at `CONFIG_VERSION + 1` producing one \u2014 and assert `:117` on the warning's text.",
+        "tests/test_upgrade_matrix.py:94 \u2014 the shared `config.yaml` is unstamped, so `_config_stamps()` reads 0 and the fixture is a whole-home-unmigrated case; write `f'schema_version: {schema.CONFIG_VERSION}\\ndefault_product: sample\\nscheduler:\\n  kind: none\\n'`."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-t-0457-1791638803: groom-fill raised risk high: Card's own Description already mirrors docs/plans/f-0114.md's Task 6 verbatim (same writes, same steps); filled the two acceptance lines from the plan's own canonical test classes (PlanTests, MixedVersionTests), confirmed tools/upgrade_matrix.py and tests/test_upgrade_matrix.py are absent from origin/main and .github/workflows/tests.yml has no plan/upgrade-matrix job yet; risk_raise high because writes touch CI (tests.yml). Separately: the Description's \"stories: S-32357\" is the pre-spec-amend id \u2014 the plan's own Task 6 (docs/plans/f-0114.md:44,611) already carries the live id S-69211, so the card's header is stale and worth a follow-up correction.",
         "PR #1556: part (3.12, 4) is red but not a required check \u2014 ignored",
@@ -69950,7 +69952,7 @@
         "PR #1585: part (3.12, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69963,7 +69965,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T19:10:13Z",
+      "updated": "2026-10-11T19:25:22Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
