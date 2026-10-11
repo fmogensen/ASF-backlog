@@ -1,3 +1,5 @@
+→ retired: Duplicate note: re-filed as a typed Bug (B-148751 / B-148750). (2026-10-11)
+
 # Bug: DoR fails a Task on its parent's stale stored kernel_state done
 
 Bug (defect): DoR fails a Task on its parent's stale stored kernel_state "done"
