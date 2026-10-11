@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T08:50:26Z",
+  "generated": "2026-10-11T08:51:58Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -68517,7 +68517,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -68532,7 +68532,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-11T08:50:24Z",
+      "updated": "2026-10-11T08:51:56Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -84620,7 +84620,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -84633,7 +84633,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T08:50:24Z",
+      "updated": "2026-10-11T08:51:56Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85390,7 +85390,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129179",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85403,10 +85409,11 @@
       ],
       "title": "the leftover-work commit stages the session's work and never its scratch",
       "type": "task",
-      "updated": "2026-10-11T08:43:46Z",
+      "updated": "2026-10-11T08:51:56Z",
       "writes": [
         "asf/workers/lifecycle.py",
-        "tests/test_lifecycle.py"
+        "tests/test_lifecycle.py",
+        "asf/workers/scratch.py"
       ]
     },
     "T-129180": {
@@ -85418,7 +85425,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129180",
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "blocked: NEEDS OPERATOR: this Task's `after: Task 1` dependency (T-129178, `asf/workers/scratch.py` \u2014 PATHS/add_pathspec()/exclude(), per plan Task 1) is not on origin/main and has no open PR. Its on\u2026",
+      "kernel_stuck_since": "2026-10-11T08:51:25Z",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85431,7 +85442,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T08:43:46Z",
+      "updated": "2026-10-11T08:51:56Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -85446,7 +85457,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129181",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85459,7 +85470,7 @@
       ],
       "title": "the factory hardens the worktree when it makes it",
       "type": "task",
-      "updated": "2026-10-11T08:25:46Z",
+      "updated": "2026-10-11T08:51:56Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -85986,7 +85997,7 @@
       ],
       "title": "the stub that models launchd, the two registered bounds, and the wait",
       "type": "task",
-      "updated": "2026-10-11T08:48:29Z",
+      "updated": "2026-10-11T08:51:56Z",
       "writes": [
         "asf/scheduler.py",
         "asf/config_keys.py",
