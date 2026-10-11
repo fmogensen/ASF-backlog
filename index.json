@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:00:20Z",
+  "generated": "2026-10-11T15:04:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16942,11 +16942,12 @@
         "relaunch: PR #1517 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1533 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1539 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
-        "relaunch: PR #1550 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1550 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1555 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16956,7 +16957,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T15:00:19Z",
+      "updated": "2026-10-11T15:04:40Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -69744,7 +69745,17 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
       "kernel_notes": [
-        "groom-fill-t-0457-1791638803: groom-fill raised risk high: Card's own Description already mirrors docs/plans/f-0114.md's Task 6 verbatim (same writes, same steps); filled the two acceptance lines from the plan's own canonical test classes (PlanTests, MixedVersionTests), confirmed tools/upgrade_matrix.py and tests/test_upgrade_matrix.py are absent from origin/main and .github/workflows/tests.yml has no plan/upgrade-matrix job yet; risk_raise high because writes touch CI (tests.yml). Separately: the Description's \"stories: S-32357\" is the pre-spec-amend id \u2014 the plan's own Task 6 (docs/plans/f-0114.md:44,611) already carries the live id S-69211, so the card's header is stale and worth a follow-up correction."
+        "groom-fill-t-0457-1791638803: groom-fill raised risk high: Card's own Description already mirrors docs/plans/f-0114.md's Task 6 verbatim (same writes, same steps); filled the two acceptance lines from the plan's own canonical test classes (PlanTests, MixedVersionTests), confirmed tools/upgrade_matrix.py and tests/test_upgrade_matrix.py are absent from origin/main and .github/workflows/tests.yml has no plan/upgrade-matrix job yet; risk_raise high because writes touch CI (tests.yml). Separately: the Description's \"stories: S-32357\" is the pre-spec-amend id \u2014 the plan's own Task 6 (docs/plans/f-0114.md:44,611) already carries the live id S-69211, so the card's header is stale and worth a follow-up correction.",
+        "PR #1556: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1556: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "PR #1556: upgrade-matrix (v0.1.0) is red but not a required check \u2014 ignored",
+        "PR #1556: upgrade-matrix (v0.1.330) is red but not a required check \u2014 ignored",
+        "PR #1556: upgrade-matrix (v0.2.0) is red but not a required check \u2014 ignored",
+        "PR #1556: upgrade-matrix (v0.2.24) is red but not a required check \u2014 ignored",
+        "PR #1556: upgrade-matrix (v0.2.25) is red but not a required check \u2014 ignored",
+        "PR #1556: upgrade-matrix (v0.2.97) is red but not a required check \u2014 ignored",
+        "PR #1556: upgrade-matrix (v0.2.98) is red but not a required check \u2014 ignored",
+        "PR #1556: upgrade-matrix (v0.2.99) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "links": {
@@ -69759,7 +69770,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T15:00:19Z",
+      "updated": "2026-10-11T15:04:40Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -87134,7 +87145,11 @@
         "granted asf/procedures/skills/report-shape/SKILL.md asf/build-t-129196-1791723261@20261011T125429Z; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1528: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1528: part (3.13, 2) is red but not a required check \u2014 ignored",
@@ -87143,7 +87158,7 @@
         "PR #1554: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0330.md"
       },
@@ -87156,7 +87171,7 @@
       ],
       "title": "the field \u2014 the shared TAIL offers `superseded_by:` to a fix or correct session",
       "type": "task",
-      "updated": "2026-10-11T15:00:19Z",
+      "updated": "2026-10-11T15:04:40Z",
       "writes": [
         "asf/briefs/build.py",
         "tests/fixtures/briefs/golden/*.md",
@@ -88912,7 +88927,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T15:00:19Z",
+      "updated": "2026-10-11T15:04:40Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
@@ -89255,7 +89270,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159849",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89268,7 +89283,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T14:35:18Z",
+      "updated": "2026-10-11T15:04:40Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -89581,7 +89596,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160207",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89594,7 +89609,7 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T14:32:02Z",
+      "updated": "2026-10-11T15:04:40Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -90096,7 +90111,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166573",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90109,7 +90124,7 @@
       ],
       "title": "the verdict, the looping rule, and the `kernel.heartbeat` section",
       "type": "task",
-      "updated": "2026-10-11T14:46:48Z",
+      "updated": "2026-10-11T15:04:40Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/settings.py",
