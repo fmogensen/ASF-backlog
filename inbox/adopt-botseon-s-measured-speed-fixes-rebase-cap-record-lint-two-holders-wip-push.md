@@ -1,0 +1,17 @@
+# Adopt botseon's measured speed fixes: rebase cap, record lint, two holders, WIP push
+parent: E-0006
+
+type: feature
+parent: E-0006
+
+Adopt botseon's measured speed fixes in the ASF kernel (botseon console exchange, 2026-10-11). Each was measured as blocking on botseon; check whether ASF has the same wait before building.
+
+## Candidates
+1. Conflict rebases: a PR that was green before it conflicted gets up to 8 rebases (general cap 4) instead of being closed for "long conflict". Botseon threw away a ready PR after 2 rebases.
+2. Record lint: no empty acceptance bullet, and no live Story under a removed or retired Feature. Botseon silently hid 7 Stories this way.
+3. Shared code files: allow 2 concurrent holders of one write path (the second session keeps edits additive and merges main before pushing) instead of serialising every overlap. One holder blocked 18 Stories on botseon.
+4. Briefs: push a WIP commit after each green step (already in F-0347; confirm the build brief says it).
+5. Diagnostics read state from the live state dir, never from a worktree copy.
+
+## Acceptance
+- For each candidate: either a measured ASF baseline showing the wait does not occur here (recorded on this card), or a test proving the change.
