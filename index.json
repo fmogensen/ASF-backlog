@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:42:46Z",
+  "generated": "2026-10-11T15:46:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -35994,10 +35994,11 @@
     "F-0354": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0354",
       "parent": "E-0006",
+      "priority": "nice",
       "schema_version": 1,
       "stage_since": "2026-10-11T15:40:27Z",
       "state": "New",
@@ -81417,6 +81418,9 @@
       ],
       "folder": "tasks",
       "id": "T-0734",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
@@ -81433,7 +81437,7 @@
         "PR #1177: part (3.13, 4) is red but not a required check \u2014 ignored",
         "build-t-0734-1791731552: NEEDS OPERATOR: tests/test_install_e2e.py's RecordTickAgainstALocalNonBareOriginTests leaks the same unstubbed `launchctl list` (a plain `asf init` never sets scheduler.kind, so cron_cell's scheduler.loaded_jobs() r\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81446,7 +81450,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-11T15:42:45Z",
+      "updated": "2026-10-11T15:46:20Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -87376,7 +87380,7 @@
         "tools/cutover.sh:458 \u2014 the failure line is not \u00a74's and goes to the wrong stream: replace it with the spec's line verbatim (docs/specs/f-0331.md:552) `echo \"  $label: install exited $rc \u2014 the plist is written and recorded, the clock is not loaded\"`, dropping the `>&2` so it stays in the indented transcript the new `2>&1` at :449 keeps whole, and update tests/test_cutover.py:508 to `self.assertIn('asf.sample.daily: install exited 1', result.stdout)`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -87389,7 +87393,7 @@
       ],
       "title": "the exit status pinned, and the cutover that records its manifest row before it fails",
       "type": "task",
-      "updated": "2026-10-11T15:28:07Z",
+      "updated": "2026-10-11T15:46:20Z",
       "writes": [
         "tools/cutover.sh",
         "tests/test_cutover.py",
@@ -88878,6 +88882,14 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-148635",
+      "kernel_notes": [
+        "PR #1563: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1563: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1563: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1563: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1563: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "PR #1563: part (3.13, 4) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0349.md"
@@ -88891,7 +88903,7 @@
       ],
       "title": "schema 1 \u2192 2 \u2014 the migration, and the nine cases the bump moves",
       "type": "task",
-      "updated": "2026-10-11T15:42:45Z",
+      "updated": "2026-10-11T15:46:20Z",
       "writes": [
         "asf/schema.py",
         "tests/test_install.py",
@@ -89831,7 +89843,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/approvals.py asf/harvest/harvest.py asf/tick/step_harvest.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -89844,7 +89856,7 @@
       ],
       "title": "`asf/logs.py` \u2014 the tree, its paths and its caps",
       "type": "task",
-      "updated": "2026-10-11T15:24:43Z",
+      "updated": "2026-10-11T15:46:20Z",
       "writes": [
         "asf/logs.py",
         "asf/scheduler.py",
