@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T17:13:44Z",
+  "generated": "2026-10-11T17:17:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16954,7 +16954,7 @@
       "kernel_notes": [
         "build-b-138845-1791733799: NEEDS OPERATOR: the CI check names cited by the card (\"tests (3.12)\", \"tests (3.13)\") no longer exist on current origin/main's check-runs \u2014 the workflow was restructured into \"checks (3.X)\" / \"part (3.X, N)\" jobs so\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16964,7 +16964,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T16:58:49Z",
+      "updated": "2026-10-11T17:17:12Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -85109,7 +85109,7 @@
         "groom-fill-t-0818-1791631129: groom-fill verdict rejected: acceptance: missing or not a list",
         "groom-fill-t-0818-1791632751: groom-fill raised risk high: design, line citations and dependency are verified against trunk and buildable; only the empty Acceptance checklist was missing, now filled from the card's own Gate/Description, and risk is raised because the change is in the tick kernel's push path."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -85122,7 +85122,7 @@
       ],
       "title": "a card a push discards add/add is named by its id, and a modify/modify resolution still prints exactly one line",
       "type": "task",
-      "updated": "2026-10-11T16:56:10Z",
+      "updated": "2026-10-11T17:17:12Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -89648,13 +89648,10 @@
       "folder": "tasks",
       "id": "T-159854",
       "kernel_findings": [
-        "asf/kernel/incidents.py:102 \u2014 a `reverted-merge`'s `sha` changes once the merge commit leaves `facts.main`, so the same incident is recorded twice; write `'sha': pr.head_sha` unconditionally (or make `_key` ignore `sha` for this kind)",
-        "asf/kernel/incidents.py:45 \u2014 `main-red`'s `pr` flips from `None` to the culprit number when the candidate set narrows, giving one red spell two rows; key it on the red sha alone: `return (rec.get('kind'), rec.get('sha'), None if rec.get('kind') == 'main-red' else rec.get('pr'))`",
-        "asf/kernel/decide.py:960 \u2014 `risk_why` counts glob hits one-directionally while `high_risk` uses `_overlap`, so a flagged record reads \"matched none\" when `writes` is a glob; use `hits = sum(1 for p in paths if _overlap([p], globs))`",
-        "asf/kernel/decide.py:965 \u2014 the line term prints `>=` where the flag uses `>` (and `< 0` when the cap is off); use `'>' if cap and lines > cap else '<='`, and render the clause as `'%d lines (risk.large_lines off)' % lines` when `cap` is 0"
+        "asf/kernel/incidents.py:140-147 \u2014 report() sums total/flagged over records, but the three kinds co-occur on one event (main-red + revert + reverted-merge for the same PR), so one incident reads as \"trigger: 3 incidents, 3 of them flagged\". Count over distinct incidents instead: key each record on its `pr` (falling back to `sha`), take total = the number of distinct keys and flagged = those with any flagged record. This contradicts the spec's \"one record per incident\" (docs/specs/f-0334.md:947, :1158) and distorts the flagged ratio the Stage-5 trigger is read for \u2014 a mixed ledger reads \"4 incidents, 3 of them flagged\" where the truth is \"2 incidents, 1 flagged\". Verified: the fix keeps \u00a78's example at 3 incidents and tests/kernel/test_incidents.py:126-137 green."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89667,7 +89664,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-11T14:50:00Z",
+      "updated": "2026-10-11T17:17:12Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
@@ -89843,7 +89840,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160209",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89856,7 +89853,7 @@
       ],
       "title": "the pull request opened against the base, and never merged into it",
       "type": "task",
-      "updated": "2026-10-11T16:56:10Z",
+      "updated": "2026-10-11T17:17:12Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stacked_builds.py"
