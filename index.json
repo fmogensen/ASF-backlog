@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T11:01:19Z",
+  "generated": "2026-10-11T11:06:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16804,7 +16804,7 @@
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: fix/B-126941 holds 1 commit(s) off it",
         "build-b-126941-1791714620: NEEDS OPERATOR: ```"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "E-0003",
       "priority": "need",
       "reopened": [
@@ -16817,7 +16817,7 @@
       "state": "New",
       "title": "Kernel: a PR head with no required-check run gets a fresh CI run, not 'no action exists'",
       "type": "bug",
-      "updated": "2026-10-11T10:51:30Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/dwell.py",
         "tests/test_dwell.py"
@@ -16860,7 +16860,7 @@
         "satisfied on main at 14b963ba1: tests.test_remote, tests.test_env, tests.test_cloud, tests.test_workers, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: fix/B-136993 holds 1 commit(s) off it"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0001",
       "priority": "need",
       "reopened": [
@@ -16873,7 +16873,7 @@
       "state": "New",
       "title": "Bug: a cloud routine is polled under the ambient CLI login when its account does not resolve",
       "type": "bug",
-      "updated": "2026-10-11T11:01:11Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/workers/remote.py",
         "asf/workers/cloud.py",
@@ -17190,7 +17190,7 @@
       "kernel_notes": [
         "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17199,7 +17199,7 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T10:56:35Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/dispatch.py",
         "asf/briefs/preamble.py",
@@ -17287,7 +17287,7 @@
       "state": "New",
       "title": "Bug: a refused push strands a local session's work on a local-only branch",
       "type": "bug",
-      "updated": "2026-10-11T10:56:35Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/kernel/status.py",
         "tests/kernel/test_flow_violations.py"
@@ -84373,7 +84373,11 @@
       ],
       "folder": "tasks",
       "id": "T-0816",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026unner/work/_temp/0ef1840f-3539-47a1-b5ac-405badb32591' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84387,7 +84391,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T11:01:11Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -85160,7 +85164,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85173,7 +85177,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T10:56:35Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85361,7 +85365,7 @@
         "PR #1483: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1483: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85378,7 +85382,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T10:56:35Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -86470,7 +86474,11 @@
       "kernel_attempts": [
         "review: no VERDICT line"
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "tests/test_apply_rulings.py:116 \u2014 in `test_a_closed_successor_retires_the_item_and_mirrors_supersedes`, call `self.rows()` before the ruling (non-empty) and again after `self.apply_now()` (now `[]`), to prove S-92305's acceptance clause that `feeder_rows.candidates` returns no row for a retired item where it returned one before (plan docs/plans/f-0330.md:314-316, spec docs/specs/f-0330.md:1016-1018); no case in `SupersedeTests` currently calls `self.rows()`."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0330.md"
       },
@@ -86485,7 +86493,7 @@
       ],
       "title": "the applier \u2014 `asf/tick/apply_rulings.py`, its three arms, and the two seams it needs",
       "type": "task",
-      "updated": "2026-10-11T10:41:59Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/tick/apply_rulings.py",
         "asf/tick/widen_footprint.py",
@@ -86641,9 +86649,10 @@
       "id": "T-129198",
       "kernel_attempts": [
         "session ran past its max age",
-        "failed: OpenPR worker/T-129198: open PR worker/T-129198: rc 1: pull request create failed: GraphQL: No commits between main and worker/T-129198 (createPullRequest)"
+        "failed: OpenPR worker/T-129198: open PR worker/T-129198: rc 1: pull request create failed: GraphQL: No commits between main and worker/T-129198 (createPullRequest)",
+        "relaunch: branch worker/T-129198 has no commits beyond main, so it cannot become a PR: make the change the card asks for and push it, or \u2014 when the work already landed \u2014 name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86656,7 +86665,7 @@
       ],
       "title": "a bootstrap launchd still refuses is retried once, and both outcomes are said",
       "type": "task",
-      "updated": "2026-10-11T11:01:11Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/scheduler.py",
         "tests/test_scheduler.py"
@@ -87060,7 +87069,7 @@
         "PR #1442: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1442: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -87073,7 +87082,7 @@
       ],
       "title": "what the operator sees \u2014 the shape check, the example file, one doctor row and the two guide pages",
       "type": "task",
-      "updated": "2026-10-11T10:51:30Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/conventions.py",
         "asf/doctor.py",
@@ -88229,7 +88238,7 @@
         "tests/test_card_schema.py:177-179 \u2014 add `{'pattern': '('}` to `garbage_schemas` and one case asserting an unusable pattern yields an error rather than silence, so validate.py:153-154 stops being dead to the suite"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88242,7 +88251,7 @@
       ],
       "title": "the card schema file, and the stdlib validator that enforces exactly what it declares",
       "type": "task",
-      "updated": "2026-10-11T10:51:30Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/record/cards.v2.schema.json",
         "asf/record/validate.py",
@@ -90819,7 +90828,8 @@
         "One more fix round (4th), scoped to the two latest findings, which are real correctness issues: (1) asf/briefs/build.py:559 renders required()'s normalized names. Add reviews.checks(*kinds) beside required() (same dedupe-by-normalize loop, appending the display name) and render reviews.render_table(reviews.checks(*checklist_kinds(row)), reviews.EVIDENCE). (2) tests/test_doc_lane_review.py:180-190 builds 'expected' from the call under test. Assert the literal '| <name> | <pass|fail> | <hint> |' lines against the brief text instead. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more fix round (4th), scoped to the two latest findings, which are real correctness issues: (1) asf/briefs/build.py:559 renders required()'s normalized names. Add reviews.checks(*kinds) beside required() (same dedupe-by-normalize loop, appending the display name) and render reviews.render_table(reviews.checks(*checklist_kinds(row)), reviews.EVIDENCE). (2) tests/test_doc_lane_review.py:180-190 builds 'expected' from the call under test. Assert the literal '| <name> | <pass|fail> | <hint> |' lines against the brief text instead. Nothing else."
+        "relaunch: operator answer: One more fix round (4th), scoped to the two latest findings, which are real correctness issues: (1) asf/briefs/build.py:559 renders required()'s normalized names. Add reviews.checks(*kinds) beside required() (same dedupe-by-normalize loop, appending the display name) and render reviews.render_table(reviews.checks(*checklist_kinds(row)), reviews.EVIDENCE). (2) tests/test_doc_lane_review.py:180-190 builds 'expected' from the call under test. Assert the literal '| <name> | <pass|fail> | <hint> |' lines against the brief text instead. Nothing else.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_extra_rounds": 1,
@@ -90866,7 +90876,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-11T11:01:12Z",
+      "updated": "2026-10-11T11:06:47Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
