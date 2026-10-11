@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T21:35:05Z",
+  "generated": "2026-10-11T21:38:40Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17547,7 +17547,7 @@
       "kernel_notes": [
         "groom-fill-b-177713-1791753390: groom-fill raised risk high: card bundles 6 disjoint-module mechanisms at uneven readiness (installs.prune already uninstalls old pipx venvs; F-0067's approved-but-unbuilt floor registry already owns worktree/branch/cache salvage via hold/<job>, conflicting with this card's own salvage/<name>); narrowed to the one confirmed, independent defect \u2014 non-git dirs worktrees.py keeps forever."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17556,7 +17556,7 @@
       "state": "New",
       "title": "Bug: the floor reaper leaves merged branches, worktrees, venvs, caches and orphan beat loops behind",
       "type": "bug",
-      "updated": "2026-10-11T21:31:23Z",
+      "updated": "2026-10-11T21:38:38Z",
       "writes": [
         "asf/workers/worktrees.py",
         "asf/workers/trash.py",
@@ -89481,7 +89481,7 @@
         "tools/check_card_readers.sh:21 \u2014 the `open\\([^)]*f['\"]\\{\u2026\\}\\.md` grep only matches a card path built inline inside the `open()` call, so it misses every real direct reader in the tree (`asf/evidence/rulings.py:57`\u2192`:73`, `asf/evidence/rulepass.py:284`\u2192`:288`, `asf/metrics/metrics.py:1066`\u2192`:1095`, `asf/scorecard/loop.py:266`\u2192`:234`) and passes green on four live breaches of the rule it exists to hold. Match the path-build shape instead (`grep -rnE --include='*.py' \"f['\\\"]\\{[A-Za-z_][A-Za-z0-9_]*\\}\\.md['\\\"]\" asf`), and carry a named `EXEMPT_RE` listing those four modules with the reason \u2014 the shape `tools/check_record_writers.sh:7,19` already uses for `asf/tick/flaky.py` \u2014 so the debt is recorded in the lint and a new reader is still refused; then add the split `path = \u2026; open(path)` shape to `tests/test_card_json.py:203` and keep `:241` green. Both files are inside `writes:`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89494,7 +89494,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-11T21:16:36Z",
+      "updated": "2026-10-11T21:38:38Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -90694,7 +90694,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: Decision: ship the code part now and open the PR without the two template edits (delivery-code.md, plan.md). Mark S-137009 lines 7 and 8 as 'Not proved:' in the PR. The amendable-set path for ASF's own brief templates is being fixed structurally (F-0356); once it lands, the template edits are a follow-up Task. Don't wait on the console."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0350.md"
       },
@@ -90707,7 +90707,7 @@
       ],
       "title": "the pull request, the delivery brief and the plan template say which Story the branch is for",
       "type": "task",
-      "updated": "2026-10-11T21:31:23Z",
+      "updated": "2026-10-11T21:38:38Z",
       "writes": [
         "asf/tick/step_prs.py",
         "asf/briefs/preamble.py",
@@ -92454,7 +92454,7 @@
       ],
       "title": "the runner \u2014 `lay`, `rehearse`, the acts tuple, the `manifest` act and the `ids` act",
       "type": "task",
-      "updated": "2026-10-11T21:31:23Z",
+      "updated": "2026-10-11T21:38:38Z",
       "writes": [
         "asf/rehearsal.py",
         "asf/cli.py",
