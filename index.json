@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T22:23:36Z",
+  "generated": "2026-10-11T22:27:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17520,7 +17520,7 @@
         "groom-fill-b-173962-1791744740: groom-fill raised risk high: measured live (97 kernel_state:done Tasks/Bugs, 80 still state: New, 73 of those with a commit on origin/main naming them) and confirmed derive() already computes the correct Closed/Resolved result from current evidence \u2014 the gap is that this correct result isn't persisting across ticks, not a missing kernel->state coupling, which would contradict the shipped evidence-only closing design (F-0318) and the existing asf reopen path for the opposite case.",
         "build-b-173962-1791751793: NEEDS OPERATOR: C2's \"88% of the measured bug\" (73-of-80 cards like T-0818) is not an `ingest.py`/`evidence.py` logic bug \u2014 the new regression test proves `derive()`/`write_fields` already close a `kernel_state: don\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17529,7 +17529,7 @@
       "state": "New",
       "title": "Bug: kernel-done Tasks keep state New on their cards, so boards under-count done work",
       "type": "bug",
-      "updated": "2026-10-11T22:19:38Z",
+      "updated": "2026-10-11T22:27:51Z",
       "writes": [
         "asf/record/ingest.py",
         "asf/evidence/evidence.py",
@@ -17563,7 +17563,7 @@
       "state": "New",
       "title": "Bug: the floor reaper leaves merged branches, worktrees, venvs, caches and orphan beat loops behind",
       "type": "bug",
-      "updated": "2026-10-11T22:19:38Z",
+      "updated": "2026-10-11T22:27:51Z",
       "writes": [
         "asf/workers/worktrees.py",
         "asf/workers/trash.py",
@@ -70166,7 +70166,7 @@
         "PR #1585: upgrade-matrix (v0.2.118) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -70179,7 +70179,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T22:23:34Z",
+      "updated": "2026-10-11T22:27:51Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -70209,6 +70209,7 @@
       "kernel_notes": [
         "groom-fill-t-0458-1791639050: groom-fill raised risk high: Task 7 of F-0114's plan is buildable now (its Task 1/6 dependencies are correctly gated by \"after: T-0457\"); only filled the empty Acceptance with the steps' named tests, worded to avoid the plan's now-stale \"nine keys\" count (KEYS is ten long since #774 added floor/seats, so it becomes eleven, not nine)."
       ],
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -70218,7 +70219,7 @@
       "state": "New",
       "title": "`asf/release.py` \u2014 the ninth criterion, the migrations in a release's notes, and the guide brought into step",
       "type": "task",
-      "updated": "2026-10-10T13:42:02Z",
+      "updated": "2026-10-11T22:27:51Z",
       "writes": [
         "asf/release.py",
         "asf/metrics/metrics.py",
@@ -89823,7 +89824,7 @@
         "PR #1611: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89836,7 +89837,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T22:12:15Z",
+      "updated": "2026-10-11T22:27:51Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -90497,7 +90498,7 @@
         "PR #1601: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1601: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90510,7 +90511,7 @@
       ],
       "title": "every reader of a capped transcript reads its generations oldest-first, streamed",
       "type": "task",
-      "updated": "2026-10-11T22:23:34Z",
+      "updated": "2026-10-11T22:27:51Z",
       "writes": [
         "asf/logs.py",
         "asf/scorecard/program.py",
@@ -90530,6 +90531,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164016",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90542,7 +90544,7 @@
       ],
       "title": "a job transcript outlives every window its readers read over, and no longer",
       "type": "task",
-      "updated": "2026-10-11T13:34:16Z",
+      "updated": "2026-10-11T22:27:51Z",
       "writes": [
         "asf/logs.py",
         "asf/tick/step_health.py",
@@ -91151,7 +91153,7 @@
       ],
       "title": "the seats \u2014 the sweep launches after the launches and after the intake, on what they left",
       "type": "task",
-      "updated": "2026-10-11T22:19:38Z",
+      "updated": "2026-10-11T22:27:51Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/actions.py",
