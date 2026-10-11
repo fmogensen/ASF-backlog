@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T13:02:46Z",
+  "generated": "2026-10-11T13:06:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17368,7 +17368,7 @@
       "id": "B-157108",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17377,7 +17377,7 @@
       "state": "New",
       "title": "Bug: test_host and test_clean_floor fail locally under the launchd guard",
       "type": "bug",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "tests/kernel/test_host.py"
       ]
@@ -17391,6 +17391,9 @@
       "id": "B-160759",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
+      "kernel_notes": [
+        "groom-fill-b-160759-1791723358: groom-fill raised risk high: the card named no tests and no writes; the real suspects (RealSessions.capacity/seat_note/lane vs decide._free) and the missing status-line feature are concrete and locatable, so acceptance lines and writes can be filled from the code rather than invented."
+      ],
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S1",
@@ -17399,7 +17402,15 @@
       "state": "New",
       "title": "Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)",
       "type": "bug",
-      "updated": "2026-10-11T12:56:15Z"
+      "updated": "2026-10-11T13:06:48Z",
+      "writes": [
+        "asf/kernel/ports.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/status.py",
+        "tests/kernel/fakes.py",
+        "tests/kernel/test_decide.py",
+        "tests/kernel/test_loop.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -35737,7 +35748,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 4,
@@ -35746,7 +35757,7 @@
       "state": "New",
       "title": "Heartbeat: judge sessions by progress beats, not elapsed time",
       "type": "feature",
-      "updated": "2026-10-11T12:45:16Z"
+      "updated": "2026-10-11T13:06:48Z"
     },
     "F-0348": {
       "backlinks": [
@@ -35853,12 +35864,15 @@
         "the session API failed",
         "session ran past its max age"
       ],
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/record/slice.py:203-204 (cited in docs/plans/f-0350.md's Decisions K2 and Task 2 Steps item 4) \u2014 change to :204-205; the `len(free) < 2` guard is line 204 and its `return []` is line 205, not 203-204."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0350-1791661450: NEEDS OPERATOR: the six Stories are declared in the spec but the record holds no card for any of them, and `feeder.stories_before_plan` counts Story cards and not declarations \u2014 so no plan session for F-0350 can sta\u2026",
         "plan-f-0350-1791720969: NEEDS OPERATOR: S-137105 is a Story of F-0350 that the approved spec refuses by name \u2014 the answer needed is one of two words: reparent (S-137105 becomes its own Feature under E-0003 for the landing half, F-0350's co\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "rank": 3,
@@ -35867,7 +35881,7 @@
       "state": "New",
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
-      "updated": "2026-10-11T12:50:20Z"
+      "updated": "2026-10-11T13:06:48Z"
     },
     "F-0351": {
       "backlinks": [],
@@ -69313,12 +69327,18 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tools/pinned-readers.txt; nothing else outside writes (card updated by the kernel). tools/pinned-readers.txt matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance.",
         "PR #1529: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1529: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69328,7 +69348,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -85405,7 +85425,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85418,7 +85438,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -86260,7 +86280,7 @@
         "relaunch: escalated: the previous session stopped (blocked: blocked_on: T-129178 NEEDS OPERATOR: none \u2014 operator already answered; this Task waits for T-129178 (asf/workers/scratch.py) to land on origin/main, then relaunch) \u2014 pick up from its report and branch, and finish the item",
         "ended without a REPORT"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86273,7 +86293,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -86296,7 +86316,7 @@
         "relaunch: escalated: the previous session stopped (blocked: left out: asf/workers/spawn.py and tests/test_workers.py untouched \u2014 Task 1 (T-129178, `asf/workers/scratch.py`, the `exclude()` this Task calls) is still not an ancestor of origin/main (its\u2026) \u2014 pick up from its report and branch, and finish the item",
         "ended without a REPORT"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86309,7 +86329,7 @@
       ],
       "title": "the factory hardens the worktree when it makes it",
       "type": "task",
-      "updated": "2026-10-11T12:56:15Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -86344,7 +86364,7 @@
         "PR #1516: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1516: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86357,7 +86377,7 @@
       ],
       "title": "a factory scratch path tracked on a trunk is one named doctor row",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_doctor.py",
@@ -86373,6 +86393,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129183",
+      "kernel_notes": [
+        "satisfied on main at 1dd79af39: tests.test_doctor.TrackedScratchTests"
+      ],
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -86382,7 +86406,7 @@
       "state": "New",
       "title": "the tracked copy comes off the reporting product's trunk, as an ordinary pull request",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "NOTES.asf.md",
         ".gitignore"
@@ -86504,7 +86528,7 @@
         "escalated: the previous session stopped (partial: left out: the PD10 regression case \u2014 a Closed Bug whose fresh evidence carries a `refix` reopening to `Active` through the real `refixing` rule (ingest.derive needs no reopen.py change for i\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -86517,7 +86541,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -87934,7 +87958,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131722",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -87947,7 +87971,7 @@
       ],
       "title": "the `stray` line stops, and the orphan path keeps its own bar",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "tests/test_closed_item_prs.py"
       ]
@@ -90928,7 +90952,7 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -90949,7 +90973,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T12:50:20Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -91574,7 +91598,7 @@
         "satisfied on main at 14b963ba1: tests.test_doc_lane_review, tests.test_feeder, tests.test_direct_lane, tests.test_pushed_work, tests.test_pushed_not_starved, tests.test_doc_lane_landing, tests.test_invariants_in_feeder, tests.test_correction_moves_to_open_branch, tests.test_reviews, tests.test_review_reader, tests.test_lane, tests.test_lifecycle, tests.test_briefs, tests.test_evidence, tests.test_harvest, tests.test_continuation, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-83143 holds 3 commit(s) off it"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -91590,7 +91614,7 @@
       ],
       "title": "the checklist a document branch that carries code must answer, and the class that chooses it",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "asf/reviews.py",
         "asf/harvest/lane.py",
@@ -91657,7 +91681,7 @@
         "PR #1463: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0280.md"
       },
@@ -91670,7 +91694,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-11T11:06:47Z",
+      "updated": "2026-10-11T13:06:48Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
