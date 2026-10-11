@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T09:07:51Z",
+  "generated": "2026-10-11T09:13:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17160,6 +17160,7 @@
       "kernel_notes": [
         "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
       ],
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17168,7 +17169,7 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/dispatch.py",
         "asf/briefs/preamble.py",
@@ -34821,7 +34822,7 @@
       "state": "New",
       "title": "ASF 0.3 \u2014 run any product on the kernel: lead time under an hour, intake and grooming without a human, botseon capability parity",
       "type": "feature",
-      "updated": "2026-10-11T08:43:46Z"
+      "updated": "2026-10-11T09:13:43Z"
     },
     "F-0335": {
       "backlinks": [],
@@ -35323,12 +35324,16 @@
       "folder": "features",
       "id": "F-0344",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/specs/f-0344.md:798 \u2014 drop \"each of which exercises a spawn whose log now rotates first\": test_tick_steps.py:1775 patches `spawn_background`, test_product_checks.py passes `spawn_fn=` on every `ensure` call, and test_lane.py:382 / test_lane_off_tick.py:67 substitute `rebuild_check.spawn`, so no pre-existing test reaches the body D12 adds the rotation to \u2014 say instead that those modules cover the step and lane behaviour only, and that `tests.test_logs_tree.RotateTests` (S-134155) is the proof for the three new call sites, as \u00a72 already says for the gate's log.",
+        "docs/specs/f-0344.md:174 \u2014 `asf/install.py:759-767` is `_append_uninstall_log` and writes the uninstall row only; cite `tools/install.sh:216-217` for the install rows (the ones `release.install_log` counts), repeat the fix in D13 (`:276`) and P3 (`:87`), and add one sentence that the installer's shell half keeps hand-building `$ASF_HOME/logs/install.log` and so stays outside the module's ownership."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0344-1791658092-local: NEEDS OPERATOR: the product's CLI pin is ~162 commits behind and lacks the `pre-push` subcommand its own hook shim invokes, so no session on this product can push \u2014 unblock by building a current pin with `asf upgrad\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35336,7 +35341,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-11T08:50:24Z"
+      "updated": "2026-10-11T09:13:43Z"
     },
     "F-0345": {
       "backlinks": [
@@ -68572,7 +68577,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -68587,7 +68592,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -84675,7 +84680,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -84688,7 +84693,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -84862,7 +84867,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/test_views.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -84879,7 +84884,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-10T21:23:05Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -85338,7 +85343,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129176",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0319.md"
       },
@@ -85353,7 +85358,7 @@
       ],
       "title": "one law for the feeder's CI-free fact \u2014 the clamp dropped, the source named, the regression replayed",
       "type": "task",
-      "updated": "2026-10-11T08:57:26Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/capacity.py",
         "asf/feeder/rows.py",
@@ -85455,7 +85460,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85468,7 +85473,7 @@
       ],
       "title": "the leftover-work commit stages the session's work and never its scratch",
       "type": "task",
-      "updated": "2026-10-11T08:53:03Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/workers/lifecycle.py",
         "tests/test_lifecycle.py",
@@ -85493,7 +85498,7 @@
         "relaunch: operator answer: Correct: T-129178 was falsely closed as satisfied (judged on the old pin 14b963ba1). It's reopened and will build first. This Task waits for it via after:, so don't build ahead; end this round and relaunch once T-129178 lands.",
         "relaunch: escalated: the previous session stopped (blocked: blocked_on: T-129178 NEEDS OPERATOR: none \u2014 operator already answered; this Task waits for T-129178 (asf/workers/scratch.py) to land on origin/main, then relaunch) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85506,7 +85511,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -85527,7 +85532,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: Correct: T-129178 was falsely marked satisfied (judged on the old pin 14b963ba1). A fix agent is re-judging it and recovering its commit, and it will build first. This Task waits for it via after:, so end this round; it relaunches once T-129178 lands."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85540,7 +85545,7 @@
       ],
       "title": "the factory hardens the worktree when it makes it",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -85708,9 +85713,10 @@
         "Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish."
+        "relaunch: operator answer: Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish.",
+        "relaunch: escalated: the previous session stopped (partial: left out: the PD10 regression case \u2014 a Closed Bug whose fresh evidence carries a `refix` reopening to `Active` through the real `refixing` rule (ingest.derive needs no reopen.py change for i\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -85723,7 +85729,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T08:57:26Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -85788,7 +85794,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129189",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0325.md"
       },
@@ -85803,7 +85809,7 @@
       ],
       "title": "the declared wave clock is built as the wave job, and the shapes that cannot be are named",
       "type": "task",
-      "updated": "2026-10-10T22:30:03Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/scheduler.py",
         "asf/doctor.py",
@@ -86063,7 +86069,7 @@
         "PR #1462: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1462: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86077,7 +86083,7 @@
       ],
       "title": "the stub that models launchd, the two registered bounds, and the wait",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/scheduler.py",
         "asf/config_keys.py",
@@ -86096,6 +86102,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129198",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86108,7 +86115,7 @@
       ],
       "title": "a bootstrap launchd still refuses is retried once, and both outcomes are said",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/scheduler.py",
         "tests/test_scheduler.py"
@@ -86126,6 +86133,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129199",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86138,7 +86146,7 @@
       ],
       "title": "one owner for the labels launchd is not holding, and the install that reads its clocks back and exits non-zero",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/scheduler.py",
         "asf/install.py",
@@ -86608,7 +86616,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129211",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0338.md"
       },
@@ -86623,7 +86631,7 @@
       ],
       "title": "the judge \u2014 a cancelled run is no verdict, and the one run that answers a blind trunk",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_pending.py"
@@ -86740,7 +86748,7 @@
         "PR #1433: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0328.md"
       },
@@ -86754,7 +86762,7 @@
       ],
       "title": "the judge reads the run after the graph and before the blame, and the start queue keeps its own re-run",
       "type": "task",
-      "updated": "2026-10-11T08:57:26Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/merge_queue.py",
         "asf/ci_queue.py",
@@ -86944,9 +86952,10 @@
         "PR #1450: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1450: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1450: part (3.13, 4) is red but not a required check \u2014 ignored",
-        "build-t-131719-1791708574: NEEDS OPERATOR: T-131719 is already delivered on the trunk, so this correction round had"
+        "build-t-131719-1791708574: NEEDS OPERATOR: T-131719 is already delivered on the trunk, so this correction round had",
+        "satisfied on main at 63885b3d0: tests.test_closed_item_prs.TrunkEvidenceTests, tests.test_closed_item_prs.ClosedItemPRTests"
       ],
-      "kernel_state": "review",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -86960,7 +86969,7 @@
       ],
       "title": "the trunk's own evidence, the `closed` fact it decides, and the PR closed against it",
       "type": "task",
-      "updated": "2026-10-11T09:07:48Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_closed_item_prs.py",
@@ -86983,6 +86992,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131720",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -86995,7 +87005,7 @@
       ],
       "title": "the decision the lane cannot make, written once instead of printed every tick",
       "type": "task",
-      "updated": "2026-10-10T18:12:28Z",
+      "updated": "2026-10-11T09:13:43Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_closed_item_prs.py"
