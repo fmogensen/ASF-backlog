@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T13:15:12Z",
+  "generated": "2026-10-11T13:20:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16940,7 +16940,7 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16950,7 +16950,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T13:15:09Z",
+      "updated": "2026-10-11T13:20:31Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17291,7 +17291,7 @@
         "groom-fill-b-153355-1791712919: groom-fill raised risk high: two of the three acceptance lines are already implemented and tested (host-push safety net; B-151303's trunk-fetched done-judging landed today); only the kernel-status flow-violation count is new, scoped work.",
         "PR #1513: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17300,7 +17300,7 @@
       "state": "New",
       "title": "Bug: a refused push strands a local session's work on a local-only branch",
       "type": "bug",
-      "updated": "2026-10-11T13:15:09Z",
+      "updated": "2026-10-11T13:20:31Z",
       "writes": [
         "asf/kernel/status.py",
         "tests/kernel/test_flow_violations.py"
@@ -35652,7 +35652,7 @@
         "spec-f-0344-1791712134: NEEDS OPERATOR: the card's five Feature-level acceptance bullets, to defer them one by one in Out instead of as a set \u2014 `cat \"$(find ~/.ASF -path '*/features/F-0344.md' -print -quit)\"`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "schema_version": 1,
@@ -35660,7 +35660,7 @@
       "state": "New",
       "title": "Centralized logging and metrics on flat files (Stage 1)",
       "type": "feature",
-      "updated": "2026-10-11T12:45:16Z"
+      "updated": "2026-10-11T13:20:31Z"
     },
     "F-0345": {
       "backlinks": [
@@ -35874,7 +35874,7 @@
         "spec-f-0350-1791661450: NEEDS OPERATOR: the six Stories are declared in the spec but the record holds no card for any of them, and `feeder.stories_before_plan` counts Story cards and not declarations \u2014 so no plan session for F-0350 can sta\u2026",
         "plan-f-0350-1791720969: NEEDS OPERATOR: S-137105 is a Story of F-0350 that the approved spec refuses by name \u2014 the answer needed is one of two words: reparent (S-137105 becomes its own Feature under E-0003 for the landing half, F-0350's co\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0003",
       "priority": "need",
       "rank": 3,
@@ -35883,7 +35883,7 @@
       "state": "New",
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
-      "updated": "2026-10-11T13:06:48Z"
+      "updated": "2026-10-11T13:20:31Z"
     },
     "F-0351": {
       "backlinks": [],
@@ -84631,16 +84631,10 @@
       ],
       "folder": "tasks",
       "id": "T-0816",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "asf/tick/shadow.py:298-299 \u2014 wrap `_rebase_and_push(repo, trunk, ahead, out)`'s bare `bool` into a `Sync` (e.g. `moved = _rebase_and_push(...); return Sync(moved, None, 0 if moved else behind, [], None)`), as the plan's Files section specifies, so `sync_operator_checkout` returns a `Sync` on every path, not just three of four.",
-        "docs/reviews/1-t-0816.md (committed at a5beb4f53) \u2014 remove it from `worker/T-0816` with a follow-up `git rm` commit; a prior review session committed its own review file to the branch, violating \"the review never touches the branch,\" and it carries a verdict for a superseded head.",
-        "rebase: PR #1237 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84654,7 +84648,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:20:31Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -86982,7 +86976,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129199",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86995,7 +86989,7 @@
       ],
       "title": "one owner for the labels launchd is not holding, and the install that reads its clocks back and exits non-zero",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:20:31Z",
       "writes": [
         "asf/scheduler.py",
         "asf/install.py",
@@ -87737,7 +87731,7 @@
         "satisfied on main at 14b963ba1: tests.test_upgrade_kernel_floor, tests.test_upgrade, tests.test_upgrade_drain_bound, tests.test_pin_defects, tests.test_scheduler, tests.test_connectors_scheduler, tests.kernel.test_host, tests.test_doctor, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: worker/T-130967 holds 1 commit(s) off it"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -87753,7 +87747,7 @@
       ],
       "title": "the smoke replays the floor that moved, and each kernel job has a no-op form",
       "type": "task",
-      "updated": "2026-10-11T12:27:42Z",
+      "updated": "2026-10-11T13:20:31Z",
       "writes": [
         "asf/scheduler.py",
         "asf/upgrade.py",
@@ -88291,7 +88285,7 @@
         "tests/test_flow_conservation.py:756-763 \u2014 replace `self.assertEqual([f for f in findings if f.scope == 'record'], [])` with an assertion that the flow pass *joins* the others: patch `invariants.run` with a spy that appends `scope` and delegates, then `self.assertEqual(scopes, ['feeder', 'lane', 'flow'])` alongside `self.assertEqual([f.subject for f in findings if f.invariant == 'I16'], ['T-0004'])` \u2014 as written the test asserts zero record findings, the opposite of the \"beside the record, feeder and lane findings\" it and `docs/specs/f-0346.md:605` claim, and would stay green if the flow pass had replaced the other scopes."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -88304,7 +88298,7 @@
       ],
       "title": "`asf check --invariants` runs the flow scope read-only",
       "type": "task",
-      "updated": "2026-10-11T13:10:55Z",
+      "updated": "2026-10-11T13:20:31Z",
       "writes": [
         "asf/record/check.py",
         "tests/test_flow_conservation.py"
@@ -88565,7 +88559,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154338",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88578,7 +88572,7 @@
       ],
       "title": "one card API \u2014 the only place a card is addressed, read, split and rendered",
       "type": "task",
-      "updated": "2026-10-11T13:15:09Z",
+      "updated": "2026-10-11T13:20:31Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/core.py",
@@ -88884,7 +88878,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159848",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -88898,7 +88892,7 @@
       ],
       "title": "the pull request's own clock, the lead-time sample on the ledger, the fold, the view and the two gate criteria",
       "type": "task",
-      "updated": "2026-10-11T12:50:20Z",
+      "updated": "2026-10-11T13:20:31Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -89178,7 +89172,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160206",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/record/cards.v2.schema.json:108 \u2014 the closed card schema does not declare the key this Task adds: insert `\"kernel_stack\": {\"type\": \"string\", \"owner\": \"machine\"},` after `kernel_reverted` (:107), and add `'kernel_stack',` to `measured_keys` in tests/test_card_schema.py:39 after `'kernel_reverted',`. Both files are outside writes:, so the correction reports `needs writes: asf/record/cards.v2.schema.json tests/test_card_schema.py`; nothing in asf/kernel/** changes. Measured on this head: validate.errors on a card carrying kernel_stack returns [('/kernel_stack', \"additional property 'kernel_stack' is not allowed\")], and neither docs/specs/f-0348.md nor docs/plans/f-0348.md mentions the schema at any Task, so no later Task of this Feature covers it."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89191,7 +89189,7 @@
       ],
       "title": "the stack as a fact \u2014 the card's key, the pull request's base, and the two knobs",
       "type": "task",
-      "updated": "2026-10-11T13:02:43Z",
+      "updated": "2026-10-11T13:20:31Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
