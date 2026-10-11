@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T10:46:25Z",
+  "generated": "2026-10-11T10:51:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16817,7 +16817,7 @@
       "state": "New",
       "title": "Kernel: a PR head with no required-check run gets a fresh CI run, not 'no action exists'",
       "type": "bug",
-      "updated": "2026-10-11T10:38:41Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/dwell.py",
         "tests/test_dwell.py"
@@ -16937,7 +16937,7 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16947,7 +16947,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T10:36:31Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17338,6 +17338,23 @@
       "title": "Bug: a session that quotes a session limit stops its account and costs seats",
       "type": "bug",
       "updated": "2026-10-11T10:44:40Z"
+    },
+    "B-157108": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-157108",
+      "parent": "F-0346",
+      "schema_version": 1,
+      "severity": "S3",
+      "signature": "Bug: test_host and test_clean_floor fail locally under the launchd guard",
+      "stage_since": "2026-10-11T10:49:26Z",
+      "state": "New",
+      "title": "Bug: test_host and test_clean_floor fail locally under the launchd guard",
+      "type": "bug",
+      "updated": "2026-10-11T10:49:26Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -35604,7 +35621,8 @@
         "B-152404",
         "B-153355",
         "B-154656",
-        "B-157007"
+        "B-157007",
+        "B-157108"
       ],
       "decided": true,
       "folder": "features",
@@ -35745,7 +35763,8 @@
       "folder": "features",
       "id": "F-0350",
       "kernel_attempts": [
-        "the session API failed"
+        "the session API failed",
+        "session ran past its max age"
       ],
       "kernel_fix_rounds": 0,
       "kernel_notes": [
@@ -35759,7 +35778,7 @@
       "state": "New",
       "title": "Story is the build unit: one PR per Story, Tasks as commits",
       "type": "feature",
-      "updated": "2026-10-11T10:05:38Z"
+      "updated": "2026-10-11T10:51:30Z"
     },
     "F-0351": {
       "backlinks": [],
@@ -68991,7 +69010,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69006,7 +69025,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-11T10:38:41Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -85094,7 +85113,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85107,7 +85126,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T10:46:21Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85295,7 +85314,7 @@
         "PR #1483: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1483: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85312,7 +85331,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T10:46:21Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -86110,7 +86129,7 @@
         "satisfied on main at 14b963ba1: tests.test_closing.RefixingTests, tests.test_evidence.RefixFactTests, tests.test_ingest.RefixedBugTests, tests.test_closing, tests.test_evidence, tests.test_ingest, tests.test_landing_stamp, tests.test_invariants, tests.test_no_test_no_done, tests.test_scorecard, tests.test_tick_steps, tests.test_hermetic",
         "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: not on origin/main: tests.test_closing.RefixingTests, tests.test_evidence.RefixFactTests, tests.test_ingest.RefixedBugTests; worker/T-129185 holds 1 commit(s) off it"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -86126,7 +86145,7 @@
       ],
       "title": "the derivation \u2014 the `refix` fact, the `refixing` rule, and the card ingest writes",
       "type": "task",
-      "updated": "2026-10-11T10:38:41Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/evidence/closing.py",
@@ -86179,7 +86198,7 @@
         "relaunch: operator answer: Fixed: the asf product pin now points at the live kernel install (0.2.28+15, 2e9df7f7b), which has 'asf pre-push'; '~/.local/bin/asf pre-push --help' works. Retry the push and finish.",
         "relaunch: escalated: the previous session stopped (partial: left out: the PD10 regression case \u2014 a Closed Bug whose fresh evidence carries a `refix` reopening to `Active` through the real `refixing` rule (ingest.derive needs no reopen.py change for i\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0323.md"
       },
@@ -86192,7 +86211,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T09:34:52Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -86776,7 +86795,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: Relaunch on another account: the launch failed because one account hit its session limit (resets 14:40 local), not because of the item. Any account with free seats is fine."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0332.md"
       },
@@ -86789,7 +86808,7 @@
       ],
       "title": "the pin \u2014 the measured loop as a fixture, and the two pinned loops unchanged",
       "type": "task",
-      "updated": "2026-10-11T10:46:21Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "tests/fixtures/replay/loop_total.jsonl",
         "tests/test_loops.py"
@@ -86976,10 +86995,12 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026/work/_temp/f2ef3bd3-1cd9-4a10-a34b-a90b1c9388b0' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
+        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026/work/_temp/f2ef3bd3-1cd9-4a10-a34b-a90b1c9388b0' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
         "red: tests (3.12)",
         "red: tests (3.13)"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1442: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1442: checks (3.13) is red but not a required check \u2014 ignored",
@@ -86988,7 +87009,7 @@
         "PR #1442: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1442: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0333.md"
       },
@@ -87001,7 +87022,7 @@
       ],
       "title": "what the operator sees \u2014 the shape check, the example file, one doctor row and the two guide pages",
       "type": "task",
-      "updated": "2026-10-10T23:05:17Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/conventions.py",
         "asf/doctor.py",
@@ -87023,7 +87044,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129209",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0335.md"
       },
@@ -87040,7 +87061,7 @@
       ],
       "title": "the reconcile \u2014 the ledger read, the cross-check, the seven verdicts, the one writer, the entry the record credits, and the command",
       "type": "task",
-      "updated": "2026-10-11T10:26:40Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/record/reconcile_proofs.py",
         "asf/proves.py",
@@ -87323,7 +87344,7 @@
         "PR #1497: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1497: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0342.md"
       },
@@ -87339,7 +87360,7 @@
       ],
       "title": "the quiesce \u2014 the kernel's two argv shapes, its lock, and the module every Story shares",
       "type": "task",
-      "updated": "2026-10-11T10:36:31Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/upgrade.py",
@@ -87513,8 +87534,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-131720",
+      "kernel_answers": [
+        "granted tests/test_ci_queue.py; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_attempts": [
-        "the session API failed"
+        "the session API failed",
+        "relaunch: operator answer: granted tests/test_ci_queue.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
@@ -87525,7 +87550,7 @@
         "PR #1509: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1509: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -87538,10 +87563,11 @@
       ],
       "title": "the decision the lane cannot make, written once instead of printed every tick",
       "type": "task",
-      "updated": "2026-10-11T10:36:31Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/harvest/lane.py",
-        "tests/test_closed_item_prs.py"
+        "tests/test_closed_item_prs.py",
+        "tests/test_ci_queue.py"
       ]
     },
     "T-131721": {
@@ -88144,7 +88170,14 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154337",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/record/cards.v2.schema.json:98 \u2014 declare the 15 keys ASF's own writers set but the closed schema omits (`supersedes`, `superseded_by`, `delivers`, `delivered_by`, `split_from`, `moved_to`, `reopened`, `local_only`, `stability`, `check`, `lane`, `size`, `ab_pair`, `dates`, `asf_ready`), each with its one type, its `owner` where `split_machine` puts it in the machine block, and `\"ref\": \"card\"` on the five reference fields; re-derive type and owner from the measurement over both readable record roots rather than from the review's list",
+        "tests/test_card_schema.py:28-41 \u2014 widen `measured_keys` to the union over both record roots, or better, walk a record root and assert zero undeclared keys, so the case cannot pass while the acceptance line it quotes (\"every key the record uses today is a declared property\") is false",
+        "asf/record/validate.py:151-154 \u2014 return an error for an unusable `pattern` instead of guessing it satisfied: `except re.error as e: out.append((pointer, 'schema pattern %r is not a usable regex: %s' % (pattern, e)))`, keeping `matched = True` so the no-raise contract holds",
+        "tests/test_card_schema.py:177-179 \u2014 add `{'pattern': '('}` to `garbage_schemas` and one case asserting an unusable pattern yields an error rather than silence, so validate.py:153-154 stops being dead to the suite"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -88157,7 +88190,7 @@
       ],
       "title": "the card schema file, and the stdlib validator that enforces exactly what it declares",
       "type": "task",
-      "updated": "2026-10-11T10:30:58Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/record/cards.v2.schema.json",
         "asf/record/validate.py",
@@ -90015,13 +90048,11 @@
       "kernel_answers": [
         "Granted: tests/test_env.py added to writes. Its report (commit e318af65f on worker/T-81130) asks for exactly this twice: add regression.check, regression.command, regression.exempt_found_in and regression.fail_re to _PLANNED_FLAG_VALUES in tests/test_env.py so PinnedReader.test_product_file_with_every_planned_key_loads matches conventions.KNOWN_FLAGS. Nothing else outside writes. Then finish and open the PR; Task 6 (S-80459) stays out of scope as reported.",
         "Relaunch now: the external worktree that held a T-81130-named branch was removed at 22:20Z, so nothing holds worker/T-81130 any more. The earlier grant stands: tests/test_env.py is in writes.",
-        "granted asf/schema.py asf/hermetic.py 3.12 3.13 footprint. 3.1x; nothing else outside writes (card updated by the kernel). T-129157 also writes asf/schema.py (Building): the overlap rule serialises them."
+        "granted asf/schema.py asf/hermetic.py 3.12 3.13 footprint. 3.1x; nothing else outside writes (card updated by the kernel). T-129157 also writes asf/schema.py (Building): the overlap rule serialises them.",
+        "Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Relaunch now: the external worktree that held a T-81130-named branch was removed at 22:20Z, so nothing holds worker/T-81130 any more. The earlier grant stands: tests/test_env.py is in writes.",
-        "relaunch: operator answer: granted asf/schema.py asf/hermetic.py 3.12 3.13 footprint. 3.1x; nothing else outside writes (card updated by the kernel). T-129157 also writes asf/schema.py (Building): the overlap rule serialises them.",
-        "review: no VERDICT line",
-        "review: no VERDICT line"
+        "relaunch: operator answer: Relaunch the review on PR #1498 (worker/T-81130, required checks green). The last review session ended without a VERDICT line, which is a session failure, not a finding. The new review must end with exactly one 'VERDICT: approve' or 'VERDICT: changes' line plus its findings."
       ],
       "kernel_dor_fills": 1,
       "kernel_findings": [
@@ -90041,11 +90072,7 @@
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "review: no VERDICT line",
-      "kernel_stuck_since": "2026-10-11T10:37:52Z",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -90066,7 +90093,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T10:38:41Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",
@@ -90739,7 +90766,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/kernel/briefs.py; nothing else outside writes (card updated by the kernel). asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
       "kernel_extra_rounds": 0,
@@ -90786,7 +90814,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-11T09:27:44Z",
+      "updated": "2026-10-11T10:51:30Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
