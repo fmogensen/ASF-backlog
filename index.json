@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T18:52:56Z",
+  "generated": "2026-10-11T18:57:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16958,7 +16958,7 @@
       "kernel_notes": [
         "build-b-138845-1791733799: NEEDS OPERATOR: the CI check names cited by the card (\"tests (3.12)\", \"tests (3.13)\") no longer exist on current origin/main's check-runs \u2014 the workflow was restructured into \"checks (3.X)\" / \"part (3.X, N)\" jobs so\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16968,7 +16968,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T18:52:44Z",
+      "updated": "2026-10-11T18:57:23Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17478,7 +17478,7 @@
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
       "landed": "21c0c2c2f3d13adca24c7c0a09d9543c03f0cf0e",
       "rank": -4,
-      "removed": "retired: superseded by 21c0c2c2f3d13adca24c7c0a09d9543c03f0cf0e \u2014 The red run's failure (test_logs_tree.PathTests.test_no_other_module_hand_builds_a_path_under_the_tree, asf/harvest/regression.py hand-building a log path) was already fixed by 21c0c2c2f (B-172260, #1584); the test is green at current HEAD. (landed 21c0c2c2f3d13adca24c7c0a09d9543c03f0cf0e)",
+      "removed": "intake: already fixed and pushed as fix(B-172260) #1584 (21c0c2c2f); main's tests (3.12)/(3.13) are green again at HEAD. (groom 2026-10-11)",
       "schema_version": 1,
       "stage_since": "2026-10-11T18:29:57Z",
       "state": "New",
@@ -89316,14 +89316,15 @@
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1."
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted asf/harvest/regression.py; nothing else outside writes (card updated by the kernel). B-172260 also writes asf/harvest/regression.py (Review): the overlap rule serialises them. T-160207 also writes asf/harvest/regression.py (Review): the overlap rule serialises them."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1578: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1578: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89336,7 +89337,7 @@
       ],
       "title": "every reference resolves to a card at the moment it is written",
       "type": "task",
-      "updated": "2026-10-11T18:26:25Z",
+      "updated": "2026-10-11T18:57:23Z",
       "writes": [
         "asf/record/card.py",
         "asf/record/check.py",
@@ -89789,10 +89790,12 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/kernel/incidents.py:45-47 \u2014 `_key` drops `pr` for `main-red`, so the first unattributed observation of a red sha is final and the later attributed record is skipped; keep `(kind, sha)` as the identity but make `record` supersede an existing `main-red` record whose `pr` is None when the new candidate carries a `pr`, and make the read side keep the last record per `_key`, so `flagged`/`why` carry the culprit PR's verdict and `report` collapses it with the `revert` record into one incident. Add a two-tick narrowing case to tests/kernel/test_incidents.py asserting `trigger: 1 incident, 1 of them flagged`.",
+        "rebase: PR #1544 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/incidents.py:140-147 \u2014 report() sums total/flagged over records, but the three kinds co-occur on one event (main-red + revert + reverted-merge for the same PR), so one incident reads as \"trigger: 3 incidents, 3 of them flagged\". Count over distinct incidents instead: key each record on its `pr` (falling back to `sha`), take total = the number of distinct keys and flagged = those with any flagged record. This contradicts the spec's \"one record per incident\" (docs/specs/f-0334.md:947, :1158) and distorts the flagged ratio the Stage-5 trigger is read for \u2014 a mixed ledger reads \"4 incidents, 3 of them flagged\" where the truth is \"2 incidents, 1 flagged\". Verified: the fix keeps \u00a78's example at 3 incidents and tests/kernel/test_incidents.py:126-137 green."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89805,7 +89808,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-11T17:43:37Z",
+      "updated": "2026-10-11T18:57:23Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
@@ -89904,7 +89907,8 @@
         "T-0453",
         "T-154342",
         "T-160208",
-        "T-160210"
+        "T-160210",
+        "T-164020"
       ],
       "children": [],
       "decided": true,
@@ -89924,7 +89928,7 @@
         "PR #1562: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -89937,7 +89941,7 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T18:36:50Z",
+      "updated": "2026-10-11T18:57:23Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -90193,7 +90197,7 @@
         "PR #1586: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1586: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90206,7 +90210,7 @@
       ],
       "title": "a clock transcript is capped by the run that wrote it, and the facts that outlive the cap are carried",
       "type": "task",
-      "updated": "2026-10-11T18:30:17Z",
+      "updated": "2026-10-11T18:57:23Z",
       "writes": [
         "asf/logs.py",
         "asf/cli.py",
@@ -90382,6 +90386,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164020",
+      "kernel_answers": [
+        "granted asf/harvest/regression.py; nothing else outside writes (card updated by the kernel). T-160207 also writes asf/harvest/regression.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/harvest/regression.py; nothing else outside writes (card updated by the kernel). T-160207 also writes asf/harvest/regression.py (Building): the overlap rule serialises them."
+      ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1."
@@ -90391,7 +90401,7 @@
         "PR #1582: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1582: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0350.md"
       },
@@ -90404,14 +90414,15 @@
       ],
       "title": "the delivery's Story is a field on the lead \u2014 written with delivers, refused when it is wrong, kept by the snapshot",
       "type": "task",
-      "updated": "2026-10-11T18:26:25Z",
+      "updated": "2026-10-11T18:57:23Z",
       "writes": [
         "asf/record/slice.py",
         "asf/record/check.py",
         "asf/rehearsal.py",
         "tests/test_feature_delivery.py",
         "tests/test_backlog.py",
-        "tests/test_rehearsal_snapshot.py"
+        "tests/test_rehearsal_snapshot.py",
+        "asf/harvest/regression.py"
       ]
     },
     "T-164021": {
@@ -90525,7 +90536,7 @@
         "PR #1588: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1588: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90538,7 +90549,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T18:52:44Z",
+      "updated": "2026-10-11T18:57:23Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -92711,7 +92722,7 @@
         "PR #1324: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -92724,7 +92735,7 @@
       ],
       "title": "the fix-bug brief carries the pre-fix base and the command the lane will run",
       "type": "task",
-      "updated": "2026-10-11T18:52:44Z",
+      "updated": "2026-10-11T18:57:23Z",
       "writes": [
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/build.py",
