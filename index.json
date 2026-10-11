@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T12:08:05Z",
+  "generated": "2026-10-11T12:11:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -34804,6 +34804,7 @@
     },
     "F-0330": {
       "backlinks": [
+        "T-129212",
         "B-121289"
       ],
       "children": [
@@ -39586,6 +39587,7 @@
     "S-134155": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-134155",
       "parent": "F-0344",
@@ -39601,6 +39603,7 @@
         "F-0344"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-134156",
       "parent": "F-0344",
@@ -39614,6 +39617,7 @@
     "S-134157": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-134157",
       "parent": "F-0344",
@@ -39627,6 +39631,7 @@
     "S-134158": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-134158",
       "parent": "F-0344",
@@ -39640,6 +39645,7 @@
     "S-134159": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-134159",
       "parent": "F-0344",
@@ -85338,7 +85344,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85351,7 +85357,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T12:03:45Z",
+      "updated": "2026-10-11T12:11:34Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85523,18 +85529,8 @@
         "granted tests/test_views.py; nothing else outside writes (card updated by the kernel).",
         "granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_views.py; nothing else outside writes (card updated by the kernel).",
-        "relaunch: operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "rebase: PR #1483 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
-        "operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1483: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1483: checks (3.13) is red but not a required check \u2014 ignored",
@@ -85543,7 +85539,8 @@
         "PR #1483: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1483: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85560,7 +85557,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T11:40:22Z",
+      "updated": "2026-10-11T12:11:34Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -86452,7 +86449,7 @@
       ],
       "title": "the route \u2014 `asf reopen`'s refusal says where a second fix goes",
       "type": "task",
-      "updated": "2026-10-11T12:03:45Z",
+      "updated": "2026-10-11T12:11:34Z",
       "writes": [
         "asf/record/reopen.py",
         "tests/test_reopen.py"
@@ -87406,15 +87403,19 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Relaunch on worker/T-129212: the external worktree that held the T-129212-named fix branch was removed, and that framework fix is now Bug B-147398 (PR #1460), not this Task's delivery. Build T-129212's own plan Task; if its branch has no commits beyond main, the new no-commits rule applies.",
-        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "tests/kernel/test_question_pushed_base.py:78-83 \u2014 replace the invented `Q_ROUND` and `Q_LOST_VERDICT` with the operator log's own texts verbatim (`adjudicate-f-0308`, 558 chars; `plan-f-0330-1791633833`, 96 chars), per step 1's \"both verbatim\"; drop the `review-t-0197` \"lost verdict\" shape the plan ruled out, and rename the `it6` holder in `ShareRises._six` (:448-449) to the F-0330 item it then quotes",
+        "tests/kernel/test_question_pushed_base.py:130 \u2014 add the end-to-end `REBASE_FIRST` case step 11 names: a `Stuck(D.NOT_PUSHED + refusal, 'operator')` card with a `push_refused` session must yield exactly one `ApplyAnswer(by=R.PUSHED)` whose text contains `Rebase onto origin/main`",
         "asf/kernel/resolvers.py:291 \u2014 move the `linear` gate so it only guards `BASE_OK`: return `NO_BASE % (branch, main, sha, branch)` whenever `base` is empty, before testing `result.get('linear')`, and add a `TrunkBaseClass` case asserting `NO_BASE` with `'linear': False` plus one driving the orphan branch off a harness trunk that carries a merge commit",
         "asf/kernel/resolvers.py:108-110 \u2014 drop `ORIGIN_RE`'s unnegated `\\bon origin\\b` alternative, leaving `r'\\b(?:not|never|still not)\\s+(?:yet\\s+)?on origin\\b|\\bnot\\b[^.]*\\breached origin\\b|\\bpush(?:ed|ing)? (?:was )?(?:refused|denied)\\b'`, and add the red-CI text (\"I committed the fix but the required check on origin/main is red\u2026\") to `PushedClass` as a negative case beside line 94",
         "asf/kernel/decide.py:995 \u2014 in `_pushed`, after `pushed_question(text)`, compute `probe = resolvers.match(text, resolvers.branch_of(it.id, facts.sessions, facts.prs))` and `return None` when `probe is not None and probe.cls == resolvers.TRUNK_BASE`, then pin the precedence with a case on a text carrying both forms",
+        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel).",
         "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1445: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1445: checks (3.13) is red but not a required check \u2014 ignored",
@@ -87423,7 +87424,7 @@
         "PR #1445: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -87439,7 +87440,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-11T11:53:51Z",
+      "updated": "2026-10-11T12:11:34Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
