@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T20:47:09Z",
+  "generated": "2026-10-11T20:50:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17505,10 +17505,16 @@
       "id": "B-173962",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.74.post1+gb69dc8bd",
+      "kernel_findings": [
+        "asf/record/reopen.py:151-155 \u2014 hoist the `kernel_state == done and satisfied_note(machine)` test above the `old_state not in (Resolved, Closed)` guard so a kernel-satisfied *closed* card still reaches `reopen_kernel_done`, and have `reopen_kernel_done` (`:258`) also set `state` back to `New` and drop the `landing:` key on a false judgement; cover it in `tests/test_reopen.py::KernelDoneTests` with a card at `state: Closed` \u2014 today the close is irreversible (`reopen` refuses with \"current evidence still says Closed\") and the escape hatch for a false satisfied judgement is dead code.",
+        "tests/test_ingest.py:466 \u2014 add the card's acceptance-item-2 case to `CmdIngestEndToEndTests` (a card with `kernel_state: done`, **no** satisfied note, and a trunk commit naming its id; assert one `cmd_ingest` run leaves it `Closed`) and make it pass in `asf/record/ingest.py`: `:96`'s `if not r.get('commit')` makes the fold a no-op for the 73-of-80 the card measured, and only 20 of the 170 still-New cards carry a satisfied note at all, so the measured bug is untouched.",
+        "asf/record/ingest.py:97 \u2014 stop borrowing the id-token shape: add `'kernel-satisfied'` to `LANDING_BY` (`:51`, documented beside the others at `:44-50`), mark the folded evidence in `_fold_kernel_landed`, return the new value from `_by_of_ids` ahead of the `names` fallback (`:122`), and emit `kernel judged <sha7> satisfies <iid>` in `evidence.id_state` (`asf/evidence/evidence.py:1669-1671`) \u2014 the close currently writes `commit <sha7> names <iid>` and `landing.by: names` when no commit names the item."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-173962-1791744740: groom-fill raised risk high: measured live (97 kernel_state:done Tasks/Bugs, 80 still state: New, 73 of those with a commit on origin/main naming them) and confirmed derive() already computes the correct Closed/Resolved result from current evidence \u2014 the gap is that this correct result isn't persisting across ticks, not a missing kernel->state coupling, which would contradict the shipped evidence-only closing design (F-0318) and the existing asf reopen path for the opposite case."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17517,7 +17523,7 @@
       "state": "New",
       "title": "Bug: kernel-done Tasks keep state New on their cards, so boards under-count done work",
       "type": "bug",
-      "updated": "2026-10-11T20:36:32Z",
+      "updated": "2026-10-11T20:50:09Z",
       "writes": [
         "asf/record/ingest.py",
         "asf/evidence/evidence.py",
@@ -70078,7 +70084,7 @@
       "state": "New",
       "title": "`tools/upgrade_matrix.py` and the `upgrade-matrix` job \u2014 a real release installed, ticked and upgraded into HEAD",
       "type": "task",
-      "updated": "2026-10-11T20:47:07Z",
+      "updated": "2026-10-11T20:50:09Z",
       "writes": [
         "tools/upgrade_matrix.py",
         ".github/workflows/tests.yml",
@@ -89755,7 +89761,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159850",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89768,7 +89780,7 @@
       ],
       "title": "intake \u2014 every note decided by code once its sessions are spent, and the step measured",
       "type": "task",
-      "updated": "2026-10-11T20:15:53Z",
+      "updated": "2026-10-11T20:50:09Z",
       "writes": [
         "asf/kernel/intake.py",
         "asf/kernel/ports.py",
@@ -89781,7 +89793,8 @@
         "tests/kernel/test_intake_never_silent.py",
         "tests/kernel/test_ports.py",
         "tests/kernel/test_gate.py",
-        "tests/test_conventions.py"
+        "tests/test_conventions.py",
+        "asf/kernel/facts.py"
       ]
     },
     "T-159851": {
@@ -90062,16 +90075,17 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/kernel/settings.py:250 \u2014 change the block to `'stack': {'enabled': (False, bool), 'max_depth': (1, int)}` so the knob ships off until Tasks 3\u20135 land, and move the flip to `True` into Task 6; report `needs writes: asf/kernel/settings.py` (no test in `tests/kernel/test_stacked_builds.py` changes \u2014 `cfg()` opts in at `tests/kernel/test_stacked_builds.py:163` and `model.Config.stack` is already `False`)",
-        "rebase: PR #1581 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+        "asf/kernel/settings.py:250 \u2014 outside `writes:`; either have `asf/kernel/settings.py` granted to this card and keep `'enabled': (False, bool)`, or revert it to `(True, bool)` and move the off-by-default flip to Task 6, which owns the knob's docs",
+        "asf/kernel/decide.py:2062 \u2014 the stacked launch drops `judged[iid].findings`, so a card relaunched by an operator answer loses it from its brief; build it as `A.Launch('build', iid, _branch('build', iid, config, it), list(judged[iid].findings), judged[iid].model, base=pred_pr.branch, base_sha=pred_pr.head_sha)` and pin it with one `StackedLaunch` case",
+        "tests/kernel/test_stacked_builds.py:395 \u2014 `test_12` proves \"a parked predecessor is not stacked on\" vacuously (its predecessor has no PR, so `pred_pr is None` refuses it) and the claim is false for a parked predecessor whose PR is open; either add `or not _visible(items, pred, parked)` at `asf/kernel/decide.py:2051` and give the fixture `_review_pred()` + `priority='later'`, or document the parked-but-flying predecessor as deliberately stackable and split `test_12` into the two cases"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1562: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1562: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -90084,7 +90098,7 @@
       ],
       "title": "the stacked launch \u2014 one open edge, a predecessor that has pushed, a free seat",
       "type": "task",
-      "updated": "2026-10-11T19:17:57Z",
+      "updated": "2026-10-11T20:50:09Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -90694,16 +90708,18 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/kernel/ports.py:2279 \u2014 a read-only session must not be launched with a beat (spec \u00a71.1 Out, `docs/specs/f-0347.md:77-80`): pass `heartbeat=False if kind in READ_ONLY else self._beat_on()` (`READ_ONLY` is already imported at `asf/kernel/ports.py:61`) and add a `review` case to `tests/kernel/test_kernel_heartbeat.py::BeatOn`; or, if acceptance line 2 is read as overriding the Out, land the line that makes \u00a72.5's settle safe for a read-only branch",
+        "asf/workers/spawn.py:689-693 \u2014 the exclude-failure line is unreachable because `scratch.exclude` never raises (`asf/workers/scratch.py:48-49,70-71`): print the line inside `scratch.exclude`'s own `except` before it returns `()`, drop the dead `except Exception` handler, and drive `tests/kernel/test_kernel_heartbeat.py:185-197` with a real unwritable `info/` (`os.chmod(..., 0o500)` plus an `addCleanup`) instead of `mock.patch.object(scratch, 'exclude', side_effect=OSError(...))`",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "operator answer: granted tests/kernel/test_speedups.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1588: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1588: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90716,7 +90732,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T20:33:18Z",
+      "updated": "2026-10-11T20:50:09Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
