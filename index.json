@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T09:02:08Z",
+  "generated": "2026-10-11T09:07:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16911,7 +16911,7 @@
       "id": "B-138845",
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16921,7 +16921,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-10T21:03:16Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17157,6 +17157,9 @@
       "id": "B-151002",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.41",
+      "kernel_notes": [
+        "groom-fill-b-151002-1791709034: groom-fill raised risk high: writes/acceptance were empty/untested; the dispatcher's exit-127 line and the brief's standing rules are the concrete, verified sites that still name the operator-only command to a session, with the kernel's drift auto-policy as the existing mechanism that should own the fix instead."
+      ],
       "parent": "F-0346",
       "schema_version": 1,
       "severity": "S3",
@@ -17165,7 +17168,14 @@
       "state": "New",
       "title": "Bug: build sessions are told to run asf upgrade themselves",
       "type": "bug",
-      "updated": "2026-10-11T08:57:26Z"
+      "updated": "2026-10-11T09:07:48Z",
+      "writes": [
+        "asf/dispatch.py",
+        "asf/briefs/preamble.py",
+        "asf/briefs/build.py",
+        "tests/test_dispatch.py",
+        "tests/test_briefs.py"
+      ]
     },
     "B-151303": {
       "backlinks": [],
@@ -68562,7 +68572,7 @@
         "PR #1444: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1444: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -68577,7 +68587,7 @@
       "state": "Active",
       "title": "`asf/schema.py` \u2014 two numbers, migrations that say whether they are additive, and the refusal that finally has callers",
       "type": "task",
-      "updated": "2026-10-11T09:02:04Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/schema.py",
         "asf/cli.py",
@@ -84665,7 +84675,7 @@
         "PR #1441: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -84678,7 +84688,7 @@
       ],
       "title": "the row \u2014 one guard over the rows actually drawn, and the held Feature keeps its line",
       "type": "task",
-      "updated": "2026-10-11T09:02:04Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/feeder/rows.py",
         "tests/test_held_feature.py",
@@ -85432,7 +85442,9 @@
       "after": [
         "T-129178"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-129182"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -85478,9 +85490,10 @@
         "Correct: T-129178 was falsely closed as satisfied (judged on the old pin 14b963ba1). It's reopened and will build first. This Task waits for it via after:, so don't build ahead; end this round and relaunch once T-129178 lands."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Correct: T-129178 was falsely closed as satisfied (judged on the old pin 14b963ba1). It's reopened and will build first. This Task waits for it via after:, so don't build ahead; end this round and relaunch once T-129178 lands."
+        "relaunch: operator answer: Correct: T-129178 was falsely closed as satisfied (judged on the old pin 14b963ba1). It's reopened and will build first. This Task waits for it via after:, so don't build ahead; end this round and relaunch once T-129178 lands.",
+        "relaunch: escalated: the previous session stopped (blocked: blocked_on: T-129178 NEEDS OPERATOR: none \u2014 operator already answered; this Task waits for T-129178 (asf/workers/scratch.py) to land on origin/main, then relaunch) \u2014 pick up from its report and branch, and finish the item"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85493,7 +85506,7 @@
       ],
       "title": "the beat snapshots the work, carries the notes as its message, and both briefs say so",
       "type": "task",
-      "updated": "2026-10-11T09:02:04Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "tests/test_heartbeat.py"
@@ -85508,11 +85521,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129181",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "blocked: NEEDS OPERATOR: T-129178 (Task 1 of this plan) has not landed on origin/main \u2014 its only commit",
-      "kernel_stuck_since": "2026-10-11T09:00:42Z",
+      "kernel_answers": [
+        "Correct: T-129178 was falsely marked satisfied (judged on the old pin 14b963ba1). A fix agent is re-judging it and recovering its commit, and it will build first. This Task waits for it via after:, so end this round; it relaunches once T-129178 lands."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Correct: T-129178 was falsely marked satisfied (judged on the old pin 14b963ba1). A fix agent is re-judging it and recovering its commit, and it will build first. This Task waits for it via after:, so end this round; it relaunches once T-129178 lands."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85525,7 +85540,7 @@
       ],
       "title": "the factory hardens the worktree when it makes it",
       "type": "task",
-      "updated": "2026-10-11T09:02:04Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/workers/spawn.py",
         "tests/test_workers.py"
@@ -85542,7 +85557,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129182",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel). T-129179 also writes asf/workers/scratch.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/workers/scratch.py; nothing else outside writes (card updated by the kernel). T-129179 also writes asf/workers/scratch.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0321.md"
       },
@@ -85555,10 +85576,11 @@
       ],
       "title": "a factory scratch path tracked on a trunk is one named doctor row",
       "type": "task",
-      "updated": "2026-10-11T08:57:26Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/doctor.py",
-        "tests/test_doctor.py"
+        "tests/test_doctor.py",
+        "asf/workers/scratch.py"
       ]
     },
     "T-129183": {
@@ -85721,10 +85743,12 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'UNKNOWN STEP' failed:\n\u2026/work/_temp/06023bc7-bc96-4b60-ae98-4077b1e2ef1e' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
+        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026/work/_temp/06023bc7-bc96-4b60-ae98-4077b1e2ef1e' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
         "red: tests (3.12)",
         "red: tests (3.13)"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1437: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1437: checks (3.13) is red but not a required check \u2014 ignored",
@@ -85735,7 +85759,7 @@
         "PR #1437: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1437: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0324.md"
       },
@@ -85750,7 +85774,7 @@
       ],
       "title": "a branch of only empty proof commits lands its proof instead of being deleted as already on main",
       "type": "task",
-      "updated": "2026-10-10T22:08:25Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_lane.py",
@@ -85845,7 +85869,7 @@
       ],
       "title": "the doctor \u2014 the second question, asked in the same row",
       "type": "task",
-      "updated": "2026-10-11T08:57:26Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/doctor.py",
         "tests/test_pushed_work.py",
@@ -85873,7 +85897,7 @@
         "PR #1461: part (3.13, 4) is red but not a required check \u2014 ignored",
         "build-t-129192-1791706079: NEEDS OPERATOR: PR #1461's `tests (3.12)`/`tests (3.13)` may still read red on a re-run of this same push if the flake recurs \u2014 if it does twice in a row, the next session should look at whether `tests.test_minimal_\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0329.md"
       },
@@ -85888,7 +85912,7 @@
       ],
       "title": "the reader reads the document \u2014 the bytes, the fences, and the one line that keeps a minted title from refusing its own plan",
       "type": "task",
-      "updated": "2026-10-11T08:48:29Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/record/idcheck.py",
         "tests/test_plan_tasks.py",
@@ -86039,7 +86063,7 @@
         "PR #1462: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1462: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -86053,7 +86077,7 @@
       ],
       "title": "the stub that models launchd, the two registered bounds, and the wait",
       "type": "task",
-      "updated": "2026-10-11T08:51:56Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/scheduler.py",
         "asf/config_keys.py",
@@ -86247,7 +86271,7 @@
       ],
       "title": "the ceiling and its kind gate, in one diff",
       "type": "task",
-      "updated": "2026-10-11T08:57:26Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/workers/loops.py",
         "asf/workers/relaunch.py",
@@ -86545,7 +86569,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129210",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0338.md"
       },
@@ -86559,7 +86583,7 @@
       ],
       "title": "the seam \u2014 the action, its one write, the knob, the line and the trigger",
       "type": "task",
-      "updated": "2026-10-11T09:02:04Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/apply.py",
@@ -86584,6 +86608,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-129211",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0338.md"
       },
@@ -86598,7 +86623,7 @@
       ],
       "title": "the judge \u2014 a cancelled run is no verdict, and the one run that answers a blind trunk",
       "type": "task",
-      "updated": "2026-10-10T17:59:58Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_pending.py"
@@ -86918,9 +86943,10 @@
         "PR #1450: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1450: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1450: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1450: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1450: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "build-t-131719-1791708574: NEEDS OPERATOR: T-131719 is already delivered on the trunk, so this correction round had"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0314.md"
       },
@@ -86934,7 +86960,7 @@
       ],
       "title": "the trunk's own evidence, the `closed` fact it decides, and the PR closed against it",
       "type": "task",
-      "updated": "2026-10-11T08:50:24Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/harvest/lane.py",
         "tests/test_closed_item_prs.py",
@@ -87222,7 +87248,7 @@
         "PR #1454: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1454: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -87238,7 +87264,7 @@
       ],
       "title": "the law \u2014 `asf/flow.py`, and the feeder's severity bar gets one name",
       "type": "task",
-      "updated": "2026-10-11T09:02:04Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/flow.py",
         "asf/feeder/rows.py",
@@ -87257,6 +87283,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-142127",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0346.md"
       },
@@ -87271,7 +87298,7 @@
       ],
       "title": "`I16`, the `flow` scope, and the tick's check point",
       "type": "task",
-      "updated": "2026-10-10T21:25:10Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/invariants.py",
         "tests/test_invariants.py",
@@ -89868,7 +89895,7 @@
       ],
       "title": "the review brief asks for the table of the branch in front of it",
       "type": "task",
-      "updated": "2026-10-11T08:57:26Z",
+      "updated": "2026-10-11T09:07:48Z",
       "writes": [
         "asf/reviews.py",
         "asf/briefs/build.py",
