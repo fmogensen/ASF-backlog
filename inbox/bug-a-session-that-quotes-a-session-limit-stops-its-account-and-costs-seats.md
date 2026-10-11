@@ -1,0 +1,20 @@
+# Bug: a session that quotes a session limit stops its account and costs seats
+
+type: bug
+parent: F-0346
+
+A session that only quotes a session limit stops its account, and the stop costs seats.
+
+Measured 2026-10-11 ~10:30Z: seat waits p90 1.4 h, max 12.2 h, "no free seat" while 8-11 sessions ran.
+quota-limits.json held three false stops, each written by a SUCCESSFUL session (is_error false) whose
+prose quoted a limit text: A "until 19:20Z" (23 h, groom-fill-b-138544, a judge of the cloud
+session-limit bug), account B 1 h (groom-fill-b-154656), account C 1 h (intake-decide of the same bug).
+runtime.failure_reason scans result prose for headroom.LIMIT_RE; the account sweep
+(lifecycle.note_spent_windows / health.account_fault) then stops the account. 35 real limits in the
+job logs all carry is_error true; the 3 false ones none. RealSessions.capacity counts a stopped
+account only at its live seats and the lane/local picks skip it: with three accounts stopped,
+capacity read 14 of 18 and fell to 10 as account A's sessions ended, while its live sessions ran fine.
+
+Acceptance:
+- a successful result quoting a limit or an auth refusal stops no account — `python3 -m unittest tests.kernel.test_false_account_stops.ProseIsNoLimit tests.kernel.test_false_account_stops.TheSweepStopsOnlyOnARealLimit`
+- a session that started on an account after its stop was recorded and ended with its report lifts the stop — `python3 -m unittest tests.kernel.test_false_account_stops.AFinishedSessionLiftsAStaleStop`
