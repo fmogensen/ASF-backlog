@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T15:46:23Z",
+  "generated": "2026-10-11T15:50:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16948,7 +16948,7 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.23.post1+gcd8dc7f0",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0001",
       "priority": "need",
       "rank": -1,
@@ -16958,7 +16958,7 @@
       "state": "New",
       "title": "main red at 64924468c: tests (3.12), tests (3.13) \u2014 6 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-11T15:04:40Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "tests/test_tick.py"
       ]
@@ -17411,7 +17411,7 @@
         "groom-fill-b-160759-1791723358: groom-fill raised risk high: the card named no tests and no writes; the real suspects (RealSessions.capacity/seat_note/lane vs decide._free) and the missing status-line feature are concrete and locatable, so acceptance lines and writes can be filled from the code rather than invented.",
         "build-b-160759-1791726648: NEEDS OPERATOR: the pure kernel layer already behaves correctly in every replay I could construct, so the measured incident's root cause may live in `RealSessions`' real account/lane plumbing (not reachable from a h\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "rank": 1,
       "schema_version": 1,
@@ -17421,7 +17421,7 @@
       "state": "New",
       "title": "Bug: decide sees no free seat while capacity is free (launches only replace ended sessions)",
       "type": "bug",
-      "updated": "2026-10-11T15:42:45Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/decide.py",
@@ -21853,7 +21853,8 @@
       "children": [
         "F-0352",
         "F-0353",
-        "F-0354"
+        "F-0354",
+        "F-0355"
       ],
       "decided": true,
       "folder": "epics",
@@ -36005,6 +36006,21 @@
       "title": "Acceptance coverage, test strength and a human proof class for Story lines",
       "type": "feature",
       "updated": "2026-10-11T15:40:27Z"
+    },
+    "F-0355": {
+      "backlinks": [],
+      "children": [],
+      "decided": false,
+      "folder": "features",
+      "id": "F-0355",
+      "parent": "E-0006",
+      "priority": "need",
+      "schema_version": 1,
+      "stage_since": "2026-10-11T15:48:42Z",
+      "state": "New",
+      "title": "Acceptance lines cover every layer (UI, backend, docs, tests) and are proved at that layer",
+      "type": "feature",
+      "updated": "2026-10-11T15:48:42Z"
     },
     "R-0001": {
       "backlinks": [
@@ -69585,23 +69601,10 @@
         "granted tools/pinned-readers.txt; nothing else outside writes (card updated by the kernel). tools/pinned-readers.txt matches kernel.risk.high: this item is high-risk now.",
         "granted tests/test_product_check.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tools/pinned-readers.txt; nothing else outside writes (card updated by the kernel). tools/pinned-readers.txt matches kernel.risk.high: this item is high-risk now.",
-        "relaunch: operator answer: granted tests/test_product_check.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.1.270.post78+gbfcba4ef",
-      "kernel_findings": [
-        "asf/env.py:268-286 \u2014 Step 4 (docs/plans/f-0114.md:265-269) is absent: load_config is byte-unchanged and config_warnings() exists nowhere. Partition load_config's findings on the file's own schema_version strictly greater than schema.CONFIG_VERSION, the way asf/env.py:793-796 does, raise only the fatal half, and add config_warnings() returning the tolerated half (empty today \u2014 neither validate_worker_pool nor cloud.config_problems emits an UNKNOWN_KEY finding, so the deliverable is the seam, not a behaviour change). Task 3 reads env.config_warnings (docs/plans/f-0114.md:353) and its own writes: (docs/plans/f-0114.md:327) cannot touch asf/env.py, so Task 3 is blocked until this lands.",
-        "tests/test_env.py:13-41 \u2014 the card's fifth acceptance line names TestExampleConfigsParse as its proof and nothing was added there; grep -rn migrate_drain_s tests/ has no hit, and test_config_example_parses would pass with a live schema_version: key. Add a case asserting (?m)^\\s*#\\s*schema_version: and ^\\s*#\\s*migrate_drain_s: in docs/config.example.yaml, ^\\s*#\\s*schema_version: in docs/products.example.yaml, and 'schema_version' not in env.loads(text) for both.",
-        "tools/pinned-readers.txt:1-8 \u2014 the file is left with no sha, so tests/test_env.py:1061, tests/test_env.py:1073 and tests/test_product_check.py:72-74 skip and the loops at tests/test_env.py:1033, tests/test_landing_stamp.py:440, tests/test_config_keys.py:361, tests/test_queue_store.py:171 and tests/test_record_writer.py:231 iterate zero times. Add the oldest released sha whose loader tolerates an unknown top-level key as a warning, so every loop keeps running against a real older reader; if the operator answers that none can be pinned, record that decision and the card that restores the guard in the file's header instead of leaving seven silent no-ops.",
-        "asf/env.py:622-624 and asf/env.py:632-640 \u2014 both comment blocks withhold release.floor, release.seats, release.gate, ci.hosts, ci.jobs, kernel and release.channels from the field tables because \"a pinned reader predates them\" and cite tests.test_env.PinnedReader.test_no_product_key_the_pinned_reader_would_refuse, which this diff turned into an unconditional skip (tests/test_env.py:1061). Say in those blocks that no reader is pinned, that the refusal test therefore skips, and what now decides whether such a key may be registered.",
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "operator answer: granted tests/test_product_check.py; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "groom-fill-t-0453-1791638012: groom-fill raised risk high: card's Steps are truncated on disk (full text recoverable from docs/plans/f-0114.md:279-289), its \"every existing class unchanged\" claim is only true if absent schema_version is explicitly pinned as staying tolerant (undocumented), and its load_config/worker_pool/cloud step has no existing unknown-key mechanism to gate and conflicts with the spec's own out-of-scope ban on a declared config.yaml field table \u2014 so that step is dropped from acceptance.",
         "PR #1529: part (3.12, 2) is red but not a required check \u2014 ignored",
@@ -69610,7 +69613,8 @@
         "PR #1529: part (3.13, 4) is red but not a required check \u2014 ignored",
         "build-t-0453-1791728303: NEEDS OPERATOR: tools/pinned-readers.txt is documented as a deployment fact \u2014 \"the oldest asf sha whose loader still reads a live product file (a pinned product venv)\" \u2014 and this session cannot see which sha any pro\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69620,7 +69624,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T15:31:36Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -81437,7 +81441,7 @@
         "PR #1177: part (3.13, 4) is red but not a required check \u2014 ignored",
         "build-t-0734-1791731552: NEEDS OPERATOR: tests/test_install_e2e.py's RecordTickAgainstALocalNonBareOriginTests leaks the same unstubbed `launchctl list` (a plain `asf init` never sets scheduler.kind, so cron_cell's scheduler.loaded_jobs() r\u2026"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0118-bc84bd0fa59e.md"
       },
@@ -81450,7 +81454,7 @@
       "state": "Active",
       "title": "the tick leaves a snapshot behind it, atomically, and a session's status line reads it",
       "type": "task",
-      "updated": "2026-10-11T15:46:20Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/views/status.py",
         "asf/tick/tick.py",
@@ -84973,7 +84977,7 @@
         "groom-fill-t-0816-1791726076: groom-fill raised risk high: the card's Files/Steps describe sync_operator_checkout's pre-#1039 shape (ceiling 25, no ahead/marker handling); the approved replan docs/plans/replans/f-0260-710ab73e6bdd.md (RD3-RD6) already corrects this (ceiling 24, build around the landed ahead/stranded-commit machinery, drop DIRTY_MARKER per D5) but was never carried into the card body, and a prior attempt under this stale text (PR #1237) already closed without landing."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/replans/f-0260-710ab73e6bdd.md"
       },
@@ -84987,7 +84991,7 @@
       ],
       "title": "a record checkout the tick cannot fast-forward says so in four places, and the record step still reads ok",
       "type": "task",
-      "updated": "2026-10-11T15:42:45Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/tick/shadow.py",
         "asf/tick/tick.py",
@@ -85803,7 +85807,7 @@
       "id": "T-129158",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.9.post3+gdce5aac9",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0274.md"
       },
@@ -85816,7 +85820,7 @@
       ],
       "title": "the counter \u2014 the silence is counted, and `asf doctor` says which Feature",
       "type": "task",
-      "updated": "2026-10-11T15:37:43Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/doctor.py",
@@ -85965,7 +85969,7 @@
         "PR #1483: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0307.md"
       },
@@ -85982,7 +85986,7 @@
       ],
       "title": "the gate and its report \u2014 the freeze, the exemption, F-0113's invariant, the line",
       "type": "task",
-      "updated": "2026-10-11T15:42:45Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/feeder/tiers.py",
@@ -87380,7 +87384,7 @@
         "tools/cutover.sh:458 \u2014 the failure line is not \u00a74's and goes to the wrong stream: replace it with the spec's line verbatim (docs/specs/f-0331.md:552) `echo \"  $label: install exited $rc \u2014 the plist is written and recorded, the clock is not loaded\"`, dropping the `>&2` so it stays in the indented transcript the new `2>&1` at :449 keeps whole, and update tests/test_cutover.py:508 to `self.assertIn('asf.sample.daily: install exited 1', result.stdout)`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0331.md"
       },
@@ -87393,7 +87397,7 @@
       ],
       "title": "the exit status pinned, and the cutover that records its manifest row before it fails",
       "type": "task",
-      "updated": "2026-10-11T15:46:20Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "tools/cutover.sh",
         "tests/test_cutover.py",
@@ -88890,7 +88894,7 @@
         "PR #1563: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1563: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0349.md"
       },
@@ -88903,7 +88907,7 @@
       ],
       "title": "schema 1 \u2192 2 \u2014 the migration, and the nine cases the bump moves",
       "type": "task",
-      "updated": "2026-10-11T15:46:20Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/schema.py",
         "tests/test_install.py",
@@ -89018,7 +89022,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154339",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89031,7 +89035,7 @@
       ],
       "title": "the write gate \u2014 the one card writer refuses an invalid card and writes nothing",
       "type": "task",
-      "updated": "2026-10-11T15:24:43Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/record/writer.py",
         "tools/check_card_gate.sh",
@@ -89343,7 +89347,14 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159849",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/decide.py:2232 \u2014 `config.lead_p90_max` is on no `Config` and no F-0334 Task adds it (Task 1 writes neither `model.py` nor `ports.py`; landed Task 2 reads the same knob via `gate.py:47-52`), so the target is permanently the hardcoded 4h and `0` cannot turn the rule off: add `Config.lead_p90_max_s` (`asf/kernel/model.py:544`) filled in `asf/kernel/ports.py` beside `:2684` from `S.parse_duration(k['gate']['lead_p90_max'])`, read it with no `getattr`, and report both files as `needs writes:`",
+        "asf/kernel/decide.py:2248 \u2014 the record reuses the item's wait class, so no line says `LEAD BREACH` or names the PR (Step 4, `docs/plans/f-0334.md:425-426`): emit the breach in its own `'lead'` class carrying the PR number and the target, widen `decide.py:487`'s front set to `c in ('train', 'merge', 'lead')`, and print the PR and the target on the line",
+        "asf/kernel/decide.py:480-485 \u2014 a `merge`-class lead breach fabricates `j.behind_pr` on a green, not-behind PR and emits `UpdateBranch`, restarting its CI; keep this block reading only a true `'merge'` class",
+        "asf/kernel/decide.py:2472-2474 \u2014 a lead breach enters `stalled`, so LIMBO reports the PR's lifetime as the unmerged-green wait (`'not merged after 6.0h'` for a PR green one minute, inside its 10m target); exclude the lead class from `stalled`, or word the reason with the right clock"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89356,7 +89367,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T15:28:07Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -89457,7 +89468,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89471,7 +89482,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-11T15:24:43Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -89524,7 +89535,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T15:42:45Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -90037,7 +90048,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164018",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0350.md"
       },
@@ -90050,7 +90061,7 @@
       ],
       "title": "the third delivery unit \u2014 validated, documented, predicated, and the record step that runs its pass",
       "type": "task",
-      "updated": "2026-10-11T13:36:14Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/conventions.py",
         "asf/tick/tick.py",
@@ -92071,10 +92082,11 @@
         "PR #1439: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.13, 2) is red but not a required check \u2014 ignored",
         "PR #1439: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1439: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "PR #1549: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0312.md"
       },
@@ -92095,7 +92107,7 @@
       ],
       "title": "the branch's tests on the pre-fix tree \u2014 the grafted worktree, the lock, the store, the detached job",
       "type": "task",
-      "updated": "2026-10-11T15:42:45Z",
+      "updated": "2026-10-11T15:50:22Z",
       "writes": [
         "asf/harvest/regression.py",
         "tests/test_regression_gate.py",

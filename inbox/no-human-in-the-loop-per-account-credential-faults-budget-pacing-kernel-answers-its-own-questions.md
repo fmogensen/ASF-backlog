@@ -24,3 +24,7 @@ No human in the loop: the factory degrades and heals by itself (operator, 2026-1
 - At 90%+ of the 7-day budget an account gets a lower launch share and a cheaper model, and capacity is never cut to zero while any account has headroom (test).
 - Each recurring Stuck class above is answered by the kernel's policy without the console (one test per class replaying a 2026-10-11 case).
 - Status reports operator questions per day by class.
+
+## Human by choice, not by need (operator, same day: "Unless they want to slow it down and inspect")
+5. Inspection is opt-in. A product-yaml `kernel.inspect:` list names the gates where the factory waits for a person, e.g. `[spec, plan, release]` or `[merge]` per epic or label, plus a pace knob (`kernel.pace: full | slow | hold`) that caps launches or holds new work while the operator inspects. With it empty, the default, nothing waits on a person.
+- Acceptance: an inspect gate holds only the items it names, and shows them as `waiting: inspect <gate>` (not Stuck); clearing the gate or the list resumes them on the next tick (test). `pace: hold` launches nothing new but lets running sessions and landing finish (test).
