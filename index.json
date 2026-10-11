@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T09:25:29Z",
+  "generated": "2026-10-11T09:25:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -16792,11 +16792,15 @@
       "kernel_dor_fills_ver": "0.2.5",
       "kernel_notes": [
         "groom-fill-b-126941-1791650780: groom-fill raised risk high: today `check_cancelled` (asf/dwell.py:433) explicitly skips a PR with `not checks` \u2014 a head with no required-check run at all produces no Finding and no action; the fix is a new watchdog state/probe/action in the same table-driven module, reusing the close/reopen retrigger already proven in asf/stale_ref.py:315-322; touches the kernel's CI watchdog so risk is high.",
-        "satisfied on main at 14b963ba1: tests.test_dwell, tests.test_channels, tests.test_hermetic"
+        "satisfied on main at 14b963ba1: tests.test_dwell, tests.test_channels, tests.test_hermetic",
+        "reopened: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 the satisfied judgement at 14b963ba1 is false on main at b6180c465: fix/B-126941 holds 1 commit(s) off it"
       ],
-      "kernel_state": "done",
+      "kernel_state": "ready",
       "parent": "E-0003",
       "priority": "need",
+      "reopened": [
+        "2026-10-11T09:25:55Z: B-151303: satisfied on the install pin 14b963ba1, not origin/main \u2014 kernel done \u2192 ready"
+      ],
       "schema_version": 1,
       "severity": "S2",
       "signature": "Kernel: a PR head with no required-check run gets a fresh CI run, not 'no action exists'",
@@ -16804,7 +16808,7 @@
       "state": "New",
       "title": "Kernel: a PR head with no required-check run gets a fresh CI run, not 'no action exists'",
       "type": "bug",
-      "updated": "2026-10-10T17:11:19Z",
+      "updated": "2026-10-11T09:25:55Z",
       "writes": [
         "asf/dwell.py",
         "tests/test_dwell.py"
@@ -17182,7 +17186,9 @@
       ]
     },
     "B-151303": {
-      "backlinks": [],
+      "backlinks": [
+        "B-126941"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
