@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T11:35:58Z",
+  "generated": "2026-10-12T11:39:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17680,6 +17680,10 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-186367",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding",
+        "review: no VERDICT line"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
       "kernel_findings": [
@@ -17692,7 +17696,7 @@
       "kernel_notes": [
         "groom-fill-b-186367-1791789686: groom-fill raised risk high: both failure mechanisms are confirmed on trunk \u2014 heartbeat.launch() reuses the same account with no quota check, and continuation resets session.started so the existing max_review_age_h bound never trips on a repeatedly-stalling review; a new configurable breach limit and an account-band check are concrete, buildable fixes."
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17701,7 +17705,7 @@
       "state": "New",
       "title": "Stalled review continued on a quota-stopped account; BREACH review never acted on",
       "type": "bug",
-      "updated": "2026-10-12T10:23:07Z",
+      "updated": "2026-10-12T11:39:11Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/decide.py",
@@ -91458,7 +91462,7 @@
       ],
       "title": "beats decide, not age",
       "type": "task",
-      "updated": "2026-10-12T11:32:14Z",
+      "updated": "2026-10-12T11:39:11Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/loop.py",
