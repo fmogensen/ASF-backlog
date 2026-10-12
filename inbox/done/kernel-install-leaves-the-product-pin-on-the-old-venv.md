@@ -1,3 +1,5 @@
+→ B-187018
+
 # kernel install leaves the product pin on the old venv
 parent: F-0346
 
