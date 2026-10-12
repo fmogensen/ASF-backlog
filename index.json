@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T11:04:49Z",
+  "generated": "2026-10-12T11:07:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90074,14 +90074,13 @@
       "folder": "tasks",
       "id": "T-154345",
       "kernel_answers": [
-        "granted tests/test_install.py; nothing else outside writes (card updated by the kernel)."
+        "granted tests/test_install.py; nothing else outside writes (card updated by the kernel).",
+        "One more round, two fixes only: (1) asf/init.py:71 \u2014 treat FALLBACK as no released version, so record-check.yml never pins the nonexistent v0.0.0; (2) asf/record/check.py:347-349 \u2014 run the card.refs loop only in the mode that doesn't already report supersedes/superseded_by/delivers, so the full check reports each once. Each fix gets a test red on base, green on head. The red tests finding is stale: PR #1640 head 40d33f311 is green and CLEAN; nothing to fix for CI."
       ],
       "kernel_attempts": [
-        "review: no VERDICT line",
-        "relaunch: operator answer: granted tests/test_install.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: One more round, two fixes only: (1) asf/init.py:71 \u2014 treat FALLBACK as no released version, so record-check.yml never pins the nonexistent v0.0.0; (2) asf/record/check.py:347-349 \u2014 run the card.refs loop only in the mode that doesn't already report supersedes/superseded_by/delivers, so the full check reports each once. Each fix gets a test red on base, green on head. The red tests finding is stale: PR #1640 head 40d33f311 is green and CLEAN; nothing to fix for CI."
       ],
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/init.py:71 \u2014 `tag_of(FALLBACK)` returns `v0.0.0`, a tag that does not exist on origin, so the generated `record-check.yml` pins an unresolvable git ref and `ensure_record_ci` never corrects it; treat the FALLBACK as no released version: `installed = asf.__version__; ref = (version.tag_of(installed) if installed != version.FALLBACK else None) or 'main'`, and extend tests/test_card_enforcement.py:193 with cases patching `asf.__version__` to `version.FALLBACK` and to a released `'0.2.155'`",
         "asf/record/check.py:347-349 \u2014 the new `card.refs(meta)` loop runs in both modes, so the full check reports `supersedes`, `superseded_by` and `delivers` twice (second copy from asf/groom/conflicts.py:186/:199 via check.py:561, and check.py:89 via :488), against the diff's own comment at :379-380; skip those three fields in the full check only: `if not schema_only and field in ('supersedes', 'superseded_by', 'delivers'): continue`, and add a case asserting the full check reports a dangling `superseded_by` on a `.json` card exactly once",
@@ -90102,11 +90101,7 @@
         "PR #1640: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
-      "kernel_stuck_since": "2026-10-12T11:04:45Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90119,7 +90114,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T11:04:45Z",
+      "updated": "2026-10-12T11:07:18Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
@@ -91384,7 +91379,7 @@
         "PR #1633: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91397,7 +91392,7 @@
       ],
       "title": "one remote call a tick, and a beat observation on every live session",
       "type": "task",
-      "updated": "2026-10-12T10:53:26Z",
+      "updated": "2026-10-12T11:07:18Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
