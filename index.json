@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T18:11:35Z",
+  "generated": "2026-10-12T18:14:46Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17914,7 +17914,7 @@
       "kernel_notes": [
         "groom-fill-b-195724-1791827390: groom-fill raised risk high: fixes the one gate that stops a secret or operator name reaching any record, CI run or public repo (F-0075); a wrong MERGE_HEAD-skip is a false-negative bypass risk, not just a false positive."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17923,7 +17923,7 @@
       "state": "New",
       "title": "asf redact --pre-commit refuses a conflicted trunk merge: it scans the trunk's own files",
       "type": "bug",
-      "updated": "2026-10-12T17:58:07Z",
+      "updated": "2026-10-12T18:14:45Z",
       "writes": [
         "asf/redact.py",
         "tests/test_redact.py"
@@ -91021,7 +91021,11 @@
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "ready",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "ended without a REPORT",
+      "kernel_stuck_since": "2026-10-12T18:14:17Z",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91034,7 +91038,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T18:11:34Z",
+      "updated": "2026-10-12T18:14:45Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91885,7 +91889,7 @@
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91898,7 +91902,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T17:55:32Z",
+      "updated": "2026-10-12T18:14:45Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
