@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T08:43:40Z",
+  "generated": "2026-10-12T08:47:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17684,7 +17684,7 @@
       "state": "New",
       "title": "Stalled review continued on a quota-stopped account; BREACH review never acted on",
       "type": "bug",
-      "updated": "2026-10-12T08:40:04Z",
+      "updated": "2026-10-12T08:47:32Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/decide.py",
@@ -17711,7 +17711,7 @@
       "kernel_notes": [
         "groom-fill-b-187018-1791791555: groom-fill raised risk high: host.install() (asf/kernel/host.py) switches the launchd jobs' venv but never calls asf.installs.write \u2014 confirmed by reading the module (no \"installs\" import/call) against asf/installs.py (the only pin writer, used today solely by asf upgrade's move), so the card names a real, unfixed gap; scope is precise enough to fill as a bug, not reshape."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17720,7 +17720,7 @@
       "state": "New",
       "title": "kernel install leaves the product pin on the old venv",
       "type": "bug",
-      "updated": "2026-10-12T08:40:04Z",
+      "updated": "2026-10-12T08:47:32Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_host.py"
@@ -90425,10 +90425,11 @@
       "kernel_fix_rounds": 4,
       "kernel_notes": [
         "build-t-159854-1791788370: NEEDS OPERATOR: the heartbeat background command was refused by the sandbox (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-159854-1791788370 'asf/build-t-159854-1791788370@20261012T065940Z' >/dev/null 2>&1 &\u2026",
-        "build-t-159854-1791790150: NEEDS OPERATOR: the heartbeat loop could not start \u2014 the sandbox refused `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-159854-1791790150 'asf/build-t-159854-1791790150@20261012T072918Z'` as an unapproved com\u2026"
+        "build-t-159854-1791790150: NEEDS OPERATOR: the heartbeat loop could not start \u2014 the sandbox refused `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-159854-1791790150 'asf/build-t-159854-1791790150@20261012T072918Z'` as an unapproved com\u2026",
+        "build-t-159854-1791794091-local: NEEDS OPERATOR: the heartbeat loop could not start \u2014 the sandbox refused the `nohup sh .b0000_heartbeat.sh \u2026` call twice, so this session published no beat; the work is committed and pushed instead. To start it by h\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90441,7 +90442,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-12T08:35:17Z",
+      "updated": "2026-10-12T08:47:32Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
