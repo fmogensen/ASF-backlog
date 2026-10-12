@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T19:44:19Z",
+  "generated": "2026-10-12T19:47:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17919,7 +17919,7 @@
       "kernel_notes": [
         "groom-fill-b-195724-1791827390: groom-fill raised risk high: fixes the one gate that stops a secret or operator name reaching any record, CI run or public repo (F-0075); a wrong MERGE_HEAD-skip is a false-negative bypass risk, not just a false positive."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17928,7 +17928,7 @@
       "state": "New",
       "title": "asf redact --pre-commit refuses a conflicted trunk merge: it scans the trunk's own files",
       "type": "bug",
-      "updated": "2026-10-12T19:36:30Z",
+      "updated": "2026-10-12T19:47:27Z",
       "writes": [
         "asf/redact.py",
         "tests/test_redact.py"
@@ -17943,6 +17943,9 @@
       "id": "B-195925",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_notes": [
+        "groom-fill-b-195925-1791833775: groom-fill raised risk high: the hole and the missing CLI are precisely located (requested_ready's VERDICT_STATES gate, cmd_land's flag set); fillable as a scoped merge-queue/release-tooling fix with two concrete tests."
+      ],
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17951,7 +17954,11 @@
       "state": "New",
       "title": "asf land waits forever on a branch with an old terminal lane record; no release command",
       "type": "bug",
-      "updated": "2026-10-12T19:36:30Z"
+      "updated": "2026-10-12T19:47:27Z",
+      "writes": [
+        "asf/merge_queue.py",
+        "tests/test_merge_queue.py"
+      ]
     },
     "B-195926": {
       "backlinks": [],
@@ -17960,6 +17967,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-195926",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.167",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17968,7 +17977,7 @@
       "state": "New",
       "title": "Merge-queue reaper cancels foreign CI runs that share its ref prefix",
       "type": "bug",
-      "updated": "2026-10-12T17:19:14Z"
+      "updated": "2026-10-12T19:47:27Z"
     },
     "B-196077": {
       "backlinks": [],
@@ -90809,7 +90818,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T19:36:30Z",
+      "updated": "2026-10-12T19:47:27Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
