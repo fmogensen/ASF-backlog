@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T20:33:09Z",
+  "generated": "2026-10-12T20:38:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18002,6 +18002,9 @@
       "id": "B-196077",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_notes": [
+        "groom-fill-b-196077-1791836609: groom-fill raised risk high: two of the four listed findings (owned() in _bugless_live, the PD5 matrix-leg assertion) are already implemented and already tested on trunk; the real remaining gaps are a wording mismatch, two untested branches, and the unmet enablement-gate note, so the card is reshaped to those four concrete items."
+      ],
       "parent": "F-0336",
       "schema_version": 2,
       "severity": "S3",
@@ -18010,7 +18013,12 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-12T20:24:44Z"
+      "updated": "2026-10-12T20:38:11Z",
+      "writes": [
+        "asf/kernel/flake.py",
+        "asf/kernel/settings.py",
+        "tests/kernel/test_flake.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -50408,6 +50416,7 @@
         "T-154337",
         "T-154341",
         "T-159849",
+        "T-160208",
         "T-164021",
         "T-80371",
         "B-0040",
@@ -50460,6 +50469,7 @@
         "T-129191",
         "T-129193",
         "T-154337",
+        "T-160208",
         "T-164021",
         "T-80369",
         "T-80370"
@@ -91079,16 +91089,20 @@
         "granted asf/kernel/decide.py; nothing else outside writes (card updated by the kernel). T-159853 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. T-166577 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. asf/kernel/decide.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/decide.py; nothing else outside writes (card updated by the kernel). T-159853 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. T-166577 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. asf/kernel/decide.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted asf/kernel/decide.py; nothing else outside writes (card updated by the kernel). T-159853 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. T-166577 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. asf/kernel/decide.py matches kernel.risk.high: this item is high-risk now.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "tests/test_stacked_worktree.py \u2014 C1: the stack base on a relaunch is proved by no test; add two cases asserting the Launch itself, built like tests/kernel/test_stacked_builds.py:232-248 (item('T-0002', state=M.State.REVIEW, stack='worker/T-0001@abc123f'), the predecessor's open PR, pr(4, 'T-0002', base='worker/T-0001')) \u2014 (1) the review round: launch, = B.of(plan, A.Launch); assertEqual((launch.kind, launch.base, launch.base_sha), ('review', 'worker/T-0001', 'abc123f')); (2) the fix round: the same facts plus reviews=[B.review('T-0002', verdict='changes')] and ('build', 'worker/T-0001', 'abc123f') \u2014 each must go red when `base=base, base_sha=base_sha` is removed from asf/kernel/decide.py:1983 and :2005 respectively, because today reverting both leaves tests.kernel.test_stacked_builds (56) and tests.test_stacked_worktree (16) green.",
         "asf/kernel/decide.py:2000 (and :1979) \u2014 carry the stack onto every relaunch, not just the first: compute `base = stack_base(items[iid], facts)` and `base_sha = M.stack_of(items[iid])[1] if base else ''` and pass `base=base, base_sha=base_sha` to the `A.Launch(kind, iid, \u2026)` of the build/fix round at :2000 and to the `A.Launch('review', \u2026)` at :1979. Today only `decide.stacked_builds` (:2194-2195) sets them and it is guarded by `State.NEW` (:2172), so a fix round reaches `asf/workers/spawn.py:1331` with `ASF_BASE=''`, `asf/cli.py:206` falls back to the trunk, and this Task's own footprint gate refuses the push with the predecessor's paths as `needs writes:` \u2014 the author's own `tests/test_stacked_worktree.py:217-221` asserts exactly that refusal. The same `base=''` makes `asf/workers/spawn.py:684` resolve to the trunk, so the `CONFLICT` arm at :959-970 can rebase a stacked head onto `origin/main` and publish it (:976). `asf/kernel/decide.py` is outside this Task's `writes:`: report `needs writes: asf/kernel/decide.py` with `status: partial`.",
-        "operator answer: granted asf/kernel/decide.py; nothing else outside writes (card updated by the kernel). T-159853 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. T-166577 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. asf/kernel/decide.py matches kernel.risk.high: this item is high-risk now."
+        "operator answer: granted asf/kernel/decide.py; nothing else outside writes (card updated by the kernel). T-159853 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. T-166577 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. asf/kernel/decide.py matches kernel.risk.high: this item is high-risk now.",
+        "operator answer: granted asf/kernel/decide.py; nothing else outside writes (card updated by the kernel). T-159853 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. T-166577 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. asf/kernel/decide.py matches kernel.risk.high: this item is high-risk now.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91101,7 +91115,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T20:15:39Z",
+      "updated": "2026-10-12T20:38:11Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
