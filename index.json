@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T07:44:13Z",
+  "generated": "2026-10-12T07:47:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89788,13 +89788,13 @@
       "folder": "tasks",
       "id": "T-154343",
       "kernel_answers": [
-        "granted tests/kernel/test_apply.py; nothing else outside writes (card updated by the kernel)."
+        "granted tests/kernel/test_apply.py; nothing else outside writes (card updated by the kernel).",
+        "grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_apply.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round."
       ],
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/record/resolve.py:116 \u2014 superseding re-points a holder that IS the survivor onto itself (blockedBy: [self], which asf/evidence/evidence.py:1925 blocked_of has no guard against, so the survivor is blocked for good; card.validate accepts it). In _rewrite_one, when superseded_by equals the holder's own id, drop the edge instead of re-pointing it: pop the scalar field, or delete the list entry (highest index first, as the 'deleted' branch at :95-96 already does), set changed = True and append the field to `deleted` so the History line names what it pointed at; add the case to tests/test_card_edge_resolve.py's Superseded class (a survivor carrying blockedBy: [<loser>] loses the entry instead of gaining its own id).",
         "docs/plans/f-0340.md:553 \u2014 the Gate line `python3 -m unittest -q tests.test_groom tests.kernel.test_apply` errors because tests/kernel/test_apply.py does not exist; the operator has now granted that path (\"granted tests/kernel/test_apply.py\"), so create it and cover asf/kernel/apply.py's own additions: _resolve_closed calls resolve.close(root, iid, 'closed', commit=False) for exactly set(self.closed) & set(self.result.written); a Satisfied whose write_fields failed leaves its edges held; a raising resolve.close lands as result.failed == [(('write', 'resolve <iid>'), why)] and logs FAILED resolve <iid> (apply.py:742-748); through run() (not Satisfied alone) a declining Satisfied leaves the item State.STUCK with the UNRESOLVED reason prefix, owner='operator', and no state: Done staged; and a ports.record with no root is left alone by both Satisfied (apply.py:495) and _resolve_closed (apply.py:735).",
@@ -89808,11 +89808,7 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
-      "kernel_stuck_since": "2026-10-12T07:43:26Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89825,7 +89821,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T07:44:11Z",
+      "updated": "2026-10-12T07:47:41Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -90085,7 +90081,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-12T07:44:11Z",
+      "updated": "2026-10-12T07:47:41Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
