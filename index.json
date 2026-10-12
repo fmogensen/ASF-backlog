@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T16:50:23Z",
+  "generated": "2026-10-12T16:53:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17833,7 +17833,7 @@
         "PR #1655: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17842,7 +17842,7 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T16:39:27Z",
+      "updated": "2026-10-12T16:53:22Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -91773,7 +91773,8 @@
         "granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "asf/kernel/host.py:445-450 \u2014 the restore loop calls scheduler.bootstrap on every kept label, including one the boot-in did load; launchctl bootstrap refuses a label launchd already holds (which is why asf/scheduler.py:1025-1032 boots out and waits first), so that label ends with the old plist on disk and the new job still running, and the next install reads it as `unchanged` (:412-413). Keep the job in `kept` and boot the label out through scheduler.bootout_clocks(product.name, [job['clock']], cfg) (asf/scheduler.py:1214-1218 \u2014 no raw argv, K11 holds) after writing the old plist and before scheduler.bootstrap; make fake_bootstrap (tests/kernel/test_install_rollback.py:54-56) return (False, 'already loaded') for a label still in self.loaded, cleared by a fake over bootout_clocks, so test_a_label_not_loaded_rolls_back_every_replaced_plist_and_rebootstraps_it is red before the fix.",
@@ -91782,7 +91783,7 @@
       ],
       "kernel_fix_rounds": 2,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91795,7 +91796,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T16:39:27Z",
+      "updated": "2026-10-12T16:53:22Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
