@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T19:53:34Z",
+  "generated": "2026-10-12T19:56:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17973,6 +17973,7 @@
       "kernel_notes": [
         "groom-fill-b-195926-1791834440: groom-fill raised risk high: Confirmed real bug in asf/merge_queue.py:2471 (reap_leftover_runs matches any ref by prefix alone, no exclude path); filled with a concrete, additive fix (merge_queue.reap_skip glob patterns) matching the card's own \"or a product yaml key\" option, naming the tests that prove it."
       ],
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17981,7 +17982,7 @@
       "state": "New",
       "title": "Merge-queue reaper cancels foreign CI runs that share its ref prefix",
       "type": "bug",
-      "updated": "2026-10-12T19:53:32Z",
+      "updated": "2026-10-12T19:56:25Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_queue_reap.py"
@@ -90420,6 +90421,11 @@
         "relaunch: operator answer: hold: asf/record/setfield.py belongs to T-154341, wait for it \u2014 no writes granted; this card waits on it through after:. Decided by the kernel.",
         "relaunch: operator answer: granted asf/record/ingest.py asf/tick/flaky.py asf/tick/migrate_landing.py asf/tick/file_bugs.py asf/record/reopen.py asf/groom/groom.py asf/metrics/metrics.py tests/test_install.py; nothing else outside writes (card updated by the kernel). asf/record/ingest.py asf/record/reopen.py matches kernel.risk.high: this item is high-risk now."
       ],
+      "kernel_findings": [
+        "rebase: PR #1667 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: granted asf/record/ingest.py asf/tick/flaky.py asf/tick/migrate_landing.py asf/tick/file_bugs.py asf/record/reopen.py asf/groom/groom.py asf/metrics/metrics.py tests/test_install.py; nothing else outside writes (card updated by the kernel). asf/record/ingest.py asf/record/reopen.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -90441,7 +90447,7 @@
         "PR #1667: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90454,7 +90460,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-12T19:53:32Z",
+      "updated": "2026-10-12T19:56:25Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
@@ -91929,7 +91935,7 @@
       "kernel_fix_rounds": 2,
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91942,7 +91948,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T19:44:16Z",
+      "updated": "2026-10-12T19:56:25Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
