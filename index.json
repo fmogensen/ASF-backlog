@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T10:13:25Z",
+  "generated": "2026-10-12T10:16:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17780,7 +17780,11 @@
       "id": "B-188920",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.154",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/briefs/preamble.py:822-823 \u2014 pass a `limit_chars` to `section_lines` for the acceptance call that never binds in practice (e.g. `limit_chars=10**9`), or change `section_lines` so a sentinel skips the character slice entirely, and add a test with a long (>2000 char), few-line Acceptance body so a regression here is caught."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17789,7 +17793,7 @@
       "state": "New",
       "title": "Briefs truncate the card's Acceptance; reviewers cannot read the record",
       "type": "bug",
-      "updated": "2026-10-12T10:06:50Z",
+      "updated": "2026-10-12T10:16:01Z",
       "writes": [
         "asf/briefs/preamble.py",
         "tests/test_briefs.py"
@@ -36364,9 +36368,13 @@
       "decided": true,
       "folder": "features",
       "id": "F-0352",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+      "kernel_answers": [
+        "F-0347 is open (in progress, 2 of 10 Tasks done) and owns the WIP-push/beat work; C4 stays a check that the build brief says it, nothing to build under F-0352. Plan Tasks for S-176462 (hub split) and S-185716 (strong first pass) in this plan so they get minted."
       ],
+      "kernel_attempts": [
+        "relaunch: operator answer: F-0347 is open (in progress, 2 of 10 Tasks done) and owns the WIP-push/beat work; C4 stays a check that the build brief says it, nothing to build under F-0352. Plan Tasks for S-176462 (hub split) and S-185716 (strong first pass) in this plan so they get minted."
+      ],
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "docs/plans/f-0352.md:41 \u2014 K1 claims `idcheck.cited_stories`/`phantom_stories` see only 3 Story ids, but the plan's \u00a74 cites a 4th (`S-177314`); re-run the probes and update the claimed results (actual: `cited_stories` has 4 ids, `phantom_stories` = `['S-177314']` with canon `{S-176462}`, `['S-176462','S-177314']` with empty canon).",
         "docs/plans/f-0352.md:73 \u2014 \"the only three S-/T-/B- tokens in the whole document\" is wrong since \u00a74 added `S-177314`; fix to say four, consistent with K1's fix.",
@@ -36388,7 +36396,7 @@
       "state": "New",
       "title": "Adopt botseon's measured speed fixes: rebase cap, record lint, two holders, WIP push",
       "type": "feature",
-      "updated": "2026-10-11T22:31:51Z"
+      "updated": "2026-10-12T10:16:01Z"
     },
     "F-0353": {
       "backlinks": [],
@@ -41050,7 +41058,9 @@
       "updated": "2026-10-11T20:52:50Z"
     },
     "S-185716": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0352"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -89943,7 +89953,7 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89956,7 +89966,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T09:57:27Z",
+      "updated": "2026-10-12T10:16:01Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -90380,7 +90390,11 @@
         "PR #1645: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 5 fix rounds",
+      "kernel_stuck_since": "2026-10-12T10:15:32Z",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90394,7 +90408,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T09:57:27Z",
+      "updated": "2026-10-12T10:16:01Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
