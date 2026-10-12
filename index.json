@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T08:40:08Z",
+  "generated": "2026-10-12T08:43:40Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17645,7 +17645,7 @@
       "kernel_notes": [
         "groom-fill-b-186216-1791788912: groom-fill raised risk high: all three gaps are confirmed on trunk in the kernel's own conflict/rebuild/archive path (decide.py, ports.py), each pinned by an existing or directly adjacent test class."
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17654,7 +17654,7 @@
       "state": "New",
       "title": "Bug: unresolvable conflict ends Stuck, rebuild can't be requested, and archive names collide",
       "type": "bug",
-      "updated": "2026-10-12T08:25:40Z",
+      "updated": "2026-10-12T08:43:36Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/ports.py",
@@ -89978,12 +89978,12 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/record/check.py:338 \u2014 take the reference fields from `card.refs(meta)` against the `canonical` dict already in hand (never `card.validate(meta, root)`, which is O(n\u00b2)), and guard the four hand-rolled `parent`/`blockedBy`/`after`/`stories` arms with `if not rec['path'].endswith('.json')` so each reference reports once; add a case asserting `--schema-only` reports a dangling `superseded_by` and a dangling `parent` on an epic",
-        "asf/init.py:71 \u2014 replace `pin = f'{DIST_NAME}=={asf.__version__}'` with a git spec, `ref = tag_of(asf.__version__) or 'main'` and `pin = f'git+{repo_url(cached=True)}@{ref}'` (`asf/upgrade.py:447`), so nothing product-specific is written into a tracked file; extend `tests/test_card_enforcement.py:149` to assert the install line names a git ref and carries no `==` index pin",
-        "asf/init.py:310 \u2014 move the `put` into an idempotent `ensure_record_ci(backlog)` and call it from both branches of `cmd_init` (after `schema.stamp(backlog, version)` at `:360` as well as from `lay_down`), the way `ensure_git_hooks` is called at `:378`; correct `asf/doctor.py:206`'s detail, and add a case where a directory `is_asf_record` reports true for ends with the workflow in place and a hand-edited one is untouched",
-        "docs/reviews/1-t-154345.md \u2014 remove it from the branch in one commit (`git rm docs/reviews/1-t-154345.md`; `git commit -s`), no force-push; report `needs writes: docs/reviews/1-t-154345.md`"
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/test_install.py; nothing else outside writes (card updated by the kernel).",
+        "Another session edits asf/cli.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1630: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1630: part (3.12, 4) is red but not a required check \u2014 ignored",
@@ -89994,7 +89994,7 @@
         "PR #1640: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90007,7 +90007,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T08:40:04Z",
+      "updated": "2026-10-12T08:43:36Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
