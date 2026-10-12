@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T03:34:26Z",
+  "generated": "2026-10-12T03:41:59Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -91405,17 +91405,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-180938",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding",
-        "session ran past its max age"
-      ],
-      "kernel_findings": [
-        "asf/kernel/waits.py:212-215 \u2014 the guard only suppresses overlap->seat, so a seat->overlap move writes a record and resets the spell start (loop.py:436 folds the last record's at into facts.waits): the item leaves overdue (decide.py:2342-2359) and so breaches and the launch priority due (decide.py:471). Common path \u2014 decide.py:1862 takes 'seat' when free <= 0 and reaches 'overlap' (:1877) only with a seat free. Fix: in changes (waits.py:209-215) keep the continue for the identical-reason case only, and for a state-unchanged move between two different READY_CLASSES emit the record with 'at': old['at'] so the row reads the new class and the age survives; add a test case asserting the age survives both ways.",
-        "asf/kernel/decide.py:2417 \u2014 the paused branch widened to W.READY_CLASSES + ('review',) has no test (grep -rn READY_CLASSES tests/ is empty; tests/test_pause.py covers seat and review only). Fix: add a case to tests/kernel/test_overlap_wait.py beside Breach (:189) with facts paused and waits={'T-2': ('overlap', ago(25))}, asserting plan.breaches[0]['action'] == 'none: launches paused'.",
-        "rebase: PR #1623 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -91429,7 +91422,7 @@
       ],
       "title": "`overlap` is its own wait class, so `seat` stops hiding it",
       "type": "task",
-      "updated": "2026-10-12T03:29:06Z",
+      "updated": "2026-10-12T03:41:34Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/waits.py",
