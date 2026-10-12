@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T10:09:28Z",
+  "generated": "2026-10-12T10:13:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17664,7 +17664,7 @@
       "state": "New",
       "title": "Bug: unresolvable conflict ends Stuck, rebuild can't be requested, and archive names collide",
       "type": "bug",
-      "updated": "2026-10-12T10:06:50Z",
+      "updated": "2026-10-12T10:13:23Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/ports.py",
@@ -17692,7 +17692,7 @@
       "kernel_notes": [
         "groom-fill-b-186367-1791789686: groom-fill raised risk high: both failure mechanisms are confirmed on trunk \u2014 heartbeat.launch() reuses the same account with no quota check, and continuation resets session.started so the existing max_review_age_h bound never trips on a repeatedly-stalling review; a new configurable breach limit and an account-band check are concrete, buildable fixes."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17701,7 +17701,7 @@
       "state": "New",
       "title": "Stalled review continued on a quota-stopped account; BREACH review never acted on",
       "type": "bug",
-      "updated": "2026-10-12T10:00:54Z",
+      "updated": "2026-10-12T10:13:23Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/decide.py",
@@ -89994,7 +89994,7 @@
         "PR #1632: upgrade-matrix (v0.2.152) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90007,7 +90007,7 @@
       ],
       "title": "an invalid card and an unresolvable reference are LIMBO with the reason, never dropped",
       "type": "task",
-      "updated": "2026-10-12T07:44:11Z",
+      "updated": "2026-10-12T10:13:23Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_limbo_invalid_card.py",
