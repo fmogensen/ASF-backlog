@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T13:35:21Z",
+  "generated": "2026-10-12T13:42:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89885,20 +89885,10 @@
       "kernel_answers": [
         "granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now.",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "asf/kernel/ports.py:245 \u2014 a scalar `gate` (what `asf set gate=\u2026`/`asf new --set gate=\u2026` land, since `gate` is not in `setfield.LIST_FIELDS`) is iterated character by character at `asf/kernel/dor.py:196-197` and reads as no gate test, while the non-`None` field also suppresses the body prose \u2014 so setting a gate un-readies a Ready Task. Coerce on the port: `acceptance, gate = meta.get('acceptance'), meta.get('gate')` / `item.acceptance = acceptance` / `item.gate = as_list(gate) if gate is not None else None` (`as_list` is already imported at `asf/kernel/ports.py:63`; keep `None` for unset so the prose fallback survives).",
-        "asf/record/plan_tasks.py:170 \u2014 `gate_of` must join a `\\` line-continuation the way `acceptance_of` does (`asf/record/plan_tasks.py:137-141`): accumulate into `cmd`, `rstrip('\\\\')`, flush only on a line that does not end with `\\`. As written, 524 Gate lines across this tree's plans mint as dangling-backslash fragments and bare continuation lines that are not commands, breaking spec line 5. Extend `tests/test_card_body_fields.py:190` (`test_15`) with a `\\`-continued Gate line.",
-        "asf/kernel/ports.py:752 \u2014 `fill_card`'s json branch must write through `asf.record.stage.guarded` (as `set_typed` does at `asf/record/setfield.py:434`), raising `PortError` on findings, instead of calling `writer.write_card` directly; `write_card` is Task 3's schema gate, not the record stage, so a schema-2 card's `writes:` change currently skips invariant I3, its rollback and the tick's Bug filer. Add a case filling a `.json` Task with a footprint another Active Task already holds.",
-        "operator answer: granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now.",
-        "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
-        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89911,7 +89901,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T13:23:34Z",
+      "updated": "2026-10-12T13:42:42Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -90499,7 +90489,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T13:32:37Z",
+      "updated": "2026-10-12T13:42:42Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
