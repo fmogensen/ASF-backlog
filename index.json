@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T11:10:28Z",
+  "generated": "2026-10-12T11:14:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89176,6 +89176,9 @@
       "kernel_answers": [
         "granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them."
       ],
+      "kernel_attempts": [
+        "ended without a REPORT"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_notes": [
@@ -89190,7 +89193,7 @@
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -89208,7 +89211,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-12T10:50:03Z",
+      "updated": "2026-10-12T11:14:46Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -89863,7 +89866,17 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/dor.py:191 \u2014 decide each field on its own instead of one combined branch: acc = _typed_test_refs(acceptance) if acceptance is not None else the acceptance_lines(it.body) reading, and gate_src = gate_field if gate_field is not None else gate_lines(it.body). As written, a Task minted from a plan (plan_tasks.py:556 -> ids.py:188) carries a typed gate: with its acceptance still in the body, so the typed branch is taken, acc = _typed_test_refs(None) = [], the body's ## Acceptance is never read, and the card is held New with 'no test named in Acceptance or Gate' \u2014 measured, and 25 plan Tasks in the tree have a Gate naming no test. Add that mixed case to tests/test_card_body_fields.py.",
+        "asf/kernel/ports.py:741 \u2014 carry the test each acceptance line names into the field dor reads: for each line, refs = dor_mod.test_refs(a) and write {'text': a, 'test': refs[0]} when refs else {'text': a} (dor_mod is already imported at ports.py:57). Today fill_card writes {'text': a} only while dor._typed_test_refs (dor.py:166) reads entry['test'] only, so after a groom-fill a json card still reports 'no test named in Acceptance or Gate' \u2014 measured end to end \u2014 and the fill can never satisfy the DoR that asked for it. Assert it in test_11.",
+        "asf/kernel/ports.py:745 \u2014 store the history entry without the '- ' prefix ('%s groom-fill: acceptance and writes filled%s' % ...), as asf/record/resolve.py:160 does: card._render_body (asf/record/card.py:167) renders each entry as f\"- {h}\", so the view reads '- - 2026-10-12 groom-fill: ...' (measured). Fix the same convention in tests/test_card_body_fields.py:247, whose test_20 currently asserts the prefixed form.",
+        "asf/kernel/ports.py:733,749 \u2014 replace meta = dict(rec['meta']) / rec['meta'], rec['text'] = meta, text with a re-read of the canonical text: rec['meta'], rec['body'] = card_mod.loads(text, rec['path']); rec['text'] = text. dict() drops FrontmatterDict.machine_keys, which frontmatter.split_machine reads (frontmatter.py:501), and _load caches the record for the port's lifetime (ports.py:334), so every later item_from_card in that tick sees machine == {} and reads the filled card as state NEW, closed False, fix_rounds 0, findings [] (measured). rec['body'] is also left stale.",
+        "asf/proves.py:367,388 \u2014 tick_acceptance and card_tick have no production caller, so Step 4's tick is not delivered: asf/record/ingest.py:1554,1565 and asf/record/reconcile_proofs.py:270,303 still tick the markdown body and render it back, and a json card's typed acceptance is never flipped. Declare needs writes: asf/record/ingest.py asf/record/reconcile_proofs.py and branch those call sites on rec['path'].endswith('.json') through card_tick + card.dumps + writer.write_card \u2014 or say in the REPORT that it is deferred to Task 10, rather than leaving an uncalled function behind.",
+        "operator answer: granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89876,7 +89889,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T11:04:45Z",
+      "updated": "2026-10-12T11:14:46Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -90717,7 +90730,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160208",
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "partial: NEEDS OPERATOR: T-160208 touch_amendable_set \u2014 the three cut-from lines in `asf/briefs/templates/coder.md`, `asf/briefs/templates/fix-bug.md` and `asf/briefs/templates/direct.md` need `cut f\u2026",
+      "kernel_stuck_since": "2026-10-12T11:14:00Z",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -90730,7 +90747,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T10:41:05Z",
+      "updated": "2026-10-12T11:14:46Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91842,7 +91859,14 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted docs/products.example.yaml tests/kernel/test_overlap_wait.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/ports.py:2768 \u2014 the dropped max(1, ...) clamp lets kernel.launch.max_holders: 0 hold every Ready item as 'overlap' even with disjoint writes (settings.problems accepts 0 with no error or warning, and the neighbouring max_open_prs documents 0 as \"off\"); restore it as max_holders=max(1, int(k['launch']['max_holders'])), or add a \"must be at least 1\" floor in settings.problems in kernel.landing.update_parallel's shape (asf/kernel/settings.py:395-398) with a case in tests/kernel/test_two_holders.py::Knob",
+        "tests/kernel/test_two_holders.py:153-157 \u2014 test_a_fresh_build_with_only_a_shared_finding_is_still_a_coder_brief cannot fail: `shared` is assigned and never used, and brief_kind (asf/kernel/briefs.py:302-308, untouched by this diff) takes no findings, so the assertion holds with the whole Task reverted while the report claims Proves: S-175863 line 12; put the notice through the brief \u2014 after the brief_kind assertion add `text = self.brief([shared], item=item, launch=launch)`, `self.assertIn('## Shared files', text)` and `self.assertNotIn('## Review findings', text)`",
+        "operator answer: granted docs/products.example.yaml tests/kernel/test_overlap_wait.py; nothing else outside writes (card updated by the kernel).",
+        "Another session edits asf/kernel/decide.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -91857,7 +91881,7 @@
       ],
       "title": "a second item may hold a file another is building, and its brief names the holder",
       "type": "task",
-      "updated": "2026-10-12T10:59:16Z",
+      "updated": "2026-10-12T11:14:46Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/model.py",
