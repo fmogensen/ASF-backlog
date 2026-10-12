@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T00:04:11Z",
+  "generated": "2026-10-12T00:12:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89517,7 +89517,8 @@
       "folder": "tasks",
       "id": "T-154340",
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: PR #1595 landed and turned main red (tests (3.12), tests (3.13) at 3ed08c6ab); it was reverted. Build it again so the required checks pass on main."
       ],
       "kernel_findings": [
         "asf/record/index.py:39 \u2014 `only=` matches only `rec['relpath']`, so the view relpath `refresh` now returns at `:58` can never be fed back to it; `asf/record/publish.py:154-156` does exactly that round-trip, so a hand-edited view in the checkout is never regenerated (the commit lands the right bytes, the working tree keeps the stale ones, and `asf check` then reports `view is stale` with no automatic repair). Fix: `if only is not None and rec['relpath'] not in only and os.path.relpath(card.view_path(rec['path']), root) not in only: continue`.",
@@ -89526,7 +89527,13 @@
         "asf/cli.py:986 \u2014 `resolve_record` announces `record: <path>` on stdout ahead of the rendered card, so `asf show`'s stdout is not the card's text that spec \u00a72.9 says is byte-identical to the view; dispatch it as the other value-on-stdout commands do, `return cmd_show(args, resolve_record(args, announce=_announce_stderr))`."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "landing",
+      "kernel_notes": [
+        "PR #1595 reverted off main (red at 3ed08c6ab: tests (3.12), tests (3.13)) \u2014 back to Ready"
+      ],
+      "kernel_reverted": [
+        1595
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89539,7 +89546,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:12:40Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89559,6 +89566,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154341",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89571,7 +89579,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-11T09:54:12Z",
+      "updated": "2026-10-12T00:12:40Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -89850,10 +89858,11 @@
       "kernel_fix_rounds": 2,
       "kernel_notes": [
         "build-t-159849-1791746871: NEEDS OPERATOR: `worker/T-159849` is rebased and cannot fast-forward onto its own remote, so the Stop gate refuses it twice and the branch needs the factory's publish \u2014 `git -C ~/.asf/state/asf/worktrees/\u2026",
-        "PR #1611: install-clean-macos is red but not a required check \u2014 ignored"
+        "PR #1611: install-clean-macos is red but not a required check \u2014 ignored",
+        "PR #1611: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89866,7 +89875,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:12:40Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -89949,7 +89958,7 @@
       ],
       "title": "the console's share \u2014 the question ledger, the window, the gate criterion and the classifier that codes nothing",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:12:40Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/kernel/loop.py",
@@ -90851,10 +90860,11 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "tests/kernel/test_kernel_heartbeat.py:179 \u2014 C1: the only case for acceptance line 7 (\"a worktree whose exclude file cannot be written still launches, with the script written and one line said\") asserts neither \"still launches\" nor \"with the script written\": it calls scratch.exclude(wt, log=lambda) directly and never reaches spawn.make_worktree (asf/workers/spawn.py:694) or spawn.spawn (asf/workers/spawn.py:1327-1333), so make_worktree's own log-to-stderr wiring is untested too. Fix: add a case to PortAndLedgerTests, same root skipIf, that chmods <repo>/.git/info/exclude to 0o400 (addCleanup restores 0o600), runs spawn_mod.spawn(self.product, s1_row(), self.acct(), 'fix the bug\\n', runtime=runtime_mod.FakeRuntime([{'running': True, 'pid': 4244}]), cfg=self.cfg, heartbeat=True) under contextlib.redirect_stderr, and asserts the record came back, os.path.exists(os.path.join(rec['worktree'], scratch.SCRIPT_NAME)), and 'could not harden the shared exclude file' in the captured stderr.",
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "operator answer: granted asf/workers/runtime.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1588: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1588: part (3.13, 2) is red but not a required check \u2014 ignored",
@@ -90863,7 +90873,7 @@
         "PR #1622: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90876,7 +90886,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:12:40Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -91198,7 +91208,7 @@
       ],
       "title": "the seats \u2014 the sweep launches after the launches and after the intake, on what they left",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:12:40Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/actions.py",
@@ -92675,7 +92685,7 @@
         "rebase: PR #1621 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -92688,7 +92698,7 @@
       ],
       "title": "the `tags` act \u2014 every version reader over annotated tags",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:12:40Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_tags.py"
