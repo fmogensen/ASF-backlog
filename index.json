@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T15:54:26Z",
+  "generated": "2026-10-12T15:58:21Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17837,7 +17837,7 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T15:48:18Z",
+      "updated": "2026-10-12T15:58:20Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -91610,7 +91610,7 @@
       ],
       "title": "the settle \u2014 the snapshot lands, the ref goes, the notes reach the next brief",
       "type": "task",
-      "updated": "2026-10-12T15:48:18Z",
+      "updated": "2026-10-12T15:58:20Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/briefs.py",
@@ -91707,14 +91707,13 @@
         "relaunch: operator answer: granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
-        "asf/kernel/host.py:442-443 \u2014 a paused clock is counted as down, so a no-op install rolls back, returns 1 and prints a NEEDS OPERATOR bootstrap for the clock the operator paused (origin/main returns 0); replace the raw comprehension with `down = scheduler.unloaded_clocks([job['label'] for job in all_jobs], cfg)` (asf/scheduler.py:1627-1632, the helper asf/install.py:386-389 and this module's own host.py:552-554 already use) and add a paused-clock case.",
-        "tests/kernel/test_install_rollback.py:103-110 \u2014 the only case for Step 3 switches both jobs, so both are pending and the test passes with the verification narrowed to `pending`; make it a genuinely one-job switch (same python, only `kernel.watch.interval_s` changed) with `collateral_down = {self.tick_label}`, assert rc == 1 and `self.tick_label in self.lines[-1]`, and fix the stale \"watch-only switch\" comment at :105-106.",
-        "asf/kernel/host.py:446-454 \u2014 the operator's bootstrap line is printed only for a kept plist whose re-bootstrap failed, so a label still down that was never pending (or whose kept plist was None) gets neither a bootstrap attempt nor a command, against Step 4's \"for each label still down\"; drop the `if not ok` print and re-read after the restore loop, `for label in scheduler.unloaded_clocks(down, cfg): out('NEEDS OPERATOR: launchctl bootstrap gui/%d %s' % (scheduler._uid(), scheduler.plist_path(label)))`, before the final rolled-back line.",
+        "asf/kernel/host.py:445-450 \u2014 the restore loop calls scheduler.bootstrap on every kept label, including one the boot-in did load; launchctl bootstrap refuses a label launchd already holds (which is why asf/scheduler.py:1025-1032 boots out and waits first), so that label ends with the old plist on disk and the new job still running, and the next install reads it as `unchanged` (:412-413). Keep the job in `kept` and boot the label out through scheduler.bootout_clocks(product.name, [job['clock']], cfg) (asf/scheduler.py:1214-1218 \u2014 no raw argv, K11 holds) after writing the old plist and before scheduler.bootstrap; make fake_bootstrap (tests/kernel/test_install_rollback.py:54-56) return (False, 'already loaded') for a label still in self.loaded, cleared by a fake over bootout_clocks, so test_a_label_not_loaded_rolls_back_every_replaced_plist_and_rebootstraps_it is red before the fix.",
+        "asf/kernel/host.py:438-440 \u2014 installs.write runs before the verification and is never undone, so a rollback leaves install.json naming the new venv while both restored plists name the old one, against the module doc's own invariant (:16-19) and this head's \"never stay half-applied\" (:395-396). Move the pin write and its _pin_line print below the `if pending:` verification block, still inside the held tick_lock, as `if pin and not rolled_back:`; add a case with host._pin_change patched to return a pin (the fakes never reach it today \u2014 installs.commit_of('/old') reads no sha, :336-338) asserting installs.read('sample') is unchanged after a rollback and moved after a success.",
         "operator answer: granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91727,7 +91726,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T15:43:32Z",
+      "updated": "2026-10-12T15:58:20Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
