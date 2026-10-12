@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T09:57:29Z",
+  "generated": "2026-10-12T10:00:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17683,14 +17683,16 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
       "kernel_findings": [
-        "asf/kernel/decide.py:2317-2326 \u2014 the bound is the item's REVIEW wait spell, which no relaunch resets, so the reviewer launched one tick ago is ended again and two `OVER_AGE` attempts park the item `Stuck(owner=loop)` with no review done (default-on at 4 h for every product, and it fires on plain review-seat starvation too). Fix the root cause in the card's own footprint: carry the run's first launch time across a continuation (`asf/workers/heartbeat.py:733-737` mints a fresh `started`; keep the original as the session's age, read it into `Session.started` in `asf/kernel/ports.py`) so `session_bound` catches a relaunch-looping review with no new knob \u2014 or, keeping the knob, fire at most once per review wait spell and never on a session still inside its own `session_bound`, and add the missing case: a reviewer relaunched one tick ago on an item past the limit is left alone.",
-        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "asf/kernel/ports.py:2013 \u2014 `Session.started` now carries the chain's origin, but asf/kernel/ports.py:2265 passes it to `headroom.lift_disproved` as this run's own start, so a continuation that ran and reported after its account's stop can never lift a false stop (`began <= stopped_at`, asf/workers/headroom.py:227); add `run_started: str = ''` to `M.Session`, set `out[-1].run_started = run.get('started') or ''` beside line 2013, and read `getattr(session, 'run_started', '') or session.started` at 2265, with a case in tests/kernel/test_false_account_stops.py (whose fixture at :98-103 bypasses `rows()` today)",
+        "tests/kernel/test_limbo.py:193 \u2014 the card's named acceptance test `Breach::test_a_review_breach_past_the_relaunch_limit_ends_its_session_and_relaunches` was deleted with the reverted knob and only the negative guard remains; restore it as the positive two-tick shape of tests/kernel/test_limbo.py:181-191 \u2014 `B.session('r1','T-1',kind='review',started=ago(200))` under `config(max_session_age_h=3, max_review_age_h=1.5)` \u2192 `EndSession ['r1']`, then a second `D.decide` without that session \u2192 `Launch ('review', True)`",
+        "asf/kernel/ports.py:2013 \u2014 the only new kernel production line has no test (`grep -rn first_started tests/` hits just tests/test_heartbeat.py:681, the ledger record); add a tests/kernel/test_ports.py case over `P.RealSessions(...).sessions()` with one row carrying `first_started` older than `started` and one with `started` alone, asserting each row's resulting `Session.started`",
+        "Another session edits asf/kernel/decide.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-186367-1791789686: groom-fill raised risk high: both failure mechanisms are confirmed on trunk \u2014 heartbeat.launch() reuses the same account with no quota check, and continuation resets session.started so the existing max_review_age_h bound never trips on a repeatedly-stalling review; a new configurable breach limit and an account-band check are concrete, buildable fixes."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17699,7 +17701,7 @@
       "state": "New",
       "title": "Stalled review continued on a quota-stopped account; BREACH review never acted on",
       "type": "bug",
-      "updated": "2026-10-12T09:57:27Z",
+      "updated": "2026-10-12T10:00:54Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/decide.py",
@@ -91780,7 +91782,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-180939",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted docs/products.example.yaml tests/kernel/test_overlap_wait.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted docs/products.example.yaml tests/kernel/test_overlap_wait.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -91795,7 +91803,7 @@
       ],
       "title": "a second item may hold a file another is building, and its brief names the holder",
       "type": "task",
-      "updated": "2026-10-12T09:33:10Z",
+      "updated": "2026-10-12T10:00:54Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/model.py",
@@ -91805,7 +91813,9 @@
         "tests/kernel/test_two_holders.py",
         "tests/kernel/test_decide.py",
         "tests/kernel/test_scenarios.py",
-        "tests/kernel/test_loop.py"
+        "tests/kernel/test_loop.py",
+        "docs/products.example.yaml",
+        "tests/kernel/test_overlap_wait.py"
       ]
     },
     "T-76350": {
