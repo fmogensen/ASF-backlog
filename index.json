@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T11:53:20Z",
+  "generated": "2026-10-12T11:56:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -91447,10 +91447,15 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166576",
+      "kernel_findings": [
+        "asf/kernel/decide.py:2370 \u2014 the C6 ceiling can never fire: `getattr(config, 'heartbeat_max_age', None)` reads a field no Config has (absent from dataclasses.fields(M.Config); kernel.heartbeat.max_age is parsed at settings.py:421 and never passed through at ports.py:2926), while _over_age:2404-2405 now skips every judged_by_beat session \u2014 so an `alive` session has no bound at all, neither p90 nor ceiling, and no Task in docs/plans/f-0347.md owns the wiring. Under the writes the REPORT already requested: add `heartbeat_max_age: float = None` (seconds) to Config in asf/kernel/model.py beside max_session_age_h; add `heartbeat_max_age=k['heartbeat']['max_age'],` to the Config(...) construction at asf/kernel/ports.py:2926; change decide.py:2370 to `ceiling = config.heartbeat_max_age`; and build the case at tests/kernel/test_beat_decide.py:95-98 as `cfg = config(heartbeat_max_age=6 * 3600)` instead of setting the attribute by hand, keeping :104-108 as the no-ceiling case.",
+        "Another session edits asf/kernel/decide.py, asf/kernel/loop.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1654: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91463,7 +91468,7 @@
       ],
       "title": "beats decide, not age",
       "type": "task",
-      "updated": "2026-10-12T11:39:11Z",
+      "updated": "2026-10-12T11:56:50Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/loop.py",
