@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T07:26:27Z",
+  "generated": "2026-10-12T07:29:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17667,6 +17667,9 @@
       "id": "B-186367",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
+      "kernel_notes": [
+        "groom-fill-b-186367-1791789686: groom-fill raised risk high: both failure mechanisms are confirmed on trunk \u2014 heartbeat.launch() reuses the same account with no quota check, and continuation resets session.started so the existing max_review_age_h bound never trips on a repeatedly-stalling review; a new configurable breach limit and an account-band check are concrete, buildable fixes."
+      ],
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17675,7 +17678,16 @@
       "state": "New",
       "title": "Stalled review continued on a quota-stopped account; BREACH review never acted on",
       "type": "bug",
-      "updated": "2026-10-12T07:21:34Z"
+      "updated": "2026-10-12T07:29:18Z",
+      "writes": [
+        "asf/workers/heartbeat.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/model.py",
+        "asf/kernel/ports.py",
+        "asf/kernel/settings.py",
+        "tests/test_heartbeat.py",
+        "tests/kernel/test_limbo.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -90307,16 +90319,22 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159854",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "rebase: PR #1638 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+        "tests/kernel/test_incidents.py:197 \u2014 S-131017's eighth acceptance line (\"the view reads only the ledger and the settings, and writes nothing\") is asserted against incidents.report()/incidents.render(), two pure functions over a list of dicts that take no state_dir and cannot write, so the case cannot fail and proves nothing; the view is incidents.risk() (asf/kernel/incidents.py:214-231, dispatched at asf/cli.py:899-905) and nothing in the repository calls it. Add a View case that calls incidents.risk(<stub env.Product>, state_dir=tmp, out=out.append) over a one-record ledger and asserts the printed table, settings and trigger line plus os.listdir(tmp) and the ledger bytes unchanged before and after; rename the existing case to say it covers the fold and the renderer.",
+        "asf/kernel/loop.py:465-481 \u2014 measure_incidents is the only path that ever appends to kernel-incidents.jsonl in a real run (called at :635, write=False at :604) and no test calls it; the sibling it copies is tested at exactly that seam (tests/kernel/test_main_moves.py:224-238). Drop the call, invert write, or break the import and every test in test_incidents.py still passes while asf kernel risk reports \"0 incidents, 0 of them flagged\" \u2014 which the Stage-5 card reads as widening is not justified, the one failure mode D22 exists to prevent. Add a TheTickWritesIt class to tests/kernel/test_incidents.py covering the write path (two records appended, [] and no second append on a repeat tick, out empty), the dry run (write=False appends nothing), and the swallowed failure (measure_incidents(None, None, None, None, None) returns [] and prints exactly one \"incident ledger failed\" line).",
+        "rebase: PR #1638 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "Another session edits asf/kernel/loop.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "build-t-159854-1791788370: NEEDS OPERATOR: the heartbeat background command was refused by the sandbox (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-159854-1791788370 'asf/build-t-159854-1791788370@20261012T065940Z' >/dev/null 2>&1 &\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90329,7 +90347,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-12T07:14:06Z",
+      "updated": "2026-10-12T07:29:18Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
