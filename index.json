@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T16:08:23Z",
+  "generated": "2026-10-12T16:13:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17822,13 +17822,17 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.159",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/kernel/ports.py:1649 \u2014 a red the kernel already read keeps `head_sha=''` for good: `GhCache` is durable JSON on disk (ports.py:1399-1447, real path via `real_ports` at :3030-3037) and every pre-fix `jobs` entry holds `attempt` with no `head_sha`, so the cached branch returns '' and `current_checks` (decide.py:1502) still counts the stale red as the PR's own \u2014 the card's AC2 does not hold on the PRs it exists for (T-159852, T-154345), whose reds are precisely the cached ones. Change the guard to `if 'attempt' in seen and 'head_sha' in seen:` so such an entry falls through once to the `actions/runs/<run_id>` read it made before this card anyway (the copied `seen` keeps `step`/`files`/`tail`, so no log is re-read and `:1671-1672` backfills both keys), and add a third case beside the two named ones: a `jobs` entry with `attempt` and no `head_sha` must still end with `check.head_sha` set.",
+        "Another session edits asf/kernel/briefs.py, asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-190071-1791800796: groom-fill raised risk high: GitHub's statusCheckRollup can lag a push by up to ~60s under an already-current headRefOid (verified live via gh api against this repo's own open PR), and Check carries no head identity to catch it \u2014 _red_detail already makes the one gh api call that has head_sha, so tagging Check with it and excluding a head-mismatched red from _judge_pr's fix-round path is a minimal, buildable fix.",
         "PR #1655: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17837,7 +17841,7 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T15:58:20Z",
+      "updated": "2026-10-12T16:13:20Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -17883,6 +17887,9 @@
       "id": "B-195073",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_notes": [
+        "groom-fill-b-195073-1791821292: groom-fill verdict rejected: no GROOM-FILL block"
+      ],
       "parent": "F-0352",
       "schema_version": 2,
       "severity": "S3",
@@ -17891,7 +17898,7 @@
       "state": "New",
       "title": "Shared-file brief says merge origin/main; review demands rebase: one rule",
       "type": "bug",
-      "updated": "2026-10-12T16:08:20Z"
+      "updated": "2026-10-12T16:13:20Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -89264,7 +89271,8 @@
         "One more round, three fixes in asf/kernel/flake.py judge(), nothing else: (1) the bugless-live-entry path (:359-372) calls owned(sig, facts) first and files no second card when another open Bug owns the signature; (2) on that same path the filed Bug carries the test file in writes: and an acceptance line naming the test, same as the fresh path at :416; when no test file is in the log, file nothing and record 'no test file in the log: nothing filed'; (3) add the missing PD5 assertion in tests/kernel/test_flake.py (a live entry is live for every matrix leg in asf.flake.active but exact in decide.quarantined) without clearing f.quarantine. Each needs a test red on base, green on head. Branch hygiene ruling: rebase onto origin/main, never a merge commit; the 'git merge origin/main' line in the shared-file note does not apply. PR #1657 head 34d535125 is CLEAN and green."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, three fixes in asf/kernel/flake.py judge(), nothing else: (1) the bugless-live-entry path (:359-372) calls owned(sig, facts) first and files no second card when another open Bug owns the signature; (2) on that same path the filed Bug carries the test file in writes: and an acceptance line naming the test, same as the fresh path at :416; when no test file is in the log, file nothing and record 'no test file in the log: nothing filed'; (3) add the missing PD5 assertion in tests/kernel/test_flake.py (a live entry is live for every matrix leg in asf.flake.active but exact in decid\u2026"
+        "relaunch: operator answer: One more round, three fixes in asf/kernel/flake.py judge(), nothing else: (1) the bugless-live-entry path (:359-372) calls owned(sig, facts) first and files no second card when another open Bug owns the signature; (2) on that same path the filed Bug carries the test file in writes: and an acceptance line naming the test, same as the fresh path at :416; when no test file is in the log, file nothing and record 'no test file in the log: nothing filed'; (3) add the missing PD5 assertion in tests/kernel/test_flake.py (a live entry is live for every matrix leg in asf.flake.active but exact in decid\u2026",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
@@ -89310,7 +89318,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-12T16:08:20Z",
+      "updated": "2026-10-12T16:13:20Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -90635,7 +90643,11 @@
         "PR #1546: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "a session reads the reason and fixes the cause",
+      "kernel_stuck_owner": "session",
+      "kernel_stuck_reason": "done without a push: pushed: no \u2014 pushing next",
+      "kernel_stuck_since": "2026-10-12T16:12:09Z",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90649,7 +90661,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T16:04:50Z",
+      "updated": "2026-10-12T16:13:20Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
