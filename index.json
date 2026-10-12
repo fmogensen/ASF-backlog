@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T17:13:08Z",
+  "generated": "2026-10-12T17:16:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -88688,12 +88688,13 @@
       "id": "T-129212",
       "kernel_answers": [
         "Relaunch on worker/T-129212: the external worktree that held the T-129212-named fix branch was removed, and that framework fix is now Bug B-147398 (PR #1460), not this Task's delivery. Build T-129212's own plan Task; if its branch has no commits beyond main, the new no-commits rule applies.",
-        "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
+        "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel).",
+        "One more round, these fixes only: (1) resolvers.py:104-105 restore LOCAL_RE and ORIGIN_RE verbatim from docs/specs/f-0339.md:145-148; (2) decide.py:1107 make HOST_PUSHES reachable or remove it, and add the WONT_PUSH answer the finding names; (3) test_question_pushed_base.py:471 and :502 build the ShareRises fixtures on shapes ports can produce (pr=1, status='done') and assert the plan's Step 12 line 'resolved by code 4, to the console 2 (67% by code)'; fix the Proves: trailers to name tests that exist; (4) :295 add the trunk-sha half of the cache key case. NOT in this round: moving the six Host cases between test classes (:262) is structure only; list it as a follow-up. Rebase onto origin/main, no merge commit. The next review judges only (1)-(4)."
       ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: One more round, these fixes only: (1) resolvers.py:104-105 restore LOCAL_RE and ORIGIN_RE verbatim from docs/specs/f-0339.md:145-148; (2) decide.py:1107 make HOST_PUSHES reachable or remove it, and add the WONT_PUSH answer the finding names; (3) test_question_pushed_base.py:471 and :502 build the ShareRises fixtures on shapes ports can produce (pr=1, status='done') and assert the plan's Step 12 line 'resolved by code 4, to the console 2 (67% by code)'; fix the Proves: trailers to name tests that exist; (4) :295 add the trunk-sha half of the cache key case. NOT in this round: moving the six Ho\u2026"
       ],
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/kernel/resolvers.py:104-105 \u2014 restore the spec's two matchers verbatim (docs/specs/f-0339.md:145-148): `LOCAL_RE = re.compile(r'\\b(?:committed|clean locally|rebased and ready|commits? locally)\\b', re.I)` and `ORIGIN_RE = re.compile(r'\\b(?:not|never|still not)\\s+(?:yet\\s+)?on origin\\b|\\bon origin\\b|\\breached origin\\b|\\bpush(?:ed|ing)? (?:was )?(?:refused|denied)\\b', re.I)`, which the plan's Files section binds (\"LOCAL_RE, ORIGIN_RE \u2026 as the spec writes them\"); keep test_q83142_matches_neither_matcher as the no-cross-match fence (measured: the spec's pair leaves Q_83142 unmatched too, so the narrowing buys nothing and loses in-class phrasings such as \"I have commits locally that are not on origin\").",
         "tests/kernel/test_question_pushed_base.py:262 \u2014 move the six `Host` cases into the classes whose fences own them (the probe/orphan/cache/dry-run/absent-branch cases into `TrunkBaseClass`, `test_a_disabled_class_is_never_probed` into `LeftToTheConsole`), keeping the real-git harness as a `_RealGit` mixin so `setUp` is written once, and restate the moved cases' `Proves:` trailers under their new ids: S-125106's acceptance (`python3 -m unittest \u2026TrunkBaseClass`) and S-125107's (`\u2026LeftToTheConsole`) today run none of the cases aacb79b's trailers cite for S-125106 lines 9-11 and S-125107 line 6.",
@@ -88714,11 +88715,7 @@
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
-      "kernel_stuck_since": "2026-10-12T17:09:31Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -88734,7 +88731,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-12T17:09:31Z",
+      "updated": "2026-10-12T17:16:28Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -90693,7 +90690,7 @@
         "PR #1546: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90707,7 +90704,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T16:17:15Z",
+      "updated": "2026-10-12T17:16:28Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -91812,7 +91809,7 @@
       ],
       "kernel_fix_rounds": 3,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91825,7 +91822,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T17:03:10Z",
+      "updated": "2026-10-12T17:16:28Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
