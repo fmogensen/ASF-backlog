@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T08:25:47Z",
+  "generated": "2026-10-12T08:28:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89843,14 +89843,13 @@
       "kernel_answers": [
         "granted tests/kernel/test_apply.py; nothing else outside writes (card updated by the kernel).",
         "grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round.",
-        "granted asf/record/index.py; nothing else outside writes (card updated by the kernel). asf/record/index.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/record/index.py; nothing else outside writes (card updated by the kernel). asf/record/index.py matches kernel.risk.high: this item is high-risk now.",
+        "One more strong-model round. The findings are real correctness defects; fix all of them in this order: (1) resolve.py:116 self-blocking survivor, (2) apply.py:719-725 close whose resolve fails must not leave Done with unresolved edges (retry it next tick), (3) resolve.py:220 commit=True must not write markdown into a .json card's path, (4) resolve.py:203 validate once per close, not once per holder, (5) loop.py tuple verb rendering, (6) create tests/kernel/test_apply.py covering _resolve_closed. Each fix gets a test that fails on the base and passes on the head. No other scope."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "relaunch: operator answer: granted asf/record/index.py; nothing else outside writes (card updated by the kernel). asf/record/index.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: One more strong-model round. The findings are real correctness defects; fix all of them in this order: (1) resolve.py:116 self-blocking survivor, (2) apply.py:719-725 close whose resolve fails must not leave Done with unresolved edges (retry it next tick), (3) resolve.py:220 commit=True must not write markdown into a .json card's path, (4) resolve.py:203 validate once per close, not once per holder, (5) loop.py tuple verb rendering, (6) create tests/kernel/test_apply.py covering _resolve_closed. Each fix gets a test that fails on the base and passes on the head. No other scope."
       ],
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/record/resolve.py:220 \u2014 close(commit=True) reaches index.refresh (publish.py:109), which writes markdown into a .json card's own path (index.py:38-40) and is refused by the write gate; measured CardInvalid on a two-card JSON record. The round steered tests 13, 10b, 18b and 18c onto commit=False for it and recorded it only in test comments, so spec lines 11 and 12 are proven on .md cards alone. Fix: put asf/record/index.py on the REPORT's `needs writes:` line and say in `left out:` that the one-commit path is unproven on a JSON card until index.refresh renders a .json card through card.dumps.",
         "asf/record/resolve.py:203 \u2014 card.validate(new_meta, root) runs once per holder and each call re-scans the whole record (card.py:81-83, uncached), so one close() costs 1 + N full load_items scans, and the kernel's close pays it twice per card per tick (apply.py:500 and :740). Fix: close() already holds the record at resolve.py:190-191 \u2014 validate shape only with card.validate(new_meta) and check each card.refs(new_meta) id against that by_id, instead of re-scanning per holder.",
@@ -89867,7 +89866,7 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89880,7 +89879,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T08:09:00Z",
+      "updated": "2026-10-12T08:28:48Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -90283,7 +90282,9 @@
       "kernel_notes": [
         "PR #1567: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1567: part (3.13, 3) is red but not a required check \u2014 ignored",
-        "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026"
+        "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026",
+        "PR #1645: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1645: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "review",
@@ -90300,7 +90301,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T08:25:40Z",
+      "updated": "2026-10-12T08:28:48Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
