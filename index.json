@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T23:51:42Z",
+  "generated": "2026-10-12T00:04:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -49926,6 +49926,7 @@
         "T-129177",
         "T-129193",
         "T-154337",
+        "T-159849",
         "T-164021",
         "T-80371",
         "B-0040",
@@ -69974,7 +69975,7 @@
         "PR #1570: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0114.md"
       },
@@ -69984,7 +69985,7 @@
       "state": "New",
       "title": "`asf/env.py` \u2014 a version on the file, a warning where there was a refusal, and the rename table read",
       "type": "task",
-      "updated": "2026-10-11T23:51:20Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/env.py",
         "docs/config.example.yaml",
@@ -89525,7 +89526,7 @@
         "asf/cli.py:986 \u2014 `resolve_record` announces `record: <path>` on stdout ahead of the rendered card, so `asf show`'s stdout is not the card's text that spec \u00a72.9 says is byte-identical to the view; dispatch it as the other value-on-stdout commands do, `return cmd_show(args, resolve_record(args, announce=_announce_stderr))`."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89538,7 +89539,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-11T23:38:16Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89701,7 +89702,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154345",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89714,7 +89715,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-11T23:51:20Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
@@ -89843,16 +89844,16 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/kernel/decide.py:521 \u2014 a lead-breach record reaches `stalled`, so a LANDING item whose PR is green with auto-merge on and within its merge target is reported in LIMBO (\"PR #N green with auto-merge on, not merged after 6.0h\") and cascades through `_blocked_for_good`; exclude the lead classes: `stalled = {b['item']: b for b in found if b['action'].startswith(NO_BREACH_ACTION) and not b['class'].startswith('lead ')}`",
-        "asf/kernel/decide.py:2383 \u2014 `_why_no_breach_action` has no case for a `lead PR #N` class, so the tick line reads `BREACH T-1 lead PR #10 6.0h -> none: no action exists` for a PR that is correctly waiting on GitHub auto-merge; before the final return, map the lead class onto the item's own wait class: `if cls.startswith('lead '): cls = (overdue(facts, config, states, same_class=False).get(iid) or ('',))[0]`"
+        "asf/kernel/decide.py:2452-2453 \u2014 the lead-breach branch resolves the wait class through `overdue(facts, config, states, same_class=False)`, which returns an item only when its ledger spell is already past target; `lead_breaches` skips any `iid in due` (:2364), so a `lead PR #n` class means `overdue` did not return it, `cls` becomes '' and the tick line reads \"no action exists\" for a PR that is waiting on CI or on GitHub auto-merge. Replace with `cls = W.classify(iid, _state, stuck, facts, config)[0]` (`_state, stuck` are unpacked at :2427 \u2014 verified: the probe cases then read \"waits on GitHub auto-merge\" / \"CI in flight\"), and add a TheLeadBreach case pinning the line for a lead-breached item the kernel has no action for.",
+        "asf/kernel/decide.py:521-522 \u2014 the `and not b['class'].startswith('lead ')` LIMBO suppression is load-bearing (without it a LANDING item with a green auto-merge PR inside its merge target is declared LIMBO on the PR's age alone) but commit 3823f41 added it with no test: `git show 3823f41 -- tests/` is empty. Add a TheLeadBreach case \u2014 LANDING Task, `B.pr(41, 'T-0001', opened_at=at(-6 * 60), auto_merge=True, auto_merge_at=at(-6 * 60), clean=False)`, `waits={'T-0001': ('merge', at(-10))}`, `B.config(lead_p90_max=P90, wait_targets={'merge': 3600}, required_checks=('test',))` \u2014 asserting the breach is in `plan.breaches` and `'T-0001' not in plan.limbo`."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "build-t-159849-1791746871: NEEDS OPERATOR: `worker/T-159849` is rebased and cannot fast-forward onto its own remote, so the Stop gate refuses it twice and the branch needs the factory's publish \u2014 `git -C ~/.asf/state/asf/worktrees/\u2026",
         "PR #1611: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89865,7 +89866,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-11T23:10:52Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -89934,7 +89935,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159851",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89948,7 +89949,7 @@
       ],
       "title": "the console's share \u2014 the question ledger, the window, the gate criterion and the classifier that codes nothing",
       "type": "task",
-      "updated": "2026-10-11T23:51:20Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/kernel/loop.py",
@@ -89997,7 +89998,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-11T23:51:20Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -90601,7 +90602,7 @@
       ],
       "title": "the doctor reports both flat-file trees, from what is on disk",
       "type": "task",
-      "updated": "2026-10-11T23:51:20Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/logs.py",
         "asf/doctor.py",
@@ -90857,10 +90858,12 @@
       "kernel_notes": [
         "PR #1588: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1588: part (3.13, 2) is red but not a required check \u2014 ignored",
-        "build-t-166574-1791751785: NEEDS OPERATOR: confirm kernel.test_clean_floor's host-only red is the worker-home artifact above and not a defect to file \u2014 `cd ~/.asf/state/asf/worktrees/build-t-166574-1791751785 && python3 -c \"from as\u2026"
+        "build-t-166574-1791751785: NEEDS OPERATOR: confirm kernel.test_clean_floor's host-only red is the worker-home artifact above and not a defect to file \u2014 `cd ~/.asf/state/asf/worktrees/build-t-166574-1791751785 && python3 -c \"from as\u2026",
+        "PR #1622: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1622: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90873,7 +90876,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-11T23:51:20Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -91182,7 +91185,7 @@
         "rebase: PR #1614 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91195,7 +91198,7 @@
       ],
       "title": "the seats \u2014 the sweep launches after the launches and after the intake, on what they left",
       "type": "task",
-      "updated": "2026-10-11T23:10:52Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/actions.py",
@@ -91247,7 +91250,7 @@
       "kernel_notes": [
         "PR #1617: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91260,7 +91263,7 @@
       ],
       "title": "code applies each verdict, and a verdict it cannot apply is a note and no marker",
       "type": "task",
-      "updated": "2026-10-11T23:14:48Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/kernel/apply.py",
         "tests/kernel/test_sweep.py"
@@ -91275,7 +91278,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-173237",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91288,7 +91291,7 @@
       ],
       "title": "the parked-age histogram in `asf kernel waits`, and the tick's sweep line",
       "type": "task",
-      "updated": "2026-10-11T21:49:30Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/kernel/waits.py",
         "asf/kernel/loop.py",
@@ -91304,7 +91307,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-180938",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -91318,7 +91321,7 @@
       ],
       "title": "`overlap` is its own wait class, so `seat` stops hiding it",
       "type": "task",
-      "updated": "2026-10-11T23:38:16Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/waits.py",
@@ -92672,7 +92675,7 @@
         "rebase: PR #1621 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -92685,7 +92688,7 @@
       ],
       "title": "the `tags` act \u2014 every version reader over annotated tags",
       "type": "task",
-      "updated": "2026-10-11T23:38:16Z",
+      "updated": "2026-10-12T00:03:54Z",
       "writes": [
         "asf/rehearsal.py",
         "tests/test_rehearsal_tags.py"
