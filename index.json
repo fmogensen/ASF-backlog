@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T15:13:48Z",
+  "generated": "2026-10-12T15:18:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17877,7 +17877,7 @@
       "state": "New",
       "title": "asf retire refuses a Task under a retired Feature: it flags itself as a removed reference",
       "type": "bug",
-      "updated": "2026-10-12T15:06:15Z",
+      "updated": "2026-10-12T15:18:25Z",
       "writes": [
         "asf/record/check.py",
         "tests/test_backlog.py",
@@ -88672,7 +88672,7 @@
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -88688,7 +88688,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-12T14:50:07Z",
+      "updated": "2026-10-12T15:18:25Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -89247,17 +89247,22 @@
         "granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them."
       ],
       "kernel_attempts": [
-        "ended without a REPORT"
+        "ended without a REPORT",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "asf/kernel/flake.py:363-372 \u2014 `judge`'s bugless-live-entry path files a Bug with `writes: []` and no acceptance line (`dor.missing` \u2192 `['no test named in Acceptance or Gate', 'writes: empty']`), the D9/PD9 gap the head commit dc77deb closed only on the fresh path at `:416`: compute `test = sorted({f for c in _checks_by_sig(facts, config).get(sig, ()) for f in test_files(c)})` inside the `if not bug_id:` branch and, when `not _writes_for(test, facts.trunk_files)`, record `'no test file in the log: no bug filed'` and append the bugless `entry(...)` instead of filing, then fence it in `BugTests` beside `tests/kernel/test_flake.py:681`",
+        "asf/kernel/flake.py:363-372 \u2014 the same path never calls `owned(sig, facts)`, so it files a second card for a symptom class another filer's open Bug already owns (reproduced: `owned() -> B-7777`, yet `['FileBug','Quarantine']`), against \u00a71.4 step 2's \"no card and no entry at all\": add `owner = owned(sig, facts)` in that `if not bug_id:` branch before filing and record `'waits on %s: its symptom class is already owned' % owner`, then extend `tests/kernel/test_flake.py:650` with the live-entry variant",
+        "tests/kernel/test_flake.py:831 \u2014 plan step 11's second named assertion (PD5: a live entry is live for every matrix leg of its job in `asf.flake.active`'s eyes but exact in `decide.quarantined`'s) is absent, because `test_a_red_whose_signature_is_not_quarantined_is_judged_as_today` clears `f.quarantine` instead of keeping it: add a `FixRoundTests` case that keeps `self._quarantined_world()`'s entry and asserts `quarantined(red(failing_files=['tests/test_other.py']), f) is None`",
         "worker/T-136825 @ 48549e08a \u2014 drop the merge commit: rebase the branch onto `origin/main` so `5cf9b1d1a` and the report commit replay as straight commits, commit locally and report `pushed: rebased <sha>` (the host publishes it); never merge `origin/main` in or force-push.",
         "asf/kernel/flake.py:359-368 \u2014 fill an entry whose `bug` is empty: when `not live_q.get('bug')`, resolve `bug_id, _first = cycle(sig, facts)` and emit `entry(sig, merged, facts, config, first=live_q.get('first'), bug=bug_id)` unconditionally (not only when `len(merged) > len(have)`); when `cycle` finds no card, emit `bug_action(...)` too and pass its `key` as the entry's `bug_key`, keeping `first`/`expires`.",
         "asf/kernel/flake.py:329-332 \u2014 a case-keyed signature with no test file files a Bug with `writes: []` and a bare `- [ ] ` acceptance that `dor.missing` holds; in `judge`'s flake branch (:402-407) record `'no test file in the log: nothing filed'` and emit neither action when `_writes_for(test, facts.trunk_files)` is empty, or give `bug_action` an acceptance line `dor.test_refs` can read.",
         "rebase: PR #1657 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
-        "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "Another session edits asf/kernel/decide.py, asf/kernel/ports.py, asf/schema.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "build-t-136825-1791661085: NEEDS OPERATOR: the push is refused by a stale local `asf` CLI install with no `pre-push` subcommand \u2014 upgrade `~/.local/bin/asf` on this host, then publish branch `worker/T-136825` \u2014 `git push origin worker/T-13682\u2026",
         "PR #1438: checks (3.12) is red but not a required check \u2014 ignored",
@@ -89272,7 +89277,7 @@
         "PR #1657: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -89290,7 +89295,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-12T15:00:01Z",
+      "updated": "2026-10-12T15:18:25Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -90229,7 +90234,7 @@
         "relaunch: operator answer: hold: asf/record/setfield.py belongs to T-154341, wait for it \u2014 no writes granted; this card waits on it through after:. Decided by the kernel."
       ],
       "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
-      "kernel_state": "new",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90242,7 +90247,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-12T15:13:46Z",
+      "updated": "2026-10-12T15:18:25Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
@@ -90581,7 +90586,7 @@
         "PR #1546: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90595,7 +90600,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-11T17:21:00Z",
+      "updated": "2026-10-12T15:18:25Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -90842,7 +90847,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T15:10:13Z",
+      "updated": "2026-10-12T15:18:25Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91643,7 +91648,7 @@
         "build-t-166579-1791807795: NEEDS OPERATOR: the claim check over the live record (same as the plan's own \u00a76 \u2014 this cloud session has no ~/.ASF, so the claim covering S-161916 could not be read here) \u2014 asf check --product asf --item F-0347"
       ],
       "kernel_stack": "worker/T-166576@f610e33502318a61b094f511bb5e4bf691183552",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91656,7 +91661,7 @@
       ],
       "title": "the kernel's own beat, readable with both launchd jobs unloaded",
       "type": "task",
-      "updated": "2026-10-12T15:03:23Z",
+      "updated": "2026-10-12T15:18:25Z",
       "writes": [
         "asf/kernel/host.py",
         "asf/kernel/loop.py",
@@ -91988,10 +91993,11 @@
       "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1652: part (3.12, 1) is red but not a required check \u2014 ignored",
-        "PR #1652: part (3.13, 1) is red but not a required check \u2014 ignored"
+        "PR #1652: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "build-t-180939-1791817756: NEEDS OPERATOR: the branch's required pre-push product gate step `python3 tools/run_tests.py --part 1/4` through `--part 4/4` and the trial-merge-with-trunk check recorded by the prior session were not re-run here (\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -92006,7 +92012,7 @@
       ],
       "title": "a second item may hold a file another is building, and its brief names the holder",
       "type": "task",
-      "updated": "2026-10-12T15:10:13Z",
+      "updated": "2026-10-12T15:18:25Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/model.py",
