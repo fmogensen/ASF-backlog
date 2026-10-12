@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T17:25:00Z",
+  "generated": "2026-10-12T17:29:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17834,7 +17834,7 @@
         "PR #1655: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17843,7 +17843,7 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T17:13:07Z",
+      "updated": "2026-10-12T17:29:02Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -17952,6 +17952,23 @@
       "title": "Merge-queue reaper cancels foreign CI runs that share its ref prefix",
       "type": "bug",
       "updated": "2026-10-12T17:19:14Z"
+    },
+    "B-196077": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-196077",
+      "parent": "F-0336",
+      "schema_version": 2,
+      "severity": "S3",
+      "signature": "kernel.flake: close the open review findings before it is enabled",
+      "stage_since": "2026-10-12T17:28:42Z",
+      "state": "New",
+      "title": "kernel.flake: close the open review findings before it is enabled",
+      "type": "bug",
+      "updated": "2026-10-12T17:28:42Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -35713,7 +35730,8 @@
         "S-122808",
         "S-122809",
         "S-122810",
-        "T-136825"
+        "T-136825",
+        "B-196077"
       ],
       "decided": true,
       "folder": "features",
@@ -89323,7 +89341,8 @@
         "T-129208",
         "T-131719",
         "T-131823",
-        "B-195073"
+        "B-195073",
+        "B-196077"
       ],
       "children": [],
       "decided": true,
@@ -89331,13 +89350,13 @@
       "id": "T-136825",
       "kernel_answers": [
         "granted asf/schema.py asf/tick/tick.py asf/env.py tests/test_minimal_product.py tests/test_tick.py tests/test_tick_steps.py; nothing else outside writes (card updated by the kernel). T-0452 also writes asf/schema.py asf/tick/tick.py tests/test_tick_steps.py (Review): the overlap rule serialises them. T-129163 also writes tests/test_tick_steps.py (Building): the overlap rule serialises them. T-129165 also writes asf/schema.py tests/test_minimal_product.py tests/test_tick.py (Building): the overlap rule serialises them. T-129206 also writes asf/env.py (Review): the overlap rule serialises them.",
-        "One more round, three fixes in asf/kernel/flake.py judge(), nothing else: (1) the bugless-live-entry path (:359-372) calls owned(sig, facts) first and files no second card when another open Bug owns the signature; (2) on that same path the filed Bug carries the test file in writes: and an acceptance line naming the test, same as the fresh path at :416; when no test file is in the log, file nothing and record 'no test file in the log: nothing filed'; (3) add the missing PD5 assertion in tests/kernel/test_flake.py (a live entry is live for every matrix leg in asf.flake.active but exact in decide.quarantined) without clearing f.quarantine. Each needs a test red on base, green on head. Branch hygiene ruling: rebase onto origin/main, never a merge commit; the 'git merge origin/main' line in the shared-file note does not apply. PR #1657 head 34d535125 is CLEAN and green."
+        "One more round, three fixes in asf/kernel/flake.py judge(), nothing else: (1) the bugless-live-entry path (:359-372) calls owned(sig, facts) first and files no second card when another open Bug owns the signature; (2) on that same path the filed Bug carries the test file in writes: and an acceptance line naming the test, same as the fresh path at :416; when no test file is in the log, file nothing and record 'no test file in the log: nothing filed'; (3) add the missing PD5 assertion in tests/kernel/test_flake.py (a live entry is live for every matrix leg in asf.flake.active but exact in decide.quarantined) without clearing f.quarantine. Each needs a test red on base, green on head. Branch hygiene ruling: rebase onto origin/main, never a merge commit; the 'git merge origin/main' line in the shared-file note does not apply. PR #1657 head 34d535125 is CLEAN and green.",
+        "Console decision: PR #1657 was merged at green head d88e8ced7. kernel.flake is off by default, so the remaining review findings are tracked as a follow-up Bug under F-0336 and must be closed before it is enabled. This Task is done."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, three fixes in asf/kernel/flake.py judge(), nothing else: (1) the bugless-live-entry path (:359-372) calls owned(sig, facts) first and files no second card when another open Bug owns the signature; (2) on that same path the filed Bug carries the test file in writes: and an acceptance line naming the test, same as the fresh path at :416; when no test file is in the log, file nothing and record 'no test file in the log: nothing filed'; (3) add the missing PD5 assertion in tests/kernel/test_flake.py (a live entry is live for every matrix leg in asf.flake.active but exact in decid\u2026",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: Console decision: PR #1657 was merged at green head d88e8ced7. kernel.flake is off by default, so the remaining review findings are tracked as a follow-up Bug under F-0336 and must be closed before it is enabled. This Task is done."
       ],
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "tests/kernel/test_flake.py:585 \u2014 `test_a_test_file_not_on_the_trunk_is_left_out_of_the_writes` asserts the opposite of its name (nothing is left out; PD9's fallback fires), and every `world()` signature has one test file (`:43`), so `_writes_for`'s filter branch (asf/kernel/flake.py:303-304) is never shown to drop anything and S-122809's fourth acceptance line is unfenced. Rename this case to `test_a_signature_whose_only_test_file_is_off_the_trunk_keeps_it` and add a new one building `world(3, failing_files=['tests/test_x.py', 'tests/test_gone.py'])` with `f.trunk_files = frozenset(['tests/test_x.py'])`, asserting `bug.writes == ['tests/test_x.py']`.",
         "tests/kernel/test_flake.py:818 \u2014 `FixRoundTests` asserts only the first half of D7; plan Step 9 (docs/plans/f-0336.md:316-320) names both. `escalate`, `attempt` and `max_reruns` appear nowhere in the module, so \"the red still reaches `_fix_round` once the escalation's extra rerun is spent\" (decide.py:1466) is unpinned. Add a case setting the check's `attempt` past `max_reruns` + 1 with the item old enough for `_due` to fire, asserting a build Launch is planned for T-1 despite the live entry.",
@@ -89367,7 +89386,7 @@
         "PR #1657: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -89385,7 +89404,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-12T17:13:07Z",
+      "updated": "2026-10-12T17:29:02Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
