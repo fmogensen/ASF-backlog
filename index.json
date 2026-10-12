@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T09:09:25Z",
+  "generated": "2026-10-12T09:11:58Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17713,7 +17713,7 @@
       "kernel_notes": [
         "groom-fill-b-187018-1791791555: groom-fill raised risk high: host.install() (asf/kernel/host.py) switches the launchd jobs' venv but never calls asf.installs.write \u2014 confirmed by reading the module (no \"installs\" import/call) against asf/installs.py (the only pin writer, used today solely by asf upgrade's move), so the card names a real, unfixed gap; scope is precise enough to fill as a bug, not reshape."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17722,7 +17722,7 @@
       "state": "New",
       "title": "kernel install leaves the product pin on the old venv",
       "type": "bug",
-      "updated": "2026-10-12T09:09:23Z",
+      "updated": "2026-10-12T09:11:55Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_host.py"
@@ -17740,7 +17740,7 @@
       "kernel_notes": [
         "groom-fill-b-187369-1791793531: groom-fill raised risk high: asf correct never writes operator-answers.jsonl, the only ledger the kernel's Facts.answers reads, so a correction on a kernel Stuck item is recorded but never re-judged \u2014 unlike asf answer, which writes that exact file."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17749,7 +17749,7 @@
       "state": "New",
       "title": "asf correct on a Stuck item never relaunches it",
       "type": "bug",
-      "updated": "2026-10-12T09:09:23Z",
+      "updated": "2026-10-12T09:11:55Z",
       "writes": [
         "asf/workers/correct.py",
         "tests/test_correct.py",
@@ -90448,7 +90448,7 @@
         "build-t-159854-1791794091-local: NEEDS OPERATOR: the heartbeat loop could not start \u2014 the sandbox refused the `nohup sh .b0000_heartbeat.sh \u2026` call twice, so this session published no beat; the work is committed and pushed instead. To start it by h\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90461,7 +90461,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-12T09:09:23Z",
+      "updated": "2026-10-12T09:11:55Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
