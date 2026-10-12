@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T14:53:27Z",
+  "generated": "2026-10-12T14:57:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17816,8 +17816,12 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-190071",
+      "kernel_answers": [
+        "granted asf/kernel/briefs.py; nothing else outside writes (card updated by the kernel). T-160208 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
+      ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted asf/kernel/briefs.py; nothing else outside writes (card updated by the kernel). T-160208 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.159",
@@ -17834,7 +17838,7 @@
         "groom-fill-b-190071-1791800796: groom-fill raised risk high: GitHub's statusCheckRollup can lag a push by up to ~60s under an already-current headRefOid (verified live via gh api against this repo's own open PR), and Check carries no head identity to catch it \u2014 _red_detail already makes the one gh api call that has head_sha, so tagging Check with it and excluding a head-mismatched red from _judge_pr's fix-round path is a minimal, buildable fix.",
         "PR #1655: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17843,12 +17847,13 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T14:40:47Z",
+      "updated": "2026-10-12T14:56:58Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
         "asf/kernel/decide.py",
-        "tests/kernel/test_review_ci_gate.py"
+        "tests/kernel/test_review_ci_gate.py",
+        "asf/kernel/briefs.py"
       ]
     },
     "B-193422": {
@@ -17863,6 +17868,7 @@
       "kernel_notes": [
         "groom-fill-b-193422-1791816040: groom-fill raised risk high: Confirmed root cause (self-reference in check_deliveries' removed-item scan) and a minimal fix by reproducing the bug and the fix in a scratch harness; the card's existing acceptance named no test and the literal repro it described (plain Task, retired parent) doesn't trigger the bug, so acceptance/writes needed filling in with the real trigger (a self-referencing delivers: lead)."
       ],
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17871,7 +17877,7 @@
       "state": "New",
       "title": "asf retire refuses a Task under a retired Feature: it flags itself as a removed reference",
       "type": "bug",
-      "updated": "2026-10-12T14:53:26Z",
+      "updated": "2026-10-12T14:56:58Z",
       "writes": [
         "asf/record/check.py",
         "tests/test_backlog.py",
@@ -90804,7 +90810,8 @@
         "T-160207"
       ],
       "backlinks": [
-        "T-160210"
+        "T-160210",
+        "B-190071"
       ],
       "children": [],
       "decided": true,
@@ -90816,7 +90823,13 @@
       "kernel_attempts": [
         "relaunch: operator answer: Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file."
       ],
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/kernel/briefs.py:572 \u2014 the STACKED block takes the predecessor from item.after[0], the first *declared* after: edge, where decide.py:2126-2129 stacks on the one *open* edge; with a landed edge declared first the brief names the wrong card (\"`T-DONE` is written and pushed but not merged\" while cutting from `origin/worker/T-OPEN`). Replace it with the predecessor of the branch actually cut from \u2014 `from asf.kernel.ports import item_of_branch` (briefs.py already imports from ports lazily at :363) then `predecessor = item_of_branch(launch.base) or ''` \u2014 and add a StackedBrief case with two declared edges (after=('T-done', 'T-pred'), base='worker/T-pred') asserting the block names T-pred and never T-done.",
+        "operator answer: Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -90829,7 +90842,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T14:44:22Z",
+      "updated": "2026-10-12T14:56:58Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91670,7 +91683,7 @@
         "relaunch: operator answer: granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "review",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91683,7 +91696,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T14:40:47Z",
+      "updated": "2026-10-12T14:56:58Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
