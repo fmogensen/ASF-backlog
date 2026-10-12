@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T17:55:34Z",
+  "generated": "2026-10-12T17:58:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17914,6 +17914,7 @@
       "kernel_notes": [
         "groom-fill-b-195724-1791827390: groom-fill raised risk high: fixes the one gate that stops a secret or operator name reaching any record, CI run or public repo (F-0075); a wrong MERGE_HEAD-skip is a false-negative bypass risk, not just a false positive."
       ],
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17922,7 +17923,7 @@
       "state": "New",
       "title": "asf redact --pre-commit refuses a conflicted trunk merge: it scans the trunk's own files",
       "type": "bug",
-      "updated": "2026-10-12T17:55:32Z",
+      "updated": "2026-10-12T17:58:07Z",
       "writes": [
         "asf/redact.py",
         "tests/test_redact.py"
@@ -90755,11 +90756,11 @@
       "kernel_answers": [
         "granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now.",
         "granted asf/kernel/loop.py asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now.",
-        "The last session ended without pushing and left nothing on a heartbeat ref. Relaunch the build from origin's worker/T-159853 and push before reporting done."
+        "The last session ended without pushing and left nothing on a heartbeat ref. Relaunch the build from origin's worker/T-159853 and push before reporting done.",
+        "Verified: origin/worker/T-159853 is at 9f804ca73, which is this session's report commit on top of its merge of origin/main. The work is on origin; nothing is unpushed. Proceed to open the PR and review; no rebuild, no second push."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: The last session ended without pushing and left nothing on a heartbeat ref. Relaunch the build from origin's worker/T-159853 and push before reporting done.",
-        "relaunch: escalated: the previous session stopped (done without a push: pushed: no \u2014 pushing next) \u2014 pick up from its report and branch, and finish the item"
+        "relaunch: operator answer: Verified: origin/worker/T-159853 is at 9f804ca73, which is this session's report commit on top of its merge of origin/main. The work is on origin; nothing is unpushed. Proceed to open the PR and review; no rebuild, no second push."
       ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
@@ -90767,11 +90768,7 @@
         "PR #1546: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the reason and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "done without a push: pushed: no \u2014 pushing next",
-      "kernel_stuck_since": "2026-10-12T17:45:44Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90785,7 +90782,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T17:46:08Z",
+      "updated": "2026-10-12T17:58:07Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
