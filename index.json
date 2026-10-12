@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T01:32:54Z",
+  "generated": "2026-10-12T01:45:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89895,10 +89895,12 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
         "asf/kernel/decide.py:2452-2453 \u2014 the lead-breach branch resolves the wait class through `overdue(facts, config, states, same_class=False)`, which returns an item only when its ledger spell is already past target; `lead_breaches` skips any `iid in due` (:2364), so a `lead PR #n` class means `overdue` did not return it, `cls` becomes '' and the tick line reads \"no action exists\" for a PR that is waiting on CI or on GitHub auto-merge. Replace with `cls = W.classify(iid, _state, stuck, facts, config)[0]` (`_state, stuck` are unpacked at :2427 \u2014 verified: the probe cases then read \"waits on GitHub auto-merge\" / \"CI in flight\"), and add a TheLeadBreach case pinning the line for a lead-breached item the kernel has no action for.",
         "asf/kernel/decide.py:521-522 \u2014 the `and not b['class'].startswith('lead ')` LIMBO suppression is load-bearing (without it a LANDING item with a green auto-merge PR inside its merge target is declared LIMBO on the PR's age alone) but commit 3823f41 added it with no test: `git show 3823f41 -- tests/` is empty. Add a TheLeadBreach case \u2014 LANDING Task, `B.pr(41, 'T-0001', opened_at=at(-6 * 60), auto_merge=True, auto_merge_at=at(-6 * 60), clean=False)`, `waits={'T-0001': ('merge', at(-10))}`, `B.config(lead_p90_max=P90, wait_targets={'merge': 3600}, required_checks=('test',))` \u2014 asserting the breach is in `plan.breaches` and `'T-0001' not in plan.limbo`."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "build-t-159849-1791746871: NEEDS OPERATOR: `worker/T-159849` is rebased and cannot fast-forward onto its own remote, so the Stop gate refuses it twice and the branch needs the factory's publish \u2014 `git -C ~/.asf/state/asf/worktrees/\u2026",
         "PR #1611: install-clean-macos is red but not a required check \u2014 ignored",
@@ -89906,7 +89908,7 @@
         "PR #1611: part (3.12, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89919,7 +89921,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-12T00:18:49Z",
+      "updated": "2026-10-12T01:45:25Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -90924,7 +90926,7 @@
         "PR #1622: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90937,7 +90939,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-12T01:20:04Z",
+      "updated": "2026-10-12T01:45:25Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -91310,7 +91312,7 @@
         "PR #1617: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91323,7 +91325,7 @@
       ],
       "title": "code applies each verdict, and a verdict it cannot apply is a note and no marker",
       "type": "task",
-      "updated": "2026-10-12T01:27:57Z",
+      "updated": "2026-10-12T01:45:25Z",
       "writes": [
         "asf/kernel/apply.py",
         "tests/kernel/test_sweep.py"
@@ -91389,7 +91391,7 @@
       ],
       "title": "`overlap` is its own wait class, so `seat` stops hiding it",
       "type": "task",
-      "updated": "2026-10-12T01:32:36Z",
+      "updated": "2026-10-12T01:45:25Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/waits.py",
