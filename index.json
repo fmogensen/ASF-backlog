@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T06:13:00Z",
+  "generated": "2026-10-12T06:59:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17613,7 +17613,7 @@
         "PR #1639: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1639: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17622,7 +17622,7 @@
       "state": "New",
       "title": "Bug: tests/kernel/test_ports.py hangs locally on real git",
       "type": "bug",
-      "updated": "2026-10-12T05:55:09Z",
+      "updated": "2026-10-12T06:59:40Z",
       "writes": [
         "tests/kernel/test_ports.py",
         "asf/hermetic.py"
@@ -89740,7 +89740,7 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89753,7 +89753,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T06:12:29Z",
+      "updated": "2026-10-12T06:59:40Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89784,12 +89784,14 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "operator answer: granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel).",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1632: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1632: part (3.12, 2) is red but not a required check \u2014 ignored",
@@ -89799,7 +89801,7 @@
         "PR #1632: part (3.13, 4) is red but not a required check \u2014 ignored",
         "PR #1632: upgrade-matrix (v0.2.152) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89812,7 +89814,7 @@
       ],
       "title": "an invalid card and an unresolvable reference are LIMBO with the reason, never dropped",
       "type": "task",
-      "updated": "2026-10-12T05:48:25Z",
+      "updated": "2026-10-12T06:59:40Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_limbo_invalid_card.py",
@@ -90097,7 +90099,7 @@
         "asf/kernel/questions.py:174-176 \u2014 escape the pipe where the example is truncated, `text = ' '.join(str(text or '').split()).replace('|', '\\\\|')`: `render_classes` (:221) interpolates the example raw into a markdown table, so one `|` in a question's text renders a five-cell row in a four-column table and every renderer drops the tail; fence it with a fixture whose question carries a pipe."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90111,7 +90113,7 @@
       ],
       "title": "the console's share \u2014 the question ledger, the window, the gate criterion and the classifier that codes nothing",
       "type": "task",
-      "updated": "2026-10-12T05:48:25Z",
+      "updated": "2026-10-12T06:59:40Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/kernel/loop.py",
@@ -90141,7 +90143,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Archive and rebuild fresh: archive worker/T-159852, close PR #1624, and rebuild from current origin/main. The conflict comes from hub-file changes that landed meanwhile; the rebase session couldn't resolve it, so a fresh build on main is cheaper than another rebase.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session died"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
@@ -90158,7 +90161,11 @@
         "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "rebase PR #1624 onto its base by hand and push, or close it and reopen the item",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "conflict the rebase session could not resolve: PR #1624 still conflicts on head 49a81ae4fa1f3f481822e19fe1a051d8da79bbc7",
+      "kernel_stuck_since": "2026-10-12T06:58:39Z",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90172,7 +90179,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T05:41:45Z",
+      "updated": "2026-10-12T06:59:40Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -90252,14 +90259,11 @@
       "id": "T-159854",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/kernel/incidents.py:221 \u2014 an offset-bearing --since is stamped Z without conversion, so report() compares a non-UTC wall time against the ledger's UTC `at` and silently drops incidents inside the window (proven: --since 2026-10-12T00:00:00+02:00 keeps 0 of 1 record at 2026-10-11T23:00:00Z). Fix: since_iso = t0.astimezone(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ') if t0 else None, with datetime lifted to the module imports.",
-        "asf/kernel/decide.py:929-930 \u2014 glob_text is built from `hit` (files) alone, so a record flagged on its item's writes carries why='risk.high matched none of 1 file; 10 lines < 800', contradicting its own flagged and losing the term D22 requires. Fix: writes_hit = bool(globs and _overlap(list(writes or ()), globs)); use it in flagged and append \" and the item's writes\" to glob_text; assert it in tests/kernel/test_incidents.py:138.",
-        "asf/kernel/incidents.py:99-107 with _key at :51 \u2014 a reverted merge's subject sha shifts (squash commit -> PR head_sha -> '') as the merge ages out of Facts.main and Facts.prs while Item.reverted persists, so (kind, sha, pr) records one incident up to three times and the trigger line reads \"3 incidents\" for one. Fix: key reverted-merge on its PR alone \u2014 return (kind, '' if kind == REVERTED_MERGE else (r.get('sha') or ''), r.get('pr')) \u2014 and add the three-tick case beside tests/kernel/test_incidents.py:113.",
-        "Another session edits asf/kernel/loop.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "rebase: PR #1638 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90272,7 +90276,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-12T06:12:29Z",
+      "updated": "2026-10-12T06:59:40Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
@@ -91084,15 +91088,23 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166575",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "asf/kernel/ports.py:2081-2088 \u2014 `same_tree` advances once per `sessions()` call, not once per beat, so one beat sampled `loop_beats` times ends a live session as `looping` (probed: five `sessions(now=t)` calls at one identical `now`, beat ref untouched, drive the counter 0->5 and the verdict to `looping`). Record the beat the count was taken on and only advance on a new one: read `prev_beat_sha = (prev or {}).get('beat_sha')` beside `tree` (ports.py:2065), then in the gated block `if beat['sha'] != prev_beat_sha: same_tree = same_tree + 1 if beat_tree == branch_tree else 0` and `rec['beat_sha'] = beat['sha']`, carrying `rec['beat_sha']` through the non-gated path exactly as `rec['tree']` is (ports.py:2094). Add the probe's shape as a case in tests/kernel/test_beat_facts.py::TreeFetchGating.",
         "asf/kernel/ports.py:1985-1995 and asf/kernel/status.py:117 \u2014 the beat pass runs on every `sessions()` call, so `asf kernel status` (via `flow_violations`) makes an `ls-remote`, a `heartbeat.last_beat` fetch per quiet run and a `heartbeat.json` write, against that function's own documented contract (\"the count is local ... never a remote read\", status.py:105-108), and advances the counter of the finding above out of band. Make the observation opt-in: `def sessions(self, now=None, beats=True)` with `beat_runs = [r for r in runs if beats and r.get('heartbeat_min')]` (the rest of the body already keys off `beat_runs`), and `sess_port.sessions(beats=False)` at status.py:117 \u2014 that second line needs `asf/kernel/status.py` added to the footprint (`needs writes:`).",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1633: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1633: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1633: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1633: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1633: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "building",
       "links": {
@@ -91107,11 +91119,12 @@
       ],
       "title": "one remote call a tick, and a beat observation on every live session",
       "type": "task",
-      "updated": "2026-10-12T06:01:47Z",
+      "updated": "2026-10-12T06:59:40Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
-        "tests/kernel/test_beat_facts.py"
+        "tests/kernel/test_beat_facts.py",
+        "tests/kernel/fakes.py"
       ]
     },
     "T-166576": {
