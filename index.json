@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T20:19:51Z",
+  "generated": "2026-10-12T20:24:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17995,6 +17995,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-196077",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.167",
       "parent": "F-0336",
       "schema_version": 2,
       "severity": "S3",
@@ -18003,7 +18005,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-12T17:28:42Z"
+      "updated": "2026-10-12T20:24:44Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -90422,10 +90424,11 @@
         "relaunch: operator answer: granted asf/record/ingest.py asf/tick/flaky.py asf/tick/migrate_landing.py asf/tick/file_bugs.py asf/record/reopen.py asf/groom/groom.py asf/metrics/metrics.py tests/test_install.py; nothing else outside writes (card updated by the kernel). asf/record/ingest.py asf/record/reopen.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_findings": [
-        "rebase: PR #1667 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "red: tests (3.12)",
+        "red: tests (3.13)",
         "operator answer: granted asf/record/ingest.py asf/tick/flaky.py asf/tick/migrate_landing.py asf/tick/file_bugs.py asf/record/reopen.py asf/groom/groom.py asf/metrics/metrics.py tests/test_install.py; nothing else outside writes (card updated by the kernel). asf/record/ingest.py asf/record/reopen.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -90453,7 +90456,7 @@
         "PR #1667: upgrade-matrix (v0.2.178) is red but not a required check \u2014 ignored"
       ],
       "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90466,7 +90469,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-12T20:19:50Z",
+      "updated": "2026-10-12T20:24:44Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
@@ -90934,6 +90937,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159855",
+      "kernel_stack": "worker/T-159853@fecc297051bc677d12be5658529fd01a081a908d",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90946,7 +90950,7 @@
       ],
       "title": "the release's own documentation \u2014 the v0.3.0 notes, and what 0.3 leaves open",
       "type": "task",
-      "updated": "2026-10-11T11:56:52Z",
+      "updated": "2026-10-12T20:24:44Z",
       "writes": [
         "docs/RELEASE-NOTES.md",
         "docs/KNOWN-ISSUES.md"
