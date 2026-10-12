@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T02:42:15Z",
+  "generated": "2026-10-12T02:47:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89678,7 +89678,7 @@
       "kernel_notes": [
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89691,7 +89691,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T02:35:08Z",
+      "updated": "2026-10-12T02:47:26Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89900,7 +89900,8 @@
         "One more fix round (4th, final), limited to the three latest findings, all real. (1) asf/kernel/ports.py:2727: gate lead_p90_max on k['waits']['breach'], like the other breach levers at :2702-2707. (2) tests/kernel/test_lead_time.py:275: add a TheLeadBreach case pinning the fix-round key at decide.py:1821. (3) asf/kernel/decide.py:2452: hoist the 'lead ' remap to the top of _why_no_breach_action, so the Stuck and paused branches see the real wait class. Reviewer: approve if these hold; anything else is a follow-up."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more fix round (4th, final), limited to the three latest findings, all real. (1) asf/kernel/ports.py:2727: gate lead_p90_max on k['waits']['breach'], like the other breach levers at :2702-2707. (2) tests/kernel/test_lead_time.py:275: add a TheLeadBreach case pinning the fix-round key at decide.py:1821. (3) asf/kernel/decide.py:2452: hoist the 'lead ' remap to the top of _why_no_breach_action, so the Stuck and paused branches see the real wait class. Reviewer: approve if these hold; anything else is a follow-up."
+        "relaunch: operator answer: One more fix round (4th, final), limited to the three latest findings, all real. (1) asf/kernel/ports.py:2727: gate lead_p90_max on k['waits']['breach'], like the other breach levers at :2702-2707. (2) tests/kernel/test_lead_time.py:275: add a TheLeadBreach case pinning the fix-round key at decide.py:1821. (3) asf/kernel/decide.py:2452: hoist the 'lead ' remap to the top of _why_no_breach_action, so the Stuck and paused branches see the real wait class. Reviewer: approve if these hold; anything else is a follow-up.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
@@ -89930,7 +89931,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-12T02:42:01Z",
+      "updated": "2026-10-12T02:47:26Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -91320,14 +91321,14 @@
       "id": "T-173236",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/kernel/apply.py:370-372 \u2014 a `revive` of a New card writes nothing: `unpark` is called unconditionally and RealRecord.unpark (ports.py:792-794) refuses a card carrying no `priority: later` of its own, so `self.set(s.item_id, **{P.DOR_FILLS: 0})` is never reached and D7's New-card half (spec f-0337.md:214, plan f-0337.md:477) never happens. Fix: `by = S.parked_by(self.facts.items, s.item_id)` and `raise P.PortError('parked through %s' % by)` when it is set (D8, note unchanged); otherwise call `self.ports.record.unpark(...)` only when `self.facts.items.get(s.item_id).priority == 'later'`, and `self.set(s.item_id, **{P.DOR_FILLS: 0})` either way. Then make acceptance line 9 (tests/kernel/test_sweep.py:538) bite by driving it through a FakeRecord subclass carrying that guard, since tests/kernel/fakes.py:117-122 has none and RealRecord.unpark is untested."
+        "rebase: PR #1631 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1617: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91340,7 +91341,7 @@
       ],
       "title": "code applies each verdict, and a verdict it cannot apply is a note and no marker",
       "type": "task",
-      "updated": "2026-10-12T02:42:01Z",
+      "updated": "2026-10-12T02:47:26Z",
       "writes": [
         "asf/kernel/apply.py",
         "tests/kernel/test_sweep.py"
