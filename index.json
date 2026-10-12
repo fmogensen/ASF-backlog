@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T09:23:03Z",
+  "generated": "2026-10-12T09:26:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17602,7 +17602,11 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-184865-1791780722: groom-fill raised risk high: hang reproduces in EndReview's real-git path (push-only guard misses fetch/clone/pull, and the module never self-installs the stub); fix is concrete and the card just lacked named tests and writes.",
         "PR #1639: checks (3.12) is red but not a required check \u2014 ignored",
@@ -17616,7 +17620,7 @@
         "PR #1648: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17625,7 +17629,7 @@
       "state": "New",
       "title": "Bug: tests/kernel/test_ports.py hangs locally on real git",
       "type": "bug",
-      "updated": "2026-10-12T09:23:00Z",
+      "updated": "2026-10-12T09:26:43Z",
       "writes": [
         "tests/kernel/test_ports.py",
         "asf/hermetic.py"
@@ -17659,7 +17663,7 @@
       "state": "New",
       "title": "Bug: unresolvable conflict ends Stuck, rebuild can't be requested, and archive names collide",
       "type": "bug",
-      "updated": "2026-10-12T09:20:00Z",
+      "updated": "2026-10-12T09:26:43Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/ports.py",
@@ -89879,14 +89883,13 @@
         "grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round.",
         "granted asf/record/index.py; nothing else outside writes (card updated by the kernel). asf/record/index.py matches kernel.risk.high: this item is high-risk now.",
         "One more strong-model round. The findings are real correctness defects; fix all of them in this order: (1) resolve.py:116 self-blocking survivor, (2) apply.py:719-725 close whose resolve fails must not leave Done with unresolved edges (retry it next tick), (3) resolve.py:220 commit=True must not write markdown into a .json card's path, (4) resolve.py:203 validate once per close, not once per holder, (5) loop.py tuple verb rendering, (6) create tests/kernel/test_apply.py covering _resolve_closed. Each fix gets a test that fails on the base and passes on the head. No other scope.",
-        "granted asf/kernel/loop.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/kernel/loop.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py matches kernel.risk.high: this item is high-risk now.",
+        "Final round (6). Fix only findings that are correctness defects in this diff, each with a test red on base and green on head. Any finding about code outside this Task's diff, or about style, docs or performance, is NOT fixed here: list it in the report as a follow-up for a new Bug. The next review judges only whether those correctness findings are closed."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more strong-model round. The findings are real correctness defects; fix all of them in this order: (1) resolve.py:116 self-blocking survivor, (2) apply.py:719-725 close whose resolve fails must not leave Done with unresolved edges (retry it next tick), (3) resolve.py:220 commit=True must not write markdown into a .json card's path, (4) resolve.py:203 validate once per close, not once per holder, (5) loop.py tuple verb rendering, (6) create tests/kernel/test_apply.py covering _resolve_closed. Each fix gets a test that fails on the base and passes on the head. No other scope.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "relaunch: operator answer: granted asf/kernel/loop.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: Final round (6). Fix only findings that are correctness defects in this diff, each with a test red on base and green on head. Any finding about code outside this Task's diff, or about style, docs or performance, is NOT fixed here: list it in the report as a follow-up for a new Bug. The next review judges only whether those correctness findings are closed."
       ],
-      "kernel_extra_rounds": 2,
+      "kernel_extra_rounds": 3,
       "kernel_findings": [
         "tests/test_card_edge_resolve.py:314-344 \u2014 C1: lines 11 and 12 are proven on .md cards only; add a JSON case to OneCommit (two .json holders, resolve.close with the default commit=True, asserting one new commit and both tasks/*.json plus their .md views in `git show --stat HEAD`), and withdraw `needs writes: asf/record/index.py` \u2014 the premise is this branch's stale asf/record/index.py:37-40, which origin/main already replaced in c4c7a31 (T-154340, PR #1635), so no change to index.py is needed.",
         "tests/test_card_edge_resolve.py:114-122 and :230-238 \u2014 C2: lines 5 and 9 assert `satisfied` is absent (.md holders) and the supersede-on-JSON path has no test at all; add a JSON case to Superseded asserting the re-point and the satisfied entry's field/id/date (id = the old id), and one to ClosedSatisfied asserting the same three keys for 'closed'.",
@@ -89906,11 +89909,7 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 5 fix rounds",
-      "kernel_stuck_since": "2026-10-12T09:16:53Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89923,7 +89922,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T09:16:55Z",
+      "updated": "2026-10-12T09:26:44Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
