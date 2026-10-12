@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T07:37:42Z",
+  "generated": "2026-10-12T07:44:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17640,7 +17640,7 @@
       "kernel_notes": [
         "groom-fill-b-186216-1791788912: groom-fill raised risk high: all three gaps are confirmed on trunk in the kernel's own conflict/rebuild/archive path (decide.py, ports.py), each pinned by an existing or directly adjacent test class."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17649,7 +17649,7 @@
       "state": "New",
       "title": "Bug: unresolvable conflict ends Stuck, rebuild can't be requested, and archive names collide",
       "type": "bug",
-      "updated": "2026-10-12T07:21:34Z",
+      "updated": "2026-10-12T07:44:11Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/ports.py",
@@ -89808,7 +89808,11 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
+      "kernel_stuck_since": "2026-10-12T07:43:26Z",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89821,7 +89825,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T07:26:24Z",
+      "updated": "2026-10-12T07:44:11Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89845,21 +89849,8 @@
         "granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel).",
         "granted tests/kernel/test_floor_starvation.py tests/kernel/test_question_needs_writes.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel).",
-        "relaunch: operator answer: granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel).",
-        "relaunch: operator answer: granted tests/kernel/test_floor_starvation.py tests/kernel/test_question_needs_writes.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
-        "operator answer: granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel).",
-        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1632: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1632: part (3.12, 2) is red but not a required check \u2014 ignored",
@@ -89869,7 +89860,8 @@
         "PR #1632: part (3.13, 4) is red but not a required check \u2014 ignored",
         "PR #1632: upgrade-matrix (v0.2.152) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89882,7 +89874,7 @@
       ],
       "title": "an invalid card and an unresolvable reference are LIMBO with the reason, never dropped",
       "type": "task",
-      "updated": "2026-10-12T06:59:40Z",
+      "updated": "2026-10-12T07:44:11Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_limbo_invalid_card.py",
@@ -90057,7 +90049,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: One more fix round (4th, final), limited to the three latest findings, all real. (1) asf/kernel/ports.py:2727: gate lead_p90_max on k['waits']['breach'], like the other breach levers at :2702-2707. (2) tests/kernel/test_lead_time.py:275: add a TheLeadBreach case pinning the fix-round key at decide.py:1821. (3) asf/kernel/decide.py:2452: hoist the 'lead ' remap to the top of _why_no_breach_action, so the Stuck and paused branches see the real wait class. Reviewer: approve if these hold; anything else is a follow-up.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "review: no VERDICT line"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
@@ -90092,7 +90085,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-12T06:12:29Z",
+      "updated": "2026-10-12T07:44:11Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -90349,7 +90342,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-12T07:37:40Z",
+      "updated": "2026-10-12T07:44:11Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
