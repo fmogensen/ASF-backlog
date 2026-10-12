@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T22:13:54Z",
+  "generated": "2026-10-12T22:16:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90841,14 +90841,13 @@
         "granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py; nothing else outside writes (card updated by the kernel). T-159848 also writes asf/kernel/model.py asf/kernel/ports.py (Building): the overlap rule serialises them. T-160206 also writes asf/kernel/model.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/actions.py matches kernel.risk.high: this item is high-risk now.",
         "granted asf/kernel/loop.py asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now.",
         "The last session ended without pushing and left nothing on a heartbeat ref. Relaunch the build from origin's worker/T-159853 and push before reporting done.",
-        "Verified: origin/worker/T-159853 is at 9f804ca73, which is this session's report commit on top of its merge of origin/main. The work is on origin; nothing is unpushed. Proceed to open the PR and review; no rebuild, no second push."
+        "Verified: origin/worker/T-159853 is at 9f804ca73, which is this session's report commit on top of its merge of origin/main. The work is on origin; nothing is unpushed. Proceed to open the PR and review; no rebuild, no second push.",
+        "One more round, exactly these, then done: (1) decide.py:1794 replace _story_of with _stories_of (parent Story plus every Story on stories:) and make started_story iterate them; add the multi-Story case to test_stories_first.py. (2) ports.py:3140 STORIES_FIRST_DEFAULT = False (off by default; Task 1 flips it where the key is validated). (3) ports.py:2451-2452 gate ci_free() on the launch_per_tick cap being set, and reuse self.resolved; no second capacity.resolve on a tick with the cap off. (4) The four docstring corrections exactly as the findings word them (test_stories_first.py:1, actions.py:352, loop.py:250, decide.py:1995, model.py:596). Each code fix gets a test red on base, green on head. Rebase onto origin/main, no merge commit. The next review judges only (1)-(4)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Verified: origin/worker/T-159853 is at 9f804ca73, which is this session's report commit on top of its merge of origin/main. The work is on origin; nothing is unpushed. Proceed to open the PR and review; no rebuild, no second push.",
-        "relaunch: escalated: the previous session stopped (done without a push: pushed: no \u2014 pushing next) \u2014 pick up from its report and branch, and finish the item",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: One more round, exactly these, then done: (1) decide.py:1794 replace _story_of with _stories_of (parent Story plus every Story on stories:) and make started_story iterate them; add the multi-Story case to test_stories_first.py. (2) ports.py:3140 STORIES_FIRST_DEFAULT = False (off by default; Task 1 flips it where the key is validated). (3) ports.py:2451-2452 gate ci_free() on the launch_per_tick cap being set, and reuse self.resolved; no second capacity.resolve on a tick with the cap off. (4) The four docstring corrections exactly as the findings word them (test_stories_first.py:1, actions.py\u2026"
       ],
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/kernel/decide.py:1794 \u2014 _story_of returns at the first Story on the item's `stories:` list, so the Stories-first term never reads a multi-Story Task's other Stories; replace it with a `_stories_of` that returns the parent Story plus every Story named on `stories:`, and make started_story (decide.py:1797-1806) iterate them (`for sid in _stories_of(iid, items) for cid in children.get(sid, ())`). Probe confirms the term does not fire today for `stories: S-131015, S-131016`, which is this very Task's own shape. Add one case to test_stories_first.py's Stories class over that world.",
         "tests/kernel/test_stories_first.py:1 \u2014 the module docstring says ``kernel.launch.stories_first`` (default on) while the shipped default is off (ports.py:3147, model.py:670) and this module's own test_the_bare_config_default_is_off (:125-126) asserts off; replace `(default on)` with `(default off until Task 1 adds the key to settings.SPEC \u2014 asf.kernel.ports.STORIES_FIRST_DEFAULT)`.",
@@ -90866,11 +90865,7 @@
         "PR #1546: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
-      "kernel_stuck_since": "2026-10-12T22:10:36Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90884,7 +90879,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T22:11:14Z",
+      "updated": "2026-10-12T22:16:13Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
