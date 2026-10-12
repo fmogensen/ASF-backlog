@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T14:40:48Z",
+  "generated": "2026-10-12T14:44:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90815,7 +90815,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T14:34:28Z",
+      "updated": "2026-10-12T14:44:22Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91608,15 +91608,15 @@
       "folder": "tasks",
       "id": "T-166579",
       "kernel_findings": [
-        "rebase: PR #1658 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "asf/kernel/loop.py:719-721 \u2014 a blind tick (`facts.github_error`) returns before `beat_started, beat_rc = time.time(), 1` at :721, so it writes no beat; after 600s (`kernel.heartbeat.kernel_stale_after_s`) of GitHub being unreadable `asf kernel beat` prints STALE \"the tick is not running\" and the doctor row goes red while the tick is running and both jobs are loaded, against the spec's \"Every tick writes\" (docs/specs/f-0347.md:341, S-161916 line 1 at :679). Fix: open `beat_started, beat_rc = time.time(), 1` and the `try` above the `if facts.github_error:` branch, and inside it do `summary = blind_tick(facts, ports, out, minted); beat_rc = 1 if summary.get(\"failed\") else 0; return summary`, leaving `write_beat(...)` in the same `finally` \u2014 plus a `TickWritesTheBeat` case asserting a tick whose ports report `github_error` still leaves a beat carrying this tick's `sessions` and `beats`.",
         "Another session edits asf/kernel/loop.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "build-t-166579-1791807795: NEEDS OPERATOR: the claim check over the live record (same as the plan's own \u00a76 \u2014 this cloud session has no ~/.ASF, so the claim covering S-161916 could not be read here) \u2014 asf check --product asf --item F-0347"
       ],
       "kernel_stack": "worker/T-166576@f610e33502318a61b094f511bb5e4bf691183552",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91629,7 +91629,7 @@
       ],
       "title": "the kernel's own beat, readable with both launchd jobs unloaded",
       "type": "task",
-      "updated": "2026-10-12T14:30:32Z",
+      "updated": "2026-10-12T14:44:22Z",
       "writes": [
         "asf/kernel/host.py",
         "asf/kernel/loop.py",
