@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T08:31:51Z",
+  "generated": "2026-10-12T08:35:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17731,6 +17731,9 @@
       "id": "B-187369",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.154",
+      "kernel_notes": [
+        "groom-fill-b-187369-1791793531: groom-fill raised risk high: asf correct never writes operator-answers.jsonl, the only ledger the kernel's Facts.answers reads, so a correction on a kernel Stuck item is recorded but never re-judged \u2014 unlike asf answer, which writes that exact file."
+      ],
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17739,7 +17742,12 @@
       "state": "New",
       "title": "asf correct on a Stuck item never relaunches it",
       "type": "bug",
-      "updated": "2026-10-12T08:25:40Z"
+      "updated": "2026-10-12T08:35:17Z",
+      "writes": [
+        "asf/workers/correct.py",
+        "tests/test_correct.py",
+        "tests/kernel/test_answers.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -89956,8 +89964,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154345",
+      "kernel_answers": [
+        "granted tests/test_install.py; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_attempts": [
-        "review: no VERDICT line"
+        "review: no VERDICT line",
+        "relaunch: operator answer: granted tests/test_install.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -89975,7 +89987,7 @@
         "build-t-154345-1791778854: NEEDS OPERATOR: the two red CI checks the correction quotes (`tests (3.12)` / `tests (3.13)`, parts 3 and 4) are from a run before head 39a762c32; all 31 check runs on 39a762c32 are green, so nothing was left to fix\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89988,14 +90000,15 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T08:11:55Z",
+      "updated": "2026-10-12T08:35:17Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
         "asf/init.py",
         "asf/doctor.py",
         "tests/test_card_enforcement.py",
-        "tests/test_check_staged.py"
+        "tests/test_check_staged.py",
+        "tests/test_install.py"
       ]
     },
     "T-154346": {
@@ -90395,17 +90408,20 @@
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/kernel/incidents.py:75 \u2014 gate the main-red verdict on the PR the flag ran on: `flagged, why = (False, 'no PR: the risk flag never ran') if c.pr is None else risk_verdict(c.files, c.lines, _writes_of(items, c.item_id), config)`, with a `Kinds` case over a PR-less red head (measured: `flagged: True` where `decide._merge_high` is `False`)",
+        "asf/kernel/incidents.py:50 \u2014 key `MAIN_RED` on the red spell, not its moving head: carry `mainline.red_spell(facts, config)`'s last-green sha into the record (already computed this tick, no new read) and key `_key` on it, plus a case that lands a second red commit on a still-red trunk and asserts one record (measured: one unbroken spell wrote 2 records and printed `trigger: 2 incidents`)",
         "tests/kernel/test_incidents.py:197 \u2014 S-131017's eighth acceptance line (\"the view reads only the ledger and the settings, and writes nothing\") is asserted against incidents.report()/incidents.render(), two pure functions over a list of dicts that take no state_dir and cannot write, so the case cannot fail and proves nothing; the view is incidents.risk() (asf/kernel/incidents.py:214-231, dispatched at asf/cli.py:899-905) and nothing in the repository calls it. Add a View case that calls incidents.risk(<stub env.Product>, state_dir=tmp, out=out.append) over a one-record ledger and asserts the printed table, settings and trigger line plus os.listdir(tmp) and the ledger bytes unchanged before and after; rename the existing case to say it covers the fold and the renderer.",
         "asf/kernel/loop.py:465-481 \u2014 measure_incidents is the only path that ever appends to kernel-incidents.jsonl in a real run (called at :635, write=False at :604) and no test calls it; the sibling it copies is tested at exactly that seam (tests/kernel/test_main_moves.py:224-238). Drop the call, invert write, or break the import and every test in test_incidents.py still passes while asf kernel risk reports \"0 incidents, 0 of them flagged\" \u2014 which the Stage-5 card reads as widening is not justified, the one failure mode D22 exists to prevent. Add a TheTickWritesIt class to tests/kernel/test_incidents.py covering the write path (two records appended, [] and no second append on a repeat tick, out empty), the dry run (write=False appends nothing), and the swallowed failure (measure_incidents(None, None, None, None, None) returns [] and prints exactly one \"incident ledger failed\" line).",
-        "Another session edits asf/kernel/loop.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "Another session edits asf/kernel/loop.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "Another session edits asf/kernel/decide.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "build-t-159854-1791788370: NEEDS OPERATOR: the heartbeat background command was refused by the sandbox (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-159854-1791788370 'asf/build-t-159854-1791788370@20261012T065940Z' >/dev/null 2>&1 &\u2026",
         "build-t-159854-1791790150: NEEDS OPERATOR: the heartbeat loop could not start \u2014 the sandbox refused `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-159854-1791790150 'asf/build-t-159854-1791790150@20261012T072918Z'` as an unapproved com\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90418,7 +90434,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-12T08:20:47Z",
+      "updated": "2026-10-12T08:35:17Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
