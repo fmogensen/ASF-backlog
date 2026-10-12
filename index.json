@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T08:20:48Z",
+  "generated": "2026-10-12T08:25:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17654,7 +17654,7 @@
       "state": "New",
       "title": "Bug: unresolvable conflict ends Stuck, rebuild can't be requested, and archive names collide",
       "type": "bug",
-      "updated": "2026-10-12T08:15:47Z",
+      "updated": "2026-10-12T08:25:40Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/ports.py",
@@ -17716,11 +17716,30 @@
       "state": "New",
       "title": "kernel install leaves the product pin on the old venv",
       "type": "bug",
-      "updated": "2026-10-12T08:15:47Z",
+      "updated": "2026-10-12T08:25:40Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_host.py"
       ]
+    },
+    "B-187369": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-187369",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.154",
+      "parent": "F-0346",
+      "schema_version": 2,
+      "severity": "S3",
+      "signature": "asf correct on a Stuck item never relaunches it",
+      "stage_since": "2026-10-12T08:23:33Z",
+      "state": "New",
+      "title": "asf correct on a Stuck item never relaunches it",
+      "type": "bug",
+      "updated": "2026-10-12T08:25:40Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -36051,7 +36070,8 @@
         "B-184865",
         "B-186216",
         "B-186367",
-        "B-187018"
+        "B-187018",
+        "B-187369"
       ],
       "decided": true,
       "folder": "features",
@@ -89738,7 +89758,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154341",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89751,7 +89771,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T04:59:23Z",
+      "updated": "2026-10-12T08:25:40Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -90266,7 +90286,7 @@
         "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90280,7 +90300,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T07:26:24Z",
+      "updated": "2026-10-12T08:25:40Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -90352,7 +90372,8 @@
       "backlinks": [
         "T-0816",
         "T-159853",
-        "T-159855"
+        "T-159855",
+        "B-187369"
       ],
       "children": [],
       "decided": true,
