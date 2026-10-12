@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T16:53:24Z",
+  "generated": "2026-10-12T16:56:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17824,16 +17824,17 @@
       "kernel_dor_fills_ver": "0.2.159",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/kernel/ports.py:1649 \u2014 a red the kernel already read keeps `head_sha=''` for good: `GhCache` is durable JSON on disk (ports.py:1399-1447, real path via `real_ports` at :3030-3037) and every pre-fix `jobs` entry holds `attempt` with no `head_sha`, so the cached branch returns '' and `current_checks` (decide.py:1502) still counts the stale red as the PR's own \u2014 the card's AC2 does not hold on the PRs it exists for (T-159852, T-154345), whose reds are precisely the cached ones. Change the guard to `if 'attempt' in seen and 'head_sha' in seen:` so such an entry falls through once to the `actions/runs/<run_id>` read it made before this card anyway (the copied `seen` keeps `step`/`files`/`tail`, so no log is re-read and `:1671-1672` backfills both keys), and add a third case beside the two named ones: a `jobs` entry with `attempt` and no `head_sha` must still end with `check.head_sha` set.",
-        "Another session edits asf/kernel/briefs.py, asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "asf/kernel/briefs.py:397 \u2014 ci_fact reads pr.checks unfiltered, so the review that decide.ci_green now launches on a stale red is handed \"CI is NOT confirmed green ... trust no result\": import current_checks from asf.kernel.decide function-locally (as correction already does at briefs.py:312) and make line 397 `checks = list(current_checks(pr)) if pr is not None else []`, plus a case in tests/kernel/test_review_ci_gate.py asserting the brief reads \"CI is green on head\" when the only red is stale.",
+        "asf/kernel/briefs.py:327 \u2014 correction's no-findings fallback names stale reds, ordering a writer to fix a red that is not on their head: make line 327 `reds = [c.name for c in (current_checks(pr) if pr else ()) if c.conclusion in RED_CONCLUSIONS]` with the same function-local import.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-190071-1791800796: groom-fill raised risk high: GitHub's statusCheckRollup can lag a push by up to ~60s under an already-current headRefOid (verified live via gh api against this repo's own open PR), and Check carries no head identity to catch it \u2014 _red_detail already makes the one gh api call that has head_sha, so tagging Check with it and excluding a head-mismatched red from _judge_pr's fix-round path is a minimal, buildable fix.",
         "PR #1655: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17842,7 +17843,7 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T16:53:22Z",
+      "updated": "2026-10-12T16:56:45Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -90908,7 +90909,9 @@
         "Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file."
+        "relaunch: operator answer: Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file.",
+        "escalated: one more fix round on the strong model, with every finding",
+        "ended without a REPORT"
       ],
       "kernel_findings": [
         "asf/harvest/lane.py:1192 \u2014 worker/T-160208 carries two merges of origin/main (9cb027b5aa25a99dd3a8bf350354d34c0c939cdc, ca4001687f3e02df719e4c7523364846b906c4e1), and the lane refuses such a branch before any gate (\"merge commit on a lane branch \u2026 a lane branch is straight commits on origin/main\"), so this PR cannot land as it stands. The seven changed files need no edit. In the worktree: `git fetch origin main && git rebase origin/main`, then confirm `git rev-list --merges --count origin/main..HEAD` prints 0, then report `pushed: rebased <sha>` and let the host publish it \u2014 never another merge, never a force-push. Also correct the next report's `left out:` line: the merges of origin/main were not no-ops (\"Already up to date\") \u2014 ca40016 brought in asf/kernel/model.py, asf/kernel/ports.py and tests/kernel/test_beat_facts.py, and 9cb027b brought in asf/capacity.py, asf/cli.py, asf/doctor.py and asf/init.py.",
@@ -90916,7 +90919,7 @@
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -90929,7 +90932,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T15:48:18Z",
+      "updated": "2026-10-12T16:56:45Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
