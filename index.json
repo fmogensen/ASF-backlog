@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T11:26:01Z",
+  "generated": "2026-10-12T11:28:58Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90424,10 +90424,12 @@
         "Rebase worker/T-159852 onto current main and resolve the single conflict in asf/kernel/ports.py by keeping both sides (main's new ports plus this Task's additions); host.py, loop.py and test_host.py merge cleanly. No other change. Then CI and re-review on the new head."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Rebase worker/T-159852 onto current main and resolve the single conflict in asf/kernel/ports.py by keeping both sides (main's new ports plus this Task's additions); host.py, loop.py and test_host.py merge cleanly. No other change. Then CI and re-review on the new head."
+        "relaunch: operator answer: Rebase worker/T-159852 onto current main and resolve the single conflict in asf/kernel/ports.py by keeping both sides (main's new ports plus this Task's additions); host.py, loop.py and test_host.py merge cleanly. No other change. Then CI and re-review on the new head.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 4,
       "kernel_findings": [
+        "rebase: PR #1645 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/ports.py:2399 \u2014 _take_seat catches only seats.Unusable; seats.Busy escapes _spawn/launch untyped and apply.py:552-554 charges the item an attempt. Add, before the Unusable clause: `except seats.Busy as e: raise NoSeat('seats ledger busy: %s' % e) from None`",
         "asf/kernel/ports.py:2409 \u2014 _release_seat catches only seats.Unusable, and it runs in _spawn's finally (:2354-2359), so a Busy there replaces a successful launch with an exception (session running, item never moved to BUILDING, _meta never reached). Make it `except (seats.Busy, seats.Unusable): pass`, as Pool.untake does at asf/workers/pool.py:692.",
         "asf/kernel/ports.py:2103 \u2014 _account (and the _live it reads, :2059) still count this product's ledger only, so the local lane picks a host-full account and _take_seat refuses the launch while another local account is free and is never tried; the cloud lane re-fires, the local one does not. Implement the Task's own Files instruction (docs/plans/f-0334.md:786-788): make the per-account number the claim ledger's in _live/_account \u2014 layer lifecycle.live_all(seats.root()) plus seats.read() over it at :2090 \u2014 or, minimally, retry self._account(skip=refused) on NoSeat in the local branch (:2277-2284).",
@@ -90437,9 +90439,11 @@
         "asf/kernel/loop.py:475 \u2014 replace `wanted = min(wanted, max(0, _free(facts, config)))` with `wanted = min(wanted, max(0, config.max_sessions - inflight))` and drop `_free` from the import at :466: `_free` folds in `facts.seats`, which this Task just bound by the fair share, so `wanted` is capped by host pressure and by the share itself \u2014 the terms `asf.tick.step_wave.demand` (asf/tick/step_wave.py:669-684, the definition `capacity.write_demand` names) explicitly rules out with a dated measurement. Measured here: 8 Ready rows at 0 free records `wanted 0`, and the partner's `claim` lends 3 of its 5 slots away. Keep the `plan.idle['waiting']` preference and the Task/Bug Ready fallback as they are.",
         "asf/kernel/ports.py:2375 \u2014 move the foreign count inside the lock and take one registry snapshot for both terms: inside `with seats.held() as ledger:` do `registered = lifecycle.live_all(seats.root())`, `keys = {(r.get('product'), r.get('job')) for r in registered}`, `live = sum(1 for r in registered if r.get('account') == acct.name)`, `held = sum(1 for c in ledger.claims if c.get('account') == acct.name and (c.get('product'), c.get('job')) not in keys)`, then test `live + held >= acct.cap` \u2014 retiring `_foreign_live` and the `foreign`/`here` split. As written, `foreign` is read before the lock while `ledger.claims` is swept against a second, later `live_all` walk, so a foreign launch registering between the two is counted zero times (missed as foreign, swept out of claims) and one launch goes over the account's host cap \u2014 the race this Task exists to close, and the contract `_claim_seat`'s own docstring states at :2368-2371.",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "operator answer: Rebase worker/T-159852 onto current main and resolve the single conflict in asf/kernel/ports.py by keeping both sides (main's new ports plus this Task's additions); host.py, loop.py and test_host.py merge cleanly. No other change. Then CI and re-review on the new head.",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 6,
+      "kernel_fix_rounds": 7,
       "kernel_notes": [
         "PR #1567: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1567: part (3.13, 3) is red but not a required check \u2014 ignored",
@@ -90448,7 +90452,7 @@
         "PR #1645: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90462,7 +90466,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T11:25:56Z",
+      "updated": "2026-10-12T11:28:54Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -91438,7 +91442,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166576",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91451,7 +91455,7 @@
       ],
       "title": "beats decide, not age",
       "type": "task",
-      "updated": "2026-10-12T11:10:26Z",
+      "updated": "2026-10-12T11:28:54Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/loop.py",
