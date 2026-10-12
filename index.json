@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T05:12:45Z",
+  "generated": "2026-10-12T05:23:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17604,6 +17604,7 @@
       "kernel_notes": [
         "groom-fill-b-184865-1791780722: groom-fill raised risk high: hang reproduces in EndReview's real-git path (push-only guard misses fetch/clone/pull, and the module never self-installs the stub); fix is concrete and the card just lacked named tests and writes."
       ],
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17612,7 +17613,7 @@
       "state": "New",
       "title": "Bug: tests/kernel/test_ports.py hangs locally on real git",
       "type": "bug",
-      "updated": "2026-10-12T05:12:35Z",
+      "updated": "2026-10-12T05:22:52Z",
       "writes": [
         "tests/kernel/test_ports.py",
         "asf/hermetic.py"
@@ -49972,7 +49973,6 @@
         "T-129177",
         "T-129193",
         "T-154337",
-        "T-154344",
         "T-159849",
         "T-164021",
         "T-80371",
@@ -89722,7 +89722,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T05:12:35Z",
+      "updated": "2026-10-12T05:22:52Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89749,18 +89749,19 @@
         "relaunch: operator answer: granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
-        "asf/kernel/ports.py:351 \u2014 resolve a reference against every id the record holds on disk, not only the ids that canonicalize: a card whose JSON does not parse is in `self._errors` and never in `self._cards`, and a card with no `id:` is dropped by `canonicalize`, so today every valid card that waits on such a card is itself declared LIMBO (\"after T-0001 names no card on the record\", which is false) and removed from `items()` \u2014 the silent drop S-133162 exists to end, one hop out, and Step 5's \"still holds the cards that wait on it\" broken. Build the target set once in `unreadable()` before the `self._by_id` loop (`:372`) from `set(self._cards)` plus `item_of_branch` of every `self._errors` path and of every `rec['relpath']`, pass it to `_invalid_why`, and test `ref_id not in known` at `:351`; then assert line 5 off a real `RealRecord` in tests/kernel/test_limbo_invalid_card.py:127-149 rather than a hand-built `facts(unreadable=\u2026)`, which is why CI is green on this.",
-        "asf/kernel/ports.py:351 \u2014 drop the `field == 'after'` guard so every field `card.refs(meta)` yields is checked (ten schema reference fields), as Step 1 (`<field> <id> names no card on the record`) and spec line 4 (docs/specs/f-0340.md:852) both say, and add a `parent: F-9999` case to tests/kernel/test_limbo_invalid_card.py::DanglingAfter. If the narrowing is deliberate because a dangling non-scheduling reference must not take a card out of `items()`, then amend docs/plans/f-0340.md:578-583 to say `after:` where it says `<field>` and say so in the report \u2014 the report's `left out: none` and `Proves: S-133162 line 4` leave the narrowing nowhere but a code comment at `:349-350`.",
-        "operator answer: granted tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel)."
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel).",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1632: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1632: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1632: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1632: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89773,7 +89774,7 @@
       ],
       "title": "an invalid card and an unresolvable reference are LIMBO with the reason, never dropped",
       "type": "task",
-      "updated": "2026-10-12T04:59:23Z",
+      "updated": "2026-10-12T05:22:52Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_limbo_invalid_card.py",
@@ -89793,17 +89794,8 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154345",
-      "kernel_attempts": [
-        "session ran past its max age",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "asf/init.py:88 \u2014 the generated record CI workflow installs `pip install \"asf-factory=={version}\"` from a package index that has never carried this distribution (PyPI -> 404; pip --dry-run -> No matching distribution found), so every push and pull request to every record `asf init` lays down fails before `asf check --schema-only` is reached, and `write_record_ci_workflow`'s never-overwrite rule means re-running `asf init` never repairs it. Install from the git URL the product already defines, pinned to the release tag, reusing asf/version.py:50 INSTALL_LINE or asf/conventions.py:504 DEFAULT_RELEASE_INSTALL instead of minting a second install line: `- run: pipx install --force \"git+https://github.com/{slug}.git@v{version}\"`, with {slug} from asf/init.py:185's existing slug_from_url. Then widen the line-15 test: tests/test_card_enforcement.py:152 drops the install line before asserting, which is why this reached a green CI \u2014 it must assert the install line names the product's git URL and a v<x.y.z> tag, and nothing from an index.",
-        "asf/init.py:96 \u2014 RECORD_CI_WORKFLOW_TEMPLATE.format(version=asf.__version__) pins to a string that names no release outside an installed release: asf/version.py:80-88 pep440 returns x.y.z.post<n>+g<sha> for a checkout past the last tag (a factory host's normal state) and FALLBACK 0.0.0 with no stamp, no usable git describe and no metadata \u2014 which is what this container renders, `pip install \"asf-factory==0.0.0\"`. Even with C1's git URL that ref would not resolve. Render the release tag instead: take v<x.y.z> only when asf.__version__ matches a plain release triple, and when it does not, refuse to write the workflow (return False from write_record_ci_workflow, so lay_down reports no file and doctor.check_record_ci's informational row names the gap) rather than write one pinned to a ref that does not exist. Test it beside line 15: a non-release version writes no workflow, a release version writes one whose ref is v<x.y.z>.",
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1630: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1630: part (3.12, 4) is red but not a required check \u2014 ignored",
@@ -89811,7 +89803,8 @@
         "PR #1630: part (3.13, 4) is red but not a required check \u2014 ignored",
         "build-t-154345-1791778854: NEEDS OPERATOR: the two red CI checks the correction quotes (`tests (3.12)` / `tests (3.13)`, parts 3 and 4) are from a run before head 39a762c32; all 31 check runs on 39a762c32 are green, so nothing was left to fix\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89824,7 +89817,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T04:59:23Z",
+      "updated": "2026-10-12T05:22:52Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
@@ -90059,11 +90052,12 @@
       "folder": "tasks",
       "id": "T-159851",
       "kernel_findings": [
-        "asf/kernel/questions.py:166 \u2014 the host-command bucket is gated on R.HOST_RE, which demands the literal word \"confirm\" and cannot cross a \".\" (so a backticked command with a file extension never matches); the ordinary shape \"run `bash tools/check_clients.sh` on the host\" buckets as judgement, against docs/specs/f-0334.md:844. Fix in questions.py (never resolvers.py, PC13): add HOST_CLAUSE_RE = re.compile(r'\\b(?:confirm|run)\\b[^\\n]{0,120}?\\bon the (?:factory )?host\\b', re.I) beside HOST_COMMAND_RE at :139 and use it at :166 as `if HOST_CLAUSE_RE.search(text) and HOST_COMMAND_RE.search(text):`; add one TheClassifier case for the run-phrasing. Verified on this head: all twelve test_each_fixture_buckets_into_exactly_one_class fixtures still classify exactly as asserted.",
-        "Another session edits asf/cli.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "asf/kernel/questions.py:161-170 \u2014 move the `host-command` test above the two owned classes (`PUSHED_RE`, `TRUNK_BASE_RE`), so `classify` decides this Story's own shape before F-0339's: `PUSHED_RE` is two bare words under `re.S`, so a host-command question naming `--against origin/main` and a pushed branch buckets as `pushed` instead of `host-command`; all thirteen existing fixtures stay green under the reordering, and the case belongs among them as a fourteenth.",
+        "asf/kernel/questions.py:139 \u2014 replace `HOST_COMMAND_RE = re.compile(r'`[a-z][^`\\n]+`')` with `re.compile(r'`[^`\\n]*[A-Za-z][^`\\n]*`')`: the `[a-z]` anchor drops a backticked `./tools/x.sh` or `PYTHONPATH=. python3 \u2026`, so both fall to `judgement` although the spec's row (docs/specs/f-0334.md:844) asks only for a backticked command and a host clause; add both as fixtures.",
+        "asf/kernel/questions.py:174-176 \u2014 escape the pipe where the example is truncated, `text = ' '.join(str(text or '').split()).replace('|', '\\\\|')`: `render_classes` (:221) interpolates the example raw into a markdown table, so one `|` in a question's text renders a five-cell row in a four-column table and every renderer drops the tail; fence it with a fixture whose question carries a pipe."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90077,7 +90071,7 @@
       ],
       "title": "the console's share \u2014 the question ledger, the window, the gate criterion and the classifier that codes nothing",
       "type": "task",
-      "updated": "2026-10-12T04:59:23Z",
+      "updated": "2026-10-12T05:22:52Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/kernel/loop.py",
@@ -90217,7 +90211,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90230,7 +90224,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-12T04:52:09Z",
+      "updated": "2026-10-12T05:22:52Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
@@ -91052,7 +91046,7 @@
         "PR #1633: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1633: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91065,7 +91059,7 @@
       ],
       "title": "one remote call a tick, and a beat observation on every live session",
       "type": "task",
-      "updated": "2026-10-12T04:40:56Z",
+      "updated": "2026-10-12T05:22:52Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
