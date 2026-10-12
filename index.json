@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T07:47:45Z",
+  "generated": "2026-10-12T07:49:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17599,13 +17599,18 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-184865",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
       "kernel_findings": [
+        "asf/hermetic.py:524-527,540,550 \u2014 add the short flags `-u` (clone's `--upload-pack`) and `-j` (clone/fetch's `--jobs`) to the skip-list, and the pull equivalents `-s`/`-X` (`--strategy`/`--strategy-option`); better, drive the remote-detection off git's own option table so a future flag can't reopen this (`git clone -u /tmp/x https://real/evil.git` passes the guard unrefused today).",
         "asf/hermetic.py:524 \u2014 add `-b`/`--branch` (and the other clone-only value flags sharing the gap: `--origin`, `--depth`, `--template`, `--reference`, `--reference-if-able`, `--separate-git-dir`, `--shallow-since`, `--shallow-exclude`, `--filter`, `--jobs`, `--upload-pack`, `--server-option`) to the value-consuming option set in the guard's remote-detection loop, so `git clone -b <branch> <real-remote-url> <dir>` is refused the same way a plain `git clone <real-remote-url> <dir>` already is \u2014 currently the branch name is misread as the remote and treated as local, letting the real clone through to the network unrefused (reproduced: see docs/reviews/1-b-184865.md C1).",
+        "Another session edits tests/kernel/test_ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "Another session edits tests/kernel/test_ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-b-184865-1791780722: groom-fill raised risk high: hang reproduces in EndReview's real-git path (push-only guard misses fetch/clone/pull, and the module never self-installs the stub); fix is concrete and the card just lacked named tests and writes.",
         "PR #1639: checks (3.12) is red but not a required check \u2014 ignored",
@@ -17613,7 +17618,7 @@
         "PR #1639: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1639: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17622,7 +17627,7 @@
       "state": "New",
       "title": "Bug: tests/kernel/test_ports.py hangs locally on real git",
       "type": "bug",
-      "updated": "2026-10-12T07:35:08Z",
+      "updated": "2026-10-12T07:49:22Z",
       "writes": [
         "tests/kernel/test_ports.py",
         "asf/hermetic.py"
@@ -89792,23 +89797,27 @@
         "grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round."
+        "relaunch: operator answer: grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/record/resolve.py:220 \u2014 close(commit=True) reaches index.refresh (publish.py:109), which writes markdown into a .json card's own path (index.py:38-40) and is refused by the write gate; measured CardInvalid on a two-card JSON record. The round steered tests 13, 10b, 18b and 18c onto commit=False for it and recorded it only in test comments, so spec lines 11 and 12 are proven on .md cards alone. Fix: put asf/record/index.py on the REPORT's `needs writes:` line and say in `left out:` that the one-commit path is unproven on a JSON card until index.refresh renders a .json card through card.dumps.",
+        "asf/record/resolve.py:203 \u2014 card.validate(new_meta, root) runs once per holder and each call re-scans the whole record (card.py:81-83, uncached), so one close() costs 1 + N full load_items scans, and the kernel's close pays it twice per card per tick (apply.py:500 and :740). Fix: close() already holds the record at resolve.py:190-191 \u2014 validate shape only with card.validate(new_meta) and check each card.refs(new_meta) id against that by_id, instead of re-scanning per holder.",
         "asf/record/resolve.py:116 \u2014 superseding re-points a holder that IS the survivor onto itself (blockedBy: [self], which asf/evidence/evidence.py:1925 blocked_of has no guard against, so the survivor is blocked for good; card.validate accepts it). In _rewrite_one, when superseded_by equals the holder's own id, drop the edge instead of re-pointing it: pop the scalar field, or delete the list entry (highest index first, as the 'deleted' branch at :95-96 already does), set changed = True and append the field to `deleted` so the History line names what it pointed at; add the case to tests/test_card_edge_resolve.py's Superseded class (a survivor carrying blockedBy: [<loser>] loses the entry instead of gaining its own id).",
         "docs/plans/f-0340.md:553 \u2014 the Gate line `python3 -m unittest -q tests.test_groom tests.kernel.test_apply` errors because tests/kernel/test_apply.py does not exist; the operator has now granted that path (\"granted tests/kernel/test_apply.py\"), so create it and cover asf/kernel/apply.py's own additions: _resolve_closed calls resolve.close(root, iid, 'closed', commit=False) for exactly set(self.closed) & set(self.result.written); a Satisfied whose write_fields failed leaves its edges held; a raising resolve.close lands as result.failed == [(('write', 'resolve <iid>'), why)] and logs FAILED resolve <iid> (apply.py:742-748); through run() (not Satisfied alone) a declining Satisfied leaves the item State.STUCK with the UNRESOLVED reason prefix, owner='operator', and no state: Done staged; and a ports.record with no root is left alone by both Satisfied (apply.py:495) and _resolve_closed (apply.py:735).",
         "docs/plans/f-0340.md:553 \u2014 the Gate's `python3 -m unittest -q tests.test_groom tests.kernel.test_apply` errors: `tests/kernel/test_apply.py` does not exist on this head. Report `needs writes: tests/kernel/test_apply.py` and create it, covering `_resolve_closed` (its failure path and the `self.closed \u2229 result.written` intersection), or get the Gate line corrected \u2014 a Gate command that errors never gates.",
         "asf/kernel/apply.py:719-725 \u2014 a kernel close whose `resolve.close` raises leaves the card Done with its incoming edges unresolved for good: `write()` has already landed `state: Done` (apply.py:495, :701), the failure is caught and kept only in `result.failed` and the transcript, and `Satisfied` is emitted once (asf/kernel/needed.py:216, :251, :268) so no later tick retries it. Take the `dry_run=True` pre-check before apply.py:494's `self.set(a.item_id, **{P.STATE: State.DONE.value})`, the way retire.py:92 and groom.py:375 decline before their own write lands \u2014 or, on failure, write the reason onto the item through `self.ports.record.write_fields` so the record carries the unresolved edges. A transcript line alone is not enough; it is the only trace and it goes with the tick.",
         "asf/kernel/apply.py:723 with asf/kernel/loop.py:134 and :497 \u2014 `_resolve_closed` appends `(('resolve', iid), str(e))` and both tick summaries render any tuple as `'write %s' % a[1]`, so a resolve failure prints as `write <id>` and the `resolve` tag is dropped. Render the tuple's own verb, `('%s %s' % a)` for a 2-tuple, in both places (needs writes: asf/kernel/loop.py); if that grant is refused, pass the label as `(('write', 'resolve %s' % iid), ...)` so the line at least names the operation.",
-        "operator answer: granted tests/kernel/test_apply.py; nothing else outside writes (card updated by the kernel)."
+        "operator answer: granted tests/kernel/test_apply.py; nothing else outside writes (card updated by the kernel).",
+        "operator answer: grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89821,7 +89830,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T07:47:41Z",
+      "updated": "2026-10-12T07:49:22Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -91150,25 +91159,16 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166575",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "asf/kernel/ports.py:2081-2088 \u2014 `same_tree` advances once per `sessions()` call, not once per beat, so one beat sampled `loop_beats` times ends a live session as `looping` (probed: five `sessions(now=t)` calls at one identical `now`, beat ref untouched, drive the counter 0->5 and the verdict to `looping`). Record the beat the count was taken on and only advance on a new one: read `prev_beat_sha = (prev or {}).get('beat_sha')` beside `tree` (ports.py:2065), then in the gated block `if beat['sha'] != prev_beat_sha: same_tree = same_tree + 1 if beat_tree == branch_tree else 0` and `rec['beat_sha'] = beat['sha']`, carrying `rec['beat_sha']` through the non-gated path exactly as `rec['tree']` is (ports.py:2094). Add the probe's shape as a case in tests/kernel/test_beat_facts.py::TreeFetchGating.",
-        "asf/kernel/ports.py:1985-1995 and asf/kernel/status.py:117 \u2014 the beat pass runs on every `sessions()` call, so `asf kernel status` (via `flow_violations`) makes an `ls-remote`, a `heartbeat.last_beat` fetch per quiet run and a `heartbeat.json` write, against that function's own documented contract (\"the count is local ... never a remote read\", status.py:105-108), and advances the counter of the finding above out of band. Make the observation opt-in: `def sessions(self, now=None, beats=True)` with `beat_runs = [r for r in runs if beats and r.get('heartbeat_min')]` (the rest of the body already keys off `beat_runs`), and `sess_port.sessions(beats=False)` at status.py:117 \u2014 that second line needs `asf/kernel/status.py` added to the footprint (`needs writes:`).",
-        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
-        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1633: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1633: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1633: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1633: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91181,7 +91181,7 @@
       ],
       "title": "one remote call a tick, and a beat observation on every live session",
       "type": "task",
-      "updated": "2026-10-12T07:32:13Z",
+      "updated": "2026-10-12T07:49:22Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
