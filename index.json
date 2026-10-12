@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T21:07:49Z",
+  "generated": "2026-10-12T21:14:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90434,11 +90434,13 @@
       "id": "T-154346",
       "kernel_answers": [
         "hold: asf/record/setfield.py belongs to T-154341, wait for it \u2014 no writes granted; this card waits on it through after:. Decided by the kernel.",
-        "granted asf/record/ingest.py asf/tick/flaky.py asf/tick/migrate_landing.py asf/tick/file_bugs.py asf/record/reopen.py asf/groom/groom.py asf/metrics/metrics.py tests/test_install.py; nothing else outside writes (card updated by the kernel). asf/record/ingest.py asf/record/reopen.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/record/ingest.py asf/tick/flaky.py asf/tick/migrate_landing.py asf/tick/file_bugs.py asf/record/reopen.py asf/groom/groom.py asf/metrics/metrics.py tests/test_install.py; nothing else outside writes (card updated by the kernel). asf/record/ingest.py asf/record/reopen.py matches kernel.risk.high: this item is high-risk now.",
+        "granted asf/record/ids.py tests/test_harvest.py tests/test_cli.py tests/test_path_resolution.py tests/test_card_schema.py; nothing else outside writes (card updated by the kernel). asf/record/ids.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: hold: asf/record/setfield.py belongs to T-154341, wait for it \u2014 no writes granted; this card waits on it through after:. Decided by the kernel.",
-        "relaunch: operator answer: granted asf/record/ingest.py asf/tick/flaky.py asf/tick/migrate_landing.py asf/tick/file_bugs.py asf/record/reopen.py asf/groom/groom.py asf/metrics/metrics.py tests/test_install.py; nothing else outside writes (card updated by the kernel). asf/record/ingest.py asf/record/reopen.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted asf/record/ingest.py asf/tick/flaky.py asf/tick/migrate_landing.py asf/tick/file_bugs.py asf/record/reopen.py asf/groom/groom.py asf/metrics/metrics.py tests/test_install.py; nothing else outside writes (card updated by the kernel). asf/record/ingest.py asf/record/reopen.py matches kernel.risk.high: this item is high-risk now.",
+        "relaunch: operator answer: granted asf/record/ids.py tests/test_harvest.py tests/test_cli.py tests/test_path_resolution.py tests/test_card_schema.py; nothing else outside writes (card updated by the kernel). asf/record/ids.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_findings": [
         "red: tests (3.12)",
@@ -90473,7 +90475,7 @@
         "PR #1667: upgrade-matrix (v0.2.178) is red but not a required check \u2014 ignored"
       ],
       "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90486,7 +90488,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-12T20:24:44Z",
+      "updated": "2026-10-12T21:14:20Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
@@ -90500,7 +90502,12 @@
         "asf/record/reopen.py",
         "asf/groom/groom.py",
         "asf/metrics/metrics.py",
-        "tests/test_install.py"
+        "tests/test_install.py",
+        "asf/record/ids.py",
+        "tests/test_harvest.py",
+        "tests/test_cli.py",
+        "tests/test_path_resolution.py",
+        "tests/test_card_schema.py"
       ]
     },
     "T-159847": {
@@ -90867,7 +90874,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T21:00:11Z",
+      "updated": "2026-10-12T21:14:20Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -90961,7 +90968,7 @@
       "folder": "tasks",
       "id": "T-159855",
       "kernel_stack": "worker/T-159853@e0f7fad62495ceea126790623824fb494187ec2a",
-      "kernel_state": "new",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90974,7 +90981,7 @@
       ],
       "title": "the release's own documentation \u2014 the v0.3.0 notes, and what 0.3 leaves open",
       "type": "task",
-      "updated": "2026-10-12T21:07:48Z",
+      "updated": "2026-10-12T21:14:20Z",
       "writes": [
         "docs/RELEASE-NOTES.md",
         "docs/KNOWN-ISSUES.md"
@@ -91982,7 +91989,7 @@
       "kernel_fix_rounds": 3,
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91995,7 +92002,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T20:53:16Z",
+      "updated": "2026-10-12T21:14:20Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
