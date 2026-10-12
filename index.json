@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T04:23:42Z",
+  "generated": "2026-10-12T04:30:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -49943,6 +49943,7 @@
         "T-129177",
         "T-129193",
         "T-154337",
+        "T-154344",
         "T-159849",
         "T-164021",
         "T-80371",
@@ -89675,7 +89676,7 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89688,7 +89689,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T04:23:15Z",
+      "updated": "2026-10-12T04:30:20Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89712,7 +89713,13 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/ports.py:351 \u2014 resolve a reference against every id the record holds on disk, not only the ids that canonicalize: a card whose JSON does not parse is in `self._errors` and never in `self._cards`, and a card with no `id:` is dropped by `canonicalize`, so today every valid card that waits on such a card is itself declared LIMBO (\"after T-0001 names no card on the record\", which is false) and removed from `items()` \u2014 the silent drop S-133162 exists to end, one hop out, and Step 5's \"still holds the cards that wait on it\" broken. Build the target set once in `unreadable()` before the `self._by_id` loop (`:372`) from `set(self._cards)` plus `item_of_branch` of every `self._errors` path and of every `rec['relpath']`, pass it to `_invalid_why`, and test `ref_id not in known` at `:351`; then assert line 5 off a real `RealRecord` in tests/kernel/test_limbo_invalid_card.py:127-149 rather than a hand-built `facts(unreadable=\u2026)`, which is why CI is green on this.",
+        "asf/kernel/ports.py:351 \u2014 drop the `field == 'after'` guard so every field `card.refs(meta)` yields is checked (ten schema reference fields), as Step 1 (`<field> <id> names no card on the record`) and spec line 4 (docs/specs/f-0340.md:852) both say, and add a `parent: F-9999` case to tests/kernel/test_limbo_invalid_card.py::DanglingAfter. If the narrowing is deliberate because a dangling non-scheduling reference must not take a card out of `items()`, then amend docs/plans/f-0340.md:578-583 to say `after:` where it says `<field>` and say so in the report \u2014 the report's `left out: none` and `Proves: S-133162 line 4` leave the narrowing nowhere but a code comment at `:349-350`.",
+        "operator answer: granted tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89725,7 +89732,7 @@
       ],
       "title": "an invalid card and an unresolvable reference are LIMBO with the reason, never dropped",
       "type": "task",
-      "updated": "2026-10-12T02:58:50Z",
+      "updated": "2026-10-12T04:30:20Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_limbo_invalid_card.py",
@@ -90062,7 +90069,11 @@
         "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "rebase PR #1624 onto its base by hand and push, or close it and reopen the item",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "conflict the rebase session could not resolve: PR #1624 still conflicts on head 49a81ae4fa1f3f481822e19fe1a051d8da79bbc7",
+      "kernel_stuck_since": "2026-10-12T04:28:05Z",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90076,7 +90087,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T04:23:15Z",
+      "updated": "2026-10-12T04:30:20Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
