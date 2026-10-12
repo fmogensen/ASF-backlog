@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T17:39:41Z",
+  "generated": "2026-10-12T17:42:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90058,7 +90058,8 @@
         "granted asf/record/ingest.py asf/record/reconcile_proofs.py tests/kernel/test_dor.py tests/test_proves.py; nothing else outside writes (card updated by the kernel). T-154346 also writes asf/record/ingest.py (Building): the overlap rule serialises them. asf/record/ingest.py asf/record/reconcile_proofs.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/record/ingest.py asf/record/reconcile_proofs.py tests/kernel/test_dor.py tests/test_proves.py; nothing else outside writes (card updated by the kernel). T-154346 also writes asf/record/ingest.py (Building): the overlap rule serialises them. asf/record/ingest.py asf/record/reconcile_proofs.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted asf/record/ingest.py asf/record/reconcile_proofs.py tests/kernel/test_dor.py tests/test_proves.py; nothing else outside writes (card updated by the kernel). T-154346 also writes asf/record/ingest.py (Building): the overlap rule serialises them. asf/record/ingest.py asf/record/reconcile_proofs.py matches kernel.risk.high: this item is high-risk now.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -90075,7 +90076,7 @@
         "PR #1663: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90088,7 +90089,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T17:24:52Z",
+      "updated": "2026-10-12T17:42:21Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -91747,12 +91748,15 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166577",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
         "asf/kernel/ports.py:2516 \u2014 _inherit_resumes picks the newest ended row that happens to carry a `resumes`, so it reaches past a normally-ended run and the cap counts an item's lifetime beat-stalls instead of one chain's continuations; take the item's LAST ended run and then test it for `beat_notes` (the rule briefs._last_beat_run:298-310 already uses and tests), so a normally-ended run resets the chain, and add the mirror of test_a_settled_run_followed_by_a_normal_one_leaves_the_brief_unchanged to MaxContinuesCapsTheRelaunch.",
         "Another session edits asf/kernel/briefs.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91765,7 +91769,7 @@
       ],
       "title": "the settle \u2014 the snapshot lands, the ref goes, the notes reach the next brief",
       "type": "task",
-      "updated": "2026-10-12T17:24:52Z",
+      "updated": "2026-10-12T17:42:21Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/briefs.py",
