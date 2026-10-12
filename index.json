@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T00:37:10Z",
+  "generated": "2026-10-12T00:43:48Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89551,7 +89551,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89564,7 +89564,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-12T00:12:40Z",
+      "updated": "2026-10-12T00:43:31Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89666,7 +89666,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154343",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89679,7 +89679,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-11T23:51:20Z",
+      "updated": "2026-10-12T00:43:31Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89728,7 +89728,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154345",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89741,7 +89741,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:43:31Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
@@ -91280,13 +91280,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-173236",
-      "kernel_findings": [
-        "rebase: PR #1617 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
-      ],
-      "kernel_fix_rounds": 1,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1617: install-clean-macos is red but not a required check \u2014 ignored"
       ],
+      "kernel_rebuilds": 1,
       "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0337.md"
@@ -91300,7 +91299,7 @@
       ],
       "title": "code applies each verdict, and a verdict it cannot apply is a note and no marker",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:43:31Z",
       "writes": [
         "asf/kernel/apply.py",
         "tests/kernel/test_sweep.py"
@@ -91345,11 +91344,10 @@
       "folder": "tasks",
       "id": "T-180938",
       "kernel_findings": [
-        "asf/kernel/waits.py:210 \u2014 a seat-full tick cuts the `overlap` spell and restarts it at age 0 (`_launches` sets `queued[iid]='seat'` at `decide.py:1849-1851`, before the overlap test at `:1864-1866`), so the class's p50/p90/max measure free-seat runs rather than time blocked on a file and an interrupted wait is never flagged over target; in `changes`, after the unchanged-spell `continue`, add `if (old and old.get('to_state') == state and old.get('reason') == 'overlap' and cls in READY_CLASSES): continue` \u2014 or move the overlap test in `_launches` above `if free <= 0:` and say so, since that reading contradicts `docs/specs/f-0352.md:136-137`",
-        "asf/kernel/decide.py:2405 \u2014 with the kernel paused, an over-target overlap wait reports `none: no action exists` where it read `none: launches paused` before this diff; change the clause to `if facts.paused and cls in W.READY_CLASSES + ('review',):`"
+        "rebase: PR #1623 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -91363,7 +91361,7 @@
       ],
       "title": "`overlap` is its own wait class, so `seat` stops hiding it",
       "type": "task",
-      "updated": "2026-10-12T00:37:00Z",
+      "updated": "2026-10-12T00:43:31Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/waits.py",
