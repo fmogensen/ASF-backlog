@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T12:04:51Z",
+  "generated": "2026-10-12T12:07:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90425,15 +90425,14 @@
         "Archive and rebuild fresh: archive worker/T-159852, close PR #1624, and rebuild from current origin/main. The conflict comes from hub-file changes that landed meanwhile; the rebase session couldn't resolve it, so a fresh build on main is cheaper than another rebase.",
         "Rebuild fresh: PR #1624 is closed, and the old branch is archived as archive/worker/T-159852 and deleted. Build T-159852 again on a new worker/T-159852 cut from current origin/main, re-applying its plan Task. Don't rebase the old work.",
         "The red tests (3.12) part-2 finding is stale: every check on PR #1645 head fdaade599 is green and the PR is CLEAN. Re-review this exact head; nothing to fix for CI. Land if the review approves.",
-        "Rebase worker/T-159852 onto current main and resolve the single conflict in asf/kernel/ports.py by keeping both sides (main's new ports plus this Task's additions); host.py, loop.py and test_host.py merge cleanly. No other change. Then CI and re-review on the new head."
+        "Rebase worker/T-159852 onto current main and resolve the single conflict in asf/kernel/ports.py by keeping both sides (main's new ports plus this Task's additions); host.py, loop.py and test_host.py merge cleanly. No other change. Then CI and re-review on the new head.",
+        "Operator ruling, final: loop.py:475 is decided as wanted = min(wanted, max(0, config.max_sessions - inflight)), with no _free import. The two review findings contradict each other, and this one stands; no review may reopen it. Fix only: ports.py:2399 (catch seats.Busy -> NoSeat), ports.py:2409 (_release_seat catches Busy and Unusable), and ports.py:2103 (_account/_live count the host-wide ledger so a free local account is tried). Each fix needs a test that fails on the base and passes on the head. The red-tests findings are stale: PR #1645 head ba313308d is CLEAN. The next review judges only these three fixes plus the loop.py ruling."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Rebase worker/T-159852 onto current main and resolve the single conflict in asf/kernel/ports.py by keeping both sides (main's new ports plus this Task's additions); host.py, loop.py and test_host.py merge cleanly. No other change. Then CI and re-review on the new head.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: Operator ruling, final: loop.py:475 is decided as wanted = min(wanted, max(0, config.max_sessions - inflight)), with no _free import. The two review findings contradict each other, and this one stands; no review may reopen it. Fix only: ports.py:2399 (catch seats.Busy -> NoSeat), ports.py:2409 (_release_seat catches Busy and Unusable), and ports.py:2103 (_account/_live count the host-wide ledger so a free local account is tried). Each fix needs a test that fails on the base and passes on the head. The red-tests findings are stale: PR #1645 head ba313308d is CLEAN. The next review judges only\u2026"
       ],
-      "kernel_extra_rounds": 4,
+      "kernel_extra_rounds": 5,
       "kernel_findings": [
-        "rebase: PR #1645 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/ports.py:2399 \u2014 _take_seat catches only seats.Unusable; seats.Busy escapes _spawn/launch untyped and apply.py:552-554 charges the item an attempt. Add, before the Unusable clause: `except seats.Busy as e: raise NoSeat('seats ledger busy: %s' % e) from None`",
         "asf/kernel/ports.py:2409 \u2014 _release_seat catches only seats.Unusable, and it runs in _spawn's finally (:2354-2359), so a Busy there replaces a successful launch with an exception (session running, item never moved to BUILDING, _meta never reached). Make it `except (seats.Busy, seats.Unusable): pass`, as Pool.untake does at asf/workers/pool.py:692.",
         "asf/kernel/ports.py:2103 \u2014 _account (and the _live it reads, :2059) still count this product's ledger only, so the local lane picks a host-full account and _take_seat refuses the launch while another local account is free and is never tried; the cloud lane re-fires, the local one does not. Implement the Task's own Files instruction (docs/plans/f-0334.md:786-788): make the per-account number the claim ledger's in _live/_account \u2014 layer lifecycle.live_all(seats.root()) plus seats.read() over it at :2090 \u2014 or, minimally, retry self._account(skip=refused) on NoSeat in the local branch (:2277-2284).",
@@ -90457,11 +90456,7 @@
         "build-t-159852-1791804524: NEEDS OPERATOR: the rebased branch cannot be published by this session \u2014 the stop gate refuses the turn while 686119f4f is off origin, but the only way up is a force, which B-0056 forbids the session to run. To publ\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 7 fix rounds",
-      "kernel_stuck_since": "2026-10-12T12:04:41Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90475,7 +90470,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T12:04:50Z",
+      "updated": "2026-10-12T12:07:30Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -91459,7 +91454,7 @@
       "kernel_notes": [
         "PR #1654: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91472,7 +91467,7 @@
       ],
       "title": "beats decide, not age",
       "type": "task",
-      "updated": "2026-10-12T11:56:50Z",
+      "updated": "2026-10-12T12:07:30Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/loop.py",
