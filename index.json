@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T00:12:57Z",
+  "generated": "2026-10-12T00:19:03Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17572,6 +17572,19 @@
         "asf/workers/trash.py",
         "tests/test_worktree_reaper.py"
       ]
+    },
+    "B-182364": {
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-182364",
+      "rank": -5,
+      "schema_version": 1,
+      "stage_since": "2026-10-12T00:18:49Z",
+      "state": "New",
+      "title": "main red at e4885e79e: tests (3.12), tests (3.13) \u2014 2 candidate change(s)",
+      "type": "bug",
+      "updated": "2026-10-12T00:18:49Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -89510,7 +89523,8 @@
         "T-154339"
       ],
       "backlinks": [
-        "T-154341"
+        "T-154341",
+        "B-182364"
       ],
       "children": [],
       "decided": true,
@@ -89566,7 +89580,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154341",
-      "kernel_state": "ready",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89579,7 +89593,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T00:12:40Z",
+      "updated": "2026-10-12T00:18:49Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -89850,6 +89864,9 @@
       "kernel_answers": [
         "granted asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py; nothing else outside writes (card updated by the kernel). T-159852 also writes asf/kernel/ports.py (Review): the overlap rule serialises them. T-166574 also writes asf/kernel/ports.py (Building): the overlap rule serialises them. asf/kernel/model.py asf/kernel/ports.py asf/kernel/settings.py matches kernel.risk.high: this item is high-risk now."
       ],
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
         "asf/kernel/decide.py:2452-2453 \u2014 the lead-breach branch resolves the wait class through `overdue(facts, config, states, same_class=False)`, which returns an item only when its ledger spell is already past target; `lead_breaches` skips any `iid in due` (:2364), so a `lead PR #n` class means `overdue` did not return it, `cls` becomes '' and the tick line reads \"no action exists\" for a PR that is waiting on CI or on GitHub auto-merge. Replace with `cls = W.classify(iid, _state, stuck, facts, config)[0]` (`_state, stuck` are unpacked at :2427 \u2014 verified: the probe cases then read \"waits on GitHub auto-merge\" / \"CI in flight\"), and add a TheLeadBreach case pinning the line for a lead-breached item the kernel has no action for.",
@@ -89859,10 +89876,11 @@
       "kernel_notes": [
         "build-t-159849-1791746871: NEEDS OPERATOR: `worker/T-159849` is rebased and cannot fast-forward onto its own remote, so the Stop gate refuses it twice and the branch needs the factory's publish \u2014 `git -C ~/.asf/state/asf/worktrees/\u2026",
         "PR #1611: install-clean-macos is red but not a required check \u2014 ignored",
-        "PR #1611: part (3.13, 1) is red but not a required check \u2014 ignored"
+        "PR #1611: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1611: part (3.12, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -89875,7 +89893,7 @@
       ],
       "title": "the lead breach \u2014 a pull request past its p90 goes first in every queue the kernel owns",
       "type": "task",
-      "updated": "2026-10-12T00:12:40Z",
+      "updated": "2026-10-12T00:18:49Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_lead_time.py",
@@ -92667,7 +92685,8 @@
         "T-80573"
       ],
       "backlinks": [
-        "T-80578"
+        "T-80578",
+        "B-182364"
       ],
       "children": [],
       "creates": [
