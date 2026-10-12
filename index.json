@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T13:23:35Z",
+  "generated": "2026-10-12T13:32:40Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89196,7 +89196,13 @@
         "ended without a REPORT"
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "worker/T-136825 @ 48549e08a \u2014 drop the merge commit: rebase the branch onto `origin/main` so `5cf9b1d1a` and the report commit replay as straight commits, commit locally and report `pushed: rebased <sha>` (the host publishes it); never merge `origin/main` in or force-push.",
+        "asf/kernel/flake.py:359-368 \u2014 fill an entry whose `bug` is empty: when `not live_q.get('bug')`, resolve `bug_id, _first = cycle(sig, facts)` and emit `entry(sig, merged, facts, config, first=live_q.get('first'), bug=bug_id)` unconditionally (not only when `len(merged) > len(have)`); when `cycle` finds no card, emit `bug_action(...)` too and pass its `key` as the entry's `bug_key`, keeping `first`/`expires`.",
+        "asf/kernel/flake.py:329-332 \u2014 a case-keyed signature with no test file files a Bug with `writes: []` and a bare `- [ ] ` acceptance that `dor.missing` holds; in `judge`'s flake branch (:402-407) record `'no test file in the log: nothing filed'` and emit neither action when `_writes_for(test, facts.trunk_files)` is empty, or give `bug_action` an acceptance line `dor.test_refs` can read.",
+        "Another session edits asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/settings.py, docs/products.example.yaml concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "build-t-136825-1791661085: NEEDS OPERATOR: the push is refused by a stale local `asf` CLI install with no `pre-push` subcommand \u2014 upgrade `~/.local/bin/asf` on this host, then publish branch `worker/T-136825` \u2014 `git push origin worker/T-13682\u2026",
         "PR #1438: checks (3.12) is red but not a required check \u2014 ignored",
@@ -89209,7 +89215,7 @@
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -89227,7 +89233,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-12T12:52:45Z",
+      "updated": "2026-10-12T13:32:37Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -90479,7 +90485,7 @@
         "build-t-159852-1791804524: NEEDS OPERATOR: the rebased branch cannot be published by this session \u2014 the stop gate refuses the turn while 686119f4f is off origin, but the only way up is a force, which B-0056 forbids the session to run. To publ\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90493,7 +90499,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T13:18:06Z",
+      "updated": "2026-10-12T13:32:37Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -91495,7 +91501,7 @@
       ],
       "title": "beats decide, not age",
       "type": "task",
-      "updated": "2026-10-12T13:18:06Z",
+      "updated": "2026-10-12T13:32:37Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/loop.py",
