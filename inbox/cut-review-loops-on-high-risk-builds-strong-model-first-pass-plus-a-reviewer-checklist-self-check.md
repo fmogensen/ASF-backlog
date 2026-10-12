@@ -1,0 +1,17 @@
+# Cut review loops on high-risk builds: strong-model first pass plus a reviewer checklist self-check
+parent: F-0352
+
+type: story
+parent: F-0352
+
+Cut review loops on high-risk builds. Measured 2026-10-12 (last 12 h): 94 review verdicts, 40 approve and 54 changes (57% sent back); 43 items reviewed, 14 of them 3 or more times. The findings read were mostly real defects. Almost all were kernel Tasks (risk.high includes asf/kernel/**), which get a strong-model review but a light-model build. Each loop also re-queues behind the hub files.
+
+## Change
+- `kernel.risk.build_model: strong` (default: today's). Builds touching a risk.high path launch on strong_model from the first round.
+- The build brief carries the reviewer's checklist (the same table the review uses). The builder runs it against its own diff and records pass or fail per row in its report before the first push.
+- An A/B on 10 high-risk Tasks: first-review approve rate, fix rounds per item, quota used per landed item, against the 2026-10-12 baseline (43% first-review approve overall).
+
+## Acceptance
+- A high-risk build launches on strong_model when build_model is strong (test); a non-risky build is unchanged (test).
+- The build brief contains the review checklist rows (test).
+- The A/B numbers are reported on this card.
