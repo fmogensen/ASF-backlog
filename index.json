@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T09:05:43Z",
+  "generated": "2026-10-12T09:09:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17613,7 +17613,7 @@
         "PR #1639: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17622,7 +17622,7 @@
       "state": "New",
       "title": "Bug: tests/kernel/test_ports.py hangs locally on real git",
       "type": "bug",
-      "updated": "2026-10-12T09:05:41Z",
+      "updated": "2026-10-12T09:09:23Z",
       "writes": [
         "tests/kernel/test_ports.py",
         "asf/hermetic.py"
@@ -17713,7 +17713,7 @@
       "kernel_notes": [
         "groom-fill-b-187018-1791791555: groom-fill raised risk high: host.install() (asf/kernel/host.py) switches the launchd jobs' venv but never calls asf.installs.write \u2014 confirmed by reading the module (no \"installs\" import/call) against asf/installs.py (the only pin writer, used today solely by asf upgrade's move), so the card names a real, unfixed gap; scope is precise enough to fill as a bug, not reshape."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17722,7 +17722,7 @@
       "state": "New",
       "title": "kernel install leaves the product pin on the old venv",
       "type": "bug",
-      "updated": "2026-10-12T08:54:35Z",
+      "updated": "2026-10-12T09:09:23Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_host.py"
@@ -17740,7 +17740,7 @@
       "kernel_notes": [
         "groom-fill-b-187369-1791793531: groom-fill raised risk high: asf correct never writes operator-answers.jsonl, the only ledger the kernel's Facts.answers reads, so a correction on a kernel Stuck item is recorded but never re-judged \u2014 unlike asf answer, which writes that exact file."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17749,7 +17749,7 @@
       "state": "New",
       "title": "asf correct on a Stuck item never relaunches it",
       "type": "bug",
-      "updated": "2026-10-12T08:58:12Z",
+      "updated": "2026-10-12T09:09:23Z",
       "writes": [
         "asf/workers/correct.py",
         "tests/test_correct.py",
@@ -90314,12 +90314,15 @@
       ],
       "kernel_extra_rounds": 2,
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "asf/kernel/loop.py:475 \u2014 replace `wanted = min(wanted, max(0, config.max_sessions - inflight))` with `wanted = min(wanted, max(0, _free(facts, config)))` (import `_free` beside `BUILDABLE` from asf.kernel.decide; it subtracts the alive sessions itself, so the separate `inflight` term goes). The cap must be the host room its own docstring at :460 cites \u2014 `min(config.max_sessions, facts.seats) - alive` \u2014 because `facts.seats` is the `asf.capacity`-bounded `capacity()` this Task introduced, so `facts.seats < config.max_sessions` is now the normal multi-product case and the present cap never bites: probed, facts.seats=2 / max_sessions=10 / one alive publishes wanted=5 against one real seat, and `asf.capacity.claim` documents the contract this breaks (\"`wanted` was cut to the room the partner had then\"), so the partner lends nothing and P7 inverts. Also add the case `tests/kernel/test_multi_product.py:264` cannot reach \u2014 it builds facts with seats=None, which collapses `_free` onto `config.max_sessions` and is why this is green: with seats=2, max_sessions=10, one alive, idle={\"waiting\": 5}, assert read_demand_record returns (1, 1).",
         "asf/kernel/loop.py:475 \u2014 replace `wanted = min(wanted, max(0, _free(facts, config)))` with `wanted = min(wanted, max(0, config.max_sessions - inflight))` and drop `_free` from the import at :466: `_free` folds in `facts.seats`, which this Task just bound by the fair share, so `wanted` is capped by host pressure and by the share itself \u2014 the terms `asf.tick.step_wave.demand` (asf/tick/step_wave.py:669-684, the definition `capacity.write_demand` names) explicitly rules out with a dated measurement. Measured here: 8 Ready rows at 0 free records `wanted 0`, and the partner's `claim` lends 3 of its 5 slots away. Keep the `plan.idle['waiting']` preference and the Task/Bug Ready fallback as they are.",
         "asf/kernel/ports.py:2375 \u2014 move the foreign count inside the lock and take one registry snapshot for both terms: inside `with seats.held() as ledger:` do `registered = lifecycle.live_all(seats.root())`, `keys = {(r.get('product'), r.get('job')) for r in registered}`, `live = sum(1 for r in registered if r.get('account') == acct.name)`, `held = sum(1 for c in ledger.claims if c.get('account') == acct.name and (c.get('product'), c.get('job')) not in keys)`, then test `live + held >= acct.cap` \u2014 retiring `_foreign_live` and the `foreign`/`here` split. As written, `foreign` is read before the lock while `ledger.claims` is swept against a second, later `live_all` walk, so a foreign launch registering between the two is counted zero times (missed as foreign, swept out of claims) and one launch goes over the account's host cap \u2014 the race this Task exists to close, and the contract `_claim_seat`'s own docstring states at :2368-2371.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 4,
+      "kernel_fix_rounds": 5,
       "kernel_notes": [
         "PR #1567: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1567: part (3.13, 3) is red but not a required check \u2014 ignored",
@@ -90328,7 +90331,7 @@
         "PR #1645: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90342,7 +90345,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T08:31:50Z",
+      "updated": "2026-10-12T09:09:23Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -90445,7 +90448,7 @@
         "build-t-159854-1791794091-local: NEEDS OPERATOR: the heartbeat loop could not start \u2014 the sandbox refused the `nohup sh .b0000_heartbeat.sh \u2026` call twice, so this session published no beat; the work is committed and pushed instead. To start it by h\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90458,7 +90461,7 @@
       ],
       "title": "the risk flag's own evidence \u2014 the incident ledger and `asf kernel risk`, which is the Stage-5 trigger's reading",
       "type": "task",
-      "updated": "2026-10-12T08:54:35Z",
+      "updated": "2026-10-12T09:09:23Z",
       "writes": [
         "asf/kernel/incidents.py",
         "asf/cli.py",
@@ -91279,7 +91282,7 @@
         "PR #1633: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91292,7 +91295,7 @@
       ],
       "title": "one remote call a tick, and a beat observation on every live session",
       "type": "task",
-      "updated": "2026-10-12T08:40:04Z",
+      "updated": "2026-10-12T09:09:23Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
