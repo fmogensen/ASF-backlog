@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T19:47:28Z",
+  "generated": "2026-10-12T19:50:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17919,7 +17919,7 @@
       "kernel_notes": [
         "groom-fill-b-195724-1791827390: groom-fill raised risk high: fixes the one gate that stops a secret or operator name reaching any record, CI run or public repo (F-0075); a wrong MERGE_HEAD-skip is a false-negative bypass risk, not just a false positive."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17928,7 +17928,7 @@
       "state": "New",
       "title": "asf redact --pre-commit refuses a conflicted trunk merge: it scans the trunk's own files",
       "type": "bug",
-      "updated": "2026-10-12T19:47:27Z",
+      "updated": "2026-10-12T19:50:34Z",
       "writes": [
         "asf/redact.py",
         "tests/test_redact.py"
@@ -17946,6 +17946,7 @@
       "kernel_notes": [
         "groom-fill-b-195925-1791833775: groom-fill raised risk high: the hole and the missing CLI are precisely located (requested_ready's VERDICT_STATES gate, cmd_land's flag set); fillable as a scoped merge-queue/release-tooling fix with two concrete tests."
       ],
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17954,7 +17955,7 @@
       "state": "New",
       "title": "asf land waits forever on a branch with an old terminal lane record; no release command",
       "type": "bug",
-      "updated": "2026-10-12T19:47:27Z",
+      "updated": "2026-10-12T19:50:34Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_merge_queue.py"
@@ -90120,7 +90121,7 @@
         "PR #1663: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90133,7 +90134,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T19:36:30Z",
+      "updated": "2026-10-12T19:50:34Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -90777,7 +90778,8 @@
         "T-159847"
       ],
       "backlinks": [
-        "T-159855"
+        "T-159855",
+        "T-160208"
       ],
       "children": [],
       "decided": true,
@@ -91042,7 +91044,11 @@
       "id": "T-160208",
       "kernel_answers": [
         "Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file.",
-        "The cloud session went idle and ended without a REPORT; PR #1661 is open and CLEAN at its head. Relaunch as a fix round on worker/T-160208 from the PR head: apply the open review findings, with the template lines dropped per the earlier ruling, push, and end with the REPORT block."
+        "The cloud session went idle and ended without a REPORT; PR #1661 is open and CLEAN at its head. Relaunch as a fix round on worker/T-160208 from the PR head: apply the open review findings, with the template lines dropped per the earlier ruling, push, and end with the REPORT block.",
+        "granted asf/kernel/decide.py; nothing else outside writes (card updated by the kernel). T-159853 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. T-166577 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. asf/kernel/decide.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/kernel/decide.py; nothing else outside writes (card updated by the kernel). T-159853 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. T-166577 also writes asf/kernel/decide.py (Review): the overlap rule serialises them. asf/kernel/decide.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -91050,7 +91056,7 @@
       ],
       "kernel_fix_rounds": 1,
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91063,7 +91069,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T19:41:04Z",
+      "updated": "2026-10-12T19:50:34Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91074,7 +91080,8 @@
         "asf/briefs/templates/fix-bug.md",
         "asf/briefs/templates/direct.md",
         "asf/cli.py",
-        "tests/test_stacked_worktree.py"
+        "tests/test_stacked_worktree.py",
+        "asf/kernel/decide.py"
       ]
     },
     "T-160209": {
@@ -91788,6 +91795,7 @@
         "T-166576"
       ],
       "backlinks": [
+        "T-160208",
         "T-166578"
       ],
       "children": [],
@@ -91810,7 +91818,7 @@
       ],
       "title": "the settle \u2014 the snapshot lands, the ref goes, the notes reach the next brief",
       "type": "task",
-      "updated": "2026-10-12T19:41:04Z",
+      "updated": "2026-10-12T19:50:34Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/briefs.py",
