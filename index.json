@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T18:14:46Z",
+  "generated": "2026-10-12T18:18:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90066,11 +90066,13 @@
       "id": "T-154341",
       "kernel_answers": [
         "granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now.",
-        "granted asf/record/ingest.py asf/record/reconcile_proofs.py tests/kernel/test_dor.py tests/test_proves.py; nothing else outside writes (card updated by the kernel). T-154346 also writes asf/record/ingest.py (Building): the overlap rule serialises them. asf/record/ingest.py asf/record/reconcile_proofs.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/record/ingest.py asf/record/reconcile_proofs.py tests/kernel/test_dor.py tests/test_proves.py; nothing else outside writes (card updated by the kernel). T-154346 also writes asf/record/ingest.py (Building): the overlap rule serialises them. asf/record/ingest.py asf/record/reconcile_proofs.py matches kernel.risk.high: this item is high-risk now.",
+        "granted asf/invariants.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/record/ingest.py asf/record/reconcile_proofs.py tests/kernel/test_dor.py tests/test_proves.py; nothing else outside writes (card updated by the kernel). T-154346 also writes asf/record/ingest.py (Building): the overlap rule serialises them. asf/record/ingest.py asf/record/reconcile_proofs.py matches kernel.risk.high: this item is high-risk now.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted asf/invariants.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -90091,7 +90093,7 @@
         "PR #1663: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90104,7 +90106,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T17:46:08Z",
+      "updated": "2026-10-12T18:18:00Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -90118,7 +90120,8 @@
         "asf/record/ingest.py",
         "asf/record/reconcile_proofs.py",
         "tests/kernel/test_dor.py",
-        "tests/test_proves.py"
+        "tests/test_proves.py",
+        "asf/invariants.py"
       ]
     },
     "T-154342": {
@@ -90768,7 +90771,7 @@
         "PR #1546: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90782,7 +90785,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T17:58:07Z",
+      "updated": "2026-10-12T18:18:00Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -91005,27 +91008,13 @@
       "folder": "tasks",
       "id": "T-160208",
       "kernel_answers": [
-        "Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file."
+        "Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file.",
+        "The cloud session went idle and ended without a REPORT; PR #1661 is open and CLEAN at its head. Relaunch as a fix round on worker/T-160208 from the PR head: apply the open review findings, with the template lines dropped per the earlier ruling, push, and end with the REPORT block."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "ended without a REPORT",
-        "relaunch: escalated: the previous session stopped (ended without a REPORT) \u2014 pick up from its report and branch, and finish the item",
-        "ended without a REPORT"
-      ],
-      "kernel_findings": [
-        "asf/harvest/lane.py:1192 \u2014 worker/T-160208 carries two merges of origin/main (9cb027b5aa25a99dd3a8bf350354d34c0c939cdc, ca4001687f3e02df719e4c7523364846b906c4e1), and the lane refuses such a branch before any gate (\"merge commit on a lane branch \u2026 a lane branch is straight commits on origin/main\"), so this PR cannot land as it stands. The seven changed files need no edit. In the worktree: `git fetch origin main && git rebase origin/main`, then confirm `git rev-list --merges --count origin/main..HEAD` prints 0, then report `pushed: rebased <sha>` and let the host publish it \u2014 never another merge, never a force-push. Also correct the next report's `left out:` line: the merges of origin/main were not no-ops (\"Already up to date\") \u2014 ca40016 brought in asf/kernel/model.py, asf/kernel/ports.py and tests/kernel/test_beat_facts.py, and 9cb027b brought in asf/capacity.py, asf/cli.py, asf/doctor.py and asf/init.py.",
-        "operator answer: Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file.",
-        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
-        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "ended without a REPORT",
-      "kernel_stuck_since": "2026-10-12T18:14:17Z",
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91038,7 +91027,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T18:14:45Z",
+      "updated": "2026-10-12T18:18:00Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
