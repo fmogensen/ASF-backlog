@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T04:52:24Z",
+  "generated": "2026-10-12T04:59:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89577,7 +89577,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89590,7 +89590,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-12T04:52:09Z",
+      "updated": "2026-10-12T04:59:23Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89610,7 +89610,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154341",
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89623,7 +89623,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T00:18:49Z",
+      "updated": "2026-10-12T04:59:23Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -89693,12 +89693,16 @@
       "folder": "tasks",
       "id": "T-154343",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/record/retire.py:98 \u2014 resolve.close can raise writer.CardInvalid (the \"writes none of them\" refusal tests/test_card_edge_resolve.py:288-303 pins) and _retire_card does not handle it, so the exception leaves cmd_retire, asf.cli._published (asf/cli.py:724-733) never reaches publish_changes, and the card's own `removed:` written by set_typed at retire.py:90 is left uncommitted and silently lost. Fix: add a `dry_run=False` keyword to resolve.close that returns the rewrites map computed at resolve.py:193 without entering the write loop at :194, then pre-check at retire.py:89, before set_typed \u2014 `try: resolve.close(root, item_id, 'retired', commit=False, dry_run=True)` / `except card_writer.CardInvalid as e: print(f\"error: {item_id} not retired \u2014 an incoming edge cannot be resolved:\\n{e}\", file=sys.stderr); return 2` \u2014 leaving the real call at :98 unchanged. Minimal alternative: read rec['path']'s bytes before set_typed, catch CardInvalid around :98, restore with card_writer.write_text and return 2.",
+        "asf/groom/groom.py:392-395 \u2014 the same refusal escapes apply_conflict after both _write_card calls (:379, :384) have landed, aborting apply_groom_answers (:482) and every later answer in the run, and leaving the loser superseded on the record with none of its incoming edges re-pointed \u2014 exactly the window the comment at :385-391 says never exists; the kernel's caller handles this (apply.py:673-677), this one does not. Fix: with C1's dry_run, pre-check at groom.py:378 before the first _write_card and decline the answer the way :360/:364/:368-369 do \u2014 `try: resolve.close(root, loser, ('superseded', survivor), commit=False, dry_run=True)` / `except card_writer.CardInvalid as e: print(f\"groom: {word} {key} skipped \u2014 {loser}'s incoming edges cannot be resolved: {e}\"); return 0` \u2014 keeping the existing call and its canonical mirror at :392-395 unchanged."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89711,7 +89715,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T04:52:09Z",
+      "updated": "2026-10-12T04:59:23Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89743,6 +89747,12 @@
         "operator answer: granted tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_fix_rounds": 1,
+      "kernel_notes": [
+        "PR #1632: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1632: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1632: part (3.13, 1) is red but not a required check \u2014 ignored",
+        "PR #1632: part (3.13, 2) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
@@ -89756,7 +89766,7 @@
       ],
       "title": "an invalid card and an unresolvable reference are LIMBO with the reason, never dropped",
       "type": "task",
-      "updated": "2026-10-12T04:52:09Z",
+      "updated": "2026-10-12T04:59:23Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_limbo_invalid_card.py",
@@ -89807,7 +89817,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T04:52:09Z",
+      "updated": "2026-10-12T04:59:23Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
@@ -90060,7 +90070,7 @@
       ],
       "title": "the console's share \u2014 the question ledger, the window, the gate criterion and the classifier that codes nothing",
       "type": "task",
-      "updated": "2026-10-12T04:52:09Z",
+      "updated": "2026-10-12T04:59:23Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/kernel/loop.py",
