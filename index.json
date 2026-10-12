@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T01:50:44Z",
+  "generated": "2026-10-12T01:57:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89536,7 +89536,8 @@
       "id": "T-154340",
       "kernel_attempts": [
         "escalated: one more fix round on the strong model, with every finding",
-        "relaunch: PR #1595 landed and turned main red (tests (3.12), tests (3.13) at 3ed08c6ab); it was reverted. Build it again so the required checks pass on main."
+        "relaunch: PR #1595 landed and turned main red (tests (3.12), tests (3.13) at 3ed08c6ab); it was reverted. Build it again so the required checks pass on main.",
+        "session ran past its max age"
       ],
       "kernel_findings": [
         "asf/record/index.py:39 \u2014 `only=` matches only `rec['relpath']`, so the view relpath `refresh` now returns at `:58` can never be fed back to it; `asf/record/publish.py:154-156` does exactly that round-trip, so a hand-edited view in the checkout is never regenerated (the commit lands the right bytes, the working tree keeps the stale ones, and `asf check` then reports `view is stale` with no automatic repair). Fix: `if only is not None and rec['relpath'] not in only and os.path.relpath(card.view_path(rec['path']), root) not in only: continue`.",
@@ -89564,7 +89565,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-12T00:43:31Z",
+      "updated": "2026-10-12T01:56:46Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89675,7 +89676,7 @@
       "kernel_notes": [
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89688,7 +89689,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T01:20:04Z",
+      "updated": "2026-10-12T01:56:46Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
