@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T18:54:44Z",
+  "generated": "2026-10-12T19:00:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17911,10 +17911,15 @@
       "id": "B-195724",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_findings": [
+        "asf/redact.py:499 \u2014 scan_tree_debt crashes `asf redact --tree` (uncaught UnicodeDecodeError) on any trunk tree that ever held a binary file, because the `git show <ref>:<path>` read has no decode-error guard where scan_tree's own `open(encoding='utf-8')` walk has one (`except (UnicodeDecodeError, OSError): continue`, asf/redact.py:473-474). Wrap the `_run_git(repo, ['show', f'{ref}:{rel}'])` call in a try/except UnicodeDecodeError: continue.",
+        "asf/redact.py:503-505 \u2014 the trunk-debt/branch split keys on (path, line, kind, source) only; Finding carries no matched text, so a brand-new, unpublished secret that lands on the same path/line as an old trunk secret of the same pattern is wrongly classified as pre-existing debt and never gated (repro in docs/reviews/1-b-195724.md C2). Decide debt by content, as `_lines_not_in_ref` already does for the merge case, not by position + pattern identity."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-195724-1791827390: groom-fill raised risk high: fixes the one gate that stops a secret or operator name reaching any record, CI run or public repo (F-0075); a wrong MERGE_HEAD-skip is a false-negative bypass risk, not just a false positive."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17923,7 +17928,7 @@
       "state": "New",
       "title": "asf redact --pre-commit refuses a conflicted trunk merge: it scans the trunk's own files",
       "type": "bug",
-      "updated": "2026-10-12T18:42:15Z",
+      "updated": "2026-10-12T19:00:28Z",
       "writes": [
         "asf/redact.py",
         "tests/test_redact.py"
@@ -88757,12 +88762,14 @@
         "Relaunch on worker/T-129212: the external worktree that held the T-129212-named fix branch was removed, and that framework fix is now Bug B-147398 (PR #1460), not this Task's delivery. Build T-129212's own plan Task; if its branch has no commits beyond main, the new no-commits rule applies.",
         "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel).",
         "One more round, these fixes only: (1) resolvers.py:104-105 restore LOCAL_RE and ORIGIN_RE verbatim from docs/specs/f-0339.md:145-148; (2) decide.py:1107 make HOST_PUSHES reachable or remove it, and add the WONT_PUSH answer the finding names; (3) test_question_pushed_base.py:471 and :502 build the ShareRises fixtures on shapes ports can produce (pr=1, status='done') and assert the plan's Step 12 line 'resolved by code 4, to the console 2 (67% by code)'; fix the Proves: trailers to name tests that exist; (4) :295 add the trunk-sha half of the cache key case. NOT in this round: moving the six Host cases between test classes (:262) is structure only; list it as a follow-up. Rebase onto origin/main, no merge commit. The next review judges only (1)-(4).",
-        "Operator ruling, final round: (1) resolvers.py:265 ground the third landed read in the report's own claim exactly as the finding states: landed = (session.claim_landed or session.result == 'pushed' or (claimed and any(b.name == branch for b in branches))), with pushed_claim read once above it; a report claiming no push goes to the console. (2) The share is whatever the grounded read measures. Do NOT bend fixtures to reach 67%: assert the measured line (the reviewer measured 'resolved by code 2, to the console 4 (33% by code)') and correct docs/plans/f-0339.md:414-415 to that measured value; this supersedes my earlier 67% instruction and the plan's number. Use a plan/-branch-free fixture for F-0324 or drop that case. (3) Fix Proves: trailers to name tests that exist. Nothing else. The next review judges only these three."
+        "Operator ruling, final round: (1) resolvers.py:265 ground the third landed read in the report's own claim exactly as the finding states: landed = (session.claim_landed or session.result == 'pushed' or (claimed and any(b.name == branch for b in branches))), with pushed_claim read once above it; a report claiming no push goes to the console. (2) The share is whatever the grounded read measures. Do NOT bend fixtures to reach 67%: assert the measured line (the reviewer measured 'resolved by code 2, to the console 4 (33% by code)') and correct docs/plans/f-0339.md:414-415 to that measured value; this supersedes my earlier 67% instruction and the plan's number. Use a plan/-branch-free fixture for F-0324 or drop that case. (3) Fix Proves: trailers to name tests that exist. Nothing else. The next review judges only these three.",
+        "granted edited. docs/specs/f-0339.md; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Operator ruling, final round: (1) resolvers.py:265 ground the third landed read in the report's own claim exactly as the finding states: landed = (session.claim_landed or session.result == 'pushed' or (claimed and any(b.name == branch for b in branches))), with pushed_claim read once above it; a report claiming no push goes to the console. (2) The share is whatever the grounded read measures. Do NOT bend fixtures to reach 67%: assert the measured line (the reviewer measured 'resolved by code 2, to the console 4 (33% by code)') and correct docs/plans/f-0339.md:414-415 to that measured value; t\u2026",
         "ended without a REPORT",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted edited. docs/specs/f-0339.md; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 2,
       "kernel_findings": [
@@ -88789,7 +88796,7 @@
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -88805,7 +88812,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-12T18:36:37Z",
+      "updated": "2026-10-12T19:00:28Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -88814,7 +88821,9 @@
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
         "tests/kernel/test_question_pushed_base.py",
-        "tests/kernel/test_question_resolvers.py"
+        "tests/kernel/test_question_resolvers.py",
+        "edited.",
+        "docs/specs/f-0339.md"
       ]
     },
     "T-130213": {
@@ -90793,7 +90802,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T18:36:37Z",
+      "updated": "2026-10-12T19:00:28Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -91022,7 +91031,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91035,7 +91044,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T18:24:04Z",
+      "updated": "2026-10-12T19:00:28Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91766,17 +91775,10 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166577",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "asf/kernel/briefs.py:309 \u2014 _last_beat_run picks the last-started ended run, not the last-ended one its docstring and the f73a70a correction define; change `key=lambda r: r.get('started') or ''` to `key=lambda r: r.get('ended') or ''` (every candidate already has a truthy `ended` by the filter above) and add a case where the beat-settled row has the later `started` and the earlier `ended`, asserting continue_block leaves the brief unchanged \u2014 neither existing test discriminates the two orders, and both continue_block and ports._inherit_resumes ride this function.",
-        "asf/kernel/ports.py:2516 \u2014 _inherit_resumes picks the newest ended row that happens to carry a `resumes`, so it reaches past a normally-ended run and the cap counts an item's lifetime beat-stalls instead of one chain's continuations; take the item's LAST ended run and then test it for `beat_notes` (the rule briefs._last_beat_run:298-310 already uses and tests), so a normally-ended run resets the chain, and add the mirror of test_a_settled_run_followed_by_a_normal_one_leaves_the_brief_unchanged to MaxContinuesCapsTheRelaunch.",
-        "Another session edits asf/kernel/briefs.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
-        "Another session edits asf/kernel/decide.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
-      ],
-      "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91789,7 +91791,7 @@
       ],
       "title": "the settle \u2014 the snapshot lands, the ref goes, the notes reach the next brief",
       "type": "task",
-      "updated": "2026-10-12T18:36:37Z",
+      "updated": "2026-10-12T19:00:28Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/briefs.py",
