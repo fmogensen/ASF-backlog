@@ -1,3 +1,5 @@
+→ B-193422
+
 # asf retire refuses a Task under a retired Feature: it flags itself as a removed reference
 parent: F-0346
 
