@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T15:43:40Z",
+  "generated": "2026-10-12T15:48:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17828,7 +17828,7 @@
         "PR #1655: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17837,7 +17837,7 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T15:32:32Z",
+      "updated": "2026-10-12T15:48:18Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -88643,6 +88643,9 @@
         "Relaunch on worker/T-129212: the external worktree that held the T-129212-named fix branch was removed, and that framework fix is now Bug B-147398 (PR #1460), not this Task's delivery. Build T-129212's own plan Task; if its branch has no commits beyond main, the new no-commits rule applies.",
         "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
       ],
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
         "asf/kernel/decide.py:1107 \u2014 the guard returns None for every shape that reaches _pushed (decide.py:705/:715 move the item on whenever host_pushes is true), so resolvers.HOST_PUSHES is dead code; add WONT_PUSH ('%s holds commits origin lacks (head %s) but the host will not publish them from this report \u2014 rebase onto %s and push the branch yourself under a lease; never merge %s in.') and return it there instead of None, or delete HOST_PUSHES and record that the class answers two shapes, not three",
@@ -88661,7 +88664,7 @@
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -88677,7 +88680,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-12T15:25:25Z",
+      "updated": "2026-10-12T15:48:18Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -89937,9 +89940,20 @@
         "granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/record/ids.py:261 \u2014 store the history line dashless (`history_line = f\"{date}: created ({why})\"`); asf/record/card.py:167 adds the `- ` itself, so the stored dash renders as `- - 2026-\u2026` and CREATED_RE (asf/kernel/ports.py:254) then never matches, losing the card's creation date",
+        "asf/kernel/ports.py:823 \u2014 same fix in _fill_card_json: `history.append('%s groom-fill: acceptance and writes filled%s' % \u2026)`, no leading `- `",
+        "asf/record/setfield.py:463 \u2014 _set_typed_json stores its callers' dashed lines verbatim; strip the dash instead, since those callers (asf/kernel/ports.py:873, SEVERITY_HISTORY at asf/record/setfield.py:41, asf/record/retire.py:97) must keep writing it for the schema-1 path: `hist.extend(h[2:] if h.startswith('- ') else h for h in (x.lstrip() for x in history))`",
+        "asf/kernel/dor.py:200-207 \u2014 fall back per field, not per card: `acc` reads the prose when `typed_acc is None` and `gate` reads the prose when `typed_gate is None`. As written, plan_tasks.py:536 writing `gate` onto every schema-1 .md Task card makes it.gate non-None while it.acceptance stays None, which silently switches off the prose `## Acceptance` reader; add the mixed case to tests/kernel/test_dor.py, whose typed_task (:144) always sets both",
+        "asf/kernel/ports.py:912 \u2014 Step 2's mint_story clause is unimplemented: pass `json_card=parent['path'].endswith('.json')` so a spec declaration's checkbox lines reach the acceptance field, or declare the Step left out with its reason (the report says `left out: none`)",
+        "asf/record/new.py:20 and asf/record/setfield.py:30 \u2014 Step 3's `asf set` clause is unimplemented and in-footprint: add `SETTABLE['task'] |= {'gate', 'acceptance', 'risk'}` and `LIST_FIELDS = {'task': ('writes', 'after', 'gate')}`; today `asf set gate=\u2026` is refused \"task has no settable field 'gate'\"",
+        "asf/proves.py:361 \u2014 tick_card has no production caller and appends no History line, so Step 4's tick and S-133159 line 20 are not delivered; declare `needs writes: asf/record/ingest.py asf/record/reconcile_proofs.py` and route the four live sites (ingest.py:1554,1565; reconcile_proofs.py:270,303) through tick_card + set_typed for a JSON card",
+        "tests/kernel/test_dor.py and tests/test_proves.py \u2014 both are outside the granted writes: (56 and 88 added lines) while the report says `needs writes: none`; declare `needs writes: tests/kernel/test_dor.py tests/test_proves.py` so the I3 overlap check serialises them (no code change)",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89952,7 +89966,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T15:38:17Z",
+      "updated": "2026-10-12T15:48:18Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -90828,12 +90842,12 @@
         "relaunch: operator answer: Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file."
       ],
       "kernel_findings": [
-        "asf/kernel/briefs.py:572 \u2014 the STACKED block takes the predecessor from item.after[0], the first *declared* after: edge, where decide.py:2126-2129 stacks on the one *open* edge; with a landed edge declared first the brief names the wrong card (\"`T-DONE` is written and pushed but not merged\" while cutting from `origin/worker/T-OPEN`). Replace it with the predecessor of the branch actually cut from \u2014 `from asf.kernel.ports import item_of_branch` (briefs.py already imports from ports lazily at :363) then `predecessor = item_of_branch(launch.base) or ''` \u2014 and add a StackedBrief case with two declared edges (after=('T-done', 'T-pred'), base='worker/T-pred') asserting the block names T-pred and never T-done.",
+        "asf/harvest/lane.py:1192 \u2014 worker/T-160208 carries two merges of origin/main (9cb027b5aa25a99dd3a8bf350354d34c0c939cdc, ca4001687f3e02df719e4c7523364846b906c4e1), and the lane refuses such a branch before any gate (\"merge commit on a lane branch \u2026 a lane branch is straight commits on origin/main\"), so this PR cannot land as it stands. The seven changed files need no edit. In the worktree: `git fetch origin main && git rebase origin/main`, then confirm `git rev-list --merges --count origin/main..HEAD` prints 0, then report `pushed: rebased <sha>` and let the host publish it \u2014 never another merge, never a force-push. Also correct the next report's `left out:` line: the merges of origin/main were not no-ops (\"Already up to date\") \u2014 ca40016 brought in asf/kernel/model.py, asf/kernel/ports.py and tests/kernel/test_beat_facts.py, and 9cb027b brought in asf/capacity.py, asf/cli.py, asf/doctor.py and asf/init.py.",
         "operator answer: Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file.",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -90846,7 +90860,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T15:35:36Z",
+      "updated": "2026-10-12T15:48:18Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91577,7 +91591,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166577",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91590,7 +91604,7 @@
       ],
       "title": "the settle \u2014 the snapshot lands, the ref goes, the notes reach the next brief",
       "type": "task",
-      "updated": "2026-10-12T15:10:13Z",
+      "updated": "2026-10-12T15:48:18Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/briefs.py",
@@ -92003,7 +92017,7 @@
         "build-t-180939-1791817756: NEEDS OPERATOR: the branch's required pre-push product gate step `python3 tools/run_tests.py --part 1/4` through `--part 4/4` and the trial-merge-with-trunk check recorded by the prior session were not re-run here (\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -92018,7 +92032,7 @@
       ],
       "title": "a second item may hold a file another is building, and its brief names the holder",
       "type": "task",
-      "updated": "2026-10-12T15:28:38Z",
+      "updated": "2026-10-12T15:48:18Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/model.py",
