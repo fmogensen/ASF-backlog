@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T00:30:55Z",
+  "generated": "2026-10-12T00:37:10Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17582,7 +17582,7 @@
       "kernel_dor_fills_ver": "0.2.117",
       "landed": "58979bd0be33c1f623f222e2de665a8c652e0118",
       "rank": -5,
-      "removed": "retired: superseded by 58979bd0be33c1f623f222e2de665a8c652e0118 \u2014 tests (3.12/3.13) failed at 3ed08c6ab and e4885e79e; PR #1627 (merge 58979bd0be33c1f623f222e2de665a8c652e0118) reverted T-154340 and main is green again from there onward (confirmed by the \"tests\" check succeeding at 58979bd0b and e4885e79e's predecessor 8e711aa72). (landed 58979bd0be33c1f623f222e2de665a8c652e0118)",
+      "removed": "intake: Culprit T-154340 already reverted on main in PR #1627 (58979bd0b); main is green again at tip c7aecdf7d, so the fix this card asks for has already landed. (groom 2026-10-12)",
       "schema_version": 1,
       "stage_since": "2026-10-12T00:18:49Z",
       "state": "New",
@@ -90913,7 +90913,7 @@
       ],
       "title": "a kernel session launched with a beat that writes nothing outside its worktree",
       "type": "task",
-      "updated": "2026-10-12T00:30:44Z",
+      "updated": "2026-10-12T00:37:00Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/workers/scratch.py",
@@ -91222,7 +91222,7 @@
         "rebase: PR #1614 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91235,7 +91235,7 @@
       ],
       "title": "the seats \u2014 the sweep launches after the launches and after the intake, on what they left",
       "type": "task",
-      "updated": "2026-10-12T00:30:44Z",
+      "updated": "2026-10-12T00:37:00Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/actions.py",
@@ -91328,7 +91328,7 @@
       ],
       "title": "the parked-age histogram in `asf kernel waits`, and the tick's sweep line",
       "type": "task",
-      "updated": "2026-10-12T00:24:44Z",
+      "updated": "2026-10-12T00:37:00Z",
       "writes": [
         "asf/kernel/waits.py",
         "asf/kernel/loop.py",
@@ -91349,7 +91349,7 @@
         "asf/kernel/decide.py:2405 \u2014 with the kernel paused, an over-target overlap wait reports `none: no action exists` where it read `none: launches paused` before this diff; change the clause to `if facts.paused and cls in W.READY_CLASSES + ('review',):`"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -91363,7 +91363,7 @@
       ],
       "title": "`overlap` is its own wait class, so `seat` stops hiding it",
       "type": "task",
-      "updated": "2026-10-12T00:24:44Z",
+      "updated": "2026-10-12T00:37:00Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/waits.py",
