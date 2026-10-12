@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T07:06:04Z",
+  "generated": "2026-10-12T07:08:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17627,6 +17627,25 @@
         "tests/kernel/test_ports.py",
         "asf/hermetic.py"
       ]
+    },
+    "B-186216": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-186216",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.150",
+      "parent": "F-0346",
+      "schema_version": 2,
+      "severity": "S3",
+      "signature": "Bug: unresolvable conflict ends Stuck, rebuild can't be requested, and archive names collide",
+      "stage_since": "2026-10-12T07:08:18Z",
+      "state": "New",
+      "title": "Bug: unresolvable conflict ends Stuck, rebuild can't be requested, and archive names collide",
+      "type": "bug",
+      "updated": "2026-10-12T07:08:40Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -35954,7 +35973,8 @@
         "B-160759",
         "B-173962",
         "B-177713",
-        "B-184865"
+        "B-184865",
+        "B-186216"
       ],
       "decided": true,
       "folder": "features",
@@ -90135,7 +90155,8 @@
       ],
       "backlinks": [
         "T-159849",
-        "T-159855"
+        "T-159855",
+        "B-186216"
       ],
       "children": [],
       "decided": true,
@@ -90143,17 +90164,15 @@
       "id": "T-159852",
       "kernel_answers": [
         "granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel).",
-        "Archive and rebuild fresh: archive worker/T-159852, close PR #1624, and rebuild from current origin/main. The conflict comes from hub-file changes that landed meanwhile; the rebase session couldn't resolve it, so a fresh build on main is cheaper than another rebase."
+        "Archive and rebuild fresh: archive worker/T-159852, close PR #1624, and rebuild from current origin/main. The conflict comes from hub-file changes that landed meanwhile; the rebase session couldn't resolve it, so a fresh build on main is cheaper than another rebase.",
+        "Rebuild fresh: PR #1624 is closed, and the old branch is archived as archive/worker/T-159852 and deleted. Build T-159852 again on a new worker/T-159852 cut from current origin/main, re-applying its plan Task. Don't rebase the old work."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Archive and rebuild fresh: archive worker/T-159852, close PR #1624, and rebuild from current origin/main. The conflict comes from hub-file changes that landed meanwhile; the rebase session couldn't resolve it, so a fresh build on main is cheaper than another rebase.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "session died"
+        "relaunch: operator answer: Rebuild fresh: PR #1624 is closed, and the old branch is archived as archive/worker/T-159852 and deleted. Build T-159852 again on a new worker/T-159852 cut from current origin/main, re-applying its plan Task. Don't rebase the old work."
       ],
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/kernel/loop.py:475 \u2014 replace `wanted = min(wanted, max(0, config.max_sessions - inflight))` with `wanted = min(wanted, max(0, _free(facts, config)))` (import `_free` beside `BUILDABLE` from asf.kernel.decide; it subtracts the alive sessions itself, so the separate `inflight` term goes). The cap must be the host room its own docstring at :460 cites \u2014 `min(config.max_sessions, facts.seats) - alive` \u2014 because `facts.seats` is the `asf.capacity`-bounded `capacity()` this Task introduced, so `facts.seats < config.max_sessions` is now the normal multi-product case and the present cap never bites: probed, facts.seats=2 / max_sessions=10 / one alive publishes wanted=5 against one real seat, and `asf.capacity.claim` documents the contract this breaks (\"`wanted` was cut to the room the partner had then\"), so the partner lends nothing and P7 inverts. Also add the case `tests/kernel/test_multi_product.py:264` cannot reach \u2014 it builds facts with seats=None, which collapses `_free` onto `config.max_sessions` and is why this is green: with seats=2, max_sessions=10, one alive, idle={\"waiting\": 5}, assert read_demand_record returns (1, 1).",
-        "rebase: PR #1624 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/loop.py:475 \u2014 replace `wanted = min(wanted, max(0, _free(facts, config)))` with `wanted = min(wanted, max(0, config.max_sessions - inflight))` and drop `_free` from the import at :466: `_free` folds in `facts.seats`, which this Task just bound by the fair share, so `wanted` is capped by host pressure and by the share itself \u2014 the terms `asf.tick.step_wave.demand` (asf/tick/step_wave.py:669-684, the definition `capacity.write_demand` names) explicitly rules out with a dated measurement. Measured here: 8 Ready rows at 0 free records `wanted 0`, and the partner's `claim` lends 3 of its 5 slots away. Keep the `plan.idle['waiting']` preference and the Task/Bug Ready fallback as they are.",
         "asf/kernel/ports.py:2375 \u2014 move the foreign count inside the lock and take one registry snapshot for both terms: inside `with seats.held() as ledger:` do `registered = lifecycle.live_all(seats.root())`, `keys = {(r.get('product'), r.get('job')) for r in registered}`, `live = sum(1 for r in registered if r.get('account') == acct.name)`, `held = sum(1 for c in ledger.claims if c.get('account') == acct.name and (c.get('product'), c.get('job')) not in keys)`, then test `live + held >= acct.cap` \u2014 retiring `_foreign_live` and the `foreign`/`here` split. As written, `foreign` is read before the lock while `ledger.claims` is swept against a second, later `live_all` walk, so a foreign launch registering between the two is counted zero times (missed as foreign, swept out of claims) and one launch goes over the account's host cap \u2014 the race this Task exists to close, and the contract `_claim_seat`'s own docstring states at :2368-2371.",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
@@ -90165,11 +90184,7 @@
         "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "rebase PR #1624 onto its base by hand and push, or close it and reopen the item",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "conflict the rebase session could not resolve: PR #1624 still conflicts on head 49a81ae4fa1f3f481822e19fe1a051d8da79bbc7",
-      "kernel_stuck_since": "2026-10-12T06:58:39Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90183,7 +90198,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T06:59:40Z",
+      "updated": "2026-10-12T07:08:40Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -91452,7 +91467,9 @@
       "after": [
         "T-173233"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-186216"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
