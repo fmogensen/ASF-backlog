@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T20:38:24Z",
+  "generated": "2026-10-12T20:42:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17978,7 +17978,7 @@
       "kernel_notes": [
         "groom-fill-b-195926-1791834440: groom-fill raised risk high: Confirmed real bug in asf/merge_queue.py:2471 (reap_leftover_runs matches any ref by prefix alone, no exclude path); filled with a concrete, additive fix (merge_queue.reap_skip glob patterns) matching the card's own \"or a product yaml key\" option, naming the tests that prove it."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17987,7 +17987,7 @@
       "state": "New",
       "title": "Merge-queue reaper cancels foreign CI runs that share its ref prefix",
       "type": "bug",
-      "updated": "2026-10-12T20:29:23Z",
+      "updated": "2026-10-12T20:42:28Z",
       "writes": [
         "asf/merge_queue.py",
         "tests/test_queue_reap.py"
@@ -18003,8 +18003,10 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_notes": [
-        "groom-fill-b-196077-1791836609: groom-fill raised risk high: two of the four listed findings (owned() in _bugless_live, the PD5 matrix-leg assertion) are already implemented and already tested on trunk; the real remaining gaps are a wording mismatch, two untested branches, and the unmet enablement-gate note, so the card is reshaped to those four concrete items."
+        "groom-fill-b-196077-1791836609: groom-fill raised risk high: two of the four listed findings (owned() in _bugless_live, the PD5 matrix-leg assertion) are already implemented and already tested on trunk; the real remaining gaps are a wording mismatch, two untested branches, and the unmet enablement-gate note, so the card is reshaped to those four concrete items.",
+        "satisfied on main at 5f129ce21: tests.kernel.test_flake.BugTests, tests.kernel.test_flake.KnobTests"
       ],
+      "kernel_state": "done",
       "parent": "F-0336",
       "schema_version": 2,
       "severity": "S3",
@@ -18013,7 +18015,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-12T20:38:11Z",
+      "updated": "2026-10-12T20:42:28Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -91972,7 +91974,7 @@
       "kernel_fix_rounds": 3,
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91985,7 +91987,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T20:33:07Z",
+      "updated": "2026-10-12T20:42:28Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
