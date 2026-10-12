@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T08:47:36Z",
+  "generated": "2026-10-12T08:50:55Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17738,7 +17738,7 @@
       "kernel_notes": [
         "groom-fill-b-187369-1791793531: groom-fill raised risk high: asf correct never writes operator-answers.jsonl, the only ledger the kernel's Facts.answers reads, so a correction on a kernel Stuck item is recorded but never re-judged \u2014 unlike asf answer, which writes that exact file."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17747,7 +17747,7 @@
       "state": "New",
       "title": "asf correct on a Stuck item never relaunches it",
       "type": "bug",
-      "updated": "2026-10-12T08:40:04Z",
+      "updated": "2026-10-12T08:50:51Z",
       "writes": [
         "asf/workers/correct.py",
         "tests/test_correct.py",
@@ -89858,11 +89858,13 @@
         "granted tests/kernel/test_apply.py; nothing else outside writes (card updated by the kernel).",
         "grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round.",
         "granted asf/record/index.py; nothing else outside writes (card updated by the kernel). asf/record/index.py matches kernel.risk.high: this item is high-risk now.",
-        "One more strong-model round. The findings are real correctness defects; fix all of them in this order: (1) resolve.py:116 self-blocking survivor, (2) apply.py:719-725 close whose resolve fails must not leave Done with unresolved edges (retry it next tick), (3) resolve.py:220 commit=True must not write markdown into a .json card's path, (4) resolve.py:203 validate once per close, not once per holder, (5) loop.py tuple verb rendering, (6) create tests/kernel/test_apply.py covering _resolve_closed. Each fix gets a test that fails on the base and passes on the head. No other scope."
+        "One more strong-model round. The findings are real correctness defects; fix all of them in this order: (1) resolve.py:116 self-blocking survivor, (2) apply.py:719-725 close whose resolve fails must not leave Done with unresolved edges (retry it next tick), (3) resolve.py:220 commit=True must not write markdown into a .json card's path, (4) resolve.py:203 validate once per close, not once per holder, (5) loop.py tuple verb rendering, (6) create tests/kernel/test_apply.py covering _resolve_closed. Each fix gets a test that fails on the base and passes on the head. No other scope.",
+        "granted asf/kernel/loop.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: One more strong-model round. The findings are real correctness defects; fix all of them in this order: (1) resolve.py:116 self-blocking survivor, (2) apply.py:719-725 close whose resolve fails must not leave Done with unresolved edges (retry it next tick), (3) resolve.py:220 commit=True must not write markdown into a .json card's path, (4) resolve.py:203 validate once per close, not once per holder, (5) loop.py tuple verb rendering, (6) create tests/kernel/test_apply.py covering _resolve_closed. Each fix gets a test that fails on the base and passes on the head. No other scope.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted asf/kernel/loop.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_extra_rounds": 2,
       "kernel_findings": [
@@ -89884,7 +89886,7 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89897,7 +89899,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T08:31:50Z",
+      "updated": "2026-10-12T08:50:51Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89905,7 +89907,8 @@
         "asf/kernel/apply.py",
         "tests/test_card_edge_resolve.py",
         "tests/kernel/test_apply.py",
-        "asf/record/index.py"
+        "asf/record/index.py",
+        "asf/kernel/loop.py"
       ]
     },
     "T-154344": {
@@ -90398,6 +90401,7 @@
       ],
       "backlinks": [
         "T-0816",
+        "T-154343",
         "T-159853",
         "T-159855",
         "B-187369"
