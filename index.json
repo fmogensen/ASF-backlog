@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T16:17:17Z",
+  "generated": "2026-10-12T16:21:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1341,6 +1341,7 @@
         "T-0133",
         "T-0286",
         "T-0441",
+        "T-166577",
         "B-0042"
       ],
       "children": [],
@@ -88694,7 +88695,7 @@
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -88710,7 +88711,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-12T15:54:24Z",
+      "updated": "2026-10-12T16:21:00Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -91636,7 +91637,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166577",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/ports.py:2449 \u2014 C1: the continuation cap can never fire. _settle_beat writes `resumes` onto the dying row (ports.py:2799-2801 via ports.py:2765), but the cap reads it off the live run's own row (ports.py:2102, `beats=`), and a kernel relaunch mints a fresh row with no `resumes` (ports.py:2449-2451 -> spawn.py:1335-1357; pool.Row has no such field; spawn.py:1356 keeps the previous run's fields off the new one, B-0041). The only writer that carries the chain is heartbeat.launch (heartbeat.py:800,811), which the kernel never calls (plan Step 6, spec C8). So s.beats is always 0 and decide.py:2390 (`s.beats >= cap`) is unreachable at the shipped default max_continues: 2 (settings.py:206); spec acceptance line 8 (specs/f-0347.md:655, \"incremented on the new row\") is not implemented. Fix: in RealSessions.launch, before `return self._meta(job, meta)`, inherit the chain onto the new row \u2014 `prev = max((r for r in pool.load_sessions(self.product).values() if r.get('item') == item_id and r.get('ended') and r.get('resumes')), key=lambda r: r.get('started') or '', default=None)` then `if prev: pool.update_session(self.product, job, resumes=int(_as_num(prev.get('resumes')) or 0))` \u2014 and add a case to MaxContinuesCapsTheRelaunch that asserts the increment lands on the row sessions() reads, not on a built fact.",
+        "asf/kernel/briefs.py:303 \u2014 C2: the CONTINUE block is appended to every later brief for the item, not only the next one. _last_beat_run keeps the runs that carry `beat_notes` and takes the newest of those, instead of taking the item's last ended run and then testing it; plan Step 4 (plans/f-0347.md:353-356) and spec 2.5 (specs/f-0347.md:333-334) both say \"its last run\". Confirmed by a scripted case: a settled run followed by a normally-ended run for the same item still gets the block, naming the stale beat_head \u2014 and build() applies it to the coder, reviewer and light-review briefs alike (briefs.py:606), so a later reviewer is told \"this session continues a run of the same job that stopped beating\" and \"its pushes from now on are ignored\". Fix: `runs = [r for r in pool.load_sessions(product).values() if r.get('item') == item_id and r.get('ended')]`, `last = max(runs, key=lambda r: r.get('started') or '', default=None)`, `return last if last is not None and 'beat_notes' in last else None` \u2014 plus the case that a settled run followed by a normally-ended one leaves the brief unchanged.",
+        "Another session edits asf/kernel/briefs.py, asf/kernel/decide.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91649,7 +91656,7 @@
       ],
       "title": "the settle \u2014 the snapshot lands, the ref goes, the notes reach the next brief",
       "type": "task",
-      "updated": "2026-10-12T16:17:15Z",
+      "updated": "2026-10-12T16:21:00Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/briefs.py",
