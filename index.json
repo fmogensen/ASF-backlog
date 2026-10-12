@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T16:56:47Z",
+  "generated": "2026-10-12T17:03:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17834,7 +17834,7 @@
         "PR #1655: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17843,7 +17843,7 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T16:56:45Z",
+      "updated": "2026-10-12T17:03:10Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -90916,10 +90916,11 @@
       "kernel_findings": [
         "asf/harvest/lane.py:1192 \u2014 worker/T-160208 carries two merges of origin/main (9cb027b5aa25a99dd3a8bf350354d34c0c939cdc, ca4001687f3e02df719e4c7523364846b906c4e1), and the lane refuses such a branch before any gate (\"merge commit on a lane branch \u2026 a lane branch is straight commits on origin/main\"), so this PR cannot land as it stands. The seven changed files need no edit. In the worktree: `git fetch origin main && git rebase origin/main`, then confirm `git rev-list --merges --count origin/main..HEAD` prints 0, then report `pushed: rebased <sha>` and let the host publish it \u2014 never another merge, never a force-push. Also correct the next report's `left out:` line: the merges of origin/main were not no-ops (\"Already up to date\") \u2014 ca40016 brought in asf/kernel/model.py, asf/kernel/ports.py and tests/kernel/test_beat_facts.py, and 9cb027b brought in asf/capacity.py, asf/cli.py, asf/doctor.py and asf/init.py.",
         "operator answer: Drop the three template cut-from lines from this Task: the amendable set is not editable by a session (F-0024). Land the code with the template key kept inert, and remove asf/briefs/templates/*.md from what this Task must change; the template wording goes through F-0356's amendable-template proposal path. Acceptance lines that need only the template text are proved by the brief builder's output test, not the template file.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -90932,7 +90933,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T16:56:45Z",
+      "updated": "2026-10-12T17:03:10Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91780,13 +91781,15 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/kernel/host.py:452 \u2014 the post-rollback re-check runs over `down` only; make it `for label in scheduler.unloaded_clocks([job['label'] for job in all_jobs], cfg):` so a label the rollback itself booted out at :450 and failed to re-bootstrap at :451 also gets its NEEDS OPERATOR line (leave :455 naming `down`, which bullet 3 and the test at :166 assert), and add that case to tests/kernel/test_install_rollback.py \u2014 the case at :154 only ever fails a label already in `down`, which is why the gap survived twelve green tests.",
+        "tests/kernel/test_install_rollback.py:117 \u2014 the ten S-161917 claims are source comments, which asf/proves.py:28 never reads, so all ten bullets of docs/specs/f-0347.md:694-702 stay unticked; add one further commit on worker/T-166580 (no amend, no force-push) whose message carries ten `Proves: S-161917 line N \u2014 tests/kernel/test_install_rollback.py::InstallRollback::<test>` trailers in the landed path::Class::test form, line 4 only once C1 is fixed.",
         "asf/kernel/host.py:445-450 \u2014 the restore loop calls scheduler.bootstrap on every kept label, including one the boot-in did load; launchctl bootstrap refuses a label launchd already holds (which is why asf/scheduler.py:1025-1032 boots out and waits first), so that label ends with the old plist on disk and the new job still running, and the next install reads it as `unchanged` (:412-413). Keep the job in `kept` and boot the label out through scheduler.bootout_clocks(product.name, [job['clock']], cfg) (asf/scheduler.py:1214-1218 \u2014 no raw argv, K11 holds) after writing the old plist and before scheduler.bootstrap; make fake_bootstrap (tests/kernel/test_install_rollback.py:54-56) return (False, 'already loaded') for a label still in self.loaded, cleared by a fake over bootout_clocks, so test_a_label_not_loaded_rolls_back_every_replaced_plist_and_rebootstraps_it is red before the fix.",
         "asf/kernel/host.py:438-440 \u2014 installs.write runs before the verification and is never undone, so a rollback leaves install.json naming the new venv while both restored plists name the old one, against the module doc's own invariant (:16-19) and this head's \"never stay half-applied\" (:395-396). Move the pin write and its _pin_line print below the `if pending:` verification block, still inside the held tick_lock, as `if pin and not rolled_back:`; add a case with host._pin_change patched to return a pin (the fakes never reach it today \u2014 installs.commit_of('/old') reads no sha, :336-338) asserting installs.read('sample') is unchanged after a rollback and moved after a success.",
         "operator answer: granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91799,7 +91802,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T16:53:22Z",
+      "updated": "2026-10-12T17:03:10Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
