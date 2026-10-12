@@ -1,3 +1,5 @@
+→ B-188920
+
 # Briefs truncate the card's Acceptance; reviewers cannot read the record
 parent: F-0346
 

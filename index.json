@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T09:26:45Z",
+  "generated": "2026-10-12T09:30:13Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17767,6 +17767,25 @@
         "tests/test_correct.py",
         "tests/kernel/test_answers.py"
       ]
+    },
+    "B-188920": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-188920",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.154",
+      "parent": "F-0346",
+      "schema_version": 2,
+      "severity": "S3",
+      "signature": "Briefs truncate the card's Acceptance; reviewers cannot read the record",
+      "stage_since": "2026-10-12T09:29:16Z",
+      "state": "New",
+      "title": "Briefs truncate the card's Acceptance; reviewers cannot read the record",
+      "type": "bug",
+      "updated": "2026-10-12T09:30:10Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -36098,7 +36117,8 @@
         "B-186216",
         "B-186367",
         "B-187018",
-        "B-187369"
+        "B-187369",
+        "B-188920"
       ],
       "decided": true,
       "folder": "features",
@@ -89872,7 +89892,8 @@
         "T-154342"
       ],
       "backlinks": [
-        "T-154341"
+        "T-154341",
+        "B-188920"
       ],
       "children": [],
       "decided": true,
@@ -89887,10 +89908,13 @@
         "Final round (6). Fix only findings that are correctness defects in this diff, each with a test red on base and green on head. Any finding about code outside this Task's diff, or about style, docs or performance, is NOT fixed here: list it in the report as a follow-up for a new Bug. The next review judges only whether those correctness findings are closed."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Final round (6). Fix only findings that are correctness defects in this diff, each with a test red on base and green on head. Any finding about code outside this Task's diff, or about style, docs or performance, is NOT fixed here: list it in the report as a follow-up for a new Bug. The next review judges only whether those correctness findings are closed."
+        "relaunch: operator answer: Final round (6). Fix only findings that are correctness defects in this diff, each with a test red on base and green on head. Any finding about code outside this Task's diff, or about style, docs or performance, is NOT fixed here: list it in the report as a follow-up for a new Bug. The next review judges only whether those correctness findings are closed.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 3,
       "kernel_findings": [
+        "asf/kernel/apply.py:741 \u2014 a `resolve.close` that raises after the card's own write landed leaves it Done with its incoming edges held and nothing retries it (the operator's fix 2, half done; `tests/kernel/test_apply.py:115-117` now pins the gap). In `_resolve_closed`'s `except`, after the log, write the card Stuck through the port in the shape `states()` already uses for `self.unresolved` (`apply.py:680-683`): `self.ports.record.write_fields(iid, {P.STATE: State.STUCK.value, P.STUCK_REASON: R.cap(UNRESOLVED + str(e)), P.STUCK_OWNER: 'operator', P.STUCK_NEXT: NEXT_ACTION['operator'], P.STUCK_SINCE: self.now})` inside its own `try`. The card is then no longer Done, so the next tick re-judges it, re-emits `Satisfied`, and the resolve runs again (`close` is idempotent). Update `tests/kernel/test_apply.py:107-127` to assert the Stuck and that the reason starts with `KA.UNRESOLVED`.",
+        "asf/kernel/loop.py:134 \u2014 the tuple verb is dropped (the operator's fix 5; `loop.py` is granted to this Task now). Change `'write %s' % a[1]` to `'%s %s' % a` here and at `asf/kernel/loop.py:497`, label the failure `('resolve', iid)` at `asf/kernel/apply.py:746`, and delete the four-line comment at `:742-745` that exists only to explain the workaround. If the serialisation behind T-159854 (which also writes `loop.py`) is the wrong trade for two lines, say so and defer C2 to a follow-up card \u2014 but it cannot stay neither done nor carried anywhere.",
         "tests/test_card_edge_resolve.py:314-344 \u2014 C1: lines 11 and 12 are proven on .md cards only; add a JSON case to OneCommit (two .json holders, resolve.close with the default commit=True, asserting one new commit and both tasks/*.json plus their .md views in `git show --stat HEAD`), and withdraw `needs writes: asf/record/index.py` \u2014 the premise is this branch's stale asf/record/index.py:37-40, which origin/main already replaced in c4c7a31 (T-154340, PR #1635), so no change to index.py is needed.",
         "tests/test_card_edge_resolve.py:114-122 and :230-238 \u2014 C2: lines 5 and 9 assert `satisfied` is absent (.md holders) and the supersede-on-JSON path has no test at all; add a JSON case to Superseded asserting the re-point and the satisfied entry's field/id/date (id = the old id), and one to ClosedSatisfied asserting the same three keys for 'closed'.",
         "asf/record/resolve.py:220 \u2014 close(commit=True) reaches index.refresh (publish.py:109), which writes markdown into a .json card's own path (index.py:38-40) and is refused by the write gate; measured CardInvalid on a two-card JSON record. The round steered tests 13, 10b, 18b and 18c onto commit=False for it and recorded it only in test comments, so spec lines 11 and 12 are proven on .md cards alone. Fix: put asf/record/index.py on the REPORT's `needs writes:` line and say in `left out:` that the one-commit path is unproven on a JSON card until index.refresh renders a .json card through card.dumps.",
@@ -89902,14 +89926,16 @@
         "asf/kernel/apply.py:723 with asf/kernel/loop.py:134 and :497 \u2014 `_resolve_closed` appends `(('resolve', iid), str(e))` and both tick summaries render any tuple as `'write %s' % a[1]`, so a resolve failure prints as `write <id>` and the `resolve` tag is dropped. Render the tuple's own verb, `('%s %s' % a)` for a 2-tuple, in both places (needs writes: asf/kernel/loop.py); if that grant is refused, pass the label as `(('write', 'resolve %s' % iid), ...)` so the line at least names the operation.",
         "operator answer: granted tests/kernel/test_apply.py; nothing else outside writes (card updated by the kernel).",
         "operator answer: grant tests/kernel/test_apply.py \u2014 the Gate's test module stays; create it under this Task's writes:. Then fix the remaining review findings in one more round.",
-        "operator answer: One more strong-model round. The findings are real correctness defects; fix all of them in this order: (1) resolve.py:116 self-blocking survivor, (2) apply.py:719-725 close whose resolve fails must not leave Done with unresolved edges (retry it next tick), (3) resolve.py:220 commit=True must not write markdown into a .json card's path, (4) resolve.py:203 validate once per close, not once per holder, (5) loop.py tuple verb rendering, (6) create tests/kernel/test_apply.py covering _resolve_closed. Each fix gets a test that fails on the base and passes on the head. No other scope."
+        "operator answer: One more strong-model round. The findings are real correctness defects; fix all of them in this order: (1) resolve.py:116 self-blocking survivor, (2) apply.py:719-725 close whose resolve fails must not leave Done with unresolved edges (retry it next tick), (3) resolve.py:220 commit=True must not write markdown into a .json card's path, (4) resolve.py:203 validate once per close, not once per holder, (5) loop.py tuple verb rendering, (6) create tests/kernel/test_apply.py covering _resolve_closed. Each fix gets a test that fails on the base and passes on the head. No other scope.",
+        "operator answer: Final round (6). Fix only findings that are correctness defects in this diff, each with a test red on base and green on head. Any finding about code outside this Task's diff, or about style, docs or performance, is NOT fixed here: list it in the report as a follow-up for a new Bug. The next review judges only whether those correctness findings are closed.",
+        "Another session edits asf/kernel/loop.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 5,
+      "kernel_fix_rounds": 6,
       "kernel_notes": [
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89922,7 +89948,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T09:26:44Z",
+      "updated": "2026-10-12T09:30:10Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
