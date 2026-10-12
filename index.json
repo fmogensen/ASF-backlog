@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T04:17:31Z",
+  "generated": "2026-10-12T04:23:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -49943,7 +49943,6 @@
         "T-129177",
         "T-129193",
         "T-154337",
-        "T-154343",
         "T-159849",
         "T-164021",
         "T-80371",
@@ -49997,7 +49996,6 @@
         "T-129191",
         "T-129193",
         "T-154337",
-        "T-154343",
         "T-164021",
         "T-80369",
         "T-80370"
@@ -53945,8 +53943,7 @@
     },
     "T-0099": {
       "backlinks": [
-        "T-0100",
-        "T-154343"
+        "T-0100"
       ],
       "children": [],
       "cost": {
@@ -89570,7 +89567,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-12T04:09:12Z",
+      "updated": "2026-10-12T04:23:15Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -89672,20 +89669,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154343",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "asf/kernel/apply.py:669 \u2014 _resolve_closed resolves the incoming edges of a card whose own write failed (Satisfied appends to self.closed at :450 before the write; write() at :644-652 records ('write', iid) in result.failed and continues, leaving the card's state untouched). Measured: T-0002 ends with satisfied [{'field': 'after', 'id': 'T-0001', ...}] while T-0001 is still New, and close() is idempotent on that marker (asf/record/resolve.py:114) so no later tick repairs it. Fix: iterate only what landed \u2014 `for iid in sorted(set(self.closed) & set(self.result.written)):` \u2014 and amend the comments on :148 and :450 that assert the invariant the code does not enforce. Add the case to tests/test_card_edge_resolve.py (already in writes:): a StubRecord.write_fields that raises, then assert resolve.incoming(root, 'T-0001') == ['T-0002'] and that T-0002 has no satisfied.",
-        "asf/groom/groom.py:393 \u2014 the resolve.close return is dropped, so apply_groom_answers' in-memory canonical (built once at :1291) keeps the pre-re-point meta for every card close() just rewrote; the unblock branch in the same answer loop reads it (:523) and writes the whole list back (:527), silently putting the superseded loser's id back into blockedBy. Fix: mirror the return \u2014 `for other_id, new_meta in resolve.close(root, loser, ('superseded', survivor), commit=False).items(): if other_id in canonical: canonical[other_id]['meta'] = new_meta` \u2014 and set closed.return_value = {} on the mock.patch at tests/test_card_edge_resolve.py:326, or the seam test raises on MagicMock.items().",
-        "asf/record/resolve.py:124-126 \u2014 make close() idempotent on a .md card: in _rewrite_one, before returning, treat the edge as already resolved when the card's body carries the line this call would write (`if not is_json and history and ('- ' + history) in (rec['body'] or ''): return None, None`), and extend tests/test_card_edge_resolve.py:130-144 with the .md case (a second close returns {} and ## History holds one resolve line).",
-        "asf/record/resolve.py:115-121 \u2014 dedupe a re-pointed list field so superseding never writes a duplicate id: after the `for field, index in refs:` loop (never inside it, which would invalidate the indices still to be written), set new_meta[field] = list(dict.fromkeys(new_meta[field])) for each list field the re-point touched, and add a Superseded case whose holder already names the survivor, asserting after == ['T-0099']."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89698,7 +89688,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T04:00:12Z",
+      "updated": "2026-10-12T04:23:15Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89755,20 +89745,23 @@
       "folder": "tasks",
       "id": "T-154345",
       "kernel_attempts": [
-        "session ran past its max age"
+        "session ran past its max age",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/init.py:88 \u2014 the generated record CI workflow installs `pip install \"asf-factory=={version}\"` from a package index that has never carried this distribution (PyPI -> 404; pip --dry-run -> No matching distribution found), so every push and pull request to every record `asf init` lays down fails before `asf check --schema-only` is reached, and `write_record_ci_workflow`'s never-overwrite rule means re-running `asf init` never repairs it. Install from the git URL the product already defines, pinned to the release tag, reusing asf/version.py:50 INSTALL_LINE or asf/conventions.py:504 DEFAULT_RELEASE_INSTALL instead of minting a second install line: `- run: pipx install --force \"git+https://github.com/{slug}.git@v{version}\"`, with {slug} from asf/init.py:185's existing slug_from_url. Then widen the line-15 test: tests/test_card_enforcement.py:152 drops the install line before asserting, which is why this reached a green CI \u2014 it must assert the install line names the product's git URL and a v<x.y.z> tag, and nothing from an index.",
+        "asf/init.py:96 \u2014 RECORD_CI_WORKFLOW_TEMPLATE.format(version=asf.__version__) pins to a string that names no release outside an installed release: asf/version.py:80-88 pep440 returns x.y.z.post<n>+g<sha> for a checkout past the last tag (a factory host's normal state) and FALLBACK 0.0.0 with no stamp, no usable git describe and no metadata \u2014 which is what this container renders, `pip install \"asf-factory==0.0.0\"`. Even with C1's git URL that ref would not resolve. Render the release tag instead: take v<x.y.z> only when asf.__version__ matches a plain release triple, and when it does not, refuse to write the workflow (return False from write_record_ci_workflow, so lay_down reports no file and doctor.check_record_ci's informational row names the gap) rather than write one pinned to a ref that does not exist. Test it beside line 15: a non-release version writes no workflow, a release version writes one whose ref is v<x.y.z>.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1630: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1630: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1630: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1630: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89781,7 +89774,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T04:00:12Z",
+      "updated": "2026-10-12T04:23:15Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
@@ -90052,7 +90045,8 @@
         "granted tests/kernel/test_no_heartbeat.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -90082,7 +90076,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T03:04:13Z",
+      "updated": "2026-10-12T04:23:15Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
