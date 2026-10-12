@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T12:39:38Z",
+  "generated": "2026-10-12T12:42:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -89878,7 +89878,8 @@
         "granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "asf/record/plan_tasks.py:170 \u2014 `gate_of` must join a `\\` line-continuation the way `acceptance_of` does (`asf/record/plan_tasks.py:137-141`): accumulate into `cmd`, `rstrip('\\\\')`, flush only on a line that does not end with `\\`. As written, 524 Gate lines across this tree's plans mint as dangling-backslash fragments and bare continuation lines that are not commands, breaking spec line 5. Extend `tests/test_card_body_fields.py:190` (`test_15`) with a `\\`-continued Gate line.",
@@ -89887,7 +89888,7 @@
         "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89900,7 +89901,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T12:19:28Z",
+      "updated": "2026-10-12T12:42:25Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
