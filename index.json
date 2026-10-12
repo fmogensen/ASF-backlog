@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T22:07:48Z",
+  "generated": "2026-10-12T22:11:16Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90866,7 +90866,11 @@
         "PR #1546: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
+      "kernel_stuck_since": "2026-10-12T22:10:36Z",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90880,7 +90884,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T21:14:20Z",
+      "updated": "2026-10-12T22:11:14Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -90974,7 +90978,7 @@
       "folder": "tasks",
       "id": "T-159855",
       "kernel_stack": "worker/T-159853@e0f7fad62495ceea126790623824fb494187ec2a",
-      "kernel_state": "new",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90987,7 +90991,7 @@
       ],
       "title": "the release's own documentation \u2014 the v0.3.0 notes, and what 0.3 leaves open",
       "type": "task",
-      "updated": "2026-10-12T22:07:42Z",
+      "updated": "2026-10-12T22:11:14Z",
       "writes": [
         "docs/RELEASE-NOTES.md",
         "docs/KNOWN-ISSUES.md"
@@ -91194,8 +91198,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160210",
+      "kernel_findings": [
+        "rebase: PR #1677 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_stack": "worker/T-160208@fb2c88353c4799dd472eb5f311e8dbd2fafc1b72",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91208,7 +91217,7 @@
       ],
       "title": "the unstack \u2014 retargeted to the trunk, replayed onto it, torn down when the base is rebuilt",
       "type": "task",
-      "updated": "2026-10-12T22:07:42Z",
+      "updated": "2026-10-12T22:11:14Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -91924,7 +91933,7 @@
       ],
       "title": "cloud and local judged by the same code, and a reported run that still beats",
       "type": "task",
-      "updated": "2026-10-12T22:07:42Z",
+      "updated": "2026-10-12T22:11:14Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_beat_cloud.py"
@@ -92032,6 +92041,7 @@
       "folder": "tasks",
       "id": "T-166581",
       "kernel_stack": "worker/T-166578@d1e2494acdcc14b34c3350a45bcb877f6fda5712",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -92044,7 +92054,7 @@
       ],
       "title": "a session's identity is opaque to the kernel and named only in a connector",
       "type": "task",
-      "updated": "2026-10-12T22:07:42Z",
+      "updated": "2026-10-12T22:11:14Z",
       "writes": [
         "asf/connectors/__init__.py",
         "asf/connectors/protocols.py",
