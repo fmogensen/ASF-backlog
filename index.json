@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T04:59:37Z",
+  "generated": "2026-10-12T05:12:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17601,6 +17601,9 @@
       "id": "B-184865",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
+      "kernel_notes": [
+        "groom-fill-b-184865-1791780722: groom-fill raised risk high: hang reproduces in EndReview's real-git path (push-only guard misses fetch/clone/pull, and the module never self-installs the stub); fix is concrete and the card just lacked named tests and writes."
+      ],
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17609,7 +17612,11 @@
       "state": "New",
       "title": "Bug: tests/kernel/test_ports.py hangs locally on real git",
       "type": "bug",
-      "updated": "2026-10-12T04:52:09Z"
+      "updated": "2026-10-12T05:12:35Z",
+      "writes": [
+        "tests/kernel/test_ports.py",
+        "asf/hermetic.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -89702,7 +89709,7 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89715,7 +89722,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T04:59:23Z",
+      "updated": "2026-10-12T05:12:35Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
