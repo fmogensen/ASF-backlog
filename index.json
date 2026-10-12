@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T17:50:00Z",
+  "generated": "2026-10-12T17:52:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -91872,20 +91872,11 @@
       "kernel_answers": [
         "granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "asf/kernel/host.py:452 \u2014 the post-rollback re-check runs over `down` only; make it `for label in scheduler.unloaded_clocks([job['label'] for job in all_jobs], cfg):` so a label the rollback itself booted out at :450 and failed to re-bootstrap at :451 also gets its NEEDS OPERATOR line (leave :455 naming `down`, which bullet 3 and the test at :166 assert), and add that case to tests/kernel/test_install_rollback.py \u2014 the case at :154 only ever fails a label already in `down`, which is why the gap survived twelve green tests.",
-        "tests/kernel/test_install_rollback.py:117 \u2014 the ten S-161917 claims are source comments, which asf/proves.py:28 never reads, so all ten bullets of docs/specs/f-0347.md:694-702 stay unticked; add one further commit on worker/T-166580 (no amend, no force-push) whose message carries ten `Proves: S-161917 line N \u2014 tests/kernel/test_install_rollback.py::InstallRollback::<test>` trailers in the landed path::Class::test form, line 4 only once C1 is fixed.",
-        "asf/kernel/host.py:445-450 \u2014 the restore loop calls scheduler.bootstrap on every kept label, including one the boot-in did load; launchctl bootstrap refuses a label launchd already holds (which is why asf/scheduler.py:1025-1032 boots out and waits first), so that label ends with the old plist on disk and the new job still running, and the next install reads it as `unchanged` (:412-413). Keep the job in `kept` and boot the label out through scheduler.bootout_clocks(product.name, [job['clock']], cfg) (asf/scheduler.py:1214-1218 \u2014 no raw argv, K11 holds) after writing the old plist and before scheduler.bootstrap; make fake_bootstrap (tests/kernel/test_install_rollback.py:54-56) return (False, 'already loaded') for a label still in self.loaded, cleared by a fake over bootout_clocks, so test_a_label_not_loaded_rolls_back_every_replaced_plist_and_rebootstraps_it is red before the fix.",
-        "asf/kernel/host.py:438-440 \u2014 installs.write runs before the verification and is never undone, so a rollback leaves install.json naming the new venv while both restored plists name the old one, against the module doc's own invariant (:16-19) and this head's \"never stay half-applied\" (:395-396). Move the pin write and its _pin_line print below the `if pending:` verification block, still inside the held tick_lock, as `if pin and not rolled_back:`; add a case with host._pin_change patched to return a pin (the fakes never reach it today \u2014 installs.commit_of('/old') reads no sha, :336-338) asserting installs.read('sample') is unchanged after a rollback and moved after a success.",
-        "operator answer: granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
+      "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91898,7 +91889,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T17:39:39Z",
+      "updated": "2026-10-12T17:52:40Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
