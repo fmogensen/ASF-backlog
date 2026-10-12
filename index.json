@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T22:34:28Z",
+  "generated": "2026-10-12T22:37:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18022,6 +18022,25 @@
         "tests/kernel/test_flake.py"
       ]
     },
+    "B-199428": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-199428",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.167",
+      "parent": "F-0334",
+      "schema_version": 2,
+      "severity": "S3",
+      "signature": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
+      "stage_since": "2026-10-12T22:36:53Z",
+      "state": "New",
+      "title": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
+      "type": "bug",
+      "updated": "2026-10-12T22:37:55Z"
+    },
     "B-70500": {
       "backlinks": [],
       "children": [],
@@ -35672,7 +35691,8 @@
         "T-159852",
         "T-159853",
         "T-159854",
-        "T-159855"
+        "T-159855",
+        "B-199428"
       ],
       "decided": true,
       "folder": "features",
@@ -90831,7 +90851,8 @@
       ],
       "backlinks": [
         "T-159855",
-        "T-160208"
+        "T-160208",
+        "B-199428"
       ],
       "children": [],
       "decided": true,
@@ -90842,13 +90863,13 @@
         "granted asf/kernel/loop.py asf/kernel/facts.py; nothing else outside writes (card updated by the kernel). T-159854 also writes asf/kernel/loop.py (Review): the overlap rule serialises them. asf/kernel/loop.py asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now.",
         "The last session ended without pushing and left nothing on a heartbeat ref. Relaunch the build from origin's worker/T-159853 and push before reporting done.",
         "Verified: origin/worker/T-159853 is at 9f804ca73, which is this session's report commit on top of its merge of origin/main. The work is on origin; nothing is unpushed. Proceed to open the PR and review; no rebuild, no second push.",
-        "One more round, exactly these, then done: (1) decide.py:1794 replace _story_of with _stories_of (parent Story plus every Story on stories:) and make started_story iterate them; add the multi-Story case to test_stories_first.py. (2) ports.py:3140 STORIES_FIRST_DEFAULT = False (off by default; Task 1 flips it where the key is validated). (3) ports.py:2451-2452 gate ci_free() on the launch_per_tick cap being set, and reuse self.resolved; no second capacity.resolve on a tick with the cap off. (4) The four docstring corrections exactly as the findings word them (test_stories_first.py:1, actions.py:352, loop.py:250, decide.py:1995, model.py:596). Each code fix gets a test red on base, green on head. Rebase onto origin/main, no merge commit. The next review judges only (1)-(4)."
+        "One more round, exactly these, then done: (1) decide.py:1794 replace _story_of with _stories_of (parent Story plus every Story on stories:) and make started_story iterate them; add the multi-Story case to test_stories_first.py. (2) ports.py:3140 STORIES_FIRST_DEFAULT = False (off by default; Task 1 flips it where the key is validated). (3) ports.py:2451-2452 gate ci_free() on the launch_per_tick cap being set, and reuse self.resolved; no second capacity.resolve on a tick with the cap off. (4) The four docstring corrections exactly as the findings word them (test_stories_first.py:1, actions.py:352, loop.py:250, decide.py:1995, model.py:596). Each code fix gets a test red on base, green on head. Rebase onto origin/main, no merge commit. The next review judges only (1)-(4).",
+        "Console decision: PR #1670 merged at green head bafc912f3. Stories-first is off by default; the left-out ports.py:3153 finding and a review of the last fix commit are a follow-up Bug under F-0334. This Task is done."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, exactly these, then done: (1) decide.py:1794 replace _story_of with _stories_of (parent Story plus every Story on stories:) and make started_story iterate them; add the multi-Story case to test_stories_first.py. (2) ports.py:3140 STORIES_FIRST_DEFAULT = False (off by default; Task 1 flips it where the key is validated). (3) ports.py:2451-2452 gate ci_free() on the launch_per_tick cap being set, and reuse self.resolved; no second capacity.resolve on a tick with the cap off. (4) The four docstring corrections exactly as the findings word them (test_stories_first.py:1, actions.py\u2026",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: Console decision: PR #1670 merged at green head bafc912f3. Stories-first is off by default; the left-out ports.py:3153 finding and a review of the last fix commit are a follow-up Bug under F-0334. This Task is done."
       ],
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/kernel/ports.py:3153 \u2014 `_stories_first` (and `_launch_per_tick` at :3165) reads the raw `kernel.launch` block and ignores the validated one `config_for` already holds (`k = product.kernel`, :3182), so Task 1's SPEC default `'stories_first': (True, bool)` (docs/plans/f-0334.md:203) can never reach `Config` and S-131015 ships off: give both readers `k` and prefer it when the key is present (`validated = (k or {}).get('launch') or {}; if 'stories_first' in validated: return bool(validated['stories_first'])`), keep the raw read as the pre-Task-1 fallback, call them as `_stories_first(product, k)` / `_launch_per_tick(product, k)` at :3242, drop the untrue \"Task 1 flips this\" claim at :3145-3146 (Task 1's writes at docs/plans/f-0334.md:173 do not include asf/kernel/ports.py, so no later Task may fix it), and pin it with a `mock.patch.dict(settings.SPEC['launch'], {'stories_first': (True, bool), 'per_tick': (0, int)})` case beside `LaunchKnobs` in tests/kernel/test_finish_first.py:191.",
         "asf/kernel/decide.py:1794 \u2014 _story_of returns at the first Story on the item's `stories:` list, so the Stories-first term never reads a multi-Story Task's other Stories; replace it with a `_stories_of` that returns the parent Story plus every Story named on `stories:`, and make started_story (decide.py:1797-1806) iterate them (`for sid in _stories_of(iid, items) for cid in children.get(sid, ())`). Probe confirms the term does not fire today for `stories: S-131015, S-131016`, which is this very Task's own shape. Add one case to test_stories_first.py's Stories class over that world.",
@@ -90869,11 +90890,7 @@
         "PR #1546: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 4 fix rounds",
-      "kernel_stuck_since": "2026-10-12T22:25:34Z",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90887,7 +90904,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T22:26:31Z",
+      "updated": "2026-10-12T22:37:55Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -90980,8 +90997,11 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-159855",
+      "kernel_notes": [
+        "satisfied on main at 9277db82b: tests.kernel.test_pace, tests.kernel.test_moved_main"
+      ],
       "kernel_stack": "worker/T-159853@e0f7fad62495ceea126790623824fb494187ec2a",
-      "kernel_state": "new",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90994,7 +91014,7 @@
       ],
       "title": "the release's own documentation \u2014 the v0.3.0 notes, and what 0.3 leaves open",
       "type": "task",
-      "updated": "2026-10-12T22:13:52Z",
+      "updated": "2026-10-12T22:37:55Z",
       "writes": [
         "docs/RELEASE-NOTES.md",
         "docs/KNOWN-ISSUES.md"
@@ -91242,6 +91262,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160211",
+      "kernel_stack": "worker/T-160210@e6e657e1debedf3155b570e67775afc17d63c96d",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91254,7 +91275,7 @@
       ],
       "title": "the knobs, the records, and a product that stacks nothing behaving exactly as today",
       "type": "task",
-      "updated": "2026-10-11T12:06:57Z",
+      "updated": "2026-10-12T22:37:55Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -91926,7 +91947,7 @@
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91939,7 +91960,7 @@
       ],
       "title": "cloud and local judged by the same code, and a reported run that still beats",
       "type": "task",
-      "updated": "2026-10-12T22:26:31Z",
+      "updated": "2026-10-12T22:37:55Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_beat_cloud.py"
