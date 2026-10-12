@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T09:01:53Z",
+  "generated": "2026-10-12T09:05:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17599,18 +17599,10 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-184865",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
-      "kernel_findings": [
-        "asf/hermetic.py:524-527,540,550 \u2014 add the short flags `-u` (clone's `--upload-pack`) and `-j` (clone/fetch's `--jobs`) to the skip-list, and the pull equivalents `-s`/`-X` (`--strategy`/`--strategy-option`); better, drive the remote-detection off git's own option table so a future flag can't reopen this (`git clone -u /tmp/x https://real/evil.git` passes the guard unrefused today).",
-        "asf/hermetic.py:524 \u2014 add `-b`/`--branch` (and the other clone-only value flags sharing the gap: `--origin`, `--depth`, `--template`, `--reference`, `--reference-if-able`, `--separate-git-dir`, `--shallow-since`, `--shallow-exclude`, `--filter`, `--jobs`, `--upload-pack`, `--server-option`) to the value-consuming option set in the guard's remote-detection loop, so `git clone -b <branch> <real-remote-url> <dir>` is refused the same way a plain `git clone <real-remote-url> <dir>` already is \u2014 currently the branch name is misread as the remote and treated as local, letting the real clone through to the network unrefused (reproduced: see docs/reviews/1-b-184865.md C1).",
-        "Another session edits tests/kernel/test_ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
-        "Another session edits tests/kernel/test_ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "groom-fill-b-184865-1791780722: groom-fill raised risk high: hang reproduces in EndReview's real-git path (push-only guard misses fetch/clone/pull, and the module never self-installs the stub); fix is concrete and the card just lacked named tests and writes.",
         "PR #1639: checks (3.12) is red but not a required check \u2014 ignored",
@@ -17620,7 +17612,8 @@
         "PR #1639: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1639: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17629,7 +17622,7 @@
       "state": "New",
       "title": "Bug: tests/kernel/test_ports.py hangs locally on real git",
       "type": "bug",
-      "updated": "2026-10-12T08:58:12Z",
+      "updated": "2026-10-12T09:05:41Z",
       "writes": [
         "tests/kernel/test_ports.py",
         "asf/hermetic.py"
@@ -17684,7 +17677,7 @@
       "kernel_notes": [
         "groom-fill-b-186367-1791789686: groom-fill raised risk high: both failure mechanisms are confirmed on trunk \u2014 heartbeat.launch() reuses the same account with no quota check, and continuation resets session.started so the existing max_review_age_h bound never trips on a repeatedly-stalling review; a new configurable breach limit and an account-band check are concrete, buildable fixes."
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17693,7 +17686,7 @@
       "state": "New",
       "title": "Stalled review continued on a quota-stopped account; BREACH review never acted on",
       "type": "bug",
-      "updated": "2026-10-12T08:47:32Z",
+      "updated": "2026-10-12T09:05:41Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/decide.py",
@@ -90029,7 +90022,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T08:58:12Z",
+      "updated": "2026-10-12T09:05:41Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
