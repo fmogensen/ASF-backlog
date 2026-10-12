@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T17:52:41Z",
+  "generated": "2026-10-12T17:55:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17911,6 +17911,9 @@
       "id": "B-195724",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_notes": [
+        "groom-fill-b-195724-1791827390: groom-fill raised risk high: fixes the one gate that stops a secret or operator name reaching any record, CI run or public repo (F-0075); a wrong MERGE_HEAD-skip is a false-negative bypass risk, not just a false positive."
+      ],
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17919,7 +17922,11 @@
       "state": "New",
       "title": "asf redact --pre-commit refuses a conflicted trunk merge: it scans the trunk's own files",
       "type": "bug",
-      "updated": "2026-10-12T17:49:57Z"
+      "updated": "2026-10-12T17:55:32Z",
+      "writes": [
+        "asf/redact.py",
+        "tests/test_redact.py"
+      ]
     },
     "B-195925": {
       "backlinks": [],
@@ -25512,7 +25519,8 @@
         "T-0362",
         "T-0740",
         "B-0051",
-        "B-0059"
+        "B-0059",
+        "B-195724"
       ],
       "children": [
         "T-0022",
@@ -91876,7 +91884,7 @@
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91889,7 +91897,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T17:52:40Z",
+      "updated": "2026-10-12T17:55:32Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
