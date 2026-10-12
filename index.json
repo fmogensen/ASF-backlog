@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T02:26:50Z",
+  "generated": "2026-10-12T02:35:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -53943,7 +53943,8 @@
     },
     "T-0099": {
       "backlinks": [
-        "T-0100"
+        "T-0100",
+        "T-154343"
       ],
       "children": [],
       "cost": {
@@ -89670,15 +89671,14 @@
       "folder": "tasks",
       "id": "T-154343",
       "kernel_findings": [
-        "asf/record/resolve.py:120 \u2014 `satisfied` is written as a list of dicts, but the frontmatter grammar has no list-of-objects form (`asf/record/frontmatter.py:507` covers only evidence/reopened, and those str() a dict too), so on every `.md` card \u2014 the whole live record today \u2014 it reaches disk as `satisfied: [\"{'field': 'after', ...}\"]`, not the object array \u00a72.5 and `asf/record/cards.v2.schema.json:31-36` declare; it breaks any reader doing `satisfied[0]['field']` and will fail `items.type: object` when Task 10 migrates those cards to schema 2. Fix: write the `satisfied` array only when `rec['path'].endswith('.json')` and record a `.md` card's resolution in the `## History` line alone, dropping `_satisfied_entry`'s `isinstance(e, str)` repr-matching branch (`asf/record/resolve.py:64-70`) rather than resting idempotency on it \u2014 or take a `needs writes:` grant for `asf/record/frontmatter.py` and give the grammar a real list-of-objects block form.",
-        "asf/record/resolve.py:93 \u2014 the `deleted` case sets a scalar ref field to `None` instead of removing the key; `feature` and `split_from` are `{\"type\": \"string\"}` with no null (`asf/record/cards.v2.schema.json:80-81`, unlike `parent` at `:16`), so `card.validate` rejects the rewrite, `close` raises at `asf/record/resolve.py:177-180` and resolves nothing \u2014 leaving valid list edges pointing at a card that no longer exists, the exact state \u00a72.5's `deleted` row prevents (reproduced: `CardInvalid: /feature: is not of type 'string'`). Fix: `new_meta.pop(field, None)` and discard it from `new_meta.machine_keys`, matching `asf/kernel/ports.py:656-658`; add a `deleted` case over a scalar `feature:`/`split_from:` edge on a `.json` card to `tests/test_card_edge_resolve.py`'s `Deleted`.",
-        "asf/record/resolve.py:180-184 \u2014 `close()` commits and pushes from inside itself, but two of its three callers already own the record commit, so Step 3's \"one record commit, one pre-commit run, one push\" breaks on both: groom (`asf/groom/groom.py:391`, inside `cmd_groom`'s snapshot/publish_changes window at `:1275-1278`) now makes an extra commit and push on *every* `keep A`/`keep B`/`merge` answer even with zero incoming edges, because `rels` picks up the target card regardless (`asf/record/resolve.py:177-179`), and splits the supersession pair across two commits \u2014 exactly the half-applied state `apply_conflict`'s own guard at `:358-360` treats as not-yet-applied; and the kernel (`asf/kernel/apply.py:653`, inside `apply`, which `asf/kernel/loop.py:538-556` runs before `ports.publish`) commits and pushes the Satisfied card and every rewritten holder before `scrub_changed()` has looked at them (`asf/kernel/ports.py:1105-1113`), leaving the pre-commit hook \u2014 which refuses rather than repairs \u2014 as the only net, then makes a second commit and push. Fix: give `close()` a `commit=True` parameter (or a variant returning the relpaths and writing no commit), pass `commit=False` from `asf/groom/groom.py:391` and `asf/kernel/apply.py:667` so each caller's single `publish_changes` carries the rewrites, keep `commit=True` for `asf retire` (the one caller that is right today, via `_published` at `asf/cli.py:879-881`), and correct `_resolve_closed`'s docstring at `asf/kernel/apply.py:656-658`, which claims the resolution lands in the same record commit as the card write."
+        "asf/record/resolve.py:124-126 \u2014 make close() idempotent on a .md card: in _rewrite_one, before returning, treat the edge as already resolved when the card's body carries the line this call would write (`if not is_json and history and ('- ' + history) in (rec['body'] or ''): return None, None`), and extend tests/test_card_edge_resolve.py:130-144 with the .md case (a second close returns {} and ## History holds one resolve line).",
+        "asf/record/resolve.py:115-121 \u2014 dedupe a re-pointed list field so superseding never writes a duplicate id: after the `for field, index in refs:` loop (never inside it, which would invalidate the indices still to be written), set new_meta[field] = list(dict.fromkeys(new_meta[field])) for each list field the re-point touched, and add a Superseded case whose holder already names the survivor, asserting after == ['T-0099']."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89691,7 +89691,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T02:05:38Z",
+      "updated": "2026-10-12T02:35:08Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
@@ -89715,7 +89715,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89728,7 +89728,7 @@
       ],
       "title": "an invalid card and an unresolvable reference are LIMBO with the reason, never dropped",
       "type": "task",
-      "updated": "2026-10-12T02:19:05Z",
+      "updated": "2026-10-12T02:35:08Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_limbo_invalid_card.py",
@@ -90971,7 +90971,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166575",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -90984,7 +90984,7 @@
       ],
       "title": "one remote call a tick, and a beat observation on every live session",
       "type": "task",
-      "updated": "2026-10-12T02:26:34Z",
+      "updated": "2026-10-12T02:35:08Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
@@ -91355,7 +91355,7 @@
         "rebase: PR #1628 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91368,7 +91368,7 @@
       ],
       "title": "the parked-age histogram in `asf kernel waits`, and the tick's sweep line",
       "type": "task",
-      "updated": "2026-10-12T02:12:44Z",
+      "updated": "2026-10-12T02:35:08Z",
       "writes": [
         "asf/kernel/waits.py",
         "asf/kernel/loop.py",
