@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T00:19:03Z",
+  "generated": "2026-10-12T00:24:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17578,13 +17578,15 @@
       "children": [],
       "folder": "bugs",
       "id": "B-182364",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.117",
       "rank": -5,
       "schema_version": 1,
       "stage_since": "2026-10-12T00:18:49Z",
       "state": "New",
       "title": "main red at e4885e79e: tests (3.12), tests (3.13) \u2014 2 candidate change(s)",
       "type": "bug",
-      "updated": "2026-10-12T00:18:49Z"
+      "updated": "2026-10-12T00:24:44Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -90011,7 +90013,7 @@
         "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90025,7 +90027,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:24:44Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
@@ -90616,7 +90618,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-164017",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0344.md"
       },
@@ -90629,7 +90631,7 @@
       ],
       "title": "the doctor reports both flat-file trees, from what is on disk",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:24:44Z",
       "writes": [
         "asf/logs.py",
         "asf/doctor.py",
@@ -91306,7 +91308,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-173237",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0337.md"
       },
@@ -91319,7 +91321,7 @@
       ],
       "title": "the parked-age histogram in `asf kernel waits`, and the tick's sweep line",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:24:44Z",
       "writes": [
         "asf/kernel/waits.py",
         "asf/kernel/loop.py",
@@ -91335,7 +91337,12 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-180938",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/waits.py:210 \u2014 a seat-full tick cuts the `overlap` spell and restarts it at age 0 (`_launches` sets `queued[iid]='seat'` at `decide.py:1849-1851`, before the overlap test at `:1864-1866`), so the class's p50/p90/max measure free-seat runs rather than time blocked on a file and an interrupted wait is never flagged over target; in `changes`, after the unchanged-spell `continue`, add `if (old and old.get('to_state') == state and old.get('reason') == 'overlap' and cls in READY_CLASSES): continue` \u2014 or move the overlap test in `_launches` above `if free <= 0:` and say so, since that reading contradicts `docs/specs/f-0352.md:136-137`",
+        "asf/kernel/decide.py:2405 \u2014 with the kernel paused, an over-target overlap wait reports `none: no action exists` where it read `none: launches paused` before this diff; change the clause to `if facts.paused and cls in W.READY_CLASSES + ('review',):`"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0352.md"
       },
@@ -91349,7 +91356,7 @@
       ],
       "title": "`overlap` is its own wait class, so `seat` stops hiding it",
       "type": "task",
-      "updated": "2026-10-12T00:03:54Z",
+      "updated": "2026-10-12T00:24:44Z",
       "writes": [
         "asf/kernel/settings.py",
         "asf/kernel/waits.py",
