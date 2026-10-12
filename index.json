@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T18:24:06Z",
+  "generated": "2026-10-12T18:30:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17914,7 +17914,7 @@
       "kernel_notes": [
         "groom-fill-b-195724-1791827390: groom-fill raised risk high: fixes the one gate that stops a secret or operator name reaching any record, CI run or public repo (F-0075); a wrong MERGE_HEAD-skip is a false-negative bypass risk, not just a false positive."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17923,7 +17923,7 @@
       "state": "New",
       "title": "asf redact --pre-commit refuses a conflicted trunk merge: it scans the trunk's own files",
       "type": "bug",
-      "updated": "2026-10-12T18:14:45Z",
+      "updated": "2026-10-12T18:30:27Z",
       "writes": [
         "asf/redact.py",
         "tests/test_redact.py"
@@ -88756,13 +88756,14 @@
       "kernel_answers": [
         "Relaunch on worker/T-129212: the external worktree that held the T-129212-named fix branch was removed, and that framework fix is now Bug B-147398 (PR #1460), not this Task's delivery. Build T-129212's own plan Task; if its branch has no commits beyond main, the new no-commits rule applies.",
         "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel).",
-        "One more round, these fixes only: (1) resolvers.py:104-105 restore LOCAL_RE and ORIGIN_RE verbatim from docs/specs/f-0339.md:145-148; (2) decide.py:1107 make HOST_PUSHES reachable or remove it, and add the WONT_PUSH answer the finding names; (3) test_question_pushed_base.py:471 and :502 build the ShareRises fixtures on shapes ports can produce (pr=1, status='done') and assert the plan's Step 12 line 'resolved by code 4, to the console 2 (67% by code)'; fix the Proves: trailers to name tests that exist; (4) :295 add the trunk-sha half of the cache key case. NOT in this round: moving the six Host cases between test classes (:262) is structure only; list it as a follow-up. Rebase onto origin/main, no merge commit. The next review judges only (1)-(4)."
+        "One more round, these fixes only: (1) resolvers.py:104-105 restore LOCAL_RE and ORIGIN_RE verbatim from docs/specs/f-0339.md:145-148; (2) decide.py:1107 make HOST_PUSHES reachable or remove it, and add the WONT_PUSH answer the finding names; (3) test_question_pushed_base.py:471 and :502 build the ShareRises fixtures on shapes ports can produce (pr=1, status='done') and assert the plan's Step 12 line 'resolved by code 4, to the console 2 (67% by code)'; fix the Proves: trailers to name tests that exist; (4) :295 add the trunk-sha half of the cache key case. NOT in this round: moving the six Host cases between test classes (:262) is structure only; list it as a follow-up. Rebase onto origin/main, no merge commit. The next review judges only (1)-(4).",
+        "Operator ruling, final round: (1) resolvers.py:265 ground the third landed read in the report's own claim exactly as the finding states: landed = (session.claim_landed or session.result == 'pushed' or (claimed and any(b.name == branch for b in branches))), with pushed_claim read once above it; a report claiming no push goes to the console. (2) The share is whatever the grounded read measures. Do NOT bend fixtures to reach 67%: assert the measured line (the reviewer measured 'resolved by code 2, to the console 4 (33% by code)') and correct docs/plans/f-0339.md:414-415 to that measured value; this supersedes my earlier 67% instruction and the plan's number. Use a plan/-branch-free fixture for F-0324 or drop that case. (3) Fix Proves: trailers to name tests that exist. Nothing else. The next review judges only these three."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, these fixes only: (1) resolvers.py:104-105 restore LOCAL_RE and ORIGIN_RE verbatim from docs/specs/f-0339.md:145-148; (2) decide.py:1107 make HOST_PUSHES reachable or remove it, and add the WONT_PUSH answer the finding names; (3) test_question_pushed_base.py:471 and :502 build the ShareRises fixtures on shapes ports can produce (pr=1, status='done') and assert the plan's Step 12 line 'resolved by code 4, to the console 2 (67% by code)'; fix the Proves: trailers to name tests that exist; (4) :295 add the trunk-sha half of the cache key case. NOT in this round: moving the six Ho\u2026",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: Operator ruling, final round: (1) resolvers.py:265 ground the third landed read in the report's own claim exactly as the finding states: landed = (session.claim_landed or session.result == 'pushed' or (claimed and any(b.name == branch for b in branches))), with pushed_claim read once above it; a report claiming no push goes to the console. (2) The share is whatever the grounded read measures. Do NOT bend fixtures to reach 67%: assert the measured line (the reviewer measured 'resolved by code 2, to the console 4 (33% by code)') and correct docs/plans/f-0339.md:414-415 to that measured value; t\u2026",
+        "ended without a REPORT"
       ],
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/kernel/resolvers.py:265 \u2014 `pushed_answer`'s third landed-claim read treats a branch name in `facts.branches` as proof this session's work landed, so a `partial`/`blocked` report with no PR whose own `pushed:` value reads `no` is answered ON_ORIGIN (\"proceed to review; no rebuild, no second push\"), with `?` in the sha slot. `Facts.branches` is every `worker/`/`fix/` branch on origin (ports.py:1909-1929), and `ports` fills neither `unpushed` (ports.py:2071-2075, done report or open PR only) nor `claim_landed` (ports.py:2076-2080, done report only) on that shape. Fix: ground the third read in the report's own claim \u2014 move the `reports.pushed_claim` read above `landed` and require it, `landed = (session.claim_landed or session.result == 'pushed' or (claimed and any(b.name == branch for b in branches)))`, dropping the second `pushed_claim` call at :270. F-0324's claiming shape still resolves; a report claiming no push goes to the console (D9).",
         "tests/kernel/test_question_pushed_base.py:477-515 \u2014 S-125108's measured share rests on that ungrounded read: B-0070 and T-0196 ship as `partial` reports with no `unpushed` and no `claim_landed`, against plan step 12 (docs/plans/f-0339.md:409-417, \"with `unpushed` set\"), so 2 of the 4 answers the fence counts are C1's. With the grounded read the line is `resolved by code 2, to the console 4 (33% by code)`. The third, F-0324 (:490, :506), is a Feature's plan session given `fix/F-0324` \u2014 a `plan/` branch is exactly what `RealGitHub._prefixes` (ports.py:1905-1907) excludes from `facts.branches`, which is PD6's own finding. Fix: either build the two `pushed` fixtures on a shape `ports` can fill that still reaches `_auto_answer`, or re-measure S-125108's two lines and correct docs/plans/f-0339.md:414-415; and give F-0324 the `plan/F-0324` branch it really has.",
@@ -88786,7 +88787,7 @@
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -88802,7 +88803,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-12T17:24:52Z",
+      "updated": "2026-10-12T18:30:27Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -90772,7 +90773,7 @@
         "PR #1546: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90786,7 +90787,7 @@
       ],
       "title": "parity, generic \u2014 Stories-first ordering, the pace cap, and the two capabilities the kernel already has, held by a test",
       "type": "task",
-      "updated": "2026-10-12T18:24:04Z",
+      "updated": "2026-10-12T18:30:27Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_stories_first.py",
@@ -91892,7 +91893,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T18:14:45Z",
+      "updated": "2026-10-12T18:30:27Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
