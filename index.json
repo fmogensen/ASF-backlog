@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T11:39:13Z",
+  "generated": "2026-10-12T11:41:58Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1838,6 +1838,7 @@
         "T-0090",
         "T-0306",
         "T-129157",
+        "T-159852",
         "B-0123"
       ],
       "children": [],
@@ -17687,16 +17688,18 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
       "kernel_findings": [
+        "rebase: PR #1646 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/ports.py:2013 \u2014 `Session.started` now carries the chain's origin, but asf/kernel/ports.py:2265 passes it to `headroom.lift_disproved` as this run's own start, so a continuation that ran and reported after its account's stop can never lift a false stop (`began <= stopped_at`, asf/workers/headroom.py:227); add `run_started: str = ''` to `M.Session`, set `out[-1].run_started = run.get('started') or ''` beside line 2013, and read `getattr(session, 'run_started', '') or session.started` at 2265, with a case in tests/kernel/test_false_account_stops.py (whose fixture at :98-103 bypasses `rows()` today)",
         "tests/kernel/test_limbo.py:193 \u2014 the card's named acceptance test `Breach::test_a_review_breach_past_the_relaunch_limit_ends_its_session_and_relaunches` was deleted with the reverted knob and only the negative guard remains; restore it as the positive two-tick shape of tests/kernel/test_limbo.py:181-191 \u2014 `B.session('r1','T-1',kind='review',started=ago(200))` under `config(max_session_age_h=3, max_review_age_h=1.5)` \u2192 `EndSession ['r1']`, then a second `D.decide` without that session \u2192 `Launch ('review', True)`",
         "asf/kernel/ports.py:2013 \u2014 the only new kernel production line has no test (`grep -rn first_started tests/` hits just tests/test_heartbeat.py:681, the ledger record); add a tests/kernel/test_ports.py case over `P.RealSessions(...).sessions()` with one row carrying `first_started` older than `started` and one with `started` alone, asserting each row's resulting `Session.started`",
-        "Another session edits asf/kernel/decide.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "Another session edits asf/kernel/decide.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "Another session edits asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/settings.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-b-186367-1791789686: groom-fill raised risk high: both failure mechanisms are confirmed on trunk \u2014 heartbeat.launch() reuses the same account with no quota check, and continuation resets session.started so the existing max_review_age_h bound never trips on a repeatedly-stalling review; a new configurable breach limit and an account-band check are concrete, buildable fixes."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17705,7 +17708,7 @@
       "state": "New",
       "title": "Stalled review continued on a quota-stopped account; BREACH review never acted on",
       "type": "bug",
-      "updated": "2026-10-12T11:39:11Z",
+      "updated": "2026-10-12T11:41:57Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/decide.py",
@@ -90453,10 +90456,11 @@
         "PR #1567: part (3.13, 3) is red but not a required check \u2014 ignored",
         "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026",
         "PR #1645: part (3.12, 2) is red but not a required check \u2014 ignored",
-        "PR #1645: part (3.13, 2) is red but not a required check \u2014 ignored"
+        "PR #1645: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "build-t-159852-1791804524: NEEDS OPERATOR: the rebased branch cannot be published by this session \u2014 the stop gate refuses the turn while 686119f4f is off origin, but the only way up is a force, which B-0056 forbids the session to run. To publ\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90470,7 +90474,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T11:28:54Z",
+      "updated": "2026-10-12T11:41:57Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
