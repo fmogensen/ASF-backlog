@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T08:58:13Z",
+  "generated": "2026-10-12T09:01:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17644,10 +17644,17 @@
       "id": "B-186216",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
+      "kernel_findings": [
+        "asf/kernel/decide.py:1122 \u2014 acceptance 1 is unimplemented: bound the rebuild by the item's round cap (config.max_fix_rounds + it.extra_rounds) instead of `it.rebuilds >= MAX_REBUILDS` (MAX_REBUILDS = 1, decide.py:416), so a conflict the rebase session cannot resolve never ends Stuck(operator) while rounds remain; then rewrite tests/kernel/test_stuck_escalation.py::Conflict.test_once_per_item (line 199) to the round cap and add the case the card names, and correct decide.py:130 and settings.py:66, which still state the old bound.",
+        "asf/kernel/apply.py:231 \u2014 the close comment is built with `P.ARCHIVE_PREFIX, a.branch` but ports.archive_and_reset now returns `archive/<branch>-N` (ports.py:1917), so the closed PR points a human at the older archive: pass the comment as a template the port completes with the name it chose (format it at ports.py:1922 once `archive` is known) or close the PR from the applier after the archive, and make tests/kernel/fakes.py:222 model a suffixed name so tests/kernel/test_stuck_escalation.py::Apply can assert the posted comment names the ref the port returned.",
+        "asf/kernel/decide.py:110 \u2014 the new docstrings advertise `asf rebuild <id> --why` as a command and no such subcommand exists anywhere in the CLI (only decide.py:110, decide.py:243 and the new test mention it): either add the subcommand in asf/cli.py (filing the answer `rebuild: <why>`) or reword decide.py:109-112 and decide.py:242-244 so the second form is plainly answer text an operator may paste, not a command.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-186216-1791788912: groom-fill raised risk high: all three gaps are confirmed on trunk in the kernel's own conflict/rebuild/archive path (decide.py, ports.py), each pinned by an existing or directly adjacent test class."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17656,7 +17663,7 @@
       "state": "New",
       "title": "Bug: unresolvable conflict ends Stuck, rebuild can't be requested, and archive names collide",
       "type": "bug",
-      "updated": "2026-10-12T08:43:36Z",
+      "updated": "2026-10-12T09:01:49Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/ports.py",
@@ -89774,7 +89781,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154341",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89787,7 +89800,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T08:25:40Z",
+      "updated": "2026-10-12T09:01:49Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -89795,7 +89808,9 @@
         "asf/record/new.py",
         "asf/record/ids.py",
         "asf/record/setfield.py",
-        "tests/test_card_body_fields.py"
+        "tests/test_card_body_fields.py",
+        "asf/kernel/apply.py",
+        "asf/record/plan_tasks.py"
       ]
     },
     "T-154342": {
@@ -89851,7 +89866,9 @@
       "after": [
         "T-154342"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-154341"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -89901,7 +89918,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T08:54:35Z",
+      "updated": "2026-10-12T09:01:49Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
