@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T19:36:41Z",
+  "generated": "2026-10-12T19:41:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -91036,9 +91036,12 @@
         "The cloud session went idle and ended without a REPORT; PR #1661 is open and CLEAN at its head. Relaunch as a fix round on worker/T-160208 from the PR head: apply the open review findings, with the template lines dropped per the earlier ruling, push, and end with the REPORT block."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/kernel/decide.py:2000 (and :1979) \u2014 carry the stack onto every relaunch, not just the first: compute `base = stack_base(items[iid], facts)` and `base_sha = M.stack_of(items[iid])[1] if base else ''` and pass `base=base, base_sha=base_sha` to the `A.Launch(kind, iid, \u2026)` of the build/fix round at :2000 and to the `A.Launch('review', \u2026)` at :1979. Today only `decide.stacked_builds` (:2194-2195) sets them and it is guarded by `State.NEW` (:2172), so a fix round reaches `asf/workers/spawn.py:1331` with `ASF_BASE=''`, `asf/cli.py:206` falls back to the trunk, and this Task's own footprint gate refuses the push with the predecessor's paths as `needs writes:` \u2014 the author's own `tests/test_stacked_worktree.py:217-221` asserts exactly that refusal. The same `base=''` makes `asf/workers/spawn.py:684` resolve to the trunk, so the `CONFLICT` arm at :959-970 can rebase a stacked head onto `origin/main` and publish it (:976). `asf/kernel/decide.py` is outside this Task's `writes:`: report `needs writes: asf/kernel/decide.py` with `status: partial`."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91051,7 +91054,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-12T19:09:55Z",
+      "updated": "2026-10-12T19:41:04Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91785,7 +91788,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91798,7 +91801,7 @@
       ],
       "title": "the settle \u2014 the snapshot lands, the ref goes, the notes reach the next brief",
       "type": "task",
-      "updated": "2026-10-12T19:04:05Z",
+      "updated": "2026-10-12T19:41:04Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/briefs.py",
@@ -91898,7 +91901,7 @@
       "kernel_fix_rounds": 1,
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91911,7 +91914,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T19:12:59Z",
+      "updated": "2026-10-12T19:41:04Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
