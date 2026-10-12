@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T12:55:43Z",
+  "generated": "2026-10-12T13:02:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -40888,6 +40888,7 @@
     },
     "S-161914": {
       "backlinks": [
+        "T-166576",
         "T-166577"
       ],
       "children": [],
@@ -88617,7 +88618,7 @@
         "PR #1445: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0339.md"
       },
@@ -88633,7 +88634,7 @@
       ],
       "title": "the two classes \u2014 `pushed` read off the session's own facts, `trunk-base` off one refs-only probe, both knobs, and the fixtures the console's own answers leave",
       "type": "task",
-      "updated": "2026-10-12T12:27:25Z",
+      "updated": "2026-10-12T13:02:25Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/trunk.py",
@@ -89883,13 +89884,15 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/kernel/ports.py:245 \u2014 a scalar `gate` (what `asf set gate=\u2026`/`asf new --set gate=\u2026` land, since `gate` is not in `setfield.LIST_FIELDS`) is iterated character by character at `asf/kernel/dor.py:196-197` and reads as no gate test, while the non-`None` field also suppresses the body prose \u2014 so setting a gate un-readies a Ready Task. Coerce on the port: `acceptance, gate = meta.get('acceptance'), meta.get('gate')` / `item.acceptance = acceptance` / `item.gate = as_list(gate) if gate is not None else None` (`as_list` is already imported at `asf/kernel/ports.py:63`; keep `None` for unset so the prose fallback survives).",
         "asf/record/plan_tasks.py:170 \u2014 `gate_of` must join a `\\` line-continuation the way `acceptance_of` does (`asf/record/plan_tasks.py:137-141`): accumulate into `cmd`, `rstrip('\\\\')`, flush only on a line that does not end with `\\`. As written, 524 Gate lines across this tree's plans mint as dangling-backslash fragments and bare continuation lines that are not commands, breaking spec line 5. Extend `tests/test_card_body_fields.py:190` (`test_15`) with a `\\`-continued Gate line.",
         "asf/kernel/ports.py:752 \u2014 `fill_card`'s json branch must write through `asf.record.stage.guarded` (as `set_typed` does at `asf/record/setfield.py:434`), raising `PortError` on findings, instead of calling `writer.write_card` directly; `write_card` is Task 3's schema gate, not the record stage, so a schema-2 card's `writes:` change currently skips invariant I3, its rollback and the tick's Bug filer. Add a case filling a `.json` Task with a footprint another Active Task already holds.",
         "operator answer: granted asf/kernel/apply.py asf/record/plan_tasks.py; nothing else outside writes (card updated by the kernel). T-154343 also writes asf/kernel/apply.py (Review): the overlap rule serialises them. asf/kernel/apply.py asf/record/plan_tasks.py matches kernel.risk.high: this item is high-risk now.",
-        "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89902,7 +89905,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T12:42:25Z",
+      "updated": "2026-10-12T13:02:25Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -91457,14 +91460,19 @@
       "folder": "tasks",
       "id": "T-166576",
       "kernel_findings": [
-        "asf/kernel/decide.py:2370 \u2014 the C6 ceiling can never fire: `getattr(config, 'heartbeat_max_age', None)` reads a field no Config has (absent from dataclasses.fields(M.Config); kernel.heartbeat.max_age is parsed at settings.py:421 and never passed through at ports.py:2926), while _over_age:2404-2405 now skips every judged_by_beat session \u2014 so an `alive` session has no bound at all, neither p90 nor ceiling, and no Task in docs/plans/f-0347.md owns the wiring. Under the writes the REPORT already requested: add `heartbeat_max_age: float = None` (seconds) to Config in asf/kernel/model.py beside max_session_age_h; add `heartbeat_max_age=k['heartbeat']['max_age'],` to the Config(...) construction at asf/kernel/ports.py:2926; change decide.py:2370 to `ceiling = config.heartbeat_max_age`; and build the case at tests/kernel/test_beat_decide.py:95-98 as `cfg = config(heartbeat_max_age=6 * 3600)` instead of setting the attribute by hand, keeping :104-108 as the no-ceiling case.",
-        "Another session edits asf/kernel/decide.py, asf/kernel/loop.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "asf/kernel/decide.py:2366 \u2014 the `looping` reason prints `s.beats`, which is the ledger's `resumes` (model.py:286-287, ports.py:2099), not the same-tree counter: a looping session that was never continued reads `looping: the same tree for 0 beats`. Replace with `out.append((s, 'looping: the same tree, branch unmoved %dm' % round(s.quiet_min or 0)))` (for `LOOPING`, `quiet_min` is the branch-unmoved minutes the verdict measured, heartbeat.py:210-214), and rebuild the case at tests/kernel/test_beat_decide.py:118-128 with `beats=0`.",
+        "asf/kernel/loop.py:393 \u2014 `beats_unread` is always `False`: `Facts.beats_unread` is never populated (facts.py:302-318; ports.py:2102-2104 keeps the fact on the port). Add `facts.beats_unread = getattr(ports.sessions, 'beats_unread', False)` after each `facts = read_facts(ports)` (loop.py:590 and :624) and assert it through a fake sessions port instead of by assignment.",
+        "asf/kernel/decide.py:2534 \u2014 the `why` from `beat_stalls` is dropped everywhere, so no record says why a session was ended on its beat (\u00a72.4, docs/specs/f-0347.md:314-316). Append it to the breach row: `'action': A.describe(A.EndSession(s.job, free_worktree=False)) + ' \u2014 ' + why`, with a case asserting the frozen session's row names its verdict.",
+        "commit f637669b1 \u2014 `Proves: S-161913 line 11` claims a line whose first half (the ledger's `end_reason`) is not implemented, and `asf.proves` counts an unqualified claim as proving its line whole (proves.py:7-12). Add a new commit (no amend, no force-push) carrying `Not proved: S-161913 line 11 \u2014 the plan file carries each session's verdict; the ledger's end_reason is the settle's own path (S-161914, asf/kernel/ports.py), outside this Task's writes:`.",
+        "asf/kernel/model.py:584, asf/kernel/ports.py:2928 \u2014 both files are outside this Task's `writes:` while the REPORT declares `needs writes: none`. Declare `needs writes: asf/kernel/model.py asf/kernel/ports.py`, or point at the grant line on the card if one was already applied.",
+        "rebase: PR #1654 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "Another session edits asf/kernel/decide.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1654: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91477,7 +91485,7 @@
       ],
       "title": "beats decide, not age",
       "type": "task",
-      "updated": "2026-10-12T12:30:13Z",
+      "updated": "2026-10-12T13:02:25Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/loop.py",
