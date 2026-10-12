@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T05:32:38Z",
+  "generated": "2026-10-12T05:42:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17604,7 +17604,7 @@
       "kernel_notes": [
         "groom-fill-b-184865-1791780722: groom-fill raised risk high: hang reproduces in EndReview's real-git path (push-only guard misses fetch/clone/pull, and the module never self-installs the stub); fix is concrete and the card just lacked named tests and writes."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17613,7 +17613,7 @@
       "state": "New",
       "title": "Bug: tests/kernel/test_ports.py hangs locally on real git",
       "type": "bug",
-      "updated": "2026-10-12T05:22:52Z",
+      "updated": "2026-10-12T05:41:45Z",
       "writes": [
         "tests/kernel/test_ports.py",
         "asf/hermetic.py"
@@ -89742,11 +89742,13 @@
       "id": "T-154344",
       "kernel_answers": [
         "granted tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel).",
-        "granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel)."
+        "granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel).",
+        "granted tests/kernel/test_floor_starvation.py tests/kernel/test_question_needs_writes.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel).",
-        "relaunch: operator answer: granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/kernel/test_dor.py; nothing else outside writes (card updated by the kernel).",
+        "relaunch: operator answer: granted tests/kernel/test_floor_starvation.py tests/kernel/test_question_needs_writes.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
@@ -89761,7 +89763,7 @@
         "PR #1632: part (3.13, 1) is red but not a required check \u2014 ignored",
         "PR #1632: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89774,13 +89776,15 @@
       ],
       "title": "an invalid card and an unresolvable reference are LIMBO with the reason, never dropped",
       "type": "task",
-      "updated": "2026-10-12T05:22:52Z",
+      "updated": "2026-10-12T05:41:45Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_limbo_invalid_card.py",
         "tests/kernel/test_limbo.py",
         "tests/kernel/test_ports.py",
-        "tests/kernel/test_dor.py"
+        "tests/kernel/test_dor.py",
+        "tests/kernel/test_floor_starvation.py",
+        "tests/kernel/test_question_needs_writes.py"
       ]
     },
     "T-154345": {
@@ -90057,7 +90061,7 @@
         "asf/kernel/questions.py:174-176 \u2014 escape the pipe where the example is truncated, `text = ' '.join(str(text or '').split()).replace('|', '\\\\|')`: `render_classes` (:221) interpolates the example raw into a markdown table, so one `|` in a question's text renders a five-cell row in a four-column table and every renderer drops the tail; fence it with a fixture whose question carries a pipe."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90071,7 +90075,7 @@
       ],
       "title": "the console's share \u2014 the question ledger, the window, the gate criterion and the classifier that codes nothing",
       "type": "task",
-      "updated": "2026-10-12T05:22:52Z",
+      "updated": "2026-10-12T05:41:45Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/kernel/loop.py",
@@ -90106,17 +90110,19 @@
       "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/kernel/loop.py:475 \u2014 replace `wanted = min(wanted, max(0, config.max_sessions - inflight))` with `wanted = min(wanted, max(0, _free(facts, config)))` (import `_free` beside `BUILDABLE` from asf.kernel.decide; it subtracts the alive sessions itself, so the separate `inflight` term goes). The cap must be the host room its own docstring at :460 cites \u2014 `min(config.max_sessions, facts.seats) - alive` \u2014 because `facts.seats` is the `asf.capacity`-bounded `capacity()` this Task introduced, so `facts.seats < config.max_sessions` is now the normal multi-product case and the present cap never bites: probed, facts.seats=2 / max_sessions=10 / one alive publishes wanted=5 against one real seat, and `asf.capacity.claim` documents the contract this breaks (\"`wanted` was cut to the room the partner had then\"), so the partner lends nothing and P7 inverts. Also add the case `tests/kernel/test_multi_product.py:264` cannot reach \u2014 it builds facts with seats=None, which collapses `_free` onto `config.max_sessions` and is why this is green: with seats=2, max_sessions=10, one alive, idle={\"waiting\": 5}, assert read_demand_record returns (1, 1).",
+        "rebase: PR #1624 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/loop.py:475 \u2014 replace `wanted = min(wanted, max(0, _free(facts, config)))` with `wanted = min(wanted, max(0, config.max_sessions - inflight))` and drop `_free` from the import at :466: `_free` folds in `facts.seats`, which this Task just bound by the fair share, so `wanted` is capped by host pressure and by the share itself \u2014 the terms `asf.tick.step_wave.demand` (asf/tick/step_wave.py:669-684, the definition `capacity.write_demand` names) explicitly rules out with a dated measurement. Measured here: 8 Ready rows at 0 free records `wanted 0`, and the partner's `claim` lends 3 of its 5 slots away. Keep the `plan.idle['waiting']` preference and the Task/Bug Ready fallback as they are.",
-        "asf/kernel/ports.py:2375 \u2014 move the foreign count inside the lock and take one registry snapshot for both terms: inside `with seats.held() as ledger:` do `registered = lifecycle.live_all(seats.root())`, `keys = {(r.get('product'), r.get('job')) for r in registered}`, `live = sum(1 for r in registered if r.get('account') == acct.name)`, `held = sum(1 for c in ledger.claims if c.get('account') == acct.name and (c.get('product'), c.get('job')) not in keys)`, then test `live + held >= acct.cap` \u2014 retiring `_foreign_live` and the `foreign`/`here` split. As written, `foreign` is read before the lock while `ledger.claims` is swept against a second, later `live_all` walk, so a foreign launch registering between the two is counted zero times (missed as foreign, swept out of claims) and one launch goes over the account's host cap \u2014 the race this Task exists to close, and the contract `_claim_seat`'s own docstring states at :2368-2371."
+        "asf/kernel/ports.py:2375 \u2014 move the foreign count inside the lock and take one registry snapshot for both terms: inside `with seats.held() as ledger:` do `registered = lifecycle.live_all(seats.root())`, `keys = {(r.get('product'), r.get('job')) for r in registered}`, `live = sum(1 for r in registered if r.get('account') == acct.name)`, `held = sum(1 for c in ledger.claims if c.get('account') == acct.name and (c.get('product'), c.get('job')) not in keys)`, then test `live + held >= acct.cap` \u2014 retiring `_foreign_live` and the `foreign`/`here` split. As written, `foreign` is read before the lock while `ledger.claims` is swept against a second, later `live_all` walk, so a foreign launch registering between the two is counted zero times (missed as foreign, swept out of claims) and one launch goes over the account's host cap \u2014 the race this Task exists to close, and the contract `_claim_seat`'s own docstring states at :2368-2371.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1567: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1567: part (3.13, 3) is red but not a required check \u2014 ignored",
         "build-t-159852-1791749089: NEEDS OPERATOR: part (3.12, 3) and part (3.13, 3) on PR #1567 are red only because that run's merge commit was built in the 56-minute window when trunk itself was red; a plain `gh run rerun` would re-test the same s\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -90130,7 +90136,7 @@
       ],
       "title": "one host, many products \u2014 the seats from `asf.capacity`, the demand, the active wave and the host-wide claim",
       "type": "task",
-      "updated": "2026-10-12T04:52:09Z",
+      "updated": "2026-10-12T05:41:45Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/capacity.py",
