@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T10:37:49Z",
+  "generated": "2026-10-12T10:41:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17787,7 +17787,7 @@
       "kernel_notes": [
         "build-b-188920-1791800137-local: NEEDS OPERATOR: the heartbeat command `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-188920-1791800137-local 'asf/build-b-188920-1791800137-local@20261012T101601Z' >/dev/null 2>&1 &` was refused by the sandbo\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17796,7 +17796,7 @@
       "state": "New",
       "title": "Briefs truncate the card's Acceptance; reviewers cannot read the record",
       "type": "bug",
-      "updated": "2026-10-12T10:34:28Z",
+      "updated": "2026-10-12T10:41:05Z",
       "writes": [
         "asf/briefs/preamble.py",
         "tests/test_briefs.py"
@@ -17811,6 +17811,9 @@
       "id": "B-190071",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.159",
+      "kernel_notes": [
+        "groom-fill-b-190071-1791800796: groom-fill raised risk high: GitHub's statusCheckRollup can lag a push by up to ~60s under an already-current headRefOid (verified live via gh api against this repo's own open PR), and Check carries no head identity to catch it \u2014 _red_detail already makes the one gh api call that has head_sha, so tagging Check with it and excluding a head-mismatched red from _judge_pr's fix-round path is a minimal, buildable fix."
+      ],
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17819,7 +17822,13 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T10:26:46Z"
+      "updated": "2026-10-12T10:41:05Z",
+      "writes": [
+        "asf/kernel/model.py",
+        "asf/kernel/ports.py",
+        "asf/kernel/decide.py",
+        "tests/kernel/test_review_ci_gate.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -90703,7 +90712,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160208",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -90716,7 +90725,7 @@
       ],
       "title": "the branch cut from the base, the brief that says so, and the footprint gate that follows it",
       "type": "task",
-      "updated": "2026-10-11T21:35:03Z",
+      "updated": "2026-10-12T10:41:05Z",
       "writes": [
         "asf/workers/spawn.py",
         "asf/workers/pool.py",
@@ -91370,7 +91379,7 @@
         "PR #1633: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91383,7 +91392,7 @@
       ],
       "title": "one remote call a tick, and a beat observation on every live session",
       "type": "task",
-      "updated": "2026-10-12T10:34:28Z",
+      "updated": "2026-10-12T10:41:05Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
