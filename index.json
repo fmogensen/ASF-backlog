@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T12:19:33Z",
+  "generated": "2026-10-12T12:23:55Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17818,10 +17818,15 @@
       "id": "B-190071",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.159",
+      "kernel_findings": [
+        "asf/kernel/ports.py:1649 \u2014 a jobs-cache entry written before this change has `attempt` but no `head_sha`, so `_red_detail` takes the cached branch, leaves `check.head_sha = ''` and never reads the run: the stale red still counts as a fix round for exactly the reds already cached on the host (T-159852, T-154345 of 2026-10-12). Change the guard to `if 'attempt' in seen and 'head_sha' in seen:` so a pre-change entry is re-read once; the else branch already caches both keys.",
+        "Another session edits asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-190071-1791800796: groom-fill raised risk high: GitHub's statusCheckRollup can lag a push by up to ~60s under an already-current headRefOid (verified live via gh api against this repo's own open PR), and Check carries no head identity to catch it \u2014 _red_detail already makes the one gh api call that has head_sha, so tagging Check with it and excluding a head-mismatched red from _judge_pr's fix-round path is a minimal, buildable fix."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17830,7 +17835,7 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T11:59:39Z",
+      "updated": "2026-10-12T12:23:52Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -89202,7 +89207,7 @@
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -89220,7 +89225,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-12T11:35:57Z",
+      "updated": "2026-10-12T12:23:52Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -90159,6 +90164,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-154346",
+      "kernel_stack": "worker/T-154341@00ab4509dda119654e1f5437729526864837e479",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90171,7 +90177,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-11T09:54:32Z",
+      "updated": "2026-10-12T12:23:52Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
@@ -91546,6 +91552,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166579",
+      "kernel_stack": "worker/T-166576@f610e33502318a61b094f511bb5e4bf691183552",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91558,7 +91565,7 @@
       ],
       "title": "the kernel's own beat, readable with both launchd jobs unloaded",
       "type": "task",
-      "updated": "2026-10-11T14:44:54Z",
+      "updated": "2026-10-12T12:23:52Z",
       "writes": [
         "asf/kernel/host.py",
         "asf/kernel/loop.py",
