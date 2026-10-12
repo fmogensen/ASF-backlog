@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T07:14:07Z",
+  "generated": "2026-10-12T07:17:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17602,10 +17602,10 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\n##[error]Process completed with exit code 1."
+        "asf/hermetic.py:524 \u2014 add `-b`/`--branch` (and the other clone-only value flags sharing the gap: `--origin`, `--depth`, `--template`, `--reference`, `--reference-if-able`, `--separate-git-dir`, `--shallow-since`, `--shallow-exclude`, `--filter`, `--jobs`, `--upload-pack`, `--server-option`) to the value-consuming option set in the guard's remote-detection loop, so `git clone -b <branch> <real-remote-url> <dir>` is refused the same way a plain `git clone <real-remote-url> <dir>` already is \u2014 currently the branch name is misread as the remote and treated as local, letting the real clone through to the network unrefused (reproduced: see docs/reviews/1-b-184865.md C1).",
+        "Another session edits tests/kernel/test_ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-184865-1791780722: groom-fill raised risk high: hang reproduces in EndReview's real-git path (push-only guard misses fetch/clone/pull, and the module never self-installs the stub); fix is concrete and the card just lacked named tests and writes.",
         "PR #1639: checks (3.12) is red but not a required check \u2014 ignored",
@@ -17613,7 +17613,7 @@
         "PR #1639: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1639: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17622,7 +17622,7 @@
       "state": "New",
       "title": "Bug: tests/kernel/test_ports.py hangs locally on real git",
       "type": "bug",
-      "updated": "2026-10-12T07:03:21Z",
+      "updated": "2026-10-12T07:17:17Z",
       "writes": [
         "tests/kernel/test_ports.py",
         "asf/hermetic.py"
@@ -17637,6 +17637,9 @@
       "id": "B-186216",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.150",
+      "kernel_notes": [
+        "groom-fill-b-186216-1791788912: groom-fill raised risk high: all three gaps are confirmed on trunk in the kernel's own conflict/rebuild/archive path (decide.py, ports.py), each pinned by an existing or directly adjacent test class."
+      ],
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17645,7 +17648,14 @@
       "state": "New",
       "title": "Bug: unresolvable conflict ends Stuck, rebuild can't be requested, and archive names collide",
       "type": "bug",
-      "updated": "2026-10-12T07:08:40Z"
+      "updated": "2026-10-12T07:17:17Z",
+      "writes": [
+        "asf/kernel/decide.py",
+        "asf/kernel/ports.py",
+        "tests/kernel/test_stuck_escalation.py",
+        "tests/kernel/test_answers.py",
+        "tests/kernel/test_ports.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -89764,7 +89774,7 @@
         "PR #1629: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -89777,7 +89787,7 @@
       ],
       "title": "closing, retiring or superseding a card resolves its incoming edges in the same commit",
       "type": "task",
-      "updated": "2026-10-12T07:03:21Z",
+      "updated": "2026-10-12T07:17:17Z",
       "writes": [
         "asf/record/resolve.py",
         "asf/record/retire.py",
