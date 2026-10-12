@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T11:07:20Z",
+  "generated": "2026-10-12T11:10:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90078,19 +90078,24 @@
         "One more round, two fixes only: (1) asf/init.py:71 \u2014 treat FALLBACK as no released version, so record-check.yml never pins the nonexistent v0.0.0; (2) asf/record/check.py:347-349 \u2014 run the card.refs loop only in the mode that doesn't already report supersedes/superseded_by/delivers, so the full check reports each once. Each fix gets a test red on base, green on head. The red tests finding is stale: PR #1640 head 40d33f311 is green and CLEAN; nothing to fix for CI."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, two fixes only: (1) asf/init.py:71 \u2014 treat FALLBACK as no released version, so record-check.yml never pins the nonexistent v0.0.0; (2) asf/record/check.py:347-349 \u2014 run the card.refs loop only in the mode that doesn't already report supersedes/superseded_by/delivers, so the full check reports each once. Each fix gets a test red on base, green on head. The red tests finding is stale: PR #1640 head 40d33f311 is green and CLEAN; nothing to fix for CI."
+        "relaunch: operator answer: One more round, two fixes only: (1) asf/init.py:71 \u2014 treat FALLBACK as no released version, so record-check.yml never pins the nonexistent v0.0.0; (2) asf/record/check.py:347-349 \u2014 run the card.refs loop only in the mode that doesn't already report supersedes/superseded_by/delivers, so the full check reports each once. Each fix gets a test red on base, green on head. The red tests finding is stale: PR #1640 head 40d33f311 is green and CLEAN; nothing to fix for CI.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/init.py:73 \u2014 drop `upgrade.repo_url(cached=True)`: it runs `pipx list --json` and writes `<ASF_HOME>/state/install-source.json`, so `lay_down` is no longer a record write and three test modules (`tests/test_card_enforcement.py:127`, `tests/test_hooks.py:186`, `tests/test_work_item_model.py:871`) reach the operator's real home; and it copies any userinfo in the spec into a tracked file. Use `os.environ.get('ASF_REPO_URL') or upgrade.tunable('DEFAULT_REPO_URL')` \u2014 `repo_url`'s own fallback at `asf/upgrade.py:460` \u2014 give `RecordCiWorkflowTests` the temp-`ASF_HOME` setUp of `tests/test_install.py:130-138`, and add a case asserting the rendered install line carries no `@` before the host.",
+        "asf/record/check.py:340 \u2014 `record_findings` walks `canonical.items()` and `canonicalize` keeps one rec per id, so a card shadowed by a duplicate id is never handed to `card.validate`; with the `duplicate id` finding also inside the `if not schema_only:` guard at `:321`, two cards sharing one id and a schema error on the shadowed copy report nothing at all in the mode the record's CI runs. Move the `if iid in dupes:` finding out of that guard, and validate every copy \u2014 `for on_disk in by_id.get(iid, (rec,))` (`by_id` is in hand at `:264`) \u2014 then pin it with a `tests/test_card_enforcement.py` case over two cards sharing one id.",
         "asf/init.py:71 \u2014 `tag_of(FALLBACK)` returns `v0.0.0`, a tag that does not exist on origin, so the generated `record-check.yml` pins an unresolvable git ref and `ensure_record_ci` never corrects it; treat the FALLBACK as no released version: `installed = asf.__version__; ref = (version.tag_of(installed) if installed != version.FALLBACK else None) or 'main'`, and extend tests/test_card_enforcement.py:193 with cases patching `asf.__version__` to `version.FALLBACK` and to a released `'0.2.155'`",
         "asf/record/check.py:347-349 \u2014 the new `card.refs(meta)` loop runs in both modes, so the full check reports `supersedes`, `superseded_by` and `delivers` twice (second copy from asf/groom/conflicts.py:186/:199 via check.py:561, and check.py:89 via :488), against the diff's own comment at :379-380; skip those three fields in the full check only: `if not schema_only and field in ('supersedes', 'superseded_by', 'delivers'): continue`, and add a case asserting the full check reports a dangling `superseded_by` on a `.json` card exactly once",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "operator answer: granted tests/test_install.py; nothing else outside writes (card updated by the kernel).",
         "Another session edits asf/cli.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
-        "operator answer: granted tests/test_install.py; nothing else outside writes (card updated by the kernel)."
+        "operator answer: granted tests/test_install.py; nothing else outside writes (card updated by the kernel).",
+        "operator answer: One more round, two fixes only: (1) asf/init.py:71 \u2014 treat FALLBACK as no released version, so record-check.yml never pins the nonexistent v0.0.0; (2) asf/record/check.py:347-349 \u2014 run the card.refs loop only in the mode that doesn't already report supersedes/superseded_by/delivers, so the full check reports each once. Each fix gets a test red on base, green on head. The red tests finding is stale: PR #1640 head 40d33f311 is green and CLEAN; nothing to fix for CI.",
+        "Another session edits asf/cli.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1630: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1630: part (3.12, 4) is red but not a required check \u2014 ignored",
@@ -90101,7 +90106,7 @@
         "PR #1640: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90114,7 +90119,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T11:07:18Z",
+      "updated": "2026-10-12T11:10:26Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
@@ -91379,7 +91384,7 @@
         "PR #1633: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91392,7 +91397,7 @@
       ],
       "title": "one remote call a tick, and a beat observation on every live session",
       "type": "task",
-      "updated": "2026-10-12T11:07:18Z",
+      "updated": "2026-10-12T11:10:26Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
@@ -91412,6 +91417,7 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-166576",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91424,7 +91430,7 @@
       ],
       "title": "beats decide, not age",
       "type": "task",
-      "updated": "2026-10-11T14:44:43Z",
+      "updated": "2026-10-12T11:10:26Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/loop.py",
