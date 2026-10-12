@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T08:35:25Z",
+  "generated": "2026-10-12T08:40:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17675,7 +17675,7 @@
       "kernel_notes": [
         "groom-fill-b-186367-1791789686: groom-fill raised risk high: both failure mechanisms are confirmed on trunk \u2014 heartbeat.launch() reuses the same account with no quota check, and continuation resets session.started so the existing max_review_age_h bound never trips on a repeatedly-stalling review; a new configurable breach limit and an account-band check are concrete, buildable fixes."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17684,7 +17684,7 @@
       "state": "New",
       "title": "Stalled review continued on a quota-stopped account; BREACH review never acted on",
       "type": "bug",
-      "updated": "2026-10-12T08:15:47Z",
+      "updated": "2026-10-12T08:40:04Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/decide.py",
@@ -17704,10 +17704,14 @@
       "id": "B-187018",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.154",
+      "kernel_findings": [
+        "asf/kernel/host.py:421 \u2014 change `if pending:` to `if pending or pin:` so the pin write at `:435` is reached when both plists are already current and only the pin is behind (the card's Acceptance 3 fails there today, and `--dry-run` at `:415-418` prints a move the real run does not make); add a fourth `class Install` case that installs twice, puts the pin back to the old venv between them, and asserts the second install moves it."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-187018-1791791555: groom-fill raised risk high: host.install() (asf/kernel/host.py) switches the launchd jobs' venv but never calls asf.installs.write \u2014 confirmed by reading the module (no \"installs\" import/call) against asf/installs.py (the only pin writer, used today solely by asf upgrade's move), so the card names a real, unfixed gap; scope is precise enough to fill as a bug, not reshape."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17716,7 +17720,7 @@
       "state": "New",
       "title": "kernel install leaves the product pin on the old venv",
       "type": "bug",
-      "updated": "2026-10-12T08:25:40Z",
+      "updated": "2026-10-12T08:40:04Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_host.py"
@@ -17734,6 +17738,7 @@
       "kernel_notes": [
         "groom-fill-b-187369-1791793531: groom-fill raised risk high: asf correct never writes operator-answers.jsonl, the only ledger the kernel's Facts.answers reads, so a correction on a kernel Stuck item is recorded but never re-judged \u2014 unlike asf answer, which writes that exact file."
       ],
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -17742,7 +17747,7 @@
       "state": "New",
       "title": "asf correct on a Stuck item never relaunches it",
       "type": "bug",
-      "updated": "2026-10-12T08:35:17Z",
+      "updated": "2026-10-12T08:40:04Z",
       "writes": [
         "asf/workers/correct.py",
         "tests/test_correct.py",
@@ -89984,10 +89989,12 @@
         "PR #1630: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1630: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1630: part (3.13, 4) is red but not a required check \u2014 ignored",
-        "build-t-154345-1791778854: NEEDS OPERATOR: the two red CI checks the correction quotes (`tests (3.12)` / `tests (3.13)`, parts 3 and 4) are from a run before head 39a762c32; all 31 check runs on 39a762c32 are green, so nothing was left to fix\u2026"
+        "build-t-154345-1791778854: NEEDS OPERATOR: the two red CI checks the correction quotes (`tests (3.12)` / `tests (3.13)`, parts 3 and 4) are from a run before head 39a762c32; all 31 check runs on 39a762c32 are green, so nothing was left to fix\u2026",
+        "PR #1640: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1640: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90000,7 +90007,7 @@
       ],
       "title": "a hand edit and any other writer are refused too \u2014 the check, the hook and CI",
       "type": "task",
-      "updated": "2026-10-12T08:35:17Z",
+      "updated": "2026-10-12T08:40:04Z",
       "writes": [
         "asf/record/check.py",
         "asf/cli.py",
@@ -91255,7 +91262,7 @@
         "PR #1633: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91268,7 +91275,7 @@
       ],
       "title": "one remote call a tick, and a beat observation on every live session",
       "type": "task",
-      "updated": "2026-10-12T07:49:22Z",
+      "updated": "2026-10-12T08:40:04Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
