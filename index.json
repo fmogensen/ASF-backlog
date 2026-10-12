@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T12:50:07Z",
+  "generated": "2026-10-12T12:52:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17824,7 +17824,8 @@
       ],
       "kernel_fix_rounds": 1,
       "kernel_notes": [
-        "groom-fill-b-190071-1791800796: groom-fill raised risk high: GitHub's statusCheckRollup can lag a push by up to ~60s under an already-current headRefOid (verified live via gh api against this repo's own open PR), and Check carries no head identity to catch it \u2014 _red_detail already makes the one gh api call that has head_sha, so tagging Check with it and excluding a head-mismatched red from _judge_pr's fix-round path is a minimal, buildable fix."
+        "groom-fill-b-190071-1791800796: groom-fill raised risk high: GitHub's statusCheckRollup can lag a push by up to ~60s under an already-current headRefOid (verified live via gh api against this repo's own open PR), and Check carries no head identity to catch it \u2014 _red_detail already makes the one gh api call that has head_sha, so tagging Check with it and excluding a head-mismatched red from _judge_pr's fix-round path is a minimal, buildable fix.",
+        "PR #1655: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "F-0346",
@@ -17835,7 +17836,7 @@
       "state": "New",
       "title": "Stale red-CI finding from an old head keeps a green PR in fix rounds until Stuck",
       "type": "bug",
-      "updated": "2026-10-12T12:39:36Z",
+      "updated": "2026-10-12T12:52:45Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -89207,7 +89208,7 @@
         "PR #1438: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0336.md"
       },
@@ -89225,7 +89226,7 @@
       ],
       "title": "`kernel.flake` \u2014 the signature, the window over the sightings, the verdict, the capped entry, the Bug a fix session can start on, and the quarantined red that spends no round",
       "type": "task",
-      "updated": "2026-10-12T12:33:26Z",
+      "updated": "2026-10-12T12:52:45Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/model.py",
@@ -91558,7 +91559,7 @@
         "build-t-166579-1791807795: NEEDS OPERATOR: the claim check over the live record (same as the plan's own \u00a76 \u2014 this cloud session has no ~/.ASF, so the claim covering S-161916 could not be read here) \u2014 asf check --product asf --item F-0347"
       ],
       "kernel_stack": "worker/T-166576@f610e33502318a61b094f511bb5e4bf691183552",
-      "kernel_state": "review",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91571,7 +91572,7 @@
       ],
       "title": "the kernel's own beat, readable with both launchd jobs unloaded",
       "type": "task",
-      "updated": "2026-10-12T12:50:06Z",
+      "updated": "2026-10-12T12:52:45Z",
       "writes": [
         "asf/kernel/host.py",
         "asf/kernel/loop.py",
