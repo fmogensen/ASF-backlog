@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T18:49:27Z",
+  "generated": "2026-10-12T18:54:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90074,10 +90074,13 @@
         "One more round; the findings are real defects, fix exactly these: (1) ingest.py:1605 drop the positional None: proves.tick_card(meta, claim['line'], suffix=claim['path']); (2) ports.py:807-830 route the JSON groom-fill through set_typed(..., writer='groom-fill', history=[...]) so stage.guarded and invariant I3 apply, raising PortError on its error; (3) ruling on the plan question: Step 3 stands, so add 'acceptance' to LIST_FIELDS['task'] and SETTABLE['task'], each entry stored as {'text': ...} with split=False, and keep it out of asf new --set; (4) setfield.py:30 gate must not go through the path splitter: a gate value is one command string per entry (split=False), including for gate+=. Each needs a test red on base, green on head. Nothing else; the next review judges only (1)-(4)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round; the findings are real defects, fix exactly these: (1) ingest.py:1605 drop the positional None: proves.tick_card(meta, claim['line'], suffix=claim['path']); (2) ports.py:807-830 route the JSON groom-fill through set_typed(..., writer='groom-fill', history=[...]) so stage.guarded and invariant I3 apply, raising PortError on its error; (3) ruling on the plan question: Step 3 stands, so add 'acceptance' to LIST_FIELDS['task'] and SETTABLE['task'], each entry stored as {'text': ...} with split=False, and keep it out of asf new --set; (4) setfield.py:30 gate must not go through the\u2026"
+        "relaunch: operator answer: One more round; the findings are real defects, fix exactly these: (1) ingest.py:1605 drop the positional None: proves.tick_card(meta, claim['line'], suffix=claim['path']); (2) ports.py:807-830 route the JSON groom-fill through set_typed(..., writer='groom-fill', history=[...]) so stage.guarded and invariant I3 apply, raising PortError on its error; (3) ruling on the plan question: Step 3 stands, so add 'acceptance' to LIST_FIELDS['task'] and SETTABLE['task'], each entry stored as {'text': ...} with split=False, and keep it out of asf new --set; (4) setfield.py:30 gate must not go through the\u2026",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/kernel/apply.py:355 \u2014 a groom-fill's `risk_raise: high` never writes `risk` on a JSON card: the write goes through ports.write_fields (asf/kernel/ports.py:710), which is markdown-only, and apply.py:356's `except Exception: pass` discards the FrontmatterError. Give write_fields a JSON branch before the frontmatter.parse \u2014 `if rec['path'].endswith('.json'): return self._write_fields_json(rec, fields)`, applying fields to the flat map, stamping `updated`, writing through card.dumps and the write gate, as setfield._set_typed_json (asf/record/setfield.py:519) already does; narrow apply.py:356 to note the refusal instead of swallowing it; and add a real-record case beside tests/kernel/test_dor.py:489, which asserts against the dict-backed fake and so is green either way.",
+        "asf/kernel/ports.py:248 \u2014 the typed/prose fallback is keyed on the field being absent, not on the card being JSON, so dor.missing still reads prose off a JSON card (probed: a schema-2 card with no `gate` key whose prose.Description holds a **Gate** fence yields dor.gate_lines(body) -> ['python3 -m unittest tests.test_a']). Decide by shape: `json_card = rec['path'].endswith('.json')`, then `it.acceptance = acc if isinstance(acc, list) and all(isinstance(e, dict) for e in acc) else ([] if json_card else None)` and `it.gate = gate if isinstance(gate, list) else ([] if json_card else None)`; add a case in tests/test_card_body_fields.py for a JSON card with no `gate` key and a **Gate** fence in prose being held with `no test named in Acceptance or Gate`.",
         "asf/record/ingest.py:1605 \u2014 `proves.tick_card(meta, claim['line'], None, suffix=claim['path'])` passes `suffix` twice against `tick_card(meta, line_no, suffix=None)` and raises `TypeError: tick_card() got multiple values for argument 'suffix'` on every review-claim tick of a JSON card (the schema-1 line it was copied from, ingest.py:1568, is correct because `tick` has the `note` parameter `tick_card` dropped); drop the positional `None`: `meta, changed = proves.tick_card(meta, claim['line'], suffix=claim['path'])`",
         "asf/kernel/ports.py:807-830 \u2014 `_fill_card_json` builds `meta` by hand and calls `writer.write_card` directly, so a JSON card's groom-fill writes `writes:` without `stage.guarded` and invariant I3 is never enforced, never reverted and never recorded in `stage.REFUSED`, where the schema-1 path at ports.py:787 goes through `set_typed(rec, updates, writer='groom-fill')` and the sibling `setfield._set_typed_json` does call the stage; route the JSON fill through `set_typed(rec, {'writes': \u2026, 'creates': \u2026 or None, 'acceptance': [{'text': a} for a in \u2026]}, writer='groom-fill', history=['<today> groom-fill: acceptance and writes filled \u2014 <why>'])` and raise `PortError` on its error, instead of `writer.write_card`",
         "asf/record/new.py:33 \u2014 Step 3 requires `asf set` to write acceptance as well as gate, but `SETTABLE['task'] |= {'gate', 'risk'}` leaves `acceptance` out of `SETTABLE` for every type and out of `LIST_FIELDS['task']` (setfield.py:30), so a typed acceptance has no hand route at all \u2014 only a groom-fill verdict or a mint can write one; add `'acceptance'` to `LIST_FIELDS['task']` and `SETTABLE['task']` and convert each parsed entry to `{'text': str(v)}` for that key in `parse_assignments` (setfield.py:174) with `split=False`, keeping it out of `asf new --set` as the code comment intends \u2014 or say the plan's Step 3 is wrong, which is a plan amendment and not this Task's call",
@@ -90088,14 +90091,16 @@
         "tests/test_proves.py:277 \u2014 `test_appends_the_history_line_it_appends_today` asserts on a list the test itself built, so S-133159 line 20 is claimed proved by a tautology. Once the tick is wired, assert it on the caller: tick a JSON Story card through `ingest.tick_proven` and assert `meta['history']` holds `<stamp> ingest: proved line 1 \u2014 T-0001 (tests/test_a.py::A)`, byte-identical to the `.md` path's line; keep the `assertNotIn('history', \u2026)` case, renamed for what it checks.",
         "operator answer: granted asf/record/ingest.py asf/record/reconcile_proofs.py tests/kernel/test_dor.py tests/test_proves.py; nothing else outside writes (card updated by the kernel). T-154346 also writes asf/record/ingest.py (Building): the overlap rule serialises them. asf/record/ingest.py asf/record/reconcile_proofs.py matches kernel.risk.high: this item is high-risk now.",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "operator answer: One more round; the findings are real defects, fix exactly these: (1) ingest.py:1605 drop the positional None: proves.tick_card(meta, claim['line'], suffix=claim['path']); (2) ports.py:807-830 route the JSON groom-fill through set_typed(..., writer='groom-fill', history=[...]) so stage.guarded and invariant I3 apply, raising PortError on its error; (3) ruling on the plan question: Step 3 stands, so add 'acceptance' to LIST_FIELDS['task'] and SETTABLE['task'], each entry stored as {'text': ...} with split=False, and keep it out of asf new --set; (4) setfield.py:30 gate must not go through the\u2026",
         "Another session edits asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1663: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90108,7 +90113,7 @@
       ],
       "title": "acceptance, gate and risk are typed fields, and the kernel reads no prose",
       "type": "task",
-      "updated": "2026-10-12T18:49:18Z",
+      "updated": "2026-10-12T18:54:36Z",
       "writes": [
         "asf/kernel/dor.py",
         "asf/kernel/ports.py",
@@ -91878,10 +91883,13 @@
         "granted tests/kernel/test_host.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/kernel/host.py:465-484 \u2014 the rollback iterates `pending` only, so a label the boot-in took down that this install did not change is left not loaded and gets no bootstrap command (probed: watch loaded before, down after, `bootstrap calls` holds only the tick's path, last line merely names it), failing Step 4's \"the exact `launchctl bootstrap` command for each label still down\" in the very 2026-10-10 shape Step 3 cites. Fix: after the restore loop at :470-483, re-read the status over both labels from `jobs(product, cfg, python)`; for each label still not loaded, bootstrap its on-disk plist via `scheduler.bootstrap(scheduler.plist_path(label))` (never a raw launchctl argv \u2014 K11), then print the existing `NEEDS OPERATOR: <label> still not loaded after the rollback \u2014 launchctl bootstrap gui/$(id -u) <path>` line for each one still down after that attempt; at a minimum print that line for every label the post-rollback read finds down. Then add the assertion tests/kernel/test_install_rollback.py:108-123 is missing \u2014 in the dropped-sibling scenario the watch label ends in `self.loaded`, or its bootstrap command is among the printed lines."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-166579@2b04210d009bf84e06fa815e0465b0b3e7d175ad",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -91894,7 +91902,7 @@
       ],
       "title": "an install that fails or is refused leaves the previous jobs loaded",
       "type": "task",
-      "updated": "2026-10-12T18:44:50Z",
+      "updated": "2026-10-12T18:54:36Z",
       "writes": [
         "asf/kernel/host.py",
         "tests/kernel/test_install_rollback.py",
