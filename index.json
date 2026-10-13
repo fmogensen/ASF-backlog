@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T10:59:02Z",
+  "generated": "2026-10-13T11:03:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18152,7 +18152,11 @@
         "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 5 fix rounds",
+      "kernel_stuck_since": "2026-10-13T11:02:10Z",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18161,7 +18165,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T10:48:00Z",
+      "updated": "2026-10-13T11:03:21Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18341,7 +18345,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T10:44:58Z",
+      "updated": "2026-10-13T11:03:21Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -93446,6 +93450,12 @@
         "asf redact --unpublished"
       ],
       "id": "T-206240",
+      "kernel_answers": [
+        "granted asf/kernel/briefs.py tests/kernel/test_doc_fix_rounds.py; nothing else outside writes (card updated by the kernel). T-206241 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted asf/kernel/briefs.py tests/kernel/test_doc_fix_rounds.py; nothing else outside writes (card updated by the kernel). T-206241 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
+      ],
       "kernel_findings": [
         "asf/kernel/decide.py:1628 \u2014 nothing in the product stamps a finding (Step 9's first step; `F.stamp` has no caller in `asf/`), so no finding gets a head: make it `kept, reraised = F.drop_known([F.stamp(f, pr.head_sha) for f in verdict.findings], it)`, and land C2 with it.",
         "asf/kernel/briefs.py:327 \u2014 `red_findings` is handed the raw line, so a stamped finding loses the brief's red section: `red = red_findings([F.parse(f)[2] for f in findings])` (Step 4; `asf/kernel/briefs.py` is outside this Task's `writes:` \u2014 a writes request per S-203320).",
@@ -93456,7 +93466,7 @@
         "asf/kernel/findings.py:102 \u2014 `ruled_by` scans the raised findings only; Step 6 says closed-or-raised, and since `ArchiveAndReset` clears the closed set but keeps the ruled one, a ruling naming a file and line is lost at the rebuild: also add `key` for each `closed(it)` entry whose `info.get('line')` is in `lines`."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0358.md"
       },
@@ -93469,18 +93479,22 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T10:41:25Z",
+      "updated": "2026-10-13T11:03:21Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
         "asf/kernel/ports.py",
-        "tests/kernel/test_finding_keys.py"
+        "tests/kernel/test_finding_keys.py",
+        "asf/kernel/briefs.py",
+        "tests/kernel/test_doc_fix_rounds.py"
       ]
     },
     "T-206241": {
-      "backlinks": [],
+      "backlinks": [
+        "T-206240"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -93515,7 +93529,7 @@
       ],
       "title": "the operator's answers reach the brief whole, newest first",
       "type": "task",
-      "updated": "2026-10-13T10:51:13Z",
+      "updated": "2026-10-13T11:03:21Z",
       "writes": [
         "asf/kernel/briefs.py",
         "tests/test_brief_answers.py",
