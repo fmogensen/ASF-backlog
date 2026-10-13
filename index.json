@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:39:14Z",
+  "generated": "2026-10-13T19:43:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18614,7 +18614,7 @@
       "kernel_notes": [
         "groom-fill-b-211642-1791918062: groom-fill raised risk high: both defects are real (confirmed in findings.py's _path_token and apply.py's FindingWrites route handler, the latter's buggy behavior even codified in an existing test), concretely scoped to the kernel's F-0358 follow-up, and buildable against the existing test harness in tests/kernel/test_finding_writes.py."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18624,7 +18624,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T19:12:08Z",
+      "updated": "2026-10-13T19:43:42Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -18641,6 +18641,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-213443",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.11",
       "parent": "E-0006",
       "schema_version": 3,
       "severity": "S3",
@@ -18649,7 +18651,7 @@
       "state": "New",
       "title": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
       "type": "bug",
-      "updated": "2026-10-13T19:38:19Z"
+      "updated": "2026-10-13T19:43:42Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -36124,9 +36126,7 @@
       "updated": "2026-10-10T17:34:09Z"
     },
     "F-0329": {
-      "backlinks": [
-        "F-0363"
-      ],
+      "backlinks": [],
       "children": [
         "S-91855",
         "S-91856",
@@ -37669,18 +37669,16 @@
       },
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "docs/specs/f-0363.md:100 \u2014 P16's clause \"an id with no entry is listed under **In progress**\" is false; render_notes adds such an id to neither features nor bugs (the parent walk breaks on type None) and progress is built from {**features, **bugs}, so it is printed in no section at all. Replace the clause with the real behaviour: an id with no entry is dropped from the notes entirely, and commit_items (asf/metrics/metrics.py:1464-1474) never even records it, since it keeps an id only `if iid in items`.",
-        "docs/specs/f-0363.md:351 \u2014 same wrong symptom in \u00a72.4 (\"falls through every branch and is printed under **In progress**\") plus a command that does not exist (\"`asf release`'s notes path\"). Say instead that the id is dropped from the notes (and its commit falls to `### Improvements and hotfixes` through improvement_commits, asf/metrics/metrics.py:1477-1489), and name the real caller: the rollup's notes path, metrics.cmd_rollup (asf/metrics/metrics.py:1996, :2004) and the note-adoption pass (:1821) \u2014 `asf/release.py` is `asf release-readiness` and renders no notes.",
-        "docs/specs/f-0363.md:679-681 \u2014 \"replaces every inline code span with a single space before parsing, so \u2026 an identifier inside backticks reaches it missing\" is false for acceptance lines: idcheck.declared_stories (asf/record/idcheck.py:127-151) reads each `- [ ]` line out of the text itself, \"byte-for-byte, inline code spans included (F-0329)\"; _prose's code-span substitution (idcheck.py:27-28) is used by cited_stories/phantom_stories for citations only. Keep the line-anchoring reason (CHECKBOX, idcheck.py:124, matches one physical line, so a wrapped line is truncated) and drop the backticks clause. Fix the same premise in the S-211574 acceptance line at :808 (\"list it as landed, not as in progress\")."
+        "docs/specs/f-0363.md:9 \u2014 replace the card's \"2,044 Done, 566 parked and about 110 live\" with the record's own count from `index.json` (Closed 627 + Resolved 12 = 639 Done, 1,823 New, 255 Active, 878 retired \u2192 at most 1,474 cards, 54%, are candidates and \u22651,243, 46%, stay), re-derive \u00a72.11's \"working set after: 679 of 2720 (25%)\" / \"target \u2264 30%\" and S-211577's \"at most thirty percent\" acceptance line against that number, and drop the `NEEDS OPERATOR: today's card count by state` line whose own `jq` command answers it."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
         "spec-f-0363-1791900986: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
         "spec-f-0363-1791914847: NEEDS OPERATOR: today's card count by state on the real record, the baseline section 2.11's 30% target is measured against - `jq -r '[.items[] | .state // \"New\"] | group_by(.) | map(\"\\(.[0]) \\(length)\") | .[]' ~/.AS\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.5",
       "parent": "E-0006",
       "priority": "need",
@@ -37690,7 +37688,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T19:39:12Z"
+      "updated": "2026-10-13T19:43:42Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94824,7 +94822,7 @@
         "shared files: asf/kernel/ports.py also held by B-208438 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94837,7 +94835,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T19:35:50Z",
+      "updated": "2026-10-13T19:43:42Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -94999,6 +94997,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210358",
+      "kernel_stack": "worker/T-210355@f131d782d4d57bd57b617cc46815fa12f565be87",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95011,7 +95010,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-13T15:34:37Z",
+      "updated": "2026-10-13T19:43:42Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
