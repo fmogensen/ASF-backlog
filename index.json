@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T12:43:12Z",
+  "generated": "2026-10-13T12:58:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18328,8 +18328,12 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-205135",
+      "kernel_answers": [
+        "granted asf/record/cards.v2.schema.json; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
+      ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted asf/record/cards.v2.schema.json; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.0",
@@ -18344,7 +18348,7 @@
       "kernel_notes": [
         "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18354,7 +18358,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T12:21:55Z",
+      "updated": "2026-10-13T12:58:13Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -18362,7 +18366,8 @@
         "asf/cli.py",
         "docs/guide/operating.md",
         "tests/test_evidence.py",
-        "tests/test_feature_delivery.py"
+        "tests/test_feature_delivery.py",
+        "asf/record/cards.v2.schema.json"
       ]
     },
     "B-205886": {
@@ -18415,6 +18420,23 @@
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
       "updated": "2026-10-13T12:17:30Z"
+    },
+    "B-208438": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-208438",
+      "parent": "F-0360",
+      "schema_version": 2,
+      "severity": "S3",
+      "signature": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
+      "stage_since": "2026-10-13T12:56:34Z",
+      "state": "New",
+      "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
+      "type": "bug",
+      "updated": "2026-10-13T12:56:34Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -37274,7 +37296,8 @@
     "F-0360": {
       "backlinks": [],
       "children": [
-        "B-205886"
+        "B-205886",
+        "B-208438"
       ],
       "decided": true,
       "folder": "features",
@@ -94060,7 +94083,7 @@
       ],
       "title": "the document lanes' heads are facts, and the work is on origin when origin's head is the head the REPORT names",
       "type": "task",
-      "updated": "2026-10-13T12:35:48Z",
+      "updated": "2026-10-13T12:58:13Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
