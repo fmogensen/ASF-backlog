@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T11:13:57Z",
+  "generated": "2026-10-13T11:17:39Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18108,6 +18108,7 @@
     "B-200581": {
       "backlinks": [
         "F-0357",
+        "T-206240",
         "B-200932"
       ],
       "children": [],
@@ -18200,16 +18201,15 @@
         "One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit.",
         "granted tests/kernel/test_incidents.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the five findings of the latest review exactly as worded: needed.py:272 (add RevertUndone so Done survives the next tick), needed.py:268 (the reverted merge must still be in the window), test_main_landing.py:232 (two ticks on a red trunk; must fail on base), incidents.py:115 (rows only for RevertLanded), then the two doc lines. Prove each with a test that fails on base.",
         "granted asf/kernel/ports.py. One more round, the two findings of the latest review as worded: mainline.py:310 (a new Facts.revert_prs filled by ports._prs; when a revert PR for the item already exists, open or closed unmerged, return 'waits on the revert' and open none) and mainline.py:213 (when the merge has scrolled off the window, fall back to the item's newest merged PR not in the window and not reverted). Each test must fail on base. Nothing else.",
-        "granted asf/kernel/facts.py tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel). asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/kernel/facts.py tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel). asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now.",
+        "granted tests/kernel/test_ports.py. One more round, the single finding of the latest review as worded: Facts.revert_prs holds the item's revert PRs in any non-merged state \u2014 one bounded closed-PR listing for revert heads in ports._prs, kept out of prs, and the listing assertion in tests/kernel/test_ports.py widened from two to three. The test must fail on base. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/ports.py. One more round, the two findings of the latest review as worded: mainline.py:310 (a new Facts.revert_prs filled by ports._prs; when a revert PR for the item already exists, open or closed unmerged, return 'waits on the revert' and open none) and mainline.py:213 (when the merge has scrolled off the window, fall back to the item's newest merged PR not in the window and not reverted). Each test must fail on base. Nothing else.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "relaunch: operator answer: granted asf/kernel/facts.py tests/kernel/test_ports.py; nothing else outside writes (card updated by the kernel). asf/kernel/facts.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted tests/kernel/test_ports.py. One more round, the single finding of the latest review as worded: Facts.revert_prs holds the item's revert PRs in any non-merged state \u2014 one bounded closed-PR listing for revert heads in ports._prs, kept out of prs, and the listing assertion in tests/kernel/test_ports.py widened from two to three. The test must fail on base. Nothing else."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
-      "kernel_extra_rounds": 3,
+      "kernel_extra_rounds": 4,
       "kernel_findings": [
         "asf/kernel/mainline.py:310 \u2014 before line 319 return `[], {'sha': red.sha, 'kind': RED, 'action': 'waits on the revert of #%d (%s)' % (c.pr, it.id)}` whenever a PR on `revert_prefix(config) + it.id` already exists (open or closed unmerged), reading it off a new `Facts.revert_prs` that `ports._prs` fills at ports.py:1648-1650 instead of discarding, so the kernel opens the revert once and never re-creates one the operator closed; declare `needs writes: asf/kernel/facts.py`",
         "asf/kernel/mainline.py:213 \u2014 when `hit is None`, fall back to the newest `p` in `facts.prs` with `p.merged and p.item_id == it.id and p.number not in {c.pr for c in mains} and p.number not in it.reverted` (any merge absent from the window is necessarily older than the revert commit) and build the note/finding with the existing no-commit fallbacks, so a revert whose merge has scrolled off the 15-commit window is still recorded instead of leaving the item Done with its work off the trunk",
@@ -18242,11 +18242,7 @@
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 6 fix rounds",
-      "kernel_stuck_since": "2026-10-13T11:06:29Z",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18255,7 +18251,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T11:07:09Z",
+      "updated": "2026-10-13T11:17:35Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -41963,7 +41959,6 @@
     },
     "S-203320": {
       "backlinks": [
-        "T-206240",
         "T-206244"
       ],
       "children": [],
@@ -93460,20 +93455,17 @@
         "relaunch: operator answer: granted asf/kernel/briefs.py tests/kernel/test_doc_fix_rounds.py; nothing else outside writes (card updated by the kernel). T-206241 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_findings": [
-        "asf/kernel/decide.py:1628 \u2014 nothing in the product stamps a finding (Step 9's first step; `F.stamp` has no caller in `asf/`), so no finding gets a head: make it `kept, reraised = F.drop_known([F.stamp(f, pr.head_sha) for f in verdict.findings], it)`, and land C2 with it.",
-        "asf/kernel/briefs.py:327 \u2014 `red_findings` is handed the raw line, so a stamped finding loses the brief's red section: `red = red_findings([F.parse(f)[2] for f in findings])` (Step 4; `asf/kernel/briefs.py` is outside this Task's `writes:` \u2014 a writes request per S-203320).",
-        "asf/kernel/briefs.py:550-551 \u2014 same for `shared_finding`: parse before the shared/non-shared split, or a stamped shared-files notice lands in the wrong section and under the cap.",
-        "asf/kernel/decide.py:2220 \u2014 same for `shared_finding` over `judged[iid].findings`: a stamped stale notice is no longer filtered and a second one is appended each tick.",
-        "asf/kernel/apply.py:396 \u2014 the current verdict is keyed with `key_of` while the prior round uses `parse`, so a re-raise copied back with its stamp reads as not-raised and is closed for good: `now_keys = {F.parse(f)[0] for f in raw_findings}`.",
-        "asf/kernel/apply.py:390-394 \u2014 a finding naming no `path:line` is never closed and comes back every round: drop the `if lk:` guard and record `prior[key] = F.line_key(text)` for every parsed finding (`findings.py:78` already tolerates `'line': ''`).",
-        "asf/kernel/findings.py:102 \u2014 `ruled_by` scans the raised findings only; Step 6 says closed-or-raised, and since `ArchiveAndReset` clears the closed set but keeps the ruled one, a ruling naming a file and line is lost at the rebuild: also add `key` for each `closed(it)` entry whose `info.get('line')` is in `lines`."
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted asf/kernel/briefs.py tests/kernel/test_doc_fix_rounds.py; nothing else outside writes (card updated by the kernel). T-206241 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now.",
+        "shared files: asf/kernel/actions.py, asf/kernel/apply.py, asf/kernel/decide.py, asf/kernel/ports.py also held by B-200581 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1703: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1703: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0358.md"
       },
@@ -93486,7 +93478,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T11:10:51Z",
+      "updated": "2026-10-13T11:17:35Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
@@ -93523,7 +93515,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_speedups.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0358.md"
       },
@@ -93536,7 +93528,7 @@
       ],
       "title": "the operator's answers reach the brief whole, newest first",
       "type": "task",
-      "updated": "2026-10-13T11:13:52Z",
+      "updated": "2026-10-13T11:17:35Z",
       "writes": [
         "asf/kernel/briefs.py",
         "tests/test_brief_answers.py",
