@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T06:08:13Z",
+  "generated": "2026-10-13T06:12:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18211,7 +18211,7 @@
         "groom-fill-b-202833-1791867443: groom-fill verdict rejected: no GROOM-FILL block",
         "PR #1693: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18220,7 +18220,7 @@
       "state": "New",
       "title": "asf set milestone=0.4 is refused: a version-shaped milestone is read as a number",
       "type": "bug",
-      "updated": "2026-10-13T06:08:12Z",
+      "updated": "2026-10-13T06:12:03Z",
       "writes": [
         "asf/record/new.py",
         "tests/test_work_item_model.py"
@@ -36959,7 +36959,7 @@
       "state": "New",
       "title": "A red trunk is handled correctly: blame is established before any revert",
       "type": "feature",
-      "updated": "2026-10-13T06:08:12Z"
+      "updated": "2026-10-13T06:12:03Z"
     },
     "F-0358": {
       "backlinks": [],
@@ -36970,11 +36970,14 @@
       "kernel_answers": [
         "Measured input for the spec and plan: docs/specs/inputs/0.4-evidence.md on main (PR #1695), summary table plus section B. Each number has the query beside it; re-run it rather than trust it if the window has moved. Size the Stories from those counts, largest first."
       ],
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/specs/f-0358.md:299 \u2014 the \u00a72.7 baseline \"The 2026-10-12 reading, 57%\" contradicts docs/specs/inputs/0.4-evidence.md \u00a7B.1 (2026-10-12 changes share measured 72%, 74% for the full window; the card's 57% is explicitly flagged there as unreproduced from that ledger) \u2014 replace 57% with the evidence file's measured figure, or mark it explicitly as the card's own unverified number"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0358-1791869759: NEEDS OPERATOR: the card's last acceptance line is a 24-hour measurement, and this session could not read the kernel review ledger (it runs off the factory host), so the 57% baseline the card quotes for 2026-10-12 i\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -36984,7 +36987,7 @@
       "state": "New",
       "title": "Review loops converge: proof before review, no repeated or contradicting findings",
       "type": "feature",
-      "updated": "2026-10-13T06:00:10Z"
+      "updated": "2026-10-13T06:12:03Z"
     },
     "F-0359": {
       "backlinks": [],
@@ -37034,7 +37037,7 @@
       "state": "New",
       "title": "The kernel keeps itself running and current: self-upgrade, watchdog, proposals, account probes",
       "type": "feature",
-      "updated": "2026-10-13T06:08:12Z"
+      "updated": "2026-10-13T06:12:03Z"
     },
     "F-0361": {
       "backlinks": [],
@@ -37042,8 +37045,14 @@
       "decided": true,
       "folder": "features",
       "id": "F-0361",
+      "kernel_answers": [
+        "Measured input for the spec and plan: docs/specs/inputs/0.4-evidence.md on main (PR #1695), summary table plus section E. Each number has the query beside it; re-run it rather than trust it if the window has moved. Size the Stories from those counts, largest first."
+      ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0361-1791870109: NEEDS OPERATOR: whether the record's S-176462 is this Feature's Story now (it is named in the spec's Stories section and declared nowhere, so a plan that cites it needs it on the record and visible under F-0361) \u2014 `\u2026"
+      ],
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0006",
       "priority": "need",
@@ -37053,7 +37062,7 @@
       "state": "New",
       "title": "Throughput holds under shared files, slow launches and shared seats",
       "type": "feature",
-      "updated": "2026-10-13T05:42:34Z"
+      "updated": "2026-10-13T06:12:03Z"
     },
     "R-0001": {
       "backlinks": [
@@ -91679,7 +91688,7 @@
       ],
       "title": "the knobs, the records, and a product that stacks nothing behaving exactly as today",
       "type": "task",
-      "updated": "2026-10-13T06:04:36Z",
+      "updated": "2026-10-13T06:12:03Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
