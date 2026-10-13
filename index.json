@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T17:33:29Z",
+  "generated": "2026-10-13T17:36:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -94086,7 +94086,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-206245",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0358.md"
       },
@@ -94099,7 +94099,7 @@
       ],
       "title": "the final review of the final head, and no Stuck on a head nobody read",
       "type": "task",
-      "updated": "2026-10-13T17:02:43Z",
+      "updated": "2026-10-13T17:36:40Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -94305,6 +94305,10 @@
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
         "escalated: one more fix round on the strong model, with every finding"
       ],
+      "kernel_closed_findings": {
+        "3211b7ab": "{'head': 'd2d466e64a48d93512a08a97389b9b2c623f959e', 'line': 'asf/kernel/decide.py:1282'}",
+        "a68364b5": "{'head': 'd2d466e64a48d93512a08a97389b9b2c623f959e', 'line': 'asf/kernel/resolvers.py:525'}"
+      },
       "kernel_findings": [
         "rebase: PR #1714 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/decide.py:1282 \u2014 write_grant_refusal is dead code (grep -rn write_grant_refusal asf/ returns its definition only), so on a refusal _write_grant returns None, _judge keeps the Stuck verbatim (_keep, decide.py:1923-1926) and the console's reason never names the refusing clause: Step 6 and S-205270 line 12 are unimplemented in the product, proved only by a unit test calling the pure function (tests/kernel/test_question_write_grant.py:257). Fix: return the reason from the refusal path \u2014 `why = resolvers.write_grant_refusal(paths, it, items, tuple(config.test_paths), facts.trunk_files or (), tuple(config.risk_high or ()))` and carry it into the Stuck reason at the two _auto_answer dispatch sites (decide.py:656-660); move the high-risk early return (decide.py:1277-1278) below the rule call so a high-risk path still gets its clause named; assert it through decide, not through the resolver.",
@@ -94327,7 +94331,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T17:20:35Z",
+      "updated": "2026-10-13T17:36:40Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
