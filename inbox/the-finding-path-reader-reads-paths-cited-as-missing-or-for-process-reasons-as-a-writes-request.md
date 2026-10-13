@@ -1,0 +1,14 @@
+# The finding path reader reads paths cited as missing or for process reasons as a writes request
+parent: F-0358
+
+Type: Bug
+
+The finding path reader still reads 35% of real review findings as a writes request (follow-up to B-211642). Measured on the honest fixture tests/fixtures/review_findings_283.jsonl (harvested from docs/reviews by tests/fixtures/harvest_review_findings.py): 35% requested, 0% routed. Two patterns dominate, and neither is an ask to change a file: a review citing the card's own missing docs/plans/*.md or docs/specs/*.md, and a review citing tools/*.sh or a plan or spec for process reasons. asf/kernel/findings.py `outside_writes` and `_cited` do not yet read a path cited as missing or absent, or cited forward of the claim, as context.
+
+kernel.resolve.finding_writes stays off until this lands.
+
+## Acceptance
+- [ ] A path the finding cites as missing, absent or not in the record is not a writes request.
+- [ ] A path cited for process reasons (a check script that was or was not run, a plan or spec the review compared against) is not a writes request.
+- [ ] A finding that says to change or create a file outside the footprint still is one.
+- [ ] The Replay test on the honest fixture reads under 10% requested and under 2% routed, with no row removed from the fixture.
