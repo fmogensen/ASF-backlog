@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T13:30:00Z",
+  "generated": "2026-10-13T13:49:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18167,7 +18167,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T13:12:19Z",
+      "updated": "2026-10-13T13:49:36Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -37409,7 +37409,10 @@
       "folder": "features",
       "id": "F-0363",
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`"
+      ],
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0006",
       "priority": "need",
@@ -37419,7 +37422,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T13:20:34Z"
+      "updated": "2026-10-13T13:49:36Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94106,7 +94109,13 @@
         "asf redact --unpublished"
       ],
       "id": "T-208098",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94119,7 +94128,7 @@
       ],
       "title": "a red finding against the head it was measured on and the checks on the current head",
       "type": "task",
-      "updated": "2026-10-13T13:20:34Z",
+      "updated": "2026-10-13T13:49:36Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94127,7 +94136,8 @@
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
         "asf/kernel/questions.py",
-        "tests/kernel/test_question_finding_head.py"
+        "tests/kernel/test_question_finding_head.py",
+        "tests/kernel/test_question_resolvers.py"
       ]
     },
     "T-208099": {
@@ -94230,6 +94240,7 @@
     },
     "T-208101": {
       "backlinks": [
+        "T-208098",
         "T-208104"
       ],
       "children": [],
@@ -94267,7 +94278,7 @@
       ],
       "title": "a Gate command no CI job runs, run on the head when the read-only grant admits it",
       "type": "task",
-      "updated": "2026-10-13T13:20:34Z",
+      "updated": "2026-10-13T13:49:36Z",
       "writes": [
         "asf/kernel/trunk.py",
         "asf/kernel/resolvers.py",
