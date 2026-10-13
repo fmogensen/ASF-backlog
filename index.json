@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T02:05:28Z",
+  "generated": "2026-10-13T02:08:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18152,7 +18152,7 @@
       "kernel_notes": [
         "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18161,7 +18161,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T01:35:49Z",
+      "updated": "2026-10-13T02:08:55Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -90597,10 +90597,10 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -90654,7 +90654,7 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90667,7 +90667,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T02:05:27Z",
+      "updated": "2026-10-13T02:08:55Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
