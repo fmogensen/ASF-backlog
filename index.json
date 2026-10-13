@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:24:36Z",
+  "generated": "2026-10-13T19:28:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18464,7 +18464,7 @@
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18474,7 +18474,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T19:21:41Z",
+      "updated": "2026-10-13T19:28:43Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -37649,7 +37649,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T19:15:48Z"
+      "updated": "2026-10-13T19:28:43Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94461,7 +94461,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T19:15:48Z",
+      "updated": "2026-10-13T19:28:43Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94776,6 +94776,9 @@
         "asf redact --unpublished"
       ],
       "id": "T-210355",
+      "kernel_closed_findings": {
+        "913b5280": "{'head': '8a8004c8c5f7a9f7d27dadb56e817f2fe36a5bec', 'line': 'tools/check_clock.py:43'}"
+      },
       "kernel_findings": [
         "tools/check_clock.py:43 \u2014 the ratchet misses `time.time_ns(`, and asf/workers/lifecycle.py:454 (`read_ns = time.time_ns()`, compared against st_mtime_ns/st_ctime_ns in _settled at :426-430) is a live uncounted instance, so that file's ceiling is 3 (tools/clock-baseline.txt:108) while it holds 4. Change `re.compile(r'time\\.time\\(')` to `re.compile(r'time\\.time(?:_ns)?\\(')`, add `re.compile(r'datetime\\.today\\(')` beside :41 (`date\\.today\\(` does not match `datetime.today(`), name both in the docstring pattern list at :8-12, run `python3 tools/check_clock.py --write-baseline` (the only line that moves is tools/clock-baseline.txt:108, 3 -> 4; total 430 -> 431), add a `time.time_ns()` case and a `datetime.today()` case beside tests/test_check_clock.py:67-68 with the `# clock-exempt:` marker its neighbours carry, then re-run `python3 -m unittest -v tests.test_clock tests.test_check_clock` and `bash tools/check_clock.sh --against origin/main`.",
         "shared files: asf/kernel/ports.py also held by T-208099 \u2014 additive edits only, never a rewrite"
@@ -94794,7 +94797,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T19:15:48Z",
+      "updated": "2026-10-13T19:28:43Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -94852,7 +94855,7 @@
         "PR #1721: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1721: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94865,7 +94868,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T19:08:27Z",
+      "updated": "2026-10-13T19:28:43Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -94901,6 +94904,7 @@
       ],
       "id": "T-210357",
       "kernel_attempts": [
+        "launch: launch: branch fix/T-210357-blame-before-revert checked out in an external worktree /private/tmp/claude-501/wt-blame; waits until it's released",
         "launch: launch: branch fix/T-210357-blame-before-revert checked out in an external worktree /private/tmp/claude-501/wt-blame; waits until it's released"
       ],
       "kernel_state": "review",
@@ -94916,7 +94920,7 @@
       ],
       "title": "blame before any revert \u2014 the failing test run on the parent's tree, now",
       "type": "task",
-      "updated": "2026-10-13T19:24:34Z",
+      "updated": "2026-10-13T19:28:43Z",
       "writes": [
         "asf/kernel/blame.py",
         "asf/kernel/trunk.py",
