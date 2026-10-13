@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:15:49Z",
+  "generated": "2026-10-13T19:19:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18443,7 +18443,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T19:08:27Z",
+      "updated": "2026-10-13T19:19:04Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18452,13 +18452,20 @@
     "B-208438": {
       "backlinks": [],
       "children": [],
+      "creates": [
+        "tests/kernel/test_intake_mint_atomic.py"
+      ],
       "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-208438",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
+      "kernel_notes": [
+        "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
+      ],
       "parent": "F-0360",
+      "risk": "high",
       "schema_version": 2,
       "severity": "S3",
       "signature": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
@@ -18466,7 +18473,13 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T19:12:08Z"
+      "updated": "2026-10-13T19:19:04Z",
+      "writes": [
+        "asf/kernel/loop.py",
+        "asf/kernel/ports.py",
+        "asf/record/publish.py",
+        "tests/kernel/test_intake_mint_atomic.py"
+      ]
     },
     "B-210839": {
       "backlinks": [],
