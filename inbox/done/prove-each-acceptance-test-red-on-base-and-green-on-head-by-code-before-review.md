@@ -1,3 +1,5 @@
+→ retired: Superseded by S-203318 under F-0358 (milestone 0.4), which carries the same proof. This note was minted as S-185817 on 2026-10-12 but the card was never committed (it stayed an untracked file in the record checkout through a kernel outage), so nothing was built from it. (2026-10-13)
+
 # Prove each acceptance test red on base and green on head, by code, before review
 parent: F-0346
 
