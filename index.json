@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:31:40Z",
+  "generated": "2026-10-13T09:35:21Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18146,7 +18146,11 @@
         "build-b-200581-1791872508: NEEDS OPERATOR: tests/test_tick_latency.py:177 reads `m.today()` bare right after a tick \u2014 the same day-crossing flakiness class B-200581 fixes elsewhere, discovered only because this round tried widening the lint's\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 4 fix rounds",
+      "kernel_stuck_since": "2026-10-13T09:34:40Z",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18155,7 +18159,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T09:19:35Z",
+      "updated": "2026-10-13T09:35:16Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -37257,7 +37261,16 @@
       "backlinks": [
         "F-0359"
       ],
-      "children": [],
+      "children": [
+        "S-205268",
+        "S-205269",
+        "S-205270",
+        "S-205271",
+        "S-205272",
+        "S-205273",
+        "S-205274",
+        "S-205275"
+      ],
       "decided": false,
       "folder": "features",
       "id": "F-0362",
@@ -37269,7 +37282,7 @@
         "spec-f-0362-1791880334: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" and (.at // \"\") < \"2026-10-\u2026",
         "spec-f-0362-1791882733: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" and (.at // \"\") < \"2026-10-\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37279,7 +37292,7 @@
       "state": "New",
       "title": "Session questions are answered by code, not by the console (replaces F-0359)",
       "type": "feature",
-      "updated": "2026-10-13T09:22:44Z"
+      "updated": "2026-10-13T09:35:16Z"
     },
     "R-0001": {
       "backlinks": [
@@ -42118,6 +42131,112 @@
       "title": "the gate measures seats busy and usable seats beside lead time, so the Feature's own number is readable \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_throughput_gate`",
       "type": "story",
       "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-205268": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-205268",
+      "parent": "F-0362",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:34:41Z",
+      "state": "New",
+      "title": "kind 1 \u2014 the work is on origin when origin's head is the head the REPORT names, in every lane",
+      "type": "story",
+      "updated": "2026-10-13T09:34:41Z"
+    },
+    "S-205269": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-205269",
+      "parent": "F-0362",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:34:41Z",
+      "state": "New",
+      "title": "kind 2 \u2014 a red finding against the head it was measured on and the checks on the current head",
+      "type": "story",
+      "updated": "2026-10-13T09:34:41Z"
+    },
+    "S-205270": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-205270",
+      "parent": "F-0362",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:34:41Z",
+      "state": "New",
+      "title": "kind 3 \u2014 a write asked in prose, granted by rule for a test this item adds, else routed",
+      "type": "story",
+      "updated": "2026-10-13T09:34:41Z"
+    },
+    "S-205271": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-205271",
+      "parent": "F-0362",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:34:41Z",
+      "state": "New",
+      "title": "kind 4 \u2014 the card's acceptance quoted back from the record, never a pointer at the brief",
+      "type": "story",
+      "updated": "2026-10-13T09:34:41Z"
+    },
+    "S-205272": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-205272",
+      "parent": "F-0362",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:34:41Z",
+      "state": "New",
+      "title": "kind 5 \u2014 a Gate command no CI job runs, run on the head when the read-only grant admits it",
+      "type": "story",
+      "updated": "2026-10-13T09:34:41Z"
+    },
+    "S-205273": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-205273",
+      "parent": "F-0362",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:34:41Z",
+      "state": "New",
+      "title": "kind 6 \u2014 the predecessor's state and who holds the work, read from the record",
+      "type": "story",
+      "updated": "2026-10-13T09:34:41Z"
+    },
+    "S-205274": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-205274",
+      "parent": "F-0362",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:34:41Z",
+      "state": "New",
+      "title": "every question left to the console carries its kind, and the next kind is first by count",
+      "type": "story",
+      "updated": "2026-10-13T09:34:41Z"
+    },
+    "S-205275": {
+      "backlinks": [
+        "F-0362"
+      ],
+      "children": [],
+      "folder": "stories",
+      "id": "S-205275",
+      "parent": "F-0362",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:34:41Z",
+      "state": "New",
+      "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
+      "type": "story",
+      "updated": "2026-10-13T09:34:41Z"
     },
     "S-51600": {
       "backlinks": [
@@ -93338,7 +93457,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-206241",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0358.md"
       },
@@ -93351,7 +93470,7 @@
       ],
       "title": "the operator's answers reach the brief whole, newest first",
       "type": "task",
-      "updated": "2026-10-13T09:25:42Z",
+      "updated": "2026-10-13T09:35:16Z",
       "writes": [
         "asf/kernel/briefs.py",
         "tests/test_brief_answers.py"
