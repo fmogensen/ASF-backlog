@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T22:28:07Z",
+  "generated": "2026-10-13T22:31:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18482,7 +18482,7 @@
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18492,7 +18492,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T22:15:00Z",
+      "updated": "2026-10-13T22:31:51Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18764,7 +18764,7 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T22:24:43Z",
+      "updated": "2026-10-13T22:31:51Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_landing.py"
@@ -94834,7 +94834,8 @@
         "Round granted for the conflict only: PR 1723 conflicts with main after other merges (asf/kernel/resolvers.py and its tests are the likely files). Merge origin/main into the branch, resolve keeping both sides' behaviour, rerun the touched test modules, push. Make no other change; the review findings are already answered."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Round granted for the conflict only: PR 1723 conflicts with main after other merges (asf/kernel/resolvers.py and its tests are the likely files). Merge origin/main into the branch, resolve keeping both sides' behaviour, rerun the touched test modules, push. Make no other change; the review findings are already answered."
+        "relaunch: operator answer: Round granted for the conflict only: PR 1723 conflicts with main after other merges (asf/kernel/resolvers.py and its tests are the likely files). Merge origin/main into the branch, resolve keeping both sides' behaviour, rerun the touched test modules, push. Make no other change; the review findings are already answered.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
         "146fa521": "{'head': '{\\'head\\': \"{\\'head\\': \\'c31003babc20e7accf250898c18136afe8eb4fe5\\', \\'line\\': \\'asf/kernel/resolvers.py:606\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
@@ -94846,9 +94847,12 @@
       },
       "kernel_extra_rounds": 2,
       "kernel_findings": [
+        "asf/kernel/resolvers.py:709 \u2014 an asked glob escapes the trunk clause: replace `and p not in trunk_files` with `and p not in trunk_files and not any(covers(t, [p]) for t in trunk_files)`, so `tests/kernel/test_*.py` is no longer granted by rule while the trunk holds `tests/kernel/test_existing.py` that it covers; also `asf/kernel/resolvers.py:744`, replace `elif p in trunk_files:` with `elif p in trunk_files or any(covers(t, [p]) for t in trunk_files):` so the named clause is ON_TRUNK_CLAUSE and not the all-or-nothing `else`; and add the trunk case to AnAskedGlobDoesNotEscapeTheClause (tests/kernel/test_question_write_grant.py:195) \u2014 no other item, trunk_files=frozenset(['tests/kernel/test_existing.py']), asserting write_grant_by_rule(...) == [] with the two-sided overlap, that write_grant_refused names `already on the trunk`, and no ApplyAnswer through decide",
+        "rebase: PR #1723 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/resolvers.py:744 \u2014 the bare `'%s is refused'` fallback is reachable: the rule is all-or-nothing, so a multi-path ask refuses paths the rule itself admits and names them no clause (plan step 6), and tests/kernel/test_question_write_grant.py:292 asserts it unreachable with single-path cases only. Add `ALL_OR_NOTHING_CLAUSE = ('%s is granted by no rule on its own: the grant is all-or-nothing and another asked path was refused')` beside UNREAD_TRUNK_CLAUSE (resolvers.py:654) and make the last clause `clauses.append(WRITTEN_BY_CLAUSE % (p, owner) if owner else ALL_OR_NOTHING_CLAUSE % p)`; then add the two-path case (second path on the trunk) to `cases` in test_question_write_grant.py:292 and a case in ConsoleReasonNamesTheClause asserting both clauses are named.",
         "asf/kernel/resolvers.py:736 \u2014 when `trunk_files is None` (the trunk is unread, `ports.py:853-863`) `write_grant_refused` falls past the `trunk_files is not None` guard at `:730` to the bare `'%s is refused'` fallback, so the park names no clause \u2014 against spec \u00a72.4 and plan step 6. Add `UNREAD_TRUNK_CLAUSE = ('%s could not be checked: the trunk is unread, so the kernel cannot tell whether this file is already on it')` beside the four clauses at `:648-651`, and in `write_grant_refused` replace `:730-736` with `elif trunk_files is None: clauses.append(UNREAD_TRUNK_CLAUSE % p)` / `elif p in trunk_files: clauses.append(ON_TRUNK_CLAUSE % p)` / `else: <the existing owner lookup>`; add the case to `ConsoleReasonNamesTheClause` (tests/kernel/test_question_write_grant.py:254) so the bare fallback stays unreachable.",
         "operator answer: Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else.",
+        "operator answer: Round granted for the conflict only: PR 1723 conflicts with main after other merges (asf/kernel/resolvers.py and its tests are the likely files). Merge origin/main into the branch, resolve keeping both sides' behaviour, rerun the touched test modules, push. Make no other change; the review findings are already answered.",
         "shared files: asf/kernel/ports.py also held by T-210361 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 4,
@@ -94859,7 +94863,8 @@
         "build-t-208099-1791921910: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208099-1791921910 'asf/build-t-208099-1791921910@20261013T200519Z' >/dev/null 2>&1 &`, both a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94872,7 +94877,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T22:28:06Z",
+      "updated": "2026-10-13T22:31:51Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95256,8 +95261,10 @@
         "granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_closed_findings": {
-        "3cb9d359": "{'head': '66c6ec92f83467abec428cc839014b02eb1c30be', 'line': 'tests/kernel/test_satisfied_not_relaunched.py:189'}",
-        "b688539e": "{'head': '66c6ec92f83467abec428cc839014b02eb1c30be', 'line': 'asf/kernel/needed.py:316'}"
+        "3cb9d359": "{'head': \"{'head': '66c6ec92f83467abec428cc839014b02eb1c30be', 'line': 'tests/kernel/test_satisfied_not_relaunched.py:189'}\", 'line': ''}",
+        "413fef26": "{'head': '336cd91ca68282f487c6cbefef3e48b69dfe991e', 'line': 'asf/kernel/needed.py:24'}",
+        "80edd973": "{'head': '336cd91ca68282f487c6cbefef3e48b69dfe991e', 'line': 'asf/kernel/needed.py:140'}",
+        "b688539e": "{'head': \"{'head': '66c6ec92f83467abec428cc839014b02eb1c30be', 'line': 'asf/kernel/needed.py:316'}\", 'line': ''}"
       },
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -95284,7 +95291,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T22:21:17Z",
+      "updated": "2026-10-13T22:31:51Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
