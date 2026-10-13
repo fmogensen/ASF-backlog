@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T10:12:48Z",
+  "generated": "2026-10-13T10:15:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18193,15 +18193,15 @@
       "kernel_answers": [
         "granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now.",
         "One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit.",
-        "granted tests/kernel/test_incidents.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the five findings of the latest review exactly as worded: needed.py:272 (add RevertUndone so Done survives the next tick), needed.py:268 (the reverted merge must still be in the window), test_main_landing.py:232 (two ticks on a red trunk; must fail on base), incidents.py:115 (rows only for RevertLanded), then the two doc lines. Prove each with a test that fails on base."
+        "granted tests/kernel/test_incidents.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the five findings of the latest review exactly as worded: needed.py:272 (add RevertUndone so Done survives the next tick), needed.py:268 (the reverted merge must still be in the window), test_main_landing.py:232 (two ticks on a red trunk; must fail on base), incidents.py:115 (rows only for RevertLanded), then the two doc lines. Prove each with a test that fails on base.",
+        "granted asf/kernel/ports.py. One more round, the two findings of the latest review as worded: mainline.py:310 (a new Facts.revert_prs filled by ports._prs; when a revert PR for the item already exists, open or closed unmerged, return 'waits on the revert' and open none) and mainline.py:213 (when the merge has scrolled off the window, fall back to the item's newest merged PR not in the window and not reverted). Each test must fail on base. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_incidents.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the five findings of the latest review exactly as worded: needed.py:272 (add RevertUndone so Done survives the next tick), needed.py:268 (the reverted merge must still be in the window), test_main_landing.py:232 (two ticks on a red trunk; must fail on base), incidents.py:115 (rows only for RevertLanded), then the two doc lines. Prove each with a test that fails on base.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: granted asf/kernel/ports.py. One more round, the two findings of the latest review as worded: mainline.py:310 (a new Facts.revert_prs filled by ports._prs; when a revert PR for the item already exists, open or closed unmerged, return 'waits on the revert' and open none) and mainline.py:213 (when the merge has scrolled off the window, fall back to the item's newest merged PR not in the window and not reverted). Each test must fail on base. Nothing else."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
-      "kernel_extra_rounds": 2,
+      "kernel_extra_rounds": 3,
       "kernel_findings": [
         "asf/kernel/needed.py:272 \u2014 the `make(State.DONE)` is discarded next tick, because `asf/kernel/decide.py:831` refuses a Done card while `kernel_reverted` holds the PR, so the item relaunches forever (probed: tick 1 DONE/no launch, tick 2 READY/launched ['B-0097']); add `A.RevertUndone(item_id, pr)` in actions.py (+ORDER, +PROGRESS, +describe), apply it in apply.py as `P.REVERTED` minus that PR, emit one per `n in it.reverted` beside the Done, and extend the acceptance test with the tick after (apply \u2192 re-read \u2192 still DONE, no launch)",
         "asf/kernel/needed.py:268 \u2014 absence of the revert branch from `Facts.main`'s 15-commit window is also \"the revert aged out\", so a failed rebuild is closed Done and the work dropped (probed: DONE with the gate line \"its earlier work is still there\" against a trunk the revert had scrolled off); require the reverted merge itself to still be in the window \u2014 `elif (it.reverted and facts.main and prefix + p.item_id not in reverting and any(c.pr in it.reverted for c in facts.main)):` \u2014 and reword the gate line to what that reads",
@@ -18230,11 +18230,7 @@
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 5 fix rounds",
-      "kernel_stuck_since": "2026-10-13T10:12:11Z",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18243,7 +18239,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T10:12:45Z",
+      "updated": "2026-10-13T10:15:48Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
