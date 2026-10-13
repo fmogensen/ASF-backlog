@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:33:08Z",
+  "generated": "2026-10-13T08:35:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18113,15 +18113,15 @@
       "found_in": "dev",
       "id": "B-200581",
       "kernel_answers": [
-        "granted asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py tests/test_tick_steps.py tests/test_tick_latency.py; nothing else outside writes (card updated by the kernel). B-200932 also writes asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py tests/test_tick_steps.py tests/test_tick_latency.py; nothing else outside writes (card updated by the kernel). B-200932 also writes asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py matches kernel.risk.high: this item is high-risk now.",
+        "granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932)."
       ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding",
-        "relaunch: operator answer: granted asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py tests/test_tick_steps.py tests/test_tick_latency.py; nothing else outside writes (card updated by the kernel). B-200932 also writes asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932)."
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/kernel/mainline.py:339-341 \u2014 gate the single-candidate revert on a confirmation that is actually fetched, not one that happens to be in facts: either emit A.DispatchMain(green, 'confirm the red without the candidate') (asf/kernel/mainline.py:306-315) and record 'waits on the parent's fresh check', reverting only once that fresh run reads green on the red check, or carry an auto-merge flag on A.RevertPR (asf/kernel/actions.py:236-249, apply leg asf/kernel/apply.py:485) and finalize the revert only once the revert PR's own CI reads green on the red check \u2014 red there means no RevertPR, one Bug naming the check, the item held (acceptance A1). Confirmed on this head: a single candidate whose files include the red's failing test file, with no other open PR carrying the red and no informational leg on the green parent, still yields RevertPR (#21, T-2) and T-2 back to State.READY.",
         "tests/test_tick_steps.py:22 \u2014 the file is edited (import dropped, _ticks_stream_path added at :40-47, call sites at :161-170 and :926-940) but is outside this item's writes: footprint, and b0da4b3's report reads `needs writes: none`; re-report with `needs writes: tests/test_tick_steps.py` so the footprint is widened on the record instead of silently exceeded.",
@@ -18139,11 +18139,7 @@
         "build-b-200581-1791872508: NEEDS OPERATOR: tests/test_tick_latency.py:177 reads `m.today()` bare right after a tick \u2014 the same day-crossing flakiness class B-200581 fixes elsewhere, discovered only because this round tried widening the lint's\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
-      "kernel_stuck_since": "2026-10-13T08:32:12Z",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18152,7 +18148,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T08:33:04Z",
+      "updated": "2026-10-13T08:35:52Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -91164,14 +91160,13 @@
         "granted tools/upgrade_matrix.py; nothing else outside writes (card updated by the kernel). tools/upgrade_matrix.py matches kernel.risk.high: this item is high-risk now.",
         "The branch predates PR #1682 (main 5c2953d5e), which fixed the trunk-wide tests.test_ci_census clock bug that made every PR's tests red. Rebase worker/T-154346 onto origin/main, no merge commit, change nothing else, push, and let CI rerun. Only if a test other than test_ci_census is still red afterwards is there anything to fix.",
         "Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files.",
-        "One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head."
+        "One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
+        "granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "session ran past its max age"
+        "relaunch: operator answer: granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else."
       ],
-      "kernel_extra_rounds": 2,
+      "kernel_extra_rounds": 3,
       "kernel_findings": [
         "asf/schema.py:250 \u2014 the unconditional `new_meta['gate'] = gate` destroys the typed gate a schema-1 card carries in frontmatter (asf/record/ids.py:200-201, fed by plan_tasks.py:536); have _lift_sections return None for an absent `## Gate` section and overwrite only when it is not None, add new_meta['gate'] to the round-trip comparison at :294-299 (which is blind to the loss today), and add a tests/test_card_migration.py case whose fixture carries `gate:` in frontmatter and no `## Gate` section",
         "tools/upgrade_matrix.py \u2014 10 upgrade-matrix legs are red on this head and the file is inside this card's writes: (granted, high-risk), not outside it as the build report states; before asserting the new `asf tick` exits 0, run `asf schema-migrate --drain --product sample` when the installed record's stamp is below the package's and the pending span crosses a non-additive entry, and treat the tick's exit 3 carrying `NEEDS OPERATOR: run asf schema-migrate` as the expected handoff across that boundary rather than a leg failure",
@@ -91241,11 +91236,7 @@
         "PR #1684: upgrade-matrix (v0.3.0) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 5 fix rounds",
-      "kernel_stuck_since": "2026-10-13T08:28:06Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91258,7 +91249,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T08:28:59Z",
+      "updated": "2026-10-13T08:35:52Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
