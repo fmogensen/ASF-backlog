@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T14:55:33Z",
+  "generated": "2026-10-13T14:59:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18124,12 +18124,14 @@
         "One more round, the single finding of the latest review exactly as worded: mainline.py:645 \u2014 an abandoned revert is recognised by its own marker, not by any Bug with the spell's key. Add ABANDON_MARKER beside BUG_MARKER, have the abandon leg append it to the spell's Bug, match that marker at :645, keep test_main_landing.py:721 green, and add the two tests (knob-off second tick;  second tick: no Quarantine), red on this head. Change nothing else; add no new behaviour."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, the single finding of the latest review exactly as worded: mainline.py:645 \u2014 an abandoned revert is recognised by its own marker, not by any Bug with the spell's key. Add ABANDON_MARKER beside BUG_MARKER, have the abandon leg append it to the spell's Bug, match that marker at :645, keep test_main_landing.py:721 green, and add the two tests (knob-off second tick; second tick: no Quarantine), red on this head. Change nothing else; add no new behaviour."
+        "relaunch: operator answer: One more round, the single finding of the latest review exactly as worded: mainline.py:645 \u2014 an abandoned revert is recognised by its own marker, not by any Bug with the spell's key. Add ABANDON_MARKER beside BUG_MARKER, have the abandon leg append it to the spell's Bug, match that marker at :645, keep test_main_landing.py:721 green, and add the two tests (knob-off second tick; second tick: no Quarantine), red on this head. Change nothing else; add no new behaviour.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 6,
       "kernel_findings": [
+        "asf/kernel/mainline.py:645 \u2014 the third independence source `bool(filed(facts, bug_key(red, green)))` fires on any Bug carrying the spell's key, not only on one an abandoned revert left, so a single-candidate main red files trunk-wide `Quarantine` entries on no independence evidence from its second tick: with `config.main_red_revert` off the revert block at `:649` never runs, tick 1 files the Bug (`tests/kernel/test_main_landing.py:493`) and tick 2 returns `extra + qacts(bug=bug)` at `:712`; the same happens with the knob on whenever `mine` at `:651` is False (no `pr`, no `item_id`, or a candidate on `config.revert_branch` \u2014 a landed revert that leaves main red). Fix: add `ABANDON_MARKER = 'main-red revert abandoned: '` beside `BUG_MARKER` (`:93`), have the abandon leg at `:683`\u2013`:689` append `ABANDON_MARKER + bug_key(red, green)` to the spell's Bug whether this tick files it (`:714`/`:719`) or `open_bug` at `:710` already returns one, and change `:645` to match that marker instead of `bug_key`; keep `tests/kernel/test_main_landing.py:721` green and add two tests red on this head \u2014 a knob-off second tick and an `it is None` second tick each file no `A.Quarantine`.",
         "asf/kernel/mainline.py:513 \u2014 a red check's name missing from a settled revert PR is read as terminal ('unanswered') and abandons the revert, though a `needs:`-gated check run does not exist until its dependency concludes (`tests: needs: [changes, checks, part]`, and `tests (3.1x)` are the required checks); extend the grace the empty check list already gets to any unreported red name: replace lines 513-514 with `if not (names <= {c.name for c in pr.checks}) and _within_grace(pr, facts, config): return 'waiting'` before `return 'unanswered'`, and add the case that is red today \u2014 a revert PR inside its grace carrying one completed non-red check must be 'waiting' and plan no ClosePR (the committed 'absent'/'no ci' subtests at tests/kernel/test_main_landing.py:735 run nine hours past the grace and stay green).",
         "asf/kernel/ports.py:1719 \u2014 `_revert_fact` drops `autoMergeRequest`, which the open listing already carries (PR_FIELDS, ports.py:1318; `_open_pr` reads it at :1746), so `rpr.auto_merge` is always False and the finalize guard at mainline.py:667 never fires: `RevertPR` is re-emitted every tick until the revert merges, each one a `gh pr merge --auto` write and another \"the revert is finalized\" tick record. Add `auto_merge=bool(d.get('autoMergeRequest')),` beside `closed=closed` at ports.py:1732, and assert it off a listing-built fact (`B.of(plan, A.RevertPR) == []`), which is what tests/kernel/test_main_landing.py:621's second half currently asserts against a fact the port cannot produce.",
         "asf/kernel/mainline.py:365 \u2014 `revert_ci` has no terminal state when a red check does not reproduce on the revert PR (a name absent from it, or `cancelled`/`action_required`, or no CI at all), so the held revert waits for ever and the trunk stays red where base recovered. Read the answer off the names that exist on the PR (`want = names & {c.name for c in pr.checks}`) once the PR's own checks have settled, treat `want` empty as \"this PR will never answer\", and give that case a terminal leg in `judge` (mainline.py:505-524): re-emit the `RevertPR` with `auto_merge=True`, or close it and file the Bug as the abandon leg at :517-521 does. Add a case alongside tests/kernel/test_main_landing.py:522 that is red on this head.",
@@ -18148,9 +18150,9 @@
         "asf/kernel/mainline.py:213 \u2014 an open PR proves independence without establishing that its tree excludes the candidate, so a PR brought up to the trunk head carries the candidate's merge and reads the same red because of it; require the base to predate the candidate: `if pr.merged or not pr.behind or (set(pr.files or ()) & set(files)): continue` (PR.behind, asf/kernel/model.py:228), or drop the open-PR path for parent_already_red plus the revert PR's own CI, the two sources acceptance 1 names.",
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "operator answer: One more round, the single finding of the latest review as worded: mainline.py:509 \u2014 the abandon leg must leave something the next tick reads, so an abandoned revert is not re-opened every tick; add the abandoned case as a third independence source at mainline.py:478 as the finding gives it, with a two-tick test (abandon, then no new RevertPR) that fails on base. Nothing else.",
-        "shared files: asf/kernel/decide.py, asf/kernel/ports.py also held by T-208099 \u2014 additive edits only, never a rewrite"
+        "operator answer: One more round, the single finding of the latest review exactly as worded: mainline.py:645 \u2014 an abandoned revert is recognised by its own marker, not by any Bug with the spell's key. Add ABANDON_MARKER beside BUG_MARKER, have the abandon leg append it to the spell's Bug, match that marker at :645, keep test_main_landing.py:721 green, and add the two tests (knob-off second tick; second tick: no Quarantine), red on this head. Change nothing else; add no new behaviour."
       ],
-      "kernel_fix_rounds": 8,
+      "kernel_fix_rounds": 9,
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing.",
@@ -18159,7 +18161,7 @@
         "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18168,7 +18170,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T14:55:31Z",
+      "updated": "2026-10-13T14:59:48Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18350,7 +18352,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T14:42:09Z",
+      "updated": "2026-10-13T14:59:48Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -37423,18 +37425,16 @@
       "folder": "features",
       "id": "F-0363",
       "kernel_findings": [
-        "docs/specs/f-0363.md:118 \u2014 P7's \"the text scan is explicitly the record step's dominant cost in its own comment\" misquotes asf/record/core.py:299-303, whose comment says the *pairwise* search \"was quadratic ... and was most of the record step's time\" (past tense, about the implementation it replaced); compute_derived now does one MENTION_TOKEN_RE.findall per text plus set membership per id, with a regex per (id, text) pair only for non-X-0000 ids. Restate P7 as what runs today, fix :11 (\"scans every card's text for mentions of every other id\"), and re-argue D12 at :175 (\"the single largest cost this Feature removes\") on the per-card text load rather than a quadratic scan.",
-        "docs/specs/f-0363.md:134 \u2014 P13 names `asf set` among the writers that \"each pay two whole-record reads\", but asf/record/setfield.py:511,550 pass only=[rec['relpath']] to stage.guarded and stage_only narrows the snapshot to those paths (asf/record/stage.py:107-112). Drop `asf set` from P13, and restate D8's premise at :171 (\"every staged writer pays two whole-record reads\") over the writers that do snapshot the whole record \u2014 slice, plan-order, file-bugs (tick.py:139,173,181), ingest, replan, spec-stories, plan-tasks, reconcile-proofs \u2014 since nine call sites narrow with only=, among them reopen, untick, audit-proofs (reopen.py:206,319,366,480), migrate-landing (migrate_landing.py:134) and correct (workers/correct.py:254).",
-        "docs/specs/f-0363.md:99 \u2014 P2's \"There is no second list of item folders in the tree\" is false: besides the derived asf/record/core.py:25, the same seven names are spelled as literal tuples at asf/init.py:28 and asf/cli.py:777 (the latter read by _looks_like_record). Name both copies in P2 and narrow \u00a72.1's \"there is still exactly one list of item folders in the tree\" (:188) to the archive list.",
-        "docs/specs/f-0363.md:105 \u2014 P4 cites asf/record/card.py:38-54 for `card.refs`, which is at asf/record/card.py:113-128 (38-54 is view_path/load/loads). Also correct P1's asf/record/core.py:114-170 at :96 (load_items is 114-158; 160-170 is canonicalize) and P2's asf/record/core.py:14-24 at :98 (ITEM_FOLDERS is line 25).",
-        "docs/specs/f-0363.md:451 \u2014 A2's \"`is_finished` on each of the eight states\": the card `state` enum has four values, New/Active/Resolved/Closed (asf/record/cards.v2.schema.json, asf/evidence/closing.py:54); kernel_state has seven and only asf/kernel/model.py's State enum has eight, with PARKED derived and never stored. Say four states, or name the list A2 means."
+        "docs/specs/f-0363.md:139 \u2014 P10 is false and takes \u00a72.9, A10 and D3 with it: `asf.scorecard.facts.load` builds its items from `load_cards(root)` -> `asf.record.core.load_items` (facts.py:546, 485-489; loop.py:478), and `score` reads those card-derived entries (score.py:210, 236-239), so `facts`/`score` read the cards, not `index.json` \u2014 only `pairs.load_items` reads the index. Two of the four fields P10 names are not in an index entry at all: `send_backs` and `reopens` come from the card body's `## History` via `facts.timeline` (facts.py:112-176), and `facts.card`'s `text` is the body too (facts.py:218-222, read at score.py:172), while P11/`core.build_index_data` (core.py:408-430) carries only typed and machine fields plus folder/children/backlinks. Fix: restate P10 to what the code does, then give \u00a72.9 (:387) a scorecard design that actually holds its numbers \u2014 either `facts.load_cards` also loading `ARCHIVE_FOLDERS`, or the archive entry freezing the body-derived timeline facts (`send_backs`, `reopens`, `closes`, `reopened`, `_description`), which widens \u00a72.2's entry shape \u2014 and restate D3's reason (:190) and A10/S-208625's \"identical before and after\" (:575, :828) from whichever is chosen",
+        "docs/specs/f-0363.md:106 \u2014 P3's \"114 call sites in 42 modules call `load_items`\" is the count of every mention of the name under `asf/` (116 grep hits less the two `def` lines at core.py:114 and scorecard/pairs.py:126), 36 of them imports; `core.load_items` has 61 call sites in 38 modules (`grep -rn \"load_items(\" asf/ --include=*.py | grep -v \"def load_items\"` -> 62, less pairs.py:142 calling pairs' own same-named function). Correct the number here and at :11, :21, :190 and :222 (\"all 114 call sites\", \"the 114 that do not\"); nothing in the design depends on its size",
+        "docs/specs/f-0363.md:406 \u2014 \u00a72.10 gives `load_items(root)`'s today as \"3,586 files, 73 MB\" and \u00a72.11 (:428) makes \"3,586 files\" the measure's baseline, but 3,586 is the preamble's count of every markdown file on the record (:4), including the 421 processed inbox notes `load_items` never opens (P1, P2, core.py:114-158; the intake directory is walked only by `scorecard.loop._inbox_has`, loop.py:252-260) and the `.md` views it skips beside a `.json` (core.py:131-132), while the \"after\" beside it (\"about 700\") counts cards. Replace both before-numbers with the cards `load_items` actually parses on that record, so the gate's two ends measure the same quantity"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
         "spec-f-0363-1791900986: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0006",
       "priority": "need",
@@ -37444,7 +37444,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T14:53:07Z"
+      "updated": "2026-10-13T14:59:48Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94099,6 +94099,7 @@
       ],
       "backlinks": [
         "T-208099",
+        "T-208100",
         "T-208104"
       ],
       "children": [],
@@ -94130,7 +94131,7 @@
         "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py also held by T-208100 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94143,7 +94144,7 @@
       ],
       "title": "a red finding against the head it was measured on and the checks on the current head",
       "type": "task",
-      "updated": "2026-10-13T14:50:29Z",
+      "updated": "2026-10-13T14:59:48Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94160,8 +94161,7 @@
         "T-208097"
       ],
       "backlinks": [
-        "T-208104",
-        "B-200581"
+        "T-208104"
       ],
       "children": [],
       "decided": true,
@@ -94239,7 +94239,13 @@
         "asf redact --unpublished"
       ],
       "id": "T-208100",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them. T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them. T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94252,7 +94258,7 @@
       ],
       "title": "the card's acceptance quoted back from the record, never a pointer at the brief",
       "type": "task",
-      "updated": "2026-10-13T14:42:09Z",
+      "updated": "2026-10-13T14:59:48Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94260,12 +94266,14 @@
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
         "asf/kernel/questions.py",
-        "tests/kernel/test_question_card_read.py"
+        "tests/kernel/test_question_card_read.py",
+        "tests/kernel/test_question_resolvers.py"
       ]
     },
     "T-208101": {
       "backlinks": [
         "T-208098",
+        "T-208100",
         "T-208104"
       ],
       "children": [],
