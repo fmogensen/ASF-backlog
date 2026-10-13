@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T06:17:09Z",
+  "generated": "2026-10-13T06:26:17Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18116,20 +18116,19 @@
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/kernel/mainline.py:188-205 \u2014 neither confirmation source acceptance #1 names (the parent's own fresh check, or the revert PR's CI) is consulted; `red_independent` asks only whether another open PR already reads the signature red, so when main's own check is the first to run it the innocent merge is still reverted. Re-dispatch the last green parent's required checks (`A.DispatchMain`, as at asf/kernel/mainline.py:267) and hold the revert for that verdict, or emit the RevertPR without auto-merge and read its own CI; keep the open-PR match as an extra fast path, not the only one.",
-        "asf/kernel/mainline.py:218 \u2014 `kflake.entry(..., bug='')` leaves the entry bugless, so the next tick takes flake.judge's live/`not bug` path (asf/kernel/flake.py:383-389) into `_bugless_live`, which finds no cycle (mainline's body carries `main-red: ...`, not flake's marker) and no owner (mainline's FileBug leaves `signature=''`, asf/kernel/mainline.py:185) and files a second, flake Bug for the same red, against acceptance #1's \"one Bug naming the check\". Widen to `trunk_quarantine(reds, facts, config, bug='', bug_key='')`, pass them into `kflake.entry`, and supply mainline's own Bug at each return site: `bug=bug` at asf/kernel/mainline.py:304, `bug_key=a.key` at asf/kernel/mainline.py:310, and the id `filed()` matched at asf/kernel/mainline.py:307.",
-        "asf/ci_stall.py:217 \u2014 `refresh_max` threads the given `now` into the stream window but still calls `ci_measure.readings(events)` with no `now`, so the readings window stays on the real wall clock (asf/ci_measure.py:47-48,99-100) and a past `now` reads the right stream days then discards every event. Use `ci_measure.readings(events, now=datetime.datetime.fromtimestamp(now, datetime.timezone.utc))` and add `import datetime` at asf/ci_stall.py:40-45; the conversion is required because `ci_measure._now` does not accept the epoch seconds ci_stall uses.",
-        "asf/kernel/mainline.py:197-203 \u2014 `red_independent` counts any open PR's matching red as independent evidence, with no check that the PR is unrelated to the candidate, which flake's own rule requires (`shared`, asf/kernel/flake.py:179-187; `verdict`'s defect branch, asf/kernel/flake.py:211-213). Two open PRs touching the file the candidate broke make a genuine culprit read as independent and leave main red with no revert. Thread the candidate's files (already computed at asf/kernel/mainline.py:279) into `red_independent` and skip a PR where `set(pr.files or ()) & set(files)`.",
-        "Another session edits asf/kernel/mainline.py, asf/metrics/metrics.py, tests/kernel/test_main_landing.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "tests/test_metrics.py:2516 \u2014 widen the needle set to any wall-clock read in tests/test_tick_steps.py (today() through any binding: metrics.today(), metrics_mod.today(), a bare today() from a from-import; plus utcnow(, time.time(), .now() ), and take the day at tests/test_tick_steps.py:156,920,928 from the tick's own output (the --name-only list already in hand at tests/test_tick_steps.py:152 carries the written metrics/ticks/<day>.jsonl name) instead of a second clock read; needs tests/test_tick_steps.py added to writes:.",
+        "asf/metrics/metrics.py:106 \u2014 BARE_TODAY_RE matches only a metrics.-qualified, whitespace-free call, so metrics_mod.today() (the form tests/test_tick_steps.py:22 uses), a bare today() from a from-import, and metrics.today( ) all pass; resolve the metrics binding per file from its own import lines and flag a bare call of that binding with optional inner whitespace, counting calls only and not comment or docstring text, and extend the scanned set at tests/test_metrics.py:2505 from asf/ to tests/ as well.",
+        "asf/kernel/mainline.py:213 \u2014 an open PR proves independence without establishing that its tree excludes the candidate, so a PR brought up to the trunk head carries the candidate's merge and reads the same red because of it; require the base to predate the candidate: `if pr.merged or not pr.behind or (set(pr.files or ()) & set(files)): continue` (PR.behind, asf/kernel/model.py:228), or drop the open-PR path for parent_already_red plus the revert PR's own CI, the two sources acceptance 1 names.",
+        "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing.",
         "build-b-200581-1791868352: NEEDS OPERATOR: widen asf/kernel/decide.py's ORDER tuple (line ~313) to include asf.kernel.actions.DispatchMain, so the trunk-head dispatch path (asf.kernel.mainline.dispatch, already shipped) does not crash decide(\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18138,7 +18137,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T06:04:36Z",
+      "updated": "2026-10-13T06:26:02Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18184,7 +18183,7 @@
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18193,7 +18192,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T06:17:06Z",
+      "updated": "2026-10-13T06:26:02Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -36996,7 +36995,7 @@
       "state": "New",
       "title": "Review loops converge: proof before review, no repeated or contradicting findings",
       "type": "feature",
-      "updated": "2026-10-13T06:17:06Z"
+      "updated": "2026-10-13T06:26:02Z"
     },
     "F-0359": {
       "backlinks": [],
