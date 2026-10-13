@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T17:06:36Z",
+  "generated": "2026-10-13T17:10:04Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18457,6 +18457,40 @@
       "type": "bug",
       "updated": "2026-10-13T16:39:08Z"
     },
+    "B-211240": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-211240",
+      "parent": "F-0358",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "Review-loop rules that can stall or run unbounded: reworded findings, lost answers, uncapped free rounds",
+      "stage_since": "2026-10-13T17:08:38Z",
+      "state": "New",
+      "title": "Review-loop rules that can stall or run unbounded: reworded findings, lost answers, uncapped free rounds",
+      "type": "bug",
+      "updated": "2026-10-13T17:08:38Z"
+    },
+    "B-211241": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-211241",
+      "parent": "F-0358",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "Settle which ids a proof may judge before the proof gate can be turned on",
+      "stage_since": "2026-10-13T17:08:42Z",
+      "state": "New",
+      "title": "Settle which ids a proof may judge before the proof gate can be turned on",
+      "type": "bug",
+      "updated": "2026-10-13T17:08:42Z"
+    },
     "B-70500": {
       "backlinks": [],
       "children": [],
@@ -35929,9 +35963,7 @@
       "updated": "2026-10-10T17:34:09Z"
     },
     "F-0329": {
-      "backlinks": [
-        "F-0363"
-      ],
+      "backlinks": [],
       "children": [
         "S-91855",
         "S-91856",
@@ -37272,7 +37304,9 @@
         "T-206243",
         "T-206244",
         "T-206245",
-        "T-206246"
+        "T-206246",
+        "B-211240",
+        "B-211241"
       ],
       "decided": true,
       "folder": "features",
@@ -37464,21 +37498,14 @@
       "decided": false,
       "folder": "features",
       "id": "F-0363",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "docs/specs/f-0363.md:749 \u2014 replace the sentence with one that is true after F-0329, e.g. \"Each acceptance line is one physical line of plain text, on purpose: the reader is line-anchored, so a wrapped line reaches the minted card truncated. A code span is kept byte-for-byte (F-0329), so a backticked identifier reaches the card intact.\" Delete the clauses \"with no backticks\", \"and replaces every inline code span with one space before parsing\" and \"and an identifier inside backticks reaches it missing\": declared_stories (asf/record/idcheck.py:127-151) reads the lines out of the document text, not out of _prose, and docs/specs/f-0329.md:43-45 retires that instruction. No Story line in this file needs editing \u2014 all eight declarations already parse with every acceptance line intact.",
-        "docs/specs/f-0363.md:139 \u2014 P10 is false and takes \u00a72.9, A10 and D3 with it: `asf.scorecard.facts.load` builds its items from `load_cards(root)` -> `asf.record.core.load_items` (facts.py:546, 485-489; loop.py:478), and `score` reads those card-derived entries (score.py:210, 236-239), so `facts`/`score` read the cards, not `index.json` \u2014 only `pairs.load_items` reads the index. Two of the four fields P10 names are not in an index entry at all: `send_backs` and `reopens` come from the card body's `## History` via `facts.timeline` (facts.py:112-176), and `facts.card`'s `text` is the body too (facts.py:218-222, read at score.py:172), while P11/`core.build_index_data` (core.py:408-430) carries only typed and machine fields plus folder/children/backlinks. Fix: restate P10 to what the code does, then give \u00a72.9 (:387) a scorecard design that actually holds its numbers \u2014 either `facts.load_cards` also loading `ARCHIVE_FOLDERS`, or the archive entry freezing the body-derived timeline facts (`send_backs`, `reopens`, `closes`, `reopened`, `_description`), which widens \u00a72.2's entry shape \u2014 and restate D3's reason (:190) and A10/S-208625's \"identical before and after\" (:575, :828) from whichever is chosen",
-        "docs/specs/f-0363.md:106 \u2014 P3's \"114 call sites in 42 modules call `load_items`\" is the count of every mention of the name under `asf/` (116 grep hits less the two `def` lines at core.py:114 and scorecard/pairs.py:126), 36 of them imports; `core.load_items` has 61 call sites in 38 modules (`grep -rn \"load_items(\" asf/ --include=*.py | grep -v \"def load_items\"` -> 62, less pairs.py:142 calling pairs' own same-named function). Correct the number here and at :11, :21, :190 and :222 (\"all 114 call sites\", \"the 114 that do not\"); nothing in the design depends on its size",
-        "docs/specs/f-0363.md:406 \u2014 \u00a72.10 gives `load_items(root)`'s today as \"3,586 files, 73 MB\" and \u00a72.11 (:428) makes \"3,586 files\" the measure's baseline, but 3,586 is the preamble's count of every markdown file on the record (:4), including the 421 processed inbox notes `load_items` never opens (P1, P2, core.py:114-158; the intake directory is walked only by `scorecard.loop._inbox_has`, loop.py:252-260) and the `.md` views it skips beside a `.json` (core.py:131-132), while the \"after\" beside it (\"about 700\") counts cards. Replace both before-numbers with the cards `load_items` actually parses on that record, so the gate's two ends measure the same quantity"
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
         "spec-f-0363-1791900986: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "milestone": "0.4",
       "parent": "E-0006",
       "priority": "need",
@@ -37488,7 +37515,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T16:53:37Z"
+      "updated": "2026-10-13T17:10:02Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94339,7 +94366,7 @@
         "build-t-208100-1791910380: NEEDS OPERATOR: heartbeat command could not start \u2014 sandbox refused approval twice \u2014 `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208100-1791910380 'asf/build-t-208100-1791910380@20261013T165309Z' >/dev/nul\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94352,7 +94379,7 @@
       ],
       "title": "the card's acceptance quoted back from the record, never a pointer at the brief",
       "type": "task",
-      "updated": "2026-10-13T17:06:35Z",
+      "updated": "2026-10-13T17:10:02Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94452,7 +94479,7 @@
         "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py also held by T-208099 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94465,7 +94492,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T17:02:43Z",
+      "updated": "2026-10-13T17:10:02Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94637,7 +94664,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210356",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94650,7 +94677,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T15:38:50Z",
+      "updated": "2026-10-13T17:10:02Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py"
