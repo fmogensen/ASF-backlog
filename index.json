@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T10:15:53Z",
+  "generated": "2026-10-13T10:19:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18107,7 +18107,8 @@
     },
     "B-200581": {
       "backlinks": [
-        "F-0357"
+        "F-0357",
+        "B-200932"
       ],
       "children": [],
       "decided": true,
@@ -18197,12 +18198,15 @@
         "granted asf/kernel/ports.py. One more round, the two findings of the latest review as worded: mainline.py:310 (a new Facts.revert_prs filled by ports._prs; when a revert PR for the item already exists, open or closed unmerged, return 'waits on the revert' and open none) and mainline.py:213 (when the merge has scrolled off the window, fall back to the item's newest merged PR not in the window and not reverted). Each test must fail on base. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/ports.py. One more round, the two findings of the latest review as worded: mainline.py:310 (a new Facts.revert_prs filled by ports._prs; when a revert PR for the item already exists, open or closed unmerged, return 'waits on the revert' and open none) and mainline.py:213 (when the merge has scrolled off the window, fall back to the item's newest merged PR not in the window and not reverted). Each test must fail on base. Nothing else."
+        "relaunch: operator answer: granted asf/kernel/ports.py. One more round, the two findings of the latest review as worded: mainline.py:310 (a new Facts.revert_prs filled by ports._prs; when a revert PR for the item already exists, open or closed unmerged, return 'waits on the revert' and open none) and mainline.py:213 (when the merge has scrolled off the window, fall back to the item's newest merged PR not in the window and not reverted). Each test must fail on base. Nothing else.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 3,
       "kernel_findings": [
+        "asf/kernel/mainline.py:310 \u2014 before line 319 return `[], {'sha': red.sha, 'kind': RED, 'action': 'waits on the revert of #%d (%s)' % (c.pr, it.id)}` whenever a PR on `revert_prefix(config) + it.id` already exists (open or closed unmerged), reading it off a new `Facts.revert_prs` that `ports._prs` fills at ports.py:1648-1650 instead of discarding, so the kernel opens the revert once and never re-creates one the operator closed; declare `needs writes: asf/kernel/facts.py`",
+        "asf/kernel/mainline.py:213 \u2014 when `hit is None`, fall back to the newest `p` in `facts.prs` with `p.merged and p.item_id == it.id and p.number not in {c.pr for c in mains} and p.number not in it.reverted` (any merge absent from the window is necessarily older than the revert commit) and build the note/finding with the existing no-commit fallbacks, so a revert whose merge has scrolled off the 15-commit window is still recorded instead of leaving the item Done with its work off the trunk",
         "asf/kernel/needed.py:272 \u2014 the `make(State.DONE)` is discarded next tick, because `asf/kernel/decide.py:831` refuses a Done card while `kernel_reverted` holds the PR, so the item relaunches forever (probed: tick 1 DONE/no launch, tick 2 READY/launched ['B-0097']); add `A.RevertUndone(item_id, pr)` in actions.py (+ORDER, +PROGRESS, +describe), apply it in apply.py as `P.REVERTED` minus that PR, emit one per `n in it.reverted` beside the Done, and extend the acceptance test with the tick after (apply \u2192 re-read \u2192 still DONE, no launch)",
         "asf/kernel/needed.py:268 \u2014 absence of the revert branch from `Facts.main`'s 15-commit window is also \"the revert aged out\", so a failed rebuild is closed Done and the work dropped (probed: DONE with the gate line \"its earlier work is still there\" against a trunk the revert had scrolled off); require the reverted merge itself to still be in the window \u2014 `elif (it.reverted and facts.main and prefix + p.item_id not in reverting and any(c.pr in it.reverted for c in facts.main)):` \u2014 and reword the gate line to what that reads",
         "tests/kernel/test_main_landing.py:232 \u2014 `test_a_revert_pr_closed_unmerged_yields_no_launch_for_the_item` models no revert PR and a green trunk, so every changed path is unreachable and it is green on 2522e4b; rebuild it as main still red, two ticks (apply the first tick's RevertPR, re-read, assert `State.DONE`, no launch, `P.REVERTED` empty), which the base gets wrong",
@@ -18222,15 +18226,17 @@
         "asf/kernel/incidents.py:99 \u2014 key _revert_records off A.RevertLanded (files/lines/checks from main_by_pr[a.pr]) or dedupe by (item, sha), so the ledger holds one `revert` row per revert instead of one per red tick now that RevertPR is re-planned every tick",
         "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "operator answer: granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now.",
-        "operator answer: One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit."
+        "operator answer: One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit.",
+        "operator answer: granted asf/kernel/ports.py. One more round, the two findings of the latest review as worded: mainline.py:310 (a new Facts.revert_prs filled by ports._prs; when a revert PR for the item already exists, open or closed unmerged, return 'waits on the revert' and open none) and mainline.py:213 (when the merge has scrolled off the window, fall back to the item's newest merged PR not in the window and not reverted). Each test must fail on base. Nothing else.",
+        "shared files: asf/kernel/actions.py, asf/kernel/apply.py, asf/kernel/decide.py, asf/kernel/mainline.py, asf/kernel/ports.py, tests/kernel/test_main_landing.py also held by B-200581 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 5,
+      "kernel_fix_rounds": 6,
       "kernel_notes": [
         "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building.",
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18239,7 +18245,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T10:15:48Z",
+      "updated": "2026-10-13T10:19:20Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -37269,7 +37275,8 @@
       "kernel_fix_rounds": 0,
       "kernel_notes": [
         "spec-f-0362-1791880334: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" and (.at // \"\") < \"2026-10-\u2026",
-        "spec-f-0362-1791882733: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" and (.at // \"\") < \"2026-10-\u2026"
+        "spec-f-0362-1791882733: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" and (.at // \"\") < \"2026-10-\u2026",
+        "plan-f-0362-1791884815: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture `tests/fixtures/replay/questions-2026-10-12.jsonl` (spec \u00a72.9, plan Task 8 step 6) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\"\u2026"
       ],
       "kernel_state": "building",
       "milestone": "0.4",
@@ -37281,7 +37288,7 @@
       "state": "New",
       "title": "Session questions are answered by code, not by the console (replaces F-0359)",
       "type": "feature",
-      "updated": "2026-10-13T09:47:42Z"
+      "updated": "2026-10-13T10:19:20Z"
     },
     "R-0001": {
       "backlinks": [
