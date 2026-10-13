@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T23:10:15Z",
+  "generated": "2026-10-13T23:14:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18482,10 +18482,18 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
+      "kernel_findings": [
+        "asf/kernel/ports.py:1145 \u2014 drop publish.discard_dirt (and delete asf/record/publish.py:51-60): it hard-resets the operator's record checkout, which asf/tick/shadow.py:14-16 states is \"clean and on the trunk, never a reset\" and probe_operator_checkout refuses on (shadow.py:272-278, --untracked-files=no, touching nothing). Return the named paths and stop, as the card's clause 2 asks; keep the mint's rollback but bound it to the mint's own paths via _put_back (publish.py:191), and for the killed-process case record the intended paths in a .git/ marker (as shadow.py:333-345 does) and clean up only what it names.",
+        "asf/kernel/ports.py:1154 \u2014 a behind-only checkout is not a breach: the live tick pushes record commits from its own clone (shadow.py:10-13) and sync_operator_checkout runs in the product tick (tick.py:342), never in the kernel tick, so behind is backlog_dir's normal steady state. As shipped, loop.py:811 makes that suppress intake minting on most ticks. Branch on the pair: ahead+behind -> report both (C5); ahead alone -> the existing push retry; behind alone -> not a breach (return None, or call shadow.sync_operator_checkout and report only its refusal).",
+        "asf/kernel/ports.py:1115 \u2014 drop the `if created:` gate and call publish_changes unconditionally (it already no-ops on no change, publish.py:265-268): process_inbox also writes without minting \u2014 the \"## Question\" write (asf/groom/inbox.py:512-514) and the repeat-Bug add_evidence + move_to_done (:497-499) \u2014 and loop.py:827 gates the end-of-tick publish too, so those writes strand, then get discarded by the next tick, rewriting an undecided note's file and resetting its mtime against ports.py:1171-1173's stated invariant.",
+        "asf/kernel/ports.py:1143-1151 \u2014 guard with shadow.probe_operator_checkout(self.product, out=None) before resetting or pushing: checkout_breach checks neither the off-trunk/detached HEAD case (shadow.py:263-268) nor backlog_dir == record_dir (shadow.py:259-260), so it can reset a side-branch HEAD and push it to origin/<trunk> (shadow.py:122), or hard-reset the live tick's own record clone while that tick is mid-write (the kernel tick holds only its own lock, loop.py:802).",
+        "asf/kernel/ports.py:1149-1155 \u2014 handle `ahead and behind` before either single case and name the stranded commits with publish.left_ahead (publish.py:75-78, unused by this diff): a truly diverged checkout falls through to the behind message, so a minted-but-unpushed card is never named or retried \u2014 clause 4 left open in the one state that produces it. test_diverged_checkout_is_reported (tests/kernel/test_intake_mint_atomic.py:117-135) builds a behind-only checkout, so this combination is untested."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18495,7 +18503,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T23:07:38Z",
+      "updated": "2026-10-13T23:14:52Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18515,7 +18523,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
@@ -18551,7 +18560,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T22:00:35Z",
+      "updated": "2026-10-13T23:14:52Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18664,7 +18673,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T22:58:52Z",
+      "updated": "2026-10-13T23:14:52Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -18778,7 +18787,7 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T23:04:28Z",
+      "updated": "2026-10-13T23:14:52Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_landing.py"
@@ -95344,10 +95353,11 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
-        "3cb9d359": "{'head': \"{'head': '66c6ec92f83467abec428cc839014b02eb1c30be', 'line': 'tests/kernel/test_satisfied_not_relaunched.py:189'}\", 'line': ''}",
-        "413fef26": "{'head': '336cd91ca68282f487c6cbefef3e48b69dfe991e', 'line': 'asf/kernel/needed.py:24'}",
-        "80edd973": "{'head': '336cd91ca68282f487c6cbefef3e48b69dfe991e', 'line': 'asf/kernel/needed.py:140'}",
-        "b688539e": "{'head': \"{'head': '66c6ec92f83467abec428cc839014b02eb1c30be', 'line': 'asf/kernel/needed.py:316'}\", 'line': ''}"
+        "3cb9d359": "{'head': '{\\'head\\': \"{\\'head\\': \\'66c6ec92f83467abec428cc839014b02eb1c30be\\', \\'line\\': \\'tests/kernel/test_satisfied_not_relaunched.py:189\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
+        "413fef26": "{'head': '046eccf49ab392995af69da3759c3ccc80d29374', 'line': 'asf/kernel/needed.py:24'}",
+        "4f226de3": "{'head': '046eccf49ab392995af69da3759c3ccc80d29374', 'line': 'asf/kernel/needed.py:26'}",
+        "80edd973": "{'head': '046eccf49ab392995af69da3759c3ccc80d29374', 'line': 'asf/kernel/needed.py:140'}",
+        "b688539e": "{'head': '{\\'head\\': \"{\\'head\\': \\'66c6ec92f83467abec428cc839014b02eb1c30be\\', \\'line\\': \\'asf/kernel/needed.py:316\\'}\", \\'line\\': \\'\\'}', 'line': ''}"
       },
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -95376,7 +95386,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T23:04:28Z",
+      "updated": "2026-10-13T23:14:52Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95634,8 +95644,9 @@
       ],
       "id": "T-210361",
       "kernel_closed_findings": {
-        "94c68f70": "{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/incidents.py:130'}",
-        "ed52e4dd": "{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/ports.py:1817'}"
+        "94c68f70": "{'head': \"{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/incidents.py:130'}\", 'line': ''}",
+        "ed52e4dd": "{'head': \"{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/ports.py:1817'}\", 'line': ''}",
+        "fa2d54ba": "{'head': '87562aa748cf6b32cb57c318919d12a8ca7f0ad5', 'line': 'asf/kernel/incidents.py:111'}"
       },
       "kernel_findings": [
         "asf/kernel/incidents.py:111 \u2014 `_landed_blame` takes the first MAIN_RED row with a truthy blame, but `_key` (:59-75) keys MAIN_RED on the spell alone, so the ledger holds only the spell's FIRST tick \u2014 whose probe is unanswered, so its blame is `unproven`/`test: ''`. The landed revert's row therefore records that the read was never made, the opposite of acceptance line 9 and Step 4. The existing case passes only because `guilty_world()` pre-seeds `f.blame`. Let `observe` (:221-235) upgrade a held MAIN_RED row whose stored blame is not guilty when this tick's is (keep `_key` unchanged), and make `_landed_blame` scan `reversed(ledger)` for a row whose `blame['cls'] == 'guilty'`, returning None otherwise \u2014 a revert is only ever opened on a guilty read (mainline.py:795). Add the two-tick case to tests/kernel/test_revert_merged.py:219-256: record a tick with `f.blame` empty, then a tick with the answer seeded, then land, and assert `rec['blame']['cls'] == blame.GUILTY` and `rec['blame']['test'] == ID_A`.",
@@ -95658,7 +95669,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T23:04:28Z",
+      "updated": "2026-10-13T23:14:52Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
