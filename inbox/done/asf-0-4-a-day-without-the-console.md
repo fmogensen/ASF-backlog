@@ -1,3 +1,5 @@
+→ retired: Filed by mistake as an Epic named after a version. Under the record model a version is a milestone; the work is filed as Features carrying milestone 0.4 under a thematic Epic. (2026-10-13)
+
 # ASF 0.4 — a day without the console
 
 Type: Epic
