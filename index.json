@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T01:16:09Z",
+  "generated": "2026-10-13T01:19:10Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18113,7 +18113,8 @@
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_notes": [
-        "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block"
+        "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
+        "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing."
       ],
       "parent": "F-0346",
       "schema_version": 2,
@@ -18123,7 +18124,20 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T01:02:56Z"
+      "updated": "2026-10-13T01:19:06Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "asf/ci_stall.py",
+        "asf/ci_cancels.py",
+        "asf/doctor.py",
+        "asf/kernel/mainline.py",
+        "tests/test_metrics.py",
+        "tests/test_ci_stall.py",
+        "tests/test_ci_cancels.py",
+        "tests/test_doctor.py",
+        "tests/kernel/test_main_landing.py",
+        "tests/kernel/test_flake.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -92194,7 +92208,7 @@
         1678
       ],
       "kernel_stack": "worker/T-166578@d1e2494acdcc14b34c3350a45bcb877f6fda5712",
-      "kernel_state": "done",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -92207,7 +92221,7 @@
       ],
       "title": "a session's identity is opaque to the kernel and named only in a connector",
       "type": "task",
-      "updated": "2026-10-13T01:16:06Z",
+      "updated": "2026-10-13T01:19:06Z",
       "writes": [
         "asf/connectors/__init__.py",
         "asf/connectors/protocols.py",
