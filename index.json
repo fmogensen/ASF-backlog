@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T21:51:08Z",
+  "generated": "2026-10-13T21:55:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18475,7 +18475,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T21:47:54Z",
+      "updated": "2026-10-13T21:55:23Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18779,7 +18779,7 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T21:43:16Z",
+      "updated": "2026-10-13T21:55:23Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_landing.py"
@@ -94316,6 +94316,7 @@
       ],
       "kernel_attempts": [
         "launch: launch: branch fix/T-206240-review-loops-part1 checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-aaad56de0523e1b2b; waits until it's released",
+        "launch: launch: branch fix/T-206240-rereview-scope checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-af70284b807b5dd58; waits until it's released",
         "launch: launch: branch fix/T-206240-rereview-scope checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-af70284b807b5dd58; waits until it's released"
       ],
       "kernel_extra_rounds": 0,
@@ -94340,7 +94341,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T21:47:54Z",
+      "updated": "2026-10-13T21:55:23Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
@@ -94825,7 +94826,7 @@
         "build-t-208099-1791921910: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208099-1791921910 'asf/build-t-208099-1791921910@20261013T200519Z' >/dev/null 2>&1 &`, both a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94838,7 +94839,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T21:47:54Z",
+      "updated": "2026-10-13T21:55:23Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95163,7 +95164,7 @@
         "asf/clock.py:55-70 \u2014 iso/today/stamp stamp a given instant without normalizing it to UTC, so a non-UTC-aware instant is written with a literal Z carrying its local fields (clock.iso(2026-03-14T15:09:26+09:00) -> \"2026-03-14T15:09:26Z\", should be \"2026-03-14T06:09:26Z\"; clock.today is off by a whole day at an offset) and clock.stamp reads a naive instant as local time. Add a _utc(instant) helper beside _at \u2014 astimezone(datetime.timezone.utc), with a naive instant taken as UTC via replace(tzinfo=...) \u2014 and have iso, today and stamp's given-instant branch go through it; leave now() on _at as Step 3 asks. This is the house pattern the replaced code already had (asf/metrics/metrics.py:89,102; asf/scorecard/facts.py:72,76). Add two cases beside tests/test_clock.py:77: iso/today/stamp of an instant at a non-UTC offset equal the same instant's UTC stamp, and of a naive instant are read as UTC."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95176,7 +95177,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T21:51:07Z",
+      "updated": "2026-10-13T21:55:23Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -95217,6 +95218,10 @@
       "kernel_answers": [
         "granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
       ],
+      "kernel_closed_findings": {
+        "3cb9d359": "{'head': '66c6ec92f83467abec428cc839014b02eb1c30be', 'line': 'tests/kernel/test_satisfied_not_relaunched.py:189'}",
+        "b688539e": "{'head': '66c6ec92f83467abec428cc839014b02eb1c30be', 'line': 'asf/kernel/needed.py:316'}"
+      },
       "kernel_extra_rounds": 0,
       "kernel_findings": [
         "asf/kernel/needed.py:316 \u2014 the relaunch arm must also deny the new empty-diff Done to an item still marked reverted, whose revert is landed on the trunk: change `elif revert_live or _proving_red(it, facts.items, facts):` to `elif revert_live or it.reverted or _proving_red(it, facts.items, facts):`, and correct the docstring at :270-274 to list three surviving EMPTY_FINDING cases, not two. As written, such an item reaches the final `else` whenever `test_ids` is `[]` (card names no proving test, or more than resolvers.MAX_IDS=20) and is marked Done with a false \"nothing left to change\" note and a SATISFIED gate line, contradicting the B-200932 sentence kept at :272-274; because that arm emits no RevertUndone, decide.py:866 then discards the Done and relaunches the item next tick \u2014 B-200932's endless empty rebuild, with no finding left for the next session.",
@@ -95242,7 +95247,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T21:43:16Z",
+      "updated": "2026-10-13T21:55:23Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95337,7 +95342,7 @@
         "relaunch: operator answer: granted asf/groom/groom.py asf/capacity.py asf/workers/cloud.py asf/kernel/status.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel). asf/kernel/status.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_stack": "worker/T-210355@f131d782d4d57bd57b617cc46815fa12f565be87",
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95350,7 +95355,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-13T20:59:26Z",
+      "updated": "2026-10-13T21:55:23Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
