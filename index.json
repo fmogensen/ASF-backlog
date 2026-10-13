@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T23:28:43Z",
+  "generated": "2026-10-13T23:33:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18451,10 +18451,11 @@
       "kernel_notes": [
         "build-b-208187-1791926710: NEEDS OPERATOR: the acceptance bullet \"the per-card migration path then refuses 0 cards of a copy of a real record of this size\" is still unchecked \u2014 this host and CI have no real record (the only corpus is sample/b\u2026",
         "PR #1726: install-clean-macos is red but not a required check \u2014 ignored",
-        "build-b-208187-1791929672: NEEDS OPERATOR: confirm the per-card migration path refuses 0 cards after card_repair on a copy of the real 2,913-card record (no record is available in this container or in CI; verified here only on a synthetic 6-c\u2026"
+        "build-b-208187-1791929672: NEEDS OPERATOR: confirm the per-card migration path refuses 0 cards after card_repair on a copy of the real 2,913-card record (no record is available in this container or in CI; verified here only on a synthetic 6-c\u2026",
+        "build-b-208187-1791933475: NEEDS OPERATOR: confirm the per-card migration path refuses 0 cards after card_repair on a copy of the real ~2,913-card record (no such record is available in this container) \u2014 `python3 -c \"from asf.record import re\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18464,7 +18465,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T23:18:22Z",
+      "updated": "2026-10-13T23:33:30Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18498,7 +18499,7 @@
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18508,7 +18509,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T23:14:52Z",
+      "updated": "2026-10-13T23:33:30Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18540,7 +18541,7 @@
         "PR #1728: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18550,7 +18551,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T23:18:22Z",
+      "updated": "2026-10-13T23:33:30Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18653,7 +18654,7 @@
         "PR #1729: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18663,7 +18664,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T23:28:41Z",
+      "updated": "2026-10-13T23:33:30Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -18771,7 +18772,7 @@
         "shared files: asf/kernel/mainline.py, tests/kernel/test_main_landing.py also held by T-210360 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0357",
       "schema_version": 3,
       "severity": "S3",
@@ -18780,7 +18781,7 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T23:28:41Z",
+      "updated": "2026-10-13T23:33:30Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_landing.py"
@@ -18810,7 +18811,7 @@
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18820,7 +18821,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-13T22:58:52Z",
+      "updated": "2026-10-13T23:33:30Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -95475,7 +95476,7 @@
         "ended without a REPORT"
       ],
       "kernel_stack": "worker/T-210355@f131d782d4d57bd57b617cc46815fa12f565be87",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95488,7 +95489,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-13T23:25:12Z",
+      "updated": "2026-10-13T23:33:30Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -95700,6 +95701,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210362",
+      "kernel_stack": "worker/T-210360@9e4e8740933af01b3ccf73a95c03c4468f880505",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95712,7 +95714,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-13T15:35:08Z",
+      "updated": "2026-10-13T23:33:30Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
