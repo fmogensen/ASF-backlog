@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T22:12:52Z",
+  "generated": "2026-10-13T22:15:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18446,7 +18446,7 @@
         "PR #1726: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18456,7 +18456,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T22:12:51Z",
+      "updated": "2026-10-13T22:15:00Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18480,7 +18480,7 @@
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18490,7 +18490,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T19:56:41Z",
+      "updated": "2026-10-13T22:15:00Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18801,6 +18801,44 @@
         "tests/fixtures/review_findings_283.jsonl",
         "tests/fixtures/harvest_review_findings.py"
       ]
+    },
+    "B-216547": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-216547",
+      "kernel_notes": [
+        "satisfied on main at 904ae82b7: tests.kernel.test_review_measure, tests.kernel.test_rereview_scope"
+      ],
+      "kernel_state": "done",
+      "parent": "F-0358",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
+      "stage_since": "2026-10-13T22:13:38Z",
+      "state": "New",
+      "title": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
+      "type": "bug",
+      "updated": "2026-10-13T22:15:00Z"
+    },
+    "B-216548": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-216548",
+      "parent": "F-0358",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "A second landing files no follow-up Bug for its later findings",
+      "stage_since": "2026-10-13T22:13:41Z",
+      "state": "New",
+      "title": "A second landing files no follow-up Bug for its later findings",
+      "type": "bug",
+      "updated": "2026-10-13T22:13:41Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -37622,7 +37660,9 @@
         "B-211240",
         "B-211241",
         "B-211642",
-        "B-214946"
+        "B-214946",
+        "B-216547",
+        "B-216548"
       ],
       "decided": true,
       "folder": "features",
@@ -94791,11 +94831,12 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
-        "146fa521": "{'head': \"{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/resolvers.py:606'}\", 'line': ''}",
-        "37e0f605": "{'head': \"{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/resolvers.py:681'}\", 'line': ''}",
-        "3a1267c9": "{'head': 'a44cfade023891236ac9740f8e05b3bbb7f517aa', 'line': 'asf/kernel/resolvers.py:736'}",
-        "3bfac4bc": "{'head': \"{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/decide.py:1341'}\", 'line': ''}",
-        "4709f0f2": "{'head': \"{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/questions.py:191'}\", 'line': ''}"
+        "146fa521": "{'head': '{\\'head\\': \"{\\'head\\': \\'c31003babc20e7accf250898c18136afe8eb4fe5\\', \\'line\\': \\'asf/kernel/resolvers.py:606\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
+        "2761248b": "{'head': 'aacff8e8c6f0bcb9c33b4d7ebcc9114c60393dfd', 'line': 'asf/kernel/resolvers.py:744'}",
+        "37e0f605": "{'head': '{\\'head\\': \"{\\'head\\': \\'c31003babc20e7accf250898c18136afe8eb4fe5\\', \\'line\\': \\'asf/kernel/resolvers.py:681\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
+        "3a1267c9": "{'head': 'aacff8e8c6f0bcb9c33b4d7ebcc9114c60393dfd', 'line': 'asf/kernel/resolvers.py:736'}",
+        "3bfac4bc": "{'head': '{\\'head\\': \"{\\'head\\': \\'c31003babc20e7accf250898c18136afe8eb4fe5\\', \\'line\\': \\'asf/kernel/decide.py:1341\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
+        "4709f0f2": "{'head': '{\\'head\\': \"{\\'head\\': \\'c31003babc20e7accf250898c18136afe8eb4fe5\\', \\'line\\': \\'asf/kernel/questions.py:191\\'}\", \\'line\\': \\'\\'}', 'line': ''}"
       },
       "kernel_extra_rounds": 1,
       "kernel_findings": [
@@ -94812,7 +94853,11 @@
         "build-t-208099-1791921910: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208099-1791921910 'asf/build-t-208099-1791921910@20261013T200519Z' >/dev/null 2>&1 &`, both a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "conflict: PR #1723 after 4 fix rounds",
+      "kernel_stuck_since": "2026-10-13T22:14:00Z",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94825,7 +94870,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T22:04:20Z",
+      "updated": "2026-10-13T22:15:00Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95004,7 +95049,7 @@
         "build-t-208102-1791918911: NEEDS OPERATOR: heartbeat command refused to start by the sandbox; continued per instructions since a beat that cannot start never ends the session \u2014 `sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208102-1791918911\u2026"
       ],
       "kernel_rebuilds": 2,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -95017,7 +95062,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T22:04:20Z",
+      "updated": "2026-10-13T22:15:00Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
