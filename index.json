@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T17:58:20Z",
+  "generated": "2026-10-13T18:02:32Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -94066,7 +94066,8 @@
         "T-206243"
       ],
       "backlinks": [
-        "T-206246"
+        "T-206246",
+        "T-208100"
       ],
       "children": [],
       "decided": true,
@@ -94358,12 +94359,17 @@
         "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them. T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
       "kernel_extra_rounds": 0,
+      "kernel_findings": [
+        "rebase: PR #1720 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "shared files: asf/kernel/decide.py, asf/kernel/ports.py also held by T-206245 \u2014 additive edits only, never a rewrite"
+      ],
       "kernel_fix_rounds": 0,
       "kernel_notes": [
-        "build-t-208100-1791910380: NEEDS OPERATOR: heartbeat command could not start \u2014 sandbox refused approval twice \u2014 `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208100-1791910380 'asf/build-t-208100-1791910380@20261013T165309Z' >/dev/nul\u2026"
+        "build-t-208100-1791910380: NEEDS OPERATOR: heartbeat command could not start \u2014 sandbox refused approval twice \u2014 `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208100-1791910380 'asf/build-t-208100-1791910380@20261013T165309Z' >/dev/nul\u2026",
+        "round not charged: a rebase round: PR #1720 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94376,7 +94382,7 @@
       ],
       "title": "the card's acceptance quoted back from the record, never a pointer at the brief",
       "type": "task",
-      "updated": "2026-10-13T17:58:18Z",
+      "updated": "2026-10-13T18:02:18Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94608,7 +94614,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210355",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94621,7 +94627,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T17:06:35Z",
+      "updated": "2026-10-13T18:02:18Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
