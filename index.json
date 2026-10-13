@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T00:47:24Z",
+  "generated": "2026-10-13T00:52:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18059,12 +18059,18 @@
       "id": "B-200179",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_findings": [
+        "red: tests (3.12)",
+        "red: tests (3.13)",
+        "Another session edits tests/kernel/test_stacked_builds.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-200179-1791850046: groom-fill raised risk high: Reproduced the false-LIMBO/merge-breach bug live (waits.classify keeps a stacked item's wait class 'merge' regardless of PR.base); the retarget half of the original acceptance is already in flight on PR #1677 (T-160210, S-135959 under the same parent F-0348), so scope is narrowed to the uncovered classification fix.",
         "PR #1683: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1683: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0348",
       "schema_version": 2,
       "severity": "S3",
@@ -18073,12 +18079,27 @@
       "state": "New",
       "title": "Approved stacked PR sits in LIMBO: its base is the predecessor branch, not the trunk",
       "type": "bug",
-      "updated": "2026-10-13T00:44:32Z",
+      "updated": "2026-10-13T00:52:13Z",
       "writes": [
         "asf/kernel/waits.py",
         "tests/kernel/test_waits.py",
         "tests/kernel/test_stacked_builds.py"
       ]
+    },
+    "B-200380": {
+      "backlinks": [],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-200380",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.2.167",
+      "rank": -6,
+      "schema_version": 2,
+      "stage_since": "2026-10-13T00:33:18Z",
+      "state": "New",
+      "title": "main red at ab7c9d9ba: tests (3.12), tests (3.13) \u2014 2 candidate change(s)",
+      "type": "bug",
+      "updated": "2026-10-13T00:52:13Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -90502,7 +90523,11 @@
         "granted asf/record/ids.py tests/test_harvest.py tests/test_cli.py tests/test_path_resolution.py tests/test_card_schema.py; nothing else outside writes (card updated by the kernel). asf/record/ids.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -90551,7 +90576,7 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90564,7 +90589,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T00:47:23Z",
+      "updated": "2026-10-13T00:52:13Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
@@ -92114,7 +92139,8 @@
       ],
       "backlinks": [
         "T-166582",
-        "B-200179"
+        "B-200179",
+        "B-200380"
       ],
       "children": [],
       "decided": true,
@@ -92136,7 +92162,7 @@
         1678
       ],
       "kernel_stack": "worker/T-166578@d1e2494acdcc14b34c3350a45bcb877f6fda5712",
-      "kernel_state": "done",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -92149,7 +92175,7 @@
       ],
       "title": "a session's identity is opaque to the kernel and named only in a connector",
       "type": "task",
-      "updated": "2026-10-13T00:47:23Z",
+      "updated": "2026-10-13T00:52:13Z",
       "writes": [
         "asf/connectors/__init__.py",
         "asf/connectors/protocols.py",
@@ -92165,7 +92191,8 @@
         "T-166581"
       ],
       "backlinks": [
-        "B-200179"
+        "B-200179",
+        "B-200380"
       ],
       "children": [],
       "decided": true,
