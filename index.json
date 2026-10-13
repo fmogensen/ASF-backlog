@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T14:10:10Z",
+  "generated": "2026-10-13T14:13:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18130,6 +18130,8 @@
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 5,
       "kernel_findings": [
+        "asf/kernel/mainline.py:513 \u2014 a red check's name missing from a settled revert PR is read as terminal ('unanswered') and abandons the revert, though a `needs:`-gated check run does not exist until its dependency concludes (`tests: needs: [changes, checks, part]`, and `tests (3.1x)` are the required checks); extend the grace the empty check list already gets to any unreported red name: replace lines 513-514 with `if not (names <= {c.name for c in pr.checks}) and _within_grace(pr, facts, config): return 'waiting'` before `return 'unanswered'`, and add the case that is red today \u2014 a revert PR inside its grace carrying one completed non-red check must be 'waiting' and plan no ClosePR (the committed 'absent'/'no ci' subtests at tests/kernel/test_main_landing.py:735 run nine hours past the grace and stay green).",
+        "asf/kernel/ports.py:1719 \u2014 `_revert_fact` drops `autoMergeRequest`, which the open listing already carries (PR_FIELDS, ports.py:1318; `_open_pr` reads it at :1746), so `rpr.auto_merge` is always False and the finalize guard at mainline.py:667 never fires: `RevertPR` is re-emitted every tick until the revert merges, each one a `gh pr merge --auto` write and another \"the revert is finalized\" tick record. Add `auto_merge=bool(d.get('autoMergeRequest')),` beside `closed=closed` at ports.py:1732, and assert it off a listing-built fact (`B.of(plan, A.RevertPR) == []`), which is what tests/kernel/test_main_landing.py:621's second half currently asserts against a fact the port cannot produce.",
         "asf/kernel/mainline.py:365 \u2014 `revert_ci` has no terminal state when a red check does not reproduce on the revert PR (a name absent from it, or `cancelled`/`action_required`, or no CI at all), so the held revert waits for ever and the trunk stays red where base recovered. Read the answer off the names that exist on the PR (`want = names & {c.name for c in pr.checks}`) once the PR's own checks have settled, treat `want` empty as \"this PR will never answer\", and give that case a terminal leg in `judge` (mainline.py:505-524): re-emit the `RevertPR` with `auto_merge=True`, or close it and file the Bug as the abandon leg at :517-521 does. Add a case alongside tests/kernel/test_main_landing.py:522 that is red on this head.",
         "asf/kernel/mainline.py:509 \u2014 the abandon leg writes nothing the next tick can read, so after the ClosePR the revert PR is re-opened every tick (new PR on the kept branch, full CI matrix, red again, closed again). Add the abandoned case as a third independence source at `mainline.py:478`: `or bool(filed(facts, bug_key(red, green)))` (or `all(kflake.live(s, facts) for s in sigs)`), and pin it with a `MainRed` case that runs the abandon tick, drops the closed PR from `orphan_prs`, puts that tick's Bug on the record and asserts no `RevertPR` \u2014 red on 235c4911f.",
         "asf/kernel/mainline.py:462 \u2014 `open_revert_pr` reads the revert PR from `facts.prs`, which `asf/kernel/ports.py:1647` strips of every revert-prefixed branch, so `revert_ci` is permanently `'waiting'` and the held revert never merges: surface the kernel's own revert PR as a fact (stop skipping revert branches in `_prs`' open listing, or add a `revert_prs()` port read plus a `Facts` field) and read it there; report `needs writes: asf/kernel/facts.py` if a new field is used",
@@ -18146,9 +18148,9 @@
         "asf/kernel/mainline.py:213 \u2014 an open PR proves independence without establishing that its tree excludes the candidate, so a PR brought up to the trunk head carries the candidate's merge and reads the same red because of it; require the base to predate the candidate: `if pr.merged or not pr.behind or (set(pr.files or ()) & set(files)): continue` (PR.behind, asf/kernel/model.py:228), or drop the open-PR path for parent_already_red plus the revert PR's own CI, the two sources acceptance 1 names.",
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "operator answer: One more round, the single finding of the latest review as worded: mainline.py:509 \u2014 the abandon leg must leave something the next tick reads, so an abandoned revert is not re-opened every tick; add the abandoned case as a third independence source at mainline.py:478 as the finding gives it, with a two-tick test (abandon, then no new RevertPR) that fails on base. Nothing else.",
-        "shared files: asf/kernel/decide.py, asf/kernel/ports.py also held by T-208097 \u2014 additive edits only, never a rewrite"
+        "shared files: asf/kernel/decide.py, asf/kernel/ports.py also held by T-208099 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 7,
+      "kernel_fix_rounds": 8,
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing.",
@@ -18157,7 +18159,7 @@
         "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18166,7 +18168,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T14:10:08Z",
+      "updated": "2026-10-13T14:13:35Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -37412,7 +37414,7 @@
       "kernel_notes": [
         "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "milestone": "0.4",
       "parent": "E-0006",
       "priority": "need",
@@ -37422,7 +37424,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T13:55:57Z"
+      "updated": "2026-10-13T14:13:35Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94030,8 +94032,7 @@
         "T-208099",
         "T-208100",
         "T-208102",
-        "T-208104",
-        "B-200581"
+        "T-208104"
       ],
       "children": [],
       "decided": true,
@@ -94102,7 +94103,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94115,7 +94116,7 @@
       ],
       "title": "a red finding against the head it was measured on and the checks on the current head",
       "type": "task",
-      "updated": "2026-10-13T14:04:08Z",
+      "updated": "2026-10-13T14:13:35Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94132,7 +94133,8 @@
         "T-208097"
       ],
       "backlinks": [
-        "T-208104"
+        "T-208104",
+        "B-200581"
       ],
       "children": [],
       "decided": true,
