@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:35:51Z",
+  "generated": "2026-10-13T19:39:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18328,7 +18328,9 @@
       "updated": "2026-10-13T06:56:16Z"
     },
     "B-205135": {
-      "backlinks": [],
+      "backlinks": [
+        "B-213443"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -18367,7 +18369,7 @@
       "kernel_ruled_findings": [
         "e41445c4"
       ],
-      "kernel_state": "review",
+      "kernel_state": "done",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18377,7 +18379,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T19:35:50Z",
+      "updated": "2026-10-13T19:39:12Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -18504,7 +18506,11 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_notes": [
-        "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes."
+        "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes.",
+        "PR #1728: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1728: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1728: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1728: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "F-0340",
@@ -18516,7 +18522,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T19:35:50Z",
+      "updated": "2026-10-13T19:39:12Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18627,6 +18633,23 @@
         "tests/kernel/test_finding_writes.py",
         "tests/fixtures/review_findings_283.jsonl"
       ]
+    },
+    "B-213443": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-213443",
+      "parent": "E-0006",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
+      "stage_since": "2026-10-13T19:38:19Z",
+      "state": "New",
+      "title": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
+      "type": "bug",
+      "updated": "2026-10-13T19:38:19Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -23088,7 +23111,8 @@
         "B-200581",
         "B-200932",
         "B-202833",
-        "B-205135"
+        "B-205135",
+        "B-213443"
       ],
       "decided": true,
       "folder": "epics",
@@ -37638,6 +37662,11 @@
       "decided": false,
       "folder": "features",
       "id": "F-0363",
+      "kernel_closed_findings": {
+        "4264ee2d": "{'head': '1a4a65290180ba3c00473e574e3dc41373cd2954', 'line': 'docs/specs/f-0363.md:100'}",
+        "483acb8f": "{'head': '1a4a65290180ba3c00473e574e3dc41373cd2954', 'line': 'docs/specs/f-0363.md:351'}",
+        "a28b5720": "{'head': '1a4a65290180ba3c00473e574e3dc41373cd2954', 'line': 'docs/specs/f-0363.md:679'}"
+      },
       "kernel_extra_rounds": 0,
       "kernel_findings": [
         "docs/specs/f-0363.md:100 \u2014 P16's clause \"an id with no entry is listed under **In progress**\" is false; render_notes adds such an id to neither features nor bugs (the parent walk breaks on type None) and progress is built from {**features, **bugs}, so it is printed in no section at all. Replace the clause with the real behaviour: an id with no entry is dropped from the notes entirely, and commit_items (asf/metrics/metrics.py:1464-1474) never even records it, since it keeps an id only `if iid in items`.",
@@ -37661,7 +37690,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T19:28:43Z"
+      "updated": "2026-10-13T19:39:12Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94879,7 +94908,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T19:28:43Z",
+      "updated": "2026-10-13T19:39:12Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
