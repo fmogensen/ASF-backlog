@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T22:54:22Z",
+  "generated": "2026-10-13T22:58:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -3448,7 +3448,9 @@
       "updated": "2026-10-07T22:30:13Z"
     },
     "B-0110": {
-      "backlinks": [],
+      "backlinks": [
+        "B-214946"
+      ],
       "budget_sessions": 12,
       "budget_usd": 20,
       "children": [],
@@ -18457,7 +18459,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T22:39:32Z",
+      "updated": "2026-10-13T22:58:52Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18652,7 +18654,7 @@
         "PR #1729: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18662,7 +18664,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T22:44:33Z",
+      "updated": "2026-10-13T22:58:52Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -18795,10 +18797,18 @@
       "id": "B-214946",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
+      "kernel_findings": [
+        "tests/fixtures/harvest_review_findings.py:28 \u2014 C1: LIMIT = 283 caps the fixture at the first 283 of the 531 findings the same harvester yields from the committed docs/reviews tree (100 of 352 files, alphabetical prefix). On the 248 held-out rows this head reads 15.32% as a writes request and 10.17% corpus-wide, both above the card's 10% ceiling, which only the tuned prefix clears (5.65%). Raise the cap to the whole committed corpus, rename the fixture, update the row-count assertion at tests/kernel/test_finding_writes.py:475, and meet the ceiling there \u2014 the held-out half shows the cue patterns still missing.",
+        "asf/kernel/findings.py:218 \u2014 C2: the _CONTEXT_GLOBS clause of _cited returns True before the text is read, so every docs/plans/*.md, docs/specs/*.md and tools/*.sh is context whatever the prose says: \"write `docs/plans/t-0501.md` with the Task and its Steps\", \"`tools/check_conventions.sh` must reject a bare card id; add the pattern\" and \"fix the wrong acceptance command in `docs/specs/f-0102.md`\" all yield []. Drop _CONTEXT_GLOBS from the early return and let those paths take the same cue test as every other path; with the globs off the fixture still reads 6.36%, under the ceiling, so the blanket rule buys 2 rows of 283 and costs the card's third Acceptance.",
+        "asf/kernel/findings.py:211-225 \u2014 C3: _cited returns True on any cue in a \u00b180-char window with nothing weighed against it, so findings that do ask for the change read as context \u2014 fixture row :1 (\"`asf/cli.py` \u2014 half the card is unbuilt: there is no `asf watch`.\") and row :154 (\"`tests/test_briefs.py` is missing half of the spec's/plan's named acceptance test.\") both yield []. Scope the cue to the clause the path heads, bounded by the sentence or nearest ;/\u2014, not a character window; and let an imperative aimed at the path (add, create, write, fix, rename, remove, must, should) win over a cue.",
+        "asf/kernel/findings.py:170 \u2014 C4: strip('`\\'\"()[]<>,;') runs before rstrip('.:'), so `path`: and `path`. keep a trailing backtick (_path_token('`asf/a.py`:') -> 'asf/a.py`'), and _cited/_REF_RE then test a token that is not the path \u2014 fix/B-0110 is a ref _REF_RE matches yet survives as a writes request; 40 of the 531 corpus rows carry such a token. Strip the quote set once more after the rstrip: tok = LINE_SUFFIX_RE.sub('', tok.strip('`\\'\"()[]<>,;').rstrip('.:').strip('`\\'\"()[]<>,;')).",
+        "tests/kernel/test_finding_writes.py:64-80 \u2014 C5: the test the card names for \"a finding that asks to change or create a file outside the footprint still requests it\" is pre-existing, unchanged, and its subject string carries no cue and matches no context glob, so it never enters _cited's new branches and cannot fail from C2 or C3. Add the counterweight cases: a cue-adjacent ask still requests (\"`asf/runner.py` should run the hook before the gate; add the call.\" -> ['asf/runner.py']) and an explicit creation ask for a context-glob path still requests (\"there is no plan: write `docs/plans/t-0501.md` with the Task and its Steps.\" -> ['docs/plans/t-0501.md'])."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18808,7 +18818,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-13T22:39:32Z",
+      "updated": "2026-10-13T22:58:52Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -21216,6 +21226,7 @@
         "T-148631",
         "T-154337",
         "T-206242",
+        "T-217369",
         "T-81130",
         "T-82991",
         "T-84804"
@@ -21247,6 +21258,7 @@
         "T-129198",
         "T-148631",
         "T-173234",
+        "T-217364",
         "T-84804"
       ],
       "children": [],
@@ -21277,6 +21289,10 @@
         "T-154337",
         "T-154338",
         "T-206240",
+        "T-217365",
+        "T-217366",
+        "T-217367",
+        "T-217370",
         "T-81129",
         "T-81131",
         "T-82988"
@@ -21302,6 +21318,7 @@
         "T-129193",
         "T-129204",
         "T-210361",
+        "T-217365",
         "T-81129",
         "T-81131",
         "T-82987",
@@ -21335,6 +21352,7 @@
         "T-173236",
         "T-208098",
         "T-210360",
+        "T-217365",
         "T-81130",
         "T-82989"
       ],
@@ -21396,6 +21414,8 @@
         "T-206243",
         "T-208100",
         "T-210360",
+        "T-217365",
+        "T-217370",
         "T-82989"
       ],
       "children": [],
@@ -21421,6 +21441,7 @@
         "T-148634",
         "T-154340",
         "T-206245",
+        "T-217370",
         "T-82989"
       ],
       "children": [],
@@ -21512,6 +21533,7 @@
         "T-154342",
         "T-208098",
         "T-208102",
+        "T-217368",
         "T-82991"
       ],
       "children": [],
@@ -21528,7 +21550,8 @@
     },
     "D-0014": {
       "backlinks": [
-        "T-154343"
+        "T-154343",
+        "T-217368"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -21545,7 +21568,8 @@
     "D-0015": {
       "backlinks": [
         "T-129173",
-        "T-154344"
+        "T-154344",
+        "T-217369"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -21563,7 +21587,8 @@
       "backlinks": [
         "T-129173",
         "T-154345",
-        "T-210358"
+        "T-210358",
+        "T-217369"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -21579,7 +21604,8 @@
     },
     "D-0017": {
       "backlinks": [
-        "T-210363"
+        "T-210363",
+        "T-217367"
       ],
       "children": [],
       "date": "2026-09-21",
@@ -21622,7 +21648,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "D-0020": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217372"
+      ],
       "children": [],
       "date": "2026-09-21",
       "decided_by": "operator",
@@ -21636,7 +21664,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "D-0021": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217370"
+      ],
       "children": [],
       "date": "2026-09-21",
       "decided_by": "operator",
@@ -21650,7 +21680,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "D-0022": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217366"
+      ],
       "children": [],
       "date": "2026-09-21",
       "decided_by": "operator",
@@ -21664,7 +21696,9 @@
       "updated": "2026-09-21T14:00:00Z"
     },
     "D-0023": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217372"
+      ],
       "children": [],
       "date": "2026-09-21",
       "decided_by": "operator",
@@ -37878,7 +37912,16 @@
         "S-211574",
         "S-211575",
         "S-211576",
-        "S-211577"
+        "S-211577",
+        "T-217364",
+        "T-217365",
+        "T-217366",
+        "T-217367",
+        "T-217368",
+        "T-217369",
+        "T-217370",
+        "T-217371",
+        "T-217372"
       ],
       "decided": false,
       "folder": "features",
@@ -43028,7 +43071,9 @@
       "updated": "2026-10-13T11:59:50Z"
     },
     "S-211568": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217364"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -43042,7 +43087,9 @@
       "updated": "2026-10-13T20:17:19Z"
     },
     "S-211569": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217365"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -43056,7 +43103,9 @@
       "updated": "2026-10-13T20:17:19Z"
     },
     "S-211570": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217366"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -43070,7 +43119,9 @@
       "updated": "2026-10-13T20:17:19Z"
     },
     "S-211571": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217367"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -43084,7 +43135,9 @@
       "updated": "2026-10-13T20:17:19Z"
     },
     "S-211572": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217369"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -43098,7 +43151,9 @@
       "updated": "2026-10-13T20:17:19Z"
     },
     "S-211573": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217368"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -43112,7 +43167,9 @@
       "updated": "2026-10-13T20:17:19Z"
     },
     "S-211574": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217370"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -43126,7 +43183,9 @@
       "updated": "2026-10-13T20:17:19Z"
     },
     "S-211575": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217371"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -43140,7 +43199,9 @@
       "updated": "2026-10-13T20:17:19Z"
     },
     "S-211576": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217367"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -43154,7 +43215,9 @@
       "updated": "2026-10-13T20:17:19Z"
     },
     "S-211577": {
-      "backlinks": [],
+      "backlinks": [
+        "T-217372"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -57465,6 +57528,7 @@
         "T-0216",
         "T-0797",
         "T-173235",
+        "T-217368",
         "T-79565",
         "T-80576",
         "T-82986",
@@ -95515,7 +95579,7 @@
         "shared files: asf/kernel/decide.py also held by B-211642 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95528,7 +95592,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-13T22:47:48Z",
+      "updated": "2026-10-13T22:58:52Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -95691,6 +95755,388 @@
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
+      ]
+    },
+    "T-217364": {
+      "backlinks": [
+        "T-217365",
+        "T-217367",
+        "T-217368"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_record_archive_shape",
+        "python3 -m unittest -q tests.test_backlog tests.test_card_json tests.test_card_schema \\",
+        "tests.test_views tests.test_cli",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_record_writers.sh",
+        "bash tools/check_card_readers.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "python3 -m unittest -q tests.test_hermetic",
+        "asf redact --unpublished"
+      ],
+      "id": "T-217364",
+      "kernel_state": "ready",
+      "links": {
+        "plan": "docs/plans/f-0363.md"
+      },
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T22:56:59Z",
+      "state": "New",
+      "stories": [
+        "S-211568"
+      ],
+      "title": "the archive is a place in the record \u2014 a rename, a manifest, and two ways to read a card that is in it",
+      "type": "task",
+      "updated": "2026-10-13T22:58:52Z",
+      "writes": [
+        "asf/record/core.py",
+        "asf/record/archive.py",
+        "asf/cli.py",
+        "tests/test_record_archive_shape.py"
+      ]
+    },
+    "T-217365": {
+      "after": [
+        "T-217364"
+      ],
+      "backlinks": [
+        "T-217366"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_record_archive_rule",
+        "python3 -m unittest -q tests.test_record_archive_shape tests.test_card_refs \\",
+        "tests.test_conventions tests.test_config_keys",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_record_writers.sh",
+        "bash tools/check_card_readers.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "python3 -m unittest -q tests.test_hermetic",
+        "asf redact --unpublished"
+      ],
+      "id": "T-217365",
+      "links": {
+        "plan": "docs/plans/f-0363.md"
+      },
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T22:57:03Z",
+      "state": "New",
+      "stories": [
+        "S-211569"
+      ],
+      "title": "closed, aged, and admitted by the reference closure \u2014 the rule that chooses, and the retention floor under it",
+      "type": "task",
+      "updated": "2026-10-13T22:57:03Z",
+      "writes": [
+        "asf/record/archive.py",
+        "asf/conventions.py",
+        "docs/products.example.yaml",
+        "tests/test_record_archive_rule.py"
+      ]
+    },
+    "T-217366": {
+      "after": [
+        "T-217365"
+      ],
+      "backlinks": [
+        "T-217369",
+        "T-217370",
+        "T-217371",
+        "T-217372"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_record_archive_dryrun",
+        "python3 -m unittest -q tests.test_record_archive_shape tests.test_record_archive_rule \\",
+        "tests.test_cli tests.test_views",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_record_writers.sh",
+        "bash tools/check_card_readers.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "python3 -m unittest -q tests.test_hermetic",
+        "asf redact --unpublished"
+      ],
+      "id": "T-217366",
+      "links": {
+        "plan": "docs/plans/f-0363.md"
+      },
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T22:57:07Z",
+      "state": "New",
+      "stories": [
+        "S-211570"
+      ],
+      "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
+      "type": "task",
+      "updated": "2026-10-13T22:57:07Z",
+      "writes": [
+        "asf/record/archive.py",
+        "asf/cli.py",
+        "tests/test_record_archive_dryrun.py"
+      ]
+    },
+    "T-217367": {
+      "after": [
+        "T-217364"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_record_archive_reopen tests.test_record_archive_schema",
+        "python3 -m unittest -q tests.test_reopen tests.test_closing tests.test_card_migration \\",
+        "tests.test_schema_version tests.test_record_archive_shape",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_record_writers.sh",
+        "bash tools/check_card_readers.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "python3 -m unittest -q tests.test_hermetic",
+        "asf redact --unpublished"
+      ],
+      "id": "T-217367",
+      "links": {
+        "plan": "docs/plans/f-0363.md"
+      },
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T22:57:10Z",
+      "state": "New",
+      "stories": [
+        "S-211571",
+        "S-211576"
+      ],
+      "title": "the way back \u2014 every writing command that names an archived id brings the card back before it writes, and the migration converts it then",
+      "type": "task",
+      "updated": "2026-10-13T22:57:10Z",
+      "writes": [
+        "asf/record/reopen.py",
+        "asf/record/setfield.py",
+        "asf/record/undeliver.py",
+        "asf/record/resolve.py",
+        "tests/test_record_archive_reopen.py",
+        "tests/test_record_archive_schema.py"
+      ]
+    },
+    "T-217368": {
+      "after": [
+        "T-217364"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_record_archive_ids",
+        "python3 -m unittest -q tests.test_id_range_block tests.test_record_ids_origin tests.test_idclaim \\",
+        "tests.test_backlog tests.test_record_archive_shape",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_record_writers.sh",
+        "bash tools/check_card_readers.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "python3 -m unittest -q tests.test_hermetic",
+        "asf redact --unpublished"
+      ],
+      "id": "T-217368",
+      "links": {
+        "plan": "docs/plans/f-0363.md"
+      },
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T22:57:14Z",
+      "state": "New",
+      "stories": [
+        "S-211573"
+      ],
+      "title": "a new id never reuses an archived one, and an id both places hold is a finding",
+      "type": "task",
+      "updated": "2026-10-13T22:57:14Z",
+      "writes": [
+        "asf/record/ids.py",
+        "asf/record/check.py",
+        "tests/test_record_archive_ids.py"
+      ]
+    },
+    "T-217369": {
+      "after": [
+        "T-217366"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_record_archive_readers",
+        "python3 -m unittest -q tests.test_check_staged tests.test_record_archive_shape \\",
+        "tests.test_record_archive_dryrun tests.test_views tests.test_backlog",
+        "python3 -m unittest -q tests.kernel.test_ports tests.kernel.test_decide",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_record_writers.sh",
+        "bash tools/check_card_readers.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "python3 -m unittest -q tests.test_hermetic",
+        "asf redact --unpublished"
+      ],
+      "id": "T-217369",
+      "links": {
+        "plan": "docs/plans/f-0363.md"
+      },
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T22:57:18Z",
+      "state": "New",
+      "stories": [
+        "S-211572"
+      ],
+      "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
+      "type": "task",
+      "updated": "2026-10-13T22:57:18Z",
+      "writes": [
+        "asf/record/stage.py",
+        "asf/tick/cadence.py",
+        "asf/tick/tick.py",
+        "tests/test_record_archive_readers.py"
+      ]
+    },
+    "T-217370": {
+      "after": [
+        "T-217366"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_record_archive_history",
+        "python3 -m unittest -q tests.test_record_archive_shape tests.test_record_archive_rule \\",
+        "tests.test_record_archive_dryrun tests.test_views tests.test_conventions",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_record_writers.sh",
+        "bash tools/check_card_readers.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "python3 -m unittest -q tests.test_hermetic",
+        "asf redact --unpublished"
+      ],
+      "id": "T-217370",
+      "links": {
+        "plan": "docs/plans/f-0363.md"
+      },
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T22:57:22Z",
+      "state": "New",
+      "stories": [
+        "S-211574"
+      ],
+      "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
+      "type": "task",
+      "updated": "2026-10-13T22:57:22Z",
+      "writes": [
+        "asf/record/archive.py",
+        "asf/metrics/metrics.py",
+        "asf/doctor.py",
+        "tests/test_record_archive_history.py"
+      ]
+    },
+    "T-217371": {
+      "after": [
+        "T-217366"
+      ],
+      "backlinks": [
+        "T-217372"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_record_archive_inbox",
+        "python3 -m unittest -q tests.test_intake_dedupe tests.test_inbox_shape \\",
+        "tests.test_record_archive_shape tests.test_record_archive_dryrun",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_record_writers.sh",
+        "bash tools/check_card_readers.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "python3 -m unittest -q tests.test_hermetic",
+        "asf redact --unpublished"
+      ],
+      "id": "T-217371",
+      "links": {
+        "plan": "docs/plans/f-0363.md"
+      },
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T22:57:26Z",
+      "state": "New",
+      "stories": [
+        "S-211575"
+      ],
+      "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
+      "type": "task",
+      "updated": "2026-10-13T22:57:26Z",
+      "writes": [
+        "asf/record/archive.py",
+        "asf/groom/inbox.py",
+        "tests/test_record_archive_inbox.py"
+      ]
+    },
+    "T-217372": {
+      "after": [
+        "T-217366",
+        "T-217371"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_record_archive_scale",
+        "python3 -m unittest -q tests.test_record_archive_shape tests.test_record_archive_rule \\",
+        "tests.test_record_archive_dryrun tests.test_record_archive_readers \\",
+        "tests.test_record_archive_inbox tests.test_registry_perf",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_record_writers.sh",
+        "bash tools/check_card_readers.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "python3 -m unittest -q tests.test_hermetic",
+        "asf redact --unpublished"
+      ],
+      "id": "T-217372",
+      "links": {
+        "plan": "docs/plans/f-0363.md"
+      },
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T22:57:30Z",
+      "state": "New",
+      "stories": [
+        "S-211577"
+      ],
+      "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
+      "type": "task",
+      "updated": "2026-10-13T22:57:30Z",
+      "writes": [
+        "asf/record/archive.py",
+        "asf/cli.py",
+        "tests/test_record_archive_scale.py"
       ]
     },
     "T-76350": {
