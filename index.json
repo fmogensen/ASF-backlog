@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T22:17:55Z",
+  "generated": "2026-10-13T22:21:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -95286,7 +95286,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T22:12:51Z",
+      "updated": "2026-10-13T22:21:17Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95535,11 +95535,18 @@
         "asf redact --unpublished"
       ],
       "id": "T-210361",
+      "kernel_closed_findings": {
+        "94c68f70": "{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/incidents.py:130'}",
+        "ed52e4dd": "{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/ports.py:1817'}"
+      },
       "kernel_findings": [
         "asf/kernel/ports.py:1817 \u2014 _revert_fact leaves Check.failing_ids empty (only _red_detail sets them, and it is called from _open_pr and main_commits only, never for a revert branch: _prs routes it to _revert_fact and continues at :1754-1757), so _still_failing is always () and revert_ci never returns 'red' \u2014 D5's second blame read at mainline.py:778-783 is unreachable in production. Fix: in _revert_fact, for the open case, mirror _open_pr's loop at :1838-1841 \u2014 jobs = job_keys(d.get('statusCheckRollup') or []); for each completed check whose conclusion is in M.RED_CONCLUSIONS and which has a run_id, self._red_detail(c, (), jobs.get((c.name, c.run_id)) or '') \u2014 and say so in the docstring; _red_detail is cache-first and LOG_LIMIT-bounded. Also rebuild the Port case, which passes None for self (tests/kernel/test_revert_merged.py:246) and asserts names only, to use a port/fake and assert the ids.",
         "asf/kernel/incidents.py:130 \u2014 bv = blame.verdict(facts, config) is read at landing time, when the revert has merged and the trunk is green again, so red_spell is None and the REVERT row stores {'parent': '', 'ids': [], 'cls': 'unproven'} instead of the read that allowed the revert (acceptance line 9). Fix: carry the read forward from the tick that made it \u2014 put plan.main.get('blame') (mainline.blame_record, :295-297) on the MAIN_RED row in _main_red_record, and in _revert_records take the blame from that spell's recorded MAIN_RED row (observe at :199 already has state_dir and read()) rather than recomputing, leaving the key absent when no recorded read is found; then pin it with the revert commit green on the trunk (the module's own landed_world()), not pending as :219-220 does."
       ],
       "kernel_fix_rounds": 1,
+      "kernel_later_findings": [
+        "[e1b07754@ce7da27] asf/kernel/mainline.py:120 \u2014 `revert_ci` now routes \"the revert PR's own CI completed that check red but on none of the trunk's failing ids\" to 'unanswered' (:586-587), so `judge` posts UNANSWERED's old sentence \"its own CI never reports <check>\" on a PR whose check is right there, completed and red. Add a `NO_SAME_ID` reason beside UNANSWERED and split judge's `else` (:789-791) on `({c.name for c in rpr.checks if c.conclusion in RED_CONCLUSIONS} & {c.name for c in reds})`, using NO_SAME_ID when that set is non-empty and UNANSWERED only when it is empty; then assert the reason in tests/kernel/test_revert_merged.py:203-216 (`assertIn(REQ[0], closed.reason)`, `assertNotIn('never reports', closed.reason)`)."
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
@@ -95553,7 +95560,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T22:09:12Z",
+      "updated": "2026-10-13T22:21:17Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
