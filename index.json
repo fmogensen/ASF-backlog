@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T21:31:09Z",
+  "generated": "2026-10-13T21:35:17Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18701,7 +18701,7 @@
       "kernel_notes": [
         "groom-fill-b-213443-1791920579: groom-fill raised risk high: confirmed on origin/main that exclusion only reaches ev['ids'] (_exclude_pr_ids, ingest.py:717-744) while the plan-matched Task path (ingest.py:1159-1163) and match_bug (ingest.py:392-409, called at 1259) read ev['features'][...]['tasks'][tid] and ev['merged'] unfiltered \u2014 a real, well-localized gap buildable with the sha coercion already proven at ingest.py:732."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 3,
@@ -18711,7 +18711,7 @@
       "state": "New",
       "title": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
       "type": "bug",
-      "updated": "2026-10-13T21:31:08Z",
+      "updated": "2026-10-13T21:35:16Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_feature_delivery.py"
@@ -37845,7 +37845,8 @@
         "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
         "spec-f-0363-1791900986: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
         "spec-f-0363-1791914847: NEEDS OPERATOR: today's card count by state on the real record, the baseline section 2.11's 30% target is measured against - `jq -r '[.items[] | .state // \"New\"] | group_by(.) | map(\"\\(.[0]) \\(length)\") | .[]' ~/.AS\u2026",
-        "spec-f-0363-1791920553: NEEDS OPERATOR: which of the 171 cards that refuse the schema-2 migration are closed, so the spec's claim that the archive carries them unchanged is counted rather than argued \u2014 `asf check --schema-only --product as\u2026"
+        "spec-f-0363-1791920553: NEEDS OPERATOR: which of the 171 cards that refuse the schema-2 migration are closed, so the spec's claim that the archive carries them unchanged is counted rather than argued \u2014 `asf check --schema-only --product as\u2026",
+        "plan-f-0363-1791925579: NEEDS OPERATOR: which of the 171 cards that refuse the schema-2 migration are closed, so \u00a72.9's claim that the archive carries them unchanged is counted rather than argued \u2014 `asf check --schema-only --product asf`"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "building",
@@ -37858,7 +37859,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T21:06:54Z"
+      "updated": "2026-10-13T21:35:16Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94311,7 +94312,9 @@
       "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1703: part (3.12, 2) is red but not a required check \u2014 ignored",
-        "PR #1703: part (3.13, 2) is red but not a required check \u2014 ignored"
+        "PR #1703: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "PR #1735: part (3.12, 1) is red but not a required check \u2014 ignored",
+        "PR #1735: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "review",
@@ -94327,7 +94330,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T21:31:08Z",
+      "updated": "2026-10-13T21:35:16Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
@@ -95155,7 +95158,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T21:13:44Z",
+      "updated": "2026-10-13T21:35:16Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -95463,7 +95466,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210361",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95476,7 +95479,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T21:13:44Z",
+      "updated": "2026-10-13T21:35:16Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
