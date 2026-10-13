@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T07:54:48Z",
+  "generated": "2026-10-13T08:01:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18112,8 +18112,12 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-200581",
+      "kernel_answers": [
+        "granted asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py tests/test_tick_steps.py tests/test_tick_latency.py; nothing else outside writes (card updated by the kernel). B-200932 also writes asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py matches kernel.risk.high: this item is high-risk now."
+      ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py tests/test_tick_steps.py tests/test_tick_latency.py; nothing else outside writes (card updated by the kernel). B-200932 also writes asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
@@ -18135,7 +18139,7 @@
         "build-b-200581-1791872508: NEEDS OPERATOR: tests/test_tick_latency.py:177 reads `m.today()` bare right after a tick \u2014 the same day-crossing flakiness class B-200581 fixes elsewhere, discovered only because this round tried widening the lint's\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18144,7 +18148,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T07:32:39Z",
+      "updated": "2026-10-13T08:01:10Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18156,7 +18160,13 @@
         "tests/test_ci_cancels.py",
         "tests/test_doctor.py",
         "tests/kernel/test_main_landing.py",
-        "tests/kernel/test_flake.py"
+        "tests/kernel/test_flake.py",
+        "asf/kernel/actions.py",
+        "asf/kernel/apply.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/ports.py",
+        "tests/test_tick_steps.py",
+        "tests/test_tick_latency.py"
       ]
     },
     "B-200932": {
@@ -18209,7 +18219,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T07:54:36Z",
+      "updated": "2026-10-13T08:01:10Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -37002,7 +37012,7 @@
       "kernel_notes": [
         "spec-f-0357-1791869808: NEEDS OPERATOR: whether the host-side `pre_push_check` should gain the new clock lint (the in-repo CI step is part of S-203372; this is the host gate) \u2014 `grep -n -A8 pre_push_check \"$ASF_HOME\"/products/asf.yaml`"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37012,7 +37022,7 @@
       "state": "New",
       "title": "A red trunk is handled correctly: blame is established before any revert",
       "type": "feature",
-      "updated": "2026-10-13T07:38:44Z"
+      "updated": "2026-10-13T08:01:10Z"
     },
     "F-0358": {
       "backlinks": [],
