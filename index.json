@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:42:30Z",
+  "generated": "2026-10-13T08:45:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18301,6 +18301,7 @@
       "kernel_notes": [
         "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
       ],
+      "kernel_state": "ready",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18310,7 +18311,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T08:42:28Z",
+      "updated": "2026-10-13T08:45:40Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -37089,12 +37090,22 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/plans/f-0358.md:135 \u2014 \"Every other pair intersects on at least one of decide.py, apply.py, ports.py and model.py\" is false: Task 2's writes (briefs.py, tests/test_brief_answers.py) is disjoint from Task 4, Task 5 and Task 7 as well as Task 1, and its intersections with Task 3 and Task 6 are on briefs.py, none of the four files named \u2014 5 of the 20 pairs contradict it; say \"every pair but Task 2's\" and name briefs.py beside the four",
+        "docs/plans/f-0358.md:117 \u2014 \"the eight free ones\" is followed by a list of ten, and spec S-203321 carries ten uncharged acceptance lines (spec \u00a72.4's table has six rows only because it groups the five session-ended causes); write \"the ten free ones\"",
+        "docs/plans/f-0358.md:45 \u2014 K7 (and the \u00a72.1 anchor at :103) cite `asf/metrics/metrics.py:375-376` as `stream_path`; that is `read_stream`, and `stream_path` is at :344-345 \u2014 correct both to :344-345 (K7's conclusion is unaffected, the path shape is true there)",
+        "docs/plans/f-0358.md:99 \u2014 `:336` is cited as `SPEC['resolve']` \"re-read in place\"; line 336 is the brace closing `SPEC`, and `SPEC['resolve']` is at asf/kernel/settings.py:308-313 \u2014 correct to :308-313",
+        "docs/plans/f-0358.md:43 \u2014 K5's \"Measured: asf/kernel/apply.py:592-594\" names `groom`, `swept` and `if fix:`; the re-derivation it describes is :595-598 \u2014 correct it here and in the three other places that repeat it (:75 in \u00a72.1, :266 Task 1 step 10, :514 Task 4 step 2)",
+        "docs/plans/f-0358.md:339 \u2014 Task 2 step 4 cites the uncapped findings section as asf/kernel/briefs.py:611-614; that is the DOC_ROUND block and `if shared:`, and the findings section is :616-618 \u2014 correct to :616-618",
+        "docs/plans/f-0358.md:454 \u2014 \"each of the nine `judge` readings\": spec S-203318 gives eight (its acceptance lines 2-9) and Task 3 step 3 enumerates eight; write \"eight\" and leave \u00a72.2's \"five\" as the five rows of spec \u00a72.1's table it correctly counts",
+        "docs/plans/f-0358.md:54,55,47,98,73,92 \u2014 six off-by-one anchors, each on a blank, a comment continuation or the neighbouring statement: resolvers.py:62 -> :61 (MAX_IDS); trunk.py:135 -> :136 (the test_runs_per_tick skip); trunk.py:143 -> :142 (sha = sha or self._trunk_sha()); settings.py:87 -> :86 (the documented test_runs_per_tick: 1); decide.py:1814-1821 -> :1815-1824 (shared_finding_for/shared_finding, neither end inside the cited range); ports.py:86-88 -> :88-90 (KERNEL_KEYS, also at :250 and :692)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0358-1791869759: NEEDS OPERATOR: the card's last acceptance line is a 24-hour measurement, and this session could not read the kernel review ledger (it runs off the factory host), so the 57% baseline the card quotes for 2026-10-12 i\u2026",
         "plan-f-0358-1791877809: NEEDS OPERATOR: the id-claim check over the live record, which a cloud session cannot reach (no ~/.ASF here) \u2014 it must show every S- id this plan cites either already a card or covered by a claim whose claimant name\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37104,7 +37115,7 @@
       "state": "New",
       "title": "Review loops converge: proof before review, no repeated or contradicting findings",
       "type": "feature",
-      "updated": "2026-10-13T08:15:02Z"
+      "updated": "2026-10-13T08:45:40Z"
     },
     "F-0359": {
       "backlinks": [
@@ -41837,7 +41848,9 @@
       "updated": "2026-10-12T06:07:43Z"
     },
     "S-203318": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0358"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -41879,7 +41892,9 @@
       "updated": "2026-10-13T07:04:14Z"
     },
     "S-203321": {
-      "backlinks": [],
+      "backlinks": [
+        "F-0358"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
