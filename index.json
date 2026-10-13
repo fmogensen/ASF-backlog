@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T21:06:55Z",
+  "generated": "2026-10-13T21:13:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18436,11 +18436,15 @@
       "found_in": "dev",
       "id": "B-208187",
       "kernel_closed_findings": {
-        "0861193e": "{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'asf/record/repair.py:215'}",
-        "333a14e4": "{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'tests/test_record_repair.py:259'}",
-        "4378af68": "{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'asf/record/repair.py:246'}",
-        "862be677": "{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'asf/record/repair.py:390'}",
-        "95e35b82": "{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'asf/record/repair.py:167'}"
+        "0861193e": "{'head': \"{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'asf/record/repair.py:215'}\", 'line': ''}",
+        "333a14e4": "{'head': \"{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'tests/test_record_repair.py:259'}\", 'line': ''}",
+        "3980e05b": "{'head': '721bb7a0155b25c44a39f43c9fdb89f0f91197d9', 'line': 'asf/record/repair.py:131'}",
+        "4378af68": "{'head': \"{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'asf/record/repair.py:246'}\", 'line': ''}",
+        "57686a37": "{'head': '721bb7a0155b25c44a39f43c9fdb89f0f91197d9', 'line': 'tests/test_record_repair.py:392'}",
+        "862be677": "{'head': \"{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'asf/record/repair.py:390'}\", 'line': ''}",
+        "95e35b82": "{'head': \"{'head': 'e8ee9891ded7823ec02952f772ecf91ef3529468', 'line': 'asf/record/repair.py:167'}\", 'line': ''}",
+        "ae4f59e5": "{'head': '721bb7a0155b25c44a39f43c9fdb89f0f91197d9', 'line': 'asf/record/repair.py:225'}",
+        "efcfc80f": "{'head': '721bb7a0155b25c44a39f43c9fdb89f0f91197d9', 'line': 'asf/cli.py:1068'}"
       },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
@@ -18461,7 +18465,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T20:59:26Z",
+      "updated": "2026-10-13T21:13:44Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18528,9 +18532,11 @@
         "PR #1728: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1728: checks (3.13) is red but not a required check \u2014 ignored",
         "PR #1728: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1728: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1728: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "PR #1728: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1728: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18540,7 +18546,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T21:06:54Z",
+      "updated": "2026-10-13T21:13:44Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18637,18 +18643,19 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_findings": [
-        "tests/kernel/test_finding_writes.py:440 \u2014 the acceptance measurement is an artifact of its own generator: 220 of the 283 fixture rows (77.7%) are one machine-expanded template whose only path is inside that row's writes:, so the 4.59%/1.06% it reports is the generator's mix, not a measurement (13/63 = 20.6% over the other rows), and the routed arm flips to a failure on a 6th 7-path row with no parser change at all; worse, stubbing `_cited` to False \u2014 removing the entire cited-caller half of this fix \u2014 still passes (7.42%). Rebuild tests/fixtures/review_findings_283.jsonl from findings the record actually holds, with each row's own card writes:, and commit the harvester beside it; and at tests/kernel/test_finding_writes.py:456 compute the routed arm the way asf/kernel/decide.py:1353 does (`risky or len(paths) > finding_writes_max`), since the 2% claim today omits the whole risk_high half of the rule.",
-        "asf/kernel/apply.py:296 \u2014 dropping the ruling makes a routed finding loop forever on any operator answer that is prose: the key is left neither pending nor ruled, and F.ruled_by (asf/kernel/findings.py:102) reads only the answer text for an 8-hex key or a path:line. Reproduced on this head \u2014 the operator answers \"no, leave the footprint as it is for now\" and the same tick's plan is ['ApplyAnswer', 'MarkStuck', 'FindingWrites(route, ['02883767'])'], identically again on the next tick, where the base 5da9cad ends ['ApplyAnswer', 'NoteItem', 'EnableAutoMerge'] and lands. In _Applier.ApplyAnswer give the routed request the treatment the contradiction Stuck already gets at asf/kernel/apply.py:215-222: add a finding_writes_keys(reason) beside decide.contradiction_line (asf/kernel/decide.py:2080) reading the keys out of the \"review finding <keys> asks for \u2026\" reason built at asf/kernel/decide.py:1354, and rule exactly those keys when the answer does not grant the widening \u2014 then restore a case for the guard the diff deleted (Apply::test_a_routed_finding_is_never_briefed_again).",
-        "shared files: asf/kernel/decide.py, asf/kernel/resolvers.py also held by T-208102 \u2014 additive edits only, never a rewrite"
+        "red: tests (3.12)",
+        "red: tests (3.13)",
+        "operator answer: Decision: keep this PR to the two defects and the honest fixture. Change the Replay test to assert route under 2 percent (met, 0) and request at most 35 percent as a recorded ceiling, with a comment that the under-10 target moves to a follow-up. Do not retune outside_writes further here and do not scope by card kind. kernel.resolve.finding_writes stays off. The console files the follow-up for paths cited as missing or forward of the claim. Then finish and report done.",
+        "shared files: asf/kernel/decide.py also held by T-210360 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-211642-1791918062: groom-fill raised risk high: both defects are real (confirmed in findings.py's _path_token and apply.py's FindingWrites route handler, the latter's buggy behavior even codified in an existing test), concretely scoped to the kernel's F-0358 follow-up, and buildable against the existing test harness in tests/kernel/test_finding_writes.py.",
         "PR #1729: upgrade-matrix (v0.1.330) is red but not a required check \u2014 ignored",
         "PR #1729: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1729: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18658,7 +18665,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T21:06:54Z",
+      "updated": "2026-10-13T21:13:44Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -18757,13 +18764,21 @@
     "B-214946": {
       "backlinks": [],
       "children": [],
+      "creates": [
+        "tests/fixtures/review_findings_283.jsonl",
+        "tests/fixtures/harvest_review_findings.py"
+      ],
       "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-214946",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
+      "kernel_notes": [
+        "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable."
+      ],
       "parent": "F-0358",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
@@ -18771,7 +18786,13 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-13T21:06:54Z"
+      "updated": "2026-10-13T21:13:44Z",
+      "writes": [
+        "asf/kernel/findings.py",
+        "tests/kernel/test_finding_writes.py",
+        "tests/fixtures/review_findings_283.jsonl",
+        "tests/fixtures/harvest_review_findings.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -94744,10 +94765,11 @@
       ],
       "id": "T-208099",
       "kernel_answers": [
-        "granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
+        "granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
+        "Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else."
       ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else."
       ],
       "kernel_closed_findings": {
         "146fa521": "{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/resolvers.py:606'}",
@@ -94755,7 +94777,7 @@
         "3bfac4bc": "{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/decide.py:1341'}",
         "4709f0f2": "{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/questions.py:191'}"
       },
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/kernel/resolvers.py:736 \u2014 when `trunk_files is None` (the trunk is unread, `ports.py:853-863`) `write_grant_refused` falls past the `trunk_files is not None` guard at `:730` to the bare `'%s is refused'` fallback, so the park names no clause \u2014 against spec \u00a72.4 and plan step 6. Add `UNREAD_TRUNK_CLAUSE = ('%s could not be checked: the trunk is unread, so the kernel cannot tell whether this file is already on it')` beside the four clauses at `:648-651`, and in `write_grant_refused` replace `:730-736` with `elif trunk_files is None: clauses.append(UNREAD_TRUNK_CLAUSE % p)` / `elif p in trunk_files: clauses.append(ON_TRUNK_CLAUSE % p)` / `else: <the existing owner lookup>`; add the case to `ConsoleReasonNamesTheClause` (tests/kernel/test_question_write_grant.py:254) so the bare fallback stays unreachable."
       ],
@@ -94767,11 +94789,7 @@
         "build-t-208099-1791921910: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208099-1791921910 'asf/build-t-208099-1791921910@20261013T200519Z' >/dev/null 2>&1 &`, both a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds \u2014 findings: asf/kernel/resolvers.py:736 \u2014 when `trunk_files is None` (the trunk is unread, `ports.py:853-863`) `write_grant_refused` falls past the `trunk\u2026",
-      "kernel_stuck_since": "2026-10-13T21:05:16Z",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94784,7 +94802,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T21:06:54Z",
+      "updated": "2026-10-13T21:13:44Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94923,8 +94941,7 @@
         "T-208097"
       ],
       "backlinks": [
-        "T-208104",
-        "B-211642"
+        "T-208104"
       ],
       "children": [],
       "decided": true,
@@ -94955,7 +94972,7 @@
         "build-t-208102-1791918911: NEEDS OPERATOR: heartbeat command refused to start by the sandbox; continued per instructions since a beat that cannot start never ends the session \u2014 `sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208102-1791918911\u2026"
       ],
       "kernel_rebuilds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94968,7 +94985,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T20:46:55Z",
+      "updated": "2026-10-13T21:13:44Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95103,7 +95120,7 @@
         "asf/clock.py:55-70 \u2014 iso/today/stamp stamp a given instant without normalizing it to UTC, so a non-UTC-aware instant is written with a literal Z carrying its local fields (clock.iso(2026-03-14T15:09:26+09:00) -> \"2026-03-14T15:09:26Z\", should be \"2026-03-14T06:09:26Z\"; clock.today is off by a whole day at an offset) and clock.stamp reads a naive instant as local time. Add a _utc(instant) helper beside _at \u2014 astimezone(datetime.timezone.utc), with a naive instant taken as UTC via replace(tzinfo=...) \u2014 and have iso, today and stamp's given-instant branch go through it; leave now() on _at as Step 3 asks. This is the house pattern the replaced code already had (asf/metrics/metrics.py:89,102; asf/scorecard/facts.py:72,76). Add two cases beside tests/test_clock.py:77: iso/today/stamp of an instant at a non-UTC offset equal the same instant's UTC stamp, and of a naive instant are read as UTC."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95116,7 +95133,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T20:59:26Z",
+      "updated": "2026-10-13T21:13:44Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -95158,14 +95175,18 @@
         "granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/kernel/needed.py:316 \u2014 the relaunch arm must also deny the new empty-diff Done to an item still marked reverted, whose revert is landed on the trunk: change `elif revert_live or _proving_red(it, facts.items, facts):` to `elif revert_live or it.reverted or _proving_red(it, facts.items, facts):`, and correct the docstring at :270-274 to list three surviving EMPTY_FINDING cases, not two. As written, such an item reaches the final `else` whenever `test_ids` is `[]` (card names no proving test, or more than resolvers.MAX_IDS=20) and is marked Done with a false \"nothing left to change\" note and a SATISFIED gate line, contradicting the B-200932 sentence kept at :272-274; because that arm emits no RevertUndone, decide.py:866 then discards the Done and relaunches the item next tick \u2014 B-200932's endless empty rebuild, with no finding left for the next session.",
+        "tests/kernel/test_satisfied_not_relaunched.py:189 \u2014 add the \"B-200932's reverted arm still answers what it answered\" case Step 5 names, with a card body that names no proving test so the assertion rests on the revert facts and not on test_ids: revert still landed on Facts.main -> READY with one ClearStuck and no NoteItem (red on this head, green with the fix above); the reverted merge on Facts.main with no revert of it -> DONE with RevertUndone; Facts.main empty -> READY."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1721: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1721: part (3.13, 3) is red but not a required check \u2014 ignored",
         "build-t-210356-1791922145: NEEDS OPERATOR: asf redact --unpublished could not run in this cloud session (the `asf` CLI is not installed here) \u2014 `asf redact --unpublished` (read-only; the cloud-session brief notes no pre-push hook runs here, a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95178,7 +95199,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T20:52:11Z",
+      "updated": "2026-10-13T21:13:44Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95347,7 +95368,8 @@
       ],
       "backlinks": [
         "T-210362",
-        "T-210363"
+        "T-210363",
+        "B-211642"
       ],
       "children": [],
       "decided": true,
@@ -95430,7 +95452,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T20:59:26Z",
+      "updated": "2026-10-13T21:13:44Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
