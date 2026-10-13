@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T15:25:02Z",
+  "generated": "2026-10-13T15:28:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18382,7 +18382,7 @@
       "kernel_notes": [
         "groom-fill-b-205886-1791892798: groom-fill raised risk high: buildable scoped fix \u2014 wires an existing runtime_liveness/unknown-verdict pattern (already shipped for claude-remote) to the actions cloud lane, with concrete tests naming the confirm/no-confirm split."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "F-0360",
       "priority": "need",
       "risk": "high",
@@ -18393,7 +18393,7 @@
       "state": "New",
       "title": "0.3.0 ends working cloud sessions for no first beat: the cloud sandbox cannot start the beat",
       "type": "bug",
-      "updated": "2026-10-13T12:12:12Z",
+      "updated": "2026-10-13T15:28:28Z",
       "writes": [
         "asf/workers/heartbeat.py",
         "asf/kernel/ports.py",
@@ -94126,12 +94126,14 @@
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
       "kernel_findings": [
-        "asf/kernel/resolvers.py:427 \u2014 an all-decimal token (a CI run id, 7-40 digits) passes `SHA_TOKEN_RE` and is claimed as the head a finding was measured on, so the kernel answers `FINDING_STALE`/`FINDING_HOLDS` off a comparison against a non-commit. Replace `tokens = list(dict.fromkeys(SHA_TOKEN_RE.findall(text)))` with `tokens = [t for t in dict.fromkeys(SHA_TOKEN_RE.findall(text)) if not t.isdigit()]`, say why in the `SHA_TOKEN_RE` comment at `asf/kernel/resolvers.py:406-410` (an all-decimal token is a run id or timestamp; an all-decimal abbreviated sha fails closed to the console, D13's direction), and add two cases to `tests/kernel/test_question_finding_head.py` \u2014 a bare `run 38411462626` question yields `''` and is not `R.FINDING_HEAD`, and it reaches the console through `D.decide` with the Stuck still on `operator`.",
-        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
-        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py also held by T-208100 \u2014 additive edits only, never a rewrite"
+        "asf/kernel/resolvers.py:452 \u2014 after the `if pr is None: return None` guard add `if not pr.head_sha: return None`; today a PR whose own head is unread (`model.py:225`, `ports.py:1733` leaves `''` on a degraded read) falls past `_same_sha(sha, '')` and is answered `FINDING_STALE` with a blank where the head belongs, telling the session to drop a live finding (C1)",
+        "asf/kernel/resolvers.py:460 \u2014 widen the `None` guard to `if not current or any(c.status != 'completed' or c.conclusion not in ('success', 'neutral', 'skipped') for c in current): return None`; `reds` tests `RED_CONCLUSIONS` only, so a check completed `cancelled` or `action_required` on the current head is read as green and answered \"every check is green \u2026 do not re-fix it\" (C2)",
+        "asf/kernel/resolvers.py:430 \u2014 the `if not t.isdigit()` filter is not in Step 2 and PD11 decides against it: either revert to `tokens = list(dict.fromkeys(SHA_TOKEN_RE.findall(text)))`, or keep it and assert the untested half in `tests/kernel/test_question_finding_head.py` beside `AllDecimalTokenClaimedByNothing` \u2014 a run id beside a real sha is now claimed (`'\u2026run 38411462626 at aaaaaaa\u2026'` -> `'aaaaaaa'`) where Step 2 leaves it to the console \u2014 and say in the REPORT that Step 2 and PD11 are superseded (C3)",
+        "rebase: PR #1712 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94144,7 +94146,7 @@
       ],
       "title": "a red finding against the head it was measured on and the checks on the current head",
       "type": "task",
-      "updated": "2026-10-13T15:24:59Z",
+      "updated": "2026-10-13T15:28:28Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94187,7 +94189,13 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
-      "kernel_state": "review",
+      "kernel_findings": [
+        "rebase: PR #1714 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
+        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py, tests/kernel/test_question_resolvers.py also held by T-208098 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94200,7 +94208,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T15:24:59Z",
+      "updated": "2026-10-13T15:28:28Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94218,7 +94226,6 @@
         "T-208097"
       ],
       "backlinks": [
-        "T-208098",
         "T-208104"
       ],
       "children": [],
@@ -94245,7 +94252,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them. T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94258,7 +94265,7 @@
       ],
       "title": "the card's acceptance quoted back from the record, never a pointer at the brief",
       "type": "task",
-      "updated": "2026-10-13T15:16:08Z",
+      "updated": "2026-10-13T15:28:28Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
