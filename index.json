@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T23:41:02Z",
+  "generated": "2026-10-13T23:45:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18507,7 +18507,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T23:33:30Z",
+      "updated": "2026-10-13T23:45:09Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18536,10 +18536,11 @@
         "PR #1728: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1728: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1728: part (3.12, 4) is red but not a required check \u2014 ignored",
-        "PR #1728: part (3.13, 4) is red but not a required check \u2014 ignored"
+        "PR #1728: part (3.13, 4) is red but not a required check \u2014 ignored",
+        "build-b-210839-1791934321: NEEDS OPERATOR: step watchdog has no clock in the sample product config \u2014 not this item; surfaced only because tests/test_sample_product.py ran doctor as part of the suite \u2014 `python3 -m unittest tests.test_sample_pr\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18549,7 +18550,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T23:33:30Z",
+      "updated": "2026-10-13T23:45:09Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -95230,7 +95231,11 @@
         "asf redact --unpublished"
       ],
       "id": "T-208104",
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "partial: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" an\u2026",
+      "kernel_stuck_since": "2026-10-13T23:44:09Z",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -95243,7 +95248,7 @@
       ],
       "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
       "type": "task",
-      "updated": "2026-10-13T23:28:41Z",
+      "updated": "2026-10-13T23:45:09Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/cli.py",
@@ -95669,7 +95674,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T23:37:31Z",
+      "updated": "2026-10-13T23:45:09Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
