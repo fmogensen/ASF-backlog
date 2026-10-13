@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T15:11:23Z",
+  "generated": "2026-10-13T15:16:10Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18158,10 +18158,11 @@
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing.",
         "build-b-200581-1791868352: NEEDS OPERATOR: widen asf/kernel/decide.py's ORDER tuple (line ~313) to include asf.kernel.actions.DispatchMain, so the trunk-head dispatch path (asf.kernel.mainline.dispatch, already shipped) does not crash decide(\u2026",
         "build-b-200581-1791872508: NEEDS OPERATOR: tests/test_tick_latency.py:177 reads `m.today()` bare right after a tick \u2014 the same day-crossing flakiness class B-200581 fixes elsewhere, discovered only because this round tried widening the lint's\u2026",
-        "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
+        "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026",
+        "build-b-200581-1791903521: NEEDS OPERATOR: B-200581's A6 clock lint still pins four paths outside its writes: footprint (asf/ci_pool.py asf/dwell.py asf/record/check.py asf/record/core.py), and reverting them turns the committed tests/test_me\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18170,7 +18171,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T14:59:48Z",
+      "updated": "2026-10-13T15:16:08Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -37195,7 +37196,7 @@
         "plan-f-0357-1791903770: NEEDS OPERATOR: the spec repeats the non-existent name `decide.plan` at docs/specs/f-0357.md:392 (\u00a72.12). The plan records the correction in \u00a72.6 and K22 rather than widening scope, but the approved spec still carri\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37205,7 +37206,7 @@
       "state": "New",
       "title": "A red trunk is handled correctly: blame is established before any revert",
       "type": "feature",
-      "updated": "2026-10-13T15:11:16Z"
+      "updated": "2026-10-13T15:16:08Z"
     },
     "F-0358": {
       "backlinks": [
@@ -37428,7 +37429,7 @@
         "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
         "spec-f-0363-1791900986: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0006",
       "priority": "need",
@@ -37438,7 +37439,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T14:59:48Z"
+      "updated": "2026-10-13T15:16:08Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94181,7 +94182,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94194,7 +94195,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T14:32:51Z",
+      "updated": "2026-10-13T15:16:08Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94239,7 +94240,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them. T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94252,7 +94253,7 @@
       ],
       "title": "the card's acceptance quoted back from the record, never a pointer at the brief",
       "type": "task",
-      "updated": "2026-10-13T14:59:48Z",
+      "updated": "2026-10-13T15:16:08Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
