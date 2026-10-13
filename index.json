@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T07:11:48Z",
+  "generated": "2026-10-13T07:15:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18166,25 +18166,33 @@
         "granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "asf/kernel/needed.py:259 \u2014 `elif it.reverted and facts.main and config.revert_branch + p.item_id not in reverting:` so an unread trunk falls to the Ready/relaunch branch, and decide the Done off a fact that does not decay (the revert's sha recorded by `RevertLanded`) instead of absence from `main_commits`' 15-commit window; fix `tests/kernel/test_still_needed.py:280` to pass an explicit non-empty `main`",
+        "asf/kernel/mainline.py:184 \u2014 `if not config.main_red_revert or not prefix or not facts.main: return []`, and add a case asserting `landed_reverts(f, cfg(main_red_revert=False)) == []`",
+        "asf/kernel/mainline.py:201 \u2014 keep the `MainCommit` the `c.pr` lookup hits and rebuild the finding with `red_checks(c, config)`'s names and the first check's `log_tail[-TAIL_MAX:]`, as the deleted `revert_action` did",
+        "tests/kernel/test_still_needed.py:276 \u2014 rename to `test_an_empty_diff_on_an_already_reverted_item_marks_it_done_not_ready` (the card's exact acceptance id), keeping the still-landed case as the second test",
+        "asf/kernel/mainline.py:184 \u2014 add `def revert_prefix(config): return config.revert_branch or DEFAULT_BRANCH_PREFIXES['revert']` and use it at `mainline.py:164`, `mainline.py:184` and `needed.py:259` so one prefix rule holds everywhere",
+        "asf/kernel/incidents.py:99 \u2014 `if not isinstance(a, A.RevertLanded): continue`, taking the subject sha from `main_by_pr[a.pr]` as `_reverted_merge_records` does; `incidents.py` is granted by this round's Operator answers",
         "asf/kernel/mainline.py:190 \u2014 bind RevertLanded to the PR the revert commit sits above, not to the item's newest merged PR: find the revert commit's index in facts.main and take `next((c.pr for c in mains[at+1:] if c.item_id == it.id and c.pr and c.pr not in it.reverted), None)`; otherwise the item's next merged PR is marked reverted and relaunched (confirmed: #30 \u2192 RevertLanded, State.READY, launched)",
         "asf/kernel/needed.py:255 \u2014 gate the `elif it.reverted` Done on the revert not having landed (the mirror of landed_reverts: `prefix + p.item_id` absent from facts.main), else a failed empty rebuild of work the revert really removed is closed Done with a gate line falsely claiming the work is still on the trunk; split the new test into both cases",
         "the next REPORT \u2014 declare `needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py`: the diff leaves the brief's footprint (actions.py, decide.py) and C4's fix adds incidents.py",
         "asf/kernel/incidents.py:99 \u2014 key _revert_records off A.RevertLanded (files/lines/checks from main_by_pr[a.pr]) or dedupe by (item, sha), so the ledger holds one `revert` row per revert instead of one per red tick now that RevertPR is re-planned every tick",
-        "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "operator answer: granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building.",
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18193,7 +18201,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T06:56:15Z",
+      "updated": "2026-10-13T07:15:49Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -36996,7 +37004,7 @@
       "state": "New",
       "title": "A red trunk is handled correctly: blame is established before any revert",
       "type": "feature",
-      "updated": "2026-10-13T07:11:46Z"
+      "updated": "2026-10-13T07:15:49Z"
     },
     "F-0358": {
       "backlinks": [],
@@ -37078,7 +37086,7 @@
       "kernel_notes": [
         "spec-f-0360-1791870060: NEEDS OPERATOR: whether host clocks are loadable in this machine's launchd domain at all \u2014 the watchdog seats itself beside the net probe (spec \u00a71.3) \u2014 `launchctl print gui/$(id -u)/asf.host.net-probe | head -20`"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37088,7 +37096,7 @@
       "state": "New",
       "title": "The kernel keeps itself running and current: self-upgrade, watchdog, proposals, account probes",
       "type": "feature",
-      "updated": "2026-10-13T07:05:22Z"
+      "updated": "2026-10-13T07:15:49Z"
     },
     "F-0361": {
       "backlinks": [
@@ -91151,14 +91159,13 @@
         "PR #1684: upgrade-matrix (v0.2.187) is red but not a required check \u2014 ignored",
         "PR #1684: upgrade-matrix (v0.2.188) is red but not a required check \u2014 ignored",
         "PR #1684: part (3.12, 2) is red but not a required check \u2014 ignored",
-        "PR #1684: part (3.13, 2) is red but not a required check \u2014 ignored"
+        "PR #1684: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "PR #1684: upgrade-matrix (v0.2.190) is red but not a required check \u2014 ignored",
+        "PR #1684: upgrade-matrix (v0.2.191) is red but not a required check \u2014 ignored",
+        "PR #1684: upgrade-matrix (v0.3.0) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 5 fix rounds",
-      "kernel_stuck_since": "2026-10-13T07:08:09Z",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91171,7 +91178,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T07:08:33Z",
+      "updated": "2026-10-13T07:15:49Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
