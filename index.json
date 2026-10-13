@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T05:26:45Z",
+  "generated": "2026-10-13T05:30:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18182,7 +18182,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T05:20:00Z",
+      "updated": "2026-10-13T05:30:50Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -90756,7 +90756,8 @@
         "One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head."
+        "relaunch: operator answer: One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 2,
       "kernel_findings": [
@@ -90768,9 +90769,11 @@
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "operator answer: granted tests/test_card_body_fields.py; nothing else outside writes (card updated by the kernel).",
         "operator answer: Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files.",
+        "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "operator answer: One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 4,
+      "kernel_fix_rounds": 5,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -90824,7 +90827,7 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90837,7 +90840,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T05:26:38Z",
+      "updated": "2026-10-13T05:30:50Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
@@ -91626,7 +91629,7 @@
       ],
       "title": "the knobs, the records, and a product that stacks nothing behaving exactly as today",
       "type": "task",
-      "updated": "2026-10-13T05:22:55Z",
+      "updated": "2026-10-13T05:30:51Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
