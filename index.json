@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:45:01Z",
+  "generated": "2026-10-13T19:47:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18463,6 +18463,7 @@
     },
     "B-208438": {
       "backlinks": [
+        "T-208099",
         "T-210355"
       ],
       "children": [],
@@ -18505,6 +18506,11 @@
       "id": "B-210839",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.13) did not finish green\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: checks (3.12) did not finish green\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes.",
         "PR #1728: checks (3.12) is red but not a required check \u2014 ignored",
@@ -18512,7 +18518,7 @@
         "PR #1728: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1728: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18522,7 +18528,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T19:39:12Z",
+      "updated": "2026-10-13T19:47:55Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18643,7 +18649,11 @@
       "id": "B-213443",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
+      "kernel_notes": [
+        "groom-fill-b-213443-1791920579: groom-fill raised risk high: confirmed on origin/main that exclusion only reaches ev['ids'] (_exclude_pr_ids, ingest.py:717-744) while the plan-matched Task path (ingest.py:1159-1163) and match_bug (ingest.py:392-409, called at 1259) read ev['features'][...]['tasks'][tid] and ev['merged'] unfiltered \u2014 a real, well-localized gap buildable with the sha coercion already proven at ingest.py:732."
+      ],
       "parent": "E-0006",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
@@ -18651,7 +18661,11 @@
       "state": "New",
       "title": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
       "type": "bug",
-      "updated": "2026-10-13T19:43:42Z"
+      "updated": "2026-10-13T19:47:55Z",
+      "writes": [
+        "asf/record/ingest.py",
+        "tests/test_feature_delivery.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -51964,6 +51978,7 @@
         "T-160208",
         "T-160211",
         "T-164021",
+        "T-208099",
         "T-80369",
         "T-80370"
       ],
@@ -94475,18 +94490,20 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "rebase: PR #1723 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
-        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py, tests/kernel/test_question_resolvers.py also held by T-208102 \u2014 additive edits only, never a rewrite"
+        "asf/kernel/decide.py:1341 \u2014 when the rule grants nothing, record the refusal on the park instead of returning a bare None: beside the _file_inbox hook at decide.py:685-687 append A.MarkStuck(it.id, resolvers.write_grant_refused(paths, it, facts.items, tuple(config.test_paths or ()), facts.trunk_files, tuple(config.risk_high or ())), 'operator') (only when that reason differs from the Stuck's current one). Step 6 and spec \u00a72.4's last paragraph are unimplemented today: write_grant_refused is called from no module, so a refused ask's reason names neither the paths nor the clause",
+        "asf/kernel/questions.py:191 and asf/kernel/decide.py:1232 \u2014 move the write_ask test above the card_read_question test in classify, and the _write_grant call above card_read = _card_read(...) in _auto_answer: write-grant is second of the four and card-read third (plan :416, :480; spec :139-141). Measured inverted today \u2014 \"I could not read the card's Acceptance \u2014 may I write `tests/kernel/test_new_thing.py`?\" is answered by='card-read' writes=[], dropping the permission ask and never widening the card",
+        "asf/kernel/resolvers.py:606 \u2014 replace the inline by-rule block with the shared predicate (step 4, D7's one home): give write_grant_by_rule a covers=None parameter defaulting to fnmatch.fnmatchcase, then needs_writes reads `if write_grant_by_rule(paths, it, items, test_paths, trunk_files, lambda p, g: overlap([p], g)): return FINDING_BY_RULE % ' '.join(paths), paths`. T-208100 landed as 5da9cad, this branch's base, so nothing serialises resolvers.py against it now",
+        "asf/kernel/resolvers.py:681 \u2014 write_grant_by_rule matches with fnmatch.fnmatchcase while PATH_TOKEN_RE admits `*`, so an asked glob escapes the \"no other live item holds it\" clause: measured, `tests/kernel/test_*.py` is granted and the card widened while T-0002 (Building) holds tests/kernel/test_shared.py inside it. Pass the caller's _overlap through C3's covers parameter, or make write_ask drop a token carrying a glob metacharacter",
+        "shared files: asf/kernel/ports.py also held by B-208438 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1723: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1723: part (3.13, 3) is red but not a required check \u2014 ignored",
         "round not charged: a rebase round: PR #1723 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_round_charged": false,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94499,7 +94516,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T19:28:43Z",
+      "updated": "2026-10-13T19:47:55Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94517,6 +94534,7 @@
         "T-208097"
       ],
       "backlinks": [
+        "T-208099",
         "T-208104"
       ],
       "children": [],
@@ -94638,7 +94656,6 @@
         "T-208097"
       ],
       "backlinks": [
-        "T-208099",
         "T-208104"
       ],
       "children": [],
@@ -94946,11 +94963,7 @@
         "launch: launch: branch fix/T-210357-blame-before-revert checked out in an external worktree /private/tmp/claude-501/wt-blame; waits until it's released",
         "launch: launch: branch fix/T-210357-blame-before-revert checked out in an external worktree /private/tmp/claude-501/wt-blame; waits until it's released"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "launch: launch: branch fix/T-210357-blame-before-revert checked out in an external worktree /private/tmp/claude-501/wt-blame; waits until it's released",
-      "kernel_stuck_since": "2026-10-13T19:31:35Z",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94963,7 +94976,7 @@
       ],
       "title": "blame before any revert \u2014 the failing test run on the parent's tree, now",
       "type": "task",
-      "updated": "2026-10-13T19:32:00Z",
+      "updated": "2026-10-13T19:47:55Z",
       "writes": [
         "asf/kernel/blame.py",
         "asf/kernel/trunk.py",
@@ -94999,6 +95012,7 @@
       ],
       "id": "T-210358",
       "kernel_stack": "worker/T-210355@f131d782d4d57bd57b617cc46815fa12f565be87",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95011,7 +95025,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-13T19:43:42Z",
+      "updated": "2026-10-13T19:47:55Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -95088,6 +95102,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210360",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95100,7 +95115,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-13T15:34:56Z",
+      "updated": "2026-10-13T19:47:55Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -95136,6 +95151,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210361",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95148,7 +95164,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T15:35:01Z",
+      "updated": "2026-10-13T19:47:55Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
