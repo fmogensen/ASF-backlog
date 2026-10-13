@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T03:23:38Z",
+  "generated": "2026-10-13T03:26:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -91398,10 +91398,13 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160210",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+      "kernel_answers": [
+        "granted tests/kernel/fakes.py. One more round: close every open finding as worded \u2014 decide.py:1135 (NoteStack only in the acting arms), :1131 (a parked predecessor is not Done; read Done from states, not facts.prs), spawn.py:980 (is_ancestor ... is False), and add retarget to the fake plus one Unstack test that applies the plan. Rebase onto origin/main, no merge commit."
       ],
-      "kernel_extra_rounds": 0,
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/kernel/fakes.py. One more round: close every open finding as worded \u2014 decide.py:1135 (NoteStack only in the acting arms), :1131 (a parked predecessor is not Done; read Done from states, not facts.prs), spawn.py:980 (is_ancestor ... is False), and add retarget to the fake plus one Unstack test that applies the plan. Rebase onto origin/main, no merge commit."
+      ],
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/kernel/decide.py:1135 \u2014 the stack key is cleared with no write when the base carries no pull request but its branch is still on origin and the predecessor is not Done (reachable via needed.py:247, an empty-diff close that keeps the branch): move A.NoteStack(iid, '', '') into the two acting arms and widen the teardown to `elif own_pr is not None:`, since line 1125 already established the base carries no open pull request and 1132 none unreverted-merged; else hold_stacked (decide.py:1065) holds the card's pull request for ever and line 1119 skips the card on every later tick",
         "asf/kernel/decide.py:1131 \u2014 a retired predecessor (parked and reading as Done) takes the retarget arm, overriding the teardown the comment at 1123-1124 promises, and lands the retired work under the successor's number: `pred_done = (pred_id and pred_id not in parked and states.get(pred_id, (None,))[0] is State.DONE)`",
@@ -91418,11 +91421,7 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-160208@fb2c88353c4799dd472eb5f311e8dbd2fafc1b72",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds",
-      "kernel_stuck_since": "2026-10-13T03:23:35Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91435,7 +91434,7 @@
       ],
       "title": "the unstack \u2014 retargeted to the trunk, replayed onto it, torn down when the base is rebuilt",
       "type": "task",
-      "updated": "2026-10-13T03:23:35Z",
+      "updated": "2026-10-13T03:26:14Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
