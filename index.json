@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:21:24Z",
+  "generated": "2026-10-13T08:24:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -37024,17 +37024,21 @@
       "kernel_answers": [
         "Measured input for the spec and plan: docs/specs/inputs/0.4-evidence.md on main (PR #1695), summary table plus section C. Each number has the query beside it; re-run it rather than trust it if the window has moved. Size the Stories from those counts, largest first."
       ],
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
+        "docs/specs/f-0357.md:737 \u2014 S-203373's acceptance command names `tests.test_clock_shift`, a module no section of the spec declares (\u00a73 declares only tests.kernel.test_blame, test_trunk_wide, test_revert_landed, test_empty_done, test_red_trunk_replay, and A6 adds tests.test_clock and tests.test_check_clock) and which contradicts the Story's own body at :861 (\"Acceptance A6's third command\", i.e. `ASF_CLOCK_OFFSET_S=34560000 python3 -m unittest -v tests.test_ci_stall tests.test_ci_cancels tests.test_doctor`): put A6's third command on :737, or declare tests.test_clock_shift in \u00a73/A6 with what it holds (the local two-shift command of :870)",
         "docs/specs/f-0357.md:591 \u2014 A7's command opens with `tests.kernel.test_trunk_red`, which does not exist (ModuleNotFoundError; the only trunk-red suite is `tests/test_trunk_red.py`, the floor's, which \u00a71.1 Out leaves untouched): drop that module from the A7 command.",
         "docs/specs/f-0357.md:53-57 \u2014 \u00a71.1 In omits four files \u00a72.7 (`:390-393`) and S-203372 (`:840`) require editing to make the six existing helpers forward to `asf.clock`: add `asf/metrics/metrics.py` (also `metrics.today` must take a `now`, since `asf/metrics/metrics.py:91` is `def today():` and \u00a72.7 calls `metrics.today(now)`), `asf/workers/headroom.py`, `asf/record/core.py` and `asf/ci_heartbeat.py` to the In list, so the Stories minted from it carry them in `writes:`.",
         "docs/specs/f-0357.md:718 \u2014 \"S-203368 mints the module and the probe that every later kernel Story reads\" contradicts S-203371's \"Independent of S-203368\" (`:817`); \u00a72.6 touches only `asf/kernel/needed.py` and reads no blame verdict, so fix `:718` to read \"every later kernel Story but S-203371\".",
         "docs/specs/f-0357.md:591-593 \u2014 A7 reaches only one of the two landed cases \u00a72.6 (`:368`) and S-203371 (`:827`) say `EMPTY_FINDING`'s retirement updates: add `tests.kernel.test_stacked_builds` to the command, for `test_13_the_still_needed_gate_reads_it_as_any_other` (`tests/kernel/test_stacked_builds.py:284-292`), which asserts `State.READY` on an empty diff and flips to DONE under D10."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "spec-f-0357-1791869808: NEEDS OPERATOR: whether the host-side `pre_push_check` should gain the new clock lint (the in-repo CI step is part of S-203372; this is the host gate) \u2014 `grep -n -A8 pre_push_check \"$ASF_HOME\"/products/asf.yaml`"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37044,7 +37048,7 @@
       "state": "New",
       "title": "A red trunk is handled correctly: blame is established before any revert",
       "type": "feature",
-      "updated": "2026-10-13T08:05:53Z"
+      "updated": "2026-10-13T08:24:39Z"
     },
     "F-0358": {
       "backlinks": [],
