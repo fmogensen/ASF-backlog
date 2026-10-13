@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T06:57:03Z",
+  "generated": "2026-10-13T07:05:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18125,10 +18125,11 @@
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing.",
-        "build-b-200581-1791868352: NEEDS OPERATOR: widen asf/kernel/decide.py's ORDER tuple (line ~313) to include asf.kernel.actions.DispatchMain, so the trunk-head dispatch path (asf.kernel.mainline.dispatch, already shipped) does not crash decide(\u2026"
+        "build-b-200581-1791868352: NEEDS OPERATOR: widen asf/kernel/decide.py's ORDER tuple (line ~313) to include asf.kernel.actions.DispatchMain, so the trunk-head dispatch path (asf.kernel.mainline.dispatch, already shipped) does not crash decide(\u2026",
+        "build-b-200581-1791872508: NEEDS OPERATOR: tests/test_tick_latency.py:177 reads `m.today()` bare right after a tick \u2014 the same day-crossing flakiness class B-200581 fixes elsewhere, discovered only because this round tried widening the lint's\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18137,7 +18138,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T06:26:02Z",
+      "updated": "2026-10-13T07:05:22Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18243,7 +18244,9 @@
       "id": "B-204234",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "landed": "f8e619ea472e515ffa313d48c61a1dc23b39fad2",
       "parent": "F-0361",
+      "removed": "retired: superseded by f8e619ea472e515ffa313d48c61a1dc23b39fad2 \u2014 Both fixes (NoteStack duplicate-event guard at apply.py:266, ArchiveAndReset \"-> trunk\" gating at apply.py:285-286) and their proving tests (test_13b_a_replanned_stack_note_appends_no_second_event, test_12c_the_teardowns_unstack_line_never_says_the_pr_went_to_the_trunk) already landed on origin/main in T-160211/PR #1688, and both tests pass on trunk today. (landed f8e619ea472e515ffa313d48c61a1dc23b39fad2)",
       "schema_version": 2,
       "severity": "S3",
       "signature": "Stacked builds: no duplicate stacked-start event, and the unstack log line names what happened",
@@ -23567,6 +23570,7 @@
     "F-0024": {
       "area": "factory",
       "backlinks": [
+        "F-0360",
         "T-160208",
         "B-0351",
         "B-0352",
@@ -36972,11 +36976,17 @@
       "kernel_answers": [
         "Measured input for the spec and plan: docs/specs/inputs/0.4-evidence.md on main (PR #1695), summary table plus section C. Each number has the query beside it; re-run it rather than trust it if the window has moved. Size the Stories from those counts, largest first."
       ],
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/specs/f-0357.md:124 \u2014 \"_rebuild is only reachable through _fix_round\" is false (decide.py:1568 calls it from _judge_pr's conflict branch; ArchiveAndReset is also appended at decide.py:669 and decide.py:1153): say H2 closes the fix-round path only, and scope A2's and S-203369's \"no archive and reset is planned for any item while the red is trunk-wide\" to that path.",
+        "docs/specs/f-0357.md:144 \u2014 P7's `waits.py:130` is the State.PARKED branch; the `overlap` Ready split is waits.py:139: change the reference to waits.py:139.",
+        "docs/specs/f-0357.md:193 \u2014 resolvers.Probe.key is '%s:%s' % (cls, ','.join(target)), so a blame probe keys as `blame:<parent>,<id>,<id>`: drop the second colon here and in R11 (line 625).",
+        "docs/specs/f-0357.md:573 \u2014 A6 says \"the five forwarding helpers\" while \u00a72.7 names six (metrics.now_utc, workers.headroom.now_utc, record.core.now_iso, record.core.today, ci_stall._now, ci_heartbeat._now): make the two counts agree."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0357-1791869808: NEEDS OPERATOR: whether the host-side `pre_push_check` should gain the new clock lint (the in-repo CI step is part of S-203372; this is the host gate) \u2014 `grep -n -A8 pre_push_check \"$ASF_HOME\"/products/asf.yaml`"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -36986,11 +36996,19 @@
       "state": "New",
       "title": "A red trunk is handled correctly: blame is established before any revert",
       "type": "feature",
-      "updated": "2026-10-13T06:12:03Z"
+      "updated": "2026-10-13T07:05:22Z"
     },
     "F-0358": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-203318",
+        "S-203319",
+        "S-203320",
+        "S-203321",
+        "S-203322",
+        "S-203323",
+        "S-203324"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0358",
@@ -37004,7 +37022,7 @@
       "kernel_notes": [
         "spec-f-0358-1791869759: NEEDS OPERATOR: the card's last acceptance line is a 24-hour measurement, and this session could not read the kernel review ledger (it runs off the factory host), so the 57% baseline the card quotes for 2026-10-12 i\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37014,7 +37032,7 @@
       "state": "New",
       "title": "Review loops converge: proof before review, no repeated or contradicting findings",
       "type": "feature",
-      "updated": "2026-10-13T06:26:02Z"
+      "updated": "2026-10-13T07:05:22Z"
     },
     "F-0359": {
       "backlinks": [],
@@ -37050,11 +37068,20 @@
       "kernel_answers": [
         "Measured input for the spec and plan: docs/specs/inputs/0.4-evidence.md on main (PR #1695), summary table plus section D. Each number has the query beside it; re-run it rather than trust it if the window has moved. Size the Stories from those counts, largest first."
       ],
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/specs/f-0360.md:392 \u2014 \u00a72.6 re-specifies `asf propose`, which `docs/specs/f-0024.md` \u00a72.4 already specifies differently (intake card at `<record>/<intake_dir>/propose-<slug>.md`, `--path/--evidence/--patch/--title/--parent/--dry-run`, dedupe `source: amend:<path>`); say in \u00a72.6 (or 1.1 Out) that F-0024 \u00a72.4's card shape is superseded by the proposal file and why, so the two specs do not describe one command two ways",
+        "docs/specs/f-0360.md:419 \u2014 the hold's captured payload is copied verbatim into a repo file with no redaction gate, contradicting F-0024's \"The captured patch\" decision; state that `asf propose` scans each payload with `redact.scan_text` and writes `patch withheld \u2014 the redaction gate found N finding(s)` instead of the body when it is not clean, or the session's pre-push `asf redact` refuses the push and the proposal can never land",
+        "docs/specs/f-0360.md:567 \u2014 \"a command (A11)\" names the account-probe test; change to \"a command (A12, and A13 on the live factory)\"",
+        "docs/specs/f-0360.md:1029 \u2014 \"Design \u00a72.4 and \u00a72.6's pin setting\": the `pin` setting is in \u00a72.4, \u00a72.6 is the proposal; change to \"Design \u00a72.4, the `pin` setting included\"",
+        "docs/specs/f-0360.md:155 \u2014 P5 cites `asf/upgrade.py:1575` (inside `move`'s CI read) for `upgrade.moving`; change to `asf/upgrade.py:1520` (and optionally `ci_queue.py:4628`, the clock that already reads it)",
+        "docs/specs/f-0360.md:151 \u2014 P1 cites `scheduler.clock_names`, which does not exist; change to `scheduler.clocks` (the product's declared clocks) beside the `upgrade.MoveOps.clock_names` already cited",
+        "docs/specs/f-0360.md:230 \u2014 `asf scheduler pause --product host --clock kernel-guard` exits 2 as written (`--reason` is required by `_cmd_pause_resume`); change to `asf scheduler pause --product host --clock kernel-guard --reason \"<why>\"`"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0360-1791870060: NEEDS OPERATOR: whether host clocks are loadable in this machine's launchd domain at all \u2014 the watchdog seats itself beside the net probe (spec \u00a71.3) \u2014 `launchctl print gui/$(id -u)/asf.host.net-probe | head -20`"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37064,13 +37091,21 @@
       "state": "New",
       "title": "The kernel keeps itself running and current: self-upgrade, watchdog, proposals, account probes",
       "type": "feature",
-      "updated": "2026-10-13T06:12:03Z"
+      "updated": "2026-10-13T07:05:22Z"
     },
     "F-0361": {
       "backlinks": [
         "T-160211"
       ],
       "children": [
+        "S-203468",
+        "S-203469",
+        "S-203470",
+        "S-203471",
+        "S-203472",
+        "S-203473",
+        "S-203474",
+        "S-203475",
         "B-204234"
       ],
       "decided": true,
@@ -41706,6 +41741,201 @@
       "title": "Cut review loops on high-risk builds: strong-model first pass plus a reviewer checklist self-check",
       "type": "story",
       "updated": "2026-10-12T06:07:43Z"
+    },
+    "S-203318": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203318",
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "the proof before the review \u2014 each acceptance test red on the base, green on the head \u2014 acceptance: `python3 -m unittest tests.kernel.test_review_proof`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203319": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203319",
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "a finding with a head and a stable key \u2014 closed, ruled, and the contradiction that escalates once \u2014 acceptance: `python3 -m unittest tests.kernel.test_finding_keys`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203320": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203320",
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "a finding outside the footprint becomes a writes request, granted by rule or routed, never a loop \u2014 acceptance: `python3 -m unittest tests.kernel.test_finding_writes`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203321": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203321",
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "the round the author caused, and the three that charge nothing \u2014 acceptance: `python3 -m unittest tests.kernel.test_round_charge`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203322": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203322",
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "the final review of the final head, and no Stuck on a head nobody read \u2014 acceptance: `python3 -m unittest tests.kernel.test_final_review`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203323": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203323",
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "the operator's answers reach the brief whole, newest first \u2014 acceptance: `python3 -m unittest tests.test_brief_answers`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203324": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203324",
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "the measure \u2014 the changes share and the greatest round over 24 hours \u2014 acceptance: `python3 -m unittest tests.kernel.test_review_measure`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203468": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203468",
+      "parent": "F-0361",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "decide is cut on its four seams, behind a facade that still exports every name \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_split_decide`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203469": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203469",
+      "parent": "F-0361",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "ports is cut into its three doors and its knobs, behind a facade \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_split_ports`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203470": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203470",
+      "parent": "F-0361",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "Config leaves model, so a knob Task and a facts Task stop sharing a file \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_split_model`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203471": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203471",
+      "parent": "F-0361",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "loop keeps the tick; its lines and its measures move out \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_split_loop`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203472": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203472",
+      "parent": "F-0361",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "a tick is bounded, measured and recorded, and its launches never delay a landing \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_bounded_tick`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203473": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203473",
+      "parent": "F-0361",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "a product with Ready work keeps its floor, an idle partner lends within one tick, and the status says why \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_seat_floor`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203474": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203474",
+      "parent": "F-0361",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "a rebuilt predecessor carries its stack along instead of throwing it away \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_stack_rebuild`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
+    },
+    "S-203475": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-203475",
+      "parent": "F-0361",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T07:04:14Z",
+      "state": "New",
+      "title": "the gate measures seats busy and usable seats beside lead time, so the Feature's own number is readable \u2014 acceptance: `python3 -m unittest -v tests.kernel.test_throughput_gate`",
+      "type": "story",
+      "updated": "2026-10-13T07:04:14Z"
     },
     "S-51600": {
       "backlinks": [
@@ -90842,7 +91072,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_extra_rounds": 2,
       "kernel_findings": [
@@ -90911,7 +91142,6 @@
         "PR #1684: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
       "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
@@ -90925,7 +91155,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T05:30:50Z",
+      "updated": "2026-10-13T07:05:22Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
