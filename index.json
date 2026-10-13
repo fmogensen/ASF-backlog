@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T18:04:33Z",
+  "generated": "2026-10-13T18:05:58Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18499,6 +18499,23 @@
       "title": "Settle which ids a proof may judge before the proof gate can be turned on",
       "type": "bug",
       "updated": "2026-10-13T17:08:42Z"
+    },
+    "B-211642": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-211642",
+      "parent": "F-0358",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
+      "stage_since": "2026-10-13T18:05:04Z",
+      "state": "New",
+      "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
+      "type": "bug",
+      "updated": "2026-10-13T18:05:04Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -37315,7 +37332,8 @@
         "T-206245",
         "T-206246",
         "B-211240",
-        "B-211241"
+        "B-211241",
+        "B-211642"
       ],
       "decided": true,
       "folder": "features",
@@ -94020,7 +94038,8 @@
       ],
       "backlinks": [
         "T-206245",
-        "T-206246"
+        "T-206246",
+        "B-211642"
       ],
       "children": [],
       "decided": true,
@@ -94309,7 +94328,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94322,7 +94341,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T17:39:45Z",
+      "updated": "2026-10-13T18:05:52Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94670,6 +94689,12 @@
         "asf redact --unpublished"
       ],
       "id": "T-210356",
+      "kernel_answers": [
+        "granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
+      ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1."
@@ -94679,7 +94704,7 @@
         "PR #1721: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1721: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94692,10 +94717,12 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T17:42:45Z",
+      "updated": "2026-10-13T18:05:52Z",
       "writes": [
         "asf/kernel/needed.py",
-        "tests/kernel/test_satisfied_not_relaunched.py"
+        "tests/kernel/test_satisfied_not_relaunched.py",
+        "tests/kernel/test_stacked_builds.py",
+        "asf/build-t-210356-1791913341@20261013T174228Z"
       ]
     },
     "T-210357": {
