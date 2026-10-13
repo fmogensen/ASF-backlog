@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T14:44:48Z",
+  "generated": "2026-10-13T14:50:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -94124,7 +94124,13 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/resolvers.py:427 \u2014 an all-decimal token (a CI run id, 7-40 digits) passes `SHA_TOKEN_RE` and is claimed as the head a finding was measured on, so the kernel answers `FINDING_STALE`/`FINDING_HOLDS` off a comparison against a non-commit. Replace `tokens = list(dict.fromkeys(SHA_TOKEN_RE.findall(text)))` with `tokens = [t for t in dict.fromkeys(SHA_TOKEN_RE.findall(text)) if not t.isdigit()]`, say why in the `SHA_TOKEN_RE` comment at `asf/kernel/resolvers.py:406-410` (an all-decimal token is a run id or timestamp; an all-decimal abbreviated sha fails closed to the console, D13's direction), and add two cases to `tests/kernel/test_question_finding_head.py` \u2014 a bare `run 38411462626` question yields `''` and is not `R.FINDING_HEAD`, and it reaches the console through `D.decide` with the Stuck still on `operator`.",
+        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
+        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py also held by T-208100 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94137,7 +94143,7 @@
       ],
       "title": "a red finding against the head it was measured on and the checks on the current head",
       "type": "task",
-      "updated": "2026-10-13T14:44:47Z",
+      "updated": "2026-10-13T14:50:29Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94212,6 +94218,7 @@
         "T-208097"
       ],
       "backlinks": [
+        "T-208098",
         "T-208104"
       ],
       "children": [],
@@ -94301,7 +94308,7 @@
       ],
       "title": "a Gate command no CI job runs, run on the head when the read-only grant admits it",
       "type": "task",
-      "updated": "2026-10-13T14:38:20Z",
+      "updated": "2026-10-13T14:50:29Z",
       "writes": [
         "asf/kernel/trunk.py",
         "asf/kernel/resolvers.py",
