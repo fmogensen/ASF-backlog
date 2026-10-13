@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T11:44:48Z",
+  "generated": "2026-10-13T11:47:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -91397,13 +91397,13 @@
         "One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
         "granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else.",
         "One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base.",
-        "One more round, the two findings of the latest review as worded: schema.py:383 (a card the gate refuses raises CardMigrationError naming the card, field and why, not a traceback) and schema.py:810-813 (drive the snapshot off the clone's own stamp, so a clone already at SCHEMA_VERSION snapshots nothing and a second schema-migrate cannot move the tag). Each test must fail on base. Then make every check green on the head. Nothing else."
+        "One more round, the two findings of the latest review as worded: schema.py:383 (a card the gate refuses raises CardMigrationError naming the card, field and why, not a traceback) and schema.py:810-813 (drive the snapshot off the clone's own stamp, so a clone already at SCHEMA_VERSION snapshots nothing and a second schema-migrate cannot move the tag). Each test must fail on base. Then make every check green on the head. Nothing else.",
+        "One more round, the single finding of the latest review as worded: schema.py:926 \u2014 schema-migrate: asf: refused \u2014 4 session(s) in flight (build-t-206240-1791890226, review-b-200581-1791891382, review-f-0357-1791891859, review-f-0362-1791891546); rerun with --drain to wait for them catches CardMigrationError where record-repair does and ends with a clean message naming each refused card, field and why, and a non-zero exit; no traceback, and no card written when any card refuses. Test on a record with one refusing card; it must fail on base. Report in the REPORT how many cards of the sample and of a real record refuse, and why. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, the two findings of the latest review as worded: schema.py:383 (a card the gate refuses raises CardMigrationError naming the card, field and why, not a traceback) and schema.py:810-813 (drive the snapshot off the clone's own stamp, so a clone already at SCHEMA_VERSION snapshots nothing and a second schema-migrate cannot move the tag). Each test must fail on base. Then make every check green on the head. Nothing else.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: One more round, the single finding of the latest review as worded: schema.py:926 \u2014 schema-migrate: asf: refused \u2014 4 session(s) in flight (build-t-206240-1791890226, review-b-200581-1791891382, review-f-0357-1791891859, review-f-0362-1791891546); rerun with --drain to wait for them catches CardMigrationError where record-repair does and ends with a clean message naming each refused card, field and why, and a non-zero exit; no traceback, and no card written when any card refuses. Test on a record with one refusing card; it must fail on base. Report in the REPORT how many cards of the sample and\u2026"
       ],
-      "kernel_extra_rounds": 5,
+      "kernel_extra_rounds": 6,
       "kernel_findings": [
         "asf/schema.py:383 \u2014 wrap the gate write in `try: writer.write_card(json_path, card.dumps(new_meta)) except writer.CardInvalid as e: raise CardMigrationError(relpath, 'card', '; '.join(f'{p}: {m}' for p, m in e.errors)) from e`, so a card the gate refuses (an unresolvable reference above all) stops the migration with the card, field and why instead of an uncaught traceback out of `record-repair --to-schema 2 --apply` and `schema-migrate`; add the unresolvable-`blockedBy` case to `RoundTripSafetyTests` (tests/test_card_migration.py:185)",
         "asf/schema.py:810-813 \u2014 drive the snapshot off the clone's own stamp, not `pending()`'s lowest-across-roots: `from_v = record_version(clone) or 0` then `for v in range(from_v + 1, SCHEMA_VERSION + 1): m = MIGRATIONS.get(v); if m is None or not m.additive: snapshot(product, v); break`, so a clone already at `SCHEMA_VERSION` snapshots nothing and a second `asf schema-migrate` cannot force `refs/tags/asf-schema-2` off the pre-migration commit; add the case to tests/test_schema_version.py:298 (a second `migrate_product` leaves the tag where it was and writes no second backup)",
@@ -91486,7 +91486,7 @@
         "PR #1684: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91499,7 +91499,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T11:30:44Z",
+      "updated": "2026-10-13T11:47:14Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
