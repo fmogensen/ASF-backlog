@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T12:03:45Z",
+  "generated": "2026-10-13T12:07:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18119,15 +18119,15 @@
         "granted asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py tests/test_tick_steps.py tests/test_tick_latency.py; nothing else outside writes (card updated by the kernel). B-200932 also writes asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py matches kernel.risk.high: this item is high-risk now.",
         "granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932).",
         "granted asf/kernel/ports.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the four findings of the latest review as worded: mainline.py:462 (surface the kernel's own revert PR as a fact), mainline.py:243 (independence needs a base that predates the candidate, not 'not behind'), apply.py:490 (write P.REVERTED only with auto_merge), metrics.py:105 (the clock lint sees every today() binding). Each test must fail on base.",
-        "One more round, the single finding of the latest review as worded: mainline.py:509 \u2014 the abandon leg must leave something the next tick reads, so an abandoned revert is not re-opened every tick; add the abandoned case as a third independence source at mainline.py:478 as the finding gives it, with a two-tick test (abandon, then no new RevertPR) that fails on base. Nothing else."
+        "One more round, the single finding of the latest review as worded: mainline.py:509 \u2014 the abandon leg must leave something the next tick reads, so an abandoned revert is not re-opened every tick; add the abandoned case as a third independence source at mainline.py:478 as the finding gives it, with a two-tick test (abandon, then no new RevertPR) that fails on base. Nothing else.",
+        "One more round, the single finding of the latest review as worded: mainline.py:365 \u2014 revert_ci must reach a terminal state when a red check does not reproduce on the revert PR (name absent, cancelled, action_required, or no CI): read the answer off the check names that exist on the PR once its own checks have finished, so a held revert never waits for ever. Test each of those cases; they must fail on base. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, the single finding of the latest review as worded: mainline.py:509 \u2014 the abandon leg must leave something the next tick reads, so an abandoned revert is not re-opened every tick; add the abandoned case as a third independence source at mainline.py:478 as the finding gives it, with a two-tick test (abandon, then no new RevertPR) that fails on base. Nothing else.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: One more round, the single finding of the latest review as worded: mainline.py:365 \u2014 revert_ci must reach a terminal state when a red check does not reproduce on the revert PR (name absent, cancelled, action_required, or no CI): read the answer off the check names that exist on the PR once its own checks have finished, so a held revert never waits for ever. Test each of those cases; they must fail on base. Nothing else."
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
-      "kernel_extra_rounds": 3,
+      "kernel_extra_rounds": 4,
       "kernel_findings": [
         "asf/kernel/mainline.py:509 \u2014 the abandon leg writes nothing the next tick can read, so after the ClosePR the revert PR is re-opened every tick (new PR on the kept branch, full CI matrix, red again, closed again). Add the abandoned case as a third independence source at `mainline.py:478`: `or bool(filed(facts, bug_key(red, green)))` (or `all(kflake.live(s, facts) for s in sigs)`), and pin it with a `MainRed` case that runs the abandon tick, drops the closed PR from `orphan_prs`, puts that tick's Bug on the record and asserts no `RevertPR` \u2014 red on 235c4911f.",
         "asf/kernel/mainline.py:462 \u2014 `open_revert_pr` reads the revert PR from `facts.prs`, which `asf/kernel/ports.py:1647` strips of every revert-prefixed branch, so `revert_ci` is permanently `'waiting'` and the held revert never merges: surface the kernel's own revert PR as a fact (stop skipping revert branches in `_prs`' open listing, or add a `revert_prs()` port read plus a `Facts` field) and read it there; report `needs writes: asf/kernel/facts.py` if a new field is used",
@@ -18155,11 +18155,7 @@
         "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 6 fix rounds",
-      "kernel_stuck_since": "2026-10-13T11:55:55Z",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18168,7 +18164,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T11:56:55Z",
+      "updated": "2026-10-13T12:07:31Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18369,8 +18365,12 @@
       "id": "B-205886",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.0",
+      "kernel_notes": [
+        "groom-fill-b-205886-1791892798: groom-fill raised risk high: buildable scoped fix \u2014 wires an existing runtime_liveness/unknown-verdict pattern (already shipped for claude-remote) to the actions cloud lane, with concrete tests naming the confirm/no-confirm split."
+      ],
       "parent": "F-0360",
       "priority": "need",
+      "risk": "high",
       "schema_version": 2,
       "severity": "S3",
       "signature": "0.3.0 ends working cloud sessions for no first beat: the cloud sandbox cannot start the beat",
@@ -18378,7 +18378,15 @@
       "state": "New",
       "title": "0.3.0 ends working cloud sessions for no first beat: the cloud sandbox cannot start the beat",
       "type": "bug",
-      "updated": "2026-10-13T12:00:07Z"
+      "updated": "2026-10-13T12:07:31Z",
+      "writes": [
+        "asf/workers/heartbeat.py",
+        "asf/kernel/ports.py",
+        "asf/workers/actions.py",
+        "asf/workers/cloud.py",
+        "tests/test_heartbeat_verdict.py",
+        "tests/kernel/test_beat_cloud.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -93659,7 +93667,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T12:00:07Z",
+      "updated": "2026-10-13T12:07:31Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
@@ -93982,7 +93990,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-208097",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -93995,7 +94003,7 @@
       ],
       "title": "the document lanes' heads are facts, and the work is on origin when origin's head is the head the REPORT names",
       "type": "task",
-      "updated": "2026-10-13T12:03:36Z",
+      "updated": "2026-10-13T12:07:31Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
