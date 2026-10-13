@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:04:34Z",
+  "generated": "2026-10-13T19:08:29Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18433,7 +18433,7 @@
       "id": "B-208187",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18443,7 +18443,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T18:49:19Z",
+      "updated": "2026-10-13T19:08:27Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18566,13 +18566,20 @@
     "B-211642": {
       "backlinks": [],
       "children": [],
+      "creates": [
+        "tests/fixtures/review_findings_283.jsonl"
+      ],
       "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-211642",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
+      "kernel_notes": [
+        "groom-fill-b-211642-1791918062: groom-fill raised risk high: both defects are real (confirmed in findings.py's _path_token and apply.py's FindingWrites route handler, the latter's buggy behavior even codified in an existing test), concretely scoped to the kernel's F-0358 follow-up, and buildable against the existing test harness in tests/kernel/test_finding_writes.py."
+      ],
       "parent": "F-0358",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
@@ -18580,7 +18587,15 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T19:01:09Z"
+      "updated": "2026-10-13T19:08:27Z",
+      "writes": [
+        "asf/kernel/findings.py",
+        "asf/kernel/resolvers.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/apply.py",
+        "tests/kernel/test_finding_writes.py",
+        "tests/fixtures/review_findings_283.jsonl"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -94402,17 +94417,18 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py also held by T-208102 \u2014 additive edits only, never a rewrite"
+        "rebase: PR #1723 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py, tests/kernel/test_question_resolvers.py also held by T-208102 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1723: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1723: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1723: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "round not charged: a rebase round: PR #1723 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94425,7 +94441,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T19:04:33Z",
+      "updated": "2026-10-13T19:08:27Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94735,7 +94751,7 @@
         "shared files: asf/kernel/ports.py also held by T-208099 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94748,7 +94764,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T18:56:35Z",
+      "updated": "2026-10-13T19:08:27Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -94790,19 +94806,23 @@
         "granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/kernel/needed.py:312 \u2014 an empty diff on an item whose revert *did* land is closed Done, against this arm's own docstring at :269-270 (\"a failed rebuild of work the revert really removed, never a Done\"): `revert_open` is false once the revert merged and `_unproven` is false for a card naming no proving tests. Make it `elif revert_wait or it.reverted or _unproven(it, facts):` \u2014 B-200932's arm at :297-311 runs first, so an item whose work is demonstrably still on the trunk keeps its Done \u2014 and add a case beside `RevertedArmUnaffected` (tests/kernel/test_satisfied_not_relaunched.py:163) pinning a landed revert plus a card naming no proving tests as READY with one ClearStuck.",
+        "asf/kernel/needed.py:314 \u2014 the revert-open relaunch reuses EMPTY_FINDING, telling the session \"the card's proving tests are not green on main: make the change the card asks for\" when the tests were green and the blocker is the open revert. Add a `REVERT_OPEN_FINDING` constant beside EMPTY_FINDING at :152 naming the open unmerged revert, select it with `why = REVERT_OPEN_FINDING if revert_wait else EMPTY_FINDING` at :314, say the same in the gate line's `why`, and pin the text in `UnmergedRevertOpen.test_the_empty_pr_arm_does_not_mark_it_satisfied` (tests/kernel/test_satisfied_not_relaunched.py:75-82), which today asserts only that one ClearStuck exists.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel).",
         "operator answer: granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1721: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1721: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94815,7 +94835,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T18:52:56Z",
+      "updated": "2026-10-13T19:08:27Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95123,6 +95143,8 @@
         "asf redact --unpublished"
       ],
       "id": "T-210363",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.11",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95135,7 +95157,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-13T15:35:16Z",
+      "updated": "2026-10-13T19:08:27Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
