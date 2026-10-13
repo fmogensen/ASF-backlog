@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T12:21:58Z",
+  "generated": "2026-10-13T12:24:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -93690,7 +93690,8 @@
         "granted asf/kernel/briefs.py tests/kernel/test_doc_fix_rounds.py; nothing else outside writes (card updated by the kernel). T-206241 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/briefs.py tests/kernel/test_doc_fix_rounds.py; nothing else outside writes (card updated by the kernel). T-206241 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
+        "relaunch: operator answer: granted asf/kernel/briefs.py tests/kernel/test_doc_fix_rounds.py; nothing else outside writes (card updated by the kernel). T-206241 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
@@ -93703,7 +93704,7 @@
         "PR #1703: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1703: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0358.md"
       },
@@ -93716,7 +93717,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T12:07:31Z",
+      "updated": "2026-10-13T12:24:38Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
