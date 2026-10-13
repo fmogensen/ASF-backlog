@@ -1,0 +1,20 @@
+# The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question
+parent: F-0362
+
+Type: Bug
+
+The replay of real session questions is claimed by code for 20%, against the 80% target (follow-up to T-208104). Measured on tests/fixtures/replay/questions-2026-10-12.jsonl, harvested from the operator ledger for 2026-10-12/13: 15 questions, 3 claimed (predecessor 2, needs-writes 1), 12 read as judgement. Classes with no question at all: pushed, finding-head, write-grant, card-read, gate.
+
+The 12 unclaimed, by kind:
+- About 5 ask for a footprint grant in prose ("keeps the four paths", a fakes file outside writes). asf/kernel/questions.py `classify` reads none of them as write-grant.
+- 5 ask to run the card's gate commands read-only. None is read as gate, although the gate resolver exists.
+- About 3 are product or policy decisions, which are judgement by design.
+- 1 asks for the ledger itself.
+
+Second defect: the ledger loses the question. Of 56 rows for those two days in the state directory's operator-answers.jsonl, 41 carry only the operator's answer text and no `question`, so the replay can read 15. The spec's count of 127 does not match the file.
+
+## Acceptance
+- [ ] Every operator answer written to the ledger carries the question it answers (the item's stuck reason or the session's NEEDS OPERATOR line), proved through the answer command and the applier.
+- [ ] `classify` reads a prose footprint request as write-grant and a request to run the card's gate commands as gate, proved on the fixture's own rows.
+- [ ] The two skipped cases in tests/kernel/test_question_replay.py run: the replay claims at least 80% of the fixture's questions that are not product or policy decisions, and each coded class the fixture can hold has at least one question.
+- [ ] No row is removed from the fixture to reach the share.
