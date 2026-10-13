@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T14:53:08Z",
+  "generated": "2026-10-13T14:55:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18120,15 +18120,15 @@
         "granted asf/kernel/ports.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the four findings of the latest review as worded: mainline.py:462 (surface the kernel's own revert PR as a fact), mainline.py:243 (independence needs a base that predates the candidate, not 'not behind'), apply.py:490 (write P.REVERTED only with auto_merge), metrics.py:105 (the clock lint sees every today() binding). Each test must fail on base.",
         "One more round, the single finding of the latest review as worded: mainline.py:509 \u2014 the abandon leg must leave something the next tick reads, so an abandoned revert is not re-opened every tick; add the abandoned case as a third independence source at mainline.py:478 as the finding gives it, with a two-tick test (abandon, then no new RevertPR) that fails on base. Nothing else.",
         "One more round, the single finding of the latest review as worded: mainline.py:365 \u2014 revert_ci must reach a terminal state when a red check does not reproduce on the revert PR (name absent, cancelled, action_required, or no CI): read the answer off the check names that exist on the PR once its own checks have finished, so a held revert never waits for ever. Test each of those cases; they must fail on base. Nothing else.",
-        "One more round, the two findings of the latest review as worded: mainline.py:513 (a red check name missing from the revert PR is not terminal while a needs:-gated check may still appear; give any unreported red name the same grace the empty check list gets) and ports.py:1719 (_revert_fact keeps autoMergeRequest so the finalize guard fires and RevertPR is not re-emitted every tick). Each test must fail on base. Nothing else; no new scope."
+        "One more round, the two findings of the latest review as worded: mainline.py:513 (a red check name missing from the revert PR is not terminal while a needs:-gated check may still appear; give any unreported red name the same grace the empty check list gets) and ports.py:1719 (_revert_fact keeps autoMergeRequest so the finalize guard fires and RevertPR is not re-emitted every tick). Each test must fail on base. Nothing else; no new scope.",
+        "One more round, the single finding of the latest review exactly as worded: mainline.py:645 \u2014 an abandoned revert is recognised by its own marker, not by any Bug with the spell's key. Add ABANDON_MARKER beside BUG_MARKER, have the abandon leg append it to the spell's Bug, match that marker at :645, keep test_main_landing.py:721 green, and add the two tests (knob-off second tick;  second tick: no Quarantine), red on this head. Change nothing else; add no new behaviour."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, the two findings of the latest review as worded: mainline.py:513 (a red check name missing from the revert PR is not terminal while a needs:-gated check may still appear; give any unreported red name the same grace the empty check list gets) and ports.py:1719 (_revert_fact keeps autoMergeRequest so the finalize guard fires and RevertPR is not re-emitted every tick). Each test must fail on base. Nothing else; no new scope.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: One more round, the single finding of the latest review exactly as worded: mainline.py:645 \u2014 an abandoned revert is recognised by its own marker, not by any Bug with the spell's key. Add ABANDON_MARKER beside BUG_MARKER, have the abandon leg append it to the spell's Bug, match that marker at :645, keep test_main_landing.py:721 green, and add the two tests (knob-off second tick; second tick: no Quarantine), red on this head. Change nothing else; add no new behaviour."
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
-      "kernel_extra_rounds": 5,
+      "kernel_extra_rounds": 6,
       "kernel_findings": [
         "asf/kernel/mainline.py:513 \u2014 a red check's name missing from a settled revert PR is read as terminal ('unanswered') and abandons the revert, though a `needs:`-gated check run does not exist until its dependency concludes (`tests: needs: [changes, checks, part]`, and `tests (3.1x)` are the required checks); extend the grace the empty check list already gets to any unreported red name: replace lines 513-514 with `if not (names <= {c.name for c in pr.checks}) and _within_grace(pr, facts, config): return 'waiting'` before `return 'unanswered'`, and add the case that is red today \u2014 a revert PR inside its grace carrying one completed non-red check must be 'waiting' and plan no ClosePR (the committed 'absent'/'no ci' subtests at tests/kernel/test_main_landing.py:735 run nine hours past the grace and stay green).",
         "asf/kernel/ports.py:1719 \u2014 `_revert_fact` drops `autoMergeRequest`, which the open listing already carries (PR_FIELDS, ports.py:1318; `_open_pr` reads it at :1746), so `rpr.auto_merge` is always False and the finalize guard at mainline.py:667 never fires: `RevertPR` is re-emitted every tick until the revert merges, each one a `gh pr merge --auto` write and another \"the revert is finalized\" tick record. Add `auto_merge=bool(d.get('autoMergeRequest')),` beside `closed=closed` at ports.py:1732, and assert it off a listing-built fact (`B.of(plan, A.RevertPR) == []`), which is what tests/kernel/test_main_landing.py:621's second half currently asserts against a fact the port cannot produce.",
@@ -18159,11 +18159,7 @@
         "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 8 fix rounds",
-      "kernel_stuck_since": "2026-10-13T14:53:07Z",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18172,7 +18168,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T14:53:07Z",
+      "updated": "2026-10-13T14:55:31Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
