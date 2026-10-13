@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:35:21Z",
+  "generated": "2026-10-13T09:38:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -1302,7 +1302,6 @@
       "area": "asf.harvest",
       "backlinks": [
         "F-0100",
-        "F-0360",
         "T-0036",
         "T-0125",
         "T-0161",
@@ -18117,15 +18116,15 @@
       "id": "B-200581",
       "kernel_answers": [
         "granted asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py tests/test_tick_steps.py tests/test_tick_latency.py; nothing else outside writes (card updated by the kernel). B-200932 also writes asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py (Review): the overlap rule serialises them. asf/kernel/actions.py asf/kernel/apply.py asf/kernel/decide.py asf/kernel/ports.py matches kernel.risk.high: this item is high-risk now.",
-        "granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932)."
+        "granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932).",
+        "granted asf/kernel/ports.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the four findings of the latest review as worded: mainline.py:462 (surface the kernel's own revert PR as a fact), mainline.py:243 (independence needs a base that predates the candidate, not 'not behind'), apply.py:490 (write P.REVERTED only with auto_merge), metrics.py:105 (the clock lint sees every today() binding). Each test must fail on base."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932).",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: granted asf/kernel/ports.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the four findings of the latest review as worded: mainline.py:462 (surface the kernel's own revert PR as a fact), mainline.py:243 (independence needs a base that predates the candidate, not 'not behind'), apply.py:490 (write P.REVERTED only with auto_merge), metrics.py:105 (the clock lint sees every today() binding). Each test must fail on base."
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/kernel/decide.py:529 \u2014 gate the Ready flip on the flag (`if isinstance(a, A.RevertPR) and a.auto_merge:`); a revert whose auto-merge is held must not bounce its item. With it, asf/kernel/apply.py:490-493 \u2014 keep writing P.REVERTED on the held tick (it is the key mainline.py:435 reads to enter the revert_ci branch) but move the RELAUNCH attempt and the P.NOTES note behind `if a.auto_merge:`; and asf/kernel/mainline.py:440-444 \u2014 emit the finalize as `revert_action(red, c, it, reds, config, auto_merge=True)` rather than a bare `A.EnableAutoMerge(rpr.number)`, so the relaunch finding is queued once, at confirmation, guarded on `a.auto_merge` instead of on `a.pr not in reverted`. Today a held revert still sets State.READY and queues the red as the item's own finding, and the abandon path (mainline.py:447-451) emits only ClosePR, so nothing restores it \u2014 the card's own headline. Asserted by tests/kernel/test_main_landing.py:219-226; extend that case and add one over `self._reverted(red(...))` that an abandoned revert leaves the item unblamed.",
         "tests/test_metrics.py:2490 \u2014 drop 'tests/test_tick_latency.py' from CLOCK_ON_PURPOSE and fix tests/test_tick_latency.py:177 to read the day off the commit's own --name-only list via _ticks_stream_path (tests/test_tick_steps.py:40-47), the same fix this diff applied to tests/test_tick_steps.py. That line is a real bare `m.today()` of exactly the class A6 exists to catch; the allowlist comment justifies it as outside the footprint, but the operator answer has since granted the file, so the suppression is no longer forced.",
@@ -18146,11 +18145,7 @@
         "build-b-200581-1791872508: NEEDS OPERATOR: tests/test_tick_latency.py:177 reads `m.today()` bare right after a tick \u2014 the same day-crossing flakiness class B-200581 fixes elsewhere, discovered only because this round tried widening the lint's\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 4 fix rounds",
-      "kernel_stuck_since": "2026-10-13T09:34:40Z",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18159,7 +18154,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T09:35:16Z",
+      "updated": "2026-10-13T09:38:21Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -37194,20 +37189,12 @@
       "kernel_answers": [
         "Measured input for the spec and plan: docs/specs/inputs/0.4-evidence.md on main (PR #1695), summary table plus section D. Each number has the query beside it; re-run it rather than trust it if the window has moved. Size the Stories from those counts, largest first."
       ],
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "docs/specs/f-0360.md:119-122 \u2014 wrong fact: a new account does not \"burn a job\" and is already probed before its first job. `asf/workers/spawn.py:1293-1296` reads the account's `auth_env` files before anything is made and turns `AuthEnvError` into a `SpawnError`, and `:1297-1298` runs `_preflight_push_auth` (`:1250-1275`, B-0040, `conventions.flags.push_auth_preflight`, default on) which runs `doctor.probe_account_push_auth` and `account_auth.block_now` \u2014 all before `make_worktree` (`:1304`), `reserve_id_range` (`:1317`) and the session id (`:1328`). Replace the \"burns a job\" sentence with the true state: `spawn` already refuses the launch and blocks the account, so what is missing is the probe record, the retry clock (D14), the band gate for an account the record has never seen (D13) and C3's real session \u2014 and fix the same claim in the \u00a71.1 table at `docs/specs/f-0360.md:18` (\"no probe before a new account gets work\").",
-        "docs/specs/f-0360.md:433 \u2014 wrong line number: the `tools/forbidden-names.txt` join is at `asf/redact.py:147-148` (`:147` is `if repo:`, `:148` is the `os.path.join`), not `:146-147` (`:146` is blank). Change the citation to `:147-148`.",
-        "docs/specs/f-0360.md:425 \u2014 `redact.patterns(product)` is the wrong argument: `patterns(repo=...)` takes a repo path (`asf/redact.py:123`, used as `os.path.join(repo, 'tools', 'forbidden-names.txt')` at `:146-147`; both package callers pass a repo root). Write `redact.patterns(<the product's repo root>)`.",
-        "docs/specs/f-0360.md:274 \u2014 `LastExitStatus` is not a key in this repository: `scheduler.status` \u2192 `_launchd_status` \u2192 `parse_print` returns `last_exit` (and `never_exited`), off the `last exit code` regex at `asf/scheduler.py:1246`. Name `scheduler.status`'s `last_exit`.",
-        "docs/specs/f-0360.md:107 \u2014 the quoted grep's output is not its output: `grep -rn \"propose\" asf/` returns nineteen lines across improve/tick/feeder/groom/evidence/savings/amendable beside five in `asf/approvals.py`. Quote `grep -rn \"asf propose\" asf/` (two lines: `asf/approvals.py:1006` and `:1043`) and mention `RESOLUTIONS`' unused `proposed` entry separately."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "spec-f-0360-1791870060: NEEDS OPERATOR: whether host clocks are loadable in this machine's launchd domain at all \u2014 the watchdog seats itself beside the net probe (spec \u00a71.3) \u2014 `launchctl print gui/$(id -u)/asf.host.net-probe | head -20`"
       ],
+      "kernel_rebuilds": 1,
       "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0007",
@@ -37218,7 +37205,7 @@
       "state": "New",
       "title": "The kernel keeps itself running and current: self-upgrade, watchdog, proposals, account probes",
       "type": "feature",
-      "updated": "2026-10-13T09:19:35Z"
+      "updated": "2026-10-13T09:38:21Z"
     },
     "F-0361": {
       "backlinks": [
@@ -42135,6 +42122,7 @@
     "S-205268": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-205268",
       "parent": "F-0362",
@@ -42148,6 +42136,7 @@
     "S-205269": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-205269",
       "parent": "F-0362",
@@ -42161,6 +42150,7 @@
     "S-205270": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-205270",
       "parent": "F-0362",
@@ -42174,6 +42164,7 @@
     "S-205271": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-205271",
       "parent": "F-0362",
@@ -42187,6 +42178,7 @@
     "S-205272": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-205272",
       "parent": "F-0362",
@@ -42200,6 +42192,7 @@
     "S-205273": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-205273",
       "parent": "F-0362",
@@ -42213,6 +42206,7 @@
     "S-205274": {
       "backlinks": [],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-205274",
       "parent": "F-0362",
@@ -42228,6 +42222,7 @@
         "F-0362"
       ],
       "children": [],
+      "decided": true,
       "folder": "stories",
       "id": "S-205275",
       "parent": "F-0362",
@@ -91371,13 +91366,13 @@
         "The branch predates PR #1682 (main 5c2953d5e), which fixed the trunk-wide tests.test_ci_census clock bug that made every PR's tests red. Rebase worker/T-154346 onto origin/main, no merge commit, change nothing else, push, and let CI rerun. Only if a test other than test_ci_census is still red afterwards is there anything to fix.",
         "Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files.",
         "One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
-        "granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else."
+        "granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else.",
+        "One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base."
       ],
-      "kernel_extra_rounds": 3,
+      "kernel_extra_rounds": 4,
       "kernel_findings": [
         "asf/schema.py:338 \u2014 the first non-additive *record* step lands with no snapshot: `snapshot(product, version)` (`:741-761`) is only ever called as `snapshot(None, v)` from `migrate_config` (`:661`), so `asf schema-migrate` across schema 3 never writes the `asf-schema-2` tag `restore()` guards on (`:796`) and `docs/specs/f-0114.md:447,529` declare \u2014 a downgrade past schema 3 silently leaves a JSON record a pre-3 package cannot read. In `migrate_product` before `migrate_dir` (`:728-729`) add `for _a, b, m in pending(product)['record']: if m is not None and not m.additive: snapshot(product, b); break`, plus a case in `tests/test_schema_version.py` asserting `refs/tags/asf-schema-2` lands at the clone's pre-migration commit and that an all-additive walk writes no tag.",
         "tests/test_card_migration.py:243 \u2014 the converted sample is not pinned byte for byte as `docs/plans/f-0340.md:721-723` requires: add a case to `SampleRecordShipsConvertedTests` that copies `sample/backlog` to a tmpdir, runs `asf.record.index.do_index` on it and asserts every file but `index.json` is byte-identical (it passes today \u2014 verified by hand).",
@@ -91451,11 +91446,7 @@
         "PR #1684: upgrade-matrix (v0.3.0) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 6 fix rounds",
-      "kernel_stuck_since": "2026-10-13T09:25:42Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91468,7 +91459,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T09:25:42Z",
+      "updated": "2026-10-13T09:38:21Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
