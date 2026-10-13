@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:15:05Z",
+  "generated": "2026-10-13T08:17:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18180,16 +18180,15 @@
       "found_in": "dev",
       "id": "B-200932",
       "kernel_answers": [
-        "granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now.",
+        "One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "session ran past its max age"
+        "relaunch: operator answer: One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/kernel/needed.py:259 \u2014 `elif it.reverted and facts.main and config.revert_branch + p.item_id not in reverting:` so an unread trunk falls to the Ready/relaunch branch, and decide the Done off a fact that does not decay (the revert's sha recorded by `RevertLanded`) instead of absence from `main_commits`' 15-commit window; fix `tests/kernel/test_still_needed.py:280` to pass an explicit non-empty `main`",
         "asf/kernel/mainline.py:184 \u2014 `if not config.main_red_revert or not prefix or not facts.main: return []`, and add a case asserting `landed_reverts(f, cfg(main_red_revert=False)) == []`",
@@ -18210,7 +18209,7 @@
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18219,7 +18218,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T08:01:10Z",
+      "updated": "2026-10-13T08:17:42Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
