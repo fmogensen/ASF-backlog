@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T05:15:02Z",
+  "generated": "2026-10-13T05:20:06Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18169,10 +18169,11 @@
       ],
       "kernel_fix_rounds": 1,
       "kernel_notes": [
-        "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building."
+        "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building.",
+        "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18181,7 +18182,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T04:53:40Z",
+      "updated": "2026-10-13T05:20:00Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -22645,6 +22646,7 @@
         "F-0354",
         "F-0355",
         "F-0356",
+        "F-0361",
         "B-200581",
         "B-200932",
         "B-202833"
@@ -22666,8 +22668,7 @@
         "F-0357",
         "F-0358",
         "F-0359",
-        "F-0360",
-        "F-0361"
+        "F-0360"
       ],
       "decided": true,
       "folder": "epics",
@@ -36991,11 +36992,11 @@
     "F-0361": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0361",
       "milestone": "0.4",
-      "parent": "E-0007",
+      "parent": "E-0006",
       "priority": "need",
       "schema_version": 2,
       "stage_since": "2026-10-13T04:52:13Z",
@@ -90750,7 +90751,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
@@ -90831,7 +90833,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T03:40:02Z",
+      "updated": "2026-10-13T05:20:00Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
