@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T17:05:11Z",
+  "generated": "2026-10-13T17:06:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18359,7 +18359,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T16:57:09Z",
+      "updated": "2026-10-13T17:06:35Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -94278,7 +94278,7 @@
         "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py, tests/kernel/test_question_resolvers.py also held by T-208100 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94291,7 +94291,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T16:57:09Z",
+      "updated": "2026-10-13T17:06:35Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94333,21 +94333,13 @@
       "kernel_answers": [
         "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them. T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them. T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
-      ],
-      "kernel_findings": [
-        "asf/kernel/resolvers.py:500 \u2014 the section precedence is inverted against spec \u00a72.5 (\"`acceptance` when the text names acceptance, `gate` when it names Gate, else `acceptance`\"): the code tests Gate first and never looks for \"acceptance\", and `GATE_NAME_RE` (:480) is a bare `\\bgate\\b` over the whole text with none of `CARD_READ_RE`'s 80-char fences, so \"I could not read the acceptance from the record; the pre-push gate refused\" answers with the Gate section. Add `ACCEPTANCE_NAME_RE = re.compile(r'\\bacceptance\\b', re.I)` and make :500 read `if ACCEPTANCE_NAME_RE.search(text): return 'acceptance'` before the existing `return 'gate' if GATE_NAME_RE.search(text) else 'acceptance'`, plus a case in tests/kernel/test_question_card_read.py pinning a both-named question to 'acceptance'.",
-        "asf/kernel/decide.py:1253-1270 \u2014 card-read is dispatched (call site :1190) before `resolvers.resolve`, so it claims a coded `gate` question and closes it with the wrong answer: for \"the Gate command `bash tools/check_clients.sh --against origin/main` could not run here and I cannot open the gate log \u2014 confirm on the factory host\", `resolvers.match` returns `Probe(cls='gate', \u2026)` and `card_read_question` returns 'gate'; end-to-end `decide.decide` emits one ApplyAnswer `by='card-read'` quoting the card's own Gate fence and no probe request at all, which is what asf/kernel/questions.py:188-190 forbids (\"so no coded or owned class loses a question to them\"). Moving the call after `resolvers.resolve` does not fix it (resolve returns None until the probe result is in `facts.resolved`); fence it explicitly: at the top of `_card_read`, after the knob check, `branch = resolvers.branch_of(it.id, facts.sessions, facts.prs)` then `if resolvers.match(text, branch) is not None: return None`, drop the now-false \"``facts`` is unused\" sentence at :1260-1261, and add a case asserting that question reaches no `card-read` ApplyAnswer.",
-        "rebase: PR #1716 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
-        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them. T-208101 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
-        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py also held by T-208102 \u2014 additive edits only, never a rewrite"
-      ],
-      "kernel_fix_rounds": 1,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "build-t-208100-1791910380: NEEDS OPERATOR: heartbeat command could not start \u2014 sandbox refused approval twice \u2014 `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208100-1791910380 'asf/build-t-208100-1791910380@20261013T165309Z' >/dev/nul\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94360,7 +94352,7 @@
       ],
       "title": "the card's acceptance quoted back from the record, never a pointer at the brief",
       "type": "task",
-      "updated": "2026-10-13T17:02:43Z",
+      "updated": "2026-10-13T17:06:35Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94434,7 +94426,6 @@
         "T-208097"
       ],
       "backlinks": [
-        "T-208100",
         "T-208104"
       ],
       "children": [],
@@ -94595,7 +94586,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210355",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94608,7 +94599,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T15:38:50Z",
+      "updated": "2026-10-13T17:06:35Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
