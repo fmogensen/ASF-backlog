@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T03:43:09Z",
+  "generated": "2026-10-13T03:51:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18135,7 +18135,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T03:43:08Z",
+      "updated": "2026-10-13T03:51:43Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18171,7 +18171,7 @@
       "kernel_notes": [
         "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18180,7 +18180,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T03:43:08Z",
+      "updated": "2026-10-13T03:51:43Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -91417,7 +91417,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/fakes.py. One more round: close every open finding as worded \u2014 decide.py:1135 (NoteStack only in the acting arms), :1131 (a parked predecessor is not Done; read Done from states, not facts.prs), spawn.py:980 (is_ancestor ... is False), and add retarget to the fake plus one Unstack test that applies the plan. Rebase onto origin/main, no merge commit.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "ended without a REPORT"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
@@ -91439,7 +91440,11 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-160208@fb2c88353c4799dd472eb5f311e8dbd2fafc1b72",
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 4 fix rounds",
+      "kernel_stuck_since": "2026-10-13T03:51:17Z",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91452,7 +91457,7 @@
       ],
       "title": "the unstack \u2014 retargeted to the trunk, replayed onto it, torn down when the base is rebuilt",
       "type": "task",
-      "updated": "2026-10-13T03:30:05Z",
+      "updated": "2026-10-13T03:51:43Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
