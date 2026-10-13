@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T11:17:39Z",
+  "generated": "2026-10-13T11:23:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18108,8 +18108,7 @@
     "B-200581": {
       "backlinks": [
         "F-0357",
-        "T-206240",
-        "B-200932"
+        "T-206240"
       ],
       "children": [],
       "decided": true,
@@ -18156,7 +18155,7 @@
         "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18165,7 +18164,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T11:10:51Z",
+      "updated": "2026-10-13T11:23:20Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18205,12 +18204,14 @@
         "granted tests/kernel/test_ports.py. One more round, the single finding of the latest review as worded: Facts.revert_prs holds the item's revert PRs in any non-merged state \u2014 one bounded closed-PR listing for revert heads in ports._prs, kept out of prs, and the listing assertion in tests/kernel/test_ports.py widened from two to three. The test must fail on base. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_ports.py. One more round, the single finding of the latest review as worded: Facts.revert_prs holds the item's revert PRs in any non-merged state \u2014 one bounded closed-PR listing for revert heads in ports._prs, kept out of prs, and the listing assertion in tests/kernel/test_ports.py widened from two to three. The test must fail on base. Nothing else."
+        "relaunch: operator answer: granted tests/kernel/test_ports.py. One more round, the single finding of the latest review as worded: Facts.revert_prs holds the item's revert PRs in any non-merged state \u2014 one bounded closed-PR listing for revert heads in ports._prs, kept out of prs, and the listing assertion in tests/kernel/test_ports.py widened from two to three. The test must fail on base. Nothing else.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 4,
       "kernel_findings": [
+        "asf/kernel/mainline.py:174 \u2014 make `Facts.revert_prs` hold the item's revert PRs in any non-merged state (add one bounded `gh pr list --state closed` listing for revert heads in `ports._prs` at `ports.py:1658`, keeping them out of `prs` as `_revert_fact` does, and widen the two-listing assertion at `tests/kernel/test_ports.py:204-228` to three) so `revert_open` is True for a closed-unmerged PR and `mainline.judge:359-361` returns `'waits on the revert of #%d (%s)'` and plans none; prove red on base that a tick with a closed-unmerged revert PR plans no `A.RevertPR` and makes no `revert_pr` call, and that two ticks over one red trunk plan exactly one, then drop the now-wrong `[a.pr for a in B.of(plan2, A.RevertPR)] == [21]` at `tests/kernel/test_main_landing.py:230`",
         "asf/kernel/mainline.py:310 \u2014 before line 319 return `[], {'sha': red.sha, 'kind': RED, 'action': 'waits on the revert of #%d (%s)' % (c.pr, it.id)}` whenever a PR on `revert_prefix(config) + it.id` already exists (open or closed unmerged), reading it off a new `Facts.revert_prs` that `ports._prs` fills at ports.py:1648-1650 instead of discarding, so the kernel opens the revert once and never re-creates one the operator closed; declare `needs writes: asf/kernel/facts.py`",
         "asf/kernel/mainline.py:213 \u2014 when `hit is None`, fall back to the newest `p` in `facts.prs` with `p.merged and p.item_id == it.id and p.number not in {c.pr for c in mains} and p.number not in it.reverted` (any merge absent from the window is necessarily older than the revert commit) and build the note/finding with the existing no-commit fallbacks, so a revert whose merge has scrolled off the 15-commit window is still recorded instead of leaving the item Done with its work off the trunk",
         "asf/kernel/needed.py:272 \u2014 the `make(State.DONE)` is discarded next tick, because `asf/kernel/decide.py:831` refuses a Done card while `kernel_reverted` holds the PR, so the item relaunches forever (probed: tick 1 DONE/no launch, tick 2 READY/launched ['B-0097']); add `A.RevertUndone(item_id, pr)` in actions.py (+ORDER, +PROGRESS, +describe), apply it in apply.py as `P.REVERTED` minus that PR, emit one per `n in it.reverted` beside the Done, and extend the acceptance test with the tick after (apply \u2192 re-read \u2192 still DONE, no launch)",
@@ -18234,15 +18235,16 @@
         "operator answer: granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now.",
         "operator answer: One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit.",
         "operator answer: granted asf/kernel/ports.py. One more round, the two findings of the latest review as worded: mainline.py:310 (a new Facts.revert_prs filled by ports._prs; when a revert PR for the item already exists, open or closed unmerged, return 'waits on the revert' and open none) and mainline.py:213 (when the merge has scrolled off the window, fall back to the item's newest merged PR not in the window and not reverted). Each test must fail on base. Nothing else.",
-        "shared files: asf/kernel/actions.py, asf/kernel/apply.py, asf/kernel/decide.py, asf/kernel/mainline.py, asf/kernel/ports.py, tests/kernel/test_main_landing.py also held by B-200581 \u2014 additive edits only, never a rewrite"
+        "operator answer: granted tests/kernel/test_ports.py. One more round, the single finding of the latest review as worded: Facts.revert_prs holds the item's revert PRs in any non-merged state \u2014 one bounded closed-PR listing for revert heads in ports._prs, kept out of prs, and the listing assertion in tests/kernel/test_ports.py widened from two to three. The test must fail on base. Nothing else.",
+        "shared files: asf/kernel/actions.py, asf/kernel/apply.py, asf/kernel/decide.py, asf/kernel/ports.py also held by T-206240 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 6,
+      "kernel_fix_rounds": 7,
       "kernel_notes": [
         "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building.",
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18251,7 +18253,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T11:17:35Z",
+      "updated": "2026-10-13T11:23:20Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -18334,7 +18336,7 @@
       "kernel_notes": [
         "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18344,7 +18346,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T11:03:21Z",
+      "updated": "2026-10-13T11:23:20Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -37287,20 +37289,18 @@
       "folder": "features",
       "id": "F-0362",
       "kernel_findings": [
-        "docs/plans/f-0362.md:73 \u2014 escape the four pipes in PD4's `(`waiting on|still open|depends on|blocker|\u2026`)` as `\\|`; unescaped they split the three-column row into seven cells and GFM drops everything in PD4 from \"still open\" onward.",
-        "docs/plans/f-0362.md:621 \u2014 `_unmerged` is at `decide.py:889-899`, not `:1322-1332` (that range is `relaunch_findings`/`effective_rank`).",
-        "docs/plans/f-0362.md:533 \u2014 `match`'s `gate` branch is `resolvers.py:203-205`, not `:151-153` (those lines are the `GATE_RED`/`FILED` strings).",
-        "docs/plans/f-0362.md:388 \u2014 `needs_writes` with the three answers is `resolvers.py:404`; `:398` is `needs_writes_of`.",
-        "docs/plans/f-0362.md:35 \u2014 say five plumbing files, not \"four\", and drop the claims that contradict the Tasks' own `writes:`: PD1 (c)'s \"Tasks 1-6 each edit\" all five (Task 1 writes no `settings.py`/`model.py`, Task 5 no `decide.py`) and \u00a74's \":830-832\" \"Task 5 shares only the last three with wave 1\" (it shares `resolvers.py` and `ports.py` with Task 1).",
-        "docs/plans/f-0362.md:226,241,380,85 \u2014 fix the four drifted citations: the `return None` is `resolvers.py:274` not `:275`; the `writes=` keyword is `decide.py:677` not `:676`; `PATH_TOKEN_RE` is `resolvers.py:371` not `:370`; PD16's gate cache key is `trunk.py:175` not `:174` and `read_answers` is `questions.py:179-195` not `:177-193`."
+        "docs/plans/f-0362.md:71 \u2014 PD2 names `_session_bound`, which does not exist; the function is `session_bound` (`asf/kernel/decide.py:2627`). Rename it in both places PD2 uses it (the cited line `:2640` and the quoted docstring are correct)",
+        "docs/plans/f-0362.md:81 \u2014 PD12 says a Stuck's `owner` is \"`operator` or `session`\"; it is one of `OWNERS = ('loop', 'session', 'ci', 'operator')` (`asf/kernel/model.py:45`) and the kernel sets all four (`Stuck(owner=ci)` `decide.py:56`, `Stuck(owner=loop)` `decide.py:85`). Say four roles, and change PD12's \"both owners\" and Task 6 step 7's \"each owner role\" (`:636`) to assert the clause for all four",
+        "docs/plans/f-0362.md:77 \u2014 PD8 cites `_in_worktree` at `trunk.py:201-216`; it is at `trunk.py:249-265` (201-216 is `_trunk_base`'s merge-base body). Change the citation to `trunk.py:249-265`",
+        "docs/plans/f-0362.md:74 \u2014 PD5 says `grep -rn _auto_answer asf/ tests/` gives \"two hits\"; it gives three (`decide.py:648`, `decide.py:790`, and the definition at `decide.py:1158`). Change to \"three hits, the definition and its two callers, all in `decide.py`\" \u2014 the two-callers/no-test substance is correct"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "spec-f-0362-1791880334: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" and (.at // \"\") < \"2026-10-\u2026",
         "spec-f-0362-1791882733: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" and (.at // \"\") < \"2026-10-\u2026",
         "plan-f-0362-1791884815: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture `tests/fixtures/replay/questions-2026-10-12.jsonl` (spec \u00a72.9, plan Task 8 step 6) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\"\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37310,7 +37310,7 @@
       "state": "New",
       "title": "Session questions are answered by code, not by the console (replaces F-0359)",
       "type": "feature",
-      "updated": "2026-10-13T10:51:13Z"
+      "updated": "2026-10-13T11:23:20Z"
     },
     "R-0001": {
       "backlinks": [
@@ -91486,7 +91486,7 @@
         "PR #1684: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91499,7 +91499,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T10:59:01Z",
+      "updated": "2026-10-13T11:23:20Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
@@ -93430,7 +93430,8 @@
     },
     "T-206240": {
       "backlinks": [
-        "T-206242"
+        "T-206242",
+        "B-200932"
       ],
       "children": [],
       "decided": true,
