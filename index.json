@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:22:46Z",
+  "generated": "2026-10-13T09:25:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18186,15 +18186,15 @@
       "id": "B-200932",
       "kernel_answers": [
         "granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now.",
-        "One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit."
+        "One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit.",
+        "granted tests/kernel/test_incidents.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the five findings of the latest review exactly as worded: needed.py:272 (add RevertUndone so Done survives the next tick), needed.py:268 (the reverted merge must still be in the window), test_main_landing.py:232 (two ticks on a red trunk; must fail on base), incidents.py:115 (rows only for RevertLanded), then the two doc lines. Prove each with a test that fails on base."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: granted tests/kernel/test_incidents.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the five findings of the latest review exactly as worded: needed.py:272 (add RevertUndone so Done survives the next tick), needed.py:268 (the reverted merge must still be in the window), test_main_landing.py:232 (two ticks on a red trunk; must fail on base), incidents.py:115 (rows only for RevertLanded), then the two doc lines. Prove each with a test that fails on base."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/kernel/mainline.py:210 \u2014 the `hit` search filters out PRs already on `Item.reverted`, so the tick after a RevertLanded slides to the item's next-older merged commit on Facts.main and records that PR reverted too, relaunching the item once per tick (proven: reverted=[21] yields RevertLanded('T-2', 12), decide launches T-2). Bind the revert to the one merged commit it sits above and let a recorded PR end the search: `hit = next((c for c in mains[at + 1:] if c.item_id == it.id and c.pr), None)` then `if hit is None or hit.pr in it.reverted: continue`.",
         "asf/kernel/decide.py:540 \u2014 the landed_reverts override replaces judged[item] with `_Judged(State.READY, findings=[a.finding], start=True)` after _judge and the holds have run, so a live session's BUILDING/hold judgement (decide.py:816) is overwritten and a second session launches on the same item and branch (proven: with one live build session on T-2, state READY, launched ['T-2']); the old RevertPR path held for exactly this. Hold the launch one tick when a session is live: `live = {s.item_id for s in facts.sessions if s.alive}` and `hold=a.item_id in live` on that `_Judged`.",
@@ -18218,11 +18218,7 @@
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 4 fix rounds",
-      "kernel_stuck_since": "2026-10-13T09:15:17Z",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18231,7 +18227,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T09:15:17Z",
+      "updated": "2026-10-13T09:25:42Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -20700,6 +20696,7 @@
         "T-129204",
         "T-148631",
         "T-154337",
+        "T-206242",
         "T-81130",
         "T-82991",
         "T-84804"
@@ -20760,6 +20757,7 @@
         "T-148633",
         "T-154337",
         "T-154338",
+        "T-206240",
         "T-81129",
         "T-81131",
         "T-82988"
@@ -20842,6 +20840,7 @@
         "T-129196",
         "T-154341",
         "T-173236",
+        "T-206244",
         "T-82989"
       ],
       "children": [],
@@ -20870,6 +20869,7 @@
         "T-148634",
         "T-154341",
         "T-173235",
+        "T-206243",
         "T-82989"
       ],
       "children": [],
@@ -20894,6 +20894,7 @@
         "T-129193",
         "T-148634",
         "T-154340",
+        "T-206245",
         "T-82989"
       ],
       "children": [],
@@ -20960,6 +20961,7 @@
         "T-129197",
         "T-148630",
         "T-154342",
+        "T-206243",
         "T-82990"
       ],
       "children": [],
@@ -37094,7 +37096,14 @@
         "S-203321",
         "S-203322",
         "S-203323",
-        "S-203324"
+        "S-203324",
+        "T-206240",
+        "T-206241",
+        "T-206242",
+        "T-206243",
+        "T-206244",
+        "T-206245",
+        "T-206246"
       ],
       "decided": true,
       "folder": "features",
@@ -41878,7 +41887,8 @@
     },
     "S-203318": {
       "backlinks": [
-        "F-0358"
+        "F-0358",
+        "T-206242"
       ],
       "children": [],
       "decided": true,
@@ -41893,7 +41903,9 @@
       "updated": "2026-10-13T07:04:14Z"
     },
     "S-203319": {
-      "backlinks": [],
+      "backlinks": [
+        "T-206240"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -41907,7 +41919,9 @@
       "updated": "2026-10-13T07:04:14Z"
     },
     "S-203320": {
-      "backlinks": [],
+      "backlinks": [
+        "T-206244"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -41922,7 +41936,8 @@
     },
     "S-203321": {
       "backlinks": [
-        "F-0358"
+        "F-0358",
+        "T-206243"
       ],
       "children": [],
       "decided": true,
@@ -41937,7 +41952,9 @@
       "updated": "2026-10-13T07:04:14Z"
     },
     "S-203322": {
-      "backlinks": [],
+      "backlinks": [
+        "T-206245"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -41951,7 +41968,9 @@
       "updated": "2026-10-13T07:04:14Z"
     },
     "S-203323": {
-      "backlinks": [],
+      "backlinks": [
+        "T-206241"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -41965,7 +41984,9 @@
       "updated": "2026-10-13T07:04:14Z"
     },
     "S-203324": {
-      "backlinks": [],
+      "backlinks": [
+        "T-206246"
+      ],
       "children": [],
       "decided": true,
       "folder": "stories",
@@ -91303,7 +91324,11 @@
         "PR #1684: upgrade-matrix (v0.3.0) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 6 fix rounds",
+      "kernel_stuck_since": "2026-10-13T09:25:42Z",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91316,7 +91341,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T09:09:48Z",
+      "updated": "2026-10-13T09:25:42Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
@@ -93243,6 +93268,325 @@
         "tests/kernel/test_loop.py",
         "docs/products.example.yaml",
         "tests/kernel/test_overlap_wait.py"
+      ]
+    },
+    "T-206240": {
+      "backlinks": [
+        "T-206242"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.kernel.test_finding_keys",
+        "python3 -m unittest -q tests.kernel.test_decide tests.kernel.test_apply \\",
+        "tests.kernel.test_scenarios tests.kernel.test_findings_in_brief \\",
+        "tests.kernel.test_doc_fix_rounds tests.kernel.test_answers tests.kernel.test_ports \\",
+        "tests.kernel.test_host tests.kernel.test_stuck_escalation tests.kernel.test_limbo \\",
+        "tests.kernel.test_review_ci_gate tests.test_reviews tests.test_briefs tests.test_hermetic",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "asf redact --unpublished"
+      ],
+      "id": "T-206240",
+      "kernel_state": "ready",
+      "links": {
+        "plan": "docs/plans/f-0358.md"
+      },
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:25:06Z",
+      "state": "New",
+      "stories": [
+        "S-203319"
+      ],
+      "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
+      "type": "task",
+      "updated": "2026-10-13T09:25:42Z",
+      "writes": [
+        "asf/kernel/findings.py",
+        "asf/kernel/actions.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/apply.py",
+        "asf/kernel/ports.py",
+        "tests/kernel/test_finding_keys.py"
+      ]
+    },
+    "T-206241": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.test_brief_answers",
+        "python3 -m unittest -q tests.test_briefs tests.kernel.test_findings_in_brief \\",
+        "tests.kernel.test_answers tests.kernel.test_doc_fix_rounds tests.kernel.test_cloud_reviews \\",
+        "tests.kernel.test_decide tests.kernel.test_apply tests.kernel.test_host \\",
+        "tests.test_brief_facts tests.test_hermetic",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "asf redact --unpublished"
+      ],
+      "id": "T-206241",
+      "kernel_state": "ready",
+      "links": {
+        "plan": "docs/plans/f-0358.md"
+      },
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:25:10Z",
+      "state": "New",
+      "stories": [
+        "S-203323"
+      ],
+      "title": "the operator's answers reach the brief whole, newest first",
+      "type": "task",
+      "updated": "2026-10-13T09:25:42Z",
+      "writes": [
+        "asf/kernel/briefs.py",
+        "tests/test_brief_answers.py"
+      ]
+    },
+    "T-206242": {
+      "after": [
+        "T-206240"
+      ],
+      "backlinks": [
+        "T-206243"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.kernel.test_review_proof",
+        "python3 -m unittest -q tests.kernel.test_decide tests.kernel.test_apply \\",
+        "tests.kernel.test_scenarios tests.kernel.test_review_ci_gate tests.kernel.test_still_needed \\",
+        "tests.kernel.test_question_resolvers tests.kernel.test_question_needs_writes \\",
+        "tests.kernel.test_clean_floor tests.kernel.test_doc_fix_rounds tests.kernel.test_dor \\",
+        "tests.kernel.test_ports tests.kernel.test_host tests.kernel.test_finding_keys \\",
+        "tests.kernel.test_findings_in_brief tests.test_briefs tests.test_config_keys \\",
+        "tests.test_hermetic",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "asf redact --unpublished"
+      ],
+      "id": "T-206242",
+      "links": {
+        "plan": "docs/plans/f-0358.md"
+      },
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:25:14Z",
+      "state": "New",
+      "stories": [
+        "S-203318"
+      ],
+      "title": "the proof before the review \u2014 each acceptance test red on the base, green on the head",
+      "type": "task",
+      "updated": "2026-10-13T09:25:14Z",
+      "writes": [
+        "asf/kernel/proof.py",
+        "asf/kernel/proof_probe.py",
+        "asf/kernel/trunk.py",
+        "asf/kernel/resolvers.py",
+        "asf/kernel/model.py",
+        "asf/kernel/settings.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/briefs.py",
+        "asf/kernel/ports.py",
+        "tests/kernel/test_review_proof.py"
+      ]
+    },
+    "T-206243": {
+      "after": [
+        "T-206242"
+      ],
+      "backlinks": [
+        "T-206244",
+        "T-206245"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.kernel.test_round_charge",
+        "python3 -m unittest -q tests.kernel.test_decide tests.kernel.test_apply \\",
+        "tests.kernel.test_scenarios tests.kernel.test_review_proof tests.kernel.test_finding_keys \\",
+        "tests.kernel.test_local_session_limit tests.kernel.test_false_account_stops \\",
+        "tests.kernel.test_rebase_any_end tests.kernel.test_two_holders tests.kernel.test_doc_fix_rounds \\",
+        "tests.kernel.test_stuck_escalation tests.kernel.test_failed_actions tests.kernel.test_reports \\",
+        "tests.kernel.test_host tests.kernel.test_ports tests.test_hermetic",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "asf redact --unpublished"
+      ],
+      "id": "T-206243",
+      "links": {
+        "plan": "docs/plans/f-0358.md"
+      },
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:25:18Z",
+      "state": "New",
+      "stories": [
+        "S-203321"
+      ],
+      "title": "the round the author caused, and the ones that charge nothing",
+      "type": "task",
+      "updated": "2026-10-13T09:25:18Z",
+      "writes": [
+        "asf/kernel/actions.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/apply.py",
+        "tests/kernel/test_round_charge.py"
+      ]
+    },
+    "T-206244": {
+      "after": [
+        "T-206243"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.kernel.test_finding_writes",
+        "python3 -m unittest -q tests.kernel.test_question_needs_writes \\",
+        "tests.kernel.test_question_resolvers tests.kernel.test_decide tests.kernel.test_apply \\",
+        "tests.kernel.test_scenarios tests.kernel.test_risk tests.kernel.test_finding_keys \\",
+        "tests.kernel.test_round_charge tests.kernel.test_review_proof tests.kernel.test_dor \\",
+        "tests.kernel.test_ports tests.kernel.test_host tests.kernel.test_findings_in_brief \\",
+        "tests.test_config_keys tests.test_hermetic",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "asf redact --unpublished"
+      ],
+      "id": "T-206244",
+      "links": {
+        "plan": "docs/plans/f-0358.md"
+      },
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:25:21Z",
+      "state": "New",
+      "stories": [
+        "S-203320"
+      ],
+      "title": "a finding outside the footprint becomes one writes request, granted by rule or routed",
+      "type": "task",
+      "updated": "2026-10-13T09:25:21Z",
+      "writes": [
+        "asf/kernel/findings.py",
+        "asf/kernel/resolvers.py",
+        "asf/kernel/model.py",
+        "asf/kernel/settings.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/apply.py",
+        "asf/kernel/ports.py",
+        "tests/kernel/test_finding_writes.py"
+      ]
+    },
+    "T-206245": {
+      "after": [
+        "T-206243"
+      ],
+      "backlinks": [
+        "T-206246"
+      ],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.kernel.test_final_review",
+        "python3 -m unittest -q tests.kernel.test_decide tests.kernel.test_apply \\",
+        "tests.kernel.test_scenarios tests.kernel.test_stuck_escalation tests.kernel.test_stuck_hygiene \\",
+        "tests.kernel.test_round_charge tests.kernel.test_finding_keys tests.kernel.test_review_proof \\",
+        "tests.kernel.test_doc_fix_rounds tests.kernel.test_cloud_reviews tests.kernel.test_answers \\",
+        "tests.kernel.test_container_answer tests.kernel.test_ports tests.kernel.test_host \\",
+        "tests.kernel.test_findings_in_brief tests.test_briefs tests.test_brief_answers \\",
+        "tests.test_hermetic",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "asf redact --unpublished"
+      ],
+      "id": "T-206245",
+      "links": {
+        "plan": "docs/plans/f-0358.md"
+      },
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:25:25Z",
+      "state": "New",
+      "stories": [
+        "S-203322"
+      ],
+      "title": "the final review of the final head, and no Stuck on a head nobody read",
+      "type": "task",
+      "updated": "2026-10-13T09:25:25Z",
+      "writes": [
+        "asf/kernel/actions.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/apply.py",
+        "asf/kernel/briefs.py",
+        "asf/kernel/ports.py",
+        "tests/kernel/test_final_review.py"
+      ]
+    },
+    "T-206246": {
+      "after": [
+        "T-206245"
+      ],
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "tasks",
+      "gate": [
+        "python3 -m unittest -v tests.kernel.test_review_measure",
+        "python3 -m unittest -q tests.kernel.test_gate tests.kernel.test_apply tests.kernel.test_ports \\",
+        "tests.kernel.test_host tests.kernel.test_lead_time tests.kernel.test_decide \\",
+        "tests.kernel.test_scenarios tests.kernel.test_round_charge tests.kernel.test_final_review \\",
+        "tests.test_metrics tests.test_config_keys tests.test_hermetic",
+        "python3 -m unittest -q tests.kernel.test_review_proof tests.kernel.test_finding_keys \\",
+        "tests.kernel.test_finding_writes tests.kernel.test_round_charge \\",
+        "tests.kernel.test_final_review tests.kernel.test_review_measure tests.test_brief_answers \\",
+        "tests.kernel.test_decide tests.kernel.test_apply tests.kernel.test_scenarios \\",
+        "tests.kernel.test_findings_in_brief tests.kernel.test_doc_fix_rounds \\",
+        "tests.kernel.test_review_ci_gate tests.kernel.test_answers tests.kernel.test_gate \\",
+        "tests.kernel.test_ports tests.kernel.test_host tests.kernel.test_dor tests.test_briefs \\",
+        "tests.test_metrics tests.test_config_keys",
+        "bash tools/check_generic.sh",
+        "bash tools/check_conventions.sh",
+        "bash tools/check_clients.sh --against origin/main",
+        "asf redact --unpublished"
+      ],
+      "id": "T-206246",
+      "links": {
+        "plan": "docs/plans/f-0358.md"
+      },
+      "parent": "F-0358",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T09:25:29Z",
+      "state": "New",
+      "stories": [
+        "S-203324"
+      ],
+      "title": "the measure \u2014 the changes share and the greatest round over 24 hours",
+      "type": "task",
+      "updated": "2026-10-13T09:25:29Z",
+      "writes": [
+        "asf/metrics/metrics.py",
+        "asf/kernel/model.py",
+        "asf/kernel/settings.py",
+        "asf/kernel/gate.py",
+        "asf/kernel/apply.py",
+        "asf/kernel/ports.py",
+        "tests/kernel/test_review_measure.py"
       ]
     },
     "T-76350": {
