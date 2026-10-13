@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T16:53:39Z",
+  "generated": "2026-10-13T16:57:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18349,7 +18349,7 @@
         "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18359,7 +18359,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T16:42:36Z",
+      "updated": "2026-10-13T16:57:09Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -93814,7 +93814,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T16:36:36Z",
+      "updated": "2026-10-13T16:57:09Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
@@ -94252,16 +94252,19 @@
         "granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
+        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "rebase: PR #1714 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/decide.py:1282 \u2014 write_grant_refusal is dead code (grep -rn write_grant_refusal asf/ returns its definition only), so on a refusal _write_grant returns None, _judge keeps the Stuck verbatim (_keep, decide.py:1923-1926) and the console's reason never names the refusing clause: Step 6 and S-205270 line 12 are unimplemented in the product, proved only by a unit test calling the pure function (tests/kernel/test_question_write_grant.py:257). Fix: return the reason from the refusal path \u2014 `why = resolvers.write_grant_refusal(paths, it, items, tuple(config.test_paths), facts.trunk_files or (), tuple(config.risk_high or ()))` and carry it into the Stuck reason at the two _auto_answer dispatch sites (decide.py:656-660); move the high-risk early return (decide.py:1277-1278) below the rule call so a high-risk path still gets its clause named; assert it through decide, not through the resolver.",
         "asf/kernel/resolvers.py:525 \u2014 a path token that is itself a glob slips all three clauses: PATH_TOKEN_RE (resolvers.py:414) admits `*`, but write_grant_by_rule judges each token literally (`p in trunk_files` at :539, one-directional fnmatchcase(p, g) at :543) while every other footprint reader uses the symmetric decide._overlap (decide.py:2577-2587). Measured end-to-end through decide, \"may I write `tests/**`?\" is granted by rule and widens the card's writes: to tests/** although the trunk holds test files and a live item holds one; the same asymmetry makes Step 4's branch 0 (resolvers.py:466) preempt branches 1 and 2 \u2014 a hold becomes a grant and the serialisation note is dropped, against Step 4 and S-205270 line 13. Fix: after resolvers.py:536 add `if any(ch in p for p in paths for ch in '*?['): return []` so the rule judges concrete files only (verified on this head: the glob ask is then claimed by nothing, the hold and the note come back, the concrete grant and branch 0 unchanged); mirror it in write_grant_refusal (:548) and add the two missing cases to the module.",
         "operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
-        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py also held by T-208102 \u2014 additive edits only, never a rewrite"
+        "operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
+        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py, tests/kernel/test_question_resolvers.py also held by T-208100 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94274,7 +94277,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T16:53:37Z",
+      "updated": "2026-10-13T16:57:09Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94292,6 +94295,7 @@
         "T-208097"
       ],
       "backlinks": [
+        "T-208099",
         "T-208104"
       ],
       "children": [],
@@ -94413,7 +94417,6 @@
         "T-208097"
       ],
       "backlinks": [
-        "T-208099",
         "T-208100",
         "T-208104"
       ],
@@ -94436,7 +94439,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-208102",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94449,7 +94452,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T16:29:36Z",
+      "updated": "2026-10-13T16:57:09Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
