@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:32:02Z",
+  "generated": "2026-10-13T19:35:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18343,10 +18343,12 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
-        "293a48d9": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/record/undeliver.py:58'}",
-        "7f932bd1": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/evidence/evidence.py:1527'}",
-        "96c631a1": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/evidence/evidence.py:1210'}",
-        "dbc526c1": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/record/ingest.py:713'}"
+        "293a48d9": "{'head': \"{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/record/undeliver.py:58'}\", 'line': ''}",
+        "7f932bd1": "{'head': \"{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/evidence/evidence.py:1527'}\", 'line': ''}",
+        "96c631a1": "{'head': \"{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/evidence/evidence.py:1210'}\", 'line': ''}",
+        "988ef16a": "{'head': '6bb47eb610fff2d8668b0900b05cb4a94c9ecd58', 'line': 'asf/record/ingest.py:1343'}",
+        "dbc526c1": "{'head': \"{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/record/ingest.py:713'}\", 'line': ''}",
+        "e41445c4": "{'head': '6bb47eb610fff2d8668b0900b05cb4a94c9ecd58', 'line': 'asf/record/ingest.py:734'}"
       },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.0",
@@ -18375,7 +18377,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T19:24:34Z",
+      "updated": "2026-10-13T19:35:50Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -18458,7 +18460,9 @@
       ]
     },
     "B-208438": {
-      "backlinks": [],
+      "backlinks": [
+        "T-210355"
+      ],
       "children": [],
       "creates": [
         "tests/kernel/test_intake_mint_atomic.py"
@@ -18502,7 +18506,7 @@
       "kernel_notes": [
         "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18512,7 +18516,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T18:56:35Z",
+      "updated": "2026-10-13T19:35:50Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -94419,8 +94423,7 @@
       ],
       "backlinks": [
         "T-208102",
-        "T-208104",
-        "T-210355"
+        "T-208104"
       ],
       "children": [],
       "decided": true,
@@ -94662,7 +94665,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T19:24:34Z",
+      "updated": "2026-10-13T19:35:50Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94788,11 +94791,11 @@
         "913b5280": "{'head': '8a8004c8c5f7a9f7d27dadb56e817f2fe36a5bec', 'line': 'tools/check_clock.py:43'}"
       },
       "kernel_findings": [
-        "tools/check_clock.py:43 \u2014 the ratchet misses `time.time_ns(`, and asf/workers/lifecycle.py:454 (`read_ns = time.time_ns()`, compared against st_mtime_ns/st_ctime_ns in _settled at :426-430) is a live uncounted instance, so that file's ceiling is 3 (tools/clock-baseline.txt:108) while it holds 4. Change `re.compile(r'time\\.time\\(')` to `re.compile(r'time\\.time(?:_ns)?\\(')`, add `re.compile(r'datetime\\.today\\(')` beside :41 (`date\\.today\\(` does not match `datetime.today(`), name both in the docstring pattern list at :8-12, run `python3 tools/check_clock.py --write-baseline` (the only line that moves is tools/clock-baseline.txt:108, 3 -> 4; total 430 -> 431), add a `time.time_ns()` case and a `datetime.today()` case beside tests/test_check_clock.py:67-68 with the `# clock-exempt:` marker its neighbours carry, then re-run `python3 -m unittest -v tests.test_clock tests.test_check_clock` and `bash tools/check_clock.sh --against origin/main`.",
-        "shared files: asf/kernel/ports.py also held by T-208099 \u2014 additive edits only, never a rewrite"
+        "asf/clock.py:55-70 \u2014 iso/today/stamp stamp a given instant without normalizing it to UTC, so a non-UTC-aware instant is written with a literal Z carrying its local fields (clock.iso(2026-03-14T15:09:26+09:00) -> \"2026-03-14T15:09:26Z\", should be \"2026-03-14T06:09:26Z\"; clock.today is off by a whole day at an offset) and clock.stamp reads a naive instant as local time. Add a _utc(instant) helper beside _at \u2014 astimezone(datetime.timezone.utc), with a naive instant taken as UTC via replace(tzinfo=...) \u2014 and have iso, today and stamp's given-instant branch go through it; leave now() on _at as Step 3 asks. This is the house pattern the replaced code already had (asf/metrics/metrics.py:89,102; asf/scorecard/facts.py:72,76). Add two cases beside tests/test_clock.py:77: iso/today/stamp of an instant at a non-UTC offset equal the same instant's UTC stamp, and of a naive instant are read as UTC.",
+        "shared files: asf/kernel/ports.py also held by B-208438 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94805,7 +94808,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T19:32:00Z",
+      "updated": "2026-10-13T19:35:50Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
