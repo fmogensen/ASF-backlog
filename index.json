@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T20:14:42Z",
+  "generated": "2026-10-13T20:17:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18445,14 +18445,13 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_findings": [
-        "asf/record/repair.py:390-406 \u2014 C1: repair_refusals and plan_refusals have no caller; add --refusals to register(), dispatch it in cmd_record_repair() ahead of the --to-schema branch, and pass a real commit callback through the _published wrapper at asf/cli.py:1064-1069, so an operator can run the pass and it commits each rule as its own record commit.",
-        "asf/record/repair.py:167 \u2014 C2: the guard is `line[:1].isspace()`; asf/schema.py:164 is `line[:1].isspace() and out`. Make it positional at :167 and :173 \u2014 an indented line is a continuation only after a bullet has been emitted in that section; one that opens the section becomes `- [ ] {line.strip()}`. Measured: such a card gives plan_refusals == [] and the migration still raises \"acceptance: not a checkbox bullet\".",
-        "asf/record/repair.py:246 \u2014 C3: a history line with no bullet above it is appended unchanged with changed still False. Emit `out.append(f'- {line.strip()}')` and set changed = True. Measured: the migration still raises \"history: not a bullet: 'prose, no bullet'\".",
-        "asf/record/repair.py:215 \u2014 C4: meta[moved_key] = moved_value overwrites an existing key and meta.entries.insert then adds a second entry for it, so a stray `rank: 9` over a typed `rank: 2` writes `rank: 9` twice into the card. Guard with `if moved_key in meta:` \u2014 skip the rule for that card and let `asf check` name the collision.",
-        "tests/test_record_repair.py:259-299 \u2014 C5: RepairClearsEveryMigrationRefusalTests feeds each rule the fixture constant it was written against, so it is green while C2, C3 and I1 each leave a card the migration refuses. Add a case over a corpus the pass was not written against (at minimum sample/backlog copied to a tmpdir, asserting migrate_cards_to_json raises nothing after repair_refusals(apply=True)) and give each per-rule case one shape outside its own fixture."
+        "asf/record/repair.py:131 \u2014 close the fence at the end of the last non-derived section, not the end of the body: it lands inside the derived ## Backlinks, which index.refresh (run by publish.commit_paths, asf/record/publish.py:118) regenerates in the same commit, so the card is unbalanced again and the migration refuses it \u2014 insert the closing ``` before the first ## Children/## Backlinks heading via core.parse_sections/core.render_sections, falling back to the end of the body only when the card has neither section",
+        "asf/record/repair.py:225 \u2014 drop the `if moved_key is None:` guard and move every stray `key: value` line, not just the first: collect all (key, value) pairs, skip any key already in meta (keeping today's collision behaviour at asf/record/repair.py:234-235), insert one frontmatter._Entry per pair before the marker index \u2014 today a card with two stray lines is still refused after a real run and does not round-trip on a second run; add a two-line case to PreambleLineRepairTests",
+        "asf/cli.py:1068-1086 \u2014 outside the writes: footprint (asf/record/repair.py tests/test_record_repair.py) and reported as `needs writes: none`: name asf/cli.py in the report's needs writes: line, add a test for the --refusals --apply path (the commit closure at asf/cli.py:1072-1073 and the push-refused branch at asf/cli.py:1078-1084), and replace asf/cli.py:1077-1084 with a call to publish._refused(record, 'record-repair --refusals --apply') \u2014 it is a verbatim copy of it",
+        "tests/test_record_repair.py:392-394 \u2014 pass asf.record.publish.commit_paths itself as the commit callback instead of a plain git add/git commit stub, and assert repair.plan_refusals(root) == [] after the commits and before migrate_cards_to_json: the card's acceptance names this test for the real run over a record of this size, but it stubs the publish path out (and the only real corpus, sample/backlog, is 11 cards) \u2014 that assertion is what would have caught the fence finding"
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18462,7 +18461,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T20:14:40Z",
+      "updated": "2026-10-13T20:17:49Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18712,7 +18711,11 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T20:14:40Z"
+      "updated": "2026-10-13T20:14:40Z",
+      "writes": [
+        "asf/kernel/mainline.py",
+        "tests/kernel/test_main_landing.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -37721,7 +37724,18 @@
       "backlinks": [
         "B-208187"
       ],
-      "children": [],
+      "children": [
+        "S-211568",
+        "S-211569",
+        "S-211570",
+        "S-211571",
+        "S-211572",
+        "S-211573",
+        "S-211574",
+        "S-211575",
+        "S-211576",
+        "S-211577"
+      ],
       "decided": false,
       "folder": "features",
       "id": "F-0363",
@@ -37743,7 +37757,7 @@
         "spec-f-0363-1791920553: NEEDS OPERATOR: which of the 171 cards that refuse the schema-2 migration are closed, so the spec's claim that the archive carries them unchanged is counted rather than argued \u2014 `asf check --schema-only --product as\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "milestone": "0.5",
       "parent": "E-0006",
       "priority": "need",
@@ -37753,7 +37767,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T20:14:40Z"
+      "updated": "2026-10-13T20:17:49Z"
     },
     "R-0001": {
       "backlinks": [
@@ -42864,6 +42878,138 @@
       "title": "the replay of the 2026-10-13 incident",
       "type": "story",
       "updated": "2026-10-13T11:59:50Z"
+    },
+    "S-211568": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211568",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "an archive in the record holds the closed card byte for byte, and asf show and asf archive --find name it archived",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-211569": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211569",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "a closed, aged card moves only when the reference closure admits it, children before parents",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-211570": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211570",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "the dry run prints what would move and why, and a refusal lists the references that hold a card back",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-211571": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211571",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "re-opening an archived card moves it back, and every writing command that names an archived id brings it back first",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-211572": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211572",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "load_items, the kernel's facts, the index and asf check read the working set only",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-211573": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211573",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "a new id never reuses an archived one, and an id both places hold is a finding",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-211574": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211574",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-211575": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211575",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-211576": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211576",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "the schema migration converts the working set strictly and carries the archive unchanged",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-211577": {
+      "backlinks": [
+        "F-0363"
+      ],
+      "children": [],
+      "folder": "stories",
+      "id": "S-211577",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-13T20:17:19Z",
+      "state": "New",
+      "title": "measured on a record of today's size the working set is at most half the cards and asf check and the tick's processing are each at least twice as fast",
+      "type": "story",
+      "updated": "2026-10-13T20:17:19Z"
     },
     "S-51600": {
       "backlinks": [
