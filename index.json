@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T21:43:17Z",
+  "generated": "2026-10-13T21:47:55Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18461,7 +18461,11 @@
         "tests/test_record_repair.py:392-394 \u2014 pass asf.record.publish.commit_paths itself as the commit callback instead of a plain git add/git commit stub, and assert repair.plan_refusals(root) == [] after the commits and before migrate_cards_to_json: the card's acceptance names this test for the real run over a record of this size, but it stubs the publish path out (and the only real corpus, sample/backlog, is 11 cards) \u2014 that assertion is what would have caught the fence finding"
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "build-b-208187-1791926710: NEEDS OPERATOR: the acceptance bullet \"the per-card migration path then refuses 0 cards of a copy of a real record of this size\" is still unchecked \u2014 this host and CI have no real record (the only corpus is sample/b\u2026",
+        "PR #1726: install-clean-macos is red but not a required check \u2014 ignored"
+      ],
+      "kernel_state": "review",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18471,7 +18475,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T21:25:41Z",
+      "updated": "2026-10-13T21:47:54Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -94308,7 +94312,8 @@
         "granted asf/kernel/briefs.py tests/kernel/test_doc_fix_rounds.py; nothing else outside writes (card updated by the kernel). T-206241 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now."
       ],
       "kernel_attempts": [
-        "launch: launch: branch fix/T-206240-review-loops-part1 checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-aaad56de0523e1b2b; waits until it's released"
+        "launch: launch: branch fix/T-206240-review-loops-part1 checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-aaad56de0523e1b2b; waits until it's released",
+        "launch: launch: branch fix/T-206240-rereview-scope checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-af70284b807b5dd58; waits until it's released"
       ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
@@ -94332,7 +94337,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T21:35:16Z",
+      "updated": "2026-10-13T21:47:54Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
@@ -94791,7 +94796,8 @@
         "Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else."
+        "relaunch: operator answer: Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
         "146fa521": "{'head': \"{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/resolvers.py:606'}\", 'line': ''}",
@@ -94802,9 +94808,12 @@
       },
       "kernel_extra_rounds": 1,
       "kernel_findings": [
-        "asf/kernel/resolvers.py:736 \u2014 when `trunk_files is None` (the trunk is unread, `ports.py:853-863`) `write_grant_refused` falls past the `trunk_files is not None` guard at `:730` to the bare `'%s is refused'` fallback, so the park names no clause \u2014 against spec \u00a72.4 and plan step 6. Add `UNREAD_TRUNK_CLAUSE = ('%s could not be checked: the trunk is unread, so the kernel cannot tell whether this file is already on it')` beside the four clauses at `:648-651`, and in `write_grant_refused` replace `:730-736` with `elif trunk_files is None: clauses.append(UNREAD_TRUNK_CLAUSE % p)` / `elif p in trunk_files: clauses.append(ON_TRUNK_CLAUSE % p)` / `else: <the existing owner lookup>`; add the case to `ConsoleReasonNamesTheClause` (tests/kernel/test_question_write_grant.py:254) so the bare fallback stays unreachable."
+        "asf/kernel/resolvers.py:744 \u2014 the bare `'%s is refused'` fallback is reachable: the rule is all-or-nothing, so a multi-path ask refuses paths the rule itself admits and names them no clause (plan step 6), and tests/kernel/test_question_write_grant.py:292 asserts it unreachable with single-path cases only. Add `ALL_OR_NOTHING_CLAUSE = ('%s is granted by no rule on its own: the grant is all-or-nothing and another asked path was refused')` beside UNREAD_TRUNK_CLAUSE (resolvers.py:654) and make the last clause `clauses.append(WRITTEN_BY_CLAUSE % (p, owner) if owner else ALL_OR_NOTHING_CLAUSE % p)`; then add the two-path case (second path on the trunk) to `cases` in test_question_write_grant.py:292 and a case in ConsoleReasonNamesTheClause asserting both clauses are named.",
+        "asf/kernel/resolvers.py:736 \u2014 when `trunk_files is None` (the trunk is unread, `ports.py:853-863`) `write_grant_refused` falls past the `trunk_files is not None` guard at `:730` to the bare `'%s is refused'` fallback, so the park names no clause \u2014 against spec \u00a72.4 and plan step 6. Add `UNREAD_TRUNK_CLAUSE = ('%s could not be checked: the trunk is unread, so the kernel cannot tell whether this file is already on it')` beside the four clauses at `:648-651`, and in `write_grant_refused` replace `:730-736` with `elif trunk_files is None: clauses.append(UNREAD_TRUNK_CLAUSE % p)` / `elif p in trunk_files: clauses.append(ON_TRUNK_CLAUSE % p)` / `else: <the existing owner lookup>`; add the case to `ConsoleReasonNamesTheClause` (tests/kernel/test_question_write_grant.py:254) so the bare fallback stays unreachable.",
+        "operator answer: Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else.",
+        "shared files: asf/kernel/ports.py also held by T-210361 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1723: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1723: part (3.13, 3) is red but not a required check \u2014 ignored",
@@ -94812,7 +94821,7 @@
         "build-t-208099-1791921910: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208099-1791921910 'asf/build-t-208099-1791921910@20261013T200519Z' >/dev/null 2>&1 &`, both a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94825,7 +94834,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T21:43:16Z",
+      "updated": "2026-10-13T21:47:54Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95013,7 +95022,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T21:38:42Z",
+      "updated": "2026-10-13T21:47:54Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95139,8 +95148,10 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
-        "913b5280": "{'head': \"{'head': '8a8004c8c5f7a9f7d27dadb56e817f2fe36a5bec', 'line': 'tools/check_clock.py:43'}\", 'line': ''}",
-        "ff4786d6": "{'head': 'f131d782d4d57bd57b617cc46815fa12f565be87', 'line': 'asf/clock.py:55'}"
+        "0e879b43": "{'head': '5b09138f1d359397bf05ef632ed9b1aeb9859b99', 'line': 'tools/clock-baseline.txt:122'}",
+        "28e5e753": "{'head': '5b09138f1d359397bf05ef632ed9b1aeb9859b99', 'line': 'tests/test_check_clock.py:237'}",
+        "913b5280": "{'head': '{\\'head\\': \"{\\'head\\': \\'8a8004c8c5f7a9f7d27dadb56e817f2fe36a5bec\\', \\'line\\': \\'tools/check_clock.py:43\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
+        "ff4786d6": "{'head': '5b09138f1d359397bf05ef632ed9b1aeb9859b99', 'line': 'asf/clock.py:55'}"
       },
       "kernel_findings": [
         "tests/test_check_clock.py:237-240 \u2014 replace the exact-equality assertion in test_the_committed_baseline_matches_this_tree with the ratchet direction (`above = {r: n for r, n in counts.items() if n > base.get(r, 0)}` then `self.assertEqual(above, {})`), as tests/test_github.py:379-380 does for the client ratchet; exact equality contradicts the tool's own contract at tools/check_clock.py:17-18, reds the trunk on any concurrent landing that changes a clock-read count under asf/ or tests/, and blocks the fix for the finding below.",
@@ -95161,7 +95172,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T21:35:16Z",
+      "updated": "2026-10-13T21:47:54Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -95458,6 +95469,7 @@
         "T-210357"
       ],
       "backlinks": [
+        "T-208099",
         "T-210363"
       ],
       "children": [],
