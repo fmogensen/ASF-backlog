@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T05:06:44Z",
+  "generated": "2026-10-13T05:15:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18115,13 +18115,20 @@
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/kernel/mainline.py:188-205 \u2014 neither confirmation source acceptance #1 names (the parent's own fresh check, or the revert PR's CI) is consulted; `red_independent` asks only whether another open PR already reads the signature red, so when main's own check is the first to run it the innocent merge is still reverted. Re-dispatch the last green parent's required checks (`A.DispatchMain`, as at asf/kernel/mainline.py:267) and hold the revert for that verdict, or emit the RevertPR without auto-merge and read its own CI; keep the open-PR match as an extra fast path, not the only one.",
+        "asf/kernel/mainline.py:218 \u2014 `kflake.entry(..., bug='')` leaves the entry bugless, so the next tick takes flake.judge's live/`not bug` path (asf/kernel/flake.py:383-389) into `_bugless_live`, which finds no cycle (mainline's body carries `main-red: ...`, not flake's marker) and no owner (mainline's FileBug leaves `signature=''`, asf/kernel/mainline.py:185) and files a second, flake Bug for the same red, against acceptance #1's \"one Bug naming the check\". Widen to `trunk_quarantine(reds, facts, config, bug='', bug_key='')`, pass them into `kflake.entry`, and supply mainline's own Bug at each return site: `bug=bug` at asf/kernel/mainline.py:304, `bug_key=a.key` at asf/kernel/mainline.py:310, and the id `filed()` matched at asf/kernel/mainline.py:307.",
+        "asf/ci_stall.py:217 \u2014 `refresh_max` threads the given `now` into the stream window but still calls `ci_measure.readings(events)` with no `now`, so the readings window stays on the real wall clock (asf/ci_measure.py:47-48,99-100) and a past `now` reads the right stream days then discards every event. Use `ci_measure.readings(events, now=datetime.datetime.fromtimestamp(now, datetime.timezone.utc))` and add `import datetime` at asf/ci_stall.py:40-45; the conversion is required because `ci_measure._now` does not accept the epoch seconds ci_stall uses.",
+        "asf/kernel/mainline.py:197-203 \u2014 `red_independent` counts any open PR's matching red as independent evidence, with no check that the PR is unrelated to the candidate, which flake's own rule requires (`shared`, asf/kernel/flake.py:179-187; `verdict`'s defect branch, asf/kernel/flake.py:211-213). Two open PRs touching the file the candidate broke make a genuine culprit read as independent and leave main red with no revert. Thread the candidate's files (already computed at asf/kernel/mainline.py:279) into `red_independent` and skip a PR where `set(pr.files or ()) & set(files)`.",
+        "Another session edits asf/kernel/mainline.py, asf/metrics/metrics.py, tests/kernel/test_main_landing.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18130,7 +18137,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T04:49:11Z",
+      "updated": "2026-10-13T05:14:50Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18192,7 +18199,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-202833",
-      "kernel_dor_fills": 1,
+      "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_notes": [
         "groom-fill-b-202833-1791867443: groom-fill verdict rejected: no GROOM-FILL block"
@@ -18205,7 +18212,7 @@
       "state": "New",
       "title": "asf set milestone=0.4 is refused: a version-shaped milestone is read as a number",
       "type": "bug",
-      "updated": "2026-10-13T05:05:51Z"
+      "updated": "2026-10-13T05:14:50Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -36968,7 +36975,7 @@
     "F-0360": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0360",
       "milestone": "0.4",
@@ -50771,6 +50778,7 @@
         "T-129193",
         "T-154337",
         "T-160208",
+        "T-160211",
         "T-164021",
         "T-80369",
         "T-80370"
@@ -91594,12 +91602,12 @@
       "folder": "tasks",
       "id": "T-160211",
       "kernel_findings": [
-        "rebase: PR #1688 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "asf/kernel/apply.py:273 \u2014 the unstack's result line names the first open PR of the item (`next((p for p in self.facts.prs if p.item_id == a.item_id and not p.merged), None)`) while the retarget it describes moves the newest (`decide._open_pr_of` -> `decide.item_pr`, decide.py:939-953): with a stale open PR beside the live one (Unstack.test_23's case) it logs `unstack T-0002 \u2014 PR #3 -> trunk` where `retarget #4 -> the trunk` runs. Fix: add `item_pr` to the `from asf.kernel.decide import (...)` list at apply.py:79-81 and replace that `next(...)` with `pr = item_pr(a.item_id, self.facts)`, then extend tests/kernel/test_stacked_builds.py:1028-1036 with a stale #3 beside a live #4 asserting the line names #4 \u2014 or drop the note (`return None`, deleting apply.py:273-274) and assert decide's existing `STACK RETARGET <item> #<pr> -> <trunk>` note (decide.py:1148-1150) in test_12 instead.",
         "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_stack": "worker/T-160210@82cc4e44c773e18b51f506499b7418746f2497e8",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91612,7 +91620,7 @@
       ],
       "title": "the knobs, the records, and a product that stacks nothing behaving exactly as today",
       "type": "task",
-      "updated": "2026-10-13T04:45:13Z",
+      "updated": "2026-10-13T05:14:50Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
