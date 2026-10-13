@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T03:51:50Z",
+  "generated": "2026-10-13T04:01:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18180,7 +18180,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T03:51:43Z",
+      "updated": "2026-10-13T04:01:07Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -91413,14 +91413,13 @@
       "folder": "tasks",
       "id": "T-160210",
       "kernel_answers": [
-        "granted tests/kernel/fakes.py. One more round: close every open finding as worded \u2014 decide.py:1135 (NoteStack only in the acting arms), :1131 (a parked predecessor is not Done; read Done from states, not facts.prs), spawn.py:980 (is_ancestor ... is False), and add retarget to the fake plus one Unstack test that applies the plan. Rebase onto origin/main, no merge commit."
+        "granted tests/kernel/fakes.py. One more round: close every open finding as worded \u2014 decide.py:1135 (NoteStack only in the acting arms), :1131 (a parked predecessor is not Done; read Done from states, not facts.prs), spawn.py:980 (is_ancestor ... is False), and add retarget to the fake plus one Unstack test that applies the plan. Rebase onto origin/main, no merge commit.",
+        "Console pushed head a506211b5 on PR #1686 (rebased on main, all required checks green): own_pr = _open_pr_of(...) with a new test (Unstack.test_23); the other findings were already closed on the branch (tests 17, 18, 21, 22). needs writes: tests/kernel/fakes.py is granted. Nothing left to build: report done on this head and go to review."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/fakes.py. One more round: close every open finding as worded \u2014 decide.py:1135 (NoteStack only in the acting arms), :1131 (a parked predecessor is not Done; read Done from states, not facts.prs), spawn.py:980 (is_ancestor ... is False), and add retarget to the fake plus one Unstack test that applies the plan. Rebase onto origin/main, no merge commit.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "ended without a REPORT"
+        "relaunch: operator answer: Console pushed head a506211b5 on PR #1686 (rebased on main, all required checks green): own_pr = _open_pr_of(...) with a new test (Unstack.test_23); the other findings were already closed on the branch (tests 17, 18, 21, 22). needs writes: tests/kernel/fakes.py is granted. Nothing left to build: report done on this head and go to review."
       ],
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/kernel/decide.py:1136 \u2014 replace `own_pr = next((p for p in facts.prs if p.item_id == iid and not p.merged), None)` with `own_pr = _open_pr_of(iid, facts, config)`: `next()` takes the first unmerged PR in `facts.prs` order, while every other site in the kernel (`item_pr`, decide.py:939-953, used by `stacked_builds` at :2377) takes the newest, so with a stale open PR beside the live one `unstack` retargets or archives-and-resets the wrong PR and, because `A.NoteStack(iid, '', '')` clears the stack key the same tick (:1146), leaves the live PR stacked for ever under `hold_stacked` (:1060-1077) \u2014 the exact permanent hold the function's docstring (:1118-1121) says the paired clear exists to prevent. Add an `Unstack` case for a card with a stale open PR beside its live one.",
         "the report's `needs writes:` line \u2014 `tests/kernel/fakes.py` (+13/-1: `FakeGitHub.retarget`, `main_branch`) is outside the Task's `writes:` (docs/plans/f-0348.md:344), but `build-t-160210-1791859489` reports `needs writes: none` while its `left out:` line names that file as where finding 4's fix went. The edit belongs there (`FakeGitHub` is shared), so the fix is the declaration: report `needs writes: tests/kernel/fakes.py`.",
@@ -91440,11 +91439,7 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-160208@fb2c88353c4799dd472eb5f311e8dbd2fafc1b72",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 4 fix rounds",
-      "kernel_stuck_since": "2026-10-13T03:51:17Z",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91457,7 +91452,7 @@
       ],
       "title": "the unstack \u2014 retargeted to the trunk, replayed onto it, torn down when the base is rebuilt",
       "type": "task",
-      "updated": "2026-10-13T03:51:43Z",
+      "updated": "2026-10-13T04:01:07Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -91477,7 +91472,7 @@
       "folder": "tasks",
       "id": "T-160211",
       "kernel_stack": "worker/T-160210@82cc4e44c773e18b51f506499b7418746f2497e8",
-      "kernel_state": "new",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91490,7 +91485,7 @@
       ],
       "title": "the knobs, the records, and a product that stacks nothing behaving exactly as today",
       "type": "task",
-      "updated": "2026-10-13T02:59:49Z",
+      "updated": "2026-10-13T04:01:07Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
