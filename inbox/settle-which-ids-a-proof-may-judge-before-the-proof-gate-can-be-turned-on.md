@@ -1,0 +1,16 @@
+# Settle which ids a proof may judge before the proof gate can be turned on
+parent: F-0358
+
+Type: Bug
+
+The proof before the review (F-0358 §2.1) ships off (kernel.proof.enabled: false, PR #1717). Three defects must be closed before any product turns it on.
+
+1. A whole existing module reads failed. asf/kernel/proof.py `reading` judges green-on-base as failed, a charged round. asf/kernel/needed.py `test_ids` returns every id in `## Acceptance`, including whole modules named as hygiene (tests.test_hermetic). Measured: 164 of 330 open cards with ids name a module the trunk already has. Each would get rounds the author cannot answer, then Stuck, and no review. Decide which ids a proof judges (only ids the PR adds or changes; a module id only when absent at the base) and what an unjudgeable id reads as.
+
+2. The run is ungated. asf/kernel/trunk.py `probe` (the tests-at branch) runs `python -m unittest` on a worktree of the PR head: unreviewed code on the host with only the hermetic env. trunk-tests runs merged code, and the gate probe on a head is admitted by asf.readonly.grant. Give tests-at the same grant or a sandbox.
+
+3. The gate leaks open. asf/kernel/proof_probe.py `read` skips an item whose state is not Review, but asf/kernel/decide.py `_judge_pr` launches the review on the tick the item enters Review. A PR whose CI is already green then is reviewed with no proof.
+
+## Acceptance
+- [ ] One test per point above.
+- [ ] With the gate on, a card naming tests.test_hermetic beside a new test module reads proved.
