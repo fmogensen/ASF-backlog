@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T21:19:53Z",
+  "generated": "2026-10-13T21:25:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18452,13 +18452,16 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_findings": [
+        "asf/record/repair.py:167-169 \u2014 the `safe_idx is None` fallback appends the closing fence to the end of the whole body, i.e. inside the derived `## Children`/`## Backlinks` this function's own docstring (:148-156) forbids; the card is listed and rewritten as fixed, the migration still refuses it via the candidate round-trip (asf/schema.py:375 -> :270), and the second run reports nothing left to do. Close the fence at the end of the section that opened it, ahead of `derived_idx` \u2014 for an `acceptance` section as an indented continuation line (`  ```), which asf/schema.py:163 accepts and which keeps the fence count even; when no placement clears the refusal, do not rewrite the card and do not list it as fixed. Add a fixture with no non-structural section before the derived ones, asserting it converts after a real run through `publish.commit_paths`.",
+        "asf/record/repair.py:208-218 and :223-241 \u2014 `emitted` is set for any `_CHECKBOX_RE` match, but the migration counts an indented line as a continuation only when `out` is non-empty (asf/schema.py:163) and an empty-text bullet never reaches `out` (asf/schema.py:168-170), so `- [ ] ` followed by `  stray text` is left alone while the migration refuses it. Count a bullet as `emitted` only when its captured text is non-empty (`emitted = bool(m.group(2).strip())` from the taken match) in both loops, so the stray line becomes its own `- [ ] ` entry through :235-241; add the shape to `AcceptanceCheckboxRepairTests` with the \"converts clean\" assertion.",
+        "asf/cli.py:1071-1078 \u2014 the `--refusals --apply` branch calls `publish.commit_paths` and `shadow.push` with no `_is_checkout` guard, so on a record that is not a git checkout (a copy of the record, which is what this tool is for) it rewrites the cards and then dies with `CalledProcessError` from asf/record/publish.py:94 -> asf/record/tree.py:32. Guard both on the condition `_published` already uses: `publishable = publish.snapshot(record) is not None`, pass `commit=commit if publishable else None`, and run `shadow.push`/`publish._refused` only when `publishable`; cover it in `CliRefusalsApplyTests` with a record root that has no `origin`.",
         "asf/record/repair.py:131 \u2014 close the fence at the end of the last non-derived section, not the end of the body: it lands inside the derived ## Backlinks, which index.refresh (run by publish.commit_paths, asf/record/publish.py:118) regenerates in the same commit, so the card is unbalanced again and the migration refuses it \u2014 insert the closing ``` before the first ## Children/## Backlinks heading via core.parse_sections/core.render_sections, falling back to the end of the body only when the card has neither section",
         "asf/record/repair.py:225 \u2014 drop the `if moved_key is None:` guard and move every stray `key: value` line, not just the first: collect all (key, value) pairs, skip any key already in meta (keeping today's collision behaviour at asf/record/repair.py:234-235), insert one frontmatter._Entry per pair before the marker index \u2014 today a card with two stray lines is still refused after a real run and does not round-trip on a second run; add a two-line case to PreambleLineRepairTests",
         "asf/cli.py:1068-1086 \u2014 outside the writes: footprint (asf/record/repair.py tests/test_record_repair.py) and reported as `needs writes: none`: name asf/cli.py in the report's needs writes: line, add a test for the --refusals --apply path (the commit closure at asf/cli.py:1072-1073 and the push-refused branch at asf/cli.py:1078-1084), and replace asf/cli.py:1077-1084 with a call to publish._refused(record, 'record-repair --refusals --apply') \u2014 it is a verbatim copy of it",
         "tests/test_record_repair.py:392-394 \u2014 pass asf.record.publish.commit_paths itself as the commit callback instead of a plain git add/git commit stub, and assert repair.plan_refusals(root) == [] after the commits and before migrate_cards_to_json: the card's acceptance names this test for the real run over a record of this size, but it stubs the publish path out (and the only real corpus, sample/backlog, is 11 cards) \u2014 that assertion is what would have caught the fence finding"
       ],
-      "kernel_fix_rounds": 2,
-      "kernel_state": "ready",
+      "kernel_fix_rounds": 3,
+      "kernel_state": "building",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18468,7 +18471,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T21:19:52Z",
+      "updated": "2026-10-13T21:25:41Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18659,7 +18662,7 @@
         "PR #1729: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1729: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18669,7 +18672,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T21:13:44Z",
+      "updated": "2026-10-13T21:25:41Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -18686,6 +18689,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-213443",
+      "kernel_closed_findings": {
+        "0e5141ab": "{'head': '1c0ff9f01ada9d50ec27492fbd3c089ae50d6f68', 'line': 'asf/record/ingest.py:1174'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_findings": [
@@ -18705,7 +18711,7 @@
       "state": "New",
       "title": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
       "type": "bug",
-      "updated": "2026-10-13T21:06:54Z",
+      "updated": "2026-10-13T21:25:41Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_feature_delivery.py"
@@ -18750,7 +18756,7 @@
       "id": "B-213995",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "F-0357",
       "schema_version": 3,
       "severity": "S3",
@@ -18759,7 +18765,7 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T20:59:26Z",
+      "updated": "2026-10-13T21:25:41Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_landing.py"
@@ -56250,7 +56256,8 @@
         "S-59305",
         "T-0101",
         "T-0103",
-        "T-0104"
+        "T-0104",
+        "T-208102"
       ],
       "children": [],
       "cost": {
@@ -94971,13 +94978,18 @@
         "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208099 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/kernel/decide.py:1336 \u2014 `_predecessor` reads `open_` as `_unmerged(dep_id, facts, _parked(facts.items))`, a different parked set from every other `_unmerged` caller (`parked = _parked(items) - flying(facts, config)`, decide.py:506-507, threaded to :973, :1354, :1394), so plan step 4's \"the same predicate kind 3's hold rule and the after: edges already use\" does not hold. Measured through D.decide on this head, a predecessor at state=REVIEW, priority='later' with an open PR #42 is answered \"T-0100 is Review: the edge is clear, proceed. It is held by PR #42 on worker/T-0100.\" while D.blocked_on on the identical facts answers ['T-0100']. Fix: thread the kernel's own parked in \u2014 `def _predecessor(it, text, facts, config, parked=())` (:1316), `open_ = _unmerged(dep_id, facts, parked)` (:1336), `def _auto_answer(it, facts, config, text=None, parked=())` (:1202), `predecessor = _predecessor(it, text, facts, config, parked)` (:1232), `_auto_answer(it, facts, config, parked=parked)` (:684) and `_auto_answer(it, facts, config, asked.question, parked)` (:829) \u2014 parked is already in scope at both call sites (:679, :798). Correct the docstring at :1322-1324, and replace tests/kernel/test_question_predecessor.py:106-112 (which asserts the defect by calling _unmerged with the same un-subtracted set, never through _predecessor) with a case through D.decide on a priority='later' predecessor that has an open PR, asserting \"waits on it through after:\", plus a second case for a parked predecessor with no PR that stays \"the edge is clear\".",
+        "tests/kernel/test_question_predecessor.py:54-58 \u2014 test_every_phrase_the_design_names_claims_the_one_id does not test the `after:` alternative: its fixture 'after: T-0100 still open' passes on `still open`. PREDECESSOR_RE (resolvers.py:638-639, spec-verbatim) closes with \\b, so `after:` fires only on `after:T-0100`, never on `after: T-0100` \u2014 measured: predecessor_question('after: T-0100') == '', PREDECESSOR_RE.findall('after: T-0100') == []. A question spelled the way the record spells the edge reaches the console, and the test claims the opposite. Fix (not the regex \u2014 step 1 requires it verbatim): assert each of the seven phrases alone, with no phrase carrying a second trigger word (use 'after:T-0100 here' and 'T-0100 is still open' as separate fixtures), and add the dead alternative as a documented fail-closed beside them in the spirit of PD11 \u2014 `def test_the_after_colon_alternative_needs_no_space_documented(self): self.assertEqual(R.predecessor_question('after: T-0100'), '')` \u2014 then raise the spelling to F-0362's spec owner rather than patching the regex in this card.",
+        "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/settings.py also held by T-210360 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1727 conflicts with its base",
         "build-t-208102-1791918911: NEEDS OPERATOR: heartbeat command refused to start by the sandbox; continued per instructions since a beat that cannot start never ends the session \u2014 `sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208102-1791918911\u2026"
       ],
       "kernel_rebuilds": 2,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94990,7 +95002,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T21:13:44Z",
+      "updated": "2026-10-13T21:25:41Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95372,6 +95384,7 @@
         "T-210357"
       ],
       "backlinks": [
+        "T-208102",
         "T-210362",
         "T-210363",
         "B-211642"
