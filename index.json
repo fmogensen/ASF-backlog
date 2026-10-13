@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T21:55:24Z",
+  "generated": "2026-10-13T22:00:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -24,7 +24,8 @@
         "B-0020",
         "B-0027",
         "B-0030",
-        "B-0036"
+        "B-0036",
+        "B-210839"
       ],
       "children": [],
       "decided": true,
@@ -18528,16 +18529,24 @@
         "granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_findings": [
+        "asf/schema.py:171 \u2014 `_BARE_BULLET_RE.match(line).group(1)` is dereferenced unconditionally but the regex needs a `-`/`*` marker, so a bare prose line in `## Acceptance` (or an indented first line) raises AttributeError, which `except CardMigrationError` at :942 does not catch \u2014 a traceback D11/D12 forbid, now escaping with the kernel left paused by :928; replace with `m2 = _BARE_BULLET_RE.match(line)` then `text = (m2.group(1) if m2 else line).strip()`",
+        "asf/kernel/host.py:464 \u2014 the `if pending:` gate means an install with nothing to switch exits 0 printing only `unchanged`, never naming a non-additive gap, and `asf kernel install` has no other schema signal (`kernel` is absent from surface.COMMANDS, so cli.py:996-998's `schema.require` is skipped); call `_warn_schema_gap(product, out)` unconditionally for a non-dry-run install, above the `for job in jobs(...)` loop at :449",
+        "asf/schema.py:943 \u2014 a failed schema-migrate leaves the kernel paused and says nothing: the message names only the card, the pause carries no pid and `reason='schema-migrate'` is not upgrade.PAUSE_REASON, so upgrade.stale_pauses (asf/upgrade.py:1136-1156) can never lift it; return `1, f'{product.name}: stopped \u2014 {e}; the kernel stays paused \u2014 run `asf scheduler resume --product {product.name} --clock kernel` once that card is fixed'` and pass `pid=os.getpid()` at :928",
+        "asf/schema.py:946 \u2014 `out=lambda *_a: None` plus the dropped return value silences sync_operator_checkout's refusal (dirty, off-trunk or ahead \u2014 asf/tick/shadow.py:306-312), whose own contract is that it is named every time it holds (:290-292), so the command reports `migrated 2 \u2192 3` while backlog_dir stays at schema 2 and every console write there is refused: keep `sync = shadow.sync_operator_checkout(...)` and fold `sync.why` into the :949 message",
+        "asf/schema.py:928,947 \u2014 scheduler.pause overwrites any pause record already held (asf/scheduler.py:1191) and scheduler.resume pops it and re-bootstraps with force=True (:1221-1241), so a migration erases an operator's own `asf scheduler pause` and restarts the factory; read `before = scheduler.read_pauses(product.name)` first, pause only `[c for c in KERNEL_CLOCKS if c not in before]`, and resume only those",
+        "asf/record/ids.py:186 \u2014 `_folder_is_json` answers False for an empty folder, so a record already at schema 3 whose type folder holds no card yet mints schema-1 markdown (verified: schema_version 3 with an empty bugs/ wrote bugs/B-0001.md), the hardcoded-markdown case acceptance 4 exists to stop; decide from the record's own stamp at :204-205 \u2014 `v = schema.record_version(root)` then `json_card = _folder_is_json(root, folder) if v is None else v >= 3`",
         "red: tests (3.12)",
         "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026/work/_temp/55b28162-8554-40e8-98ec-9109fa0f40d8' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
+        "operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel).",
         "operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes.",
         "PR #1728: checks (3.12) is red but not a required check \u2014 ignored",
@@ -18547,7 +18556,7 @@
         "PR #1728: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1728: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18557,7 +18566,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T21:38:42Z",
+      "updated": "2026-10-13T22:00:35Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18669,7 +18678,7 @@
         "PR #1729: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1729: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18679,7 +18688,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T21:51:07Z",
+      "updated": "2026-10-13T22:00:35Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -18801,7 +18810,7 @@
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18811,7 +18820,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-13T21:19:52Z",
+      "updated": "2026-10-13T22:00:35Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -94328,7 +94337,11 @@
         "PR #1735: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "launch: launch: branch fix/T-206240-rereview-scope checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-af70284b807b5dd58; waits until it's released",
+      "kernel_stuck_since": "2026-10-13T21:58:43Z",
       "links": {
         "plan": "docs/plans/f-0358.md"
       },
@@ -94341,7 +94354,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T21:55:23Z",
+      "updated": "2026-10-13T22:00:35Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
@@ -95002,6 +95015,10 @@
       "kernel_answers": [
         "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208099 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them."
       ],
+      "kernel_closed_findings": {
+        "1fd12f34": "{'head': '7399bf8891557f1a004acea78b6deee86451c75d', 'line': 'asf/kernel/decide.py:1336'}",
+        "bd4c504d": "{'head': '7399bf8891557f1a004acea78b6deee86451c75d', 'line': 'tests/kernel/test_question_predecessor.py:54'}"
+      },
       "kernel_extra_rounds": 0,
       "kernel_findings": [
         "asf/kernel/decide.py:1336 \u2014 `_predecessor` reads `open_` as `_unmerged(dep_id, facts, _parked(facts.items))`, a different parked set from every other `_unmerged` caller (`parked = _parked(items) - flying(facts, config)`, decide.py:506-507, threaded to :973, :1354, :1394), so plan step 4's \"the same predicate kind 3's hold rule and the after: edges already use\" does not hold. Measured through D.decide on this head, a predecessor at state=REVIEW, priority='later' with an open PR #42 is answered \"T-0100 is Review: the edge is clear, proceed. It is held by PR #42 on worker/T-0100.\" while D.blocked_on on the identical facts answers ['T-0100']. Fix: thread the kernel's own parked in \u2014 `def _predecessor(it, text, facts, config, parked=())` (:1316), `open_ = _unmerged(dep_id, facts, parked)` (:1336), `def _auto_answer(it, facts, config, text=None, parked=())` (:1202), `predecessor = _predecessor(it, text, facts, config, parked)` (:1232), `_auto_answer(it, facts, config, parked=parked)` (:684) and `_auto_answer(it, facts, config, asked.question, parked)` (:829) \u2014 parked is already in scope at both call sites (:679, :798). Correct the docstring at :1322-1324, and replace tests/kernel/test_question_predecessor.py:106-112 (which asserts the defect by calling _unmerged with the same un-subtracted set, never through _predecessor) with a case through D.decide on a priority='later' predecessor that has an open PR, asserting \"waits on it through after:\", plus a second case for a parked predecessor with no PR that stays \"the edge is clear\".",
@@ -95027,7 +95044,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T21:47:54Z",
+      "updated": "2026-10-13T22:00:35Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95224,17 +95241,17 @@
       },
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/kernel/needed.py:316 \u2014 the relaunch arm must also deny the new empty-diff Done to an item still marked reverted, whose revert is landed on the trunk: change `elif revert_live or _proving_red(it, facts.items, facts):` to `elif revert_live or it.reverted or _proving_red(it, facts.items, facts):`, and correct the docstring at :270-274 to list three surviving EMPTY_FINDING cases, not two. As written, such an item reaches the final `else` whenever `test_ids` is `[]` (card names no proving test, or more than resolvers.MAX_IDS=20) and is marked Done with a false \"nothing left to change\" note and a SATISFIED gate line, contradicting the B-200932 sentence kept at :272-274; because that arm emits no RevertUndone, decide.py:866 then discards the Done and relaunches the item next tick \u2014 B-200932's endless empty rebuild, with no finding left for the next session.",
-        "tests/kernel/test_satisfied_not_relaunched.py:189 \u2014 add the \"B-200932's reverted arm still answers what it answered\" case Step 5 names, with a card body that names no proving test so the assertion rests on the revert facts and not on test_ids: revert still landed on Facts.main -> READY with one ClearStuck and no NoteItem (red on this head, green with the fix above); the reverted merge on Facts.main with no revert of it -> DONE with RevertUndone; Facts.main empty -> READY."
+        "asf/kernel/needed.py:140-148 (and the call at :316) \u2014 _proving_red reads \"red on the trunk\" as \"not confirmed defined\" only, so a card whose proving test IS defined on the trunk and FAILS there falls into the new else arm and is marked Done (\"empty diff on PR #7: nothing left to change\", no ClearStuck), against S-207174's sixth line. Give _proving_red the item's probe \u2014 `_proving_red(it, facts.items, facts, (facts.needed or {}).get(p.item_id))` \u2014 and return True when `(probe or {}).get('tests')` is non-empty and reports error, failed, or not ok, keeping the trunk_tests read as it is; pin it in RedProvingTestsStillRelaunch with trunk_tests={IDS[0]: True} and a failing probe expecting State.READY, one ClearStuck and no NoteItem.",
+        "asf/kernel/needed.py:24-25 \u2014 the module docstring's \"Empty PR\" bullet still says \"closed: Done when the item's probe is satisfied, else Ready with EMPTY_FINDING\", which this diff makes false and which contradicts judge's own docstring at :262-273. Replace it with the three outcomes: Done on a satisfied probe, Done with EMPTY_DONE_NOTE when nothing stands against it, and Ready with EMPTY_FINDING while an unmerged revert of the item's own work is open or a proving test its card names reads red on the trunk."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "PR #1721: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1721: part (3.13, 3) is red but not a required check \u2014 ignored",
         "build-t-210356-1791922145: NEEDS OPERATOR: asf redact --unpublished could not run in this cloud session (the `asf` CLI is not installed here) \u2014 `asf redact --unpublished` (read-only; the cloud-session brief notes no pre-push hook runs here, a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95247,7 +95264,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T21:55:23Z",
+      "updated": "2026-10-13T22:00:35Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95445,7 +95462,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95458,7 +95475,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-13T21:43:16Z",
+      "updated": "2026-10-13T22:00:35Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -95502,7 +95519,7 @@
         "asf/kernel/incidents.py:130 \u2014 bv = blame.verdict(facts, config) is read at landing time, when the revert has merged and the trunk is green again, so red_spell is None and the REVERT row stores {'parent': '', 'ids': [], 'cls': 'unproven'} instead of the read that allowed the revert (acceptance line 9). Fix: carry the read forward from the tick that made it \u2014 put plan.main.get('blame') (mainline.blame_record, :295-297) on the MAIN_RED row in _main_red_record, and in _revert_records take the blame from that spell's recorded MAIN_RED row (observe at :199 already has state_dir and read()) rather than recomputing, leaving the key absent when no recorded read is found; then pin it with the revert commit green on the trunk (the module's own landed_world()), not pending as :219-220 does."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95515,7 +95532,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T21:43:16Z",
+      "updated": "2026-10-13T22:00:35Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
