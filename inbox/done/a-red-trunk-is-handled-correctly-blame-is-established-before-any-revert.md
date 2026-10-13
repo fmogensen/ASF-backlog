@@ -1,3 +1,5 @@
+→ F-0357
+
 # A red trunk is handled correctly: blame is established before any revert
 parent: E-0007
 

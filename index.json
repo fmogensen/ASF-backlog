@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T04:53:38Z",
+  "generated": "2026-10-13T04:53:44Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18157,12 +18157,15 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "rebase: PR #1692 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18171,7 +18174,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T04:49:11Z",
+      "updated": "2026-10-13T04:53:40Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
