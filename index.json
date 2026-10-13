@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T13:49:49Z",
+  "generated": "2026-10-13T13:56:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -37182,7 +37182,8 @@
       "kernel_fix_rounds": 0,
       "kernel_notes": [
         "spec-f-0357-1791869808: NEEDS OPERATOR: whether the host-side `pre_push_check` should gain the new clock lint (the in-repo CI step is part of S-203372; this is the host gate) \u2014 `grep -n -A8 pre_push_check \"$ASF_HOME\"/products/asf.yaml`",
-        "spec-f-0357-1791889590: NEEDS OPERATOR: the product's current conventions.pre_push_check, so the plan can place the new clock lint in it (spec \u00a72.9) \u2014 `sed -n '1,80p' ~/.ASF/products/asf.yaml`"
+        "spec-f-0357-1791889590: NEEDS OPERATOR: the product's current conventions.pre_push_check, so the plan can place the new clock lint in it (spec \u00a72.9) \u2014 `sed -n '1,80p' ~/.ASF/products/asf.yaml`",
+        "plan-f-0357-1791897340: NEEDS OPERATOR: the product's current conventions.pre_push_check, so the plan can say exactly where the clock ratchet joins it (\u00a72.9, Task 1 step 7) \u2014 `sed -n '1,80p' ~/.ASF/products/asf.yaml`"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "building",
@@ -37195,7 +37196,7 @@
       "state": "New",
       "title": "A red trunk is handled correctly: blame is established before any revert",
       "type": "feature",
-      "updated": "2026-10-13T13:16:23Z"
+      "updated": "2026-10-13T13:55:57Z"
     },
     "F-0358": {
       "backlinks": [
@@ -37422,7 +37423,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T13:49:36Z"
+      "updated": "2026-10-13T13:55:57Z"
     },
     "R-0001": {
       "backlinks": [
@@ -93709,7 +93710,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/kernel/briefs.py tests/kernel/test_doc_fix_rounds.py; nothing else outside writes (card updated by the kernel). T-206241 also writes asf/kernel/briefs.py (Review): the overlap rule serialises them. asf/kernel/briefs.py matches kernel.risk.high: this item is high-risk now.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_findings": [
         "asf/kernel/apply.py:400 \u2014 the closed set is stored as a nested dict, which the record cannot carry: frontmatter.render emits the inner mapping as a quoted Python repr, so after one card round-trip every closed finding's `line` is '' and findings.py:139's `if lk:` skips it, meaning no contradiction is ever detected in production. Write a flat value, `closed_map[k] = '%s %s' % (pr.head_sha, lk)`, and parse it back in findings.py:77-79 (`head, _, line = str(v).partition(' ')`) keeping the existing dict branch for the in-memory shape.",
@@ -93740,7 +93742,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T12:35:48Z",
+      "updated": "2026-10-13T13:55:57Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
