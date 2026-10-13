@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T20:41:56Z",
+  "generated": "2026-10-13T20:46:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18451,7 +18451,7 @@
         "tests/test_record_repair.py:392-394 \u2014 pass asf.record.publish.commit_paths itself as the commit callback instead of a plain git add/git commit stub, and assert repair.plan_refusals(root) == [] after the commits and before migrate_cards_to_json: the card's acceptance names this test for the real run over a record of this size, but it stubs the publish path out (and the only real corpus, sample/backlog, is 11 cards) \u2014 that assertion is what would have caught the fence finding"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18461,7 +18461,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T20:17:49Z",
+      "updated": "2026-10-13T20:46:55Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18662,10 +18662,14 @@
       "id": "B-213443",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
+      "kernel_findings": [
+        "asf/record/ingest.py:1174 \u2014 the new block clears only the local `merged`, not the excluded PR's own row fields, so `pr_state` (always \"MERGED\" for a merged PR, asf/evidence/evidence.py:631-636) still fires the Task's `in-flight` rule (asf/evidence/closing.py:122) and the Task derives Active, not New: replace the block with `if excl and tev and (tev.get('pr') in excl or any(_sha_prefix(merged, excluded_sha_of[n]) for n in excl if n in excluded_sha_of)): tev = dict(tev, pr=None, pr_state=None, merged_sha=None); task_ev[iid] = tev; merged = ''`, and set `'pr_state': 'MERGED'` on both fixture rows at tests/test_feature_delivery.py:706-710 (the shape `chosen_pr` emits; with `'pr_state': None` the new test cannot fail)"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-213443-1791920579: groom-fill raised risk high: confirmed on origin/main that exclusion only reaches ev['ids'] (_exclude_pr_ids, ingest.py:717-744) while the plan-matched Task path (ingest.py:1159-1163) and match_bug (ingest.py:392-409, called at 1259) read ev['features'][...]['tasks'][tid] and ev['merged'] unfiltered \u2014 a real, well-localized gap buildable with the sha coercion already proven at ingest.py:732."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 3,
@@ -18675,7 +18679,7 @@
       "state": "New",
       "title": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
       "type": "bug",
-      "updated": "2026-10-13T20:41:54Z",
+      "updated": "2026-10-13T20:46:55Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_feature_delivery.py"
@@ -18720,7 +18724,7 @@
       "id": "B-213995",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "schema_version": 3,
       "severity": "S3",
@@ -18729,7 +18733,7 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T20:34:28Z",
+      "updated": "2026-10-13T20:46:55Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_landing.py"
@@ -94931,7 +94935,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T20:34:28Z",
+      "updated": "2026-10-13T20:46:55Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
