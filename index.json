@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:39:30Z",
+  "generated": "2026-10-13T08:42:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18124,15 +18124,18 @@
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/kernel/decide.py:529 \u2014 gate the Ready flip on the flag (`if isinstance(a, A.RevertPR) and a.auto_merge:`); a revert whose auto-merge is held must not bounce its item. With it, asf/kernel/apply.py:490-493 \u2014 keep writing P.REVERTED on the held tick (it is the key mainline.py:435 reads to enter the revert_ci branch) but move the RELAUNCH attempt and the P.NOTES note behind `if a.auto_merge:`; and asf/kernel/mainline.py:440-444 \u2014 emit the finalize as `revert_action(red, c, it, reds, config, auto_merge=True)` rather than a bare `A.EnableAutoMerge(rpr.number)`, so the relaunch finding is queued once, at confirmation, guarded on `a.auto_merge` instead of on `a.pr not in reverted`. Today a held revert still sets State.READY and queues the red as the item's own finding, and the abandon path (mainline.py:447-451) emits only ClosePR, so nothing restores it \u2014 the card's own headline. Asserted by tests/kernel/test_main_landing.py:219-226; extend that case and add one over `self._reverted(red(...))` that an abandoned revert leaves the item unblamed.",
+        "tests/test_metrics.py:2490 \u2014 drop 'tests/test_tick_latency.py' from CLOCK_ON_PURPOSE and fix tests/test_tick_latency.py:177 to read the day off the commit's own --name-only list via _ticks_stream_path (tests/test_tick_steps.py:40-47), the same fix this diff applied to tests/test_tick_steps.py. That line is a real bare `m.today()` of exactly the class A6 exists to catch; the allowlist comment justifies it as outside the footprint, but the operator answer has since granted the file, so the suppression is no longer forced.",
+        "asf/kernel/mainline.py:25-26 \u2014 rewrite the module docstring (and the 'none' bullet at :282) to describe what ships. It states that one DispatchMain on the parent asks for a fresh run, that the tick records \"waits on the parent's fresh check\", and that \"only once that run reads green on the red check is the candidate blamed\" \u2014 none of which is in the code: no DispatchMain is ever emitted on the parent (only the pre-existing trunk-head one at :403), that record string is nowhere in asf/, and the candidate is blamed at once. Either delete the unreachable 'waiting'/dispatch arm at :286-288 (nothing in the product creates a workflow_dispatch run on the parent's sha) or say it fires only on a dispatch made elsewhere.",
         "asf/kernel/mainline.py:339-341 \u2014 gate the single-candidate revert on a confirmation that is actually fetched, not one that happens to be in facts: either emit A.DispatchMain(green, 'confirm the red without the candidate') (asf/kernel/mainline.py:306-315) and record 'waits on the parent's fresh check', reverting only once that fresh run reads green on the red check, or carry an auto-merge flag on A.RevertPR (asf/kernel/actions.py:236-249, apply leg asf/kernel/apply.py:485) and finalize the revert only once the revert PR's own CI reads green on the red check \u2014 red there means no RevertPR, one Bug naming the check, the item held (acceptance A1). Confirmed on this head: a single candidate whose files include the red's failing test file, with no other open PR carrying the red and no informational leg on the green parent, still yields RevertPR (#21, T-2) and T-2 back to State.READY.",
         "tests/test_tick_steps.py:22 \u2014 the file is edited (import dropped, _ticks_stream_path added at :40-47, call sites at :161-170 and :926-940) but is outside this item's writes: footprint, and b0da4b3's report reads `needs writes: none`; re-report with `needs writes: tests/test_tick_steps.py` so the footprint is widened on the record instead of silently exceeded.",
         "tests/test_metrics.py:2516 \u2014 widen the needle set to any wall-clock read in tests/test_tick_steps.py (today() through any binding: metrics.today(), metrics_mod.today(), a bare today() from a from-import; plus utcnow(, time.time(), .now() ), and take the day at tests/test_tick_steps.py:156,920,928 from the tick's own output (the --name-only list already in hand at tests/test_tick_steps.py:152 carries the written metrics/ticks/<day>.jsonl name) instead of a second clock read; needs tests/test_tick_steps.py added to writes:.",
         "asf/metrics/metrics.py:106 \u2014 BARE_TODAY_RE matches only a metrics.-qualified, whitespace-free call, so metrics_mod.today() (the form tests/test_tick_steps.py:22 uses), a bare today() from a from-import, and metrics.today( ) all pass; resolve the metrics binding per file from its own import lines and flag a bare call of that binding with optional inner whitespace, counting calls only and not comment or docstring text, and extend the scanned set at tests/test_metrics.py:2505 from asf/ to tests/ as well.",
         "asf/kernel/mainline.py:213 \u2014 an open PR proves independence without establishing that its tree excludes the candidate, so a PR brought up to the trunk head carries the candidate's merge and reads the same red because of it; require the base to predate the candidate: `if pr.merged or not pr.behind or (set(pr.files or ()) & set(files)): continue` (PR.behind, asf/kernel/model.py:228), or drop the open-PR path for parent_already_red plus the revert PR's own CI, the two sources acceptance 1 names.",
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
-        "shared files: asf/kernel/mainline.py, tests/kernel/test_main_landing.py also held by B-200932 \u2014 additive edits only, never a rewrite"
+        "shared files: asf/metrics/metrics.py also held by T-154346 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing.",
@@ -18140,7 +18143,7 @@
         "build-b-200581-1791872508: NEEDS OPERATOR: tests/test_tick_latency.py:177 reads `m.today()` bare right after a tick \u2014 the same day-crossing flakiness class B-200581 fixes elsewhere, discovered only because this round tried widening the lint's\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18149,7 +18152,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T08:39:25Z",
+      "updated": "2026-10-13T08:42:28Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18295,7 +18298,11 @@
       "id": "B-205135",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.0",
+      "kernel_notes": [
+        "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
+      ],
       "parent": "E-0006",
+      "risk": "high",
       "schema_version": 2,
       "severity": "S3",
       "signature": "A Feature reads Done when any merged PR names its id, with no spec or children",
@@ -18303,7 +18310,16 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T08:33:04Z"
+      "updated": "2026-10-13T08:42:28Z",
+      "writes": [
+        "asf/evidence/evidence.py",
+        "asf/record/ingest.py",
+        "asf/record/undeliver.py",
+        "asf/cli.py",
+        "docs/guide/operating.md",
+        "tests/test_evidence.py",
+        "tests/test_feature_delivery.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -91147,7 +91163,8 @@
         "T-154345"
       ],
       "backlinks": [
-        "T-154341"
+        "T-154341",
+        "B-200581"
       ],
       "children": [],
       "decided": true,
