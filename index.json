@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T23:51:36Z",
+  "generated": "2026-10-13T23:57:40Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18436,6 +18436,12 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-208187",
+      "kernel_closed_findings": {
+        "2ff1eead": "{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:363'}",
+        "66bcf29c": "{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:212'}",
+        "882dcb7a": "{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:234'}",
+        "c0269974": "{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:148'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 0,
@@ -18463,7 +18469,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T23:41:01Z",
+      "updated": "2026-10-13T23:57:37Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18484,6 +18490,13 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
+      "kernel_closed_findings": {
+        "1821c570": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1115'}",
+        "36ddb7e1": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1154'}",
+        "455a562e": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1145'}",
+        "468ceb29": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1149'}",
+        "b52af875": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1143'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_findings": [
@@ -18507,7 +18520,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T23:45:09Z",
+      "updated": "2026-10-13T23:57:37Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18816,10 +18829,11 @@
       "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable.",
-        "round not charged: a rebase round: PR #1738 conflicts with its base"
+        "round not charged: a rebase round: PR #1738 conflicts with its base",
+        "build-b-214946-1791934634: NEEDS OPERATOR: the heartbeat command (.b0000_heartbeat.sh) was refused by the sandbox's approval gate every time it was attempted \u2014 proceeded without one per the brief's own rule that a heartbeat that cannot start\u2026"
       ],
       "kernel_round_charged": false,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18829,7 +18843,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-13T23:37:31Z",
+      "updated": "2026-10-13T23:57:37Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -95656,9 +95670,10 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
-        "94c68f70": "{'head': \"{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/incidents.py:130'}\", 'line': ''}",
-        "ed52e4dd": "{'head': \"{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/ports.py:1817'}\", 'line': ''}",
-        "fa2d54ba": "{'head': '87562aa748cf6b32cb57c318919d12a8ca7f0ad5', 'line': 'asf/kernel/incidents.py:111'}"
+        "8ae354fa": "{'head': 'c9e45c4e93a0986aff06c98d9ab27cbc4082ec7b', 'line': 'asf/kernel/incidents.py:245'}",
+        "94c68f70": "{'head': '{\\'head\\': \"{\\'head\\': \\'ce7da27865be9941414984fe52e0ec21c10ffc70\\', \\'line\\': \\'asf/kernel/incidents.py:130\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
+        "ed52e4dd": "{'head': '{\\'head\\': \"{\\'head\\': \\'ce7da27865be9941414984fe52e0ec21c10ffc70\\', \\'line\\': \\'asf/kernel/ports.py:1817\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
+        "fa2d54ba": "{'head': 'c9e45c4e93a0986aff06c98d9ab27cbc4082ec7b', 'line': 'asf/kernel/incidents.py:111'}"
       },
       "kernel_findings": [
         "asf/kernel/incidents.py:245-246 \u2014 the blame upgrade appends a second MAIN_RED row under a key the ledger already holds, so `asf kernel risk` counts one red spell as two incidents (report :263 folds per row; verified: one spell, two rows, `| main-red | 2 | 0 | 2 |`), and the unproven->guilty transition is the ordinary course since the probe answers on a later tick. Fix: at :246 append the restatement marked \u2014 `out.append(dict(r, restates_blame=True))`; at :263, after the `since` filter, drop restatements \u2014 `rows = [r for r in rows if not r.get('restates_blame')]` \u2014 and say so in `report`'s docstring; make the two docstrings true again at :19-21 and :61 (a MAIN_RED key holds one counted incident; a later guilty read is appended under it as a restatement, not counted twice); and in tests/kernel/test_revert_merged.py:246-275 assert the spell is still one incident after the upgrade \u2014 `self.assertEqual(incidents.report(incidents.read(tmp))['by_kind'][incidents.MAIN_RED], {'flagged': 0, 'not_flagged': 1})`. Do not collapse rows by `_key` in `report` instead: tests/kernel/test_incidents.py:265-272 feeds two synthetic spell-less MAIN_RED rows and asserts `| main-red | 2 | 0 | 2 |`.",
@@ -95682,7 +95697,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T23:45:09Z",
+      "updated": "2026-10-13T23:57:37Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
@@ -95717,7 +95732,7 @@
       ],
       "id": "T-210362",
       "kernel_stack": "worker/T-210360@9e4e8740933af01b3ccf73a95c03c4468f880505",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95730,7 +95745,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-13T23:37:31Z",
+      "updated": "2026-10-13T23:57:37Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -95821,7 +95836,7 @@
       ],
       "title": "the archive is a place in the record \u2014 a rename, a manifest, and two ways to read a card that is in it",
       "type": "task",
-      "updated": "2026-10-13T23:37:31Z",
+      "updated": "2026-10-13T23:57:37Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/archive.py",
@@ -95938,6 +95953,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-217367",
+      "kernel_stack": "worker/T-217364@8b9bb74e590fc84925982d69dd1600474e6c975e",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -95951,7 +95967,7 @@
       ],
       "title": "the way back \u2014 every writing command that names an archived id brings the card back before it writes, and the migration converts it then",
       "type": "task",
-      "updated": "2026-10-13T22:57:10Z",
+      "updated": "2026-10-13T23:57:37Z",
       "writes": [
         "asf/record/reopen.py",
         "asf/record/setfield.py",
