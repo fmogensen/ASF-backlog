@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T18:52:57Z",
+  "generated": "2026-10-13T18:56:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18335,10 +18335,11 @@
       "found_in": "dev",
       "id": "B-205135",
       "kernel_answers": [
-        "granted asf/record/cards.v2.schema.json; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now."
+        "granted asf/record/cards.v2.schema.json; nothing else outside writes (card updated by the kernel). asf/record/cards.v2.schema.json matches kernel.risk.high: this item is high-risk now.",
+        "Round granted: the last review finding is new and real. asf/record/ingest.py:734 _exclude_pr_ids compares int PR numbers against ev['merged'] keys that are strings after evidence.load()'s JSON cache round-trip, so the exclusion is lost on a cache hit. Normalise the key type on both sides and add a test that puts ev through json.loads(json.dumps(...)). Also cover the reviewer's second check: closing.state_of on a feature with a typed landed sha must not fall back to New after the scrub. Fix these two only; no other changes."
       ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: Round granted: the last review finding is new and real. asf/record/ingest.py:734 _exclude_pr_ids compares int PR numbers against ev['merged'] keys that are strings after evidence.load()'s JSON cache round-trip, so the exclusion is lost on a cache hit. Normalise the key type on both sides and add a test that puts ev through json.loads(json.dumps(...)). Also cover the reviewer's second check: closing.state_of on a feature with a typed landed sha must not fall back to New after the scrub. Fix these two only; no other changes."
       ],
       "kernel_closed_findings": {
         "293a48d9": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/record/undeliver.py:58'}",
@@ -18348,7 +18349,7 @@
       },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.0",
-      "kernel_extra_rounds": 0,
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "asf/record/ingest.py:734 \u2014 `_exclude_pr_ids`'s sha arm compares int PR numbers against `ev['merged']` keys that come back from `evidence.load()`'s JSON cache as strings, so an operator's `asf undeliver --pr` silently stops excluding a PR whenever the cache is warm; coerce them at :727 (`sha_of = {int(n): s for n, s in (ev.get('merged') or {}).items() if str(n).isdigit()}`) and add a `tests/test_feature_delivery.py::UndeliveredTests` case that JSON round-trips `ev` before the second ingest",
         "asf/record/ingest.py:1343-1349 \u2014 the Feature scrub forces `green=False` on the id's whole evidence, which also voids the type-independent `reconciled` rule (`asf/evidence/closing.py:114`) for a Feature carrying an operator-typed `landed:` sha, because `merge_landed` fills `commit`/`green` only when the slot is free (`asf/evidence/evidence.py:1437`); after nulling the commit, re-fold the typed sha through `evidence.merge_landed` so the freed slot carries the operator's own sha and its own green, and add a `tests/test_evidence.py::IngestIdEvidenceTests` case where a childless Feature with a typed on-trunk `landed:` plus a merged `fix/<id>-\u2026` PR still reads Closed"
@@ -18358,11 +18359,10 @@
         "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds \u2014 findings: asf/record/ingest.py:734 \u2014 `_exclude_pr_ids`'s sha arm compares int PR numbers against `ev['merged']` keys that come back from `evidence.load(\u2026",
-      "kernel_stuck_since": "2026-10-13T18:52:28Z",
+      "kernel_ruled_findings": [
+        "e41445c4"
+      ],
+      "kernel_state": "ready",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18372,7 +18372,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T18:52:56Z",
+      "updated": "2026-10-13T18:56:35Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -18475,7 +18475,7 @@
       "kernel_notes": [
         "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18485,7 +18485,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T18:52:56Z",
+      "updated": "2026-10-13T18:56:35Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18507,8 +18507,10 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_notes": [
-        "groom-fill-b-211240-1791917101: groom-fill raised risk high: four confirmed, non-overlapping kernel decide/apply gaps left live by F-0358 parts 1-2; acceptance now names the test class each must pass, writes name the files the fix touches."
+        "groom-fill-b-211240-1791917101: groom-fill raised risk high: four confirmed, non-overlapping kernel decide/apply gaps left live by F-0358 parts 1-2; acceptance now names the test class each must pass, writes name the files the fix touches.",
+        "satisfied on main at 5da9cade5: tests.kernel.test_finding_keys.DecideReviewBranch, tests.kernel.test_finding_keys.ApplyRecords, tests.kernel.test_round_charge.Free"
       ],
+      "kernel_state": "done",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18518,7 +18520,7 @@
       "state": "New",
       "title": "Review-loop rules that can stall or run unbounded: reworded findings, lost answers, uncapped free rounds",
       "type": "bug",
-      "updated": "2026-10-13T18:52:56Z",
+      "updated": "2026-10-13T18:56:35Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/apply.py",
@@ -18536,7 +18538,11 @@
       "id": "B-211241",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
+      "kernel_notes": [
+        "groom-fill-b-211241-1791917348: groom-fill raised risk high: three concrete, already-verified defects in the proof gate itself, just missing the test names and writes the DoR requires"
+      ],
       "parent": "F-0358",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "Settle which ids a proof may judge before the proof gate can be turned on",
@@ -18544,7 +18550,13 @@
       "state": "New",
       "title": "Settle which ids a proof may judge before the proof gate can be turned on",
       "type": "bug",
-      "updated": "2026-10-13T18:49:19Z"
+      "updated": "2026-10-13T18:56:35Z",
+      "writes": [
+        "asf/kernel/proof.py",
+        "asf/kernel/proof_probe.py",
+        "asf/kernel/trunk.py",
+        "tests/kernel/test_review_proof.py"
+      ]
     },
     "B-211642": {
       "backlinks": [],
@@ -94349,7 +94361,9 @@
         "T-208097"
       ],
       "backlinks": [
-        "T-208104"
+        "T-208102",
+        "T-208104",
+        "T-210355"
       ],
       "children": [],
       "decided": true,
@@ -94558,10 +94572,16 @@
         "asf redact --unpublished"
       ],
       "id": "T-208102",
+      "kernel_answers": [
+        "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208099 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208099 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them."
+      ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94574,7 +94594,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T18:31:35Z",
+      "updated": "2026-10-13T18:56:35Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94582,7 +94602,8 @@
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
         "asf/kernel/questions.py",
-        "tests/kernel/test_question_predecessor.py"
+        "tests/kernel/test_question_predecessor.py",
+        "tests/kernel/test_question_resolvers.py"
       ]
     },
     "T-208103": {
@@ -94695,7 +94716,12 @@
         "asf redact --unpublished"
       ],
       "id": "T-210355",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "tools/check_clock.py:43 \u2014 the ratchet misses `time.time_ns(`, and asf/workers/lifecycle.py:454 (`read_ns = time.time_ns()`, compared against st_mtime_ns/st_ctime_ns in _settled at :426-430) is a live uncounted instance, so that file's ceiling is 3 (tools/clock-baseline.txt:108) while it holds 4. Change `re.compile(r'time\\.time\\(')` to `re.compile(r'time\\.time(?:_ns)?\\(')`, add `re.compile(r'datetime\\.today\\(')` beside :41 (`date\\.today\\(` does not match `datetime.today(`), name both in the docstring pattern list at :8-12, run `python3 tools/check_clock.py --write-baseline` (the only line that moves is tools/clock-baseline.txt:108, 3 -> 4; total 430 -> 431), add a `time.time_ns()` case and a `datetime.today()` case beside tests/test_check_clock.py:67-68 with the `# clock-exempt:` marker its neighbours carry, then re-run `python3 -m unittest -v tests.test_clock tests.test_check_clock` and `bash tools/check_clock.sh --against origin/main`.",
+        "shared files: asf/kernel/ports.py also held by T-208099 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94708,7 +94734,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T18:40:56Z",
+      "updated": "2026-10-13T18:56:35Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
