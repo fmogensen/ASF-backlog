@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T05:45:32Z",
+  "generated": "2026-10-13T05:54:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18125,10 +18125,11 @@
       "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
-        "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing."
+        "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing.",
+        "build-b-200581-1791868352: NEEDS OPERATOR: widen asf/kernel/decide.py's ORDER tuple (line ~313) to include asf.kernel.actions.DispatchMain, so the trunk-head dispatch path (asf.kernel.mainline.dispatch, already shipped) does not crash decide(\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18137,7 +18138,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T05:14:50Z",
+      "updated": "2026-10-13T05:54:32Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18203,7 +18204,8 @@
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_notes": [
-        "groom-fill-b-202833-1791867443: groom-fill verdict rejected: no GROOM-FILL block"
+        "groom-fill-b-202833-1791867443: groom-fill verdict rejected: no GROOM-FILL block",
+        "PR #1693: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "E-0006",
@@ -18214,7 +18216,7 @@
       "state": "New",
       "title": "asf set milestone=0.4 is refused: a version-shaped milestone is read as a number",
       "type": "bug",
-      "updated": "2026-10-13T05:42:34Z",
+      "updated": "2026-10-13T05:54:32Z",
       "writes": [
         "asf/record/new.py",
         "tests/test_work_item_model.py"
@@ -36955,8 +36957,14 @@
       "decided": true,
       "folder": "features",
       "id": "F-0358",
+      "kernel_answers": [
+        "Measured input for the spec and plan: docs/specs/inputs/0.4-evidence.md on main (PR #1695), summary table plus section B. Each number has the query beside it; re-run it rather than trust it if the window has moved. Size the Stories from those counts, largest first."
+      ],
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0358-1791869759: NEEDS OPERATOR: the card's last acceptance line is a 24-hour measurement, and this session could not read the kernel review ledger (it runs off the factory host), so the 57% baseline the card quotes for 2026-10-12 i\u2026"
+      ],
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -36966,7 +36974,7 @@
       "state": "New",
       "title": "Review loops converge: proof before review, no repeated or contradicting findings",
       "type": "feature",
-      "updated": "2026-10-13T05:37:01Z"
+      "updated": "2026-10-13T05:54:32Z"
     },
     "F-0359": {
       "backlinks": [],
@@ -36975,7 +36983,7 @@
       "folder": "features",
       "id": "F-0359",
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_state": "done",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -36985,7 +36993,7 @@
       "state": "New",
       "title": "Session questions are answered by code, not by the console",
       "type": "feature",
-      "updated": "2026-10-13T05:37:01Z"
+      "updated": "2026-10-13T05:54:32Z"
     },
     "F-0360": {
       "backlinks": [],
@@ -91625,13 +91633,18 @@
       "decided": true,
       "folder": "tasks",
       "id": "T-160211",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
+        "asf/kernel/apply.py:262 \u2014 guard the `stacked-start` write with `if stack_of(self.facts.items.get(a.item_id)) != (a.base, a.base_sha)` so a re-planned `NoteStack` (a `NoSeat` launch, `decide.py:2337-2341`) appends no duplicate event; add a case asserting two identical applies leave `rec.events` one entry long",
+        "asf/kernel/apply.py:274 \u2014 return `'PR #%d -> trunk'` only when this plan carries a `Retarget` for that PR, else `'PR #%d'`; the teardown path (`decide.py:1153-1155`, `ArchiveAndReset`) currently logs `-> trunk` for a PR it closes. Extend `tests/kernel/test_stacked_builds.py:1028` with that plan shape",
         "asf/kernel/apply.py:273 \u2014 the unstack's result line names the first open PR of the item (`next((p for p in self.facts.prs if p.item_id == a.item_id and not p.merged), None)`) while the retarget it describes moves the newest (`decide._open_pr_of` -> `decide.item_pr`, decide.py:939-953): with a stale open PR beside the live one (Unstack.test_23's case) it logs `unstack T-0002 \u2014 PR #3 -> trunk` where `retarget #4 -> the trunk` runs. Fix: add `item_pr` to the `from asf.kernel.decide import (...)` list at apply.py:79-81 and replace that `next(...)` with `pr = item_pr(a.item_id, self.facts)`, then extend tests/kernel/test_stacked_builds.py:1028-1036 with a stale #3 beside a live #4 asserting the line names #4 \u2014 or drop the note (`return None`, deleting apply.py:273-274) and assert decide's existing `STACK RETARGET <item> #<pr> -> <trunk>` note (decide.py:1148-1150) in test_12 instead.",
         "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_stack": "worker/T-160210@82cc4e44c773e18b51f506499b7418746f2497e8",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91644,7 +91657,7 @@
       ],
       "title": "the knobs, the records, and a product that stacks nothing behaving exactly as today",
       "type": "task",
-      "updated": "2026-10-13T05:30:51Z",
+      "updated": "2026-10-13T05:54:32Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
