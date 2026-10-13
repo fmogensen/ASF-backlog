@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:47:56Z",
+  "generated": "2026-10-13T19:52:48Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18445,7 +18445,7 @@
         "tests/test_record_repair.py:259-299 \u2014 C5: RepairClearsEveryMigrationRefusalTests feeds each rule the fixture constant it was written against, so it is green while C2, C3 and I1 each leave a card the migration refuses. Add a case over a corpus the pass was not written against (at minimum sample/backlog copied to a tmpdir, asserting migrate_cards_to_json raises nothing after repair_refusals(apply=True)) and give each per-rule case one shape outside its own fixture."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18455,7 +18455,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T19:32:00Z",
+      "updated": "2026-10-13T19:52:47Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18474,6 +18474,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-208438",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_notes": [
@@ -18489,7 +18492,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T19:28:43Z",
+      "updated": "2026-10-13T19:52:47Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18604,9 +18607,7 @@
       ]
     },
     "B-211642": {
-      "backlinks": [
-        "T-208102"
-      ],
+      "backlinks": [],
       "children": [],
       "creates": [
         "tests/fixtures/review_findings_283.jsonl"
@@ -18618,7 +18619,8 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_notes": [
-        "groom-fill-b-211642-1791918062: groom-fill raised risk high: both defects are real (confirmed in findings.py's _path_token and apply.py's FindingWrites route handler, the latter's buggy behavior even codified in an existing test), concretely scoped to the kernel's F-0358 follow-up, and buildable against the existing test harness in tests/kernel/test_finding_writes.py."
+        "groom-fill-b-211642-1791918062: groom-fill raised risk high: both defects are real (confirmed in findings.py's _path_token and apply.py's FindingWrites route handler, the latter's buggy behavior even codified in an existing test), concretely scoped to the kernel's F-0358 follow-up, and buildable against the existing test harness in tests/kernel/test_finding_writes.py.",
+        "PR #1729: upgrade-matrix (v0.1.330) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "F-0358",
@@ -18630,7 +18632,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T19:43:42Z",
+      "updated": "2026-10-13T19:52:47Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -18652,6 +18654,7 @@
       "kernel_notes": [
         "groom-fill-b-213443-1791920579: groom-fill raised risk high: confirmed on origin/main that exclusion only reaches ev['ids'] (_exclude_pr_ids, ingest.py:717-744) while the plan-matched Task path (ingest.py:1159-1163) and match_bug (ingest.py:392-409, called at 1259) read ev['features'][...]['tasks'][tid] and ev['merged'] unfiltered \u2014 a real, well-localized gap buildable with the sha coercion already proven at ingest.py:732."
       ],
+      "kernel_state": "building",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 3,
@@ -18661,7 +18664,7 @@
       "state": "New",
       "title": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
       "type": "bug",
-      "updated": "2026-10-13T19:47:55Z",
+      "updated": "2026-10-13T19:52:47Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_feature_delivery.py"
@@ -37689,10 +37692,11 @@
       "kernel_notes": [
         "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
         "spec-f-0363-1791900986: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
-        "spec-f-0363-1791914847: NEEDS OPERATOR: today's card count by state on the real record, the baseline section 2.11's 30% target is measured against - `jq -r '[.items[] | .state // \"New\"] | group_by(.) | map(\"\\(.[0]) \\(length)\") | .[]' ~/.AS\u2026"
+        "spec-f-0363-1791914847: NEEDS OPERATOR: today's card count by state on the real record, the baseline section 2.11's 30% target is measured against - `jq -r '[.items[] | .state // \"New\"] | group_by(.) | map(\"\\(.[0]) \\(length)\") | .[]' ~/.AS\u2026",
+        "spec-f-0363-1791920553: NEEDS OPERATOR: which of the 171 cards that refuse the schema-2 migration are closed, so the spec's claim that the archive carries them unchanged is counted rather than argued \u2014 `asf check --schema-only --product as\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "milestone": "0.5",
       "parent": "E-0006",
       "priority": "need",
@@ -37702,7 +37706,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T19:43:42Z"
+      "updated": "2026-10-13T19:52:47Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94680,23 +94684,14 @@
       "kernel_answers": [
         "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208099 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208099 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them."
-      ],
       "kernel_extra_rounds": 0,
-      "kernel_findings": [
-        "rebase: PR #1727 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
-        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208099 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them.",
-        "shared files: asf/kernel/decide.py, asf/kernel/resolvers.py also held by B-211642 \u2014 additive edits only, never a rewrite"
-      ],
       "kernel_fix_rounds": 0,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1727 conflicts with its base",
         "build-t-208102-1791918911: NEEDS OPERATOR: heartbeat command refused to start by the sandbox; continued per instructions since a beat that cannot start never ends the session \u2014 `sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208102-1791918911\u2026"
       ],
-      "kernel_rebuilds": 1,
-      "kernel_round_charged": false,
-      "kernel_state": "review",
+      "kernel_rebuilds": 2,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94709,7 +94704,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T19:35:50Z",
+      "updated": "2026-10-13T19:52:47Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94852,7 +94847,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T19:43:42Z",
+      "updated": "2026-10-13T19:52:47Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -94897,6 +94892,10 @@
         "relaunch: operator answer: granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel).",
         "escalated: one more fix round on the strong model, with every finding"
       ],
+      "kernel_closed_findings": {
+        "250ca322": "{'head': '6990cc23e8d212b53e50add4b963eb091e39f31e', 'line': 'asf/kernel/needed.py:312'}",
+        "61556866": "{'head': '6990cc23e8d212b53e50add4b963eb091e39f31e', 'line': 'asf/kernel/needed.py:314'}"
+      },
       "kernel_findings": [
         "asf/kernel/needed.py:312 \u2014 an empty diff on an item whose revert *did* land is closed Done, against this arm's own docstring at :269-270 (\"a failed rebuild of work the revert really removed, never a Done\"): `revert_open` is false once the revert merged and `_unproven` is false for a card naming no proving tests. Make it `elif revert_wait or it.reverted or _unproven(it, facts):` \u2014 B-200932's arm at :297-311 runs first, so an item whose work is demonstrably still on the trunk keeps its Done \u2014 and add a case beside `RevertedArmUnaffected` (tests/kernel/test_satisfied_not_relaunched.py:163) pinning a landed revert plus a card naming no proving tests as READY with one ClearStuck.",
         "asf/kernel/needed.py:314 \u2014 the revert-open relaunch reuses EMPTY_FINDING, telling the session \"the card's proving tests are not green on main: make the change the card asks for\" when the tests were green and the blocker is the open revert. Add a `REVERT_OPEN_FINDING` constant beside EMPTY_FINDING at :152 naming the open unmerged revert, select it with `why = REVERT_OPEN_FINDING if revert_wait else EMPTY_FINDING` at :314, say the same in the gate line's `why`, and pin the text in `UnmergedRevertOpen.test_the_empty_pr_arm_does_not_mark_it_satisfied` (tests/kernel/test_satisfied_not_relaunched.py:75-82), which today asserts only that one ClearStuck exists.",
@@ -94923,7 +94922,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T19:39:12Z",
+      "updated": "2026-10-13T19:52:47Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
