@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T14:04:12Z",
+  "generated": "2026-10-13T14:06:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18119,18 +18119,17 @@
         "granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932).",
         "granted asf/kernel/ports.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the four findings of the latest review as worded: mainline.py:462 (surface the kernel's own revert PR as a fact), mainline.py:243 (independence needs a base that predates the candidate, not 'not behind'), apply.py:490 (write P.REVERTED only with auto_merge), metrics.py:105 (the clock lint sees every today() binding). Each test must fail on base.",
         "One more round, the single finding of the latest review as worded: mainline.py:509 \u2014 the abandon leg must leave something the next tick reads, so an abandoned revert is not re-opened every tick; add the abandoned case as a third independence source at mainline.py:478 as the finding gives it, with a two-tick test (abandon, then no new RevertPR) that fails on base. Nothing else.",
-        "One more round, the single finding of the latest review as worded: mainline.py:365 \u2014 revert_ci must reach a terminal state when a red check does not reproduce on the revert PR (name absent, cancelled, action_required, or no CI): read the answer off the check names that exist on the PR once its own checks have finished, so a held revert never waits for ever. Test each of those cases; they must fail on base. Nothing else."
+        "One more round, the single finding of the latest review as worded: mainline.py:365 \u2014 revert_ci must reach a terminal state when a red check does not reproduce on the revert PR (name absent, cancelled, action_required, or no CI): read the answer off the check names that exist on the PR once its own checks have finished, so a held revert never waits for ever. Test each of those cases; they must fail on base. Nothing else.",
+        "One more round, the two findings of the latest review as worded: mainline.py:513 (a red check name missing from the revert PR is not terminal while a needs:-gated check may still appear; give any unreported red name the same grace the empty check list gets) and ports.py:1719 (_revert_fact keeps autoMergeRequest so the finalize guard fires and RevertPR is not re-emitted every tick). Each test must fail on base. Nothing else; no new scope."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, the single finding of the latest review as worded: mainline.py:365 \u2014 revert_ci must reach a terminal state when a red check does not reproduce on the revert PR (name absent, cancelled, action_required, or no CI): read the answer off the check names that exist on the PR once its own checks have finished, so a held revert never waits for ever. Test each of those cases; they must fail on base. Nothing else.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: One more round, the two findings of the latest review as worded: mainline.py:513 (a red check name missing from the revert PR is not terminal while a needs:-gated check may still appear; give any unreported red name the same grace the empty check list gets) and ports.py:1719 (_revert_fact keeps autoMergeRequest so the finalize guard fires and RevertPR is not re-emitted every tick). Each test must fail on base. Nothing else; no new scope."
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
-      "kernel_extra_rounds": 4,
+      "kernel_extra_rounds": 5,
       "kernel_findings": [
         "asf/kernel/mainline.py:365 \u2014 `revert_ci` has no terminal state when a red check does not reproduce on the revert PR (a name absent from it, or `cancelled`/`action_required`, or no CI at all), so the held revert waits for ever and the trunk stays red where base recovered. Read the answer off the names that exist on the PR (`want = names & {c.name for c in pr.checks}`) once the PR's own checks have settled, treat `want` empty as \"this PR will never answer\", and give that case a terminal leg in `judge` (mainline.py:505-524): re-emit the `RevertPR` with `auto_merge=True`, or close it and file the Bug as the abandon leg at :517-521 does. Add a case alongside tests/kernel/test_main_landing.py:522 that is red on this head.",
-        "rebase: PR #1691 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/mainline.py:509 \u2014 the abandon leg writes nothing the next tick can read, so after the ClosePR the revert PR is re-opened every tick (new PR on the kept branch, full CI matrix, red again, closed again). Add the abandoned case as a third independence source at `mainline.py:478`: `or bool(filed(facts, bug_key(red, green)))` (or `all(kflake.live(s, facts) for s in sigs)`), and pin it with a `MainRed` case that runs the abandon tick, drops the closed PR from `orphan_prs`, puts that tick's Bug on the record and asserts no `RevertPR` \u2014 red on 235c4911f.",
         "asf/kernel/mainline.py:462 \u2014 `open_revert_pr` reads the revert PR from `facts.prs`, which `asf/kernel/ports.py:1647` strips of every revert-prefixed branch, so `revert_ci` is permanently `'waiting'` and the held revert never merges: surface the kernel's own revert PR as a fact (stop skipping revert branches in `_prs`' open listing, or add a `revert_prs()` port read plus a `Facts` field) and read it there; report `needs writes: asf/kernel/facts.py` if a new field is used",
         "asf/kernel/mainline.py:243 \u2014 `not pr.behind` neither proves the base predates the candidate's merge (with any commit above the red, a base on the candidate's own merge commit is BEHIND) nor holds for the PRs this path reads (`behind` is `mergeStateStatus == 'BEHIND'`, which a red required check turns into BLOCKED/UNSTABLE; every other use gates on `facts.strict`, and the new tests all pass `strict=False`): drop the `behind` gate and require the PR's matching red check's `run_id` to be below every red `run_id` on the candidate's commit, the ordering `confirm_without_candidate` already uses",
@@ -18157,11 +18156,7 @@
         "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 7 fix rounds",
-      "kernel_stuck_since": "2026-10-13T14:03:14Z",
+      "kernel_state": "ready",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18170,7 +18165,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T14:04:08Z",
+      "updated": "2026-10-13T14:06:50Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -94256,7 +94251,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94269,7 +94264,7 @@
       ],
       "title": "a Gate command no CI job runs, run on the head when the read-only grant admits it",
       "type": "task",
-      "updated": "2026-10-13T13:49:36Z",
+      "updated": "2026-10-13T14:06:50Z",
       "writes": [
         "asf/kernel/trunk.py",
         "asf/kernel/resolvers.py",
