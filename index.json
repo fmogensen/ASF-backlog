@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T17:25:42Z",
+  "generated": "2026-10-13T17:30:35Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18348,15 +18348,17 @@
       "kernel_dor_fills_ver": "0.3.0",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "asf/evidence/evidence.py:1210 \u2014 own_lane_landing() counts only prefixes[\"code\"] and prefixes[\"legacy\"], and branch_prefixes() (asf/evidence/evidence.py:56-64) never exposes conventions.prefix(\"direct\") (\"cloud/direct-\"), so a `lane: direct` Feature \u2014 a leaf with no Tasks, built end to end on that one branch (asf/feeder/rows.py:27-30) \u2014 can no longer land: proven at stage=card/state=New on this head where the merge-base 73b10b5 gives stage=landed/state=Closed. Add \"direct\": conv.prefix(\"direct\") to branch_prefixes() and include prefixes.get(\"direct\") in own_lane_landing()'s `code` list, plus a tests/test_evidence.py::IngestIdEvidenceTests case asserting a direct-lane Feature does reach stage: landed. Leave revert/ out.",
+        "asf/record/undeliver.py:58 \u2014 `existing = [int(p) for p in (typed.get('excluded_prs') or ())]` iterates a scalar the read side was deliberately hardened against: \"excluded_prs: 42\" raises TypeError out of the command, and \"excluded_prs: \\\"42\\\"\" silently becomes [4, 2] and is written back as excluded_prs: [4, 2, N], after which _exclude_pr_ids un-lands PRs 4 and 2 too. Nothing validates the shape first \u2014 card.validate runs only on .json cards (asf/record/check.py:351) and every card is .md, so the new schema entry never fires. Use the same coercion ingest._excluded_prs (asf/record/ingest.py:681-700) already has, ideally lifted into one shared helper.",
         "asf/evidence/evidence.py:1527 \u2014 the commit-subject loop must record the landing branch: build `head_of = {mergeCommit.oid: headRefName}` over the MERGED prs before the loop at :1521 and set `r[\"commit_branch\"] = head_of.get(sha, \"\")` when it sets `r[\"commit\"]`; and in the merged-PR loop at :1548, before the `continue`, fill `commit_branch` when the id's existing commit is this PR's merge sha. Add the reproduction (a trunk subject naming the Feature *and* a merged `fix/` PR with that `mergeCommit.oid`) as a case of `tests/test_evidence.py::IngestIdEvidenceTests` \u2014 the three cases on the branch cannot see this path.",
         "asf/record/ingest.py:713 \u2014 `_exclude_pr_ids` must match the excluded PR by its merge sha as well as by `iev['pr']` (follow `_void_ids:659`, which already does sha-or-number via `_sha_prefix` at :666): take `prs=ev.get('prs') or ()` at the call site :1075, build `{number: mergeCommit.oid}`, and scrub when `_sha_prefix(iev['commit'], sha_of[n])` holds. Extend `tests/test_feature_delivery.py:538` with an id whose evidence carries `commit` but no `pr`."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18366,7 +18368,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T17:23:07Z",
+      "updated": "2026-10-13T17:30:34Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -94373,7 +94375,7 @@
         "build-t-208100-1791910380: NEEDS OPERATOR: heartbeat command could not start \u2014 sandbox refused approval twice \u2014 `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208100-1791910380 'asf/build-t-208100-1791910380@20261013T165309Z' >/dev/nul\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94386,7 +94388,7 @@
       ],
       "title": "the card's acceptance quoted back from the record, never a pointer at the brief",
       "type": "task",
-      "updated": "2026-10-13T17:10:02Z",
+      "updated": "2026-10-13T17:30:34Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94499,7 +94501,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T17:10:02Z",
+      "updated": "2026-10-13T17:30:34Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94671,7 +94673,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210356",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94684,7 +94686,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T17:10:02Z",
+      "updated": "2026-10-13T17:30:34Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py"
