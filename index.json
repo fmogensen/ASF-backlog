@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T03:37:13Z",
+  "generated": "2026-10-13T03:40:04Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -90614,17 +90614,22 @@
         "Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files."
+        "relaunch: operator answer: Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/schema.py:250 \u2014 the unconditional `new_meta['gate'] = gate` destroys the typed gate a schema-1 card carries in frontmatter (asf/record/ids.py:200-201, fed by plan_tasks.py:536); have _lift_sections return None for an absent `## Gate` section and overwrite only when it is not None, add new_meta['gate'] to the round-trip comparison at :294-299 (which is blind to the loss today), and add a tests/test_card_migration.py case whose fixture carries `gate:` in frontmatter and no `## Gate` section",
+        "tools/upgrade_matrix.py \u2014 10 upgrade-matrix legs are red on this head and the file is inside this card's writes: (granted, high-risk), not outside it as the build report states; before asserting the new `asf tick` exits 0, run `asf schema-migrate --drain --product sample` when the installed record's stamp is below the package's and the pending span crosses a non-additive entry, and treat the tick's exit 3 carrying `NEEDS OPERATOR: run asf schema-migrate` as the expected handoff across that boundary rather than a leg failure",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.",
-        "operator answer: granted tests/test_card_body_fields.py; nothing else outside writes (card updated by the kernel)."
+        "operator answer: granted tests/test_card_body_fields.py; nothing else outside writes (card updated by the kernel).",
+        "operator answer: Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files.",
+        "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -90678,7 +90683,7 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90691,7 +90696,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T03:37:11Z",
+      "updated": "2026-10-13T03:40:02Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
