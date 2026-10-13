@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:17:45Z",
+  "generated": "2026-10-13T08:21:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18184,12 +18184,15 @@
         "One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit."
+        "relaunch: operator answer: One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/kernel/mainline.py:210 \u2014 the `hit` search filters out PRs already on `Item.reverted`, so the tick after a RevertLanded slides to the item's next-older merged commit on Facts.main and records that PR reverted too, relaunching the item once per tick (proven: reverted=[21] yields RevertLanded('T-2', 12), decide launches T-2). Bind the revert to the one merged commit it sits above and let a recorded PR end the search: `hit = next((c for c in mains[at + 1:] if c.item_id == it.id and c.pr), None)` then `if hit is None or hit.pr in it.reverted: continue`.",
+        "asf/kernel/decide.py:540 \u2014 the landed_reverts override replaces judged[item] with `_Judged(State.READY, findings=[a.finding], start=True)` after _judge and the holds have run, so a live session's BUILDING/hold judgement (decide.py:816) is overwritten and a second session launches on the same item and branch (proven: with one live build session on T-2, state READY, launched ['T-2']); the old RevertPR path held for exactly this. Hold the launch one tick when a session is live: `live = {s.item_id for s in facts.sessions if s.alive}` and `hold=a.item_id in live` on that `_Judged`.",
         "asf/kernel/needed.py:259 \u2014 `elif it.reverted and facts.main and config.revert_branch + p.item_id not in reverting:` so an unread trunk falls to the Ready/relaunch branch, and decide the Done off a fact that does not decay (the revert's sha recorded by `RevertLanded`) instead of absence from `main_commits`' 15-commit window; fix `tests/kernel/test_still_needed.py:280` to pass an explicit non-empty `main`",
         "asf/kernel/mainline.py:184 \u2014 `if not config.main_red_revert or not prefix or not facts.main: return []`, and add a case asserting `landed_reverts(f, cfg(main_red_revert=False)) == []`",
         "asf/kernel/mainline.py:201 \u2014 keep the `MainCommit` the `c.pr` lookup hits and rebuild the finding with `red_checks(c, config)`'s names and the first check's `log_tail[-TAIL_MAX:]`, as the deleted `revert_action` did",
@@ -18201,15 +18204,16 @@
         "the next REPORT \u2014 declare `needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py`: the diff leaves the brief's footprint (actions.py, decide.py) and C4's fix adds incidents.py",
         "asf/kernel/incidents.py:99 \u2014 key _revert_records off A.RevertLanded (files/lines/checks from main_by_pr[a.pr]) or dedupe by (item, sha), so the ledger holds one `revert` row per revert instead of one per red tick now that RevertPR is re-planned every tick",
         "Another session edits asf/kernel/apply.py, asf/kernel/ports.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
-        "operator answer: granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now."
+        "operator answer: granted asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py; nothing else outside writes (card updated by the kernel). asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py matches kernel.risk.high: this item is high-risk now.",
+        "operator answer: One more strong-model round: close findings 1-10 exactly as worded, in order, each with a test red on base and green on head. Priority: 7 and 8 (bind RevertLanded to the PR the revert commit sits above; Done only when the revert has not landed), then 1, 2, 5, then the incidents ledger (6, 10), then 3 and 4. Declare needs writes: asf/kernel/actions.py asf/kernel/decide.py asf/kernel/incidents.py (granted). Rebase, no merge commit."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building.",
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18218,7 +18222,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T08:17:42Z",
+      "updated": "2026-10-13T08:21:21Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
