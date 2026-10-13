@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T21:47:55Z",
+  "generated": "2026-10-13T21:51:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18649,24 +18649,27 @@
         "Decision: keep this PR to the two defects and the honest fixture. Change the Replay test to assert route under 2 percent (met, 0) and request at most 35 percent as a recorded ceiling, with a comment that the under-10 target moves to a follow-up. Do not retune outside_writes further here and do not scope by card kind. kernel.resolve.finding_writes stays off. The console files the follow-up for paths cited as missing or forward of the claim. Then finish and report done."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Decision: keep this PR to the two defects and the honest fixture. Change the Replay test to assert route under 2 percent (met, 0) and request at most 35 percent as a recorded ceiling, with a comment that the under-10 target moves to a follow-up. Do not retune outside_writes further here and do not scope by card kind. kernel.resolve.finding_writes stays off. The console files the follow-up for paths cited as missing or forward of the claim. Then finish and report done."
+        "relaunch: operator answer: Decision: keep this PR to the two defects and the honest fixture. Change the Replay test to assert route under 2 percent (met, 0) and request at most 35 percent as a recorded ceiling, with a comment that the under-10 target moves to a follow-up. Do not retune outside_writes further here and do not scope by card kind. kernel.resolve.finding_writes stays off. The console files the follow-up for paths cited as missing or forward of the claim. Then finish and report done.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_findings": [
+        "asf/kernel/apply.py:224-227 \u2014 rule only the routed keys the operator did NOT grant: `if fw_keys and not a.writes:` reduces to `if fw_keys:` for a routed review finding (decide.py:715 always passes writes=[] for an operator answer, _auto_answer documents writes as empty for every class at decide.py:1213-1214, and decide.py:684's needs_writes_of matches `needs writes:` while the routed reason says `outside writes:`), so a GRANTING answer rules the key and the next tick's drop_known drops the finding \u2014 the card's own second defect, unfixed. Replace the unconditional `ruled_now |= set(fw_keys)` with `ruled_now |= {k for k in fw_keys if any(F.parse(f)[0] == k and F.outside_writes(f, it) for r in self.facts.reviews if r.item_id == a.item_id and r.verdict != 'approve' for f in r.findings)}` so a key whose finding is no longer outside the (hand-widened) footprint stays open and is briefed next round, while a refusal still rules every key; then drive tests/kernel/test_finding_writes.py:352 through the routed Stuck and A.ApplyAnswer instead of a fresh REVIEW-state item, so the case cannot pass again without the behaviour.",
         "red: tests (3.12)",
         "red: tests (3.13)",
         "operator answer: Decision: keep this PR to the two defects and the honest fixture. Change the Replay test to assert route under 2 percent (met, 0) and request at most 35 percent as a recorded ceiling, with a comment that the under-10 target moves to a follow-up. Do not retune outside_writes further here and do not scope by card kind. kernel.resolve.finding_writes stays off. The console files the follow-up for paths cited as missing or forward of the claim. Then finish and report done.",
-        "shared files: asf/kernel/decide.py also held by T-210360 \u2014 additive edits only, never a rewrite"
+        "operator answer: Decision: keep this PR to the two defects and the honest fixture. Change the Replay test to assert route under 2 percent (met, 0) and request at most 35 percent as a recorded ceiling, with a comment that the under-10 target moves to a follow-up. Do not retune outside_writes further here and do not scope by card kind. kernel.resolve.finding_writes stays off. The console files the follow-up for paths cited as missing or forward of the claim. Then finish and report done.",
+        "shared files: asf/kernel/decide.py, asf/kernel/resolvers.py also held by T-208099 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-b-211642-1791918062: groom-fill raised risk high: both defects are real (confirmed in findings.py's _path_token and apply.py's FindingWrites route handler, the latter's buggy behavior even codified in an existing test), concretely scoped to the kernel's F-0358 follow-up, and buildable against the existing test harness in tests/kernel/test_finding_writes.py.",
         "PR #1729: upgrade-matrix (v0.1.330) is red but not a required check \u2014 ignored",
         "PR #1729: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1729: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18676,7 +18679,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T21:31:08Z",
+      "updated": "2026-10-13T21:51:07Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -94771,7 +94774,8 @@
       ],
       "backlinks": [
         "T-208102",
-        "T-208104"
+        "T-208104",
+        "B-211642"
       ],
       "children": [],
       "decided": true,
@@ -95159,7 +95163,7 @@
         "asf/clock.py:55-70 \u2014 iso/today/stamp stamp a given instant without normalizing it to UTC, so a non-UTC-aware instant is written with a literal Z carrying its local fields (clock.iso(2026-03-14T15:09:26+09:00) -> \"2026-03-14T15:09:26Z\", should be \"2026-03-14T06:09:26Z\"; clock.today is off by a whole day at an offset) and clock.stamp reads a naive instant as local time. Add a _utc(instant) helper beside _at \u2014 astimezone(datetime.timezone.utc), with a naive instant taken as UTC via replace(tzinfo=...) \u2014 and have iso, today and stamp's given-instant branch go through it; leave now() on _at as Step 3 asks. This is the house pattern the replaced code already had (asf/metrics/metrics.py:89,102; asf/scorecard/facts.py:72,76). Add two cases beside tests/test_clock.py:77: iso/today/stamp of an instant at a non-UTC offset equal the same instant's UTC stamp, and of a naive instant are read as UTC."
       ],
       "kernel_fix_rounds": 3,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95172,7 +95176,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T21:47:54Z",
+      "updated": "2026-10-13T21:51:07Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -95409,7 +95413,6 @@
         "T-208102",
         "T-210362",
         "T-210363",
-        "B-211642",
         "B-213995"
       ],
       "children": [],
