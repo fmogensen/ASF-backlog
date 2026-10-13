@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T14:16:53Z",
+  "generated": "2026-10-13T14:33:12Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18159,7 +18159,7 @@
         "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18168,7 +18168,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T14:13:35Z",
+      "updated": "2026-10-13T14:32:51Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -37180,14 +37180,26 @@
         "Measured input for the spec and plan: docs/specs/inputs/0.4-evidence.md on main (PR #1695), summary table plus section C. Each number has the query beside it; re-run it rather than trust it if the window has moved. Size the Stories from those counts, largest first."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/plans/f-0357.md:86 \u2014 `from_kernel` does not exist in this repository; the classmethod reading the kernel knobs into TrunkProbe is `for_product` (asf/kernel/trunk.py:74-81). Rename it here and in Task 3 step 2 (:520), keeping the `:80` anchor.",
+        "docs/plans/f-0357.md:19 \u2014 `2026-10-13T14:17Z` is local time stamped Z; bea3052's committer date is 2026-10-13T14:17:56+02:00 and PR #1692's merged_at is 2026-10-13T12:17:57Z. Write `2026-10-13T12:17Z`.",
+        "docs/plans/f-0357.md:52 \u2014 K5 says \"all ten files the Tasks create\" before listing sixteen, and \"the nine test modules\" before listing ten, contradicting \u00a72.3's \"ten new test modules\" and K3's \"all ten of them\". Write \"all sixteen files\" and \"the ten test modules\".",
+        "docs/plans/f-0357.md:15 \u2014 \"\u00a72.6 is that table\" and (:16) \"the edge wins and \u00a72.6 says so\" name the wrong section: the sizing table is \u00a72.5. Change both to \u00a72.5.",
+        "docs/plans/f-0357.md:50 \u2014 K3's \"its own new acceptance module (\u00a72.4)\" points at \"The waves\"; the module table is \u00a72.3. Change to \u00a72.3.",
+        "docs/plans/f-0357.md:196 \u2014 needed.judge's ClosePR is at asf/kernel/needed.py:268-269, not `:262-264` (same anchor again at :462); the satisfied arm is :270-273 not `:268-273`, and the config.needed_satisfied return is :252-253 not `:253-254`. Re-pin all four.",
+        "docs/plans/f-0357.md:136 \u2014 waits.py's `CLASSES`, `READY_CLASSES` and `NOT_WAITS` are at :48, :52 and :55, not `:44`, `:49` and `:52`. Re-pin the three.",
+        "docs/plans/f-0357.md:150 \u2014 the gathering job's docs-only assertion step is .github/workflows/tests.yml:219-223, not `:216-222` (same anchor again at :639), and the `--gather` step is :233-235 not `:234-236`. Re-pin both.",
+        "docs/plans/f-0357.md:141 \u2014 `asf/hermetic.py:115-123` does not cover `MODES`, which is at :125, and `worker_base` starts at :219 not `:221-227`. Widen the first range and re-pin the second.",
+        "docs/plans/f-0357.md:88 \u2014 trunk.py's TRUNK_BASE arm is :128-132 and the cache hit is :133-135 (the `if p.key in cache` line), not `:128-133` / `:134-135` (same anchor again at :521); and decide.py's three holds are computed at :497-499, not `:500`. Re-pin all three."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0357-1791869808: NEEDS OPERATOR: whether the host-side `pre_push_check` should gain the new clock lint (the in-repo CI step is part of S-203372; this is the host gate) \u2014 `grep -n -A8 pre_push_check \"$ASF_HOME\"/products/asf.yaml`",
         "spec-f-0357-1791889590: NEEDS OPERATOR: the product's current conventions.pre_push_check, so the plan can place the new clock lint in it (spec \u00a72.9) \u2014 `sed -n '1,80p' ~/.ASF/products/asf.yaml`",
         "plan-f-0357-1791897340: NEEDS OPERATOR: the product's current conventions.pre_push_check, so the plan can say exactly where the clock ratchet joins it (\u00a72.9, Task 1 step 7) \u2014 `sed -n '1,80p' ~/.ASF/products/asf.yaml`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37197,7 +37209,7 @@
       "state": "New",
       "title": "A red trunk is handled correctly: blame is established before any revert",
       "type": "feature",
-      "updated": "2026-10-13T14:00:06Z"
+      "updated": "2026-10-13T14:32:51Z"
     },
     "F-0358": {
       "backlinks": [
@@ -37419,9 +37431,10 @@
       ],
       "kernel_fix_rounds": 1,
       "kernel_notes": [
-        "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`"
+        "spec-f-0363-1791897605: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`",
+        "spec-f-0363-1791900986: NEEDS OPERATOR: the baseline the halving in S-208625 is measured against must be taken on the live record, which this cloud session has no copy of - `asf status && time asf check`"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0006",
       "priority": "need",
@@ -37431,7 +37444,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T14:16:51Z"
+      "updated": "2026-10-13T14:32:51Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94085,6 +94098,7 @@
         "T-208097"
       ],
       "backlinks": [
+        "T-208099",
         "T-208104"
       ],
       "children": [],
@@ -94123,7 +94137,7 @@
       ],
       "title": "a red finding against the head it was measured on and the checks on the current head",
       "type": "task",
-      "updated": "2026-10-13T14:13:35Z",
+      "updated": "2026-10-13T14:32:51Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94161,7 +94175,13 @@
         "asf redact --unpublished"
       ],
       "id": "T-208099",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94174,7 +94194,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T14:00:06Z",
+      "updated": "2026-10-13T14:32:51Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94182,7 +94202,9 @@
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
         "asf/kernel/questions.py",
-        "tests/kernel/test_question_write_grant.py"
+        "tests/kernel/test_question_write_grant.py",
+        "tests/kernel/test_question_resolvers.py",
+        "tests/kernel/test_questions.py"
       ]
     },
     "T-208100": {
@@ -94261,7 +94283,12 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/trunk.py:90 \u2014 `read_only=bool(k['gate_read_only'])` ignores `k['gates']`, so with `resolve.gates: false` the gate class is enabled anyway (`gates=()` + default `gate_read_only: true` -> `enabled[R.GATE]` True, measured) and the probe fetches, builds a worktree of the branch head and runs whatever `readonly.grant` admits for a product whose operator turned the probe off \u2014 `facts.read_resolved` (asf/kernel/facts.py:107-112) filters probes by `resolvers.PROBED` alone, never by `config.resolve_gates`, which `decide` applies only afterwards (asf/kernel/decide.py:1183-1190). Fix: `read_only=bool(k['gate_read_only'] and k['gates'])`, plus a case in tests/kernel/test_question_gate_read_only.py ForProduct asserting `settings.read({'resolve': {'gates': False}})` gives `read_only is False` and `enabled[R.GATE] is False`. Verified the fix keeps PD7's case (gates true, no pre_push_check) enabled and the module green.",
+        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94274,7 +94301,7 @@
       ],
       "title": "a Gate command no CI job runs, run on the head when the read-only grant admits it",
       "type": "task",
-      "updated": "2026-10-13T14:06:50Z",
+      "updated": "2026-10-13T14:32:51Z",
       "writes": [
         "asf/kernel/trunk.py",
         "asf/kernel/resolvers.py",
