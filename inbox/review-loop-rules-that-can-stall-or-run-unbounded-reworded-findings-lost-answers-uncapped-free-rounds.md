@@ -1,0 +1,18 @@
+# Review-loop rules that can stall or run unbounded: reworded findings, lost answers, uncapped free rounds
+parent: F-0358
+
+Type: Bug
+
+Four behaviours of F-0358 part 1 (PR #1717), all live with no knob.
+
+1. A reworded finding reads as a contradiction. asf/kernel/findings.py `contradiction` fires when a kept finding names a path:line that a closed key with a different text key names. A reviewer who rewords a still-open defect on the same line at the next head closes the old key and raises a new one: Stuck on the operator instead of a round.
+
+2. The answer's meaning is lost. asf/kernel/apply.py `ApplyAnswer` rules every ask over the escalated line, so asf/kernel/decide.py `_judge_pr` then treats the changes verdict as approved whatever the operator answered. "The reviewer is right" must become a round carrying the answer.
+
+3. Uncapped free rounds on red. asf/kernel/decide.py `_judge_pr` passes `free=` to `_fix_round` for a check red on the trunk too and for a red outside the PR's files. Each still launches a session and never moves `fix_rounds`, so an item relaunches for as long as the red lasts. Hold the launch while the trunk is red, or cap free rounds.
+
+4. A changes verdict with no parsed findings is free beside a holder. asf/kernel/decide.py `_launches` reads a round with no finding but answers, on an item sharing files, as a shared-files notice. A review that writes its findings in prose then costs nothing, every round.
+
+## Acceptance
+- [ ] One test per point through decide and apply.
+- [ ] Points 3 and 4: the item reaches Stuck or the cap in a bounded number of ticks.
