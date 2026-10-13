@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T12:30:05Z",
+  "generated": "2026-10-13T12:33:04Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18130,6 +18130,8 @@
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 4,
       "kernel_findings": [
+        "asf/kernel/mainline.py:365 \u2014 `revert_ci` has no terminal state when a red check does not reproduce on the revert PR (a name absent from it, or `cancelled`/`action_required`, or no CI at all), so the held revert waits for ever and the trunk stays red where base recovered. Read the answer off the names that exist on the PR (`want = names & {c.name for c in pr.checks}`) once the PR's own checks have settled, treat `want` empty as \"this PR will never answer\", and give that case a terminal leg in `judge` (mainline.py:505-524): re-emit the `RevertPR` with `auto_merge=True`, or close it and file the Bug as the abandon leg at :517-521 does. Add a case alongside tests/kernel/test_main_landing.py:522 that is red on this head.",
+        "rebase: PR #1691 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/mainline.py:509 \u2014 the abandon leg writes nothing the next tick can read, so after the ClosePR the revert PR is re-opened every tick (new PR on the kept branch, full CI matrix, red again, closed again). Add the abandoned case as a third independence source at `mainline.py:478`: `or bool(filed(facts, bug_key(red, green)))` (or `all(kflake.live(s, facts) for s in sigs)`), and pin it with a `MainRed` case that runs the abandon tick, drops the closed PR from `orphan_prs`, puts that tick's Bug on the record and asserts no `RevertPR` \u2014 red on 235c4911f.",
         "asf/kernel/mainline.py:462 \u2014 `open_revert_pr` reads the revert PR from `facts.prs`, which `asf/kernel/ports.py:1647` strips of every revert-prefixed branch, so `revert_ci` is permanently `'waiting'` and the held revert never merges: surface the kernel's own revert PR as a fact (stop skipping revert branches in `_prs`' open listing, or add a `revert_prs()` port read plus a `Facts` field) and read it there; report `needs writes: asf/kernel/facts.py` if a new field is used",
         "asf/kernel/mainline.py:243 \u2014 `not pr.behind` neither proves the base predates the candidate's merge (with any commit above the red, a base on the candidate's own merge commit is BEHIND) nor holds for the PRs this path reads (`behind` is `mergeStateStatus == 'BEHIND'`, which a red required check turns into BLOCKED/UNSTABLE; every other use gates on `facts.strict`, and the new tests all pass `strict=False`): drop the `behind` gate and require the PR's matching red check's `run_id` to be below every red `run_id` on the candidate's commit, the ordering `confirm_without_candidate` already uses",
@@ -18145,9 +18147,9 @@
         "asf/kernel/mainline.py:213 \u2014 an open PR proves independence without establishing that its tree excludes the candidate, so a PR brought up to the trunk head carries the candidate's merge and reads the same red because of it; require the base to predate the candidate: `if pr.merged or not pr.behind or (set(pr.files or ()) & set(files)): continue` (PR.behind, asf/kernel/model.py:228), or drop the open-PR path for parent_already_red plus the revert PR's own CI, the two sources acceptance 1 names.",
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "operator answer: One more round, the single finding of the latest review as worded: mainline.py:509 \u2014 the abandon leg must leave something the next tick reads, so an abandoned revert is not re-opened every tick; add the abandoned case as a third independence source at mainline.py:478 as the finding gives it, with a two-tick test (abandon, then no new RevertPR) that fails on base. Nothing else.",
-        "shared files: asf/metrics/metrics.py also held by T-154346 \u2014 additive edits only, never a rewrite"
+        "shared files: asf/kernel/decide.py, asf/kernel/ports.py also held by T-208097 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 6,
+      "kernel_fix_rounds": 7,
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing.",
@@ -18156,7 +18158,7 @@
         "build-b-200581-1791886336: NEEDS OPERATOR: whether the clock lint's hard assertion should extend from metrics.today() to its delegate asf.record.core.today across asf/, which means threading a now through the 18 files listed under `left out:`\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18165,7 +18167,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T12:12:12Z",
+      "updated": "2026-10-13T12:33:03Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -91614,7 +91616,6 @@
       ],
       "backlinks": [
         "T-154341",
-        "B-200581",
         "B-205135"
       ],
       "children": [],
@@ -94020,7 +94021,8 @@
         "T-208099",
         "T-208100",
         "T-208102",
-        "T-208104"
+        "T-208104",
+        "B-200581"
       ],
       "children": [],
       "decided": true,
@@ -94224,7 +94226,13 @@
         "asf redact --unpublished"
       ],
       "id": "T-208101",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel)."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94237,14 +94245,15 @@
       ],
       "title": "a Gate command no CI job runs, run on the head when the read-only grant admits it",
       "type": "task",
-      "updated": "2026-10-13T12:12:12Z",
+      "updated": "2026-10-13T12:33:03Z",
       "writes": [
         "asf/kernel/trunk.py",
         "asf/kernel/resolvers.py",
         "asf/kernel/settings.py",
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
-        "tests/kernel/test_question_gate_read_only.py"
+        "tests/kernel/test_question_gate_read_only.py",
+        "tests/kernel/test_question_resolvers.py"
       ]
     },
     "T-208102": {
