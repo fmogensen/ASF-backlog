@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T02:48:49Z",
+  "generated": "2026-10-13T02:52:01Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18113,17 +18113,16 @@
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_findings": [
-        "asf/kernel/mainline.py:162 \u2014 trunk_wide's code is `any` where its own docstring says \"every one of `reds`\": it returns True on the first single matching red, so a main red on both `tests (3.12)` and `tests (3.13)` with one unrelated PR red on `tests (3.12)` alone suppresses the RevertPR although `tests (3.13)` is genuinely the candidate's. Collect the names matched across the other PRs and return True only when that set covers `names`.",
-        "asf/kernel/mainline.py:166 \u2014 matching on check *name* alone reads an unrelated PR's own ordinary failure as a trunk-wide break: every PR runs the same workflow, so every PR has a `tests (3.12)`, and one open PR red on it for its own reason (different failing_files, different failed_step) makes trunk_wide True. Since some open PR being red on a shared check name is the fleet's ordinary state, this disables the main-red revert safety net in the common case. Compare failure signatures \u2014 add `sigs = {s for s in (kflake.signature(c) for c in reds) if s}` beside `names` and require `kflake.signature(c) in sigs`, the same discriminator this diff's own tests/kernel/test_flake.py:908-912 uses.",
-        "asf/kernel/mainline.py:163 \u2014 `facts.prs` and `p.checks` are both read raw, so stale and merged reds count as \"right now\": GitHubPort.prs() returns \"The open PRs and the recently merged ones\" (asf/kernel/ports.py:767-769) and `p.merged` is never filtered, and the kernel's convention for a head's own checks is `current_checks(pr)` (asf/kernel/decide.py:1559-1565), used by briefs.py:337,408 and decide.py:1498,1572,1594 and bypassed here. Skip `p.merged` and iterate `current_checks(p)` instead of `p.checks`.",
+        "tests/test_metrics.py:2496 \u2014 metrics.bare_today_calls() is run over three hard-coded paths only, so the lint guards nothing outside ci_stall.py/ci_cancels.py/doctor.py; add a ratchet over the package beside it: tree = [os.path.join(dp, f) for dp, _dirs, files in os.walk(os.path.join(root, 'asf')) for f in files if f.endswith('.py')]; self.assertEqual(metrics.bare_today_calls(tree), []) \u2014 green today (no qualified metrics.today() is left in asf/), or put the same assertion in tests/test_conventions.py:447 beside the existing asf/ walk.",
+        "asf/kernel/mainline.py:272 \u2014 quarantine_actions() builds A.Quarantine with neither bug nor bug_key, so asf/kernel/apply.py:531 resolves bug to '' and asf/kernel/ports.py:792 writes an entry with no owning Bug: every item it exempts gets the note asf/kernel/decide.py:1634 renders as \"is quarantined as a flake (?)\", and ports.py:785 only ever back-fills a blank bug if the flake lane later reaches the same signature. Add bug='' / bug_key='' parameters, pass them into A.Quarantine, and call per path in judge(): quarantine_actions(reds, facts, config, bug=bug) on the open-Bug path (mainline.py:328) and quarantine_actions(reds, facts, config, bug_key=a.key) after bug_action() (mainline.py:331) \u2014 asf/kernel/decide.py:311 already applies A.FileBug before A.Quarantine, so apply.filed[a.key] is populated and no reordering is needed.",
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0346",
       "schema_version": 2,
       "severity": "S3",
@@ -18132,7 +18131,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T02:36:05Z",
+      "updated": "2026-10-13T02:51:59Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
