@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T15:18:56Z",
+  "generated": "2026-10-13T15:25:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18171,7 +18171,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T15:16:08Z",
+      "updated": "2026-10-13T15:24:59Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18338,12 +18338,17 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.0",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/evidence/evidence.py:1196 \u2014 invert the test so a known branch must *be* a code lane, not merely not be a fix/doc one: after the `if not branch: return True` guard, strip `refs/heads/`/`origin/`, then `code = [p for p in (prefixes.get(\"code\"), *prefixes.get(\"legacy\", ())) if p]` and `return any(b.lower().startswith(p.lower()) for p in code)`. Add a case to `tests/test_evidence.py::IngestIdEvidenceTests`: a childless Feature, one merged PR whose `headRefName` carries no id token and whose title names the Feature, asserted to stay `stage: card` / `state: New`.",
+        "docs/guide/operating.md:594 \u2014 document the new `asf undeliver <item> --pr N --why \"<reason>\"` mode after the existing `undeliver` paragraph: what it writes (`excluded_prs:` plus the `PR #N excluded from derived evidence: <reason>` History line), that every later ingest drops that PR's commit/merge/PR/green from the item's evidence, and that re-running it for an already-excluded PR is a reported no-op.",
+        "asf/record/ingest.py:688 \u2014 guard the read: `excluded_prs: 12` raises `TypeError: 'int' object is not iterable` inside `derive()` and takes down the whole record's ingest, and `excluded_prs: \"42\"` silently yields `{2, 4}`. Coerce a scalar to a one-tuple and skip values `int()` rejects, the way `_typed_landed` (`:711-714`) guards its field."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18353,7 +18358,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T15:18:53Z",
+      "updated": "2026-10-13T15:24:59Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -94126,7 +94131,7 @@
         "shared files: asf/kernel/decide.py, asf/kernel/model.py, asf/kernel/ports.py, asf/kernel/questions.py, asf/kernel/resolvers.py, asf/kernel/settings.py also held by T-208100 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94139,7 +94144,7 @@
       ],
       "title": "a red finding against the head it was measured on and the checks on the current head",
       "type": "task",
-      "updated": "2026-10-13T15:11:16Z",
+      "updated": "2026-10-13T15:24:59Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94182,7 +94187,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94195,7 +94200,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T15:16:08Z",
+      "updated": "2026-10-13T15:24:59Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
