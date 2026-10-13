@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T22:09:14Z",
+  "generated": "2026-10-13T22:12:52Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18108,7 +18108,8 @@
     },
     "B-200581": {
       "backlinks": [
-        "F-0357"
+        "F-0357",
+        "B-213995"
       ],
       "children": [],
       "decided": true,
@@ -18436,40 +18437,16 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-208187",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_closed_findings": {
-        "0861193e": "{'head': '{\\'head\\': \"{\\'head\\': \\'e8ee9891ded7823ec02952f772ecf91ef3529468\\', \\'line\\': \\'asf/record/repair.py:215\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
-        "333a14e4": "{'head': '{\\'head\\': \"{\\'head\\': \\'e8ee9891ded7823ec02952f772ecf91ef3529468\\', \\'line\\': \\'tests/test_record_repair.py:259\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
-        "3980e05b": "{'head': 'a107a4784fdd0f69b92a136cc1ca7550872607ab', 'line': 'asf/record/repair.py:131'}",
-        "4378af68": "{'head': '{\\'head\\': \"{\\'head\\': \\'e8ee9891ded7823ec02952f772ecf91ef3529468\\', \\'line\\': \\'asf/record/repair.py:246\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
-        "57686a37": "{'head': 'a107a4784fdd0f69b92a136cc1ca7550872607ab', 'line': 'tests/test_record_repair.py:392'}",
-        "862be677": "{'head': '{\\'head\\': \"{\\'head\\': \\'e8ee9891ded7823ec02952f772ecf91ef3529468\\', \\'line\\': \\'asf/record/repair.py:390\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
-        "928a8b9a": "{'head': 'a107a4784fdd0f69b92a136cc1ca7550872607ab', 'line': 'asf/cli.py:1071'}",
-        "95e35b82": "{'head': '{\\'head\\': \"{\\'head\\': \\'e8ee9891ded7823ec02952f772ecf91ef3529468\\', \\'line\\': \\'asf/record/repair.py:167\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
-        "ae4f59e5": "{'head': 'a107a4784fdd0f69b92a136cc1ca7550872607ab', 'line': 'asf/record/repair.py:225'}",
-        "ed5268fc": "{'head': 'a107a4784fdd0f69b92a136cc1ca7550872607ab', 'line': 'asf/record/repair.py:208'}",
-        "efcfc80f": "{'head': 'a107a4784fdd0f69b92a136cc1ca7550872607ab', 'line': 'asf/cli.py:1068'}",
-        "f92f9a0b": "{'head': 'a107a4784fdd0f69b92a136cc1ca7550872607ab', 'line': 'asf/record/repair.py:167'}"
-      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
-      "kernel_findings": [
-        "asf/record/repair.py:167-169 \u2014 the `safe_idx is None` fallback appends the closing fence to the end of the whole body, i.e. inside the derived `## Children`/`## Backlinks` this function's own docstring (:148-156) forbids; the card is listed and rewritten as fixed, the migration still refuses it via the candidate round-trip (asf/schema.py:375 -> :270), and the second run reports nothing left to do. Close the fence at the end of the section that opened it, ahead of `derived_idx` \u2014 for an `acceptance` section as an indented continuation line (`  ```), which asf/schema.py:163 accepts and which keeps the fence count even; when no placement clears the refusal, do not rewrite the card and do not list it as fixed. Add a fixture with no non-structural section before the derived ones, asserting it converts after a real run through `publish.commit_paths`.",
-        "asf/record/repair.py:208-218 and :223-241 \u2014 `emitted` is set for any `_CHECKBOX_RE` match, but the migration counts an indented line as a continuation only when `out` is non-empty (asf/schema.py:163) and an empty-text bullet never reaches `out` (asf/schema.py:168-170), so `- [ ] ` followed by `  stray text` is left alone while the migration refuses it. Count a bullet as `emitted` only when its captured text is non-empty (`emitted = bool(m.group(2).strip())` from the taken match) in both loops, so the stray line becomes its own `- [ ] ` entry through :235-241; add the shape to `AcceptanceCheckboxRepairTests` with the \"converts clean\" assertion.",
-        "asf/cli.py:1071-1078 \u2014 the `--refusals --apply` branch calls `publish.commit_paths` and `shadow.push` with no `_is_checkout` guard, so on a record that is not a git checkout (a copy of the record, which is what this tool is for) it rewrites the cards and then dies with `CalledProcessError` from asf/record/publish.py:94 -> asf/record/tree.py:32. Guard both on the condition `_published` already uses: `publishable = publish.snapshot(record) is not None`, pass `commit=commit if publishable else None`, and run `shadow.push`/`publish._refused` only when `publishable`; cover it in `CliRefusalsApplyTests` with a record root that has no `origin`.",
-        "asf/record/repair.py:131 \u2014 close the fence at the end of the last non-derived section, not the end of the body: it lands inside the derived ## Backlinks, which index.refresh (run by publish.commit_paths, asf/record/publish.py:118) regenerates in the same commit, so the card is unbalanced again and the migration refuses it \u2014 insert the closing ``` before the first ## Children/## Backlinks heading via core.parse_sections/core.render_sections, falling back to the end of the body only when the card has neither section",
-        "asf/record/repair.py:225 \u2014 drop the `if moved_key is None:` guard and move every stray `key: value` line, not just the first: collect all (key, value) pairs, skip any key already in meta (keeping today's collision behaviour at asf/record/repair.py:234-235), insert one frontmatter._Entry per pair before the marker index \u2014 today a card with two stray lines is still refused after a real run and does not round-trip on a second run; add a two-line case to PreambleLineRepairTests",
-        "asf/cli.py:1068-1086 \u2014 outside the writes: footprint (asf/record/repair.py tests/test_record_repair.py) and reported as `needs writes: none`: name asf/cli.py in the report's needs writes: line, add a test for the --refusals --apply path (the commit closure at asf/cli.py:1072-1073 and the push-refused branch at asf/cli.py:1078-1084), and replace asf/cli.py:1077-1084 with a call to publish._refused(record, 'record-repair --refusals --apply') \u2014 it is a verbatim copy of it",
-        "tests/test_record_repair.py:392-394 \u2014 pass asf.record.publish.commit_paths itself as the commit callback instead of a plain git add/git commit stub, and assert repair.plan_refusals(root) == [] after the commits and before migrate_cards_to_json: the card's acceptance names this test for the real run over a record of this size, but it stubs the publish path out (and the only real corpus, sample/backlog, is 11 cards) \u2014 that assertion is what would have caught the fence finding"
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "build-b-208187-1791926710: NEEDS OPERATOR: the acceptance bullet \"the per-card migration path then refuses 0 cards of a copy of a real record of this size\" is still unchecked \u2014 this host and CI have no real record (the only corpus is sample/b\u2026",
         "PR #1726: install-clean-macos is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18479,7 +18456,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T22:09:12Z",
+      "updated": "2026-10-13T22:12:51Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18771,11 +18748,12 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
       "kernel_findings": [
-        "asf/kernel/blame.py:145-146 \u2014 in verdict(), report an unsure blame answer the trunk probe will still retry as asked, so the revert stays held for that one remaining try: `from asf.kernel.trunk import BLAME_TRIES, blame_unsure` (a pure predicate and a constant), `retry = blame_unsure(got) and int(got.get('tries') or 0) < BLAME_TRIES`, then `asked=retry` on the error return at :146 and on the two not_red returns at :144 and :154. Today bv.asked is False on a first `{'error': ..., 'tries': 1}` read, so asf/kernel/mainline.py:734-744 closes the revert and writes abandon_key, and revert_abandoned then makes every later tick set independent at :699 and skip the revert leg at :704 \u2014 a retry that comes back guilty reverts nothing, ever, for that spell. Honouring this needs asf/kernel/blame.py added to the item's writes: footprint (with its unit test in tests/kernel/test_blame_before_revert.py), and the acceptance fixture at tests/kernel/test_main_landing.py:697 must answer a settled unsure read, `{'error': 'timeout', 'tries': 2}` \u2014 the test's id and assertions are unchanged.",
-        "shared files: asf/kernel/mainline.py also held by T-210360 \u2014 additive edits only, never a rewrite"
+        "asf/kernel/mainline.py:741 \u2014 replace `independent = True` with `independent = bv.cls == blame.TRUNK_WIDE`: the unproven settle establishes no independence (the revert's own CI read green), yet it quarantines the red signature trunk-wide, exempting every open PR reading that red from a fix round and an ArchiveAndReset \u2014 the B-200581 failure mode named at :693-700. Measured: unproven-settled and resolve_blame=False both plan a Quarantine. Nothing else in the leg reads `independent` (only qacts at :791), so ClosePR, the abandon marker and the Bug still fire. Add `assertEqual(B.of(plan, A.Quarantine), [])` to the unproven acceptance test and a non-empty assertion to the trunk-wide one.",
+        "asf/kernel/mainline.py:670 \u2014 the card's third described case is unfixed: when `red_spell` reads None `judge` returns `dispatch(...)` and a held revert whose trunk recovered another way is never closed (floor_closes at asf/kernel/decide.py:2822-2848 reads facts.prs, and a held revert lives on Facts.revert_prs), so revert_open at :255-267 keeps the item not Ready for ever. Before that return, emit one A.ClosePR per unmerged revert PR on revert_prefix(config) whose candidate commit is still on Facts.main with its required checks now green, with a reason constant beside BLAME_SETTLED (:117-124) and one MainRed case. Both files are inside writes:.",
+        "asf/kernel/blame.py:1 \u2014 the diff changes asf/kernel/blame.py and tests/kernel/test_blame_before_revert.py, both outside the card's writes:, and both reports declare `needs writes: none`. The changes themselves are right (asf/kernel/blame.py:148 mirrors the probe runner's retry budget at asf/kernel/trunk.py:181-183 and 380). Declare them: `needs writes: asf/kernel/blame.py tests/kernel/test_blame_before_revert.py`."
       ],
-      "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_fix_rounds": 2,
+      "kernel_state": "building",
       "parent": "F-0357",
       "schema_version": 3,
       "severity": "S3",
@@ -18784,7 +18762,7 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T22:09:12Z",
+      "updated": "2026-10-13T22:12:51Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_landing.py"
@@ -95246,7 +95224,7 @@
         "build-t-210356-1791922145: NEEDS OPERATOR: asf redact --unpublished could not run in this cloud session (the `asf` CLI is not installed here) \u2014 `asf redact --unpublished` (read-only; the cloud-session brief notes no pre-push hook runs here, a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95259,7 +95237,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T22:00:35Z",
+      "updated": "2026-10-13T22:12:51Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95429,8 +95407,7 @@
       "backlinks": [
         "T-208102",
         "T-210362",
-        "T-210363",
-        "B-213995"
+        "T-210363"
       ],
       "children": [],
       "decided": true,
