@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T21:38:43Z",
+  "generated": "2026-10-13T21:43:17Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18748,7 +18748,9 @@
       ]
     },
     "B-213995": {
-      "backlinks": [],
+      "backlinks": [
+        "T-210360"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -18761,7 +18763,7 @@
         "shared files: asf/kernel/mainline.py also held by T-210360 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "schema_version": 3,
       "severity": "S3",
@@ -18770,7 +18772,7 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T21:31:08Z",
+      "updated": "2026-10-13T21:43:16Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_landing.py"
@@ -37849,7 +37851,7 @@
         "plan-f-0363-1791925579: NEEDS OPERATOR: which of the 171 cards that refuse the schema-2 migration are closed, so \u00a72.9's claim that the archive carries them unchanged is counted rather than argued \u2014 `asf check --schema-only --product asf`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "milestone": "0.5",
       "parent": "E-0006",
       "priority": "need",
@@ -37859,7 +37861,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T21:35:16Z"
+      "updated": "2026-10-13T21:43:16Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94792,10 +94794,11 @@
         "relaunch: operator answer: Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else."
       ],
       "kernel_closed_findings": {
-        "146fa521": "{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/resolvers.py:606'}",
-        "37e0f605": "{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/resolvers.py:681'}",
-        "3bfac4bc": "{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/decide.py:1341'}",
-        "4709f0f2": "{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/questions.py:191'}"
+        "146fa521": "{'head': \"{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/resolvers.py:606'}\", 'line': ''}",
+        "37e0f605": "{'head': \"{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/resolvers.py:681'}\", 'line': ''}",
+        "3a1267c9": "{'head': 'a44cfade023891236ac9740f8e05b3bbb7f517aa', 'line': 'asf/kernel/resolvers.py:736'}",
+        "3bfac4bc": "{'head': \"{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/decide.py:1341'}\", 'line': ''}",
+        "4709f0f2": "{'head': \"{'head': 'c31003babc20e7accf250898c18136afe8eb4fe5', 'line': 'asf/kernel/questions.py:191'}\", 'line': ''}"
       },
       "kernel_extra_rounds": 1,
       "kernel_findings": [
@@ -94822,7 +94825,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T21:31:08Z",
+      "updated": "2026-10-13T21:43:16Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95224,7 +95227,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T21:31:08Z",
+      "updated": "2026-10-13T21:43:16Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95417,7 +95420,13 @@
         "asf redact --unpublished"
       ],
       "id": "T-210360",
-      "kernel_state": "building",
+      "kernel_answers": [
+        "granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95430,7 +95439,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-13T21:06:54Z",
+      "updated": "2026-10-13T21:43:16Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -95439,7 +95448,9 @@
         "asf/kernel/settings.py",
         "asf/kernel/ports.py",
         "asf/kernel/model.py",
-        "tests/kernel/test_trunk_wide_red.py"
+        "tests/kernel/test_trunk_wide_red.py",
+        "tests/kernel/test_main_landing.py",
+        "tests/kernel/test_main_pending.py"
       ]
     },
     "T-210361": {
@@ -95466,7 +95477,12 @@
         "asf redact --unpublished"
       ],
       "id": "T-210361",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/kernel/ports.py:1817 \u2014 _revert_fact leaves Check.failing_ids empty (only _red_detail sets them, and it is called from _open_pr and main_commits only, never for a revert branch: _prs routes it to _revert_fact and continues at :1754-1757), so _still_failing is always () and revert_ci never returns 'red' \u2014 D5's second blame read at mainline.py:778-783 is unreachable in production. Fix: in _revert_fact, for the open case, mirror _open_pr's loop at :1838-1841 \u2014 jobs = job_keys(d.get('statusCheckRollup') or []); for each completed check whose conclusion is in M.RED_CONCLUSIONS and which has a run_id, self._red_detail(c, (), jobs.get((c.name, c.run_id)) or '') \u2014 and say so in the docstring; _red_detail is cache-first and LOG_LIMIT-bounded. Also rebuild the Port case, which passes None for self (tests/kernel/test_revert_merged.py:246) and asserts names only, to use a port/fake and assert the ids.",
+        "asf/kernel/incidents.py:130 \u2014 bv = blame.verdict(facts, config) is read at landing time, when the revert has merged and the trunk is green again, so red_spell is None and the REVERT row stores {'parent': '', 'ids': [], 'cls': 'unproven'} instead of the read that allowed the revert (acceptance line 9). Fix: carry the read forward from the tick that made it \u2014 put plan.main.get('blame') (mainline.blame_record, :295-297) on the MAIN_RED row in _main_red_record, and in _revert_records take the blame from that spell's recorded MAIN_RED row (observe at :199 already has state_dir and read()) rather than recomputing, leaving the key absent when no recorded read is found; then pin it with the revert commit green on the trunk (the module's own landed_world()), not pending as :219-220 does."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95479,7 +95495,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T21:35:16Z",
+      "updated": "2026-10-13T21:43:16Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
