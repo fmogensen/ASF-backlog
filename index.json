@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:52:48Z",
+  "generated": "2026-10-13T19:56:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18482,7 +18482,7 @@
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18492,7 +18492,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T19:52:47Z",
+      "updated": "2026-10-13T19:56:41Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18632,7 +18632,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T19:52:47Z",
+      "updated": "2026-10-13T19:56:41Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/resolvers.py",
@@ -37644,7 +37644,7 @@
         "T-208103",
         "T-208104"
       ],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0362",
       "kernel_findings": [
@@ -37706,7 +37706,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T19:52:47Z"
+      "updated": "2026-10-13T19:56:41Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94888,28 +94888,14 @@
       "kernel_answers": [
         "granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_closed_findings": {
-        "250ca322": "{'head': '6990cc23e8d212b53e50add4b963eb091e39f31e', 'line': 'asf/kernel/needed.py:312'}",
-        "61556866": "{'head': '6990cc23e8d212b53e50add4b963eb091e39f31e', 'line': 'asf/kernel/needed.py:314'}"
-      },
-      "kernel_findings": [
-        "asf/kernel/needed.py:312 \u2014 an empty diff on an item whose revert *did* land is closed Done, against this arm's own docstring at :269-270 (\"a failed rebuild of work the revert really removed, never a Done\"): `revert_open` is false once the revert merged and `_unproven` is false for a card naming no proving tests. Make it `elif revert_wait or it.reverted or _unproven(it, facts):` \u2014 B-200932's arm at :297-311 runs first, so an item whose work is demonstrably still on the trunk keeps its Done \u2014 and add a case beside `RevertedArmUnaffected` (tests/kernel/test_satisfied_not_relaunched.py:163) pinning a landed revert plus a card naming no proving tests as READY with one ClearStuck.",
-        "asf/kernel/needed.py:314 \u2014 the revert-open relaunch reuses EMPTY_FINDING, telling the session \"the card's proving tests are not green on main: make the change the card asks for\" when the tests were green and the blocker is the open revert. Add a `REVERT_OPEN_FINDING` constant beside EMPTY_FINDING at :152 naming the open unmerged revert, select it with `why = REVERT_OPEN_FINDING if revert_wait else EMPTY_FINDING` at :314, say the same in the gate line's `why`, and pin the text in `UnmergedRevertOpen.test_the_empty_pr_arm_does_not_mark_it_satisfied` (tests/kernel/test_satisfied_not_relaunched.py:75-82), which today asserts only that one ClearStuck exists.",
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "operator answer: granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel).",
-        "operator answer: granted tests/kernel/test_stacked_builds.py asf/build-t-210356-1791913341@20261013T174228Z; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1721: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1721: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94922,7 +94908,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T19:52:47Z",
+      "updated": "2026-10-13T19:56:41Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
