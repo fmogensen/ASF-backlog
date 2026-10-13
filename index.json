@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T18:45:21Z",
+  "generated": "2026-10-13T18:49:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18341,8 +18341,10 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
-        "7f932bd1": "{'head': 'e08c422da0ebf1d0c8373cf9fec46e3a86ee05ab', 'line': 'asf/evidence/evidence.py:1527'}",
-        "dbc526c1": "{'head': 'e08c422da0ebf1d0c8373cf9fec46e3a86ee05ab', 'line': 'asf/record/ingest.py:713'}"
+        "293a48d9": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/record/undeliver.py:58'}",
+        "7f932bd1": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/evidence/evidence.py:1527'}",
+        "96c631a1": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/evidence/evidence.py:1210'}",
+        "dbc526c1": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/record/ingest.py:713'}"
       },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.0",
@@ -18368,7 +18370,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T18:31:35Z",
+      "updated": "2026-10-13T18:49:19Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -18426,6 +18428,7 @@
       "id": "B-208187",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
+      "kernel_state": "building",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18435,7 +18438,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T18:36:11Z",
+      "updated": "2026-10-13T18:49:19Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18467,7 +18470,11 @@
       "id": "B-210839",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
+      "kernel_notes": [
+        "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes."
+      ],
       "parent": "F-0340",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
@@ -18475,7 +18482,17 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T18:40:56Z"
+      "updated": "2026-10-13T18:49:19Z",
+      "writes": [
+        "asf/schema.py",
+        "asf/kernel/host.py",
+        "asf/upgrade.py",
+        "asf/record/ids.py",
+        "tests/kernel/test_host.py",
+        "tests/test_card_migration.py",
+        "tests/test_schema_version.py",
+        "tests/test_upgrade.py"
+      ]
     },
     "B-211240": {
       "backlinks": [],
@@ -18503,6 +18520,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-211241",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.11",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -18511,7 +18530,7 @@
       "state": "New",
       "title": "Settle which ids a proof may judge before the proof gate can be turned on",
       "type": "bug",
-      "updated": "2026-10-13T17:08:42Z"
+      "updated": "2026-10-13T18:49:19Z"
     },
     "B-211642": {
       "backlinks": [],
@@ -94416,7 +94435,7 @@
         "round not charged: a rebase round: PR #1720 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94429,7 +94448,7 @@
       ],
       "title": "the card's acceptance quoted back from the record, never a pointer at the brief",
       "type": "task",
-      "updated": "2026-10-13T18:45:14Z",
+      "updated": "2026-10-13T18:49:19Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94777,7 +94796,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210357",
-      "kernel_state": "review",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94790,7 +94809,7 @@
       ],
       "title": "blame before any revert \u2014 the failing test run on the parent's tree, now",
       "type": "task",
-      "updated": "2026-10-13T18:45:14Z",
+      "updated": "2026-10-13T18:49:19Z",
       "writes": [
         "asf/kernel/blame.py",
         "asf/kernel/trunk.py",
