@@ -1,0 +1,19 @@
+# Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards
+parent: F-0340
+
+Type: Bug
+
+An upgrade to a package at schema 3 locks the operator out of every record-writing command, and the migration that would lift it cannot succeed.
+
+Observed 2026-10-13 after the kernel moved from 0.3.0 to 0.3.8: `asf retire`, `asf set`, `asf inbox`, `asf correct`, `asf park`, `asf approvals resolve` and the other RECORD commands exit 3 with "NEEDS OPERATOR: run asf schema-migrate" (asf/cli.py:991-998, asf/schema.py require). `asf kernel install` gave no warning. The kernel loop keeps ticking and writing markdown cards, so only the operator is stopped.
+
+`asf schema-migrate` then stops at the first card that will not convert (epics/E-0001.md: history: not a bullet). Measured on a copy: 184 of 2924 cards fail the 2 to 3 step: unbalanced code fence 110, acceptance line not a checkbox bullet 28, duplicate section heading 27, text before the first section 9, rank below 0: 6, history line not a bullet 4. A failed run still pushes the snapshot tag and writes the backup.
+
+Also: schema-migrate works in the record clone while the kernel writes the backlog checkout, so a run needs the kernel paused and a pull afterwards, and neither is done or said. New cards are still minted as markdown after a migration (write_new_item json_card=False), so the record would be mixed. schema.check compares config.yaml against SCHEMA_VERSION instead of CONFIG_VERSION (schema.py:586-588), so the message names a config gap that does not exist.
+
+## Acceptance
+- [ ] `asf kernel install` and `asf upgrade` refuse, or warn and name the step, when the new package has a non-additive schema gap the record cannot cross; they never leave the operator locked out silently.
+- [ ] The 2 to 3 migration converts every card of a record with the six shapes above (repaired by code, or carried as a lossless raw section), proved on a fixture holding one card of each shape.
+- [ ] `asf schema-migrate` pauses the kernel, migrates, brings the backlog checkout to the migrated head and resumes; a failed run changes nothing, tag and backup included.
+- [ ] After a migration every mint path writes the record's own format.
+- [ ] The refusal message names only real gaps (config compared against CONFIG_VERSION).
