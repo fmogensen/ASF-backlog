@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:12:09Z",
+  "generated": "2026-10-13T19:15:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18566,7 +18566,9 @@
       ]
     },
     "B-211642": {
-      "backlinks": [],
+      "backlinks": [
+        "T-208102"
+      ],
       "children": [],
       "creates": [
         "tests/fixtures/review_findings_283.jsonl"
@@ -37623,7 +37625,7 @@
         "spec-f-0363-1791914847: NEEDS OPERATOR: today's card count by state on the real record, the baseline section 2.11's 30% target is measured against - `jq -r '[.items[] | .state // \"New\"] | group_by(.) | map(\"\\(.[0]) \\(length)\") | .[]' ~/.AS\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "milestone": "0.5",
       "parent": "E-0006",
       "priority": "need",
@@ -37633,7 +37635,7 @@
       "state": "New",
       "title": "The record's working set holds live work only; closed cards are archived and not loaded",
       "type": "feature",
-      "updated": "2026-10-13T19:04:33Z"
+      "updated": "2026-10-13T19:15:48Z"
     },
     "R-0001": {
       "backlinks": [
@@ -94431,7 +94433,7 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_round_charged": false,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94444,7 +94446,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T19:08:27Z",
+      "updated": "2026-10-13T19:15:48Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94612,9 +94614,18 @@
         "relaunch: operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208099 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them."
       ],
       "kernel_extra_rounds": 0,
+      "kernel_findings": [
+        "rebase: PR #1727 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: granted tests/kernel/test_question_resolvers.py; nothing else outside writes (card updated by the kernel). T-208099 also writes tests/kernel/test_question_resolvers.py (Building): the overlap rule serialises them.",
+        "shared files: asf/kernel/decide.py, asf/kernel/resolvers.py also held by B-211642 \u2014 additive edits only, never a rewrite"
+      ],
       "kernel_fix_rounds": 0,
+      "kernel_notes": [
+        "round not charged: a rebase round: PR #1727 conflicts with its base"
+      ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94627,7 +94638,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T19:12:08Z",
+      "updated": "2026-10-13T19:15:48Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94767,7 +94778,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T19:08:27Z",
+      "updated": "2026-10-13T19:15:48Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -94873,7 +94884,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210357",
-      "kernel_state": "new",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94886,7 +94897,7 @@
       ],
       "title": "blame before any revert \u2014 the failing test run on the parent's tree, now",
       "type": "task",
-      "updated": "2026-10-13T18:49:19Z",
+      "updated": "2026-10-13T19:15:48Z",
       "writes": [
         "asf/kernel/blame.py",
         "asf/kernel/trunk.py",
