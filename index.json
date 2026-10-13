@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T11:49:38Z",
+  "generated": "2026-10-13T11:52:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -91406,6 +91406,7 @@
       ],
       "kernel_extra_rounds": 6,
       "kernel_findings": [
+        "asf/schema.py:926 \u2014 `CardMigrationError` escapes `asf schema-migrate` as a Python traceback: `record-repair` catches it (asf/record/repair.py:97-100) but this path does not, and asf/cli.py:940-948 catches only `env.ConfigError`, so the command this Task exists to make the operator run ends in a stack trace \u2014 measured to fire on the first run (171 of 2717 cards on ASF's own record refuse). Catch it where the `(rc, message)` contract lives, in `migrate_product` (asf/schema.py:802): wrap the `migrate_dir(clone, \u2026)` call in `except CardMigrationError as e: return 1, f'{product.name}: stopped \u2014 {e}'`, and add one case beside `tests/test_card_migration.py:334` that runs `cli._main(['schema-migrate', '--product', \u2026])` against a record with one unconvertible card and asserts the single `stopped \u2014 <card>: <field>: <why>` line plus a non-zero rc with no exception escaping \u2014 red on this head.",
         "asf/schema.py:383 \u2014 wrap the gate write in `try: writer.write_card(json_path, card.dumps(new_meta)) except writer.CardInvalid as e: raise CardMigrationError(relpath, 'card', '; '.join(f'{p}: {m}' for p, m in e.errors)) from e`, so a card the gate refuses (an unresolvable reference above all) stops the migration with the card, field and why instead of an uncaught traceback out of `record-repair --to-schema 2 --apply` and `schema-migrate`; add the unresolvable-`blockedBy` case to `RoundTripSafetyTests` (tests/test_card_migration.py:185)",
         "asf/schema.py:810-813 \u2014 drive the snapshot off the clone's own stamp, not `pending()`'s lowest-across-roots: `from_v = record_version(clone) or 0` then `for v in range(from_v + 1, SCHEMA_VERSION + 1): m = MIGRATIONS.get(v); if m is None or not m.additive: snapshot(product, v); break`, so a clone already at `SCHEMA_VERSION` snapshots nothing and a second `asf schema-migrate` cannot force `refs/tags/asf-schema-2` off the pre-migration commit; add the case to tests/test_schema_version.py:298 (a second `migrate_product` leaves the tag where it was and writes no second backup)",
         "asf/schema.py:250 \u2014 when there is no `## Gate` section and no typed `gate:`, fall back to `dor.gate_lines(body)` (Step 2's own named reader) so the body `**Gate**` fence 97 open Tasks carry is lifted into `gate` instead of landing in `prose`; strip the lifted fence from that prose section, and add the case to tests/test_card_migration.py beside :80",
@@ -91429,7 +91430,7 @@
         "operator answer: One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base.",
         "operator answer: One more round, the two findings of the latest review as worded: schema.py:383 (a card the gate refuses raises CardMigrationError naming the card, field and why, not a traceback) and schema.py:810-813 (drive the snapshot off the clone's own stamp, so a clone already at SCHEMA_VERSION snapshots nothing and a second schema-migrate cannot move the tag). Each test must fail on base. Then make every check green on the head. Nothing else."
       ],
-      "kernel_fix_rounds": 8,
+      "kernel_fix_rounds": 9,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -91487,7 +91488,7 @@
         "PR #1684: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91500,7 +91501,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T11:49:36Z",
+      "updated": "2026-10-13T11:52:45Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
