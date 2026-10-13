@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T20:02:21Z",
+  "generated": "2026-10-13T20:05:21Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18463,7 +18463,6 @@
     },
     "B-208438": {
       "backlinks": [
-        "T-208099",
         "T-210355"
       ],
       "children": [],
@@ -94528,13 +94527,16 @@
       "kernel_answers": [
         "granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them."
       ],
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "rebase: PR #1723 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
         "asf/kernel/decide.py:1341 \u2014 when the rule grants nothing, record the refusal on the park instead of returning a bare None: beside the _file_inbox hook at decide.py:685-687 append A.MarkStuck(it.id, resolvers.write_grant_refused(paths, it, facts.items, tuple(config.test_paths or ()), facts.trunk_files, tuple(config.risk_high or ())), 'operator') (only when that reason differs from the Stuck's current one). Step 6 and spec \u00a72.4's last paragraph are unimplemented today: write_grant_refused is called from no module, so a refused ask's reason names neither the paths nor the clause",
         "asf/kernel/questions.py:191 and asf/kernel/decide.py:1232 \u2014 move the write_ask test above the card_read_question test in classify, and the _write_grant call above card_read = _card_read(...) in _auto_answer: write-grant is second of the four and card-read third (plan :416, :480; spec :139-141). Measured inverted today \u2014 \"I could not read the card's Acceptance \u2014 may I write `tests/kernel/test_new_thing.py`?\" is answered by='card-read' writes=[], dropping the permission ask and never widening the card",
         "asf/kernel/resolvers.py:606 \u2014 replace the inline by-rule block with the shared predicate (step 4, D7's one home): give write_grant_by_rule a covers=None parameter defaulting to fnmatch.fnmatchcase, then needs_writes reads `if write_grant_by_rule(paths, it, items, test_paths, trunk_files, lambda p, g: overlap([p], g)): return FINDING_BY_RULE % ' '.join(paths), paths`. T-208100 landed as 5da9cad, this branch's base, so nothing serialises resolvers.py against it now",
-        "asf/kernel/resolvers.py:681 \u2014 write_grant_by_rule matches with fnmatch.fnmatchcase while PATH_TOKEN_RE admits `*`, so an asked glob escapes the \"no other live item holds it\" clause: measured, `tests/kernel/test_*.py` is granted and the card widened while T-0002 (Building) holds tests/kernel/test_shared.py inside it. Pass the caller's _overlap through C3's covers parameter, or make write_ask drop a token carrying a glob metacharacter",
-        "shared files: asf/kernel/ports.py also held by B-208438 \u2014 additive edits only, never a rewrite"
+        "asf/kernel/resolvers.py:681 \u2014 write_grant_by_rule matches with fnmatch.fnmatchcase while PATH_TOKEN_RE admits `*`, so an asked glob escapes the \"no other live item holds it\" clause: measured, `tests/kernel/test_*.py` is granted and the card widened while T-0002 (Building) holds tests/kernel/test_shared.py inside it. Pass the caller's _overlap through C3's covers parameter, or make write_ask drop a token carrying a glob metacharacter"
       ],
       "kernel_fix_rounds": 2,
       "kernel_notes": [
@@ -94543,7 +94545,8 @@
         "round not charged: a rebase round: PR #1723 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94556,7 +94559,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T20:02:19Z",
+      "updated": "2026-10-13T20:05:19Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94863,7 +94866,8 @@
       ],
       "id": "T-210355",
       "kernel_closed_findings": {
-        "913b5280": "{'head': '8a8004c8c5f7a9f7d27dadb56e817f2fe36a5bec', 'line': 'tools/check_clock.py:43'}"
+        "913b5280": "{'head': \"{'head': '8a8004c8c5f7a9f7d27dadb56e817f2fe36a5bec', 'line': 'tools/check_clock.py:43'}\", 'line': ''}",
+        "ff4786d6": "{'head': 'f131d782d4d57bd57b617cc46815fa12f565be87', 'line': 'asf/clock.py:55'}"
       },
       "kernel_findings": [
         "asf/clock.py:55-70 \u2014 iso/today/stamp stamp a given instant without normalizing it to UTC, so a non-UTC-aware instant is written with a literal Z carrying its local fields (clock.iso(2026-03-14T15:09:26+09:00) -> \"2026-03-14T15:09:26Z\", should be \"2026-03-14T06:09:26Z\"; clock.today is off by a whole day at an offset) and clock.stamp reads a naive instant as local time. Add a _utc(instant) helper beside _at \u2014 astimezone(datetime.timezone.utc), with a naive instant taken as UTC via replace(tzinfo=...) \u2014 and have iso, today and stamp's given-instant branch go through it; leave now() on _at as Step 3 asks. This is the house pattern the replaced code already had (asf/metrics/metrics.py:89,102; asf/scorecard/facts.py:72,76). Add two cases beside tests/test_clock.py:77: iso/today/stamp of an instant at a non-UTC offset equal the same instant's UTC stamp, and of a naive instant are read as UTC.",
@@ -94883,7 +94887,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T19:52:47Z",
+      "updated": "2026-10-13T20:05:19Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
