@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T22:24:44Z",
+  "generated": "2026-10-13T22:28:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18786,7 +18786,7 @@
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18796,7 +18796,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-13T22:00:35Z",
+      "updated": "2026-10-13T22:28:06Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -94830,11 +94830,11 @@
       "id": "T-208099",
       "kernel_answers": [
         "granted tests/kernel/test_question_resolvers.py tests/kernel/test_questions.py; nothing else outside writes (card updated by the kernel). T-208098 also writes tests/kernel/test_question_resolvers.py (Review): the overlap rule serialises them.",
-        "Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else."
+        "Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else.",
+        "Round granted for the conflict only: PR 1723 conflicts with main after other merges (asf/kernel/resolvers.py and its tests are the likely files). Merge origin/main into the branch, resolve keeping both sides' behaviour, rerun the touched test modules, push. Make no other change; the review findings are already answered."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Round granted for the one remaining finding, which gives the exact fix: in asf/kernel/resolvers.py write_grant_refused, when trunk_files is None append a new UNREAD_TRUNK_CLAUSE (the file could not be checked because the trunk is unread) instead of falling to the bare refused fallback; keep the on-trunk and owner branches as they are; add the case to ConsoleReasonNamesTheClause in tests/kernel/test_question_write_grant.py. Change nothing else.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "relaunch: operator answer: Round granted for the conflict only: PR 1723 conflicts with main after other merges (asf/kernel/resolvers.py and its tests are the likely files). Merge origin/main into the branch, resolve keeping both sides' behaviour, rerun the touched test modules, push. Make no other change; the review findings are already answered."
       ],
       "kernel_closed_findings": {
         "146fa521": "{'head': '{\\'head\\': \"{\\'head\\': \\'c31003babc20e7accf250898c18136afe8eb4fe5\\', \\'line\\': \\'asf/kernel/resolvers.py:606\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
@@ -94844,7 +94844,7 @@
         "3bfac4bc": "{'head': '{\\'head\\': \"{\\'head\\': \\'c31003babc20e7accf250898c18136afe8eb4fe5\\', \\'line\\': \\'asf/kernel/decide.py:1341\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
         "4709f0f2": "{'head': '{\\'head\\': \"{\\'head\\': \\'c31003babc20e7accf250898c18136afe8eb4fe5\\', \\'line\\': \\'asf/kernel/questions.py:191\\'}\", \\'line\\': \\'\\'}', 'line': ''}"
       },
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/kernel/resolvers.py:744 \u2014 the bare `'%s is refused'` fallback is reachable: the rule is all-or-nothing, so a multi-path ask refuses paths the rule itself admits and names them no clause (plan step 6), and tests/kernel/test_question_write_grant.py:292 asserts it unreachable with single-path cases only. Add `ALL_OR_NOTHING_CLAUSE = ('%s is granted by no rule on its own: the grant is all-or-nothing and another asked path was refused')` beside UNREAD_TRUNK_CLAUSE (resolvers.py:654) and make the last clause `clauses.append(WRITTEN_BY_CLAUSE % (p, owner) if owner else ALL_OR_NOTHING_CLAUSE % p)`; then add the two-path case (second path on the trunk) to `cases` in test_question_write_grant.py:292 and a case in ConsoleReasonNamesTheClause asserting both clauses are named.",
         "asf/kernel/resolvers.py:736 \u2014 when `trunk_files is None` (the trunk is unread, `ports.py:853-863`) `write_grant_refused` falls past the `trunk_files is not None` guard at `:730` to the bare `'%s is refused'` fallback, so the park names no clause \u2014 against spec \u00a72.4 and plan step 6. Add `UNREAD_TRUNK_CLAUSE = ('%s could not be checked: the trunk is unread, so the kernel cannot tell whether this file is already on it')` beside the four clauses at `:648-651`, and in `write_grant_refused` replace `:730-736` with `elif trunk_files is None: clauses.append(UNREAD_TRUNK_CLAUSE % p)` / `elif p in trunk_files: clauses.append(ON_TRUNK_CLAUSE % p)` / `else: <the existing owner lookup>`; add the case to `ConsoleReasonNamesTheClause` (tests/kernel/test_question_write_grant.py:254) so the bare fallback stays unreachable.",
@@ -94859,11 +94859,7 @@
         "build-t-208099-1791921910: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208099-1791921910 'asf/build-t-208099-1791921910@20261013T200519Z' >/dev/null 2>&1 &`, both a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "conflict: PR #1723 after 4 fix rounds",
-      "kernel_stuck_since": "2026-10-13T22:14:00Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94876,7 +94872,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T22:15:00Z",
+      "updated": "2026-10-13T22:28:06Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -95498,7 +95494,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-13T22:09:12Z",
+      "updated": "2026-10-13T22:28:06Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
