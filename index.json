@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:09:49Z",
+  "generated": "2026-10-13T09:12:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -37248,11 +37248,14 @@
       "decided": false,
       "folder": "features",
       "id": "F-0362",
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/specs/f-0362.md:423 \u2014 widen the replay's claimed-class set in \u00a72.9 to include `pushed` (e.g. `CODED | {PUSHED}` plus the four new classes), so a `pushed`-shaped question can register as claimed and the acceptance line at \u00a72.9/S-205275 (\"claims at least one question under each of the six classes this Feature codes\") is satisfiable for kind 1."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0362-1791880334: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" and (.at // \"\") < \"2026-10-\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37262,7 +37265,7 @@
       "state": "New",
       "title": "Session questions are answered by code, not by the console (replaces F-0359)",
       "type": "feature",
-      "updated": "2026-10-13T09:01:07Z"
+      "updated": "2026-10-13T09:12:41Z"
     },
     "R-0001": {
       "backlinks": [
