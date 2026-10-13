@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T01:22:45Z",
+  "generated": "2026-10-13T01:30:12Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18070,7 +18070,7 @@
         "PR #1683: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1683: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0348",
       "schema_version": 2,
       "severity": "S3",
@@ -18079,7 +18079,7 @@
       "state": "New",
       "title": "Approved stacked PR sits in LIMBO: its base is the predecessor branch, not the trunk",
       "type": "bug",
-      "updated": "2026-10-13T01:13:01Z",
+      "updated": "2026-10-13T01:30:09Z",
       "writes": [
         "asf/kernel/waits.py",
         "tests/kernel/test_waits.py",
@@ -91359,7 +91359,12 @@
       "folder": "tasks",
       "id": "T-160210",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/kernel/decide.py:1121 \u2014 `pred_id = next(iter(it.after), '')` reads the first `after:` id, not the item that owns `base`; with more than one `after:` edge the parked check (:1122) and the `pred_item.reverted` check (:1128-1130) decide on the wrong card \u2014 a reverted base is retargeted onto the trunk, and an unrelated parked edge archives a healthy stack while also skipping the \"still building\" guard at :1123-1124. Replace with `pred_id = next((i for i in it.after if i in facts.items and base == _branch('build', i, config, facts.items[i])), '')`.",
+        "asf/kernel/decide.py:1127-1130 \u2014 `base_merged = next(...)` keeps one merged PR on the base branch and revert-tests only that number, where `landed` (decide.py:1080-1083), which the plan's Step 3 names and the docstring cites at :1103, asks `any()` over all of them; a base that merged, was reverted and merged again cleanly reads as not Done and its healthy stacked PR is closed and archived. Replace with `base_prs = [p for p in facts.prs if p.branch == base and p.merged]` / `reverted = pred_item.reverted if pred_item is not None else ()` / `done = any(p.number not in reverted for p in base_prs)`.",
+        "asf/kernel/decide.py:1131 \u2014 the unconditional `actions.append(A.NoteStack(iid, '', ''))` clears the recorded fork point on the arm where the predecessor is Done and the item has no own PR yet, so a still-building item loses the only record the replay reads (decide.py:2142,2166 -> spawn.py:980) and its next launch rebases plainly past a squash-landed predecessor (D4) \u2014 contradicting this change's own contract at actions.py:24-29. Add `if done and own_pr is None: continue` above :1131; test_2 and test_3 both have an own PR and are unaffected."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1677: install-clean-macos is red but not a required check \u2014 ignored",
         "PR #1677: part (3.13, 4) is red but not a required check \u2014 ignored",
@@ -91367,7 +91372,7 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-160208@fb2c88353c4799dd472eb5f311e8dbd2fafc1b72",
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91380,7 +91385,7 @@
       ],
       "title": "the unstack \u2014 retargeted to the trunk, replayed onto it, torn down when the base is rebuilt",
       "type": "task",
-      "updated": "2026-10-13T01:13:01Z",
+      "updated": "2026-10-13T01:30:09Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
