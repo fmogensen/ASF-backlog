@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T08:35:56Z",
+  "generated": "2026-10-13T08:39:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18117,7 +18117,8 @@
         "granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932)."
+        "relaunch: operator answer: granted tests/test_tick_steps.py. One more strong-model round: close findings 1, 5 (revert only on a confirmation that was actually fetched; an open PR proves independence only when its base predates the candidate), then 3 and 4 (the clock lint catches every binding of today(), utcnow(, time.time(), .now()), each with a test red on base and green on head. Report needs writes: tests/test_tick_steps.py. Additive edits only in mainline.py (shared with B-200932).",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
@@ -18148,7 +18149,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T08:35:52Z",
+      "updated": "2026-10-13T08:39:25Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18213,7 +18214,7 @@
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18222,7 +18223,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T08:21:21Z",
+      "updated": "2026-10-13T08:39:25Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -91164,10 +91165,14 @@
         "granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else."
+        "relaunch: operator answer: granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 3,
       "kernel_findings": [
+        "asf/schema.py:338 \u2014 the first non-additive *record* step lands with no snapshot: `snapshot(product, version)` (`:741-761`) is only ever called as `snapshot(None, v)` from `migrate_config` (`:661`), so `asf schema-migrate` across schema 3 never writes the `asf-schema-2` tag `restore()` guards on (`:796`) and `docs/specs/f-0114.md:447,529` declare \u2014 a downgrade past schema 3 silently leaves a JSON record a pre-3 package cannot read. In `migrate_product` before `migrate_dir` (`:728-729`) add `for _a, b, m in pending(product)['record']: if m is not None and not m.additive: snapshot(product, b); break`, plus a case in `tests/test_schema_version.py` asserting `refs/tags/asf-schema-2` lands at the clone's pre-migration commit and that an all-additive walk writes no tag.",
+        "tests/test_card_migration.py:243 \u2014 the converted sample is not pinned byte for byte as `docs/plans/f-0340.md:721-723` requires: add a case to `SampleRecordShipsConvertedTests` that copies `sample/backlog` to a tmpdir, runs `asf.record.index.do_index` on it and asserts every file but `index.json` is byte-identical (it passes today \u2014 verified by hand).",
+        "asf/cli.py:991 \u2014 `asf/cli.py` and `tests/test_surface.py` are outside the card's footprint while the report says `needs writes: none`; both changes are correct, so declare `needs writes: asf/cli.py tests/test_surface.py` in the next report so the kernel grants them (or take the smaller footprint the report already measured: `schema.require(..., clearing=True)` called by `schema-migrate` itself, which touches neither file).",
         "asf/schema.py:250 \u2014 the unconditional `new_meta['gate'] = gate` destroys the typed gate a schema-1 card carries in frontmatter (asf/record/ids.py:200-201, fed by plan_tasks.py:536); have _lift_sections return None for an absent `## Gate` section and overwrite only when it is not None, add new_meta['gate'] to the round-trip comparison at :294-299 (which is blind to the loss today), and add a tests/test_card_migration.py case whose fixture carries `gate:` in frontmatter and no `## Gate` section",
         "tools/upgrade_matrix.py \u2014 10 upgrade-matrix legs are red on this head and the file is inside this card's writes: (granted, high-risk), not outside it as the build report states; before asserting the new `asf tick` exits 0, run `asf schema-migrate --drain --product sample` when the installed record's stamp is below the package's and the pending span crosses a non-additive entry, and treat the tick's exit 3 carrying `NEEDS OPERATOR: run asf schema-migrate` as the expected handoff across that boundary rather than a leg failure",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 2) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 2) did not finish green\n##[error]Process completed with exit code 1.",
@@ -91178,9 +91183,10 @@
         "operator answer: Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files.",
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "operator answer: One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
-        "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself."
+        "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
+        "operator answer: granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else."
       ],
-      "kernel_fix_rounds": 5,
+      "kernel_fix_rounds": 6,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -91236,7 +91242,7 @@
         "PR #1684: upgrade-matrix (v0.3.0) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91249,7 +91255,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T08:35:52Z",
+      "updated": "2026-10-13T08:39:25Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
