@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T18:56:37Z",
+  "generated": "2026-10-13T19:01:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18339,7 +18339,8 @@
         "Round granted: the last review finding is new and real. asf/record/ingest.py:734 _exclude_pr_ids compares int PR numbers against ev['merged'] keys that are strings after evidence.load()'s JSON cache round-trip, so the exclusion is lost on a cache hit. Normalise the key type on both sides and add a test that puts ev through json.loads(json.dumps(...)). Also cover the reviewer's second check: closing.state_of on a feature with a typed landed sha must not fall back to New after the scrub. Fix these two only; no other changes."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Round granted: the last review finding is new and real. asf/record/ingest.py:734 _exclude_pr_ids compares int PR numbers against ev['merged'] keys that are strings after evidence.load()'s JSON cache round-trip, so the exclusion is lost on a cache hit. Normalise the key type on both sides and add a test that puts ev through json.loads(json.dumps(...)). Also cover the reviewer's second check: closing.state_of on a feature with a typed landed sha must not fall back to New after the scrub. Fix these two only; no other changes."
+        "relaunch: operator answer: Round granted: the last review finding is new and real. asf/record/ingest.py:734 _exclude_pr_ids compares int PR numbers against ev['merged'] keys that are strings after evidence.load()'s JSON cache round-trip, so the exclusion is lost on a cache hit. Normalise the key type on both sides and add a test that puts ev through json.loads(json.dumps(...)). Also cover the reviewer's second check: closing.state_of on a feature with a typed landed sha must not fall back to New after the scrub. Fix these two only; no other changes.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
         "293a48d9": "{'head': '65ad2825e9b9ec1796a4e7e840f80241668e118f', 'line': 'asf/record/undeliver.py:58'}",
@@ -18351,18 +18352,20 @@
       "kernel_dor_fills_ver": "0.3.0",
       "kernel_extra_rounds": 1,
       "kernel_findings": [
+        "asf/record/ingest.py:1343-1349 \u2014 the Feature scrub forces `green=False` on the id's whole evidence, which also voids the type-independent `reconciled` rule (`asf/evidence/closing.py:114`) for a Feature carrying an operator-typed `landed:` sha, because `merge_landed` fills `commit`/`green` only when the slot is free (`asf/evidence/evidence.py:1437`); after nulling the commit, re-fold the typed sha through `evidence.merge_landed` so the freed slot carries the operator's own sha and its own green, and add a `tests/test_evidence.py::IngestIdEvidenceTests` case where a childless Feature with a typed on-trunk `landed:` plus a merged `fix/<id>-\u2026` PR still reads Closed",
         "asf/record/ingest.py:734 \u2014 `_exclude_pr_ids`'s sha arm compares int PR numbers against `ev['merged']` keys that come back from `evidence.load()`'s JSON cache as strings, so an operator's `asf undeliver --pr` silently stops excluding a PR whenever the cache is warm; coerce them at :727 (`sha_of = {int(n): s for n, s in (ev.get('merged') or {}).items() if str(n).isdigit()}`) and add a `tests/test_feature_delivery.py::UndeliveredTests` case that JSON round-trips `ev` before the second ingest",
-        "asf/record/ingest.py:1343-1349 \u2014 the Feature scrub forces `green=False` on the id's whole evidence, which also voids the type-independent `reconciled` rule (`asf/evidence/closing.py:114`) for a Feature carrying an operator-typed `landed:` sha, because `merge_landed` fills `commit`/`green` only when the slot is free (`asf/evidence/evidence.py:1437`); after nulling the commit, re-fold the typed sha through `evidence.merge_landed` so the freed slot carries the operator's own sha and its own green, and add a `tests/test_evidence.py::IngestIdEvidenceTests` case where a childless Feature with a typed on-trunk `landed:` plus a merged `fix/<id>-\u2026` PR still reads Closed"
+        "operator answer: Round granted: the last review finding is new and real. asf/record/ingest.py:734 _exclude_pr_ids compares int PR numbers against ev['merged'] keys that are strings after evidence.load()'s JSON cache round-trip, so the exclusion is lost on a cache hit. Normalise the key type on both sides and add a test that puts ev through json.loads(json.dumps(...)). Also cover the reviewer's second check: closing.state_of on a feature with a typed landed sha must not fall back to New after the scrub. Fix these two only; no other changes."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
-        "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
+        "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command.",
+        "RERAISED e41445c4"
       ],
       "kernel_rebuilds": 1,
       "kernel_ruled_findings": [
         "e41445c4"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18372,7 +18375,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T18:56:35Z",
+      "updated": "2026-10-13T19:01:09Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -18539,8 +18542,10 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_notes": [
-        "groom-fill-b-211241-1791917348: groom-fill raised risk high: three concrete, already-verified defects in the proof gate itself, just missing the test names and writes the DoR requires"
+        "groom-fill-b-211241-1791917348: groom-fill raised risk high: three concrete, already-verified defects in the proof gate itself, just missing the test names and writes the DoR requires",
+        "satisfied on main at 5da9cade5: tests.kernel.test_review_proof.NeededIds, tests.kernel.test_review_proof.ProbeReads, tests.kernel.test_review_proof.DecideProof"
       ],
+      "kernel_state": "done",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18550,7 +18555,7 @@
       "state": "New",
       "title": "Settle which ids a proof may judge before the proof gate can be turned on",
       "type": "bug",
-      "updated": "2026-10-13T18:56:35Z",
+      "updated": "2026-10-13T19:01:09Z",
       "writes": [
         "asf/kernel/proof.py",
         "asf/kernel/proof_probe.py",
@@ -18565,6 +18570,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-211642",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.11",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -18573,7 +18580,7 @@
       "state": "New",
       "title": "A review finding's writes request reads cited words as paths, and a granted route loses the finding",
       "type": "bug",
-      "updated": "2026-10-13T18:05:04Z"
+      "updated": "2026-10-13T19:01:09Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -94398,7 +94405,7 @@
         "PR #1723: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94411,7 +94418,7 @@
       ],
       "title": "a write asked in prose, granted by rule for a test this item adds, else routed",
       "type": "task",
-      "updated": "2026-10-13T18:40:56Z",
+      "updated": "2026-10-13T19:01:09Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94581,7 +94588,7 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94594,7 +94601,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T18:56:35Z",
+      "updated": "2026-10-13T19:01:09Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
