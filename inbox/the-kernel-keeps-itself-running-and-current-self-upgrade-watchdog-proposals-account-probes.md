@@ -1,0 +1,15 @@
+# The kernel keeps itself running and current: self-upgrade, watchdog, proposals, account probes
+parent: E-0007
+
+Type: Feature
+Priority: need
+
+## Description
+The kernel keeps itself running and current without a person. On 2026-10-12/13 the console installed every kernel build by hand (four times), found both kernel jobs unloaded with no alarm, could not let a Task change a protected brief template, and re-enabled accounts by hand. Extends F-0356.
+
+## Acceptance
+- [ ] Self-upgrade: when the trunk is green and the shadow plan of the new build stays within the install guard, the kernel installs it and moves the worker pin in the same step; a refused switch files one Bug with the shadow diff and keeps running the old build. A setting pins a product to a version.
+- [ ] A watchdog outside the two kernel jobs notices within 10 minutes when either is unloaded or the tick has not finished within a configurable limit, reloads it, and records the outage with its cause where one can be read.
+- [ ] Protected files (the amendable set) have a proposal path: a session writes a proposal, a kernel-run review judges it against a rule, and an approved proposal lands through the normal lane. No approval prompt to a person.
+- [ ] An account that fails sign-in is taken out, retried on a schedule, and returned when a probe session succeeds; a new account added to the pool file is probed in an isolated home before it gets work, and the result names what is missing.
+- [ ] Over a 24-hour window the console performs no install, no enable and no reload.
