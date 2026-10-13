@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T10:56:06Z",
+  "generated": "2026-10-13T10:59:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -91398,10 +91398,13 @@
         "One more round, the two findings of the latest review as worded: schema.py:383 (a card the gate refuses raises CardMigrationError naming the card, field and why, not a traceback) and schema.py:810-813 (drive the snapshot off the clone's own stamp, so a clone already at SCHEMA_VERSION snapshots nothing and a second schema-migrate cannot move the tag). Each test must fail on base. Then make every check green on the head. Nothing else."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more round, the two findings of the latest review as worded: schema.py:383 (a card the gate refuses raises CardMigrationError naming the card, field and why, not a traceback) and schema.py:810-813 (drive the snapshot off the clone's own stamp, so a clone already at SCHEMA_VERSION snapshots nothing and a second schema-migrate cannot move the tag). Each test must fail on base. Then make every check green on the head. Nothing else."
+        "relaunch: operator answer: One more round, the two findings of the latest review as worded: schema.py:383 (a card the gate refuses raises CardMigrationError naming the card, field and why, not a traceback) and schema.py:810-813 (drive the snapshot off the clone's own stamp, so a clone already at SCHEMA_VERSION snapshots nothing and a second schema-migrate cannot move the tag). Each test must fail on base. Then make every check green on the head. Nothing else.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 5,
       "kernel_findings": [
+        "asf/schema.py:383 \u2014 wrap the gate write in `try: writer.write_card(json_path, card.dumps(new_meta)) except writer.CardInvalid as e: raise CardMigrationError(relpath, 'card', '; '.join(f'{p}: {m}' for p, m in e.errors)) from e`, so a card the gate refuses (an unresolvable reference above all) stops the migration with the card, field and why instead of an uncaught traceback out of `record-repair --to-schema 2 --apply` and `schema-migrate`; add the unresolvable-`blockedBy` case to `RoundTripSafetyTests` (tests/test_card_migration.py:185)",
+        "asf/schema.py:810-813 \u2014 drive the snapshot off the clone's own stamp, not `pending()`'s lowest-across-roots: `from_v = record_version(clone) or 0` then `for v in range(from_v + 1, SCHEMA_VERSION + 1): m = MIGRATIONS.get(v); if m is None or not m.additive: snapshot(product, v); break`, so a clone already at `SCHEMA_VERSION` snapshots nothing and a second `asf schema-migrate` cannot force `refs/tags/asf-schema-2` off the pre-migration commit; add the case to tests/test_schema_version.py:298 (a second `migrate_product` leaves the tag where it was and writes no second backup)",
         "asf/schema.py:250 \u2014 when there is no `## Gate` section and no typed `gate:`, fall back to `dor.gate_lines(body)` (Step 2's own named reader) so the body `**Gate**` fence 97 open Tasks carry is lifted into `gate` instead of landing in `prose`; strip the lifted fence from that prose section, and add the case to tests/test_card_migration.py beside :80",
         "asf/schema.py:181 \u2014 accept any opening fence and any lead prose before it (find the first line whose strip starts with ```, require the last to as well, return the lines between) so a ```bash gate does not hard-stop the whole record migration; and at asf/schema.py:141-146 fold an indented continuation line into the preceding bullet's text rather than raising",
         "asf/schema.py:294-304 \u2014 the round-trip compares the lift with itself, so a loss inside `_lift_sections` cancels; make the lift refuse what it cannot represent (raise `CardMigrationError(relpath, 'body', f'duplicate section heading: {label!r}')` on a repeated heading, tracked in a `seen` set added at :206 for every branch, and refuse an unbalanced fence), and add the test the comparison loop has never had \u2014 patch `card.render` to drop a prose key and assert `CardMigrationError.field == 'prose'`",
@@ -91420,9 +91423,10 @@
         "operator answer: One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "operator answer: granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else.",
-        "operator answer: One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base."
+        "operator answer: One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base.",
+        "operator answer: One more round, the two findings of the latest review as worded: schema.py:383 (a card the gate refuses raises CardMigrationError naming the card, field and why, not a traceback) and schema.py:810-813 (drive the snapshot off the clone's own stamp, so a clone already at SCHEMA_VERSION snapshots nothing and a second schema-migrate cannot move the tag). Each test must fail on base. Then make every check green on the head. Nothing else."
       ],
-      "kernel_fix_rounds": 7,
+      "kernel_fix_rounds": 8,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -91480,7 +91484,7 @@
         "PR #1684: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91493,7 +91497,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T10:56:04Z",
+      "updated": "2026-10-13T10:59:01Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
