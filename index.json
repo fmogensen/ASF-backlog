@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T01:30:12Z",
+  "generated": "2026-10-13T01:32:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18070,7 +18070,7 @@
         "PR #1683: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1683: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0348",
       "schema_version": 2,
       "severity": "S3",
@@ -18079,7 +18079,7 @@
       "state": "New",
       "title": "Approved stacked PR sits in LIMBO: its base is the predecessor branch, not the trunk",
       "type": "bug",
-      "updated": "2026-10-13T01:30:09Z",
+      "updated": "2026-10-13T01:32:48Z",
       "writes": [
         "asf/kernel/waits.py",
         "tests/kernel/test_waits.py",
@@ -18149,6 +18149,9 @@
       "id": "B-200932",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_notes": [
+        "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building."
+      ],
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18157,7 +18160,16 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T01:22:40Z"
+      "updated": "2026-10-13T01:32:48Z",
+      "writes": [
+        "asf/kernel/ports.py",
+        "asf/kernel/apply.py",
+        "asf/kernel/mainline.py",
+        "asf/kernel/needed.py",
+        "asf/kernel/model.py",
+        "tests/kernel/test_main_landing.py",
+        "tests/kernel/test_still_needed.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
