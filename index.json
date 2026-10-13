@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T05:22:59Z",
+  "generated": "2026-10-13T05:26:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18205,6 +18205,7 @@
       "kernel_notes": [
         "groom-fill-b-202833-1791867443: groom-fill verdict rejected: no GROOM-FILL block"
       ],
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18213,7 +18214,7 @@
       "state": "New",
       "title": "asf set milestone=0.4 is refused: a version-shaped milestone is read as a number",
       "type": "bug",
-      "updated": "2026-10-13T05:14:50Z",
+      "updated": "2026-10-13T05:26:38Z",
       "writes": [
         "asf/record/new.py",
         "tests/test_work_item_model.py"
@@ -90751,14 +90752,13 @@
         "granted tests/test_card_body_fields.py; nothing else outside writes (card updated by the kernel).",
         "granted tools/upgrade_matrix.py; nothing else outside writes (card updated by the kernel). tools/upgrade_matrix.py matches kernel.risk.high: this item is high-risk now.",
         "The branch predates PR #1682 (main 5c2953d5e), which fixed the trunk-wide tests.test_ci_census clock bug that made every PR's tests red. Rebase worker/T-154346 onto origin/main, no merge commit, change nothing else, push, and let CI rerun. Only if a test other than test_ci_census is still red afterwards is there anything to fix.",
-        "Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files."
+        "Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files.",
+        "One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Console ran the three Gate commands read-only on bd48bda8f: tools/check_card_gate.sh rc 0 (ok), tools/check_card_readers.sh rc 0 (ok), python3 -m asf.redact --tree rc 0 (clean). Treat them as evidenced on that head; rerun is not needed unless the rebase changes those files.",
-        "escalated: one more fix round on the strong model, with every finding",
-        "session ran past its max age"
+        "relaunch: operator answer: One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head."
       ],
-      "kernel_extra_rounds": 1,
+      "kernel_extra_rounds": 2,
       "kernel_findings": [
         "asf/schema.py:250 \u2014 the unconditional `new_meta['gate'] = gate` destroys the typed gate a schema-1 card carries in frontmatter (asf/record/ids.py:200-201, fed by plan_tasks.py:536); have _lift_sections return None for an absent `## Gate` section and overwrite only when it is not None, add new_meta['gate'] to the round-trip comparison at :294-299 (which is blind to the loss today), and add a tests/test_card_migration.py case whose fixture carries `gate:` in frontmatter and no `## Gate` section",
         "tools/upgrade_matrix.py \u2014 10 upgrade-matrix legs are red on this head and the file is inside this card's writes: (granted, high-risk), not outside it as the build report states; before asserting the new `asf tick` exits 0, run `asf schema-migrate --drain --product sample` when the installed record's stamp is below the package's and the pending span crosses a non-additive entry, and treat the tick's exit 3 carrying `NEEDS OPERATOR: run asf schema-migrate` as the expected handoff across that boundary rather than a leg failure",
@@ -90824,11 +90824,7 @@
       ],
       "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-154341@4cc4bba40f7e52d0d17e828e8d56f9581d9dff27",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 4 fix rounds",
-      "kernel_stuck_since": "2026-10-13T05:22:54Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -90841,7 +90837,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T05:22:55Z",
+      "updated": "2026-10-13T05:26:38Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
