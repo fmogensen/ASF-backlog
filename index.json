@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T22:44:34Z",
+  "generated": "2026-10-13T22:47:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18627,6 +18627,7 @@
     },
     "B-211642": {
       "backlinks": [
+        "T-210360",
         "B-214946"
       ],
       "children": [],
@@ -18745,6 +18746,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-213995",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_closed_findings": {
         "679eb98c": "{'head': '94f7658a3149a12d60c402fbb3e931a35813fddb', 'line': 'asf/kernel/mainline.py:670'}",
         "efc911c4": "{'head': '94f7658a3149a12d60c402fbb3e931a35813fddb', 'line': 'asf/kernel/blame.py:1'}",
@@ -18759,7 +18763,7 @@
         "asf/kernel/blame.py:1 \u2014 the diff changes asf/kernel/blame.py and tests/kernel/test_blame_before_revert.py, both outside the card's writes:, and both reports declare `needs writes: none`. The changes themselves are right (asf/kernel/blame.py:148 mirrors the probe runner's retry budget at asf/kernel/trunk.py:181-183 and 380). Declare them: `needs writes: asf/kernel/blame.py tests/kernel/test_blame_before_revert.py`."
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "F-0357",
       "schema_version": 3,
       "severity": "S3",
@@ -18768,7 +18772,7 @@
       "state": "New",
       "title": "A revert PR held for want of a guilty blame read is never closed",
       "type": "bug",
-      "updated": "2026-10-13T22:44:33Z",
+      "updated": "2026-10-13T22:47:48Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_main_landing.py"
@@ -95497,7 +95501,14 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them."
       ],
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/kernel/incidents.py:48 \u2014 plan Task 6 step 8's `blame` incident kind is not implemented while the REPORT says `needs writes: none`. incidents.py is on this Task's writes: line, so the step was in footprint; what blocks it is tests/kernel/test_incidents.py:108 and :221, whose exact kind-list assertions a third kind turns red on the scenario that reads blame (tests/kernel/test_incidents.py:62 calls B.blamed with main_red_revert=True, :32). Fix: add `BLAME = 'blame'` beside MAIN_RED (incidents.py:39-45), BLAME in KINDS (:48), a `(kind, spell, class)` leg in _key (:56-72) and a _blame_record fed from plan.main['blame'] (mainline.py:295-297) joined in gather (:147-158) \u2014 and report `needs writes: tests/kernel/test_incidents.py`; or report that `needs writes:` alone and let the next round land the step. A `left out:` line is not a substitute for `needs writes:` when only a file outside the footprint stands in the way.",
+        "asf/kernel/decide.py:1159 \u2014 the spell's-own-Bug exemption matches the exact bug_key, where mainline decides the same question by prefix (open_bug, mainline.py:180-187) and reads the abandon marker from body or notes (revert_abandoned, :203-212). Any Bug the kernel is itself answering the spell with, but whose body lacks this exact key \u2014 a spell live across this landing, whose Bug is keyed the old way on the moving head (`main-red: c1..c3` where the marker is now `main-red: c1..c2`), still found by open_bug's prefix so no second Bug is filed \u2014 is not exempt, and the hold holds its own cure (D7, the stall this Story exists to stop). Fix: replace decide.py:1150's `marker = mainline.bug_key(candidates[-1], green)` with `head = '%s%s..' % (mainline.BUG_MARKER, green or 'none')` and decide.py:1159's test with `if it.type == 'bug' and (head in (it.body or '') or any(head in n for n in (it.notes or ()))):`; `candidates` is then unused, so unpack `_red, _cands, green = spell`. Add one case for a Bug carrying the spell's prefix with a different red half.",
+        "operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them.",
+        "shared files: asf/kernel/decide.py also held by B-211642 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95510,7 +95521,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-13T22:28:06Z",
+      "updated": "2026-10-13T22:47:48Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
