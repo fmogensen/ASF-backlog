@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T09:38:25Z",
+  "generated": "2026-10-13T09:41:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18120,7 +18120,8 @@
         "granted asf/kernel/ports.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the four findings of the latest review as worded: mainline.py:462 (surface the kernel's own revert PR as a fact), mainline.py:243 (independence needs a base that predates the candidate, not 'not behind'), apply.py:490 (write P.REVERTED only with auto_merge), metrics.py:105 (the clock lint sees every today() binding). Each test must fail on base."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: granted asf/kernel/ports.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the four findings of the latest review as worded: mainline.py:462 (surface the kernel's own revert PR as a fact), mainline.py:243 (independence needs a base that predates the candidate, not 'not behind'), apply.py:490 (write P.REVERTED only with auto_merge), metrics.py:105 (the clock lint sees every today() binding). Each test must fail on base."
+        "relaunch: operator answer: granted asf/kernel/ports.py asf/kernel/apply.py asf/kernel/model.py. One more strong-model round, the four findings of the latest review as worded: mainline.py:462 (surface the kernel's own revert PR as a fact), mainline.py:243 (independence needs a base that predates the candidate, not 'not behind'), apply.py:490 (write P.REVERTED only with auto_merge), metrics.py:105 (the clock lint sees every today() binding). Each test must fail on base.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.2.167",
@@ -18154,7 +18155,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T09:38:21Z",
+      "updated": "2026-10-13T09:41:40Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18309,7 +18310,7 @@
       "kernel_notes": [
         "groom-fill-b-205135-1791880372: groom-fill raised risk high: id_evidence/closing's feature-landed rule accepts any PR naming the id regardless of lane, with no way to un-attribute a false match \u2014 fix touches kernel done-derivation and the record's undeliver command."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 2,
@@ -18319,7 +18320,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T09:19:35Z",
+      "updated": "2026-10-13T09:41:40Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -91370,10 +91371,14 @@
         "One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base."
+        "relaunch: operator answer: One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 4,
       "kernel_findings": [
+        "asf/schema.py:250 \u2014 when there is no `## Gate` section and no typed `gate:`, fall back to `dor.gate_lines(body)` (Step 2's own named reader) so the body `**Gate**` fence 97 open Tasks carry is lifted into `gate` instead of landing in `prose`; strip the lifted fence from that prose section, and add the case to tests/test_card_migration.py beside :80",
+        "asf/schema.py:181 \u2014 accept any opening fence and any lead prose before it (find the first line whose strip starts with ```, require the last to as well, return the lines between) so a ```bash gate does not hard-stop the whole record migration; and at asf/schema.py:141-146 fold an indented continuation line into the preceding bullet's text rather than raising",
+        "asf/schema.py:294-304 \u2014 the round-trip compares the lift with itself, so a loss inside `_lift_sections` cancels; make the lift refuse what it cannot represent (raise `CardMigrationError(relpath, 'body', f'duplicate section heading: {label!r}')` on a repeated heading, tracked in a `seen` set added at :206 for every branch, and refuse an unbalanced fence), and add the test the comparison loop has never had \u2014 patch `card.render` to drop a prose key and assert `CardMigrationError.field == 'prose'`",
         "asf/schema.py:338 \u2014 the first non-additive *record* step lands with no snapshot: `snapshot(product, version)` (`:741-761`) is only ever called as `snapshot(None, v)` from `migrate_config` (`:661`), so `asf schema-migrate` across schema 3 never writes the `asf-schema-2` tag `restore()` guards on (`:796`) and `docs/specs/f-0114.md:447,529` declare \u2014 a downgrade past schema 3 silently leaves a JSON record a pre-3 package cannot read. In `migrate_product` before `migrate_dir` (`:728-729`) add `for _a, b, m in pending(product)['record']: if m is not None and not m.additive: snapshot(product, b); break`, plus a case in `tests/test_schema_version.py` asserting `refs/tags/asf-schema-2` lands at the clone's pre-migration commit and that an all-additive walk writes no tag.",
         "tests/test_card_migration.py:243 \u2014 the converted sample is not pinned byte for byte as `docs/plans/f-0340.md:721-723` requires: add a case to `SampleRecordShipsConvertedTests` that copies `sample/backlog` to a tmpdir, runs `asf.record.index.do_index` on it and asserts every file but `index.json` is byte-identical (it passes today \u2014 verified by hand).",
         "asf/cli.py:991 \u2014 `asf/cli.py` and `tests/test_surface.py` are outside the card's footprint while the report says `needs writes: none`; both changes are correct, so declare `needs writes: asf/cli.py tests/test_surface.py` in the next report so the kernel grants them (or take the smaller footprint the report already measured: `schema.require(..., clearing=True)` called by `schema-migrate` itself, which touches neither file).",
@@ -91388,9 +91393,10 @@
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "operator answer: One more round, in this order: (1) rebase onto origin/main, no merge commit; (2) schema.py:250 keep a typed frontmatter gate: _lift_sections returns None for an absent ## Gate, overwrite only when not None, and compare gate in the round-trip check; (3) tools/upgrade_matrix.py is in your writes: run schema-migrate --drain before asserting the new tick exits 0, until all legs are green; (4) fix whatever is still red in tests part 2. Tests red on base, green on head.",
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
-        "operator answer: granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else."
+        "operator answer: granted asf/cli.py tests/test_surface.py tests/test_schema_version.py. One more round, three things: (1) schema.py migrate_product: snapshot(product, b) before the first non-additive record step, with the test that refs/tags/asf-schema-2 lands at the pre-migration commit and an all-additive walk writes no tag; (2) add the byte-for-byte sample pin to SampleRecordShipsConvertedTests; (3) report needs writes: asf/cli.py tests/test_surface.py. Nothing else.",
+        "operator answer: One more strong-model round, the three findings of the latest review as worded: schema.py:250 (lift a body **Gate** fence via dor.gate_lines when there is no section and no typed gate; strip it from prose), schema.py:181 and :141-146 (accept any opening fence and lead prose; fold an indented continuation), schema.py:294-304 (the lift refuses what it cannot represent: duplicate heading, unbalanced fence; add the missing round-trip test). Each test must fail on base."
       ],
-      "kernel_fix_rounds": 6,
+      "kernel_fix_rounds": 7,
       "kernel_notes": [
         "PR #1667: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1667: checks (3.13) is red but not a required check \u2014 ignored",
@@ -91446,7 +91452,7 @@
         "PR #1684: upgrade-matrix (v0.3.0) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -91459,7 +91465,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T09:38:21Z",
+      "updated": "2026-10-13T09:41:40Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
