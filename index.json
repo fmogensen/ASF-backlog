@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T19:21:44Z",
+  "generated": "2026-10-13T19:24:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18375,7 +18375,7 @@
       "state": "New",
       "title": "A Feature reads Done when any merged PR names its id, with no spec or children",
       "type": "bug",
-      "updated": "2026-10-13T19:12:08Z",
+      "updated": "2026-10-13T19:24:34Z",
       "writes": [
         "asf/evidence/evidence.py",
         "asf/record/ingest.py",
@@ -93583,6 +93583,7 @@
       ],
       "backlinks": [
         "T-166582",
+        "T-210363",
         "B-200179",
         "B-200380",
         "B-200581",
@@ -94635,11 +94636,12 @@
       ],
       "kernel_fix_rounds": 0,
       "kernel_notes": [
-        "round not charged: a rebase round: PR #1727 conflicts with its base"
+        "round not charged: a rebase round: PR #1727 conflicts with its base",
+        "build-t-208102-1791918911: NEEDS OPERATOR: heartbeat command refused to start by the sandbox; continued per instructions since a beat that cannot start never ends the session \u2014 `sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208102-1791918911\u2026"
       ],
       "kernel_rebuilds": 1,
       "kernel_round_charged": false,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94652,7 +94654,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T19:15:48Z",
+      "updated": "2026-10-13T19:24:34Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94898,6 +94900,9 @@
         "asf redact --unpublished"
       ],
       "id": "T-210357",
+      "kernel_attempts": [
+        "launch: launch: branch fix/T-210357-blame-before-revert checked out in an external worktree /private/tmp/claude-501/wt-blame; waits until it's released"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
@@ -94911,7 +94916,7 @@
       ],
       "title": "blame before any revert \u2014 the failing test run on the parent's tree, now",
       "type": "task",
-      "updated": "2026-10-13T19:15:48Z",
+      "updated": "2026-10-13T19:24:34Z",
       "writes": [
         "asf/kernel/blame.py",
         "asf/kernel/trunk.py",
@@ -95154,6 +95159,10 @@
       ],
       "backlinks": [],
       "children": [],
+      "creates": [
+        "tests/fixtures/red-trunk/2026-10-13.json",
+        "tests/kernel/test_red_trunk_replay.py"
+      ],
       "decided": true,
       "folder": "tasks",
       "gate": [
