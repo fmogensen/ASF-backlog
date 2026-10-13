@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T11:57:00Z",
+  "generated": "2026-10-13T12:00:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18367,6 +18367,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-205886",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.0",
       "parent": "F-0360",
       "priority": "need",
       "schema_version": 2,
@@ -18376,7 +18378,7 @@
       "state": "New",
       "title": "0.3.0 ends working cloud sessions for no first beat: the cloud sandbox cannot start the beat",
       "type": "bug",
-      "updated": "2026-10-13T09:06:52Z"
+      "updated": "2026-10-13T12:00:07Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -37099,7 +37101,17 @@
     },
     "F-0357": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-207168",
+        "S-207169",
+        "S-207170",
+        "S-207171",
+        "S-207172",
+        "S-207173",
+        "S-207174",
+        "S-207175",
+        "S-207176"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0357",
@@ -37113,7 +37125,7 @@
         "spec-f-0357-1791889590: NEEDS OPERATOR: the product's current conventions.pre_push_check, so the plan can place the new clock lint in it (spec \u00a72.9) \u2014 `sed -n '1,80p' ~/.ASF/products/asf.yaml`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -37123,7 +37135,7 @@
       "state": "New",
       "title": "A red trunk is handled correctly: blame is established before any revert",
       "type": "feature",
-      "updated": "2026-10-13T11:44:47Z"
+      "updated": "2026-10-13T12:00:07Z"
     },
     "F-0358": {
       "backlinks": [],
@@ -42265,6 +42277,123 @@
       "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
       "type": "story",
       "updated": "2026-10-13T09:34:41Z"
+    },
+    "S-207168": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-207168",
+      "parent": "F-0357",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T11:59:50Z",
+      "state": "New",
+      "title": "one clock helper, and a ratcheted lint that refuses every other raw wall-clock read",
+      "type": "story",
+      "updated": "2026-10-13T11:59:50Z"
+    },
+    "S-207169": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-207169",
+      "parent": "F-0357",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T11:59:50Z",
+      "state": "New",
+      "title": "the suite passes with the clock moved 30 and 400 days forward",
+      "type": "story",
+      "updated": "2026-10-13T11:59:50Z"
+    },
+    "S-207170": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-207170",
+      "parent": "F-0357",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T11:59:50Z",
+      "state": "New",
+      "title": "blame is established before any revert",
+      "type": "story",
+      "updated": "2026-10-13T11:59:50Z"
+    },
+    "S-207171": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-207171",
+      "parent": "F-0357",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T11:59:50Z",
+      "state": "New",
+      "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
+      "type": "story",
+      "updated": "2026-10-13T11:59:50Z"
+    },
+    "S-207172": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-207172",
+      "parent": "F-0357",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T11:59:50Z",
+      "state": "New",
+      "title": "no open PR is charged a fix round or archived for a trunk-wide failure",
+      "type": "story",
+      "updated": "2026-10-13T11:59:50Z"
+    },
+    "S-207173": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-207173",
+      "parent": "F-0357",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T11:59:50Z",
+      "state": "New",
+      "title": "a revert counts only when the revert PR has merged",
+      "type": "story",
+      "updated": "2026-10-13T11:59:50Z"
+    },
+    "S-207174": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-207174",
+      "parent": "F-0357",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T11:59:50Z",
+      "state": "New",
+      "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks the item Done",
+      "type": "story",
+      "updated": "2026-10-13T11:59:50Z"
+    },
+    "S-207175": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-207175",
+      "parent": "F-0357",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T11:59:50Z",
+      "state": "New",
+      "title": "the three known gating clock reads take an injected now",
+      "type": "story",
+      "updated": "2026-10-13T11:59:50Z"
+    },
+    "S-207176": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-207176",
+      "parent": "F-0357",
+      "schema_version": 2,
+      "stage_since": "2026-10-13T11:59:50Z",
+      "state": "New",
+      "title": "the replay of the 2026-10-13 incident",
+      "type": "story",
+      "updated": "2026-10-13T11:59:50Z"
     },
     "S-51600": {
       "backlinks": [
@@ -93472,7 +93601,7 @@
         "PR #1703: part (3.12, 2) is red but not a required check \u2014 ignored",
         "PR #1703: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0358.md"
       },
@@ -93485,7 +93614,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T11:17:35Z",
+      "updated": "2026-10-13T12:00:07Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
