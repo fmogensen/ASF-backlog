@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T23:14:53Z",
+  "generated": "2026-10-13T23:18:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -24,8 +24,7 @@
         "B-0020",
         "B-0027",
         "B-0030",
-        "B-0036",
-        "B-210839"
+        "B-0036"
       ],
       "children": [],
       "decided": true,
@@ -18442,14 +18441,20 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/record/repair.py:148-156 \u2014 close the fence at the end of the section that opened it, ahead of the derived `## Children`/`## Backlinks`, and prove the placement before listing the card fixed (restore `_fence_placements`/`_fence_clears`/`_converts` from a107a4784fdd0f69b92a136cc1ca7550872607ab and their rule that a card no placement clears is left unwritten and unlisted); appended at the end of the body the fence lands inside `## Backlinks`, which `index.refresh` regenerates in the rule's own commit (`publish.commit_paths`, asf/record/publish.py:76-81, :109), so the card is announced `fixed ... body: unbalanced code fence` and the migration still refuses it \u2014 reproduced, and this is 110 of the 182 cards",
+        "asf/record/repair.py:234-235 \u2014 fold the continuation onto the last line in `out` that `_HISTORY_BULLET_RE` matches, not onto `out[-1]`, and drop the continuation line instead of appending it; when no bullet precedes it, `out.append(line)` and leave `changed` alone. Today a blank line between a bullet and its continuation is what gets folded onto, producing another non-bullet line while the card is listed as fixed \u2014 reproduced",
+        "asf/record/repair.py:212 \u2014 carry the `emitted` flag the previous head had (set only on a checkbox bullet with non-empty text) and rewrite an indented line that has no emitted entry above it as a bullet of its own (`- [ ] {line.strip()}`); `asf.schema._lift_acceptance` folds onto `out[-1]` only when `out` is non-empty (asf/schema.py:163-164) and an unfilled `- [ ] ` placeholder never reaches it (asf/schema.py:168-170), so a continuation under the record's own default placeholder is left refused \u2014 reproduced",
+        "asf/record/repair.py:363 \u2014 give the pass a caller, inside this card's `writes:`: add `p.add_argument('--refusals', action='store_true', ...)` in `register` and `if getattr(args, 'refusals', False): return run_cards(root, apply=bool(args.apply))` as the first branch of `cmd_record_repair`. `run_cards` and `card_repair` have no caller but the tests, so `asf record-repair` cannot run the six rules at all; the report's reason for leaving it out does not hold \u2014 `asf/cli.py` only calls `register(sub)` (asf/cli.py:576-577) and `cmd_record_repair(args, root)` (asf/cli.py:1071-1076), both of which live in `asf/record/repair.py`, and head a107a4784fdd0f69b92a136cc1ca7550872607ab wired its `--refusals` flag entirely inside this file"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "build-b-208187-1791926710: NEEDS OPERATOR: the acceptance bullet \"the per-card migration path then refuses 0 cards of a copy of a real record of this size\" is still unchecked \u2014 this host and CI have no real record (the only corpus is sample/b\u2026",
         "PR #1726: install-clean-macos is red but not a required check \u2014 ignored",
         "build-b-208187-1791929672: NEEDS OPERATOR: confirm the per-card migration path refuses 0 cards after card_repair on a copy of the real 2,913-card record (no record is available in this container or in CI; verified here only on a synthetic 6-c\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18459,7 +18464,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T22:58:52Z",
+      "updated": "2026-10-13T23:18:22Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18521,26 +18526,10 @@
       "kernel_answers": [
         "granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel).",
-        "escalated: one more fix round on the strong model, with every finding",
-        "session ran past its max age"
-      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
-      "kernel_findings": [
-        "asf/schema.py:171 \u2014 `_BARE_BULLET_RE.match(line).group(1)` is dereferenced unconditionally but the regex needs a `-`/`*` marker, so a bare prose line in `## Acceptance` (or an indented first line) raises AttributeError, which `except CardMigrationError` at :942 does not catch \u2014 a traceback D11/D12 forbid, now escaping with the kernel left paused by :928; replace with `m2 = _BARE_BULLET_RE.match(line)` then `text = (m2.group(1) if m2 else line).strip()`",
-        "asf/kernel/host.py:464 \u2014 the `if pending:` gate means an install with nothing to switch exits 0 printing only `unchanged`, never naming a non-additive gap, and `asf kernel install` has no other schema signal (`kernel` is absent from surface.COMMANDS, so cli.py:996-998's `schema.require` is skipped); call `_warn_schema_gap(product, out)` unconditionally for a non-dry-run install, above the `for job in jobs(...)` loop at :449",
-        "asf/schema.py:943 \u2014 a failed schema-migrate leaves the kernel paused and says nothing: the message names only the card, the pause carries no pid and `reason='schema-migrate'` is not upgrade.PAUSE_REASON, so upgrade.stale_pauses (asf/upgrade.py:1136-1156) can never lift it; return `1, f'{product.name}: stopped \u2014 {e}; the kernel stays paused \u2014 run `asf scheduler resume --product {product.name} --clock kernel` once that card is fixed'` and pass `pid=os.getpid()` at :928",
-        "asf/schema.py:946 \u2014 `out=lambda *_a: None` plus the dropped return value silences sync_operator_checkout's refusal (dirty, off-trunk or ahead \u2014 asf/tick/shadow.py:306-312), whose own contract is that it is named every time it holds (:290-292), so the command reports `migrated 2 \u2192 3` while backlog_dir stays at schema 2 and every console write there is refused: keep `sync = shadow.sync_operator_checkout(...)` and fold `sync.why` into the :949 message",
-        "asf/schema.py:928,947 \u2014 scheduler.pause overwrites any pause record already held (asf/scheduler.py:1191) and scheduler.resume pops it and re-bootstraps with force=True (:1221-1241), so a migration erases an operator's own `asf scheduler pause` and restarts the factory; read `before = scheduler.read_pauses(product.name)` first, pause only `[c for c in KERNEL_CLOCKS if c not in before]`, and resume only those",
-        "asf/record/ids.py:186 \u2014 `_folder_is_json` answers False for an empty folder, so a record already at schema 3 whose type folder holds no card yet mints schema-1 markdown (verified: schema_version 3 with an empty bugs/ wrote bugs/B-0001.md), the hardcoded-markdown case acceptance 4 exists to stop; decide from the record's own stamp at :204-205 \u2014 `v = schema.record_version(root)` then `json_card = _folder_is_json(root, folder) if v is None else v >= 3`",
-        "red: tests (3.12)",
-        "red: tests (3.13) \u2014 step 'UNKNOWN STEP' failed:\n\u2026/work/_temp/55b28162-8554-40e8-98ec-9109fa0f40d8' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory ~/work/ASF/ASF\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nhttp.https://github.com/.extraheader\n[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\n[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\n[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nCleaning up orphan processes\n##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
-        "operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel).",
-        "operator answer: granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes.",
         "PR #1728: checks (3.12) is red but not a required check \u2014 ignored",
@@ -18550,7 +18539,8 @@
         "PR #1728: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1728: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18560,7 +18550,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T23:14:52Z",
+      "updated": "2026-10-13T23:18:22Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -95373,7 +95363,7 @@
         "build-t-210356-1791930896: NEEDS OPERATOR: the Gate's redaction check could not run here (no `asf` CLI on this cloud session) \u2014 `asf redact --unpublished`"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95386,7 +95376,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T23:14:52Z",
+      "updated": "2026-10-13T23:18:22Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95643,6 +95633,9 @@
         "asf redact --unpublished"
       ],
       "id": "T-210361",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_closed_findings": {
         "94c68f70": "{'head': \"{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/incidents.py:130'}\", 'line': ''}",
         "ed52e4dd": "{'head': \"{'head': 'ce7da27865be9941414984fe52e0ec21c10ffc70', 'line': 'asf/kernel/ports.py:1817'}\", 'line': ''}",
@@ -95656,7 +95649,7 @@
       "kernel_later_findings": [
         "[e1b07754@ce7da27] asf/kernel/mainline.py:120 \u2014 `revert_ci` now routes \"the revert PR's own CI completed that check red but on none of the trunk's failing ids\" to 'unanswered' (:586-587), so `judge` posts UNANSWERED's old sentence \"its own CI never reports <check>\" on a PR whose check is right there, completed and red. Add a `NO_SAME_ID` reason beside UNANSWERED and split judge's `else` (:789-791) on `({c.name for c in rpr.checks if c.conclusion in RED_CONCLUSIONS} & {c.name for c in reds})`, using NO_SAME_ID when that set is non-empty and UNANSWERED only when it is empty; then assert the reason in tests/kernel/test_revert_merged.py:203-216 (`assertIn(REQ[0], closed.reason)`, `assertNotIn('never reports', closed.reason)`)."
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95669,7 +95662,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T23:14:52Z",
+      "updated": "2026-10-13T23:18:22Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
