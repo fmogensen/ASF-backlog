@@ -1,0 +1,23 @@
+# The record's working set holds live work only; closed cards are archived and not loaded
+parent: E-0006
+
+Type: Feature
+Priority: need
+
+## Description
+The record keeps only live work in its working set; closed cards are archived, not loaded. On 2026-10-13 ASF's own record held about 2,700 work cards of which the kernel counted 2,044 Done, 566 parked and about 110 live, plus 421 processed inbox notes: 3,586 markdown files, 73 MB. Every tick, every `load_items`, the index, `asf check` and the schema-2 migration read all of it. Ticks spent minutes on pure processing, and 171 cards refused the schema-2 migration, most of them likely closed history.
+
+The working set is: live cards (New, Ready, Building, Review, Landing, Stuck) and parked cards, plus every card a live card still references. Everything else (Done, Closed, retired or removed cards, processed inbox notes) moves to an archive in the same record repository that the kernel, the tick and the index do not load.
+
+## Acceptance
+- [ ] An archive location in the record (for example `archive/<type>/`) holds closed cards byte for byte with their history; `asf show <id>` and search still find an archived card and say it is archived.
+- [ ] A card is archived by code when it has been Done, Closed or retired for a configurable number of days and no live card references it; a parent is archived only after all its children. Re-opening a card moves it back.
+- [ ] `load_items`, the kernel's facts, the index and `asf check` read the working set only; counts that need history (release-readiness, metrics, the gate's landed counts) read the archive explicitly.
+- [ ] Processed inbox notes are archived or deleted after their card exists.
+- [ ] The schema migration converts the working set strictly and carries the archive unchanged (an archived card is migrated only when it is re-opened).
+- [ ] Measured on a copy of a real record of this size: working set at most 30% of today's card count, tick processing time (facts + decide, no launches) and `asf check` time each at least halved, and no card id that a live card references is missing.
+- [ ] A dry run prints what would move and why, and a refusal lists the references that hold a card back.
+
+## Non-goals
+- Deleting history. Nothing leaves the repository.
+- Changing card ids or links.
