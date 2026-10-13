@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T20:26:21Z",
+  "generated": "2026-10-13T20:30:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18691,8 +18691,10 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
       "kernel_notes": [
-        "groom-fill-b-213994-1791922466: groom-fill raised risk high: missing_ids conflates \"module exists but fails to import\" with \"absent\" by matching on name alone; the fix is a self-contained text-based reclassification in trunk.py plus a doc-only sync of D1/\u00a72.1/\u00a72.2 to the already-shipped two-run, bounded-retry read."
+        "groom-fill-b-213994-1791922466: groom-fill raised risk high: missing_ids conflates \"module exists but fails to import\" with \"absent\" by matching on name alone; the fix is a self-contained text-based reclassification in trunk.py plus a doc-only sync of D1/\u00a72.1/\u00a72.2 to the already-shipped two-run, bounded-retry read.",
+        "satisfied on main at 9a37dbf74: tests.kernel.test_blame_before_revert.ParseUnittest, tests.kernel.test_blame_before_revert.ProbeClass"
       ],
+      "kernel_state": "done",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -18702,7 +18704,7 @@
       "state": "New",
       "title": "A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-13T20:26:19Z",
+      "updated": "2026-10-13T20:30:27Z",
       "writes": [
         "asf/kernel/trunk.py",
         "docs/specs/f-0357.md",
@@ -95121,10 +95123,11 @@
       "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1721: part (3.12, 3) is red but not a required check \u2014 ignored",
-        "PR #1721: part (3.13, 3) is red but not a required check \u2014 ignored"
+        "PR #1721: part (3.13, 3) is red but not a required check \u2014 ignored",
+        "build-t-210356-1791922145: NEEDS OPERATOR: asf redact --unpublished could not run in this cloud session (the `asf` CLI is not installed here) \u2014 `asf redact --unpublished` (read-only; the cloud-session brief notes no pre-push hook runs here, a\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95137,7 +95140,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T20:09:33Z",
+      "updated": "2026-10-13T20:30:27Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
@@ -95365,7 +95368,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-210361",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95378,7 +95381,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T19:47:55Z",
+      "updated": "2026-10-13T20:30:27Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
