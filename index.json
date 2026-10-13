@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T10:09:15Z",
+  "generated": "2026-10-13T10:12:48Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18127,6 +18127,10 @@
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_extra_rounds": 2,
       "kernel_findings": [
+        "asf/kernel/mainline.py:462 \u2014 `open_revert_pr` reads the revert PR from `facts.prs`, which `asf/kernel/ports.py:1647` strips of every revert-prefixed branch, so `revert_ci` is permanently `'waiting'` and the held revert never merges: surface the kernel's own revert PR as a fact (stop skipping revert branches in `_prs`' open listing, or add a `revert_prs()` port read plus a `Facts` field) and read it there; report `needs writes: asf/kernel/facts.py` if a new field is used",
+        "asf/kernel/mainline.py:243 \u2014 `not pr.behind` neither proves the base predates the candidate's merge (with any commit above the red, a base on the candidate's own merge commit is BEHIND) nor holds for the PRs this path reads (`behind` is `mergeStateStatus == 'BEHIND'`, which a red required check turns into BLOCKED/UNSTABLE; every other use gates on `facts.strict`, and the new tests all pass `strict=False`): drop the `behind` gate and require the PR's matching red check's `run_id` to be below every red `run_id` on the candidate's commit, the ordering `confirm_without_candidate` already uses",
+        "asf/metrics/metrics.py:105 \u2014 `_today_bindings` resolves only `metrics`/`today` from `asf.metrics*` and walks only `ast.ImportFrom`, so `asf/record/core.py:75`'s second bare `today()` is invisible and `tests/test_metrics.py:2542`'s \"asf/ carries none at all\" is false \u2014 `asf/ci_pool.py:1525`, `asf/dwell.py:808`, `asf/dwell.py:812`, `asf/record/check.py:383` still date off the wall clock: recognise that binding (and `ast.Import`), give `record.core.today` an optional `now` delegating to `metrics.today`, and report `needs writes: asf/record/core.py asf/ci_pool.py asf/dwell.py asf/record/check.py`",
+        "asf/kernel/apply.py:490 \u2014 `P.REVERTED` is written on the held tick, which un-Dones the item via `decide.landed` (`asf/kernel/decide.py:1082`) and relaunches it as a `build` session with no findings and no note (probed: `launches: [('T-2', 'build', [])]`), and the abandon leg never clears it: guard the `P.REVERTED` write with `a.auto_merge` alongside the note and finding, and re-enter the revert leg off `open_revert_pr` instead of off `Item.reverted`",
         "asf/kernel/decide.py:529 \u2014 gate the Ready flip on the flag (`if isinstance(a, A.RevertPR) and a.auto_merge:`); a revert whose auto-merge is held must not bounce its item. With it, asf/kernel/apply.py:490-493 \u2014 keep writing P.REVERTED on the held tick (it is the key mainline.py:435 reads to enter the revert_ci branch) but move the RELAUNCH attempt and the P.NOTES note behind `if a.auto_merge:`; and asf/kernel/mainline.py:440-444 \u2014 emit the finalize as `revert_action(red, c, it, reds, config, auto_merge=True)` rather than a bare `A.EnableAutoMerge(rpr.number)`, so the relaunch finding is queued once, at confirmation, guarded on `a.auto_merge` instead of on `a.pr not in reverted`. Today a held revert still sets State.READY and queues the red as the item's own finding, and the abandon path (mainline.py:447-451) emits only ClosePR, so nothing restores it \u2014 the card's own headline. Asserted by tests/kernel/test_main_landing.py:219-226; extend that case and add one over `self._reverted(red(...))` that an abandoned revert leaves the item unblamed.",
         "tests/test_metrics.py:2490 \u2014 drop 'tests/test_tick_latency.py' from CLOCK_ON_PURPOSE and fix tests/test_tick_latency.py:177 to read the day off the commit's own --name-only list via _ticks_stream_path (tests/test_tick_steps.py:40-47), the same fix this diff applied to tests/test_tick_steps.py. That line is a real bare `m.today()` of exactly the class A6 exists to catch; the allowlist comment justifies it as outside the footprint, but the operator answer has since granted the file, so the suppression is no longer forced.",
         "asf/kernel/mainline.py:25-26 \u2014 rewrite the module docstring (and the 'none' bullet at :282) to describe what ships. It states that one DispatchMain on the parent asks for a fresh run, that the tick records \"waits on the parent's fresh check\", and that \"only once that run reads green on the red check is the candidate blamed\" \u2014 none of which is in the code: no DispatchMain is ever emitted on the parent (only the pre-existing trunk-head one at :403), that record string is nowhere in asf/, and the candidate is blamed at once. Either delete the unreachable 'waiting'/dispatch arm at :286-288 (nothing in the product creates a workflow_dispatch run on the parent's sha) or say it fires only on a dispatch made elsewhere.",
@@ -18138,7 +18142,7 @@
         "Another session edits asf/metrics/metrics.py concurrently: keep edits additive, `git fetch && git merge origin/main` before every push, and resolve conflicts yourself.",
         "shared files: asf/metrics/metrics.py also held by T-154346 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 4,
+      "kernel_fix_rounds": 5,
       "kernel_notes": [
         "groom-fill-b-200581-1791852906: groom-fill verdict rejected: no GROOM-FILL block",
         "groom-fill-b-200581-1791853332: groom-fill raised risk high: the description already pins down file:line fixes and a clear replay shape; filling names the tests and the kernel/CI files that must change, which is what the gate was missing.",
@@ -18146,7 +18150,7 @@
         "build-b-200581-1791872508: NEEDS OPERATOR: tests/test_tick_latency.py:177 reads `m.today()` bare right after a tick \u2014 the same day-crossing flakiness class B-200581 fixes elsewhere, discovered only because this round tried widening the lint's\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18155,7 +18159,7 @@
       "state": "New",
       "title": "Trunk-wide red is blamed on the newest merge: wrong revert, fix rounds and an archive; plus three more clock reads",
       "type": "bug",
-      "updated": "2026-10-13T09:41:40Z",
+      "updated": "2026-10-13T10:12:45Z",
       "writes": [
         "asf/metrics/metrics.py",
         "asf/ci_stall.py",
@@ -18226,7 +18230,11 @@
         "build-b-200932-1791867161: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox refused background execution of `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-200932-1791867161 'asf/build-b-200932-1791867161@20261013T045301Z' >/d\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 5 fix rounds",
+      "kernel_stuck_since": "2026-10-13T10:12:11Z",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18235,7 +18243,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T09:55:52Z",
+      "updated": "2026-10-13T10:12:45Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -93409,7 +93417,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-206240",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0358.md"
       },
@@ -93422,7 +93430,7 @@
       ],
       "title": "a finding gets a key and a head, and a closed or ruled key is never raised again",
       "type": "task",
-      "updated": "2026-10-13T09:31:35Z",
+      "updated": "2026-10-13T10:12:45Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/actions.py",
