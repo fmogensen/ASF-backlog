@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T03:08:12Z",
+  "generated": "2026-10-13T03:14:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18156,15 +18156,13 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_findings": [
-        "asf/kernel/mainline.py:188 \u2014 landed_reverts takes the first trunk commit whose branch is revert/<item>, and that branch name is reused for every revert of the same item, so an item's second red landing fires RevertLanded off the previous cycle's revert commit while the new revert PR is still open (reproduced). Stop the scan at the culprit: iterate facts.main and break on `c.pr == it.revert_pending`, taking a `c.branch == branch` match only above it \u2014 or record the revert PR's own number in apply.RevertPR and match `c.pr == that number`.",
-        "asf/kernel/needed.py:255 \u2014 `elif it.reverted:` never checks the acceptance's \"when its earlier work is still on the trunk\"; post-fix kernel_reverted means the revert merged, so an empty relaunch PR marks the item Done (verdict SATISFIED) with a note claiming the work is on main when it is not. Gate it on `not any(c.branch == mainline.revert_branch(it, config) for c in facts.main or [])` and give tests/kernel/test_still_needed.py:276 both cases (no revert commit on main -> Done; a revert commit on main -> the existing Ready + EMPTY_FINDING).",
-        "REPORT of build-b-200932-1791855316 \u2014 `needs writes: none` while the diff touches asf/kernel/decide.py, asf/kernel/actions.py and tests/kernel/fakes.py, all outside the card's writes:. The changes are unavoidable (decide.ORDER.index raises on an unregistered action type); re-report with `needs writes: asf/kernel/decide.py asf/kernel/actions.py tests/kernel/fakes.py`."
+        "asf/kernel/needed.py:256 \u2014 an unread trunk (Facts.main is [] on any failed or rate-limited read: ports.py:1801-1817, facts.py:162-179) satisfies `not any(c.branch == ... for c in facts.main or [])`, so the gate marks a once-reverted item Done and closes its PR with no evidence. Require the trunk to have been read \u2014 `elif (it.reverted and facts.main and not any(c.branch == mainline.revert_branch(it, config) for c in facts.main)):` \u2014 or, better, test for the work itself with `all(facts.trunk_tests.get(t) for t in test_ids(it))` (needed.py:69-88; empty when unread, as _done_unchanged at :188-190 already requires). Add the missing case: facts.main empty must not be Done, and give test_still_needed.py:276 a non-empty main that simply holds no revert commit, since as written it passes through the unread-trunk path."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-200932-1791854550: groom-fill raised risk high: Confirmed in code \u2014 ports.py hides revert-PR outcomes from Facts and needed.py's empty-diff path relaunches forever with nothing to satisfy; a real, current, unfixed loop worth building."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0006",
       "schema_version": 2,
       "severity": "S3",
@@ -18173,7 +18171,7 @@
       "state": "New",
       "title": "A revert PR that never merges still marks the item reverted: endless empty rebuilds",
       "type": "bug",
-      "updated": "2026-10-13T02:57:22Z",
+      "updated": "2026-10-13T03:14:45Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/apply.py",
@@ -90689,7 +90687,7 @@
       ],
       "title": "the migration to schema 2, round-tripped, on every copy of a record and on the sample",
       "type": "task",
-      "updated": "2026-10-13T03:08:10Z",
+      "updated": "2026-10-13T03:14:45Z",
       "writes": [
         "asf/schema.py",
         "asf/record/repair.py",
