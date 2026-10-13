@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T00:15:35Z",
+  "generated": "2026-10-13T00:18:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18059,6 +18059,9 @@
       "id": "B-200179",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_notes": [
+        "groom-fill-b-200179-1791850046: groom-fill raised risk high: Reproduced the false-LIMBO/merge-breach bug live (waits.classify keeps a stacked item's wait class 'merge' regardless of PR.base); the retarget half of the original acceptance is already in flight on PR #1677 (T-160210, S-135959 under the same parent F-0348), so scope is narrowed to the uncovered classification fix."
+      ],
       "parent": "F-0348",
       "schema_version": 2,
       "severity": "S3",
@@ -18067,7 +18070,12 @@
       "state": "New",
       "title": "Approved stacked PR sits in LIMBO: its base is the predecessor branch, not the trunk",
       "type": "bug",
-      "updated": "2026-10-13T00:07:34Z"
+      "updated": "2026-10-13T00:18:24Z",
+      "writes": [
+        "asf/kernel/waits.py",
+        "tests/kernel/test_waits.py",
+        "tests/kernel/test_stacked_builds.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -40758,7 +40766,8 @@
     "S-135959": {
       "backlinks": [
         "T-160210",
-        "T-160211"
+        "T-160211",
+        "B-200179"
       ],
       "children": [],
       "decided": true,
@@ -91235,29 +91244,23 @@
         "T-160209"
       ],
       "backlinks": [
-        "T-160211"
+        "T-160211",
+        "B-200179"
       ],
       "children": [],
       "decided": true,
       "folder": "tasks",
       "id": "T-160210",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "asf/kernel/apply.py:585 \u2014 change `if a.base:` to `if a.base or a.base_sha:` so a Launch carrying base='' with base_sha=<fork> (the one shape decide._launches plans after the retarget, decide.py:2101/2125) puts both keys in meta; today meta is empty for it, so ports.py:2571 -> pool.Row.base_sha -> spawn.py:1293 all read '' and the --onto replay at spawn.py:981-982 is unreachable, leaving the branch to a plain rebase that replays the predecessor's commits over the trunk's squash of them. Match ports._meta (ports.py:2698), which already reads `if meta.get('base') or meta.get('base_sha')`, and add a TheApplierAndTheStack case asserting sessions.meta[-1]['base_sha'] survives base='' \u2014 tests 6-11 call _rebase_onto_trunk directly (tests/kernel/test_stacked_builds.py:719-721) and cannot see this.",
-        "asf/workers/spawn.py:1291 \u2014 pass the fork into make_worktree (`fork=getattr(row, 'base_sha', '') or ''`; pool.Row already carries base_sha, so nothing outside writes: is needed) and keep the fork sha readable past the retarget (decide.py:1123 / apply.py:253-255) so a post-unstack A.Launch carries base='' with base_sha=<fork>: today fork is never non-empty off this branch, so the --onto replay (spawn.py:970) can only run in the tests and S-135959's replay is undelivered.",
-        "asf/kernel/decide.py:1126 \u2014 guard the teardown's A.ArchiveAndReset with the live-session test decide.py:661-664 uses (`any(s.item_id == iid and s.alive and s.kind not in READ_ONLY for s in facts.sessions)`), planning only the NoteStack clear while a session holds the item: as written it deletes the item's branch on origin and resets its card under a live fix round when the predecessor is rebuilt.",
-        "asf/workers/spawn.py:970 \u2014 `replay = bool(fork) and gitops.is_ancestor(path, fork, f'origin/{base}') is False`: `is not True` folds is_ancestor's None (an object the worktree does not have, a timeout \u2014 gitops.py:72-78) into a replay, and the --onto rebase then fails on an unknown revision, is aborted and returns, leaving a branch that needed the ordinary trunk rebase un-rebased."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1677: install-clean-macos is red but not a required check \u2014 ignored",
         "PR #1677: part (3.13, 4) is red but not a required check \u2014 ignored",
         "PR #1677: part (3.12, 4) is red but not a required check \u2014 ignored"
       ],
+      "kernel_rebuilds": 1,
       "kernel_stack": "worker/T-160208@fb2c88353c4799dd472eb5f311e8dbd2fafc1b72",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0348.md"
       },
@@ -91270,7 +91273,7 @@
       ],
       "title": "the unstack \u2014 retargeted to the trunk, replayed onto it, torn down when the base is rebuilt",
       "type": "task",
-      "updated": "2026-10-13T00:13:03Z",
+      "updated": "2026-10-13T00:18:24Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/decide.py",
@@ -92138,7 +92141,7 @@
       "folder": "tasks",
       "id": "T-166582",
       "kernel_stack": "worker/T-166581@4ef43d6ff573be5f8b00e2fc39364eb5c0255de1",
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0347.md"
       },
@@ -92151,7 +92154,7 @@
       ],
       "title": "everything the heartbeat lands on top of is still green",
       "type": "task",
-      "updated": "2026-10-12T23:43:47Z",
+      "updated": "2026-10-13T00:18:24Z",
       "writes": [
         "tests/test_scratch.py"
       ]
