@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T20:05:21Z",
+  "generated": "2026-10-13T20:09:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18653,7 +18653,7 @@
       "kernel_notes": [
         "groom-fill-b-213443-1791920579: groom-fill raised risk high: confirmed on origin/main that exclusion only reaches ev['ids'] (_exclude_pr_ids, ingest.py:717-744) while the plan-matched Task path (ingest.py:1159-1163) and match_bug (ingest.py:392-409, called at 1259) read ev['features'][...]['tasks'][tid] and ev['merged'] unfiltered \u2014 a real, well-localized gap buildable with the sha coercion already proven at ingest.py:732."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 3,
@@ -18663,7 +18663,7 @@
       "state": "New",
       "title": "undeliver --pr is a no-op for items landed through a plan table or links.prs",
       "type": "bug",
-      "updated": "2026-10-13T19:52:47Z",
+      "updated": "2026-10-13T20:09:33Z",
       "writes": [
         "asf/record/ingest.py",
         "tests/test_feature_delivery.py"
@@ -94730,7 +94730,7 @@
         "build-t-208102-1791918911: NEEDS OPERATOR: heartbeat command refused to start by the sandbox; continued per instructions since a beat that cannot start never ends the session \u2014 `sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-208102-1791918911\u2026"
       ],
       "kernel_rebuilds": 2,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -94743,7 +94743,7 @@
       ],
       "title": "the predecessor's state and who holds the work, read from the record",
       "type": "task",
-      "updated": "2026-10-13T19:52:47Z",
+      "updated": "2026-10-13T20:09:33Z",
       "writes": [
         "asf/kernel/resolvers.py",
         "asf/kernel/decide.py",
@@ -94865,6 +94865,9 @@
         "asf redact --unpublished"
       ],
       "id": "T-210355",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_closed_findings": {
         "913b5280": "{'head': \"{'head': '8a8004c8c5f7a9f7d27dadb56e817f2fe36a5bec', 'line': 'tools/check_clock.py:43'}\", 'line': ''}",
         "ff4786d6": "{'head': 'f131d782d4d57bd57b617cc46815fa12f565be87', 'line': 'asf/clock.py:55'}"
@@ -94874,7 +94877,7 @@
         "shared files: asf/kernel/ports.py also held by B-208438 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94887,7 +94890,7 @@
       ],
       "title": "one clock door, and a ratchet that refuses every other raw wall-clock read",
       "type": "task",
-      "updated": "2026-10-13T20:05:19Z",
+      "updated": "2026-10-13T20:09:33Z",
       "writes": [
         "asf/clock.py",
         "asf/metrics/metrics.py",
@@ -94935,7 +94938,7 @@
         "PR #1721: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -94948,7 +94951,7 @@
       ],
       "title": "an item satisfied on the trunk is never relaunched, and an empty diff marks it",
       "type": "task",
-      "updated": "2026-10-13T19:56:41Z",
+      "updated": "2026-10-13T20:09:33Z",
       "writes": [
         "asf/kernel/needed.py",
         "tests/kernel/test_satisfied_not_relaunched.py",
