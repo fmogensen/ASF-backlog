@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T01:23:50Z",
+  "generated": "2026-10-14T01:26:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -95685,26 +95685,16 @@
       ],
       "id": "T-210358",
       "kernel_answers": [
-        "granted asf/groom/groom.py asf/capacity.py asf/workers/cloud.py asf/kernel/status.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel). asf/kernel/status.py matches kernel.risk.high: this item is high-risk now."
+        "granted asf/groom/groom.py asf/capacity.py asf/workers/cloud.py asf/kernel/status.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel). asf/kernel/status.py matches kernel.risk.high: this item is high-risk now.",
+        "Round granted: the last session ran past its max age and PR 1749 now conflicts with main. Merge origin/main into worker/T-210358, resolve the conflicts keeping both sides' behaviour, rerun the Task's gate test modules, push. No other change."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted asf/groom/groom.py asf/capacity.py asf/workers/cloud.py asf/kernel/status.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel). asf/kernel/status.py matches kernel.risk.high: this item is high-risk now.",
-        "ended without a REPORT",
-        "session ran past its max age",
-        "session ran past its max age"
-      ],
-      "kernel_findings": [
-        "rebase: PR #1749 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
-      ],
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1749 conflicts with its base"
       ],
-      "kernel_round_charged": false,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "session ran past its max age",
-      "kernel_stuck_since": "2026-10-14T01:23:13Z",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95717,7 +95707,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T01:23:46Z",
+      "updated": "2026-10-14T01:26:33Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
