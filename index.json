@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T03:18:47Z",
+  "generated": "2026-10-14T03:21:52Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19072,7 +19072,7 @@
       "kernel_notes": [
         "groom-fill-b-219953-1791941431: groom-fill raised risk high: Confirmed in code (apply.py RevertPR still unpinned auto_merge, decide.py withdraw only covers _judge_pr) that B-218952's pinned-merge fix was never extended to revert PRs; filled with the mirrored acceptance/writes."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19082,7 +19082,7 @@
       "state": "New",
       "title": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
       "type": "bug",
-      "updated": "2026-10-14T03:18:44Z",
+      "updated": "2026-10-14T03:21:48Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/apply.py",
@@ -19144,7 +19144,7 @@
         "asf/kernel/loop.py:812 \u2014 gate the mint, not the fetch: mint_plans also calls record.refresh_trunk(), the once-a-tick fetch every trunk read of this tick depends on (Facts.trunk_files is ls-tree with no fetch), so a breach now leaves the whole tick deciding DoR and write-grants-by-rule on a stale trunk; give mint_plans a `mint=True` parameter that does refresh() unconditionally and returns [] before mint_plan_tasks when mint is false, write `minted = minted + mint_plans(ports, out, config, mint=not problem)`, and add `self.assertIn(\"refresh\", calls)` beside the existing assertNotIn(\"mint\", calls) at tests/kernel/test_plan_mint.py:205"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0360",
       "priority": "need",
       "schema_version": 3,
@@ -19153,7 +19153,7 @@
       "state": "New",
       "title": "Later findings from the review of B-208438: Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T03:18:44Z",
+      "updated": "2026-10-14T03:21:48Z",
       "writes": [
         "asf/kernel/loop.py",
         "tests/kernel/test_plan_mint.py"
@@ -19166,13 +19166,15 @@
       "children": [],
       "folder": "bugs",
       "id": "B-222356",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.26",
       "parent": "F-0363",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:18:15Z",
       "state": "New",
       "title": "Later findings from the review of T-217365: closed, aged, and admitted by the reference closure \u2014 the rule that chooses, and the retention floor under it",
       "type": "bug",
-      "updated": "2026-10-14T03:18:15Z"
+      "updated": "2026-10-14T03:21:48Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -95920,6 +95922,9 @@
       "kernel_answers": [
         "granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them."
       ],
+      "kernel_closed_findings": {
+        "520a9402": "{'head': '9a0ac18c8977db8ae71ca60f773915db836bd8f6', 'line': 'asf/kernel/decide.py:1177'}"
+      },
       "kernel_extra_rounds": 0,
       "kernel_findings": [
         "asf/kernel/decide.py:1177 \u2014 the hold exempts the spell's Bug on the exact key `mainline.bug_key(candidates[-1], green)` while `mainline.open_bug` (mainline.py:209) finds it on the green-half prefix, so a Bug keyed on the moving head (what the trunk's own `bug_key` writes) is found by `open_bug` \u2014 no second Bug is filed \u2014 and is itself held: the cure is held and nothing launches. Match the prefix instead: `head = '%s%s..' % (mainline.BUG_MARKER, green or 'none')` and `if it.type == 'bug' and (head in (it.body or '') or any(head in n for n in (it.notes or ()))): continue`, plus a case in tests/kernel/test_trunk_wide_red.py with `main = [c3 red, c2 red, c1 green]` and a Bug body carrying `mainline.bug_key(main[0], 'c1')`",
@@ -95947,7 +95952,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-14T03:14:15Z",
+      "updated": "2026-10-14T03:21:48Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
