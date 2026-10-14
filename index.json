@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T04:46:11Z",
+  "generated": "2026-10-14T04:50:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -96191,20 +96191,15 @@
         "asf redact --unpublished"
       ],
       "id": "T-210362",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
-        "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`"
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1759 conflicts with its base",
         "build-t-210362-1791949404: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox denied approval for `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791949404 'asf/build-t-210362-1791949404@20261014T034334Z'`",
         "build-t-210362-1791952371: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791952371 'asf/build-t-210362-1791952371@20261014T043259Z' >/dev/null 2>&1 &`) was refused by the sandbox approval\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96217,7 +96212,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T04:40:43Z",
+      "updated": "2026-10-14T04:49:22Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96569,7 +96564,7 @@
         "session ran past its max age"
       ],
       "kernel_stack": "worker/T-217366@16b91c2dc99733444f58ef184c1cac60a28dbf1f",
-      "kernel_state": "building",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96582,7 +96577,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T04:46:10Z",
+      "updated": "2026-10-14T04:49:22Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -96617,7 +96612,7 @@
         "session ran past its max age"
       ],
       "kernel_stack": "worker/T-217366@16b91c2dc99733444f58ef184c1cac60a28dbf1f",
-      "kernel_state": "building",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96630,7 +96625,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T04:46:10Z",
+      "updated": "2026-10-14T04:49:22Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
