@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T04:30:01Z",
+  "generated": "2026-10-14T04:33:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18552,7 +18552,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Round granted with a decision. The two red tests are tests/test_record_archive_schema.py RoundTripFailureNamesCardFieldTests and RoundTripFailureNeverReachesArchiveTests (archive work, merged after this branch started). They expect CardMigrationError for a card that does not round-trip; this Bug's repairs now convert their fixture card, so the error is no longer raised. Both guarantees stay: keep the tests and change only their fixture to a card the repaired migration still cannot convert losslessly (pick a shape your repair deliberately refuses, and say which in the commit). Do not weaken th\u2026",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
@@ -18598,7 +18599,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-14T04:10:56Z",
+      "updated": "2026-10-14T04:33:18Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18970,7 +18971,7 @@
         "round not charged: a rebase round: PR #1750 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0362",
       "risk": "high",
       "schema_version": 3,
@@ -18980,7 +18981,7 @@
       "state": "New",
       "title": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
       "type": "bug",
-      "updated": "2026-10-14T04:29:56Z",
+      "updated": "2026-10-14T04:33:18Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/workers/answer.py",
@@ -96174,12 +96175,12 @@
         "reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
         "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1759 conflicts with its base",
         "build-t-210362-1791949404: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox denied approval for `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791949404 'asf/build-t-210362-1791949404@20261014T034334Z'`"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96192,7 +96193,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T04:29:56Z",
+      "updated": "2026-10-14T04:33:18Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96410,7 +96411,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T04:20:11Z",
+      "updated": "2026-10-14T04:33:18Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
