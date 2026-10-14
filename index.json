@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T00:56:56Z",
+  "generated": "2026-10-14T01:01:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18579,7 +18579,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-14T00:56:51Z",
+      "updated": "2026-10-14T01:01:36Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18825,6 +18825,13 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-214946",
+      "kernel_answers": [
+        "Decision: the 10 percent ceiling was the console's estimate, not a measured requirement. Do not extend the cue vocabulary further. Set the Replay ceiling to 20 percent requested (measured 18.52) and keep routed under 2 percent, with a comment giving the measured numbers and that the remaining rows are genuine path:line asks. Fix the one named false positive (declines to fix it) only if it is a one-line change with a test. Then report done. kernel.resolve.finding_writes stays off."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: Decision: the 10 percent ceiling was the console's estimate, not a measured requirement. Do not extend the cue vocabulary further. Set the Replay ceiling to 20 percent requested (measured 18.52) and keep routed under 2 percent, with a comment giving the measured numbers and that the remaining rows are genuine path:line asks. Fix the one named false positive (declines to fix it) only if it is a one-line change with a test. Then report done. kernel.resolve.finding_writes stays off.",
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
       "kernel_findings": [
@@ -18840,13 +18847,11 @@
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable.",
         "round not charged: a rebase round: PR #1738 conflicts with its base",
-        "build-b-214946-1791934634: NEEDS OPERATOR: the heartbeat command (.b0000_heartbeat.sh) was refused by the sandbox's approval gate every time it was attempted \u2014 proceeded without one per the brief's own rule that a heartbeat that cannot start\u2026"
+        "build-b-214946-1791934634: NEEDS OPERATOR: the heartbeat command (.b0000_heartbeat.sh) was refused by the sandbox's approval gate every time it was attempted \u2014 proceeded without one per the brief's own rule that a heartbeat that cannot start\u2026",
+        "PR #1738: part (3.12, 2) is red but not a required check \u2014 ignored",
+        "PR #1738: part (3.13, 2) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "partial: NEEDS OPERATOR: the Replay test (tests/kernel/test_finding_writes.py::Replay) still fails its <10% requested assertion (measures 18.52%) even with every one of the review's 6 points implemen\u2026",
-      "kernel_stuck_since": "2026-10-14T00:55:15Z",
+      "kernel_state": "ready",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18856,7 +18861,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T00:56:51Z",
+      "updated": "2026-10-14T01:01:36Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -18978,7 +18983,15 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T00:51:21Z"
+      "updated": "2026-10-14T00:51:21Z",
+      "writes": [
+        "asf/kernel/model.py",
+        "asf/kernel/ports.py",
+        "asf/kernel/reviewfix.py",
+        "asf/kernel/apply.py",
+        "tests/kernel/test_beat_facts.py",
+        "tests/kernel/test_reviewer_fixes.py"
+      ]
     },
     "B-218952": {
       "backlinks": [],
@@ -95980,7 +95993,7 @@
         "shared files: asf/cli.py also held by T-208104 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -95993,7 +96006,7 @@
       ],
       "title": "the archive is a place in the record \u2014 a rename, a manifest, and two ways to read a card that is in it",
       "type": "task",
-      "updated": "2026-10-14T00:56:51Z",
+      "updated": "2026-10-14T01:01:36Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/archive.py",
@@ -96024,6 +96037,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-217365",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96036,7 +96050,7 @@
       ],
       "title": "closed, aged, and admitted by the reference closure \u2014 the rule that chooses, and the retention floor under it",
       "type": "task",
-      "updated": "2026-10-13T22:57:03Z",
+      "updated": "2026-10-14T01:01:36Z",
       "writes": [
         "asf/record/archive.py",
         "asf/conventions.py",
@@ -96110,7 +96124,6 @@
         "asf redact --unpublished"
       ],
       "id": "T-217367",
-      "kernel_stack": "worker/T-217364@8b9bb74e590fc84925982d69dd1600474e6c975e",
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
@@ -96125,7 +96138,7 @@
       ],
       "title": "the way back \u2014 every writing command that names an archived id brings the card back before it writes, and the migration converts it then",
       "type": "task",
-      "updated": "2026-10-14T00:39:28Z",
+      "updated": "2026-10-14T01:01:36Z",
       "writes": [
         "asf/record/reopen.py",
         "asf/record/setfield.py",
@@ -96156,6 +96169,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-217368",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96168,7 +96182,7 @@
       ],
       "title": "a new id never reuses an archived one, and an id both places hold is a finding",
       "type": "task",
-      "updated": "2026-10-13T22:57:14Z",
+      "updated": "2026-10-14T01:01:36Z",
       "writes": [
         "asf/record/ids.py",
         "asf/record/check.py",
