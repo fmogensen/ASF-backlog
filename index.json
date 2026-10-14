@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T08:41:07Z",
+  "generated": "2026-10-14T08:44:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18003,12 +18003,19 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-196077",
+      "kernel_closed_findings": {
+        "90468907": "{'head': '620e79594097f32bb8e298f87ee4eed228d2d217', 'line': 'docs/products.example.yaml:778'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_findings": [
         "docs/products.example.yaml:778 \u2014 add the B-196077 note to the operator-facing flake block, at the end of `enabled: false`'s comment prose in the same comment column: `# red on: the kernel's ordinary red path keeps those. Off until` / `# B-196077 (open review findings in judge()) is Done`; then extend tests/kernel/test_flake.py:786 to assert `B-196077` in both `settings.__doc__` and `docs/products.example.yaml`, mirroring tests/kernel/test_blame_before_revert.py:652-661 and reading the file as tests/kernel/test_flake.py:810 already does. This needs `needs writes: docs/products.example.yaml`."
       ],
       "kernel_fix_rounds": 1,
+      "kernel_later_findings": [
+        "[ed695aad@620e795] tests/kernel/test_flake.py:750,762 \u2014 the two BugTests cases added in 8693b329a pass on origin/main unchanged (the branch's only behavioural edit is the record wording at asf/kernel/flake.py:367), so they pin a regression rather than fail before; if the card's \"fails before\" clause is to be literal, add the failing-before variant or record them as pins.",
+        "[ac3d3c8b@620e795] tests/kernel/test_flake.py:792 \u2014 scope the example-file assertion to the flake block (`example[example.index('  flake:'):example.index('  risk:', \u2026)]`) so a `B-196077` elsewhere in the file cannot satisfy it."
+      ],
       "kernel_notes": [
         "groom-fill-b-196077-1791836609: groom-fill raised risk high: two of the four listed findings (owned() in _bugless_live, the PD5 matrix-leg assertion) are already implemented and already tested on trunk; the real remaining gaps are a wording mismatch, two untested branches, and the unmet enablement-gate note, so the card is reshaped to those four concrete items.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5f129ce21: tests.kernel.test_flake.BugTests, tests.kernel.test_flake.KnobTests)",
@@ -18023,7 +18030,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T08:38:18Z",
+      "updated": "2026-10-14T08:44:39Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -18056,7 +18063,7 @@
       "state": "New",
       "title": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
       "type": "bug",
-      "updated": "2026-10-14T08:35:15Z",
+      "updated": "2026-10-14T08:44:39Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_finish_first.py"
@@ -18935,7 +18942,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_finding_writes.OutsideWrites, tests.kernel.test_finding_writes.Replay)"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18945,7 +18952,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T08:35:15Z",
+      "updated": "2026-10-14T08:44:39Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -18968,6 +18975,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_review_measure, tests.kernel.test_rereview_scope)",
         "groom-fill-b-216547-1791966892: groom-fill raised risk high: trunk has no own-diff once-rule or split LATER count (confirmed by reading split_scope/_scope and running the two cited test files green); the earlier satisfied-on-main close was false."
       ],
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18977,7 +18985,7 @@
       "state": "New",
       "title": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
       "type": "bug",
-      "updated": "2026-10-14T08:41:04Z",
+      "updated": "2026-10-14T08:44:39Z",
       "writes": [
         "asf/kernel/apply.py",
         "asf/kernel/findings.py",
@@ -18999,9 +19007,11 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
       "kernel_notes": [
-        "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_rereview_scope)"
+        "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_rereview_scope)",
+        "groom-fill-b-216548-1791966899: groom-fill raised risk high: Confirmed in code \u2014 later_bugs' later_filed check, _keep_later's never-cleared later_findings, and file_bug's key-substring dedup all combine to drop a second landing's follow-up Bug; the fix and its tests are concretely scoped across decide.py, apply.py and the two test files."
       ],
       "parent": "F-0358",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "A second landing files no follow-up Bug for its later findings",
@@ -19009,7 +19019,13 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T08:35:15Z"
+      "updated": "2026-10-14T08:44:39Z",
+      "writes": [
+        "asf/kernel/decide.py",
+        "asf/kernel/apply.py",
+        "tests/kernel/test_rereview_scope.py",
+        "tests/kernel/test_main_landing.py"
+      ]
     },
     "B-218499": {
       "backlinks": [],
@@ -19561,6 +19577,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-226065",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.40",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -19569,7 +19587,7 @@
       "state": "New",
       "title": "An item whose out-of-bounds reviewer fix is kept can never leave Stuck",
       "type": "bug",
-      "updated": "2026-10-14T06:41:51Z"
+      "updated": "2026-10-14T08:44:39Z"
     },
     "B-226066": {
       "backlinks": [],
@@ -96987,7 +97005,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T08:35:15Z",
+      "updated": "2026-10-14T08:44:39Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -97041,7 +97059,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T08:35:15Z",
+      "updated": "2026-10-14T08:44:39Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
