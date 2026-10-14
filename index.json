@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T23:57:40Z",
+  "generated": "2026-10-14T00:03:12Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18446,12 +18446,10 @@
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/record/repair.py:148-156 \u2014 close the fence at the end of the section that opened it, ahead of the derived `## Children`/`## Backlinks`, and prove the placement before listing the card fixed (restore `_fence_placements`/`_fence_clears`/`_converts` from a107a4784fdd0f69b92a136cc1ca7550872607ab and their rule that a card no placement clears is left unwritten and unlisted); appended at the end of the body the fence lands inside `## Backlinks`, which `index.refresh` regenerates in the rule's own commit (`publish.commit_paths`, asf/record/publish.py:76-81, :109), so the card is announced `fixed ... body: unbalanced code fence` and the migration still refuses it \u2014 reproduced, and this is 110 of the 182 cards",
-        "asf/record/repair.py:234-235 \u2014 fold the continuation onto the last line in `out` that `_HISTORY_BULLET_RE` matches, not onto `out[-1]`, and drop the continuation line instead of appending it; when no bullet precedes it, `out.append(line)` and leave `changed` alone. Today a blank line between a bullet and its continuation is what gets folded onto, producing another non-bullet line while the card is listed as fixed \u2014 reproduced",
-        "asf/record/repair.py:212 \u2014 carry the `emitted` flag the previous head had (set only on a checkbox bullet with non-empty text) and rewrite an indented line that has no emitted entry above it as a bullet of its own (`- [ ] {line.strip()}`); `asf.schema._lift_acceptance` folds onto `out[-1]` only when `out` is non-empty (asf/schema.py:163-164) and an unfilled `- [ ] ` placeholder never reaches it (asf/schema.py:168-170), so a continuation under the record's own default placeholder is left refused \u2014 reproduced",
-        "asf/record/repair.py:363 \u2014 give the pass a caller, inside this card's `writes:`: add `p.add_argument('--refusals', action='store_true', ...)` in `register` and `if getattr(args, 'refusals', False): return run_cards(root, apply=bool(args.apply))` as the first branch of `cmd_record_repair`. `run_cards` and `card_repair` have no caller but the tests, so `asf record-repair` cannot run the six rules at all; the report's reason for leaving it out does not hold \u2014 `asf/cli.py` only calls `register(sub)` (asf/cli.py:576-577) and `cmd_record_repair(args, root)` (asf/cli.py:1071-1076), both of which live in `asf/record/repair.py`, and head a107a4784fdd0f69b92a136cc1ca7550872607ab wired its `--refusals` flag entirely inside this file"
+        "asf/record/repair.py:413-418 \u2014 return (lines, False) when any non-blank line of out still fails _HISTORY_BULLET_RE, so a ## History section holding an orphan the rule deliberately leaves alone is never rewritten and never listed as fixed; today a later continuation in the same section sets changed=True at :417, the card is announced \"fixed <card>: history: not a bullet\" and asf.schema._lift_history refuses it with exactly that reason \u2014 reproduced with ['an orphan with no bullet', '- made', '  a continuation']",
+        "asf/record/repair.py:390-391 \u2014 guard the new else branch with `if line.strip().startswith('```'): return lines, False` before wrapping, so a fenced block inside ## Acceptance is left for the non-mechanical nine instead of being flattened; today each of its lines becomes a checkbox entry, the body's fence count drops by two and stays even, so the migration converts the card and nothing reports the loss \u2014 at 6cde9ca that line was appended unchanged with changed left unset, so the card stayed refused and intact"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "build-b-208187-1791926710: NEEDS OPERATOR: the acceptance bullet \"the per-card migration path then refuses 0 cards of a copy of a real record of this size\" is still unchecked \u2014 this host and CI have no real record (the only corpus is sample/b\u2026",
         "PR #1726: install-clean-macos is red but not a required check \u2014 ignored",
@@ -18459,7 +18457,7 @@
         "build-b-208187-1791933475: NEEDS OPERATOR: confirm the per-card migration path refuses 0 cards after card_repair on a copy of the real ~2,913-card record (no such record is available in this container) \u2014 `python3 -c \"from asf.record import re\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18469,7 +18467,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-13T23:57:37Z",
+      "updated": "2026-10-14T00:03:09Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18500,17 +18498,13 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_findings": [
-        "asf/kernel/ports.py:1145 \u2014 drop publish.discard_dirt (and delete asf/record/publish.py:51-60): it hard-resets the operator's record checkout, which asf/tick/shadow.py:14-16 states is \"clean and on the trunk, never a reset\" and probe_operator_checkout refuses on (shadow.py:272-278, --untracked-files=no, touching nothing). Return the named paths and stop, as the card's clause 2 asks; keep the mint's rollback but bound it to the mint's own paths via _put_back (publish.py:191), and for the killed-process case record the intended paths in a .git/ marker (as shadow.py:333-345 does) and clean up only what it names.",
-        "asf/kernel/ports.py:1154 \u2014 a behind-only checkout is not a breach: the live tick pushes record commits from its own clone (shadow.py:10-13) and sync_operator_checkout runs in the product tick (tick.py:342), never in the kernel tick, so behind is backlog_dir's normal steady state. As shipped, loop.py:811 makes that suppress intake minting on most ticks. Branch on the pair: ahead+behind -> report both (C5); ahead alone -> the existing push retry; behind alone -> not a breach (return None, or call shadow.sync_operator_checkout and report only its refusal).",
-        "asf/kernel/ports.py:1115 \u2014 drop the `if created:` gate and call publish_changes unconditionally (it already no-ops on no change, publish.py:265-268): process_inbox also writes without minting \u2014 the \"## Question\" write (asf/groom/inbox.py:512-514) and the repeat-Bug add_evidence + move_to_done (:497-499) \u2014 and loop.py:827 gates the end-of-tick publish too, so those writes strand, then get discarded by the next tick, rewriting an undecided note's file and resetting its mtime against ports.py:1171-1173's stated invariant.",
-        "asf/kernel/ports.py:1143-1151 \u2014 guard with shadow.probe_operator_checkout(self.product, out=None) before resetting or pushing: checkout_breach checks neither the off-trunk/detached HEAD case (shadow.py:263-268) nor backlog_dir == record_dir (shadow.py:259-260), so it can reset a side-branch HEAD and push it to origin/<trunk> (shadow.py:122), or hard-reset the live tick's own record clone while that tick is mid-write (the kernel tick holds only its own lock, loop.py:802).",
-        "asf/kernel/ports.py:1149-1155 \u2014 handle `ahead and behind` before either single case and name the stranded commits with publish.left_ahead (publish.py:75-78, unused by this diff): a truly diverged checkout falls through to the behind message, so a minted-but-unpushed card is never named or retried \u2014 clause 4 left open in the one state that produces it. test_diverged_checkout_is_reported (tests/kernel/test_intake_mint_atomic.py:117-135) builds a behind-only checkout, so this combination is untested."
+        "asf/kernel/ports.py:1178 \u2014 drop the mint marker as soon as the checkout is clean (`dirty = publish.dirty_paths(self.root)` then `if not dirty: publish.drop_mint_pending(self.root)`, before the `if dirty:` block): a mint killed after publish_changes committed but before drop_mint_pending (ports.py:1131) leaves the marker naming paths that are now committed, the clean path at :1178-1179 never retires it, and the next hand edit to one of those paths matches `set(dirty) <= set(pending)` at :1181 and is silently reverted by _put_back and misreported as an interrupted mint \u2014 verified on this head: \"record: an earlier tick's mint never committed \u2014 features/F-0001.md put back to 7f39015\", EDIT SURVIVED: False. Add a case beside test_interrupted_mint_leaves_no_untracked_card_after_next_tick that leaves the marker undropped after a committed mint, runs one checkout_breach, then hand-edits one of its paths and asserts the edit survives and is reported as uncommitted record change(s) at tick start."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18520,7 +18514,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-13T23:57:37Z",
+      "updated": "2026-10-14T00:03:09Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18892,6 +18886,23 @@
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
       "updated": "2026-10-13T22:17:53Z"
+    },
+    "B-218499": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-218499",
+      "parent": "F-0362",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
+      "stage_since": "2026-10-14T00:00:25Z",
+      "state": "New",
+      "title": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
+      "type": "bug",
+      "updated": "2026-10-14T00:00:25Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -23438,7 +23449,8 @@
         "T-154337",
         "T-80371",
         "B-0030",
-        "B-0063"
+        "B-0063",
+        "B-208438"
       ],
       "children": [],
       "cost": {
@@ -37894,7 +37906,8 @@
         "T-208101",
         "T-208102",
         "T-208103",
-        "T-208104"
+        "T-208104",
+        "B-218499"
       ],
       "decided": true,
       "folder": "features",
@@ -95233,7 +95246,9 @@
         "T-208102",
         "T-208103"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-218499"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -95253,11 +95268,13 @@
         "asf redact --unpublished"
       ],
       "id": "T-208104",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "partial: NEEDS OPERATOR: the 2026-10-12/13 session questions themselves, for the replay fixture tests/fixtures/replay/questions-2026-10-12.jsonl (\u00a72.9) \u2014 `jq -c 'select((.at // \"\") >= \"2026-10-12\" an\u2026",
-      "kernel_stuck_since": "2026-10-13T23:44:09Z",
+      "kernel_answers": [
+        "The console harvested the fixture on the host and pushed it to this branch (head dbc8ac618): 15 real questions, redacted. The honest replay claims 3 of 15 (20 percent). Decision: this Task lands as the measurement. Keep the two cases (share at least 80 percent, one question per class) skipped with the measured numbers as the reason; do not trim rows or retune the classifier here. The 80 percent target moves to a follow-up Bug the console files under F-0362. Pull the branch, confirm the gate modules pass, report done."
+      ],
+      "kernel_attempts": [
+        "relaunch: operator answer: The console harvested the fixture on the host and pushed it to this branch (head dbc8ac618): 15 real questions, redacted. The honest replay claims 3 of 15 (20 percent). Decision: this Task lands as the measurement. Keep the two cases (share at least 80 percent, one question per class) skipped with the measured numbers as the reason; do not trim rows or retune the classifier here. The 80 percent target moves to a follow-up Bug the console files under F-0362. Pull the branch, confirm the gate modules pass, report done."
+      ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -95270,7 +95287,7 @@
       ],
       "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
       "type": "task",
-      "updated": "2026-10-13T23:45:09Z",
+      "updated": "2026-10-14T00:03:09Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/cli.py",
@@ -95627,7 +95644,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-13T23:51:34Z",
+      "updated": "2026-10-14T00:03:09Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -95684,7 +95701,7 @@
       "kernel_later_findings": [
         "[e1b07754@ce7da27] asf/kernel/mainline.py:120 \u2014 `revert_ci` now routes \"the revert PR's own CI completed that check red but on none of the trunk's failing ids\" to 'unanswered' (:586-587), so `judge` posts UNANSWERED's old sentence \"its own CI never reports <check>\" on a PR whose check is right there, completed and red. Add a `NO_SAME_ID` reason beside UNANSWERED and split judge's `else` (:789-791) on `({c.name for c in rpr.checks if c.conclusion in RED_CONCLUSIONS} & {c.name for c in reds})`, using NO_SAME_ID when that set is non-empty and UNANSWERED only when it is empty; then assert the reason in tests/kernel/test_revert_merged.py:203-216 (`assertIn(REQ[0], closed.reason)`, `assertNotIn('never reports', closed.reason)`)."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95697,7 +95714,7 @@
       ],
       "title": "a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "task",
-      "updated": "2026-10-13T23:57:37Z",
+      "updated": "2026-10-14T00:03:09Z",
       "writes": [
         "asf/kernel/mainline.py",
         "asf/kernel/incidents.py",
@@ -95954,6 +95971,7 @@
       ],
       "id": "T-217367",
       "kernel_stack": "worker/T-217364@8b9bb74e590fc84925982d69dd1600474e6c975e",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -95967,7 +95985,7 @@
       ],
       "title": "the way back \u2014 every writing command that names an archived id brings the card back before it writes, and the migration converts it then",
       "type": "task",
-      "updated": "2026-10-13T23:57:37Z",
+      "updated": "2026-10-14T00:03:09Z",
       "writes": [
         "asf/record/reopen.py",
         "asf/record/setfield.py",
