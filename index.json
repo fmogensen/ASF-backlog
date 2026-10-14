@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:07:52Z",
+  "generated": "2026-10-14T10:11:03Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19582,7 +19582,11 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_notes": [
+        "groom-fill-b-225513-1791971413: groom-fill raised risk high: The five named modules were already migrated to asf.clock by T-210358 (#1758, on origin/main) and the baseline file already matches the tree; the only real remaining work is flipping clock-400 from report-only to blocking in CI, which touches the kernel's own gate."
+      ],
       "parent": "F-0357",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
@@ -19590,7 +19594,11 @@
       "state": "New",
       "title": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
       "type": "bug",
-      "updated": "2026-10-14T09:50:29Z"
+      "updated": "2026-10-14T10:10:59Z",
+      "writes": [
+        ".github/workflows/tests.yml",
+        "tests/test_workflow.py"
+      ]
     },
     "B-226064": {
       "backlinks": [],
@@ -19604,7 +19612,7 @@
       "kernel_notes": [
         "groom-fill-b-226064-1791970180: groom-fill raised risk high: no log_silent_min key or frozen-demotion logic exists yet; this is new kernel heartbeat-judge behavior, not landed or covered elsewhere."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19614,7 +19622,7 @@
       "state": "New",
       "title": "A hung local session keeps beating through the host loop and is ended only at the 6 hour ceiling",
       "type": "bug",
-      "updated": "2026-10-14T09:50:29Z",
+      "updated": "2026-10-14T10:10:59Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/settings.py",
@@ -19643,7 +19651,7 @@
       "state": "New",
       "title": "An item whose out-of-bounds reviewer fix is kept can never leave Stuck",
       "type": "bug",
-      "updated": "2026-10-14T09:53:28Z",
+      "updated": "2026-10-14T10:10:59Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -19720,6 +19728,7 @@
       "id": "B-229218",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_state": "building",
       "parent": "F-0336",
       "priority": "nice",
       "schema_version": 3,
@@ -19728,7 +19737,7 @@
       "state": "New",
       "title": "Later findings from the review of B-196077: kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T09:57:15Z",
+      "updated": "2026-10-14T10:10:59Z",
       "writes": [
         "tests/kernel/test_flake.py"
       ]
@@ -92876,7 +92885,8 @@
         "Decision: the review's second clause came from a transient red on main. tests.test_card_json passes 23 of 23 on origin/main at 54d0321c1, as you measured, so no action is needed for it. Treat that clause as closed and continue to review with the first clause's fix in place."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Decision: the review's second clause came from a transient red on main. tests.test_card_json passes 23 of 23 on origin/main at 54d0321c1, as you measured, so no action is needed for it. Treat that clause as closed and continue to review with the first clause's fix in place."
+        "relaunch: operator answer: Decision: the review's second clause came from a transient red on main. tests.test_card_json passes 23 of 23 on origin/main at 54d0321c1, as you measured, so no action is needed for it. Treat that clause as closed and continue to review with the first clause's fix in place.",
+        "relaunch: PR #1789 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_findings": [
         "asf/record/index.py:39 \u2014 `only=` matches only `rec['relpath']`, so the view relpath `refresh` now returns at `:58` can never be fed back to it; `asf/record/publish.py:154-156` does exactly that round-trip, so a hand-edited view in the checkout is never regenerated (the commit lands the right bytes, the working tree keeps the stale ones, and `asf check` then reports `view is stale` with no automatic repair). Fix: `if only is not None and rec['relpath'] not in only and os.path.relpath(card.view_path(rec['path']), root) not in only: continue`.",
@@ -92891,7 +92901,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92904,7 +92914,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:07:47Z",
+      "updated": "2026-10-14T10:10:59Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -96738,7 +96748,7 @@
         "PR #1783: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96751,7 +96761,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T10:07:47Z",
+      "updated": "2026-10-14T10:10:59Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
