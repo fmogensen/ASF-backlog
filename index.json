@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T09:50:32Z",
+  "generated": "2026-10-14T09:53:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18957,7 +18957,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_finding_writes.OutsideWrites, tests.kernel.test_finding_writes.Replay)"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18967,7 +18967,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T09:50:29Z",
+      "updated": "2026-10-14T09:53:28Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -19633,7 +19633,7 @@
       "kernel_notes": [
         "groom-fill-b-226065-1791967471: groom-fill raised risk high: holding_verdict/verdict_holds keeps the stale out-of-bounds breach 'changes' verdict current whenever the PR tree does not move, so _judge_pr re-charges _fix_round forever and _final_review's own \"no verdict holds\" guard blocks it from ever breaking the loop (confirmed against asf/kernel/decide.py:1881-2004, 2246-2290 and asf/kernel/reviewfix.py, with no existing test in tests/kernel/test_reviewer_fixes.py or test_final_review.py covering a no-op build after a breach); needs real code in the kernel, so risk_raise: high."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19643,7 +19643,7 @@
       "state": "New",
       "title": "An item whose out-of-bounds reviewer fix is kept can never leave Stuck",
       "type": "bug",
-      "updated": "2026-10-14T08:58:01Z",
+      "updated": "2026-10-14T09:53:28Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -92875,7 +92875,11 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "done: NEEDS OPERATOR: the review finding's second clause (\"the card's proving tests are not green on main\") does not reproduce against current origin/main (54d0321c1) \u2014 tests.test_card_json is 23/23\u2026",
+      "kernel_stuck_since": "2026-10-14T09:53:02Z",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92888,7 +92892,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T09:46:50Z",
+      "updated": "2026-10-14T09:53:28Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
