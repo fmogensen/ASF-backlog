@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T05:42:04Z",
+  "generated": "2026-10-14T05:45:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19371,6 +19371,23 @@
       "type": "bug",
       "updated": "2026-10-14T05:42:00Z"
     },
+    "B-224862": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-224862",
+      "parent": "F-0358",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "A reviewer fix on a high-risk path is attempted, rejected and charged a round",
+      "stage_since": "2026-10-14T05:44:17Z",
+      "state": "New",
+      "title": "A reviewer fix on a high-risk path is attempted, rejected and charged a round",
+      "type": "bug",
+      "updated": "2026-10-14T05:44:17Z"
+    },
     "B-70500": {
       "backlinks": [],
       "children": [],
@@ -38224,7 +38241,8 @@
         "B-216547",
         "B-216548",
         "B-218951",
-        "B-218952"
+        "B-218952",
+        "B-224862"
       ],
       "decided": true,
       "folder": "features",
@@ -96258,7 +96276,8 @@
         "T-210360"
       ],
       "backlinks": [
-        "T-210363"
+        "T-210363",
+        "B-224862"
       ],
       "children": [],
       "decided": true,
@@ -96278,10 +96297,13 @@
         "asf redact --unpublished"
       ],
       "id": "T-210362",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+      "kernel_answers": [
+        "Round granted. The last review tried to fix its findings itself but touched asf/kernel/decide.py, a high-risk path, so the kernel did not trust commit 1c44b6d (since fbeed72); that is a reviewer-rule limit, not this item's fault. Read 1c44b6d: keep each change that correctly fixes a review finding, revert anything else, and finish any finding it left. Run the Task's gate modules, push. The next review checks the result."
       ],
-      "kernel_extra_rounds": 0,
+      "kernel_attempts": [
+        "relaunch: operator answer: Round granted. The last review tried to fix its findings itself but touched asf/kernel/decide.py, a high-risk path, so the kernel did not trust commit 1c44b6d (since fbeed72); that is a reviewer-rule limit, not this item's fault. Read 1c44b6d: keep each change that correctly fixes a review finding, revert anything else, and finish any finding it left. Run the Task's gate modules, push. The next review checks the result."
+      ],
+      "kernel_extra_rounds": 1,
       "kernel_findings": [
         "reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
         "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`"
@@ -96295,11 +96317,7 @@
         "build-t-210362-1791955186: NEEDS OPERATOR: the session's heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791955186 'asf/build-t-210362-1791955186@20261014T051954Z' >/dev/null 2>&1 &`) was refused by the sandbo\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 3 fix rounds \u2014 findings: reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: ke\u2026",
-      "kernel_stuck_since": "2026-10-14T05:35:42Z",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96312,7 +96330,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T05:35:42Z",
+      "updated": "2026-10-14T05:45:03Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96720,7 +96738,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
-      "kernel_stack": "worker/T-217366@c6ba97fed32155155b173aca6dc844f1d595de50",
+      "kernel_stack": "worker/T-217366@8e1a879032f6192d53ac2529a458658ce688d476",
       "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0363.md"
@@ -96734,7 +96752,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T05:38:57Z",
+      "updated": "2026-10-14T05:45:03Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -96766,8 +96784,11 @@
         "asf redact --unpublished"
       ],
       "id": "T-217371",
+      "kernel_notes": [
+        "build-t-217371-1791955537: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217371-1791955537 'asf/build-t-217371-1791955537@20261014T052543Z' >/dev/null 2>&1 &`) was refused by the sandbox twice at\u2026"
+      ],
       "kernel_stack": "worker/T-217366@c51cbc77881039fad66f8cd1e011b5c468b19c94",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96780,7 +96801,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T05:28:30Z",
+      "updated": "2026-10-14T05:45:03Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
