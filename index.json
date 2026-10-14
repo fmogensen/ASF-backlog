@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T12:54:17Z",
+  "generated": "2026-10-14T12:57:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -38980,6 +38980,9 @@
       "decided": true,
       "folder": "features",
       "id": "F-0364",
+      "kernel_closed_findings": {
+        "28a267f3": "{'head': 'ab6d67e3b4c74957360df2d0b48d4c60f052b308', 'line': 'docs/specs/f-0364.md:643'}"
+      },
       "kernel_findings": [
         "docs/specs/f-0364.md:643 \u2014 add kernel_stale_after_s to the \"What stays\" list in \u00a72.6 and to the S-233322 acceptance line's keeps-clause (\"kernel.heartbeat keeps enabled, interval_min and kernel_stale_after_s\"), since asf/kernel/host.py:706 reads that key for the kernel's own beat staleness check which \u00a72.6 says stays unchanged, and settings.read() would otherwise drop the key from product.kernel['heartbeat'] entirely."
       ],
@@ -38997,7 +39000,7 @@
       "state": "New",
       "title": "ASF 0.4 design: remove five mechanisms, keep five, seven invariants, built in one order",
       "type": "feature",
-      "updated": "2026-10-14T12:54:16Z"
+      "updated": "2026-10-14T12:57:06Z"
     },
     "R-0001": {
       "backlinks": [
@@ -97233,7 +97236,7 @@
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97246,7 +97249,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T12:54:16Z",
+      "updated": "2026-10-14T12:57:06Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
