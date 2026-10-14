@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:46:56Z",
+  "generated": "2026-10-14T10:50:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19047,7 +19047,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T10:34:24Z",
+      "updated": "2026-10-14T10:50:24Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
@@ -19629,7 +19629,7 @@
       "kernel_notes": [
         "groom-fill-b-226064-1791970180: groom-fill raised risk high: no log_silent_min key or frozen-demotion logic exists yet; this is new kernel heartbeat-judge behavior, not landed or covered elsewhere."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19639,7 +19639,7 @@
       "state": "New",
       "title": "A hung local session keeps beating through the host loop and is ended only at the 6 hour ceiling",
       "type": "bug",
-      "updated": "2026-10-14T10:43:28Z",
+      "updated": "2026-10-14T10:50:24Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/settings.py",
@@ -92940,7 +92940,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92953,7 +92953,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:43:28Z",
+      "updated": "2026-10-14T10:50:24Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -97102,27 +97102,14 @@
         "Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
         "granted tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
-        "relaunch: operator answer: granted tests/test_tick.py; nothing else outside writes (card updated by the kernel).",
-        "session ran past its max age",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_closed_findings": {
-        "dda08731": "{'head': 'e4a1dfb818ad8f22170ce296b20b9837c160f986', 'line': 'asf/tick/tick.py:198'}"
-      },
-      "kernel_findings": [
-        "asf/tick/tick.py:198 \u2014 the archive writer runs even when `plan['moving']` is empty, and `apply()` then creates/rewrites `archive/manifest.json` (fresh `generated` stamp) and re-runs `index.refresh` at least hourly on every product, including one with `archive_after_days: 0` (archiving off); replace the bare `else:` with `elif not (archive_plan['moving'] or archive_plan['notes']): print(f\"archive moved=0 held={len(archive_plan['held_back'])}\")` ahead of it, and add a case to `tests/test_tick.py` asserting the writer never runs and no manifest appears when nothing moves",
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
-        "operator answer: granted tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "PR #1771: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97135,7 +97122,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T10:46:53Z",
+      "updated": "2026-10-14T10:50:24Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -97314,7 +97301,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-14T10:37:33Z",
+      "updated": "2026-10-14T10:50:24Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
