@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T06:55:58Z",
+  "generated": "2026-10-14T06:59:51Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18019,7 +18019,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T06:49:01Z",
+      "updated": "2026-10-14T06:59:45Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -18623,6 +18623,7 @@
     },
     "B-211240": {
       "backlinks": [
+        "B-214946",
         "B-223558"
       ],
       "children": [],
@@ -18875,7 +18876,12 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "[8a900942@bb6cfe8] asf/kernel/findings.py:198 \u2014 `_cited` has no imperative override and no clause scoping, so `missing` on either side of a path beats an explicit ask: \"add the missing guard to asf/kernel/decide.py:12\" \u2192 `[]` (main: `['asf/kernel/decide.py']`), \"no plan exists; create docs/plans/b-1.md\" \u2192 `[]`, and the earlier finding's own example \"`docs/plans/x.md` is missing. Write `docs/plans/x.md` \u2026\" \u2192 `[]` \u2014 four regressions against `origin/main` and the card's third Acceptance. Add `IMPERATIVE_RE = re.compile(r'\\b(?:add|write|create|delete|remove|fix|replace|rename|move|drop|restore|update)\\b', re.I)` and `return False` when it fires in `before`, ahead of both cue checks, then cut `before`/`after` at the nearest clause break (`.;\u2014:`); add the four rows as `OutsideWrites` cases. Measured: 19/100 = 19 % requested, inside the 20 % ceiling.",
+        "asf/kernel/findings.py:185 \u2014 `verbatim`, `near-miss` and the bare `existed` are cues of neither pattern the card names, and `verbatim` suppresses a genuine ask inside the honest fixture itself (row 26: ``(`asf/feeder/render.py:61`) prints `row.action` verbatim`` \u2192 `[]` here, `['asf/feeder/render.py']` on main, and that path is outside the card's `writes:`). Drop the three alternatives, keeping `never existed`: `EITHER_SIDE_RE = re.compile(r'\\b(?:missing|absent|not in the record|never existed|neither exists?|' r\"does(?:n't| not) exist|no plan|no spec|forbids?)\\b\", re.I)`, and reword the third path of `tests/kernel/test_finding_writes.py:112-117` off `near-miss` onto the card's pattern-2 wording. Measured: 18/100 = 18 % alone, 19 % with the fix above.",
+        "shared files: asf/kernel/findings.py also held by B-211240 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable.",
         "round not charged: a rebase round: PR #1738 conflicts with its base",
@@ -18885,7 +18891,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_finding_writes.OutsideWrites, tests.kernel.test_finding_writes.Replay)"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18895,7 +18901,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T06:55:47Z",
+      "updated": "2026-10-14T06:59:45Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -19021,7 +19027,7 @@
         "groom-fill-b-218650-1791941424: groom-fill raised risk high: finding e1b07754 still reproduces unchanged on current main (T-210361 at a312beb9f); the test it names already builds the exact scenario and just needs the reason-text assertions added, so the card is buildable as scoped.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_revert_merged.NotGuilty)"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19029,7 +19035,7 @@
       "state": "New",
       "title": "Later findings from the review of T-210361: a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "bug",
-      "updated": "2026-10-14T06:52:36Z",
+      "updated": "2026-10-14T06:59:45Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_revert_merged.py"
@@ -98393,7 +98399,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at af8aa11cc: tests.test_release_rehearsal_criterion)"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -98409,7 +98415,7 @@
       ],
       "title": "the edge \u2014 the `rehearsal` job and the two `needs:` lines",
       "type": "task",
-      "updated": "2026-10-14T06:55:47Z",
+      "updated": "2026-10-14T06:59:45Z",
       "writes": [
         ".github/workflows/release.yml",
         "tests/test_version.py"
