@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T06:06:02Z",
+  "generated": "2026-10-14T06:10:17Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18784,7 +18784,7 @@
         "groom-fill-b-213994-1791922466: groom-fill raised risk high: missing_ids conflates \"module exists but fails to import\" with \"absent\" by matching on name alone; the fix is a self-contained text-based reclassification in trunk.py plus a doc-only sync of D1/\u00a72.1/\u00a72.2 to the already-shipped two-run, bounded-retry read.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9a37dbf74: tests.kernel.test_blame_before_revert.ParseUnittest, tests.kernel.test_blame_before_revert.ProbeClass)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -18794,7 +18794,7 @@
       "state": "New",
       "title": "A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T05:52:39Z",
+      "updated": "2026-10-14T06:10:07Z",
       "writes": [
         "asf/kernel/trunk.py",
         "docs/specs/f-0357.md",
@@ -18879,7 +18879,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_finding_writes.OutsideWrites, tests.kernel.test_finding_writes.Replay)"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18889,7 +18889,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T06:10:07Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -19247,14 +19247,14 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at d8a1f1457: tests.kernel.test_revert_merged.Incident)"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:43:23Z",
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T05:49:55Z",
+      "updated": "2026-10-14T06:10:07Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
@@ -19384,7 +19384,7 @@
       "kernel_notes": [
         "groom-fill-b-224761-1791956512: groom-fill raised risk high: Gap is real and unaddressed by the just-landed sibling B-223558, and buildable with existing plumbing (NeededProbe's git-read pattern, Ports.record.root, TYPES folder convention)."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19394,7 +19394,7 @@
       "state": "New",
       "title": "The satisfied-on-main cutoff dates a card by day, not by the commit that added it",
       "type": "bug",
-      "updated": "2026-10-14T05:52:39Z",
+      "updated": "2026-10-14T06:10:08Z",
       "writes": [
         "asf/kernel/needed_probe.py",
         "asf/kernel/facts.py",
@@ -96745,6 +96745,10 @@
       "kernel_attempts": [
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
+      "kernel_notes": [
+        "PR #1771: part (3.12, 3) is red but not a required check \u2014 ignored",
+        "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
@@ -96758,7 +96762,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T06:05:57Z",
+      "updated": "2026-10-14T06:10:08Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
