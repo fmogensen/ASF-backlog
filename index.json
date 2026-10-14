@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T00:11:14Z",
+  "generated": "2026-10-14T00:15:14Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -95263,6 +95263,7 @@
         "T-208103"
       ],
       "backlinks": [
+        "T-217364",
         "B-218499"
       ],
       "children": [],
@@ -95639,7 +95640,8 @@
         "relaunch: operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them."
       ],
       "kernel_closed_findings": {
-        "0a4e209f": "{'head': '9e4e8740933af01b3ccf73a95c03c4468f880505', 'line': 'asf/kernel/decide.py:1159'}"
+        "0a4e209f": "{'head': \"{'head': '9e4e8740933af01b3ccf73a95c03c4468f880505', 'line': 'asf/kernel/decide.py:1159'}\", 'line': ''}",
+        "5bef432e": "{'head': '5359343a7dee2d227e39de0f19f4aa0471e79f89', 'line': 'asf/kernel/incidents.py:48'}"
       },
       "kernel_findings": [
         "[5bef432e@6db2bc1] asf/kernel/incidents.py:48 \u2014 plan Task 6 step 8 (docs/plans/f-0357.md:820) is still not implemented; the REPORT on 9e4e874 now carries `needs writes: tests/kernel/test_incidents.py`, which unblocks the file but does not land the step. Fix: add `BLAME = 'blame'` beside MAIN_RED (incidents.py:40-45), BLAME in KINDS (:48), a `(kind, spell, class)` leg in _key (:56-72) so a class that changes (unproven -> trunk-wide) is recorded again, and a _blame_record carrying {at, kind, spell, sha, item, pr, class, test, first_red, parent, why} fed from plan.main['blame'] (mainline.blame_record, :295-297) joined in gather (:147-158); then update the two exact kind-list assertions at tests/kernel/test_incidents.py:108 and :221 under the granted write, leaving the three existing kinds' keys and meaning untouched.",
@@ -95660,7 +95662,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-14T00:03:09Z",
+      "updated": "2026-10-14T00:15:12Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -95858,7 +95860,12 @@
         "asf redact --unpublished"
       ],
       "id": "T-217364",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/record/archive.py:171-172 \u2014 `bring_back` calls `schema.migrate_cards_to_json(root)` unconditionally, against its own verbatim docstring at :116-118 and the plan's Step 2 (docs/plans/f-0363.md:299-300), which both condition it on the card that came back being below the record's shape; it therefore converts and rewrites cards nobody named (and on the real record raises CardMigrationError after the moves and the manifest rewrite are already done), and the paths it returns omit the .json written beside each converted .md, so a caller staging exactly what it got commits a view with no card. Fix: replace the two lines with `if any(p.endswith('.md') for p in brought_back):` guarding `from asf import schema` and a loop over `schema.migrate_cards_to_json(root)` that appends each relpath and, for a `.md`, `os.path.splitext(relpath)[0] + '.json'` beside it.",
+        "shared files: asf/cli.py also held by T-208104 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -95871,7 +95878,7 @@
       ],
       "title": "the archive is a place in the record \u2014 a rename, a manifest, and two ways to read a card that is in it",
       "type": "task",
-      "updated": "2026-10-13T23:57:37Z",
+      "updated": "2026-10-14T00:15:12Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/archive.py",
