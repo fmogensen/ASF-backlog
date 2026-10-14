@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T08:59:05Z",
+  "generated": "2026-10-14T09:10:34Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17997,7 +17997,9 @@
       ]
     },
     "B-196077": {
-      "backlinks": [],
+      "backlinks": [
+        "B-229218"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -18012,6 +18014,7 @@
         "docs/products.example.yaml:778 \u2014 add the B-196077 note to the operator-facing flake block, at the end of `enabled: false`'s comment prose in the same comment column: `# red on: the kernel's ordinary red path keeps those. Off until` / `# B-196077 (open review findings in judge()) is Done`; then extend tests/kernel/test_flake.py:786 to assert `B-196077` in both `settings.__doc__` and `docs/products.example.yaml`, mirroring tests/kernel/test_blame_before_revert.py:652-661 and reading the file as tests/kernel/test_flake.py:810 already does. This needs `needs writes: docs/products.example.yaml`."
       ],
       "kernel_fix_rounds": 1,
+      "kernel_later_filed": "B-229218",
       "kernel_later_findings": [
         "[ed695aad@620e795] tests/kernel/test_flake.py:750,762 \u2014 the two BugTests cases added in 8693b329a pass on origin/main unchanged (the branch's only behavioural edit is the record wording at asf/kernel/flake.py:367), so they pin a regression rather than fail before; if the card's \"fails before\" clause is to be literal, add the failing-before variant or record them as pins.",
         "[ac3d3c8b@620e795] tests/kernel/test_flake.py:792 \u2014 scope the example-file assertion to the flake block (`example[example.index('  flake:'):example.index('  risk:', \u2026)]`) so a `B-196077` elsewhere in the file cannot satisfy it."
@@ -18021,7 +18024,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5f129ce21: tests.kernel.test_flake.BugTests, tests.kernel.test_flake.KnobTests)",
         "build-b-196077-1791959526: NEEDS OPERATOR: `asf redact --unpublished` could not be run \u2014 the `asf` CLI is not installed in this cloud container, and the brief's CLOUD SESSION section does not list it among what to run here (only the tools/che\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0336",
       "schema_version": 2,
       "severity": "S3",
@@ -18030,7 +18033,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T08:47:43Z",
+      "updated": "2026-10-14T09:10:02Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -18057,7 +18060,7 @@
         "groom-fill-b-199428-1791844636: groom-fill raised risk high: Both readers today only look at the raw kernel.launch block, confirmed by the final PR #1670 build report as a deliberately left-out finding; a fix is well-scoped (prefer validated, fallback to raw) and my own review of the last two fix commits found nothing further to fix.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_finish_first.LaunchKnobs)"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0334",
       "schema_version": 2,
       "severity": "S3",
@@ -18066,7 +18069,7 @@
       "state": "New",
       "title": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
       "type": "bug",
-      "updated": "2026-10-14T08:53:55Z",
+      "updated": "2026-10-14T09:10:02Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_finish_first.py"
@@ -18927,6 +18930,9 @@
       "kernel_answers": [
         "Decision: the 10 percent ceiling was the console's estimate, not a measured requirement. Do not extend the cue vocabulary further. Set the Replay ceiling to 20 percent requested (measured 18.52) and keep routed under 2 percent, with a comment giving the measured numbers and that the remaining rows are genuine path:line asks. Fix the one named false positive (declines to fix it) only if it is a one-line change with a test. Then report done. kernel.resolve.finding_writes stays off."
       ],
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_closed_findings": {
         "1a6efad8": "{'head': \"{'head': '7865edf2175c511fb9a29124edc5868f24832b8d', 'line': 'asf/kernel/findings.py:185'}\", 'line': ''}",
         "1bf99562": "{'head': 'af56deb11c7e4322776bd68900683d2cf51f7cad', 'line': 'asf/kernel/findings.py:236'}",
@@ -18936,9 +18942,11 @@
       "kernel_dor_fills_ver": "0.3.14",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "asf/kernel/findings.py:236 \u2014 `IMPERATIVE_RE.search(' '.join(before))` fires on an indicative verb in another clause, so honest-fixture row 60 (\"both docstrings write the literal string `tools/install.sh`, which `tools/check_conventions.sh` forbids\") regressed from `[]` at `9762c356d` to `['tools/install.sh', 'tools/check_conventions.sh']`, breaking the card's second Acceptance on the record it measures on; the acceptance test at tests/kernel/test_finding_writes.py:113 is green only because its paraphrase says singular \"writes\". Anchor the override to the clause's first word after the last path token \u2014 replace lines 236-237 with `for j in range(len(before) - 1, -1, -1):` / `    if _path_token(before[j]):` / `        before = before[j + 1:]` / `        break` / `if before and IMPERATIVE_RE.match(before[0]):` / `    return False`, fix the `IMPERATIVE_RE` and `_cited` docstrings to say anchored not searched, add an `OutsideWrites` case using the fixture's own \"both docstrings write\" wording expecting `[]`, and update the Replay comment's measured 19% to 18% (tests/kernel/test_finding_writes.py:532); verified: 56 tests OK, 18/100 requested, 0 routed"
+        "asf/kernel/findings.py:242 \u2014 the anchor loop rebinds `before` in place, so BACKWARD_RE (:248) and EITHER_SIDE_RE (:250) now search only the words after the clause's last path token and miss a cue before it, regressing \"No caller outside `asf/reservations.py` and `tests/test_reservations.py`\" (docs/reviews/1-t-0807.md:26) from `[]` to `['tests/test_reservations.py']` and \"no caller or reference anywhere outside `asf/hermetic.py`, `asf/hooks.py`\" (docs/reviews/1-t-0497.md:11) from `[]` to `['asf/hooks.py']`. Keep the truncation local to the anchor \u2014 replace lines 242-247 with `anchor = before` / `for j in range(len(before) - 1, -1, -1):` / `    if _path_token(before[j]):` / `        anchor = before[j + 1:]` / `        break` / `if anchor and IMPERATIVE_RE.match(anchor[0]):` / `    return False`, amend `_cited`'s docstring (:233-235) to say the anchor segment is cut at the last path token while both cue searches still see the whole clause, and add an `OutsideWrites` case using the 1-t-0807.md:26 wording expecting `[]`; verified on a patched copy: row 60 stays `[]`, fixture stays 18/100 requested and 0 routed, every existing asserted text unchanged.",
+        "asf/kernel/findings.py:236 \u2014 `IMPERATIVE_RE.search(' '.join(before))` fires on an indicative verb in another clause, so honest-fixture row 60 (\"both docstrings write the literal string `tools/install.sh`, which `tools/check_conventions.sh` forbids\") regressed from `[]` at `9762c356d` to `['tools/install.sh', 'tools/check_conventions.sh']`, breaking the card's second Acceptance on the record it measures on; the acceptance test at tests/kernel/test_finding_writes.py:113 is green only because its paraphrase says singular \"writes\". Anchor the override to the clause's first word after the last path token \u2014 replace lines 236-237 with `for j in range(len(before) - 1, -1, -1):` / `    if _path_token(before[j]):` / `        before = before[j + 1:]` / `        break` / `if before and IMPERATIVE_RE.match(before[0]):` / `    return False`, fix the `IMPERATIVE_RE` and `_cited` docstrings to say anchored not searched, add an `OutsideWrites` case using the fixture's own \"both docstrings write\" wording expecting `[]`, and update the Replay comment's measured 19% to 18% (tests/kernel/test_finding_writes.py:532); verified: 56 tests OK, 18/100 requested, 0 routed",
+        "shared files: asf/kernel/findings.py also held by B-216547 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable.",
         "round not charged: a rebase round: PR #1738 conflicts with its base",
@@ -18948,7 +18956,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_finding_writes.OutsideWrites, tests.kernel.test_finding_writes.Replay)"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18958,7 +18966,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T08:58:01Z",
+      "updated": "2026-10-14T09:10:02Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -18968,6 +18976,7 @@
     },
     "B-216547": {
       "backlinks": [
+        "B-214946",
         "B-223558"
       ],
       "children": [],
@@ -19645,15 +19654,39 @@
       "id": "B-228767",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_notes": [
+        "groom-fill-b-228767-1791968026: groom-fill raised risk high: all three findings are concrete, already confirmed (repro showed missing_ids returns [] on a basename collision), and fit the exact code+spec+test shape the parent fix (B-213994) already used, so the card just needed acceptance/writes named \u2014 risk_raise is high because the write touches asf/kernel/trunk.py."
+      ],
       "parent": "F-0357",
       "priority": "need",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S2",
       "stage_since": "2026-10-14T08:47:21Z",
       "state": "New",
       "title": "Later findings from the review of B-213994: A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T08:53:55Z"
+      "updated": "2026-10-14T09:10:02Z",
+      "writes": [
+        "docs/specs/f-0357.md",
+        "asf/kernel/trunk.py",
+        "tests/kernel/test_blame_before_revert.py"
+      ]
+    },
+    "B-229218": {
+      "backlinks": [
+        "B-196077"
+      ],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-229218",
+      "parent": "F-0336",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T09:04:13Z",
+      "state": "New",
+      "title": "Later findings from the review of B-196077: kernel.flake: close the open review findings before it is enabled",
+      "type": "bug",
+      "updated": "2026-10-14T09:04:13Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -37495,7 +37528,8 @@
         "S-122809",
         "S-122810",
         "T-136825",
-        "B-196077"
+        "B-196077",
+        "B-229218"
       ],
       "decided": true,
       "folder": "features",
@@ -92814,7 +92848,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92827,7 +92861,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T08:58:01Z",
+      "updated": "2026-10-14T09:10:02Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -96321,7 +96355,7 @@
         "PR #1758: clock (+30d) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96334,7 +96368,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T08:47:43Z",
+      "updated": "2026-10-14T09:10:02Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -96668,7 +96702,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T08:53:55Z",
+      "updated": "2026-10-14T09:10:02Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
@@ -97114,7 +97148,7 @@
         "build-t-217371-1791955537: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217371-1791955537 'asf/build-t-217371-1791955537@20261014T052543Z' >/dev/null 2>&1 &`) was refused by the sandbox twice at\u2026",
         "round not charged: a rebase round: PR #1769 conflicts with its base"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97127,7 +97161,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T08:53:55Z",
+      "updated": "2026-10-14T09:10:02Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
