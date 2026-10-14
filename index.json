@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T05:49:57Z",
+  "generated": "2026-10-14T05:52:42Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18783,7 +18783,7 @@
         "groom-fill-b-213994-1791922466: groom-fill raised risk high: missing_ids conflates \"module exists but fails to import\" with \"absent\" by matching on name alone; the fix is a self-contained text-based reclassification in trunk.py plus a doc-only sync of D1/\u00a72.1/\u00a72.2 to the already-shipped two-run, bounded-retry read.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9a37dbf74: tests.kernel.test_blame_before_revert.ParseUnittest, tests.kernel.test_blame_before_revert.ProbeClass)"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -18793,7 +18793,7 @@
       "state": "New",
       "title": "A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T05:49:55Z",
+      "updated": "2026-10-14T05:52:39Z",
       "writes": [
         "asf/kernel/trunk.py",
         "docs/specs/f-0357.md",
@@ -19313,7 +19313,7 @@
       "kernel_notes": [
         "build-b-224009-1791954719: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-b-224009-1791954719 'asf/build-b-224009-1791954719@20261014T051207Z' >/dev/null 2>&1 &`) was refused by the sandbox's approv\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0360",
       "schema_version": 3,
       "severity": "S3",
@@ -19322,7 +19322,7 @@
       "state": "New",
       "title": "An account whose sign-in expired keeps being picked for cloud launches, emptying the cloud lane",
       "type": "bug",
-      "updated": "2026-10-14T05:42:00Z",
+      "updated": "2026-10-14T05:52:39Z",
       "writes": [
         "asf/connectors/claude_code.py",
         "asf/workers/account_auth.py",
@@ -19382,6 +19382,7 @@
       "kernel_notes": [
         "groom-fill-b-224761-1791956512: groom-fill raised risk high: Gap is real and unaddressed by the just-landed sibling B-223558, and buildable with existing plumbing (NeededProbe's git-read pattern, Ports.record.root, TYPES folder convention)."
       ],
+      "kernel_state": "ready",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19391,7 +19392,7 @@
       "state": "New",
       "title": "The satisfied-on-main cutoff dates a card by day, not by the commit that added it",
       "type": "bug",
-      "updated": "2026-10-14T05:49:55Z",
+      "updated": "2026-10-14T05:52:39Z",
       "writes": [
         "asf/kernel/needed_probe.py",
         "asf/kernel/facts.py",
@@ -96339,8 +96340,7 @@
       "kernel_extra_rounds": 1,
       "kernel_findings": [
         "reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
-        "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`",
-        "operator answer: Round granted. The last review tried to fix its findings itself but touched asf/kernel/decide.py, a high-risk path, so the kernel did not trust commit 1c44b6d (since fbeed72); that is a reviewer-rule limit, not this item's fault. Read 1c44b6d: keep each change that correctly fixes a review finding, revert anything else, and finish any finding it left. Run the Task's gate modules, push. The next review checks the result."
+        "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`"
       ],
       "kernel_fix_rounds": 4,
       "kernel_notes": [
@@ -96351,7 +96351,11 @@
         "build-t-210362-1791955186: NEEDS OPERATOR: the session's heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791955186 'asf/build-t-210362-1791955186@20261014T051954Z' >/dev/null 2>&1 &`) was refused by the sandbo\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 4 fix rounds \u2014 findings: reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: ke\u2026",
+      "kernel_stuck_since": "2026-10-14T05:52:27Z",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96364,7 +96368,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:52:39Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
