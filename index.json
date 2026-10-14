@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T01:26:37Z",
+  "generated": "2026-10-14T01:30:40Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18482,7 +18482,8 @@
     },
     "B-208438": {
       "backlinks": [
-        "T-210361"
+        "T-210361",
+        "B-220155"
       ],
       "children": [],
       "creates": [
@@ -18511,13 +18512,14 @@
         "asf/kernel/ports.py:1178 \u2014 drop the mint marker as soon as the checkout is clean (`dirty = publish.dirty_paths(self.root)` then `if not dirty: publish.drop_mint_pending(self.root)`, before the `if dirty:` block): a mint killed after publish_changes committed but before drop_mint_pending (ports.py:1131) leaves the marker naming paths that are now committed, the clean path at :1178-1179 never retires it, and the next hand edit to one of those paths matches `set(dirty) <= set(pending)` at :1181 and is silently reverted by _put_back and misreported as an interrupted mint \u2014 verified on this head: \"record: an earlier tick's mint never committed \u2014 features/F-0001.md put back to 7f39015\", EDIT SURVIVED: False. Add a case beside test_interrupted_mint_leaves_no_untracked_card_after_next_tick that leaves the marker undropped after a committed mint, runs one checkout_breach, then hand-edits one of its paths and asserts the edit survives and is reported as uncommitted record change(s) at tick start."
       ],
       "kernel_fix_rounds": 3,
+      "kernel_later_filed": "B-220155",
       "kernel_later_findings": [
         "[94ea130f@bbe6f26] asf/kernel/loop.py:811 \u2014 mint_plans is not gated by the breach, only mint_inbox is: `minted = minted + mint_plans(ports, out, config)` runs unconditionally and mint_plan_tasks writes Task cards into the checkout the breach just declared dirty, against the card's \"mints nothing until the checkout is clean\". Gate it the same way: `minted = minted + (mint_plans(ports, out, config) if not problem else [])`."
       ],
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18527,7 +18529,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T01:23:46Z",
+      "updated": "2026-10-14T01:30:38Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18835,7 +18837,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Decision: the 10 percent ceiling was the console's estimate, not a measured requirement. Do not extend the cue vocabulary further. Set the Replay ceiling to 20 percent requested (measured 18.52) and keep routed under 2 percent, with a comment giving the measured numbers and that the remaining rows are genuine path:line asks. Fix the one named false positive (declines to fix it) only if it is a one-line change with a test. Then report done. kernel.resolve.finding_writes stays off.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
@@ -18868,7 +18871,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T01:14:24Z",
+      "updated": "2026-10-14T01:30:38Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -18965,13 +18968,15 @@
       "children": [],
       "folder": "bugs",
       "id": "B-218650",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.26",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T00:06:18Z",
       "state": "New",
       "title": "Later findings from the review of T-210361: a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "bug",
-      "updated": "2026-10-14T00:06:18Z"
+      "updated": "2026-10-14T01:30:38Z"
     },
     "B-218951": {
       "backlinks": [],
@@ -19036,6 +19041,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-219953",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.26",
       "parent": "F-0357",
       "schema_version": 3,
       "severity": "S3",
@@ -19044,7 +19051,7 @@
       "state": "New",
       "title": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
       "type": "bug",
-      "updated": "2026-10-14T01:18:14Z"
+      "updated": "2026-10-14T01:30:38Z"
     },
     "B-219954": {
       "backlinks": [],
@@ -19062,6 +19069,21 @@
       "title": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
       "type": "bug",
       "updated": "2026-10-14T01:18:19Z"
+    },
+    "B-220155": {
+      "backlinks": [
+        "B-208438"
+      ],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-220155",
+      "parent": "F-0360",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T01:29:48Z",
+      "state": "New",
+      "title": "Later findings from the review of B-208438: Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
+      "type": "bug",
+      "updated": "2026-10-14T01:29:48Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -37987,7 +38009,8 @@
       "backlinks": [],
       "children": [
         "B-205886",
-        "B-208438"
+        "B-208438",
+        "B-220155"
       ],
       "decided": true,
       "folder": "features",
@@ -95439,6 +95462,11 @@
       "kernel_attempts": [
         "relaunch: operator answer: The console harvested the fixture on the host and pushed it to this branch (head dbc8ac618): 15 real questions, redacted. The honest replay claims 3 of 15 (20 percent). Decision: this Task lands as the measurement. Keep the two cases (share at least 80 percent, one question per class) skipped with the measured numbers as the reason; do not trim rows or retune the classifier here. The 80 percent target moves to a follow-up Bug the console files under F-0362. Pull the branch, confirm the gate modules pass, report done."
       ],
+      "kernel_closed_findings": {
+        "04e66c80": "{'head': '651d20e8c765ebfbe36e1a7ddd9f56663764dcde', 'line': 'tests/kernel/test_question_replay.py:247'}",
+        "610861e0": "{'head': '651d20e8c765ebfbe36e1a7ddd9f56663764dcde', 'line': 'tests/kernel/test_question_replay.py:234'}",
+        "aa44fb89": "{'head': '651d20e8c765ebfbe36e1a7ddd9f56663764dcde', 'line': 'tests/kernel/test_question_replay.py:197'}"
+      },
       "kernel_findings": [
         "tests/kernel/test_question_replay.py:247-255 \u2014 step 7's PD4 classifier invariant asserts nothing: the guard `cls in Q.CODED or cls in Q.OWNED or cls == Q.HOST_COMMAND` already implies the assertion `assertIn(cls, Q.CODED | set(Q.OWNED) | {Q.HOST_COMMAND})`, so the case passes over any fixture, including one with no coded/owned/host-command row (proved). Compare the class before this Feature against the class after, from a committed per-row baseline \u2014 see the patch in docs/reviews/1-t-208104.md C1 \u2014 and assert the guarded-row count too (`assertEqual(checked, 1)`) so it cannot become vacuous again on a fixture edit",
         "tests/kernel/test_question_replay.py:234,239 \u2014 the two measurement cases are skipped by the negation of their own assertion (`skipIf(share < 0.80)` on a body asserting `share >= 0.80`; same shape for the per-class case), so each runs only where it would pass and can never go red; after the follow-up Bug lifts the share, any regression silently re-skips instead of failing. Replace both with the unconditional `@unittest.skip(_SHARE_REASON)` / `@unittest.skip(_CLASSES_REASON)` \u2014 the reasons at :213-218 already carry the measured numbers, which is what the operator asked for (\"skipped with the measured numbers as the reason\")",
@@ -95460,7 +95488,7 @@
       ],
       "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
       "type": "task",
-      "updated": "2026-10-14T01:20:15Z",
+      "updated": "2026-10-14T01:30:38Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/cli.py",
@@ -95694,7 +95722,7 @@
         "round not charged: a rebase round: PR #1749 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95707,7 +95735,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T01:26:33Z",
+      "updated": "2026-10-14T01:30:38Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -95794,30 +95822,14 @@
       "kernel_answers": [
         "granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them."
       ],
-      "kernel_attempts": [
-        "relaunch: operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them.",
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_closed_findings": {
-        "070494ba": "{'head': '225e37119b98e8335126166a9bc43e856969fcf5', 'line': 'asf/kernel/incidents.py:43'}",
-        "0a4e209f": "{'head': '{\\'head\\': \"{\\'head\\': \\'9e4e8740933af01b3ccf73a95c03c4468f880505\\', \\'line\\': \\'asf/kernel/decide.py:1159\\'}\", \\'line\\': \\'\\'}', 'line': ''}",
-        "5bef432e": "{'head': '225e37119b98e8335126166a9bc43e856969fcf5', 'line': 'asf/kernel/incidents.py:48'}"
-      },
-      "kernel_findings": [
-        "[ff9bd457@5359343] tests/kernel/test_incidents.py:108 \u2014 the file is changed by this head but is outside the card's `writes:` and outside the plan's Task 6 `writes:` (docs/plans/f-0357.md:765), and the operator granted only test_main_landing.py and test_main_pending.py (\"nothing else outside writes\"); the newest report on the branch (6a8c738) still reads `needs writes: none`, and the two commits pushed since carry no report at all. Restore the line verbatim in the next report for T-210360: `needs writes: tests/kernel/test_incidents.py`",
-        "tests/kernel/test_incidents.py:108 \u2014 this file is changed by the head under review but is outside the card's `writes:` and outside the plan's Task 6 `writes:` (docs/plans/f-0357.md:765); the report on 9e4e874 declared `needs writes: tests/kernel/test_incidents.py` and the report on 5359343a7 dropped it to `none`. Restore the line verbatim in the next report for T-210360: `needs writes: tests/kernel/test_incidents.py`",
-        "asf/kernel/incidents.py:43 \u2014 the new BLAME kind is absent from the module docstring that defines the ledger's contract: the kind list at :10-16 still names only MAIN_RED, REVERT and REVERTED_MERGE, and the record shape at :8 is still {\"at\", \"kind\", \"sha\", \"item\", \"pr\", \"spell\", \"checks\", \"flagged\", \"why\"}, while a BLAME row carries class/test/first_red/parent and carries neither checks nor flagged. Add BLAME to the kind list at :14 (after \"re-planned on every red tick until it does)\") as \":data:`BLAME` (the blame read the revert leg took on that same red verdict, :mod:`asf.kernel.blame`; its row carries ``class``, ``test``, ``first_red`` and ``parent`` in place of ``checks`` and ``flagged``)\", and give its shape at :8.",
-        "rebase: PR #1737 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
-        "[5bef432e@6db2bc1] asf/kernel/incidents.py:48 \u2014 plan Task 6 step 8 (docs/plans/f-0357.md:820) is still not implemented; the REPORT on 9e4e874 now carries `needs writes: tests/kernel/test_incidents.py`, which unblocks the file but does not land the step. Fix: add `BLAME = 'blame'` beside MAIN_RED (incidents.py:40-45), BLAME in KINDS (:48), a `(kind, spell, class)` leg in _key (:56-72) so a class that changes (unproven -> trunk-wide) is recorded again, and a _blame_record carrying {at, kind, spell, sha, item, pr, class, test, first_red, parent, why} fed from plan.main['blame'] (mainline.blame_record, :295-297) joined in gather (:147-158); then update the two exact kind-list assertions at tests/kernel/test_incidents.py:108 and :221 under the granted write, leaving the three existing kinds' keys and meaning untouched.",
-        "operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them.",
-        "operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them."
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1737 conflicts with its base",
         "build-t-210360-1791937121: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused the `nohup sh .b0000_heartbeat.sh \u2026` call this session was told to run as its first command (it needs an approval a non-interactive session cannot\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95830,7 +95842,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-14T01:20:15Z",
+      "updated": "2026-10-14T01:30:38Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -96213,7 +96225,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-217368",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96226,7 +96238,7 @@
       ],
       "title": "a new id never reuses an archived one, and an id both places hold is a finding",
       "type": "task",
-      "updated": "2026-10-14T01:14:24Z",
+      "updated": "2026-10-14T01:30:38Z",
       "writes": [
         "asf/record/ids.py",
         "asf/record/check.py",
