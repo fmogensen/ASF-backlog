@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T04:50:02Z",
+  "generated": "2026-10-14T04:55:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18589,11 +18589,7 @@
         "PR #1744: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "red: tests (3.12), tests (3.13) after 5 fix rounds",
-      "kernel_stuck_since": "2026-10-14T04:35:44Z",
+      "kernel_state": "review",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18603,7 +18599,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-14T04:35:44Z",
+      "updated": "2026-10-14T04:55:09Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -95927,7 +95923,8 @@
       ],
       "kernel_attempts": [
         "session ran past its max age",
-        "relaunch: operator answer: granted tests/test_cloud.py tests/test_groom_policy.py tests/test_groom.py tests/test_cli.py tests/test_remote.py tests/test_quota_headroom.py tests/test_quota_stale.py tests/kernel/test_gh_budget.py tests/test_groom_every_card_decided.py tests/test_quota_pressure.py tests/test_groom_publish.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/test_cloud.py tests/test_groom_policy.py tests/test_groom.py tests/test_cli.py tests/test_remote.py tests/test_quota_headroom.py tests/test_quota_stale.py tests/kernel/test_gh_budget.py tests/test_groom_every_card_decided.py tests/test_quota_pressure.py tests/test_groom_publish.py; nothing else outside writes (card updated by the kernel).",
+        "session ran past its max age"
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -95955,7 +95952,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T04:29:56Z",
+      "updated": "2026-10-14T04:55:09Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -96199,7 +96196,7 @@
         "build-t-210362-1791952371: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791952371 'asf/build-t-210362-1791952371@20261014T043259Z' >/dev/null 2>&1 &`) was refused by the sandbox approval\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96212,7 +96209,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T04:49:22Z",
+      "updated": "2026-10-14T04:55:09Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96254,7 +96251,7 @@
         "build-t-210363-1791950444: NEEDS OPERATOR: whether any open PR was charged a fix round for the 2026-10-13 trunk-wide failure"
       ],
       "kernel_stack": "worker/T-210362@fbeed726ad8fb66435be6e41cbff3369f1a883f8",
-      "kernel_state": "landing",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96267,7 +96264,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T04:40:43Z",
+      "updated": "2026-10-14T04:55:09Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
