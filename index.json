@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:20:38Z",
+  "generated": "2026-10-14T10:25:08Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18977,7 +18977,6 @@
     },
     "B-216547": {
       "backlinks": [
-        "T-217370",
         "B-214946",
         "B-216548",
         "B-223558"
@@ -92913,7 +92912,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92926,7 +92925,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:20:34Z",
+      "updated": "2026-10-14T10:25:03Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -97150,11 +97149,13 @@
         "ecd9b587": "{'head': '5c2b7787d8515249c73e8242c3f985f3486066d2', 'line': 'asf/record/archive.py:245'}"
       },
       "kernel_findings": [
-        "rebase: PR #1777 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "asf/doctor.py:226 \u2014 return `'warn', plan['refused']` instead of `False, plan['refused']`: with `required=False` the printer renders `ok is False` as `skip` (`asf/doctor.py:2582`) and `is_red` ignores it, so the below-floor refusal is invisible; also change the docstring at `:72-73` from \"is red\" to \"is `warn`\", and change `tests/test_record_archive_history.py:377-382` to assert `ok == 'warn'` and that `doctor.format_table` carries `warn`",
+        "asf/metrics/metrics.py:1082 \u2014 add the comment Step 2 requires at the deliberate non-overlay reader: \"No archive overlay: the window is at most `days` (7 by default) and the retention floor is 14 (F-0363 D8, P17), so no card this counts can have been archived \u2014 the floor is what keeps that true.\"; the same line belongs on `asf/feeder/rows.py:619` naming D4, which needs that path added to `writes:`",
+        "tests/test_record_archive_history.py:6 \u2014 add the case Step 4 names for acceptance line 10: a product at `archive_after_days=5, land_window_days=7` over `self.root` under `unittest.mock.patch('builtins.open', side_effect=AssertionError('read a card'))`, asserting `archive.plan(self.root, product, now='2026-10-13')['refused']` names both `5` and `14` and that `open` was never called \u2014 `tests/test_record_archive_dryrun.py:302-315`, which the docstring delegates to, proves no write and no stdout, not no read",
         "operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
-        "shared files: asf/metrics/metrics.py, asf/record/archive.py also held by B-216547, T-217372 \u2014 additive edits only, never a rewrite"
+        "shared files: asf/record/archive.py also held by T-217372 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_later_findings": [
         "[2e968a66@5c2b778] tests/test_record_archive_history.py:384 \u2014 rename `test_12_row_appears_in_run_as_required` to `..._as_optional` and change the `# required` comment at :392 to `# not required (PD12)`: both say the opposite of the `assertFalse(row[1])` they annotate",
         "[76456a5d@5c2b778] tests/test_record_archive_history.py:4-6 \u2014 add line 11 to the module docstring's \"covers lines 1-8 and 12\", now that `ArchiveOffTests` proves it here",
@@ -97164,8 +97165,7 @@
       "kernel_notes": [
         "round not charged: a rebase round: PR #1777 conflicts with its base"
       ],
-      "kernel_round_charged": false,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97178,7 +97178,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T10:07:47Z",
+      "updated": "2026-10-14T10:25:03Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -98156,6 +98156,7 @@
         "groom-fill-t-79566-1791972435: groom-fill raised risk high: card's Description was cut at 4000 chars before Gate/Acceptance landed to survive it (fix af8aa11cc landed 2026-10-10, after this card's 2026-10-08 mint), leaving no test named; the plan's own Acceptance for this Task's 3 owned bullets is complete and verified against the checkout."
       ],
       "kernel_rebuilds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -98173,7 +98174,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-14T10:20:34Z",
+      "updated": "2026-10-14T10:25:03Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
