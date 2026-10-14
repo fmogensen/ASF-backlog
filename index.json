@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T00:51:24Z",
+  "generated": "2026-10-14T00:56:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18472,7 +18472,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-14T00:45:44Z",
+      "updated": "2026-10-14T00:56:51Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18569,7 +18569,7 @@
         "PR #1744: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18579,7 +18579,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-13T23:51:34Z",
+      "updated": "2026-10-14T00:56:51Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18842,7 +18842,11 @@
         "round not charged: a rebase round: PR #1738 conflicts with its base",
         "build-b-214946-1791934634: NEEDS OPERATOR: the heartbeat command (.b0000_heartbeat.sh) was refused by the sandbox's approval gate every time it was attempted \u2014 proceeded without one per the brief's own rule that a heartbeat that cannot start\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "partial: NEEDS OPERATOR: the Replay test (tests/kernel/test_finding_writes.py::Replay) still fails its <10% requested assertion (measures 18.52%) even with every one of the review's 6 points implemen\u2026",
+      "kernel_stuck_since": "2026-10-14T00:55:15Z",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18852,7 +18856,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T00:31:21Z",
+      "updated": "2026-10-14T00:56:51Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -18903,7 +18907,9 @@
       "updated": "2026-10-13T22:17:53Z"
     },
     "B-218499": {
-      "backlinks": [],
+      "backlinks": [
+        "T-208104"
+      ],
       "children": [],
       "creates": [
         "tests/kernel/test_question_replay.py",
@@ -18985,7 +18991,11 @@
         "launch: launch: branch fix/B-218952-auto-merge-pinned checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-a77e63523cdf570cd; waits until it's released",
         "launch: launch: branch fix/B-218952-auto-merge-pinned checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-a77e63523cdf570cd; waits until it's released"
       ],
-      "kernel_state": "review",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "launch: launch: branch fix/B-218952-auto-merge-pinned checked out in an external worktree ~/Code/fmogensen/ASF/.claude/worktrees/agent-a77e63523cdf570cd; waits until it's released",
+      "kernel_stuck_since": "2026-10-14T00:55:15Z",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -18994,7 +19004,7 @@
       "state": "New",
       "title": "Auto-merge stays on when the PR head moves after an approve: unreviewed code can land",
       "type": "bug",
-      "updated": "2026-10-14T00:51:21Z"
+      "updated": "2026-10-14T00:56:51Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -95370,7 +95380,15 @@
       "kernel_attempts": [
         "relaunch: operator answer: The console harvested the fixture on the host and pushed it to this branch (head dbc8ac618): 15 real questions, redacted. The honest replay claims 3 of 15 (20 percent). Decision: this Task lands as the measurement. Keep the two cases (share at least 80 percent, one question per class) skipped with the measured numbers as the reason; do not trim rows or retune the classifier here. The 80 percent target moves to a follow-up Bug the console files under F-0362. Pull the branch, confirm the gate modules pass, report done."
       ],
-      "kernel_state": "review",
+      "kernel_findings": [
+        "tests/kernel/test_question_replay.py:247-255 \u2014 step 7's PD4 classifier invariant asserts nothing: the guard `cls in Q.CODED or cls in Q.OWNED or cls == Q.HOST_COMMAND` already implies the assertion `assertIn(cls, Q.CODED | set(Q.OWNED) | {Q.HOST_COMMAND})`, so the case passes over any fixture, including one with no coded/owned/host-command row (proved). Compare the class before this Feature against the class after, from a committed per-row baseline \u2014 see the patch in docs/reviews/1-t-208104.md C1 \u2014 and assert the guarded-row count too (`assertEqual(checked, 1)`) so it cannot become vacuous again on a fixture edit",
+        "tests/kernel/test_question_replay.py:234,239 \u2014 the two measurement cases are skipped by the negation of their own assertion (`skipIf(share < 0.80)` on a body asserting `share >= 0.80`; same shape for the per-class case), so each runs only where it would pass and can never go red; after the follow-up Bug lifts the share, any regression silently re-skips instead of failing. Replace both with the unconditional `@unittest.skip(_SHARE_REASON)` / `@unittest.skip(_CLASSES_REASON)` \u2014 the reasons at :213-218 already carry the measured numbers, which is what the operator asked for (\"skipped with the measured numbers as the reason\")",
+        "tests/kernel/test_question_replay.py:197-200 \u2014 `_FIXTURE_REASON` is dead code (defined once, read nowhere) left behind when dbc8ac618 landed the fixture, and it still embeds the literal `NEEDS OPERATOR:` for a question the operator has answered. Delete :194-200. Not blocked on",
+        "operator answer: The console harvested the fixture on the host and pushed it to this branch (head dbc8ac618): 15 real questions, redacted. The honest replay claims 3 of 15 (20 percent). Decision: this Task lands as the measurement. Keep the two cases (share at least 80 percent, one question per class) skipped with the measured numbers as the reason; do not trim rows or retune the classifier here. The 80 percent target moves to a follow-up Bug the console files under F-0362. Pull the branch, confirm the gate modules pass, report done.",
+        "shared files: asf/kernel/questions.py, tests/fixtures/replay/questions-2026-10-12.jsonl, tests/kernel/test_question_replay.py also held by B-218499 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0362.md"
       },
@@ -95383,7 +95401,7 @@
       ],
       "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
       "type": "task",
-      "updated": "2026-10-14T00:39:28Z",
+      "updated": "2026-10-14T00:56:51Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/cli.py",
@@ -95615,8 +95633,14 @@
         "ended without a REPORT",
         "session ran past its max age"
       ],
-      "kernel_stack": "worker/T-210355@f131d782d4d57bd57b617cc46815fa12f565be87",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "rebase: PR #1749 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_notes": [
+        "round not charged: a rebase round: PR #1749 conflicts with its base"
+      ],
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95629,7 +95653,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T00:51:21Z",
+      "updated": "2026-10-14T00:56:51Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -95956,7 +95980,7 @@
         "shared files: asf/cli.py also held by T-208104 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -95969,7 +95993,7 @@
       ],
       "title": "the archive is a place in the record \u2014 a rename, a manifest, and two ways to read a card that is in it",
       "type": "task",
-      "updated": "2026-10-14T00:51:21Z",
+      "updated": "2026-10-14T00:56:51Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/archive.py",
