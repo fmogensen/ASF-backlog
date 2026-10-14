@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T03:40:38Z",
+  "generated": "2026-10-14T03:43:46Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18782,7 +18782,8 @@
     },
     "B-213995": {
       "backlinks": [
-        "T-210360"
+        "T-210360",
+        "B-222657"
       ],
       "children": [],
       "decided": true,
@@ -18951,7 +18952,7 @@
       "state": "New",
       "title": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
       "type": "bug",
-      "updated": "2026-10-14T03:34:15Z",
+      "updated": "2026-10-14T03:43:44Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/workers/answer.py",
@@ -19194,6 +19195,21 @@
         "tests/test_card_json.py",
         "tests/test_record_archive_rule.py"
       ]
+    },
+    "B-222657": {
+      "backlinks": [
+        "T-210360"
+      ],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-222657",
+      "parent": "F-0357",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T03:43:23Z",
+      "state": "New",
+      "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
+      "type": "bug",
+      "updated": "2026-10-14T03:43:23Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -37986,7 +38002,8 @@
         "B-213994",
         "B-213995",
         "B-218650",
-        "B-219953"
+        "B-219953",
+        "B-222657"
       ],
       "decided": true,
       "folder": "features",
@@ -95917,7 +95934,8 @@
         "T-210362",
         "T-210363",
         "B-213995",
-        "B-219954"
+        "B-219954",
+        "B-222657"
       ],
       "children": [],
       "decided": true,
@@ -95950,6 +95968,7 @@
         "shared files: asf/kernel/mainline.py, tests/kernel/test_main_landing.py also held by B-219953 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
+      "kernel_later_filed": "B-222657",
       "kernel_later_findings": [
         "[c09870b3@083e558] asf/kernel/incidents.py:53 \u2014 Task 6 Step 8 is not implemented: restore the `BLAME = 'blame'` kind in `KINDS`, its `(kind, spell, class)` branch in `_key`, and its record in `gather` (as head `225e371` had them), or amend Step 8 of docs/plans/f-0357.md to name B-213995's nested `blame_read` on the `MAIN_RED` row as its replacement \u2014 that read is keyed on the spell alone and `observe` re-appends only on an upgrade to `guilty` (incidents.py:250-254), so the `unproven` \u2192 `trunk-wide` change the Step names is still recorded once"
       ],
@@ -95958,7 +95977,7 @@
         "build-t-210360-1791937121: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused the `nohup sh .b0000_heartbeat.sh \u2026` call this session was told to run as its first command (it needs an approval a non-interactive session cannot\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95971,7 +95990,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-14T03:24:37Z",
+      "updated": "2026-10-14T03:43:44Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -96076,8 +96095,14 @@
         "asf redact --unpublished"
       ],
       "id": "T-210362",
-      "kernel_stack": "worker/T-210360@9a0ac18c8977db8ae71ca60f773915db836bd8f6",
-      "kernel_state": "new",
+      "kernel_findings": [
+        "rebase: PR #1759 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_notes": [
+        "round not charged: a rebase round: PR #1759 conflicts with its base"
+      ],
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96090,7 +96115,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T03:14:15Z",
+      "updated": "2026-10-14T03:43:44Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96284,6 +96309,9 @@
         "asf redact --unpublished"
       ],
       "id": "T-217366",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
         "reviewer fix out of bounds (the reviewed head is not an ancestor of the new head (diverged); commit f0efd9a is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit f13f435 is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit 8695f10 is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit fe5723c is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); 685 changed lines, over the 80 allowed; outside the item's writes and the test paths: tests/test_record_archive_rule.py; a high-risk path: asf/record/archive.py) \u2014 commits f0efd9a, f13f435, 8695f10, fe5723c, 59ab91f since 4600ca6 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
         "asf/cli.py:406 \u2014 the retention floor is checked in `cmd_archive` before any card is read, so `--why` prints `archive: <refusal>` and exits 1 like the dry run and `--apply` [review-t-217366-1791946489@fe5723ca9]",
@@ -96294,7 +96322,7 @@
       "kernel_notes": [
         "round not charged: a rebase round: PR #1757 conflicts with its base"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96307,7 +96335,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T03:37:21Z",
+      "updated": "2026-10-14T03:43:44Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
