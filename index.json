@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T11:12:10Z",
+  "generated": "2026-10-14T11:15:15Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19002,7 +19002,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_review_measure, tests.kernel.test_rereview_scope)",
         "groom-fill-b-216547-1791966892: groom-fill raised risk high: trunk has no own-diff once-rule or split LATER count (confirmed by reading split_scope/_scope and running the two cited test files green); the earlier satisfied-on-main close was false."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19012,7 +19012,7 @@
       "state": "New",
       "title": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
       "type": "bug",
-      "updated": "2026-10-14T10:55:04Z",
+      "updated": "2026-10-14T11:15:10Z",
       "writes": [
         "asf/kernel/apply.py",
         "asf/kernel/findings.py",
@@ -97200,13 +97200,15 @@
         "ecd9b587": "{'head': \"{'head': '5c2b7787d8515249c73e8242c3f985f3486066d2', 'line': 'asf/record/archive.py:245'}\", 'line': ''}"
       },
       "kernel_findings": [
+        "tests/test_record_archive_history.py:4 \u2014 the docstring credits acceptance line 11 (\"a retention of zero turns archiving off and moves nothing\") to tests.test_record_archive_dryrun's test_floor_refusal_writes_nothing_and_reads_no_card, which proves line 10; line 11 is proven in this module by ArchiveOffTests:418. Replace lines 4-7 with: \"One test per acceptance line, in order (line 9, the floor's derivation, is already proven by tests.test_record_archive_rule.FloorTests, and line 10 again end to end by tests.test_record_archive_dryrun's test_floor_refusal_writes_nothing_and_reads_no_card \u2014 this module covers lines 1-8 and 10-12).\"",
+        "asf/feeder/rows.py:638 \u2014 keep the comment (Step 2 requires it, landed_ids is the only place for it) but declare the path: the correction run's REPORT must carry the line `needs writes: asf/feeder/rows.py`, so asf.feeder.widen adds it to Task 7's `writes:` (docs/plans/f-0363.md:713), which today omits the file its own Step 2 commands.",
         "asf/doctor.py:226 \u2014 return `'warn', plan['refused']` instead of `False, plan['refused']`: with `required=False` the printer renders `ok is False` as `skip` (`asf/doctor.py:2582`) and `is_red` ignores it, so the below-floor refusal is invisible; also change the docstring at `:72-73` from \"is red\" to \"is `warn`\", and change `tests/test_record_archive_history.py:377-382` to assert `ok == 'warn'` and that `doctor.format_table` carries `warn`",
         "asf/metrics/metrics.py:1082 \u2014 add the comment Step 2 requires at the deliberate non-overlay reader: \"No archive overlay: the window is at most `days` (7 by default) and the retention floor is 14 (F-0363 D8, P17), so no card this counts can have been archived \u2014 the floor is what keeps that true.\"; the same line belongs on `asf/feeder/rows.py:619` naming D4, which needs that path added to `writes:`",
         "tests/test_record_archive_history.py:6 \u2014 add the case Step 4 names for acceptance line 10: a product at `archive_after_days=5, land_window_days=7` over `self.root` under `unittest.mock.patch('builtins.open', side_effect=AssertionError('read a card'))`, asserting `archive.plan(self.root, product, now='2026-10-13')['refused']` names both `5` and `14` and that `open` was never called \u2014 `tests/test_record_archive_dryrun.py:302-315`, which the docstring delegates to, proves no write and no stdout, not no read",
         "operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
         "shared files: asf/record/archive.py also held by T-217372 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_later_findings": [
         "[2e968a66@5c2b778] tests/test_record_archive_history.py:384 \u2014 rename `test_12_row_appears_in_run_as_required` to `..._as_optional` and change the `# required` comment at :392 to `# not required (PD12)`: both say the opposite of the `assertFalse(row[1])` they annotate",
         "[76456a5d@5c2b778] tests/test_record_archive_history.py:4-6 \u2014 add line 11 to the module docstring's \"covers lines 1-8 and 12\", now that `ArchiveOffTests` proves it here",
@@ -97216,7 +97218,7 @@
       "kernel_notes": [
         "round not charged: a rebase round: PR #1777 conflicts with its base"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97229,7 +97231,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T11:12:05Z",
+      "updated": "2026-10-14T11:15:10Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
