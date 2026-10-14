@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T04:10:59Z",
+  "generated": "2026-10-14T04:16:53Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18963,7 +18963,7 @@
       "state": "New",
       "title": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
       "type": "bug",
-      "updated": "2026-10-14T04:07:52Z",
+      "updated": "2026-10-14T04:16:51Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/workers/answer.py",
@@ -95860,10 +95860,12 @@
       "id": "T-210358",
       "kernel_answers": [
         "granted asf/groom/groom.py asf/capacity.py asf/workers/cloud.py asf/kernel/status.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel). asf/kernel/status.py matches kernel.risk.high: this item is high-risk now.",
-        "Round granted: the last session ran past its max age and PR 1749 now conflicts with main. Merge origin/main into worker/T-210358, resolve the conflicts keeping both sides' behaviour, rerun the Task's gate test modules, push. No other change."
+        "Round granted: the last session ran past its max age and PR 1749 now conflicts with main. Merge origin/main into worker/T-210358, resolve the conflicts keeping both sides' behaviour, rerun the Task's gate test modules, push. No other change.",
+        "granted tests/test_cloud.py tests/test_groom_policy.py tests/test_groom.py tests/test_cli.py tests/test_remote.py tests/test_quota_headroom.py tests/test_quota_stale.py tests/kernel/test_gh_budget.py tests/test_groom_every_card_decided.py tests/test_quota_pressure.py tests/test_groom_publish.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "session ran past its max age"
+        "session ran past its max age",
+        "relaunch: operator answer: granted tests/test_cloud.py tests/test_groom_policy.py tests/test_groom.py tests/test_cli.py tests/test_remote.py tests/test_quota_headroom.py tests/test_quota_stale.py tests/kernel/test_gh_budget.py tests/test_groom_every_card_decided.py tests/test_quota_pressure.py tests/test_groom_publish.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
@@ -95877,7 +95879,7 @@
         "PR #1758: clock (+30d) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95890,7 +95892,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T03:14:15Z",
+      "updated": "2026-10-14T04:16:51Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -95901,7 +95903,18 @@
         "asf/capacity.py",
         "asf/workers/cloud.py",
         "asf/kernel/status.py",
-        "tests/test_ci_pool.py"
+        "tests/test_ci_pool.py",
+        "tests/test_cloud.py",
+        "tests/test_groom_policy.py",
+        "tests/test_groom.py",
+        "tests/test_cli.py",
+        "tests/test_remote.py",
+        "tests/test_quota_headroom.py",
+        "tests/test_quota_stale.py",
+        "tests/kernel/test_gh_budget.py",
+        "tests/test_groom_every_card_decided.py",
+        "tests/test_quota_pressure.py",
+        "tests/test_groom_publish.py"
       ]
     },
     "T-210359": {
