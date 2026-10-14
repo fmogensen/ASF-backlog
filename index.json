@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T06:43:54Z",
+  "generated": "2026-10-14T06:49:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18007,9 +18007,10 @@
       "kernel_dor_fills_ver": "0.2.167",
       "kernel_notes": [
         "groom-fill-b-196077-1791836609: groom-fill raised risk high: two of the four listed findings (owned() in _bugless_live, the PD5 matrix-leg assertion) are already implemented and already tested on trunk; the real remaining gaps are a wording mismatch, two untested branches, and the unmet enablement-gate note, so the card is reshaped to those four concrete items.",
-        "reopened: satisfied-on-main no longer holds (satisfied on main at 5f129ce21: tests.kernel.test_flake.BugTests, tests.kernel.test_flake.KnobTests)"
+        "reopened: satisfied-on-main no longer holds (satisfied on main at 5f129ce21: tests.kernel.test_flake.BugTests, tests.kernel.test_flake.KnobTests)",
+        "build-b-196077-1791959526: NEEDS OPERATOR: `asf redact --unpublished` could not be run \u2014 the `asf` CLI is not installed in this cloud container, and the brief's CLOUD SESSION section does not list it among what to run here (only the tools/che\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0336",
       "schema_version": 2,
       "severity": "S3",
@@ -18018,7 +18019,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T06:35:56Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -18038,7 +18039,7 @@
         "groom-fill-b-199428-1791844636: groom-fill raised risk high: Both readers today only look at the raw kernel.launch block, confirmed by the final PR #1670 build report as a deliberately left-out finding; a fix is well-scoped (prefer validated, fallback to raw) and my own review of the last two fix commits found nothing further to fix.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_finish_first.LaunchKnobs)"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0334",
       "schema_version": 2,
       "severity": "S3",
@@ -18047,7 +18048,7 @@
       "state": "New",
       "title": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
       "type": "bug",
-      "updated": "2026-10-14T05:49:55Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_finish_first.py"
@@ -18638,7 +18639,7 @@
         "groom-fill-b-211240-1791917101: groom-fill raised risk high: four confirmed, non-overlapping kernel decide/apply gaps left live by F-0358 parts 1-2; acceptance now names the test class each must pass, writes name the files the fix touches.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5da9cade5: tests.kernel.test_finding_keys.DecideReviewBranch, tests.kernel.test_finding_keys.ApplyRecords, tests.kernel.test_round_charge.Free)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18648,7 +18649,7 @@
       "state": "New",
       "title": "Review-loop rules that can stall or run unbounded: reworded findings, lost answers, uncapped free rounds",
       "type": "bug",
-      "updated": "2026-10-14T06:43:49Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/apply.py",
@@ -18675,7 +18676,7 @@
         "groom-fill-b-211241-1791917348: groom-fill raised risk high: three concrete, already-verified defects in the proof gate itself, just missing the test names and writes the DoR requires",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5da9cade5: tests.kernel.test_review_proof.NeededIds, tests.kernel.test_review_proof.ProbeReads, tests.kernel.test_review_proof.DecideProof)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18685,7 +18686,7 @@
       "state": "New",
       "title": "Settle which ids a proof may judge before the proof gate can be turned on",
       "type": "bug",
-      "updated": "2026-10-14T06:43:49Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "asf/kernel/proof.py",
         "asf/kernel/proof_probe.py",
@@ -18799,7 +18800,7 @@
       "state": "New",
       "title": "A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T06:10:07Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "asf/kernel/trunk.py",
         "docs/specs/f-0357.md",
@@ -19057,7 +19058,7 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T06:35:56Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -19247,6 +19248,9 @@
       "decided": true,
       "folder": "bugs",
       "id": "B-222657",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
       "kernel_notes": [
@@ -19259,7 +19263,7 @@
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T06:10:07Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
@@ -19384,6 +19388,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-224761",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
       "kernel_notes": [
@@ -19399,7 +19406,7 @@
       "state": "New",
       "title": "The satisfied-on-main cutoff dates a card by day, not by the commit that added it",
       "type": "bug",
-      "updated": "2026-10-14T06:10:08Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "asf/kernel/needed_probe.py",
         "asf/kernel/facts.py",
@@ -93602,7 +93609,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_pace, tests.kernel.test_moved_main)"
       ],
       "kernel_stack": "worker/T-159853@e0f7fad62495ceea126790623824fb494187ec2a",
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -93615,7 +93622,7 @@
       ],
       "title": "the release's own documentation \u2014 the v0.3.0 notes, and what 0.3 leaves open",
       "type": "task",
-      "updated": "2026-10-14T05:49:55Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "docs/RELEASE-NOTES.md",
         "docs/KNOWN-ISSUES.md"
@@ -96864,7 +96871,6 @@
       "kernel_attempts": [
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
-      "kernel_stack": "worker/T-217366@8e1a879032f6192d53ac2529a458658ce688d476",
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
@@ -96878,7 +96884,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T06:43:49Z",
+      "updated": "2026-10-14T06:49:01Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
