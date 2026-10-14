@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T02:08:36Z",
+  "generated": "2026-10-14T02:13:03Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18940,9 +18940,11 @@
       ],
       "kernel_fix_rounds": 1,
       "kernel_notes": [
-        "groom-fill-b-218499-1791937575: groom-fill raised risk high: Two real, isolable defects (classify's prose write-grant/gate gap; correct.py/answer.py dropping `question` on the ledger) block the two tests T-208104 already left skipped for this exact shortfall, and the fix touches the kernel."
+        "groom-fill-b-218499-1791937575: groom-fill raised risk high: Two real, isolable defects (classify's prose write-grant/gate gap; correct.py/answer.py dropping `question` on the ledger) block the two tests T-208104 already left skipped for this exact shortfall, and the fix touches the kernel.",
+        "PR #1750: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1750: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "F-0362",
       "risk": "high",
       "schema_version": 3,
@@ -18952,7 +18954,7 @@
       "state": "New",
       "title": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
       "type": "bug",
-      "updated": "2026-10-14T02:08:33Z",
+      "updated": "2026-10-14T02:13:00Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/workers/answer.py",
@@ -19122,14 +19124,14 @@
       "id": "B-220155",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0360",
       "schema_version": 3,
       "stage_since": "2026-10-14T01:29:48Z",
       "state": "New",
       "title": "Later findings from the review of B-208438: Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T02:03:42Z",
+      "updated": "2026-10-14T02:13:00Z",
       "writes": [
         "asf/kernel/loop.py",
         "tests/kernel/test_plan_mint.py"
@@ -95535,7 +95537,7 @@
       ],
       "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
       "type": "task",
-      "updated": "2026-10-14T01:56:05Z",
+      "updated": "2026-10-14T02:13:00Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/cli.py",
@@ -96186,6 +96188,7 @@
       ],
       "id": "T-217366",
       "kernel_stack": "worker/T-217365@08880652cc06cbb5ab7ec0df797a05bbfffc81ac",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96198,7 +96201,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T02:08:33Z",
+      "updated": "2026-10-14T02:13:00Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
@@ -96248,7 +96251,7 @@
       ],
       "title": "the way back \u2014 every writing command that names an archived id brings the card back before it writes, and the migration converts it then",
       "type": "task",
-      "updated": "2026-10-14T01:59:38Z",
+      "updated": "2026-10-14T02:13:00Z",
       "writes": [
         "asf/record/reopen.py",
         "asf/record/setfield.py",
