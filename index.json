@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T05:58:46Z",
+  "generated": "2026-10-14T06:02:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18622,6 +18622,7 @@
     },
     "B-211240": {
       "backlinks": [
+        "T-210362",
         "B-223558"
       ],
       "children": [],
@@ -19300,9 +19301,7 @@
       ]
     },
     "B-224009": {
-      "backlinks": [
-        "T-210358"
-      ],
+      "backlinks": [],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -96081,23 +96080,24 @@
         "Round granted with a scope decision. The +30d clock leg is green; the +400d leg still fails in test_quota_headroom, test_quota_stale, test_gh_budget, test_groom_publish, test_groom_ev* and one session-limit test. These legs are new in this Task, so: keep +30d blocking, make the +400d leg report-only (continue-on-error, named so in the workflow), and change nothing else. The console files the remaining +400d modules as a follow-up Bug. Push, and report done once tests (3.12/3.13) and clock (+30d) are green."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Round granted with a scope decision. The +30d clock leg is green; the +400d leg still fails in test_quota_headroom, test_quota_stale, test_gh_budget, test_groom_publish, test_groom_ev* and one session-limit test. These legs are new in this Task, so: keep +30d blocking, make the +400d leg report-only (continue-on-error, named so in the workflow), and change nothing else. The console files the remaining +400d modules as a follow-up Bug. Push, and report done once tests (3.12/3.13) and clock (+30d) are green."
+        "relaunch: operator answer: Round granted with a scope decision. The +30d clock leg is green; the +400d leg still fails in test_quota_headroom, test_quota_stale, test_gh_budget, test_groom_publish, test_groom_ev* and one session-limit test. These legs are new in this Task, so: keep +30d blocking, make the +400d leg report-only (continue-on-error, named so in the workflow), and change nothing else. The console files the remaining +400d modules as a follow-up Bug. Push, and report done once tests (3.12/3.13) and clock (+30d) are green.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 1,
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the clock legs are green too' failed:\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the clock legs are green too' failed:\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.",
         "operator answer: granted tests/test_cloud.py tests/test_groom_policy.py tests/test_groom.py tests/test_cli.py tests/test_remote.py tests/test_quota_headroom.py tests/test_quota_stale.py tests/kernel/test_gh_budget.py tests/test_groom_every_card_decided.py tests/test_quota_pressure.py tests/test_groom_publish.py; nothing else outside writes (card updated by the kernel).",
-        "shared files: asf/workers/cloud.py, tests/test_cloud.py also held by B-224009 \u2014 additive edits only, never a rewrite"
+        "operator answer: Round granted with a scope decision. The +30d clock leg is green; the +400d leg still fails in test_quota_headroom, test_quota_stale, test_gh_budget, test_groom_publish, test_groom_ev* and one session-limit test. These legs are new in this Task, so: keep +30d blocking, make the +400d leg report-only (continue-on-error, named so in the workflow), and change nothing else. The console files the remaining +400d modules as a follow-up Bug. Push, and report done once tests (3.12/3.13) and clock (+30d) are green."
       ],
-      "kernel_fix_rounds": 3,
+      "kernel_fix_rounds": 4,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1749 conflicts with its base",
         "PR #1758: clock (+400d) is red but not a required check \u2014 ignored",
         "PR #1758: clock (+30d) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96110,7 +96110,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T05:58:39Z",
+      "updated": "2026-10-14T06:02:23Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -96352,14 +96352,17 @@
         "Round granted. Reviewer fixes are now switched off for this product, so the next review will not try to fix. Read commit 1c44b6d (since fbeed72): keep each change that correctly fixes a review finding, revert anything else, finish any open finding. Run the Task's gate modules, push."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Round granted. Reviewer fixes are now switched off for this product, so the next review will not try to fix. Read commit 1c44b6d (since fbeed72): keep each change that correctly fixes a review finding, revert anything else, finish any open finding. Run the Task's gate modules, push."
+        "relaunch: operator answer: Round granted. Reviewer fixes are now switched off for this product, so the next review will not try to fix. Read commit 1c44b6d (since fbeed72): keep each change that correctly fixes a review finding, revert anything else, finish any open finding. Run the Task's gate modules, push.",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_extra_rounds": 2,
       "kernel_findings": [
         "reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
-        "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`"
+        "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`",
+        "operator answer: Round granted. Reviewer fixes are now switched off for this product, so the next review will not try to fix. Read commit 1c44b6d (since fbeed72): keep each change that correctly fixes a review finding, revert anything else, finish any open finding. Run the Task's gate modules, push.",
+        "shared files: asf/kernel/decide.py also held by B-211240 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 4,
+      "kernel_fix_rounds": 5,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1759 conflicts with its base",
         "build-t-210362-1791949404: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox denied approval for `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791949404 'asf/build-t-210362-1791949404@20261014T034334Z'`",
@@ -96368,7 +96371,7 @@
         "build-t-210362-1791955186: NEEDS OPERATOR: the session's heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791955186 'asf/build-t-210362-1791955186@20261014T051954Z' >/dev/null 2>&1 &`) was refused by the sandbo\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96381,7 +96384,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T05:58:39Z",
+      "updated": "2026-10-14T06:02:23Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96598,7 +96601,7 @@
         "build-t-217366-1791952993: NEEDS OPERATOR: the heartbeat command `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217366-1791952993 'asf/build-t-217366-1791952993@20261014T044322Z' >/dev/null 2>&1 &` could not start \u2014 the sandbox require\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96611,7 +96614,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T05:58:39Z",
+      "updated": "2026-10-14T06:02:23Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
@@ -96743,7 +96746,7 @@
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
       "kernel_stack": "worker/T-217366@8e1a879032f6192d53ac2529a458658ce688d476",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96756,7 +96759,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T05:42:00Z",
+      "updated": "2026-10-14T06:02:23Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
