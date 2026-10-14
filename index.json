@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T01:49:34Z",
+  "generated": "2026-10-14T01:52:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19103,13 +19103,14 @@
       "id": "B-220155",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
+      "kernel_state": "ready",
       "parent": "F-0360",
       "schema_version": 3,
       "stage_since": "2026-10-14T01:29:48Z",
       "state": "New",
       "title": "Later findings from the review of B-208438: Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T01:45:17Z",
+      "updated": "2026-10-14T01:52:51Z",
       "writes": [
         "asf/kernel/loop.py",
         "tests/kernel/test_plan_mint.py"
@@ -96206,12 +96207,14 @@
       ],
       "id": "T-217367",
       "kernel_findings": [
-        "asf/record/resolve.py:211 \u2014 guard the bring_back with `if not dry_run:` (the dry run returns at :230 without writing, and needs nothing from it: `holders` is empty for an archived id, `target_rec` is read only on the commit path at :237); say so in the docstring paragraph at :206-210",
-        "asf/record/undeliver.py:87 \u2014 bring the lead back too, as Step 1 names: after the first load read `lid = rec['meta'].get('delivered_by')`, and when `lid not in canonical` call `archive.bring_back(root, [lid], why)` and re-run `load_items`/`canonicalize` before `lead = canonical.get(lid)` at :102",
-        "asf/record/archive.py:169 \u2014 report `needs writes: asf/record/archive.py` and expand `bring_back`'s `ids` to the transitive archived closure of what it brings back (the mirror of `movable`) before the first `os.replace`, so a brought-back card's refs are never left dangling; and capture its return value at asf/record/resolve.py:212 to extend `rels` at :236, so the commit close() makes carries the archive-side removal and the manifest edit"
+        "rebase: PR #1748 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "review",
+      "kernel_notes": [
+        "round not charged: a rebase round: PR #1748 conflicts with its base"
+      ],
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96225,7 +96228,7 @@
       ],
       "title": "the way back \u2014 every writing command that names an archived id brings the card back before it writes, and the migration converts it then",
       "type": "task",
-      "updated": "2026-10-14T01:49:27Z",
+      "updated": "2026-10-14T01:52:51Z",
       "writes": [
         "asf/record/reopen.py",
         "asf/record/setfield.py",
