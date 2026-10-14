@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T01:20:20Z",
+  "generated": "2026-10-14T01:23:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -55,7 +55,8 @@
         "T-129163",
         "B-0032",
         "B-0034",
-        "B-0063"
+        "B-0063",
+        "B-210839"
       ],
       "children": [],
       "cost": {
@@ -18463,7 +18464,7 @@
         "build-b-208187-1791933475: NEEDS OPERATOR: confirm the per-card migration path refuses 0 cards after card_repair on a copy of the real ~2,913-card record (no such record is available in this container) \u2014 `python3 -c \"from asf.record import re\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18473,7 +18474,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-14T01:20:15Z",
+      "updated": "2026-10-14T01:23:46Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18516,7 +18517,7 @@
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18526,7 +18527,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T01:20:15Z",
+      "updated": "2026-10-14T01:23:46Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18548,10 +18549,12 @@
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.",
-        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 2) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 2) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1."
+        "[dcf3481a@15115c8] asf/schema.py:940 \u2014 the recorded `pid=os.getpid()` is inert: `upgrade.stale_pauses` skips any pause whose `reason != PAUSE_REASON` ('upgrade', asf/upgrade.py:1063,1145) before it reads the pid, so a schema-migrate killed between the pause at :941 and the resume at :966 leaves both kernel clocks paused with nothing in the tree able to lift them; pause with `reason=PAUSE_REASON` imported from asf.upgrade instead of `reason='schema-migrate'`",
+        "asf/schema.py:955 \u2014 the failed-migration message hardcodes `--clock kernel` while the run paused every clock in `ours` (both of KERNEL_CLOCKS, or only 'kernel-watch' when the operator had already paused 'kernel' by hand), so the command it tells the operator to run leaves a clock paused for good; build it from `ours` \u2014 `--clock {\",\".join(ours)}` (`--clock` takes a comma-separated list, asf/scheduler.py:1545-1546) \u2014 and drop the clause when `ours` is empty",
+        "[2e89fc14@15115c8] asf/record/ids.py:218 \u2014 `json_card = _record_has_json_cards(root)` never consults the record's stamp, so a record whose index.json says schema 3 while no folder holds a JSON card yet still mints schema-1 markdown (probed: stamp 3, empty record -> bugs/B-0002.md) \u2014 which `asf init` makes every fresh record (asf/init.py:381), permanently, since `migrate_product` then answers \"at schema 3, nothing to do\" and the write gate matches `.json` only; replace with `v = schema.record_version(root)` then `json_card = _record_has_json_cards(root) if v is None else v >= 3`, which keeps test_a_kernel_filed_bug_is_minted_as_markdown_before_any_migration green (make_repo writes no index.json, so v is None)",
+        "shared files: asf/record/ids.py also held by T-217368 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes.",
         "PR #1728: checks (3.12) is red but not a required check \u2014 ignored",
@@ -18571,7 +18574,7 @@
         "PR #1744: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18581,7 +18584,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-14T01:01:36Z",
+      "updated": "2026-10-14T01:23:46Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -95697,7 +95700,11 @@
         "round not charged: a rebase round: PR #1749 conflicts with its base"
       ],
       "kernel_round_charged": false,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "session ran past its max age",
+      "kernel_stuck_since": "2026-10-14T01:23:13Z",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95710,7 +95717,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T01:20:15Z",
+      "updated": "2026-10-14T01:23:46Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -96197,7 +96204,9 @@
       "after": [
         "T-217364"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-210839"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
