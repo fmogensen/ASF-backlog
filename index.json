@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T13:30:33Z",
+  "generated": "2026-10-14T13:37:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -97396,6 +97396,9 @@
       "kernel_answers": [
         "Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
+      "kernel_attempts": [
+        "ended without a REPORT"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_findings": [
         "asf/feeder/rows.py:638 \u2014 [a6c4da3e@87a8f6b] still open: this head deleted the comment instead of declaring the path, so Step 2 of Task 7 is short one of the two no-overlay comments it commands (only metrics.delivered_vs_single has one, asf/metrics/metrics.py:1083-1085) and docs/plans/f-0363.md:713 still omits the file its own Step 2 commands. Restore the three-line comment above `done = {i for i, v in items.items() ...}`, worded as before so it does not contain the literal `archive` (tests/test_record_archive_history.py:336 asserts assertNotIn('archive', inspect.getsource(feeder_rows.landed_ids))), and carry `needs writes: asf/feeder/rows.py` in that run's REPORT so asf.feeder.widen adds the file to Task 7's writes:. No behaviour change \u2014 landed_ids is already correct and FeederLandedSetTests proves it from behaviour."
@@ -97414,7 +97417,7 @@
         "round not charged: a rebase round: PR #1777 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97427,7 +97430,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T12:50:55Z",
+      "updated": "2026-10-14T13:37:47Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
