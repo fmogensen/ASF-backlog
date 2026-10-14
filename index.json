@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T07:03:09Z",
+  "generated": "2026-10-14T07:06:49Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19287,7 +19287,7 @@
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T07:03:05Z",
+      "updated": "2026-10-14T07:06:44Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
@@ -89766,7 +89766,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 13e6050a6: tests.test_feeder.ReplanLandedDocTests, tests.test_feeder.ReplanCorrectionRowTests, tests.test_invariants.LaneLaunchKindsTests, tests.test_feeder, tests.test_invariants, tests.test_replan, tests.test_harvest.ProductHarvestTests, tests.test_harvest, tests.test_hermetic)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0317.md"
       },
@@ -89780,7 +89780,7 @@
       ],
       "title": "the three readers, in one diff",
       "type": "task",
-      "updated": "2026-10-14T06:52:36Z",
+      "updated": "2026-10-14T07:06:44Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/harvest/lane.py",
@@ -93633,7 +93633,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_pace, tests.kernel.test_moved_main)"
       ],
       "kernel_stack": "worker/T-159853@e0f7fad62495ceea126790623824fb494187ec2a",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -93646,7 +93646,7 @@
       ],
       "title": "the release's own documentation \u2014 the v0.3.0 notes, and what 0.3 leaves open",
       "type": "task",
-      "updated": "2026-10-14T06:49:01Z",
+      "updated": "2026-10-14T07:06:44Z",
       "writes": [
         "docs/RELEASE-NOTES.md",
         "docs/KNOWN-ISSUES.md"
@@ -96829,10 +96829,12 @@
       ],
       "id": "T-217369",
       "kernel_answers": [
-        "Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
+        "Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
+        "granted tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
+        "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
+        "relaunch: operator answer: granted tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
@@ -96844,7 +96846,7 @@
         "PR #1771: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96857,12 +96859,13 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T06:35:56Z",
+      "updated": "2026-10-14T07:06:44Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
         "asf/tick/tick.py",
-        "tests/test_record_archive_readers.py"
+        "tests/test_record_archive_readers.py",
+        "tests/test_tick.py"
       ]
     },
     "T-217370": {
@@ -96908,7 +96911,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T06:49:01Z",
+      "updated": "2026-10-14T07:06:44Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -96962,7 +96965,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T06:43:49Z",
+      "updated": "2026-10-14T07:06:44Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
