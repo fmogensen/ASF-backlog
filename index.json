@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T06:02:30Z",
+  "generated": "2026-10-14T06:06:02Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17905,7 +17905,7 @@
       "state": "New",
       "title": "Shared-file brief says merge origin/main; review demands rebase: one rule",
       "type": "bug",
-      "updated": "2026-10-14T05:55:21Z",
+      "updated": "2026-10-14T06:05:57Z",
       "writes": [
         "tests/kernel/test_two_holders.py"
       ]
@@ -19015,7 +19015,7 @@
         "groom-fill-b-218650-1791941424: groom-fill raised risk high: finding e1b07754 still reproduces unchanged on current main (T-210361 at a312beb9f); the test it names already builds the exact scenario and just needs the reason-text assertions added, so the card is buildable as scoped.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_revert_merged.NotGuilty)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19023,7 +19023,7 @@
       "state": "New",
       "title": "Later findings from the review of T-210361: a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "bug",
-      "updated": "2026-10-14T05:55:21Z",
+      "updated": "2026-10-14T06:05:57Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_revert_merged.py"
@@ -96601,7 +96601,7 @@
         "build-t-217366-1791952993: NEEDS OPERATOR: the heartbeat command `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217366-1791952993 'asf/build-t-217366-1791952993@20261014T044322Z' >/dev/null 2>&1 &` could not start \u2014 the sandbox require\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96614,7 +96614,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T06:02:23Z",
+      "updated": "2026-10-14T06:05:57Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
@@ -96745,7 +96745,6 @@
       "kernel_attempts": [
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
-      "kernel_stack": "worker/T-217366@8e1a879032f6192d53ac2529a458658ce688d476",
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
@@ -96759,7 +96758,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T06:02:23Z",
+      "updated": "2026-10-14T06:05:57Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -96772,6 +96771,7 @@
         "T-217366"
       ],
       "backlinks": [
+        "T-217371",
         "B-224610"
       ],
       "children": [],
@@ -96842,11 +96842,16 @@
         "asf redact --unpublished"
       ],
       "id": "T-217371",
-      "kernel_notes": [
-        "build-t-217371-1791955537: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217371-1791955537 'asf/build-t-217371-1791955537@20261014T052543Z' >/dev/null 2>&1 &`) was refused by the sandbox twice at\u2026"
+      "kernel_findings": [
+        "rebase: PR #1769 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "shared files: asf/record/archive.py also held by T-217370 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_stack": "worker/T-217366@c51cbc77881039fad66f8cd1e011b5c468b19c94",
-      "kernel_state": "new",
+      "kernel_notes": [
+        "build-t-217371-1791955537: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217371-1791955537 'asf/build-t-217371-1791955537@20261014T052543Z' >/dev/null 2>&1 &`) was refused by the sandbox twice at\u2026",
+        "round not charged: a rebase round: PR #1769 conflicts with its base"
+      ],
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96859,7 +96864,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T06:05:57Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
@@ -98314,7 +98319,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at af8aa11cc: tests.test_release_rehearsal_criterion)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -98330,7 +98335,7 @@
       ],
       "title": "the edge \u2014 the `rehearsal` job and the two `needs:` lines",
       "type": "task",
-      "updated": "2026-10-14T05:49:55Z",
+      "updated": "2026-10-14T06:05:57Z",
       "writes": [
         ".github/workflows/release.yml",
         "tests/test_version.py"
