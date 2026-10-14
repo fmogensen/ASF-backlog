@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:31:24Z",
+  "generated": "2026-10-14T10:34:27Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19037,7 +19037,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_rereview_scope)",
         "groom-fill-b-216548-1791966899: groom-fill raised risk high: Confirmed in code \u2014 later_bugs' later_filed check, _keep_later's never-cleared later_findings, and file_bug's key-substring dedup all combine to drop a second landing's follow-up Bug; the fix and its tests are concretely scoped across decide.py, apply.py and the two test files."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19047,7 +19047,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T10:17:33Z",
+      "updated": "2026-10-14T10:34:24Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
@@ -19687,7 +19687,8 @@
       "kernel_notes": [
         "groom-fill-b-226066-1791971422: groom-fill raised risk high: confirmed in the code \u2014 resumes is written only onto the ended row (_settle_beat) and never carried onto a relaunch's fresh job record (pool.Row/spawn.spawn), so Session.beats always reads 0 and the cap can't trip; card's scope is buildable as stated.",
         "PR #1796: checks (3.12) is red but not a required check \u2014 ignored",
-        "PR #1796: checks (3.13) is red but not a required check \u2014 ignored"
+        "PR #1796: checks (3.13) is red but not a required check \u2014 ignored",
+        "PR #1796: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "F-0360",
@@ -19699,7 +19700,7 @@
       "state": "New",
       "title": "kernel.heartbeat.max_continues never trips because a relaunch starts its resumes at 0",
       "type": "bug",
-      "updated": "2026-10-14T10:31:21Z",
+      "updated": "2026-10-14T10:34:24Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/workers/spawn.py",
@@ -92923,7 +92924,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92936,7 +92937,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:31:21Z",
+      "updated": "2026-10-14T10:34:24Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -97115,7 +97116,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T10:20:34Z",
+      "updated": "2026-10-14T10:34:24Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -97282,7 +97283,7 @@
         "session ran past its max age"
       ],
       "kernel_stack": "worker/T-217371@15235399018a92f7f7cac1bffd359271c70302c2",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97295,7 +97296,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-14T09:46:50Z",
+      "updated": "2026-10-14T10:34:24Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
