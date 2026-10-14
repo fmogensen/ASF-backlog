@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T06:10:17Z",
+  "generated": "2026-10-14T06:36:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18009,7 +18009,7 @@
         "groom-fill-b-196077-1791836609: groom-fill raised risk high: two of the four listed findings (owned() in _bugless_live, the PD5 matrix-leg assertion) are already implemented and already tested on trunk; the real remaining gaps are a wording mismatch, two untested branches, and the unmet enablement-gate note, so the card is reshaped to those four concrete items.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5f129ce21: tests.kernel.test_flake.BugTests, tests.kernel.test_flake.KnobTests)"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0336",
       "schema_version": 2,
       "severity": "S3",
@@ -18018,7 +18018,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T05:49:55Z",
+      "updated": "2026-10-14T06:35:56Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -18622,7 +18622,6 @@
     },
     "B-211240": {
       "backlinks": [
-        "T-210362",
         "B-223558"
       ],
       "children": [],
@@ -19023,7 +19022,7 @@
       "state": "New",
       "title": "Later findings from the review of T-210361: a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "bug",
-      "updated": "2026-10-14T06:05:57Z",
+      "updated": "2026-10-14T06:35:56Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_revert_merged.py"
@@ -19043,7 +19042,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at b2921cb8f: tests.kernel.test_reviewer_fixes.Bounds, tests.kernel.test_reviewer_fixes.Apply)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -19052,7 +19051,7 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T05:49:55Z",
+      "updated": "2026-10-14T06:35:56Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -19349,7 +19348,7 @@
         "PR #1768: checks (3.12) is red but not a required check \u2014 ignored",
         "PR #1768: checks (3.13) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "done",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19359,7 +19358,7 @@
       "state": "New",
       "title": "The no-first-beat judge ends sessions that are working: 10 ended since the heartbeat came back",
       "type": "bug",
-      "updated": "2026-10-14T05:58:39Z",
+      "updated": "2026-10-14T06:35:56Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/workers/heartbeat.py",
@@ -96358,9 +96357,7 @@
       "kernel_extra_rounds": 2,
       "kernel_findings": [
         "reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
-        "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`",
-        "operator answer: Round granted. Reviewer fixes are now switched off for this product, so the next review will not try to fix. Read commit 1c44b6d (since fbeed72): keep each change that correctly fixes a review finding, revert anything else, finish any open finding. Run the Task's gate modules, push.",
-        "shared files: asf/kernel/decide.py also held by B-211240 \u2014 additive edits only, never a rewrite"
+        "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`"
       ],
       "kernel_fix_rounds": 5,
       "kernel_notes": [
@@ -96371,7 +96368,11 @@
         "build-t-210362-1791955186: NEEDS OPERATOR: the session's heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791955186 'asf/build-t-210362-1791955186@20261014T051954Z' >/dev/null 2>&1 &`) was refused by the sandbo\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "review: changes requested after 5 fix rounds \u2014 findings: reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: ke\u2026",
+      "kernel_stuck_since": "2026-10-14T06:16:32Z",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96384,7 +96385,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T06:02:23Z",
+      "updated": "2026-10-14T06:35:56Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96745,11 +96746,17 @@
       "kernel_attempts": [
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
+        "operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1771: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96762,7 +96769,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T06:10:08Z",
+      "updated": "2026-10-14T06:35:56Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
