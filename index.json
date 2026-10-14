@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T03:21:52Z",
+  "generated": "2026-10-14T03:24:39Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19072,7 +19072,7 @@
       "kernel_notes": [
         "groom-fill-b-219953-1791941431: groom-fill raised risk high: Confirmed in code (apply.py RevertPR still unpinned auto_merge, decide.py withdraw only covers _judge_pr) that B-218952's pinned-merge fix was never extended to revert PRs; filled with the mirrored acceptance/writes."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19082,7 +19082,7 @@
       "state": "New",
       "title": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
       "type": "bug",
-      "updated": "2026-10-14T03:21:48Z",
+      "updated": "2026-10-14T03:24:37Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/apply.py",
@@ -19098,6 +19098,10 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-219954",
+      "kernel_closed_findings": {
+        "a76feed9": "{'head': '994b41f1b87fd85356d61624466a3cf673383477', 'line': 'docs/products.example.yaml:586'}",
+        "c1908405": "{'head': '994b41f1b87fd85356d61624466a3cf673383477', 'line': 'asf/kernel/settings.py:79'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
       "kernel_findings": [
@@ -19119,7 +19123,7 @@
       "state": "New",
       "title": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
       "type": "bug",
-      "updated": "2026-10-14T03:14:15Z",
+      "updated": "2026-10-14T03:24:37Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/model.py",
@@ -19144,7 +19148,7 @@
         "asf/kernel/loop.py:812 \u2014 gate the mint, not the fetch: mint_plans also calls record.refresh_trunk(), the once-a-tick fetch every trunk read of this tick depends on (Facts.trunk_files is ls-tree with no fetch), so a breach now leaves the whole tick deciding DoR and write-grants-by-rule on a stale trunk; give mint_plans a `mint=True` parameter that does refresh() unconditionally and returns [] before mint_plan_tasks when mint is false, write `minted = minted + mint_plans(ports, out, config, mint=not problem)`, and add `self.assertIn(\"refresh\", calls)` beside the existing assertNotIn(\"mint\", calls) at tests/kernel/test_plan_mint.py:205"
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0360",
       "priority": "need",
       "schema_version": 3,
@@ -19153,7 +19157,7 @@
       "state": "New",
       "title": "Later findings from the review of B-208438: Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T03:21:48Z",
+      "updated": "2026-10-14T03:24:37Z",
       "writes": [
         "asf/kernel/loop.py",
         "tests/kernel/test_plan_mint.py"
@@ -95939,7 +95943,7 @@
         "build-t-210360-1791937121: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused the `nohup sh .b0000_heartbeat.sh \u2026` call this session was told to run as its first command (it needs an approval a non-interactive session cannot\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95952,7 +95956,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-14T03:21:48Z",
+      "updated": "2026-10-14T03:24:37Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -96275,7 +96279,7 @@
         "round not charged: a rebase round: PR #1757 conflicts with its base"
       ],
       "kernel_round_charged": false,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96288,7 +96292,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T03:18:44Z",
+      "updated": "2026-10-14T03:24:37Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
