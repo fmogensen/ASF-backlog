@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T04:40:44Z",
+  "generated": "2026-10-14T04:43:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19268,7 +19268,8 @@
       "kernel_dor_fills_ver": "0.3.26",
       "kernel_notes": [
         "groom-fill-b-223558-1791952185: groom-fill raised risk high: the card's defect is real and still live (two separate satisfied-on-main code paths exist; only one filters ids by baseline novelty), and the fix is well-scoped to the kernel's needed/needed_probe/reopen modules plus one new additive schema migration",
-        "PR #1764: part (3.12, 4) is red but not a required check \u2014 ignored"
+        "PR #1764: part (3.12, 4) is red but not a required check \u2014 ignored",
+        "PR #1764: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "F-0360",
@@ -19280,7 +19281,7 @@
       "state": "New",
       "title": "Satisfied on main closes items whose work was never built: 9 false closes",
       "type": "bug",
-      "updated": "2026-10-14T04:40:43Z",
+      "updated": "2026-10-14T04:43:23Z",
       "writes": [
         "asf/kernel/needed_probe.py",
         "asf/kernel/needed.py",
@@ -96416,12 +96417,19 @@
       ],
       "id": "T-217366",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/record/archive.py:475 \u2014 add each move's destination and `index.json` to `plan()['paths']`: inside the `for iid in moving` loop add `dest = os.path.join(core.archived_folder(rec['folder']), rec['name'])` plus `paths.add(dest)` and `paths.add(card.view_path(dest))` when the view exists, and add `paths.add('index.json')` beside the manifest \u2014 today `paths` has 11 entries where `apply()` touches 22, so `stage.guarded(only=paths)` stages the deletions and never the archived copies",
+        "asf/cli.py:388 \u2014 hoist the floor above every plan surface: after `product = _schema_product(args)` add `refusal = archive.floor_refusal(product)` / `if refusal: print(f\"archive: {refusal}\", file=sys.stderr); return 1`, and drop the dead `if p['refused']` branch at asf/record/archive.py:567 \u2014 `--why` today prints the refusal to stdout and returns 0 [38a69610@4600ca6]",
+        "asf/record/archive.py:529 \u2014 restore \u00a72.3's columns the recut dropped: `_PATH_COL = 27`, rows as `f\"  {rel}\".ljust(_PATH_COL) + reason` ordered by `core.sort_key(canonical, i)` not `sorted(moving)`, and asf/record/archive.py:585 as `f\"  {holder}\".ljust(10) + tag.ljust(16) + str(state).ljust(11) + descriptor` [f0a991c9@4600ca6]",
+        "asf/record/archive.py:612 \u2014 write the per-card reason into the manifest: `entries = entries_for(root, recs, '', plan['now'])` then `for iid, entry in entries.items(): word, date, age = plan['reasons'][iid]; entry['why'] = f\"{word} {date} ({age}d)\"` \u2014 \u00a72.4 shows `\"why\": \"done 2026-07-14 (91d)\"`, not one constant for the whole pass",
+        "shared files: asf/record/archive.py also held by T-217370 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1757 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96434,7 +96442,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T04:33:18Z",
+      "updated": "2026-10-14T04:43:23Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
@@ -96583,7 +96591,9 @@
       "after": [
         "T-217366"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-217366"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
