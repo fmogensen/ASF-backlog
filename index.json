@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T03:09:56Z",
+  "generated": "2026-10-14T03:14:18Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19116,7 +19116,7 @@
       "state": "New",
       "title": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
       "type": "bug",
-      "updated": "2026-10-14T03:02:33Z",
+      "updated": "2026-10-14T03:14:15Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/model.py",
@@ -95786,13 +95786,18 @@
         "session ran past its max age"
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the clock legs are green too' failed:\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the clock legs are green too' failed:\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1749 conflicts with its base",
-        "PR #1758: clock (+400d) is red but not a required check \u2014 ignored"
+        "PR #1758: clock (+400d) is red but not a required check \u2014 ignored",
+        "PR #1758: clock (+30d) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95805,7 +95810,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T03:09:54Z",
+      "updated": "2026-10-14T03:14:15Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -95920,7 +95925,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-14T03:02:33Z",
+      "updated": "2026-10-14T03:14:15Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -96026,7 +96031,7 @@
       ],
       "id": "T-210362",
       "kernel_stack": "worker/T-210360@9a0ac18c8977db8ae71ca60f773915db836bd8f6",
-      "kernel_state": "review",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96039,7 +96044,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T03:09:54Z",
+      "updated": "2026-10-14T03:14:15Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
