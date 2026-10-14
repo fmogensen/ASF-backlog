@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T12:47:37Z",
+  "generated": "2026-10-14T12:50:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -38987,7 +38987,7 @@
       "kernel_notes": [
         "spec-f-0364-1791979327: NEEDS OPERATOR: at T0 the kernel must be installed from S7's merge commit and `kernel.gate.since` set to that instant, then the console left alone for 24 hours; the factory may not run `asf kernel install` (standing\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -38997,7 +38997,7 @@
       "state": "New",
       "title": "ASF 0.4 design: remove five mechanisms, keep five, seven invariants, built in one order",
       "type": "feature",
-      "updated": "2026-10-14T12:44:29Z"
+      "updated": "2026-10-14T12:50:55Z"
     },
     "R-0001": {
       "backlinks": [
@@ -97278,7 +97278,10 @@
         "Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/feeder/rows.py:638 \u2014 [a6c4da3e@87a8f6b] still open: this head deleted the comment instead of declaring the path, so Step 2 of Task 7 is short one of the two no-overlay comments it commands (only metrics.delivered_vs_single has one, asf/metrics/metrics.py:1083-1085) and docs/plans/f-0363.md:713 still omits the file its own Step 2 commands. Restore the three-line comment above `done = {i for i, v in items.items() ...}`, worded as before so it does not contain the literal `archive` (tests/test_record_archive_history.py:336 asserts assertNotIn('archive', inspect.getsource(feeder_rows.landed_ids))), and carry `needs writes: asf/feeder/rows.py` in that run's REPORT so asf.feeder.widen adds the file to Task 7's writes:. No behaviour change \u2014 landed_ids is already correct and FeederLandedSetTests proves it from behaviour."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_later_findings": [
         "[2e968a66@5c2b778] tests/test_record_archive_history.py:384 \u2014 rename `test_12_row_appears_in_run_as_required` to `..._as_optional` and change the `# required` comment at :392 to `# not required (PD12)`: both say the opposite of the `assertFalse(row[1])` they annotate",
         "[76456a5d@5c2b778] tests/test_record_archive_history.py:4-6 \u2014 add line 11 to the module docstring's \"covers lines 1-8 and 12\", now that `ArchiveOffTests` proves it here",
@@ -97292,7 +97295,7 @@
         "round not charged: a rebase round: PR #1777 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97305,7 +97308,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T12:47:35Z",
+      "updated": "2026-10-14T12:50:55Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
