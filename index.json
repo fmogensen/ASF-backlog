@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T02:41:31Z",
+  "generated": "2026-10-14T02:45:46Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19067,10 +19067,14 @@
       "id": "B-219953",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
+      "kernel_findings": [
+        "asf/kernel/mainline.py:859 and asf/kernel/mainline.py:868 \u2014 delete ` and not rpr.auto_merge` from both conditions (leaving `if ci == 'green' and bv.cls != blame.GUILTY and bv.asked:` and `if ci == 'green' and bv.cls != blame.GUILTY:`). The clause meant \"the kernel already finalized this revert\"; this diff makes `rpr.auto_merge` mean only \"a stray, from before this rule or set by hand\" \u2014 the very state A2 withdraws \u2014 so both blame arms are now skipped in that state and control falls through to `elif ci == 'green'` (:888), merging a revert whose blame settled trunk-wide or unproven. Measured on this head: stray flag False gives ClosePR(30) and no MergePR; True gives MergePR(30, 'head-1') and no ClosePR, after which landed_reverts blames an innocent item. A regression \u2014 at aa2fcd7 that state emitted nothing. Also add the uncovered case to FinalizePinned: green revert CI with auto_merge=True AND blame trunk-wide plans ClosePR + DisableAutoMerge and no MergePR."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-219953-1791941431: groom-fill raised risk high: Confirmed in code (apply.py RevertPR still unpinned auto_merge, decide.py withdraw only covers _judge_pr) that B-218952's pinned-merge fix was never extended to revert PRs; filled with the mirrored acceptance/writes."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19080,7 +19084,7 @@
       "state": "New",
       "title": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
       "type": "bug",
-      "updated": "2026-10-14T02:28:18Z",
+      "updated": "2026-10-14T02:45:40Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/apply.py",
@@ -19128,14 +19132,14 @@
       "id": "B-220155",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "parent": "F-0360",
       "schema_version": 3,
       "stage_since": "2026-10-14T01:29:48Z",
       "state": "New",
       "title": "Later findings from the review of B-208438: Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T02:32:38Z",
+      "updated": "2026-10-14T02:45:40Z",
       "writes": [
         "asf/kernel/loop.py",
         "tests/kernel/test_plan_mint.py"
@@ -95770,6 +95774,9 @@
         "granted asf/groom/groom.py asf/capacity.py asf/workers/cloud.py asf/kernel/status.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel). asf/kernel/status.py matches kernel.risk.high: this item is high-risk now.",
         "Round granted: the last session ran past its max age and PR 1749 now conflicts with main. Merge origin/main into worker/T-210358, resolve the conflicts keeping both sides' behaviour, rerun the Task's gate test modules, push. No other change."
       ],
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_notes": [
@@ -95789,7 +95796,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T01:30:38Z",
+      "updated": "2026-10-14T02:45:40Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -95878,6 +95885,9 @@
       ],
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
+      "kernel_later_findings": [
+        "[c09870b3@083e558] asf/kernel/incidents.py:53 \u2014 Task 6 Step 8 is not implemented: restore the `BLAME = 'blame'` kind in `KINDS`, its `(kind, spell, class)` branch in `_key`, and its record in `gather` (as head `225e371` had them), or amend Step 8 of docs/plans/f-0357.md to name B-213995's nested `blame_read` on the `MAIN_RED` row as its replacement \u2014 that read is keyed on the spell alone and `observe` re-appends only on an upgrade to `guilty` (incidents.py:250-254), so the `unproven` \u2192 `trunk-wide` change the Step names is still recorded once"
+      ],
       "kernel_notes": [
         "round not charged: a rebase round: PR #1737 conflicts with its base",
         "build-t-210360-1791937121: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused the `nohup sh .b0000_heartbeat.sh \u2026` call this session was told to run as its first command (it needs an approval a non-interactive session cannot\u2026"
@@ -95896,7 +95906,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-14T02:32:38Z",
+      "updated": "2026-10-14T02:45:40Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
