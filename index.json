@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T07:25:23Z",
+  "generated": "2026-10-14T07:35:59Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18637,6 +18637,7 @@
       "found_in": "dev",
       "id": "B-211240",
       "kernel_attempts": [
+        "session ran past its max age",
         "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
@@ -18655,7 +18656,7 @@
       "state": "New",
       "title": "Review-loop rules that can stall or run unbounded: reworded findings, lost answers, uncapped free rounds",
       "type": "bug",
-      "updated": "2026-10-14T06:52:36Z",
+      "updated": "2026-10-14T07:35:49Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/apply.py",
@@ -18675,6 +18676,7 @@
       "found_in": "dev",
       "id": "B-211241",
       "kernel_attempts": [
+        "session ran past its max age",
         "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
@@ -18693,7 +18695,7 @@
       "state": "New",
       "title": "Settle which ids a proof may judge before the proof gate can be turned on",
       "type": "bug",
-      "updated": "2026-10-14T06:52:36Z",
+      "updated": "2026-10-14T07:35:49Z",
       "writes": [
         "asf/kernel/proof.py",
         "asf/kernel/proof_probe.py",
@@ -96906,7 +96908,14 @@
       "kernel_attempts": [
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/record/archive.py:245 \u2014 fold only what the caller folded: after `raw.update(items)`, `if not isinstance(items, index_reader.Items): return raw`, and only then `raw.update(items.retired_done)`, `raw.update(items.retired_open)`, `return index_reader.live(raw)`; add a test that cuts a release with `items = match.load_index(root)` on a record whose named card is retired and asserts the id reaches the notes, and correct the docstring's raw-map promise at `:233-234`",
+        "asf/doctor.py:1895 \u2014 `rows.append(('archive', False, ok, detail))` per plan Step 3 / PD12, and flip tests/test_record_archive_history.py:364-373 to look up the `'archive'` row and `assertFalse(row[1])`",
+        "tests/test_record_archive_history.py:378 \u2014 add Step 4's missing case: with an aged closed card on the record, `archive.plan(self.root, _product(archive_after_days=0))` has `refused == ''` and `moving == []`, and `archive.candidates(self._canonical(), _product(archive_after_days=0), '2026-10-13', {}) == set()`",
+        "operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96919,7 +96928,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T07:06:44Z",
+      "updated": "2026-10-14T07:35:49Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -96960,7 +96969,7 @@
         "round not charged: a rebase round: PR #1769 conflicts with its base"
       ],
       "kernel_round_charged": false,
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96973,7 +96982,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T07:06:44Z",
+      "updated": "2026-10-14T07:35:49Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
