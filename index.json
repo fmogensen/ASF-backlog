@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T09:31:03Z",
+  "generated": "2026-10-14T09:39:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19660,7 +19660,7 @@
       "kernel_notes": [
         "groom-fill-b-228767-1791968026: groom-fill raised risk high: all three findings are concrete, already confirmed (repro showed missing_ids returns [] on a basename collision), and fit the exact code+spec+test shape the parent fix (B-213994) already used, so the card just needed acceptance/writes named \u2014 risk_raise is high because the write touches asf/kernel/trunk.py."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "priority": "need",
       "risk": "high",
@@ -19670,7 +19670,7 @@
       "state": "New",
       "title": "Later findings from the review of B-213994: A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T09:30:21Z",
+      "updated": "2026-10-14T09:39:10Z",
       "writes": [
         "docs/specs/f-0357.md",
         "asf/kernel/trunk.py",
@@ -92837,7 +92837,8 @@
         "session ran past its max age",
         "failed: OpenPR worker/T-154340: open PR worker/T-154340: rc 1: pull request create failed: GraphQL: No commits between main and worker/T-154340 (createPullRequest)",
         "relaunch: branch worker/T-154340 has no commits beyond main, so it cannot become a PR: make the change the card asks for and push it, or \u2014 when the work already landed \u2014 name the landed sha and the passing tests in a done REPORT with pushed: no",
-        "relaunch: PR #1784 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1784 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1785 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_findings": [
         "asf/record/index.py:39 \u2014 `only=` matches only `rec['relpath']`, so the view relpath `refresh` now returns at `:58` can never be fed back to it; `asf/record/publish.py:154-156` does exactly that round-trip, so a hand-edited view in the checkout is never regenerated (the commit lands the right bytes, the working tree keeps the stale ones, and `asf check` then reports `view is stale` with no automatic repair). Fix: `if only is not None and rec['relpath'] not in only and os.path.relpath(card.view_path(rec['path']), root) not in only: continue`.",
@@ -92852,7 +92853,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92865,7 +92866,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T09:30:21Z",
+      "updated": "2026-10-14T09:39:10Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -96687,13 +96688,16 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "tests/fixtures/red-trunk/2026-10-13.json:6 \u2014 `last_green.pr` is `1676`; this repo's own history gives `(#1675)` for commit `327d24fe9` (`git log -1 --format='%H %s' 327d24fe9`) \u2014 `#1676` is a different item's PR (`B-196401`). Change `\"pr\": 1676` to `\"pr\": 1675`."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "build-t-210363-1791950444: NEEDS OPERATOR: whether any open PR was charged a fix round for the 2026-10-13 trunk-wide failure",
         "PR #1783: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96706,7 +96710,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T09:10:02Z",
+      "updated": "2026-10-14T09:39:10Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
@@ -97200,6 +97204,9 @@
         "asf redact --unpublished"
       ],
       "id": "T-217372",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_stack": "worker/T-217371@15235399018a92f7f7cac1bffd359271c70302c2",
       "kernel_state": "building",
       "links": {
@@ -97214,7 +97221,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-14T08:38:18Z",
+      "updated": "2026-10-14T09:39:10Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
