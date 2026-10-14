@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T03:50:12Z",
+  "generated": "2026-10-14T03:53:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18546,11 +18546,13 @@
       "id": "B-210839",
       "kernel_answers": [
         "granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel).",
-        "Round granted for the conflict only: PR 1744 conflicts with main after other merges. Merge origin/main into the branch, resolve keeping both sides' behaviour, rerun the Bug's gate test modules, push. No other change."
+        "Round granted for the conflict only: PR 1744 conflicts with main after other merges. Merge origin/main into the branch, resolve keeping both sides' behaviour, rerun the Bug's gate test modules, push. No other change.",
+        "granted tests/test_record_archive_schema.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Round granted for the conflict only: PR 1744 conflicts with main after other merges. Merge origin/main into the branch, resolve keeping both sides' behaviour, rerun the Bug's gate test modules, push. No other change.",
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "relaunch: operator answer: granted tests/test_record_archive_schema.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
@@ -18583,7 +18585,7 @@
         "PR #1744: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18593,7 +18595,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-14T03:02:33Z",
+      "updated": "2026-10-14T03:53:34Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18603,7 +18605,8 @@
         "tests/test_card_migration.py",
         "tests/test_schema_version.py",
         "tests/test_upgrade.py",
-        "tests/test_sample_product.py"
+        "tests/test_sample_product.py",
+        "tests/test_record_archive_schema.py"
       ]
     },
     "B-211240": {
@@ -19114,7 +19117,7 @@
       "kernel_notes": [
         "groom-fill-b-219954-1791942556: groom-fill raised risk high: both starved-lanes still gate on the now-dead auto_merge/auto_merge_at fields; the fix lives in decide.py alone using the existing wait ledger (Facts.waits) as the approve-held clock, with named tests covering the train and the risk-lane tiebreak."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 3,
@@ -19124,7 +19127,7 @@
       "state": "New",
       "title": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
       "type": "bug",
-      "updated": "2026-10-14T03:27:37Z",
+      "updated": "2026-10-14T03:53:34Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/model.py",
@@ -19210,7 +19213,10 @@
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T03:46:46Z"
+      "updated": "2026-10-14T03:46:46Z",
+      "writes": [
+        "docs/plans/f-0357.md"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -96310,19 +96316,13 @@
         "asf redact --unpublished"
       ],
       "id": "T-217366",
-      "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
-      ],
-      "kernel_findings": [
-        "reviewer fix out of bounds (the reviewed head is not an ancestor of the new head (diverged); commit f0efd9a is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit f13f435 is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit 8695f10 is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit fe5723c is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); 685 changed lines, over the 80 allowed; outside the item's writes and the test paths: tests/test_record_archive_rule.py; a high-risk path: asf/record/archive.py) \u2014 commits f0efd9a, f13f435, 8695f10, fe5723c, 59ab91f since 4600ca6 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
-        "asf/cli.py:406 \u2014 the retention floor is checked in `cmd_archive` before any card is read, so `--why` prints `archive: <refusal>` and exits 1 like the dry run and `--apply` [review-t-217366-1791946489@fe5723ca9]",
-        "asf/record/archive.py:634 \u2014 `--why`'s columns pad to width\u22121 plus one literal space (`_column`), so an eight-character holder id no longer runs into the field and \u00a72.3's example keeps its bytes [review-t-217366-1791946489@fe5723ca9]"
-      ],
-      "kernel_fix_rounds": 3,
+      "kernel_extra_rounds": 0,
+      "kernel_fix_rounds": 0,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1757 conflicts with its base"
       ],
-      "kernel_state": "building",
+      "kernel_rebuilds": 1,
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96335,7 +96335,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T03:46:46Z",
+      "updated": "2026-10-14T03:53:34Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
