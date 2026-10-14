@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:17:36Z",
+  "generated": "2026-10-14T10:20:38Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18996,7 +18996,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_review_measure, tests.kernel.test_rereview_scope)",
         "groom-fill-b-216547-1791966892: groom-fill raised risk high: trunk has no own-diff once-rule or split LATER count (confirmed by reading split_scope/_scope and running the two cited test files green); the earlier satisfied-on-main close was false."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19006,7 +19006,7 @@
       "state": "New",
       "title": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
       "type": "bug",
-      "updated": "2026-10-14T09:50:29Z",
+      "updated": "2026-10-14T10:20:34Z",
       "writes": [
         "asf/kernel/apply.py",
         "asf/kernel/findings.py",
@@ -92896,7 +92896,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Decision: the review's second clause came from a transient red on main. tests.test_card_json passes 23 of 23 on origin/main at 54d0321c1, as you measured, so no action is needed for it. Treat that clause as closed and continue to review with the first clause's fix in place.",
-        "relaunch: PR #1789 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1789 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1792 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_findings": [
         "asf/record/index.py:39 \u2014 `only=` matches only `rec['relpath']`, so the view relpath `refresh` now returns at `:58` can never be fed back to it; `asf/record/publish.py:154-156` does exactly that round-trip, so a hand-edited view in the checkout is never regenerated (the commit lands the right bytes, the working tree keeps the stale ones, and `asf check` then reports `view is stale` with no automatic repair). Fix: `if only is not None and rec['relpath'] not in only and os.path.relpath(card.view_path(rec['path']), root) not in only: continue`.",
@@ -92912,7 +92913,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "done",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92925,7 +92926,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:17:33Z",
+      "updated": "2026-10-14T10:20:34Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -97091,7 +97092,7 @@
         "PR #1771: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97104,7 +97105,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T08:53:55Z",
+      "updated": "2026-10-14T10:20:34Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -98151,7 +98152,8 @@
         "PR #1342: part (3.13, 3) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.12, 4) is red but not a required check \u2014 ignored",
         "PR #1342: part (3.13, 4) is red but not a required check \u2014 ignored",
-        "reopened: satisfied-on-main no longer holds (satisfied on main at a22019ced: tests.test_prepush)"
+        "reopened: satisfied-on-main no longer holds (satisfied on main at a22019ced: tests.test_prepush)",
+        "groom-fill-t-79566-1791972435: groom-fill raised risk high: card's Description was cut at 4000 chars before Gate/Acceptance landed to survive it (fix af8aa11cc landed 2026-10-10, after this card's 2026-10-08 mint), leaving no test named; the plan's own Acceptance for this Task's 3 owned bullets is complete and verified against the checkout."
       ],
       "kernel_rebuilds": 1,
       "links": {
@@ -98161,6 +98163,7 @@
         "T-79567"
       ],
       "parent": "F-0301",
+      "risk": "high",
       "schema_version": 1,
       "stage_since": "2026-10-08T13:45:27Z",
       "state": "New",
@@ -98170,7 +98173,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-14T10:07:47Z",
+      "updated": "2026-10-14T10:20:34Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
