@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T03:43:46Z",
+  "generated": "2026-10-14T03:46:48Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19166,8 +19166,7 @@
     },
     "B-222356": {
       "backlinks": [
-        "T-217365",
-        "T-217366"
+        "T-217365"
       ],
       "children": [],
       "decided": true,
@@ -19203,13 +19202,15 @@
       "children": [],
       "folder": "bugs",
       "id": "B-222657",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.26",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:43:23Z",
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T03:43:23Z"
+      "updated": "2026-10-14T03:46:46Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -96315,14 +96316,13 @@
       "kernel_findings": [
         "reviewer fix out of bounds (the reviewed head is not an ancestor of the new head (diverged); commit f0efd9a is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit f13f435 is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit 8695f10 is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit fe5723c is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); 685 changed lines, over the 80 allowed; outside the item's writes and the test paths: tests/test_record_archive_rule.py; a high-risk path: asf/record/archive.py) \u2014 commits f0efd9a, f13f435, 8695f10, fe5723c, 59ab91f since 4600ca6 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
         "asf/cli.py:406 \u2014 the retention floor is checked in `cmd_archive` before any card is read, so `--why` prints `archive: <refusal>` and exits 1 like the dry run and `--apply` [review-t-217366-1791946489@fe5723ca9]",
-        "asf/record/archive.py:634 \u2014 `--why`'s columns pad to width\u22121 plus one literal space (`_column`), so an eight-character holder id no longer runs into the field and \u00a72.3's example keeps its bytes [review-t-217366-1791946489@fe5723ca9]",
-        "shared files: asf/record/archive.py also held by B-222356 \u2014 additive edits only, never a rewrite"
+        "asf/record/archive.py:634 \u2014 `--why`'s columns pad to width\u22121 plus one literal space (`_column`), so an eight-character holder id no longer runs into the field and \u00a72.3's example keeps its bytes [review-t-217366-1791946489@fe5723ca9]"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1757 conflicts with its base"
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96335,7 +96335,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T03:43:44Z",
+      "updated": "2026-10-14T03:46:46Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
