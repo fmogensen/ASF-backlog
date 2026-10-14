@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T08:44:43Z",
+  "generated": "2026-10-14T08:47:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18021,7 +18021,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5f129ce21: tests.kernel.test_flake.BugTests, tests.kernel.test_flake.KnobTests)",
         "build-b-196077-1791959526: NEEDS OPERATOR: `asf redact --unpublished` could not be run \u2014 the `asf` CLI is not installed in this cloud container, and the brief's CLOUD SESSION section does not list it among what to run here (only the tools/che\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0336",
       "schema_version": 2,
       "severity": "S3",
@@ -18030,7 +18030,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T08:44:39Z",
+      "updated": "2026-10-14T08:47:43Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -18804,7 +18804,8 @@
     },
     "B-213994": {
       "backlinks": [
-        "B-223558"
+        "B-223558",
+        "B-228767"
       ],
       "children": [],
       "decided": true,
@@ -18831,6 +18832,7 @@
         "shared files: asf/kernel/trunk.py also held by B-211241 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
+      "kernel_later_filed": "B-228767",
       "kernel_later_findings": [
         "[36ddac9a@9292c58] docs/specs/f-0357.md:193 \u2014 the \u00a72.3 `guilty` row still says \"or at least one of them does not load there (D4)\"; make it \"or at least one of them is **absent** there (D4: `missing`, not merely a load failure)\"",
         "[88c10b13@9292c58] docs/specs/f-0357.md:69 \u2014 \"The blame verdict is one test run and a comparison\" is stale against D1; make it \"two test runs and a comparison\"",
@@ -18840,7 +18842,7 @@
         "groom-fill-b-213994-1791922466: groom-fill raised risk high: missing_ids conflates \"module exists but fails to import\" with \"absent\" by matching on name alone; the fix is a self-contained text-based reclassification in trunk.py plus a doc-only sync of D1/\u00a72.1/\u00a72.2 to the already-shipped two-run, bounded-retry read.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9a37dbf74: tests.kernel.test_blame_before_revert.ParseUnittest, tests.kernel.test_blame_before_revert.ProbeClass)"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -18850,7 +18852,7 @@
       "state": "New",
       "title": "A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T08:41:04Z",
+      "updated": "2026-10-14T08:47:43Z",
       "writes": [
         "asf/kernel/trunk.py",
         "docs/specs/f-0357.md",
@@ -19010,6 +19012,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_rereview_scope)",
         "groom-fill-b-216548-1791966899: groom-fill raised risk high: Confirmed in code \u2014 later_bugs' later_filed check, _keep_later's never-cleared later_findings, and file_bug's key-substring dedup all combine to drop a second landing's follow-up Bug; the fix and its tests are concretely scoped across decide.py, apply.py and the two test files."
       ],
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19019,7 +19022,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T08:44:39Z",
+      "updated": "2026-10-14T08:47:43Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
@@ -19139,7 +19142,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at b2921cb8f: tests.kernel.test_reviewer_fixes.Bounds, tests.kernel.test_reviewer_fixes.Apply)"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -19148,7 +19151,7 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T08:41:04Z",
+      "updated": "2026-10-14T08:47:43Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -19526,7 +19529,11 @@
       "id": "B-224862",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_notes": [
+        "groom-fill-b-224862-1791967255: groom-fill raised risk high: F-0358's review.fix ships with no path list in the brief, no all-high-risk authority check and no free round for a rejected fix, confirmed unfixed on origin/main; the fix is contained to decide.py/briefs.py/reviewfix.py, all under kernel.risk.high."
+      ],
       "parent": "F-0358",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "A reviewer fix on a high-risk path is attempted, rejected and charged a round",
@@ -19534,7 +19541,12 @@
       "state": "New",
       "title": "A reviewer fix on a high-risk path is attempted, rejected and charged a round",
       "type": "bug",
-      "updated": "2026-10-14T08:41:04Z"
+      "updated": "2026-10-14T08:47:43Z",
+      "writes": [
+        "asf/kernel/reviewfix.py",
+        "asf/kernel/decide.py",
+        "asf/kernel/briefs.py"
+      ]
     },
     "B-225513": {
       "backlinks": [],
@@ -19605,6 +19617,21 @@
       "title": "kernel.heartbeat.max_continues never trips because a relaunch starts its resumes at 0",
       "type": "bug",
       "updated": "2026-10-14T06:41:59Z"
+    },
+    "B-228767": {
+      "backlinks": [
+        "B-213994"
+      ],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-228767",
+      "parent": "F-0357",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T08:47:21Z",
+      "state": "New",
+      "title": "Later findings from the review of B-213994: A blame id that fails to import on the parent reads as absent; the spec still says one run",
+      "type": "bug",
+      "updated": "2026-10-14T08:47:21Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -38399,7 +38426,8 @@
         "B-218650",
         "B-219953",
         "B-222657",
-        "B-225513"
+        "B-225513",
+        "B-228767"
       ],
       "decided": true,
       "folder": "features",
@@ -92763,7 +92791,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "done",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92776,7 +92804,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-12T04:59:23Z",
+      "updated": "2026-10-14T08:47:43Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -96270,7 +96298,7 @@
         "PR #1758: clock (+30d) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96283,7 +96311,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T08:32:05Z",
+      "updated": "2026-10-14T08:47:43Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
