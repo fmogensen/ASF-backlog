@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T12:57:07Z",
+  "generated": "2026-10-14T12:59:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -38976,7 +38976,15 @@
     },
     "F-0364": {
       "backlinks": [],
-      "children": [],
+      "children": [
+        "S-233318",
+        "S-233319",
+        "S-233320",
+        "S-233321",
+        "S-233322",
+        "S-233323",
+        "S-233324"
+      ],
       "decided": true,
       "folder": "features",
       "id": "F-0364",
@@ -38990,7 +38998,7 @@
       "kernel_notes": [
         "spec-f-0364-1791979327: NEEDS OPERATOR: at T0 the kernel must be installed from S7's merge commit and `kernel.gate.since` set to that instant, then the console left alone for 24 hours; the factory may not run `asf kernel install` (standing\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -39000,7 +39008,7 @@
       "state": "New",
       "title": "ASF 0.4 design: remove five mechanisms, keep five, seven invariants, built in one order",
       "type": "feature",
-      "updated": "2026-10-14T12:57:06Z"
+      "updated": "2026-10-14T12:59:29Z"
     },
     "R-0001": {
       "backlinks": [
@@ -44272,6 +44280,99 @@
       "title": "measured on a record of today's size the working set is at most half the cards and asf check and the tick's processing are each at least twice as fast",
       "type": "story",
       "updated": "2026-10-13T20:17:19Z"
+    },
+    "S-233318": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-233318",
+      "parent": "F-0364",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T12:59:29Z",
+      "state": "New",
+      "title": "the pre-launch gate is gone and a ranked, unheld item launches at once",
+      "type": "story",
+      "updated": "2026-10-14T12:59:29Z"
+    },
+    "S-233319": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-233319",
+      "parent": "F-0364",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T12:59:29Z",
+      "state": "New",
+      "title": "a review reports and the author fixes",
+      "type": "story",
+      "updated": "2026-10-14T12:59:29Z"
+    },
+    "S-233320": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-233320",
+      "parent": "F-0364",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T12:59:29Z",
+      "state": "New",
+      "title": "risk estimation is gone and every pull request is judged the same way",
+      "type": "story",
+      "updated": "2026-10-14T12:59:29Z"
+    },
+    "S-233321": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-233321",
+      "parent": "F-0364",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T12:59:29Z",
+      "state": "New",
+      "title": "a red required check is red",
+      "type": "story",
+      "updated": "2026-10-14T12:59:29Z"
+    },
+    "S-233322": {
+      "backlinks": [
+        "F-0364"
+      ],
+      "children": [],
+      "folder": "stories",
+      "id": "S-233322",
+      "parent": "F-0364",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T12:59:29Z",
+      "state": "New",
+      "title": "one liveness rule, from the log and the age, and the beat stays a backup",
+      "type": "story",
+      "updated": "2026-10-14T12:59:29Z"
+    },
+    "S-233323": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-233323",
+      "parent": "F-0364",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T12:59:29Z",
+      "state": "New",
+      "title": "one ordered hold table, five declared mechanisms, seven checked invariants",
+      "type": "story",
+      "updated": "2026-10-14T12:59:29Z"
+    },
+    "S-233324": {
+      "backlinks": [],
+      "children": [],
+      "folder": "stories",
+      "id": "S-233324",
+      "parent": "F-0364",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T12:59:29Z",
+      "state": "New",
+      "title": "the kernel does not shell out, is at most 15,000 lines, and its gate measures the hands-off window",
+      "type": "story",
+      "updated": "2026-10-14T12:59:29Z"
     },
     "S-51600": {
       "backlinks": [
@@ -97236,7 +97337,7 @@
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97249,7 +97350,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T12:57:06Z",
+      "updated": "2026-10-14T12:59:29Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
