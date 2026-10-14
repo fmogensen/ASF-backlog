@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T12:27:48Z",
+  "generated": "2026-10-14T12:30:40Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -38977,7 +38977,10 @@
       "folder": "features",
       "id": "F-0364",
       "kernel_fix_rounds": 0,
-      "kernel_state": "building",
+      "kernel_notes": [
+        "spec-f-0364-1791979327: NEEDS OPERATOR: at T0 the kernel must be installed from S7's merge commit and `kernel.gate.since` set to that instant, then the console left alone for 24 hours; the factory may not run `asf kernel install` (standing\u2026"
+      ],
+      "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0007",
       "rank": 1,
@@ -38986,7 +38989,7 @@
       "state": "New",
       "title": "ASF 0.4 design: remove five mechanisms, keep five, seven invariants, built in one order",
       "type": "feature",
-      "updated": "2026-10-14T12:02:15Z"
+      "updated": "2026-10-14T12:30:37Z"
     },
     "R-0001": {
       "backlinks": [
@@ -97217,7 +97220,7 @@
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97230,7 +97233,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T12:07:26Z",
+      "updated": "2026-10-14T12:30:37Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -97392,7 +97395,7 @@
         "tests/test_record_archive_scale.py:157 \u2014 [bbad812a@c755930] `assertLess(out.index('measuring '), out.index('cards in working set'))` cannot fail: the test builds `out` by concatenating `render_header` then `render_measure` at :149-152, so the index is always 0. Restore the deleted header-content assertions (`header['cards'] == N_CLOSED + N_RETIRED + N_LIVE`, `header['markdown_files']` the same, `header['bytes'] > 0` \u2014 `measure_header`'s values are otherwise asserted nowhere) and assert the order in `test_cli_measure_exits_non_zero_on_a_missed_target` at :234-256 by patching `archive.measure` with a spy that records `out.getvalue()`, then `assertIn('measuring ', seen['printed'])`"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97405,7 +97408,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-14T12:27:45Z",
+      "updated": "2026-10-14T12:30:37Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
