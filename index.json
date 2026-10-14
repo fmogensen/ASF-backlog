@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T09:15:00Z",
+  "generated": "2026-10-14T09:22:03Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18956,7 +18956,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_finding_writes.OutsideWrites, tests.kernel.test_finding_writes.Replay)"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18966,7 +18966,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T09:10:02Z",
+      "updated": "2026-10-14T09:21:09Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -18976,6 +18976,7 @@
     },
     "B-216547": {
       "backlinks": [
+        "T-217370",
         "B-214946",
         "B-223558"
       ],
@@ -97080,10 +97081,9 @@
         "ecd9b587": "{'head': '5c2b7787d8515249c73e8242c3f985f3486066d2', 'line': 'asf/record/archive.py:245'}"
       },
       "kernel_findings": [
-        "asf/record/archive.py:245 \u2014 fold only what the caller folded: after `raw.update(items)`, `if not isinstance(items, index_reader.Items): return raw`, and only then `raw.update(items.retired_done)`, `raw.update(items.retired_open)`, `return index_reader.live(raw)`; add a test that cuts a release with `items = match.load_index(root)` on a record whose named card is retired and asserts the id reaches the notes, and correct the docstring's raw-map promise at `:233-234`",
-        "asf/doctor.py:1895 \u2014 `rows.append(('archive', False, ok, detail))` per plan Step 3 / PD12, and flip tests/test_record_archive_history.py:364-373 to look up the `'archive'` row and `assertFalse(row[1])`",
-        "tests/test_record_archive_history.py:378 \u2014 add Step 4's missing case: with an aged closed card on the record, `archive.plan(self.root, _product(archive_after_days=0))` has `refused == ''` and `moving == []`, and `archive.candidates(self._canonical(), _product(archive_after_days=0), '2026-10-13', {}) == set()`",
-        "operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
+        "rebase: PR #1777 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
+        "shared files: asf/metrics/metrics.py, asf/record/archive.py also held by B-216547, T-217372 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
       "kernel_later_findings": [
@@ -97092,7 +97092,11 @@
         "[e31cb5ad@5c2b778] docs/specs/f-0363.md:349-354 \u2014 replace the `with_archive` docstring's \"`items` (an `asf.views.index_reader.Items`)\" premise with the plain-map-or-`Items` contract the code now implements, since the production caller passes a plain map",
         "[a544417d@5c2b778] asf/doctor.py:215 \u2014 rename `check_archive_retention` to `check_archive` and move its `rows.append` to directly after the `backlog` row, as plan Step 3 names it"
       ],
-      "kernel_state": "ready",
+      "kernel_notes": [
+        "round not charged: a rebase round: PR #1777 conflicts with its base"
+      ],
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97105,7 +97109,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T09:14:27Z",
+      "updated": "2026-10-14T09:21:09Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -97174,7 +97178,9 @@
         "T-217366",
         "T-217371"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "T-217370"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
