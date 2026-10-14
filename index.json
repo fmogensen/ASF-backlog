@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T12:40:34Z",
+  "generated": "2026-10-14T12:44:30Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19826,10 +19826,14 @@
       "id": "B-232919",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_findings": [
+        "asf/kernel/apply.py:628 \u2014 the same-tick fix is inert: decide.py:625 sorts every plan by decide.ORDER, where FileLater (25) runs after ArchiveAndReset (16) and RevertLanded (21), so the clear never sees the filing in self.updates and FileLater re-sets kernel_later_filed after the clear nulled it \u2014 the card keeps both keys, decide.later_bugs then skips it and the findings are never re-filed. Fix inside the footprint: add `self.cleared_later = set()` at apply.py:169; at apply.py:628 restore the plain fact read (`filed = bool(getattr(it, 'later_filed', '')) if it is not None else False`) and add `self.cleared_later.add(item_id)`; in FileLater (apply.py:632) return `'not filed: %s was reverted or rebuilt this tick' % a.item_id` before minting when `a.item_id in self.cleared_later`. Then sort the plan in tests/kernel/test_rereview_scope.py:609 by `ORDER.index(type(a))` and assert `len(rec.minted) == 0`, LATER_FILED absent, LATER_FINDINGS held \u2014 plus the same case for RevertLanded."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-232919-1791979028: groom-fill raised risk high: both lines are reachable, unaddressed gaps in asf/kernel/apply.py's existing _clear_later/ArchiveAndReset code, each fixable with one new FollowUp test in the existing test file; neither test exists yet."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "priority": "nice",
       "risk": "high",
@@ -19839,7 +19843,7 @@
       "state": "New",
       "title": "Later findings from the review of B-216548: A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T12:34:31Z",
+      "updated": "2026-10-14T12:44:29Z",
       "writes": [
         "asf/kernel/apply.py",
         "tests/kernel/test_rereview_scope.py"
@@ -38976,11 +38980,14 @@
       "decided": true,
       "folder": "features",
       "id": "F-0364",
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "docs/specs/f-0364.md:643 \u2014 add kernel_stale_after_s to the \"What stays\" list in \u00a72.6 and to the S-233322 acceptance line's keeps-clause (\"kernel.heartbeat keeps enabled, interval_min and kernel_stale_after_s\"), since asf/kernel/host.py:706 reads that key for the kernel's own beat staleness check which \u00a72.6 says stays unchanged, and settings.read() would otherwise drop the key from product.kernel['heartbeat'] entirely."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "spec-f-0364-1791979327: NEEDS OPERATOR: at T0 the kernel must be installed from S7's merge commit and `kernel.gate.since` set to that instant, then the console left alone for 24 hours; the factory may not run `asf kernel install` (standing\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "milestone": "0.4",
       "parent": "E-0007",
       "priority": "need",
@@ -38990,7 +38997,7 @@
       "state": "New",
       "title": "ASF 0.4 design: remove five mechanisms, keep five, seven invariants, built in one order",
       "type": "feature",
-      "updated": "2026-10-14T12:34:31Z"
+      "updated": "2026-10-14T12:44:29Z"
     },
     "R-0001": {
       "backlinks": [
@@ -97234,7 +97241,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T12:30:37Z",
+      "updated": "2026-10-14T12:44:29Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -98283,7 +98290,7 @@
         "build-t-79566-1791978866: NEEDS OPERATOR: T-79566/S-77506 needs the `{rubric_block}` placeholder added to `asf/briefs/templates/{coder,correct,fixer,fix-bug,direct}.md` (after the gate paragraph, per docs/plans/f-0301.md PD13/Task 3 Step 4)\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0301.md"
       },
@@ -98301,7 +98308,7 @@
       ],
       "title": "the wire \u2014 `ASF_WRITES` from the brief to the door",
       "type": "task",
-      "updated": "2026-10-14T12:40:33Z",
+      "updated": "2026-10-14T12:44:29Z",
       "writes": [
         "asf/briefs/build.py",
         "asf/tick/step_wave.py",
