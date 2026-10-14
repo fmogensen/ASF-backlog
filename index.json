@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T01:35:55Z",
+  "generated": "2026-10-14T01:40:43Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18547,16 +18547,20 @@
       "kernel_answers": [
         "granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
       ],
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
+        "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 1) did not finish green\nFAILED: part (3.12, 3) did not finish green\nFAILED: part (3.12, 4) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 1) did not finish green\nFAILED: part (3.13, 3) did not finish green\nFAILED: part (3.13, 4) did not finish green\n##[error]Process completed with exit code 1.",
         "[dcf3481a@15115c8] asf/schema.py:940 \u2014 the recorded `pid=os.getpid()` is inert: `upgrade.stale_pauses` skips any pause whose `reason != PAUSE_REASON` ('upgrade', asf/upgrade.py:1063,1145) before it reads the pid, so a schema-migrate killed between the pause at :941 and the resume at :966 leaves both kernel clocks paused with nothing in the tree able to lift them; pause with `reason=PAUSE_REASON` imported from asf.upgrade instead of `reason='schema-migrate'`",
         "asf/schema.py:955 \u2014 the failed-migration message hardcodes `--clock kernel` while the run paused every clock in `ours` (both of KERNEL_CLOCKS, or only 'kernel-watch' when the operator had already paused 'kernel' by hand), so the command it tells the operator to run leaves a clock paused for good; build it from `ours` \u2014 `--clock {\",\".join(ours)}` (`--clock` takes a comma-separated list, asf/scheduler.py:1545-1546) \u2014 and drop the clause when `ours` is empty",
-        "[2e89fc14@15115c8] asf/record/ids.py:218 \u2014 `json_card = _record_has_json_cards(root)` never consults the record's stamp, so a record whose index.json says schema 3 while no folder holds a JSON card yet still mints schema-1 markdown (probed: stamp 3, empty record -> bugs/B-0002.md) \u2014 which `asf init` makes every fresh record (asf/init.py:381), permanently, since `migrate_product` then answers \"at schema 3, nothing to do\" and the write gate matches `.json` only; replace with `v = schema.record_version(root)` then `json_card = _record_has_json_cards(root) if v is None else v >= 3`, which keeps test_a_kernel_filed_bug_is_minted_as_markdown_before_any_migration green (make_repo writes no index.json, so v is None)",
-        "shared files: asf/record/ids.py also held by T-217368 \u2014 additive edits only, never a rewrite"
+        "[2e89fc14@15115c8] asf/record/ids.py:218 \u2014 `json_card = _record_has_json_cards(root)` never consults the record's stamp, so a record whose index.json says schema 3 while no folder holds a JSON card yet still mints schema-1 markdown (probed: stamp 3, empty record -> bugs/B-0002.md) \u2014 which `asf init` makes every fresh record (asf/init.py:381), permanently, since `migrate_product` then answers \"at schema 3, nothing to do\" and the write gate matches `.json` only; replace with `v = schema.record_version(root)` then `json_card = _record_has_json_cards(root) if v is None else v >= 3`, which keeps test_a_kernel_filed_bug_is_minted_as_markdown_before_any_migration green (make_repo writes no index.json, so v is None)"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "groom-fill-b-210839-1791916840: groom-fill raised risk high: All five described defects verified directly against trunk code and existing (insufficient) tests; card is buildable as scoped, just missing acceptance/writes.",
         "PR #1728: checks (3.12) is red but not a required check \u2014 ignored",
@@ -18576,7 +18580,7 @@
         "PR #1744: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18586,7 +18590,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-14T01:35:48Z",
+      "updated": "2026-10-14T01:40:38Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18844,10 +18848,11 @@
         "round not charged: a rebase round: PR #1738 conflicts with its base",
         "build-b-214946-1791934634: NEEDS OPERATOR: the heartbeat command (.b0000_heartbeat.sh) was refused by the sandbox's approval gate every time it was attempted \u2014 proceeded without one per the brief's own rule that a heartbeat that cannot start\u2026",
         "PR #1738: part (3.12, 2) is red but not a required check \u2014 ignored",
-        "PR #1738: part (3.13, 2) is red but not a required check \u2014 ignored"
+        "PR #1738: part (3.13, 2) is red but not a required check \u2014 ignored",
+        "satisfied on main at aa2fcd79f: tests.kernel.test_finding_writes.OutsideWrites, tests.kernel.test_finding_writes.Replay"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "done",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18857,7 +18862,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T01:35:48Z",
+      "updated": "2026-10-14T01:40:38Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -18957,6 +18962,7 @@
       "kernel_notes": [
         "groom-fill-b-218650-1791941424: groom-fill raised risk high: finding e1b07754 still reproduces unchanged on current main (T-210361 at a312beb9f); the test it names already builds the exact scenario and just needs the reason-text assertions added, so the card is buildable as scoped."
       ],
+      "kernel_state": "ready",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -18964,7 +18970,7 @@
       "state": "New",
       "title": "Later findings from the review of T-210361: a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "bug",
-      "updated": "2026-10-14T01:35:48Z",
+      "updated": "2026-10-14T01:40:38Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_revert_merged.py"
@@ -19029,13 +19035,20 @@
     "B-219953": {
       "backlinks": [],
       "children": [],
+      "creates": [
+        "tests/kernel/test_revert_auto_merge_withdrawn.py"
+      ],
       "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-219953",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
+      "kernel_notes": [
+        "groom-fill-b-219953-1791941431: groom-fill raised risk high: Confirmed in code (apply.py RevertPR still unpinned auto_merge, decide.py withdraw only covers _judge_pr) that B-218952's pinned-merge fix was never extended to revert PRs; filled with the mirrored acceptance/writes."
+      ],
       "parent": "F-0357",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
@@ -19043,7 +19056,14 @@
       "state": "New",
       "title": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
       "type": "bug",
-      "updated": "2026-10-14T01:30:38Z"
+      "updated": "2026-10-14T01:40:38Z",
+      "writes": [
+        "asf/kernel/actions.py",
+        "asf/kernel/apply.py",
+        "asf/kernel/mainline.py",
+        "tests/kernel/test_main_landing.py",
+        "tests/kernel/test_revert_auto_merge_withdrawn.py"
+      ]
     },
     "B-219954": {
       "backlinks": [],
@@ -96201,9 +96221,7 @@
       "after": [
         "T-217364"
       ],
-      "backlinks": [
-        "B-210839"
-      ],
+      "backlinks": [],
       "children": [],
       "decided": true,
       "folder": "tasks",
