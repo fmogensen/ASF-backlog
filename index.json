@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T11:24:26Z",
+  "generated": "2026-10-14T11:27:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19605,6 +19605,9 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
+      "kernel_closed_findings": {
+        "f12f8924": "{'head': 'b441d817ad206133dc822f40089fe078dd4cec19', 'line': 'tests/test_workflow.py:140'}"
+      },
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.3.40",
       "kernel_findings": [
@@ -19625,7 +19628,7 @@
       "state": "New",
       "title": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
       "type": "bug",
-      "updated": "2026-10-14T11:21:06Z",
+      "updated": "2026-10-14T11:27:02Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py"
@@ -19652,7 +19655,7 @@
       "kernel_notes": [
         "groom-fill-b-226064-1791970180: groom-fill raised risk high: no log_silent_min key or frozen-demotion logic exists yet; this is new kernel heartbeat-judge behavior, not landed or covered elsewhere."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19662,7 +19665,7 @@
       "state": "New",
       "title": "A hung local session keeps beating through the host loop and is ended only at the 6 hour ceiling",
       "type": "bug",
-      "updated": "2026-10-14T11:24:21Z",
+      "updated": "2026-10-14T11:27:02Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/settings.py",
@@ -92972,7 +92975,11 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "a session reads the reason and fixes the cause",
+      "kernel_stuck_owner": "session",
+      "kernel_stuck_reason": "done without a push: pushed: no \u2014 PR carries an empty diff against origin/main (review finding, clause 1); the Task's work is already on origin/main at c4c7a3159 (all five writes: files), verified he\u2026",
+      "kernel_stuck_since": "2026-10-14T11:26:59Z",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92985,7 +92992,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T11:24:21Z",
+      "updated": "2026-10-14T11:27:02Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -97221,7 +97228,7 @@
       "kernel_notes": [
         "round not charged: a rebase round: PR #1777 conflicts with its base"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97234,7 +97241,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T11:15:10Z",
+      "updated": "2026-10-14T11:27:02Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
