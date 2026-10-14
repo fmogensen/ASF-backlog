@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T08:38:23Z",
+  "generated": "2026-10-14T08:41:07Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18833,7 +18833,7 @@
         "groom-fill-b-213994-1791922466: groom-fill raised risk high: missing_ids conflates \"module exists but fails to import\" with \"absent\" by matching on name alone; the fix is a self-contained text-based reclassification in trunk.py plus a doc-only sync of D1/\u00a72.1/\u00a72.2 to the already-shipped two-run, bounded-retry read.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9a37dbf74: tests.kernel.test_blame_before_revert.ParseUnittest, tests.kernel.test_blame_before_revert.ProbeClass)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -18843,7 +18843,7 @@
       "state": "New",
       "title": "A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T08:38:18Z",
+      "updated": "2026-10-14T08:41:04Z",
       "writes": [
         "asf/kernel/trunk.py",
         "docs/specs/f-0357.md",
@@ -18965,9 +18965,11 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
       "kernel_notes": [
-        "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_review_measure, tests.kernel.test_rereview_scope)"
+        "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_review_measure, tests.kernel.test_rereview_scope)",
+        "groom-fill-b-216547-1791966892: groom-fill raised risk high: trunk has no own-diff once-rule or split LATER count (confirmed by reading split_scope/_scope and running the two cited test files green); the earlier satisfied-on-main close was false."
       ],
       "parent": "F-0358",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
@@ -18975,7 +18977,15 @@
       "state": "New",
       "title": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
       "type": "bug",
-      "updated": "2026-10-14T08:35:15Z"
+      "updated": "2026-10-14T08:41:04Z",
+      "writes": [
+        "asf/kernel/apply.py",
+        "asf/kernel/findings.py",
+        "asf/kernel/ports.py",
+        "asf/metrics/metrics.py",
+        "tests/kernel/test_review_measure.py",
+        "tests/kernel/test_rereview_scope.py"
+      ]
     },
     "B-216548": {
       "backlinks": [
@@ -19113,7 +19123,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at b2921cb8f: tests.kernel.test_reviewer_fixes.Bounds, tests.kernel.test_reviewer_fixes.Apply)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -19122,7 +19132,7 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T08:38:18Z",
+      "updated": "2026-10-14T08:41:04Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -19329,14 +19339,14 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at d8a1f1457: tests.kernel.test_revert_merged.Incident)"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:43:23Z",
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T08:38:18Z",
+      "updated": "2026-10-14T08:41:04Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
@@ -19498,6 +19508,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-224862",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.40",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -19506,7 +19518,7 @@
       "state": "New",
       "title": "A reviewer fix on a high-risk path is attempted, rejected and charged a round",
       "type": "bug",
-      "updated": "2026-10-14T05:44:17Z"
+      "updated": "2026-10-14T08:41:04Z"
     },
     "B-225513": {
       "backlinks": [],
