@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T06:42:07Z",
+  "generated": "2026-10-14T06:43:54Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -17896,7 +17896,7 @@
         "groom-fill-b-195073-1791821292: groom-fill verdict rejected: no GROOM-FILL block",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5f129ce21: tests.kernel.test_two_holders.Brief)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0352",
       "schema_version": 2,
       "severity": "S3",
@@ -17905,7 +17905,7 @@
       "state": "New",
       "title": "Shared-file brief says merge origin/main; review demands rebase: one rule",
       "type": "bug",
-      "updated": "2026-10-14T06:05:57Z",
+      "updated": "2026-10-14T06:43:49Z",
       "writes": [
         "tests/kernel/test_two_holders.py"
       ]
@@ -18629,6 +18629,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-211240",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_notes": [
@@ -18645,7 +18648,7 @@
       "state": "New",
       "title": "Review-loop rules that can stall or run unbounded: reworded findings, lost answers, uncapped free rounds",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T06:43:49Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/apply.py",
@@ -18663,6 +18666,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-211241",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_notes": [
@@ -18679,7 +18685,7 @@
       "state": "New",
       "title": "Settle which ids a proof may judge before the proof gate can be turned on",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T06:43:49Z",
       "writes": [
         "asf/kernel/proof.py",
         "asf/kernel/proof_probe.py",
@@ -18888,7 +18894,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T06:10:07Z",
+      "updated": "2026-10-14T06:43:49Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -19437,7 +19443,7 @@
     "B-226064": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-226064",
@@ -19454,7 +19460,7 @@
     "B-226065": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-226065",
@@ -19471,7 +19477,7 @@
     "B-226066": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-226066",
@@ -96423,11 +96429,7 @@
         "build-t-210362-1791955186: NEEDS OPERATOR: the session's heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791955186 'asf/build-t-210362-1791955186@20261014T051954Z' >/dev/null 2>&1 &`) was refused by the sandbo\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "answer on the card",
-      "kernel_stuck_owner": "operator",
-      "kernel_stuck_reason": "review: changes requested after 5 fix rounds \u2014 findings: reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: ke\u2026",
-      "kernel_stuck_since": "2026-10-14T06:16:32Z",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96440,7 +96442,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T06:35:56Z",
+      "updated": "2026-10-14T06:43:49Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96484,7 +96486,7 @@
         "build-t-210363-1791950444: NEEDS OPERATOR: whether any open PR was charged a fix round for the 2026-10-13 trunk-wide failure"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "new",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96497,7 +96499,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T05:01:21Z",
+      "updated": "2026-10-14T06:43:49Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
@@ -96863,7 +96865,7 @@
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
       "kernel_stack": "worker/T-217366@8e1a879032f6192d53ac2529a458658ce688d476",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96876,7 +96878,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T06:43:49Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -96917,7 +96919,7 @@
         "round not charged: a rebase round: PR #1769 conflicts with its base"
       ],
       "kernel_round_charged": false,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96930,7 +96932,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T06:05:57Z",
+      "updated": "2026-10-14T06:43:49Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
@@ -98401,7 +98403,7 @@
       ],
       "title": "the edge \u2014 the `rehearsal` job and the two `needs:` lines",
       "type": "task",
-      "updated": "2026-10-14T06:05:57Z",
+      "updated": "2026-10-14T06:43:49Z",
       "writes": [
         ".github/workflows/release.yml",
         "tests/test_version.py"
