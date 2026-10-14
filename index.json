@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:28:41Z",
+  "generated": "2026-10-14T10:31:24Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19685,7 +19685,9 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
       "kernel_notes": [
-        "groom-fill-b-226066-1791971422: groom-fill raised risk high: confirmed in the code \u2014 resumes is written only onto the ended row (_settle_beat) and never carried onto a relaunch's fresh job record (pool.Row/spawn.spawn), so Session.beats always reads 0 and the cap can't trip; card's scope is buildable as stated."
+        "groom-fill-b-226066-1791971422: groom-fill raised risk high: confirmed in the code \u2014 resumes is written only onto the ended row (_settle_beat) and never carried onto a relaunch's fresh job record (pool.Row/spawn.spawn), so Session.beats always reads 0 and the cap can't trip; card's scope is buildable as stated.",
+        "PR #1796: checks (3.12) is red but not a required check \u2014 ignored",
+        "PR #1796: checks (3.13) is red but not a required check \u2014 ignored"
       ],
       "kernel_state": "review",
       "parent": "F-0360",
@@ -19697,7 +19699,7 @@
       "state": "New",
       "title": "kernel.heartbeat.max_continues never trips because a relaunch starts its resumes at 0",
       "type": "bug",
-      "updated": "2026-10-14T10:28:38Z",
+      "updated": "2026-10-14T10:31:21Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/workers/spawn.py",
@@ -92904,7 +92906,8 @@
       "kernel_attempts": [
         "relaunch: operator answer: Decision: the review's second clause came from a transient red on main. tests.test_card_json passes 23 of 23 on origin/main at 54d0321c1, as you measured, so no action is needed for it. Treat that clause as closed and continue to review with the first clause's fix in place.",
         "relaunch: PR #1789 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
-        "relaunch: PR #1792 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1792 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: escalated: the previous session stopped (done without a push: pushed: no \u2014 the work is already landed on origin/main at c4c7a3159 (PR #1635); all five writes: files (asf/record/index.py, asf/record/check.py, asf/cli.py, tools/check_card_rea\u2026) \u2014 pick up from its report and branch, and finish the item"
       ],
       "kernel_findings": [
         "asf/record/index.py:39 \u2014 `only=` matches only `rec['relpath']`, so the view relpath `refresh` now returns at `:58` can never be fed back to it; `asf/record/publish.py:154-156` does exactly that round-trip, so a hand-edited view in the checkout is never regenerated (the commit lands the right bytes, the working tree keeps the stale ones, and `asf check` then reports `view is stale` with no automatic repair). Fix: `if only is not None and rec['relpath'] not in only and os.path.relpath(card.view_path(rec['path']), root) not in only: continue`.",
@@ -92920,7 +92923,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92933,7 +92936,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:25:03Z",
+      "updated": "2026-10-14T10:31:21Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
