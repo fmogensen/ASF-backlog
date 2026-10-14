@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T00:34:59Z",
+  "generated": "2026-10-14T00:39:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18491,7 +18491,8 @@
       "found_in": "dev",
       "id": "B-208438",
       "kernel_attempts": [
-        "session ran past its max age"
+        "session ran past its max age",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
         "1821c570": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1115'}",
@@ -18503,16 +18504,17 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_findings": [
+        "[bc464674@4e6733b] asf/record/publish.py:61 \u2014 the two added lines retire a stale mint marker only when the checkout is clean when a tick looks, so the harm still lands whenever the hand edit comes before any clean tick (the unloaded-jobs ordering B-208438 describes): verified on this head, the edit is reverted by _put_back and misreported as an interrupted mint. Stamp the marker with the base HEAD, which ports.py:1120 already computes \u2014 `mark_mint_pending(root, rels, base='')` writing `['base %s' % base, *rels] if base else list(rels)`, and `mint_pending` returning [] when a stamped marker's base != _head(root) \u2014 and pass it at ports.py:1128 as `publish.mark_mint_pending(self.root, rels, base)`. Add the case beside test_undropped_marker_after_committed_mint_is_retired_not_left_live with the hand edit first and no clean tick between, asserting the edit survives and is reported as uncommitted record change(s).",
         "asf/kernel/ports.py:1178 \u2014 drop the mint marker as soon as the checkout is clean (`dirty = publish.dirty_paths(self.root)` then `if not dirty: publish.drop_mint_pending(self.root)`, before the `if dirty:` block): a mint killed after publish_changes committed but before drop_mint_pending (ports.py:1131) leaves the marker naming paths that are now committed, the clean path at :1178-1179 never retires it, and the next hand edit to one of those paths matches `set(dirty) <= set(pending)` at :1181 and is silently reverted by _put_back and misreported as an interrupted mint \u2014 verified on this head: \"record: an earlier tick's mint never committed \u2014 features/F-0001.md put back to 7f39015\", EDIT SURVIVED: False. Add a case beside test_interrupted_mint_leaves_no_untracked_card_after_next_tick that leaves the marker undropped after a committed mint, runs one checkout_breach, then hand-edits one of its paths and asserts the edit survives and is reported as uncommitted record change(s) at tick start."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_later_findings": [
         "[94ea130f@bbe6f26] asf/kernel/loop.py:811 \u2014 mint_plans is not gated by the breach, only mint_inbox is: `minted = minted + mint_plans(ports, out, config)` runs unconditionally and mint_plan_tasks writes Task cards into the checkout the breach just declared dirty, against the card's \"mints nothing until the checkout is clean\". Gate it the same way: `minted = minted + (mint_plans(ports, out, config) if not problem else [])`."
       ],
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 2,
@@ -18522,7 +18524,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T00:34:57Z",
+      "updated": "2026-10-14T00:39:28Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18903,13 +18905,22 @@
     "B-218499": {
       "backlinks": [],
       "children": [],
+      "creates": [
+        "tests/kernel/test_question_replay.py",
+        "tests/fixtures/replay/questions-2026-10-12.jsonl",
+        "tests/test_answer.py"
+      ],
       "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-218499",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.17",
+      "kernel_notes": [
+        "groom-fill-b-218499-1791937575: groom-fill raised risk high: Two real, isolable defects (classify's prose write-grant/gate gap; correct.py/answer.py dropping `question` on the ledger) block the two tests T-208104 already left skipped for this exact shortfall, and the fix touches the kernel."
+      ],
       "parent": "F-0362",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
@@ -18917,7 +18928,16 @@
       "state": "New",
       "title": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
       "type": "bug",
-      "updated": "2026-10-14T00:26:25Z"
+      "updated": "2026-10-14T00:39:28Z",
+      "writes": [
+        "asf/kernel/questions.py",
+        "asf/workers/answer.py",
+        "asf/workers/correct.py",
+        "tests/kernel/test_question_replay.py",
+        "tests/fixtures/replay/questions-2026-10-12.jsonl",
+        "tests/test_answer.py",
+        "tests/test_correct.py"
+      ]
     },
     "B-218650": {
       "backlinks": [
@@ -18958,6 +18978,7 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-218952",
+      "kernel_state": "review",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -18966,7 +18987,7 @@
       "state": "New",
       "title": "Auto-merge stays on when the PR head moves after an approve: unreviewed code can land",
       "type": "bug",
-      "updated": "2026-10-14T00:25:21Z"
+      "updated": "2026-10-14T00:39:28Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -95355,7 +95376,7 @@
       ],
       "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
       "type": "task",
-      "updated": "2026-10-14T00:18:51Z",
+      "updated": "2026-10-14T00:39:28Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/cli.py",
@@ -95705,10 +95726,11 @@
       ],
       "kernel_fix_rounds": 2,
       "kernel_notes": [
-        "round not charged: a rebase round: PR #1737 conflicts with its base"
+        "round not charged: a rebase round: PR #1737 conflicts with its base",
+        "build-t-210360-1791937121: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused the `nohup sh .b0000_heartbeat.sh \u2026` call this session was told to run as its first command (it needs an approval a non-interactive session cannot\u2026"
       ],
       "kernel_round_charged": false,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95721,7 +95743,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-14T00:18:51Z",
+      "updated": "2026-10-14T00:39:28Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -95936,7 +95958,7 @@
       ],
       "title": "the archive is a place in the record \u2014 a rename, a manifest, and two ways to read a card that is in it",
       "type": "task",
-      "updated": "2026-10-14T00:22:14Z",
+      "updated": "2026-10-14T00:39:28Z",
       "writes": [
         "asf/record/core.py",
         "asf/record/archive.py",
@@ -96054,7 +96076,7 @@
       ],
       "id": "T-217367",
       "kernel_stack": "worker/T-217364@8b9bb74e590fc84925982d69dd1600474e6c975e",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96068,7 +96090,7 @@
       ],
       "title": "the way back \u2014 every writing command that names an archived id brings the card back before it writes, and the migration converts it then",
       "type": "task",
-      "updated": "2026-10-14T00:03:09Z",
+      "updated": "2026-10-14T00:39:28Z",
       "writes": [
         "asf/record/reopen.py",
         "asf/record/setfield.py",
