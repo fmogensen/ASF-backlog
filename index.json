@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T02:18:29Z",
+  "generated": "2026-10-14T02:22:56Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19096,7 +19096,7 @@
       "kernel_notes": [
         "groom-fill-b-219954-1791942556: groom-fill raised risk high: both starved-lanes still gate on the now-dead auto_merge/auto_merge_at fields; the fix lives in decide.py alone using the existing wait ledger (Facts.waits) as the approve-held clock, with named tests covering the train and the risk-lane tiebreak."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 3,
@@ -19106,7 +19106,7 @@
       "state": "New",
       "title": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
       "type": "bug",
-      "updated": "2026-10-14T02:08:33Z",
+      "updated": "2026-10-14T02:22:44Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/model.py",
@@ -96139,7 +96139,12 @@
         "asf redact --unpublished"
       ],
       "id": "T-217365",
-      "kernel_state": "ready",
+      "kernel_findings": [
+        "asf/record/archive.py:303 \u2014 `candidates` raises ValueError on a date `_ISO_DATE_RE` (`:239`) matched by shape but no calendar day (demonstrated: `history: ['- 2026-02-30: closed (x)']` -> `closing_date` returns '2026-02-30' -> `datetime.date.fromisoformat` raises), so one bad date on one card aborts the whole archive pass instead of reporting that card, against `closing_date`'s own documented contract at `:247-249` (\"None when none of the four give a date; such a card is reported by the dry run and does not move\") and against `git_touch_dates`' deliberate never-raise posture at `:264-266`. Fix in `asf/record/archive.py`: parse once and report on failure \u2014 replace `:300-304` with `date = closing_date(rec, git_dates)` / `try: closed = datetime.date.fromisoformat(date) if date else None` / `except ValueError: closed = None` / `if closed is None: continue` / `if (today - closed).days < after_days: continue`, and add the case to the test module \u2014 a card whose only date source is `history: ['- 2026-02-30: closed (x)']` is not a candidate and raises nothing.",
+        "shared files: asf/record/archive.py also held by T-217366 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96152,7 +96157,7 @@
       ],
       "title": "closed, aged, and admitted by the reference closure \u2014 the rule that chooses, and the retention floor under it",
       "type": "task",
-      "updated": "2026-10-14T02:18:21Z",
+      "updated": "2026-10-14T02:22:44Z",
       "writes": [
         "asf/record/archive.py",
         "asf/conventions.py",
@@ -96165,6 +96170,7 @@
         "T-217365"
       ],
       "backlinks": [
+        "T-217365",
         "T-217369",
         "T-217370",
         "T-217371",
