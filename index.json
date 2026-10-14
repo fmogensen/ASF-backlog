@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T12:04:54Z",
+  "generated": "2026-10-14T12:07:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -97203,13 +97203,18 @@
         "granted tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "tests/test_record_archive_readers.py:149 \u2014 Step 5's acceptance line 6 lost its third clause (PD3): restore the dropped case as `test_asf_check_reports_no_missing_archive_folder_before_any_archive`, asserting `record_findings` on a record with no `archive/` directory names no archive folder as missing, and restore the comment to the plan's full sentence.",
+        "asf/tick/tick.py:192 \u2014 `stage.guarded`'s result is discarded, so `apply`'s audit refusal is invisible: bind `result, _staged, _findings = stage.guarded(...)`, unpack `_touched, audit_findings = result`, print `archive: refused \u2014 {holder} {tag} names {target}, which would move` per miss, and print `moved = 0 if audit_findings else len(plan['moving'])` so the line stops claiming a move that did not happen.",
+        "asf/tick/tick.py:191 \u2014 a floor-refused plan and a nothing-to-move plan both reach the writer: branch on `plan['refused']` (print the sentence) and on `not (plan['moving'] or plan['notes'])` (print `archive moved=0 held=\u2026`) before `stage.guarded`, so a pass with nothing to write stops rewriting `archive/manifest.json`'s `generated` stamp and indexing twice on every product; restore `ArchiveWriterTests` in tests/test_tick.py with it, counting the patched `do_index` calls instead of the vacuous `index.json` assertion."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "PR #1771: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97222,7 +97227,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T11:54:43Z",
+      "updated": "2026-10-14T12:07:26Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
