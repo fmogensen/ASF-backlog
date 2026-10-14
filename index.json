@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T08:25:25Z",
+  "generated": "2026-10-14T08:28:50Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18039,11 +18039,15 @@
       "id": "B-199428",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_findings": [
+        "asf/kernel/ports.py:3814 \u2014 the STORIES_FIRST_DEFAULT comment still says \"Task 1 flips this where the key is validated\", which this commit makes false: once Task 1 of F-0334 adds kernel.launch.stories_first to settings.SPEC, _stories_first (:3830-3832) returns the validated block and settings.read (asf/kernel/settings.py:558-586) fills it from SPEC's own default for an absent or malformed value, so the constant is never reached again and flipping it turns nothing on. Replace :3813-3815 with the condition that now holds \u2014 \"the Stories-first fallback while kernel.launch.stories_first is absent from settings.SPEC \u2014 flagged off by default. Task 1 of F-0334 adds the key to settings.SPEC with its own default (docs/plans/f-0334.md:203); from then on that default decides and this constant is only _stories_first's raw-read fallback \u2014 it is never flipped here.\" This is the remaining clause of the finding left out of PR #1670 on purpose (recorded verbatim in that PR's last report, bafc912: \"give _stories_first/_launch_per_tick the validated k and prefer it, drop the :3145-3146 'Task 1 flips this' claim, add the mock.patch.dict(settings.SPEC['launch'], ...) case\") \u2014 clauses 1 and 3 are delivered here, this one is not."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-199428-1791844636: groom-fill raised risk high: Both readers today only look at the raw kernel.launch block, confirmed by the final PR #1670 build report as a deliberately left-out finding; a fix is well-scoped (prefer validated, fallback to raw) and my own review of the last two fix commits found nothing further to fix.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_finish_first.LaunchKnobs)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0334",
       "schema_version": 2,
       "severity": "S3",
@@ -18052,7 +18056,7 @@
       "state": "New",
       "title": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
       "type": "bug",
-      "updated": "2026-10-14T07:25:09Z",
+      "updated": "2026-10-14T08:28:47Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_finish_first.py"
@@ -19096,7 +19100,7 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T07:16:20Z",
+      "updated": "2026-10-14T08:28:47Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -19440,7 +19444,11 @@
       "kernel_notes": [
         "groom-fill-b-224761-1791956512: groom-fill raised risk high: Gap is real and unaddressed by the just-landed sibling B-223558, and buildable with existing plumbing (NeededProbe's git-read pattern, Ports.record.root, TYPES folder convention)."
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "session ran past its max age",
+      "kernel_stuck_since": "2026-10-14T08:28:02Z",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19450,7 +19458,7 @@
       "state": "New",
       "title": "The satisfied-on-main cutoff dates a card by day, not by the commit that added it",
       "type": "bug",
-      "updated": "2026-10-14T08:25:22Z",
+      "updated": "2026-10-14T08:28:47Z",
       "writes": [
         "asf/kernel/needed_probe.py",
         "asf/kernel/facts.py",
@@ -89786,7 +89794,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 13e6050a6: tests.test_feeder.ReplanLandedDocTests, tests.test_feeder.ReplanCorrectionRowTests, tests.test_invariants.LaneLaunchKindsTests, tests.test_feeder, tests.test_invariants, tests.test_replan, tests.test_harvest.ProductHarvestTests, tests.test_harvest, tests.test_hermetic)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0317.md"
       },
@@ -89800,7 +89808,7 @@
       ],
       "title": "the three readers, in one diff",
       "type": "task",
-      "updated": "2026-10-14T07:25:09Z",
+      "updated": "2026-10-14T08:28:47Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/harvest/lane.py",
@@ -93652,7 +93660,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_pace, tests.kernel.test_moved_main)"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -93665,7 +93673,7 @@
       ],
       "title": "the release's own documentation \u2014 the v0.3.0 notes, and what 0.3 leaves open",
       "type": "task",
-      "updated": "2026-10-14T08:25:22Z",
+      "updated": "2026-10-14T08:28:47Z",
       "writes": [
         "docs/RELEASE-NOTES.md",
         "docs/KNOWN-ISSUES.md"
@@ -96539,7 +96547,7 @@
         "build-t-210363-1791950444: NEEDS OPERATOR: whether any open PR was charged a fix round for the 2026-10-13 trunk-wide failure"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96552,7 +96560,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T08:25:22Z",
+      "updated": "2026-10-14T08:28:47Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
@@ -96856,7 +96864,8 @@
       ],
       "kernel_attempts": [
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
-        "relaunch: operator answer: granted tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
+        "relaunch: operator answer: granted tests/test_tick.py; nothing else outside writes (card updated by the kernel).",
+        "session ran past its max age"
       ],
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
@@ -96881,7 +96890,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T07:10:32Z",
+      "updated": "2026-10-14T08:28:47Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
