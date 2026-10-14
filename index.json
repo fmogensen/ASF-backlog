@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T05:40:05Z",
+  "generated": "2026-10-14T05:42:04Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19322,7 +19322,7 @@
       "state": "New",
       "title": "An account whose sign-in expired keeps being picked for cloud launches, emptying the cloud lane",
       "type": "bug",
-      "updated": "2026-10-14T05:28:30Z",
+      "updated": "2026-10-14T05:42:00Z",
       "writes": [
         "asf/connectors/claude_code.py",
         "asf/workers/account_auth.py",
@@ -19351,6 +19351,25 @@
       "title": "The no-first-beat judge ends sessions that are working: 10 ended since the heartbeat came back",
       "type": "bug",
       "updated": "2026-10-14T05:38:57Z"
+    },
+    "B-224761": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-224761",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.26",
+      "parent": "F-0360",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "The satisfied-on-main cutoff dates a card by day, not by the commit that added it",
+      "stage_since": "2026-10-14T05:41:15Z",
+      "state": "New",
+      "title": "The satisfied-on-main cutoff dates a card by day, not by the commit that added it",
+      "type": "bug",
+      "updated": "2026-10-14T05:42:00Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -38281,7 +38300,8 @@
         "B-220155",
         "B-223558",
         "B-224009",
-        "B-224610"
+        "B-224610",
+        "B-224761"
       ],
       "decided": true,
       "folder": "features",
@@ -96650,7 +96670,7 @@
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
       "kernel_stack": "worker/T-217366@8e1a879032f6192d53ac2529a458658ce688d476",
-      "kernel_state": "new",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96663,7 +96683,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T05:38:57Z",
+      "updated": "2026-10-14T05:42:00Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
