@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T03:14:18Z",
+  "generated": "2026-10-14T03:18:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19060,6 +19060,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-219953",
+      "kernel_closed_findings": {
+        "4bc678c6": "{'head': 'a416e0a1eff24450d9752cc0e8b3b48e8ade151c', 'line': 'asf/kernel/mainline.py:859'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
       "kernel_findings": [
@@ -19079,7 +19082,7 @@
       "state": "New",
       "title": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
       "type": "bug",
-      "updated": "2026-10-14T03:05:58Z",
+      "updated": "2026-10-14T03:18:44Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/apply.py",
@@ -19132,6 +19135,9 @@
       "decided": true,
       "folder": "bugs",
       "id": "B-220155",
+      "kernel_closed_findings": {
+        "e9d005bc": "{'head': '6c95eeaa29a6810215cdf85d2e787c6dcb59949a', 'line': 'asf/kernel/loop.py:812'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
       "kernel_findings": [
@@ -19147,11 +19153,26 @@
       "state": "New",
       "title": "Later findings from the review of B-208438: Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T03:09:54Z",
+      "updated": "2026-10-14T03:18:44Z",
       "writes": [
         "asf/kernel/loop.py",
         "tests/kernel/test_plan_mint.py"
       ]
+    },
+    "B-222356": {
+      "backlinks": [
+        "T-217365"
+      ],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-222356",
+      "parent": "F-0363",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T03:18:15Z",
+      "state": "New",
+      "title": "Later findings from the review of T-217365: closed, aged, and admitted by the reference closure \u2014 the rule that chooses, and the retention floor under it",
+      "type": "bug",
+      "updated": "2026-10-14T03:18:15Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -38214,7 +38235,8 @@
         "T-217369",
         "T-217370",
         "T-217371",
-        "T-217372"
+        "T-217372",
+        "B-222356"
       ],
       "decided": true,
       "folder": "features",
@@ -96156,7 +96178,8 @@
         "T-217364"
       ],
       "backlinks": [
-        "T-217366"
+        "T-217366",
+        "B-222356"
       ],
       "children": [],
       "decided": true,
@@ -96182,13 +96205,14 @@
         "shared files: asf/record/archive.py also held by T-217366 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
+      "kernel_later_filed": "B-222356",
       "kernel_later_findings": [
         "[136ff4cb@f13f435] tests/test_record_archive_rule.py:190-199 \u2014 the new case proves no-raise on a one-card record, not that the pass survives one bad card; add a second, cleanly-aged candidate to the same canonical and assert it is still in the returned set, which is the property [b4e8c8b9] actually named.",
         "[29d12f34@f13f435] asf/record/archive.py:242-256 \u2014 closing_date still returns an unparseable date to its callers; have it return None for a date datetime.date.fromisoformat rejects, so Task 3's dry run inherits the \"does not move\" contract instead of printing the bad date as the card's closing date.",
         "[6c9c3946@f13f435] .github/workflows/tests.yml \u2014 two of Task 2's Gate commands run on no CI job (bash tools/check_card_readers.sh and asf redact --unpublished; grep -rn card_readers .github/ is empty); add check_card_readers.sh to the checks job beside check_record_writers.sh at tests.yml:103.",
         "[e6ca893f@f13f435] tests/test_record_archive_rule.py:188 \u2014 the banner reads \"candidates: a bad date (review)\" where every other banner in the module names the decision it covers; make it \"candidates: a date whose shape parses but whose day does not (D6)\"."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96201,7 +96225,7 @@
       ],
       "title": "closed, aged, and admitted by the reference closure \u2014 the rule that chooses, and the retention floor under it",
       "type": "task",
-      "updated": "2026-10-14T02:58:29Z",
+      "updated": "2026-10-14T03:18:44Z",
       "writes": [
         "asf/record/archive.py",
         "asf/conventions.py",
@@ -96236,8 +96260,17 @@
         "asf redact --unpublished"
       ],
       "id": "T-217366",
-      "kernel_stack": "worker/T-217365@08880652cc06cbb5ab7ec0df797a05bbfffc81ac",
-      "kernel_state": "review",
+      "kernel_findings": [
+        "reviewer fix out of bounds (the reviewed head is not an ancestor of the new head (diverged); commit f0efd9a is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit f13f435 is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit 8695f10 is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); commit fe5723c is not that review session's (no ASF-Review-Fix: review-t-217366-1791946489 trailer); 685 changed lines, over the 80 allowed; outside the item's writes and the test paths: tests/test_record_archive_rule.py; a high-risk path: asf/record/archive.py) \u2014 commits f0efd9a, f13f435, 8695f10, fe5723c, 59ab91f since 4600ca6 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
+        "asf/cli.py:406 \u2014 the retention floor is checked in `cmd_archive` before any card is read, so `--why` prints `archive: <refusal>` and exits 1 like the dry run and `--apply` [review-t-217366-1791946489@fe5723ca9]",
+        "asf/record/archive.py:634 \u2014 `--why`'s columns pad to width\u22121 plus one literal space (`_column`), so an eight-character holder id no longer runs into the field and \u00a72.3's example keeps its bytes [review-t-217366-1791946489@fe5723ca9]",
+        "rebase: PR #1757 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+      ],
+      "kernel_notes": [
+        "round not charged: a rebase round: PR #1757 conflicts with its base"
+      ],
+      "kernel_round_charged": false,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96250,7 +96283,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T02:36:27Z",
+      "updated": "2026-10-14T03:18:44Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
