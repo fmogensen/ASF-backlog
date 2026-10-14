@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:25:08Z",
+  "generated": "2026-10-14T10:28:41Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19017,7 +19017,8 @@
     },
     "B-216548": {
       "backlinks": [
-        "B-223558"
+        "B-223558",
+        "B-226065"
       ],
       "children": [],
       "decided": true,
@@ -19561,7 +19562,7 @@
       "kernel_notes": [
         "groom-fill-b-224862-1791967255: groom-fill raised risk high: F-0358's review.fix ships with no path list in the brief, no all-high-risk authority check and no free round for a rejected fix, confirmed unfixed on origin/main; the fix is contained to decide.py/briefs.py/reviewfix.py, all under kernel.risk.high."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19571,7 +19572,7 @@
       "state": "New",
       "title": "A reviewer fix on a high-risk path is attempted, rejected and charged a round",
       "type": "bug",
-      "updated": "2026-10-14T09:50:29Z",
+      "updated": "2026-10-14T10:28:38Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -19591,9 +19592,10 @@
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.3.40",
       "kernel_notes": [
-        "groom-fill-b-225513-1791971413: groom-fill raised risk high: The five named modules were already migrated to asf.clock by T-210358 (#1758, on origin/main) and the baseline file already matches the tree; the only real remaining work is flipping clock-400 from report-only to blocking in CI, which touches the kernel's own gate."
+        "groom-fill-b-225513-1791971413: groom-fill raised risk high: The five named modules were already migrated to asf.clock by T-210358 (#1758, on origin/main) and the baseline file already matches the tree; the only real remaining work is flipping clock-400 from report-only to blocking in CI, which touches the kernel's own gate.",
+        "build-b-225513-1791973010: NEEDS OPERATOR: file a Bug for the four modules named above (test_quota_headroom.py, test_quota_stale.py, tests/kernel/test_gh_budget.py, test_groom_publish.py) reading the real clock/pinned dates under the now-bloc\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19603,7 +19605,7 @@
       "state": "New",
       "title": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
       "type": "bug",
-      "updated": "2026-10-14T10:17:33Z",
+      "updated": "2026-10-14T10:28:38Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py"
@@ -19631,7 +19633,7 @@
       "state": "New",
       "title": "A hung local session keeps beating through the host loop and is ended only at the 6 hour ceiling",
       "type": "bug",
-      "updated": "2026-10-14T10:10:59Z",
+      "updated": "2026-10-14T10:28:38Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/settings.py",
@@ -19647,10 +19649,16 @@
       "id": "B-226065",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_findings": [
+        "asf/kernel/reviewfix.py:178 \u2014 `len(kept) == 1` never holds on a real breach row (apply.py:552 records the breach finding plus every finding `fix['fixed']` claims, and a build round closes none of them), so the card's own reproducer T-210362 still gets another charged fix round: drop the claimed ones before the test \u2014 `claimed = {str(f) for f in fix.get('fixed') or ()}`; `rest = [f for f in kept if str(f) not in claimed]`; `len(rest) == 1 and str(rest[0]).startswith(BREACH_PREFIX)` \u2014 and give `breach_row` a test that passes `extra=` and lists it in the row's `fix['fixed']`",
+        "asf/kernel/decide.py:1983 \u2014 the recovery arm launches a review on a head CI has not reported on, which every other review launch in `_judge_pr` refuses (`ci_green`, decide.py:1958, :2003, :2296); a required check still `in_progress` falls through the `own`/`gating` arms, so return `_Judged(State.REVIEW, review_branch=pr.branch if ci_green(pr, config) else None, recovery=True)`",
+        "shared files: asf/kernel/decide.py also held by B-216548 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-226065-1791967471: groom-fill raised risk high: holding_verdict/verdict_holds keeps the stale out-of-bounds breach 'changes' verdict current whenever the PR tree does not move, so _judge_pr re-charges _fix_round forever and _final_review's own \"no verdict holds\" guard blocks it from ever breaking the loop (confirmed against asf/kernel/decide.py:1881-2004, 2246-2290 and asf/kernel/reviewfix.py, with no existing test in tests/kernel/test_reviewer_fixes.py or test_final_review.py covering a no-op build after a breach); needs real code in the kernel, so risk_raise: high."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19660,7 +19668,7 @@
       "state": "New",
       "title": "An item whose out-of-bounds reviewer fix is kept can never leave Stuck",
       "type": "bug",
-      "updated": "2026-10-14T10:10:59Z",
+      "updated": "2026-10-14T10:28:38Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -19679,7 +19687,7 @@
       "kernel_notes": [
         "groom-fill-b-226066-1791971422: groom-fill raised risk high: confirmed in the code \u2014 resumes is written only onto the ended row (_settle_beat) and never carried onto a relaunch's fresh job record (pool.Row/spawn.spawn), so Session.beats always reads 0 and the cap can't trip; card's scope is buildable as stated."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19689,7 +19697,7 @@
       "state": "New",
       "title": "kernel.heartbeat.max_continues never trips because a relaunch starts its resumes at 0",
       "type": "bug",
-      "updated": "2026-10-14T10:02:40Z",
+      "updated": "2026-10-14T10:28:38Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/workers/spawn.py",
@@ -19746,7 +19754,7 @@
       "state": "New",
       "title": "Later findings from the review of B-196077: kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T10:17:33Z",
+      "updated": "2026-10-14T10:28:38Z",
       "writes": [
         "tests/kernel/test_flake.py"
       ]
