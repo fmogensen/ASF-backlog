@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T09:57:21Z",
+  "generated": "2026-10-14T10:03:04Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19040,7 +19040,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T09:46:50Z",
+      "updated": "2026-10-14T10:02:40Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
@@ -19662,6 +19662,7 @@
       "kernel_notes": [
         "groom-fill-b-226066-1791971422: groom-fill raised risk high: confirmed in the code \u2014 resumes is written only onto the ended row (_settle_beat) and never carried onto a relaunch's fresh job record (pool.Row/spawn.spawn), so Session.beats always reads 0 and the cap can't trip; card's scope is buildable as stated."
       ],
+      "kernel_state": "building",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19671,7 +19672,7 @@
       "state": "New",
       "title": "kernel.heartbeat.max_continues never trips because a relaunch starts its resumes at 0",
       "type": "bug",
-      "updated": "2026-10-14T09:57:15Z",
+      "updated": "2026-10-14T10:02:40Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/workers/spawn.py",
@@ -19692,7 +19693,7 @@
       "kernel_notes": [
         "groom-fill-b-228767-1791968026: groom-fill raised risk high: all three findings are concrete, already confirmed (repro showed missing_ids returns [] on a basename collision), and fit the exact code+spec+test shape the parent fix (B-213994) already used, so the card just needed acceptance/writes named \u2014 risk_raise is high because the write touches asf/kernel/trunk.py."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0357",
       "priority": "need",
       "risk": "high",
@@ -19702,7 +19703,7 @@
       "state": "New",
       "title": "Later findings from the review of B-213994: A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T09:50:29Z",
+      "updated": "2026-10-14T10:02:40Z",
       "writes": [
         "docs/specs/f-0357.md",
         "asf/kernel/trunk.py",
@@ -92887,7 +92888,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92900,7 +92901,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T09:57:15Z",
+      "updated": "2026-10-14T10:02:40Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -96719,6 +96720,9 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
+      "kernel_closed_findings": {
+        "8555cc9c": "{'head': '75bc272c553fc147c9a32eb23f0ac9e112b7abfd', 'line': 'tests/fixtures/red-trunk/2026-10-13.json:6'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 0,
@@ -96744,7 +96748,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T09:57:15Z",
+      "updated": "2026-10-14T10:02:40Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
