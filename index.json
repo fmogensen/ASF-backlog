@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T01:15:25Z",
+  "generated": "2026-10-14T01:20:20Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18463,7 +18463,7 @@
         "build-b-208187-1791933475: NEEDS OPERATOR: confirm the per-card migration path refuses 0 cards after card_repair on a copy of the real ~2,913-card record (no such record is available in this container) \u2014 `python3 -c \"from asf.record import re\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18473,7 +18473,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-14T01:14:24Z",
+      "updated": "2026-10-14T01:20:15Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18496,11 +18496,12 @@
         "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_closed_findings": {
-        "1821c570": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1115'}",
-        "36ddb7e1": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1154'}",
-        "455a562e": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1145'}",
-        "468ceb29": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1149'}",
-        "b52af875": "{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1143'}"
+        "1821c570": "{'head': \"{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1115'}\", 'line': ''}",
+        "36ddb7e1": "{'head': \"{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1154'}\", 'line': ''}",
+        "455a562e": "{'head': \"{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1145'}\", 'line': ''}",
+        "468ceb29": "{'head': \"{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1149'}\", 'line': ''}",
+        "b52af875": "{'head': \"{'head': '4e6733b202e8279dac2acd8177d58ed3afa24cb4', 'line': 'asf/kernel/ports.py:1143'}\", 'line': ''}",
+        "bc464674": "{'head': '25fbe511bdae8848c8cadf5bdcf8f2aa2d8cab59', 'line': 'asf/kernel/ports.py:1178'}"
       },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
@@ -18525,7 +18526,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T01:14:24Z",
+      "updated": "2026-10-14T01:20:15Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
@@ -18933,7 +18934,7 @@
       "kernel_notes": [
         "groom-fill-b-218499-1791937575: groom-fill raised risk high: Two real, isolable defects (classify's prose write-grant/gate gap; correct.py/answer.py dropping `question` on the ledger) block the two tests T-208104 already left skipped for this exact shortfall, and the fix touches the kernel."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0362",
       "risk": "high",
       "schema_version": 3,
@@ -18943,7 +18944,7 @@
       "state": "New",
       "title": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
       "type": "bug",
-      "updated": "2026-10-14T00:51:21Z",
+      "updated": "2026-10-14T01:20:15Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/workers/answer.py",
@@ -19001,7 +19002,10 @@
       ]
     },
     "B-218952": {
-      "backlinks": [],
+      "backlinks": [
+        "B-219953",
+        "B-219954"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -19021,6 +19025,40 @@
       "title": "Auto-merge stays on when the PR head moves after an approve: unreviewed code can land",
       "type": "bug",
       "updated": "2026-10-14T01:14:24Z"
+    },
+    "B-219953": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-219953",
+      "parent": "F-0357",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
+      "stage_since": "2026-10-14T01:18:14Z",
+      "state": "New",
+      "title": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
+      "type": "bug",
+      "updated": "2026-10-14T01:18:14Z"
+    },
+    "B-219954": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-219954",
+      "parent": "E-0006",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
+      "stage_since": "2026-10-14T01:18:19Z",
+      "state": "New",
+      "title": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
+      "type": "bug",
+      "updated": "2026-10-14T01:18:19Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -23507,7 +23545,8 @@
         "B-200932",
         "B-202833",
         "B-205135",
-        "B-213443"
+        "B-213443",
+        "B-219954"
       ],
       "decided": true,
       "folder": "epics",
@@ -37811,7 +37850,8 @@
         "T-210363",
         "B-213994",
         "B-213995",
-        "B-218650"
+        "B-218650",
+        "B-219953"
       ],
       "decided": true,
       "folder": "features",
@@ -95417,7 +95457,7 @@
       ],
       "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
       "type": "task",
-      "updated": "2026-10-14T01:14:24Z",
+      "updated": "2026-10-14T01:20:15Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/cli.py",
@@ -95647,6 +95687,7 @@
       "kernel_attempts": [
         "relaunch: operator answer: granted asf/groom/groom.py asf/capacity.py asf/workers/cloud.py asf/kernel/status.py tests/test_ci_pool.py; nothing else outside writes (card updated by the kernel). asf/kernel/status.py matches kernel.risk.high: this item is high-risk now.",
         "ended without a REPORT",
+        "session ran past its max age",
         "session ran past its max age"
       ],
       "kernel_findings": [
@@ -95669,7 +95710,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T00:56:51Z",
+      "updated": "2026-10-14T01:20:15Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -95766,6 +95807,7 @@
         "5bef432e": "{'head': '225e37119b98e8335126166a9bc43e856969fcf5', 'line': 'asf/kernel/incidents.py:48'}"
       },
       "kernel_findings": [
+        "[ff9bd457@5359343] tests/kernel/test_incidents.py:108 \u2014 the file is changed by this head but is outside the card's `writes:` and outside the plan's Task 6 `writes:` (docs/plans/f-0357.md:765), and the operator granted only test_main_landing.py and test_main_pending.py (\"nothing else outside writes\"); the newest report on the branch (6a8c738) still reads `needs writes: none`, and the two commits pushed since carry no report at all. Restore the line verbatim in the next report for T-210360: `needs writes: tests/kernel/test_incidents.py`",
         "tests/kernel/test_incidents.py:108 \u2014 this file is changed by the head under review but is outside the card's `writes:` and outside the plan's Task 6 `writes:` (docs/plans/f-0357.md:765); the report on 9e4e874 declared `needs writes: tests/kernel/test_incidents.py` and the report on 5359343a7 dropped it to `none`. Restore the line verbatim in the next report for T-210360: `needs writes: tests/kernel/test_incidents.py`",
         "asf/kernel/incidents.py:43 \u2014 the new BLAME kind is absent from the module docstring that defines the ledger's contract: the kind list at :10-16 still names only MAIN_RED, REVERT and REVERTED_MERGE, and the record shape at :8 is still {\"at\", \"kind\", \"sha\", \"item\", \"pr\", \"spell\", \"checks\", \"flagged\", \"why\"}, while a BLAME row carries class/test/first_red/parent and carries neither checks nor flagged. Add BLAME to the kind list at :14 (after \"re-planned on every red tick until it does)\") as \":data:`BLAME` (the blame read the revert leg took on that same red verdict, :mod:`asf.kernel.blame`; its row carries ``class``, ``test``, ``first_red`` and ``parent`` in place of ``checks`` and ``flagged``)\", and give its shape at :8.",
         "rebase: PR #1737 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
@@ -95773,13 +95815,12 @@
         "operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them.",
         "operator answer: granted tests/kernel/test_main_landing.py tests/kernel/test_main_pending.py; nothing else outside writes (card updated by the kernel). B-213995 also writes tests/kernel/test_main_landing.py (Building): the overlap rule serialises them."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1737 conflicts with its base",
         "build-t-210360-1791937121: NEEDS OPERATOR: the heartbeat could not start \u2014 the sandbox refused the `nohup sh .b0000_heartbeat.sh \u2026` call this session was told to run as its first command (it needs an approval a non-interactive session cannot\u2026"
       ],
-      "kernel_round_charged": false,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -95792,7 +95833,7 @@
       ],
       "title": "a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "task",
-      "updated": "2026-10-14T01:14:24Z",
+      "updated": "2026-10-14T01:20:15Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/mainline.py",
@@ -96142,7 +96183,7 @@
       ],
       "title": "the way back \u2014 every writing command that names an archived id brings the card back before it writes, and the migration converts it then",
       "type": "task",
-      "updated": "2026-10-14T01:01:36Z",
+      "updated": "2026-10-14T01:20:15Z",
       "writes": [
         "asf/record/reopen.py",
         "asf/record/setfield.py",
