@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T07:10:39Z",
+  "generated": "2026-10-14T07:16:28Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18005,12 +18005,16 @@
       "id": "B-196077",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.2.167",
+      "kernel_findings": [
+        "docs/products.example.yaml:778 \u2014 add the B-196077 note to the operator-facing flake block, at the end of `enabled: false`'s comment prose in the same comment column: `# red on: the kernel's ordinary red path keeps those. Off until` / `# B-196077 (open review findings in judge()) is Done`; then extend tests/kernel/test_flake.py:786 to assert `B-196077` in both `settings.__doc__` and `docs/products.example.yaml`, mirroring tests/kernel/test_blame_before_revert.py:652-661 and reading the file as tests/kernel/test_flake.py:810 already does. This needs `needs writes: docs/products.example.yaml`."
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-196077-1791836609: groom-fill raised risk high: two of the four listed findings (owned() in _bugless_live, the PD5 matrix-leg assertion) are already implemented and already tested on trunk; the real remaining gaps are a wording mismatch, two untested branches, and the unmet enablement-gate note, so the card is reshaped to those four concrete items.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5f129ce21: tests.kernel.test_flake.BugTests, tests.kernel.test_flake.KnobTests)",
         "build-b-196077-1791959526: NEEDS OPERATOR: `asf redact --unpublished` could not be run \u2014 the `asf` CLI is not installed in this cloud container, and the brief's CLOUD SESSION section does not list it among what to run here (only the tools/che\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0336",
       "schema_version": 2,
       "severity": "S3",
@@ -18019,7 +18023,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T06:59:45Z",
+      "updated": "2026-10-14T07:16:20Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -18903,7 +18907,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_finding_writes.OutsideWrites, tests.kernel.test_finding_writes.Replay)"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18913,7 +18917,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T06:59:45Z",
+      "updated": "2026-10-14T07:16:20Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -19073,7 +19077,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at b2921cb8f: tests.kernel.test_reviewer_fixes.Bounds, tests.kernel.test_reviewer_fixes.Apply)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -19082,7 +19086,7 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T07:03:05Z",
+      "updated": "2026-10-14T07:16:20Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -19277,17 +19281,22 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
+      "kernel_findings": [
+        "docs/plans/f-0357.md:822 \u2014 fix the `_key` citation to `:64-82` (its actual definition range), not `:56-72`",
+        "docs/plans/f-0357.md:823 \u2014 correct \"upgrades that same row in place \u2014 never appends a second one\" to reflect that `observe`/`append` write a second, `restates_blame`-marked row to the append-only JSONL ledger, which `report` excludes from the count"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at d8a1f1457: tests.kernel.test_revert_merged.Incident)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:43:23Z",
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T07:06:44Z",
+      "updated": "2026-10-14T07:16:20Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
