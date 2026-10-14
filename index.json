@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T05:47:04Z",
+  "generated": "2026-10-14T05:49:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18009,6 +18009,7 @@
         "groom-fill-b-196077-1791836609: groom-fill raised risk high: two of the four listed findings (owned() in _bugless_live, the PD5 matrix-leg assertion) are already implemented and already tested on trunk; the real remaining gaps are a wording mismatch, two untested branches, and the unmet enablement-gate note, so the card is reshaped to those four concrete items.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5f129ce21: tests.kernel.test_flake.BugTests, tests.kernel.test_flake.KnobTests)"
       ],
+      "kernel_state": "ready",
       "parent": "F-0336",
       "schema_version": 2,
       "severity": "S3",
@@ -18017,7 +18018,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -18037,6 +18038,7 @@
         "groom-fill-b-199428-1791844636: groom-fill raised risk high: Both readers today only look at the raw kernel.launch block, confirmed by the final PR #1670 build report as a deliberately left-out finding; a fix is well-scoped (prefer validated, fallback to raw) and my own review of the last two fix commits found nothing further to fix.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_finish_first.LaunchKnobs)"
       ],
+      "kernel_state": "ready",
       "parent": "F-0334",
       "schema_version": 2,
       "severity": "S3",
@@ -18045,7 +18047,7 @@
       "state": "New",
       "title": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_finish_first.py"
@@ -18781,6 +18783,7 @@
         "groom-fill-b-213994-1791922466: groom-fill raised risk high: missing_ids conflates \"module exists but fails to import\" with \"absent\" by matching on name alone; the fix is a self-contained text-based reclassification in trunk.py plus a doc-only sync of D1/\u00a72.1/\u00a72.2 to the already-shipped two-run, bounded-retry read.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9a37dbf74: tests.kernel.test_blame_before_revert.ParseUnittest, tests.kernel.test_blame_before_revert.ProbeClass)"
       ],
+      "kernel_state": "ready",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -18790,7 +18793,7 @@
       "state": "New",
       "title": "A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         "asf/kernel/trunk.py",
         "docs/specs/f-0357.md",
@@ -19011,6 +19014,7 @@
         "groom-fill-b-218650-1791941424: groom-fill raised risk high: finding e1b07754 still reproduces unchanged on current main (T-210361 at a312beb9f); the test it names already builds the exact scenario and just needs the reason-text assertions added, so the card is buildable as scoped.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_revert_merged.NotGuilty)"
       ],
+      "kernel_state": "ready",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19018,7 +19022,7 @@
       "state": "New",
       "title": "Later findings from the review of T-210361: a revert counts only when its PR has merged, and a red revert PR means not guilty",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         "asf/kernel/mainline.py",
         "tests/kernel/test_revert_merged.py"
@@ -19038,6 +19042,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at b2921cb8f: tests.kernel.test_reviewer_fixes.Bounds, tests.kernel.test_reviewer_fixes.Apply)"
       ],
+      "kernel_state": "building",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -19046,7 +19051,7 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -19241,19 +19246,22 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at d8a1f1457: tests.kernel.test_revert_merged.Incident)"
       ],
+      "kernel_state": "ready",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:43:23Z",
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
     },
     "B-223558": {
-      "backlinks": [],
+      "backlinks": [
+        "B-224761"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -19362,13 +19370,20 @@
     "B-224761": {
       "backlinks": [],
       "children": [],
+      "creates": [
+        "tests/kernel/test_cutoff_add_commit.py"
+      ],
       "decided": true,
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-224761",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
+      "kernel_notes": [
+        "groom-fill-b-224761-1791956512: groom-fill raised risk high: Gap is real and unaddressed by the just-landed sibling B-223558, and buildable with existing plumbing (NeededProbe's git-read pattern, Ports.record.root, TYPES folder convention)."
+      ],
       "parent": "F-0360",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "The satisfied-on-main cutoff dates a card by day, not by the commit that added it",
@@ -19376,7 +19391,12 @@
       "state": "New",
       "title": "The satisfied-on-main cutoff dates a card by day, not by the commit that added it",
       "type": "bug",
-      "updated": "2026-10-14T05:42:00Z"
+      "updated": "2026-10-14T05:49:55Z",
+      "writes": [
+        "asf/kernel/needed_probe.py",
+        "asf/kernel/facts.py",
+        "tests/kernel/test_cutoff_add_commit.py"
+      ]
     },
     "B-224862": {
       "backlinks": [],
@@ -89635,6 +89655,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 13e6050a6: tests.test_feeder.ReplanLandedDocTests, tests.test_feeder.ReplanCorrectionRowTests, tests.test_invariants.LaneLaunchKindsTests, tests.test_feeder, tests.test_invariants, tests.test_replan, tests.test_harvest.ProductHarvestTests, tests.test_harvest, tests.test_hermetic)"
       ],
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0317.md"
       },
@@ -89648,7 +89669,7 @@
       ],
       "title": "the three readers, in one diff",
       "type": "task",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         "asf/feeder/rows.py",
         "asf/harvest/lane.py",
@@ -93501,6 +93522,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_pace, tests.kernel.test_moved_main)"
       ],
       "kernel_stack": "worker/T-159853@e0f7fad62495ceea126790623824fb494187ec2a",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -93513,7 +93535,7 @@
       ],
       "title": "the release's own documentation \u2014 the v0.3.0 notes, and what 0.3 leaves open",
       "type": "task",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         "docs/RELEASE-NOTES.md",
         "docs/KNOWN-ISSUES.md"
@@ -96053,7 +96075,11 @@
         "PR #1758: clock (+30d) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "answer on the card",
+      "kernel_stuck_owner": "operator",
+      "kernel_stuck_reason": "red: tests (3.12), tests (3.13) after 3 fix rounds",
+      "kernel_stuck_since": "2026-10-14T05:49:30Z",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96066,7 +96092,7 @@
       ],
       "title": "the suite under a clock moved 30 and 400 days forward, in CI",
       "type": "task",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py",
@@ -96564,7 +96590,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T05:38:57Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
@@ -98264,6 +98290,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at af8aa11cc: tests.test_release_rehearsal_criterion)"
       ],
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0306.md"
       },
@@ -98279,7 +98306,7 @@
       ],
       "title": "the edge \u2014 the `rehearsal` job and the two `needs:` lines",
       "type": "task",
-      "updated": "2026-10-14T05:47:02Z",
+      "updated": "2026-10-14T05:49:55Z",
       "writes": [
         ".github/workflows/release.yml",
         "tests/test_version.py"
