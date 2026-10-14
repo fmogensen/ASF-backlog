@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T11:32:15Z",
+  "generated": "2026-10-14T11:35:10Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19007,7 +19007,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_review_measure, tests.kernel.test_rereview_scope)",
         "groom-fill-b-216547-1791966892: groom-fill raised risk high: trunk has no own-diff once-rule or split LATER count (confirmed by reading split_scope/_scope and running the two cited test files green); the earlier satisfied-on-main close was false."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19017,7 +19017,7 @@
       "state": "New",
       "title": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
       "type": "bug",
-      "updated": "2026-10-14T11:32:13Z",
+      "updated": "2026-10-14T11:35:08Z",
       "writes": [
         "asf/kernel/apply.py",
         "asf/kernel/findings.py",
@@ -19039,8 +19039,10 @@
       "found_in": "dev",
       "id": "B-216548",
       "kernel_closed_findings": {
-        "52385eae": "{'head': '7b6d616a7d580aaa21468ba702951906ac4549ee', 'line': 'asf/kernel/decide.py:3177'}",
-        "aa7ec4dc": "{'head': '7b6d616a7d580aaa21468ba702951906ac4549ee', 'line': 'asf/kernel/apply.py:284'}"
+        "52385eae": "{'head': \"{'head': '7b6d616a7d580aaa21468ba702951906ac4549ee', 'line': 'asf/kernel/decide.py:3177'}\", 'line': ''}",
+        "56c7f983": "{'head': '85977a7353dda8be7c21b1464014a7694d0d7845', 'line': 'asf/kernel/apply.py:629'}",
+        "683e218a": "{'head': '85977a7353dda8be7c21b1464014a7694d0d7845', 'line': 'asf/kernel/decide.py:3179'}",
+        "aa7ec4dc": "{'head': \"{'head': '7b6d616a7d580aaa21468ba702951906ac4549ee', 'line': 'asf/kernel/apply.py:284'}\", 'line': ''}"
       },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
@@ -19050,6 +19052,10 @@
         "shared files: asf/kernel/apply.py, tests/kernel/test_rereview_scope.py also held by B-216547 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 2,
+      "kernel_later_findings": [
+        "[44da0069@85977a7] asf/kernel/apply.py:284 \u2014 the `ArchiveAndReset` half of `_clear_later` is asserted by no test; add `FollowUp.test_a_rebuild_clears_the_filed_bug_and_keeps_unfiled_findings` to tests/kernel/test_rereview_scope.py, applying `A.ArchiveAndReset('T-0001', 7, 'worker/T-0001', 'head-7', 'the cap')` once with `it.later_filed = ''` and once with `'B-9001'`, asserting `P.LATER_FINDINGS` is still in / gone from `rec.card_fields('T-0001')`",
+        "[8f549b4f@85977a7] asf/kernel/apply.py:623 \u2014 `_clear_later` misses a `FileLater` from the same tick; read the field through the tick's updates: `filed = self.field(item_id, P.LATER_FILED, getattr(it, 'later_filed', '') if it is not None else '')`"
+      ],
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_rereview_scope)",
         "groom-fill-b-216548-1791966899: groom-fill raised risk high: Confirmed in code \u2014 later_bugs' later_filed check, _keep_later's never-cleared later_findings, and file_bug's key-substring dedup all combine to drop a second landing's follow-up Bug; the fix and its tests are concretely scoped across decide.py, apply.py and the two test files."
@@ -19064,7 +19070,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T11:29:43Z",
+      "updated": "2026-10-14T11:35:08Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
@@ -19593,7 +19599,7 @@
       "state": "New",
       "title": "A reviewer fix on a high-risk path is attempted, rejected and charged a round",
       "type": "bug",
-      "updated": "2026-10-14T11:21:06Z",
+      "updated": "2026-10-14T11:35:08Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -97354,7 +97360,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-14T11:24:21Z",
+      "updated": "2026-10-14T11:35:08Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
