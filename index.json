@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T02:50:28Z",
+  "generated": "2026-10-14T02:55:19Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18548,7 +18548,8 @@
         "granted tests/test_sample_product.py; nothing else outside writes (card updated by the kernel)."
       ],
       "kernel_attempts": [
-        "escalated: one more fix round on the strong model, with every finding"
+        "escalated: one more fix round on the strong model, with every finding",
+        "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
@@ -18590,7 +18591,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-14T01:40:38Z",
+      "updated": "2026-10-14T02:55:12Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -19076,7 +19077,7 @@
       "kernel_notes": [
         "groom-fill-b-219953-1791941431: groom-fill raised risk high: Confirmed in code (apply.py RevertPR still unpinned auto_merge, decide.py withdraw only covers _judge_pr) that B-218952's pinned-merge fix was never extended to revert PRs; filled with the mirrored acceptance/writes."
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19086,7 +19087,7 @@
       "state": "New",
       "title": "A revert PR can merge a head the kernel never made (unpinned auto-merge)",
       "type": "bug",
-      "updated": "2026-10-14T02:45:40Z",
+      "updated": "2026-10-14T02:55:12Z",
       "writes": [
         "asf/kernel/actions.py",
         "asf/kernel/apply.py",
@@ -19104,10 +19105,16 @@
       "id": "B-219954",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
+      "kernel_findings": [
+        "asf/kernel/settings.py:79-80 \u2014 the operator-facing doc of `landing.max_wait_h` still reads \"an auto-merge PR waiting this long since auto-merge was enabled is first in line\", the dead semantics this card removes; replace the two comment lines with \"an approved behind PR waiting this long in the merge train (its wait-ledger `train` spell) is first in line (longest wait first): none starves\" (C1 \u2014 needs a writes extension for this file)",
+        "docs/products.example.yaml:586-587 \u2014 same stale sentence in the example product config operators copy; replace with \"an approved behind PR waiting this many hours in the merge train (its wait-ledger `train` spell, never GitHub auto-merge) goes first in line (longest wait first): none starves\" (C1 \u2014 needs a writes extension for this file)",
+        "shared files: asf/kernel/decide.py, asf/kernel/model.py also held by T-210360 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-219954-1791942556: groom-fill raised risk high: both starved-lanes still gate on the now-dead auto_merge/auto_merge_at fields; the fix lives in decide.py alone using the existing wait ledger (Facts.waits) as the approve-held clock, with named tests covering the train and the risk-lane tiebreak."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "E-0006",
       "risk": "high",
       "schema_version": 3,
@@ -19117,7 +19124,7 @@
       "state": "New",
       "title": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
       "type": "bug",
-      "updated": "2026-10-14T02:36:27Z",
+      "updated": "2026-10-14T02:55:12Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/model.py",
@@ -95865,7 +95872,8 @@
         "T-208102",
         "T-210362",
         "T-210363",
-        "B-213995"
+        "B-213995",
+        "B-219954"
       ],
       "children": [],
       "decided": true,
@@ -96165,11 +96173,20 @@
         "asf redact --unpublished"
       ],
       "id": "T-217365",
+      "kernel_closed_findings": {
+        "b4e8c8b9": "{'head': 'f13f435f02db3ed06de7edb314464e0ab2eef8c3', 'line': 'asf/record/archive.py:303'}"
+      },
       "kernel_findings": [
         "asf/record/archive.py:303 \u2014 `candidates` raises ValueError on a date `_ISO_DATE_RE` (`:239`) matched by shape but no calendar day (demonstrated: `history: ['- 2026-02-30: closed (x)']` -> `closing_date` returns '2026-02-30' -> `datetime.date.fromisoformat` raises), so one bad date on one card aborts the whole archive pass instead of reporting that card, against `closing_date`'s own documented contract at `:247-249` (\"None when none of the four give a date; such a card is reported by the dry run and does not move\") and against `git_touch_dates`' deliberate never-raise posture at `:264-266`. Fix in `asf/record/archive.py`: parse once and report on failure \u2014 replace `:300-304` with `date = closing_date(rec, git_dates)` / `try: closed = datetime.date.fromisoformat(date) if date else None` / `except ValueError: closed = None` / `if closed is None: continue` / `if (today - closed).days < after_days: continue`, and add the case to the test module \u2014 a card whose only date source is `history: ['- 2026-02-30: closed (x)']` is not a candidate and raises nothing.",
         "shared files: asf/record/archive.py also held by T-217366 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
+      "kernel_later_findings": [
+        "[136ff4cb@f13f435] tests/test_record_archive_rule.py:190-199 \u2014 the new case proves no-raise on a one-card record, not that the pass survives one bad card; add a second, cleanly-aged candidate to the same canonical and assert it is still in the returned set, which is the property [b4e8c8b9] actually named.",
+        "[29d12f34@f13f435] asf/record/archive.py:242-256 \u2014 closing_date still returns an unparseable date to its callers; have it return None for a date datetime.date.fromisoformat rejects, so Task 3's dry run inherits the \"does not move\" contract instead of printing the bad date as the card's closing date.",
+        "[6c9c3946@f13f435] .github/workflows/tests.yml \u2014 two of Task 2's Gate commands run on no CI job (bash tools/check_card_readers.sh and asf redact --unpublished; grep -rn card_readers .github/ is empty); add check_card_readers.sh to the checks job beside check_record_writers.sh at tests.yml:103.",
+        "[e6ca893f@f13f435] tests/test_record_archive_rule.py:188 \u2014 the banner reads \"candidates: a bad date (review)\" where every other banner in the module names the decision it covers; make it \"candidates: a date whose shape parses but whose day does not (D6)\"."
+      ],
       "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
@@ -96183,7 +96200,7 @@
       ],
       "title": "closed, aged, and admitted by the reference closure \u2014 the rule that chooses, and the retention floor under it",
       "type": "task",
-      "updated": "2026-10-14T02:41:28Z",
+      "updated": "2026-10-14T02:55:12Z",
       "writes": [
         "asf/record/archive.py",
         "asf/conventions.py",
