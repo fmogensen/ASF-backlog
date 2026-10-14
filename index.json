@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T11:03:29Z",
+  "generated": "2026-10-14T11:08:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19025,6 +19025,7 @@
     "B-216548": {
       "backlinks": [
         "B-223558",
+        "B-224862",
         "B-226065"
       ],
       "children": [],
@@ -19039,16 +19040,16 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
       "kernel_findings": [
-        "asf/kernel/apply.py:284 \u2014 clear `P.LATER_FINDINGS` only when the card already carries a filed Bug for them (`P.LATER_FILED` always): add `_Applier._clear_later(item_id)` returning `{P.LATER_FILED: None, **({P.LATER_FINDINGS: None} if filed else {})}`, reading `later_filed` off `self.facts.items.get(item_id)` since `self.field` has no entry for it, and splice it in with `**self._clear_later(a.item_id),` here and at `asf/kernel/apply.py:826`",
-        "asf/kernel/decide.py:3177 \u2014 `gen = it.rebuilds + len(it.reverted)` falls back when `asf/kernel/needed.py:382` takes every number off `kernel_reverted`, so the key repeats an earlier landing's and `file_bug` swallows the new findings into the first Bug; replace with a key derived from the findings listed \u2014 `fkeys = '+'.join(sorted(F.parse(f)[0] for f in later))` and `key = '(later-findings:%s:%s)' % (iid, fkeys)` \u2014 updating the bare-key expectation at `tests/kernel/test_rereview_scope.py:442`, or use a monotonic `kernel_later_gen` bumped at the two clear sites (that one needs `asf/kernel/ports.py` and `asf/kernel/model.py` added to `writes:`)",
-        "shared files: asf/kernel/apply.py, asf/kernel/decide.py, tests/kernel/test_rereview_scope.py also held by B-216547, B-224862 \u2014 additive edits only, never a rewrite"
+        "asf/kernel/apply.py:629 \u2014 the conditional clear is unproven: reverting it to `return {P.LATER_FILED: None, P.LATER_FINDINGS: None}` leaves all 59 tests of tests/kernel/test_rereview_scope.py green, because the assertion at tests/kernel/test_rereview_scope.py:489 reads `P.LATER_FINDINGS` out of `FakeRecord.card_fields`, where it was never written. Add `FollowUp.test_a_revert_keeps_held_findings_until_their_bug_is_filed` as given in docs/reviews/1-b-216548.md (C1): seed the card with `rec.write_fields('T-0001', {P.LATER_FINDINGS: [FD.stamp(UNRELATED, NEW)]})`, apply `A.RevertLanded('T-0001', 7)` with `later_filed = ''` and assert the lines are still there, then with `later_filed = 'B-9001'` and assert they are gone.",
+        "asf/kernel/decide.py:3179 \u2014 the findings-derived key is covered only by the literal `assertEqual` at tests/kernel/test_rereview_scope.py:443; restoring `gen = it.rebuilds + len(it.reverted)` fails that one case and nothing else, since the second landing in `test_a_second_landing_after_a_revert\u2026` still carries `reverted = [7]` and so gets a distinct generation anyway. Add `FollowUp.test_a_second_landing_whose_revert_numbers_were_taken_off_files_its_own_bug` as given in docs/reviews/1-b-216548.md (C2): a second landing with `it2.reverted, it2.rebuilds = [], 0` and one new held finding must mint a second Bug (`self.assertEqual(len(rec.minted), 2)`).",
+        "shared files: asf/kernel/apply.py, tests/kernel/test_rereview_scope.py also held by B-216547 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_rereview_scope)",
         "groom-fill-b-216548-1791966899: groom-fill raised risk high: Confirmed in code \u2014 later_bugs' later_filed check, _keep_later's never-cleared later_findings, and file_bug's key-substring dedup all combine to drop a second landing's follow-up Bug; the fix and its tests are concretely scoped across decide.py, apply.py and the two test files."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19058,7 +19059,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T11:03:09Z",
+      "updated": "2026-10-14T11:08:32Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
@@ -19557,9 +19558,7 @@
       ]
     },
     "B-224862": {
-      "backlinks": [
-        "B-216548"
-      ],
+      "backlinks": [],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -19570,10 +19569,16 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_findings": [
+        "asf/kernel/decide.py:1922 \u2014 read `oob = out_of_bounds_fix_why(holding_verdict(it, pr, facts))` once before the CI-red arms and pass `free=oob or (trunk_red_why(on_trunk, facts) if len(on_trunk) == len(own) else '')` there and in the escalated-red arm at :1935-1940, appending the holding verdict's findings to the red findings when `oob`; a required check the reviewer's untrusted commits turned red currently charges a normal round and carries only `red: t`, dropping the breach finding",
+        "asf/kernel/decide.py:2268 \u2014 add `exempt=False` to `_fix_round` (:2259-2260), gate the cap as `if not exempt and it.fix_rounds + 1 > cap + (1 if strong else 0):`, and pass `exempt=bool(oob)` from the out-of-bounds arm at :1982-1983; at `fix_rounds == max_fix_rounds` the free round is refused today and the item goes `Stuck(owner='operator')` with the breach sentence as its capped finding \u2014 verbatim the T-210362 symptom the card reports",
+        "shared files: asf/kernel/decide.py also held by B-216548 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-224862-1791967255: groom-fill raised risk high: F-0358's review.fix ships with no path list in the brief, no all-high-risk authority check and no free round for a rejected fix, confirmed unfixed on origin/main; the fix is contained to decide.py/briefs.py/reviewfix.py, all under kernel.risk.high."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19583,7 +19588,7 @@
       "state": "New",
       "title": "A reviewer fix on a high-risk path is attempted, rejected and charged a round",
       "type": "bug",
-      "updated": "2026-10-14T11:03:09Z",
+      "updated": "2026-10-14T11:08:32Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -19610,7 +19615,7 @@
         "groom-fill-b-225513-1791971413: groom-fill raised risk high: The five named modules were already migrated to asf.clock by T-210358 (#1758, on origin/main) and the baseline file already matches the tree; the only real remaining work is flipping clock-400 from report-only to blocking in CI, which touches the kernel's own gate.",
         "build-b-225513-1791973010: NEEDS OPERATOR: file a Bug for the four modules named above (test_quota_headroom.py, test_quota_stale.py, tests/kernel/test_gh_budget.py, test_groom_publish.py) reading the real clock/pinned dates under the now-bloc\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19620,7 +19625,7 @@
       "state": "New",
       "title": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
       "type": "bug",
-      "updated": "2026-10-14T10:55:04Z",
+      "updated": "2026-10-14T11:08:32Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py"
@@ -19683,7 +19688,7 @@
       "kernel_notes": [
         "groom-fill-b-226065-1791967471: groom-fill raised risk high: holding_verdict/verdict_holds keeps the stale out-of-bounds breach 'changes' verdict current whenever the PR tree does not move, so _judge_pr re-charges _fix_round forever and _final_review's own \"no verdict holds\" guard blocks it from ever breaking the loop (confirmed against asf/kernel/decide.py:1881-2004, 2246-2290 and asf/kernel/reviewfix.py, with no existing test in tests/kernel/test_reviewer_fixes.py or test_final_review.py covering a no-op build after a breach); needs real code in the kernel, so risk_raise: high."
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19693,7 +19698,7 @@
       "state": "New",
       "title": "An item whose out-of-bounds reviewer fix is kept can never leave Stuck",
       "type": "bug",
-      "updated": "2026-10-14T11:03:09Z",
+      "updated": "2026-10-14T11:08:32Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -53294,7 +53299,8 @@
         "T-80371",
         "B-0040",
         "B-0067",
-        "B-0074"
+        "B-0074",
+        "B-216548"
       ],
       "children": [],
       "cost": {
@@ -92962,7 +92968,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92975,7 +92981,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:59:52Z",
+      "updated": "2026-10-14T11:08:32Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -97184,9 +97190,12 @@
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
       "kernel_closed_findings": {
-        "0413b006": "{'head': '5c2b7787d8515249c73e8242c3f985f3486066d2', 'line': 'asf/doctor.py:1895'}",
-        "ea471761": "{'head': '5c2b7787d8515249c73e8242c3f985f3486066d2', 'line': 'tests/test_record_archive_history.py:378'}",
-        "ecd9b587": "{'head': '5c2b7787d8515249c73e8242c3f985f3486066d2', 'line': 'asf/record/archive.py:245'}"
+        "0413b006": "{'head': \"{'head': '5c2b7787d8515249c73e8242c3f985f3486066d2', 'line': 'asf/doctor.py:1895'}\", 'line': ''}",
+        "69017eec": "{'head': '87a8f6b2435b2ea87139a93453a18de0f9734c07', 'line': 'asf/doctor.py:226'}",
+        "98f0e96b": "{'head': '87a8f6b2435b2ea87139a93453a18de0f9734c07', 'line': 'tests/test_record_archive_history.py:6'}",
+        "dbf740d9": "{'head': '87a8f6b2435b2ea87139a93453a18de0f9734c07', 'line': 'asf/metrics/metrics.py:1082'}",
+        "ea471761": "{'head': \"{'head': '5c2b7787d8515249c73e8242c3f985f3486066d2', 'line': 'tests/test_record_archive_history.py:378'}\", 'line': ''}",
+        "ecd9b587": "{'head': \"{'head': '5c2b7787d8515249c73e8242c3f985f3486066d2', 'line': 'asf/record/archive.py:245'}\", 'line': ''}"
       },
       "kernel_findings": [
         "asf/doctor.py:226 \u2014 return `'warn', plan['refused']` instead of `False, plan['refused']`: with `required=False` the printer renders `ok is False` as `skip` (`asf/doctor.py:2582`) and `is_red` ignores it, so the below-floor refusal is invisible; also change the docstring at `:72-73` from \"is red\" to \"is `warn`\", and change `tests/test_record_archive_history.py:377-382` to assert `ok == 'warn'` and that `doctor.format_table` carries `warn`",
@@ -97218,7 +97227,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T10:55:04Z",
+      "updated": "2026-10-14T11:08:32Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -97310,7 +97319,12 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
-      "kernel_state": "review",
+      "kernel_findings": [
+        "asf/cli.py:388-393 \u2014 print \u00a72.11's header before the timed rows: split `measure_header(dir_)`/`render_header(dir_, header)` (and a `measure_refusal(dir_, product)`) out of `asf/record/archive.py:864`, write the `measuring \u2026` line and flush before calling `archive.measure(args.measure, product, header=header)`, and assert the order in `tests/test_record_archive_scale.py` (`out.index('measuring ') < out.index('cards in working set')`) instead of only the header's contents at `:154-157`",
+        "asf/record/archive.py:943 \u2014 `{before_s:>9}` \u2192 `{before_s:>6}` so the three values end at columns 34/44/52, under the header labels at `:958`, reproducing \u00a72.11's table exactly"
+      ],
+      "kernel_fix_rounds": 1,
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97323,7 +97337,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-14T10:50:24Z",
+      "updated": "2026-10-14T11:08:32Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
