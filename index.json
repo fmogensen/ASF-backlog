@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T08:53:57Z",
+  "generated": "2026-10-14T08:59:05Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18928,8 +18928,9 @@
         "Decision: the 10 percent ceiling was the console's estimate, not a measured requirement. Do not extend the cue vocabulary further. Set the Replay ceiling to 20 percent requested (measured 18.52) and keep routed under 2 percent, with a comment giving the measured numbers and that the remaining rows are genuine path:line asks. Fix the one named false positive (declines to fix it) only if it is a one-line change with a test. Then report done. kernel.resolve.finding_writes stays off."
       ],
       "kernel_closed_findings": {
-        "1a6efad8": "{'head': '7865edf2175c511fb9a29124edc5868f24832b8d', 'line': 'asf/kernel/findings.py:185'}",
-        "8a900942": "{'head': '7865edf2175c511fb9a29124edc5868f24832b8d', 'line': 'asf/kernel/findings.py:198'}"
+        "1a6efad8": "{'head': \"{'head': '7865edf2175c511fb9a29124edc5868f24832b8d', 'line': 'asf/kernel/findings.py:185'}\", 'line': ''}",
+        "1bf99562": "{'head': 'af56deb11c7e4322776bd68900683d2cf51f7cad', 'line': 'asf/kernel/findings.py:236'}",
+        "8a900942": "{'head': \"{'head': '7865edf2175c511fb9a29124edc5868f24832b8d', 'line': 'asf/kernel/findings.py:198'}\", 'line': ''}"
       },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
@@ -18957,7 +18958,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T08:50:56Z",
+      "updated": "2026-10-14T08:58:01Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -19600,6 +19601,7 @@
       "kernel_notes": [
         "groom-fill-b-226065-1791967471: groom-fill raised risk high: holding_verdict/verdict_holds keeps the stale out-of-bounds breach 'changes' verdict current whenever the PR tree does not move, so _judge_pr re-charges _fix_round forever and _final_review's own \"no verdict holds\" guard blocks it from ever breaking the loop (confirmed against asf/kernel/decide.py:1881-2004, 2246-2290 and asf/kernel/reviewfix.py, with no existing test in tests/kernel/test_reviewer_fixes.py or test_final_review.py covering a no-op build after a breach); needs real code in the kernel, so risk_raise: high."
       ],
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19609,7 +19611,7 @@
       "state": "New",
       "title": "An item whose out-of-bounds reviewer fix is kept can never leave Stuck",
       "type": "bug",
-      "updated": "2026-10-14T08:53:55Z",
+      "updated": "2026-10-14T08:58:01Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -92796,7 +92798,8 @@
         "relaunch: PR #1595 landed and turned main red (tests (3.12), tests (3.13) at 3ed08c6ab); it was reverted. Build it again so the required checks pass on main.",
         "session ran past its max age",
         "failed: OpenPR worker/T-154340: open PR worker/T-154340: rc 1: pull request create failed: GraphQL: No commits between main and worker/T-154340 (createPullRequest)",
-        "relaunch: branch worker/T-154340 has no commits beyond main, so it cannot become a PR: make the change the card asks for and push it, or \u2014 when the work already landed \u2014 name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: branch worker/T-154340 has no commits beyond main, so it cannot become a PR: make the change the card asks for and push it, or \u2014 when the work already landed \u2014 name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1784 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_findings": [
         "asf/record/index.py:39 \u2014 `only=` matches only `rec['relpath']`, so the view relpath `refresh` now returns at `:58` can never be fed back to it; `asf/record/publish.py:154-156` does exactly that round-trip, so a hand-edited view in the checkout is never regenerated (the commit lands the right bytes, the working tree keeps the stale ones, and `asf check` then reports `view is stale` with no automatic repair). Fix: `if only is not None and rec['relpath'] not in only and os.path.relpath(card.view_path(rec['path']), root) not in only: continue`.",
@@ -92811,7 +92814,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92824,7 +92827,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T08:53:55Z",
+      "updated": "2026-10-14T08:58:01Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
