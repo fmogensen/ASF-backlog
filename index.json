@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T11:40:27Z",
+  "generated": "2026-10-14T11:43:39Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19031,7 +19031,8 @@
       "backlinks": [
         "B-223558",
         "B-224862",
-        "B-226065"
+        "B-226065",
+        "B-232919"
       ],
       "children": [],
       "decided": true,
@@ -19052,6 +19053,7 @@
         "shared files: asf/kernel/apply.py, tests/kernel/test_rereview_scope.py also held by B-216547 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 2,
+      "kernel_later_filed": "B-232919",
       "kernel_later_findings": [
         "[44da0069@85977a7] asf/kernel/apply.py:284 \u2014 the `ArchiveAndReset` half of `_clear_later` is asserted by no test; add `FollowUp.test_a_rebuild_clears_the_filed_bug_and_keeps_unfiled_findings` to tests/kernel/test_rereview_scope.py, applying `A.ArchiveAndReset('T-0001', 7, 'worker/T-0001', 'head-7', 'the cap')` once with `it.later_filed = ''` and once with `'B-9001'`, asserting `P.LATER_FINDINGS` is still in / gone from `rec.card_fields('T-0001')`",
         "[8f549b4f@85977a7] asf/kernel/apply.py:623 \u2014 `_clear_later` misses a `FileLater` from the same tick; read the field through the tick's updates: `filed = self.field(item_id, P.LATER_FILED, getattr(it, 'later_filed', '') if it is not None else '')`"
@@ -19060,7 +19062,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_rereview_scope)",
         "groom-fill-b-216548-1791966899: groom-fill raised risk high: Confirmed in code \u2014 later_bugs' later_filed check, _keep_later's never-cleared later_findings, and file_bug's key-substring dedup all combine to drop a second landing's follow-up Bug; the fix and its tests are concretely scoped across decide.py, apply.py and the two test files."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19070,7 +19072,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T11:37:37Z",
+      "updated": "2026-10-14T11:43:38Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
@@ -19578,6 +19580,10 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
+      "kernel_closed_findings": {
+        "e4bcda3a": "{'head': '78669ce4616798436f04d5bbe61ef0d12df0e7de', 'line': 'asf/kernel/decide.py:1922'}",
+        "e6fea23d": "{'head': '78669ce4616798436f04d5bbe61ef0d12df0e7de', 'line': 'asf/kernel/decide.py:2268'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
       "kernel_findings": [
@@ -19599,7 +19605,7 @@
       "state": "New",
       "title": "A reviewer fix on a high-risk path is attempted, rejected and charged a round",
       "type": "bug",
-      "updated": "2026-10-14T11:35:08Z",
+      "updated": "2026-10-14T11:43:38Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -19629,7 +19635,7 @@
         "groom-fill-b-225513-1791971413: groom-fill raised risk high: The five named modules were already migrated to asf.clock by T-210358 (#1758, on origin/main) and the baseline file already matches the tree; the only real remaining work is flipping clock-400 from report-only to blocking in CI, which touches the kernel's own gate.",
         "build-b-225513-1791973010: NEEDS OPERATOR: file a Bug for the four modules named above (test_quota_headroom.py, test_quota_stale.py, tests/kernel/test_gh_budget.py, test_groom_publish.py) reading the real clock/pinned dates under the now-bloc\u2026"
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19639,16 +19645,14 @@
       "state": "New",
       "title": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
       "type": "bug",
-      "updated": "2026-10-14T11:29:43Z",
+      "updated": "2026-10-14T11:43:38Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py"
       ]
     },
     "B-226064": {
-      "backlinks": [
-        "B-226066"
-      ],
+      "backlinks": [],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -19736,9 +19740,9 @@
       "kernel_findings": [
         "red: tests (3.12) \u2014 step 'the clock leg is green too' failed:\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the clock leg is green too' failed:\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.\n##[group]Run test \"$CLOCK\" = success\n^[[36;1mtest \"$CLOCK\" = success^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n  CLOCK: failure\n##[endgroup]\n##[error]Process completed with exit code 1.",
-        "shared files: asf/kernel/ports.py, asf/workers/pool.py, asf/workers/spawn.py also held by B-226064, T-79566 \u2014 additive edits only, never a rewrite"
+        "shared files: asf/workers/pool.py, asf/workers/spawn.py also held by T-79566 \u2014 additive edits only, never a rewrite"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-226066-1791971422: groom-fill raised risk high: confirmed in the code \u2014 resumes is written only onto the ended row (_settle_beat) and never carried onto a relaunch's fresh job record (pool.Row/spawn.spawn), so Session.beats always reads 0 and the cap can't trip; card's scope is buildable as stated.",
         "PR #1796: checks (3.12) is red but not a required check \u2014 ignored",
@@ -19750,7 +19754,7 @@
         "PR #1796: part (3.12, 1) is red but not a required check \u2014 ignored",
         "PR #1796: part (3.13, 1) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19760,7 +19764,7 @@
       "state": "New",
       "title": "kernel.heartbeat.max_continues never trips because a relaunch starts its resumes at 0",
       "type": "bug",
-      "updated": "2026-10-14T11:32:13Z",
+      "updated": "2026-10-14T11:43:38Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/workers/spawn.py",
@@ -19821,6 +19825,21 @@
       "writes": [
         "tests/kernel/test_flake.py"
       ]
+    },
+    "B-232919": {
+      "backlinks": [
+        "B-216548"
+      ],
+      "children": [],
+      "folder": "bugs",
+      "id": "B-232919",
+      "parent": "F-0358",
+      "schema_version": 3,
+      "stage_since": "2026-10-14T11:43:14Z",
+      "state": "New",
+      "title": "Later findings from the review of B-216548: A second landing files no follow-up Bug for its later findings",
+      "type": "bug",
+      "updated": "2026-10-14T11:43:14Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -38680,7 +38699,8 @@
         "B-218951",
         "B-218952",
         "B-224862",
-        "B-226065"
+        "B-226065",
+        "B-232919"
       ],
       "decided": true,
       "folder": "features",
@@ -53319,7 +53339,8 @@
         "B-0040",
         "B-0067",
         "B-0074",
-        "B-216548"
+        "B-216548",
+        "B-232919"
       ],
       "children": [],
       "cost": {
@@ -97342,6 +97363,10 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
+      "kernel_closed_findings": {
+        "bbad812a": "{'head': '33d3569aa7150e96a3fa6747608a4b8dbe9dc530', 'line': 'asf/cli.py:388'}",
+        "e50a6915": "{'head': '33d3569aa7150e96a3fa6747608a4b8dbe9dc530', 'line': 'asf/record/archive.py:943'}"
+      },
       "kernel_findings": [
         "asf/cli.py:388-393 \u2014 print \u00a72.11's header before the timed rows: split `measure_header(dir_)`/`render_header(dir_, header)` (and a `measure_refusal(dir_, product)`) out of `asf/record/archive.py:864`, write the `measuring \u2026` line and flush before calling `archive.measure(args.measure, product, header=header)`, and assert the order in `tests/test_record_archive_scale.py` (`out.index('measuring ') < out.index('cards in working set')`) instead of only the header's contents at `:154-157`",
         "asf/record/archive.py:943 \u2014 `{before_s:>9}` \u2192 `{before_s:>6}` so the three values end at columns 34/44/52, under the header labels at `:958`, reproducing \u00a72.11's table exactly"
@@ -97360,7 +97385,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-14T11:35:08Z",
+      "updated": "2026-10-14T11:43:38Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
