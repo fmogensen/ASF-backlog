@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T03:53:38Z",
+  "generated": "2026-10-14T03:57:47Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18585,7 +18585,7 @@
         "PR #1744: part (3.13, 4) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "review",
       "parent": "F-0340",
       "risk": "high",
       "schema_version": 3,
@@ -18595,7 +18595,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-14T03:53:34Z",
+      "updated": "2026-10-14T03:57:45Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -18937,7 +18937,12 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.17",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "asf/workers/correct.py:38 \u2014 `_record_answer`'s new `question=''` default leaves `attach_ruling` (`asf/workers/correct.py:298`) writing a questionless row that `asf/kernel/questions.py:248` `read_answers` drops: compute `question = _asked_question(path, item, ruling_run(product, item, runs))` at the cap branch (`asf/workers/correct.py:160`), pass it into `attach_ruling`, call `_record_answer(product, item, run['job'], why, question)`, and add the round-cap case to `tests/test_answer.py::CarriesTheQuestion`",
+        "asf/workers/correct.py:57 \u2014 `_asked_question` reads both of A1's sources but only `asf correct` uses it; make `asf answer` use it too \u2014 `question = correct._asked_question(path, item, asker)` at `asf/workers/answer.py:153` (lazy import, prefer the item's park, fall back to the report line) \u2014 and add the answer-command stuck-reason case to `tests/test_answer.py::CarriesTheQuestion`, which proves that path for the applier only",
+        "tests/kernel/test_question_replay.py:202 \u2014 [8caba360@c7183daf0bac5b99ce712e62af7b64f9187dcf45] `_BASELINE` was rewritten to the post-fix output, recording fixture rows 9 and 11 moving out of the coded class `predecessor` into `write-grant` while the guard at `:248` still claims no coded class may be stolen from, and `HELD` at `:220` was narrowed so A3 cannot see it: either add `and not R.predecessor_question(text)` to the footprint branch at `asf/kernel/questions.py:221` (share stays 10/12 = 83%, `R.PREDECESSOR` returns to `HELD`), or add a case proving rows 9/11's old class was `PREDECESSOR_RE`'s \"depends on\" false positive (`asf/kernel/resolvers.py:650`) so the move is deliberate and pinned"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-218499-1791937575: groom-fill raised risk high: Two real, isolable defects (classify's prose write-grant/gate gap; correct.py/answer.py dropping `question` on the ledger) block the two tests T-208104 already left skipped for this exact shortfall, and the fix touches the kernel.",
         "PR #1750: part (3.12, 4) is red but not a required check \u2014 ignored",
@@ -18945,7 +18950,7 @@
         "round not charged: a rebase round: PR #1750 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0362",
       "risk": "high",
       "schema_version": 3,
@@ -18955,7 +18960,7 @@
       "state": "New",
       "title": "The replay of real session questions is claimed by code for 20 percent, and the ledger loses the question",
       "type": "bug",
-      "updated": "2026-10-14T03:43:44Z",
+      "updated": "2026-10-14T03:57:45Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/workers/answer.py",
@@ -19207,13 +19212,17 @@
       "id": "B-222657",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
+      "kernel_notes": [
+        "satisfied on main at d8a1f1457: tests.kernel.test_revert_merged.Incident"
+      ],
+      "kernel_state": "done",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:43:23Z",
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T03:46:46Z",
+      "updated": "2026-10-14T03:57:45Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
@@ -96106,10 +96115,11 @@
         "rebase: PR #1759 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
       ],
       "kernel_notes": [
-        "round not charged: a rebase round: PR #1759 conflicts with its base"
+        "round not charged: a rebase round: PR #1759 conflicts with its base",
+        "build-t-210362-1791949404: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox denied approval for `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791949404 'asf/build-t-210362-1791949404@20261014T034334Z'`"
       ],
       "kernel_round_charged": false,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96122,7 +96132,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T03:43:44Z",
+      "updated": "2026-10-14T03:57:45Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96322,7 +96332,7 @@
         "round not charged: a rebase round: PR #1757 conflicts with its base"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96335,7 +96345,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T03:53:34Z",
+      "updated": "2026-10-14T03:57:45Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
