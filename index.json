@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T04:35:46Z",
+  "generated": "2026-10-14T04:38:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19266,7 +19266,12 @@
       "id": "B-223558",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
+      "kernel_notes": [
+        "groom-fill-b-223558-1791952185: groom-fill raised risk high: the card's defect is real and still live (two separate satisfied-on-main code paths exist; only one filters ids by baseline novelty), and the fix is well-scoped to the kernel's needed/needed_probe/reopen modules plus one new additive schema migration"
+      ],
+      "kernel_state": "review",
       "parent": "F-0360",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "Satisfied on main closes items whose work was never built: 9 false closes",
@@ -19274,7 +19279,16 @@
       "state": "New",
       "title": "Satisfied on main closes items whose work was never built: 9 false closes",
       "type": "bug",
-      "updated": "2026-10-14T04:29:56Z"
+      "updated": "2026-10-14T04:38:09Z",
+      "writes": [
+        "asf/kernel/needed_probe.py",
+        "asf/kernel/needed.py",
+        "asf/kernel/facts.py",
+        "asf/record/reopen.py",
+        "asf/schema.py",
+        "tests/kernel/test_still_needed.py",
+        "tests/test_reopen.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -96175,6 +96189,9 @@
         "asf redact --unpublished"
       ],
       "id": "T-210362",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_findings": [
         "reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
         "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`"
@@ -96182,9 +96199,10 @@
       "kernel_fix_rounds": 2,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1759 conflicts with its base",
-        "build-t-210362-1791949404: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox denied approval for `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791949404 'asf/build-t-210362-1791949404@20261014T034334Z'`"
+        "build-t-210362-1791949404: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox denied approval for `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791949404 'asf/build-t-210362-1791949404@20261014T034334Z'`",
+        "build-t-210362-1791952371: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791952371 'asf/build-t-210362-1791952371@20261014T043259Z' >/dev/null 2>&1 &`) was refused by the sandbox approval\u2026"
       ],
-      "kernel_state": "building",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96197,7 +96215,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T04:33:18Z",
+      "updated": "2026-10-14T04:38:09Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
