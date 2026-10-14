@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T05:06:32Z",
+  "generated": "2026-10-14T05:09:26Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18555,6 +18555,11 @@
         "escalated: one more fix round on the strong model, with every finding",
         "session ran past its max age"
       ],
+      "kernel_closed_findings": {
+        "2e89fc14": "{'head': '1c2837375143d86d8ef7db1eb40c96375be76b98', 'line': 'asf/record/ids.py:218'}",
+        "44f4cc0e": "{'head': '1c2837375143d86d8ef7db1eb40c96375be76b98', 'line': 'asf/schema.py:955'}",
+        "dcf3481a": "{'head': '1c2837375143d86d8ef7db1eb40c96375be76b98', 'line': 'asf/schema.py:940'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 2,
@@ -18599,7 +18604,7 @@
       "state": "New",
       "title": "Schema 3 locks the operator out after an upgrade, and the migration cannot convert 184 cards",
       "type": "bug",
-      "updated": "2026-10-14T05:01:21Z",
+      "updated": "2026-10-14T05:09:24Z",
       "writes": [
         "asf/schema.py",
         "asf/kernel/host.py",
@@ -19313,7 +19318,16 @@
       "state": "New",
       "title": "An account whose sign-in expired keeps being picked for cloud launches, emptying the cloud lane",
       "type": "bug",
-      "updated": "2026-10-14T04:58:07Z"
+      "updated": "2026-10-14T04:58:07Z",
+      "writes": [
+        "asf/connectors/claude_code.py",
+        "asf/workers/account_auth.py",
+        "asf/workers/cloud.py",
+        "tests/test_auth_error_account.py",
+        "tests/test_remote_auth_error.py",
+        "tests/kernel/test_speedups.py",
+        "tests/test_cloud.py"
+      ]
     },
     "B-70500": {
       "backlinks": [],
@@ -96221,14 +96235,18 @@
       ],
       "id": "T-210362",
       "kernel_extra_rounds": 0,
-      "kernel_fix_rounds": 0,
+      "kernel_findings": [
+        "reviewer fix out of bounds (a high-risk path: asf/kernel/decide.py) \u2014 commits 1c44b6d since fbeed72 stay on the branch and are not trusted: keep, amend or revert them as the findings require",
+        "asf/kernel/decide.py:2130 [0914662c@988c551] \u2014 `trunk_wide_note` returns `''` until `mainline.filed` finds the spell's Bug, so the filing tick leaves no `(?)` note that the next tick's dedupe cannot suppress; pinned by `TheNoteWaitsForTheBug` over `spell_world(..., bug=False)`"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "round not charged: a rebase round: PR #1759 conflicts with its base",
         "build-t-210362-1791949404: NEEDS OPERATOR: heartbeat script could not start \u2014 sandbox denied approval for `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791949404 'asf/build-t-210362-1791949404@20261014T034334Z'`",
         "build-t-210362-1791952371: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-210362-1791952371 'asf/build-t-210362-1791952371@20261014T043259Z' >/dev/null 2>&1 &`) was refused by the sandbox approval\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96241,7 +96259,7 @@
       ],
       "title": "a trunk-wide red is not the pull request's \u2014 no fix round, no archive, no Stuck",
       "type": "task",
-      "updated": "2026-10-14T05:06:22Z",
+      "updated": "2026-10-14T05:09:24Z",
       "writes": [
         "asf/kernel/decide.py",
         "tests/kernel/test_trunk_wide_not_charged.py"
@@ -96469,7 +96487,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T05:01:21Z",
+      "updated": "2026-10-14T05:09:24Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
