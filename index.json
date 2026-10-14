@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T08:35:17Z",
+  "generated": "2026-10-14T08:38:23Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18023,7 +18023,7 @@
       "state": "New",
       "title": "kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T08:32:05Z",
+      "updated": "2026-10-14T08:38:18Z",
       "writes": [
         "asf/kernel/flake.py",
         "asf/kernel/settings.py",
@@ -18804,6 +18804,14 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-213994",
+      "kernel_closed_findings": {
+        "2f4efc98": "{'head': '9292c587b927c0de003adb3c767ccc3621a7e3ce', 'line': 'asf/kernel/trunk.py:484'}",
+        "53e50cae": "{'head': '9292c587b927c0de003adb3c767ccc3621a7e3ce', 'line': 'docs/specs/f-0357.md:130'}",
+        "7b5ffe65": "{'head': '9292c587b927c0de003adb3c767ccc3621a7e3ce', 'line': 'asf/kernel/trunk.py:483'}",
+        "9a5eb4a6": "{'head': '9292c587b927c0de003adb3c767ccc3621a7e3ce', 'line': 'docs/specs/f-0357.md:617'}",
+        "c6a075da": "{'head': '9292c587b927c0de003adb3c767ccc3621a7e3ce', 'line': 'asf/kernel/trunk.py:476'}",
+        "cd3b931c": "{'head': '9292c587b927c0de003adb3c767ccc3621a7e3ce', 'line': 'docs/specs/f-0357.md:161'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
       "kernel_findings": [
@@ -18816,6 +18824,11 @@
         "shared files: asf/kernel/trunk.py also held by B-211241 \u2014 additive edits only, never a rewrite"
       ],
       "kernel_fix_rounds": 1,
+      "kernel_later_findings": [
+        "[36ddac9a@9292c58] docs/specs/f-0357.md:193 \u2014 the \u00a72.3 `guilty` row still says \"or at least one of them does not load there (D4)\"; make it \"or at least one of them is **absent** there (D4: `missing`, not merely a load failure)\"",
+        "[88c10b13@9292c58] docs/specs/f-0357.md:69 \u2014 \"The blame verdict is one test run and a comparison\" is stale against D1; make it \"two test runs and a comparison\"",
+        "[66335e96@9292c58] asf/kernel/trunk.py:483 \u2014 match the id's own path, not a bare component: test `'/'.join(parts[:k]) + '.py'` and `'/'.join(parts[:k]) + '/__init__.py'` for each `k` against the hit's bodies, so an import-failing module cannot mask an absent sibling sharing its basename (confirmed: two `test_x` blocks \u2192 `missing_ids` returns `[]`; fail-safe direction, so not a block)"
+      ],
       "kernel_notes": [
         "groom-fill-b-213994-1791922466: groom-fill raised risk high: missing_ids conflates \"module exists but fails to import\" with \"absent\" by matching on name alone; the fix is a self-contained text-based reclassification in trunk.py plus a doc-only sync of D1/\u00a72.1/\u00a72.2 to the already-shipped two-run, bounded-retry read.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9a37dbf74: tests.kernel.test_blame_before_revert.ParseUnittest, tests.kernel.test_blame_before_revert.ProbeClass)"
@@ -18830,7 +18843,7 @@
       "state": "New",
       "title": "A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T08:32:05Z",
+      "updated": "2026-10-14T08:38:18Z",
       "writes": [
         "asf/kernel/trunk.py",
         "docs/specs/f-0357.md",
@@ -19085,6 +19098,10 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-218951",
+      "kernel_closed_findings": {
+        "da43c076": "{'head': 'bf4cfd1fb1052efaf06b1fdf1f46a09cd7ce14ad', 'line': 'asf/kernel/model.py:302'}",
+        "e31f352b": "{'head': 'bf4cfd1fb1052efaf06b1fdf1f46a09cd7ce14ad', 'line': 'asf/kernel/reviewfix.py:124'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.24",
       "kernel_findings": [
@@ -19105,7 +19122,7 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T08:28:47Z",
+      "updated": "2026-10-14T08:38:18Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -19312,14 +19329,14 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at d8a1f1457: tests.kernel.test_revert_merged.Incident)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:43:23Z",
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T08:35:15Z",
+      "updated": "2026-10-14T08:38:18Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
@@ -96899,7 +96916,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T08:32:05Z",
+      "updated": "2026-10-14T08:38:18Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -97043,6 +97060,7 @@
       ],
       "id": "T-217372",
       "kernel_stack": "worker/T-217371@15235399018a92f7f7cac1bffd359271c70302c2",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97055,7 +97073,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-14T08:35:15Z",
+      "updated": "2026-10-14T08:38:18Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
