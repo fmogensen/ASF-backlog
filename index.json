@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T07:35:59Z",
+  "generated": "2026-10-14T08:25:25Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18646,7 +18646,11 @@
         "groom-fill-b-211240-1791917101: groom-fill raised risk high: four confirmed, non-overlapping kernel decide/apply gaps left live by F-0358 parts 1-2; acceptance now names the test class each must pass, writes name the files the fix touches.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5da9cade5: tests.kernel.test_finding_keys.DecideReviewBranch, tests.kernel.test_finding_keys.ApplyRecords, tests.kernel.test_round_charge.Free)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "session ran past its max age",
+      "kernel_stuck_since": "2026-10-14T08:24:11Z",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18656,7 +18660,7 @@
       "state": "New",
       "title": "Review-loop rules that can stall or run unbounded: reworded findings, lost answers, uncapped free rounds",
       "type": "bug",
-      "updated": "2026-10-14T07:35:49Z",
+      "updated": "2026-10-14T08:25:22Z",
       "writes": [
         "asf/kernel/findings.py",
         "asf/kernel/apply.py",
@@ -18685,7 +18689,11 @@
         "groom-fill-b-211241-1791917348: groom-fill raised risk high: three concrete, already-verified defects in the proof gate itself, just missing the test names and writes the DoR requires",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 5da9cade5: tests.kernel.test_review_proof.NeededIds, tests.kernel.test_review_proof.ProbeReads, tests.kernel.test_review_proof.DecideProof)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "stuck",
+      "kernel_stuck_next": "the loop retries once its facts change",
+      "kernel_stuck_owner": "loop",
+      "kernel_stuck_reason": "session ran past its max age",
+      "kernel_stuck_since": "2026-10-14T08:24:11Z",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18695,7 +18703,7 @@
       "state": "New",
       "title": "Settle which ids a proof may judge before the proof gate can be turned on",
       "type": "bug",
-      "updated": "2026-10-14T07:35:49Z",
+      "updated": "2026-10-14T08:25:22Z",
       "writes": [
         "asf/kernel/proof.py",
         "asf/kernel/proof_probe.py",
@@ -18919,7 +18927,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T07:16:20Z",
+      "updated": "2026-10-14T08:25:22Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -19291,14 +19299,14 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at d8a1f1457: tests.kernel.test_revert_merged.Incident)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:43:23Z",
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T07:16:20Z",
+      "updated": "2026-10-14T08:25:22Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
@@ -19424,6 +19432,7 @@
       "found_in": "dev",
       "id": "B-224761",
       "kernel_attempts": [
+        "session ran past its max age",
         "session ran past its max age"
       ],
       "kernel_dor_fills": 1,
@@ -19441,7 +19450,7 @@
       "state": "New",
       "title": "The satisfied-on-main cutoff dates a card by day, not by the commit that added it",
       "type": "bug",
-      "updated": "2026-10-14T07:10:32Z",
+      "updated": "2026-10-14T08:25:22Z",
       "writes": [
         "asf/kernel/needed_probe.py",
         "asf/kernel/facts.py",
@@ -93643,7 +93652,7 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_pace, tests.kernel.test_moved_main)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0334.md"
       },
@@ -93656,7 +93665,7 @@
       ],
       "title": "the release's own documentation \u2014 the v0.3.0 notes, and what 0.3 leaves open",
       "type": "task",
-      "updated": "2026-10-14T07:25:09Z",
+      "updated": "2026-10-14T08:25:22Z",
       "writes": [
         "docs/RELEASE-NOTES.md",
         "docs/KNOWN-ISSUES.md"
@@ -96519,6 +96528,9 @@
         "asf redact --unpublished"
       ],
       "id": "T-210363",
+      "kernel_attempts": [
+        "session ran past its max age"
+      ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 0,
@@ -96540,7 +96552,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T07:10:32Z",
+      "updated": "2026-10-14T08:25:22Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
@@ -96961,15 +96973,15 @@
       ],
       "id": "T-217371",
       "kernel_findings": [
-        "rebase: PR #1769 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it",
+        "asf/record/archive.py:704 \u2014 `_move_note_files` silently overwrites an already-archived note of the same name and its manifest entry, destroying a retired note's dedupe keys; pick a free destination in `plan_notes` (archive.py:557-575) using `move_to_done`'s `<stem>-2.md`, `-3.md` rule, key `moving` on the chosen destination while keeping the source name for `plan`'s `paths.add(f\"{intake_dir}/done/{src}\")` (archive.py:517) so the dry run and the writer name the same files, have `_move_note_files` replace source\u2192chosen destination rather than deriving `dest` from the manifest key, and add a ninth test case asserting the first archived note and its manifest entry survive.",
         "shared files: asf/record/archive.py also held by T-217370 \u2014 additive edits only, never a rewrite"
       ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "build-t-217371-1791955537: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217371-1791955537 'asf/build-t-217371-1791955537@20261014T052543Z' >/dev/null 2>&1 &`) was refused by the sandbox twice at\u2026",
         "round not charged: a rebase round: PR #1769 conflicts with its base"
       ],
-      "kernel_round_charged": false,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96982,7 +96994,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T07:35:49Z",
+      "updated": "2026-10-14T08:25:22Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
