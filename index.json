@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T01:52:54Z",
+  "generated": "2026-10-14T01:56:11Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19084,7 +19084,11 @@
       "id": "B-219954",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
+      "kernel_notes": [
+        "groom-fill-b-219954-1791942556: groom-fill raised risk high: both starved-lanes still gate on the now-dead auto_merge/auto_merge_at fields; the fix lives in decide.py alone using the existing wait ledger (Facts.waits) as the approve-held clock, with named tests covering the train and the risk-lane tiebreak."
+      ],
       "parent": "E-0006",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
@@ -19092,7 +19096,13 @@
       "state": "New",
       "title": "The merge train's starvation guard is dead now that item PRs never use auto-merge",
       "type": "bug",
-      "updated": "2026-10-14T01:49:27Z"
+      "updated": "2026-10-14T01:56:05Z",
+      "writes": [
+        "asf/kernel/decide.py",
+        "asf/kernel/model.py",
+        "tests/kernel/test_decide.py",
+        "tests/kernel/test_risk.py"
+      ]
     },
     "B-220155": {
       "backlinks": [
@@ -95516,7 +95526,7 @@
       ],
       "title": "the replay of the 2026-10-12/13 ledger resolves at least 80 percent in code",
       "type": "task",
-      "updated": "2026-10-14T01:45:17Z",
+      "updated": "2026-10-14T01:56:05Z",
       "writes": [
         "asf/kernel/questions.py",
         "asf/cli.py",
@@ -96259,7 +96269,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-217368",
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96272,7 +96282,7 @@
       ],
       "title": "a new id never reuses an archived one, and an id both places hold is a finding",
       "type": "task",
-      "updated": "2026-10-14T01:45:17Z",
+      "updated": "2026-10-14T01:56:05Z",
       "writes": [
         "asf/record/ids.py",
         "asf/record/check.py",
