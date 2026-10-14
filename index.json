@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T00:31:22Z",
+  "generated": "2026-10-14T00:34:59Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18436,6 +18436,9 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-208187",
+      "kernel_attempts": [
+        "escalated: one more fix round on the strong model, with every finding"
+      ],
       "kernel_closed_findings": {
         "2ff1eead": "{'head': \"{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:363'}\", 'line': ''}",
         "66bcf29c": "{'head': \"{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:212'}\", 'line': ''}",
@@ -18447,10 +18450,11 @@
       "kernel_dor_fills_ver": "0.3.11",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
+        "[4b1b3d0a@229ec46] asf/record/repair.py:394-395 \u2014 hoist this guard above the no-bullet early return: insert `if any(l.strip().startswith('```') for l in lines): return lines, False` at :372, ahead of `if not any(_CHECKBOX_RE.match(l) or _BULLET_RE.match(l) for l in lines)`, so a `## Acceptance` section of free prose plus a fenced block (the done-card population this rule exists for) is left for the non-mechanical nine instead of flattened \u2014 today `_fix_acceptance_core(['free prose about it', '```', 'code', '```'])` returns `(['- [ ] free prose about it ``` code ```'], True)`, the body's fence count drops by two and stays even, the migration converts the card and `run_cards` prints it \"fixed\", exactly the loss this guard was added to stop; add the no-bullet shape to tests/test_record_repair.py:131 and assert in both cases that `schema.migrate_cards_to_json` still refuses the card",
         "asf/record/repair.py:413-418 \u2014 return (lines, False) when any non-blank line of out still fails _HISTORY_BULLET_RE, so a ## History section holding an orphan the rule deliberately leaves alone is never rewritten and never listed as fixed; today a later continuation in the same section sets changed=True at :417, the card is announced \"fixed <card>: history: not a bullet\" and asf.schema._lift_history refuses it with exactly that reason \u2014 reproduced with ['an orphan with no bullet', '- made', '  a continuation']",
         "asf/record/repair.py:390-391 \u2014 guard the new else branch with `if line.strip().startswith('```'): return lines, False` before wrapping, so a fenced block inside ## Acceptance is left for the non-mechanical nine instead of being flattened; today each of its lines becomes a checkbox entry, the body's fence count drops by two and stays even, so the migration converts the card and nothing reports the loss \u2014 at 6cde9ca that line was appended unchanged with changed left unset, so the card stayed refused and intact"
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "build-b-208187-1791926710: NEEDS OPERATOR: the acceptance bullet \"the per-card migration path then refuses 0 cards of a copy of a real record of this size\" is still unchecked \u2014 this host and CI have no real record (the only corpus is sample/b\u2026",
         "PR #1726: install-clean-macos is red but not a required check \u2014 ignored",
@@ -18458,7 +18462,7 @@
         "build-b-208187-1791933475: NEEDS OPERATOR: confirm the per-card migration path refuses 0 cards after card_repair on a copy of the real ~2,913-card record (no such record is available in this container) \u2014 `python3 -c \"from asf.record import re\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0340",
       "priority": "need",
       "schema_version": 2,
@@ -18468,7 +18472,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-14T00:31:21Z",
+      "updated": "2026-10-14T00:34:57Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18502,6 +18506,9 @@
         "asf/kernel/ports.py:1178 \u2014 drop the mint marker as soon as the checkout is clean (`dirty = publish.dirty_paths(self.root)` then `if not dirty: publish.drop_mint_pending(self.root)`, before the `if dirty:` block): a mint killed after publish_changes committed but before drop_mint_pending (ports.py:1131) leaves the marker naming paths that are now committed, the clean path at :1178-1179 never retires it, and the next hand edit to one of those paths matches `set(dirty) <= set(pending)` at :1181 and is silently reverted by _put_back and misreported as an interrupted mint \u2014 verified on this head: \"record: an earlier tick's mint never committed \u2014 features/F-0001.md put back to 7f39015\", EDIT SURVIVED: False. Add a case beside test_interrupted_mint_leaves_no_untracked_card_after_next_tick that leaves the marker undropped after a committed mint, runs one checkout_breach, then hand-edits one of its paths and asserts the edit survives and is reported as uncommitted record change(s) at tick start."
       ],
       "kernel_fix_rounds": 2,
+      "kernel_later_findings": [
+        "[94ea130f@bbe6f26] asf/kernel/loop.py:811 \u2014 mint_plans is not gated by the breach, only mint_inbox is: `minted = minted + mint_plans(ports, out, config)` runs unconditionally and mint_plan_tasks writes Task cards into the checkout the breach just declared dirty, against the card's \"mints nothing until the checkout is clean\". Gate it the same way: `minted = minted + (mint_plans(ports, out, config) if not problem else [])`."
+      ],
       "kernel_notes": [
         "groom-fill-b-208438-1791918720: groom-fill raised risk high: confirmed in origin/main that mint_inbox's writes and the tick's one publish() are split, and a crash between them is adopted as pre-existing dirt by the next tick's snapshot(), silently losing the commit forever \u2014 a real, locatable atomicity gap, now named with tests and files to fix it"
       ],
@@ -18515,7 +18522,7 @@
       "state": "New",
       "title": "Intake mint is not atomic: a card stayed an uncommitted file for 30 hours and was never built",
       "type": "bug",
-      "updated": "2026-10-14T00:26:25Z",
+      "updated": "2026-10-14T00:34:57Z",
       "writes": [
         "asf/kernel/loop.py",
         "asf/kernel/ports.py",
