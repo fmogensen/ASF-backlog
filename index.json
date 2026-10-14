@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T08:32:06Z",
+  "generated": "2026-10-14T08:35:17Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18047,7 +18047,7 @@
         "groom-fill-b-199428-1791844636: groom-fill raised risk high: Both readers today only look at the raw kernel.launch block, confirmed by the final PR #1670 build report as a deliberately left-out finding; a fix is well-scoped (prefer validated, fallback to raw) and my own review of the last two fix commits found nothing further to fix.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_finish_first.LaunchKnobs)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0334",
       "schema_version": 2,
       "severity": "S3",
@@ -18056,7 +18056,7 @@
       "state": "New",
       "title": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
       "type": "bug",
-      "updated": "2026-10-14T08:28:47Z",
+      "updated": "2026-10-14T08:35:15Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_finish_first.py"
@@ -18631,7 +18631,6 @@
     },
     "B-211240": {
       "backlinks": [
-        "B-214946",
         "B-218951",
         "B-223558"
       ],
@@ -18911,11 +18910,9 @@
       "kernel_dor_fills_ver": "0.3.14",
       "kernel_extra_rounds": 0,
       "kernel_findings": [
-        "[8a900942@bb6cfe8] asf/kernel/findings.py:198 \u2014 `_cited` has no imperative override and no clause scoping, so `missing` on either side of a path beats an explicit ask: \"add the missing guard to asf/kernel/decide.py:12\" \u2192 `[]` (main: `['asf/kernel/decide.py']`), \"no plan exists; create docs/plans/b-1.md\" \u2192 `[]`, and the earlier finding's own example \"`docs/plans/x.md` is missing. Write `docs/plans/x.md` \u2026\" \u2192 `[]` \u2014 four regressions against `origin/main` and the card's third Acceptance. Add `IMPERATIVE_RE = re.compile(r'\\b(?:add|write|create|delete|remove|fix|replace|rename|move|drop|restore|update)\\b', re.I)` and `return False` when it fires in `before`, ahead of both cue checks, then cut `before`/`after` at the nearest clause break (`.;\u2014:`); add the four rows as `OutsideWrites` cases. Measured: 19/100 = 19 % requested, inside the 20 % ceiling.",
-        "asf/kernel/findings.py:185 \u2014 `verbatim`, `near-miss` and the bare `existed` are cues of neither pattern the card names, and `verbatim` suppresses a genuine ask inside the honest fixture itself (row 26: ``(`asf/feeder/render.py:61`) prints `row.action` verbatim`` \u2192 `[]` here, `['asf/feeder/render.py']` on main, and that path is outside the card's `writes:`). Drop the three alternatives, keeping `never existed`: `EITHER_SIDE_RE = re.compile(r'\\b(?:missing|absent|not in the record|never existed|neither exists?|' r\"does(?:n't| not) exist|no plan|no spec|forbids?)\\b\", re.I)`, and reword the third path of `tests/kernel/test_finding_writes.py:112-117` off `near-miss` onto the card's pattern-2 wording. Measured: 18/100 = 18 % alone, 19 % with the fix above.",
-        "shared files: asf/kernel/findings.py also held by B-211240 \u2014 additive edits only, never a rewrite"
+        "asf/kernel/findings.py:236 \u2014 `IMPERATIVE_RE.search(' '.join(before))` fires on an indicative verb in another clause, so honest-fixture row 60 (\"both docstrings write the literal string `tools/install.sh`, which `tools/check_conventions.sh` forbids\") regressed from `[]` at `9762c356d` to `['tools/install.sh', 'tools/check_conventions.sh']`, breaking the card's second Acceptance on the record it measures on; the acceptance test at tests/kernel/test_finding_writes.py:113 is green only because its paraphrase says singular \"writes\". Anchor the override to the clause's first word after the last path token \u2014 replace lines 236-237 with `for j in range(len(before) - 1, -1, -1):` / `    if _path_token(before[j]):` / `        before = before[j + 1:]` / `        break` / `if before and IMPERATIVE_RE.match(before[0]):` / `    return False`, fix the `IMPERATIVE_RE` and `_cited` docstrings to say anchored not searched, add an `OutsideWrites` case using the fixture's own \"both docstrings write\" wording expecting `[]`, and update the Replay comment's measured 19% to 18% (tests/kernel/test_finding_writes.py:532); verified: 56 tests OK, 18/100 requested, 0 routed"
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable.",
         "round not charged: a rebase round: PR #1738 conflicts with its base",
@@ -18925,7 +18922,7 @@
         "reopened: satisfied-on-main no longer holds (satisfied on main at aa2fcd79f: tests.kernel.test_finding_writes.OutsideWrites, tests.kernel.test_finding_writes.Replay)"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18935,7 +18932,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T08:32:05Z",
+      "updated": "2026-10-14T08:35:15Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
@@ -18952,6 +18949,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-216547",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.40",
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_review_measure, tests.kernel.test_rereview_scope)"
       ],
@@ -18963,7 +18962,7 @@
       "state": "New",
       "title": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z"
+      "updated": "2026-10-14T08:35:15Z"
     },
     "B-216548": {
       "backlinks": [
@@ -18974,6 +18973,8 @@
       "folder": "bugs",
       "found_in": "dev",
       "id": "B-216548",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.40",
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_rereview_scope)"
       ],
@@ -18985,7 +18986,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T05:47:02Z"
+      "updated": "2026-10-14T08:35:15Z"
     },
     "B-218499": {
       "backlinks": [],
@@ -19297,6 +19298,10 @@
       "kernel_attempts": [
         "session ran past its max age"
       ],
+      "kernel_closed_findings": {
+        "4c060d46": "{'head': '2f49d4e8e50a4c532812eea49f4c3e523191dfa7', 'line': 'docs/plans/f-0357.md:823'}",
+        "5eb3089e": "{'head': '2f49d4e8e50a4c532812eea49f4c3e523191dfa7', 'line': 'docs/plans/f-0357.md:822'}"
+      },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.26",
       "kernel_findings": [
@@ -19314,7 +19319,7 @@
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T08:32:05Z",
+      "updated": "2026-10-14T08:35:15Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
@@ -96551,7 +96556,7 @@
         "build-t-210363-1791950444: NEEDS OPERATOR: whether any open PR was charged a fix round for the 2026-10-13 trunk-wide failure"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0357.md"
       },
@@ -96564,7 +96569,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T08:28:47Z",
+      "updated": "2026-10-14T08:35:15Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
@@ -96940,7 +96945,7 @@
         "operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
       "kernel_fix_rounds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96953,7 +96958,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T07:35:49Z",
+      "updated": "2026-10-14T08:35:15Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -96994,7 +96999,7 @@
         "build-t-217371-1791955537: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217371-1791955537 'asf/build-t-217371-1791955537@20261014T052543Z' >/dev/null 2>&1 &`) was refused by the sandbox twice at\u2026",
         "round not charged: a rebase round: PR #1769 conflicts with its base"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97007,7 +97012,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T08:25:22Z",
+      "updated": "2026-10-14T08:35:15Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
@@ -97037,6 +97042,7 @@
         "asf redact --unpublished"
       ],
       "id": "T-217372",
+      "kernel_stack": "worker/T-217371@15235399018a92f7f7cac1bffd359271c70302c2",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97049,7 +97055,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-13T22:57:30Z",
+      "updated": "2026-10-14T08:35:15Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
