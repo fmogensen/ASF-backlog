@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:50:31Z",
+  "generated": "2026-10-14T10:55:22Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18991,11 +18991,18 @@
       ],
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_findings": [
+        "asf/kernel/findings.py:326 \u2014 `first_miss` recognises a spent courtesy by finding key only, and `earlier_lines`' new `exclude` (asf/kernel/findings.py:273) drops the spent key's `path:line` from the reworded-re-raise guard, so the same defect reworded blocks again every round; derive `spent_lines = {F.line_key(F.parse(f)[2]) for r in self.facts.reviews if r.item_id == s.item_id for f in r.findings if F.parse(f)[0] in used} - {''}` in `_scope` (asf/kernel/apply.py:598), pass it to `F.first_miss(moved, own_ranges, used, spent_lines)`, and defer on `if key in used or line_key(text) in spent_lines:` \u2014 with a test that a reworded re-raise reads LATER and `P.FIRST_MISS_KEYS` does not grow",
+        "asf/kernel/apply.py:281 \u2014 `ArchiveAndReset` clears the round state but not `kernel_first_miss_keys`, so after a rebuild a genuine first-review miss on the fresh PR is deferred straight to LATER instead of blocking once; add `P.FIRST_MISS_KEYS: None` to that `self.set` and assert it beside the other cleared keys",
+        "asf/kernel/apply.py:630 \u2014 the audit line still reports the pre-promotion `moved`, naming a finding that blocked as \"moved to LATER\" and contradicting the line above it; log `moved_now = deferred if promoted else moved` (set at asf/kernel/apply.py:618, keeping the `if moved:` guards) and guard the \"first-review miss \u2026 block once\" log at asf/kernel/apply.py:621 with `own_ranges is not None` so the unread fail-safe is not reported as a first-review miss",
+        "shared files: asf/kernel/ports.py also held by B-226066 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_review_measure, tests.kernel.test_rereview_scope)",
         "groom-fill-b-216547-1791966892: groom-fill raised risk high: trunk has no own-diff once-rule or split LATER count (confirmed by reading split_scope/_scope and running the two cited test files green); the earlier satisfied-on-main close was false."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19005,7 +19012,7 @@
       "state": "New",
       "title": "A first-review miss on the PR's own lines is deferred by the scoped re-review; decide whether it blocks once",
       "type": "bug",
-      "updated": "2026-10-14T10:37:33Z",
+      "updated": "2026-10-14T10:55:04Z",
       "writes": [
         "asf/kernel/apply.py",
         "asf/kernel/findings.py",
@@ -19591,11 +19598,15 @@
       ],
       "kernel_dor_fills": 2,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_findings": [
+        "tests/test_workflow.py:140-143 \u2014 the ClockJob class docstring still reads \"`clock-400` is report-only\", contradicting `test_the_400d_leg_blocks_like_its_sibling` below it; replace the T-210358 sentence with \"they are two jobs, not one matrix, because a matrix's one aggregate `result` could not tell a red leg from its sibling in `needs.<job>.result`. B-225513: both legs block the gathering job alike.\""
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-225513-1791971413: groom-fill raised risk high: The five named modules were already migrated to asf.clock by T-210358 (#1758, on origin/main) and the baseline file already matches the tree; the only real remaining work is flipping clock-400 from report-only to blocking in CI, which touches the kernel's own gate.",
         "build-b-225513-1791973010: NEEDS OPERATOR: file a Bug for the four modules named above (test_quota_headroom.py, test_quota_stale.py, tests/kernel/test_gh_budget.py, test_groom_publish.py) reading the real clock/pinned dates under the now-bloc\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19605,7 +19616,7 @@
       "state": "New",
       "title": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
       "type": "bug",
-      "updated": "2026-10-14T10:43:28Z",
+      "updated": "2026-10-14T10:55:04Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py"
@@ -19674,7 +19685,7 @@
       "state": "New",
       "title": "An item whose out-of-bounds reviewer fix is kept can never leave Stuck",
       "type": "bug",
-      "updated": "2026-10-14T10:40:12Z",
+      "updated": "2026-10-14T10:55:04Z",
       "writes": [
         "asf/kernel/reviewfix.py",
         "asf/kernel/decide.py",
@@ -19682,7 +19693,9 @@
       ]
     },
     "B-226066": {
-      "backlinks": [],
+      "backlinks": [
+        "B-216547"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -92924,7 +92937,8 @@
         "relaunch: PR #1789 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: PR #1792 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
         "relaunch: escalated: the previous session stopped (done without a push: pushed: no \u2014 the work is already landed on origin/main at c4c7a3159 (PR #1635); all five writes: files (asf/record/index.py, asf/record/check.py, asf/cli.py, tools/check_card_rea\u2026) \u2014 pick up from its report and branch, and finish the item",
-        "relaunch: PR #1798 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
+        "relaunch: PR #1798 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no",
+        "relaunch: PR #1799 changed nothing (an empty diff) and the card's proving tests are not green on main: make the change the card asks for, or name the landed sha and the passing tests in a done REPORT with pushed: no"
       ],
       "kernel_findings": [
         "asf/record/index.py:39 \u2014 `only=` matches only `rec['relpath']`, so the view relpath `refresh` now returns at `:58` can never be fed back to it; `asf/record/publish.py:154-156` does exactly that round-trip, so a hand-edited view in the checkout is never regenerated (the commit lands the right bytes, the working tree keeps the stale ones, and `asf check` then reports `view is stale` with no automatic repair). Fix: `if only is not None and rec['relpath'] not in only and os.path.relpath(card.view_path(rec['path']), root) not in only: continue`.",
@@ -92940,7 +92954,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "review",
+      "kernel_state": "ready",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92953,7 +92967,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:50:24Z",
+      "updated": "2026-10-14T10:55:04Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -97109,7 +97123,7 @@
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97122,7 +97136,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T10:50:24Z",
+      "updated": "2026-10-14T10:55:04Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -97196,7 +97210,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T10:37:33Z",
+      "updated": "2026-10-14T10:55:04Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
