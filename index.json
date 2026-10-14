@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T12:50:56Z",
+  "generated": "2026-10-14T12:54:17Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -38997,7 +38997,7 @@
       "state": "New",
       "title": "ASF 0.4 design: remove five mechanisms, keep five, seven invariants, built in one order",
       "type": "feature",
-      "updated": "2026-10-14T12:50:55Z"
+      "updated": "2026-10-14T12:54:16Z"
     },
     "R-0001": {
       "backlinks": [
@@ -97216,6 +97216,11 @@
         "Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
         "granted tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
       ],
+      "kernel_closed_findings": {
+        "468cbb92": "{'head': '363fcbe215ba006f08cf62afdfbdb9e5345814b9', 'line': 'tests/test_record_archive_readers.py:149'}",
+        "7af945d8": "{'head': '363fcbe215ba006f08cf62afdfbdb9e5345814b9', 'line': 'asf/tick/tick.py:191'}",
+        "9e129858": "{'head': '363fcbe215ba006f08cf62afdfbdb9e5345814b9', 'line': 'asf/tick/tick.py:192'}"
+      },
       "kernel_extra_rounds": 0,
       "kernel_findings": [
         "tests/test_record_archive_readers.py:149 \u2014 Step 5's acceptance line 6 lost its third clause (PD3): restore the dropped case as `test_asf_check_reports_no_missing_archive_folder_before_any_archive`, asserting `record_findings` on a record with no `archive/` directory names no archive folder as missing, and restore the comment to the plan's full sentence.",
@@ -97241,7 +97246,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T12:44:29Z",
+      "updated": "2026-10-14T12:54:16Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
