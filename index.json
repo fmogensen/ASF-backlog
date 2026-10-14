@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T08:50:59Z",
+  "generated": "2026-10-14T08:53:57Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18057,7 +18057,7 @@
         "groom-fill-b-199428-1791844636: groom-fill raised risk high: Both readers today only look at the raw kernel.launch block, confirmed by the final PR #1670 build report as a deliberately left-out finding; a fix is well-scoped (prefer validated, fallback to raw) and my own review of the last two fix commits found nothing further to fix.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_finish_first.LaunchKnobs)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0334",
       "schema_version": 2,
       "severity": "S3",
@@ -18066,7 +18066,7 @@
       "state": "New",
       "title": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
       "type": "bug",
-      "updated": "2026-10-14T08:50:56Z",
+      "updated": "2026-10-14T08:53:55Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_finish_first.py"
@@ -19597,7 +19597,11 @@
       "id": "B-226065",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_notes": [
+        "groom-fill-b-226065-1791967471: groom-fill raised risk high: holding_verdict/verdict_holds keeps the stale out-of-bounds breach 'changes' verdict current whenever the PR tree does not move, so _judge_pr re-charges _fix_round forever and _final_review's own \"no verdict holds\" guard blocks it from ever breaking the loop (confirmed against asf/kernel/decide.py:1881-2004, 2246-2290 and asf/kernel/reviewfix.py, with no existing test in tests/kernel/test_reviewer_fixes.py or test_final_review.py covering a no-op build after a breach); needs real code in the kernel, so risk_raise: high."
+      ],
       "parent": "F-0358",
+      "risk": "high",
       "schema_version": 3,
       "severity": "S3",
       "signature": "An item whose out-of-bounds reviewer fix is kept can never leave Stuck",
@@ -19605,7 +19609,12 @@
       "state": "New",
       "title": "An item whose out-of-bounds reviewer fix is kept can never leave Stuck",
       "type": "bug",
-      "updated": "2026-10-14T08:44:39Z"
+      "updated": "2026-10-14T08:53:55Z",
+      "writes": [
+        "asf/kernel/reviewfix.py",
+        "asf/kernel/decide.py",
+        "tests/kernel/test_reviewer_fixes.py"
+      ]
     },
     "B-226066": {
       "backlinks": [],
@@ -19629,15 +19638,20 @@
         "B-213994"
       ],
       "children": [],
+      "decided": true,
       "folder": "bugs",
       "id": "B-228767",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.40",
       "parent": "F-0357",
+      "priority": "need",
       "schema_version": 3,
+      "severity": "S2",
       "stage_since": "2026-10-14T08:47:21Z",
       "state": "New",
       "title": "Later findings from the review of B-213994: A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T08:47:21Z"
+      "updated": "2026-10-14T08:53:55Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -92797,7 +92811,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92810,7 +92824,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T08:47:43Z",
+      "updated": "2026-10-14T08:53:55Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -96634,7 +96648,8 @@
       "kernel_extra_rounds": 0,
       "kernel_fix_rounds": 0,
       "kernel_notes": [
-        "build-t-210363-1791950444: NEEDS OPERATOR: whether any open PR was charged a fix round for the 2026-10-13 trunk-wide failure"
+        "build-t-210363-1791950444: NEEDS OPERATOR: whether any open PR was charged a fix round for the 2026-10-13 trunk-wide failure",
+        "PR #1783: install-clean-macos is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
       "kernel_state": "review",
@@ -96650,7 +96665,7 @@
       ],
       "title": "the replay of the 2026-10-13 incident, over committed facts",
       "type": "task",
-      "updated": "2026-10-14T08:50:56Z",
+      "updated": "2026-10-14T08:53:55Z",
       "writes": [
         "tests/fixtures/red-trunk/2026-10-13.json",
         "tests/kernel/test_red_trunk_replay.py"
@@ -96955,19 +96970,21 @@
       "kernel_attempts": [
         "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before.",
         "relaunch: operator answer: granted tests/test_tick.py; nothing else outside writes (card updated by the kernel).",
-        "session ran past its max age"
+        "session ran past its max age",
+        "escalated: one more fix round on the strong model, with every finding"
       ],
       "kernel_findings": [
+        "asf/tick/tick.py:198 \u2014 the archive writer runs even when `plan['moving']` is empty, and `apply()` then creates/rewrites `archive/manifest.json` (fresh `generated` stamp) and re-runs `index.refresh` at least hourly on every product, including one with `archive_after_days: 0` (archiving off); replace the bare `else:` with `elif not (archive_plan['moving'] or archive_plan['notes']): print(f\"archive moved=0 held={len(archive_plan['held_back'])}\")` ahead of it, and add a case to `tests/test_tick.py` asserting the writer never runs and no manifest appears when nothing moves",
         "red: tests (3.12) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "red: tests (3.13) \u2014 step 'the checks and every part are green, and the parts ran every module once' failed:\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.13\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.13, 3) did not finish green\n##[error]Process completed with exit code 1.\n##[group]Run python3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"\n^[[36;1mpython3 tools/run_tests.py --gather ci-parts --python \"3.12\" --parts \"$PARTS\"^[[0m\nshell: /usr/bin/bash -e {0}\nenv:\n  PARTS: 4\n##[endgroup]\nFAILED: part (3.12, 3) did not finish green\n##[error]Process completed with exit code 1.",
         "operator answer: granted tests/test_tick.py; nothing else outside writes (card updated by the kernel)."
       ],
-      "kernel_fix_rounds": 2,
+      "kernel_fix_rounds": 3,
       "kernel_notes": [
         "PR #1771: part (3.12, 3) is red but not a required check \u2014 ignored",
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96980,7 +96997,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T08:38:18Z",
+      "updated": "2026-10-14T08:53:55Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -97037,7 +97054,7 @@
         "[e31cb5ad@5c2b778] docs/specs/f-0363.md:349-354 \u2014 replace the `with_archive` docstring's \"`items` (an `asf.views.index_reader.Items`)\" premise with the plain-map-or-`Items` contract the code now implements, since the production caller passes a plain map",
         "[a544417d@5c2b778] asf/doctor.py:215 \u2014 rename `check_archive_retention` to `check_archive` and move its `rows.append` to directly after the `backlog` row, as plan Step 3 names it"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97050,7 +97067,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T08:50:56Z",
+      "updated": "2026-10-14T08:53:55Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -97094,7 +97111,7 @@
         "build-t-217371-1791955537: NEEDS OPERATOR: the heartbeat command (`nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217371-1791955537 'asf/build-t-217371-1791955537@20261014T052543Z' >/dev/null 2>&1 &`) was refused by the sandbox twice at\u2026",
         "round not charged: a rebase round: PR #1769 conflicts with its base"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97107,7 +97124,7 @@
       ],
       "title": "processed inbox notes are archived once their card exists, and the retire dedupe reads the manifest",
       "type": "task",
-      "updated": "2026-10-14T08:50:56Z",
+      "updated": "2026-10-14T08:53:55Z",
       "writes": [
         "asf/record/archive.py",
         "asf/groom/inbox.py",
