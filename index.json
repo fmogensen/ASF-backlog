@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T06:59:51Z",
+  "generated": "2026-10-14T07:03:09Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18039,7 +18039,7 @@
         "groom-fill-b-199428-1791844636: groom-fill raised risk high: Both readers today only look at the raw kernel.launch block, confirmed by the final PR #1670 build report as a deliberately left-out finding; a fix is well-scoped (prefer validated, fallback to raw) and my own review of the last two fix commits found nothing further to fix.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9277db82b: tests.kernel.test_finish_first.LaunchKnobs)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0334",
       "schema_version": 2,
       "severity": "S3",
@@ -18048,7 +18048,7 @@
       "state": "New",
       "title": "Stories-first: validated-config read and a review of the last fix commit of PR #1670",
       "type": "bug",
-      "updated": "2026-10-14T06:49:01Z",
+      "updated": "2026-10-14T07:03:05Z",
       "writes": [
         "asf/kernel/ports.py",
         "tests/kernel/test_finish_first.py"
@@ -18624,6 +18624,7 @@
     "B-211240": {
       "backlinks": [
         "B-214946",
+        "B-218951",
         "B-223558"
       ],
       "children": [],
@@ -18661,6 +18662,7 @@
     },
     "B-211241": {
       "backlinks": [
+        "B-213994",
         "B-223558"
       ],
       "children": [],
@@ -18787,11 +18789,21 @@
       "id": "B-213994",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
+      "kernel_findings": [
+        "asf/kernel/trunk.py:484 \u2014 the exclusion must also accept a package init on the id's own path: `if any('%s.py' % p in body or '%s/__init__.py' % p in body for p in parts): continue`; add the `tests/__init__.py`-fails-to-import case to `ParseUnittest` beside the `test_broken.py` one",
+        "asf/kernel/trunk.py:476 \u2014 build `blocks` as `{short: [body, \u2026]}` via `setdefault(short, []).append(body)` instead of a dict comprehension that drops every body but the last",
+        "asf/kernel/trunk.py:483 \u2014 drop `next(iter(hit))`; check every body the hit keys carry: `bodies = [b for h in hit for b in blocks[h]]`, then `if any('%s.py' % p in b or '%s/__init__.py' % p in b for p in parts for b in bodies): continue`",
+        "docs/specs/f-0357.md:161 \u2014 redefine `missing` as absence: \"plus `missing`: the asked ids that are **absent** in that tree \u2014 unittest's loader stood in for them *and* no frame of the failure reaches the tree's own file (a module that is there and fails to import is an `error` only, never `missing`)\"",
+        "docs/specs/f-0357.md:130 \u2014 D4 must say absence, not any load failure: \"an id that is **absent** at the parent (P6: `missing`, not merely a load failure) reads as `guilty` for that id; a load failure that is not absence stays unproven\"",
+        "docs/specs/f-0357.md:617 \u2014 the checklist line becomes \"an id *absent* on the parent classes the spell guilty, and one whose module is there but fails to import does not\"",
+        "shared files: asf/kernel/trunk.py also held by B-211241 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-213994-1791922466: groom-fill raised risk high: missing_ids conflates \"module exists but fails to import\" with \"absent\" by matching on name alone; the fix is a self-contained text-based reclassification in trunk.py plus a doc-only sync of D1/\u00a72.1/\u00a72.2 to the already-shipped two-run, bounded-retry read.",
         "reopened: satisfied-on-main no longer holds (satisfied on main at 9a37dbf74: tests.kernel.test_blame_before_revert.ParseUnittest, tests.kernel.test_blame_before_revert.ProbeClass)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -18801,7 +18813,7 @@
       "state": "New",
       "title": "A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T06:49:01Z",
+      "updated": "2026-10-14T07:03:05Z",
       "writes": [
         "asf/kernel/trunk.py",
         "docs/specs/f-0357.md",
@@ -19052,10 +19064,16 @@
       "id": "B-218951",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.24",
+      "kernel_findings": [
+        "asf/kernel/reviewfix.py:124 \u2014 C1: drop the `found_session` conjunct so an absent `ASF-Session` is a breach too (`elif session and (not found_session or session not in found_session):`, naming `'absent'` when there is none), and add the trailer to the shared in-bounds fixture `tests/kernel/test_reviewer_fixes.py:43` (`TRAILER = 'fix it\\n\\n%s: %s\\n%s: %s' % (RF.TRAILER, JOB, RF.SESSION_TRAILER, SID)`) plus a case for a commit carrying no `ASF-Session` at all",
+        "asf/kernel/model.py:302 \u2014 C2: \"never text the session itself wrote\" is false \u2014 `asf/workers/githooks.py:50-52` stamps with `--if-exists doNothing`, so an author-written `ASF-Session:` line is kept and the hook adds nothing; say the hook stamps it only when the message carries none, and trim the same claim at `asf/kernel/reviewfix.py:30-31`",
+        "shared files: asf/kernel/apply.py also held by B-211240 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at b2921cb8f: tests.kernel.test_reviewer_fixes.Bounds, tests.kernel.test_reviewer_fixes.Apply)"
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "schema_version": 3,
       "severity": "S3",
@@ -19064,7 +19082,7 @@
       "state": "New",
       "title": "A reviewer fix is attributed by a trailer any commit author can write",
       "type": "bug",
-      "updated": "2026-10-14T06:49:01Z",
+      "updated": "2026-10-14T07:03:05Z",
       "writes": [
         "asf/kernel/model.py",
         "asf/kernel/ports.py",
@@ -19262,14 +19280,14 @@
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at d8a1f1457: tests.kernel.test_revert_merged.Incident)"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0357",
       "schema_version": 3,
       "stage_since": "2026-10-14T03:43:23Z",
       "state": "New",
       "title": "Later findings from the review of T-210360: a trunk-wide red holds new builds, opens no revert and files exactly one Bug",
       "type": "bug",
-      "updated": "2026-10-14T06:52:36Z",
+      "updated": "2026-10-14T07:03:05Z",
       "writes": [
         "docs/plans/f-0357.md"
       ]
