@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T12:30:40Z",
+  "generated": "2026-10-14T12:34:33Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19839,7 +19839,7 @@
       "state": "New",
       "title": "Later findings from the review of B-216548: A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T12:18:40Z",
+      "updated": "2026-10-14T12:34:31Z",
       "writes": [
         "asf/kernel/apply.py",
         "tests/kernel/test_rereview_scope.py"
@@ -38973,7 +38973,7 @@
     "F-0364": {
       "backlinks": [],
       "children": [],
-      "decided": false,
+      "decided": true,
       "folder": "features",
       "id": "F-0364",
       "kernel_fix_rounds": 0,
@@ -38983,13 +38983,14 @@
       "kernel_state": "review",
       "milestone": "0.4",
       "parent": "E-0007",
+      "priority": "need",
       "rank": 1,
       "schema_version": 3,
       "stage_since": "2026-10-14T11:59:28Z",
       "state": "New",
       "title": "ASF 0.4 design: remove five mechanisms, keep five, seven invariants, built in one order",
       "type": "feature",
-      "updated": "2026-10-14T12:30:37Z"
+      "updated": "2026-10-14T12:34:31Z"
     },
     "R-0001": {
       "backlinks": [
@@ -97294,7 +97295,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T12:18:40Z",
+      "updated": "2026-10-14T12:34:31Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
@@ -97395,7 +97396,7 @@
         "tests/test_record_archive_scale.py:157 \u2014 [bbad812a@c755930] `assertLess(out.index('measuring '), out.index('cards in working set'))` cannot fail: the test builds `out` by concatenating `render_header` then `render_measure` at :149-152, so the index is always 0. Restore the deleted header-content assertions (`header['cards'] == N_CLOSED + N_RETIRED + N_LIVE`, `header['markdown_files']` the same, `header['bytes'] > 0` \u2014 `measure_header`'s values are otherwise asserted nowhere) and assert the order in `test_cli_measure_exits_non_zero_on_a_missed_target` at :234-256 by patching `archive.measure` with a spy that records `out.getvalue()`, then `assertIn('measuring ', seen['printed'])`"
       ],
       "kernel_fix_rounds": 2,
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97408,7 +97409,7 @@
       ],
       "title": "measured on a record of today's size \u2014 half the working set, twice the speed, and nothing referenced missing",
       "type": "task",
-      "updated": "2026-10-14T12:30:37Z",
+      "updated": "2026-10-14T12:34:31Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
