@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T05:35:45Z",
+  "generated": "2026-10-14T05:39:00Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18394,7 +18394,9 @@
       ]
     },
     "B-205886": {
-      "backlinks": [],
+      "backlinks": [
+        "B-224610"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -19330,6 +19332,25 @@
         "tests/kernel/test_speedups.py",
         "tests/test_cloud.py"
       ]
+    },
+    "B-224610": {
+      "backlinks": [],
+      "children": [],
+      "decided": true,
+      "folder": "bugs",
+      "found_in": "dev",
+      "id": "B-224610",
+      "kernel_dor_fills": 1,
+      "kernel_dor_fills_ver": "0.3.26",
+      "parent": "F-0360",
+      "schema_version": 3,
+      "severity": "S3",
+      "signature": "The no-first-beat judge ends sessions that are working: 10 ended since the heartbeat came back",
+      "stage_since": "2026-10-14T05:37:59Z",
+      "state": "New",
+      "title": "The no-first-beat judge ends sessions that are working: 10 ended since the heartbeat came back",
+      "type": "bug",
+      "updated": "2026-10-14T05:38:57Z"
     },
     "B-70500": {
       "backlinks": [],
@@ -38259,7 +38280,8 @@
         "B-208438",
         "B-220155",
         "B-223558",
-        "B-224009"
+        "B-224009",
+        "B-224610"
       ],
       "decided": true,
       "folder": "features",
@@ -95943,7 +95965,9 @@
       "after": [
         "T-210355"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-224610"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -96480,7 +96504,7 @@
         "build-t-217366-1791952993: NEEDS OPERATOR: the heartbeat command `nohup sh .b0000_heartbeat.sh 300 refs/asf/hb/build-t-217366-1791952993 'asf/build-t-217366-1791952993@20261014T044322Z' >/dev/null 2>&1 &` could not start \u2014 the sandbox require\u2026"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96493,7 +96517,7 @@
       ],
       "title": "asf archive \u2014 the dry run is the default, and the apply runs in that order and no other",
       "type": "task",
-      "updated": "2026-10-14T05:28:30Z",
+      "updated": "2026-10-14T05:38:57Z",
       "writes": [
         "asf/record/archive.py",
         "asf/cli.py",
@@ -96598,7 +96622,9 @@
       "after": [
         "T-217366"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-224610"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -96616,16 +96642,14 @@
         "asf redact --unpublished"
       ],
       "id": "T-217369",
-      "kernel_attempts": [
-        "session ran past its max age",
-        "session ran past its max age"
+      "kernel_answers": [
+        "Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
-      "kernel_stack": "worker/T-217366@c6ba97fed32155155b173aca6dc844f1d595de50",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "session ran past its max age",
-      "kernel_stuck_since": "2026-10-14T05:25:22Z",
+      "kernel_attempts": [
+        "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
+      ],
+      "kernel_stack": "worker/T-217366@8e1a879032f6192d53ac2529a458658ce688d476",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96638,7 +96662,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T05:25:43Z",
+      "updated": "2026-10-14T05:38:57Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
@@ -96650,7 +96674,9 @@
       "after": [
         "T-217366"
       ],
-      "backlinks": [],
+      "backlinks": [
+        "B-224610"
+      ],
       "children": [],
       "decided": true,
       "folder": "tasks",
@@ -96667,16 +96693,14 @@
         "asf redact --unpublished"
       ],
       "id": "T-217370",
+      "kernel_answers": [
+        "Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
+      ],
       "kernel_attempts": [
-        "session ran past its max age",
-        "session ran past its max age"
+        "relaunch: operator answer: Round granted: the last session was working (its log was still growing) and was ended by a defect in the beat judge, not by anything in this item. Continue from the branch as it is; same scope as before."
       ],
       "kernel_stack": "worker/T-217366@c6ba97fed32155155b173aca6dc844f1d595de50",
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "the loop retries once its facts change",
-      "kernel_stuck_owner": "loop",
-      "kernel_stuck_reason": "session ran past its max age",
-      "kernel_stuck_since": "2026-10-14T05:25:22Z",
+      "kernel_state": "new",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -96689,7 +96713,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T05:25:43Z",
+      "updated": "2026-10-14T05:38:57Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
