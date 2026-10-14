@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:13:57Z",
+  "generated": "2026-10-14T10:17:36Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18979,6 +18979,7 @@
       "backlinks": [
         "T-217370",
         "B-214946",
+        "B-216548",
         "B-223558"
       ],
       "children": [],
@@ -19026,11 +19027,17 @@
       "id": "B-216548",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_findings": [
+        "asf/kernel/apply.py:284 \u2014 clear `P.LATER_FINDINGS` only when the card already carries a filed Bug for them (`P.LATER_FILED` always): add `_Applier._clear_later(item_id)` returning `{P.LATER_FILED: None, **({P.LATER_FINDINGS: None} if filed else {})}`, reading `later_filed` off `self.facts.items.get(item_id)` since `self.field` has no entry for it, and splice it in with `**self._clear_later(a.item_id),` here and at `asf/kernel/apply.py:826`",
+        "asf/kernel/decide.py:3177 \u2014 `gen = it.rebuilds + len(it.reverted)` falls back when `asf/kernel/needed.py:382` takes every number off `kernel_reverted`, so the key repeats an earlier landing's and `file_bug` swallows the new findings into the first Bug; replace with a key derived from the findings listed \u2014 `fkeys = '+'.join(sorted(F.parse(f)[0] for f in later))` and `key = '(later-findings:%s:%s)' % (iid, fkeys)` \u2014 updating the bare-key expectation at `tests/kernel/test_rereview_scope.py:442`, or use a monotonic `kernel_later_gen` bumped at the two clear sites (that one needs `asf/kernel/ports.py` and `asf/kernel/model.py` added to `writes:`)",
+        "shared files: asf/kernel/apply.py, asf/kernel/decide.py, tests/kernel/test_rereview_scope.py also held by B-216547, B-224862 \u2014 additive edits only, never a rewrite"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "reopened: satisfied-on-main no longer holds (satisfied on main at 904ae82b7: tests.kernel.test_rereview_scope)",
         "groom-fill-b-216548-1791966899: groom-fill raised risk high: Confirmed in code \u2014 later_bugs' later_filed check, _keep_later's never-cleared later_findings, and file_bug's key-substring dedup all combine to drop a second landing's follow-up Bug; the fix and its tests are concretely scoped across decide.py, apply.py and the two test files."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -19040,7 +19047,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T10:02:40Z",
+      "updated": "2026-10-14T10:17:33Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
@@ -19539,7 +19546,9 @@
       ]
     },
     "B-224862": {
-      "backlinks": [],
+      "backlinks": [
+        "B-216548"
+      ],
       "children": [],
       "decided": true,
       "folder": "bugs",
@@ -19585,7 +19594,7 @@
       "kernel_notes": [
         "groom-fill-b-225513-1791971413: groom-fill raised risk high: The five named modules were already migrated to asf.clock by T-210358 (#1758, on origin/main) and the baseline file already matches the tree; the only real remaining work is flipping clock-400 from report-only to blocking in CI, which touches the kernel's own gate."
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19595,7 +19604,7 @@
       "state": "New",
       "title": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
       "type": "bug",
-      "updated": "2026-10-14T10:13:54Z",
+      "updated": "2026-10-14T10:17:33Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py"
@@ -19702,7 +19711,7 @@
       "kernel_notes": [
         "groom-fill-b-228767-1791968026: groom-fill raised risk high: all three findings are concrete, already confirmed (repro showed missing_ids returns [] on a basename collision), and fit the exact code+spec+test shape the parent fix (B-213994) already used, so the card just needed acceptance/writes named \u2014 risk_raise is high because the write touches asf/kernel/trunk.py."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0357",
       "priority": "need",
       "risk": "high",
@@ -19712,7 +19721,7 @@
       "state": "New",
       "title": "Later findings from the review of B-213994: A blame id that fails to import on the parent reads as absent; the spec still says one run",
       "type": "bug",
-      "updated": "2026-10-14T10:02:40Z",
+      "updated": "2026-10-14T10:17:33Z",
       "writes": [
         "docs/specs/f-0357.md",
         "asf/kernel/trunk.py",
@@ -19729,7 +19738,7 @@
       "id": "B-229218",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0336",
       "priority": "nice",
       "schema_version": 3,
@@ -19738,7 +19747,7 @@
       "state": "New",
       "title": "Later findings from the review of B-196077: kernel.flake: close the open review findings before it is enabled",
       "type": "bug",
-      "updated": "2026-10-14T10:10:59Z",
+      "updated": "2026-10-14T10:17:33Z",
       "writes": [
         "tests/kernel/test_flake.py"
       ]
@@ -92897,12 +92906,13 @@
       ],
       "kernel_fix_rounds": 3,
       "kernel_notes": [
-        "PR #1595 reverted off main (red at 3ed08c6ab: tests (3.12), tests (3.13)) \u2014 back to Ready"
+        "PR #1595 reverted off main (red at 3ed08c6ab: tests (3.12), tests (3.13)) \u2014 back to Ready",
+        "satisfied on main at 63c69263d: tests.test_card_json"
       ],
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "building",
+      "kernel_state": "done",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92915,7 +92925,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:13:54Z",
+      "updated": "2026-10-14T10:17:33Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
