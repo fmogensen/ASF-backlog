@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T10:40:14Z",
+  "generated": "2026-10-14T10:43:31Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19605,7 +19605,7 @@
       "state": "New",
       "title": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
       "type": "bug",
-      "updated": "2026-10-14T10:28:38Z",
+      "updated": "2026-10-14T10:43:28Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py"
@@ -19620,10 +19620,14 @@
       "id": "B-226064",
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.40",
+      "kernel_findings": [
+        "asf/kernel/settings.py:463 \u2014 raise the default past the runtime's single-command ceiling: `'log_silent_min': (45, int)` here, `log_silent_min: 45` at settings.py:344, `.get('log_silent_min', 45)` at ports.py:2720, and pin the knob in the fixture (`kernel: {heartbeat: {log_silent_min: 20}}` in `_beating_run`, tests/kernel/test_beat_live.py:184) or raise its silent age to 50m so the acceptance pair still discriminates"
+      ],
+      "kernel_fix_rounds": 1,
       "kernel_notes": [
         "groom-fill-b-226064-1791970180: groom-fill raised risk high: no log_silent_min key or frozen-demotion logic exists yet; this is new kernel heartbeat-judge behavior, not landed or covered elsewhere."
       ],
-      "kernel_state": "review",
+      "kernel_state": "building",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19633,7 +19637,7 @@
       "state": "New",
       "title": "A hung local session keeps beating through the host loop and is ended only at the 6 hour ceiling",
       "type": "bug",
-      "updated": "2026-10-14T10:28:38Z",
+      "updated": "2026-10-14T10:43:28Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/settings.py",
@@ -92926,7 +92930,7 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92939,7 +92943,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T10:40:12Z",
+      "updated": "2026-10-14T10:43:28Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
