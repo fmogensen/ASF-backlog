@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T12:44:30Z",
+  "generated": "2026-10-14T12:47:37Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -97283,7 +97283,10 @@
         "[2e968a66@5c2b778] tests/test_record_archive_history.py:384 \u2014 rename `test_12_row_appears_in_run_as_required` to `..._as_optional` and change the `# required` comment at :392 to `# not required (PD12)`: both say the opposite of the `assertFalse(row[1])` they annotate",
         "[76456a5d@5c2b778] tests/test_record_archive_history.py:4-6 \u2014 add line 11 to the module docstring's \"covers lines 1-8 and 12\", now that `ArchiveOffTests` proves it here",
         "[e31cb5ad@5c2b778] docs/specs/f-0363.md:349-354 \u2014 replace the `with_archive` docstring's \"`items` (an `asf.views.index_reader.Items`)\" premise with the plain-map-or-`Items` contract the code now implements, since the production caller passes a plain map",
-        "[a544417d@5c2b778] asf/doctor.py:215 \u2014 rename `check_archive_retention` to `check_archive` and move its `rows.append` to directly after the `backlog` row, as plan Step 3 names it"
+        "[a544417d@5c2b778] asf/doctor.py:215 \u2014 rename `check_archive_retention` to `check_archive` and move its `rows.append` to directly after the `backlog` row, as plan Step 3 names it",
+        "[52779d86@f7b2cc6] asf/record/archive.py:258 \u2014 `dict(read_manifest(root)['items'])` is the only bare index of the manifest's items in the tree; every sibling reader degrades instead (archive.py:179, :237, :581, :682, asf/cli.py:360 all use .get('items', {})), read_manifest guarantees the key only on the no-file path, and nothing schema-validates the manifest. Use `.get('items') or {}`, or widen the plan's Step 1 wording at docs/plans/f-0363.md:726 which prescribes the bare index.",
+        "[25b1a2d2@f7b2cc6] asf/doctor.py:215 \u2014 the archive row calls archive.plan, which loads the whole working set and shells out for git_touch_dates on every `asf doctor` run, for one informational row. Pre-check conventions.archive_after_days before the full plan so the row keeps its numbers without the record load.",
+        "[12c5e184@f7b2cc6] docs/plans/f-0363.md:746 \u2014 Step 3 says the row is \"Red when the retention is below the floor\" while the same Step sets required=False; with required=False an ok of False renders as `skip`, never RED (asf/doctor.py:2583) and is_red ignores it (:2589). Change the sentence to say warn, which is what the code returns (asf/doctor.py:227) and what the tests pin."
       ],
       "kernel_notes": [
         "round not charged: a rebase round: PR #1777 conflicts with its base"
@@ -97302,7 +97305,7 @@
       ],
       "title": "the counts that need history read the archive explicitly, and a retention below the floor is refused",
       "type": "task",
-      "updated": "2026-10-14T12:34:31Z",
+      "updated": "2026-10-14T12:47:35Z",
       "writes": [
         "asf/record/archive.py",
         "asf/metrics/metrics.py",
