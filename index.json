@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T11:29:05Z",
+  "generated": "2026-10-14T11:29:45Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -19059,7 +19059,7 @@
       "state": "New",
       "title": "A second landing files no follow-up Bug for its later findings",
       "type": "bug",
-      "updated": "2026-10-14T11:18:08Z",
+      "updated": "2026-10-14T11:29:43Z",
       "writes": [
         "asf/kernel/decide.py",
         "asf/kernel/apply.py",
@@ -19618,7 +19618,7 @@
         "groom-fill-b-225513-1791971413: groom-fill raised risk high: The five named modules were already migrated to asf.clock by T-210358 (#1758, on origin/main) and the baseline file already matches the tree; the only real remaining work is flipping clock-400 from report-only to blocking in CI, which touches the kernel's own gate.",
         "build-b-225513-1791973010: NEEDS OPERATOR: file a Bug for the four modules named above (test_quota_headroom.py, test_quota_stale.py, tests/kernel/test_gh_budget.py, test_groom_publish.py) reading the real clock/pinned dates under the now-bloc\u2026"
       ],
-      "kernel_state": "review",
+      "kernel_state": "landing",
       "parent": "F-0357",
       "risk": "high",
       "schema_version": 3,
@@ -19628,7 +19628,7 @@
       "state": "New",
       "title": "Tests that fail under the +400 day clock leg: fix them and make the leg blocking",
       "type": "bug",
-      "updated": "2026-10-14T11:27:02Z",
+      "updated": "2026-10-14T11:29:43Z",
       "writes": [
         ".github/workflows/tests.yml",
         "tests/test_workflow.py"
@@ -19655,7 +19655,7 @@
       "kernel_notes": [
         "groom-fill-b-226064-1791970180: groom-fill raised risk high: no log_silent_min key or frozen-demotion logic exists yet; this is new kernel heartbeat-judge behavior, not landed or covered elsewhere."
       ],
-      "kernel_state": "landing",
+      "kernel_state": "done",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19665,7 +19665,7 @@
       "state": "New",
       "title": "A hung local session keeps beating through the host loop and is ended only at the 6 hour ceiling",
       "type": "bug",
-      "updated": "2026-10-14T11:27:02Z",
+      "updated": "2026-10-14T11:29:43Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/kernel/settings.py",
@@ -19737,7 +19737,7 @@
         "PR #1796: clock (+30d) is red but not a required check \u2014 ignored",
         "PR #1796: clock (+400d, report-only) is red but not a required check \u2014 ignored"
       ],
-      "kernel_state": "building",
+      "kernel_state": "review",
       "parent": "F-0360",
       "risk": "high",
       "schema_version": 3,
@@ -19747,7 +19747,7 @@
       "state": "New",
       "title": "kernel.heartbeat.max_continues never trips because a relaunch starts its resumes at 0",
       "type": "bug",
-      "updated": "2026-10-14T10:46:53Z",
+      "updated": "2026-10-14T11:29:43Z",
       "writes": [
         "asf/kernel/ports.py",
         "asf/workers/spawn.py",
@@ -92975,11 +92975,6 @@
       "kernel_reverted": [
         1595
       ],
-      "kernel_state": "stuck",
-      "kernel_stuck_next": "a session reads the reason and fixes the cause",
-      "kernel_stuck_owner": "session",
-      "kernel_stuck_reason": "done without a push: pushed: no \u2014 PR carries an empty diff against origin/main (review finding, clause 1); the Task's work is already on origin/main at c4c7a3159 (all five writes: files), verified he\u2026",
-      "kernel_stuck_since": "2026-10-14T11:26:59Z",
       "links": {
         "plan": "docs/plans/f-0340.md"
       },
@@ -92993,7 +92988,7 @@
       ],
       "title": "the card is JSON, and the markdown beside it is a generated view nothing parses",
       "type": "task",
-      "updated": "2026-10-14T11:27:02Z",
+      "updated": "2026-10-14T11:29:43Z",
       "writes": [
         "asf/record/index.py",
         "asf/record/check.py",
@@ -97149,7 +97144,7 @@
         "PR #1771: part (3.13, 3) is red but not a required check \u2014 ignored"
       ],
       "kernel_rebuilds": 1,
-      "kernel_state": "building",
+      "kernel_state": "review",
       "links": {
         "plan": "docs/plans/f-0363.md"
       },
@@ -97162,7 +97157,7 @@
       ],
       "title": "load_items, the kernel's facts, the index and asf check read the working set only \u2014 and the archiver is a staged writer in the record's tail",
       "type": "task",
-      "updated": "2026-10-14T10:55:04Z",
+      "updated": "2026-10-14T11:29:43Z",
       "writes": [
         "asf/record/stage.py",
         "asf/tick/cadence.py",
