@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-14T00:27:07Z",
+  "generated": "2026-10-14T00:31:22Z",
   "items": {
     "B-0001": {
       "area": "factory",
@@ -18437,10 +18437,11 @@
       "found_in": "dev",
       "id": "B-208187",
       "kernel_closed_findings": {
-        "2ff1eead": "{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:363'}",
-        "66bcf29c": "{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:212'}",
-        "882dcb7a": "{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:234'}",
-        "c0269974": "{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:148'}"
+        "2ff1eead": "{'head': \"{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:363'}\", 'line': ''}",
+        "66bcf29c": "{'head': \"{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:212'}\", 'line': ''}",
+        "882dcb7a": "{'head': \"{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:234'}\", 'line': ''}",
+        "c0269974": "{'head': \"{'head': '229ec465fa99be22ef0bc7b5cfadefdca0b53b14', 'line': 'asf/record/repair.py:148'}\", 'line': ''}",
+        "ca229eb4": "{'head': '4ec6dd6d229ebe60466d31e14cf9074adbee5f99', 'line': 'asf/record/repair.py:413'}"
       },
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.11",
@@ -18467,7 +18468,7 @@
       "state": "New",
       "title": "Repair the 182 cards that refuse the schema-2 migration by rule, before it runs",
       "type": "bug",
-      "updated": "2026-10-14T00:22:14Z",
+      "updated": "2026-10-14T00:31:21Z",
       "writes": [
         "asf/record/repair.py",
         "tests/test_record_repair.py"
@@ -18818,16 +18819,21 @@
       "kernel_dor_fills": 1,
       "kernel_dor_fills_ver": "0.3.14",
       "kernel_findings": [
-        "rebase: PR #1738 conflicts with its base \u2014 rebase the branch onto the base, resolve the conflicts, keep the change's intent, run the touched tests, commit it locally (do not force-push yourself) and report status: done, pushed: rebased <sha> \u2014 the host publishes it"
+        "tests/fixtures/harvest_review_findings.py:47 \u2014 MAX_LEN = 130 cuts 360 of the 531 rows inside their own sentence, dropping the clause that carries the ask; this, not the parser, is what clears the card's 10% ceiling (C-list rows against the cards' real declared writes:, head parser: 9.88% at 130, 20.99% uncut; main's parser 25.93% / 30.86%). Restore the predecessor harvester's first-sentence rule (SENTENCE_END_RE + _clean, no character cap) or raise MAX_LEN to 400, re-harvest, update the row-count assertion at tests/kernel/test_finding_writes.py:503, and meet the ceiling there.",
+        "tests/kernel/test_finding_writes.py:507 \u2014 the Replay footprint is synthesized from the finding's own subject (\"subject = FD.line_key(text).split(':')[0] or 'asf/a.py'\" then item(writes=(subject,))), so the one path a finding names is inside writes: by construction for the 277 of 531 rows carrying a path:line; with the cards' real declared footprint this head reads 68/531 = 12.81%, over the asserted ceiling. Restore scope_writes to the harvester, emit \"writes\" on every row, and read it = item(writes=tuple(row['writes'])) here.",
+        "tests/fixtures/harvest_review_findings.py:34 \u2014 HEADING_RE r'^#{2,4}\\s*([CI])\\b.*$' harvests the I list, so 450 of the 531 rows are notes the kernel never reads as findings (an approve's Review.findings is always [] via floor_approvals, and the LATER list is kept apart \u2014 the reason the predecessor harvester documented the exclusion). Restrict it to ([C]), rename the fixture to its true count, and update the assertion at tests/kernel/test_finding_writes.py:503.",
+        "asf/kernel/findings.py:168 \u2014 _path_token drops B-211642's directory requirement, so a bare dotted word reads as a path again: main's own test text yields ['asf/kernel/model.py', 'decide.py', 'ports.py', 'guide.md', 'tests/test_real_fix.py'] here against ['tests/test_real_fix.py'] on main, and the corpus mints 10 phantom requests for paths not in the repo (plan_tasks.py, run_tests.py, check_generic.sh, x.md); the merged assertion was deleted from the test instead (tests/kernel/test_finding_writes.py:100-102), and the sibling parser keeps the rule (asf/merge_queue.py:1160). Restore \"if '/' not in tok: return ''\" after the strip, keep the extension requirement, and restore the deleted decide.py/ports.py/guide.md clause and its assertion to the test.",
+        "asf/kernel/findings.py:222 \u2014 B-211642's cited-caller cue (CITE_RE: callers?|cit(e|es|ing|ed)) is deleted with no replacement in _MISSING_RE or _PROCESS_RE, so \"the caller in asf/kernel/model.py passes the wrong type\" and \"citing asf/kernel/model.py for context only\" are writes requests again (both [] on main), and the assertion went with it. Add callers?|cit(?:e|es|ing|ed) to _PROCESS_RE \u2014 clause-scoped it now obeys the imperative override, which is stricter than the old six-word window \u2014 and restore the test's cited-caller clause.",
+        "asf/kernel/findings.py:247 \u2014 _cited judges a path by its first mention only (m = re.search(re.escape(path), text)), so an explicit ask after a missing-clause is dropped: \"`docs/plans/x.md` is missing. Write `docs/plans/x.md` with the Task and its Steps.\" -> [], while the same two sentences reversed -> ['docs/plans/x.md']. Iterate re.finditer: the path is an ask when any mention's clause carries an imperative, context only when every mention's clause carries a cue and none an imperative.",
+        "tests/kernel/test_finding_writes.py:512 \u2014 the routed leg lost the risk_high rule the kernel routes by (asf/kernel/decide.py:1462-1464: \"risky or len(paths) > config.finding_writes_max\"), so \"under 2% routed\" no longer measures the card's fourth Acceptance. Restore risk = tuple(B.config().risk_high or ()) and count routed on risky or len(paths) > finding_writes_max."
       ],
-      "kernel_fix_rounds": 1,
+      "kernel_fix_rounds": 2,
       "kernel_notes": [
         "groom-fill-b-214946-1791925607: groom-fill raised risk high: Card's own acceptance test needs a fixture/harvester that exist only on the open, unlanded, currently-failing PR #1729 (fix/B-211642, still at 35% on its own Replay test) touching the identical findings.py functions \u2014 must be sequenced after that PR (or supersede it) before this card is buildable.",
         "round not charged: a rebase round: PR #1738 conflicts with its base",
         "build-b-214946-1791934634: NEEDS OPERATOR: the heartbeat command (.b0000_heartbeat.sh) was refused by the sandbox's approval gate every time it was attempted \u2014 proceeded without one per the brief's own rule that a heartbeat that cannot start\u2026"
       ],
-      "kernel_round_charged": false,
-      "kernel_state": "ready",
+      "kernel_state": "building",
       "parent": "F-0358",
       "risk": "high",
       "schema_version": 3,
@@ -18837,7 +18843,7 @@
       "state": "New",
       "title": "The finding path reader reads paths cited as missing or for process reasons as a writes request",
       "type": "bug",
-      "updated": "2026-10-14T00:27:05Z",
+      "updated": "2026-10-14T00:31:21Z",
       "writes": [
         "asf/kernel/findings.py",
         "tests/kernel/test_finding_writes.py",
